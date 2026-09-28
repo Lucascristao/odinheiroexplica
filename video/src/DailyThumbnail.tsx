@@ -45,8 +45,8 @@ export const DailyThumbnail = () => {
           top: 145,
           width: 610,
           color: WHITE,
-          lineHeight: 0.92,
-          letterSpacing: -5,
+          lineHeight: 0.98,
+          letterSpacing: -1.6,
           fontWeight: 950,
         }}
       >
@@ -144,7 +144,7 @@ export const DailyThumbnail = () => {
               fontSize: 56,
               fontWeight: 950,
               marginTop: 12,
-              letterSpacing: -3,
+              letterSpacing: -1.2,
             }}
           >
             R$ ...
