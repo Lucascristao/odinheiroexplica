@@ -7,7 +7,7 @@ import subprocess
 from pathlib import Path
 from xml.sax.saxutils import escape, quoteattr
 
-import requests
+import azure.cognitiveservices.speech as speechsdk
 
 from tts_config import (
     DEFAULT_PRESENTER,
@@ -84,12 +84,67 @@ def render_pronunciations(text: str, tts: dict) -> str:
     return "".join(parts)
 
 
-def build_ssml(text: str, voice: str, tts: dict) -> str:
+def inject_bookmark_tokens(text: str, beats: list[dict]) -> tuple[str, dict[str, dict]]:
+    positions: list[tuple[int, str]] = []
+    metadata: dict[str, dict] = {}
+
+    for index, beat in enumerate(beats):
+        if not isinstance(beat, dict):
+            continue
+
+        anchor = str(beat.get("anchor") or "").strip()
+        if not anchor:
+            continue
+
+        occurrences = text.count(anchor)
+        if occurrences != 1:
+            raise RuntimeError(
+                f"Anchor visual precisa aparecer exatamente uma vez na narração. "
+                f"Recebido {occurrences} ocorrência(s): {anchor!r}"
+            )
+
+        mark = f"beat-{index}"
+        positions.append((text.index(anchor), mark))
+        metadata[mark] = {
+            "beat_index": index,
+            "anchor": anchor,
+        }
+
+    if not positions:
+        return text, metadata
+
+    positions.sort(key=lambda item: item[0])
+    chunks: list[str] = []
+    cursor = 0
+
+    for position, mark in positions:
+        chunks.append(text[cursor:position])
+        chunks.append(f"ODEBOOKMARK{mark.replace('-', '')}ODE")
+        cursor = position
+
+    chunks.append(text[cursor:])
+    return "".join(chunks), metadata
+
+
+def restore_bookmarks(rendered: str, bookmark_metadata: dict[str, dict]) -> str:
+    for mark in bookmark_metadata:
+        token = f"ODEBOOKMARK{mark.replace('-', '')}ODE"
+        rendered = rendered.replace(token, f'<bookmark mark="{mark}"/>')
+    return rendered
+
+
+def build_ssml(
+    text: str,
+    voice: str,
+    tts: dict,
+    beats: list[dict] | None = None,
+) -> tuple[str, dict[str, dict]]:
     base_rate = percent_value(tts.get("rate", DEFAULT_TTS_RATE), 0)
     base_pitch = percent_value(tts.get("pitch", DEFAULT_TTS_PITCH), 0)
     pause_ms = max(90, min(240, int(tts.get("pause_ms", 120))))
 
-    sentences = split_sentences(text)
+    marked_text, bookmark_metadata = inject_bookmark_tokens(text, beats or [])
+    sentences = split_sentences(marked_text)
     rendered = []
 
     for index, sentence in enumerate(sentences):
@@ -97,8 +152,6 @@ def build_ssml(text: str, voice: str, tts: dict) -> str:
         rate = base_rate
         pitch = base_pitch
 
-        # Variações mínimas de cadência para evitar leitura mecânica,
-        # sem exagerar pitch ou velocidade.
         if sentence.endswith("?"):
             pitch += 1
             rate -= 1
@@ -109,9 +162,14 @@ def build_ssml(text: str, voice: str, tts: dict) -> str:
         elif index % 3 == 2:
             rate -= 1
 
+        sentence_xml = render_pronunciations(sentence, tts)
+        sentence_xml = restore_bookmarks(sentence_xml, bookmark_metadata)
+
+        # A voz já é pt-BR. Evitamos envolver bookmarks em <lang>, pois o
+        # serviço tem histórico de inconsistências de eventos nesse cenário.
         rendered.append(
-            f'<s><lang xml:lang="pt-BR"><prosody rate="{percent_text(rate)}" '
-            f'pitch="{percent_text(pitch)}">{render_pronunciations(sentence, tts)}</prosody></lang></s>'
+            f'<s><prosody rate="{percent_text(rate)}" '
+            f'pitch="{percent_text(pitch)}">{sentence_xml}</prosody></s>'
         )
 
         if index < len(sentences) - 1:
@@ -119,13 +177,14 @@ def build_ssml(text: str, voice: str, tts: dict) -> str:
             rendered.append(f'<break time="{pause_ms + extra}ms"/>')
 
     body = "\n      ".join(rendered)
-    return f"""<speak version="1.0"
+    ssml = f"""<speak version="1.0"
   xmlns="http://www.w3.org/2001/10/synthesis"
   xml:lang="pt-BR">
   <voice xml:lang="pt-BR" name="{voice}">
       {body}
   </voice>
 </speak>"""
+    return ssml, bookmark_metadata
 
 
 def synthesize(
@@ -135,23 +194,64 @@ def synthesize(
     region: str,
     voice: str,
     tts: dict | None = None,
-) -> None:
-    endpoint = f"https://{region}.tts.speech.microsoft.com/cognitiveservices/v1"
-    ssml = build_ssml(text, voice, tts or {})
-
-    response = requests.post(
-        endpoint,
-        headers={
-            "Ocp-Apim-Subscription-Key": key,
-            "Content-Type": "application/ssml+xml",
-            "X-Microsoft-OutputFormat": "audio-48khz-192kbitrate-mono-mp3",
-            "User-Agent": "odinheiroexplica-scene-tts",
-        },
-        data=ssml.encode("utf-8"),
-        timeout=90,
+    beats: list[dict] | None = None,
+) -> list[dict]:
+    speech_config = speechsdk.SpeechConfig(subscription=key, region=region)
+    speech_config.set_speech_synthesis_output_format(
+        speechsdk.SpeechSynthesisOutputFormat.Audio48Khz192KBitRateMonoMp3
     )
-    response.raise_for_status()
-    output.write_bytes(response.content)
+
+    audio_config = speechsdk.audio.AudioOutputConfig(filename=str(output))
+    synthesizer = speechsdk.SpeechSynthesizer(
+        speech_config=speech_config,
+        audio_config=audio_config,
+    )
+
+    ssml, bookmark_metadata = build_ssml(
+        text,
+        voice,
+        tts or {},
+        beats=beats or [],
+    )
+    reached: dict[str, float] = {}
+
+    def on_bookmark(evt) -> None:
+        mark = str(evt.text)
+        reached[mark] = round(float(evt.audio_offset) / 10_000_000, 4)
+
+    synthesizer.bookmark_reached.connect(on_bookmark)
+    result = synthesizer.speak_ssml_async(ssml).get()
+
+    if result.reason != speechsdk.ResultReason.SynthesizingAudioCompleted:
+        details = getattr(result, "cancellation_details", None)
+        detail_text = getattr(details, "error_details", None) or str(details or result.reason)
+        raise RuntimeError(f"Falha no Azure Speech SDK: {detail_text}")
+
+    expected = set(bookmark_metadata)
+    missing = sorted(expected - set(reached))
+    if missing:
+        labels = [
+            bookmark_metadata[mark]["anchor"]
+            for mark in missing
+            if mark in bookmark_metadata
+        ]
+        raise RuntimeError(
+            "Azure TTS não devolveu todos os bookmarks visuais. "
+            f"Anchors ausentes: {labels}"
+        )
+
+    timings = []
+    for mark, meta in bookmark_metadata.items():
+        timings.append(
+            {
+                **meta,
+                "mark": mark,
+                "audio_offset_seconds": reached[mark],
+            }
+        )
+
+    timings.sort(key=lambda item: item["beat_index"])
+    return timings
 
 
 def main() -> None:
@@ -193,6 +293,7 @@ def main() -> None:
         "rate": DEFAULT_TTS_RATE,
         "pitch": DEFAULT_TTS_PITCH,
         "output_format": "audio-48khz-192kbitrate-mono-mp3",
+        "timing_mode": "azure-ssml-bookmarks",
         "project_pronunciations": project_pronunciations,
         "scenes": [],
         "total_duration_seconds": 0.0,
@@ -219,7 +320,18 @@ def main() -> None:
 
         narration_hash = hashlib.sha256(narration.encode("utf-8")).hexdigest()
         output = output_dir / f"{scene_id}.mp3"
-        synthesize(narration, output, key, region, project_voice, tts)
+        visual = scene.get("visual") or {}
+        visual_beats = visual.get("beats") or []
+
+        beat_timings = synthesize(
+            narration,
+            output,
+            key,
+            region,
+            project_voice,
+            tts,
+            beats=visual_beats,
+        )
         duration = duration_seconds(output)
 
         manifest["scenes"].append(
@@ -230,6 +342,7 @@ def main() -> None:
                 "duration_seconds": duration,
                 "narration_sha256": narration_hash,
                 "tts": tts,
+                "beat_timings": beat_timings,
             }
         )
         manifest["total_duration_seconds"] += duration
