@@ -1,7 +1,7 @@
-video=bets-proibidas-2026-09-28
+video=combustiveis-em-alta-2026-09-28
 date=2026-09-28
 mode=daily-editorial
-retry=4
+retry=1
 cover=chat-final
 presenter=Roberto
-features=oralidade-natural,dinamismo-continuo,pronuncia-bete-betes
+features=beats-informativos,sound-design,oralidade-natural
