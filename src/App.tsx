@@ -15,6 +15,8 @@ export default function App() {
       return;
     }
 
+    const client = supabase;
+
     async function resolveAccess(nextSession: Session | null) {
       setSession(nextSession);
 
@@ -24,11 +26,11 @@ export default function App() {
         return;
       }
 
-      const {data, error} = await supabase.auth.getUser();
+      const {data, error} = await client.auth.getUser();
       const isAdmin = !error && data.user?.app_metadata?.role === "admin";
 
       if (!isAdmin) {
-        await supabase.auth.signOut();
+        await client.auth.signOut();
         setSession(null);
         setAuthorized(false);
       } else {
@@ -38,13 +40,13 @@ export default function App() {
       setChecking(false);
     }
 
-    void supabase.auth.getSession().then(({data}) => {
+    void client.auth.getSession().then(({data}) => {
       void resolveAccess(data.session);
     });
 
     const {
       data: {subscription},
-    } = supabase.auth.onAuthStateChange((_event, nextSession) => {
+    } = client.auth.onAuthStateChange((_event, nextSession) => {
       void resolveAccess(nextSession);
     });
 
