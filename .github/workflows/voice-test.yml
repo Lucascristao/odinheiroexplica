@@ -1,0 +1,63 @@
+name: Teste de vozes - O Dinheiro Explica
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "voice-test-trigger/current.txt"
+
+permissions:
+  contents: read
+
+jobs:
+  voice-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install --no-cache-dir -r worker/requirements.txt
+
+      - name: Generate voice candidates
+        env:
+          AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
+          AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
+        run: |
+          rm -rf voice-test-output
+          mkdir -p voice-test-output
+          python worker/generate_voice_test.py \
+            --output-dir voice-test-output \
+            --manifest voice-test-output/manifest.json
+
+      - name: Upload voice test to Google Drive
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+        run: |
+          python worker/upload_voice_test_to_drive.py \
+            --input-dir voice-test-output \
+            --manifest voice-test-output/manifest.json \
+            --output voice-test-output/drive.json
+
+      - name: Summary
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          p=json.load(open("voice-test-output/drive.json", encoding="utf-8"))
+          print("## Teste de vozes pronto")
+          print("")
+          print(f"[Abrir pasta no Google Drive]({p['folder_url']})")
+          print("")
+          for v in p["voices"]:
+              print(f"- {v['id']} — {v['label']}")
+          PY
