@@ -873,3 +873,148 @@ textarea:focus {
     width: 100%;
   }
 }
+
+
+/* Produção automática */
+
+.render-status-panel {
+  overflow: hidden;
+  position: relative;
+}
+
+.render-status-panel.ready {
+  border-color: rgba(103, 211, 145, 0.28);
+}
+
+.render-status-panel.ready .panel-heading > svg {
+  color: var(--success);
+}
+
+.render-status-main,
+.render-title-row,
+.render-live,
+.render-ready-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.render-title-row {
+  margin-top: 20px;
+  color: #dfe4e9;
+}
+
+.render-title-row svg {
+  color: var(--gold);
+  flex: 0 0 auto;
+}
+
+.render-progress-track {
+  height: 12px;
+  margin-top: 18px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #080a0c;
+  border: 1px solid var(--line);
+}
+
+.render-progress-bar {
+  height: 100%;
+  min-width: 2px;
+  border-radius: inherit;
+  background: var(--gold);
+  transition: width 500ms ease;
+  box-shadow: 0 0 22px rgba(255, 189, 25, 0.28);
+}
+
+.render-metrics {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.render-metrics > div {
+  padding: 13px;
+  border-radius: 12px;
+  background: #0b0e11;
+  border: 1px solid var(--line);
+  display: grid;
+  gap: 5px;
+}
+
+.render-metrics span {
+  color: var(--muted);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.render-metrics strong {
+  font-size: 18px;
+}
+
+.render-detail {
+  margin: 14px 0 0;
+  line-height: 1.55;
+}
+
+.render-live {
+  margin-top: 14px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.render-live svg {
+  color: var(--gold);
+}
+
+.render-link {
+  width: fit-content;
+  margin-top: 16px;
+  text-decoration: none;
+}
+
+.render-ready-row {
+  margin-top: 18px;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.render-ready-row > div {
+  display: grid;
+  gap: 5px;
+}
+
+.render-ready-row span {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.render-ready-row .render-link {
+  margin-top: 0;
+  flex: 0 0 auto;
+}
+
+.spin {
+  animation: ode-spin 900ms linear infinite;
+}
+
+@keyframes ode-spin {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 760px) {
+  .render-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .render-ready-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .render-ready-row .render-link {
+    width: 100%;
+  }
+}
