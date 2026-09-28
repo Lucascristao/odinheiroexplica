@@ -13,7 +13,7 @@
     "render:dynamic-test": "remotion render video/src/index.ts DynamicVideo public/render-tests/dynamic-scene-test.mp4 --codec=h264 --concurrency=2",
     "render:motion-v2": "remotion render video/src/index.ts DynamicMotionV2 public/render-tests/macerio-motion-v2.mp4 --codec=h264 --concurrency=2",
     "render:pix-pilot": "remotion render video/src/index.ts EditorialPilot public/render-tests/pix-med-pilot.mp4 --codec=h264 --concurrency=2",
-    "still:pix-pilot": "remotion still video/src/index.ts PixPilotThumbnailA public/render-tests/pix-med-thumbnail-a.png && remotion still video/src/index.ts PixPilotThumbnailB public/render-tests/pix-med-thumbnail-b.png && remotion still video/src/index.ts PixPilotThumbnailC public/render-tests/pix-med-thumbnail-c.png"
+    "still:pix-pilot": "remotion still video/src/index.ts PixPilotThumbnail public/render-tests/pix-med-thumbnail.png"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
