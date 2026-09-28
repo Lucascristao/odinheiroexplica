@@ -9,6 +9,9 @@ on:
       - "worker/requirements.txt"
       - ".github/workflows/voice-test.yml"
 
+permissions:
+  contents: write
+
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -34,7 +37,7 @@ jobs:
       - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y espeak-ng libsndfile1
+          sudo apt-get install -y espeak-ng libsndfile1 ffmpeg
 
       - name: Install Python dependencies
         run: pip install -r worker/requirements.txt
@@ -42,10 +45,22 @@ jobs:
       - name: Generate voice samples
         run: python worker/voice_test.py
 
-      - name: Upload samples
-        uses: actions/upload-artifact@v4
-        with:
-          name: kokoro-ptbr-voice-test
-          path: artifacts/voice-tests/*.wav
-          if-no-files-found: error
-          retention-days: 7
+      - name: Convert samples to MP3
+        run: |
+          mkdir -p public/voice-tests
+          for input in artifacts/voice-tests/*.wav; do
+            name="$(basename "$input" .wav)"
+            ffmpeg -y -i "$input" -codec:a libmp3lame -b:a 128k "public/voice-tests/$name.mp3"
+          done
+
+      - name: Publish samples in repository
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add public/voice-tests/*.mp3
+          if git diff --cached --quiet; then
+            echo "No audio changes to publish."
+          else
+            git commit -m "test: publish Kokoro voice samples"
+            git push
+          fi
