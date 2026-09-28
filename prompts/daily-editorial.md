@@ -127,7 +127,7 @@ A descrição em publication.description deve sair pronta para publicação e ot
 
 ## Direção visual própria para cada pauta
 
-Antes de escolher cenas e microcenas, crie uma direção visual específica para a história atual. A identidade do canal é o DNA, não um template.
+Antes de escolher cenas e microcenas, crie uma direção visual específica para a história atual. A identidade do canal é o DNA, não um template. Consulte `docs/visual-history.md` somente para identificar padrões recentes que NÃO devem ser repetidos; nunca use esse histórico como molde de pauta, roteiro ou estrutura.
 
 Preencha `visual_direction` com:
 - `concept`: a ideia visual que traduz esta história;
