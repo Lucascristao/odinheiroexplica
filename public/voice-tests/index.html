@@ -12,77 +12,31 @@
         background: #090b0d;
       }
       * { box-sizing: border-box; }
-      body {
-        margin: 0;
-        min-height: 100vh;
-        padding: 30px 20px 70px;
-      }
-      main {
-        width: min(800px, 100%);
-        margin: 0 auto;
-      }
-      h1 {
-        margin: 0 0 8px;
-        font-size: clamp(28px, 5vw, 44px);
-      }
-      .intro {
-        margin: 0 0 32px;
-        color: #a5adb6;
-        line-height: 1.6;
-      }
-      .group {
-        margin-top: 30px;
-      }
-      h2 {
-        margin: 0 0 12px;
-        font-size: 16px;
-        color: #d9dfe5;
-      }
+      body { margin: 0; min-height: 100vh; padding: 30px 20px 70px; }
+      main { width: min(800px, 100%); margin: 0 auto; }
+      h1 { margin: 0 0 8px; font-size: clamp(28px, 5vw, 44px); }
+      .intro { margin: 0 0 32px; color: #a5adb6; line-height: 1.6; }
+      .group { margin-top: 30px; }
+      h2 { margin: 0 0 12px; font-size: 16px; color: #d9dfe5; }
       .voice {
-        padding: 18px;
-        margin: 12px 0;
-        border: 1px solid #282d33;
-        border-radius: 16px;
-        background: #111418;
+        padding: 18px; margin: 12px 0; border: 1px solid #282d33;
+        border-radius: 16px; background: #111418;
       }
       .voice-head {
-        display: flex;
-        justify-content: space-between;
-        gap: 16px;
-        align-items: flex-start;
-        margin-bottom: 13px;
+        display: flex; justify-content: space-between; gap: 16px;
+        align-items: flex-start; margin-bottom: 13px;
       }
-      .voice strong {
-        display: block;
-        color: #ffbd19;
-        margin-bottom: 5px;
-      }
-      .voice span {
-        display: block;
-        color: #a5adb6;
-        font-size: 13px;
-      }
+      .voice strong { display: block; color: #ffbd19; margin-bottom: 5px; }
+      .voice span { display: block; color: #a5adb6; font-size: 13px; }
       .badge {
-        padding: 5px 8px;
-        border-radius: 999px;
-        font-size: 11px !important;
-        font-weight: 800;
-        white-space: nowrap;
+        padding: 5px 8px; border-radius: 999px; font-size: 11px !important;
+        font-weight: 800; white-space: nowrap;
       }
-      .badge.ok {
-        color: #7ce0a0;
-        background: rgba(124, 224, 160, .08);
-      }
-      .badge.no {
-        color: #ffcc66;
-        background: rgba(255, 204, 102, .08);
-      }
+      .badge.ok { color: #7ce0a0; background: rgba(124,224,160,.08); }
+      .badge.no { color: #ffcc66; background: rgba(255,204,102,.08); }
       .unavailable {
-        padding: 12px;
-        border: 1px dashed #3b4148;
-        border-radius: 10px;
-        color: #a5adb6;
-        font-size: 13px;
+        padding: 12px; border: 1px dashed #3b4148; border-radius: 10px;
+        color: #a5adb6; font-size: 13px;
       }
       audio { width: 100%; }
     </style>
@@ -91,151 +45,35 @@
     <main>
       <h1>Teste de vozes brasileiras</h1>
       <p class="intro">
-        Nicolau fica como referência. Abaixo estão as demais vozes masculinas
-        disponíveis e as novas vozes HD que o recurso conseguir sintetizar.
+        Nicolau fica como referência. Compare abaixo com as demais vozes brasileiras disponíveis.
       </p>
-      
-            <section class="group">
-              <h2>Referência</h2>
-              
-                <section class="voice">
-                  <div class="voice-head">
-                    <div>
-                      <strong>Nicolau</strong>
-                      <span>pt-BR-NicolauNeural</span>
-                    </div>
-                    <span class="badge ok">Gerada</span>
-                  </div>
-                  <audio controls preload="metadata" src="./nicolau.mp3"></audio>
-                </section>
-                
-            </section>
-            
-            <section class="group">
-              <h2>Neural padrão</h2>
-              
-                <section class="voice">
-                  <div class="voice-head">
-                    <div>
-                      <strong>Antonio</strong>
-                      <span>pt-BR-AntonioNeural</span>
-                    </div>
-                    <span class="badge ok">Gerada</span>
-                  </div>
-                  <audio controls preload="metadata" src="./antonio.mp3"></audio>
-                </section>
-                
-                <section class="voice">
-                  <div class="voice-head">
-                    <div>
-                      <strong>Donato</strong>
-                      <span>pt-BR-DonatoNeural</span>
-                    </div>
-                    <span class="badge ok">Gerada</span>
-                  </div>
-                  <audio controls preload="metadata" src="./donato.mp3"></audio>
-                </section>
-                
-                <section class="voice">
-                  <div class="voice-head">
-                    <div>
-                      <strong>Humberto</strong>
-                      <span>pt-BR-HumbertoNeural</span>
-                    </div>
-                    <span class="badge ok">Gerada</span>
-                  </div>
-                  <audio controls preload="metadata" src="./humberto.mp3"></audio>
-                </section>
-                
-                <section class="voice">
-                  <div class="voice-head">
-                    <div>
-                      <strong>Julio</strong>
-                      <span>pt-BR-JulioNeural</span>
-                    </div>
-                    <span class="badge ok">Gerada</span>
-                  </div>
-                  <audio controls preload="metadata" src="./julio.mp3"></audio>
-                </section>
-                
-                <section class="voice">
-                  <div class="voice-head">
-                    <div>
-                      <strong>Valerio</strong>
-                      <span>pt-BR-ValerioNeural</span>
-                    </div>
-                    <span class="badge ok">Gerada</span>
-                  </div>
-                  <audio controls preload="metadata" src="./valerio.mp3"></audio>
-                </section>
-                
-            </section>
-            
-            <section class="group">
-              <h2>Multilingual</h2>
-              
-                <section class="voice">
-                  <div class="voice-head">
-                    <div>
-                      <strong>Macerio</strong>
-                      <span>pt-BR-MacerioMultilingualNeural</span>
-                    </div>
-                    <span class="badge ok">Gerada</span>
-                  </div>
-                  <audio controls preload="metadata" src="./macerio.mp3"></audio>
-                </section>
-                
-            </section>
-            
-            <section class="group">
-              <h2>Neural HD</h2>
-              
-                <section class="voice">
-                  <div class="voice-head">
-                    <div>
-                      <strong>Caio HD</strong>
-                      <span>pt-BR-Caio:MAI-Voice-2</span>
-                    </div>
-                    <span class="badge no">Indisponível</span>
-                  </div>
-                  <div class="unavailable">Não disponível neste recurso F0 ou nesta região.</div>
-                </section>
-                
-                <section class="voice">
-                  <div class="voice-head">
-                    <div>
-                      <strong>Pedro HD</strong>
-                      <span>pt-BR-Pedro:MAI-Voice-2</span>
-                    </div>
-                    <span class="badge no">Indisponível</span>
-                  </div>
-                  <div class="unavailable">Não disponível neste recurso F0 ou nesta região.</div>
-                </section>
-                
-                <section class="voice">
-                  <div class="voice-head">
-                    <div>
-                      <strong>Rafael HD</strong>
-                      <span>pt-BR-Rafael:MAI-Voice-2</span>
-                    </div>
-                    <span class="badge no">Indisponível</span>
-                  </div>
-                  <div class="unavailable">Não disponível neste recurso F0 ou nesta região.</div>
-                </section>
-                
-                <section class="voice">
-                  <div class="voice-head">
-                    <div>
-                      <strong>Luana HD</strong>
-                      <span>pt-BR-Luana:MAI-Voice-2</span>
-                    </div>
-                    <span class="badge no">Indisponível</span>
-                  </div>
-                  <div class="unavailable">Não disponível neste recurso F0 ou nesta região.</div>
-                </section>
-                
-            </section>
-            
+
+      <section class="group">
+        <h2>Referência</h2>
+        <section class="voice"><div class="voice-head"><div><strong>Nicolau</strong><span>pt-BR-NicolauNeural</span></div><span class="badge ok">Gerada</span></div><audio controls preload="metadata" src="./nicolau.mp3"></audio></section>
+      </section>
+
+      <section class="group">
+        <h2>Neural padrão</h2>
+        <section class="voice"><div class="voice-head"><div><strong>Antonio</strong><span>pt-BR-AntonioNeural</span></div><span class="badge ok">Gerada</span></div><audio controls preload="metadata" src="./antonio.mp3"></audio></section>
+        <section class="voice"><div class="voice-head"><div><strong>Donato</strong><span>pt-BR-DonatoNeural</span></div><span class="badge ok">Gerada</span></div><audio controls preload="metadata" src="./donato.mp3"></audio></section>
+        <section class="voice"><div class="voice-head"><div><strong>Humberto</strong><span>pt-BR-HumbertoNeural</span></div><span class="badge ok">Gerada</span></div><audio controls preload="metadata" src="./humberto.mp3"></audio></section>
+        <section class="voice"><div class="voice-head"><div><strong>Julio</strong><span>pt-BR-JulioNeural</span></div><span class="badge ok">Gerada</span></div><audio controls preload="metadata" src="./julio.mp3"></audio></section>
+        <section class="voice"><div class="voice-head"><div><strong>Valerio</strong><span>pt-BR-ValerioNeural</span></div><span class="badge ok">Gerada</span></div><audio controls preload="metadata" src="./valerio.mp3"></audio></section>
+      </section>
+
+      <section class="group">
+        <h2>Multilingual</h2>
+        <section class="voice"><div class="voice-head"><div><strong>Macerio</strong><span>pt-BR-MacerioMultilingualNeural</span></div><span class="badge ok">Gerada</span></div><audio controls preload="metadata" src="./macerio.mp3"></audio></section>
+      </section>
+
+      <section class="group">
+        <h2>Neural HD</h2>
+        <section class="voice"><div class="voice-head"><div><strong>Caio HD</strong><span>pt-BR-Caio:MAI-Voice-2</span></div><span class="badge no">Indisponível</span></div><div class="unavailable">Não foi gerada no recurso F0 atual.</div></section>
+        <section class="voice"><div class="voice-head"><div><strong>Pedro HD</strong><span>pt-BR-Pedro:MAI-Voice-2</span></div><span class="badge no">Indisponível</span></div><div class="unavailable">Não foi gerada no recurso F0 atual.</div></section>
+        <section class="voice"><div class="voice-head"><div><strong>Rafael HD</strong><span>pt-BR-Rafael:MAI-Voice-2</span></div><span class="badge no">Indisponível</span></div><div class="unavailable">Não foi gerada no recurso F0 atual.</div></section>
+        <section class="voice"><div class="voice-head"><div><strong>Luana HD</strong><span>pt-BR-Luana:MAI-Voice-2</span></div><span class="badge no">Indisponível</span></div><div class="unavailable">Não foi gerada no recurso F0 atual.</div></section>
+      </section>
     </main>
   </body>
 </html>
