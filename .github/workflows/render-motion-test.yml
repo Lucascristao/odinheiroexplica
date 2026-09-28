@@ -31,9 +31,6 @@ jobs:
       - name: Install
         run: npm install --no-audit --no-fund
 
-      - name: Ensure Remotion browser
-        run: npx remotion browser ensure
-
       - name: Render
         run: npm run render:motion-test
 
