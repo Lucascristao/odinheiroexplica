@@ -42,11 +42,17 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          rm -rf /tmp/voice-tests-generated
+          cp -a public/voice-tests /tmp/voice-tests-generated
+
           git fetch origin main
           git checkout main
           git reset --hard origin/main
 
-          git add public/voice-tests/
+          rm -rf public/voice-tests
+          cp -a /tmp/voice-tests-generated public/voice-tests
+
+          git add -A public/voice-tests/
           if git diff --cached --quiet; then
             echo "No voice test changes to publish."
           else
