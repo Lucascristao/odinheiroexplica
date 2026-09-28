@@ -1,17 +1,20 @@
-# Relatório de limpeza de GitHub Actions Artifacts
+# Relatório de limpeza do GitHub Actions
 
 Repositório: `Lucascristao/odinheiroexplica`
-Executado em: 2026-09-28 11:54 UTC
+Executado em: 2026-09-28 11:56 UTC
+
+## Resultado
 
 Artifacts encontrados: **0**
-Últimas versões preservadas: **0**
-Versões antigas apagadas: **0**
-Espaço removido nesta execução: **0.00 MB**
+Artifacts antigos apagados: **0**
+Caches encontrados: **0**
+Caches apagados: **0**
+Espaço removido: **0.00 MB**
 
-## Preservados
+## Artifacts preservados
 
-- Nenhum artifact existente.
+- Nenhum.
 
-## Apagados
+## Caches apagados
 
-- Nenhuma versão antiga para apagar.
+- Nenhum.
