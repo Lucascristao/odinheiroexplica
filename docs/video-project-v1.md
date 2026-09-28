@@ -62,7 +62,7 @@ O VideoProject pode declarar ajustes de fala no nível raiz sem alterar a grafia
 {
   "speech": {
     "pronunciations": {
-      "bets": "béts"
+      "bets": "bétes"
     },
     "ignore_pronunciation_terms": []
   }
@@ -70,3 +70,23 @@ O VideoProject pode declarar ajustes de fala no nível raiz sem alterar a grafia
 ```
 
 `speech.pronunciations` é aplicado somente ao TTS. Texto de tela, título, descrição e roteiro mantêm a escrita original. Antes da síntese, o pipeline executa uma auditoria de termos com maior risco de leitura artificial. Em modo estrito, a etapa de áudio é interrompida quando um termo de risco conhecido não possui alias nem validação explícita.
+
+
+## Sound design
+
+O render diário possui uma camada global de sound design editorial. Ela não depende de o VideoProject escolher sons manualmente.
+
+Princípios:
+- a voz do apresentador é a faixa principal;
+- efeitos são curtos e discretos;
+- os eventos sonoros acompanham marcos visuais relevantes, como entrada de número, avanço de processo, alerta e transição;
+- o sistema evita colocar som em cada movimento para não deixar a edição cansativa;
+- não há música contínua por padrão;
+- o encerramento reserva uma pequena cauda depois da narração e toca uma assinatura sonora curta;
+- os efeitos são gerados proceduralmente dentro do próprio projeto durante o workflow, evitando dependência de arquivos externos e problemas de licença.
+
+## Descrição para YouTube
+
+O pipeline acrescenta automaticamente capítulos e a seção `Bases do vídeo:`.
+
+Essa seção lista somente os títulos das fontes que sustentaram o roteiro. As URLs continuam preservadas dentro do VideoProject para auditoria e verificação, mas não são colocadas automaticamente na descrição pública.
