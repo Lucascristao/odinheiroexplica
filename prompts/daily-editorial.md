@@ -44,10 +44,10 @@ A narração deve soar como uma pessoa explicando algo interessante para outra p
 ## Apresentadores do canal
 
 O canal trabalha com dois apresentadores fixos:
-- voz masculina: pt-BR-MacerioMultilingualNeural;
-- voz feminina: pt-BR-ThalitaMultilingualNeural.
+- Roberto: voz masculina pt-BR-MacerioMultilingualNeural;
+- Luana: voz feminina pt-BR-ThalitaMultilingualNeural.
 
-A escolha do apresentador deve considerar o assunto, o enquadramento e o público provável do vídeo, sem usar estereótipos simplistas de gênero. O nome/personagem editorial de cada apresentador é independente da voz técnica e será definido na configuração do canal.
+Roberto e Luana são personagens editoriais fixos do canal. Use seus nomes de forma natural quando houver apresentação no roteiro. A escolha do apresentador deve considerar o assunto, o enquadramento e o público provável do vídeo, sem usar estereótipos simplistas de gênero.
 
 A apresentação do narrador deve variar naturalmente quando fizer sentido. Não use sempre a mesma frase de abertura. É válido começar pelo gancho e só depois o apresentador se identificar. Evite introduções longas que atrasem a entrega da promessa do vídeo.
 
