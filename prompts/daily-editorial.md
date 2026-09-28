@@ -161,3 +161,8 @@ Audite:
 - descrição fraca para busca, genérica ou com excesso de palavras-chave.
 
 Ao final, entregue somente um JSON válido seguindo o schema VideoProject v1.0 do projeto.
+
+
+## Branding da thumbnail
+
+Não usar nome do canal, logotipo, ícone ou selo de marca por padrão. A identidade deve vir de tipografia, paleta, contraste e acabamento editorial. Só incluir branding explícito se o usuário pedir.
