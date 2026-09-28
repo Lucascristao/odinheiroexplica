@@ -1,39 +1,51 @@
 # Narração
 
-## Motor inicial
+## Motor escolhido
 
-Kokoro-82M.
+Azure AI Speech, usando vozes neurais nativas de Português do Brasil.
 
-Motivos:
+A escolha substitui o Kokoro depois do teste auditivo inicial mostrar pronúncia inadequada para o padrão do canal.
 
-- open weights;
-- licença Apache 2.0;
-- roda em CPU;
-- suporte a Português Brasileiro;
-- três vozes pt-BR úteis para comparação inicial.
+## Por que Azure
 
-## Vozes em teste
+A prioridade é naturalidade em pt-BR, estabilidade e licença adequada para um canal que pretende monetizar.
 
-- `pf_dora`
-- `pm_alex`
-- `pm_santa`
+A camada gratuita F0 do Azure Speech oferece 0,5 milhão de caracteres neurais por mês. Para permanecer nessa faixa gratuita, usamos vozes Neural padrão, não as novas vozes HD.
 
-A voz definitiva não deve ser escolhida apenas pelo nome ou por amostras de terceiros. O workflow `Teste de vozes Kokoro` gera o mesmo texto nas três vozes.
+## Voz padrão inicial
 
-## Critérios de escolha
+`pt-BR-FranciscaNeural`
 
-1. naturalidade;
-2. clareza de números e nomes de empresas;
-3. ritmo de documentário curto;
-4. menor sensação de leitura robótica;
-5. estabilidade em textos maiores.
+Ela fica como padrão provisório por ter boa reputação específica entre usuários brasileiros. Antes de fechar a identidade sonora do canal, o teste compara também:
+
+- `pt-BR-FabioNeural`
+- `pt-BR-NicolauNeural`
+
+A voz final continua sendo uma decisão auditiva.
+
+## Segredos necessários no GitHub
+
+O workflow usa apenas GitHub Secrets:
+
+- `AZURE_SPEECH_KEY`
+- `AZURE_SPEECH_REGION`
+
+A chave nunca deve entrar no frontend, no repositório ou em logs.
+
+## Teste
+
+O workflow `Teste de vozes Azure pt-BR` gera os três MP3 diretamente pela API oficial do Azure e os publica em `public/voice-tests/`.
+
+Página de audição:
+
+`/voice-tests/`
 
 ## Timeline
 
-A duração do vídeo nunca é estimada antes da narração.
+A duração do vídeo não é definida antes da narração.
 
 Fluxo:
 
 roteiro por cena → TTS por cena → duração real do áudio → timeline → render.
 
-O áudio de cada cena será salvo separadamente para permitir regeneração sem refazer o vídeo inteiro.
+Cada cena terá seu áudio próprio para permitir regeneração isolada.
