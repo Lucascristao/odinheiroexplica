@@ -2,13 +2,6 @@ name: Render teste V2 de dinamismo
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "video/src/DynamicMotionV2.tsx"
-      - "video/src/Root.tsx"
-      - ".github/workflows/render-motion-v2.yml"
-      - "package.json"
 
 permissions:
   contents: write
