@@ -129,3 +129,38 @@ O campo `anchor` deve ser um trecho literal da própria narração. Na montagem 
 O Remotion apresenta cada beat como uma microcena editorial em primeiro plano. Os tipos disponíveis são `fact`, `number`, `date`, `money`, `bank`, `flow`, `process`, `warning`, `compare`, `trend_up`, `trend_down`, `fuel` e `block`.
 
 Objetivo editorial: quando a fala muda de informação, o foco visual também deve mudar. Em cenas longas, a referência é uma nova informação visual aproximadamente a cada 4 a 7 segundos, sem criar movimento gratuito.
+
+
+## Direção visual por pauta
+
+O VideoProject deve definir um `visual_direction` próprio para cada história. A marca permanece consistente em tipografia, contraste, preto/carvão, branco, dourado e acabamento editorial, mas composição, metáfora, movimento, cor secundária e objetos devem nascer da pauta atual.
+
+Campos:
+- `concept`: ideia visual central;
+- `world`: minimal, digital, industrial, documentary, market, network ou paper;
+- `secondary_color`: cor secundária específica da pauta;
+- `motifs`: objetos/formas que pertencem à história;
+- `motion_language`: decisões de movimento e corte;
+- `avoid`: soluções que fariam o vídeo parecer repetição de outro.
+
+O histórico em `docs/visual-history.md` serve somente como lista anti-repetição. Nunca deve influenciar seleção de pauta ou estrutura narrativa.
+
+## Microcenas narrativas
+
+`visual.beats` não é uma camada de cards sobre a cena. Cada beat representa uma nova unidade visual capaz de substituir, transformar ou reenquadrar a composição.
+
+Campos de edição:
+- `behavior`: cut, transform, reframe ou overlay;
+- `treatment`: kinetic_type, giant_number, flow_diagram, timeline, split_compare, meter, spotlight, equation, stack ou signal;
+- `transition`: cut, fade, slide_left, slide_up, zoom ou wipe;
+- `placement`: left, center, right ou full.
+
+Overlay é exceção e deve existir apenas com área segura. O sistema valida no máximo um por cena e bloqueia repetição do mesmo tratamento em três beats consecutivos.
+
+## Sincronização de fala e imagem
+
+Beats com `anchor` usam bookmarks SSML inseridos exatamente antes do trecho literal da narração. O Azure Speech SDK devolve o `audio_offset` real do bookmark durante a síntese. O pipeline converte esse timestamp para frame e inicia a microcena naquele ponto.
+
+O método anterior de estimar o tempo pela posição proporcional do texto continua apenas como fallback para projetos antigos ou beats que usem `at`.
+
+Com isso, um número, diagrama, corte ou mudança de composição entra quando o apresentador realmente chega à informação correspondente, e não em um ponto aproximado da cena.
