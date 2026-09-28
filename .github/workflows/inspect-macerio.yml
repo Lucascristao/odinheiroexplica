@@ -1,0 +1,42 @@
+name: Inspect Azure Macerio voice
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/inspect-macerio.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Inspect voice metadata
+        env:
+          AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
+          AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
+        run: |
+          python - <<'PY'
+          import json, os, urllib.request
+
+          region = os.environ["AZURE_SPEECH_REGION"].strip()
+          key = os.environ["AZURE_SPEECH_KEY"].strip()
+          req = urllib.request.Request(
+              f"https://{region}.tts.speech.microsoft.com/cognitiveservices/voices/list",
+              headers={"Ocp-Apim-Subscription-Key": key},
+          )
+          with urllib.request.urlopen(req, timeout=30) as r:
+              voices = json.load(r)
+
+          match = [v for v in voices if v.get("ShortName") == "pt-BR-MacerioMultilingualNeural"]
+          if not match:
+              raise SystemExit("Macerio voice not found")
+          keep = {}
+          v = match[0]
+          for k in ["Name","DisplayName","LocalName","ShortName","Gender","Locale","LocaleName","StyleList","RolePlayList","VoiceTag","Status","WordsPerMinute"]:
+              if k in v:
+                  keep[k] = v[k]
+          print(json.dumps(keep, ensure_ascii=False, indent=2))
+          PY
