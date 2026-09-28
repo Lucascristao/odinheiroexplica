@@ -123,3 +123,5 @@ jobs:
             git commit -m "pilot: publish Pix MED 2.0 video package"
             git push origin main
           fi
+
+# Pilot render trigger after workflow registration.
