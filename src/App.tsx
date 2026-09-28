@@ -5,7 +5,7 @@ import { Dashboard } from "./components/Dashboard";
 import { RenderStatusPanel } from "./components/RenderStatusPanel";
 import { isSupabaseConfigured, supabase } from "./lib/supabase";
 
-function PublicProductionStatus() {
+function ProductionStatus() {
   return (
     <main className="app-shell">
       <header className="topbar">
@@ -38,12 +38,12 @@ export default function App() {
   const [session, setSession] = useState<Session | null>(null);
   const [checking, setChecking] = useState(true);
 
-  const isPublicProductionPage =
-    window.location.pathname === "/producao" ||
-    window.location.pathname === "/producao/";
+  const isAdminPage =
+    window.location.pathname === "/admin" ||
+    window.location.pathname === "/admin/";
 
   useEffect(() => {
-    if (isPublicProductionPage) {
+    if (!isAdminPage) {
       setChecking(false);
       return;
     }
@@ -66,10 +66,10 @@ export default function App() {
     });
 
     return () => subscription.unsubscribe();
-  }, [isPublicProductionPage]);
+  }, [isAdminPage]);
 
-  if (isPublicProductionPage) {
-    return <PublicProductionStatus />;
+  if (!isAdminPage) {
+    return <ProductionStatus />;
   }
 
   if (!isSupabaseConfigured) {
