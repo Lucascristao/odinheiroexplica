@@ -1,6 +1,7 @@
 video=bets-proibidas-2026-09-28
 date=2026-09-28
 mode=daily-editorial
-retry=3
+retry=4
 cover=chat-final
 presenter=Roberto
+features=oralidade-natural,dinamismo-continuo,pronuncia-bete-betes
