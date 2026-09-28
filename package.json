@@ -9,7 +9,8 @@
     "typecheck": "tsc -b --pretty false",
     "preview": "vite preview",
     "remotion:studio": "remotion studio video/src/index.ts",
-    "render:motion-test": "remotion render video/src/index.ts BrandMotionTest public/render-tests/macerio-motion-test.mp4 --codec=h264 --concurrency=2"
+    "render:motion-test": "remotion render video/src/index.ts BrandMotionTest public/render-tests/macerio-motion-test.mp4 --codec=h264 --concurrency=2",
+    "render:dynamic-test": "remotion render video/src/index.ts DynamicVideo public/render-tests/dynamic-scene-test.mp4 --codec=h264 --concurrency=2"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
