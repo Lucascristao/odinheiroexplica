@@ -1,5 +1,12 @@
 import { useEffect, useMemo, useState } from "react";
-import { CheckCircle2, Clock3, Film, LoaderCircle, RefreshCw } from "lucide-react";
+import {
+  CheckCircle2,
+  Clock3,
+  Film,
+  HardDrive,
+  LoaderCircle,
+  RefreshCw,
+} from "lucide-react";
 
 type RenderJob = {
   runId: string;
@@ -14,8 +21,16 @@ type RenderJob = {
   updatedAt: string;
 };
 
+const productionStages = [
+  {key: "editorial", label: "Editorial"},
+  {key: "audio", label: "Narração"},
+  {key: "timeline", label: "Timeline"},
+  {key: "render", label: "Render"},
+  {key: "drive", label: "Drive"},
+];
+
 function timeLabel(seconds: number | null | undefined) {
-  if (seconds == null || !Number.isFinite(seconds)) return "—";
+  if (seconds == null || !Number.isFinite(seconds)) return "n/d";
   const rounded = Math.max(0, Math.round(seconds));
   const minutes = Math.floor(rounded / 60);
   const secs = rounded % 60;
@@ -25,23 +40,40 @@ function timeLabel(seconds: number | null | undefined) {
 function stageLabel(stage: string) {
   const labels: Record<string, string> = {
     fila: "Na fila",
-    preparando: "Preparando",
+    preparando: "Preparando produção",
     audio: "Gerando narração",
     timeline: "Montando timeline",
     dependencias: "Preparando render",
     render: "Renderizando vídeo",
     thumbnail: "Gerando thumbnail",
-    publicando: "Publicando arquivos",
+    publicando: "Enviando para o Drive",
     concluido: "Vídeo pronto",
     erro: "Erro no processamento",
   };
   return labels[stage] ?? stage;
 }
 
+function stagePosition(job: RenderJob) {
+  if (job.status === "completed") return productionStages.length;
+  if (job.status === "error") return -1;
+
+  const map: Record<string, number> = {
+    fila: 0,
+    preparando: 0,
+    audio: 1,
+    timeline: 2,
+    dependencias: 2,
+    render: 3,
+    thumbnail: 3,
+    publicando: 4,
+    concluido: 5,
+  };
+
+  return map[job.stage] ?? 0;
+}
+
 export function RenderStatusPanel() {
   const [job, setJob] = useState<RenderJob | null>(null);
-  const [fallbackReady, setFallbackReady] = useState(false);
-  const [fallbackDuration, setFallbackDuration] = useState<number | null>(null);
   const [checking, setChecking] = useState(true);
   const [now, setNow] = useState(Date.now());
 
@@ -51,19 +83,7 @@ export function RenderStatusPanel() {
         cache: "no-store",
       });
       const payload = await response.json();
-      if (response.ok && payload?.job) {
-        setJob(payload.job);
-        setFallbackReady(false);
-      } else {
-        const fallback = await fetch("/render-tests/pix-med-youtube.json", {
-          cache: "no-store",
-        });
-        if (fallback.ok) {
-          const metadata = await fallback.json();
-          setFallbackReady(true);
-          setFallbackDuration(Number(metadata.duration_seconds) || null);
-        }
-      }
+      setJob(response.ok && payload?.job ? payload.job : null);
     } catch {
       // O painel não deve impedir o restante do sistema de carregar.
     } finally {
@@ -97,45 +117,55 @@ export function RenderStatusPanel() {
     );
   }
 
-  if (!job && fallbackReady) {
+  if (!job) {
     return (
-      <section className="panel render-status-panel ready">
+      <section className="panel render-status-panel idle">
         <div className="panel-heading">
           <div>
-            <p className="eyebrow">Produção automática</p>
-            <h2>Último vídeo pronto</h2>
+            <p className="eyebrow">Produção</p>
+            <h2>Aguardando o próximo vídeo</h2>
           </div>
-          <CheckCircle2 size={22} />
+          <Film size={22} />
         </div>
-        <div className="render-ready-row">
-          <div>
-            <strong>O Pix Agora Rastreia o Dinheiro do Golpe</strong>
-            <span>Duração {timeLabel(fallbackDuration)}</span>
-          </div>
-          <a className="primary-button render-link" href="/render-tests/">
-            Assistir
-          </a>
+        <p className="muted render-detail">
+          Quando um pedido feito no chat entrar na fábrica, o andamento aparece
+          aqui automaticamente.
+        </p>
+        <div className="production-stage-strip">
+          {productionStages.map((stage) => (
+            <div className="production-stage" key={stage.key}>
+              <span />
+              <strong>{stage.label}</strong>
+            </div>
+          ))}
         </div>
       </section>
     );
   }
 
-  if (!job) return null;
-
   const running = job.status === "running" || job.status === "queued";
   const done = job.status === "completed";
+  const currentPosition = stagePosition(job);
 
   return (
-    <section className={`panel render-status-panel ${done ? "ready" : ""}`}>
+    <section
+      className={`panel render-status-panel ${done ? "ready" : ""} ${
+        job.status === "error" ? "failed" : ""
+      }`}
+    >
       <div className="panel-heading">
         <div>
-          <p className="eyebrow">Produção automática</p>
+          <p className="eyebrow">Produção em tempo real</p>
           <h2>{stageLabel(job.stage)}</h2>
         </div>
-        <button className="secondary-button" onClick={() => void refresh()}>
-          <RefreshCw size={16} />
-          Atualizar
-        </button>
+        {done ? (
+          <CheckCircle2 size={22} />
+        ) : (
+          <button className="secondary-button" onClick={() => void refresh()}>
+            <RefreshCw size={16} />
+            Atualizar
+          </button>
+        )}
       </div>
 
       <div className="render-title-row">
@@ -143,7 +173,28 @@ export function RenderStatusPanel() {
         <strong>{job.title}</strong>
       </div>
 
-      <div className="render-progress-track" aria-valuenow={Math.round(job.percent)}>
+      <div className="production-stage-strip active-strip">
+        {productionStages.map((stage, index) => {
+          const completed = done || index < currentPosition;
+          const active = !done && index === currentPosition;
+          return (
+            <div
+              className={`production-stage ${completed ? "done" : ""} ${
+                active ? "active" : ""
+              }`}
+              key={stage.key}
+            >
+              <span />
+              <strong>{stage.label}</strong>
+            </div>
+          );
+        })}
+      </div>
+
+      <div
+        className="render-progress-track"
+        aria-valuenow={Math.round(job.percent)}
+      >
         <div
           className="render-progress-bar"
           style={{width: `${Math.max(0, Math.min(100, job.percent))}%`}}
@@ -180,15 +231,18 @@ export function RenderStatusPanel() {
       {job.detail && <p className="muted render-detail">{job.detail}</p>}
 
       {done && (
-        <a className="primary-button render-link" href="/render-tests/">
-          Assistir vídeo pronto
-        </a>
+        <div className="drive-ready">
+          <HardDrive size={17} />
+          <span>
+            Produção concluída. As novas produções são entregues no Google Drive.
+          </span>
+        </div>
       )}
 
       {running && (
         <div className="render-live">
           <Clock3 size={15} />
-          Atualiza automaticamente. Não precisa abrir o GitHub Actions.
+          Atualiza automaticamente a cada poucos segundos.
         </div>
       )}
     </section>
