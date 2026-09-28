@@ -1566,7 +1566,7 @@ const SoundDesign = ({
   // Transições sonoras são espaçadas para não transformar o vídeo
   // em uma sequência de whooshes. A narração continua sempre em primeiro plano.
   if (scene.scene_index > 0 && scene.scene_index % 2 === 0 && type !== "CLOSING") {
-    add(0.015, "soft-whoosh.wav", 0.045, 0.55);
+    add(0.015, "soft-whoosh.wav", 0.08, 0.55);
   }
 
   const soundFile = (sound?: VisualBeat["sound"]): SoundEvent["file"] | null => {
@@ -1584,30 +1584,80 @@ const SoundDesign = ({
     }
   };
 
-  authoredBeats.forEach((beat) => {
+  const orderedBeats = [...authoredBeats]
+    .filter((beat) => typeof beat.resolved_frame === "number")
+    .sort((a, b) => (a.resolved_frame ?? 0) - (b.resolved_frame ?? 0));
+
+  orderedBeats.forEach((beat, index) => {
     const file = soundFile(beat.sound);
-    if (!file || typeof beat.resolved_frame !== "number") return;
-
-    const durationSeconds =
-      file === "soft-impact.wav"
-        ? 0.5
-        : file === "soft-whoosh.wav"
-          ? 0.55
-          : file === "subtle-alert.wav"
-            ? 0.34
-            : 0.12;
-
-    events.push({
-      frame: beat.resolved_frame,
-      file,
-      volume:
+    if (file && typeof beat.resolved_frame === "number") {
+      const durationSeconds =
         file === "soft-impact.wav"
-          ? 0.055
+          ? 0.5
           : file === "soft-whoosh.wav"
-            ? 0.04
-            : 0.035,
-      durationSeconds,
-    });
+            ? 0.55
+            : file === "subtle-alert.wav"
+              ? 0.34
+              : 0.12;
+
+      const volume =
+        file === "soft-impact.wav"
+          ? 0.12
+          : file === "soft-whoosh.wav"
+            ? 0.085
+            : file === "subtle-alert.wav"
+              ? 0.095
+              : 0.06;
+
+      events.push({
+        frame: beat.resolved_frame,
+        file,
+        volume,
+        durationSeconds,
+      });
+    }
+
+    if (typeof beat.resolved_frame !== "number") return;
+
+    const nextFrame =
+      index < orderedBeats.length - 1
+        ? orderedBeats[index + 1].resolved_frame ?? scene.duration_frames
+        : Math.min(
+            scene.duration_frames - 1,
+            Math.round((scene.audio_duration_seconds ?? scene.duration_frames / fps) * fps),
+          );
+
+    const beatLength = Math.max(0, nextFrame - beat.resolved_frame);
+    if (beatLength < Math.round(fps * 1.8)) return;
+
+    const developmentFrame =
+      beat.resolved_frame + Math.round(beatLength * 0.62);
+
+    if (
+      beat.treatment === "flow_diagram" ||
+      beat.treatment === "timeline" ||
+      beat.treatment === "meter"
+    ) {
+      events.push({
+        frame: developmentFrame,
+        file: beat.treatment === "flow_diagram" ? "soft-whoosh.wav" : "tick.wav",
+        volume: beat.treatment === "flow_diagram" ? 0.065 : 0.05,
+        durationSeconds: beat.treatment === "flow_diagram" ? 0.55 : 0.12,
+      });
+    }
+
+    if (
+      beat.treatment === "equation" ||
+      beat.treatment === "stack" ||
+      beat.treatment === "split_compare"
+    ) {
+      events.push({
+        frame: developmentFrame,
+        file: "tick.wav",
+        volume: 0.048,
+        durationSeconds: 0.12,
+      });
+    }
   });
 
   if (!authoredBeats.length) {
@@ -1686,7 +1736,7 @@ const SoundDesign = ({
     events.push({
       frame: narrationEnd,
       file: "outro-signature.wav",
-      volume: 0.085,
+      volume: 0.16,
       durationSeconds: 1.85,
     });
   }
