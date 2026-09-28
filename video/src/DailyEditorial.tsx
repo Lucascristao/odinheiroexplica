@@ -25,23 +25,19 @@ import {
   TrendingUp,
   WalletCards,
 } from "lucide-react";
+import {
+  EditorialMicroScene,
+  SceneTransitionAccent,
+  StoryWorldBackground,
+  findActiveBeat,
+  type EditorialBeat,
+  type EditorialDirection,
+} from "./EditorialMicroScene";
 import renderInput from "../generated/daily-render-input.json";
 
 type GenericRecord = Record<string, unknown>;
 
-type VisualBeat = {
-  anchor?: string;
-  at?: number;
-  kind?: string;
-  headline: string;
-  detail?: string;
-  value?: string;
-  from?: string;
-  to?: string;
-  sound?: "none" | "tick" | "impact" | "whoosh" | "alert";
-  resolved_ratio?: number;
-  resolved_frame?: number;
-};
+type VisualBeat = EditorialBeat;
 
 type Scene = {
   id: string;
@@ -55,6 +51,7 @@ type Scene = {
     type: string;
     payload?: GenericRecord;
     beats?: VisualBeat[];
+    transition?: VisualBeat["transition"];
   };
 };
 
@@ -1750,12 +1747,75 @@ const Visual = ({scene}: {scene: Scene}) => {
   }
 };
 
+const SceneComposition = ({
+  scene,
+  isLast,
+  direction,
+}: {
+  scene: Scene;
+  isLast: boolean;
+  direction: EditorialDirection;
+}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const beats = scene.visual?.beats ?? [];
+  const active = findActiveBeat(
+    beats,
+    frame,
+    scene.duration_frames,
+    scene.audio_duration_seconds,
+    fps,
+  );
+
+  const behavior = active?.beat.behavior ?? null;
+  const baseOpacity =
+    !active || behavior === "overlay"
+      ? 1
+      : behavior === "reframe"
+        ? 0.2
+        : 0;
+  const baseScale = behavior === "reframe" ? 1.06 : 1;
+
+  return (
+    <AbsoluteFill>
+      <AbsoluteFill
+        style={{
+          opacity: baseOpacity,
+          transform: `scale(${baseScale})`,
+          transition: "opacity 120ms linear",
+        }}
+      >
+        <Visual scene={scene} />
+      </AbsoluteFill>
+
+      <EditorialMicroScene
+        beats={beats}
+        direction={direction}
+        durationFrames={scene.duration_frames}
+        audioDurationSeconds={scene.audio_duration_seconds}
+      />
+
+      <SceneTransitionAccent
+        type={scene.visual?.transition}
+        sceneIndex={scene.scene_index}
+        secondaryColor={direction.secondary_color}
+      />
+
+      <SoundDesign scene={scene} isLast={isLast} />
+      <Audio src={staticFile(scene.audio_file)} />
+    </AbsoluteFill>
+  );
+};
+
 export const DailyEditorial = () => {
   const scenes = renderInput.scenes as Scene[];
+  const direction =
+    ((renderInput as unknown as {visual_direction?: EditorialDirection})
+      .visual_direction ?? {}) as EditorialDirection;
 
   return (
     <AbsoluteFill style={{backgroundColor: BG}}>
-      <MovingBackground />
+      <StoryWorldBackground direction={direction} />
       <Brand />
       {scenes.map((scene, index) => (
         <Sequence
@@ -1763,11 +1823,11 @@ export const DailyEditorial = () => {
           from={scene.start_frame}
           durationInFrames={scene.duration_frames}
         >
-          <Visual scene={scene} />
-          <InformationBeatLayer scene={scene} />
-          <TransitionSweep sceneIndex={scene.scene_index} />
-          <SoundDesign scene={scene} isLast={index === scenes.length - 1} />
-          <Audio src={staticFile(scene.audio_file)} />
+          <SceneComposition
+            scene={scene}
+            isLast={index === scenes.length - 1}
+            direction={direction}
+          />
         </Sequence>
       ))}
     </AbsoluteFill>
