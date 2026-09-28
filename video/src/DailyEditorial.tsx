@@ -1370,25 +1370,35 @@ const InformationBeatLayer = ({scene}: {scene: Scene}) => {
               minHeight: 185,
             }}
           >
-            {[from, to].map((label, index) => (
-              <div
-                key={label}
-                style={{
-                  padding: "28px 26px",
-                  borderRadius: 20,
-                  border: `1px solid ${index === 1 ? "rgba(255,189,25,.40)" : LINE}`,
-                  background:
-                    index === 1 ? "rgba(255,189,25,.065)" : SURFACE_2,
-                  color: index === 1 ? GOLD : WHITE,
-                  fontSize: 34,
-                  fontWeight: 900,
-                  textAlign: "center",
-                }}
-              >
-                {label}
-              </div>
-            ))}
+            <div
+              style={{
+                padding: "28px 26px",
+                borderRadius: 20,
+                border: `1px solid ${LINE}`,
+                background: SURFACE_2,
+                color: WHITE,
+                fontSize: 34,
+                fontWeight: 900,
+                textAlign: "center",
+              }}
+            >
+              {from}
+            </div>
             <ArrowRight size={54} strokeWidth={1.8} color={GOLD} />
+            <div
+              style={{
+                padding: "28px 26px",
+                borderRadius: 20,
+                border: "1px solid rgba(255,189,25,.40)",
+                background: "rgba(255,189,25,.065)",
+                color: GOLD,
+                fontSize: 34,
+                fontWeight: 900,
+                textAlign: "center",
+              }}
+            >
+              {to}
+            </div>
           </div>
         ) : (
           <div
