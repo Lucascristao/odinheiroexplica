@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Teste de vozes | O Dinheiro Explica</title>
+    <style>
+      :root {
+        font-family: Inter, system-ui, sans-serif;
+        color: #f5f5f5;
+        background: #090b0d;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 24px;
+      }
+      main {
+        width: min(720px, 100%);
+      }
+      h1 {
+        margin: 0 0 8px;
+        font-size: clamp(28px, 5vw, 44px);
+      }
+      p {
+        margin: 0 0 28px;
+        color: #a5adb6;
+        line-height: 1.6;
+      }
+      .voice {
+        padding: 18px;
+        margin: 12px 0;
+        border: 1px solid #282d33;
+        border-radius: 16px;
+        background: #111418;
+      }
+      .voice strong {
+        display: block;
+        margin-bottom: 12px;
+        color: #ffbd19;
+      }
+      audio {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Teste de vozes Kokoro</h1>
+      <p>Escute o mesmo texto nas três vozes e escolha a que combina melhor com o canal.</p>
+
+      <section class="voice">
+        <strong>pf_dora</strong>
+        <audio controls preload="metadata" src="./pf_dora.mp3"></audio>
+      </section>
+
+      <section class="voice">
+        <strong>pm_alex</strong>
+        <audio controls preload="metadata" src="./pm_alex.mp3"></audio>
+      </section>
+
+      <section class="voice">
+        <strong>pm_santa</strong>
+        <audio controls preload="metadata" src="./pm_santa.mp3"></audio>
+      </section>
+    </main>
+  </body>
+</html>
