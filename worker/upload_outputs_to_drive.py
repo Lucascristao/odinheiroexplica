@@ -15,7 +15,7 @@ def safe_name(value: str) -> str:
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--video", required=True)
-    parser.add_argument("--thumbnail", required=True)
+    parser.add_argument("--thumbnail")
     parser.add_argument("--metadata", required=True)
     parser.add_argument("--publication-text")
     parser.add_argument("--project-slug", required=True)
@@ -54,7 +54,11 @@ def main() -> None:
         }
 
     upload_one("video", args.video)
-    upload_one("thumbnail", args.thumbnail)
+    if args.thumbnail:
+        thumbnail = Path(args.thumbnail)
+        if not thumbnail.exists():
+            raise RuntimeError(f"Thumbnail não encontrada: {thumbnail}")
+        upload_one("thumbnail", args.thumbnail)
     upload_one("metadata", args.metadata)
     if args.publication_text:
         publication_text = Path(args.publication_text)
