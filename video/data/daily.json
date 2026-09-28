@@ -198,7 +198,7 @@
       {
         "index": 0,
         "title": "As bets foram proibidas, mas o dinheiro ainda precisa sair",
-        "narration": "Tem uma situação meio estranha acontecendo agora: as bets foram proibidas, mas os sites ainda não sumiram. E o motivo é simples. Ainda existe dinheiro de apostadores lá dentro. Eu sou o Roberto, e hoje eu vou te mostrar o caminho desse dinheiro. A Medida Provisória número mil trezentos e noventa e quatro criou uma transição com datas bem específicas para esse saldo sair das plataformas e voltar para as contas bancárias. Então a pergunta mais importante agora não é se a bet vai continuar. É o que acontece com o dinheiro que ficou lá.",
+        "narration": "Tem uma coisa meio estranha acontecendo agora: as bets foram proibidas, mas os sites ainda não sumiram. E sabe por quê? Porque ainda tem dinheiro de gente lá dentro. Eu sou o Roberto, e hoje eu quero te mostrar exatamente o caminho desse saldo. A Medida Provisória número mil trezentos e noventa e quatro criou uma transição com datas bem específicas pra esse dinheiro sair das plataformas e voltar pras contas bancárias. Então a pergunta agora nem é se a bet vai continuar. É outra: o que acontece com o dinheiro que ficou lá?",
         "visual": {
           "type": "HEADLINE",
           "payload": {
@@ -222,7 +222,7 @@
       {
         "index": 1,
         "title": "O que mudou na hora",
-        "narration": "A primeira mudança já vale. A MP proíbe a exploração, a oferta, a intermediação e a publicidade das apostas de quota fixa. E, para quem já tinha conta, existe um ponto bem concreto: não pode colocar dinheiro novo lá dentro. O governo bloqueou novos aportes a partir da publicação da medida. Ou seja, essa fase não é uma continuação normal das bets. É uma janela de saída.",
+        "narration": "Primeiro, o que já mudou? A MP proibiu a exploração, a oferta, a intermediação e a publicidade das apostas de quota fixa. E pra quem já tinha conta, tem um ponto bem direto: não dá mais pra colocar dinheiro novo lá dentro. Os novos aportes foram bloqueados desde a publicação da medida. Então essa fase não é uma continuação normal das bets. É uma fase de saída.",
         "visual": {
           "type": "DO_DONT",
           "payload": {
@@ -250,7 +250,7 @@
       {
         "index": 2,
         "title": "A data que importa para quem tem saldo",
-        "narration": "Agora vem a data que realmente interessa pra quem deixou saldo em uma plataforma. Até as onze e cinquenta e nove da noite do dia cinco de outubro, os sites e aplicativos ficam acessíveis para o resgate do dinheiro remanescente. Esse prazo existe justamente para o usuário retirar o saldo antes do bloqueio de acesso. Não é um prazo inventado pela plataforma. Está no cronograma oficial da transição.",
+        "narration": "Agora, presta atenção nessa data porque ela é a mais importante pra quem deixou saldo numa plataforma. Até onze e cinquenta e nove da noite do dia cinco de outubro, os sites e aplicativos continuam acessíveis pra pessoa resgatar o dinheiro que ficou lá. Esse prazo existe justamente pra dar tempo de tirar o saldo antes do bloqueio de acesso. E não é uma data escolhida pela plataforma, tá no cronograma oficial da transição.",
         "visual": {
           "type": "BIG_NUMBER",
           "payload": {
@@ -274,7 +274,7 @@
       {
         "index": 3,
         "title": "O que acontece a partir do dia 6",
-        "narration": "Virou o dia, muda a lógica. A partir de zero hora de seis de outubro, o acesso aos sites e aplicativos deve ser bloqueado no Brasil. Só que o saldo que não foi sacado não some. Nos dias seis e sete, as empresas precisam informar aos bancos quanto ficou em nome de cada CPF e qual era a conta bancária de origem dos depósitos. A partir daí, a devolução deixa de depender do usuário entrar na plataforma.",
+        "narration": "Virou pro dia seis, muda a lógica. A partir de zero hora, o acesso aos sites e aplicativos deve ser bloqueado no Brasil. Só que o saldo que não foi sacado não desaparece. Nos dias seis e sete, as empresas precisam informar aos bancos quanto ficou em nome de cada CPF e qual era a conta de origem dos depósitos. A partir daí, a devolução não depende mais da pessoa conseguir entrar na plataforma.",
         "visual": {
           "type": "PROCESS",
           "payload": {
@@ -302,7 +302,7 @@
       {
         "index": 4,
         "title": "Quando o dinheiro volta",
-        "narration": "E quando esse dinheiro volta de fato? Pelo cronograma oficial, os bancos fazem a devolução entre os dias nove e quatorze de outubro. Se houver alguma dificuldade operacional para localizar a conta ou concluir o pagamento, a Caixa Econômica Federal pode entrar como intermediária. Então existem dois caminhos. Primeiro, o resgate direto até o dia cinco. Depois, o processo bancário para o que tiver ficado para trás. Se esse tipo de explicação ajuda você a entender o que realmente muda no seu dinheiro, se inscreve no canal. Agora, tem uma diferença importante entre o bloqueio do dia seis e o fim das autorizações.",
+        "narration": "Tá, mas e se a pessoa não sacar até o dia cinco? Aí entra a segunda etapa. Pelo cronograma oficial, os bancos fazem a devolução entre os dias nove e quatorze de outubro. Se der algum problema operacional pra localizar a conta ou concluir o pagamento, a Caixa Econômica Federal pode entrar como intermediária. Então guarda isso: primeiro vem o resgate direto até o dia cinco. Depois, o que ficou pra trás entra no processo bancário. Se esse tipo de explicação te ajuda a entender o que realmente muda no seu dinheiro, se inscreve no canal. Agora, tem uma diferença importante entre o bloqueio do dia seis e o fim das autorizações.",
         "visual": {
           "type": "TIMELINE",
           "payload": {
@@ -324,7 +324,7 @@
       {
         "index": 5,
         "title": "Por que existem duas datas diferentes",
-        "narration": "Talvez você tenha visto outra informação: que as autorizações das empresas acabam em trinta dias. E isso não contradiz o bloqueio do dia seis. São coisas diferentes. Para o usuário, o acesso entra em bloqueio no começo de outubro. Juridicamente, a MP também prevê a extinção das autorizações que ainda existem dentro de um prazo de trinta dias. Uma coisa trata da saída do público. A outra fecha a autorização regulatória.",
+        "narration": "E aqui tem uma confusão bem fácil de fazer. Você pode ter visto que as autorizações das empresas acabam em trinta dias e pensado: ué, então por que o site bloqueia antes? Porque são duas coisas diferentes. Pro usuário, o acesso entra em bloqueio no começo de outubro. Já a parte regulatória tem outro prazo: a MP prevê a extinção das autorizações existentes em até trinta dias. Uma data trata da saída do público. A outra trata do fim da autorização.",
         "visual": {
           "type": "BEFORE_AFTER",
           "payload": {
@@ -349,7 +349,7 @@
       {
         "index": 6,
         "title": "O que entra e o que fica fora",
-        "narration": "A proibição atinge as apostas esportivas e os jogos online de quota fixa. Mas não significa que toda forma de loteria deixou de existir no país. O texto não alcança outras modalidades lotéricas que já são autorizadas por lei. Essa diferença importa porque a manchete 'acabaram os jogos' seria ampla demais. O alvo da medida são as bets e os jogos online enquadrados nesse modelo.",
+        "narration": "Outra coisa importante: isso não quer dizer que todo tipo de loteria acabou no Brasil. A proibição atinge as apostas esportivas e os jogos online de quota fixa. Outras modalidades lotéricas que já são autorizadas por lei ficam fora dessa medida. Então dizer simplesmente que acabaram os jogos seria amplo demais. O alvo aqui são as bets e os jogos online enquadrados nesse modelo.",
         "visual": {
           "type": "DO_DONT",
           "payload": {
@@ -376,7 +376,7 @@
       {
         "index": 7,
         "title": "A MP já vale, mas a história jurídica ainda não terminou",
-        "narration": "Só que tem um detalhe importante. Medida provisória tem força de lei assim que é publicada, então essas regras já produzem efeito. Mas ela ainda precisa passar pelo Congresso para virar lei de forma definitiva. Nesta segunda, dia vinte e oito de setembro, a MP já estava em tramitação e aguardava a formação da comissão mista. O Congresso pode aprovar, alterar ou deixar a medida perder validade dentro do processo constitucional.",
+        "narration": "E tem mais um detalhe. A medida provisória já produz efeito desde a publicação, então essas regras já estão valendo. Só que a história jurídica ainda não terminou. Ela precisa passar pelo Congresso pra virar lei de forma definitiva. No dia vinte e oito de setembro, a MP já estava em tramitação e aguardava a formação da comissão mista. Nesse processo, o Congresso pode aprovar, alterar ou deixar a medida perder validade.",
         "visual": {
           "type": "TIMELINE",
           "payload": {
@@ -398,7 +398,7 @@
       {
         "index": 8,
         "title": "O resumo do dinheiro",
-        "narration": "Então guarda o resumo. Dinheiro novo não entra mais. Quem ainda tem saldo pode resgatar diretamente até o dia cinco de outubro. A partir do dia seis, o acesso é bloqueado e começa a etapa de consolidação dos saldos. Entre nove e quatorze, os bancos entram na devolução do que tiver restado. E, enquanto essa transição acontece, o Congresso decide o destino definitivo da medida. É isso que muda agora no dinheiro das bets.",
+        "narration": "Pra fechar, fica com o resumo prático. Dinheiro novo não entra mais. Quem ainda tem saldo pode fazer o resgate direto até o dia cinco de outubro. No dia seis, o acesso é bloqueado e começa a consolidação dos saldos que ficaram. Entre os dias nove e quatorze, entra a etapa de devolução pelos bancos. E enquanto tudo isso acontece, o Congresso decide o destino definitivo da medida. É esse o caminho do dinheiro que ficou nas bets.",
         "visual": {
           "type": "CLOSING",
           "payload": {
