@@ -20,15 +20,25 @@ def normalize_text(value: str) -> str:
     return re.sub(r"\s+", " ", normalized).strip()
 
 
-def resolve_visual_beats(scene: dict, audio_duration_seconds: float) -> list[dict]:
+def resolve_visual_beats(
+    scene: dict,
+    audio: dict,
+) -> list[dict]:
     visual = scene.get("visual") or {}
     beats = visual.get("beats") or []
     if not isinstance(beats, list) or not beats:
         return []
 
+    audio_duration_seconds = float(audio["duration_seconds"])
+    audio_frames = max(1, math.ceil(audio_duration_seconds * FPS))
+    timing_by_index = {
+        int(item["beat_index"]): item
+        for item in (audio.get("beat_timings") or [])
+        if isinstance(item, dict) and "beat_index" in item
+    }
+
     narration = str(scene.get("narration") or "")
     normalized_narration = normalize_text(narration)
-    audio_frames = max(1, math.ceil(audio_duration_seconds * FPS))
     resolved = []
 
     for index, beat in enumerate(beats):
@@ -36,43 +46,60 @@ def resolve_visual_beats(scene: dict, audio_duration_seconds: float) -> list[dic
             continue
 
         explicit_at = beat.get("at")
+        frame = None
         ratio = None
+        timing_source = None
 
-        if isinstance(explicit_at, (int, float)):
-            ratio = float(explicit_at)
+        if index in timing_by_index:
+            seconds = float(timing_by_index[index]["audio_offset_seconds"])
+            frame = min(audio_frames - 1, max(0, round(seconds * FPS)))
+            ratio = frame / max(1, audio_frames - 1)
+            timing_source = "azure-bookmark"
 
-        anchor = str(beat.get("anchor") or "").strip()
-        if ratio is None and anchor and normalized_narration:
-            normalized_anchor = normalize_text(anchor)
-            position = normalized_narration.find(normalized_anchor)
-            if position >= 0:
-                ratio = position / max(1, len(normalized_narration))
+        elif isinstance(explicit_at, (int, float)):
+            ratio = max(0.0, min(1.0, float(explicit_at)))
+            frame = min(audio_frames - 1, max(0, round(ratio * audio_frames)))
+            timing_source = "explicit-at"
 
-        if ratio is None:
+        else:
+            anchor = str(beat.get("anchor") or "").strip()
+            if anchor and normalized_narration:
+                normalized_anchor = normalize_text(anchor)
+                position = normalized_narration.find(normalized_anchor)
+                if position >= 0:
+                    ratio = position / max(1, len(normalized_narration))
+                    frame = min(
+                        audio_frames - 1,
+                        max(0, round(ratio * audio_frames)),
+                    )
+                    timing_source = "text-fallback"
+
+        if frame is None or ratio is None:
             ratio = (index + 1) / (len(beats) + 1)
-
-        ratio = max(0.03, min(0.94, ratio))
-        frame = min(audio_frames - 1, max(0, round(ratio * audio_frames)))
+            frame = min(audio_frames - 1, max(0, round(ratio * audio_frames)))
+            timing_source = "distributed-fallback"
 
         resolved.append(
             {
                 **beat,
                 "resolved_ratio": round(ratio, 4),
                 "resolved_frame": frame,
+                "timing_source": timing_source,
             }
         )
 
     resolved.sort(key=lambda item: item["resolved_frame"])
 
-    # Evita que dois cards informativos entrem praticamente juntos.
-    # Não muda a ordem editorial, apenas garante uma leitura visual mínima.
-    minimum_gap = max(18, round(FPS * 0.75))
+    # Apenas fallbacks textuais recebem proteção contra colisão. Bookmarks do
+    # Azure preservam o timing real da fala e não são artificialmente movidos.
+    minimum_gap = max(12, round(FPS * 0.35))
     previous = -minimum_gap
     for item in resolved:
-        item["resolved_frame"] = min(
-            audio_frames - 1,
-            max(item["resolved_frame"], previous + minimum_gap),
-        )
+        if item.get("timing_source") != "azure-bookmark":
+            item["resolved_frame"] = min(
+                audio_frames - 1,
+                max(item["resolved_frame"], previous + minimum_gap),
+            )
         previous = item["resolved_frame"]
 
     return resolved
@@ -111,7 +138,7 @@ def main() -> None:
         duration_frames = max(30, math.ceil(duration_seconds * FPS))
         resolved_beats = resolve_visual_beats(
             scene,
-            float(audio["duration_seconds"]),
+            audio,
         )
         scene_with_resolved_visual = {
             **scene,
@@ -139,6 +166,7 @@ def main() -> None:
     payload = {
         "project_id": project.get("project_id", "project"),
         "title": project.get("title", "O Dinheiro Explica"),
+        "visual_direction": project.get("visual_direction") or {},
         "fps": FPS,
         "duration_in_frames": cursor,
         "voice": manifest["voice"],
