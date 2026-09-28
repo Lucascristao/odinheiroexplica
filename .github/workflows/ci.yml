@@ -20,6 +20,9 @@ jobs:
       - name: Install
         run: npm install --no-audit --no-fund
 
+      - name: Validate Python pipeline
+        run: python -m py_compile worker/synthesize_scenes.py worker/build_render_input.py worker/build_youtube_package.py
+
       - name: Typecheck
         run: npm run typecheck
 
