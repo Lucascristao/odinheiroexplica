@@ -1,121 +1,44 @@
 # VideoProject v1.0
 
-O `VideoProject` é o contrato entre o ChatGPT e o painel.
+O `VideoProject` é o contrato entre o ChatGPT e o sistema.
 
 ## Objetivo
 
-O pacote precisa ser suficiente para:
+O pacote precisa ser suficiente para identificar a história, auditar fontes e claims, escolher uma única embalagem principal, construir o roteiro, gerar cenas, preparar publicação e renderizar sem reinterpretar texto livre.
 
-- identificar a história e o ângulo;
-- auditar fontes e afirmações;
-- construir roteiro e cenas;
-- gerar alternativas de título e thumbnail;
-- preparar publicação;
-- permitir renderização futura sem reinterpretar texto livre.
+## Embalagem
 
-## Estrutura mínima
+Título e thumbnail são uma decisão editorial única e devem ser resolvidos antes do roteiro final.
 
-```json
-{
-  "version": "1.0",
-  "story": {
-    "subject": "Assunto",
-    "angle": "Ângulo editorial",
-    "promise": "O que o espectador recebe",
-    "why_now": "Por que agora",
-    "category": "company"
-  },
-  "editorial": {
-    "viral_score": 80,
-    "strengths": [],
-    "risk_flags": []
-  },
-  "sources": [],
-  "claims": [],
-  "packaging": {
-    "titles": [],
-    "thumbnails": []
-  },
-  "script": {
-    "hook": "Gancho",
-    "beats": [],
-    "scenes": [],
-    "closing": "Fechamento"
-  },
-  "publication": {
-    "description": "",
-    "chapters": [],
-    "disclosure_ai": false
-  }
-}
-```
+O sistema entrega exatamente:
+- 1 título principal;
+- 1 thumbnail principal;
+- 1 estratégia de embalagem.
 
-## Categorias
+`packaging.strategy` registra:
+- `click_reason`: por que alguém clicaria;
+- `visual_focus`: elemento visual dominante;
+- `curiosity_gap`: pergunta aberta;
+- `mobile_readability`: por que funciona pequeno;
+- `anti_clickbait_check`: como o vídeo entrega a promessa;
+- `repetition_check`: padrão que deve ser evitado para não repetir capas anteriores.
 
-- `news`
-- `company`
-- `economy`
-- `money`
-- `evergreen`
+Uma segunda embalagem só deve ser criada depois da publicação quando CTR ou outro dado justificar um novo teste.
 
-## Fontes
+## Narração
 
-Cada fonte recebe um `id` único.
+A escrita deve soar natural em português brasileiro. O roteiro evita tom de relatório e usa variação de frases, perguntas pontuais, exemplos concretos e conectores conversacionais quando fizer sentido.
 
-Preferência editorial:
+A duração não é definida no pacote. A voz é sintetizada por cena e o áudio real define a timeline.
 
+## Fontes e claims
+
+Cada fonte recebe um ID único. Claims factuais relevantes precisam apontar para fontes existentes. Prioridade editorial:
 1. fonte primária;
 2. fonte secundária confiável;
 3. contexto complementar.
 
-Exemplo:
-
-```json
-{
-  "id": "src_01",
-  "title": "Relatório oficial",
-  "url": "https://...",
-  "publisher": "Banco Central",
-  "source_type": "primary"
-}
-```
-
-## Claims
-
-Um claim é uma afirmação factual verificável.
-
-```json
-{
-  "id": "claim_01",
-  "text": "A empresa reportou receita de X.",
-  "source_ids": ["src_01"],
-  "confidence": "high",
-  "verification_status": "verified"
-}
-```
-
-Toda afirmação importante deve apontar para pelo menos uma fonte.
-
-## Cenas
-
-A duração final não é definida no pacote. A narração será sintetizada posteriormente e o áudio determinará o tamanho real de cada cena.
-
-```json
-{
-  "index": 0,
-  "title": "Gancho",
-  "narration": "Texto falado...",
-  "visual": {
-    "type": "BIG_NUMBER",
-    "payload": {}
-  },
-  "claim_ids": ["claim_01"]
-}
-```
-
-## Bloqueadores editoriais
-
-Estes flags serão tratados como bloqueadores de renderização:
+## Bloqueadores
 
 - `RUMOR_NAO_CONFIRMADO`
 - `FONTE_INSUFICIENTE`
@@ -126,19 +49,6 @@ Estes flags serão tratados como bloqueadores de renderização:
 - `RISCO_COPYRIGHT`
 - `DADO_CONFLITANTE`
 
-O projeto pode ser importado com bloqueadores para correção, mas não deverá avançar para render até a revisão.
+## Integridade
 
-## Regras de integridade
-
-O painel valida antes de importar:
-
-- versão = 1.0;
-- subject obrigatório;
-- URLs válidas;
-- IDs de fonte únicos;
-- IDs de claim únicos;
-- claims só podem apontar para fontes existentes;
-- índices de cena únicos;
-- cenas só podem apontar para claims existentes.
-
-O banco faz a gravação em uma única transação.
+O sistema valida versão, URLs, IDs, vínculos entre claims e fontes, índices de cena, narração, uma única embalagem principal e ausência de bloqueadores críticos antes de produção.
