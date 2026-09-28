@@ -2,18 +2,6 @@ name: Render piloto real - Pix MED 2.0
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "video/data/pilot-pix-med.json"
-      - "video/src/EditorialPilot.tsx"
-      - "video/src/Root.tsx"
-      - "worker/synthesize_scenes.py"
-      - "worker/build_render_input.py"
-      - "worker/build_youtube_package.py"
-      - "worker/tts_config.py"
-      - ".github/workflows/render-pix-pilot.yml"
-      - "package.json"
 
 permissions:
   contents: write
@@ -21,7 +9,12 @@ permissions:
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 35
+    timeout-minutes: 40
+
+    env:
+      ODE_PROGRESS_URL: https://odinheiroexplica.netlify.app/.netlify/functions/render-progress
+      ODE_VIDEO_TITLE: O Pix Agora Rastreia o Dinheiro do Golpe
+      ODE_ESTIMATED_RENDER_SECONDS: 1380
 
     steps:
       - name: Checkout
@@ -33,6 +26,10 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+
+      - name: Report start
+        run: |
+          python worker/progress_callback.py             --run-id "${{ github.run_id }}"             --title "$ODE_VIDEO_TITLE"             --status running             --stage preparando             --percent 3             --detail "Preparando o ambiente de produção."
 
       - name: Install system dependencies
         run: |
@@ -47,36 +44,24 @@ jobs:
           AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
           AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
         run: |
+          python worker/progress_callback.py             --run-id "${{ github.run_id }}"             --title "$ODE_VIDEO_TITLE"             --status running             --stage audio             --percent 10             --detail "Gerando a narração de cada cena com Macerio."
+
           rm -rf public/generated-audio/pix-med-pilot
           mkdir -p public/generated-audio/pix-med-pilot video/generated
-          python worker/synthesize_scenes.py \
-            --input video/data/pilot-pix-med.json \
-            --output-dir public/generated-audio/pix-med-pilot \
-            --manifest video/generated/pilot-tts-manifest.json
+          python worker/synthesize_scenes.py             --input video/data/pilot-pix-med.json             --output-dir public/generated-audio/pix-med-pilot             --manifest video/generated/pilot-tts-manifest.json
+
+          python worker/progress_callback.py             --run-id "${{ github.run_id }}"             --title "$ODE_VIDEO_TITLE"             --status running             --stage timeline             --percent 20             --detail "Narração pronta. Medindo tempos e montando a timeline."
 
       - name: Build timeline from real narration
         run: |
-          python worker/build_render_input.py \
-            --project video/data/pilot-pix-med.json \
-            --tts-manifest video/generated/pilot-tts-manifest.json \
-            --audio-public-prefix generated-audio/pix-med-pilot \
-            --output video/generated/pilot-render-input.json
+          python worker/build_render_input.py             --project video/data/pilot-pix-med.json             --tts-manifest video/generated/pilot-tts-manifest.json             --audio-public-prefix generated-audio/pix-med-pilot             --output video/generated/pilot-render-input.json
 
       - name: Build YouTube package
         run: |
-          python worker/build_youtube_package.py \
-            --project video/data/pilot-pix-med.json \
-            --render-input video/generated/pilot-render-input.json \
-            --output public/render-tests/pix-med-youtube.json
+          python worker/build_youtube_package.py             --project video/data/pilot-pix-med.json             --render-input video/generated/pilot-render-input.json             --output public/render-tests/pix-med-youtube.json
 
-      - name: Show final duration
-        run: |
-          python - <<'PY'
-          import json
-          p=json.load(open("video/generated/pilot-render-input.json"))
-          print("Duration:", round(p["duration_in_frames"]/p["fps"], 2), "seconds")
-          print("Scenes:", len(p["scenes"]))
-          PY
+          VIDEO_DURATION=$(python -c 'import json; p=json.load(open("video/generated/pilot-render-input.json")); print(round(p["duration_in_frames"]/p["fps"], 2))')
+          python worker/progress_callback.py             --run-id "${{ github.run_id }}"             --title "$ODE_VIDEO_TITLE"             --status running             --stage dependencias             --percent 28             --detail "Timeline pronta. Vídeo com ${VIDEO_DURATION}s. Preparando o Remotion."             --video-duration-seconds "$VIDEO_DURATION"
 
       - name: Node
         uses: actions/setup-node@v4
@@ -89,8 +74,39 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Render pilot
-        run: npm run render:pix-pilot
+      - name: Render pilot with live progress
+        shell: bash
+        run: |
+          set +e
+          VIDEO_DURATION=$(python -c 'import json; p=json.load(open("video/generated/pilot-render-input.json")); print(round(p["duration_in_frames"]/p["fps"], 2))')
+          START=$(date +%s)
+
+          python worker/progress_callback.py             --run-id "${{ github.run_id }}"             --title "$ODE_VIDEO_TITLE"             --status running             --stage render             --percent 35             --detail "Renderizando 1920×1080. Esta é a etapa mais demorada."             --eta-seconds "$ODE_ESTIMATED_RENDER_SECONDS"             --video-duration-seconds "$VIDEO_DURATION"
+
+          npm run render:pix-pilot &
+          RENDER_PID=$!
+
+          while kill -0 "$RENDER_PID" 2>/dev/null; do
+            sleep 30
+            NOW=$(date +%s)
+            ELAPSED=$((NOW - START))
+            PCT=$((35 + ELAPSED * 54 / ODE_ESTIMATED_RENDER_SECONDS))
+            if [ "$PCT" -gt 89 ]; then PCT=89; fi
+            ETA=$((ODE_ESTIMATED_RENDER_SECONDS - ELAPSED))
+            if [ "$ETA" -lt 0 ]; then ETA=0; fi
+
+            python worker/progress_callback.py               --run-id "${{ github.run_id }}"               --title "$ODE_VIDEO_TITLE"               --status running               --stage render               --percent "$PCT"               --detail "Renderizando os frames do vídeo."               --eta-seconds "$ETA"               --video-duration-seconds "$VIDEO_DURATION"
+          done
+
+          wait "$RENDER_PID"
+          CODE=$?
+
+          if [ "$CODE" -ne 0 ]; then
+            python worker/progress_callback.py               --run-id "${{ github.run_id }}"               --title "$ODE_VIDEO_TITLE"               --status error               --stage erro               --percent 100               --detail "O render falhou. O erro ficou registrado no GitHub Actions."               --video-duration-seconds "$VIDEO_DURATION"
+            exit "$CODE"
+          fi
+
+          python worker/progress_callback.py             --run-id "${{ github.run_id }}"             --title "$ODE_VIDEO_TITLE"             --status running             --stage thumbnail             --percent 91             --detail "Vídeo renderizado. Gerando thumbnail."             --video-duration-seconds "$VIDEO_DURATION"
 
       - name: Render thumbnail
         run: npm run still:pix-pilot
@@ -106,6 +122,9 @@ jobs:
 
       - name: Publish pilot
         run: |
+          VIDEO_DURATION=$(python -c 'import json; p=json.load(open("video/generated/pilot-render-input.json")); print(round(p["duration_in_frames"]/p["fps"], 2))')
+          python worker/progress_callback.py             --run-id "${{ github.run_id }}"             --title "$ODE_VIDEO_TITLE"             --status running             --stage publicando             --percent 96             --detail "Salvando vídeo, thumbnail e pacote de publicação."             --video-duration-seconds "$VIDEO_DURATION"
+
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
@@ -124,4 +143,9 @@ jobs:
             git push origin main
           fi
 
-# Pilot render trigger after workflow registration.
+          python worker/progress_callback.py             --run-id "${{ github.run_id }}"             --title "$ODE_VIDEO_TITLE"             --status completed             --stage concluido             --percent 100             --detail "Vídeo pronto para assistir e publicar."             --video-duration-seconds "$VIDEO_DURATION"
+
+      - name: Report failure
+        if: failure()
+        run: |
+          python worker/progress_callback.py             --run-id "${{ github.run_id }}"             --title "$ODE_VIDEO_TITLE"             --status error             --stage erro             --percent 100             --detail "A produção falhou antes da conclusão."
