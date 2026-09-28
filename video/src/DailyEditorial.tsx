@@ -9,9 +9,39 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import {
+  ArrowRight,
+  Ban,
+  Banknote,
+  CalendarDays,
+  CircleDollarSign,
+  Fuel,
+  Info,
+  Landmark,
+  ListChecks,
+  Scale,
+  ShieldAlert,
+  TrendingDown,
+  TrendingUp,
+  WalletCards,
+} from "lucide-react";
 import renderInput from "../generated/daily-render-input.json";
 
 type GenericRecord = Record<string, unknown>;
+
+type VisualBeat = {
+  anchor?: string;
+  at?: number;
+  kind?: string;
+  headline: string;
+  detail?: string;
+  value?: string;
+  from?: string;
+  to?: string;
+  sound?: "none" | "tick" | "impact" | "whoosh" | "alert";
+  resolved_ratio?: number;
+  resolved_frame?: number;
+};
 
 type Scene = {
   id: string;
@@ -24,6 +54,7 @@ type Scene = {
   visual: {
     type: string;
     payload?: GenericRecord;
+    beats?: VisualBeat[];
   };
 };
 
@@ -1195,6 +1226,279 @@ const ClosingScene = ({
   );
 };
 
+const BeatIcon = ({kind}: {kind?: string}) => {
+  const common = {size: 58, strokeWidth: 1.8};
+  switch (kind) {
+    case "number":
+    case "money":
+      return <CircleDollarSign {...common} />;
+    case "bank":
+      return <Landmark {...common} />;
+    case "date":
+      return <CalendarDays {...common} />;
+    case "flow":
+      return <ArrowRight {...common} />;
+    case "process":
+      return <ListChecks {...common} />;
+    case "warning":
+      return <ShieldAlert {...common} />;
+    case "compare":
+      return <Scale {...common} />;
+    case "trend_up":
+      return <TrendingUp {...common} />;
+    case "trend_down":
+      return <TrendingDown {...common} />;
+    case "fuel":
+      return <Fuel {...common} />;
+    case "block":
+      return <Ban {...common} />;
+    case "fact":
+    default:
+      return <Info {...common} />;
+  }
+};
+
+const InformationBeatLayer = ({scene}: {scene: Scene}) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const beats = scene.visual?.beats ?? [];
+
+  if (!beats.length) return null;
+
+  const resolved = beats
+    .filter((beat) => typeof beat.resolved_frame === "number")
+    .sort((a, b) => (a.resolved_frame ?? 0) - (b.resolved_frame ?? 0));
+
+  if (!resolved.length) return null;
+
+  let activeIndex = -1;
+  for (let index = 0; index < resolved.length; index += 1) {
+    if (frame >= (resolved[index].resolved_frame ?? 0)) {
+      activeIndex = index;
+    }
+  }
+
+  if (activeIndex < 0) return null;
+
+  const beat = resolved[activeIndex];
+  const startFrame = beat.resolved_frame ?? 0;
+  const nextFrame =
+    activeIndex < resolved.length - 1
+      ? resolved[activeIndex + 1].resolved_frame ?? scene.duration_frames
+      : Math.min(
+          scene.duration_frames,
+          Math.max(
+            startFrame + Math.round(fps * 2.2),
+            Math.round((scene.audio_duration_seconds ?? 0) * fps),
+          ),
+        );
+
+  const localFrame = Math.max(0, frame - startFrame);
+  const enter = spring({
+    frame: localFrame,
+    fps,
+    durationInFrames: Math.max(14, Math.round(fps * 0.55)),
+    config: {damping: 18, stiffness: 108},
+  });
+  const exitStart = Math.max(startFrame + 10, nextFrame - 7);
+  const exitOpacity = interpolate(
+    frame,
+    [exitStart, Math.max(exitStart + 1, nextFrame - 1)],
+    [1, 0],
+    clamp,
+  );
+  const opacity = Math.min(enter, exitOpacity);
+  const kind = beat.kind ?? "fact";
+  const warning = kind === "warning" || kind === "block";
+  const positive = kind === "trend_up";
+  const accent = warning ? RED : positive ? GREEN : GOLD;
+  const variant = activeIndex % 3;
+  const isWide = kind === "flow" || kind === "compare";
+  const left =
+    isWide || variant === 2 ? 260 : variant === 0 ? 150 : undefined;
+  const right = !isWide && variant === 1 ? 150 : undefined;
+  const width = isWide || variant === 2 ? 1400 : 790;
+  const top = isWide ? 575 : variant === 2 ? 610 : 565;
+  const value = asString(beat.value);
+  const from = asString(beat.from);
+  const to = asString(beat.to);
+
+  return (
+    <AbsoluteFill
+      style={{
+        zIndex: 65,
+        pointerEvents: "none",
+        fontFamily: FONT,
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          left,
+          right,
+          top,
+          width,
+          minHeight: isWide ? 250 : 285,
+          padding: isWide ? "30px 38px" : "34px 40px",
+          borderRadius: 28,
+          background:
+            "linear-gradient(145deg, rgba(18,22,26,.97), rgba(10,12,14,.94))",
+          border: `1px solid ${warning ? "rgba(255,107,107,.38)" : "rgba(255,189,25,.30)"}`,
+          boxShadow: "0 28px 90px rgba(0,0,0,.38)",
+          opacity,
+          transform: `translateY(${(1 - enter) * 34}px) scale(${0.97 + enter * 0.03})`,
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            opacity: 0.18,
+            background: `radial-gradient(circle at 84% 20%, ${accent}55, transparent 34%)`,
+          }}
+        />
+
+        {kind === "flow" && from && to ? (
+          <div
+            style={{
+              position: "relative",
+              display: "grid",
+              gridTemplateColumns: "1fr auto 1fr",
+              alignItems: "center",
+              gap: 26,
+              minHeight: 185,
+            }}
+          >
+            {[from, to].map((label, index) => (
+              <div
+                key={label}
+                style={{
+                  padding: "28px 26px",
+                  borderRadius: 20,
+                  border: `1px solid ${index === 1 ? "rgba(255,189,25,.40)" : LINE}`,
+                  background:
+                    index === 1 ? "rgba(255,189,25,.065)" : SURFACE_2,
+                  color: index === 1 ? GOLD : WHITE,
+                  fontSize: 34,
+                  fontWeight: 900,
+                  textAlign: "center",
+                }}
+              >
+                {label}
+              </div>
+            ))}
+            <ArrowRight size={54} strokeWidth={1.8} color={GOLD} />
+          </div>
+        ) : (
+          <div
+            style={{
+              position: "relative",
+              display: "flex",
+              gap: 30,
+              alignItems: "center",
+            }}
+          >
+            <div
+              style={{
+                width: 104,
+                height: 104,
+                flex: "0 0 auto",
+                borderRadius: 26,
+                display: "grid",
+                placeItems: "center",
+                color: accent,
+                background: `${accent}12`,
+                border: `1px solid ${accent}40`,
+              }}
+            >
+              <BeatIcon kind={kind} />
+            </div>
+            <div style={{minWidth: 0}}>
+              {value && (
+                <div
+                  style={{
+                    color: accent,
+                    fontSize: 72,
+                    lineHeight: 0.95,
+                    fontWeight: 950,
+                    letterSpacing: -1.4,
+                    marginBottom: 12,
+                  }}
+                >
+                  {value}
+                </div>
+              )}
+              <div
+                style={{
+                  color: WHITE,
+                  fontSize: value ? 39 : 48,
+                  lineHeight: 1.04,
+                  fontWeight: 940,
+                  letterSpacing: -0.9,
+                }}
+              >
+                {beat.headline}
+              </div>
+              {beat.detail && (
+                <div
+                  style={{
+                    color: MUTED,
+                    fontSize: 25,
+                    lineHeight: 1.3,
+                    fontWeight: 700,
+                    marginTop: 15,
+                    maxWidth: 1040,
+                  }}
+                >
+                  {beat.detail}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
+        {kind === "flow" && (
+          <div
+            style={{
+              position: "relative",
+              marginTop: 18,
+              color: WHITE,
+              fontSize: 32,
+              fontWeight: 900,
+              textAlign: "center",
+            }}
+          >
+            {beat.headline}
+            {beat.detail && (
+              <span style={{color: MUTED, fontSize: 24, marginLeft: 14}}>
+                {beat.detail}
+              </span>
+            )}
+          </div>
+        )}
+
+        <div
+          style={{
+            position: "absolute",
+            left: 0,
+            bottom: 0,
+            height: 5,
+            width: `${interpolate(
+              frame,
+              [startFrame, Math.max(startFrame + 1, nextFrame)],
+              [0, 100],
+              clamp,
+            )}%`,
+            background: accent,
+            opacity: 0.78,
+          }}
+        />
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 const FallbackScene = ({
   title,
   durationFrames,
@@ -1235,6 +1539,7 @@ const SoundDesign = ({
   const {fps} = useVideoConfig();
   const payload = scene.visual?.payload ?? {};
   const type = scene.visual?.type ?? "";
+  const authoredBeats = scene.visual?.beats ?? [];
   const events: SoundEvent[] = [];
 
   const add = (
@@ -1257,69 +1562,113 @@ const SoundDesign = ({
     add(0.015, "soft-whoosh.wav", 0.045, 0.55);
   }
 
-  if (type === "HEADLINE") {
-    add(0.38, "tick.wav", 0.045, 0.12);
-  }
-
-  if (type === "STAT_GRID") {
-    const stats = asArray<unknown>(payload.stats);
-    stats.forEach((_, index) => {
-      const ratio = 0.08 + (index / Math.max(1, stats.length - 1)) * 0.5;
-      add(ratio, index === 0 ? "soft-impact.wav" : "tick.wav", index === 0 ? 0.06 : 0.04, index === 0 ? 0.5 : 0.12);
-    });
-  }
-
-  if (type === "BEFORE_AFTER") {
-    add(0.18, "tick.wav", 0.035, 0.12);
-    add(0.62, "soft-impact.wav", 0.055, 0.5);
-  }
-
-  if (type === "NETWORK") {
-    add(0.12, "soft-whoosh.wav", 0.04, 0.55);
-    add(0.56, "tick.wav", 0.04, 0.12);
-  }
-
-  if (type === "MONEY_FLOW") {
-    add(0.16, "soft-whoosh.wav", 0.045, 0.55);
-    add(0.58, "tick.wav", 0.04, 0.12);
-  }
-
-  if (type === "PROCESS") {
-    const steps = asArray<unknown>(payload.steps);
-    steps.forEach((_, index) => {
-      const ratio = 0.06 + (index / Math.max(1, steps.length - 1)) * 0.6;
-      add(ratio, "tick.wav", index === steps.length - 1 ? 0.05 : 0.035, 0.12);
-    });
-  }
-
-  if (type === "BIG_NUMBER") {
-    add(0.08, "soft-impact.wav", 0.065, 0.5);
-    if (asString(payload.warning)) {
-      add(0.55, "subtle-alert.wav", 0.045, 0.34);
+  const soundFile = (sound?: VisualBeat["sound"]): SoundEvent["file"] | null => {
+    switch (sound) {
+      case "tick":
+        return "tick.wav";
+      case "impact":
+        return "soft-impact.wav";
+      case "whoosh":
+        return "soft-whoosh.wav";
+      case "alert":
+        return "subtle-alert.wav";
+      default:
+        return null;
     }
-  }
+  };
 
-  if (type === "DO_DONT") {
-    const yes = asArray<unknown>(payload.yes);
-    const no = asArray<unknown>(payload.no);
-    const total = Math.max(1, yes.length + no.length);
+  authoredBeats.forEach((beat) => {
+    const file = soundFile(beat.sound);
+    if (!file || typeof beat.resolved_frame !== "number") return;
 
-    [...yes, ...no].forEach((_, index) => {
-      const ratio = 0.09 + (index / Math.max(1, total - 1)) * 0.58;
-      const firstNegative = index === yes.length && no.length > 0;
-      add(
-        ratio,
-        firstNegative ? "subtle-alert.wav" : "tick.wav",
-        firstNegative ? 0.04 : 0.033,
-        firstNegative ? 0.34 : 0.12,
-      );
+    const durationSeconds =
+      file === "soft-impact.wav"
+        ? 0.5
+        : file === "soft-whoosh.wav"
+          ? 0.55
+          : file === "subtle-alert.wav"
+            ? 0.34
+            : 0.12;
+
+    events.push({
+      frame: beat.resolved_frame,
+      file,
+      volume:
+        file === "soft-impact.wav"
+          ? 0.055
+          : file === "soft-whoosh.wav"
+            ? 0.04
+            : 0.035,
+      durationSeconds,
     });
-  }
+  });
 
-  if (type === "TIMELINE") {
-    add(0.12, "soft-whoosh.wav", 0.04, 0.55);
-    add(0.84, "tick.wav", 0.035, 0.12);
-  }
+  if (!authoredBeats.length) {
+    if (type === "HEADLINE") {
+      add(0.38, "tick.wav", 0.045, 0.12);
+    }
+  
+    if (type === "STAT_GRID") {
+      const stats = asArray<unknown>(payload.stats);
+      stats.forEach((_, index) => {
+        const ratio = 0.08 + (index / Math.max(1, stats.length - 1)) * 0.5;
+        add(ratio, index === 0 ? "soft-impact.wav" : "tick.wav", index === 0 ? 0.06 : 0.04, index === 0 ? 0.5 : 0.12);
+      });
+    }
+  
+    if (type === "BEFORE_AFTER") {
+      add(0.18, "tick.wav", 0.035, 0.12);
+      add(0.62, "soft-impact.wav", 0.055, 0.5);
+    }
+  
+    if (type === "NETWORK") {
+      add(0.12, "soft-whoosh.wav", 0.04, 0.55);
+      add(0.56, "tick.wav", 0.04, 0.12);
+    }
+  
+    if (type === "MONEY_FLOW") {
+      add(0.16, "soft-whoosh.wav", 0.045, 0.55);
+      add(0.58, "tick.wav", 0.04, 0.12);
+    }
+  
+    if (type === "PROCESS") {
+      const steps = asArray<unknown>(payload.steps);
+      steps.forEach((_, index) => {
+        const ratio = 0.06 + (index / Math.max(1, steps.length - 1)) * 0.6;
+        add(ratio, "tick.wav", index === steps.length - 1 ? 0.05 : 0.035, 0.12);
+      });
+    }
+  
+    if (type === "BIG_NUMBER") {
+      add(0.08, "soft-impact.wav", 0.065, 0.5);
+      if (asString(payload.warning)) {
+        add(0.55, "subtle-alert.wav", 0.045, 0.34);
+      }
+    }
+  
+    if (type === "DO_DONT") {
+      const yes = asArray<unknown>(payload.yes);
+      const no = asArray<unknown>(payload.no);
+      const total = Math.max(1, yes.length + no.length);
+  
+      [...yes, ...no].forEach((_, index) => {
+        const ratio = 0.09 + (index / Math.max(1, total - 1)) * 0.58;
+        const firstNegative = index === yes.length && no.length > 0;
+        add(
+          ratio,
+          firstNegative ? "subtle-alert.wav" : "tick.wav",
+          firstNegative ? 0.04 : 0.033,
+          firstNegative ? 0.34 : 0.12,
+        );
+      });
+    }
+  
+    if (type === "TIMELINE") {
+      add(0.12, "soft-whoosh.wav", 0.04, 0.55);
+      add(0.84, "tick.wav", 0.035, 0.12);
+    }
+  
+    }
 
   if (isLast) {
     const narrationEnd = Math.min(
@@ -1405,6 +1754,7 @@ export const DailyEditorial = () => {
           durationInFrames={scene.duration_frames}
         >
           <Visual scene={scene} />
+          <InformationBeatLayer scene={scene} />
           <TransitionSweep sceneIndex={scene.scene_index} />
           <SoundDesign scene={scene} isLast={index === scenes.length - 1} />
           <Audio src={staticFile(scene.audio_file)} />
