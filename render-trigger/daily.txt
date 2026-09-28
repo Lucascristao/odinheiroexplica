@@ -1,8 +1,9 @@
 video=combustiveis-em-alta-2026-09-28
 date=2026-09-28
 mode=daily-editorial
-retry=2
+retry=3
 cover=chat-final
 presenter=Roberto
-features=beats-informativos,sound-design,oralidade-natural
+features=beats-informativos,evolucao-interna,sound-design-audivel,oralidade-natural
 architecture=editorial-micro-scenes
+motion=entry-development-conclusion
