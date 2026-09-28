@@ -213,6 +213,7 @@ jobs:
             --video render-output/daily-video.mp4 \
             --thumbnail render-output/daily-thumbnail.png \
             --metadata render-output/daily-youtube.json \
+            --publication-text render-output/daily-youtube.txt \
             --project-slug "$ODE_PROJECT_SLUG" \
             --output render-output/daily-drive.json
 
