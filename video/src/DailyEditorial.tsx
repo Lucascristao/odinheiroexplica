@@ -735,6 +735,17 @@ const ProcessScene = ({
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
   const steps = asArray<string>(payload.steps);
+  const progress = frame / Math.max(1, durationFrames - 1);
+  const activeIndex = Math.min(
+    Math.max(0, steps.length - 1),
+    Math.floor(progress * Math.max(1, steps.length)),
+  );
+  const captionEnter = stagedSpring({
+    frame,
+    durationFrames,
+    ratio: 0.72,
+    fps,
+  });
 
   return (
     <SceneShell durationFrames={durationFrames}>
@@ -748,12 +759,17 @@ const ProcessScene = ({
         <Eyebrow>{asString(payload.eyebrow)}</Eyebrow>
         <div style={{display: "flex", alignItems: "center", gap: 16}}>
           {steps.map((step, index) => {
-            const enter = spring({
-              frame: Math.max(0, frame - index * 13),
+            const ratio =
+              0.06 + (index / Math.max(1, steps.length - 1)) * 0.6;
+            const enter = stagedSpring({
+              frame,
+              durationFrames,
+              ratio,
               fps,
-              durationInFrames: 19,
-              config: {damping: 18, stiffness: 110},
             });
+            const active = index === activeIndex;
+            const completed = index < activeIndex;
+
             return (
               <div key={step} style={{display: "flex", alignItems: "center", flex: 1}}>
                 <div
@@ -762,25 +778,53 @@ const ProcessScene = ({
                     padding: "34px 18px",
                     borderRadius: 20,
                     textAlign: "center",
-                    background: index === 2 ? "rgba(255,189,25,.08)" : SURFACE,
-                    border: index === 2 ? "1px solid rgba(255,189,25,.45)" : `1px solid ${LINE}`,
-                    color: index === 2 ? GOLD : WHITE,
+                    background: active
+                      ? "rgba(255,189,25,.10)"
+                      : completed
+                        ? "rgba(255,189,25,.035)"
+                        : SURFACE,
+                    border: active
+                      ? "1px solid rgba(255,189,25,.62)"
+                      : completed
+                        ? "1px solid rgba(255,189,25,.20)"
+                        : `1px solid ${LINE}`,
+                    color: active ? GOLD : WHITE,
                     fontSize: 27,
                     fontWeight: 900,
-                    transform: `scale(${0.92 + enter * 0.08})`,
+                    transform: `scale(${(0.92 + enter * 0.08) * (active ? 1.025 : 1)})`,
                     opacity: enter,
+                    boxShadow: active
+                      ? "0 0 32px rgba(255,189,25,.08)"
+                      : "none",
                   }}
                 >
                   {step}
                 </div>
                 {index < steps.length - 1 && (
-                  <div style={{color: GOLD, fontSize: 36, margin: "0 11px"}}>→</div>
+                  <div
+                    style={{
+                      color: GOLD,
+                      fontSize: 36,
+                      margin: "0 11px",
+                      opacity: Math.max(0.22, index < activeIndex ? 1 : enter * 0.55),
+                    }}
+                  >
+                    →
+                  </div>
                 )}
               </div>
             );
           })}
         </div>
-        <div style={{marginTop: 35, color: MUTED, fontSize: 28}}>
+        <div
+          style={{
+            marginTop: 35,
+            color: MUTED,
+            fontSize: 28,
+            opacity: captionEnter,
+            transform: `translateY(${(1 - captionEnter) * 16}px)`,
+          }}
+        >
           {asString(payload.caption)}
         </div>
         <Source text={asString(payload.source)} />
@@ -804,7 +848,27 @@ const BigNumberScene = ({
     durationInFrames: 28,
     config: {damping: 16, stiffness: 98},
   });
-  const shine = interpolate(frame, [20, 110], [-40, 140], clamp);
+  const cycle = Math.max(96, Math.round(durationFrames * 0.38));
+  const shineFrame = frame % cycle;
+  const shine = interpolate(
+    shineFrame,
+    [0, Math.max(1, Math.round(cycle * 0.62))],
+    [-45, 145],
+    clamp,
+  );
+  const captionEnter = stagedSpring({
+    frame,
+    durationFrames,
+    ratio: 0.24,
+    fps,
+  });
+  const warningEnter = stagedSpring({
+    frame,
+    durationFrames,
+    ratio: 0.55,
+    fps,
+  });
+  const pulse = 1 + Math.sin(frame / 22) * 0.008;
 
   return (
     <SceneShell durationFrames={durationFrames}>
@@ -823,7 +887,7 @@ const BigNumberScene = ({
             fontSize: 172,
             fontWeight: 950,
             letterSpacing: -2.2,
-            transform: `scale(${0.82 + pop * 0.18})`,
+            transform: `scale(${(0.82 + pop * 0.18) * pulse})`,
             position: "relative",
             overflow: "hidden",
             padding: "0 20px",
@@ -844,7 +908,16 @@ const BigNumberScene = ({
             }}
           />
         </div>
-        <div style={{color: WHITE, fontSize: 34, fontWeight: 800, marginTop: 18}}>
+        <div
+          style={{
+            color: WHITE,
+            fontSize: 34,
+            fontWeight: 800,
+            marginTop: 18,
+            opacity: captionEnter,
+            transform: `translateY(${(1 - captionEnter) * 14}px)`,
+          }}
+        >
           {asString(payload.caption)}
         </div>
         <div
@@ -857,6 +930,8 @@ const BigNumberScene = ({
             border: "1px solid rgba(255,107,107,.24)",
             fontSize: 24,
             fontWeight: 800,
+            opacity: warningEnter,
+            transform: `translateY(${(1 - warningEnter) * 18}px) scale(${0.97 + warningEnter * 0.03})`,
           }}
         >
           {asString(payload.warning)}
@@ -874,10 +949,15 @@ const DoDontScene = ({
   payload: GenericRecord;
   durationFrames: number;
 }) => {
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
   const yes = asArray<string>(payload.yes);
   const no = asArray<string>(payload.no);
+  const totalItems = Math.max(1, yes.length + no.length);
+  const progress = frame / Math.max(1, durationFrames - 1);
+  const activeItem = Math.min(totalItems - 1, Math.floor(progress * totalItems));
 
-  const list = (items: string[], good: boolean) => (
+  const list = (items: string[], good: boolean, offset: number) => (
     <div
       style={{
         flex: 1,
@@ -899,23 +979,44 @@ const DoDontScene = ({
       >
         {good ? "Serve para" : "Não serve para"}
       </div>
-      {items.map((item) => (
-        <div
-          key={item}
-          style={{
-            padding: "17px 0",
-            borderBottom: "1px solid rgba(255,255,255,.07)",
-            color: WHITE,
-            fontSize: 31,
-            fontWeight: 850,
-          }}
-        >
-          <span style={{color: good ? GREEN : RED, marginRight: 15}}>
-            {good ? "✓" : "×"}
-          </span>
-          {item}
-        </div>
-      ))}
+      {items.map((item, localIndex) => {
+        const globalIndex = offset + localIndex;
+        const enter = stagedSpring({
+          frame,
+          durationFrames,
+          ratio:
+            0.09 +
+            (globalIndex / Math.max(1, totalItems - 1)) * 0.58,
+          fps,
+        });
+        const active = globalIndex === activeItem;
+
+        return (
+          <div
+            key={item}
+            style={{
+              padding: "17px 12px",
+              borderBottom: "1px solid rgba(255,255,255,.07)",
+              borderRadius: 10,
+              color: WHITE,
+              fontSize: 31,
+              fontWeight: 850,
+              opacity: enter,
+              transform: `translateX(${(1 - enter) * 22}px)`,
+              background: active
+                ? good
+                  ? "rgba(121,217,154,.055)"
+                  : "rgba(255,107,107,.055)"
+                : "transparent",
+            }}
+          >
+            <span style={{color: good ? GREEN : RED, marginRight: 15}}>
+              {good ? "✓" : "×"}
+            </span>
+            {item}
+          </div>
+        );
+      })}
     </div>
   );
 
@@ -930,8 +1031,8 @@ const DoDontScene = ({
       >
         <Eyebrow>{asString(payload.eyebrow)}</Eyebrow>
         <div style={{display: "flex", gap: 28}}>
-          {list(yes, true)}
-          {list(no, false)}
+          {list(yes, true, 0)}
+          {list(no, false, yes.length)}
         </div>
         <Source text={asString(payload.source)} />
       </AbsoluteFill>
@@ -947,7 +1048,20 @@ const TimelineScene = ({
   durationFrames: number;
 }) => {
   const frame = useCurrentFrame();
-  const progress = interpolate(frame, [16, 82], [0, 1], clamp);
+  const {fps} = useVideoConfig();
+  const progress = interpolate(
+    frame,
+    [sceneFrameAt(durationFrames, 0.12), sceneFrameAt(durationFrames, 0.84)],
+    [0, 1],
+    clamp,
+  );
+  const headlineEnter = stagedSpring({
+    frame,
+    durationFrames,
+    ratio: 0.24,
+    fps,
+  });
+  const datePulse = 1 + Math.sin(frame / 24) * 0.006;
 
   return (
     <SceneShell durationFrames={durationFrames}>
@@ -965,6 +1079,7 @@ const TimelineScene = ({
             fontSize: 94,
             fontWeight: 950,
             letterSpacing: -1.6,
+            transform: `scale(${datePulse})`,
           }}
         >
           {asString(payload.date)}
@@ -977,6 +1092,8 @@ const TimelineScene = ({
             fontWeight: 900,
             lineHeight: 1.08,
             maxWidth: 1320,
+            opacity: headlineEnter,
+            transform: `translateY(${(1 - headlineEnter) * 18}px)`,
           }}
         >
           {asString(payload.headline)}
@@ -997,6 +1114,7 @@ const TimelineScene = ({
               height: "100%",
               borderRadius: 999,
               background: GOLD,
+              boxShadow: "0 0 22px rgba(255,189,25,.14)",
             }}
           />
         </div>
@@ -1015,13 +1133,12 @@ const ClosingScene = ({
 }) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
-  const enter = spring({
-    frame,
-    fps,
-    durationInFrames: 28,
-    config: {damping: 20, stiffness: 95},
-  });
-  const pulse = 1 + Math.sin(frame / 13) * 0.012;
+  const headline = asString(payload.headline);
+  const parts = headline
+    .split(/(?<=[.!?])\s+/)
+    .map((part) => part.trim())
+    .filter(Boolean);
+  const pulse = 1 + Math.sin(frame / 18) * 0.006;
 
   return (
     <SceneShell durationFrames={durationFrames}>
@@ -1037,17 +1154,39 @@ const ClosingScene = ({
         <Eyebrow>{asString(payload.eyebrow, "O Dinheiro Explica")}</Eyebrow>
         <div
           style={{
-            maxWidth: 1380,
-            color: WHITE,
-            fontSize: 82,
-            fontWeight: 950,
-            lineHeight: 1.04,
-            letterSpacing: -1.5,
-            transform: `scale(${pulse * (0.94 + enter * 0.06)})`,
-            opacity: enter,
+            width: "100%",
+            maxWidth: 1440,
+            display: "grid",
+            gap: 18,
+            transform: `scale(${pulse})`,
           }}
         >
-          {asString(payload.headline)}
+          {(parts.length ? parts : [headline]).map((part, index, all) => {
+            const enter = stagedSpring({
+              frame,
+              durationFrames,
+              ratio:
+                0.08 +
+                (index / Math.max(1, all.length - 1)) * 0.62,
+              fps,
+            });
+            return (
+              <div
+                key={`${part}-${index}`}
+                style={{
+                  color: index === all.length - 1 ? GOLD : WHITE,
+                  fontSize: all.length > 2 ? 64 : 78,
+                  fontWeight: 950,
+                  lineHeight: 1.03,
+                  letterSpacing: -1.2,
+                  opacity: enter,
+                  transform: `translateY(${(1 - enter) * 22}px)`,
+                }}
+              >
+                {part}
+              </div>
+            );
+          })}
         </div>
         <Source text={asString(payload.source)} />
       </AbsoluteFill>
