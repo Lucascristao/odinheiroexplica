@@ -9,6 +9,11 @@ PRESENTER_VOICES = {
     "female": "pt-BR-ThalitaMultilingualNeural",
 }
 
+PRESENTER_NAMES = {
+    "male": "Roberto",
+    "female": "Luana",
+}
+
 DEFAULT_PRESENTER = "male"
 
 # Correções de pronúncia que só afetam a fala, sem alterar o texto publicado.
