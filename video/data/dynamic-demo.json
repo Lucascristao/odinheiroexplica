@@ -1,0 +1,59 @@
+{
+  "project_id": "dynamic-demo",
+  "title": "O número que muda a história",
+  "scenes": [
+    {
+      "id": "scene-01",
+      "scene_index": 0,
+      "title": "O que sustenta um negócio?",
+      "narration": "A parte mais conhecida de uma empresa nem sempre é a que mais coloca dinheiro no caixa. E é justamente aí que os números começam a contar uma história diferente.",
+      "visual": {
+        "type": "HEADLINE",
+        "payload": {
+          "kicker": "O que sustenta um negócio?",
+          "headline": "A parte mais conhecida nem sempre é a mais importante."
+        }
+      }
+    },
+    {
+      "id": "scene-02",
+      "scene_index": 1,
+      "title": "Número central",
+      "narration": "Imagine, por exemplo, uma receita de um bilhão e oitocentos milhões de reais. O número impressiona, mas sozinho ele não explica de onde o dinheiro veio.",
+      "visual": {
+        "type": "BIG_NUMBER",
+        "payload": {
+          "eyebrow": "Receita",
+          "number": "R$ 1,8 BI",
+          "caption": "O número só importa quando existe contexto."
+        }
+      }
+    },
+    {
+      "id": "scene-03",
+      "scene_index": 2,
+      "title": "Termos financeiros",
+      "narration": "Selic, Pix, EBITDA, Nubank e Banco Central aparecem o tempo todo no noticiário. O objetivo aqui é transformar esses termos em uma história fácil de acompanhar.",
+      "visual": {
+        "type": "TERMS",
+        "payload": {
+          "headline": "Clareza até nos termos difíceis.",
+          "terms": ["SELIC", "PIX", "EBITDA", "NUBANK", "BANCO CENTRAL"]
+        }
+      }
+    },
+    {
+      "id": "scene-04",
+      "scene_index": 3,
+      "title": "Fechamento",
+      "narration": "Os números contam a história. Nosso trabalho é fazer você entendê-la.",
+      "visual": {
+        "type": "CLOSING",
+        "payload": {
+          "eyebrow": "O Dinheiro Explica",
+          "headline": "Os números contam a história. Nosso trabalho é fazer você entendê-la."
+        }
+      }
+    }
+  ]
+}
