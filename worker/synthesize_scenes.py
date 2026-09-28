@@ -2,6 +2,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import subprocess
 from pathlib import Path
 from xml.sax.saxutils import escape
@@ -30,17 +31,72 @@ def duration_seconds(path: Path) -> float:
     return round(float(completed.stdout.strip()), 3)
 
 
-def synthesize(text: str, output: Path, key: str, region: str) -> None:
-    endpoint = f"https://{region}.tts.speech.microsoft.com/cognitiveservices/v1"
-    ssml = f"""<speak version="1.0"
+def split_sentences(text: str) -> list[str]:
+    parts = re.split(r"(?<=[.!?])\s+", text.strip())
+    return [part.strip() for part in parts if part.strip()]
+
+
+def percent_value(value: str, default: int = 0) -> int:
+    match = re.fullmatch(r"([+-]?\d+)%", str(value).strip())
+    return int(match.group(1)) if match else default
+
+
+def percent_text(value: int) -> str:
+    return f"{value:+d}%" if value else "0%"
+
+
+def build_ssml(text: str, voice: str, tts: dict) -> str:
+    base_rate = percent_value(tts.get("rate", DEFAULT_TTS_RATE), -1)
+    base_pitch = percent_value(tts.get("pitch", DEFAULT_TTS_PITCH), 1)
+    pause_ms = max(60, min(260, int(tts.get("pause_ms", 115))))
+
+    sentences = split_sentences(text)
+    rendered = []
+
+    for index, sentence in enumerate(sentences):
+        words = sentence.split()
+        rate = base_rate
+        pitch = base_pitch
+
+        # Pequenas variações de frase para evitar cadência de leitura contínua.
+        if sentence.endswith("?"):
+            pitch += 2
+            rate -= 1
+        elif len(words) <= 7:
+            rate += 1
+        elif index % 3 == 1:
+            rate += 1
+        elif index % 3 == 2:
+            rate -= 1
+
+        rendered.append(
+            f'<s><prosody rate="{percent_text(rate)}" '
+            f'pitch="{percent_text(pitch)}">{escape(sentence)}</prosody></s>'
+        )
+
+        if index < len(sentences) - 1:
+            extra = 35 if sentence.endswith(":") else 0
+            rendered.append(f'<break time="{pause_ms + extra}ms"/>')
+
+    body = "\n      ".join(rendered)
+    return f"""<speak version="1.0"
   xmlns="http://www.w3.org/2001/10/synthesis"
   xml:lang="pt-BR">
-  <voice xml:lang="pt-BR" name="{DEFAULT_TTS_VOICE}">
-    <prosody rate="{DEFAULT_TTS_RATE}" pitch="{DEFAULT_TTS_PITCH}">
-      {escape(text)}
-    </prosody>
+  <voice xml:lang="pt-BR" name="{voice}">
+      {body}
   </voice>
 </speak>"""
+
+
+def synthesize(
+    text: str,
+    output: Path,
+    key: str,
+    region: str,
+    tts: dict | None = None,
+) -> None:
+    endpoint = f"https://{region}.tts.speech.microsoft.com/cognitiveservices/v1"
+    ssml = build_ssml(text, DEFAULT_TTS_VOICE, tts or {})
 
     response = requests.post(
         endpoint,
@@ -90,9 +146,10 @@ def main() -> None:
         if not narration:
             raise RuntimeError(f"Cena {scene_id} sem narração.")
 
+        tts = scene.get("tts") or {}
         narration_hash = hashlib.sha256(narration.encode("utf-8")).hexdigest()
         output = output_dir / f"{scene_id}.mp3"
-        synthesize(narration, output, key, region)
+        synthesize(narration, output, key, region, tts)
         duration = duration_seconds(output)
 
         manifest["scenes"].append(
@@ -102,6 +159,7 @@ def main() -> None:
                 "file": output.name,
                 "duration_seconds": duration,
                 "narration_sha256": narration_hash,
+                "tts": tts,
             }
         )
         manifest["total_duration_seconds"] += duration
