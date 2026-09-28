@@ -59,7 +59,15 @@ jobs:
       - name: Install Python dependencies
         run: pip install --no-cache-dir -r worker/requirements.txt
 
-      - name: Generate Macerio audio per scene
+      - name: Audit pronunciation before TTS
+        run: |
+          mkdir -p video/generated
+          python worker/pronunciation_audit.py \
+            --input video/data/daily.json \
+            --output video/generated/daily-pronunciation-audit.json \
+            --strict
+
+      - name: Generate presenter audio per scene
         env:
           AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
           AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
@@ -70,7 +78,7 @@ jobs:
             --status running \
             --stage audio \
             --percent 10 \
-            --detail "Gerando a narração por cena com Macerio."
+            --detail "Pronúncia revisada. Gerando a narração com a voz do apresentador."
 
           rm -rf public/generated-audio/daily
           mkdir -p public/generated-audio/daily video/generated render-output
