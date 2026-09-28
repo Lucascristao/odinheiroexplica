@@ -19,6 +19,7 @@ type Scene = {
   title?: string;
   start_frame: number;
   duration_frames: number;
+  audio_duration_seconds?: number;
   audio_file: string;
   visual: {
     type: string;
@@ -1217,6 +1218,151 @@ const FallbackScene = ({
   </SceneShell>
 );
 
+type SoundEvent = {
+  frame: number;
+  file: "tick.wav" | "soft-impact.wav" | "soft-whoosh.wav" | "subtle-alert.wav" | "outro-signature.wav";
+  volume: number;
+  durationSeconds: number;
+};
+
+const SoundDesign = ({
+  scene,
+  isLast,
+}: {
+  scene: Scene;
+  isLast: boolean;
+}) => {
+  const {fps} = useVideoConfig();
+  const payload = scene.visual?.payload ?? {};
+  const type = scene.visual?.type ?? "";
+  const events: SoundEvent[] = [];
+
+  const add = (
+    ratio: number,
+    file: SoundEvent["file"],
+    volume: number,
+    durationSeconds: number,
+  ) => {
+    events.push({
+      frame: sceneFrameAt(scene.duration_frames, ratio),
+      file,
+      volume,
+      durationSeconds,
+    });
+  };
+
+  // Transições sonoras são espaçadas para não transformar o vídeo
+  // em uma sequência de whooshes. A narração continua sempre em primeiro plano.
+  if (scene.scene_index > 0 && scene.scene_index % 2 === 0 && type !== "CLOSING") {
+    add(0.015, "soft-whoosh.wav", 0.045, 0.55);
+  }
+
+  if (type === "HEADLINE") {
+    add(0.38, "tick.wav", 0.045, 0.12);
+  }
+
+  if (type === "STAT_GRID") {
+    const stats = asArray<unknown>(payload.stats);
+    stats.forEach((_, index) => {
+      const ratio = 0.08 + (index / Math.max(1, stats.length - 1)) * 0.5;
+      add(ratio, index === 0 ? "soft-impact.wav" : "tick.wav", index === 0 ? 0.06 : 0.04, index === 0 ? 0.5 : 0.12);
+    });
+  }
+
+  if (type === "BEFORE_AFTER") {
+    add(0.18, "tick.wav", 0.035, 0.12);
+    add(0.62, "soft-impact.wav", 0.055, 0.5);
+  }
+
+  if (type === "NETWORK") {
+    add(0.12, "soft-whoosh.wav", 0.04, 0.55);
+    add(0.56, "tick.wav", 0.04, 0.12);
+  }
+
+  if (type === "MONEY_FLOW") {
+    add(0.16, "soft-whoosh.wav", 0.045, 0.55);
+    add(0.58, "tick.wav", 0.04, 0.12);
+  }
+
+  if (type === "PROCESS") {
+    const steps = asArray<unknown>(payload.steps);
+    steps.forEach((_, index) => {
+      const ratio = 0.06 + (index / Math.max(1, steps.length - 1)) * 0.6;
+      add(ratio, "tick.wav", index === steps.length - 1 ? 0.05 : 0.035, 0.12);
+    });
+  }
+
+  if (type === "BIG_NUMBER") {
+    add(0.08, "soft-impact.wav", 0.065, 0.5);
+    if (asString(payload.warning)) {
+      add(0.55, "subtle-alert.wav", 0.045, 0.34);
+    }
+  }
+
+  if (type === "DO_DONT") {
+    const yes = asArray<unknown>(payload.yes);
+    const no = asArray<unknown>(payload.no);
+    const total = Math.max(1, yes.length + no.length);
+
+    [...yes, ...no].forEach((_, index) => {
+      const ratio = 0.09 + (index / Math.max(1, total - 1)) * 0.58;
+      const firstNegative = index === yes.length && no.length > 0;
+      add(
+        ratio,
+        firstNegative ? "subtle-alert.wav" : "tick.wav",
+        firstNegative ? 0.04 : 0.033,
+        firstNegative ? 0.34 : 0.12,
+      );
+    });
+  }
+
+  if (type === "TIMELINE") {
+    add(0.12, "soft-whoosh.wav", 0.04, 0.55);
+    add(0.84, "tick.wav", 0.035, 0.12);
+  }
+
+  if (isLast) {
+    const narrationEnd = Math.min(
+      scene.duration_frames - 1,
+      Math.max(0, Math.round((scene.audio_duration_seconds ?? 0) * fps)),
+    );
+
+    events.push({
+      frame: narrationEnd,
+      file: "outro-signature.wav",
+      volume: 0.085,
+      durationSeconds: 1.85,
+    });
+  }
+
+  return (
+    <>
+      {events.map((event, index) => {
+        const durationInFrames = Math.max(
+          1,
+          Math.min(
+            Math.ceil(event.durationSeconds * fps),
+            scene.duration_frames - event.frame,
+          ),
+        );
+
+        return (
+          <Sequence
+            key={`${event.file}-${event.frame}-${index}`}
+            from={event.frame}
+            durationInFrames={durationInFrames}
+          >
+            <Audio
+              src={staticFile(`generated-sfx/${event.file}`)}
+              volume={event.volume}
+            />
+          </Sequence>
+        );
+      })}
+    </>
+  );
+};
+
 const Visual = ({scene}: {scene: Scene}) => {
   const payload = scene.visual?.payload ?? {};
   switch (scene.visual?.type) {
@@ -1252,7 +1398,7 @@ export const DailyEditorial = () => {
     <AbsoluteFill style={{backgroundColor: BG}}>
       <MovingBackground />
       <Brand />
-      {scenes.map((scene) => (
+      {scenes.map((scene, index) => (
         <Sequence
           key={scene.id}
           from={scene.start_frame}
@@ -1260,6 +1406,7 @@ export const DailyEditorial = () => {
         >
           <Visual scene={scene} />
           <TransitionSweep sceneIndex={scene.scene_index} />
+          <SoundDesign scene={scene} isLast={index === scenes.length - 1} />
           <Audio src={staticFile(scene.audio_file)} />
         </Sequence>
       ))}
