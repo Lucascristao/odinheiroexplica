@@ -54,9 +54,8 @@ def main() -> None:
 
     payload = {
         "title": title,
-        "title_variants": [item.get("text") for item in titles],
         "thumbnail_headline": thumbnail,
-        "thumbnail_variants": [item.get("headline") for item in thumbs],
+        "packaging_strategy": project.get("packaging", {}).get("strategy", {}),
         "description": full_description,
         "chapters": chapters,
         "duration_seconds": round(
