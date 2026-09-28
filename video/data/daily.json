@@ -1,0 +1,449 @@
+{
+  "project_id": "bets-proibidas-2026-09-28",
+  "title": "Bets Foram Proibidas: O Que Acontece com Seu Dinheiro Agora",
+  "version": "1.0",
+  "story": {
+    "subject": "O que acontece com o dinheiro que ainda ficou nas bets após a MP 1.394/2026",
+    "angle": "Explicar a transição financeira criada pela proibição das bets: bloqueio de novos aportes, prazo de resgate, devolução bancária do saldo remanescente e o que ainda depende do Congresso.",
+    "promise": "Mostrar de forma simples o que muda agora para quem ainda tem saldo em uma bet, quais são as datas importantes e por que a medida ainda não é uma lei definitiva.",
+    "why_now": "A MP 1.394/2026 foi publicada em 25 de setembro e começou a tramitar no Congresso; em 28 de setembro, os prazos de resgate e bloqueio já estão correndo.",
+    "category": "money"
+  },
+  "editorial": {
+    "viral_score": 93,
+    "strengths": [
+      "Assunto nacional com impacto financeiro imediato",
+      "Prazo real e objetivo para quem ainda tem saldo nas plataformas",
+      "Grande reconhecimento do tema pelo público brasileiro",
+      "História com cronologia clara e consequência concreta",
+      "Fontes oficiais recentes e verificáveis"
+    ],
+    "risk_flags": [
+      "Tema regulado de apostas exige abordagem estritamente informativa",
+      "Medida provisória ainda está em tramitação no Congresso"
+    ],
+    "youtube_suitability": {
+      "risk_level": "medium",
+      "sensitive_topics": [
+        "apostas e jogos de quota fixa"
+      ],
+      "context_notes": "Conteúdo jornalístico e econômico sobre uma mudança regulatória e os efeitos sobre saldos de usuários, sem incentivo, promoção, link ou instrução para apostar.",
+      "title_thumbnail_safe": true,
+      "monetization_notes": "Embalagem evita marcas de casas de apostas, promessa de ganho e linguagem de incentivo. O foco é resgate, devolução e funcionamento da medida."
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Governo Federal proíbe bets em todo o País e lança pacote de proteção às famílias endividadas",
+      "url": "https://www.gov.br/mj/pt-br/assuntos/noticias-1/governo-federal-proibe-bets-em-todo-o-pais-e-lanca-pacote-de-protecao-as-familias-endividadas-1",
+      "publisher": "Ministério da Justiça e Segurança Pública",
+      "source_type": "primary",
+      "published_at": "2026-09-25T20:51:00-03:00",
+      "notes": "Detalha proibição de novos aportes, prazo de resgate até 5/10, bloqueio em 6/10, envio de saldos por CPF e devolução bancária entre 9 e 14/10."
+    },
+    {
+      "id": "S2",
+      "title": "Medida Provisória n° 1394, de 2026",
+      "url": "https://www.congressonacional.leg.br/pt_BR/materias/medidas-provisorias/-/mpv/175871",
+      "publisher": "Congresso Nacional",
+      "source_type": "primary",
+      "published_at": "2026-09-25T00:00:00-03:00",
+      "notes": "Página oficial da MP, ementa, situação atual, prazos e tramitação."
+    },
+    {
+      "id": "S3",
+      "title": "MP proíbe bets e determina encerramento das operações em 30 dias",
+      "url": "https://www12.senado.leg.br/noticias/materias/2026/09/28/mp-proibe-bets-e-determina-encerramento-das-operacoes-em-30-dias",
+      "publisher": "Senado Federal",
+      "source_type": "primary",
+      "published_at": "2026-09-28T00:00:00-03:00",
+      "notes": "Confirma início da tramitação e extinção das autorizações existentes em 30 dias."
+    },
+    {
+      "id": "S4",
+      "title": "Presidente Lula assina Medida Provisória que proíbe as bets no Brasil",
+      "url": "https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/setembro/presidente-lula-assina-medida-provisoria-que-proibe-as-bets-no-brasil",
+      "publisher": "Ministério da Saúde",
+      "source_type": "primary",
+      "published_at": "2026-09-26T00:00:00-03:00",
+      "notes": "Confirma alcance sobre apostas esportivas e jogos online e esclarece que outras modalidades lotéricas autorizadas em lei não são abrangidas."
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "text": "A MP 1.394/2026 proíbe a exploração, oferta, intermediação e publicidade de apostas de quota fixa no território nacional.",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C2",
+      "text": "Desde a publicação da MP, novos aportes de recursos em contas de apostas ficam vedados.",
+      "source_ids": [
+        "S1"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C3",
+      "text": "Os apostadores podem acessar sites e aplicativos para resgatar saldo remanescente até 23h59 de 5 de outubro de 2026.",
+      "source_ids": [
+        "S1"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C4",
+      "text": "A partir de 0h de 6 de outubro, sites e aplicativos de apostas devem ser bloqueados no país.",
+      "source_ids": [
+        "S1"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C5",
+      "text": "Nos dias 6 e 7 de outubro, as empresas devem informar às instituições financeiras o saldo individualizado por CPF e a conta bancária de origem dos depósitos.",
+      "source_ids": [
+        "S1"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C6",
+      "text": "Os bancos devem devolver os valores remanescentes entre 9 e 14 de outubro; em dificuldades operacionais, a Caixa pode atuar como intermediária.",
+      "source_ids": [
+        "S1"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C7",
+      "text": "A MP prevê a extinção das autorizações existentes em 30 dias, mesmo com o bloqueio de acesso ao público previsto antes disso.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C8",
+      "text": "A medida alcança apostas esportivas e jogos online, mas não abrange outras modalidades lotéricas já autorizadas em lei.",
+      "source_ids": [
+        "S4"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C9",
+      "text": "A MP produz efeitos imediatos, mas ainda precisa ser apreciada pelo Congresso para se converter definitivamente em lei.",
+      "source_ids": [
+        "S2"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    }
+  ],
+  "packaging": {
+    "strategy": {
+      "click_reason": "A pergunta atinge diretamente quem deixou dinheiro em uma plataforma e também quem quer entender a consequência prática da proibição.",
+      "visual_focus": "Um celular com saldo em uma bet e uma seta clara levando o dinheiro de volta para uma conta bancária.",
+      "curiosity_gap": "O saldo volta sozinho, precisa ser sacado agora ou pode ficar preso depois do bloqueio?",
+      "mobile_readability": "Headline de três palavras, contraste alto e apenas dois objetos principais: celular e conta bancária.",
+      "anti_clickbait_check": "O vídeo explica exatamente como funciona o resgate até 5 de outubro e a devolução bancária posterior.",
+      "repetition_check": "Não reutiliza a rede de contas, rastro amarelo ou linguagem visual do piloto do Pix.",
+      "youtube_safety_check": "A thumbnail fala de saldo e devolução, sem exibir marcas de bets, odds, bônus, ganhos, links ou estímulo à aposta."
+    },
+    "titles": [
+      {
+        "id": "title_main",
+        "text": "Bets Foram Proibidas: O Que Acontece com Seu Dinheiro Agora",
+        "rationale": "Combina a mudança concreta com a dúvida financeira mais útil para o público, sem transformar o título em opinião política."
+      }
+    ],
+    "thumbnails": [
+      {
+        "id": "thumb_main",
+        "headline": "SEU SALDO VOLTA?",
+        "concept": "Celular com uma tela genérica de saldo em plataforma de aposta à direita e uma seta levando o valor para uma conta bancária, com o texto curto à esquerda.",
+        "visual_prompt": "YouTube finance thumbnail, dark editorial background, no real betting brand, smartphone showing generic betting balance, bold arrow toward a bank account card, high contrast, short Portuguese headline 'SEU SALDO VOLTA?', documentary financial style, clean composition, no odds, no bonus badges, no gambling promotion."
+      }
+    ]
+  },
+  "script": {
+    "hook": "Tem uma situação meio estranha acontecendo agora: as bets foram proibidas, mas os sites ainda não sumiram. E o motivo é simples. Ainda existe dinheiro de apostadores lá dentro. A MP criou uma transição com datas bem específicas para esse saldo sair das plataformas e voltar para as contas bancárias.",
+    "beats": [
+      "O que a MP proibiu imediatamente",
+      "O que acontece com novos depósitos",
+      "Prazo para resgatar o saldo",
+      "Bloqueio de sites e aplicativos",
+      "Devolução bancária automática do saldo remanescente",
+      "Diferença entre bloqueio ao público e extinção das autorizações",
+      "O que entra e o que fica fora da medida",
+      "Por que a MP ainda depende do Congresso",
+      "Resumo prático da transição"
+    ],
+    "scenes": [
+      {
+        "index": 0,
+        "title": "As bets foram proibidas, mas o dinheiro ainda precisa sair",
+        "narration": "Tem uma situação meio estranha acontecendo agora: as bets foram proibidas, mas os sites ainda não sumiram. E o motivo é simples. Ainda existe dinheiro de apostadores lá dentro. A Medida Provisória número mil trezentos e noventa e quatro criou uma transição com datas bem específicas para esse saldo sair das plataformas e voltar para as contas bancárias. Então a pergunta mais importante agora não é se a bet vai continuar. É o que acontece com o dinheiro que ficou lá.",
+        "visual": {
+          "type": "HEADLINE",
+          "payload": {
+            "kicker": "Bets proibidas",
+            "headline": "O que acontece com o dinheiro que ficou nas plataformas?",
+            "accent": "o dinheiro",
+            "source": "MP 1.394/2026 • Congresso Nacional"
+          }
+        },
+        "claim_ids": [
+          "C1",
+          "C3",
+          "C6"
+        ],
+        "tts": {
+          "rate": "-1%",
+          "pitch": "0%",
+          "pause_ms": 135
+        }
+      },
+      {
+        "index": 1,
+        "title": "O que mudou na hora",
+        "narration": "A primeira mudança já vale. A MP proíbe a exploração, a oferta, a intermediação e a publicidade das apostas de quota fixa. E, para quem já tinha conta, existe um ponto bem concreto: não pode colocar dinheiro novo lá dentro. O governo bloqueou novos aportes a partir da publicação da medida. Ou seja, essa fase não é uma continuação normal das bets. É uma janela de saída.",
+        "visual": {
+          "type": "DO_DONT",
+          "payload": {
+            "eyebrow": "Desde a publicação",
+            "yes": [
+              "RESGATAR SALDO"
+            ],
+            "no": [
+              "NOVO APORTE",
+              "NOVA PUBLICIDADE"
+            ],
+            "source": "Ministério da Justiça • MP 1.394/2026"
+          }
+        },
+        "claim_ids": [
+          "C1",
+          "C2"
+        ],
+        "tts": {
+          "rate": "-2%",
+          "pitch": "0%",
+          "pause_ms": 125
+        }
+      },
+      {
+        "index": 2,
+        "title": "A data que importa para quem tem saldo",
+        "narration": "Agora vem a data que realmente interessa pra quem deixou saldo em uma plataforma. Até as onze e cinquenta e nove da noite do dia cinco de outubro, os sites e aplicativos ficam acessíveis para o resgate do dinheiro remanescente. Esse prazo existe justamente para o usuário retirar o saldo antes do bloqueio de acesso. Não é um prazo inventado pela plataforma. Está no cronograma oficial da transição.",
+        "visual": {
+          "type": "BIG_NUMBER",
+          "payload": {
+            "eyebrow": "Prazo para resgatar",
+            "number": "5 OUT",
+            "caption": "Até 23h59 para retirar o saldo remanescente.",
+            "warning": "Novos aportes já estão proibidos.",
+            "source": "Ministério da Justiça • 25/09/2026"
+          }
+        },
+        "claim_ids": [
+          "C2",
+          "C3"
+        ],
+        "tts": {
+          "rate": "-1%",
+          "pitch": "0%",
+          "pause_ms": 145
+        }
+      },
+      {
+        "index": 3,
+        "title": "O que acontece a partir do dia 6",
+        "narration": "Virou o dia, muda a lógica. A partir de zero hora de seis de outubro, o acesso aos sites e aplicativos deve ser bloqueado no Brasil. Só que o saldo que não foi sacado não some. Nos dias seis e sete, as empresas precisam informar aos bancos quanto ficou em nome de cada CPF e qual era a conta bancária de origem dos depósitos. A partir daí, a devolução deixa de depender do usuário entrar na plataforma.",
+        "visual": {
+          "type": "PROCESS",
+          "payload": {
+            "eyebrow": "Depois do bloqueio",
+            "steps": [
+              "BET",
+              "CPF",
+              "BANCO",
+              "DEVOLUÇÃO"
+            ],
+            "caption": "Saldos são individualizados e enviados às instituições financeiras.",
+            "source": "Ministério da Justiça"
+          }
+        },
+        "claim_ids": [
+          "C4",
+          "C5"
+        ],
+        "tts": {
+          "rate": "-2%",
+          "pitch": "0%",
+          "pause_ms": 135
+        }
+      },
+      {
+        "index": 4,
+        "title": "Quando o dinheiro volta",
+        "narration": "E quando esse dinheiro volta de fato? Pelo cronograma oficial, os bancos fazem a devolução entre os dias nove e quatorze de outubro. Se houver alguma dificuldade operacional para localizar a conta ou concluir o pagamento, a Caixa Econômica Federal pode entrar como intermediária. Então existem dois caminhos. Primeiro, o resgate direto até o dia cinco. Depois, o processo bancário para o que tiver ficado para trás.",
+        "visual": {
+          "type": "TIMELINE",
+          "payload": {
+            "eyebrow": "Devolução bancária",
+            "date": "9 A 14 OUT",
+            "headline": "O saldo remanescente deve voltar por meio dos bancos.",
+            "source": "Ministério da Justiça"
+          }
+        },
+        "claim_ids": [
+          "C6"
+        ],
+        "tts": {
+          "rate": "0%",
+          "pitch": "0%",
+          "pause_ms": 120
+        }
+      },
+      {
+        "index": 5,
+        "title": "Por que existem duas datas diferentes",
+        "narration": "Talvez você tenha visto outra informação: que as autorizações das empresas acabam em trinta dias. E isso não contradiz o bloqueio do dia seis. São coisas diferentes. Para o usuário, o acesso entra em bloqueio no começo de outubro. Juridicamente, a MP também prevê a extinção das autorizações que ainda existem dentro de um prazo de trinta dias. Uma coisa trata da saída do público. A outra fecha a autorização regulatória.",
+        "visual": {
+          "type": "BEFORE_AFTER",
+          "payload": {
+            "eyebrow": "Duas etapas",
+            "before_title": "6 OUT",
+            "before_text": "Bloqueio de sites e aplicativos para o público.",
+            "after_title": "30 DIAS",
+            "after_text": "Extinção das autorizações existentes.",
+            "source": "Ministério da Justiça • Senado Federal"
+          }
+        },
+        "claim_ids": [
+          "C4",
+          "C7"
+        ],
+        "tts": {
+          "rate": "-2%",
+          "pitch": "0%",
+          "pause_ms": 135
+        }
+      },
+      {
+        "index": 6,
+        "title": "O que entra e o que fica fora",
+        "narration": "A proibição atinge as apostas esportivas e os jogos online de quota fixa. Mas não significa que toda forma de loteria deixou de existir no país. O texto não alcança outras modalidades lotéricas que já são autorizadas por lei. Essa diferença importa porque a manchete 'acabaram os jogos' seria ampla demais. O alvo da medida são as bets e os jogos online enquadrados nesse modelo.",
+        "visual": {
+          "type": "DO_DONT",
+          "payload": {
+            "eyebrow": "O alcance da MP",
+            "yes": [
+              "APOSTAS ESPORTIVAS",
+              "JOGOS ONLINE"
+            ],
+            "no": [
+              "OUTRAS LOTERIAS LEGAIS"
+            ],
+            "source": "Ministério da Saúde • MP 1.394/2026"
+          }
+        },
+        "claim_ids": [
+          "C8"
+        ],
+        "tts": {
+          "rate": "-1%",
+          "pitch": "0%",
+          "pause_ms": 125
+        }
+      },
+      {
+        "index": 7,
+        "title": "A MP já vale, mas a história jurídica ainda não terminou",
+        "narration": "Só que tem um detalhe importante. Medida provisória tem força de lei assim que é publicada, então essas regras já produzem efeito. Mas ela ainda precisa passar pelo Congresso para virar lei de forma definitiva. Nesta segunda, dia vinte e oito de setembro, a MP já estava em tramitação e aguardava a formação da comissão mista. O Congresso pode aprovar, alterar ou deixar a medida perder validade dentro do processo constitucional.",
+        "visual": {
+          "type": "TIMELINE",
+          "payload": {
+            "eyebrow": "Situação em 28/09",
+            "date": "EM TRAMITAÇÃO",
+            "headline": "A MP já vale, mas ainda depende da apreciação do Congresso.",
+            "source": "Congresso Nacional • consulta em 28/09/2026"
+          }
+        },
+        "claim_ids": [
+          "C9"
+        ],
+        "tts": {
+          "rate": "-2%",
+          "pitch": "0%",
+          "pause_ms": 145
+        }
+      },
+      {
+        "index": 8,
+        "title": "O resumo do dinheiro",
+        "narration": "Então guarda o resumo. Dinheiro novo não entra mais. Quem ainda tem saldo pode resgatar diretamente até o dia cinco de outubro. A partir do dia seis, o acesso é bloqueado e começa a etapa de consolidação dos saldos. Entre nove e quatorze, os bancos entram na devolução do que tiver restado. E, enquanto essa transição acontece, o Congresso decide o destino definitivo da medida. É isso que muda agora no dinheiro das bets.",
+        "visual": {
+          "type": "CLOSING",
+          "payload": {
+            "eyebrow": "O Dinheiro Explica",
+            "headline": "Sem novo depósito. Saque até 5/10. Depois, devolução bancária.",
+            "source": "Fontes: Congresso Nacional • Ministérios da Justiça e da Saúde • Senado"
+          }
+        },
+        "claim_ids": [
+          "C2",
+          "C3",
+          "C4",
+          "C6",
+          "C9"
+        ],
+        "tts": {
+          "rate": "-2%",
+          "pitch": "0%",
+          "pause_ms": 150
+        }
+      }
+    ],
+    "closing": "Sem novo depósito. Saque até 5/10. Depois, devolução bancária, enquanto a MP segue no Congresso."
+  },
+  "publication": {
+    "description": "As bets foram proibidas pela MP 1.394/2026, e quem ainda tem saldo nas plataformas entrou numa janela de transição. Neste vídeo, você entende os prazos para resgate, como funcionará a devolução bancária e o que ainda depende do Congresso.\n\nO foco aqui é o dinheiro: novos aportes, prazo até 5 de outubro, bloqueio a partir do dia 6 e a etapa de devolução dos saldos remanescentes pelos bancos.\n\nEste vídeo tem caráter informativo e educacional e não incentiva apostas.",
+    "chapters": [],
+    "disclosure_ai": false,
+    "seo": {
+      "primary_keyword": "bets proibidas",
+      "secondary_keywords": [
+        "fim das bets",
+        "MP 1394",
+        "apostas online",
+        "saldo bet",
+        "devolução bets"
+      ],
+      "search_intent": "Entender o que acontece com o dinheiro e o saldo nas bets depois da MP 1.394/2026.",
+      "description_strategy": "Abrir com a proibição e a dúvida sobre saldo, trazer as datas de resgate e devolução logo no início e usar termos relacionados de forma natural."
+    },
+    "tags": [
+      "bets proibidas",
+      "fim das bets",
+      "MP 1394",
+      "apostas online"
+    ]
+  }
+}

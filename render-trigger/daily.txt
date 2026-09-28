@@ -1,0 +1,3 @@
+video=bets-proibidas-2026-09-28
+date=2026-09-28
+mode=daily-editorial

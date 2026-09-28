@@ -2,9 +2,9 @@ import {Composition, Still} from "remotion";
 import {BrandMotionTest} from "./BrandMotionTest";
 import {DynamicVideo} from "./DynamicVideo";
 import {DynamicMotionV2} from "./DynamicMotionV2";
-import {EditorialPilot, PixPilotThumbnail} from "./EditorialPilot";
+import {EditorialPilot, PixPilotThumbnail} from "./EditorialPilot";\nimport {DailyEditorial} from "./DailyEditorial";\nimport {DailyThumbnail} from "./DailyThumbnail";
 import renderInput from "../generated/render-input.json";
-import pilotRenderInput from "../generated/pilot-render-input.json";
+import pilotRenderInput from "../generated/pilot-render-input.json";\nimport dailyRenderInput from "../generated/daily-render-input.json";
 
 export const RemotionRoot = () => {
   return (

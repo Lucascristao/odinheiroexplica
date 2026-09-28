@@ -47,7 +47,7 @@ def percent_text(value: int) -> str:
 
 def build_ssml(text: str, voice: str, tts: dict) -> str:
     base_rate = percent_value(tts.get("rate", DEFAULT_TTS_RATE), 0)
-    base_pitch = percent_value(tts.get("pitch", DEFAULT_TTS_PITCH), 1)
+    base_pitch = percent_value(tts.get("pitch", DEFAULT_TTS_PITCH), 0)
     pause_ms = max(90, min(220, int(tts.get("pause_ms", 120))))
 
     sentences = split_sentences(text)

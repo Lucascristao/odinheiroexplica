@@ -1,0 +1,240 @@
+name: Render vídeo diário - O Dinheiro Explica
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "render-trigger/daily.txt"
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+
+    env:
+      ODE_PROGRESS_URL: https://odinheiroexplica.netlify.app/.netlify/functions/render-progress
+      ODE_PROGRESS_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      ODE_ESTIMATED_RENDER_SECONDS: 1200
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Read project metadata
+        shell: bash
+        run: |
+          python - <<'PY' >> "$GITHUB_ENV"
+          import json
+          p = json.load(open("video/data/daily.json", encoding="utf-8"))
+          title = p.get("packaging", {}).get("titles", [{}])[0].get("text") or p.get("title", "O Dinheiro Explica")
+          slug = p.get("project_id", "video-diario")
+          print("ODE_VIDEO_TITLE=" + title.replace("\n", " "))
+          print("ODE_PROJECT_SLUG=" + slug.replace("\n", "-"))
+          PY
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Report start
+        run: |
+          python worker/progress_callback.py \
+            --run-id "${{ github.run_id }}" \
+            --title "$ODE_VIDEO_TITLE" \
+            --status running \
+            --stage preparando \
+            --percent 3 \
+            --detail "Preparando o vídeo diário."
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Install Python dependencies
+        run: pip install --no-cache-dir -r worker/requirements.txt
+
+      - name: Generate Macerio audio per scene
+        env:
+          AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
+          AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
+        run: |
+          python worker/progress_callback.py \
+            --run-id "${{ github.run_id }}" \
+            --title "$ODE_VIDEO_TITLE" \
+            --status running \
+            --stage audio \
+            --percent 10 \
+            --detail "Gerando a narração por cena com Macerio."
+
+          rm -rf public/generated-audio/daily
+          mkdir -p public/generated-audio/daily video/generated render-output
+          python worker/synthesize_scenes.py \
+            --input video/data/daily.json \
+            --output-dir public/generated-audio/daily \
+            --manifest video/generated/daily-tts-manifest.json
+
+      - name: Build timeline from real narration
+        run: |
+          python worker/progress_callback.py \
+            --run-id "${{ github.run_id }}" \
+            --title "$ODE_VIDEO_TITLE" \
+            --status running \
+            --stage timeline \
+            --percent 20 \
+            --detail "Narração pronta. Medindo a duração real e montando a timeline."
+
+          python worker/build_render_input.py \
+            --project video/data/daily.json \
+            --tts-manifest video/generated/daily-tts-manifest.json \
+            --audio-public-prefix generated-audio/daily \
+            --output video/generated/daily-render-input.json
+
+      - name: Build YouTube package
+        run: |
+          python worker/build_youtube_package.py \
+            --project video/data/daily.json \
+            --render-input video/generated/daily-render-input.json \
+            --output render-output/daily-youtube.json
+
+          VIDEO_DURATION=$(python -c 'import json; p=json.load(open("video/generated/daily-render-input.json")); print(round(p["duration_in_frames"]/p["fps"], 2))')
+          python worker/progress_callback.py \
+            --run-id "${{ github.run_id }}" \
+            --title "$ODE_VIDEO_TITLE" \
+            --status running \
+            --stage dependencias \
+            --percent 28 \
+            --detail "Timeline pronta. Preparando o Remotion." \
+            --video-duration-seconds "$VIDEO_DURATION"
+
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install Node dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Render video with live progress
+        shell: bash
+        run: |
+          set +e
+          VIDEO_DURATION=$(python -c 'import json; p=json.load(open("video/generated/daily-render-input.json")); print(round(p["duration_in_frames"]/p["fps"], 2))')
+          START=$(date +%s)
+
+          python worker/progress_callback.py \
+            --run-id "${{ github.run_id }}" \
+            --title "$ODE_VIDEO_TITLE" \
+            --status running \
+            --stage render \
+            --percent 35 \
+            --detail "Renderizando o vídeo em 1920×1080." \
+            --eta-seconds "$ODE_ESTIMATED_RENDER_SECONDS" \
+            --video-duration-seconds "$VIDEO_DURATION"
+
+          npm run render:daily &
+          RENDER_PID=$!
+
+          while kill -0 "$RENDER_PID" 2>/dev/null; do
+            sleep 30
+            NOW=$(date +%s)
+            ELAPSED=$((NOW - START))
+            PCT=$((35 + ELAPSED * 54 / ODE_ESTIMATED_RENDER_SECONDS))
+            if [ "$PCT" -gt 89 ]; then PCT=89; fi
+            ETA=$((ODE_ESTIMATED_RENDER_SECONDS - ELAPSED))
+            if [ "$ETA" -lt 0 ]; then ETA=0; fi
+
+            python worker/progress_callback.py \
+              --run-id "${{ github.run_id }}" \
+              --title "$ODE_VIDEO_TITLE" \
+              --status running \
+              --stage render \
+              --percent "$PCT" \
+              --detail "Renderizando os frames do vídeo." \
+              --eta-seconds "$ETA" \
+              --video-duration-seconds "$VIDEO_DURATION"
+          done
+
+          wait "$RENDER_PID"
+          CODE=$?
+
+          if [ "$CODE" -ne 0 ]; then
+            python worker/progress_callback.py \
+              --run-id "${{ github.run_id }}" \
+              --title "$ODE_VIDEO_TITLE" \
+              --status error \
+              --stage erro \
+              --percent 100 \
+              --detail "O render falhou. O erro ficou registrado no GitHub Actions." \
+              --video-duration-seconds "$VIDEO_DURATION"
+            exit "$CODE"
+          fi
+
+      - name: Render thumbnail
+        run: |
+          python worker/progress_callback.py \
+            --run-id "${{ github.run_id }}" \
+            --title "$ODE_VIDEO_TITLE" \
+            --status running \
+            --stage thumbnail \
+            --percent 91 \
+            --detail "Vídeo renderizado. Gerando a thumbnail."
+          npm run still:daily
+
+      - name: Upload package to Google Drive
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+        run: |
+          if [ -z "$GOOGLE_CLIENT_ID" ] || [ -z "$GOOGLE_CLIENT_SECRET" ] || [ -z "$GOOGLE_REFRESH_TOKEN" ] || [ -z "$GOOGLE_DRIVE_FOLDER_ID" ]; then
+            echo "Google Drive ainda não configurado. Upload ignorado neste render."
+            exit 0
+          fi
+
+          python worker/progress_callback.py \
+            --run-id "${{ github.run_id }}" \
+            --title "$ODE_VIDEO_TITLE" \
+            --status running \
+            --stage publicando \
+            --percent 94 \
+            --detail "Enviando vídeo, capa e metadados para o Google Drive."
+
+          python worker/upload_outputs_to_drive.py \
+            --video render-output/daily-video.mp4 \
+            --thumbnail render-output/daily-thumbnail.png \
+            --metadata render-output/daily-youtube.json \
+            --project-slug "$ODE_PROJECT_SLUG" \
+            --output render-output/daily-drive.json
+
+      - name: Finish production
+        run: |
+          VIDEO_DURATION=$(python -c 'import json; p=json.load(open("video/generated/daily-render-input.json")); print(round(p["duration_in_frames"]/p["fps"], 2))')
+          python worker/progress_callback.py \
+            --run-id "${{ github.run_id }}" \
+            --title "$ODE_VIDEO_TITLE" \
+            --status completed \
+            --stage concluido \
+            --percent 100 \
+            --detail "Vídeo, thumbnail e pacote de publicação salvos no Google Drive." \
+            --video-duration-seconds "$VIDEO_DURATION"
+
+      - name: Report failure
+        if: failure()
+        run: |
+          python worker/progress_callback.py \
+            --run-id "${{ github.run_id }}" \
+            --title "$ODE_VIDEO_TITLE" \
+            --status error \
+            --stage erro \
+            --percent 100 \
+            --detail "A produção falhou antes da conclusão."
