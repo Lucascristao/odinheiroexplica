@@ -2,50 +2,52 @@
 
 ## Motor escolhido
 
-Azure AI Speech, usando vozes neurais nativas de Português do Brasil.
+Azure AI Speech.
 
-A escolha substitui o Kokoro depois do teste auditivo inicial mostrar pronúncia inadequada para o padrão do canal.
+O Kokoro foi descartado depois do teste auditivo em pt-BR.
 
-## Por que Azure
+## Referência atual
 
-A prioridade é naturalidade em pt-BR, estabilidade e licença adequada para um canal que pretende monetizar.
+A voz preferida até aqui é:
 
-A camada gratuita F0 do Azure Speech oferece 0,5 milhão de caracteres neurais por mês. Para permanecer nessa faixa gratuita, usamos vozes Neural padrão, não as novas vozes HD.
+`pt-BR-NicolauNeural`
 
-## Voz padrão inicial
+Antes de fechar a identidade sonora, o projeto testa Nicolau contra outras vozes brasileiras.
 
-`pt-BR-FranciscaNeural`
+## Segunda rodada
 
-Ela fica como padrão provisório por ter boa reputação específica entre usuários brasileiros. Antes de fechar a identidade sonora do canal, o teste compara também:
+### Neural padrão
 
-- `pt-BR-FabioNeural`
-- `pt-BR-NicolauNeural`
+- `pt-BR-AntonioNeural`
+- `pt-BR-DonatoNeural`
+- `pt-BR-HumbertoNeural`
+- `pt-BR-JulioNeural`
+- `pt-BR-ValerioNeural`
 
-A voz final continua sendo uma decisão auditiva.
+### Multilingual
 
-## Segredos necessários no GitHub
+- `pt-BR-MacerioMultilingualNeural`
 
-O workflow usa apenas GitHub Secrets:
+### Neural HD
+
+- `pt-BR-Caio:MAI-Voice-2`
+- `pt-BR-Pedro:MAI-Voice-2`
+- `pt-BR-Rafael:MAI-Voice-2`
+- `pt-BR-Luana:MAI-Voice-2`
+
+As vozes HD são tentadas de forma opcional. Se o recurso F0 ou a região não permitir, o workflow continua e a página informa que ficaram indisponíveis.
+
+## Custo
+
+A camada F0 inclui 0,5 milhão de caracteres mensais para TTS Neural padrão. As vozes HD não fazem parte da franquia Neural padrão e não devem motivar mudança para S0 sem decisão explícita.
+
+## Segredos
 
 - `AZURE_SPEECH_KEY`
 - `AZURE_SPEECH_REGION`
 
-A chave nunca deve entrar no frontend, no repositório ou em logs.
-
-## Teste
-
-O workflow `Teste de vozes Azure pt-BR` gera os três MP3 diretamente pela API oficial do Azure e os publica em `public/voice-tests/`.
-
-Página de audição:
-
-`/voice-tests/`
-
 ## Timeline
-
-A duração do vídeo não é definida antes da narração.
-
-Fluxo:
 
 roteiro por cena → TTS por cena → duração real do áudio → timeline → render.
 
-Cada cena terá seu áudio próprio para permitir regeneração isolada.
+Cada cena terá áudio próprio para permitir regeneração isolada.
