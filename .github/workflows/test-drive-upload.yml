@@ -1,0 +1,57 @@
+name: Teste Google Drive
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "render-trigger/drive-smoke-test.txt"
+
+permissions:
+  contents: read
+
+jobs:
+  drive-smoke-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install --no-cache-dir -r worker/requirements.txt
+
+      - name: Test Drive upload
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from worker.drive import uploader_from_env
+
+          uploader = uploader_from_env()
+          if uploader is None:
+              raise RuntimeError("Credenciais do Google Drive não disponíveis no GitHub Actions.")
+
+          test_file = Path("/tmp/odinheiroexplica-drive-test.txt")
+          test_file.write_text(
+              "Teste automático de integração do O Dinheiro Explica com Google Drive.\n",
+              encoding="utf-8",
+          )
+
+          file_id = uploader.upload(test_file, "odinheiroexplica-drive-test.txt")
+          print(f"UPLOAD_OK:{file_id}")
+
+          uploader.service.files().delete(fileId=file_id).execute(num_retries=3)
+          print("DELETE_OK")
+          print("DRIVE_SMOKE_OK")
+          PY
