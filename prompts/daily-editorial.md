@@ -43,6 +43,25 @@ Depois construa uma narrativa original que entregue essa promessa. Não reescrev
 
 A narração deve soar como uma pessoa explicando algo interessante para outra pessoa. Evite cadência de relatório, frases excessivamente formais e blocos com o mesmo ritmo. Use português brasileiro natural, variação de frases, perguntas pontuais, exemplos concretos e conectores conversacionais quando fizer sentido. Não force gírias.
 
+### Texto escrito para ser falado
+
+O roteiro é texto de boca, não texto de artigo. Antes de aprovar cada cena, leia mentalmente como Roberto ou Luana falariam aquilo numa conversa.
+
+Regras:
+- prefira frases que uma pessoa realmente diria em voz alta;
+- misture frases curtas com frases médias; evite sequência de períodos com a mesma estrutura;
+- use conectores naturais como "olha só", "na prática", "só que", "agora", "e aqui tem um detalhe", "então", "aí" quando couber, sem transformar isso em bordão;
+- "pra" pode ser usado no lugar de "para" quando soar mais natural;
+- é permitido começar frase com "e", "mas", "só que" ou uma pergunta curta quando isso melhorar a fala;
+- quebre construções burocráticas em duas ou três frases mais simples;
+- evite expressões de relatório como "cumpre destacar", "dessa forma", "conforme mencionado", "no que diz respeito", "por conseguinte" e equivalentes;
+- não tente deixar toda frase gramaticalmente perfeita se a forma falada brasileira for mais natural e continuar clara;
+- não use erros propositais, caricatura regional, excesso de gíria ou vícios repetidos;
+- apresentações e CTAs também precisam parecer espontâneos, nunca texto publicitário lido;
+- se uma frase estiver correta no papel, mas soar como locução de telejornal ou leitura de prompt, reescreva.
+
+Faça uma última auditoria de oralidade: se o apresentador provavelmente não falaria a frase daquele jeito numa conversa explicativa, ela não está pronta.
+
 ## Apresentadores do canal
 
 O canal trabalha com dois apresentadores fixos:
@@ -105,6 +124,23 @@ Preencha publication.seo com:
 - description_strategy.
 
 A descrição em publication.description deve sair pronta para publicação e otimizada para busca, mantendo linguagem natural.
+
+## Dinamismo visual durante a fala
+
+Não trate uma cena como um slide que anima na entrada e depois fica parado. O movimento deve continuar acompanhando o raciocínio da narração.
+
+Regras globais:
+- toda cena longa precisa ter microeventos visuais distribuídos ao longo da duração real do áudio;
+- entrada, desenvolvimento, mudança de ponto e saída devem ter resposta visual;
+- palavras-chave, números, etapas, linhas, cards, barras, setas e destaques devem aparecer ou mudar quando a fala chega naquele ponto;
+- animações internas devem usar a duração proporcional da cena, não tempos fixos pensados para uma cena curta;
+- evite mais de aproximadamente 5 a 7 segundos sem alguma mudança visual perceptível, salvo quando uma pausa estática for uma escolha editorial intencional;
+- movimento de ambiente, câmera sutil e parallax podem manter vida, mas não substituem eventos que acompanham o conteúdo;
+- não mexa em tudo ao mesmo tempo; o resultado deve continuar editorial, elegante e fácil de entender;
+- processos devem avançar etapa por etapa, timelines devem progredir ao longo da fala, listas devem ser reveladas em sequência e números/alertas devem ganhar foco em momentos diferentes;
+- o final da cena deve preparar visualmente a transição para a próxima.
+
+A regra vale para todos os próximos vídeos e para qualquer tipo de cena criado no futuro. O objetivo é evitar sensação de PowerPoint narrado sem transformar o vídeo em edição caótica.
 
 Não determine previamente a duração. O vídeo termina quando a história estiver completa, sem repetição para aumentar tempo.
 
