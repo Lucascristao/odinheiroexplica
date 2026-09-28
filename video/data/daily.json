@@ -1,125 +1,140 @@
 {
-  "project_id": "bets-proibidas-2026-09-28",
-  "title": "Bets Foram Proibidas: O Que Acontece com Seu Dinheiro Agora",
+  "project_id": "combustiveis-em-alta-2026-09-28",
+  "title": "Combustíveis em Alta: O Que Muda com as Novas Medidas",
   "version": "1.0",
   "story": {
-    "subject": "O que acontece com o dinheiro que ainda ficou nas bets após a MP 1.394/2026",
-    "angle": "Explicar a transição financeira criada pela proibição das bets: bloqueio de novos aportes, prazo de resgate, devolução bancária do saldo remanescente e o que ainda depende do Congresso.",
-    "promise": "Mostrar de forma simples o que muda agora para quem ainda tem saldo em uma bet, quais são as datas importantes e por que a medida ainda não é uma lei definitiva.",
-    "why_now": "A MP 1.394/2026 foi publicada em 25 de setembro e começou a tramitar no Congresso; em 28 de setembro, os prazos de resgate e bloqueio já estão correndo.",
-    "category": "money"
+    "subject": "Alta dos combustíveis e as novas medidas anunciadas para tentar conter os preços",
+    "angle": "Explicar por que a pressão internacional chega à bomba, o que mudou nas medidas de setembro e o que fiscalização, subsídio e regras de preços conseguem ou não fazer.",
+    "promise": "Mostrar de forma simples por que os combustíveis estão sob pressão e como funcionam as medidas anunciadas, sem prometer que o preço ficará travado.",
+    "why_now": "Em 28 de setembro de 2026 o Governo Federal anunciou manutenção da subvenção ao diesel, novas fiscalizações e punições mais duras em meio à pressão do petróleo internacional.",
+    "category": "economy"
   },
   "editorial": {
-    "viral_score": 93,
     "strengths": [
-      "Assunto nacional com impacto financeiro imediato",
-      "Prazo real e objetivo para quem ainda tem saldo nas plataformas",
-      "Grande reconhecimento do tema pelo público brasileiro",
-      "História com cronologia clara e consequência concreta",
-      "Fontes oficiais recentes e verificáveis"
+      "Impacto direto no orçamento de motoristas, transportadores e consumidores",
+      "Notícia do próprio dia com medidas objetivas e números verificáveis",
+      "Tema com forte potencial visual: petróleo, bomba, preço, fiscalização e abastecimento",
+      "Permite explicar a diferença entre medida pública e preço efetivamente praticado no posto"
     ],
     "risk_flags": [
-      "Tema regulado de apostas exige abordagem estritamente informativa",
-      "Medida provisória ainda está em tramitação no Congresso"
+      "Tema envolve política pública e exige separar fatos, objetivos declarados e efeitos ainda não observados",
+      "Preço final é livre e não deve ser apresentado como garantido por uma única medida"
     ],
     "youtube_suitability": {
-      "risk_level": "medium",
-      "sensitive_topics": [
-        "apostas e jogos de quota fixa"
-      ],
-      "context_notes": "Conteúdo jornalístico e econômico sobre uma mudança regulatória e os efeitos sobre saldos de usuários, sem incentivo, promoção, link ou instrução para apostar.",
+      "risk_level": "low",
+      "sensitive_topics": [],
+      "context_notes": "Conteúdo econômico e informativo sobre preços de combustíveis e medidas públicas, sem orientação político-partidária.",
       "title_thumbnail_safe": true,
-      "monetization_notes": "Embalagem evita marcas de casas de apostas, promessa de ganho e linguagem de incentivo. O foco é resgate, devolução e funcionamento da medida."
+      "monetization_notes": "Embalagem baseada em consequência financeira real, sem promessa de preço futuro nem linguagem partidária."
     }
   },
   "sources": [
     {
       "id": "S1",
-      "title": "Governo Federal proíbe bets em todo o País e lança pacote de proteção às famílias endividadas",
-      "url": "https://www.gov.br/mj/pt-br/assuntos/noticias-1/governo-federal-proibe-bets-em-todo-o-pais-e-lanca-pacote-de-protecao-as-familias-endividadas-1",
+      "title": "Governo Federal toma novas medidas para conter alta dos combustíveis",
+      "url": "https://www.gov.br/mj/pt-br/assuntos/noticias-1/governo-federal-toma-novas-medidas-para-conter-alta-dos-combustiveis",
       "publisher": "Ministério da Justiça e Segurança Pública",
       "source_type": "primary",
-      "published_at": "2026-09-25T20:51:00-03:00",
-      "notes": "Detalha proibição de novos aportes, prazo de resgate até 5/10, bloqueio em 6/10, envio de saldos por CPF e devolução bancária entre 9 e 14/10."
+      "published_at": "2026-09-28T14:55:00-03:00",
+      "notes": "Reúne as medidas anunciadas em 28/9: subvenção do diesel, fiscalização, processos, multas e dados de abastecimento."
     },
     {
       "id": "S2",
-      "title": "Medida Provisória n° 1394, de 2026",
-      "url": "https://www.congressonacional.leg.br/pt_BR/materias/medidas-provisorias/-/mpv/175871",
-      "publisher": "Congresso Nacional",
+      "title": "Governo Federal adota novas medidas para combustíveis frente a oscilações do petróleo",
+      "url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/setembro/governo-federal-adota-novas-medidas-para-combustiveis-frente-a-oscilacoes-do-petroleo",
+      "publisher": "Ministério da Fazenda",
       "source_type": "primary",
-      "published_at": "2026-09-25T00:00:00-03:00",
-      "notes": "Página oficial da MP, ementa, situação atual, prazos e tramitação."
+      "published_at": "2026-09-09T18:47:00-03:00",
+      "notes": "Detalha a redução de tributos federais sobre gasolina e etanol e a autorização de subvenção ao diesel anunciadas em 9/9."
     },
     {
       "id": "S3",
-      "title": "MP proíbe bets e determina encerramento das operações em 30 dias",
-      "url": "https://www12.senado.leg.br/noticias/materias/2026/09/28/mp-proibe-bets-e-determina-encerramento-das-operacoes-em-30-dias",
-      "publisher": "Senado Federal",
+      "title": "Medida Provisória nº 1.391, de 11 de setembro de 2026",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2026/mpv/mpv1391.htm",
+      "publisher": "Presidência da República",
       "source_type": "primary",
-      "published_at": "2026-09-28T00:00:00-03:00",
-      "notes": "Confirma início da tramitação e extinção das autorizações existentes em 30 dias."
+      "published_at": "2026-09-11T00:00:00-03:00",
+      "notes": "Autoriza subvenção econômica a produtores e importadores de óleo diesel e suas correntes."
     },
     {
       "id": "S4",
-      "title": "Presidente Lula assina Medida Provisória que proíbe as bets no Brasil",
-      "url": "https://www.gov.br/saude/pt-br/assuntos/noticias-ms/2026/setembro/presidente-lula-assina-medida-provisoria-que-proibe-as-bets-no-brasil",
-      "publisher": "Ministério da Saúde",
+      "title": "Medida Provisória nº 1.393, de 25 de setembro de 2026",
+      "url": "https://planalto.gov.br/ccivil_03/_ato2023-2026/2026/mpv/mpv1393.htm",
+      "publisher": "Presidência da República",
       "source_type": "primary",
-      "published_at": "2026-09-26T00:00:00-03:00",
-      "notes": "Confirma alcance sobre apostas esportivas e jogos online e esclarece que outras modalidades lotéricas autorizadas em lei não são abrangidas."
+      "published_at": "2026-09-25T00:00:00-03:00",
+      "notes": "Altera o Código de Defesa do Consumidor e cria faixa específica de multa para determinadas infrações na cadeia de combustíveis."
+    },
+    {
+      "id": "S5",
+      "title": "Composição e estruturas de formação dos preços",
+      "url": "https://www.gov.br/anp/pt-br/assuntos/precos-e-defesa-da-concorrencia/precos/composicao-e-estruturas-de-formacao-dos-precos",
+      "publisher": "Agência Nacional do Petróleo, Gás Natural e Biocombustíveis",
+      "source_type": "primary",
+      "published_at": "2026-04-30T13:07:00-03:00",
+      "notes": "Explica liberdade de preços e componentes que formam o preço final dos combustíveis."
+    },
+    {
+      "id": "S6",
+      "title": "ANP fez 143 ações de fiscalização na Operação Carga Pesada",
+      "url": "https://www.gov.br/anp/pt-br/canais_atendimento/imprensa/noticias-comunicados/anp-fez-143-acoes-de-fiscalizacao-na-operacao-carga-pesada",
+      "publisher": "Agência Nacional do Petróleo, Gás Natural e Biocombustíveis",
+      "source_type": "primary",
+      "published_at": "2026-09-28T16:07:00-03:00",
+      "notes": "Balanço da participação da ANP e das ações conjuntas na Operação Carga Pesada."
     }
   ],
   "claims": [
     {
       "id": "C1",
-      "text": "A MP 1.394/2026 proíbe a exploração, oferta, intermediação e publicidade de apostas de quota fixa no território nacional.",
+      "text": "Em 28/9, o Governo Federal afirmou que o petróleo internacional vinha se mantendo acima de US$ 100 e anunciou novas medidas para conter a alta dos combustíveis.",
       "source_ids": [
-        "S2",
-        "S4"
+        "S1"
       ],
       "confidence": "high",
       "verification_status": "verified"
     },
     {
       "id": "C2",
-      "text": "Desde a publicação da MP, novos aportes de recursos em contas de apostas ficam vedados.",
+      "text": "No Brasil, os preços de combustíveis são livres e variam com fatores como preços de refinaria, tributos, biocombustíveis, custos e margens de distribuição e revenda.",
       "source_ids": [
-        "S1"
+        "S5"
       ],
       "confidence": "high",
       "verification_status": "verified"
     },
     {
       "id": "C3",
-      "text": "Os apostadores podem acessar sites e aplicativos para resgatar saldo remanescente até 23h59 de 5 de outubro de 2026.",
+      "text": "Em 9/9, o Governo Federal anunciou redução de R$ 0,63 por litro nas alíquotas federais incidentes sobre a gasolina e zerou essas contribuições sobre o etanol hidratado.",
       "source_ids": [
-        "S1"
+        "S2"
       ],
       "confidence": "high",
       "verification_status": "verified"
     },
     {
       "id": "C4",
-      "text": "A partir de 0h de 6 de outubro, sites e aplicativos de apostas devem ser bloqueados no país.",
+      "text": "A Portaria nº 2.946/2026 manteve em R$ 2,12 por litro a subvenção ao óleo diesel, agora amparada pela MP nº 1.391.",
       "source_ids": [
-        "S1"
+        "S1",
+        "S3"
       ],
       "confidence": "high",
       "verification_status": "verified"
     },
     {
       "id": "C5",
-      "text": "Nos dias 6 e 7 de outubro, as empresas devem informar às instituições financeiras o saldo individualizado por CPF e a conta bancária de origem dos depósitos.",
+      "text": "A Operação Carga Pesada registrou 241 ações de fiscalização; o governo também informou cerca de 330 denúncias recebidas pela ANP e 70 processos administrativos sancionadores instaurados pela Senacon.",
       "source_ids": [
-        "S1"
+        "S1",
+        "S6"
       ],
       "confidence": "high",
       "verification_status": "verified"
     },
     {
       "id": "C6",
-      "text": "Os bancos devem devolver os valores remanescentes entre 9 e 14 de outubro; em dificuldades operacionais, a Caixa pode atuar como intermediária.",
+      "text": "A ANP determinou multas de mais de R$ 700 milhões a distribuidoras em decisões administrativas de primeira instância, ainda sujeitas a recurso.",
       "source_ids": [
         "S1"
       ],
@@ -128,28 +143,19 @@
     },
     {
       "id": "C7",
-      "text": "A MP prevê a extinção das autorizações existentes em 30 dias, mesmo com o bloqueio de acesso ao público previsto antes disso.",
+      "text": "A MP nº 1.393 estabeleceu, para determinadas condutas vedadas pelo Código de Defesa do Consumidor na cadeia de combustíveis, multas administrativas entre R$ 20 mil e R$ 500 milhões.",
       "source_ids": [
-        "S2",
-        "S3"
-      ],
-      "confidence": "high",
-      "verification_status": "verified"
-    },
-    {
-      "id": "C8",
-      "text": "A medida alcança apostas esportivas e jogos online, mas não abrange outras modalidades lotéricas já autorizadas em lei.",
-      "source_ids": [
+        "S1",
         "S4"
       ],
       "confidence": "high",
       "verification_status": "verified"
     },
     {
-      "id": "C9",
-      "text": "A MP produz efeitos imediatos, mas ainda precisa ser apreciada pelo Congresso para se converter definitivamente em lei.",
+      "id": "C8",
+      "text": "Segundo dados apresentados pelo Governo Federal, para outubro a demanda estimada de diesel é de 3,950 milhões de m³, a oferta confirmada é de 3,978 milhões de m³ e os estoques de 1,970 milhão de m³ equivalem a cerca de 15 dias de consumo.",
       "source_ids": [
-        "S2"
+        "S1"
       ],
       "confidence": "high",
       "verification_status": "verified"
@@ -157,88 +163,148 @@
   ],
   "packaging": {
     "strategy": {
-      "click_reason": "A pergunta atinge diretamente quem deixou dinheiro em uma plataforma e também quem quer entender a consequência prática da proibição.",
-      "visual_focus": "Um celular com saldo em uma bet e uma seta clara levando o dinheiro de volta para uma conta bancária.",
-      "curiosity_gap": "O saldo volta sozinho, precisa ser sacado agora ou pode ficar preso depois do bloqueio?",
-      "mobile_readability": "Headline de três palavras, contraste alto e apenas dois objetos principais: celular e conta bancária.",
-      "anti_clickbait_check": "O vídeo explica exatamente como funciona o resgate até 5 de outubro e a devolução bancária posterior.",
-      "repetition_check": "Não reutiliza a rede de contas, rastro amarelo ou linguagem visual do piloto do Pix.",
-      "youtube_safety_check": "A thumbnail fala de saldo e devolução, sem exibir marcas de bets, odds, bônus, ganhos, links ou estímulo à aposta."
+      "click_reason": "O preço do combustível afeta diretamente o bolso e as novas medidas levantam a dúvida prática sobre o que realmente pode chegar à bomba.",
+      "visual_focus": "Bomba de combustível com preço em destaque e uma pressão visual vinda do barril de petróleo, sem usar rostos de políticos.",
+      "curiosity_gap": "As medidas conseguem segurar o preço ou apenas reduzem parte da pressão sobre a cadeia?",
+      "mobile_readability": "Headline curta, bomba de combustível reconhecível e número/preço como foco principal.",
+      "anti_clickbait_check": "O vídeo explica os mecanismos das medidas e deixa claro que não existe garantia de preço fixo no posto.",
+      "repetition_check": "Evita celular, conta bancária e fluxo visual usados no vídeo das bets; usa universo de posto, barril, fiscalização e abastecimento.",
+      "youtube_safety_check": "Tema econômico cotidiano, sem sensacionalismo, linguagem partidária ou promessa sobre preço futuro."
     },
     "titles": [
       {
         "id": "title_main",
-        "text": "Bets Foram Proibidas: O Que Acontece com Seu Dinheiro Agora",
-        "rationale": "Combina a mudança concreta com a dúvida financeira mais útil para o público, sem transformar o título em opinião política."
+        "text": "Combustíveis em Alta: O Que Muda com as Novas Medidas",
+        "rationale": "Combina o fato do dia com a dúvida prática sem afirmar que uma política garantirá queda ou alta futura."
       }
     ],
     "thumbnails": [
       {
         "id": "thumb_main",
-        "headline": "SEU SALDO VOLTA?",
-        "concept": "Thumbnail completa gerada pelo ChatGPT após o vídeo terminar, em 16:9, com composição editorial fotográfica e texto final incorporado na própria imagem. O arquivo gerado pelo chat é a capa definitiva usada no YouTube, sem etapa posterior de montagem no Remotion.",
-        "visual_prompt": "Criar a thumbnail COMPLETA do YouTube em 16:9. Estilo editorial fotográfico premium para canal brasileiro de economia, fundo escuro sofisticado com detalhes dourados. À direita, smartphone realista com interface genérica de saldo de uma plataforma de apostas, sem marca real, odds ou bônus, com sinal visual claro de dinheiro voltando para uma conta bancária. À esquerda, headline grande e perfeitamente legível: 'SEU SALDO VOLTA?'. Texto com espaçamento confortável entre letras, alto contraste, sem letras coladas, composição forte para leitura no celular. Não incluir nome do canal, logotipo, ícone ou selo. A identidade deve vir de tipografia, paleta, contraste e acabamento editorial. A imagem gerada já deve ser a capa final pronta para uso, não uma imagem-base."
+        "headline": "VAI SUBIR MAIS?",
+        "concept": "Thumbnail editorial completa, com bomba de combustível e preço sob pressão, sem políticos, sem logo e sem marca de posto.",
+        "visual_prompt": "Criar thumbnail COMPLETA do YouTube em 16:9, estilo editorial fotográfico premium. Fundo preto/carvão, iluminação cinematográfica, detalhes dourados e vermelho apenas para tensão. Uma bomba de combustível realista em primeiro plano com visor de preço genérico subindo, sem marca comercial. Ao fundo, um barril de petróleo parcialmente iluminado e uma seta/tensão visual sugerindo pressão de custos, sem gráfico genérico ocupando a cena. Headline grande e perfeitamente legível: 'VAI SUBIR MAIS?'. Tipografia pesada, branca e dourada, leitura imediata no celular. Não incluir nome do canal, logotipo, ícone ou selo. Sem políticos, sem bandeiras partidárias, sem aparência de anúncio de posto."
       }
     ]
   },
   "script": {
-    "hook": "Tem uma situação meio estranha acontecendo agora: as bets foram proibidas, mas os sites ainda não sumiram. Ainda existe dinheiro de apostadores lá dentro. Roberto apresenta o caminho desse saldo e explica as datas da transição até a devolução bancária.",
+    "hook": "O petróleo voltou a pressionar a conta dos combustíveis, e o governo anunciou novas medidas. A pergunta prática é o que realmente muda no preço que chega à bomba.",
     "beats": [
-      "O que a MP proibiu imediatamente",
-      "O que acontece com novos depósitos",
-      "Prazo para resgatar o saldo",
-      "Bloqueio de sites e aplicativos",
-      "Devolução bancária automática do saldo remanescente",
-      "Diferença entre bloqueio ao público e extinção das autorizações",
-      "O que entra e o que fica fora da medida",
-      "Por que a MP ainda depende do Congresso",
-      "Resumo prático da transição"
+      "Petróleo internacional e pressão sobre a cadeia",
+      "Por que preço no posto não é tabelado",
+      "O que já tinha mudado em setembro",
+      "Subvenção de R$ 2,12 no diesel",
+      "Fiscalização e denúncias",
+      "Multas e punições mais altas",
+      "Situação do abastecimento de diesel",
+      "O que as medidas podem e não podem garantir"
     ],
     "scenes": [
       {
         "index": 0,
-        "title": "As bets foram proibidas, mas o dinheiro ainda precisa sair",
-        "narration": "Tem uma coisa meio estranha acontecendo agora: as bets foram proibidas, mas os sites ainda não sumiram. E sabe por quê? Porque ainda tem dinheiro de gente lá dentro. Eu sou o Roberto, e hoje eu quero te mostrar exatamente o caminho desse saldo. A Medida Provisória número mil trezentos e noventa e quatro criou uma transição com datas bem específicas pra esse dinheiro sair das plataformas e voltar pras contas bancárias. Então a pergunta agora nem é se a bet vai continuar. É outra: o que acontece com o dinheiro que ficou lá?",
+        "title": "Por que o combustível voltou ao centro da discussão",
+        "narration": "Tem uma conta acontecendo por trás da bomba que ajuda a explicar por que combustível voltou ao centro da discussão. Segundo o governo federal, o barril de petróleo vinha se mantendo acima de cem dólares com a continuidade dos conflitos no Oriente Médio. E quando essa referência internacional fica pressionada, aumenta a preocupação com custos de importação e derivados. Hoje, o governo apresentou um novo pacote pra tentar conter essa pressão. Só que tem um detalhe importante desde já: isso não significa que o preço no posto ficou congelado. Eu sou o Roberto, e vou te mostrar o que realmente mudou.",
         "visual": {
           "type": "HEADLINE",
           "payload": {
-            "kicker": "Bets proibidas",
-            "headline": "O que acontece com o dinheiro que ficou nas plataformas?",
-            "accent": "o dinheiro",
-            "source": "MP 1.394/2026 • Congresso Nacional"
-          }
+            "kicker": "Combustíveis em alta",
+            "headline": "O que realmente pode mudar no preço da bomba?",
+            "accent": "preço da bomba",
+            "source": "Ministério da Justiça • 28/09/2026"
+          },
+          "beats": [
+            {
+              "anchor": "o barril de petróleo vinha se mantendo acima de cem dólares",
+              "kind": "trend_up",
+              "headline": "Petróleo sob pressão",
+              "value": "> US$ 100",
+              "detail": "Valor citado pelo governo em 28/9.",
+              "sound": "impact"
+            },
+            {
+              "anchor": "aumenta a preocupação com custos de importação e derivados",
+              "kind": "flow",
+              "headline": "Pressão internacional chega à cadeia",
+              "from": "PETRÓLEO",
+              "to": "COMBUSTÍVEIS",
+              "sound": "whoosh"
+            },
+            {
+              "anchor": "o governo apresentou um novo pacote",
+              "kind": "process",
+              "headline": "Novas medidas anunciadas",
+              "detail": "Subsídio, fiscalização e punições.",
+              "sound": "tick"
+            },
+            {
+              "anchor": "isso não significa que o preço no posto ficou congelado",
+              "kind": "warning",
+              "headline": "Preço não ficou congelado",
+              "detail": "No Brasil, o preço continua sendo livre.",
+              "sound": "alert"
+            }
+          ]
         },
         "claim_ids": [
           "C1",
-          "C3",
-          "C6"
+          "C2"
         ],
         "tts": {
           "rate": "-1%",
           "pitch": "0%",
-          "pause_ms": 135
+          "pause_ms": 125
         }
       },
       {
         "index": 1,
-        "title": "O que mudou na hora",
-        "narration": "Primeiro, o que já mudou? A MP proibiu a exploração, a oferta, a intermediação e a publicidade das apostas de quota fixa. E pra quem já tinha conta, tem um ponto bem direto: não dá mais pra colocar dinheiro novo lá dentro. Os novos aportes foram bloqueados desde a publicação da medida. Então essa fase não é uma continuação normal das bets. É uma fase de saída.",
+        "title": "Como o preço chega até a bomba",
+        "narration": "Pra entender o pacote, primeiro precisa entender a formação do preço. A Agência Nacional do Petróleo explica que não existe tabelamento de gasolina ou diesel no Brasil. O valor final passa por várias camadas: preço na refinaria ou na importação, tributos, custo do biocombustível misturado, transporte, distribuição e margem do posto. Então uma medida pode aliviar uma parte dessa conta sem controlar todas as outras. É por isso que falar em segurar o preço não é a mesma coisa que fixar um valor. A bomba é o fim de uma cadeia inteira.",
         "visual": {
-          "type": "DO_DONT",
+          "type": "PROCESS",
           "payload": {
-            "eyebrow": "Desde a publicação",
-            "yes": [
-              "RESGATAR SALDO"
+            "eyebrow": "Como o preço se forma",
+            "steps": [
+              "PETRÓLEO",
+              "REFINO",
+              "DISTRIBUIÇÃO",
+              "POSTO"
             ],
-            "no": [
-              "NOVO APORTE",
-              "NOVA PUBLICIDADE"
-            ],
-            "source": "Ministério da Justiça • MP 1.394/2026"
-          }
+            "caption": "Várias parcelas entram no preço final.",
+            "source": "ANP • formação de preços"
+          },
+          "beats": [
+            {
+              "anchor": "não existe tabelamento de gasolina ou diesel no Brasil",
+              "kind": "fact",
+              "headline": "Preço é livre",
+              "detail": "Não há valor máximo ou mínimo tabelado.",
+              "sound": "tick"
+            },
+            {
+              "anchor": "preço na refinaria ou na importação",
+              "kind": "flow",
+              "headline": "Primeira camada de custo",
+              "from": "REFINO / IMPORTAÇÃO",
+              "to": "DISTRIBUIÇÃO",
+              "sound": "none"
+            },
+            {
+              "anchor": "tributos, custo do biocombustível misturado, transporte, distribuição e margem do posto",
+              "kind": "process",
+              "headline": "A conta tem várias parcelas",
+              "detail": "Tributos, mistura, logística e margens.",
+              "sound": "tick"
+            },
+            {
+              "anchor": "uma medida pode aliviar uma parte dessa conta sem controlar todas as outras",
+              "kind": "compare",
+              "headline": "Aliviar não é tabelar",
+              "detail": "Cada medida atinge uma parte da cadeia.",
+              "sound": "none"
+            }
+          ]
         },
         "claim_ids": [
-          "C1",
           "C2"
         ],
         "tts": {
@@ -249,95 +315,225 @@
       },
       {
         "index": 2,
-        "title": "A data que importa para quem tem saldo",
-        "narration": "Agora, presta atenção nessa data porque ela é a mais importante pra quem deixou saldo numa plataforma. Até onze e cinquenta e nove da noite do dia cinco de outubro, os sites e aplicativos continuam acessíveis pra pessoa resgatar o dinheiro que ficou lá. Esse prazo existe justamente pra dar tempo de tirar o saldo antes do bloqueio de acesso. E não é uma data escolhida pela plataforma, tá no cronograma oficial da transição.",
+        "title": "O que já tinha mudado antes do anúncio de hoje",
+        "narration": "E parte dessa tentativa já vinha acontecendo antes de hoje. No dia nove de setembro, o governo reduziu em sessenta e três centavos por litro as alíquotas federais sobre a gasolina e zerou essas contribuições sobre o etanol hidratado. Na mesma rodada, também foi autorizada uma nova subvenção para o diesel. Isso mexe em componentes diferentes da conta: na gasolina e no etanol, pelo lado dos tributos federais; no diesel, por meio de apoio econômico a produtores e importadores. O anúncio de hoje não começa do zero. Ele mantém e reforça mecanismos que já estavam em andamento.",
         "visual": {
-          "type": "BIG_NUMBER",
+          "type": "BEFORE_AFTER",
           "payload": {
-            "eyebrow": "Prazo para resgatar",
-            "number": "5 OUT",
-            "caption": "Até 23h59 para retirar o saldo remanescente.",
-            "warning": "Novos aportes já estão proibidos.",
-            "source": "Ministério da Justiça • 25/09/2026"
-          }
+            "eyebrow": "Medidas de setembro",
+            "before_title": "9 SET",
+            "before_text": "Redução de tributos sobre gasolina e etanol.",
+            "after_title": "28 SET",
+            "after_text": "Manutenção do apoio ao diesel e reforço da fiscalização.",
+            "source": "Ministério da Fazenda • Ministério da Justiça"
+          },
+          "beats": [
+            {
+              "anchor": "reduziu em sessenta e três centavos por litro",
+              "kind": "money",
+              "headline": "Redução tributária na gasolina",
+              "value": "R$ 0,63/L",
+              "sound": "impact"
+            },
+            {
+              "anchor": "zerou essas contribuições sobre o etanol hidratado",
+              "kind": "number",
+              "headline": "Contribuições federais zeradas",
+              "value": "0",
+              "detail": "Para o etanol hidratado, segundo o anúncio de 9/9.",
+              "sound": "tick"
+            },
+            {
+              "anchor": "também foi autorizada uma nova subvenção para o diesel",
+              "kind": "fuel",
+              "headline": "Diesel ganhou outra frente",
+              "detail": "Subvenção a produtores e importadores.",
+              "sound": "whoosh"
+            },
+            {
+              "anchor": "O anúncio de hoje não começa do zero",
+              "kind": "process",
+              "headline": "Pacote é uma continuidade",
+              "detail": "Algumas medidas já estavam em vigor.",
+              "sound": "none"
+            }
+          ]
         },
         "claim_ids": [
-          "C2",
-          "C3"
+          "C3",
+          "C4"
         ],
         "tts": {
           "rate": "-1%",
           "pitch": "0%",
-          "pause_ms": 145
+          "pause_ms": 130
         }
       },
       {
         "index": 3,
-        "title": "O que acontece a partir do dia 6",
-        "narration": "Virou pro dia seis, muda a lógica. A partir de zero hora, o acesso aos sites e aplicativos deve ser bloqueado no Brasil. Só que o saldo que não foi sacado não desaparece. Nos dias seis e sete, as empresas precisam informar aos bancos quanto ficou em nome de cada CPF e qual era a conta de origem dos depósitos. A partir daí, a devolução não depende mais da pessoa conseguir entrar na plataforma.",
+        "title": "O número central para o diesel",
+        "narration": "Agora vem o número mais direto do anúncio de hoje. O Ministério da Fazenda manteve a subvenção do diesel em dois reais e doze centavos por litro. Esse dinheiro não é um cupom entregue ao motorista no posto. A medida provisória autoriza o apoio econômico a produtores e importadores de diesel, com a finalidade declarada de estabilizar preço e oferta em um cenário de instabilidade. Então o efeito acontece antes da bomba, dentro da cadeia. E justamente por isso não dá pra pegar os dois reais e doze e simplesmente subtrair do preço que aparece no visor do posto.",
         "visual": {
-          "type": "PROCESS",
+          "type": "BIG_NUMBER",
           "payload": {
-            "eyebrow": "Depois do bloqueio",
-            "steps": [
-              "BET",
-              "CPF",
-              "BANCO",
-              "DEVOLUÇÃO"
-            ],
-            "caption": "Saldos são individualizados e enviados às instituições financeiras.",
-            "source": "Ministério da Justiça"
-          }
+            "eyebrow": "Subvenção ao diesel",
+            "number": "R$ 2,12/L",
+            "caption": "Valor mantido pela Portaria nº 2.946/2026.",
+            "warning": "Não é desconto direto de R$ 2,12 na bomba.",
+            "source": "Ministério da Justiça • MP 1.391/2026"
+          },
+          "beats": [
+            {
+              "anchor": "manteve a subvenção do diesel em dois reais e doze centavos por litro",
+              "kind": "money",
+              "headline": "Subvenção mantida",
+              "value": "R$ 2,12/L",
+              "sound": "impact"
+            },
+            {
+              "anchor": "não é um cupom entregue ao motorista no posto",
+              "kind": "warning",
+              "headline": "Não é desconto direto",
+              "detail": "O benefício opera antes da revenda.",
+              "sound": "alert"
+            },
+            {
+              "anchor": "apoio econômico a produtores e importadores de diesel",
+              "kind": "flow",
+              "headline": "Onde a medida atua",
+              "from": "UNIÃO",
+              "to": "PRODUTOR / IMPORTADOR",
+              "sound": "whoosh"
+            },
+            {
+              "anchor": "não dá pra pegar os dois reais e doze e simplesmente subtrair do preço",
+              "kind": "fact",
+              "headline": "Conta não é 1 por 1",
+              "detail": "O preço final reúne outras parcelas.",
+              "sound": "none"
+            }
+          ]
         },
         "claim_ids": [
           "C4",
-          "C5"
+          "C2"
         ],
         "tts": {
           "rate": "-2%",
           "pitch": "0%",
-          "pause_ms": 135
+          "pause_ms": 125
         }
       },
       {
         "index": 4,
-        "title": "Quando o dinheiro volta",
-        "narration": "Tá, mas e se a pessoa não sacar até o dia cinco? Aí entra a segunda etapa. Pelo cronograma oficial, os bancos fazem a devolução entre os dias nove e quatorze de outubro. Se der algum problema operacional pra localizar a conta ou concluir o pagamento, a Caixa Econômica Federal pode entrar como intermediária. Então guarda isso: primeiro vem o resgate direto até o dia cinco. Depois, o que ficou pra trás entra no processo bancário. Se esse tipo de explicação te ajuda a entender o que realmente muda no seu dinheiro, se inscreve no canal. Agora, tem uma diferença importante entre o bloqueio do dia seis e o fim das autorizações.",
+        "title": "A segunda frente é fiscalização",
+        "narration": "Só que o pacote não ficou no subsídio. A segunda frente é fiscalização de preço e margem. Na Operação Carga Pesada, o governo contabilizou duzentas e quarenta e uma ações entre os dias vinte e um e vinte e cinco de setembro. A Agência Nacional do Petróleo tinha recebido cerca de trezentas e trinta denúncias. E a Secretaria Nacional do Consumidor informou a abertura de setenta processos administrativos contra postos e distribuidoras. Isso não quer dizer que todo aumento seja irregular. O foco da fiscalização é procurar aumentos sem justificativa e outras práticas que violem as regras de defesa do consumidor.",
         "visual": {
-          "type": "TIMELINE",
+          "type": "STAT_GRID",
           "payload": {
-            "eyebrow": "Devolução bancária",
-            "date": "9 A 14 OUT",
-            "headline": "O saldo remanescente deve voltar por meio dos bancos.",
-            "source": "Ministério da Justiça"
-          }
+            "eyebrow": "Fiscalização",
+            "stats": [
+              {
+                "value": "241",
+                "label": "ações de fiscalização"
+              },
+              {
+                "value": "~330",
+                "label": "denúncias recebidas"
+              },
+              {
+                "value": "70",
+                "label": "processos administrativos"
+              }
+            ],
+            "caption": "Operação Carga Pesada e medidas associadas.",
+            "source": "Ministério da Justiça • ANP"
+          },
+          "beats": [
+            {
+              "anchor": "duzentas e quarenta e uma ações",
+              "kind": "number",
+              "headline": "Fiscalização em campo",
+              "value": "241",
+              "sound": "impact"
+            },
+            {
+              "anchor": "cerca de trezentas e trinta denúncias",
+              "kind": "warning",
+              "headline": "Denúncias recebidas",
+              "value": "~330",
+              "sound": "tick"
+            },
+            {
+              "anchor": "abertura de setenta processos administrativos",
+              "kind": "number",
+              "headline": "Processos administrativos",
+              "value": "70",
+              "sound": "tick"
+            },
+            {
+              "anchor": "Isso não quer dizer que todo aumento seja irregular",
+              "kind": "fact",
+              "headline": "Alta não é automaticamente infração",
+              "detail": "A apuração mira práticas sem justificativa e outras violações.",
+              "sound": "none"
+            }
+          ]
         },
         "claim_ids": [
-          "C6"
+          "C5"
         ],
         "tts": {
-          "rate": "0%",
+          "rate": "-1%",
           "pitch": "0%",
-          "pause_ms": 120
+          "pause_ms": 130
         }
       },
       {
         "index": 5,
-        "title": "Por que existem duas datas diferentes",
-        "narration": "E aqui tem uma confusão bem fácil de fazer. Você pode ter visto que as autorizações das empresas acabam em trinta dias e pensado: ué, então por que o site bloqueia antes? Porque são duas coisas diferentes. Pro usuário, o acesso entra em bloqueio no começo de outubro. Já a parte regulatória tem outro prazo: a MP prevê a extinção das autorizações existentes em até trinta dias. Uma data trata da saída do público. A outra trata do fim da autorização.",
+        "title": "As punições também ficaram maiores",
+        "narration": "Tem ainda uma terceira frente: punição. A Agência Nacional do Petróleo informou decisões de primeira instância que somam mais de setecentos milhões de reais em multas a distribuidoras por casos anteriores de elevação considerada abusiva. Essas empresas ainda podem recorrer. E uma medida provisória publicada no dia vinte e cinco criou uma faixa específica de multa para determinadas infrações na cadeia de combustíveis. Ela vai de vinte mil a quinhentos milhões de reais. Aqui vale separar as coisas: os setecentos milhões são de processos já julgados em primeira instância. A nova faixa de até quinhentos milhões é a regra que passa a valer para determinadas condutas.",
         "visual": {
-          "type": "BEFORE_AFTER",
+          "type": "BIG_NUMBER",
           "payload": {
-            "eyebrow": "Duas etapas",
-            "before_title": "6 OUT",
-            "before_text": "Bloqueio de sites e aplicativos para o público.",
-            "after_title": "30 DIAS",
-            "after_text": "Extinção das autorizações existentes.",
-            "source": "Ministério da Justiça • Senado Federal"
-          }
+            "eyebrow": "Punições",
+            "number": "> R$ 700 MI",
+            "caption": "Multas determinadas em primeira instância em processos anteriores.",
+            "warning": "Empresas ainda podem recorrer.",
+            "source": "Ministério da Justiça • MP 1.393/2026"
+          },
+          "beats": [
+            {
+              "anchor": "mais de setecentos milhões de reais em multas",
+              "kind": "money",
+              "headline": "Decisões de primeira instância",
+              "value": "> R$ 700 mi",
+              "sound": "impact"
+            },
+            {
+              "anchor": "Essas empresas ainda podem recorrer",
+              "kind": "warning",
+              "headline": "Ainda cabe recurso",
+              "sound": "alert"
+            },
+            {
+              "anchor": "Ela vai de vinte mil a quinhentos milhões de reais",
+              "kind": "money",
+              "headline": "Nova faixa de multa",
+              "value": "R$ 20 mil → R$ 500 mi",
+              "sound": "whoosh"
+            },
+            {
+              "anchor": "Aqui vale separar as coisas",
+              "kind": "compare",
+              "headline": "Dois números, duas situações",
+              "detail": "Processos anteriores ≠ nova faixa legal.",
+              "sound": "none"
+            }
+          ]
         },
         "claim_ids": [
-          "C4",
+          "C6",
           "C7"
         ],
         "tts": {
@@ -348,21 +544,58 @@
       },
       {
         "index": 6,
-        "title": "O que entra e o que fica fora",
-        "narration": "Outra coisa importante: isso não quer dizer que todo tipo de loteria acabou no Brasil. A proibição atinge as apostas esportivas e os jogos online de quota fixa. Outras modalidades lotéricas que já são autorizadas por lei ficam fora dessa medida. Então dizer simplesmente que acabaram os jogos seria amplo demais. O alvo aqui são as bets e os jogos online enquadrados nesse modelo.",
+        "title": "E o risco de faltar diesel?",
+        "narration": "Preço é uma preocupação. Falta de produto é outra. E nesse ponto o governo afirma que o abastecimento de diesel está garantido no horizonte acompanhado agora. Para outubro, a demanda estimada é de três milhões novecentos e cinquenta mil metros cúbicos, enquanto a oferta confirmada é de três milhões novecentos e setenta e oito mil. Além disso, os estoques informados chegam a um milhão novecentos e setenta mil metros cúbicos, o equivalente a cerca de quinze dias de consumo. Esses são dados apresentados pelo governo hoje. Eles falam de disponibilidade física de diesel, não de um preço garantido na bomba.",
         "visual": {
-          "type": "DO_DONT",
+          "type": "STAT_GRID",
           "payload": {
-            "eyebrow": "O alcance da MP",
-            "yes": [
-              "APOSTAS ESPORTIVAS",
-              "JOGOS ONLINE"
+            "eyebrow": "Abastecimento de diesel",
+            "stats": [
+              {
+                "value": "3,950 mi m³",
+                "label": "demanda estimada"
+              },
+              {
+                "value": "3,978 mi m³",
+                "label": "oferta confirmada"
+              },
+              {
+                "value": "15 dias",
+                "label": "estoque estimado"
+              }
             ],
-            "no": [
-              "OUTRAS LOTERIAS LEGAIS"
-            ],
-            "source": "Ministério da Saúde • MP 1.394/2026"
-          }
+            "caption": "Dados apresentados para outubro de 2026.",
+            "source": "Ministério da Justiça • 28/09/2026"
+          },
+          "beats": [
+            {
+              "anchor": "a demanda estimada é de três milhões novecentos e cinquenta mil metros cúbicos",
+              "kind": "number",
+              "headline": "Demanda estimada",
+              "value": "3,950 mi m³",
+              "sound": "tick"
+            },
+            {
+              "anchor": "a oferta confirmada é de três milhões novecentos e setenta e oito mil",
+              "kind": "trend_up",
+              "headline": "Oferta confirmada",
+              "value": "3,978 mi m³",
+              "sound": "impact"
+            },
+            {
+              "anchor": "o equivalente a cerca de quinze dias de consumo",
+              "kind": "date",
+              "headline": "Estoque disponível",
+              "value": "~15 dias",
+              "sound": "tick"
+            },
+            {
+              "anchor": "não de um preço garantido na bomba",
+              "kind": "warning",
+              "headline": "Abastecimento ≠ preço fixo",
+              "sound": "alert"
+            }
+          ]
         },
         "claim_ids": [
           "C8"
@@ -370,87 +603,93 @@
         "tts": {
           "rate": "-1%",
           "pitch": "0%",
-          "pause_ms": 125
+          "pause_ms": 130
         }
       },
       {
         "index": 7,
-        "title": "A MP já vale, mas a história jurídica ainda não terminou",
-        "narration": "E tem mais um detalhe. A medida provisória já produz efeito desde a publicação, então essas regras já estão valendo. Só que a história jurídica ainda não terminou. Ela precisa passar pelo Congresso pra virar lei de forma definitiva. No dia vinte e oito de setembro, a MP já estava em tramitação e aguardava a formação da comissão mista. Nesse processo, o Congresso pode aprovar, alterar ou deixar a medida perder validade.",
+        "title": "O que realmente observar daqui pra frente",
+        "narration": "Então, resumindo sem transformar medida em promessa: o pacote atua em três pontos diferentes. Tenta reduzir parte da pressão de custo, principalmente no diesel. Aumenta a fiscalização sobre margens e práticas abusivas. E monitora o abastecimento pra evitar falta de produto. Mas o preço final continua sendo formado por várias parcelas e continua livre. Por isso, não dá pra afirmar hoje quanto a gasolina ou o diesel vão custar nos próximos dias só olhando para uma dessas medidas. O que vai mostrar o resultado na prática são os levantamentos de preço seguintes. Essa é a diferença entre anunciar uma medida e ver o efeito dela chegar na bomba.",
         "visual": {
-          "type": "TIMELINE",
+          "type": "CLOSING",
           "payload": {
-            "eyebrow": "Situação em 28/09",
-            "date": "EM TRAMITAÇÃO",
-            "headline": "A MP já vale, mas ainda depende da apreciação do Congresso.",
-            "source": "Congresso Nacional • consulta em 28/09/2026"
-          }
+            "eyebrow": "O que muda de verdade",
+            "headline": "Subsídio. Fiscalização. Abastecimento. O preço final continua livre.",
+            "source": "ANP • Ministério da Justiça • Ministério da Fazenda"
+          },
+          "beats": [
+            {
+              "anchor": "Tenta reduzir parte da pressão de custo",
+              "kind": "money",
+              "headline": "1. Pressão de custo",
+              "detail": "Subvenção e medidas tributárias.",
+              "sound": "tick"
+            },
+            {
+              "anchor": "Aumenta a fiscalização sobre margens e práticas abusivas",
+              "kind": "warning",
+              "headline": "2. Fiscalização",
+              "detail": "Mais ações, processos e multas.",
+              "sound": "tick"
+            },
+            {
+              "anchor": "monitora o abastecimento pra evitar falta de produto",
+              "kind": "fuel",
+              "headline": "3. Abastecimento",
+              "detail": "Oferta e estoques acompanhados.",
+              "sound": "tick"
+            },
+            {
+              "anchor": "o preço final continua sendo formado por várias parcelas e continua livre",
+              "kind": "fact",
+              "headline": "Preço final continua livre",
+              "detail": "O efeito precisa aparecer nos dados de mercado.",
+              "sound": "impact"
+            }
+          ]
         },
         "claim_ids": [
-          "C9"
+          "C2",
+          "C4",
+          "C5",
+          "C8"
         ],
         "tts": {
           "rate": "-2%",
           "pitch": "0%",
           "pause_ms": 145
         }
-      },
-      {
-        "index": 8,
-        "title": "O resumo do dinheiro",
-        "narration": "Pra fechar, fica com o resumo prático. Dinheiro novo não entra mais. Quem ainda tem saldo pode fazer o resgate direto até o dia cinco de outubro. No dia seis, o acesso é bloqueado e começa a consolidação dos saldos que ficaram. Entre os dias nove e quatorze, entra a etapa de devolução pelos bancos. E enquanto tudo isso acontece, o Congresso decide o destino definitivo da medida. É esse o caminho do dinheiro que ficou nas bets.",
-        "visual": {
-          "type": "CLOSING",
-          "payload": {
-            "eyebrow": "O Dinheiro Explica",
-            "headline": "Sem novo depósito. Saque até 5/10. Depois, devolução bancária.",
-            "source": "Fontes: Congresso Nacional • Ministérios da Justiça e da Saúde • Senado"
-          }
-        },
-        "claim_ids": [
-          "C2",
-          "C3",
-          "C4",
-          "C6",
-          "C9"
-        ],
-        "tts": {
-          "rate": "-2%",
-          "pitch": "0%",
-          "pause_ms": 150
-        }
       }
     ],
-    "closing": "Sem novo depósito. Saque até 5/10. Depois, devolução bancária, enquanto a MP segue no Congresso."
+    "closing": "Subsídio, fiscalização e abastecimento atuam em partes diferentes da cadeia; o preço final continua livre e precisa ser observado nos dados de mercado."
   },
   "publication": {
-    "description": "As bets foram proibidas pela MP 1.394/2026, e quem ainda tem saldo nas plataformas entrou numa janela de transição. Neste vídeo, você entende os prazos para resgate, como funcionará a devolução bancária e o que ainda depende do Congresso.\n\nO foco aqui é o dinheiro: novos aportes, prazo até 5 de outubro, bloqueio a partir do dia 6 e a etapa de devolução dos saldos remanescentes pelos bancos.\n\nEste vídeo tem caráter informativo e educacional e não incentiva apostas.",
+    "description": "Os combustíveis estão sob nova pressão com o petróleo internacional em alta, e o governo anunciou medidas para tentar conter o impacto no Brasil.\n\nNeste vídeo, você entende como funciona a subvenção de R$ 2,12 por litro de diesel, o reforço da fiscalização, as novas multas e por que nenhuma dessas medidas, sozinha, congela o preço na bomba.",
     "chapters": [],
     "disclosure_ai": false,
     "seo": {
-      "primary_keyword": "bets proibidas",
+      "primary_keyword": "combustíveis em alta",
       "secondary_keywords": [
-        "fim das bets",
-        "MP 1394",
-        "apostas online",
-        "saldo bet",
-        "devolução bets"
+        "preço da gasolina",
+        "preço do diesel",
+        "subvenção diesel",
+        "alta do petróleo",
+        "fiscalização combustíveis",
+        "preço dos combustíveis"
       ],
-      "search_intent": "Entender o que acontece com o dinheiro e o saldo nas bets depois da MP 1.394/2026.",
-      "description_strategy": "Abrir com a proibição e a dúvida sobre saldo, trazer as datas de resgate e devolução logo no início e usar termos relacionados de forma natural."
+      "search_intent": "Entender por que os combustíveis estão sob pressão e o que as novas medidas podem mudar no preço da gasolina e do diesel.",
+      "description_strategy": "Abrir com combustíveis em alta e preço na bomba, destacar o valor da subvenção e explicar fiscalização, multas e abastecimento em linguagem natural."
     },
     "tags": [
-      "bets proibidas",
-      "fim das bets",
-      "MP 1394",
-      "apostas online"
+      "combustíveis em alta",
+      "preço da gasolina",
+      "preço do diesel",
+      "alta do petróleo",
+      "subvenção diesel"
     ]
   },
   "speech": {
-    "pronunciations": {
-      "bet": "béte",
-      "bets": "bétes"
-    },
+    "pronunciations": {},
     "ignore_pronunciation_terms": []
   },
   "presenter": {
