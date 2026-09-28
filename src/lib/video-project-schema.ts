@@ -59,6 +59,21 @@ export const videoProjectSchema = z
         viral_score: z.number().int().min(0).max(100).optional(),
         strengths: z.array(z.string()).default([]),
         risk_flags: z.array(z.string()).default([]),
+        youtube_suitability: z
+          .object({
+            risk_level: z.enum(["low", "medium", "high"]).default("low"),
+            sensitive_topics: z.array(z.string()).default([]),
+            context_notes: z.string().default(""),
+            title_thumbnail_safe: z.boolean().default(true),
+            monetization_notes: z.string().default(""),
+          })
+          .default({
+            risk_level: "low",
+            sensitive_topics: [],
+            context_notes: "",
+            title_thumbnail_safe: true,
+            monetization_notes: "",
+          }),
       })
       .passthrough(),
     sources: z.array(sourceSchema).default([]),
@@ -72,6 +87,7 @@ export const videoProjectSchema = z
           mobile_readability: z.string().min(1),
           anti_clickbait_check: z.string().min(1),
           repetition_check: z.string().min(1),
+          youtube_safety_check: z.string().min(1),
         }),
         titles: z
           .array(
@@ -108,7 +124,14 @@ export const videoProjectSchema = z
       .passthrough(),
     publication: z
       .object({
-        description: z.string().optional(),
+        description: z.string().min(1),
+        seo: z.object({
+          primary_keyword: z.string().min(1),
+          secondary_keywords: z.array(z.string()).max(8).default([]),
+          search_intent: z.string().min(1),
+          description_strategy: z.string().min(1),
+        }),
+        tags: z.array(z.string()).max(12).default([]),
         chapters: z.array(z.unknown()).default([]),
         disclosure_ai: z.boolean().default(false),
       })
@@ -184,4 +207,5 @@ export const hardRiskFlags = new Set([
   "URGENCIA_ARTIFICIAL",
   "RISCO_COPYRIGHT",
   "DADO_CONFLITANTE",
+  "YOUTUBE_POLICY_RISK",
 ]);
