@@ -5,11 +5,18 @@ import os
 import re
 import subprocess
 from pathlib import Path
-from xml.sax.saxutils import escape
+from xml.sax.saxutils import escape, quoteattr
 
 import requests
 
-from tts_config import DEFAULT_TTS_PITCH, DEFAULT_TTS_RATE, DEFAULT_TTS_VOICE
+from tts_config import (
+    DEFAULT_PRESENTER,
+    DEFAULT_TTS_PITCH,
+    DEFAULT_TTS_RATE,
+    DEFAULT_TTS_VOICE,
+    GLOBAL_PRONUNCIATIONS,
+    PRESENTER_VOICES,
+)
 
 
 def duration_seconds(path: Path) -> float:
@@ -45,10 +52,42 @@ def percent_text(value: int) -> str:
     return f"{value:+d}%" if value else "0%"
 
 
+def render_pronunciations(text: str, tts: dict) -> str:
+    pronunciations = dict(GLOBAL_PRONUNCIATIONS)
+    pronunciations.update(
+        {
+            str(key).lower(): str(value)
+            for key, value in (tts.get("pronunciations") or {}).items()
+        }
+    )
+
+    if not pronunciations:
+        return escape(text)
+
+    terms = sorted(pronunciations, key=len, reverse=True)
+    pattern = re.compile(
+        r"(?<!\w)(" + "|".join(re.escape(term) for term in terms) + r")(?!\w)",
+        re.IGNORECASE,
+    )
+
+    parts = []
+    last = 0
+    for match in pattern.finditer(text):
+        parts.append(escape(text[last:match.start()]))
+        spoken = pronunciations.get(match.group(0).lower(), match.group(0))
+        parts.append(
+            f"<sub alias={quoteattr(spoken)}>{escape(match.group(0))}</sub>"
+        )
+        last = match.end()
+
+    parts.append(escape(text[last:]))
+    return "".join(parts)
+
+
 def build_ssml(text: str, voice: str, tts: dict) -> str:
     base_rate = percent_value(tts.get("rate", DEFAULT_TTS_RATE), 0)
     base_pitch = percent_value(tts.get("pitch", DEFAULT_TTS_PITCH), 0)
-    pause_ms = max(90, min(220, int(tts.get("pause_ms", 120))))
+    pause_ms = max(90, min(240, int(tts.get("pause_ms", 120))))
 
     sentences = split_sentences(text)
     rendered = []
@@ -58,11 +97,10 @@ def build_ssml(text: str, voice: str, tts: dict) -> str:
         rate = base_rate
         pitch = base_pitch
 
-        # Mantém a cadência que soou melhor no teste anterior, sem quebrar
-        # frases em pequenos blocos. A voz recebe a frase inteira e preserva
-        # melhor a entonação natural.
+        # Variações mínimas de cadência para evitar leitura mecânica,
+        # sem exagerar pitch ou velocidade.
         if sentence.endswith("?"):
-            pitch += 2
+            pitch += 1
             rate -= 1
         elif len(words) <= 7:
             rate += 1
@@ -71,11 +109,9 @@ def build_ssml(text: str, voice: str, tts: dict) -> str:
         elif index % 3 == 2:
             rate -= 1
 
-        # Macerio é uma voz multilíngue. Fixamos explicitamente pt-BR em cada
-        # frase para impedir trocas ocasionais de sotaque por autodetecção.
         rendered.append(
             f'<s><lang xml:lang="pt-BR"><prosody rate="{percent_text(rate)}" '
-            f'pitch="{percent_text(pitch)}">{escape(sentence)}</prosody></lang></s>'
+            f'pitch="{percent_text(pitch)}">{render_pronunciations(sentence, tts)}</prosody></lang></s>'
         )
 
         if index < len(sentences) - 1:
@@ -97,17 +133,18 @@ def synthesize(
     output: Path,
     key: str,
     region: str,
+    voice: str,
     tts: dict | None = None,
 ) -> None:
     endpoint = f"https://{region}.tts.speech.microsoft.com/cognitiveservices/v1"
-    ssml = build_ssml(text, DEFAULT_TTS_VOICE, tts or {})
+    ssml = build_ssml(text, voice, tts or {})
 
     response = requests.post(
         endpoint,
         headers={
             "Ocp-Apim-Subscription-Key": key,
             "Content-Type": "application/ssml+xml",
-            "X-Microsoft-OutputFormat": "audio-24khz-48kbitrate-mono-mp3",
+            "X-Microsoft-OutputFormat": "audio-48khz-192kbitrate-mono-mp3",
             "User-Agent": "odinheiroexplica-scene-tts",
         },
         data=ssml.encode("utf-8"),
@@ -132,13 +169,23 @@ def main() -> None:
     if not scenes:
         raise RuntimeError("Nenhuma cena recebida.")
 
+    presenter = payload.get("presenter") or {}
+    presenter_key = str(
+        presenter.get("gender")
+        or presenter.get("voice_id")
+        or DEFAULT_PRESENTER
+    )
+    project_voice = PRESENTER_VOICES.get(presenter_key, DEFAULT_TTS_VOICE)
+
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
     manifest = {
-        "voice": DEFAULT_TTS_VOICE,
+        "voice": project_voice,
+        "presenter": presenter_key,
         "rate": DEFAULT_TTS_RATE,
         "pitch": DEFAULT_TTS_PITCH,
+        "output_format": "audio-48khz-192kbitrate-mono-mp3",
         "scenes": [],
         "total_duration_seconds": 0.0,
     }
@@ -150,10 +197,10 @@ def main() -> None:
         if not narration:
             raise RuntimeError(f"Cena {scene_id} sem narração.")
 
-        tts = scene.get("tts") or {}
+        tts = dict(scene.get("tts") or {})
         narration_hash = hashlib.sha256(narration.encode("utf-8")).hexdigest()
         output = output_dir / f"{scene_id}.mp3"
-        synthesize(narration, output, key, region, tts)
+        synthesize(narration, output, key, region, project_voice, tts)
         duration = duration_seconds(output)
 
         manifest["scenes"].append(
