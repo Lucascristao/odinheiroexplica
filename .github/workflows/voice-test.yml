@@ -20,19 +20,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: "pip"
-          cache-dependency-path: worker/requirements.txt
-
-      - name: Cache Kokoro model
-        uses: actions/cache@v4
-        with:
-          path: ~/.cache/huggingface
-          key: kokoro-82m-ptbr-v1
 
       - name: Install system dependencies
         run: |
@@ -40,7 +34,7 @@ jobs:
           sudo apt-get install -y espeak-ng libsndfile1 ffmpeg
 
       - name: Install Python dependencies
-        run: pip install -r worker/requirements.txt
+        run: pip install --no-cache-dir -r worker/requirements.txt
 
       - name: Generate voice samples
         run: python worker/voice_test.py
@@ -57,10 +51,15 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin main
+          git checkout main
+          git reset --hard origin/main
+
           git add public/voice-tests/*.mp3
           if git diff --cached --quiet; then
             echo "No audio changes to publish."
           else
             git commit -m "test: publish Kokoro voice samples"
-            git push
+            git push origin main
           fi
