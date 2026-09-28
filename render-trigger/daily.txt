@@ -1,4 +1,6 @@
 video=bets-proibidas-2026-09-28
 date=2026-09-28
 mode=daily-editorial
-retry=2
+retry=3
+cover=chat-final
+presenter=Roberto
