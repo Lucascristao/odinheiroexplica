@@ -6,6 +6,7 @@ from pathlib import Path
 
 FPS = 30
 SCENE_TAIL_SECONDS = 0.28
+FINAL_SCENE_TAIL_SECONDS = 2.15
 
 
 def main() -> None:
@@ -32,7 +33,12 @@ def main() -> None:
         if audio is None:
             raise RuntimeError(f"Áudio não encontrado para {scene_id}")
 
-        duration_seconds = float(audio["duration_seconds"]) + SCENE_TAIL_SECONDS
+        tail_seconds = (
+            FINAL_SCENE_TAIL_SECONDS
+            if position == len(scenes) - 1
+            else SCENE_TAIL_SECONDS
+        )
+        duration_seconds = float(audio["duration_seconds"]) + tail_seconds
         duration_frames = max(30, math.ceil(duration_seconds * FPS))
 
         output_scenes.append(
