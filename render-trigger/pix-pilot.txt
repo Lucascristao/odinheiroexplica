@@ -1,0 +1,1 @@
+rerender: pilot v2 with conversational narration, refined graph and thumbnail variants
