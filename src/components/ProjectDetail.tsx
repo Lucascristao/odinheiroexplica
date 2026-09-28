@@ -30,6 +30,14 @@ type PackageData = {
     closing?: string;
   };
   packaging?: {
+    strategy?: {
+      click_reason?: string;
+      visual_focus?: string;
+      curiosity_gap?: string;
+      mobile_readability?: string;
+      anti_clickbait_check?: string;
+      repetition_check?: string;
+    };
     titles?: Array<{ id?: string; text?: string; rationale?: string }>;
     thumbnails?: Array<{
       id?: string;
@@ -334,7 +342,7 @@ export function ProjectDetail({
 
       <header className="detail-header">
         <div>
-          <p className="eyebrow">Revisão editorial</p>
+          <p className="eyebrow">Projeto editorial</p>
           <h1>{project.subject}</h1>
           {project.angle && <p className="muted hero-copy">{project.angle}</p>}
         </div>
@@ -376,7 +384,7 @@ export function ProjectDetail({
             <div className="panel-heading">
               <div>
                 <p className="eyebrow">Embalagem</p>
-                <h2>Títulos e thumbnail</h2>
+                <h2>Embalagem principal</h2>
               </div>
             </div>
 
@@ -387,9 +395,20 @@ export function ProjectDetail({
               </div>
             )}
 
+            {packageData.packaging?.strategy?.click_reason && (
+              <div className="hook-box">
+                <span>Hipótese de clique</span>
+                <strong>{packageData.packaging.strategy.click_reason}</strong>
+                <small>
+                  Foco: {packageData.packaging.strategy.visual_focus ?? "não informado"} ·
+                  Curiosidade: {packageData.packaging.strategy.curiosity_gap ?? "não informada"}
+                </small>
+              </div>
+            )}
+
             <div className="packaging-grid">
               <div>
-                <h3>Títulos</h3>
+                <h3>Título</h3>
                 <div className="stack-list">
                   {(packageData.packaging?.titles ?? []).map((title, index) => (
                     <article className="compact-card" key={title.id ?? index}>
@@ -404,7 +423,7 @@ export function ProjectDetail({
               </div>
 
               <div>
-                <h3>Thumbnails</h3>
+                <h3>Thumbnail</h3>
                 <div className="stack-list">
                   {(packageData.packaging?.thumbnails ?? []).map((thumb, index) => (
                     <article className="compact-card" key={thumb.id ?? index}>
