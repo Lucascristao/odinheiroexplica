@@ -186,17 +186,6 @@ jobs:
             exit "$CODE"
           fi
 
-      - name: Render thumbnail
-        run: |
-          python worker/progress_callback.py \
-            --run-id "${{ github.run_id }}" \
-            --title "$ODE_VIDEO_TITLE" \
-            --status running \
-            --stage thumbnail \
-            --percent 91 \
-            --detail "Vídeo renderizado. Gerando a thumbnail."
-          npm run still:daily
-
       - name: Upload package to Google Drive
         env:
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
@@ -215,11 +204,10 @@ jobs:
             --status running \
             --stage publicando \
             --percent 94 \
-            --detail "Enviando vídeo, capa e metadados para o Google Drive."
+            --detail "Enviando vídeo e pacote de publicação para o Google Drive."
 
           python worker/upload_outputs_to_drive.py \
             --video render-output/daily-video.mp4 \
-            --thumbnail render-output/daily-thumbnail.png \
             --metadata render-output/daily-youtube.json \
             --publication-text render-output/daily-youtube.txt \
             --project-slug "$ODE_PROJECT_SLUG" \
@@ -234,7 +222,7 @@ jobs:
             --status completed \
             --stage concluido \
             --percent 100 \
-            --detail "Vídeo, thumbnail e pacote de publicação salvos no Google Drive." \
+            --detail "Vídeo e pacote de publicação salvos no Google Drive. A capa será gerada pelo chat." \
             --video-duration-seconds "$VIDEO_DURATION"
 
       - name: Report failure
