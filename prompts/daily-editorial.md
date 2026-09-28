@@ -53,7 +53,13 @@ A apresentação do narrador deve variar naturalmente quando fizer sentido. Não
 
 Inclua pedido de inscrição apenas quando houver um ponto natural de respiro. Varie a formulação e a posição. Não coloque o CTA sempre no mesmo minuto e não use a mesma frase em todos os vídeos. Em alguns vídeos, se o CTA quebrar a narrativa, prefira apenas um elemento visual discreto ou omita a fala.
 
-Antes de fechar o texto da narração, identifique termos estrangeiros, siglas, nomes próprios ou palavras que possam soar artificiais no TTS. Mantenha a grafia correta no texto publicado, mas registre uma pronúncia falada brasileira quando necessário. A camada de TTS possui dicionário próprio para isso.
+Antes de fechar o texto da narração, faça uma auditoria explícita de pronúncia. Identifique termos estrangeiros, siglas, nomes próprios, marcas e palavras que possam soar artificiais no TTS. Mantenha sempre a grafia correta no roteiro, no vídeo e na publicação; a adaptação é somente para a fala.
+
+Quando houver risco de pronúncia, preencha no nível raiz do VideoProject:
+- speech.pronunciations: mapa "termo escrito" -> "forma falada em português brasileiro";
+- speech.ignore_pronunciation_terms: somente para termos que parecem arriscados, mas cuja leitura padrão já foi validada e deve permanecer.
+
+Exemplo: "bets" continua escrito como bets, mas pode receber a forma falada "béts". Não invente pronúncias para palavras que você não consegue justificar. O pipeline executa uma auditoria antes do TTS e interrompe a geração do áudio quando encontra um termo de risco conhecido sem tratamento, evitando descobrir o problema apenas depois do render.
 
 O início precisa criar interesse imediatamente. Use curiosidade, contraste, consequência e especificidade quando forem sustentados pelos fatos.
 
