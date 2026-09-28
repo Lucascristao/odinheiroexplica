@@ -53,6 +53,29 @@ const visualBeatSchema = z
     value: z.string().optional(),
     from: z.string().optional(),
     to: z.string().optional(),
+    behavior: z
+      .enum(["cut", "transform", "reframe", "overlay"])
+      .default("cut"),
+    treatment: z
+      .enum([
+        "kinetic_type",
+        "giant_number",
+        "flow_diagram",
+        "timeline",
+        "split_compare",
+        "meter",
+        "spotlight",
+        "equation",
+        "stack",
+        "signal",
+      ])
+      .default("kinetic_type"),
+    transition: z
+      .enum(["cut", "fade", "slide_left", "slide_up", "zoom", "wipe"])
+      .default("cut"),
+    placement: z
+      .enum(["left", "center", "right", "full"])
+      .default("full"),
     sound: z
       .enum(["none", "tick", "impact", "whoosh", "alert"])
       .default("none"),
@@ -67,6 +90,25 @@ const visualBeatSchema = z
     }
   });
 
+const visualDirectionSchema = z
+  .object({
+    concept: z.string().min(3),
+    world: z.enum([
+      "minimal",
+      "digital",
+      "industrial",
+      "documentary",
+      "market",
+      "network",
+      "paper",
+    ]),
+    secondary_color: z.string().regex(/^#[0-9a-fA-F]{6}$/).default("#ff7a1a"),
+    motifs: z.array(z.string().min(1)).min(2).max(6),
+    motion_language: z.array(z.string().min(1)).min(2).max(6),
+    avoid: z.array(z.string().min(1)).min(2).max(8),
+  })
+  .passthrough();
+
 const sceneSchema = z
   .object({
     index: z.number().int().nonnegative(),
@@ -77,6 +119,9 @@ const sceneSchema = z
         type: z.string().min(1),
         payload: z.record(z.string(), z.unknown()).optional(),
         beats: z.array(visualBeatSchema).max(12).optional(),
+        transition: z
+          .enum(["cut", "fade", "slide_left", "slide_up", "zoom", "wipe"])
+          .default("cut"),
       })
       .passthrough(),
     claim_ids: z.array(z.string()).default([]),
@@ -95,6 +140,14 @@ export const videoProjectSchema = z
         category: z.enum(["news", "company", "economy", "money", "evergreen"]),
       })
       .passthrough(),
+    visual_direction: visualDirectionSchema.default({
+      concept: "Editorial financeiro",
+      world: "minimal",
+      secondary_color: "#ff7a1a",
+      motifs: ["tipografia", "dados"],
+      motion_language: ["cut", "reframe"],
+      avoid: ["cards repetitivos", "layout fixo"],
+    }),
     editorial: z
       .object({
         viral_score: z.number().int().min(0).max(100).optional(),
@@ -234,6 +287,46 @@ export const videoProjectSchema = z
           });
         }
       });
+
+      const beats = scene.visual.beats ?? [];
+      beats.forEach((beat, beatIndex) => {
+        if (beat.anchor) {
+          const occurrences = scene.narration.split(beat.anchor).length - 1;
+          if (occurrences !== 1) {
+            ctx.addIssue({
+              code: "custom",
+              path: ["script", "scenes", index, "visual", "beats", beatIndex, "anchor"],
+              message:
+                "Anchor precisa aparecer exatamente uma vez na narração da cena.",
+            });
+          }
+        }
+      });
+
+      const overlayCount = beats.filter((beat) => beat.behavior === "overlay").length;
+      if (overlayCount > 1) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["script", "scenes", index, "visual", "beats"],
+          message: "Use no máximo um overlay por cena; prefira cut, transform ou reframe.",
+        });
+      }
+
+      for (let beatIndex = 2; beatIndex < beats.length; beatIndex += 1) {
+        const current = beats[beatIndex];
+        const previous = beats[beatIndex - 1];
+        const beforePrevious = beats[beatIndex - 2];
+        if (
+          current.treatment === previous.treatment &&
+          previous.treatment === beforePrevious.treatment
+        ) {
+          ctx.addIssue({
+            code: "custom",
+            path: ["script", "scenes", index, "visual", "beats", beatIndex, "treatment"],
+            message: "Não repita o mesmo tratamento visual em três beats consecutivos.",
+          });
+        }
+      }
     });
   });
 
