@@ -65,6 +65,14 @@ export const videoProjectSchema = z
     claims: z.array(claimSchema).default([]),
     packaging: z
       .object({
+        strategy: z.object({
+          click_reason: z.string().min(1),
+          visual_focus: z.string().min(1),
+          curiosity_gap: z.string().min(1),
+          mobile_readability: z.string().min(1),
+          anti_clickbait_check: z.string().min(1),
+          repetition_check: z.string().min(1),
+        }),
         titles: z
           .array(
             z
@@ -75,7 +83,7 @@ export const videoProjectSchema = z
               })
               .passthrough(),
           )
-          .min(1),
+          .length(1),
         thumbnails: z
           .array(
             z
@@ -87,7 +95,7 @@ export const videoProjectSchema = z
               })
               .passthrough(),
           )
-          .min(1),
+          .length(1),
       })
       .passthrough(),
     script: z
