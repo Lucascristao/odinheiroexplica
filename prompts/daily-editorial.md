@@ -184,6 +184,21 @@ Regras globais:
 
 A unidade visual não é mais "uma cena = uma informação". Uma cena narrativa pode conter várias microcenas informativas.
 
+Cada microcena precisa ter três fases visuais: entrada, desenvolvimento e conclusão. Não basta o elemento entrar e permanecer estático até a próxima informação.
+
+Durante o intervalo real daquele beat:
+- números podem crescer, contar, ganhar unidade ou mudar foco;
+- fluxos devem percorrer origem, caminho e destino;
+- timelines devem avançar;
+- comparações devem revelar um lado e depois o outro;
+- medidores devem progredir;
+- equações devem montar termos em sequência;
+- pilhas e processos devem construir camadas;
+- alertas podem reagir com um pulso curto;
+- tipografia pode deslocar peso, escala ou posição conforme a ideia evolui.
+
+Movimento precisa explicar ou reforçar a informação. Evite flutuação, pulso ou parallax gratuito só para impedir que a tela pareça parada.
+
 Para cada nova informação relevante da fala, crie um item em `visual.beats`. Não faça um beat para pontuação, frase de ligação, apresentação do narrador ou simples repetição. Faça quando surgir um novo fato, número, data, consequência, comparação, fluxo, alerta, personagem institucional, mudança de estado ou etapa.
 
 Como referência:
@@ -221,7 +236,10 @@ Regras globais:
 - evitar repetição mecânica do mesmo efeito em todas as cenas;
 - o encerramento recebe uma assinatura sonora curta depois do fim da narração, com cauda visual suficiente para não terminar de forma seca;
 - os efeitos do fluxo são gerados internamente pelo projeto, sem depender de arquivos aleatórios ou material externo;
-- sound design deve reforçar clareza, ritmo e acabamento, nunca virar protagonista.
+- sound design deve reforçar clareza, ritmo e acabamento, nunca virar protagonista;
+- efeitos precisam ser perceptíveis em reprodução comum, mesmo em celular, mas sempre abaixo da narração;
+- mudanças visuais importantes podem ter um segundo ponto sonoro discreto durante seu desenvolvimento, não apenas na entrada;
+- se o efeito ficar inaudível sob a voz, aumente presença seletivamente em vez de colocar mais efeitos.
 
 Não determine previamente a duração. O vídeo termina quando a história estiver completa, sem repetição para aumentar tempo.
 
