@@ -272,7 +272,7 @@ const HeadlineScene = ({
             fontSize: 88,
             fontWeight: 950,
             lineHeight: 1.04,
-            letterSpacing: -4.8,
+            letterSpacing: -1.6,
             transform: `scale(${0.96 + enter * 0.04})`,
           }}
         >
@@ -342,7 +342,7 @@ const StatGridScene = ({
                     color: index === 0 ? GOLD : WHITE,
                     fontSize: 104,
                     fontWeight: 950,
-                    letterSpacing: -6,
+                    letterSpacing: -1.8,
                   }}
                 >
                   {stat.value}
@@ -470,7 +470,7 @@ const NetworkScene = ({
               color: WHITE,
               fontSize: 58,
               fontWeight: 950,
-              letterSpacing: -3,
+              letterSpacing: -1.2,
               maxWidth: 850,
               lineHeight: 1.04,
             }}
@@ -575,7 +575,7 @@ const MoneyFlowScene = ({
       <AbsoluteFill style={{fontFamily: FONT}}>
         <div style={{position: "absolute", left: 145, top: 165}}>
           <Eyebrow>{asString(payload.eyebrow)}</Eyebrow>
-          <div style={{color: GOLD, fontSize: 94, fontWeight: 950, letterSpacing: -5}}>
+          <div style={{color: GOLD, fontSize: 94, fontWeight: 950, letterSpacing: -1.6}}>
             {asString(payload.amount)}
           </div>
         </div>
@@ -744,7 +744,7 @@ const BigNumberScene = ({
             color: GOLD,
             fontSize: 172,
             fontWeight: 950,
-            letterSpacing: -9,
+            letterSpacing: -2.2,
             transform: `scale(${0.82 + pop * 0.18})`,
             position: "relative",
             overflow: "hidden",
@@ -886,7 +886,7 @@ const TimelineScene = ({
             color: GOLD,
             fontSize: 94,
             fontWeight: 950,
-            letterSpacing: -5,
+            letterSpacing: -1.6,
           }}
         >
           {asString(payload.date)}
@@ -964,7 +964,7 @@ const ClosingScene = ({
             fontSize: 82,
             fontWeight: 950,
             lineHeight: 1.04,
-            letterSpacing: -4.5,
+            letterSpacing: -1.5,
             transform: `scale(${pulse * (0.94 + enter * 0.06)})`,
             opacity: enter,
           }}
