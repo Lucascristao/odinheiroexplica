@@ -2,17 +2,6 @@ name: Render dinâmico por cenas
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "video/src/DynamicVideo.tsx"
-      - "video/src/Root.tsx"
-      - "video/data/dynamic-demo.json"
-      - "worker/synthesize_scenes.py"
-      - "worker/build_render_input.py"
-      - "worker/tts_config.py"
-      - ".github/workflows/render-dynamic-test.yml"
-      - "package.json"
 
 permissions:
   contents: write
