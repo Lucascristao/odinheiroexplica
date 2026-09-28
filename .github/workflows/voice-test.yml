@@ -15,7 +15,7 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 12
 
     steps:
       - name: Checkout
@@ -46,12 +46,10 @@ jobs:
           git checkout main
           git reset --hard origin/main
 
-          git add public/voice-tests/*.mp3
+          git add public/voice-tests/
           if git diff --cached --quiet; then
-            echo "No audio changes to publish."
+            echo "No voice test changes to publish."
           else
-            git commit -m "test: publish Azure pt-BR voice samples"
+            git commit -m "test: publish expanded Azure pt-BR voice samples"
             git push origin main
           fi
-
-# Secrets configurados em 2026-09-28. Este comentário também dispara um novo teste.
