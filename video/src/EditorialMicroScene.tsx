@@ -197,6 +197,9 @@ const entranceStyle = ({
 const worldAccent = (direction?: EditorialDirection) =>
   direction?.secondary_color ?? "#ff7a1a";
 
+const phase = (progress: number, start: number, end: number) =>
+  interpolate(progress, [start, end], [0, 1], clamp);
+
 export const StoryWorldBackground = ({
   direction,
 }: {
@@ -322,10 +325,12 @@ const KineticType = ({
   beat,
   accent,
   placement,
+  progress,
 }: {
   beat: EditorialBeat;
   accent: string;
   placement: EditorialBeat["placement"];
+  progress: number;
 }) => {
   const align =
     placement === "right" ? "flex-end" : placement === "center" ? "center" : "flex-start";
@@ -350,6 +355,8 @@ const KineticType = ({
             letterSpacing: -3,
             marginBottom: 8,
             lineHeight: 0.95,
+            transform: `scale(${0.96 + phase(progress, 0.08, 0.55) * 0.05})`,
+            transformOrigin: textAlign,
           }}
         >
           {beat.value}
@@ -365,6 +372,8 @@ const KineticType = ({
           letterSpacing: -2.2,
           textAlign,
           textTransform: "uppercase",
+          transform: `translateY(${(1 - phase(progress, 0.05, 0.42)) * 26}px)`,
+          opacity: phase(progress, 0.03, 0.34),
         }}
       >
         {beat.headline}
@@ -379,6 +388,8 @@ const KineticType = ({
             marginTop: 26,
             lineHeight: 1.3,
             textAlign,
+            opacity: phase(progress, 0.32, 0.72),
+            transform: `translateY(${(1 - phase(progress, 0.32, 0.72)) * 18}px)`,
           }}
         >
           {beat.detail}
@@ -386,7 +397,7 @@ const KineticType = ({
       )}
       <div
         style={{
-          width: 260,
+          width: `${260 * phase(progress, 0.18, 0.82)}px`,
           height: 8,
           borderRadius: 99,
           background: accent,
@@ -398,7 +409,7 @@ const KineticType = ({
   );
 };
 
-const GiantNumber = ({beat, accent}: {beat: EditorialBeat; accent: string}) => (
+const GiantNumber = ({beat, accent, progress}: {beat: EditorialBeat; accent: string; progress: number}) => (
   <AbsoluteFill
     style={{
       justifyContent: "center",
@@ -418,12 +429,13 @@ const GiantNumber = ({beat, accent}: {beat: EditorialBeat; accent: string}) => (
         color: accent,
         opacity: 0.085,
         letterSpacing: -20,
+        transform: `translateX(${progress * 46}px) scale(${1 + progress * 0.045})`,
       }}
     >
       {beat.value ?? "01"}
     </div>
     <div style={{display: "flex", alignItems: "center", gap: 42}}>
-      <div style={{color: accent}}>
+      <div style={{color: accent, transform: `scale(${0.9 + phase(progress, 0.05, 0.45) * 0.12}) rotate(${(1 - phase(progress, 0.05, 0.45)) * -8}deg)`}}>
         <BeatIcon kind={beat.kind} size={104} />
       </div>
       <div>
@@ -434,6 +446,8 @@ const GiantNumber = ({beat, accent}: {beat: EditorialBeat; accent: string}) => (
             fontWeight: 950,
             lineHeight: 0.88,
             letterSpacing: -4,
+            transform: `scale(${0.94 + phase(progress, 0.08, 0.52) * 0.08})`,
+            transformOrigin: "left center",
           }}
         >
           {beat.value ?? beat.headline}
@@ -447,6 +461,8 @@ const GiantNumber = ({beat, accent}: {beat: EditorialBeat; accent: string}) => (
               marginTop: 28,
               maxWidth: 1120,
               lineHeight: 1.05,
+              opacity: phase(progress, 0.32, 0.72),
+              transform: `translateY(${(1 - phase(progress, 0.32, 0.72)) * 18}px)`,
             }}
           >
             {beat.headline}
@@ -462,7 +478,7 @@ const GiantNumber = ({beat, accent}: {beat: EditorialBeat; accent: string}) => (
   </AbsoluteFill>
 );
 
-const FlowDiagram = ({beat, accent}: {beat: EditorialBeat; accent: string}) => (
+const FlowDiagram = ({beat, accent, progress}: {beat: EditorialBeat; accent: string; progress: number}) => (
   <AbsoluteFill
     style={{
       justifyContent: "center",
@@ -494,12 +510,43 @@ const FlowDiagram = ({beat, accent}: {beat: EditorialBeat; accent: string}) => (
           fontWeight: 950,
           textAlign: "center",
           padding: 40,
+          opacity: phase(progress, 0.02, 0.25),
+          transform: `scale(${0.94 + phase(progress, 0.02, 0.25) * 0.06})`,
         }}
       >
         {beat.from ?? "ORIGEM"}
       </div>
-      <div style={{display: "grid", placeItems: "center", color: accent}}>
-        <ArrowRight size={118} strokeWidth={1.3} />
+      <div style={{display: "grid", placeItems: "center", color: accent, position: "relative"}}>
+        <div
+          style={{
+            width: `${160 * phase(progress, 0.22, 0.68)}px`,
+            height: 5,
+            background: accent,
+            borderRadius: 99,
+          }}
+        />
+        <ArrowRight
+          size={70}
+          strokeWidth={1.5}
+          style={{
+            position: "absolute",
+            right: 20,
+            opacity: phase(progress, 0.42, 0.7),
+            transform: `translateX(${(1 - phase(progress, 0.42, 0.7)) * -26}px)`,
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            left: `${20 + phase(progress, 0.24, 0.72) * 150}px`,
+            width: 18,
+            height: 18,
+            borderRadius: "50%",
+            background: WHITE,
+            boxShadow: `0 0 24px ${accent}`,
+            opacity: phase(progress, 0.24, 0.4),
+          }}
+        />
       </div>
       <div
         style={{
@@ -514,6 +561,8 @@ const FlowDiagram = ({beat, accent}: {beat: EditorialBeat; accent: string}) => (
           fontWeight: 950,
           textAlign: "center",
           padding: 40,
+          opacity: phase(progress, 0.52, 0.78),
+          transform: `scale(${0.94 + phase(progress, 0.52, 0.78) * 0.06})`,
         }}
       >
         {beat.to ?? "DESTINO"}
@@ -527,11 +576,7 @@ const FlowDiagram = ({beat, accent}: {beat: EditorialBeat; accent: string}) => (
   </AbsoluteFill>
 );
 
-const TimelineTreatment = ({beat, accent}: {beat: EditorialBeat; accent: string}) => {
-  const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
-  const progress = spring({frame, fps, config: {damping: 20, stiffness: 95}});
-
+const TimelineTreatment = ({beat, accent, progress}: {beat: EditorialBeat; accent: string; progress: number}) => {
   return (
     <AbsoluteFill style={{justifyContent: "center", padding: "0 145px", fontFamily: FONT}}>
       <div style={{color: WHITE, fontSize: 54, fontWeight: 950, marginBottom: 90}}>
@@ -554,14 +599,14 @@ const TimelineTreatment = ({beat, accent}: {beat: EditorialBeat; accent: string}
             left: 0,
             top: 68,
             height: 6,
-            width: `${progress * 100}%`,
+            width: `${phase(progress, 0.08, 0.88) * 100}%`,
             background: accent,
           }}
         />
         <div
           style={{
             position: "absolute",
-            left: `${Math.max(2, progress * 82)}%`,
+            left: `${Math.max(2, phase(progress, 0.08, 0.88) * 82)}%`,
             top: 29,
             width: 82,
             height: 82,
@@ -585,7 +630,7 @@ const TimelineTreatment = ({beat, accent}: {beat: EditorialBeat; accent: string}
   );
 };
 
-const SplitCompare = ({beat, accent}: {beat: EditorialBeat; accent: string}) => (
+const SplitCompare = ({beat, accent, progress}: {beat: EditorialBeat; accent: string; progress: number}) => (
   <AbsoluteFill style={{fontFamily: FONT}}>
     <div
       style={{
@@ -602,6 +647,8 @@ const SplitCompare = ({beat, accent}: {beat: EditorialBeat; accent: string}) => 
           padding: "120px 100px",
           borderRight: `1px solid ${LINE}`,
           background: "rgba(255,255,255,.015)",
+          opacity: phase(progress, 0.02, 0.28),
+          transform: `translateX(${(1 - phase(progress, 0.02, 0.28)) * -70}px)`,
         }}
       >
         <div style={{textAlign: "center"}}>
@@ -619,6 +666,8 @@ const SplitCompare = ({beat, accent}: {beat: EditorialBeat; accent: string}) => 
           placeItems: "center",
           padding: "120px 100px",
           background: `${accent}0c`,
+          opacity: phase(progress, 0.42, 0.72),
+          transform: `translateX(${(1 - phase(progress, 0.42, 0.72)) * 70}px)`,
         }}
       >
         <div style={{textAlign: "center"}}>
@@ -641,6 +690,7 @@ const SplitCompare = ({beat, accent}: {beat: EditorialBeat; accent: string}) => 
         color: WHITE,
         fontSize: 38,
         fontWeight: 900,
+        opacity: phase(progress, 0.68, 0.92),
       }}
     >
       {beat.detail ?? beat.headline}
@@ -648,15 +698,16 @@ const SplitCompare = ({beat, accent}: {beat: EditorialBeat; accent: string}) => 
   </AbsoluteFill>
 );
 
-const MeterTreatment = ({beat, accent}: {beat: EditorialBeat; accent: string}) => {
-  const frame = useCurrentFrame();
-  const {fps} = useVideoConfig();
-  const progress = spring({frame, fps, config: {damping: 18, stiffness: 90}});
-
+const MeterTreatment = ({beat, accent, progress}: {beat: EditorialBeat; accent: string; progress: number}) => {
   return (
     <AbsoluteFill style={{justifyContent: "center", padding: "0 150px", fontFamily: FONT}}>
       <div style={{display: "flex", alignItems: "center", gap: 90}}>
-        <div style={{color: accent}}>
+        <div
+          style={{
+            color: accent,
+            transform: `rotate(${-8 + phase(progress, 0.08, 0.9) * 16}deg) scale(${0.96 + Math.sin(progress * Math.PI) * 0.04})`,
+          }}
+        >
           <Gauge size={210} strokeWidth={1.25} />
         </div>
         <div style={{flex: 1}}>
@@ -677,7 +728,7 @@ const MeterTreatment = ({beat, accent}: {beat: EditorialBeat; accent: string}) =
               overflow: "hidden",
             }}
           >
-            <div style={{height: "100%", width: `${Math.max(8, progress * 88)}%`, background: accent}} />
+            <div style={{height: "100%", width: `${Math.max(8, phase(progress, 0.12, 0.88) * 88)}%`, background: accent}} />
           </div>
           {beat.detail && <div style={{color: MUTED, fontSize: 27, marginTop: 20}}>{beat.detail}</div>}
         </div>
@@ -686,7 +737,7 @@ const MeterTreatment = ({beat, accent}: {beat: EditorialBeat; accent: string}) =
   );
 };
 
-const Spotlight = ({beat, accent}: {beat: EditorialBeat; accent: string}) => (
+const Spotlight = ({beat, accent, progress}: {beat: EditorialBeat; accent: string; progress: number}) => (
   <AbsoluteFill style={{justifyContent: "center", alignItems: "center", fontFamily: FONT}}>
     <div
       style={{
@@ -698,7 +749,8 @@ const Spotlight = ({beat, accent}: {beat: EditorialBeat; accent: string}) => (
         color: accent,
         background: `radial-gradient(circle, ${accent}20, ${accent}08 56%, transparent 70%)`,
         border: `1px solid ${accent}45`,
-        boxShadow: `0 0 100px ${accent}22`,
+        boxShadow: `0 0 ${70 + Math.sin(progress * Math.PI * 2) * 24}px ${accent}2f`,
+        transform: `scale(${0.96 + Math.sin(progress * Math.PI) * 0.07})`,
       }}
     >
       <BeatIcon kind={beat.kind} size={150} />
@@ -711,23 +763,23 @@ const Spotlight = ({beat, accent}: {beat: EditorialBeat; accent: string}) => (
   </AbsoluteFill>
 );
 
-const EquationTreatment = ({beat, accent}: {beat: EditorialBeat; accent: string}) => (
+const EquationTreatment = ({beat, accent, progress}: {beat: EditorialBeat; accent: string; progress: number}) => (
   <AbsoluteFill style={{justifyContent: "center", padding: "0 145px", fontFamily: FONT}}>
     <div style={{color: MUTED, fontSize: 27, letterSpacing: 4, textTransform: "uppercase", marginBottom: 40}}>
       Como a conta se conecta
     </div>
     <div style={{display: "flex", alignItems: "center", gap: 34, flexWrap: "wrap"}}>
-      <div style={{color: WHITE, fontSize: 74, fontWeight: 950}}>{beat.from ?? beat.value ?? "CUSTO"}</div>
-      <div style={{color: accent, fontSize: 74, fontWeight: 950}}>+</div>
-      <div style={{color: WHITE, fontSize: 74, fontWeight: 950}}>{beat.to ?? "OUTRAS PARCELAS"}</div>
-      <div style={{color: accent, fontSize: 74, fontWeight: 950}}>=</div>
-      <div style={{color: accent, fontSize: 74, fontWeight: 950}}>{beat.headline}</div>
+      <div style={{color: WHITE, fontSize: 74, fontWeight: 950, opacity: phase(progress, 0.02, 0.2)}}>{beat.from ?? beat.value ?? "CUSTO"}</div>
+      <div style={{color: accent, fontSize: 74, fontWeight: 950, opacity: phase(progress, 0.18, 0.34)}}>+</div>
+      <div style={{color: WHITE, fontSize: 74, fontWeight: 950, opacity: phase(progress, 0.3, 0.5)}}>{beat.to ?? "OUTRAS PARCELAS"}</div>
+      <div style={{color: accent, fontSize: 74, fontWeight: 950, opacity: phase(progress, 0.5, 0.65)}}>=</div>
+      <div style={{color: accent, fontSize: 74, fontWeight: 950, opacity: phase(progress, 0.62, 0.88), transform: `scale(${0.94 + phase(progress, 0.62, 0.88) * 0.06})`}}>{beat.headline}</div>
     </div>
     {beat.detail && <div style={{color: MUTED, fontSize: 28, marginTop: 42, maxWidth: 1150}}>{beat.detail}</div>}
   </AbsoluteFill>
 );
 
-const StackTreatment = ({beat, accent}: {beat: EditorialBeat; accent: string}) => {
+const StackTreatment = ({beat, accent, progress}: {beat: EditorialBeat; accent: string; progress: number}) => {
   const labels = (beat.detail ?? beat.headline)
     .split(/[,;•]/)
     .map((item) => item.trim())
@@ -754,6 +806,8 @@ const StackTreatment = ({beat, accent}: {beat: EditorialBeat; accent: string}) =
               fontSize: 28,
               fontWeight: 900,
               borderRadius: 12,
+              opacity: phase(progress, 0.08 + index * 0.14, 0.28 + index * 0.14),
+              transform: `translateX(${(1 - phase(progress, 0.08 + index * 0.14, 0.28 + index * 0.14)) * -70}px)`,
             }}
           >
             {label}
@@ -765,7 +819,7 @@ const StackTreatment = ({beat, accent}: {beat: EditorialBeat; accent: string}) =
   );
 };
 
-const SignalTreatment = ({beat, accent}: {beat: EditorialBeat; accent: string}) => (
+const SignalTreatment = ({beat, accent, progress}: {beat: EditorialBeat; accent: string; progress: number}) => (
   <AbsoluteFill style={{fontFamily: FONT, overflow: "hidden"}}>
     <div
       style={{
@@ -777,6 +831,7 @@ const SignalTreatment = ({beat, accent}: {beat: EditorialBeat; accent: string}) 
         background: accent,
         transform: "rotate(12deg)",
         opacity: 0.88,
+        transform: `rotate(12deg) translateX(${progress * 35}px)`,
       }}
     />
     <div
@@ -785,6 +840,7 @@ const SignalTreatment = ({beat, accent}: {beat: EditorialBeat; accent: string}) 
         left: 170,
         top: 210,
         color: BG,
+        transform: `scale(${0.96 + Math.sin(progress * Math.PI * 2) * 0.035})`,
       }}
     >
       <BeatIcon kind={beat.kind} size={150} />
@@ -806,7 +862,7 @@ const SignalTreatment = ({beat, accent}: {beat: EditorialBeat; accent: string}) 
   </AbsoluteFill>
 );
 
-const OverlayTreatment = ({beat, accent}: {beat: EditorialBeat; accent: string}) => (
+const OverlayTreatment = ({beat, accent, progress}: {beat: EditorialBeat; accent: string; progress: number}) => (
   <AbsoluteFill style={{fontFamily: FONT, pointerEvents: "none"}}>
     <div
       style={{
@@ -820,7 +876,7 @@ const OverlayTreatment = ({beat, accent}: {beat: EditorialBeat; accent: string})
         maxWidth: 1220,
       }}
     >
-      <div style={{width: 10, alignSelf: "stretch", background: accent, borderRadius: 99}} />
+      <div style={{width: 10, alignSelf: "stretch", background: accent, borderRadius: 99, transform: `scaleY(${phase(progress, 0.05, 0.7)})`, transformOrigin: "bottom"}} />
       <div>
         {beat.value && <div style={{color: accent, fontSize: 48, fontWeight: 950}}>{beat.value}</div>}
         <div style={{fontSize: 38, fontWeight: 900}}>{beat.headline}</div>
@@ -854,6 +910,12 @@ export const EditorialMicroScene = ({
 
   const {beat, startFrame, endFrame} = active;
   const localFrame = Math.max(0, frame - startFrame);
+  const beatProgress = interpolate(
+    frame,
+    [startFrame, Math.max(startFrame + 1, endFrame - 1)],
+    [0, 1],
+    clamp,
+  );
   const introFrames = Math.max(1, Math.round(fps * 0.22));
   const enter = interpolate(localFrame, [0, introFrames], [0, 1], clamp);
   const exitStart = Math.max(startFrame, endFrame - Math.round(fps * 0.12));
@@ -870,7 +932,7 @@ export const EditorialMicroScene = ({
   if (behavior === "overlay") {
     return (
       <AbsoluteFill style={{zIndex: 66, opacity: exit, ...transitionStyle}}>
-        <OverlayTreatment beat={beat} accent={accent} />
+        <OverlayTreatment beat={beat} accent={accent} progress={beatProgress} />
       </AbsoluteFill>
     );
   }
@@ -878,31 +940,31 @@ export const EditorialMicroScene = ({
   let body: React.ReactNode;
   switch (treatment) {
     case "giant_number":
-      body = <GiantNumber beat={beat} accent={accent} />;
+      body = <GiantNumber beat={beat} accent={accent} progress={beatProgress} />;
       break;
     case "flow_diagram":
-      body = <FlowDiagram beat={beat} accent={accent} />;
+      body = <FlowDiagram beat={beat} accent={accent} progress={beatProgress} />;
       break;
     case "timeline":
-      body = <TimelineTreatment beat={beat} accent={accent} />;
+      body = <TimelineTreatment beat={beat} accent={accent} progress={beatProgress} />;
       break;
     case "split_compare":
-      body = <SplitCompare beat={beat} accent={accent} />;
+      body = <SplitCompare beat={beat} accent={accent} progress={beatProgress} />;
       break;
     case "meter":
-      body = <MeterTreatment beat={beat} accent={accent} />;
+      body = <MeterTreatment beat={beat} accent={accent} progress={beatProgress} />;
       break;
     case "spotlight":
-      body = <Spotlight beat={beat} accent={accent} />;
+      body = <Spotlight beat={beat} accent={accent} progress={beatProgress} />;
       break;
     case "equation":
-      body = <EquationTreatment beat={beat} accent={accent} />;
+      body = <EquationTreatment beat={beat} accent={accent} progress={beatProgress} />;
       break;
     case "stack":
-      body = <StackTreatment beat={beat} accent={accent} />;
+      body = <StackTreatment beat={beat} accent={accent} progress={beatProgress} />;
       break;
     case "signal":
-      body = <SignalTreatment beat={beat} accent={accent} />;
+      body = <SignalTreatment beat={beat} accent={accent} progress={beatProgress} />;
       break;
     case "kinetic_type":
     default:
@@ -911,6 +973,7 @@ export const EditorialMicroScene = ({
           beat={beat}
           accent={accent}
           placement={beat.placement ?? "left"}
+          progress={beatProgress}
         />
       );
       break;
