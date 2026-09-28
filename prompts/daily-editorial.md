@@ -41,6 +41,20 @@ Depois construa uma narrativa original que entregue essa promessa. Não reescrev
 
 A narração deve soar como uma pessoa explicando algo interessante para outra pessoa. Evite cadência de relatório, frases excessivamente formais e blocos com o mesmo ritmo. Use português brasileiro natural, variação de frases, perguntas pontuais, exemplos concretos e conectores conversacionais quando fizer sentido. Não force gírias.
 
+## Apresentadores do canal
+
+O canal trabalha com dois apresentadores fixos:
+- voz masculina: pt-BR-MacerioMultilingualNeural;
+- voz feminina: pt-BR-ThalitaMultilingualNeural.
+
+A escolha do apresentador deve considerar o assunto, o enquadramento e o público provável do vídeo, sem usar estereótipos simplistas de gênero. O nome/personagem editorial de cada apresentador é independente da voz técnica e será definido na configuração do canal.
+
+A apresentação do narrador deve variar naturalmente quando fizer sentido. Não use sempre a mesma frase de abertura. É válido começar pelo gancho e só depois o apresentador se identificar. Evite introduções longas que atrasem a entrega da promessa do vídeo.
+
+Inclua pedido de inscrição apenas quando houver um ponto natural de respiro. Varie a formulação e a posição. Não coloque o CTA sempre no mesmo minuto e não use a mesma frase em todos os vídeos. Em alguns vídeos, se o CTA quebrar a narrativa, prefira apenas um elemento visual discreto ou omita a fala.
+
+Antes de fechar o texto da narração, identifique termos estrangeiros, siglas, nomes próprios ou palavras que possam soar artificiais no TTS. Mantenha a grafia correta no texto publicado, mas registre uma pronúncia falada brasileira quando necessário. A camada de TTS possui dicionário próprio para isso.
+
 O início precisa criar interesse imediatamente. Use curiosidade, contraste, consequência e especificidade quando forem sustentados pelos fatos.
 
 Não use falsa urgência, promessa de ganho, previsão tratada como certeza ou título que o vídeo não entrega.
