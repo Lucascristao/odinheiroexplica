@@ -53,3 +53,5 @@ export default async (req: Request) => {
 export const config = {
   path: "/api/google-drive/connect",
 };
+
+// Redeploy after Google OAuth environment configuration.
