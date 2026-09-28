@@ -53,3 +53,5 @@ jobs:
             git commit -m "test: publish Azure pt-BR voice samples"
             git push origin main
           fi
+
+# Secrets configurados em 2026-09-28. Este comentário também dispara um novo teste.
