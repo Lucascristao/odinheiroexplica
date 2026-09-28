@@ -140,6 +140,31 @@ Regras globais:
 - processos devem avançar etapa por etapa, timelines devem progredir ao longo da fala, listas devem ser reveladas em sequência e números/alertas devem ganhar foco em momentos diferentes;
 - o final da cena deve preparar visualmente a transição para a próxima.
 
+### Beats informativos
+
+A unidade visual não é mais "uma cena = uma informação". Uma cena narrativa pode conter várias microcenas informativas.
+
+Para cada nova informação relevante da fala, crie um item em `visual.beats`. Não faça um beat para pontuação, frase de ligação, apresentação do narrador ou simples repetição. Faça quando surgir um novo fato, número, data, consequência, comparação, fluxo, alerta, personagem institucional, mudança de estado ou etapa.
+
+Como referência:
+- cena de 10 a 20 segundos: normalmente 2 a 4 beats;
+- cena de 20 a 35 segundos: normalmente 3 a 6 beats;
+- procure uma mudança informativa visual a cada 4 a 7 segundos quando a narração realmente trouxer informação nova;
+- máximo de 12 beats numa cena.
+
+Cada beat deve conter:
+- `anchor`: trecho curto copiado EXATAMENTE da narração, no ponto em que a nova informação começa;
+- `kind`: fact, number, date, money, bank, flow, process, warning, compare, trend_up, trend_down, fuel ou block;
+- `headline`: texto visual curto, preferencialmente até 8 palavras;
+- `detail`: complemento curto somente quando necessário;
+- `value`: número, percentual, data ou valor quando isso for o foco;
+- `from` e `to`: somente para `flow`;
+- `sound`: none, tick, impact, whoosh ou alert. Use som apenas nos beats mais importantes, não em todos.
+
+O `anchor` é operacional: o pipeline procura esse trecho na narração e posiciona a microcena aproximadamente no momento em que Roberto ou Luana começa a dizê-lo. Por isso não parafraseie o anchor e não use texto que não exista literalmente na narração.
+
+O visual principal da cena continua dando contexto, mas os beats trocam o foco visual conforme a informação muda. Evite deixar o mesmo card ou a mesma pergunta dominando 20 ou 30 segundos enquanto a narração já mudou de assunto.
+
 A regra vale para todos os próximos vídeos e para qualquer tipo de cena criado no futuro. O objetivo é evitar sensação de PowerPoint narrado sem transformar o vídeo em edição caótica.
 
 ## Sound design editorial
