@@ -52,3 +52,21 @@ Cada fonte recebe um ID único. Claims factuais relevantes precisam apontar para
 ## Integridade
 
 O sistema valida versão, URLs, IDs, vínculos entre claims e fontes, índices de cena, narração, uma única embalagem principal e ausência de bloqueadores críticos antes de produção.
+
+
+## Pronúncia da narração
+
+O VideoProject pode declarar ajustes de fala no nível raiz sem alterar a grafia publicada:
+
+```json
+{
+  "speech": {
+    "pronunciations": {
+      "bets": "béts"
+    },
+    "ignore_pronunciation_terms": []
+  }
+}
+```
+
+`speech.pronunciations` é aplicado somente ao TTS. Texto de tela, título, descrição e roteiro mantêm a escrita original. Antes da síntese, o pipeline executa uma auditoria de termos com maior risco de leitura artificial. Em modo estrito, a etapa de áudio é interrompida quando um termo de risco conhecido não possui alias nem validação explícita.
