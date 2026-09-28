@@ -115,6 +115,22 @@ jobs:
       - name: Render thumbnail
         run: npm run still:pix-pilot
 
+      - name: Upload package to Google Drive
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+        run: |
+          if [ -z "$GOOGLE_CLIENT_ID" ] || [ -z "$GOOGLE_CLIENT_SECRET" ] || [ -z "$GOOGLE_REFRESH_TOKEN" ] || [ -z "$GOOGLE_DRIVE_FOLDER_ID" ]; then
+            echo "Google Drive ainda não configurado. Upload ignorado neste render."
+            exit 0
+          fi
+
+          python worker/progress_callback.py             --run-id "${{ github.run_id }}"             --title "$ODE_VIDEO_TITLE"             --status running             --stage publicando             --percent 94             --detail "Enviando vídeo, capa e metadados para o Google Drive."
+
+          python worker/upload_outputs_to_drive.py             --video public/render-tests/pix-med-pilot.mp4             --thumbnail public/render-tests/pix-med-thumbnail.png             --metadata public/render-tests/pix-med-youtube.json             --project-slug pix-med-2             --output public/render-tests/pix-med-drive.json
+
       - name: Preserve generated outputs
         run: |
           rm -rf /tmp/pix-pilot-output
@@ -123,6 +139,9 @@ jobs:
           cp public/render-tests/pix-med-thumbnail.png /tmp/pix-pilot-output/
           cp public/render-tests/pix-med-youtube.json /tmp/pix-pilot-output/
           cp public/render-tests/pix-med-youtube.txt /tmp/pix-pilot-output/
+          if [ -f public/render-tests/pix-med-drive.json ]; then
+            cp public/render-tests/pix-med-drive.json /tmp/pix-pilot-output/
+          fi
 
       - name: Publish pilot
         run: |
