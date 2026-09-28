@@ -696,5 +696,31 @@
     "gender": "male",
     "voice_id": "male",
     "name": "Roberto"
+  },
+  "visual_direction": {
+    "concept": "Pressão física na bomba: petróleo, cadeia de custos, fiscalização e abastecimento em espaços visuais diferentes.",
+    "world": "industrial",
+    "secondary_color": "#ff7a1a",
+    "motifs": [
+      "bomba de combustível",
+      "barril de petróleo",
+      "placar de preço",
+      "faixas industriais",
+      "fluxo físico"
+    ],
+    "motion_language": [
+      "hard cuts",
+      "match de forma",
+      "reframes",
+      "tipografia cinética",
+      "diagramas espaciais"
+    ],
+    "avoid": [
+      "cards flutuantes",
+      "popup central",
+      "grid repetido",
+      "mesma composição",
+      "transição sem função"
+    ]
   }
 }
