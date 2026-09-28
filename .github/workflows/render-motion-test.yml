@@ -2,12 +2,6 @@ name: Render teste de motion graphics
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "video/**"
-      - "package.json"
-      - ".github/workflows/render-motion-test.yml"
 
 permissions:
   contents: write
