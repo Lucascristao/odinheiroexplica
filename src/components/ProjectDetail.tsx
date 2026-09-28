@@ -1,11 +1,10 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
-  AlertTriangle,
   ArrowLeft,
-  CheckCircle2,
   ExternalLink,
   FileText,
-  Save,
+  HardDrive,
+  SearchCheck,
   ShieldCheck,
 } from "lucide-react";
 import type {
@@ -21,10 +20,18 @@ import { hardRiskFlags } from "../lib/video-project-schema";
 type Props = {
   project: VideoProjectRow;
   onBack: () => void;
-  onProjectUpdated: (project: VideoProjectRow) => void;
 };
 
 type PackageData = {
+  editorial?: {
+    youtube_suitability?: {
+      risk_level?: "low" | "medium" | "high";
+      sensitive_topics?: string[];
+      context_notes?: string;
+      title_thumbnail_safe?: boolean;
+      monetization_notes?: string;
+    };
+  };
   script?: {
     hook?: string;
     closing?: string;
@@ -37,6 +44,7 @@ type PackageData = {
       mobile_readability?: string;
       anti_clickbait_check?: string;
       repetition_check?: string;
+      youtube_safety_check?: string;
     };
     titles?: Array<{ id?: string; text?: string; rationale?: string }>;
     thumbnails?: Array<{
@@ -46,27 +54,38 @@ type PackageData = {
       visual_prompt?: string;
     }>;
   };
+  publication?: {
+    description?: string;
+    seo?: {
+      primary_keyword?: string;
+      secondary_keywords?: string[];
+      search_intent?: string;
+      description_strategy?: string;
+    };
+    tags?: string[];
+  };
 };
 
 function asPackageData(value: Json): PackageData {
   if (typeof value === "object" && value !== null && !Array.isArray(value)) {
     return value as unknown as PackageData;
   }
-
   return {};
 }
 
 function statusLabel(status: string) {
   const labels: Record<string, string> = {
-    IMPORTED: "Importado",
-    VALIDATING: "Em revisão",
-    READY_TO_RENDER: "Pronto para render",
-    RENDERING: "Renderizando",
-    READY_TO_REVIEW: "Pronto para assistir",
-    APPROVED: "Aprovado",
-    UPLOADED: "Enviado",
+    IDEA: "Pauta",
+    RESEARCHED: "Pesquisa pronta",
+    IMPORTED: "Projeto criado",
+    VALIDATING: "Validando",
+    READY_TO_RENDER: "Pronto para produzir",
+    RENDERING: "Em produção",
+    READY_TO_REVIEW: "Vídeo pronto",
+    APPROVED: "Vídeo pronto",
+    UPLOADED: "No Drive",
     PUBLISHED: "Publicado",
-    ANALYZING: "Em análise",
+    ANALYZING: "Analisando",
     ARCHIVED: "Arquivado",
     ERROR: "Erro",
   };
@@ -74,42 +93,11 @@ function statusLabel(status: string) {
   return labels[status] ?? status;
 }
 
-function transitionError(message: string) {
-  if (message.includes("editorial_blockers_present")) {
-    return "Ainda existem bloqueadores editoriais no projeto.";
-  }
-  if (message.includes("claims_not_ready")) {
-    return "Todos os claims precisam estar verificados e ligados a pelo menos uma fonte.";
-  }
-  if (message.includes("scenes_required")) {
-    return "O projeto precisa ter pelo menos uma cena.";
-  }
-  if (message.includes("scene_narration_required")) {
-    return "Todas as cenas precisam ter texto de narração.";
-  }
-  if (message.includes("state_changed")) {
-    return "O estado do projeto mudou em outra operação. Atualize e tente novamente.";
-  }
-  if (message.includes("transition_not_allowed")) {
-    return "Essa mudança de etapa não é permitida.";
-  }
-
-  return message;
-}
-
-export function ProjectDetail({
-  project,
-  onBack,
-  onProjectUpdated,
-}: Props) {
+export function ProjectDetail({project, onBack}: Props) {
   const [sources, setSources] = useState<ProjectSourceRow[]>([]);
   const [claims, setClaims] = useState<ProjectClaimRow[]>([]);
   const [scenes, setScenes] = useState<ProjectSceneRow[]>([]);
-  const [ownerId, setOwnerId] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
-  const [busyStatus, setBusyStatus] = useState(false);
-  const [savingSceneId, setSavingSceneId] = useState<string | null>(null);
-  const [savingClaimId, setSavingClaimId] = useState<string | null>(null);
   const [message, setMessage] = useState<string | null>(null);
 
   const packageData = useMemo(
@@ -124,7 +112,7 @@ export function ProjectDetail({
     setMessage(null);
 
     const {
-      data: { user },
+      data: {user},
       error: userError,
     } = await supabase.auth.getUser();
 
@@ -134,27 +122,25 @@ export function ProjectDetail({
       return;
     }
 
-    setOwnerId(user.id);
-
     const [sourceResult, claimResult, sceneResult] = await Promise.all([
       supabase
         .from("project_sources")
         .select("*")
         .eq("project_id", project.id)
         .eq("owner_id", user.id)
-        .order("created_at", { ascending: true }),
+        .order("created_at", {ascending: true}),
       supabase
         .from("project_claims")
         .select("*")
         .eq("project_id", project.id)
         .eq("owner_id", user.id)
-        .order("created_at", { ascending: true }),
+        .order("created_at", {ascending: true}),
       supabase
         .from("project_scenes")
         .select("*")
         .eq("project_id", project.id)
         .eq("owner_id", user.id)
-        .order("scene_index", { ascending: true }),
+        .order("scene_index", {ascending: true}),
     ]);
 
     const firstError =
@@ -176,207 +162,75 @@ export function ProjectDetail({
   }, [loadData]);
 
   const blockers = project.risk_flags.filter((flag) => hardRiskFlags.has(flag));
-  const claimsReady =
-    claims.length > 0 &&
-    claims.every(
-      (claim) =>
-        claim.verification_status === "verified" &&
-        claim.source_keys.length > 0,
-    );
-  const scenesReady =
-    scenes.length > 0 && scenes.every((scene) => scene.narration.trim().length > 0);
-  const editorialReady =
-    blockers.length === 0 && claimsReady && scenesReady;
-
-  async function transition(nextStatus: string) {
-    if (!supabase) return;
-
-    setBusyStatus(true);
-    setMessage(null);
-
-    const { data, error } = await supabase.rpc(
-      "transition_video_project_status",
-      {
-        p_project_id: project.id,
-        p_expected_status: project.status,
-        p_new_status: nextStatus,
-      },
-    );
-
-    if (error) {
-      setMessage(transitionError(error.message));
-    } else if (data) {
-      onProjectUpdated(data);
-    }
-
-    setBusyStatus(false);
-  }
-
-  async function saveScene(scene: ProjectSceneRow) {
-    if (!supabase || !ownerId) return;
-
-    setSavingSceneId(scene.id);
-    setMessage(null);
-
-    const { data, error } = await supabase
-      .from("project_scenes")
-      .update({
-        title: scene.title,
-        narration: scene.narration,
-      })
-      .eq("id", scene.id)
-      .eq("project_id", project.id)
-      .eq("owner_id", ownerId)
-      .select("*")
-      .single();
-
-    if (error) {
-      setMessage(error.message);
-    } else if (data) {
-      setScenes((current) =>
-        current.map((item) => (item.id === data.id ? data : item)),
-      );
-      setMessage(`Cena ${scene.scene_index + 1} salva.`);
-    }
-
-    setSavingSceneId(null);
-  }
-
-  async function setClaimVerification(
-    claim: ProjectClaimRow,
-    verificationStatus: "verified" | "unverified",
-  ) {
-    if (!supabase || !ownerId) return;
-
-    setSavingClaimId(claim.id);
-    setMessage(null);
-
-    const { data, error } = await supabase
-      .from("project_claims")
-      .update({ verification_status: verificationStatus })
-      .eq("id", claim.id)
-      .eq("project_id", project.id)
-      .eq("owner_id", ownerId)
-      .select("*")
-      .single();
-
-    if (error) {
-      setMessage(error.message);
-    } else if (data) {
-      setClaims((current) =>
-        current.map((item) => (item.id === data.id ? data : item)),
-      );
-    }
-
-    setSavingClaimId(null);
-  }
-
-  function updateScene(
-    sceneId: string,
-    field: "title" | "narration",
-    value: string,
-  ) {
-    setScenes((current) =>
-      current.map((scene) =>
-        scene.id === sceneId ? { ...scene, [field]: value } : scene,
-      ),
-    );
-  }
-
-  function renderStatusAction() {
-    if (project.status === "IMPORTED") {
-      return (
-        <button
-          className="primary-button"
-          disabled={busyStatus}
-          onClick={() => void transition("VALIDATING")}
-        >
-          <ShieldCheck size={17} />
-          Iniciar revisão
-        </button>
-      );
-    }
-
-    if (project.status === "VALIDATING") {
-      return (
-        <button
-          className="primary-button"
-          disabled={busyStatus || !editorialReady}
-          onClick={() => void transition("READY_TO_RENDER")}
-          title={
-            editorialReady
-              ? "Liberar projeto para a etapa de renderização"
-              : "Resolva os itens da revisão antes de avançar"
-          }
-        >
-          <CheckCircle2 size={17} />
-          Marcar pronto para render
-        </button>
-      );
-    }
-
-    if (project.status === "READY_TO_RENDER") {
-      return (
-        <button
-          className="secondary-button"
-          disabled={busyStatus}
-          onClick={() => void transition("VALIDATING")}
-        >
-          Reabrir revisão
-        </button>
-      );
-    }
-
-    return null;
-  }
+  const verifiedClaims = claims.filter(
+    (claim) =>
+      claim.verification_status === "verified" && claim.source_keys.length > 0,
+  ).length;
+  const suitability = packageData.editorial?.youtube_suitability;
+  const seo = packageData.publication?.seo;
 
   return (
     <section className="project-detail">
       <div className="detail-toolbar">
         <button className="text-icon-button" onClick={onBack}>
           <ArrowLeft size={18} />
-          Projetos
+          Histórico
         </button>
         <span className="status-chip">{statusLabel(project.status)}</span>
       </div>
 
       <header className="detail-header">
         <div>
-          <p className="eyebrow">Projeto editorial</p>
+          <p className="eyebrow">Projeto do vídeo</p>
           <h1>{project.subject}</h1>
           {project.angle && <p className="muted hero-copy">{project.angle}</p>}
         </div>
-        <div className="detail-actions">{renderStatusAction()}</div>
+        {project.drive_file_id && (
+          <a
+            className="primary-button project-drive-link"
+            href={`https://drive.google.com/file/d/${project.drive_file_id}/view`}
+            target="_blank"
+            rel="noreferrer"
+          >
+            <HardDrive size={17} />
+            Abrir no Drive
+          </a>
+        )}
       </header>
 
       {message && <div className="notice">{message}</div>}
 
-      <section className="readiness-grid">
+      <section className="readiness-grid production-summary-grid">
         <article className={`readiness-card ${blockers.length === 0 ? "ok" : "bad"}`}>
           <span>Bloqueadores</span>
           <strong>{blockers.length}</strong>
           <small>
-            {blockers.length === 0 ? "Nenhum bloqueio crítico" : blockers.join(", ")}
+            {blockers.length === 0
+              ? "Nenhum bloqueio crítico"
+              : blockers.join(", ")}
           </small>
         </article>
-        <article className={`readiness-card ${claimsReady ? "ok" : "bad"}`}>
-          <span>Claims</span>
+        <article className="readiness-card ok">
+          <span>Fatos com fonte</span>
           <strong>
-            {claims.filter((claim) => claim.verification_status === "verified").length}/
-            {claims.length}
+            {verifiedClaims}/{claims.length}
           </strong>
-          <small>Verificados e com fonte</small>
+          <small>Afirmações verificadas no pacote editorial</small>
         </article>
-        <article className={`readiness-card ${scenesReady ? "ok" : "bad"}`}>
+        <article className="readiness-card">
           <span>Cenas</span>
           <strong>{scenes.length}</strong>
-          <small>{scenesReady ? "Narração completa" : "Há cena sem narração"}</small>
+          <small>
+            {project.duration_seconds
+              ? `Vídeo com ${Math.round(project.duration_seconds)}s`
+              : "Timeline definida pela narração"}
+          </small>
         </article>
       </section>
 
       {loading ? (
         <section className="panel">
-          <p className="muted">Carregando revisão...</p>
+          <p className="muted">Carregando projeto...</p>
         </section>
       ) : (
         <>
@@ -384,7 +238,7 @@ export function ProjectDetail({
             <div className="panel-heading">
               <div>
                 <p className="eyebrow">Embalagem</p>
-                <h2>Embalagem principal</h2>
+                <h2>Título e thumbnail</h2>
               </div>
             </div>
 
@@ -397,11 +251,10 @@ export function ProjectDetail({
 
             {packageData.packaging?.strategy?.click_reason && (
               <div className="hook-box">
-                <span>Hipótese de clique</span>
+                <span>Por que clicar</span>
                 <strong>{packageData.packaging.strategy.click_reason}</strong>
                 <small>
-                  Foco: {packageData.packaging.strategy.visual_focus ?? "não informado"} ·
-                  Curiosidade: {packageData.packaging.strategy.curiosity_gap ?? "não informada"}
+                  Foco: {packageData.packaging.strategy.visual_focus ?? "não informado"}
                 </small>
               </div>
             )}
@@ -412,7 +265,7 @@ export function ProjectDetail({
                 <div className="stack-list">
                   {(packageData.packaging?.titles ?? []).map((title, index) => (
                     <article className="compact-card" key={title.id ?? index}>
-                      <span className="option-index">{String.fromCharCode(65 + index)}</span>
+                      <span className="option-index">1</span>
                       <div>
                         <strong>{title.text ?? "Sem título"}</strong>
                         {title.rationale && <small>{title.rationale}</small>}
@@ -427,7 +280,7 @@ export function ProjectDetail({
                 <div className="stack-list">
                   {(packageData.packaging?.thumbnails ?? []).map((thumb, index) => (
                     <article className="compact-card" key={thumb.id ?? index}>
-                      <span className="option-index">{String.fromCharCode(65 + index)}</span>
+                      <span className="option-index">1</span>
                       <div>
                         <strong>{thumb.headline ?? "Sem headline"}</strong>
                         <small>{thumb.concept ?? "Sem conceito"}</small>
@@ -442,79 +295,69 @@ export function ProjectDetail({
           <section className="panel">
             <div className="panel-heading">
               <div>
-                <p className="eyebrow">Evidências</p>
-                <h2>Claims</h2>
+                <p className="eyebrow">YouTube</p>
+                <h2>Adequação e SEO</h2>
               </div>
-              <span className="muted small">
-                {claims.length} afirmações verificáveis
-              </span>
+              <ShieldCheck size={20} />
             </div>
 
-            <div className="stack-list top-gap">
-              {claims.map((claim) => {
-                const linkedSources = sources.filter((source) =>
-                  claim.source_keys.includes(source.source_key ?? ""),
-                );
-                const canVerify = linkedSources.length > 0;
-                const isVerified = claim.verification_status === "verified";
+            <div className="youtube-grid top-gap">
+              <article className="youtube-card">
+                <span>Adequação</span>
+                <strong>
+                  {suitability?.risk_level === "high"
+                    ? "Atenção alta"
+                    : suitability?.risk_level === "medium"
+                      ? "Atenção moderada"
+                      : "Baixo risco"}
+                </strong>
+                <p>
+                  {suitability?.context_notes ??
+                    "Sem observação especial de adequação para este vídeo."}
+                </p>
+                {packageData.packaging?.strategy?.youtube_safety_check && (
+                  <small>
+                    {packageData.packaging.strategy.youtube_safety_check}
+                  </small>
+                )}
+              </article>
 
-                return (
-                  <article className="claim-card" key={claim.id}>
-                    <div className="claim-main">
-                      <div className="claim-meta">
-                        <span className={`verification-dot ${isVerified ? "verified" : ""}`} />
-                        <span>{claim.claim_key ?? "claim"}</span>
-                        <span>{claim.confidence}</span>
-                      </div>
-                      <p>{claim.claim_text}</p>
-
-                      <div className="source-links">
-                        {linkedSources.length === 0 ? (
-                          <span className="risk-row">
-                            <AlertTriangle size={14} />
-                            Sem fonte vinculada
-                          </span>
-                        ) : (
-                          linkedSources.map((source) => (
-                            <a
-                              key={source.id}
-                              href={source.url}
-                              target="_blank"
-                              rel="noreferrer"
-                            >
-                              <ExternalLink size={13} />
-                              {source.publisher ?? source.title ?? "Fonte"}
-                            </a>
-                          ))
-                        )}
-                      </div>
-                    </div>
-
-                    <button
-                      className={isVerified ? "secondary-button" : "primary-button"}
-                      disabled={savingClaimId === claim.id || (!isVerified && !canVerify)}
-                      onClick={() =>
-                        void setClaimVerification(
-                          claim,
-                          isVerified ? "unverified" : "verified",
-                        )
-                      }
-                    >
-                      {isVerified ? "Reabrir" : "Verificar"}
-                    </button>
-                  </article>
-                );
-              })}
+              <article className="youtube-card">
+                <span>SEO principal</span>
+                <strong>{seo?.primary_keyword ?? "Não informado"}</strong>
+                <p>{seo?.search_intent ?? "Intenção de busca não informada."}</p>
+                {seo?.secondary_keywords && seo.secondary_keywords.length > 0 && (
+                  <div className="keyword-row">
+                    {seo.secondary_keywords.map((keyword) => (
+                      <em key={keyword}>{keyword}</em>
+                    ))}
+                  </div>
+                )}
+              </article>
             </div>
+
+            {packageData.publication?.description && (
+              <div className="description-preview">
+                <span>Descrição preparada para publicação</span>
+                <p>{packageData.publication.description}</p>
+              </div>
+            )}
           </section>
 
           <section className="panel">
             <div className="panel-heading">
               <div>
                 <p className="eyebrow">Pesquisa</p>
-                <h2>Fontes</h2>
+                <h2>Fontes e evidências</h2>
               </div>
-              <span className="muted small">{sources.length} fontes</span>
+              <SearchCheck size={20} />
+            </div>
+
+            <div className="evidence-summary">
+              <strong>{claims.length}</strong>
+              <span>afirmações verificáveis</span>
+              <strong>{sources.length}</strong>
+              <span>fontes utilizadas</span>
             </div>
 
             <div className="source-grid top-gap">
@@ -527,7 +370,9 @@ export function ProjectDetail({
                   rel="noreferrer"
                 >
                   <div>
-                    <span className="source-type">{source.source_type ?? "fonte"}</span>
+                    <span className="source-type">
+                      {source.source_type ?? "fonte"}
+                    </span>
                     <strong>{source.title ?? source.publisher ?? source.url}</strong>
                     <small>{source.publisher ?? source.url}</small>
                   </div>
@@ -548,47 +393,16 @@ export function ProjectDetail({
 
             <div className="scene-list top-gap">
               {scenes.map((scene) => (
-                <article className="scene-editor" key={scene.id}>
+                <article className="scene-readonly" key={scene.id}>
                   <div className="scene-number">{scene.scene_index + 1}</div>
-                  <div className="scene-fields">
-                    <div className="scene-heading-row">
-                      <input
-                        className="scene-title-input"
-                        value={scene.title ?? ""}
-                        placeholder="Título interno da cena"
-                        onChange={(event) =>
-                          updateScene(scene.id, "title", event.target.value)
-                        }
-                      />
+                  <div>
+                    <div className="scene-readonly-heading">
+                      <strong>{scene.title ?? `Cena ${scene.scene_index + 1}`}</strong>
                       <span className="visual-chip">
                         {scene.visual_type ?? "VISUAL"}
                       </span>
                     </div>
-
-                    <textarea
-                      className="scene-narration"
-                      value={scene.narration}
-                      placeholder="Texto de narração"
-                      onChange={(event) =>
-                        updateScene(scene.id, "narration", event.target.value)
-                      }
-                    />
-
-                    <div className="scene-footer">
-                      <span className="muted small">
-                        {scene.claim_keys.length > 0
-                          ? `Claims: ${scene.claim_keys.join(", ")}`
-                          : "Sem claim factual vinculado"}
-                      </span>
-                      <button
-                        className="secondary-button"
-                        disabled={savingSceneId === scene.id}
-                        onClick={() => void saveScene(scene)}
-                      >
-                        <Save size={16} />
-                        {savingSceneId === scene.id ? "Salvando..." : "Salvar cena"}
-                      </button>
-                    </div>
+                    <p>{scene.narration}</p>
                   </div>
                 </article>
               ))}
@@ -598,11 +412,11 @@ export function ProjectDetail({
           <section className="panel compact-summary">
             <FileText size={20} />
             <div>
-              <strong>Próxima etapa</strong>
+              <strong>Fluxo automático</strong>
               <p className="muted">
-                Quando o projeto estiver pronto para render, entraremos na geração
-                de voz por cena. A duração do áudio passará a determinar a timeline
-                do vídeo.
+                Este painel é para acompanhar e consultar. Pesquisa, embalagem,
+                roteiro, narração e produção avançam pelo fluxo automático sem
+                exigir revisão manual etapa por etapa.
               </p>
             </div>
           </section>
