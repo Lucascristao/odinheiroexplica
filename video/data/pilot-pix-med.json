@@ -196,26 +196,26 @@
     "thumbnails": [
       {
         "id": "TH1",
-        "headline": "ATÉ OUTRAS CONTAS",
-        "concept": "Fluxo amarelo saindo de uma conta e se dividindo em várias contas conectadas, com uma linha de rastreamento destacada.",
+        "headline": "O PIX VAI ATRÁS",
+        "concept": "Um Pix de R$ 1.000 entra numa conta e um rastro amarelo continua por outras contas, com selo discreto de GOLPE.",
         "visual_prompt": "Editorial finance graphic, dark charcoal background, warm yellow transaction trail branching through bank account nodes, clean modern documentary style, no gradients, no people, bold text area."
       },
       {
         "id": "TH2",
-        "headline": "O PIX SEGUE O DINHEIRO",
-        "concept": "Rede de contas com uma trilha dourada sendo rastreada.",
+        "headline": "O RASTRO DO GOLPE",
+        "concept": "Uma trilha dourada conecta várias contas enquanto a primeira aparece marcada como golpe.",
         "visual_prompt": "Dark financial network diagram with yellow highlighted path, clean Brazilian finance explainer style, strong contrast, no cliché money symbols."
       },
       {
         "id": "TH3",
-        "headline": "MED 2.0",
-        "concept": "Primeira conta em cinza e contas seguintes sendo iluminadas pelo rastreamento.",
+        "headline": "ATÉ OUTRAS CONTAS",
+        "concept": "A primeira conta fica à esquerda e o rastreamento continua visivelmente para B, C e D.",
         "visual_prompt": "Minimal dark diagram of transaction chain, first node and multiple downstream nodes, yellow tracking glow, professional editorial motion identity."
       }
     ]
   },
   "script": {
-    "hook": "Você faz um Pix para um golpista. Em segundos, o dinheiro sai da primeira conta e começa a circular por outras. A pergunta sempre foi: como recuperar um valor que já não está mais onde chegou? O Pix mudou justamente nesse ponto.",
+    "hook": "Imagina a cena: você faz um Pix, percebe que caiu num golpe e, quando tenta reagir, o dinheiro já saiu da primeira conta. A sensação é de que sumiu. Só que hoje existe uma diferença importante: o sistema consegue seguir esse rastro por outras contas. E é justamente aí que o MED 2.0 muda a história.",
     "beats": [
       "Escala do Pix no Brasil",
       "Limitação da primeira conta",
@@ -230,7 +230,7 @@
       {
         "index": 0,
         "title": "O dinheiro não para na primeira conta",
-        "narration": "Você faz um Pix para um golpista. Em segundos, o dinheiro sai da primeira conta e começa a circular por outras. A pergunta sempre foi: como recuperar um valor que já não está mais onde chegou? O Pix mudou justamente nesse ponto. O novo mecanismo de recuperação consegue seguir o rastro do dinheiro para além da primeira conta recebedora.",
+        "narration": "Imagina a cena: você faz um Pix, percebe que caiu num golpe e, quando tenta reagir, o dinheiro já saiu da primeira conta. A sensação é de que sumiu. Só que hoje existe uma diferença importante: o sistema consegue seguir esse rastro por outras contas. E é justamente aí que o MED 2.0 muda a história.",
         "visual": {
           "type": "HEADLINE",
           "payload": {
@@ -242,12 +242,17 @@
         },
         "claim_ids": [
           "C2"
-        ]
+        ],
+        "tts": {
+          "rate": "+1%",
+          "pitch": "+1%",
+          "pause_ms": 120
+        }
       },
       {
         "index": 1,
         "title": "A escala do Pix",
-        "narration": "E isso importa porque estamos falando de uma infraestrutura gigantesca. Mais de cento e setenta milhões de pessoas físicas já fizeram Pix. Só em maio de dois mil e vinte e seis foram mais de sete bilhões de transações. Quando um sistema desse tamanho movimenta dinheiro em segundos, combater fraude também precisa acontecer rápido e em escala.",
+        "narration": "Pra ter noção do tamanho disso, olha a escala do Pix. Mais de cento e setenta milhões de pessoas físicas já usaram o sistema. Só em maio de dois mil e vinte e seis foram mais de sete bilhões de transações. É dinheiro andando em segundos, o dia inteiro. Então, quando aparece uma fraude, a resposta também precisa funcionar nessa velocidade.",
         "visual": {
           "type": "STAT_GRID",
           "payload": {
@@ -268,12 +273,17 @@
         },
         "claim_ids": [
           "C1"
-        ]
+        ],
+        "tts": {
+          "rate": "0%",
+          "pitch": "+1%",
+          "pause_ms": 110
+        }
       },
       {
         "index": 2,
         "title": "O problema da primeira conta",
-        "narration": "O problema é simples. O golpista raramente precisa deixar o dinheiro parado. Ele pode receber em uma conta, transferir para outra, dividir o valor e continuar a dispersão. O Banco Central apresentou o MED dois ponto zero justamente para permitir rastreamento além da primeira conta receptora e aumentar a chance de encontrar recursos desviados.",
+        "narration": "Até pouco tempo, existia um gargalo bem óbvio. O dinheiro chegava na primeira conta e podia sair dali quase imediatamente. Se ele fosse dividido e espalhado, a recuperação ficava muito mais difícil. O MED 2.0 foi criado justamente para ir além dessa primeira conta e tentar reconstruir o caminho que o dinheiro fez.",
         "visual": {
           "type": "BEFORE_AFTER",
           "payload": {
@@ -287,12 +297,17 @@
         },
         "claim_ids": [
           "C2"
-        ]
+        ],
+        "tts": {
+          "rate": "0%",
+          "pitch": "+1%",
+          "pause_ms": 120
+        }
       },
       {
         "index": 3,
         "title": "O grafo do dinheiro",
-        "narration": "A peça central é o chamado grafo de rastreamento. Pense em um mapa. A transação do golpe é o ponto inicial. A partir dali, o sistema identifica transferências subsequentes, monta caminhos e prioriza onde existem recursos que podem ser bloqueados. A documentação técnica do Pix diz que esse rastreamento e o comando de bloqueio podem ser feitos automaticamente pelo DICT.",
+        "narration": "Pensa no DICT como um mapa do trajeto. A transação do golpe é o ponto de partida. Depois, o sistema observa as transferências seguintes, monta os caminhos e procura onde ainda existem recursos que podem ser bloqueados. Na documentação do Pix, esse rastreamento pode acontecer automaticamente. É quase como seguir pegadas digitais do dinheiro.",
         "visual": {
           "type": "NETWORK",
           "payload": {
@@ -328,12 +343,17 @@
         },
         "claim_ids": [
           "C4"
-        ]
+        ],
+        "tts": {
+          "rate": "-1%",
+          "pitch": "+1%",
+          "pause_ms": 125
+        }
       },
       {
         "index": 4,
         "title": "Um exemplo de mil reais",
-        "narration": "Imagine um golpe de mil reais. O dinheiro entra na conta A. Dali, seiscentos reais vão para a conta B e quatrocentos para a conta C. Depois, parte da conta B segue para uma conta D. O objetivo do novo mecanismo é não enxergar apenas a conta A. Ele tenta reconstruir esse caminho e levar a análise também às contas potencialmente envolvidas na dispersão.",
+        "narration": "Vamos colocar dinheiro nessa história. Imagina um golpe de mil reais. O valor entra na conta A. Dali, seiscentos reais vão pra conta B e quatrocentos pra conta C. Depois, uma parte da conta B segue pra conta D. Antes, olhar só pra conta A deixava boa parte da história de fora. Agora, a ideia é acompanhar esse caminho e levar a análise também pras contas seguintes.",
         "visual": {
           "type": "MONEY_FLOW",
           "payload": {
@@ -362,12 +382,17 @@
         "claim_ids": [
           "C4",
           "C5"
-        ]
+        ],
+        "tts": {
+          "rate": "+1%",
+          "pitch": "+1%",
+          "pause_ms": 105
+        }
       },
       {
         "index": 5,
         "title": "Rastrear não é confiscar automaticamente",
-        "narration": "Mas existe uma diferença importante: rastrear uma conta não significa simplesmente retirar dinheiro dela. As instituições recebem notificações, bloqueiam recursos disponíveis até o limite da transação contestada e analisam se aquela movimentação realmente está ligada à fraude. Segundo o Banco Central, essa análise pode levar até sete dias.",
+        "narration": "Agora vem uma parte importante. Rastrear uma conta não significa simplesmente tirar dinheiro dela. As instituições recebem as notificações, bloqueiam o que estiver disponível até o limite contestado e analisam se aquela movimentação realmente está ligada à fraude. Segundo o Banco Central, essa análise pode levar até sete dias.",
         "visual": {
           "type": "PROCESS",
           "payload": {
@@ -385,12 +410,17 @@
         "claim_ids": [
           "C5",
           "C7"
-        ]
+        ],
+        "tts": {
+          "rate": "-1%",
+          "pitch": "0%",
+          "pause_ms": 125
+        }
       },
       {
         "index": 6,
         "title": "O relógio ainda importa",
-        "narration": "Para a vítima, velocidade continua sendo importante. O MED pode ser solicitado em até oitenta dias da transação, mas o próprio Banco Central recomenda acionar o mecanismo o mais rápido possível. E há um limite que nenhum efeito visual deve esconder: o MED não garante que todo o dinheiro volte. A devolução depende da análise e da existência de saldo nas contas envolvidas.",
+        "narration": "E aqui entra o relógio. A vítima pode pedir o MED em até oitenta dias depois da transação. Mas oitenta dias não significa que vale a pena esperar. Quanto mais cedo o pedido é feito, maior a chance de ainda existir dinheiro nas contas envolvidas. E tem outro ponto: o MED não garante devolução. Se não houver saldo disponível, não existe dinheiro pra recuperar.",
         "visual": {
           "type": "BIG_NUMBER",
           "payload": {
@@ -404,12 +434,17 @@
         "claim_ids": [
           "C6",
           "C7"
-        ]
+        ],
+        "tts": {
+          "rate": "-2%",
+          "pitch": "0%",
+          "pause_ms": 140
+        }
       },
       {
         "index": 7,
         "title": "O que o MED não cobre",
-        "narration": "Também é importante saber o que não entra nessa regra. O MED foi criado para fraude, golpe ou crime. Ele não é o caminho para resolver um desacordo comercial comum e também não serve para um Pix enviado à pessoa errada por erro do próprio pagador. Nesses casos, a lógica é outra.",
+        "narration": "Outra dúvida comum: o MED não serve pra qualquer Pix que deu problema. Ele foi criado pra fraude, golpe ou crime. Se você comprou um produto e entrou numa discussão comercial, é outra situação. E se você mesmo digitou a chave errada e mandou o Pix pra pessoa errada, o MED também não é o caminho previsto pra resolver isso.",
         "visual": {
           "type": "DO_DONT",
           "payload": {
@@ -429,12 +464,17 @@
         "claim_ids": [
           "C6",
           "C8"
-        ]
+        ],
+        "tts": {
+          "rate": "0%",
+          "pitch": "+1%",
+          "pause_ms": 115
+        }
       },
       {
         "index": 8,
         "title": "O Pix ainda está mudando",
-        "narration": "E a evolução não parou. Em setembro de dois mil e vinte e seis, o Banco Central anunciou uma nova experiência de contestação para entrar em vigor em março de dois mil e vinte e sete. Entre as mudanças, o processo deve ficar mais orientativo para o usuário e os comprovantes do Pix não poderão carregar propaganda, ofertas ou links externos, uma medida também voltada a reduzir golpes.",
+        "narration": "E o Pix continua mudando. O Banco Central já anunciou uma nova experiência de contestação para março de dois mil e vinte e sete. A ideia é deixar o processo mais claro pro usuário. E tem uma mudança curiosa: os comprovantes do Pix não poderão trazer propaganda, ofertas ou links externos, justamente porque esse tipo de elemento também pode ser usado em golpes.",
         "visual": {
           "type": "TIMELINE",
           "payload": {
@@ -446,12 +486,17 @@
         },
         "claim_ids": [
           "C9"
-        ]
+        ],
+        "tts": {
+          "rate": "0%",
+          "pitch": "+1%",
+          "pause_ms": 115
+        }
       },
       {
         "index": 9,
         "title": "Por que isso importa",
-        "narration": "A mudança mais interessante não é um novo botão no aplicativo. É uma mudança na arquitetura da resposta à fraude. O dinheiro do golpe pode continuar se movendo, mas o mecanismo também passou a olhar para o caminho. Isso não elimina golpes e não transforma devolução em certeza. Mas torna mais difícil apostar que basta tirar o dinheiro da primeira conta para desaparecer do radar.",
+        "narration": "No fim, a mudança mais interessante não é um botão novo no aplicativo. É a lógica por trás do sistema. O dinheiro do golpe pode continuar se movendo, mas agora o mecanismo tenta olhar pro caminho inteiro. Isso não acaba com os golpes e não transforma a devolução em certeza. Mas fica bem mais difícil apostar que basta tirar o dinheiro da primeira conta e desaparecer.",
         "visual": {
           "type": "HEADLINE",
           "payload": {
@@ -465,12 +510,17 @@
           "C2",
           "C4",
           "C7"
-        ]
+        ],
+        "tts": {
+          "rate": "-1%",
+          "pitch": "+1%",
+          "pause_ms": 130
+        }
       },
       {
         "index": 10,
         "title": "Fechamento",
-        "narration": "Se você cair em um golpe, acione o MED pelo aplicativo do seu banco o mais rápido possível e registre a ocorrência pelos canais adequados. E guarde esta ideia: no Pix, a velocidade sempre foi a maior vantagem. Agora, essa mesma infraestrutura também está sendo usada para seguir o rastro do dinheiro.",
+        "narration": "Então guarda essa ideia. Se um dia você cair num golpe, acione o MED no aplicativo do seu banco o mais rápido possível e registre a ocorrência pelos canais adequados. O Pix ficou conhecido pela velocidade pra pagar. Agora essa mesma infraestrutura também está sendo usada pra seguir o rastro do dinheiro.",
         "visual": {
           "type": "CLOSING",
           "payload": {
@@ -482,13 +532,18 @@
         "claim_ids": [
           "C6",
           "C7"
-        ]
+        ],
+        "tts": {
+          "rate": "-1%",
+          "pitch": "+1%",
+          "pause_ms": 135
+        }
       }
     ],
     "closing": "O Pix ficou rápido para pagar. Agora tenta ser rápido para seguir o rastro."
   },
   "publication": {
-    "description": "O Pix mudou a forma de reagir a golpes. Com o MED 2.0, o mecanismo de recuperação de valores pode rastrear o dinheiro para além da primeira conta recebedora, formando um grafo das transferências subsequentes e ampliando a análise das contas potencialmente envolvidas. Neste vídeo, mostramos como isso funciona, quais são os prazos e por que o MED ainda não garante a devolução do dinheiro.\n\nFontes principais: Banco Central do Brasil, Regulamento do Pix, DICT e FAQs oficiais do MED.\n\nEste vídeo tem caráter informativo e educacional.",
+    "description": "O Pix mudou a forma de reagir a golpes. Com o MED 2.0, o mecanismo de recuperação de valores pode rastrear o dinheiro para além da primeira conta recebedora, formando um grafo das transferências subsequentes e ampliando a análise das contas potencialmente envolvidas. Neste vídeo, eu te mostro de forma simples como isso funciona, quais são os prazos e por que o MED ainda não garante a devolução do dinheiro.\n\nFontes principais: Banco Central do Brasil, Regulamento do Pix, DICT e FAQs oficiais do MED.\n\nEste vídeo tem caráter informativo e educacional.",
     "chapters": [],
     "disclosure_ai": false
   }
