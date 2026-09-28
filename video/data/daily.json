@@ -176,13 +176,13 @@
       {
         "id": "thumb_main",
         "headline": "SEU SALDO VOLTA?",
-        "concept": "Celular com uma tela genérica de saldo em plataforma de aposta à direita e uma seta levando o valor para uma conta bancária, com o texto curto à esquerda.",
-        "visual_prompt": "YouTube finance thumbnail, dark editorial background, no real betting brand, smartphone showing generic betting balance, bold arrow toward a bank account card, high contrast, short Portuguese headline 'SEU SALDO VOLTA?', documentary financial style, clean composition, no odds, no bonus badges, no gambling promotion."
+        "concept": "Thumbnail completa gerada pelo ChatGPT após o vídeo terminar, em 16:9, com composição editorial fotográfica e texto final incorporado na própria imagem. O arquivo gerado pelo chat é a capa definitiva usada no YouTube, sem etapa posterior de montagem no Remotion.",
+        "visual_prompt": "Criar a thumbnail COMPLETA do YouTube em 16:9. Estilo editorial fotográfico premium para canal brasileiro de economia, fundo escuro sofisticado com detalhes dourados. À direita, smartphone realista com interface genérica de saldo de uma plataforma de apostas, sem marca real, odds ou bônus, com sinal visual claro de dinheiro voltando para uma conta bancária. À esquerda, headline grande e perfeitamente legível: 'SEU SALDO VOLTA?'. Texto com espaçamento confortável entre letras, alto contraste, sem letras coladas, composição forte para leitura no celular. Incluir identidade discreta de O Dinheiro Explica, sem poluição visual. A imagem gerada já deve ser a capa final pronta para uso, não uma imagem-base."
       }
     ]
   },
   "script": {
-    "hook": "Tem uma situação meio estranha acontecendo agora: as bets foram proibidas, mas os sites ainda não sumiram. E o motivo é simples. Ainda existe dinheiro de apostadores lá dentro. A MP criou uma transição com datas bem específicas para esse saldo sair das plataformas e voltar para as contas bancárias.",
+    "hook": "Tem uma situação meio estranha acontecendo agora: as bets foram proibidas, mas os sites ainda não sumiram. Ainda existe dinheiro de apostadores lá dentro. Roberto apresenta o caminho desse saldo e explica as datas da transição até a devolução bancária.",
     "beats": [
       "O que a MP proibiu imediatamente",
       "O que acontece com novos depósitos",
@@ -198,7 +198,7 @@
       {
         "index": 0,
         "title": "As bets foram proibidas, mas o dinheiro ainda precisa sair",
-        "narration": "Tem uma situação meio estranha acontecendo agora: as bets foram proibidas, mas os sites ainda não sumiram. E o motivo é simples. Ainda existe dinheiro de apostadores lá dentro. A Medida Provisória número mil trezentos e noventa e quatro criou uma transição com datas bem específicas para esse saldo sair das plataformas e voltar para as contas bancárias. Então a pergunta mais importante agora não é se a bet vai continuar. É o que acontece com o dinheiro que ficou lá.",
+        "narration": "Tem uma situação meio estranha acontecendo agora: as bets foram proibidas, mas os sites ainda não sumiram. E o motivo é simples. Ainda existe dinheiro de apostadores lá dentro. Eu sou o Roberto, e hoje eu vou te mostrar o caminho desse dinheiro. A Medida Provisória número mil trezentos e noventa e quatro criou uma transição com datas bem específicas para esse saldo sair das plataformas e voltar para as contas bancárias. Então a pergunta mais importante agora não é se a bet vai continuar. É o que acontece com o dinheiro que ficou lá.",
         "visual": {
           "type": "HEADLINE",
           "payload": {
@@ -302,7 +302,7 @@
       {
         "index": 4,
         "title": "Quando o dinheiro volta",
-        "narration": "E quando esse dinheiro volta de fato? Pelo cronograma oficial, os bancos fazem a devolução entre os dias nove e quatorze de outubro. Se houver alguma dificuldade operacional para localizar a conta ou concluir o pagamento, a Caixa Econômica Federal pode entrar como intermediária. Então existem dois caminhos. Primeiro, o resgate direto até o dia cinco. Depois, o processo bancário para o que tiver ficado para trás.",
+        "narration": "E quando esse dinheiro volta de fato? Pelo cronograma oficial, os bancos fazem a devolução entre os dias nove e quatorze de outubro. Se houver alguma dificuldade operacional para localizar a conta ou concluir o pagamento, a Caixa Econômica Federal pode entrar como intermediária. Então existem dois caminhos. Primeiro, o resgate direto até o dia cinco. Depois, o processo bancário para o que tiver ficado para trás. Se esse tipo de explicação ajuda você a entender o que realmente muda no seu dinheiro, se inscreve no canal. Agora, tem uma diferença importante entre o bloqueio do dia seis e o fim das autorizações.",
         "visual": {
           "type": "TIMELINE",
           "payload": {
