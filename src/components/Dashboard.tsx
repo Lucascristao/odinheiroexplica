@@ -129,7 +129,7 @@ export function Dashboard() {
 
       <section className="hero">
         <div>
-          <p className="eyebrow">MVP editorial</p>
+          <p className="eyebrow">Produção editorial</p>
           <h1>Da pauta ao vídeo, automaticamente.</h1>
           <p className="muted hero-copy">
             O ChatGPT cuida do editorial e do roteiro. O sistema valida os
@@ -177,8 +177,7 @@ export function Dashboard() {
           <div className="empty-state">
             <strong>Nenhum projeto importado ainda.</strong>
             <span>
-              Use o pacote de exemplo acima para testar o fluxo sem depender de
-              uma pauta real.
+              Importe a próxima pauta real produzida pelo ChatGPT para iniciar a produção.
             </span>
           </div>
         ) : (
@@ -213,7 +212,7 @@ export function Dashboard() {
                     className="card-link-button"
                     onClick={() => setSelectedProject(project)}
                   >
-                    Abrir revisão
+                    Abrir projeto
                     <ChevronRight size={16} />
                   </button>
                 </footer>
