@@ -102,7 +102,20 @@ export default async (request: Request) => {
   };
 
   await store.setJSON(`job/${runId}`, job);
-  await store.setJSON("latest", job);
+
+  const latest =
+    (await store.get("latest", {type: "json"})) as
+      | Record<string, unknown>
+      | null;
+  const latestRunId = Number(latest?.runId ?? 0);
+  const incomingRunId = Number(runId);
+
+  // GitHub run IDs crescem ao longo do tempo. Um callback atrasado de uma
+  // execução antiga pode atualizar seu próprio histórico, mas nunca deve
+  // substituir no painel a execução mais nova.
+  if (!latest || incomingRunId >= latestRunId) {
+    await store.setJSON("latest", job);
+  }
 
   return json(200, {ok: true});
 };
