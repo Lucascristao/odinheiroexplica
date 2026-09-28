@@ -42,8 +42,23 @@ export const RemotionRoot = () => {
         height={1080}
       />
       <Still
-        id="PixPilotThumbnail"
+        id="PixPilotThumbnailA"
         component={PixPilotThumbnail}
+        defaultProps={{variant: "A"}}
+        width={1280}
+        height={720}
+      />
+      <Still
+        id="PixPilotThumbnailB"
+        component={PixPilotThumbnail}
+        defaultProps={{variant: "B"}}
+        width={1280}
+        height={720}
+      />
+      <Still
+        id="PixPilotThumbnailC"
+        component={PixPilotThumbnail}
+        defaultProps={{variant: "C"}}
         width={1280}
         height={720}
       />
