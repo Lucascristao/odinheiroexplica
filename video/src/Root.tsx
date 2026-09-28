@@ -1,8 +1,10 @@
-import {Composition} from "remotion";
+import {Composition, Still} from "remotion";
 import {BrandMotionTest} from "./BrandMotionTest";
 import {DynamicVideo} from "./DynamicVideo";
 import {DynamicMotionV2} from "./DynamicMotionV2";
+import {EditorialPilot, PixPilotThumbnail} from "./EditorialPilot";
 import renderInput from "../generated/render-input.json";
+import pilotRenderInput from "../generated/pilot-render-input.json";
 
 export const RemotionRoot = () => {
   return (
@@ -30,6 +32,20 @@ export const RemotionRoot = () => {
         fps={30}
         width={1920}
         height={1080}
+      />
+      <Composition
+        id="EditorialPilot"
+        component={EditorialPilot}
+        durationInFrames={pilotRenderInput.duration_in_frames}
+        fps={pilotRenderInput.fps}
+        width={1920}
+        height={1080}
+      />
+      <Still
+        id="PixPilotThumbnail"
+        component={PixPilotThumbnail}
+        width={1280}
+        height={720}
       />
     </>
   );
