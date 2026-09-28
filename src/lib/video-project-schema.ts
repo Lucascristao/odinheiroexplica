@@ -27,6 +27,46 @@ const claimSchema = z
   })
   .passthrough();
 
+const visualBeatSchema = z
+  .object({
+    anchor: z.string().min(1).optional(),
+    at: z.number().min(0).max(1).optional(),
+    kind: z
+      .enum([
+        "fact",
+        "number",
+        "date",
+        "money",
+        "bank",
+        "flow",
+        "process",
+        "warning",
+        "compare",
+        "trend_up",
+        "trend_down",
+        "fuel",
+        "block",
+      ])
+      .default("fact"),
+    headline: z.string().min(1),
+    detail: z.string().optional(),
+    value: z.string().optional(),
+    from: z.string().optional(),
+    to: z.string().optional(),
+    sound: z
+      .enum(["none", "tick", "impact", "whoosh", "alert"])
+      .default("none"),
+  })
+  .passthrough()
+  .superRefine((beat, ctx) => {
+    if (!beat.anchor && beat.at === undefined) {
+      ctx.addIssue({
+        code: "custom",
+        message: "Beat visual precisa de anchor ou at.",
+      });
+    }
+  });
+
 const sceneSchema = z
   .object({
     index: z.number().int().nonnegative(),
@@ -36,6 +76,7 @@ const sceneSchema = z
       .object({
         type: z.string().min(1),
         payload: z.record(z.string(), z.unknown()).optional(),
+        beats: z.array(visualBeatSchema).max(12).optional(),
       })
       .passthrough(),
     claim_ids: z.array(z.string()).default([]),
