@@ -103,7 +103,17 @@ export function RenderStatusPanel() {
 
   const elapsed = useMemo(() => {
     if (!job?.createdAt) return null;
-    return Math.max(0, (now - new Date(job.createdAt).getTime()) / 1000);
+
+    const startedAt = new Date(job.createdAt).getTime();
+    const finished =
+      job.status === "completed" || job.status === "error";
+
+    const endedAt =
+      finished && job.updatedAt
+        ? new Date(job.updatedAt).getTime()
+        : now;
+
+    return Math.max(0, (endedAt - startedAt) / 1000);
   }, [job, now]);
 
   if (checking && !job) {
