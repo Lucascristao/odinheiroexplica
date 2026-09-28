@@ -17,6 +17,8 @@ Antes de fechar o roteiro, resolva a embalagem. Título + thumbnail formam uma �
 
 Crie somente UMA embalagem principal. Não gere alternativas por obrigação.
 
+A thumbnail final não é renderizada pelo Remotion nem montada a partir de uma imagem-base. Depois que o vídeo terminar, o ChatGPT deve gerar a capa completa, já com composição, imagem, texto e acabamento final, pronta para uso no YouTube. O campo packaging.thumbnails[0].visual_prompt deve descrever essa capa completa. Priorize legibilidade em celular, espaçamento confortável entre letras e um único foco visual dominante.
+
 A embalagem precisa:
 - comunicar uma ideia central;
 - ser entendida rapidamente no feed e no celular;
