@@ -10,6 +10,7 @@ import { supabase } from "../lib/supabase";
 import type { VideoProjectRow } from "../lib/database.types";
 import { ImportProject } from "./ImportProject";
 import { ProjectDetail } from "./ProjectDetail";
+import { RenderStatusPanel } from "./RenderStatusPanel";
 
 function formatDate(value: string) {
   return new Intl.DateTimeFormat("pt-BR", {
@@ -129,10 +130,10 @@ export function Dashboard() {
       <section className="hero">
         <div>
           <p className="eyebrow">MVP editorial</p>
-          <h1>Da pauta ao vídeo, com controle humano.</h1>
+          <h1>Da pauta ao vídeo, automaticamente.</h1>
           <p className="muted hero-copy">
-            Importe a pesquisa produzida no ChatGPT, revise as evidências e
-            ajuste o roteiro antes de liberar o vídeo para produção.
+            O ChatGPT cuida do editorial e do roteiro. O sistema valida os
+            bloqueadores objetivos, gera a narração e acompanha o render até o vídeo pronto.
           </p>
         </div>
 
@@ -142,6 +143,8 @@ export function Dashboard() {
           <span>projetos no painel</span>
         </div>
       </section>
+
+      <RenderStatusPanel />
 
       <ImportProject onImported={loadProjects} />
 
