@@ -55,9 +55,12 @@ Se parecer genérica ou repetitiva, refazer o conceito antes de gerar.
 A thumbnail não faz parte do render do Remotion.
 
 1. O vídeo é roteirizado, narrado, renderizado e enviado ao Google Drive.
-2. O ChatGPT usa a embalagem aprovada e este DNA visual para gerar a CAPA FINAL COMPLETA.
-3. A imagem já deve sair com fotografia/ilustração, texto, composição e identidade final. Não é uma imagem-base.
-4. O ChatGPT envia a capa para a MESMA pasta do Google Drive criada para o vídeo.
-5. A capa entregue no Drive é o arquivo final usado no YouTube.
+2. O render termina sem gerar thumbnail automática.
+3. Na etapa seguinte da mesma produção no ChatGPT, o ChatGPT confere a pasta criada para o vídeo, usa a embalagem aprovada e este DNA visual e gera a CAPA FINAL COMPLETA.
+4. A imagem já deve sair com fotografia/ilustração, texto, composição e identidade final. Não é uma imagem-base.
+5. O ChatGPT envia a capa para a MESMA pasta do Google Drive criada para o vídeo.
+6. A capa entregue no Drive é o arquivo final usado no YouTube.
 
 A capa só é considerada concluída depois de estar na mesma pasta do vídeo.
+
+Importante: a geração da capa pelo ChatGPT não acontece dentro do GitHub Actions. Ela é uma segunda etapa da produção conduzida pelo próprio ChatGPT. Não usar polling/monitoramento periódico como parte normal do fluxo; quando a etapa de render já tiver concluído, o ChatGPT deve apenas conferir o resultado e executar a etapa da capa.
