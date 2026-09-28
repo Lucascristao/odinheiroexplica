@@ -15,19 +15,28 @@
       body {
         margin: 0;
         min-height: 100vh;
-        display: grid;
-        place-items: center;
-        padding: 24px;
+        padding: 30px 20px 70px;
       }
-      main { width: min(720px, 100%); }
+      main {
+        width: min(800px, 100%);
+        margin: 0 auto;
+      }
       h1 {
         margin: 0 0 8px;
         font-size: clamp(28px, 5vw, 44px);
       }
-      p {
-        margin: 0 0 28px;
+      .intro {
+        margin: 0 0 32px;
         color: #a5adb6;
         line-height: 1.6;
+      }
+      .group {
+        margin-top: 30px;
+      }
+      h2 {
+        margin: 0 0 12px;
+        font-size: 16px;
+        color: #d9dfe5;
       }
       .voice {
         padding: 18px;
@@ -36,6 +45,13 @@
         border-radius: 16px;
         background: #111418;
       }
+      .voice-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+        align-items: flex-start;
+        margin-bottom: 13px;
+      }
       .voice strong {
         display: block;
         color: #ffbd19;
@@ -43,7 +59,28 @@
       }
       .voice span {
         display: block;
-        margin-bottom: 12px;
+        color: #a5adb6;
+        font-size: 13px;
+      }
+      .badge {
+        padding: 5px 8px;
+        border-radius: 999px;
+        font-size: 11px !important;
+        font-weight: 800;
+        white-space: nowrap;
+      }
+      .badge.ok {
+        color: #7ce0a0;
+        background: rgba(124, 224, 160, .08);
+      }
+      .badge.no {
+        color: #ffcc66;
+        background: rgba(255, 204, 102, .08);
+      }
+      .unavailable {
+        padding: 12px;
+        border: 1px dashed #3b4148;
+        border-radius: 10px;
         color: #a5adb6;
         font-size: 13px;
       }
@@ -52,29 +89,153 @@
   </head>
   <body>
     <main>
-      <h1>Teste de vozes Azure pt-BR</h1>
-      <p>
-        O mesmo texto é lido por três vozes neurais brasileiras.
-        O objetivo é escolher naturalidade, dicção e ritmo para vídeos longos.
+      <h1>Teste de vozes brasileiras</h1>
+      <p class="intro">
+        Nicolau fica como referência. Abaixo estão as demais vozes masculinas
+        disponíveis e as novas vozes HD que o recurso conseguir sintetizar.
       </p>
-
-      <section class="voice">
-        <strong>Francisca</strong>
-        <span>pt-BR-FranciscaNeural</span>
-        <audio controls preload="metadata" src="./francisca.mp3"></audio>
-      </section>
-
-      <section class="voice">
-        <strong>Fabio</strong>
-        <span>pt-BR-FabioNeural</span>
-        <audio controls preload="metadata" src="./fabio.mp3"></audio>
-      </section>
-
-      <section class="voice">
-        <strong>Nicolau</strong>
-        <span>pt-BR-NicolauNeural</span>
-        <audio controls preload="metadata" src="./nicolau.mp3"></audio>
-      </section>
+      
+            <section class="group">
+              <h2>Referência</h2>
+              
+                <section class="voice">
+                  <div class="voice-head">
+                    <div>
+                      <strong>Nicolau</strong>
+                      <span>pt-BR-NicolauNeural</span>
+                    </div>
+                    <span class="badge ok">Gerada</span>
+                  </div>
+                  <audio controls preload="metadata" src="./nicolau.mp3"></audio>
+                </section>
+                
+            </section>
+            
+            <section class="group">
+              <h2>Neural padrão</h2>
+              
+                <section class="voice">
+                  <div class="voice-head">
+                    <div>
+                      <strong>Antonio</strong>
+                      <span>pt-BR-AntonioNeural</span>
+                    </div>
+                    <span class="badge ok">Gerada</span>
+                  </div>
+                  <audio controls preload="metadata" src="./antonio.mp3"></audio>
+                </section>
+                
+                <section class="voice">
+                  <div class="voice-head">
+                    <div>
+                      <strong>Donato</strong>
+                      <span>pt-BR-DonatoNeural</span>
+                    </div>
+                    <span class="badge ok">Gerada</span>
+                  </div>
+                  <audio controls preload="metadata" src="./donato.mp3"></audio>
+                </section>
+                
+                <section class="voice">
+                  <div class="voice-head">
+                    <div>
+                      <strong>Humberto</strong>
+                      <span>pt-BR-HumbertoNeural</span>
+                    </div>
+                    <span class="badge ok">Gerada</span>
+                  </div>
+                  <audio controls preload="metadata" src="./humberto.mp3"></audio>
+                </section>
+                
+                <section class="voice">
+                  <div class="voice-head">
+                    <div>
+                      <strong>Julio</strong>
+                      <span>pt-BR-JulioNeural</span>
+                    </div>
+                    <span class="badge ok">Gerada</span>
+                  </div>
+                  <audio controls preload="metadata" src="./julio.mp3"></audio>
+                </section>
+                
+                <section class="voice">
+                  <div class="voice-head">
+                    <div>
+                      <strong>Valerio</strong>
+                      <span>pt-BR-ValerioNeural</span>
+                    </div>
+                    <span class="badge ok">Gerada</span>
+                  </div>
+                  <audio controls preload="metadata" src="./valerio.mp3"></audio>
+                </section>
+                
+            </section>
+            
+            <section class="group">
+              <h2>Multilingual</h2>
+              
+                <section class="voice">
+                  <div class="voice-head">
+                    <div>
+                      <strong>Macerio</strong>
+                      <span>pt-BR-MacerioMultilingualNeural</span>
+                    </div>
+                    <span class="badge ok">Gerada</span>
+                  </div>
+                  <audio controls preload="metadata" src="./macerio.mp3"></audio>
+                </section>
+                
+            </section>
+            
+            <section class="group">
+              <h2>Neural HD</h2>
+              
+                <section class="voice">
+                  <div class="voice-head">
+                    <div>
+                      <strong>Caio HD</strong>
+                      <span>pt-BR-Caio:MAI-Voice-2</span>
+                    </div>
+                    <span class="badge no">Indisponível</span>
+                  </div>
+                  <div class="unavailable">Não disponível neste recurso F0 ou nesta região.</div>
+                </section>
+                
+                <section class="voice">
+                  <div class="voice-head">
+                    <div>
+                      <strong>Pedro HD</strong>
+                      <span>pt-BR-Pedro:MAI-Voice-2</span>
+                    </div>
+                    <span class="badge no">Indisponível</span>
+                  </div>
+                  <div class="unavailable">Não disponível neste recurso F0 ou nesta região.</div>
+                </section>
+                
+                <section class="voice">
+                  <div class="voice-head">
+                    <div>
+                      <strong>Rafael HD</strong>
+                      <span>pt-BR-Rafael:MAI-Voice-2</span>
+                    </div>
+                    <span class="badge no">Indisponível</span>
+                  </div>
+                  <div class="unavailable">Não disponível neste recurso F0 ou nesta região.</div>
+                </section>
+                
+                <section class="voice">
+                  <div class="voice-head">
+                    <div>
+                      <strong>Luana HD</strong>
+                      <span>pt-BR-Luana:MAI-Voice-2</span>
+                    </div>
+                    <span class="badge no">Indisponível</span>
+                  </div>
+                  <div class="unavailable">Não disponível neste recurso F0 ou nesta região.</div>
+                </section>
+                
+            </section>
+            
     </main>
   </body>
 </html>
