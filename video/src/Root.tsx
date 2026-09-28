@@ -2,9 +2,12 @@ import {Composition, Still} from "remotion";
 import {BrandMotionTest} from "./BrandMotionTest";
 import {DynamicVideo} from "./DynamicVideo";
 import {DynamicMotionV2} from "./DynamicMotionV2";
-import {EditorialPilot, PixPilotThumbnail} from "./EditorialPilot";\nimport {DailyEditorial} from "./DailyEditorial";\nimport {DailyThumbnail} from "./DailyThumbnail";
+import {EditorialPilot, PixPilotThumbnail} from "./EditorialPilot";
+import {DailyEditorial} from "./DailyEditorial";
+import {DailyThumbnail} from "./DailyThumbnail";
 import renderInput from "../generated/render-input.json";
-import pilotRenderInput from "../generated/pilot-render-input.json";\nimport dailyRenderInput from "../generated/daily-render-input.json";
+import pilotRenderInput from "../generated/pilot-render-input.json";
+import dailyRenderInput from "../generated/daily-render-input.json";
 
 export const RemotionRoot = () => {
   return (
@@ -40,6 +43,20 @@ export const RemotionRoot = () => {
         fps={pilotRenderInput.fps}
         width={1920}
         height={1080}
+      />
+      <Composition
+        id="DailyEditorial"
+        component={DailyEditorial}
+        durationInFrames={dailyRenderInput.duration_in_frames}
+        fps={dailyRenderInput.fps}
+        width={1920}
+        height={1080}
+      />
+      <Still
+        id="DailyThumbnail"
+        component={DailyThumbnail}
+        width={1280}
+        height={720}
       />
       <Still
         id="PixPilotThumbnail"
