@@ -120,9 +120,7 @@ jobs:
           rm -rf /tmp/pix-pilot-output
           mkdir -p /tmp/pix-pilot-output
           cp public/render-tests/pix-med-pilot.mp4 /tmp/pix-pilot-output/
-          cp public/render-tests/pix-med-thumbnail-a.png /tmp/pix-pilot-output/
-          cp public/render-tests/pix-med-thumbnail-b.png /tmp/pix-pilot-output/
-          cp public/render-tests/pix-med-thumbnail-c.png /tmp/pix-pilot-output/
+          cp public/render-tests/pix-med-thumbnail.png /tmp/pix-pilot-output/
           cp public/render-tests/pix-med-youtube.json /tmp/pix-pilot-output/
           cp public/render-tests/pix-med-youtube.txt /tmp/pix-pilot-output/
 
