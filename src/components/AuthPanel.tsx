@@ -1,9 +1,8 @@
-import { FormEvent, useState } from "react";
-import { LockKeyhole } from "lucide-react";
-import { supabase } from "../lib/supabase";
+import {FormEvent, useState} from "react";
+import {LockKeyhole} from "lucide-react";
+import {supabase} from "../lib/supabase";
 
 export function AuthPanel() {
-  const [mode, setMode] = useState<"signin" | "signup">("signin");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [busy, setBusy] = useState(false);
@@ -16,15 +15,10 @@ export function AuthPanel() {
     setBusy(true);
     setMessage(null);
 
-    const result =
-      mode === "signin"
-        ? await supabase.auth.signInWithPassword({ email, password })
-        : await supabase.auth.signUp({ email, password });
+    const result = await supabase.auth.signInWithPassword({email, password});
 
     if (result.error) {
-      setMessage(result.error.message);
-    } else if (mode === "signup" && !result.data.session) {
-      setMessage("Conta criada. Confirme o e-mail para entrar.");
+      setMessage("E-mail ou senha inválidos.");
     }
 
     setBusy(false);
@@ -39,7 +33,7 @@ export function AuthPanel() {
         <p className="eyebrow">O Dinheiro Explica</p>
         <h1>Painel editorial</h1>
         <p className="muted">
-          Acesso privado para pesquisa, roteiro, produção e revisão dos vídeos.
+          Acesso privado para pesquisa, roteiro, produção e acompanhamento dos vídeos.
         </p>
 
         <form onSubmit={handleSubmit} className="auth-form">
@@ -58,7 +52,7 @@ export function AuthPanel() {
             Senha
             <input
               type="password"
-              autoComplete={mode === "signin" ? "current-password" : "new-password"}
+              autoComplete="current-password"
               minLength={6}
               value={password}
               onChange={(event) => setPassword(event.target.value)}
@@ -69,26 +63,9 @@ export function AuthPanel() {
           {message && <div className="notice">{message}</div>}
 
           <button className="primary-button" disabled={busy}>
-            {busy
-              ? "Aguarde..."
-              : mode === "signin"
-                ? "Entrar"
-                : "Criar acesso"}
+            {busy ? "Aguarde..." : "Entrar"}
           </button>
         </form>
-
-        <button
-          type="button"
-          className="text-button"
-          onClick={() => {
-            setMode(mode === "signin" ? "signup" : "signin");
-            setMessage(null);
-          }}
-        >
-          {mode === "signin"
-            ? "Primeiro acesso? Criar conta"
-            : "Já tenho acesso"}
-        </button>
       </section>
     </main>
   );
