@@ -125,12 +125,52 @@ Preencha publication.seo com:
 
 A descrição em publication.description deve sair pronta para publicação e otimizada para busca, mantendo linguagem natural.
 
+## Direção visual própria para cada pauta
+
+Antes de escolher cenas e microcenas, crie uma direção visual específica para a história atual. A identidade do canal é o DNA, não um template.
+
+Preencha `visual_direction` com:
+- `concept`: a ideia visual que traduz esta história;
+- `world`: minimal, digital, industrial, documentary, market, network ou paper;
+- `secondary_color`: uma cor secundária coerente com a pauta, preservando preto/carvão, branco e dourado como base do canal;
+- `motifs`: 2 a 6 objetos, formas ou símbolos próprios desta história;
+- `motion_language`: 2 a 6 decisões de movimento/corte que combinam com a narrativa;
+- `avoid`: padrões visuais que fariam este vídeo parecer uma cópia dos anteriores.
+
+Regras:
+- dois vídeos do canal podem compartilhar paleta, tipografia e acabamento, mas não devem parecer o mesmo projeto com texto e áudio trocados;
+- não usar sempre o mesmo fundo, grade, cards, posição de texto, setas, timelines ou entrada;
+- não criar uma biblioteca de “templates fixos” e simplesmente escolher um deles;
+- a composição nasce da informação: número pode dominar a tela, fluxo pode virar diagrama espacial, comparação pode dividir o quadro, processo pode transformar a própria cena;
+- use o quadro inteiro como espaço narrativo. Card flutuante é exceção, não padrão;
+- overlays devem ser raros e só existir quando há área segura real. No máximo um overlay por cena;
+- por padrão, prefira `cut`, `transform` ou `reframe` para trocar a informação visual;
+- não repetir o mesmo `treatment` em três beats consecutivos;
+- cortes e transições precisam ter função narrativa. Hard cut é válido e muitas vezes melhor que um efeito ornamental;
+- quando dois momentos tiverem forma, direção, objeto ou ideia em comum, prefira continuidade visual, match de forma ou movimento;
+- preserve eye-trace quando isso ajuda a compreensão: o novo foco deve nascer perto de onde o espectador já estava olhando, salvo quando a intenção for provocar ruptura;
+- o som pode fazer ponte entre mudanças visuais, mas não deve mascarar uma composição fraca.
+
+Antes de fechar o VideoProject, faça uma auditoria de repetição: se o vídeo puder ser descrito como “o anterior com outro texto”, a direção visual ainda não está pronta.
+
+### Comportamento de cada beat
+
+Cada `visual.beats[]` deve escolher explicitamente:
+- `behavior`: `cut`, `transform`, `reframe` ou `overlay`;
+- `treatment`: `kinetic_type`, `giant_number`, `flow_diagram`, `timeline`, `split_compare`, `meter`, `spotlight`, `equation`, `stack` ou `signal`;
+- `transition`: `cut`, `fade`, `slide_left`, `slide_up`, `zoom` ou `wipe`;
+- `placement`: `left`, `center`, `right` ou `full`.
+
+Esses campos não são decoração aleatória. Escolha-os pelo significado daquela informação.
+
+O `anchor` continua sendo um trecho literal e único da narração. O TTS injeta um bookmark SSML nesse ponto e o render usa o timestamp devolvido pelo Azure, portanto a microcena deve entrar quando a fala realmente chega naquela informação, e não por uma estimativa proporcional do texto.
+
 ## Dinamismo visual durante a fala
 
 Não trate uma cena como um slide que anima na entrada e depois fica parado. O movimento deve continuar acompanhando o raciocínio da narração.
 
 Regras globais:
-- toda cena longa precisa ter microeventos visuais distribuídos ao longo da duração real do áudio;
+- toda cena longa precisa ter mudanças visuais informativas distribuídas ao longo da duração real do áudio;
 - entrada, desenvolvimento, mudança de ponto e saída devem ter resposta visual;
 - palavras-chave, números, etapas, linhas, cards, barras, setas e destaques devem aparecer ou mudar quando a fala chega naquele ponto;
 - animações internas devem usar a duração proporcional da cena, não tempos fixos pensados para uma cena curta;
