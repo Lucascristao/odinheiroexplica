@@ -42,7 +42,7 @@ def main() -> None:
 
     sources = project.get("sources", [])
     source_text = "\n".join(
-        f"- {source.get('title', 'Fonte')} | {source.get('url', '')}"
+        f"- {source.get('title', 'Fonte')}"
         for source in sources
     )
 
@@ -58,7 +58,7 @@ def main() -> None:
 
     full_description = (
         f"{description}\n\nCAPÍTULOS\n{chapter_text}"
-        f"\n\nFONTES\n{source_text}"
+        f"\n\nBases do vídeo:\n{source_text}"
     )
 
     payload = {
