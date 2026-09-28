@@ -445,5 +445,12 @@
       "MP 1394",
       "apostas online"
     ]
+  },
+  "speech": {
+    "pronunciations": {
+      "bet": "bét",
+      "bets": "béts"
+    },
+    "ignore_pronunciation_terms": []
   }
 }
