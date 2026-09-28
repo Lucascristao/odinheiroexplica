@@ -2,13 +2,52 @@ import { useEffect, useState } from "react";
 import type { Session } from "@supabase/supabase-js";
 import { AuthPanel } from "./components/AuthPanel";
 import { Dashboard } from "./components/Dashboard";
+import { RenderStatusPanel } from "./components/RenderStatusPanel";
 import { isSupabaseConfigured, supabase } from "./lib/supabase";
+
+function PublicProductionStatus() {
+  return (
+    <main className="app-shell">
+      <header className="topbar">
+        <div>
+          <div className="brand-title">
+            <span className="brand-dot" />
+            O Dinheiro Explica
+          </div>
+          <span className="muted small">Produção automática</span>
+        </div>
+      </header>
+
+      <section className="hero">
+        <div>
+          <p className="eyebrow">Status de produção</p>
+          <h1>Acompanhe o vídeo sem abrir o GitHub Actions.</h1>
+          <p className="muted hero-copy">
+            O painel atualiza sozinho enquanto a narração, timeline, render,
+            thumbnail e publicação são processados.
+          </p>
+        </div>
+      </section>
+
+      <RenderStatusPanel />
+    </main>
+  );
+}
 
 export default function App() {
   const [session, setSession] = useState<Session | null>(null);
   const [checking, setChecking] = useState(true);
 
+  const isPublicProductionPage =
+    window.location.pathname === "/producao" ||
+    window.location.pathname === "/producao/";
+
   useEffect(() => {
+    if (isPublicProductionPage) {
+      setChecking(false);
+      return;
+    }
+
     if (!supabase) {
       setChecking(false);
       return;
@@ -27,7 +66,11 @@ export default function App() {
     });
 
     return () => subscription.unsubscribe();
-  }, []);
+  }, [isPublicProductionPage]);
+
+  if (isPublicProductionPage) {
+    return <PublicProductionStatus />;
+  }
 
   if (!isSupabaseConfigured) {
     return (
