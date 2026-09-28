@@ -8,7 +8,7 @@ on:
       - "render-trigger/pix-pilot.txt"
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   render:
@@ -17,6 +17,7 @@ jobs:
 
     env:
       ODE_PROGRESS_URL: https://odinheiroexplica.netlify.app/.netlify/functions/render-progress
+      ODE_PROGRESS_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       ODE_VIDEO_TITLE: O Pix Agora Rastreia o Dinheiro do Golpe
       ODE_ESTIMATED_RENDER_SECONDS: 1380
 
@@ -62,7 +63,7 @@ jobs:
 
       - name: Build YouTube package
         run: |
-          python worker/build_youtube_package.py             --project video/data/pilot-pix-med.json             --render-input video/generated/pilot-render-input.json             --output public/render-tests/pix-med-youtube.json
+          python worker/build_youtube_package.py             --project video/data/pilot-pix-med.json             --render-input video/generated/pilot-render-input.json             --output render-output/pix-med-youtube.json
 
           VIDEO_DURATION=$(python -c 'import json; p=json.load(open("video/generated/pilot-render-input.json")); print(round(p["duration_in_frames"]/p["fps"], 2))')
           python worker/progress_callback.py             --run-id "${{ github.run_id }}"             --title "$ODE_VIDEO_TITLE"             --status running             --stage dependencias             --percent 28             --detail "Timeline pronta. Vídeo com ${VIDEO_DURATION}s. Preparando o Remotion."             --video-duration-seconds "$VIDEO_DURATION"
@@ -129,44 +130,12 @@ jobs:
 
           python worker/progress_callback.py             --run-id "${{ github.run_id }}"             --title "$ODE_VIDEO_TITLE"             --status running             --stage publicando             --percent 94             --detail "Enviando vídeo, capa e metadados para o Google Drive."
 
-          python worker/upload_outputs_to_drive.py             --video public/render-tests/pix-med-pilot.mp4             --thumbnail public/render-tests/pix-med-thumbnail-a.png             --metadata public/render-tests/pix-med-youtube.json             --project-slug pix-med-2             --output public/render-tests/pix-med-drive.json
+          python worker/upload_outputs_to_drive.py             --video render-output/pix-med-pilot.mp4             --thumbnail render-output/pix-med-thumbnail-a.png             --metadata render-output/pix-med-youtube.json             --project-slug pix-med-2             --output render-output/pix-med-drive.json
 
-      - name: Preserve generated outputs
-        run: |
-          rm -rf /tmp/pix-pilot-output
-          mkdir -p /tmp/pix-pilot-output
-          cp public/render-tests/pix-med-pilot.mp4 /tmp/pix-pilot-output/
-          cp public/render-tests/pix-med-thumbnail-a.png /tmp/pix-pilot-output/
-          cp public/render-tests/pix-med-youtube.json /tmp/pix-pilot-output/
-          cp public/render-tests/pix-med-youtube.txt /tmp/pix-pilot-output/
-          if [ -f public/render-tests/pix-med-drive.json ]; then
-            cp public/render-tests/pix-med-drive.json /tmp/pix-pilot-output/
-          fi
-
-      - name: Publish pilot
+      - name: Finish production
         run: |
           VIDEO_DURATION=$(python -c 'import json; p=json.load(open("video/generated/pilot-render-input.json")); print(round(p["duration_in_frames"]/p["fps"], 2))')
-          python worker/progress_callback.py             --run-id "${{ github.run_id }}"             --title "$ODE_VIDEO_TITLE"             --status running             --stage publicando             --percent 96             --detail "Salvando vídeo, thumbnail e pacote de publicação."             --video-duration-seconds "$VIDEO_DURATION"
-
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git fetch origin main
-          git checkout main
-          git reset --hard origin/main
-
-          mkdir -p public/render-tests
-          cp /tmp/pix-pilot-output/* public/render-tests/
-
-          git add public/render-tests/
-          if git diff --cached --quiet; then
-            echo "Pilot output unchanged."
-          else
-            git commit -m "pilot: publish Pix MED 2.0 video package"
-            git push origin main
-          fi
-
-          python worker/progress_callback.py             --run-id "${{ github.run_id }}"             --title "$ODE_VIDEO_TITLE"             --status completed             --stage concluido             --percent 100             --detail "Vídeo pronto para assistir e publicar."             --video-duration-seconds "$VIDEO_DURATION"
+          python worker/progress_callback.py             --run-id "${{ github.run_id }}"             --title "$ODE_VIDEO_TITLE"             --status completed             --stage concluido             --percent 100             --detail "Vídeo, thumbnail e pacote de publicação salvos no Google Drive."             --video-duration-seconds "$VIDEO_DURATION"
 
       - name: Report failure
         if: failure()

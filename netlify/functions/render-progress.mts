@@ -1,3 +1,4 @@
+import {createHash, timingSafeEqual} from "node:crypto";
 import { getStore } from "@netlify/blobs";
 
 const allowedStatus = new Set(["queued", "running", "completed", "error"]);
@@ -25,9 +26,25 @@ function safeText(value: unknown, max: number) {
   return String(value ?? "").trim().slice(0, max);
 }
 
+function authorized(request: Request) {
+  const secret = (process.env.GOOGLE_CLIENT_SECRET || "").trim();
+  if (!secret) return false;
+
+  const expected = createHash("sha256")
+    .update(`ode-progress-v1:${secret}`)
+    .digest("hex");
+  const received = (request.headers.get("x-ode-progress-token") || "").trim();
+
+  if (received.length !== expected.length) return false;
+  return timingSafeEqual(Buffer.from(received), Buffer.from(expected));
+}
+
 export default async (request: Request) => {
   if (request.method !== "POST") {
     return json(405, {ok: false, error: "Método não permitido."});
+  }
+  if (!authorized(request)) {
+    return json(401, {ok: false, error: "Não autorizado."});
   }
 
   let body: Record<string, unknown>;

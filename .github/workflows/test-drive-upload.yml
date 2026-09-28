@@ -2,10 +2,6 @@ name: Teste Google Drive
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - "render-trigger/drive-smoke-test.txt"
 
 permissions:
   contents: read

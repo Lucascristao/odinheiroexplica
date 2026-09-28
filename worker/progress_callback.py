@@ -1,4 +1,5 @@
 import argparse
+import hashlib
 import json
 import os
 import urllib.request
@@ -35,12 +36,20 @@ def main() -> None:
         payload["video_duration_seconds"] = args.video_duration_seconds
 
     data = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+    secret = os.environ.get("ODE_PROGRESS_SECRET", "").strip()
+    headers = {"Content-Type": "application/json"}
+    if secret:
+        token = hashlib.sha256(
+            ("ode-progress-v1:" + secret).encode("utf-8")
+        ).hexdigest()
+        headers["X-ODE-Progress-Token"] = token
+
     try:
         req = urllib.request.Request(
             url,
             data=data,
             method="POST",
-            headers={"Content-Type": "application/json"},
+            headers=headers,
         )
         with urllib.request.urlopen(req, timeout=8) as response:
             response.read()
