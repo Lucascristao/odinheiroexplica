@@ -68,7 +68,7 @@ def main() -> None:
     region = os.environ["AZURE_SPEECH_REGION"].strip()
 
     payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
-    scenes = payload.get("scenes", [])
+    scenes = payload.get("scenes") or payload.get("script", {}).get("scenes", [])
     if not scenes:
         raise RuntimeError("Nenhuma cena recebida.")
 
@@ -83,8 +83,9 @@ def main() -> None:
         "total_duration_seconds": 0.0,
     }
 
-    for scene in scenes:
-        scene_id = str(scene["id"])
+    for position, scene in enumerate(scenes):
+        scene_index = scene.get("scene_index", scene.get("index", position))
+        scene_id = str(scene.get("id") or f"scene-{int(scene_index):02d}")
         narration = str(scene["narration"]).strip()
         if not narration:
             raise RuntimeError(f"Cena {scene_id} sem narração.")
@@ -97,7 +98,7 @@ def main() -> None:
         manifest["scenes"].append(
             {
                 "id": scene_id,
-                "scene_index": scene.get("scene_index"),
+                "scene_index": scene_index,
                 "file": output.name,
                 "duration_seconds": duration,
                 "narration_sha256": narration_hash,
