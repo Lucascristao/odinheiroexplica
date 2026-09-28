@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
-import { ClipboardPaste, FileCheck2, FlaskConical } from "lucide-react";
-import { exampleVideoProject } from "../lib/example-project";
+import { ClipboardPaste, FileCheck2 } from "lucide-react";
 import type { Json } from "../lib/database.types";
 import { supabase } from "../lib/supabase";
 import {
@@ -89,21 +88,11 @@ export function ImportProject({ onImported }: Props) {
           <p className="eyebrow">Novo vídeo</p>
           <h2>Importar pacote editorial</h2>
         </div>
-        <button
-          type="button"
-          className="secondary-button"
-          onClick={() =>
-            setRaw(JSON.stringify(exampleVideoProject, null, 2))
-          }
-        >
-          <FlaskConical size={17} />
-          Carregar exemplo
-        </button>
       </div>
 
       <p className="muted">
-        Cole aqui o JSON VideoProject v1.0 produzido no ChatGPT. A validação
-        acontece antes da gravação e o banco importa tudo em uma única transação.
+        Cole o JSON VideoProject v1.0 produzido pelo ChatGPT para uma pauta real.
+        O sistema valida estrutura, fontes, claims e embalagem antes da gravação.
       </p>
 
       <textarea
@@ -157,7 +146,7 @@ export function ImportProject({ onImported }: Props) {
 
       <div className="import-actions">
         <span className="muted small">
-          Importar não renderiza nem publica nada.
+          A importação registra o projeto editorial real no sistema.
         </span>
         <button
           type="button"
