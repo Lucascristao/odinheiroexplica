@@ -219,7 +219,11 @@
               "headline": "Petróleo sob pressão",
               "value": "> US$ 100",
               "detail": "Valor citado pelo governo em 28/9.",
-              "sound": "impact"
+              "sound": "impact",
+              "behavior": "cut",
+              "treatment": "giant_number",
+              "transition": "zoom",
+              "placement": "left"
             },
             {
               "anchor": "aumenta a preocupação com custos de importação e derivados",
@@ -227,23 +231,36 @@
               "headline": "Pressão internacional chega à cadeia",
               "from": "PETRÓLEO",
               "to": "COMBUSTÍVEIS",
-              "sound": "whoosh"
+              "sound": "whoosh",
+              "behavior": "transform",
+              "treatment": "flow_diagram",
+              "transition": "slide_left",
+              "placement": "full"
             },
             {
               "anchor": "o governo apresentou um novo pacote",
               "kind": "process",
               "headline": "Novas medidas anunciadas",
               "detail": "Subsídio, fiscalização e punições.",
-              "sound": "tick"
+              "sound": "tick",
+              "behavior": "cut",
+              "treatment": "spotlight",
+              "transition": "cut",
+              "placement": "center"
             },
             {
               "anchor": "isso não significa que o preço no posto ficou congelado",
               "kind": "warning",
               "headline": "Preço não ficou congelado",
               "detail": "No Brasil, o preço continua sendo livre.",
-              "sound": "alert"
+              "sound": "alert",
+              "behavior": "cut",
+              "treatment": "signal",
+              "transition": "wipe",
+              "placement": "full"
             }
-          ]
+          ],
+          "transition": "cut"
         },
         "claim_ids": [
           "C1",
@@ -278,7 +295,11 @@
               "kind": "fact",
               "headline": "Preço é livre",
               "detail": "Não há valor máximo ou mínimo tabelado.",
-              "sound": "tick"
+              "sound": "tick",
+              "behavior": "cut",
+              "treatment": "kinetic_type",
+              "transition": "cut",
+              "placement": "left"
             },
             {
               "anchor": "preço na refinaria ou na importação",
@@ -286,23 +307,36 @@
               "headline": "Primeira camada de custo",
               "from": "REFINO / IMPORTAÇÃO",
               "to": "DISTRIBUIÇÃO",
-              "sound": "none"
+              "sound": "none",
+              "behavior": "transform",
+              "treatment": "flow_diagram",
+              "transition": "slide_left",
+              "placement": "full"
             },
             {
               "anchor": "tributos, custo do biocombustível misturado, transporte, distribuição e margem do posto",
               "kind": "process",
               "headline": "A conta tem várias parcelas",
               "detail": "Tributos, mistura, logística e margens.",
-              "sound": "tick"
+              "sound": "tick",
+              "behavior": "cut",
+              "treatment": "stack",
+              "transition": "slide_up",
+              "placement": "full"
             },
             {
               "anchor": "uma medida pode aliviar uma parte dessa conta sem controlar todas as outras",
               "kind": "compare",
               "headline": "Aliviar não é tabelar",
               "detail": "Cada medida atinge uma parte da cadeia.",
-              "sound": "none"
+              "sound": "none",
+              "behavior": "cut",
+              "treatment": "equation",
+              "transition": "cut",
+              "placement": "full"
             }
-          ]
+          ],
+          "transition": "wipe"
         },
         "claim_ids": [
           "C2"
@@ -333,7 +367,11 @@
               "kind": "money",
               "headline": "Redução tributária na gasolina",
               "value": "R$ 0,63/L",
-              "sound": "impact"
+              "sound": "impact",
+              "behavior": "cut",
+              "treatment": "giant_number",
+              "transition": "zoom",
+              "placement": "left"
             },
             {
               "anchor": "zerou essas contribuições sobre o etanol hidratado",
@@ -341,23 +379,36 @@
               "headline": "Contribuições federais zeradas",
               "value": "0",
               "detail": "Para o etanol hidratado, segundo o anúncio de 9/9.",
-              "sound": "tick"
+              "sound": "tick",
+              "behavior": "cut",
+              "treatment": "kinetic_type",
+              "transition": "slide_up",
+              "placement": "right"
             },
             {
               "anchor": "também foi autorizada uma nova subvenção para o diesel",
               "kind": "fuel",
               "headline": "Diesel ganhou outra frente",
               "detail": "Subvenção a produtores e importadores.",
-              "sound": "whoosh"
+              "sound": "whoosh",
+              "behavior": "cut",
+              "treatment": "spotlight",
+              "transition": "cut",
+              "placement": "center"
             },
             {
               "anchor": "O anúncio de hoje não começa do zero",
               "kind": "process",
               "headline": "Pacote é uma continuidade",
               "detail": "Algumas medidas já estavam em vigor.",
-              "sound": "none"
+              "sound": "none",
+              "behavior": "transform",
+              "treatment": "timeline",
+              "transition": "wipe",
+              "placement": "full"
             }
-          ]
+          ],
+          "transition": "slide_left"
         },
         "claim_ids": [
           "C3",
@@ -388,14 +439,22 @@
               "kind": "money",
               "headline": "Subvenção mantida",
               "value": "R$ 2,12/L",
-              "sound": "impact"
+              "sound": "impact",
+              "behavior": "cut",
+              "treatment": "giant_number",
+              "transition": "zoom",
+              "placement": "left"
             },
             {
               "anchor": "não é um cupom entregue ao motorista no posto",
               "kind": "warning",
               "headline": "Não é desconto direto",
               "detail": "O benefício opera antes da revenda.",
-              "sound": "alert"
+              "sound": "alert",
+              "behavior": "cut",
+              "treatment": "signal",
+              "transition": "wipe",
+              "placement": "full"
             },
             {
               "anchor": "apoio econômico a produtores e importadores de diesel",
@@ -403,16 +462,25 @@
               "headline": "Onde a medida atua",
               "from": "UNIÃO",
               "to": "PRODUTOR / IMPORTADOR",
-              "sound": "whoosh"
+              "sound": "whoosh",
+              "behavior": "transform",
+              "treatment": "flow_diagram",
+              "transition": "slide_left",
+              "placement": "full"
             },
             {
               "anchor": "não dá pra pegar os dois reais e doze e simplesmente subtrair do preço",
               "kind": "fact",
               "headline": "Conta não é 1 por 1",
               "detail": "O preço final reúne outras parcelas.",
-              "sound": "none"
+              "sound": "none",
+              "behavior": "cut",
+              "treatment": "equation",
+              "transition": "cut",
+              "placement": "full"
             }
-          ]
+          ],
+          "transition": "cut"
         },
         "claim_ids": [
           "C4",
@@ -455,30 +523,47 @@
               "kind": "number",
               "headline": "Fiscalização em campo",
               "value": "241",
-              "sound": "impact"
+              "sound": "impact",
+              "behavior": "cut",
+              "treatment": "giant_number",
+              "transition": "zoom",
+              "placement": "left"
             },
             {
               "anchor": "cerca de trezentas e trinta denúncias",
               "kind": "warning",
               "headline": "Denúncias recebidas",
               "value": "~330",
-              "sound": "tick"
+              "sound": "tick",
+              "behavior": "cut",
+              "treatment": "meter",
+              "transition": "slide_up",
+              "placement": "right"
             },
             {
               "anchor": "abertura de setenta processos administrativos",
               "kind": "number",
               "headline": "Processos administrativos",
               "value": "70",
-              "sound": "tick"
+              "sound": "tick",
+              "behavior": "cut",
+              "treatment": "kinetic_type",
+              "transition": "cut",
+              "placement": "left"
             },
             {
               "anchor": "Isso não quer dizer que todo aumento seja irregular",
               "kind": "fact",
               "headline": "Alta não é automaticamente infração",
               "detail": "A apuração mira práticas sem justificativa e outras violações.",
-              "sound": "none"
+              "sound": "none",
+              "behavior": "reframe",
+              "treatment": "kinetic_type",
+              "transition": "fade",
+              "placement": "right"
             }
-          ]
+          ],
+          "transition": "zoom"
         },
         "claim_ids": [
           "C5"
@@ -508,29 +593,46 @@
               "kind": "money",
               "headline": "Decisões de primeira instância",
               "value": "> R$ 700 mi",
-              "sound": "impact"
+              "sound": "impact",
+              "behavior": "cut",
+              "treatment": "giant_number",
+              "transition": "zoom",
+              "placement": "left"
             },
             {
               "anchor": "Essas empresas ainda podem recorrer",
               "kind": "warning",
               "headline": "Ainda cabe recurso",
-              "sound": "alert"
+              "sound": "alert",
+              "behavior": "cut",
+              "treatment": "signal",
+              "transition": "wipe",
+              "placement": "full"
             },
             {
               "anchor": "Ela vai de vinte mil a quinhentos milhões de reais",
               "kind": "money",
               "headline": "Nova faixa de multa",
               "value": "R$ 20 mil → R$ 500 mi",
-              "sound": "whoosh"
+              "sound": "whoosh",
+              "behavior": "cut",
+              "treatment": "timeline",
+              "transition": "slide_left",
+              "placement": "full"
             },
             {
               "anchor": "Aqui vale separar as coisas",
               "kind": "compare",
               "headline": "Dois números, duas situações",
               "detail": "Processos anteriores ≠ nova faixa legal.",
-              "sound": "none"
+              "sound": "none",
+              "behavior": "cut",
+              "treatment": "split_compare",
+              "transition": "cut",
+              "placement": "full"
             }
-          ]
+          ],
+          "transition": "cut"
         },
         "claim_ids": [
           "C6",
@@ -573,29 +675,46 @@
               "kind": "number",
               "headline": "Demanda estimada",
               "value": "3,950 mi m³",
-              "sound": "tick"
+              "sound": "tick",
+              "behavior": "cut",
+              "treatment": "meter",
+              "transition": "slide_up",
+              "placement": "left"
             },
             {
               "anchor": "a oferta confirmada é de três milhões novecentos e setenta e oito mil",
               "kind": "trend_up",
               "headline": "Oferta confirmada",
               "value": "3,978 mi m³",
-              "sound": "impact"
+              "sound": "impact",
+              "behavior": "cut",
+              "treatment": "split_compare",
+              "transition": "cut",
+              "placement": "full"
             },
             {
               "anchor": "o equivalente a cerca de quinze dias de consumo",
               "kind": "date",
               "headline": "Estoque disponível",
               "value": "~15 dias",
-              "sound": "tick"
+              "sound": "tick",
+              "behavior": "cut",
+              "treatment": "giant_number",
+              "transition": "zoom",
+              "placement": "right"
             },
             {
               "anchor": "não de um preço garantido na bomba",
               "kind": "warning",
               "headline": "Abastecimento ≠ preço fixo",
-              "sound": "alert"
+              "sound": "alert",
+              "behavior": "cut",
+              "treatment": "signal",
+              "transition": "wipe",
+              "placement": "full"
             }
-          ]
+          ],
+          "transition": "slide_up"
         },
         "claim_ids": [
           "C8"
@@ -623,30 +742,47 @@
               "kind": "money",
               "headline": "1. Pressão de custo",
               "detail": "Subvenção e medidas tributárias.",
-              "sound": "tick"
+              "sound": "tick",
+              "behavior": "cut",
+              "treatment": "spotlight",
+              "transition": "cut",
+              "placement": "center"
             },
             {
               "anchor": "Aumenta a fiscalização sobre margens e práticas abusivas",
               "kind": "warning",
               "headline": "2. Fiscalização",
               "detail": "Mais ações, processos e multas.",
-              "sound": "tick"
+              "sound": "tick",
+              "behavior": "cut",
+              "treatment": "signal",
+              "transition": "wipe",
+              "placement": "full"
             },
             {
               "anchor": "monitora o abastecimento pra evitar falta de produto",
               "kind": "fuel",
               "headline": "3. Abastecimento",
               "detail": "Oferta e estoques acompanhados.",
-              "sound": "tick"
+              "sound": "tick",
+              "behavior": "transform",
+              "treatment": "flow_diagram",
+              "transition": "slide_left",
+              "placement": "full"
             },
             {
               "anchor": "o preço final continua sendo formado por várias parcelas e continua livre",
               "kind": "fact",
               "headline": "Preço final continua livre",
               "detail": "O efeito precisa aparecer nos dados de mercado.",
-              "sound": "impact"
+              "sound": "impact",
+              "behavior": "cut",
+              "treatment": "kinetic_type",
+              "transition": "fade",
+              "placement": "center"
             }
-          ]
+          ],
+          "transition": "fade"
         },
         "claim_ids": [
           "C2",
