@@ -45,7 +45,6 @@ function stageLabel(stage: string) {
     timeline: "Montando timeline",
     dependencias: "Preparando render",
     render: "Renderizando vídeo",
-    thumbnail: "Gerando thumbnail",
     publicando: "Enviando para o Drive",
     concluido: "Vídeo pronto",
     erro: "Erro no processamento",
@@ -64,7 +63,6 @@ function stagePosition(job: RenderJob) {
     timeline: 2,
     dependencias: 2,
     render: 3,
-    thumbnail: 3,
     publicando: 4,
     concluido: 5,
   };
@@ -244,7 +242,7 @@ export function RenderStatusPanel() {
         <div className="drive-ready">
           <HardDrive size={17} />
           <span>
-            Produção concluída. As novas produções são entregues no Google Drive.
+            Vídeo e pacote de publicação concluídos no Drive. A capa é gerada pelo ChatGPT.
           </span>
         </div>
       )}
