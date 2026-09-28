@@ -17,6 +17,7 @@ def main() -> None:
     parser.add_argument("--video", required=True)
     parser.add_argument("--thumbnail", required=True)
     parser.add_argument("--metadata", required=True)
+    parser.add_argument("--publication-text")
     parser.add_argument("--project-slug", required=True)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
@@ -55,6 +56,11 @@ def main() -> None:
     upload_one("video", args.video)
     upload_one("thumbnail", args.thumbnail)
     upload_one("metadata", args.metadata)
+    if args.publication_text:
+        publication_text = Path(args.publication_text)
+        if not publication_text.exists():
+            raise RuntimeError(f"Arquivo de publicação não encontrado: {publication_text}")
+        upload_one("publication_text", args.publication_text)
 
     payload = {
         "folder_id": folder_id,
