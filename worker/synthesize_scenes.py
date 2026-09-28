@@ -36,6 +36,30 @@ def split_sentences(text: str) -> list[str]:
     return [part.strip() for part in parts if part.strip()]
 
 
+def split_clauses(sentence: str) -> list[str]:
+    # Divide a frase em blocos curtos, preservando a pontuação. Isso permite
+    # pausas naturais sem transformar a narração em uma sequência de frases
+    # desconectadas.
+    parts = re.findall(r"[^,;:!?\.]+[,;:!?\.]?|[,;:!?\.]", sentence)
+    return [part.strip() for part in parts if part.strip()]
+
+
+def pause_for_punctuation(text: str, base_pause_ms: int) -> int:
+    if text.endswith("?"):
+        return base_pause_ms + 105
+    if text.endswith("!"):
+        return base_pause_ms + 75
+    if text.endswith("."):
+        return base_pause_ms + 90
+    if text.endswith(":"):
+        return max(110, base_pause_ms - 5)
+    if text.endswith(";"):
+        return max(95, base_pause_ms - 20)
+    if text.endswith(","):
+        return max(65, base_pause_ms - 55)
+    return max(55, base_pause_ms - 70)
+
+
 def percent_value(value: str, default: int = 0) -> int:
     match = re.fullmatch(r"([+-]?\d+)%", str(value).strip())
     return int(match.group(1)) if match else default
@@ -46,37 +70,46 @@ def percent_text(value: int) -> str:
 
 
 def build_ssml(text: str, voice: str, tts: dict) -> str:
-    base_rate = percent_value(tts.get("rate", DEFAULT_TTS_RATE), -1)
-    base_pitch = percent_value(tts.get("pitch", DEFAULT_TTS_PITCH), 1)
-    pause_ms = max(60, min(260, int(tts.get("pause_ms", 115))))
+    base_rate = percent_value(tts.get("rate", DEFAULT_TTS_RATE), 0)
+    base_pitch = percent_value(tts.get("pitch", DEFAULT_TTS_PITCH), 0)
+    pause_ms = max(120, min(260, int(tts.get("pause_ms", 185))))
 
     sentences = split_sentences(text)
     rendered = []
 
-    for index, sentence in enumerate(sentences):
-        words = sentence.split()
-        rate = base_rate
-        pitch = base_pitch
+    for sentence_index, sentence in enumerate(sentences):
+        clauses = split_clauses(sentence)
 
-        # Pequenas variações de frase para evitar cadência de leitura contínua.
-        if sentence.endswith("?"):
-            pitch += 2
-            rate -= 1
-        elif len(words) <= 7:
-            rate += 1
-        elif index % 3 == 1:
-            rate += 1
-        elif index % 3 == 2:
-            rate -= 1
+        for clause_index, clause in enumerate(clauses):
+            words = clause.split()
+            rate = base_rate
+            pitch = base_pitch
 
-        rendered.append(
-            f'<s><prosody rate="{percent_text(rate)}" '
-            f'pitch="{percent_text(pitch)}">{escape(sentence)}</prosody></s>'
-        )
+            # Variação orientada pela fala, não por um padrão fixo de índices.
+            # Perguntas sobem levemente; trechos curtos desaceleram; blocos
+            # longos ganham um pouco de fluidez.
+            if clause.endswith("?"):
+                pitch += 1
+            if len(words) <= 4:
+                rate -= 1
+            elif len(words) >= 15:
+                rate += 1
 
-        if index < len(sentences) - 1:
-            extra = 35 if sentence.endswith(":") else 0
-            rendered.append(f'<break time="{pause_ms + extra}ms"/>')
+            # A primeira ideia de uma nova frase recebe uma entrada um pouco
+            # mais assentada, evitando a sensação de leitura contínua.
+            if clause_index == 0 and sentence_index > 0 and len(words) < 12:
+                rate -= 1
+
+            rendered.append(
+                f'<prosody rate="{percent_text(rate)}" '
+                f'pitch="{percent_text(pitch)}">{escape(clause)}</prosody>'
+            )
+
+            is_last_clause = clause_index == len(clauses) - 1
+            is_last_sentence = sentence_index == len(sentences) - 1
+            if not (is_last_clause and is_last_sentence):
+                pause = pause_for_punctuation(clause, pause_ms)
+                rendered.append(f'<break time="{pause}ms"/>')
 
     body = "\n      ".join(rendered)
     return f"""<speak version="1.0"
