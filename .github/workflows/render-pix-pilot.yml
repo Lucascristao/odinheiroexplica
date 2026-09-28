@@ -129,14 +129,14 @@ jobs:
 
           python worker/progress_callback.py             --run-id "${{ github.run_id }}"             --title "$ODE_VIDEO_TITLE"             --status running             --stage publicando             --percent 94             --detail "Enviando vídeo, capa e metadados para o Google Drive."
 
-          python worker/upload_outputs_to_drive.py             --video public/render-tests/pix-med-pilot.mp4             --thumbnail public/render-tests/pix-med-thumbnail.png             --metadata public/render-tests/pix-med-youtube.json             --project-slug pix-med-2             --output public/render-tests/pix-med-drive.json
+          python worker/upload_outputs_to_drive.py             --video public/render-tests/pix-med-pilot.mp4             --thumbnail public/render-tests/pix-med-thumbnail-a.png             --metadata public/render-tests/pix-med-youtube.json             --project-slug pix-med-2             --output public/render-tests/pix-med-drive.json
 
       - name: Preserve generated outputs
         run: |
           rm -rf /tmp/pix-pilot-output
           mkdir -p /tmp/pix-pilot-output
           cp public/render-tests/pix-med-pilot.mp4 /tmp/pix-pilot-output/
-          cp public/render-tests/pix-med-thumbnail.png /tmp/pix-pilot-output/
+          cp public/render-tests/pix-med-thumbnail-a.png /tmp/pix-pilot-output/
           cp public/render-tests/pix-med-youtube.json /tmp/pix-pilot-output/
           cp public/render-tests/pix-med-youtube.txt /tmp/pix-pilot-output/
           if [ -f public/render-tests/pix-med-drive.json ]; then
