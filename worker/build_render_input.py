@@ -1,12 +1,81 @@
 import argparse
 import json
 import math
+import re
+import unicodedata
 from pathlib import Path
 
 
 FPS = 30
 SCENE_TAIL_SECONDS = 0.28
 FINAL_SCENE_TAIL_SECONDS = 2.15
+
+
+
+def normalize_text(value: str) -> str:
+    normalized = unicodedata.normalize("NFKD", str(value).lower())
+    normalized = "".join(
+        char for char in normalized if not unicodedata.combining(char)
+    )
+    return re.sub(r"\s+", " ", normalized).strip()
+
+
+def resolve_visual_beats(scene: dict, audio_duration_seconds: float) -> list[dict]:
+    visual = scene.get("visual") or {}
+    beats = visual.get("beats") or []
+    if not isinstance(beats, list) or not beats:
+        return []
+
+    narration = str(scene.get("narration") or "")
+    normalized_narration = normalize_text(narration)
+    audio_frames = max(1, math.ceil(audio_duration_seconds * FPS))
+    resolved = []
+
+    for index, beat in enumerate(beats):
+        if not isinstance(beat, dict):
+            continue
+
+        explicit_at = beat.get("at")
+        ratio = None
+
+        if isinstance(explicit_at, (int, float)):
+            ratio = float(explicit_at)
+
+        anchor = str(beat.get("anchor") or "").strip()
+        if ratio is None and anchor and normalized_narration:
+            normalized_anchor = normalize_text(anchor)
+            position = normalized_narration.find(normalized_anchor)
+            if position >= 0:
+                ratio = position / max(1, len(normalized_narration))
+
+        if ratio is None:
+            ratio = (index + 1) / (len(beats) + 1)
+
+        ratio = max(0.03, min(0.94, ratio))
+        frame = min(audio_frames - 1, max(0, round(ratio * audio_frames)))
+
+        resolved.append(
+            {
+                **beat,
+                "resolved_ratio": round(ratio, 4),
+                "resolved_frame": frame,
+            }
+        )
+
+    resolved.sort(key=lambda item: item["resolved_frame"])
+
+    # Evita que dois cards informativos entrem praticamente juntos.
+    # Não muda a ordem editorial, apenas garante uma leitura visual mínima.
+    minimum_gap = max(18, round(FPS * 0.75))
+    previous = -minimum_gap
+    for item in resolved:
+        item["resolved_frame"] = min(
+            audio_frames - 1,
+            max(item["resolved_frame"], previous + minimum_gap),
+        )
+        previous = item["resolved_frame"]
+
+    return resolved
 
 
 def main() -> None:
@@ -40,10 +109,21 @@ def main() -> None:
         )
         duration_seconds = float(audio["duration_seconds"]) + tail_seconds
         duration_frames = max(30, math.ceil(duration_seconds * FPS))
+        resolved_beats = resolve_visual_beats(
+            scene,
+            float(audio["duration_seconds"]),
+        )
+        scene_with_resolved_visual = {
+            **scene,
+            "visual": {
+                **(scene.get("visual") or {}),
+                "beats": resolved_beats,
+            },
+        }
 
         output_scenes.append(
             {
-                **scene,
+                **scene_with_resolved_visual,
                 "id": scene_id,
                 "scene_index": scene_index,
                 "start_frame": cursor,
