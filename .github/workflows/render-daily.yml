@@ -59,6 +59,11 @@ jobs:
       - name: Install Python dependencies
         run: pip install --no-cache-dir -r worker/requirements.txt
 
+      - name: Generate editorial sound design
+        run: |
+          rm -rf public/generated-sfx
+          python worker/generate_sound_design.py --output-dir public/generated-sfx
+
       - name: Audit pronunciation before TTS
         run: |
           mkdir -p video/generated
