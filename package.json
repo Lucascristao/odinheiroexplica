@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "typecheck": "tsc -b --pretty false",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "remotion:studio": "remotion studio video/src/index.ts",
+    "render:motion-test": "remotion render video/src/index.ts BrandMotionTest public/render-tests/macerio-motion-test.mp4 --codec=h264 --concurrency=2"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.57.4",
@@ -21,6 +23,9 @@
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.0.4",
     "typescript": "^5.9.2",
-    "vite": "^7.1.7"
+    "vite": "^7.1.7",
+    "@remotion/cli": "4.0.529",
+    "@remotion/media": "4.0.529",
+    "remotion": "4.0.529"
   }
 }
