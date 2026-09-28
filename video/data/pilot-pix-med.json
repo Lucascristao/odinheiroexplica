@@ -176,41 +176,27 @@
     }
   ],
   "packaging": {
+    "strategy": {
+      "click_reason": "O Pix é reconhecido instantaneamente e a frase cria a curiosidade de como o sistema consegue seguir o dinheiro depois do golpe.",
+      "visual_focus": "Um rastro amarelo saindo da conta contestada e seguindo para outras contas.",
+      "curiosity_gap": "Como o Pix consegue ir atrás do dinheiro depois que ele já foi transferido?",
+      "mobile_readability": "Texto curto, contraste forte e um único rastro visual dominante.",
+      "anti_clickbait_check": "O vídeo explica o MED 2.0 e mostra como o rastreamento pode continuar além da primeira conta.",
+      "repetition_check": "Não repetir em vídeos futuros a mesma fórmula de rede de contas com trilha amarela."
+    },
     "titles": [
       {
-        "id": "T1",
+        "id": "title_main",
         "text": "O Pix Agora Rastreia o Dinheiro do Golpe",
-        "rationale": "Promessa simples, factual e imediatamente relevante."
-      },
-      {
-        "id": "T2",
-        "text": "Caiu em Golpe no Pix? O Sistema Mudou",
-        "rationale": "Abre curiosidade sem prometer devolução."
-      },
-      {
-        "id": "T3",
-        "text": "Como o Pix Passou a Seguir o Rastro do Dinheiro",
-        "rationale": "Tom documental e explicativo."
+        "rationale": "Assunto reconhecível, mudança concreta e promessa totalmente entregue pelo vídeo."
       }
     ],
     "thumbnails": [
       {
-        "id": "TH1",
+        "id": "thumb_main",
         "headline": "O PIX VAI ATRÁS",
-        "concept": "Um Pix de R$ 1.000 entra numa conta e um rastro amarelo continua por outras contas, com selo discreto de GOLPE.",
-        "visual_prompt": "Editorial finance graphic, dark charcoal background, warm yellow transaction trail branching through bank account nodes, clean modern documentary style, no gradients, no people, bold text area."
-      },
-      {
-        "id": "TH2",
-        "headline": "O RASTRO DO GOLPE",
-        "concept": "Uma trilha dourada conecta várias contas enquanto a primeira aparece marcada como golpe.",
-        "visual_prompt": "Dark financial network diagram with yellow highlighted path, clean Brazilian finance explainer style, strong contrast, no cliché money symbols."
-      },
-      {
-        "id": "TH3",
-        "headline": "ATÉ OUTRAS CONTAS",
-        "concept": "A primeira conta fica à esquerda e o rastreamento continua visivelmente para B, C e D.",
-        "visual_prompt": "Minimal dark diagram of transaction chain, first node and multiple downstream nodes, yellow tracking glow, professional editorial motion identity."
+        "concept": "Um Pix de R$ 1.000 entra em uma conta e um rastro amarelo continua para outras contas, com indicação discreta de golpe.",
+        "visual_prompt": "Editorial finance thumbnail, dark charcoal background, Pix transaction card as dominant object, one warm yellow money trail branching to downstream accounts, very high contrast, minimal elements, bold short Portuguese headline, clean documentary style, no gradients, no generic money symbols."
       }
     ]
   },
