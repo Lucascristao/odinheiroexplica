@@ -6,45 +6,28 @@ Azure AI Speech.
 
 O Kokoro foi descartado depois do teste auditivo em pt-BR.
 
-## Referência atual
+## Voz oficial do canal
 
-A voz preferida até aqui é:
+A voz escolhida para o O Dinheiro Explica é:
 
-`pt-BR-NicolauNeural`
+`pt-BR-MacerioMultilingualNeural`
 
-Antes de fechar a identidade sonora, o projeto testa Nicolau contra outras vozes brasileiras.
+Ela substitui Nicolau como referência e passa a ser a voz padrão dos próximos testes e da futura geração de áudio por cena.
 
-## Segunda rodada
+## Configuração atual
 
-### Neural padrão
+- voz: `pt-BR-MacerioMultilingualNeural`
+- velocidade: `-2%`
+- pitch: `0%`
 
-- `pt-BR-AntonioNeural`
-- `pt-BR-DonatoNeural`
-- `pt-BR-HumbertoNeural`
-- `pt-BR-JulioNeural`
-- `pt-BR-ValerioNeural`
-
-### Multilingual
-
-- `pt-BR-MacerioMultilingualNeural`
-
-### Neural HD
-
-- `pt-BR-Caio:MAI-Voice-2`
-- `pt-BR-Pedro:MAI-Voice-2`
-- `pt-BR-Rafael:MAI-Voice-2`
-- `pt-BR-Luana:MAI-Voice-2`
-
-As vozes HD são tentadas de forma opcional. Se o recurso F0 ou a região não permitir, o workflow continua e a página informa que ficaram indisponíveis.
-
-## Custo
-
-A camada F0 inclui 0,5 milhão de caracteres mensais para TTS Neural padrão. As vozes HD não fazem parte da franquia Neural padrão e não devem motivar mudança para S0 sem decisão explícita.
+Esses parâmetros podem ser refinados depois de ouvir roteiros maiores, mas a identidade sonora base fica definida no Macerio.
 
 ## Segredos
 
 - `AZURE_SPEECH_KEY`
 - `AZURE_SPEECH_REGION`
+
+A chave nunca deve entrar no frontend, no repositório ou em logs.
 
 ## Timeline
 
