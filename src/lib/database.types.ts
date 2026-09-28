@@ -21,6 +21,7 @@ export type VideoProjectRow = {
   duration_seconds: number | null;
   drive_file_id: string | null;
   youtube_video_id: string | null;
+  tts_voice: string;
   created_at: string;
   updated_at: string;
   published_at: string | null;
@@ -67,6 +68,10 @@ export type ProjectSceneRow = {
   visual_payload: Json;
   claim_keys: string[];
   audio_duration_seconds: number | null;
+  audio_path: string | null;
+  audio_voice: string | null;
+  narration_sha256: string | null;
+  audio_generated_at: string | null;
   created_at: string;
   updated_at: string;
 };
@@ -157,6 +162,21 @@ export type Database = {
           p_new_status: string;
         };
         Returns: VideoProjectRow;
+      };
+      apply_scene_audio_result: {
+        Args: {
+          p_scene_id: string;
+          p_project_id: string;
+          p_expected_narration_sha256: string;
+          p_audio_path: string;
+          p_audio_duration_seconds: number;
+          p_audio_voice: string;
+        };
+        Returns: ProjectSceneRow;
+      };
+      recalculate_project_duration: {
+        Args: { p_project_id: string };
+        Returns: number;
       };
     };
     Enums: Record<string, never>;
