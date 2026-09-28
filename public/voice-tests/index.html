@@ -19,9 +19,7 @@
         place-items: center;
         padding: 24px;
       }
-      main {
-        width: min(720px, 100%);
-      }
+      main { width: min(720px, 100%); }
       h1 {
         margin: 0 0 8px;
         font-size: clamp(28px, 5vw, 44px);
@@ -40,32 +38,42 @@
       }
       .voice strong {
         display: block;
-        margin-bottom: 12px;
         color: #ffbd19;
+        margin-bottom: 5px;
       }
-      audio {
-        width: 100%;
+      .voice span {
+        display: block;
+        margin-bottom: 12px;
+        color: #a5adb6;
+        font-size: 13px;
       }
+      audio { width: 100%; }
     </style>
   </head>
   <body>
     <main>
-      <h1>Teste de vozes Kokoro</h1>
-      <p>Escute o mesmo texto nas três vozes e escolha a que combina melhor com o canal.</p>
+      <h1>Teste de vozes Azure pt-BR</h1>
+      <p>
+        O mesmo texto é lido por três vozes neurais brasileiras.
+        O objetivo é escolher naturalidade, dicção e ritmo para vídeos longos.
+      </p>
 
       <section class="voice">
-        <strong>pf_dora</strong>
-        <audio controls preload="metadata" src="./pf_dora.mp3"></audio>
+        <strong>Francisca</strong>
+        <span>pt-BR-FranciscaNeural</span>
+        <audio controls preload="metadata" src="./francisca.mp3"></audio>
       </section>
 
       <section class="voice">
-        <strong>pm_alex</strong>
-        <audio controls preload="metadata" src="./pm_alex.mp3"></audio>
+        <strong>Fabio</strong>
+        <span>pt-BR-FabioNeural</span>
+        <audio controls preload="metadata" src="./fabio.mp3"></audio>
       </section>
 
       <section class="voice">
-        <strong>pm_santa</strong>
-        <audio controls preload="metadata" src="./pm_santa.mp3"></audio>
+        <strong>Nicolau</strong>
+        <span>pt-BR-NicolauNeural</span>
+        <audio controls preload="metadata" src="./nicolau.mp3"></audio>
       </section>
     </main>
   </body>
