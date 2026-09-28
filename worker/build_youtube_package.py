@@ -46,7 +46,16 @@ def main() -> None:
         for source in sources
     )
 
-    description = project.get("publication", {}).get("description", "").strip()
+    publication = project.get("publication", {})
+    description = publication.get("description", "").strip()
+    seo = publication.get("seo", {})
+    tags = publication.get("tags", [])
+
+    if not description:
+        raise RuntimeError("Descrição editorial ausente.")
+    if not seo.get("primary_keyword"):
+        raise RuntimeError("SEO sem palavra-chave principal.")
+
     full_description = (
         f"{description}\n\nCAPÍTULOS\n{chapter_text}"
         f"\n\nFONTES\n{source_text}"
@@ -56,6 +65,9 @@ def main() -> None:
         "title": title,
         "thumbnail_headline": thumbnail,
         "packaging_strategy": project.get("packaging", {}).get("strategy", {}),
+        "youtube_suitability": project.get("editorial", {}).get("youtube_suitability", {}),
+        "seo": seo,
+        "tags": tags,
         "description": full_description,
         "chapters": chapters,
         "duration_seconds": round(
