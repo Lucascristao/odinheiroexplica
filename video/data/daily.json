@@ -452,5 +452,10 @@
       "bets": "béts"
     },
     "ignore_pronunciation_terms": []
+  },
+  "presenter": {
+    "gender": "male",
+    "voice_id": "male",
+    "name": "Roberto"
   }
 }
