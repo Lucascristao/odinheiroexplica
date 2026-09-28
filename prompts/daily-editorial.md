@@ -80,7 +80,7 @@ Quando houver risco de pronúncia, preencha no nível raiz do VideoProject:
 - speech.pronunciations: mapa "termo escrito" -> "forma falada em português brasileiro";
 - speech.ignore_pronunciation_terms: somente para termos que parecem arriscados, mas cuja leitura padrão já foi validada e deve permanecer.
 
-Exemplo: "bets" continua escrito como bets, mas pode receber a forma falada "béts". Não invente pronúncias para palavras que você não consegue justificar. O pipeline executa uma auditoria antes do TTS e interrompe a geração do áudio quando encontra um termo de risco conhecido sem tratamento, evitando descobrir o problema apenas depois do render.
+Exemplo: "bets" continua escrito como bets, mas pode receber a forma falada "bétes". Não invente pronúncias para palavras que você não consegue justificar. O pipeline executa uma auditoria antes do TTS e interrompe a geração do áudio quando encontra um termo de risco conhecido sem tratamento, evitando descobrir o problema apenas depois do render.
 
 O início precisa criar interesse imediatamente. Use curiosidade, contraste, consequência e especificidade quando forem sustentados pelos fatos.
 
@@ -115,7 +115,7 @@ SEO da publicação:
 - inclua sinônimos e termos relacionados de modo natural, nunca como bloco de palavras-chave;
 - não faça keyword stuffing;
 - não encha a descrição de tags; tags têm importância secundária e só devem existir quando forem úteis, por exemplo para grafias alternativas;
-- capítulos e fontes serão acrescentados pelo pipeline depois da descrição editorial.
+- capítulos e uma seção `Bases do vídeo:` serão acrescentados pelo pipeline depois da descrição editorial; essa seção lista os títulos das fontes usadas, sem URLs externas.
 
 Preencha publication.seo com:
 - primary_keyword;
@@ -141,6 +141,22 @@ Regras globais:
 - o final da cena deve preparar visualmente a transição para a próxima.
 
 A regra vale para todos os próximos vídeos e para qualquer tipo de cena criado no futuro. O objetivo é evitar sensação de PowerPoint narrado sem transformar o vídeo em edição caótica.
+
+## Sound design editorial
+
+O render diário usa efeitos sonoros discretos para reforçar alguns eventos visuais sem disputar espaço com Roberto ou Luana.
+
+Regras globais:
+- a narração é sempre a prioridade e deve permanecer claramente acima dos efeitos;
+- usar sons pontuais, não um efeito para cada movimento;
+- entradas relevantes podem receber tick, impacto suave ou whoosh curto;
+- alertas podem receber um sinal discreto, sem dramatização exagerada;
+- processos, listas e timelines podem receber sons apenas nos marcos mais importantes;
+- não usar música contínua como padrão;
+- evitar repetição mecânica do mesmo efeito em todas as cenas;
+- o encerramento recebe uma assinatura sonora curta depois do fim da narração, com cauda visual suficiente para não terminar de forma seca;
+- os efeitos do fluxo são gerados internamente pelo projeto, sem depender de arquivos aleatórios ou material externo;
+- sound design deve reforçar clareza, ritmo e acabamento, nunca virar protagonista.
 
 Não determine previamente a duração. O vídeo termina quando a história estiver completa, sem repetição para aumentar tempo.
 
