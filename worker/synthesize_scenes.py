@@ -177,6 +177,13 @@ def main() -> None:
     )
     project_voice = PRESENTER_VOICES.get(presenter_key, DEFAULT_TTS_VOICE)
 
+    project_speech = payload.get("speech") or {}
+    project_pronunciations = {
+        str(key).lower(): str(value)
+        for key, value in (project_speech.get("pronunciations") or {}).items()
+        if str(key).strip() and str(value).strip()
+    }
+
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
@@ -186,6 +193,7 @@ def main() -> None:
         "rate": DEFAULT_TTS_RATE,
         "pitch": DEFAULT_TTS_PITCH,
         "output_format": "audio-48khz-192kbitrate-mono-mp3",
+        "project_pronunciations": project_pronunciations,
         "scenes": [],
         "total_duration_seconds": 0.0,
     }
@@ -198,6 +206,17 @@ def main() -> None:
             raise RuntimeError(f"Cena {scene_id} sem narração.")
 
         tts = dict(scene.get("tts") or {})
+        scene_pronunciations = {
+            str(key).lower(): str(value)
+            for key, value in (tts.get("pronunciations") or {}).items()
+            if str(key).strip() and str(value).strip()
+        }
+        if project_pronunciations or scene_pronunciations:
+            tts["pronunciations"] = {
+                **project_pronunciations,
+                **scene_pronunciations,
+            }
+
         narration_hash = hashlib.sha256(narration.encode("utf-8")).hexdigest()
         output = output_dir / f"{scene_id}.mp3"
         synthesize(narration, output, key, region, project_voice, tts)
