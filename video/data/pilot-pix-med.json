@@ -1,0 +1,495 @@
+{
+  "version": "1.0",
+  "story": {
+    "subject": "O Pix agora rastreia o dinheiro do golpe além da primeira conta",
+    "angle": "Como o MED 2.0 transformou a recuperação de valores em um rastreamento de múltiplas contas e por que isso muda a lógica dos golpes no Pix.",
+    "promise": "Mostrar, de forma simples, como o novo rastreamento do MED funciona, o que ele consegue fazer e quais limites continuam existindo.",
+    "why_now": "O Banco Central atualizou em setembro de 2026 suas orientações e regras do Pix, enquanto o MED 2.0 já opera de forma obrigatória desde fevereiro de 2026.",
+    "category": "money"
+  },
+  "editorial": {
+    "viral_score": 88,
+    "strengths": [
+      "Pix é massivamente reconhecido no Brasil",
+      "Tema une dinheiro, tecnologia e segurança",
+      "Mudança concreta e pouco compreendida",
+      "Permite visualização forte com fluxo de dinheiro e grafo de contas",
+      "Fontes primárias recentes do Banco Central"
+    ],
+    "risk_flags": []
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "title": "Pix em números",
+      "url": "https://www.bcb.gov.br/estabilidadefinanceira/pix?screening=true",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "notes": "Estatísticas oficiais: mais de 170 milhões de pessoas físicas, mais de 7 bilhões de transações em maio de 2026."
+    },
+    {
+      "id": "S2",
+      "title": "Fórum Pix debate aprimoramentos do serviço de pagamento instantâneo do BC",
+      "url": "https://www.bcb.gov.br/detalhenoticia/20483/noticia",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "notes": "Explica o objetivo do MED 2.0 de rastrear recursos para além da primeira conta receptora."
+    },
+    {
+      "id": "S3",
+      "title": "Resolução BCB nº 493",
+      "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=493&tipo=Resolu%C3%A7%C3%A3o+BCB",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "notes": "Tornou obrigatória a funcionalidade de recuperação de valores a partir de 2 de fevereiro de 2026 para participantes aplicáveis."
+    },
+    {
+      "id": "S4",
+      "title": "DICT API - Recuperação de Valores",
+      "url": "https://bcb.gov.br/content/estabilidadefinanceira/pix/API-DICT.html",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "notes": "Documenta o grafo de rastreamento, priorização de caminhos, bloqueio, análise e devolução."
+    },
+    {
+      "id": "S5",
+      "title": "FAQ - O que é e como funciona o Mecanismo Especial de Devolução (MED)",
+      "url": "https://bcb.gov.br/meubc/faqs/p/o-que-e-e-como-funciona-o-mecanismo-especial-de-devolucao-med",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "published_at": "2026-09-18T19:06:00-03:00",
+      "notes": "Orientação atual do BC sobre prazo de 80 dias, mapeamento de contas, bloqueio e análise."
+    },
+    {
+      "id": "S6",
+      "title": "FAQ - Vítima fez um Pix e caiu em um golpe",
+      "url": "https://www.bcb.gov.br/meubc/faqs/p/vitima-fez-um-pix-e-caiu-em-um-golpe",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "published_at": "2026-08-07T19:41:00-03:00",
+      "notes": "Orientação ao usuário, prazos de análise e situações em que o MED não se aplica."
+    },
+    {
+      "id": "S7",
+      "title": "Segurança no Pix",
+      "url": "https://www.bcb.gov.br/estabilidadefinanceira/pix-seguranca",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "notes": "O MED não garante devolução; resultado depende da análise e de recursos disponíveis."
+    },
+    {
+      "id": "S8",
+      "title": "BC aprimora experiência do usuário no Pix e amplia proteção contra fraudes",
+      "url": "https://www.bcb.gov.br/detalhenoticia/21251/nota",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "published_at": "2026-09-03T00:00:00-03:00",
+      "notes": "Mudanças de experiência do MED com vigência em março de 2027 e proibição de publicidade e links nos comprovantes."
+    }
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "text": "Mais de 170 milhões de pessoas físicas já usaram Pix, e o sistema registrou mais de 7 bilhões de transações em maio de 2026.",
+      "source_ids": [
+        "S1"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C2",
+      "text": "O MED 2.0 foi desenhado para rastrear recursos de fraude para além da primeira conta receptora.",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C3",
+      "text": "A funcionalidade de recuperação de valores passou a ser obrigatória para participantes aplicáveis a partir de 2 de fevereiro de 2026.",
+      "source_ids": [
+        "S3"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C4",
+      "text": "O DICT pode criar um grafo de rastreamento das transações subsequentes e comandar automaticamente rastreamento e bloqueio segundo regras de priorização.",
+      "source_ids": [
+        "S4"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C5",
+      "text": "Na orientação atual do BC, são mapeadas contas para onde o suposto fraudador pode ter transferido o dinheiro e instituições potencialmente envolvidas bloqueiam recursos disponíveis até o limite contestado para análise.",
+      "source_ids": [
+        "S5"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C6",
+      "text": "A vítima pode solicitar o MED em até 80 dias após a transação quando se tratar de fraude, golpe ou crime.",
+      "source_ids": [
+        "S5",
+        "S7"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C7",
+      "text": "As instituições analisam as notificações de fraude em até 7 dias, e a devolução depende da confirmação do caso e da existência de recursos disponíveis.",
+      "source_ids": [
+        "S5",
+        "S6",
+        "S7"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C8",
+      "text": "O MED não é destinado a desacordo comercial nem a Pix enviado para a pessoa errada por erro do próprio pagador.",
+      "source_ids": [
+        "S6",
+        "S7"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C9",
+      "text": "A partir de 1º de março de 2027, novas regras tornarão a jornada de contestação mais orientativa e proibirão publicidade, ofertas e links externos em comprovantes do Pix.",
+      "source_ids": [
+        "S8"
+      ],
+      "confidence": "high",
+      "verification_status": "verified"
+    }
+  ],
+  "packaging": {
+    "titles": [
+      {
+        "id": "T1",
+        "text": "O Pix Agora Rastreia o Dinheiro do Golpe",
+        "rationale": "Promessa simples, factual e imediatamente relevante."
+      },
+      {
+        "id": "T2",
+        "text": "Caiu em Golpe no Pix? O Sistema Mudou",
+        "rationale": "Abre curiosidade sem prometer devolução."
+      },
+      {
+        "id": "T3",
+        "text": "Como o Pix Passou a Seguir o Rastro do Dinheiro",
+        "rationale": "Tom documental e explicativo."
+      }
+    ],
+    "thumbnails": [
+      {
+        "id": "TH1",
+        "headline": "ATÉ OUTRAS CONTAS",
+        "concept": "Fluxo amarelo saindo de uma conta e se dividindo em várias contas conectadas, com uma linha de rastreamento destacada.",
+        "visual_prompt": "Editorial finance graphic, dark charcoal background, warm yellow transaction trail branching through bank account nodes, clean modern documentary style, no gradients, no people, bold text area."
+      },
+      {
+        "id": "TH2",
+        "headline": "O PIX SEGUE O DINHEIRO",
+        "concept": "Rede de contas com uma trilha dourada sendo rastreada.",
+        "visual_prompt": "Dark financial network diagram with yellow highlighted path, clean Brazilian finance explainer style, strong contrast, no cliché money symbols."
+      },
+      {
+        "id": "TH3",
+        "headline": "MED 2.0",
+        "concept": "Primeira conta em cinza e contas seguintes sendo iluminadas pelo rastreamento.",
+        "visual_prompt": "Minimal dark diagram of transaction chain, first node and multiple downstream nodes, yellow tracking glow, professional editorial motion identity."
+      }
+    ]
+  },
+  "script": {
+    "hook": "Você faz um Pix para um golpista. Em segundos, o dinheiro sai da primeira conta e começa a circular por outras. A pergunta sempre foi: como recuperar um valor que já não está mais onde chegou? O Pix mudou justamente nesse ponto.",
+    "beats": [
+      "Escala do Pix no Brasil",
+      "Limitação da primeira conta",
+      "MED 2.0 e grafo de rastreamento",
+      "Exemplo simples de dispersão do dinheiro",
+      "O que é bloqueado e analisado",
+      "Prazos e limites",
+      "Mudanças adicionais de 2027",
+      "Por que isso importa"
+    ],
+    "scenes": [
+      {
+        "index": 0,
+        "title": "O dinheiro não para na primeira conta",
+        "narration": "Você faz um Pix para um golpista. Em segundos, o dinheiro sai da primeira conta e começa a circular por outras. A pergunta sempre foi: como recuperar um valor que já não está mais onde chegou? O Pix mudou justamente nesse ponto. O novo mecanismo de recuperação consegue seguir o rastro do dinheiro para além da primeira conta recebedora.",
+        "visual": {
+          "type": "HEADLINE",
+          "payload": {
+            "kicker": "O Pix mudou",
+            "headline": "O dinheiro do golpe pode ser rastreado além da primeira conta.",
+            "accent": "além da primeira conta",
+            "source": "Banco Central do Brasil"
+          }
+        },
+        "claim_ids": [
+          "C2"
+        ]
+      },
+      {
+        "index": 1,
+        "title": "A escala do Pix",
+        "narration": "E isso importa porque estamos falando de uma infraestrutura gigantesca. Mais de cento e setenta milhões de pessoas físicas já fizeram Pix. Só em maio de dois mil e vinte e seis foram mais de sete bilhões de transações. Quando um sistema desse tamanho movimenta dinheiro em segundos, combater fraude também precisa acontecer rápido e em escala.",
+        "visual": {
+          "type": "STAT_GRID",
+          "payload": {
+            "eyebrow": "A escala do Pix",
+            "stats": [
+              {
+                "value": "+170 MI",
+                "label": "pessoas físicas"
+              },
+              {
+                "value": "+7 BI",
+                "label": "transações em maio/26"
+              }
+            ],
+            "caption": "Um sistema nacional, em tempo real.",
+            "source": "Banco Central do Brasil"
+          }
+        },
+        "claim_ids": [
+          "C1"
+        ]
+      },
+      {
+        "index": 2,
+        "title": "O problema da primeira conta",
+        "narration": "O problema é simples. O golpista raramente precisa deixar o dinheiro parado. Ele pode receber em uma conta, transferir para outra, dividir o valor e continuar a dispersão. O Banco Central apresentou o MED dois ponto zero justamente para permitir rastreamento além da primeira conta receptora e aumentar a chance de encontrar recursos desviados.",
+        "visual": {
+          "type": "BEFORE_AFTER",
+          "payload": {
+            "eyebrow": "Antes x agora",
+            "before_title": "1ª conta",
+            "before_text": "O foco terminava cedo demais.",
+            "after_title": "Rastro",
+            "after_text": "O caminho pode continuar sendo mapeado.",
+            "source": "Banco Central do Brasil"
+          }
+        },
+        "claim_ids": [
+          "C2"
+        ]
+      },
+      {
+        "index": 3,
+        "title": "O grafo do dinheiro",
+        "narration": "A peça central é o chamado grafo de rastreamento. Pense em um mapa. A transação do golpe é o ponto inicial. A partir dali, o sistema identifica transferências subsequentes, monta caminhos e prioriza onde existem recursos que podem ser bloqueados. A documentação técnica do Pix diz que esse rastreamento e o comando de bloqueio podem ser feitos automaticamente pelo DICT.",
+        "visual": {
+          "type": "NETWORK",
+          "payload": {
+            "eyebrow": "MED 2.0",
+            "headline": "Um mapa do caminho do dinheiro",
+            "nodes": [
+              "VÍTIMA",
+              "CONTA A",
+              "CONTA B",
+              "CONTA C",
+              "CONTA D"
+            ],
+            "paths": [
+              [
+                0,
+                1
+              ],
+              [
+                1,
+                2
+              ],
+              [
+                1,
+                3
+              ],
+              [
+                2,
+                4
+              ]
+            ],
+            "source": "DICT • Banco Central"
+          }
+        },
+        "claim_ids": [
+          "C4"
+        ]
+      },
+      {
+        "index": 4,
+        "title": "Um exemplo de mil reais",
+        "narration": "Imagine um golpe de mil reais. O dinheiro entra na conta A. Dali, seiscentos reais vão para a conta B e quatrocentos para a conta C. Depois, parte da conta B segue para uma conta D. O objetivo do novo mecanismo é não enxergar apenas a conta A. Ele tenta reconstruir esse caminho e levar a análise também às contas potencialmente envolvidas na dispersão.",
+        "visual": {
+          "type": "MONEY_FLOW",
+          "payload": {
+            "eyebrow": "Exemplo simplificado",
+            "amount": "R$ 1.000",
+            "flows": [
+              {
+                "from": "A",
+                "to": "B",
+                "value": "R$ 600"
+              },
+              {
+                "from": "A",
+                "to": "C",
+                "value": "R$ 400"
+              },
+              {
+                "from": "B",
+                "to": "D",
+                "value": "parte do valor"
+              }
+            ],
+            "source": "Exemplo baseado no fluxo do MED 2.0"
+          }
+        },
+        "claim_ids": [
+          "C4",
+          "C5"
+        ]
+      },
+      {
+        "index": 5,
+        "title": "Rastrear não é confiscar automaticamente",
+        "narration": "Mas existe uma diferença importante: rastrear uma conta não significa simplesmente retirar dinheiro dela. As instituições recebem notificações, bloqueiam recursos disponíveis até o limite da transação contestada e analisam se aquela movimentação realmente está ligada à fraude. Segundo o Banco Central, essa análise pode levar até sete dias.",
+        "visual": {
+          "type": "PROCESS",
+          "payload": {
+            "eyebrow": "O que acontece",
+            "steps": [
+              "RASTREAR",
+              "NOTIFICAR",
+              "BLOQUEAR",
+              "ANALISAR"
+            ],
+            "caption": "Bloqueio não é prova automática de fraude.",
+            "source": "Banco Central do Brasil"
+          }
+        },
+        "claim_ids": [
+          "C5",
+          "C7"
+        ]
+      },
+      {
+        "index": 6,
+        "title": "O relógio ainda importa",
+        "narration": "Para a vítima, velocidade continua sendo importante. O MED pode ser solicitado em até oitenta dias da transação, mas o próprio Banco Central recomenda acionar o mecanismo o mais rápido possível. E há um limite que nenhum efeito visual deve esconder: o MED não garante que todo o dinheiro volte. A devolução depende da análise e da existência de saldo nas contas envolvidas.",
+        "visual": {
+          "type": "BIG_NUMBER",
+          "payload": {
+            "eyebrow": "Prazo máximo para pedir o MED",
+            "number": "80 DIAS",
+            "caption": "Quanto mais cedo agir, maior a chance de encontrar recursos.",
+            "warning": "O MED não garante devolução.",
+            "source": "Banco Central do Brasil"
+          }
+        },
+        "claim_ids": [
+          "C6",
+          "C7"
+        ]
+      },
+      {
+        "index": 7,
+        "title": "O que o MED não cobre",
+        "narration": "Também é importante saber o que não entra nessa regra. O MED foi criado para fraude, golpe ou crime. Ele não é o caminho para resolver um desacordo comercial comum e também não serve para um Pix enviado à pessoa errada por erro do próprio pagador. Nesses casos, a lógica é outra.",
+        "visual": {
+          "type": "DO_DONT",
+          "payload": {
+            "eyebrow": "MED",
+            "yes": [
+              "FRAUDE",
+              "GOLPE",
+              "CRIME"
+            ],
+            "no": [
+              "DESACORDO COMERCIAL",
+              "PIX ENVIADO POR ENGANO"
+            ],
+            "source": "Banco Central do Brasil"
+          }
+        },
+        "claim_ids": [
+          "C6",
+          "C8"
+        ]
+      },
+      {
+        "index": 8,
+        "title": "O Pix ainda está mudando",
+        "narration": "E a evolução não parou. Em setembro de dois mil e vinte e seis, o Banco Central anunciou uma nova experiência de contestação para entrar em vigor em março de dois mil e vinte e sete. Entre as mudanças, o processo deve ficar mais orientativo para o usuário e os comprovantes do Pix não poderão carregar propaganda, ofertas ou links externos, uma medida também voltada a reduzir golpes.",
+        "visual": {
+          "type": "TIMELINE",
+          "payload": {
+            "eyebrow": "Próxima etapa",
+            "date": "MARÇO 2027",
+            "headline": "Contestação mais clara e comprovante sem propaganda ou links.",
+            "source": "Banco Central do Brasil • 03/09/2026"
+          }
+        },
+        "claim_ids": [
+          "C9"
+        ]
+      },
+      {
+        "index": 9,
+        "title": "Por que isso importa",
+        "narration": "A mudança mais interessante não é um novo botão no aplicativo. É uma mudança na arquitetura da resposta à fraude. O dinheiro do golpe pode continuar se movendo, mas o mecanismo também passou a olhar para o caminho. Isso não elimina golpes e não transforma devolução em certeza. Mas torna mais difícil apostar que basta tirar o dinheiro da primeira conta para desaparecer do radar.",
+        "visual": {
+          "type": "HEADLINE",
+          "payload": {
+            "kicker": "O que realmente mudou",
+            "headline": "O sistema passou a olhar para o caminho, não só para o destino inicial.",
+            "accent": "o caminho",
+            "source": "O Dinheiro Explica • baseado em documentação do BC"
+          }
+        },
+        "claim_ids": [
+          "C2",
+          "C4",
+          "C7"
+        ]
+      },
+      {
+        "index": 10,
+        "title": "Fechamento",
+        "narration": "Se você cair em um golpe, acione o MED pelo aplicativo do seu banco o mais rápido possível e registre a ocorrência pelos canais adequados. E guarde esta ideia: no Pix, a velocidade sempre foi a maior vantagem. Agora, essa mesma infraestrutura também está sendo usada para seguir o rastro do dinheiro.",
+        "visual": {
+          "type": "CLOSING",
+          "payload": {
+            "eyebrow": "O Dinheiro Explica",
+            "headline": "O Pix ficou rápido para pagar. Agora tenta ser rápido para seguir o rastro.",
+            "source": "Fontes: Banco Central do Brasil"
+          }
+        },
+        "claim_ids": [
+          "C6",
+          "C7"
+        ]
+      }
+    ],
+    "closing": "O Pix ficou rápido para pagar. Agora tenta ser rápido para seguir o rastro."
+  },
+  "publication": {
+    "description": "O Pix mudou a forma de reagir a golpes. Com o MED 2.0, o mecanismo de recuperação de valores pode rastrear o dinheiro para além da primeira conta recebedora, formando um grafo das transferências subsequentes e ampliando a análise das contas potencialmente envolvidas. Neste vídeo, mostramos como isso funciona, quais são os prazos e por que o MED ainda não garante a devolução do dinheiro.\n\nFontes principais: Banco Central do Brasil, Regulamento do Pix, DICT e FAQs oficiais do MED.\n\nEste vídeo tem caráter informativo e educacional.",
+    "chapters": [],
+    "disclosure_ai": false
+  }
+}
