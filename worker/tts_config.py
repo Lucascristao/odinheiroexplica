@@ -17,8 +17,8 @@ PRESENTER_NAMES = {
 DEFAULT_PRESENTER = "male"
 
 # Correções de pronúncia que só afetam a fala, sem alterar o texto publicado.
-# "bets" precisa soar com o "e" aberto, como um brasileiro costuma dizer "béts".
+# "bet/bets" precisam soar com a vogal final audível, como "béte/bétes" em português brasileiro.
 GLOBAL_PRONUNCIATIONS = {
-    "bet": "bét",
-    "bets": "béts",
+    "bet": "béte",
+    "bets": "bétes",
 }
