@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import { ClipboardPaste, FileCheck2, FlaskConical } from "lucide-react";
 import { exampleVideoProject } from "../lib/example-project";
+import type { Json } from "../lib/database.types";
 import { supabase } from "../lib/supabase";
 import {
   hardRiskFlags,
@@ -66,7 +67,7 @@ export function ImportProject({ onImported }: Props) {
     setResultMessage(null);
 
     const { data, error } = await supabase.rpc("import_video_project", {
-      payload: project,
+      payload: project as unknown as Json,
     });
 
     if (error) {
