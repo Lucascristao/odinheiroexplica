@@ -476,6 +476,49 @@ const Ending = () => {
   );
 };
 
+const SceneTransition = ({
+  durationFrames,
+  direction = "up",
+  children,
+}: {
+  durationFrames: number;
+  direction?: "up" | "left" | "right";
+  children: React.ReactNode;
+}) => {
+  const frame = useCurrentFrame();
+
+  const enter = interpolate(frame, [0, 8], [0, 1], clamp);
+  const exit = interpolate(
+    frame,
+    [Math.max(10, durationFrames - 10), durationFrames - 1],
+    [1, 0],
+    clamp,
+  );
+  const opacity = Math.min(enter, exit);
+
+  const enterOffset = interpolate(frame, [0, 10], [26, 0], clamp);
+  const exitOffset = interpolate(
+    frame,
+    [Math.max(10, durationFrames - 10), durationFrames - 1],
+    [0, -18],
+    clamp,
+  );
+  const offset = enterOffset + exitOffset;
+
+  const transform =
+    direction === "left"
+      ? `translateX(${offset}px)`
+      : direction === "right"
+        ? `translateX(${-offset}px)`
+        : `translateY(${offset}px)`;
+
+  return (
+    <AbsoluteFill style={{opacity, transform}}>
+      {children}
+    </AbsoluteFill>
+  );
+};
+
 const FlashCut = ({from}: {from: number}) => {
   const frame = useCurrentFrame();
   const local = frame - from;
@@ -500,25 +543,33 @@ export const DynamicMotionV2 = () => {
       <Brand />
       <Audio src={staticFile("voice-tests/macerio.mp3")} />
 
-      <Sequence from={0} durationInFrames={190}>
-        <Opening />
+      <Sequence from={0} durationInFrames={180}>
+        <SceneTransition durationFrames={180} direction="up">
+          <Opening />
+        </SceneTransition>
       </Sequence>
 
-      <Sequence from={170} durationInFrames={220}>
-        <DataBurst />
+      <Sequence from={180} durationInFrames={195}>
+        <SceneTransition durationFrames={195} direction="left">
+          <DataBurst />
+        </SceneTransition>
       </Sequence>
 
-      <Sequence from={365} durationInFrames={235}>
-        <NumberMoment />
+      <Sequence from={375} durationInFrames={210}>
+        <SceneTransition durationFrames={210} direction="right">
+          <NumberMoment />
+        </SceneTransition>
       </Sequence>
 
-      <Sequence from={580} durationInFrames={230}>
-        <Ending />
+      <Sequence from={585} durationInFrames={225}>
+        <SceneTransition durationFrames={225} direction="up">
+          <Ending />
+        </SceneTransition>
       </Sequence>
 
-      <FlashCut from={168} />
-      <FlashCut from={363} />
-      <FlashCut from={578} />
+      <FlashCut from={179} />
+      <FlashCut from={374} />
+      <FlashCut from={584} />
     </AbsoluteFill>
   );
 };
