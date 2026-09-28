@@ -453,11 +453,11 @@ const NetworkScene = ({
   const paths = asArray<[number, number]>(payload.paths);
 
   const positions = [
-    {x: 230, y: 520},
-    {x: 620, y: 520},
-    {x: 1040, y: 340},
-    {x: 1040, y: 700},
-    {x: 1480, y: 340},
+    {x: 260, y: 600},
+    {x: 660, y: 600},
+    {x: 1110, y: 440},
+    {x: 1110, y: 735},
+    {x: 1530, y: 440},
   ];
 
   return (
@@ -465,7 +465,16 @@ const NetworkScene = ({
       <AbsoluteFill style={{fontFamily: FONT}}>
         <div style={{position: "absolute", left: 145, top: 185}}>
           <Eyebrow>{asString(payload.eyebrow, "Rastreamento")}</Eyebrow>
-          <div style={{color: WHITE, fontSize: 62, fontWeight: 950, letterSpacing: -3}}>
+          <div
+            style={{
+              color: WHITE,
+              fontSize: 58,
+              fontWeight: 950,
+              letterSpacing: -3,
+              maxWidth: 850,
+              lineHeight: 1.04,
+            }}
+          >
             {asString(payload.headline)}
           </div>
         </div>
@@ -484,12 +493,14 @@ const NetworkScene = ({
               [0, 1],
               clamp,
             );
-            const x2 = a.x + (b.x - a.x) * progress;
+            const startX = a.x + 96;
+            const targetX = b.x - 96;
+            const x2 = startX + (targetX - startX) * progress;
             const y2 = a.y + (b.y - a.y) * progress;
             return (
               <line
                 key={index}
-                x1={a.x}
+                x1={startX}
                 y1={a.y}
                 x2={x2}
                 y2={y2}
@@ -521,7 +532,7 @@ const NetworkScene = ({
                 width: 184,
                 height: 112,
                 borderRadius: 20,
-                background: index === 0 ? "rgba(255,189,25,.08)" : SURFACE,
+                background: index === 0 ? "#17130a" : SURFACE,
                 border: index === 0 ? "2px solid rgba(255,189,25,.55)" : `1px solid ${LINE}`,
                 color: index === 0 ? GOLD : WHITE,
                 display: "grid",
@@ -1039,37 +1050,174 @@ export const EditorialPilot = () => {
   );
 };
 
-export const PixPilotThumbnail = () => {
+type ThumbnailVariant = "A" | "B" | "C";
+
+export const PixPilotThumbnail = ({
+  variant = "A",
+}: {
+  variant?: ThumbnailVariant;
+}) => {
+  const copy = {
+    A: {top: "O PIX", main: "VAI ATRÁS", badge: "MED 2.0"},
+    B: {top: "O RASTRO", main: "DO GOLPE", badge: "NOVO PIX"},
+    C: {top: "ATÉ OUTRAS", main: "CONTAS", badge: "RASTREAMENTO"},
+  }[variant];
+
   const nodes = [
-    {x: 670, y: 350, label: "A"},
-    {x: 890, y: 220, label: "B"},
-    {x: 900, y: 500, label: "C"},
-    {x: 1120, y: 220, label: "D"},
+    {x: 835, y: 358, label: "A"},
+    {x: 1002, y: 258, label: "B"},
+    {x: 1010, y: 470, label: "C"},
+    {x: 1160, y: 258, label: "D"},
   ];
   const paths = [[0, 1], [0, 2], [1, 3]];
 
   return (
-    <AbsoluteFill style={{backgroundColor: BG, fontFamily: FONT}}>
-      <MovingBackground />
-      <div style={{position: "absolute", left: 70, top: 58, color: GOLD, fontSize: 24, fontWeight: 900, letterSpacing: 4}}>
+    <AbsoluteFill
+      style={{
+        backgroundColor: BG,
+        fontFamily: FONT,
+        overflow: "hidden",
+      }}
+    >
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          background:
+            "radial-gradient(circle at 79% 48%, rgba(255,189,25,.13), transparent 35%)",
+        }}
+      />
+      <div
+        style={{
+          position: "absolute",
+          left: 58,
+          top: 48,
+          color: GOLD,
+          fontSize: 20,
+          fontWeight: 950,
+          letterSpacing: 4,
+        }}
+      >
         O DINHEIRO EXPLICA
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          left: 62,
+          top: 155,
+          width: 650,
+          color: WHITE,
+          lineHeight: 0.91,
+          letterSpacing: -5,
+          fontWeight: 950,
+        }}
+      >
+        <div style={{fontSize: 70}}>{copy.top}</div>
+        <div style={{fontSize: 100, color: GOLD, marginTop: 8}}>{copy.main}</div>
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          left: 66,
+          top: 395,
+          display: "inline-flex",
+          alignItems: "center",
+          gap: 10,
+          padding: "10px 15px",
+          borderRadius: 999,
+          background: "rgba(255,107,107,.10)",
+          border: "1px solid rgba(255,107,107,.38)",
+          color: "#ff9494",
+          fontSize: 19,
+          fontWeight: 900,
+          letterSpacing: 2,
+        }}
+      >
+        GOLPE
       </div>
       <div
         style={{
           position: "absolute",
-          left: 70,
-          top: 155,
-          width: 610,
-          color: WHITE,
-          fontSize: 78,
-          lineHeight: 0.98,
-          letterSpacing: -4,
-          fontWeight: 950,
+          left: 170,
+          top: 400,
+          color: MUTED,
+          fontSize: 19,
+          fontWeight: 800,
         }}
       >
-        O PIX SEGUE
-        <br />
-        <span style={{color: GOLD}}>O DINHEIRO</span>
+        R$ 1.000 saem da primeira conta
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          right: 55,
+          top: 105,
+          width: 500,
+          height: 515,
+          borderRadius: 42,
+          transform: "rotate(2deg)",
+          background: "#0d1115",
+          border: "1px solid #2b323a",
+          boxShadow: "0 28px 80px rgba(0,0,0,.5)",
+        }}
+      >
+        <div
+          style={{
+            position: "absolute",
+            left: 32,
+            top: 28,
+            display: "flex",
+            alignItems: "center",
+            gap: 12,
+            color: WHITE,
+            fontSize: 24,
+            fontWeight: 950,
+          }}
+        >
+          <div
+            style={{
+              width: 42,
+              height: 42,
+              borderRadius: 13,
+              background: GOLD,
+              color: BG,
+              display: "grid",
+              placeItems: "center",
+              fontSize: 18,
+            }}
+          >
+            PIX
+          </div>
+          Transferência contestada
+        </div>
+        <div
+          style={{
+            position: "absolute",
+            left: 32,
+            top: 92,
+            color: GOLD,
+            fontSize: 44,
+            fontWeight: 950,
+            letterSpacing: -2,
+          }}
+        >
+          R$ 1.000
+        </div>
+        <div
+          style={{
+            position: "absolute",
+            left: 32,
+            top: 150,
+            color: MUTED,
+            fontSize: 17,
+            fontWeight: 750,
+          }}
+        >
+          O rastro continua
+        </div>
       </div>
 
       <svg width="1280" height="720" style={{position: "absolute", inset: 0}}>
@@ -1079,51 +1227,62 @@ export const PixPilotThumbnail = () => {
           return (
             <line
               key={index}
-              x1={a.x}
+              x1={a.x + 47}
               y1={a.y}
-              x2={b.x}
+              x2={b.x - 47}
               y2={b.y}
               stroke={GOLD}
-              strokeWidth={8}
+              strokeWidth={7}
               strokeLinecap="round"
+              opacity={index === 0 ? 1 : 0.78}
             />
           );
         })}
       </svg>
+
       {nodes.map((node, index) => (
         <div
           key={node.label}
           style={{
             position: "absolute",
-            left: node.x - 52,
-            top: node.y - 52,
-            width: 104,
-            height: 104,
+            left: node.x - 47,
+            top: node.y - 47,
+            width: 94,
+            height: 94,
             borderRadius: "50%",
             display: "grid",
             placeItems: "center",
-            background: index === 0 ? GOLD : SURFACE_2,
+            background: index === 0 ? GOLD : "#171c21",
             color: index === 0 ? BG : WHITE,
-            border: index === 0 ? "none" : `2px solid ${LINE}`,
-            fontSize: 34,
+            border: index === 0 ? "none" : "2px solid #3b434c",
+            fontSize: 30,
             fontWeight: 950,
-            boxShadow: index === 0 ? "0 0 45px rgba(255,189,25,.18)" : "none",
+            boxShadow:
+              index === 0
+                ? "0 0 42px rgba(255,189,25,.22)"
+                : "0 14px 28px rgba(0,0,0,.24)",
           }}
         >
           {node.label}
         </div>
       ))}
+
       <div
         style={{
           position: "absolute",
-          right: 60,
-          bottom: 48,
-          color: MUTED,
-          fontSize: 24,
-          fontWeight: 800,
+          right: 65,
+          bottom: 45,
+          padding: "8px 12px",
+          borderRadius: 10,
+          color: GOLD,
+          background: "rgba(255,189,25,.08)",
+          border: "1px solid rgba(255,189,25,.20)",
+          fontSize: 17,
+          fontWeight: 900,
+          letterSpacing: 1.5,
         }}
       >
-        MED 2.0
+        {copy.badge}
       </div>
     </AbsoluteFill>
   );
