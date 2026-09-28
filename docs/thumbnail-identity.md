@@ -15,7 +15,8 @@ A capa precisa funcionar primeiro como peça de clique e depois como peça de ma
 - contraste alto e iluminação cinematográfica;
 - acabamento editorial/fotográfico;
 - evitar aparência genérica de IA, mockup barato ou interface montada;
-- identidade discreta do canal, preferencialmente um pequeno selo/acento dourado;
+- não usar nome do canal, logotipo, ícone ou selo de marca na thumbnail por padrão;
+- a identidade deve vir de tipografia, paleta, contraste e acabamento editorial, não de branding explícito;
 - tipografia pesada, limpa e muito legível em celular;
 - espaçamento confortável entre letras, sem compressão agressiva;
 - um foco visual dominante e, no máximo, um apoio secundário.
@@ -57,7 +58,7 @@ A thumbnail não faz parte do render do Remotion.
 1. O vídeo é roteirizado, narrado, renderizado e enviado ao Google Drive.
 2. O render termina sem gerar thumbnail automática.
 3. Na etapa seguinte da mesma produção no ChatGPT, o ChatGPT confere a pasta criada para o vídeo, usa a embalagem aprovada e este DNA visual e gera a CAPA FINAL COMPLETA.
-4. A imagem já deve sair com fotografia/ilustração, texto, composição e identidade final. Não é uma imagem-base.
+4. A imagem já deve sair com fotografia/ilustração, texto, composição e identidade visual final. Não é uma imagem-base e não deve incluir nome do canal, logotipo ou ícone, salvo pedido explícito.
 5. O ChatGPT envia a capa para a MESMA pasta do Google Drive criada para o vídeo.
 6. A capa entregue no Drive é o arquivo final usado no YouTube.
 
