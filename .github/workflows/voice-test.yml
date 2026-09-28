@@ -1,4 +1,4 @@
-name: Teste de vozes Kokoro
+name: Teste de vozes Azure pt-BR
 
 on:
   workflow_dispatch:
@@ -15,7 +15,7 @@ permissions:
 jobs:
   generate:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 10
 
     steps:
       - name: Checkout
@@ -28,24 +28,14 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install system dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y espeak-ng libsndfile1 ffmpeg
-
       - name: Install Python dependencies
         run: pip install --no-cache-dir -r worker/requirements.txt
 
-      - name: Generate voice samples
+      - name: Generate Azure voice samples
+        env:
+          AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
+          AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
         run: python worker/voice_test.py
-
-      - name: Convert samples to MP3
-        run: |
-          mkdir -p public/voice-tests
-          for input in artifacts/voice-tests/*.wav; do
-            name="$(basename "$input" .wav)"
-            ffmpeg -y -i "$input" -codec:a libmp3lame -b:a 128k "public/voice-tests/$name.mp3"
-          done
 
       - name: Publish samples in repository
         run: |
@@ -60,6 +50,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No audio changes to publish."
           else
-            git commit -m "test: publish Kokoro voice samples"
+            git commit -m "test: publish Azure pt-BR voice samples"
             git push origin main
           fi
