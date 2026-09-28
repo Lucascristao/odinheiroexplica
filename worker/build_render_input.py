@@ -23,9 +23,11 @@ def main() -> None:
 
     output_scenes = []
     cursor = 0
+    scenes = project.get("scenes") or project.get("script", {}).get("scenes", [])
 
-    for scene in project["scenes"]:
-        scene_id = str(scene["id"])
+    for position, scene in enumerate(scenes):
+        scene_index = scene.get("scene_index", scene.get("index", position))
+        scene_id = str(scene.get("id") or f"scene-{int(scene_index):02d}")
         audio = audio_by_id.get(scene_id)
         if audio is None:
             raise RuntimeError(f"Áudio não encontrado para {scene_id}")
@@ -36,6 +38,8 @@ def main() -> None:
         output_scenes.append(
             {
                 **scene,
+                "id": scene_id,
+                "scene_index": scene_index,
                 "start_frame": cursor,
                 "duration_frames": duration_frames,
                 "audio_duration_seconds": audio["duration_seconds"],
