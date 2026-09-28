@@ -90,3 +90,42 @@ Princípios:
 O pipeline acrescenta automaticamente capítulos e a seção `Bases do vídeo:`.
 
 Essa seção lista somente os títulos das fontes que sustentaram o roteiro. As URLs continuam preservadas dentro do VideoProject para auditoria e verificação, mas não são colocadas automaticamente na descrição pública.
+
+
+## Beats informativos
+
+Cada cena pode declarar `visual.beats` para que novas informações da narração recebam uma microcena visual própria sem quebrar o bloco narrativo em dezenas de cenas.
+
+Exemplo:
+
+```json
+{
+  "visual": {
+    "type": "TIMELINE",
+    "payload": {
+      "eyebrow": "Preço dos combustíveis"
+    },
+    "beats": [
+      {
+        "anchor": "o petróleo voltou a subir",
+        "kind": "trend_up",
+        "headline": "Petróleo em alta",
+        "value": "+...",
+        "sound": "impact"
+      },
+      {
+        "anchor": "o governo anunciou novas medidas",
+        "kind": "process",
+        "headline": "Novas medidas anunciadas",
+        "sound": "none"
+      }
+    ]
+  }
+}
+```
+
+O campo `anchor` deve ser um trecho literal da própria narração. Na montagem da timeline, o pipeline localiza esse trecho no texto e converte sua posição em um frame aproximado dentro do áudio real da cena. Se um beat usar `at` explicitamente, o valor é uma proporção entre 0 e 1 e tem prioridade.
+
+O Remotion apresenta cada beat como uma microcena editorial em primeiro plano. Os tipos disponíveis são `fact`, `number`, `date`, `money`, `bank`, `flow`, `process`, `warning`, `compare`, `trend_up`, `trend_down`, `fuel` e `block`.
+
+Objetivo editorial: quando a fala muda de informação, o foco visual também deve mudar. Em cenas longas, a referência é uma nova informação visual aproximadamente a cada 4 a 7 segundos, sem criar movimento gratuito.
