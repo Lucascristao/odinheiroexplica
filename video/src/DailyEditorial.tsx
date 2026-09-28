@@ -49,6 +49,27 @@ const asString = (value: unknown, fallback = "") =>
 const asArray = <T,>(value: unknown): T[] =>
   Array.isArray(value) ? (value as T[]) : [];
 
+const sceneFrameAt = (durationFrames: number, ratio: number) =>
+  Math.round(Math.max(1, durationFrames - 1) * Math.max(0, Math.min(1, ratio)));
+
+const stagedSpring = ({
+  frame,
+  durationFrames,
+  ratio,
+  fps,
+}: {
+  frame: number;
+  durationFrames: number;
+  ratio: number;
+  fps: number;
+}) =>
+  spring({
+    frame: Math.max(0, frame - sceneFrameAt(durationFrames, ratio)),
+    fps,
+    durationInFrames: Math.max(16, Math.round(fps * 0.7)),
+    config: {damping: 18, stiffness: 105},
+  });
+
 const MovingBackground = () => {
   const frame = useCurrentFrame();
   const x = (frame * 0.45) % 72;
@@ -184,12 +205,19 @@ const SceneShell = ({
     [0, -14],
     clamp,
   );
+  const driftX = interpolate(
+    frame,
+    [0, Math.max(1, durationFrames - 1)],
+    [-3, 3],
+    clamp,
+  );
+  const breathe = 1 + Math.sin(frame / 70) * 0.0025;
 
   return (
     <AbsoluteFill
       style={{
         opacity,
-        transform: `translateY(${inY + outY}px)`,
+        transform: `translate(${driftX}px, ${inY + outY}px) scale(${breathe})`,
       }}
     >
       {children}
@@ -254,6 +282,13 @@ const HeadlineScene = ({
     durationInFrames: 26,
     config: {damping: 18, stiffness: 96},
   });
+  const accent = asString(payload.accent);
+  const accentEnter = stagedSpring({
+    frame,
+    durationFrames,
+    ratio: 0.38,
+    fps,
+  });
 
   return (
     <SceneShell durationFrames={durationFrames}>
@@ -280,7 +315,12 @@ const HeadlineScene = ({
         </div>
         <div
           style={{
-            width: `${interpolate(frame, [14, 54], [0, 760], clamp)}px`,
+            width: `${interpolate(
+              frame,
+              [sceneFrameAt(durationFrames, 0.08), sceneFrameAt(durationFrames, 0.58)],
+              [0, 760],
+              clamp,
+            )}px`,
             height: 7,
             borderRadius: 999,
             background: GOLD,
@@ -288,6 +328,27 @@ const HeadlineScene = ({
             boxShadow: "0 0 28px rgba(255,189,25,.14)",
           }}
         />
+        {accent && (
+          <div
+            style={{
+              marginTop: 24,
+              width: "fit-content",
+              padding: "11px 17px",
+              borderRadius: 12,
+              color: GOLD,
+              background: "rgba(255,189,25,.06)",
+              border: "1px solid rgba(255,189,25,.18)",
+              fontSize: 23,
+              fontWeight: 900,
+              textTransform: "uppercase",
+              letterSpacing: 2.4,
+              opacity: accentEnter,
+              transform: `translateY(${(1 - accentEnter) * 18}px)`,
+            }}
+          >
+            {accent}
+          </div>
+        )}
         <Source text={asString(payload.source)} />
       </AbsoluteFill>
     </SceneShell>
@@ -317,11 +378,13 @@ const StatGridScene = ({
         <Eyebrow>{asString(payload.eyebrow, "Em números")}</Eyebrow>
         <div style={{display: "flex", gap: 28}}>
           {stats.map((stat, index) => {
-            const enter = spring({
-              frame: Math.max(0, frame - index * 10),
+            const ratio =
+              0.08 + (index / Math.max(1, stats.length - 1)) * 0.5;
+            const enter = stagedSpring({
+              frame,
+              durationFrames,
+              ratio,
               fps,
-              durationInFrames: 24,
-              config: {damping: 18, stiffness: 105},
             });
             return (
               <div
@@ -378,7 +441,12 @@ const BeforeAfterScene = ({
   durationFrames: number;
 }) => {
   const frame = useCurrentFrame();
-  const split = interpolate(frame, [18, 72], [0, 1], clamp);
+  const split = interpolate(
+    frame,
+    [sceneFrameAt(durationFrames, 0.18), sceneFrameAt(durationFrames, 0.62)],
+    [0, 1],
+    clamp,
+  );
 
   const card = (
     side: "before" | "after",
@@ -487,9 +555,14 @@ const NetworkScene = ({
           {paths.map(([from, to], index) => {
             const a = positions[from];
             const b = positions[to];
+            const startRatio =
+              0.12 + (index / Math.max(1, paths.length)) * 0.48;
             const progress = interpolate(
               frame,
-              [20 + index * 10, 65 + index * 10],
+              [
+                sceneFrameAt(durationFrames, startRatio),
+                sceneFrameAt(durationFrames, Math.min(0.86, startRatio + 0.24)),
+              ],
               [0, 1],
               clamp,
             );
@@ -515,11 +588,11 @@ const NetworkScene = ({
 
         {nodes.map((node, index) => {
           const pos = positions[index];
-          const enter = spring({
-            frame: Math.max(0, frame - 10 - index * 8),
+          const enter = stagedSpring({
+            frame,
+            durationFrames,
+            ratio: 0.06 + (index / Math.max(1, nodes.length - 1)) * 0.56,
             fps,
-            durationInFrames: 20,
-            config: {damping: 17, stiffness: 110},
           });
           const pulse = 1 + Math.sin((frame + index * 12) / 11) * 0.018;
           return (
@@ -585,9 +658,14 @@ const MoneyFlowScene = ({
             const a = columns.find((item) => item.label === flow.from);
             const b = columns.find((item) => item.label === flow.to);
             if (!a || !b) return null;
+            const startRatio =
+              0.16 + (index / Math.max(1, flows.length)) * 0.48;
             const progress = interpolate(
               frame,
-              [30 + index * 22, 80 + index * 22],
+              [
+                sceneFrameAt(durationFrames, startRatio),
+                sceneFrameAt(durationFrames, Math.min(0.9, startRatio + 0.25)),
+              ],
               [0, 1],
               clamp,
             );
