@@ -16,7 +16,16 @@
       "Permite visualização forte com fluxo de dinheiro e grafo de contas",
       "Fontes primárias recentes do Banco Central"
     ],
-    "risk_flags": []
+    "risk_flags": [],
+    "youtube_suitability": {
+      "risk_level": "low",
+      "sensitive_topics": [
+        "golpes e fraude financeira"
+      ],
+      "context_notes": "Conteúdo educativo sobre mecanismos de contestação e rastreamento do Pix, sem instruções para fraude.",
+      "title_thumbnail_safe": true,
+      "monetization_notes": "Embalagem factual, sem linguagem obscena, violência ou promessa financeira."
+    }
   },
   "sources": [
     {
@@ -182,7 +191,8 @@
       "curiosity_gap": "Como o Pix consegue ir atrás do dinheiro depois que ele já foi transferido?",
       "mobile_readability": "Texto curto, contraste forte e um único rastro visual dominante.",
       "anti_clickbait_check": "O vídeo explica o MED 2.0 e mostra como o rastreamento pode continuar além da primeira conta.",
-      "repetition_check": "Não repetir em vídeos futuros a mesma fórmula de rede de contas com trilha amarela."
+      "repetition_check": "Não repetir em vídeos futuros a mesma fórmula de rede de contas com trilha amarela.",
+      "youtube_safety_check": "Título e thumbnail descrevem rastreamento de fraude de forma informativa, sem linguagem obscena, imagem chocante ou promessa enganosa."
     },
     "titles": [
       {
@@ -531,6 +541,24 @@
   "publication": {
     "description": "O Pix mudou a forma de reagir a golpes. Com o MED 2.0, o mecanismo de recuperação de valores pode rastrear o dinheiro para além da primeira conta recebedora, formando um grafo das transferências subsequentes e ampliando a análise das contas potencialmente envolvidas. Neste vídeo, eu te mostro de forma simples como isso funciona, quais são os prazos e por que o MED ainda não garante a devolução do dinheiro.\n\nFontes principais: Banco Central do Brasil, Regulamento do Pix, DICT e FAQs oficiais do MED.\n\nEste vídeo tem caráter informativo e educacional.",
     "chapters": [],
-    "disclosure_ai": false
+    "disclosure_ai": false,
+    "seo": {
+      "primary_keyword": "MED 2.0 Pix",
+      "secondary_keywords": [
+        "Pix",
+        "golpe no Pix",
+        "Banco Central",
+        "Mecanismo Especial de Devolução",
+        "fraude no Pix"
+      ],
+      "search_intent": "Entender como funciona o MED 2.0 e o rastreamento do dinheiro após um golpe no Pix.",
+      "description_strategy": "Explicar o MED 2.0 logo nas primeiras linhas, usar termos relacionados de forma natural e complementar com capítulos e fontes."
+    },
+    "tags": [
+      "MED 2.0",
+      "Pix",
+      "golpe no Pix",
+      "Banco Central"
+    ]
   }
 }
