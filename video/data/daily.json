@@ -629,7 +629,9 @@
               "behavior": "cut",
               "treatment": "split_compare",
               "transition": "cut",
-              "placement": "full"
+              "placement": "full",
+              "from": "R$ 700 mi+",
+              "to": "Nova faixa até R$ 500 mi"
             }
           ],
           "transition": "cut"
@@ -690,7 +692,9 @@
               "behavior": "cut",
               "treatment": "split_compare",
               "transition": "cut",
-              "placement": "full"
+              "placement": "full",
+              "from": "Demanda 3,950 mi m³",
+              "to": "Oferta 3,978 mi m³"
             },
             {
               "anchor": "o equivalente a cerca de quinze dias de consumo",
@@ -768,7 +772,9 @@
               "behavior": "transform",
               "treatment": "flow_diagram",
               "transition": "slide_left",
-              "placement": "full"
+              "placement": "full",
+              "from": "OFERTA + ESTOQUE",
+              "to": "ABASTECIMENTO"
             },
             {
               "anchor": "o preço final continua sendo formado por várias parcelas e continua livre",
