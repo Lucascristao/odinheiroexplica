@@ -1,2 +1,2 @@
-Split Payment — nova execução após ajuste de tipagem do render input.
-Tema validado em 2026-09-29; Roberto/Macerio; 8 cenas; pacote editorial preservado.
+Split Payment — nova execução após ajuste de legibilidade da cena de fluxo de caixa.
+Tema validado em 2026-09-29; Roberto/Macerio; 8 cenas; tipagem e layout corrigidos.
