@@ -145,9 +145,9 @@ Regras:
 - não criar uma biblioteca de “templates fixos” e simplesmente escolher um deles;
 - a composição nasce da informação: número pode dominar a tela, fluxo pode virar diagrama espacial, comparação pode dividir o quadro, processo pode transformar a própria cena;
 - use o quadro inteiro como espaço narrativo. Card flutuante é exceção, não padrão;
-- overlays devem ser raros e só existir quando há área segura real. No máximo um overlay por cena;
-- por padrão, prefira `cut`, `transform` ou `reframe` para trocar a informação visual;
-- não repetir o mesmo `treatment` em três beats consecutivos;
+- anotações precisam de região reservada; nunca cobrir informação essencial;
+- por padrão, preservar objetos no palco e destacar ou atualizar o alvo da fala;
+- não alternar tratamentos apenas para produzir variedade; continuidade da mesma explicação pode repetir a operação;
 - cortes e transições precisam ter função narrativa. Hard cut é válido e muitas vezes melhor que um efeito ornamental;
 - quando dois momentos tiverem forma, direção, objeto ou ideia em comum, prefira continuidade visual, match de forma ou movimento;
 - preserve eye-trace quando isso ajuda a compreensão: o novo foco deve nascer perto de onde o espectador já estava olhando, salvo quando a intenção for provocar ruptura;
@@ -155,82 +155,29 @@ Regras:
 
 Antes de fechar o VideoProject, faça uma auditoria de repetição: se o vídeo puder ser descrito como “o anterior com outro texto”, a direção visual ainda não está pronta.
 
-### Comportamento de cada beat
+### Plano visual persistente — obrigatório para cenas com beats
 
-Cada `visual.beats[]` deve escolher explicitamente:
-- `behavior`: `cut`, `transform`, `reframe` ou `overlay`;
-- `treatment`: `kinetic_type`, `giant_number`, `flow_diagram`, `timeline`, `split_compare`, `meter`, `spotlight`, `equation`, `stack`, `signal`, `masked_emphasis` ou `depth_photo`;
-- `transition`: `cut`, `fade`, `slide_left`, `slide_up`, `zoom`, `wipe` ou `bloom`;
-- `placement`: `left`, `center`, `right` ou `full`;
-- `medium`: `motion_graphic`, `photo_cutout`, `photo` ou `mixed`; quando usar foto, siga `docs/photography-narrative.md`.
+Siga docs/editorial-continuity.md. O motor usa visual.stage com objetos identificáveis e visual.beats como eventos sobre eles. Cada evento tem anchor literal, target_id, action e prominence. O padrão é contextual. reveal_ids/retire_ids controlam elementos auxiliares em regiões reservadas; moves permite reposicionar mantendo identidade.
 
-Esses campos não são decoração aleatória. Escolha-os pelo significado daquela informação.
+Não copiar a composição do MED. Definir palco e relações conforme a informação da pauta. Usar fotografia, fluxo, comparação ou texto quando explicam melhor, com identidade do canal preservada.
 
-Regras adicionais:
-- `masked_emphasis` é para conclusão, contraste ou ressalva curta; não use como padrão de headline;
-- `depth_photo` só faz sentido com `medium: "photo_cutout"` e quando a fotografia realmente cria profundidade/interação com texto;
-- `bloom` é uma revelação curta; evite repetir em beats consecutivos;
-- `kinetic_type` já possui cascade de palavras;
-- valores numéricos em `giant_number` e outros tratamentos compatíveis podem evoluir durante o beat, então não duplique o mesmo número em vários elementos sem necessidade.
+Headline é intenção editorial; só action:update substitui o label. Evitar duplicar a mesma frase como título e anotação. Não repetir informação já compreendida só para criar outro evento. Permitir pausa de leitura.
 
-O `anchor` continua sendo um trecho literal e único da narração. O TTS injeta um bookmark SSML nesse ponto e o render usa o timestamp devolvido pelo Azure, portanto a microcena deve entrar quando a fala realmente chega naquela informação, e não por uma estimativa proporcional do texto.
+Não usar treatment como catálogo a alternar. Repetir operações sobre o mesmo objeto é continuidade, não repetição de template. Usar takeover somente com takeover_reason e nunca em sequência. Não criar medidor sem dado real nem comparações ANTES/AGORA quando a relação for outra.
 
-## Dinamismo visual durante a fala
+A partir das âncoras, o Azure devolve os instantes de mudança. Não distribuir etapas uniformemente pela duração da cena. Nenhuma âncora pode estar ausente, repetida ou fora da ordem da narração.
 
-Não trate uma cena como um slide que anima na entrada e depois fica parado. O movimento deve continuar acompanhando o raciocínio da narração.
+Palcos não podem ter colisão, nem mesmo nas posições de anotações que ainda vão surgir. O renderer mede texto com fonte fixa; ampliar a região ou reduzir o texto quando não houver espaço. Letras espremidas não são uma solução.
 
-Regras globais:
-- toda cena longa precisa ter mudanças visuais informativas distribuídas ao longo da duração real do áudio;
-- entrada, desenvolvimento, mudança de ponto e saída devem ter resposta visual;
-- palavras-chave, números, etapas, linhas, cards, barras, setas e destaques devem aparecer ou mudar quando a fala chega naquele ponto;
-- animações internas devem usar a duração proporcional da cena, não tempos fixos pensados para uma cena curta;
-- evite mais de aproximadamente 5 a 7 segundos sem alguma mudança visual perceptível, salvo quando uma pausa estática for uma escolha editorial intencional;
-- movimento de ambiente, câmera sutil e parallax podem manter vida, mas não substituem eventos que acompanham o conteúdo;
-- não mexa em tudo ao mesmo tempo; o resultado deve continuar editorial, elegante e fácil de entender;
-- processos devem avançar etapa por etapa, timelines devem progredir ao longo da fala, listas devem ser reveladas em sequência e números/alertas devem ganhar foco em momentos diferentes;
-- o final da cena deve preparar visualmente a transição para a próxima.
+Som é none por padrão. Escolher poucos eventos com função audível. A foto com papel rasgado é uma variação opcional; recorte limpo continua disponível.
 
-### Beats informativos
+## Ritmo durante a fala
 
-A unidade visual não é mais "uma cena = uma informação". Uma cena narrativa pode conter várias microcenas informativas.
+Use bookmarks para as mudanças de significado; use janelas curtas de animação para torná-las legíveis. Não alongar uma entrada até ocupar quase toda a fala. Não animar cada palavra por obrigação nem exigir uma mudança a cada número fixo de segundos.
 
-Cada microcena precisa ter três fases visuais: entrada, desenvolvimento e conclusão. Não basta o elemento entrar e permanecer estático até a próxima informação.
+O fluxo deve avançar junto com a explicação, o mesmo objeto pode mudar de posição e as anotações devem aparecer junto do elemento relevante. Estados anteriores continuam presentes enquanto ajudam a compreensão. Retire informação quando deixar de ser útil.
 
-Durante o intervalo real daquele beat:
-- números podem crescer, contar, ganhar unidade ou mudar foco;
-- fluxos devem percorrer origem, caminho e destino;
-- timelines devem avançar;
-- comparações devem revelar um lado e depois o outro;
-- medidores devem progredir;
-- equações devem montar termos em sequência;
-- pilhas e processos devem construir camadas;
-- alertas podem reagir com um pulso curto;
-- tipografia pode deslocar peso, escala ou posição conforme a ideia evolui.
-
-Movimento precisa explicar ou reforçar a informação. Evite flutuação, pulso ou parallax gratuito só para impedir que a tela pareça parada.
-
-Para cada nova informação relevante da fala, crie um item em `visual.beats`. Não faça um beat para pontuação, frase de ligação, apresentação do narrador ou simples repetição. Faça quando surgir um novo fato, número, data, consequência, comparação, fluxo, alerta, personagem institucional, mudança de estado ou etapa.
-
-Como referência:
-- cena de 10 a 20 segundos: normalmente 2 a 4 beats;
-- cena de 20 a 35 segundos: normalmente 3 a 6 beats;
-- procure uma mudança informativa visual a cada 4 a 7 segundos quando a narração realmente trouxer informação nova;
-- máximo de 12 beats numa cena.
-
-Cada beat deve conter:
-- `anchor`: trecho curto copiado EXATAMENTE da narração, no ponto em que a nova informação começa;
-- `kind`: fact, number, date, money, bank, flow, process, warning, compare, trend_up, trend_down, fuel ou block;
-- `headline`: texto visual curto, preferencialmente até 8 palavras;
-- `detail`: complemento curto somente quando necessário;
-- `value`: número, percentual, data ou valor quando isso for o foco;
-- `from` e `to`: somente para `flow`;
-- `sound`: none, tick, impact, whoosh ou alert. Use som apenas nos beats mais importantes, não em todos.
-
-O `anchor` é operacional: o pipeline injeta um bookmark SSML exatamente antes desse trecho e usa o timestamp devolvido pelo Azure. Por isso não parafraseie o anchor e não use texto que não exista literalmente e uma única vez na narração.
-
-O visual principal da cena continua dando contexto, mas os beats trocam o foco visual conforme a informação muda. Evite deixar o mesmo card ou a mesma pergunta dominando 20 ou 30 segundos enquanto a narração já mudou de assunto.
-
-A regra vale para todos os próximos vídeos e para qualquer tipo de cena criado no futuro. O objetivo é evitar sensação de PowerPoint narrado sem transformar o vídeo em edição caótica.
+Uma comparação deve revelar seus lados reais, não usar placeholders. Números mostram valores verificados; prazos podem permanecer estáveis enquanto recebem destaque. Nenhuma barra ou gráfico pode sugerir uma quantidade inventada.
 
 ## Sound design editorial
 

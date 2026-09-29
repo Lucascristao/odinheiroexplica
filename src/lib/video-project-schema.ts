@@ -1,4 +1,5 @@
 import { z } from "zod";
+import {editorialStageSchema, stageEventFields, validateStageEvents} from "./editorial-stage";
 
 const sourceSchema = z
   .object({
@@ -72,6 +73,7 @@ const visualAssetSchema = z
 
 const visualBeatSchema = z
   .object({
+    ...stageEventFields,
     anchor: z.string().min(1).optional(),
     at: z.number().min(0).max(1).optional(),
     kind: z
@@ -167,6 +169,7 @@ const sceneSchema = z
       .object({
         type: z.string().min(1),
         payload: z.record(z.string(), z.unknown()).optional(),
+        stage: editorialStageSchema.optional(),
         beats: z.array(visualBeatSchema).max(12).optional(),
         transition: z
           .enum(["cut", "fade", "slide_left", "slide_up", "zoom", "wipe"])
@@ -368,6 +371,19 @@ export const videoProjectSchema = z
       });
 
       const beats = scene.visual.beats ?? [];
+      if (beats.length && !scene.visual.stage) {
+        ctx.addIssue({code: "custom", path: ["script", "scenes", index, "visual", "stage"], message: "Cenas com beats precisam de um palco persistente."});
+      }
+      if (scene.visual.stage) {
+        for (const message of validateStageEvents(scene.visual.stage, beats)) {
+          ctx.addIssue({code: "custom", path: ["script", "scenes", index, "visual"], message});
+        }
+        for (const element of scene.visual.stage.elements) {
+          if (element.asset_id && !visualAssetIds.has(element.asset_id)) {
+            ctx.addIssue({code: "custom", path: ["script", "scenes", index, "visual", "stage"], message: `Asset inexistente: ${element.asset_id}`});
+          }
+        }
+      }
       beats.forEach((beat, beatIndex) => {
         if (beat.asset_id && !visualAssetIds.has(beat.asset_id)) {
           ctx.addIssue({
@@ -399,7 +415,7 @@ export const videoProjectSchema = z
         });
       }
 
-      for (let beatIndex = 2; beatIndex < beats.length; beatIndex += 1) {
+      for (let beatIndex = 2; !scene.visual.stage && beatIndex < beats.length; beatIndex += 1) {
         const current = beats[beatIndex];
         const previous = beats[beatIndex - 1];
         const beforePrevious = beats[beatIndex - 2];

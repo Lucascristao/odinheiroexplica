@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
-    "typecheck": "tsc -b --pretty false",
+    "typecheck": "tsc -b --pretty false && tsc -p tsconfig.video.json --pretty false",
     "preview": "vite preview",
     "remotion:studio": "remotion studio video/src/index.ts",
     "render:motion-test": "remotion render video/src/index.ts BrandMotionTest render-output/macerio-motion-test.mp4 --codec=h264 --concurrency=2",
@@ -15,24 +15,31 @@
     "render:pix-pilot": "remotion render video/src/index.ts EditorialPilot render-output/pix-med-pilot.mp4 --codec=h264 --concurrency=2",
     "still:pix-pilot": "remotion still video/src/index.ts PixPilotThumbnail render-output/pix-med-thumbnail-a.png",
     "render:daily": "remotion render video/src/index.ts DailyEditorial render-output/daily-video.mp4 --codec=h264 --concurrency=2",
-    "still:daily": "remotion still video/src/index.ts DailyThumbnail render-output/daily-thumbnail.png"
+    "still:daily": "remotion still video/src/index.ts DailyThumbnail render-output/daily-thumbnail.png",
+    "prepare:editorial-font": "node scripts/prepare-editorial-font.mjs",
+    "postinstall": "npm run prepare:editorial-font",
+    "validate:editorial": "tsx scripts/validate-editorial.ts"
   },
   "dependencies": {
+    "@netlify/blobs": "11.0.3",
     "@supabase/supabase-js": "^2.57.4",
     "lucide-react": "^0.544.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "zod": "4.5.4",
-    "@netlify/blobs": "11.0.3"
+    "zod": "4.5.4"
   },
   "devDependencies": {
+    "@fontsource/inter": "^5.3.0",
+    "@remotion/cli": "4.0.529",
+    "@remotion/fonts": "4.0.529",
+    "@remotion/layout-utils": "4.0.529",
+    "@remotion/media": "4.0.529",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.0.4",
+    "remotion": "4.0.529",
+    "tsx": "^4.23.15",
     "typescript": "^5.9.2",
-    "vite": "^7.1.7",
-    "@remotion/cli": "4.0.529",
-    "@remotion/media": "4.0.529",
-    "remotion": "4.0.529"
+    "vite": "^7.1.7"
   }
 }

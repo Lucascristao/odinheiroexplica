@@ -1,5 +1,7 @@
 # Biblioteca de movimento editorial
 
+> Para a produção atual, siga primeiro [editorial-continuity.md](editorial-continuity.md). Os tratamentos antigos abaixo são recursos legados; não substituem o contrato de palco persistente.
+
 Esta biblioteca existe para ampliar a linguagem do canal, não para criar um novo template fixo.
 
 Ela foi desenhada a partir de três referências técnicas estudadas em setembro de 2026:

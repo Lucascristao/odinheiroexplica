@@ -21,3 +21,11 @@ Este arquivo existe apenas para evitar repetição estética entre vídeos. Ele 
 A identidade do canal vem de tipografia, contraste, preto/carvão, branco, dourado e acabamento editorial. Composição, metáfora, ritmo, objetos, movimento e cor secundária devem nascer da história atual.
 
 Ao criar um novo VideoProject, consulte apenas a seção mais recente para identificar o que NÃO deve ser repetido. Não copie o assunto, roteiro, estrutura ou metáforas de vídeos anteriores.
+
+## MED 2.0 — continuidade editorial
+
+- processo persistente com cinco etapas e anotações ancoradas;
+- conexões que avançam com bookmarks da fala;
+- comparação sem medidores inventados; fotografia limpa e papel como variação pontual;
+- evitar repetir automaticamente em outras pautas: trilha de contas, cinco etapas horizontais e foto de celular;
+- reaproveitar as operações de continuidade, não a composição pronta.

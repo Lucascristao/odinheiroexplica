@@ -34,6 +34,8 @@ import {
   type EditorialDirection,
 } from "./EditorialMicroScene";
 import renderInput from "../generated/daily-render-input.json";
+import {EditorialStage} from "./EditorialStage";
+import type {EditorialStage as Stage} from "../../src/lib/editorial-stage";
 
 type GenericRecord = Record<string, unknown>;
 
@@ -51,6 +53,7 @@ type Scene = {
     type: string;
     payload?: GenericRecord;
     beats?: VisualBeat[];
+    stage?: Stage;
     transition?: VisualBeat["transition"];
   };
 };
@@ -1565,7 +1568,7 @@ const SoundDesign = ({
 
   // Transições sonoras são espaçadas para não transformar o vídeo
   // em uma sequência de whooshes. A narração continua sempre em primeiro plano.
-  if (scene.scene_index > 0 && scene.scene_index % 2 === 0 && type !== "CLOSING") {
+  if (!scene.visual.stage && scene.scene_index > 0 && scene.scene_index % 2 === 0 && type !== "CLOSING") {
     add(0.015, "soft-whoosh.wav", 0.08, 0.55);
   }
 
@@ -1617,7 +1620,9 @@ const SoundDesign = ({
       });
     }
 
-    if (typeof beat.resolved_frame !== "number") return;
+    // A persistent stage is driven by authored events. Do not invent sound
+    // accents at percentages of a beat whose meaning may not match that sound.
+    if (scene.visual.stage || typeof beat.resolved_frame !== "number") return;
 
     const nextFrame =
       index < orderedBeats.length - 1
@@ -1826,13 +1831,20 @@ const SceneComposition = ({
         : 0;
   const baseScale = behavior === "reframe" ? 1.06 : 1;
 
+  if (scene.visual.stage) {
+    return <AbsoluteFill>
+      <EditorialStage stage={scene.visual.stage} beats={beats} title={scene.title} source={asString(scene.visual.payload?.source)} accent={direction.secondary_color ?? GOLD} />
+      <SoundDesign scene={scene} isLast={isLast} />
+      <Audio src={staticFile(scene.audio_file)} />
+    </AbsoluteFill>;
+  }
+
   return (
     <AbsoluteFill>
       <AbsoluteFill
         style={{
           opacity: baseOpacity,
           transform: `scale(${baseScale})`,
-          transition: "opacity 120ms linear",
         }}
       >
         <Visual scene={scene} />

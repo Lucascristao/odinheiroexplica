@@ -41,6 +41,17 @@ jobs:
         with:
           python-version: "3.11"
 
+      - name: Node for editorial preparation
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Prepare editorial engine
+        run: npm ci --no-audit --no-fund
+
+      - name: Compile editorial contract before paid synthesis
+        run: npm run validate:editorial -- video/data/daily.json
+
       - name: Report start
         run: |
           python worker/progress_callback.py \
@@ -143,14 +154,6 @@ jobs:
             --detail "Timeline pronta. Preparando o Remotion." \
             --video-duration-seconds "$VIDEO_DURATION"
 
-      - name: Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Install Node dependencies
-        run: npm install --no-audit --no-fund
-
       - name: Typecheck
         run: npm run typecheck
 
@@ -217,8 +220,8 @@ jobs:
           GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
         run: |
           if [ -z "$GOOGLE_CLIENT_ID" ] || [ -z "$GOOGLE_CLIENT_SECRET" ] || [ -z "$GOOGLE_REFRESH_TOKEN" ] || [ -z "$GOOGLE_DRIVE_FOLDER_ID" ]; then
-            echo "Google Drive ainda não configurado. Upload ignorado neste render."
-            exit 0
+            echo "Google Drive não configurado. A entrega não pode ser concluída."
+            exit 1
           fi
 
           python worker/progress_callback.py \
@@ -246,6 +249,7 @@ jobs:
             --stage concluido \
             --percent 100 \
             --detail "Vídeo e pacote de publicação salvos no Google Drive. A capa será gerada pelo chat." \
+            --delivery-manifest render-output/daily-drive.json \
             --video-duration-seconds "$VIDEO_DURATION"
 
       - name: Report failure

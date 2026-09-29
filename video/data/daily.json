@@ -35,22 +35,19 @@
       "linha de investigação"
     ],
     "motion_language": [
-      "linhas que percorrem a rede",
-      "profundidade com foto recortada",
-      "tipografia em cascade",
-      "contadores progressivos",
-      "sweeps de ênfase pontuais",
-      "bloom curto em revelações"
+      "continuidade de objetos",
+      "conexões guiadas pela fala",
+      "anotações em regiões reservadas",
+      "reenquadramento pontual",
+      "fotografia editorial limpa ou em papel"
     ],
     "avoid": [
-      "visual industrial do vídeo de combustíveis",
-      "cards flutuantes",
-      "mesmo grid de estatísticas",
-      "autoridades como imagem principal",
-      "foto genérica de banco estrangeiro",
-      "usar sweep em todo texto",
-      "bloom decorativo sem mudança de informação",
-      "fotografia chapada como fundo"
+      "cartelas novas para cada frase",
+      "medidores sem escala real",
+      "efeitos sonoros em todo beat",
+      "textos sobre informações existentes",
+      "repetir a composição de outra pauta",
+      "movimento sem mudança de significado"
     ]
   },
   "editorial": {
@@ -322,13 +319,16 @@
               "kind": "bank",
               "headline": "O golpe começa no celular",
               "detail": "A contestação nasce de uma transação específica.",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "depth_photo",
               "transition": "bloom",
               "placement": "left",
               "medium": "photo_cutout",
               "asset_id": "phone-hand",
-              "sound": "whoosh"
+              "sound": "none",
+              "action": "focus",
+              "prominence": "contextual",
+              "target_id": "phone"
             },
             {
               "anchor": "o dinheiro sair daquela conta muito rápido",
@@ -341,32 +341,108 @@
               "transition": "slide_left",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "whoosh"
+              "sound": "tick",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "account-2"
             },
             {
               "anchor": "o MED 2.0 consegue seguir o rastro por outras contas",
               "kind": "process",
               "headline": "Rastreamento em cadeia",
               "detail": "A trilha pode continuar além da primeira conta.",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "stack",
               "transition": "wipe",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "impact"
+              "sound": "none",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "trace"
             },
             {
               "anchor": "seguir o dinheiro não é a mesma coisa que garantir que ele vai voltar",
               "kind": "warning",
               "headline": "Rastrear não garante devolver",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "masked_emphasis",
               "transition": "bloom",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "alert"
+              "sound": "none",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "limit"
             }
-          ]
+          ],
+          "stage": {
+            "elements": [
+              {
+                "id": "phone",
+                "kind": "photo",
+                "label": "Transação contestada",
+                "x": 0,
+                "y": 0,
+                "width": 30,
+                "height": 93,
+                "initially_visible": true,
+                "photo_style": "clean",
+                "asset_id": "phone-hand"
+              },
+              {
+                "id": "account-1",
+                "kind": "step",
+                "label": "CONTA 1",
+                "x": 36,
+                "y": 3,
+                "width": 24,
+                "height": 22,
+                "initially_visible": true,
+                "photo_style": "clean"
+              },
+              {
+                "id": "account-2",
+                "kind": "step",
+                "label": "OUTRAS CONTAS",
+                "x": 73,
+                "y": 3,
+                "width": 27,
+                "height": 22,
+                "initially_visible": false,
+                "photo_style": "clean"
+              },
+              {
+                "id": "trace",
+                "kind": "label",
+                "label": "O rastro pode continuar",
+                "x": 38,
+                "y": 35,
+                "width": 60,
+                "height": 21,
+                "initially_visible": false,
+                "photo_style": "clean"
+              },
+              {
+                "id": "limit",
+                "kind": "note",
+                "label": "Rastrear ≠ garantir devolução",
+                "x": 38,
+                "y": 64,
+                "width": 60,
+                "height": 32,
+                "initially_visible": false,
+                "photo_style": "clean",
+                "detail": "A recuperação depende da análise e do saldo."
+              }
+            ],
+            "connections": [
+              {
+                "from": "account-1",
+                "to": "account-2"
+              }
+            ]
+          }
         },
         "claim_ids": [
           "C4",
@@ -394,12 +470,15 @@
               "headline": "Primeiro salto",
               "from": "VÍTIMA",
               "to": "CONTA 1",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "flow_diagram",
               "transition": "slide_left",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "tick"
+              "sound": "tick",
+              "action": "focus",
+              "prominence": "contextual",
+              "target_id": "account-1"
             },
             {
               "anchor": "movesse o valor dali para uma segunda ou terceira conta",
@@ -412,31 +491,129 @@
               "transition": "slide_left",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "whoosh"
+              "sound": "none",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "account-2",
+              "reveal_ids": [
+                "account-3"
+              ]
             },
             {
               "anchor": "a chance de encontrar saldo na primeira conta caía muito",
               "kind": "trend_down",
               "headline": "A primeira conta podia ficar vazia",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "meter",
               "transition": "zoom",
               "placement": "right",
               "medium": "motion_graphic",
-              "sound": "alert"
+              "sound": "none",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "empty"
             },
             {
               "anchor": "reconstruir o caminho que aquele dinheiro percorreu",
               "kind": "process",
               "headline": "Agora importa o caminho inteiro",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "kinetic_type",
               "transition": "cut",
               "placement": "center",
               "medium": "motion_graphic",
-              "sound": "impact"
+              "sound": "none",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "whole"
             }
-          ]
+          ],
+          "stage": {
+            "elements": [
+              {
+                "id": "victim",
+                "kind": "step",
+                "label": "VÍTIMA",
+                "x": 0,
+                "y": 15,
+                "width": 20,
+                "height": 23,
+                "initially_visible": true,
+                "photo_style": "clean"
+              },
+              {
+                "id": "account-1",
+                "kind": "step",
+                "label": "CONTA 1",
+                "x": 28,
+                "y": 15,
+                "width": 20,
+                "height": 23,
+                "initially_visible": true,
+                "photo_style": "clean"
+              },
+              {
+                "id": "account-2",
+                "kind": "step",
+                "label": "CONTA 2",
+                "x": 56,
+                "y": 15,
+                "width": 20,
+                "height": 23,
+                "initially_visible": false,
+                "photo_style": "clean"
+              },
+              {
+                "id": "account-3",
+                "kind": "step",
+                "label": "CONTA 3",
+                "x": 82,
+                "y": 15,
+                "width": 18,
+                "height": 23,
+                "initially_visible": false,
+                "photo_style": "clean"
+              },
+              {
+                "id": "empty",
+                "kind": "note",
+                "label": "A primeira conta pode ficar vazia",
+                "x": 0,
+                "y": 57,
+                "width": 46,
+                "height": 38,
+                "initially_visible": false,
+                "photo_style": "clean",
+                "detail": "O dinheiro já seguiu para outro destino."
+              },
+              {
+                "id": "whole",
+                "kind": "note",
+                "label": "O caminho inteiro importa",
+                "x": 54,
+                "y": 57,
+                "width": 46,
+                "height": 38,
+                "initially_visible": false,
+                "photo_style": "clean",
+                "detail": "A investigação pode avançar além da primeira conta."
+              }
+            ],
+            "connections": [
+              {
+                "from": "victim",
+                "to": "account-1"
+              },
+              {
+                "from": "account-1",
+                "to": "account-2"
+              },
+              {
+                "from": "account-2",
+                "to": "account-3"
+              }
+            ]
+          }
         },
         "claim_ids": [
           "C4"
@@ -461,39 +638,100 @@
               "kind": "bank",
               "headline": "Contestação no banco",
               "detail": "A partir de uma transação específica.",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "depth_photo",
               "transition": "bloom",
               "placement": "right",
               "medium": "photo_cutout",
               "asset_id": "phone-hand",
-              "sound": "tick"
+              "sound": "none",
+              "action": "focus",
+              "prominence": "contextual",
+              "target_id": "request"
             },
             {
               "anchor": "em até oitenta dias depois do Pix",
               "kind": "date",
               "headline": "Prazo para pedir o MED",
               "value": "ATÉ 80 DIAS",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "giant_number",
               "transition": "bloom",
               "placement": "left",
               "medium": "motion_graphic",
-              "sound": "impact"
+              "sound": "tick",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "deadline"
             },
             {
               "anchor": "Não é um monitoramento geral de tudo que você faz no Pix",
               "kind": "warning",
               "headline": "Não rastreia todo Pix",
               "detail": "O rastreamento ocorre no contexto da contestação.",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "signal",
               "transition": "wipe",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "alert"
+              "sound": "none",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "scope"
             }
-          ]
+          ],
+          "stage": {
+            "elements": [
+              {
+                "id": "phone",
+                "kind": "photo",
+                "label": "Pedido no banco",
+                "x": 60,
+                "y": 0,
+                "width": 38,
+                "height": 94,
+                "initially_visible": true,
+                "photo_style": "paper",
+                "asset_id": "phone-hand"
+              },
+              {
+                "id": "request",
+                "kind": "label",
+                "label": "Contestar a transação",
+                "x": 0,
+                "y": 0,
+                "width": 53,
+                "height": 22,
+                "initially_visible": true,
+                "photo_style": "clean"
+              },
+              {
+                "id": "deadline",
+                "kind": "metric",
+                "label": "Prazo para pedir o MED",
+                "x": 0,
+                "y": 27,
+                "width": 53,
+                "height": 34,
+                "initially_visible": false,
+                "photo_style": "clean",
+                "value": "ATÉ 80 DIAS"
+              },
+              {
+                "id": "scope",
+                "kind": "note",
+                "label": "Uma ocorrência específica",
+                "x": 0,
+                "y": 66,
+                "width": 53,
+                "height": 30,
+                "initially_visible": false,
+                "photo_style": "clean",
+                "detail": "Não é monitoramento geral de todo Pix."
+              }
+            ],
+            "connections": []
+          }
         },
         "claim_ids": [
           "C2",
@@ -522,50 +760,194 @@
             {
               "anchor": "são mapeadas as contas para onde o dinheiro suspeito pode ter sido transferido",
               "kind": "process",
-              "headline": "1. Mapear o rastro",
-              "behavior": "cut",
+              "headline": "Mapear as contas",
+              "behavior": "transform",
               "treatment": "stack",
               "transition": "slide_up",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "whoosh"
+              "sound": "none",
+              "target_id": "mapear",
+              "action": "focus",
+              "prominence": "contextual"
+            },
+            {
+              "anchor": "As instituições que recebem essas notificações",
+              "headline": "Notificar as instituições",
+              "kind": "process",
+              "target_id": "notificar",
+              "behavior": "transform",
+              "action": "focus",
+              "prominence": "contextual",
+              "sound": "none"
             },
             {
               "anchor": "podem bloquear valores até o limite contestado",
               "kind": "block",
               "headline": "2. Bloquear saldo disponível",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "signal",
               "transition": "wipe",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "alert"
+              "sound": "tick",
+              "target_id": "bloquear",
+              "reveal_ids": [
+                "available"
+              ],
+              "action": "focus",
+              "prominence": "contextual"
             },
             {
               "anchor": "essa análise pode levar até sete dias",
               "kind": "date",
               "headline": "3. Analisar a ocorrência",
               "value": "ATÉ 7 DIAS",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "timeline",
               "transition": "slide_left",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "tick"
+              "sound": "none",
+              "target_id": "analisar",
+              "reveal_ids": [
+                "analysis-time"
+              ],
+              "action": "focus",
+              "prominence": "contextual"
             },
             {
               "anchor": "a devolução pode ser total ou parcial",
               "kind": "money",
               "headline": "4. O valor encontrado volta",
               "detail": "Integral ou parcialmente, se a fraude for confirmada.",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "split_compare",
               "transition": "cut",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "impact"
+              "sound": "none",
+              "target_id": "devolver",
+              "reveal_ids": [
+                "refund"
+              ],
+              "action": "focus",
+              "prominence": "contextual"
             }
-          ]
+          ],
+          "stage": {
+            "elements": [
+              {
+                "id": "mapear",
+                "kind": "step",
+                "label": "MAPEAR",
+                "x": 0,
+                "y": 8,
+                "width": 16,
+                "height": 24,
+                "initially_visible": true,
+                "photo_style": "clean"
+              },
+              {
+                "id": "notificar",
+                "kind": "step",
+                "label": "NOTIFICAR",
+                "x": 21,
+                "y": 8,
+                "width": 16,
+                "height": 24,
+                "initially_visible": true,
+                "photo_style": "clean"
+              },
+              {
+                "id": "bloquear",
+                "kind": "step",
+                "label": "BLOQUEAR",
+                "x": 42,
+                "y": 8,
+                "width": 16,
+                "height": 24,
+                "initially_visible": true,
+                "photo_style": "clean"
+              },
+              {
+                "id": "analisar",
+                "kind": "step",
+                "label": "ANALISAR",
+                "x": 63,
+                "y": 8,
+                "width": 16,
+                "height": 24,
+                "initially_visible": true,
+                "photo_style": "clean"
+              },
+              {
+                "id": "devolver",
+                "kind": "step",
+                "label": "DEVOLVER",
+                "x": 84,
+                "y": 8,
+                "width": 16,
+                "height": 24,
+                "initially_visible": true,
+                "photo_style": "clean"
+              },
+              {
+                "id": "available",
+                "kind": "note",
+                "label": "Até o limite contestado",
+                "x": 0,
+                "y": 50,
+                "width": 30,
+                "height": 40,
+                "initially_visible": false,
+                "photo_style": "clean",
+                "detail": "Bloqueio depende de saldo disponível."
+              },
+              {
+                "id": "analysis-time",
+                "kind": "metric",
+                "label": "Prazo de análise",
+                "x": 35,
+                "y": 50,
+                "width": 30,
+                "height": 40,
+                "initially_visible": false,
+                "photo_style": "clean",
+                "value": "ATÉ 7 DIAS"
+              },
+              {
+                "id": "refund",
+                "kind": "note",
+                "label": "Total ou parcial",
+                "x": 70,
+                "y": 50,
+                "width": 30,
+                "height": 40,
+                "initially_visible": false,
+                "photo_style": "clean",
+                "detail": "Se a fraude for confirmada e houver saldo."
+              }
+            ],
+            "connections": [
+              {
+                "from": "mapear",
+                "to": "notificar"
+              },
+              {
+                "from": "notificar",
+                "to": "bloquear"
+              },
+              {
+                "from": "bloquear",
+                "to": "analisar"
+              },
+              {
+                "from": "analisar",
+                "to": "devolver"
+              }
+            ]
+          }
         },
         "claim_ids": [
           "C3",
@@ -596,37 +978,103 @@
               "anchor": "não cria dinheiro onde não existe mais saldo",
               "kind": "warning",
               "headline": "Sem saldo, não há o que devolver",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "kinetic_type",
               "transition": "cut",
               "placement": "left",
               "medium": "motion_graphic",
-              "sound": "alert"
+              "sound": "none",
+              "action": "focus",
+              "prominence": "contextual",
+              "target_id": "balance"
             },
             {
               "anchor": "Se o valor já foi sacado, gasto ou saiu do alcance",
               "kind": "trend_down",
               "headline": "O rastro pode terminar sem dinheiro",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "meter",
               "transition": "zoom",
               "placement": "right",
               "medium": "motion_graphic",
-              "sound": "whoosh"
+              "sound": "none",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "spent"
             },
             {
               "anchor": "o caso ainda passa por análise",
               "kind": "process",
               "headline": "Rastreamento não decide o mérito",
               "detail": "A instituição ainda avalia a ocorrência.",
-              "behavior": "reframe",
+              "behavior": "transform",
               "treatment": "spotlight",
               "transition": "fade",
               "placement": "center",
               "medium": "motion_graphic",
-              "sound": "tick"
+              "sound": "none",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "review"
             }
-          ]
+          ],
+          "stage": {
+            "elements": [
+              {
+                "id": "trace",
+                "kind": "label",
+                "label": "O rastro foi encontrado",
+                "x": 0,
+                "y": 0,
+                "width": 44,
+                "height": 24,
+                "initially_visible": true,
+                "photo_style": "clean"
+              },
+              {
+                "id": "balance",
+                "kind": "metric",
+                "label": "Saldo disponível",
+                "x": 57,
+                "y": 0,
+                "width": 43,
+                "height": 34,
+                "initially_visible": true,
+                "photo_style": "clean",
+                "value": "PODE NÃO HAVER"
+              },
+              {
+                "id": "spent",
+                "kind": "note",
+                "label": "Sacado, gasto ou fora de alcance",
+                "x": 57,
+                "y": 48,
+                "width": 43,
+                "height": 43,
+                "initially_visible": false,
+                "photo_style": "clean",
+                "detail": "Seguir a trilha não recria os recursos."
+              },
+              {
+                "id": "review",
+                "kind": "note",
+                "label": "A ocorrência ainda será analisada",
+                "x": 0,
+                "y": 57,
+                "width": 45,
+                "height": 36,
+                "initially_visible": false,
+                "photo_style": "clean",
+                "detail": "Encontrar o rastro não decide o mérito."
+              }
+            ],
+            "connections": [
+              {
+                "from": "trace",
+                "to": "balance"
+              }
+            ]
+          }
         },
         "claim_ids": [
           "C5",
@@ -658,36 +1106,86 @@
               "anchor": "MED não serve porque você se arrependeu de uma compra",
               "kind": "block",
               "headline": "Arrependimento não entra",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "signal",
               "transition": "wipe",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "alert"
+              "sound": "none",
+              "action": "focus",
+              "prominence": "contextual",
+              "target_id": "purchase"
             },
             {
               "anchor": "digitou a chave Pix errada",
               "kind": "block",
               "headline": "Pix enviado por engano não entra",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "kinetic_type",
               "transition": "cut",
               "placement": "right",
               "medium": "motion_graphic",
-              "sound": "tick"
+              "sound": "none",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "wrong"
             },
             {
               "anchor": "Ele foi criado para fraude, golpe, crime e algumas falhas operacionais",
               "kind": "fact",
               "headline": "O MED tem um escopo específico",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "stack",
               "transition": "slide_up",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "impact"
+              "sound": "none",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "scope"
             }
-          ]
+          ],
+          "stage": {
+            "elements": [
+              {
+                "id": "purchase",
+                "kind": "label",
+                "label": "Arrependimento de compra",
+                "x": 0,
+                "y": 3,
+                "width": 44,
+                "height": 27,
+                "initially_visible": true,
+                "photo_style": "clean",
+                "detail": "Fora do escopo"
+              },
+              {
+                "id": "wrong",
+                "kind": "label",
+                "label": "Chave Pix errada",
+                "x": 0,
+                "y": 41,
+                "width": 44,
+                "height": 27,
+                "initially_visible": false,
+                "photo_style": "clean",
+                "detail": "Fora do escopo"
+              },
+              {
+                "id": "scope",
+                "kind": "label",
+                "label": "Fraude, golpe e falha operacional",
+                "x": 56,
+                "y": 10,
+                "width": 44,
+                "height": 56,
+                "initially_visible": false,
+                "photo_style": "clean",
+                "detail": "São hipóteses previstas para o mecanismo."
+              }
+            ],
+            "connections": []
+          }
         },
         "claim_ids": [
           "C1"
@@ -713,36 +1211,90 @@
               "anchor": "não significa que o Banco Central passou a seguir toda transferência que você faz",
               "kind": "warning",
               "headline": "Não é vigilância de todo Pix",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "signal",
               "transition": "wipe",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "alert"
+              "sound": "none",
+              "action": "focus",
+              "prominence": "contextual",
+              "target_id": "myth"
             },
             {
               "anchor": "depois que existe uma contestação de fraude",
               "kind": "process",
               "headline": "O gatilho é a contestação",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "timeline",
               "transition": "slide_left",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "tick"
+              "sound": "none",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "case"
             },
             {
               "anchor": "uma coisa é rastrear o caminho de um dinheiro contestado",
               "kind": "compare",
               "headline": "Rastrear caso suspeito ≠ vigiar tudo",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "split_compare",
               "transition": "cut",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "impact"
+              "sound": "none",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "trace"
             }
-          ]
+          ],
+          "stage": {
+            "elements": [
+              {
+                "id": "myth",
+                "kind": "label",
+                "label": "Vigiar toda transferência",
+                "x": 0,
+                "y": 7,
+                "width": 43,
+                "height": 34,
+                "initially_visible": true,
+                "photo_style": "clean",
+                "detail": "Essa interpretação está errada."
+              },
+              {
+                "id": "case",
+                "kind": "label",
+                "label": "Contestar uma fraude",
+                "x": 57,
+                "y": 7,
+                "width": 43,
+                "height": 34,
+                "initially_visible": false,
+                "photo_style": "clean",
+                "detail": "Esse é o contexto do mecanismo."
+              },
+              {
+                "id": "trace",
+                "kind": "label",
+                "label": "Seguir o dinheiro contestado",
+                "x": 57,
+                "y": 66,
+                "width": 43,
+                "height": 30,
+                "initially_visible": false,
+                "photo_style": "clean"
+              }
+            ],
+            "connections": [
+              {
+                "from": "case",
+                "to": "trace"
+              }
+            ]
+          }
         },
         "claim_ids": [
           "C7"
@@ -772,33 +1324,104 @@
               "transition": "slide_left",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "whoosh"
+              "sound": "none",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "others"
             },
             {
               "anchor": "Isso aumenta a chance de recuperação, mas não cria garantia",
               "kind": "warning",
               "headline": "Mais chance não é garantia",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "masked_emphasis",
               "transition": "cut",
               "placement": "center",
               "medium": "motion_graphic",
-              "sound": "impact"
+              "sound": "none",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "limit"
             },
             {
               "anchor": "o mais importante continua sendo contestar rápido no seu banco",
               "kind": "bank",
               "headline": "Contestou? Faça isso rápido",
               "detail": "Use o canal do seu banco e registre as informações do golpe.",
-              "behavior": "cut",
+              "behavior": "transform",
               "treatment": "depth_photo",
               "transition": "bloom",
               "placement": "right",
               "medium": "photo_cutout",
               "asset_id": "phone-hand",
-              "sound": "tick"
+              "sound": "tick",
+              "action": "reveal",
+              "prominence": "contextual",
+              "target_id": "action",
+              "moves": [
+                {
+                  "id": "limit",
+                  "x": 0,
+                  "y": 61
+                }
+              ]
             }
-          ]
+          ],
+          "stage": {
+            "elements": [
+              {
+                "id": "first",
+                "kind": "step",
+                "label": "CONTA 1",
+                "x": 0,
+                "y": 4,
+                "width": 24,
+                "height": 24,
+                "initially_visible": true,
+                "photo_style": "clean"
+              },
+              {
+                "id": "others",
+                "kind": "step",
+                "label": "OUTRAS CONTAS",
+                "x": 38,
+                "y": 4,
+                "width": 29,
+                "height": 24,
+                "initially_visible": false,
+                "photo_style": "clean"
+              },
+              {
+                "id": "limit",
+                "kind": "label",
+                "label": "Mais chance não é garantia",
+                "x": 0,
+                "y": 47,
+                "width": 64,
+                "height": 30,
+                "initially_visible": false,
+                "photo_style": "clean"
+              },
+              {
+                "id": "action",
+                "kind": "note",
+                "label": "Conteste rápido no seu banco",
+                "x": 72,
+                "y": 31,
+                "width": 28,
+                "height": 57,
+                "initially_visible": false,
+                "photo_style": "clean",
+                "detail": "Registre as informações do caso."
+              }
+            ],
+            "connections": [
+              {
+                "from": "first",
+                "to": "others"
+              }
+            ]
+          }
         },
         "claim_ids": [
           "C3",

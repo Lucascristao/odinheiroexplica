@@ -1,0 +1,5 @@
+{
+  "extends": "./tsconfig.app.json",
+  "compilerOptions": {"noEmit": true},
+  "include": ["video/src", "src/lib/editorial-stage.ts"]
+}

@@ -32,6 +32,7 @@ import {
   MaskedSweepHeadline,
   WordCascadeHeadline,
 } from "./EditorialMotionPrimitives";
+import type {StageEvent} from "../../src/lib/editorial-stage";
 
 export type EditorialDirection = {
   concept?: string;
@@ -42,7 +43,7 @@ export type EditorialDirection = {
   avoid?: string[];
 };
 
-export type EditorialBeat = {
+export type EditorialBeat = StageEvent & {
   anchor?: string;
   at?: number;
   kind?: string;
@@ -841,7 +842,6 @@ const SignalTreatment = ({beat, accent, progress}: {beat: EditorialBeat; accent:
         width: 780,
         height: 1350,
         background: accent,
-        transform: "rotate(12deg)",
         opacity: 0.88,
         transform: `rotate(12deg) translateX(${progress * 35}px)`,
       }}

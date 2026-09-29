@@ -1,5 +1,7 @@
 # Fotografia narrativa
 
+> Para a produção atual, siga primeiro [editorial-continuity.md](editorial-continuity.md). Os tratamentos antigos abaixo são recursos legados; não substituem o contrato de palco persistente.
+
 ## Direção
 
 O fluxo não usa 3D como padrão. A linguagem visual combina motion graphics 2D, tipografia, diagramas, números, ícones e fotografia recortada.

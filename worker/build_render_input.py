@@ -3,6 +3,7 @@ import json
 import math
 import re
 import unicodedata
+import copy
 from pathlib import Path
 
 
@@ -153,6 +154,12 @@ def main() -> None:
             scene,
             audio,
         )
+        if (scene.get("visual") or {}).get("stage"):
+            if any(beat.get("timing_source") != "azure-bookmark" for beat in resolved_beats):
+                raise RuntimeError(f"Palco persistente exige bookmarks reais: {scene_id}")
+            frames = [beat["resolved_frame"] for beat in resolved_beats]
+            if len(frames) != len(set(frames)):
+                raise RuntimeError(f"Eventos visuais simultâneos em {scene_id}; agrupe as mudanças no mesmo beat.")
         resolved_beats_with_assets = []
         for beat in resolved_beats:
             asset_id = str(beat.get("asset_id") or "").strip()
@@ -174,6 +181,15 @@ def main() -> None:
                 "beats": resolved_beats_with_assets,
             },
         }
+        stage = copy.deepcopy((scene.get("visual") or {}).get("stage"))
+        if stage:
+            for element in stage.get("elements", []):
+                asset_id = element.get("asset_id")
+                if asset_id:
+                    if asset_id not in visual_assets_by_id:
+                        raise RuntimeError(f"Asset de palco não preparado: {asset_id}")
+                    element["asset_file"] = visual_assets_by_id[asset_id]["public_file"]
+            scene_with_resolved_visual["visual"]["stage"] = stage
 
         output_scenes.append(
             {
