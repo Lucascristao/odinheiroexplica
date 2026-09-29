@@ -260,7 +260,7 @@
   "packaging": {
     "strategy": {
       "click_reason": "Quem já caiu ou teme cair em golpe quer saber se o Pix agora consegue seguir o dinheiro depois que ele sai da primeira conta.",
-      "visual_focus": "Smartphone recortado de um lado e um rastro de dinheiro atravessando várias contas do outro.",
+      "visual_focus": "Carteira dominante e trilha interrompida: rastrear não garante recuperar.",
       "curiosity_gap": "O sistema consegue seguir o dinheiro, mas até onde ele realmente consegue recuperar?",
       "mobile_readability": "Poucos elementos, rastro visual forte e texto curto.",
       "anti_clickbait_check": "O vídeo mostra como o rastreamento funciona e explica claramente que devolução não é garantida.",
@@ -270,16 +270,16 @@
     "titles": [
       {
         "id": "title_main",
-        "text": "MED 2.0 do Pix: Agora Dá Para Seguir o Dinheiro do Golpe?",
-        "rationale": "Foca na principal mudança prática e deixa a limitação para ser respondida pelo vídeo."
+        "text": "Golpe do Pix: o MED 2.0 consegue trazer seu dinheiro de volta?",
+        "rationale": "Situação reconhecível abre o título; MED 2.0 identifica o mecanismo. A pergunta é respondida com funcionamento e limites, sem prometer recuperação."
       }
     ],
     "thumbnails": [
       {
         "id": "thumb_main",
-        "headline": "AGORA RASTREIA?",
-        "concept": "Smartphone com Pix e uma trilha luminosa passando por várias contas, uma delas bloqueada. Sem políticos e sem logos de bancos.",
-        "visual_prompt": "Thumbnail completa 16:9. Fundo preto/carvão, identidade editorial premium do canal, detalhes dourados e verde Pix como cor secundária. Mão realista segurando smartphone em primeiro plano, sem banco específico, com símbolo Pix discreto na tela. Ao lado, uma trilha visual de dinheiro passando por 3 ou 4 nós de contas e terminando em um cadeado. Headline grande: 'AGORA RASTREIA?'. Sem nome do canal, sem políticos, sem excesso de elementos, leitura imediata no celular."
+        "headline": "DÁ PRA RECUPERAR?",
+        "concept": "Um rastro dourado interrompido antes de alcançar uma carteira; a dúvida é recuperar, não apenas rastrear. Um foco dominante e nenhum fluxograma pequeno.",
+        "visual_prompt": "Capa FINAL COMPLETA 16:9 para YouTube, visual editorial do O Dinheiro Explica. Fundo carvão, luz dourada #FFBD19, branco quente. Uma carteira grande em primeiro plano e uma única trilha dourada que se interrompe antes de alcançá-la, metáfora claramente ilustrativa da recuperação incerta. Texto exato DÁ PRA RECUPERAR? em tipografia pesada, grande e confortável, no espaço negativo, sem repetir o título inteiro. Um foco visual, no máximo um apoio. Ler claramente reduzida a 320x180. Respiro nas bordas e canto inferior direito livre. Sem celular obrigatório, sem nós pequenos, sem dinheiro retornando como certeza, sem saldo fictício, sem banco, logo, rosto, marca do canal, fontes ou subtítulo. Gerar toda a composição final com o texto."
       }
     ]
   },
@@ -388,7 +388,11 @@
                 "height": 93,
                 "initially_visible": true,
                 "photo_style": "clean",
-                "asset_id": "phone-hand"
+                "asset_id": "phone-hand",
+                "image_motion": "push",
+                "image_fit": "contain",
+                "focal_x": 50,
+                "focal_y": 50
               },
               {
                 "id": "account-1",
@@ -397,9 +401,10 @@
                 "x": 36,
                 "y": 3,
                 "width": 24,
-                "height": 22,
+                "height": 30,
                 "initially_visible": true,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "bank"
               },
               {
                 "id": "account-2",
@@ -408,32 +413,34 @@
                 "x": 73,
                 "y": 3,
                 "width": 27,
-                "height": 22,
+                "height": 30,
                 "initially_visible": false,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "bank"
               },
               {
                 "id": "trace",
                 "kind": "label",
-                "label": "O rastro pode continuar",
+                "label": "O rastro continua",
                 "x": 38,
                 "y": 35,
                 "width": 60,
                 "height": 21,
                 "initially_visible": false,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "route"
               },
               {
                 "id": "limit",
                 "kind": "note",
-                "label": "Rastrear ≠ garantir devolução",
+                "label": "Sem garantia de devolução",
                 "x": 38,
                 "y": 64,
                 "width": 60,
                 "height": 32,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "detail": "A recuperação depende da análise e do saldo."
+                "icon": "warning"
               }
             ],
             "connections": [
@@ -525,7 +532,10 @@
               "sound": "none",
               "action": "reveal",
               "prominence": "contextual",
-              "target_id": "whole"
+              "target_id": "whole",
+              "retire_ids": [
+                "empty"
+              ]
             }
           ],
           "stage": {
@@ -537,9 +547,10 @@
                 "x": 0,
                 "y": 15,
                 "width": 20,
-                "height": 23,
+                "height": 30,
                 "initially_visible": true,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "person"
               },
               {
                 "id": "account-1",
@@ -548,9 +559,10 @@
                 "x": 28,
                 "y": 15,
                 "width": 20,
-                "height": 23,
+                "height": 30,
                 "initially_visible": true,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "bank"
               },
               {
                 "id": "account-2",
@@ -559,9 +571,10 @@
                 "x": 56,
                 "y": 15,
                 "width": 20,
-                "height": 23,
+                "height": 30,
                 "initially_visible": false,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "bank"
               },
               {
                 "id": "account-3",
@@ -570,33 +583,34 @@
                 "x": 82,
                 "y": 15,
                 "width": 18,
-                "height": 23,
+                "height": 30,
                 "initially_visible": false,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "bank"
               },
               {
                 "id": "empty",
                 "kind": "note",
-                "label": "A primeira conta pode ficar vazia",
+                "label": "Conta pode ficar vazia",
                 "x": 0,
                 "y": 57,
                 "width": 46,
                 "height": 38,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "detail": "O dinheiro já seguiu para outro destino."
+                "icon": "wallet"
               },
               {
                 "id": "whole",
                 "kind": "note",
-                "label": "O caminho inteiro importa",
+                "label": "Além da primeira conta",
                 "x": 54,
                 "y": 57,
                 "width": 46,
                 "height": 38,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "detail": "A investigação pode avançar além da primeira conta."
+                "icon": "route"
               }
             ],
             "connections": [
@@ -684,50 +698,56 @@
             "elements": [
               {
                 "id": "phone",
-                "kind": "photo",
-                "label": "Pedido no banco",
+                "kind": "object",
+                "label": "Pedido de contestação",
                 "x": 60,
                 "y": 0,
                 "width": 38,
                 "height": 94,
                 "initially_visible": true,
                 "photo_style": "paper",
-                "asset_id": "phone-hand"
+                "image_motion": "push",
+                "image_fit": "contain",
+                "focal_x": 50,
+                "focal_y": 50,
+                "object_type": "receipt"
               },
               {
                 "id": "request",
                 "kind": "label",
-                "label": "Contestar a transação",
+                "label": "Conteste no banco",
                 "x": 0,
                 "y": 0,
                 "width": 53,
                 "height": 22,
                 "initially_visible": true,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "phone"
               },
               {
                 "id": "deadline",
                 "kind": "metric",
-                "label": "Prazo para pedir o MED",
+                "label": "Para pedir o MED",
                 "x": 0,
                 "y": 27,
                 "width": 53,
                 "height": 34,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "value": "ATÉ 80 DIAS"
+                "value": "ATÉ 80 DIAS",
+                "icon": "clock"
               },
               {
                 "id": "scope",
                 "kind": "note",
-                "label": "Uma ocorrência específica",
+                "label": "Um caso específico",
                 "x": 0,
                 "y": 66,
                 "width": 53,
                 "height": 30,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "detail": "Não é monitoramento geral de todo Pix."
+                "icon": "shield"
               }
             ],
             "connections": []
@@ -844,9 +864,10 @@
                 "x": 0,
                 "y": 8,
                 "width": 16,
-                "height": 24,
+                "height": 30,
                 "initially_visible": true,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "route"
               },
               {
                 "id": "notificar",
@@ -855,9 +876,10 @@
                 "x": 21,
                 "y": 8,
                 "width": 16,
-                "height": 24,
+                "height": 30,
                 "initially_visible": true,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "bell"
               },
               {
                 "id": "bloquear",
@@ -866,9 +888,10 @@
                 "x": 42,
                 "y": 8,
                 "width": 16,
-                "height": 24,
+                "height": 30,
                 "initially_visible": true,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "lock"
               },
               {
                 "id": "analisar",
@@ -877,9 +900,10 @@
                 "x": 63,
                 "y": 8,
                 "width": 16,
-                "height": 24,
+                "height": 30,
                 "initially_visible": true,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "search"
               },
               {
                 "id": "devolver",
@@ -888,33 +912,35 @@
                 "x": 84,
                 "y": 8,
                 "width": 16,
-                "height": 24,
+                "height": 30,
                 "initially_visible": true,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "refund"
               },
               {
                 "id": "available",
                 "kind": "note",
-                "label": "Até o limite contestado",
+                "label": "Depende de saldo",
                 "x": 0,
                 "y": 50,
                 "width": 30,
                 "height": 40,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "detail": "Bloqueio depende de saldo disponível."
+                "icon": "wallet"
               },
               {
                 "id": "analysis-time",
                 "kind": "metric",
-                "label": "Prazo de análise",
+                "label": "Para análise",
                 "x": 35,
                 "y": 50,
                 "width": 30,
                 "height": 40,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "value": "ATÉ 7 DIAS"
+                "value": "ATÉ 7 DIAS",
+                "icon": "clock"
               },
               {
                 "id": "refund",
@@ -926,7 +952,7 @@
                 "height": 40,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "detail": "Se a fraude for confirmada e houver saldo."
+                "icon": "coins"
               }
             ],
             "connections": [
@@ -1015,7 +1041,10 @@
               "sound": "none",
               "action": "reveal",
               "prominence": "contextual",
-              "target_id": "review"
+              "target_id": "review",
+              "retire_ids": [
+                "spent"
+              ]
             }
           ],
           "stage": {
@@ -1023,13 +1052,14 @@
               {
                 "id": "trace",
                 "kind": "label",
-                "label": "O rastro foi encontrado",
+                "label": "Rastro encontrado",
                 "x": 0,
                 "y": 0,
                 "width": 44,
                 "height": 24,
                 "initially_visible": true,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "route"
               },
               {
                 "id": "balance",
@@ -1041,31 +1071,32 @@
                 "height": 34,
                 "initially_visible": true,
                 "photo_style": "clean",
-                "value": "PODE NÃO HAVER"
+                "value": "PODE FALTAR",
+                "icon": "wallet"
               },
               {
                 "id": "spent",
                 "kind": "note",
-                "label": "Sacado, gasto ou fora de alcance",
+                "label": "Dinheiro fora de alcance",
                 "x": 57,
                 "y": 48,
                 "width": 43,
                 "height": 43,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "detail": "Seguir a trilha não recria os recursos."
+                "icon": "coins"
               },
               {
                 "id": "review",
                 "kind": "note",
-                "label": "A ocorrência ainda será analisada",
+                "label": "Ainda exige análise",
                 "x": 0,
                 "y": 57,
                 "width": 45,
                 "height": 36,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "detail": "Encontrar o rastro não decide o mérito."
+                "icon": "search"
               }
             ],
             "connections": [
@@ -1150,38 +1181,38 @@
               {
                 "id": "purchase",
                 "kind": "label",
-                "label": "Arrependimento de compra",
+                "label": "Compra: arrependimento",
                 "x": 0,
                 "y": 3,
                 "width": 44,
                 "height": 27,
                 "initially_visible": true,
                 "photo_style": "clean",
-                "detail": "Fora do escopo"
+                "icon": "cart"
               },
               {
                 "id": "wrong",
                 "kind": "label",
-                "label": "Chave Pix errada",
+                "label": "Chave errada",
                 "x": 0,
                 "y": 41,
                 "width": 44,
                 "height": 27,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "detail": "Fora do escopo"
+                "icon": "key"
               },
               {
                 "id": "scope",
                 "kind": "label",
-                "label": "Fraude, golpe e falha operacional",
+                "label": "Fraude ou falha operacional",
                 "x": 56,
                 "y": 10,
                 "width": 44,
                 "height": 56,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "detail": "São hipóteses previstas para o mecanismo."
+                "icon": "shield"
               }
             ],
             "connections": []
@@ -1255,37 +1286,38 @@
               {
                 "id": "myth",
                 "kind": "label",
-                "label": "Vigiar toda transferência",
+                "label": "Não vigia todo Pix",
                 "x": 0,
                 "y": 7,
                 "width": 43,
                 "height": 34,
                 "initially_visible": true,
                 "photo_style": "clean",
-                "detail": "Essa interpretação está errada."
+                "icon": "eye-off"
               },
               {
                 "id": "case",
                 "kind": "label",
-                "label": "Contestar uma fraude",
+                "label": "Fraude contestada",
                 "x": 57,
                 "y": 7,
                 "width": 43,
                 "height": 34,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "detail": "Esse é o contexto do mecanismo."
+                "icon": "shield"
               },
               {
                 "id": "trace",
                 "kind": "label",
-                "label": "Seguir o dinheiro contestado",
+                "label": "Segue o dinheiro do caso",
                 "x": 57,
                 "y": 66,
                 "width": 43,
                 "height": 30,
                 "initially_visible": false,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "route"
               }
             ],
             "connections": [
@@ -1376,9 +1408,10 @@
                 "x": 0,
                 "y": 4,
                 "width": 24,
-                "height": 24,
+                "height": 30,
                 "initially_visible": true,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "bank"
               },
               {
                 "id": "others",
@@ -1387,32 +1420,34 @@
                 "x": 38,
                 "y": 4,
                 "width": 29,
-                "height": 24,
+                "height": 30,
                 "initially_visible": false,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "bank"
               },
               {
                 "id": "limit",
                 "kind": "label",
-                "label": "Mais chance não é garantia",
+                "label": "Mais chance ≠ garantia",
                 "x": 0,
                 "y": 47,
                 "width": 64,
                 "height": 30,
                 "initially_visible": false,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "icon": "warning"
               },
               {
                 "id": "action",
                 "kind": "note",
-                "label": "Conteste rápido no seu banco",
+                "label": "Conteste rápido",
                 "x": 72,
                 "y": 31,
                 "width": 28,
                 "height": 57,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "detail": "Registre as informações do caso."
+                "icon": "phone"
               }
             ],
             "connections": [
@@ -1432,7 +1467,7 @@
     "closing": "O MED 2.0 amplia o rastro do dinheiro em fraudes no Pix, mas a recuperação continua dependendo de análise e saldo disponível."
   },
   "publication": {
-    "description": "O MED 2.0 do Pix ampliou o rastreamento do dinheiro desviado em golpes. Agora o sistema pode seguir o caminho dos recursos além da primeira conta recebedora.\n\nNeste vídeo, você entende como funciona a contestação, o prazo de até 80 dias, o bloqueio de valores, os limites da devolução e por que o MED 2.0 não significa monitoramento de todo Pix nem cancelamento automático.",
+    "description": "Caiu no golpe do Pix? Entenda como o MED 2.0 rastreia o dinheiro e por que a devolução não é garantida.\n\nO Mecanismo Especial de Devolução permite investigar o caminho dos recursos além da primeira conta. O vídeo explica a contestação no banco, os prazos, o bloqueio, a análise e os limites para recuperar o Pix. Também mostra o que fica fora do mecanismo e por que ele não significa vigiar todas as transferências.",
     "seo": {
       "primary_keyword": "MED 2.0 Pix",
       "secondary_keywords": [

@@ -115,7 +115,7 @@ SEO da publicação:
 - inclua sinônimos e termos relacionados de modo natural, nunca como bloco de palavras-chave;
 - não faça keyword stuffing;
 - não encha a descrição de tags; tags têm importância secundária e só devem existir quando forem úteis, por exemplo para grafias alternativas;
-- capítulos e uma seção `Bases do vídeo:` serão acrescentados pelo pipeline depois da descrição editorial; essa seção lista os títulos das fontes usadas, sem URLs externas.
+- capítulos válidos e uma seção `Bases do vídeo:` serão acrescentados pelo pipeline depois da descrição editorial, com títulos e links das fontes; créditos de imagens também ficam na descrição.
 
 Preencha publication.seo com:
 - primary_keyword;
@@ -156,6 +156,8 @@ Regras:
 Antes de fechar o VideoProject, faça uma auditoria de repetição: se o vídeo puder ser descrito como “o anterior com outro texto”, a direção visual ainda não está pronta.
 
 ### Plano visual persistente — obrigatório para cenas com beats
+
+Siga também `docs/editorial-attention.md` para roteiro falado, escolha de imagens, objetos e ícones, texto legível, título e descrição. Essa diretriz vale para todas as próximas pautas. Não mostrar fontes no rodapé; manter fontes e créditos no pacote da descrição. O campo `icon` e `kind: object` estão disponíveis no palco; usar conforme o significado. Uma imagem relevante ou um objeto dominante deve substituir parágrafos quando explica melhor. Não transformar todo bloco em lista de texto.
 
 Siga docs/editorial-continuity.md. O motor usa visual.stage com objetos identificáveis e visual.beats como eventos sobre eles. Cada evento tem anchor literal, target_id, action e prominence. O padrão é contextual. reveal_ids/retire_ids controlam elementos auxiliares em regiões reservadas; moves permite reposicionar mantendo identidade.
 

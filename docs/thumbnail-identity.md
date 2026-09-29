@@ -51,7 +51,17 @@ Se parecer genérica ou repetitiva, refazer o conceito antes de gerar.
 - evitar letter-spacing negativo agressivo;
 - nenhuma palavra pode ficar espremida ou com letras visualmente coladas.
 
-## Fluxo
+## Decisão de clique e precisão
+
+Escolher um instante visual de tensão relacionado ao que o vídeo realmente entrega. Pensar título e capa como uma única promessa: título identifica o assunto e a dúvida, capa torna o conflito visível. Não repetir a frase do título na imagem. Usar 2–4 palavras e um objeto dominante; segundo objeto só quando estabelece relação indispensável. Nenhum rodapé, fonte jornalística, dado miúdo ou subtítulo.
+
+Conferir mentalmente a composição em 320 × 180: foco reconhecível, texto imediato, respiro nas bordas e canto inferior direito livre para a duração. Não gerar interface bancária falsa, saldo fictício, documento forjado ou pessoa pública associada a afirmação que o vídeo não faz. Ilustração deve ser reconhecível como ilustração. Não usar cadeado aberto ou dinheiro retornando como garantia quando o assunto é recuperação incerta.
+
+No MED, a tensão é seguir o dinheiro versus conseguir recuperá-lo. Uma trilha interrompida pode comunicar esse limite; não converter automaticamente o conceito em celular + vários nós pequenos. A regra geral é buscar a metáfora mais simples da pauta, sem tornar essa composição um template. O prompt final deve especificar foco, posição e escala do texto, contraste, metáfora, elementos a excluir e exata headline aprovada.
+
+Gerar a capa final completa no ChatGPT após o render, como abaixo. Sem contratar ferramenta paga, fazer testes A/B ou inventar desempenho de clique.
+
+## Entrega
 
 A thumbnail não faz parte do render do Remotion.
 

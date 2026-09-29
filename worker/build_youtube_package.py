@@ -25,10 +25,17 @@ def main() -> None:
     thumbs = project.get("packaging", {}).get("thumbnails", [])
     title = titles[0]["text"] if titles else project["story"]["subject"]
     thumbnail = thumbs[0]["headline"] if thumbs else ""
+    if not title.strip() or len(title) > 100:
+        raise RuntimeError("Título precisa ter entre 1 e 100 caracteres.")
 
     chapters = []
+    duration_seconds = render_input["duration_in_frames"] / render_input["fps"]
+    chapter_seconds = []
     for scene in render_input.get("scenes", []):
         seconds = int(scene["start_frame"] / render_input["fps"])
+        if chapter_seconds and seconds - chapter_seconds[-1] < 10:
+            continue
+        chapter_seconds.append(seconds)
         chapters.append(
             {
                 "time": timestamp(seconds),
@@ -36,13 +43,20 @@ def main() -> None:
             }
         )
 
+    # YouTube requires 0:00, at least three chapters, and >=10s per chapter.
+    if chapters and duration_seconds - chapter_seconds[-1] < 10:
+        chapters.pop()
+        chapter_seconds.pop()
+    if len(chapters) < 3 or chapter_seconds[0] != 0:
+        chapters = []
+
     chapter_text = "\n".join(
         f"{item['time']} {item['title']}" for item in chapters
     )
 
     sources = project.get("sources", [])
     source_text = "\n".join(
-        f"- {source.get('title', 'Fonte')}"
+        f"- {source.get('title', 'Fonte')}" + (f" — {source['url']}" if source.get('url') else "")
         for source in sources
     )
 
@@ -72,12 +86,15 @@ def main() -> None:
     if not seo.get("primary_keyword"):
         raise RuntimeError("SEO sem palavra-chave principal.")
 
-    full_description = (
-        f"{description}\n\nCAPÍTULOS\n{chapter_text}"
-        f"\n\nBases do vídeo:\n{source_text}"
-    )
+    full_description = description
+    if chapter_text:
+        full_description += f"\n\nCAPÍTULOS\n{chapter_text}"
+    if source_text:
+        full_description += f"\n\nBases do vídeo:\n{source_text}"
     if visual_credit_text:
         full_description += f"\n\nCréditos visuais:\n{visual_credit_text}"
+    if len(full_description) > 5000:
+        raise RuntimeError("Descrição final excede 5.000 caracteres. Encurte a redação sem remover fontes ou créditos obrigatórios.")
 
     payload = {
         "title": title,

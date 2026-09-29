@@ -1,5 +1,6 @@
 import {createHash, timingSafeEqual} from "node:crypto";
 import { getStore } from "@netlify/blobs";
+declare const Netlify: {env: {get(name: string): string | undefined}};
 
 const allowedStatus = new Set(["queued", "running", "completed", "error"]);
 const allowedStages = new Set([
@@ -27,7 +28,7 @@ function safeText(value: unknown, max: number) {
 }
 
 function authorized(request: Request) {
-  const secret = (process.env.GOOGLE_CLIENT_SECRET || "").trim();
+  const secret = (Netlify.env.get("GOOGLE_CLIENT_SECRET") || "").trim();
   if (!secret) return false;
 
   const expected = createHash("sha256")
@@ -87,18 +88,34 @@ export default async (request: Request) => {
       | null;
 
   const now = new Date().toISOString();
+  const attempt = Math.max(1, Math.floor(Number(body.run_attempt) || 1));
+  const previousAttempt = Number(previous?.attempt ?? 1);
+  if (attempt < previousAttempt || (attempt === previousAttempt && ["completed", "error"].includes(String(previous?.status)) && !["completed", "error"].includes(status))) return json(200, {ok: true, ignored: "late-event"});
+  const sameAttempt = previous && attempt === previousAttempt;
+  const folderId = safeText(body.drive_folder_id, 200);
+  const driveFolderUrl = /^[a-zA-Z0-9_-]+$/.test(folderId) ? `https://drive.google.com/drive/folders/${folderId}` : sameAttempt ? previous?.driveFolderUrl ?? null : null;
+  const deliveryConfirmed = Boolean(driveFolderUrl && (body.delivery_confirmed === true || (sameAttempt && previous?.deliveryConfirmed === true)));
+  const previousHistory = sameAttempt && Array.isArray(previous?.stageHistory) ? previous.stageHistory : [];
+  const stageHistory = previous?.stage === stage && sameAttempt ? previousHistory : [...previousHistory.slice(-19), {stage, at: now}];
   const job = {
     runId,
     title: title || previous?.title || "Vídeo em produção",
     status,
+    attempt,
     stage,
     detail,
     percent,
     etaSeconds,
     videoDurationSeconds:
       videoDurationSeconds ?? previous?.videoDurationSeconds ?? null,
-    createdAt: previous?.createdAt || now,
+    createdAt: sameAttempt ? previous?.createdAt || now : now,
     updatedAt: now,
+    finishedAt: ["completed", "error"].includes(status) ? (sameAttempt ? previous?.finishedAt || now : now) : null,
+    githubUrl: `https://github.com/Lucascristao/odinheiroexplica/actions/runs/${runId}`,
+    driveFolderUrl,
+    deliveryConfirmed,
+    stageHistory,
+    thumbnailStatus: "pending_chat",
   };
 
   await store.setJSON(`job/${runId}`, job);

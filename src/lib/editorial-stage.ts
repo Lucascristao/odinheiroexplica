@@ -3,10 +3,12 @@ import {z} from "zod";
 // Coordinates are percentages of the safe editorial canvas, not the full video.
 export const stageElementSchema = z.object({
   id: z.string().min(1),
-  kind: z.enum(["step", "label", "metric", "note", "photo"]),
+  kind: z.enum(["step", "label", "metric", "note", "photo", "object"]),
+  object_type: z.enum(["wallet", "bank", "receipt"]).optional(),
   label: z.string().min(1).max(80),
   detail: z.string().max(160).optional(),
   value: z.string().max(32).optional(),
+  icon: z.enum(["bank", "wallet", "person", "search", "bell", "lock", "check", "refund", "shield", "warning", "clock", "phone", "receipt", "cart", "key", "eye-off", "route", "coins", "chart", "house", "car", "document", "globe"]).optional(),
   x: z.number().min(0).max(100),
   y: z.number().min(0).max(100),
   width: z.number().min(8).max(100),
@@ -15,6 +17,10 @@ export const stageElementSchema = z.object({
   asset_id: z.string().optional(),
   asset_file: z.string().optional(),
   photo_style: z.enum(["clean", "paper"]).default("clean"),
+  image_fit: z.enum(["contain", "cover"]).default("contain"),
+  focal_x: z.number().min(0).max(100).default(50),
+  focal_y: z.number().min(0).max(100).default(50),
+  image_motion: z.enum(["none", "push", "pan"]).default("none"),
 });
 
 export const editorialStageSchema = z.object({
@@ -29,6 +35,7 @@ export const editorialStageSchema = z.object({
   for (const [index, element] of stage.elements.entries()) {
     if (ids.has(element.id)) ctx.addIssue({code: "custom", path: ["elements", index, "id"], message: "ID visual duplicado."});
     ids.add(element.id);
+    if (element.kind === "object" && !element.object_type) ctx.addIssue({code: "custom", path: ["elements", index, "object_type"], message: "Objeto precisa de object_type."});
     if (element.x + element.width > 100 || element.y + element.height > 100) {
       ctx.addIssue({code: "custom", path: ["elements", index], message: "Elemento fora da área segura."});
     }

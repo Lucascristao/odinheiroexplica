@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import {
   AlertTriangle,
   ChevronRight,
+  Copy,
   Lightbulb,
   LogOut,
   MessageSquareText,
@@ -59,6 +60,11 @@ export function Dashboard() {
     useState<VideoProjectRow | null>(null);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
+  const [copied, setCopied] = useState<string | null>(null);
+  async function copyRequest(text: string) {
+    try {await navigator.clipboard.writeText(text); setCopied(text);}
+    catch {setCopied("Não foi possível copiar. Selecione o pedido abaixo.");}
+  }
 
   const loadProjects = useCallback(async () => {
     if (!supabase) return;
@@ -154,11 +160,11 @@ export function Dashboard() {
       <section className="hero production-hero">
         <div>
           <p className="eyebrow">Produção diária</p>
-          <h1>Você pede o vídeo. O resto acontece sozinho.</h1>
+          <h1>Crie no chat. Acompanhe por aqui.</h1>
           <p className="muted hero-copy">
-            O trabalho começa no chat: pesquisa, fontes, embalagem, roteiro e
-            estrutura visual. Depois, a fábrica assume narração, timeline,
-            render, thumbnail e entrega final no Google Drive.
+            Pesquisa, roteiro e direção visual começam no ChatGPT. Este painel
+            acompanha narração, render e entrega no Drive. A capa final continua
+            sendo uma etapa conduzida no chat.
           </p>
         </div>
 
@@ -169,11 +175,13 @@ export function Dashboard() {
         </div>
       </section>
 
+      <RenderStatusPanel />
+
       <section className="panel request-panel">
         <div className="panel-heading">
           <div>
             <p className="eyebrow">Como iniciar</p>
-            <h2>Duas formas de pedir o próximo vídeo</h2>
+            <h2>Leve o próximo pedido ao ChatGPT</h2>
           </div>
           <div className="chat-origin">
             <MessageSquareText size={16} />
@@ -195,6 +203,7 @@ export function Dashboard() {
                 história forte para o canal.
               </p>
               <div className="request-command">“Gerar o vídeo de hoje.”</div>
+              <button className="card-link-button" onClick={() => void copyRequest("Gerar o vídeo de hoje.")}><Copy size={15}/>{copied === "Gerar o vídeo de hoje." ? "Copiado" : "Copiar pedido"}</button>
             </div>
           </article>
 
@@ -213,9 +222,12 @@ export function Dashboard() {
               <div className="request-command">
                 “Faça um vídeo sobre como organizar suas finanças e guardar dinheiro.”
               </div>
+              <button className="card-link-button" onClick={() => void copyRequest("Faça um vídeo sobre [assunto], seguindo as regras atuais do O Dinheiro Explica.")}><Copy size={15}/>{copied?.startsWith("Faça um vídeo") ? "Copiado" : "Copiar modelo"}</button>
             </div>
           </article>
         </div>
+
+        {copied && <p className="muted small" role="status">{copied.startsWith("Não foi") ? copied : "Pedido copiado. Cole na conversa do projeto no ChatGPT."}</p>}
 
         <div className="production-flow">
           <span>Pesquisa</span>
@@ -231,8 +243,6 @@ export function Dashboard() {
           <span>Drive</span>
         </div>
       </section>
-
-      <RenderStatusPanel />
 
       <section className="panel">
         <div className="panel-heading">
@@ -261,10 +271,10 @@ export function Dashboard() {
           <p className="muted top-gap">Carregando...</p>
         ) : projects.length === 0 ? (
           <div className="empty-state">
-            <strong>Nenhum vídeo produzido ainda.</strong>
+            <strong>Nenhum projeto salvo neste histórico.</strong>
             <span>
-              Quando o primeiro pedido feito pelo chat entrar em produção, ele
-              aparecerá aqui.
+              O andamento da execução mais recente aparece no acompanhamento
+              acima. Projetos salvos no painel aparecem nesta lista.
             </span>
           </div>
         ) : (

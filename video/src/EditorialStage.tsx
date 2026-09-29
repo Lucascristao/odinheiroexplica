@@ -1,3 +1,5 @@
+import {EditorialIcon} from "./EditorialIcon";
+import {EditorialObject} from "./EditorialObject";
 import {useEffect, useId, useMemo, useState} from "react";
 import {AbsoluteFill, Img, cancelRender, continueRender, delayRender, interpolate, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
 import {loadFont} from "@remotion/fonts";
@@ -34,7 +36,7 @@ const wrap = (text: string, size: number, width: number) => {
   return lines;
 };
 
-const TextBox = ({text, width, height, maxSize = 42, minSize = 25, color = WHITE}: {text: string; width: number; height: number; maxSize?: number; minSize?: number; color?: string}) => {
+const TextBox = ({text, width, height, maxSize = 42, minSize = 32, color = WHITE}: {text: string; width: number; height: number; maxSize?: number; minSize?: number; color?: string}) => {
   let size = maxSize;
   let lines = wrap(text, size, width);
   const fits = () => lines.length * size * 1.18 <= height && lines.every(line => measureText({text: line, fontFamily: FONT, fontSize: size, fontWeight: 700}).width <= width);
@@ -43,7 +45,7 @@ const TextBox = ({text, width, height, maxSize = 42, minSize = 25, color = WHITE
   return <div style={{fontSize: size, lineHeight: 1.18, fontWeight: 700, color, whiteSpace: "pre", letterSpacing: 0}}>{lines.join("\n")}</div>;
 };
 
-export const EditorialStage = ({stage, beats, title, source, accent = GOLD}: {stage: Stage; beats: StageEvent[]; title?: string; source?: string; accent?: string}) => {
+export const EditorialStage = ({stage, beats, title, accent = GOLD}: {stage: Stage; beats: StageEvent[]; title?: string; accent?: string}) => {
   const frame = useCurrentFrame();
   const {fps, width, height} = useVideoConfig();
   const ready = useEditorialFont();
@@ -78,7 +80,8 @@ export const EditorialStage = ({stage, beats, title, source, accent = GOLD}: {st
           return <g key={`${edge.from}-${edge.to}-${i}`} opacity={edgeEnter * (takeover ? 0.15 : 1)}>
             <path d={`M${x1},${y1} L${x2},${y2}`} stroke="#45515a" strokeWidth={2} markerEnd={`url(#${arrowId})`} />
             {selected && <path d={`M${x1},${y1} L${x2},${y2}`} pathLength={1} stroke={accent} strokeWidth={4} strokeDasharray={1} strokeDashoffset={1-focus} />}
-            {edge.label && <text x={(x1+x2)/2} y={(y1+y2)/2-14} textAnchor="middle" fill={MUTED} fontSize={24}>{edge.label}</text>}
+            {selected && focus < 1 && <circle cx={x1+(x2-x1)*focus} cy={y1+(y2-y1)*focus} r={7} fill={accent} />}
+            {edge.label && <text x={(x1+x2)/2} y={(y1+y2)/2-14} textAnchor="middle" fill={MUTED} fontSize={32}>{edge.label}</text>}
           </g>;
         })}
       </svg>
@@ -90,23 +93,28 @@ export const EditorialStage = ({stage, beats, title, source, accent = GOLD}: {st
         if (opacity === 0) return null;
         const color = selected && active?.prominence !== "support" ? accent : WHITE;
         const padding = 16;
-        const innerW = box.w - padding*2;
-        const innerH = box.h - padding*2;
+        const iconSize = element.icon ? Math.min(112, Math.max(56, box.h * 0.3)) : 0;
+        const stacked = element.kind === "step";
+        const iconSpace = element.icon ? iconSize + 18 : 0;
+        const innerW = box.w - padding*2 - (stacked ? 0 : iconSpace);
+        const innerH = box.h - padding*2 - (stacked ? iconSpace : 0);
         const valueH = element.value ? innerH * 0.4 : 0;
         const detailH = element.detail ? innerH * (element.value ? 0.3 : 0.45) : 0;
         const labelH = innerH - valueH - detailH;
-        return <div key={element.id} data-element-id={element.id} style={{position: "absolute", left: box.x, top: box.y, width: box.w, height: box.h, padding, opacity, transform: `translateY(${element.visible ? (1-reveal)*12 : 0}px)`, display: "flex", flexDirection: "column", justifyContent: "center", gap: 0}}>
-          {element.kind === "photo" ? <div style={{width: "100%", height: "100%", padding: element.photo_style === "paper" ? 14 : 0, background: element.photo_style === "paper" ? "#eee8dc" : "transparent", clipPath: element.photo_style === "paper" ? "polygon(1% 2%, 18% 0, 35% 2%, 51% 0, 72% 2%, 99% 0, 98% 23%, 100% 47%, 98% 71%, 100% 99%, 77% 97%, 52% 100%, 29% 98%, 0 100%, 2% 73%, 0 48%)" : undefined}}>
-            {element.asset_file ? <Img src={staticFile(element.asset_file)} style={{height: "100%", width: "100%", objectFit: "contain"}} /> : <div style={{color: "#252a30", fontSize: 32}}>Foto: {element.label}</div>}
+        return <div key={element.id} data-element-id={element.id} style={{position: "absolute", left: box.x, top: box.y, width: box.w, height: box.h, padding, opacity, transform: `translateY(${element.visible ? (1-reveal)*12 : 0}px)`, boxSizing: "border-box", display: "flex", flexDirection: stacked ? "column" : "row", alignItems: stacked ? "flex-start" : "center", justifyContent: "center", gap: element.icon ? 18 : 0}}>
+          {element.kind === "object" && element.object_type ? <div style={{width: "100%", height: "100%", display: "flex", flexDirection: "column"}}><div style={{flex: 1, minHeight: 0}}><EditorialObject type={element.object_type} accent={accent} progress={reveal} /></div><TextBox text={element.label} width={box.w-32} height={90} maxSize={42} /></div> : element.kind === "photo" ? <div style={{width: "100%", height: "100%", padding: element.photo_style === "paper" ? 14 : 0, overflow: "hidden", background: element.photo_style === "paper" ? "#eee8dc" : "transparent", clipPath: element.photo_style === "paper" ? "polygon(1% 2%, 18% 0, 35% 2%, 51% 0, 72% 2%, 99% 0, 98% 23%, 100% 47%, 98% 71%, 100% 99%, 77% 97%, 52% 100%, 29% 98%, 0 100%, 2% 73%, 0 48%)" : undefined}}>
+            {element.asset_file ? <Img src={staticFile(element.asset_file)} style={{height: "100%", width: "100%", objectFit: element.image_fit, objectPosition: `${element.focal_x}% ${element.focal_y}%`, transform: element.image_motion === "push" ? `scale(${1 + Math.min(1, Math.max(0, frame-element.changedAt)/(fps*8))*0.06})` : element.image_motion === "pan" ? `scale(1.06) translateX(${interpolate(frame-element.changedAt, [0, fps*8], [-2, 2], clamp)}%)` : undefined}} /> : <div style={{color: "#252a30", fontSize: 32}}>Foto: {element.label}</div>}
           </div> : <>
+            {element.icon && <EditorialIcon name={element.icon} size={iconSize} color={color} progress={selected ? focus : reveal} />}
+            <div style={{width: innerW, flexShrink: 0}}>
             {element.value && <TextBox text={element.value} width={innerW} height={valueH} maxSize={72} color={color} />}
-            <TextBox text={element.label} width={innerW} height={labelH} maxSize={element.kind === "metric" ? 40 : element.kind === "note" ? 32 : 42} color={color} />
-            {element.detail && <TextBox text={element.detail} width={innerW} height={detailH} maxSize={28} color={MUTED} />}
+            <TextBox text={element.label} width={innerW} height={labelH} maxSize={element.kind === "step" ? 38 : 46} color={color} />
+            {element.detail && <TextBox text={element.detail} width={innerW} height={detailH} maxSize={34} color={MUTED} />}
+            </div>
           </>}
           {selected && element.kind !== "photo" && <div style={{position: "absolute", left: padding, bottom: 3, width: (box.w-padding*2)*focus, height: active?.prominence === "support" ? 2 : 4, background: accent}} />}
         </div>;
       })}
     </div>
-    {source && <div style={{position: "absolute", left: 130, bottom: 46, fontSize: 22, color: MUTED}}>{source}</div>}
   </AbsoluteFill>;
 };

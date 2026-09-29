@@ -189,25 +189,6 @@ const Brand = () => (
   </div>
 );
 
-const Source = ({text}: {text?: string}) => {
-  if (!text) return null;
-
-  return (
-    <div
-      style={{
-        position: "absolute",
-        right: 72,
-        bottom: 46,
-        color: "#707983",
-        fontFamily: FONT,
-        fontSize: 17,
-        letterSpacing: 0.2,
-      }}
-    >
-      Fonte: {text}
-    </div>
-  );
-};
 
 const SceneShell = ({
   durationFrames,
@@ -381,7 +362,6 @@ const HeadlineScene = ({
             {accent}
           </div>
         )}
-        <Source text={asString(payload.source)} />
       </AbsoluteFill>
     </SceneShell>
   );
@@ -459,7 +439,6 @@ const StatGridScene = ({
         <div style={{marginTop: 30, color: MUTED, fontSize: 27}}>
           {asString(payload.caption)}
         </div>
-        <Source text={asString(payload.source)} />
       </AbsoluteFill>
     </SceneShell>
   );
@@ -534,7 +513,6 @@ const BeforeAfterScene = ({
           <div style={{alignSelf: "center", color: GOLD, fontSize: 54}}>→</div>
           {card("after", true)}
         </div>
-        <Source text={asString(payload.source)} />
       </AbsoluteFill>
     </SceneShell>
   );
@@ -652,7 +630,6 @@ const NetworkScene = ({
             </div>
           );
         })}
-        <Source text={asString(payload.source)} />
       </AbsoluteFill>
     </SceneShell>
   );
@@ -751,7 +728,6 @@ const MoneyFlowScene = ({
             {item.label}
           </div>
         ))}
-        <Source text={asString(payload.source)} />
       </AbsoluteFill>
     </SceneShell>
   );
@@ -859,7 +835,6 @@ const ProcessScene = ({
         >
           {asString(payload.caption)}
         </div>
-        <Source text={asString(payload.source)} />
       </AbsoluteFill>
     </SceneShell>
   );
@@ -968,7 +943,6 @@ const BigNumberScene = ({
         >
           {asString(payload.warning)}
         </div>
-        <Source text={asString(payload.source)} />
       </AbsoluteFill>
     </SceneShell>
   );
@@ -1066,7 +1040,6 @@ const DoDontScene = ({
           {list(yes, true, 0)}
           {list(no, false, yes.length)}
         </div>
-        <Source text={asString(payload.source)} />
       </AbsoluteFill>
     </SceneShell>
   );
@@ -1150,7 +1123,6 @@ const TimelineScene = ({
             }}
           />
         </div>
-        <Source text={asString(payload.source)} />
       </AbsoluteFill>
     </SceneShell>
   );
@@ -1220,7 +1192,6 @@ const ClosingScene = ({
             );
           })}
         </div>
-        <Source text={asString(payload.source)} />
       </AbsoluteFill>
     </SceneShell>
   );
@@ -1833,7 +1804,7 @@ const SceneComposition = ({
 
   if (scene.visual.stage) {
     return <AbsoluteFill>
-      <EditorialStage stage={scene.visual.stage} beats={beats} title={scene.title} source={asString(scene.visual.payload?.source)} accent={direction.secondary_color ?? GOLD} />
+      <EditorialStage stage={scene.visual.stage} beats={beats} title={scene.title} accent={direction.secondary_color ?? GOLD} />
       <SoundDesign scene={scene} isLast={isLast} />
       <Audio src={staticFile(scene.audio_file)} />
     </AbsoluteFill>;

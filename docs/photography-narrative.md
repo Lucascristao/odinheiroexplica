@@ -1,6 +1,6 @@
 # Fotografia narrativa
 
-> Para a produção atual, siga primeiro [editorial-continuity.md](editorial-continuity.md). Os tratamentos antigos abaixo são recursos legados; não substituem o contrato de palco persistente.
+> Para a produção atual, siga primeiro [editorial-attention.md](editorial-attention.md) e [editorial-continuity.md](editorial-continuity.md). Os tratamentos antigos abaixo são recursos legados; não substituem o contrato de palco persistente.
 
 ## Direção
 

@@ -258,7 +258,7 @@ export const videoProjectSchema = z
             z
               .object({
                 id: z.string().min(1),
-                text: z.string().min(1),
+                text: z.string().min(1).max(100),
                 rationale: z.string().optional(),
               })
               .passthrough(),
@@ -288,7 +288,7 @@ export const videoProjectSchema = z
       .passthrough(),
     publication: z
       .object({
-        description: z.string().min(1),
+        description: z.string().min(1).max(5000),
         seo: z.object({
           primary_keyword: z.string().min(1),
           secondary_keywords: z.array(z.string()).max(8).default([]),
