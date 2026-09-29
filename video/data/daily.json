@@ -31,18 +31,20 @@
       "type": "source_excerpt",
       "source_id": "S1",
       "capture_file": "research/captures/planalto-lcp214-art31.png",
-      "source_page_url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214compilado.htm",
-      "subject": "Lei Complementar nº 214/2025 - Art. 31 e Art. 32",
-      "narrative_role": "Comprovação legal do recolhimento na liquidação financeira (split payment) de IBS e CBS",
+      "source_page_url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214compilado.htm#art31",
+      "scroll_to_text": "Art. 31.",
+      "expected_text": "recolhimento na liquidação financeira",
+      "subject": "Lei Complementar nº 214/2025 • Art. 31 - Split Payment",
+      "narrative_role": "Comprovação legal do recolhimento na liquidação financeira",
       "country_context": "BR",
       "license": "domínio público / legislação oficial",
-      "attribution": "Presidência da República / Imprensa Nacional",
+      "attribution": "Presidência da República / Diário Oficial",
       "needs_cutout": false,
       "crop": {
-        "x": 1,
-        "y": 0,
-        "width": 98,
-        "height": 42
+        "x": 2,
+        "y": 10,
+        "width": 96,
+        "height": 75
       },
       "captured_at": "2026-09-29T15:00:00Z"
     },
@@ -69,20 +71,22 @@
     {
       "id": "A3_noticia_2027",
       "type": "source_excerpt",
-      "source_id": "S4",
-      "capture_file": "research/captures/noticia-split-payment-2027.png",
-      "source_page_url": "https://istoedinheiro.com.br/reforma-tributaria-split-payment-comecara-em-2027-de-forma-facultativa/",
-      "subject": "Manchete sobre início facultativo em 2027",
-      "narrative_role": "Comprovação informativa do início facultativo no 2º semestre de 2027",
+      "source_id": "S3",
+      "capture_file": "research/captures/receita-split-2027.png",
+      "source_page_url": "https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/acoes-e-programas/programas-e-atividades/reforma-tributaria-do-consumo/legislacao/atos-tecnicos-conjuntos/",
+      "scroll_to_text": "Ato Técnico Conjunto RFB/CGIBS nº 4",
+      "expected_text": "Split Payment",
+      "subject": "Cronograma Oficial • Início Facultativo no 2º Semestre de 2027",
+      "narrative_role": "Regulamentação oficial dos testes piloto do Split Payment",
       "country_context": "BR",
-      "license": "uso editorial informativo",
-      "attribution": "IstoÉ Dinheiro / Economia",
+      "license": "conteúdo público governamental",
+      "attribution": "Receita Federal do Brasil / Ministério da Fazenda",
       "needs_cutout": false,
       "crop": {
-        "x": 3,
+        "x": 4,
         "y": 20,
-        "width": 65,
-        "height": 26
+        "width": 92,
+        "height": 65
       },
       "captured_at": "2026-09-29T15:00:00Z"
     }
@@ -575,10 +579,10 @@
                     "id": "mark_split_legal",
                     "style": "highlight",
                     "region": {
-                      "x": 2,
-                      "y": 2,
-                      "width": 96,
-                      "height": 26
+                      "x": 4,
+                      "y": 42,
+                      "width": 92,
+                      "height": 24
                     }
                   }
                 ]
@@ -1200,6 +1204,20 @@
           "transition": "fade",
           "beats": [
             {
+              "anchor": "não existe nenhum botão mágico que vá virar todas as compras",
+              "kind": "rule",
+              "headline": "Sem virada brusca",
+              "behavior": "transform",
+              "treatment": "masked_emphasis",
+              "transition": "bloom",
+              "placement": "left",
+              "medium": "motion_graphic",
+              "sound": "tick",
+              "target_id": "now",
+              "action": "focus",
+              "prominence": "contextual"
+            },
+            {
               "anchor": "A previsão é que os primeiros testes com dinheiro real comecem no segundo semestre de 2027",
               "kind": "fact",
               "headline": "Início facultativo em 2027",
@@ -1215,10 +1233,10 @@
                 "mark_noticia_headline"
               ],
               "prominence": "takeover",
-              "takeover_reason": "Exibe a matéria da IstoÉ Dinheiro confirmando a adesão facultativa em 2027"
+              "takeover_reason": "Exibe a publicação oficial da Receita Federal comprovando o início facultativo em 2027"
             },
             {
-              "anchor": "de forma totalmente facultativa e apenas entre empresas selecionadas",
+              "anchor": "apenas entre empresas selecionadas",
               "kind": "step",
               "headline": "Etapa piloto B2B",
               "behavior": "transform",
@@ -1228,11 +1246,21 @@
               "medium": "motion_graphic",
               "sound": "tick",
               "target_id": "b2b",
-              "action": "reveal",
-              "reveal_ids": [
-                "now",
-                "later"
-              ],
+              "action": "focus",
+              "prominence": "contextual"
+            },
+            {
+              "anchor": "Para o comércio de rua, padarias e vendas para o consumidor comum",
+              "kind": "step",
+              "headline": "Varejo geral nos anos seguintes",
+              "behavior": "transform",
+              "treatment": "flow_diagram",
+              "transition": "wipe",
+              "placement": "right",
+              "medium": "motion_graphic",
+              "sound": "tick",
+              "target_id": "later",
+              "action": "focus",
               "prominence": "contextual"
             }
           ],
@@ -1242,11 +1270,11 @@
                 "id": "excerpt_noticia",
                 "kind": "source_excerpt",
                 "asset_id": "A3_noticia_2027",
-                "label": "Cronograma oficial • Início facultativo 2027",
+                "label": "Receita Federal • Cronograma do Split Payment",
                 "x": 5,
-                "y": 8,
+                "y": 6,
                 "width": 90,
-                "height": 45,
+                "height": 50,
                 "initially_visible": false,
                 "photo_style": "clean",
                 "annotations": [
@@ -1254,62 +1282,70 @@
                     "id": "mark_noticia_headline",
                     "style": "highlight",
                     "region": {
-                      "x": 2,
-                      "y": 15,
-                      "width": 96,
-                      "height": 42
+                      "x": 4,
+                      "y": 30,
+                      "width": 92,
+                      "height": 28
                     }
                   }
                 ]
               },
               {
                 "id": "now",
-                "kind": "metric",
-                "label": "Situação atual",
-                "x": 5,
-                "y": 62,
-                "width": 26,
-                "height": 32,
-                "initially_visible": false,
+                "kind": "step",
+                "label": "FASE ATUAL",
+                "detail": "Testes de tecnologia e integração bancária",
+                "x": 4,
+                "y": 60,
+                "width": 28,
+                "height": 34,
+                "initially_visible": true,
                 "photo_style": "clean",
-                "value": "Fase Atual",
-                "icon": "document"
+                "value": "2026",
+                "value_size": 52,
+                "icon": "clock"
               },
               {
                 "id": "b2b",
-                "kind": "metric",
-                "label": "Primeira etapa real",
-                "x": 37,
-                "y": 62,
-                "width": 26,
-                "height": 32,
-                "initially_visible": false,
+                "kind": "step",
+                "label": "PILOTO FACULTATIVO",
+                "detail": "Primeira fase real restrita ao atacado B2B",
+                "x": 36,
+                "y": 60,
+                "width": 28,
+                "height": 34,
+                "initially_visible": true,
                 "photo_style": "clean",
                 "value": "2º SEM 2027",
+                "value_size": 52,
                 "icon": "bank"
               },
               {
                 "id": "later",
-                "kind": "metric",
-                "label": "Varejo amplo",
-                "x": 69,
-                "y": 62,
-                "width": 26,
-                "height": 32,
-                "initially_visible": false,
+                "kind": "step",
+                "label": "COMÉRCIO & VAREJO",
+                "detail": "Entrada progressiva das lojas e padarias",
+                "x": 68,
+                "y": 60,
+                "width": 28,
+                "height": 34,
+                "initially_visible": true,
                 "photo_style": "clean",
-                "value": "DEPOIS",
-                "icon": "route"
+                "value": "2028+",
+                "value_size": 52,
+                "icon": "cart"
               }
             ],
             "connections": [
               {
                 "from": "now",
-                "to": "b2b"
+                "to": "b2b",
+                "label": "evolução"
               },
               {
                 "from": "b2b",
-                "to": "later"
+                "to": "later",
+                "label": "maturação"
               }
             ]
           }
@@ -1404,50 +1440,63 @@
             "elements": [
               {
                 "id": "one",
-                "kind": "note",
-                "label": "1. NÃO É IMPOSTO SOBRE PIX",
+                "kind": "step",
+                "label": "NÃO É IMPOSTO NO PIX",
+                "detail": "A tributação é sobre a venda comercial registrada, e não sobre a transferência bancária.",
                 "x": 4,
-                "y": 20,
+                "y": 14,
                 "width": 28,
-                "height": 45,
+                "height": 54,
                 "initially_visible": true,
                 "photo_style": "clean",
+                "value": "REGRA 01",
+                "value_size": 52,
                 "icon": "shield"
               },
               {
                 "id": "two",
-                "kind": "note",
-                "label": "2. MUDA O CAPITAL DE GIRO",
+                "kind": "step",
+                "label": "GESTÃO DO CAPITAL DE GIRO",
+                "detail": "O valor do tributo é retido no ato e não passeia mais pelo caixa da sua empresa.",
                 "x": 36,
-                "y": 20,
+                "y": 14,
                 "width": 28,
-                "height": 45,
+                "height": 54,
                 "initially_visible": false,
                 "photo_style": "clean",
+                "value": "REGRA 02",
+                "value_size": 52,
                 "icon": "wallet"
               },
               {
                 "id": "three",
-                "kind": "note",
-                "label": "3. TRANSIÇÃO GRADUAL",
+                "kind": "step",
+                "label": "TRANSIÇÃO GRADUAL",
+                "detail": "Início opcional para testes em 2027, dando tempo para adaptação dos sistemas.",
                 "x": 68,
-                "y": 20,
+                "y": 14,
                 "width": 28,
-                "height": 45,
+                "height": 54,
                 "initially_visible": false,
                 "photo_style": "clean",
+                "value": "REGRA 03",
+                "value_size": 52,
                 "icon": "route"
               },
               {
                 "id": "final",
-                "kind": "label",
-                "label": "A tecnologia sincronizando pagamento e tributo na velocidade da luz",
+                "kind": "step",
+                "label": "TECNOLOGIA INTEGRADA",
+                "detail": "A tecnologia sincronizando o pagamento e a arrecadação na velocidade da luz.",
                 "x": 10,
                 "y": 72,
                 "width": 80,
-                "height": 18,
+                "height": 22,
                 "initially_visible": false,
-                "photo_style": "clean"
+                "photo_style": "clean",
+                "value": "CONCLUSÃO",
+                "value_size": 48,
+                "icon": "check"
               }
             ],
             "connections": []

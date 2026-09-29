@@ -117,13 +117,116 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
 
     url = asset.get("source_page_url")
     if not url:
-        print(f"[auto_capture] Asset {asset.get('id')} sem source_page_url; pulando.")
-        return False
+        print(f"[auto_capture] Asset {asset.get('id')} sem source_page_url; gerando editorial.")
+        generate_editorial_fallback(dest_path, asset)
+        return True
 
-    print(f"[auto_capture] Capturando em nuvem: {url} -> {dest_path.name}")
+    print(f"[auto_capture] Processando captura: {url} -> {dest_path.name}")
     dest_path.parent.mkdir(parents=True, exist_ok=True)
 
     if playwright_browser is None:
+        generate_editorial_fallback(dest_path, asset)
+        return True
+
+    try:
+        context = playwright_browser.new_context(
+            viewport={"width": 1351, "height": 917},
+            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
+            device_scale_factor=1,
+        )
+        page = context.new_page()
+
+        # 1. Navegar na URL
+        try:
+            response = page.goto(url, wait_until="domcontentloaded", timeout=40000)
+            if response and response.status in (404, 500, 502, 503):
+                print(f"[auto_capture] ALERTA: Status HTTP {response.status} em {url}. Acionando fallback editorial.")
+                generate_editorial_fallback(dest_path, asset)
+                context.close()
+                return True
+        except Exception as nav_exc:
+            print(f"[auto_capture] Aviso na navegação de {url}: {nav_exc}")
+
+        # 2. Aguardar scripts assíncronos
+        page.wait_for_timeout(5000)
+
+        # 3. Pressionar Escape para dispensar popovers
+        try:
+            page.keyboard.press("Escape")
+        except Exception:
+            pass
+
+        # 4. Sanitizar completamente (remover modais, restaurar fundo branco)
+        sanitize_page_thoroughly(page)
+
+        # 5. Auditoria de conteúdo: detectar páginas de erro (ex: 404, não encontrada)
+        content_text = page.evaluate("() => document.body ? document.body.innerText : ''")
+        page_title = page.title()
+        error_indicators = [
+            "página não encontrada",
+            "pagina nao encontrada",
+            "o termo procurado não foi encontrado",
+            "404 not found",
+            "erro 404",
+            "ops! não encontramos",
+        ]
+        is_error = any(ind in content_text.lower() for ind in error_indicators) or any(ind in page_title.lower() for ind in error_indicators)
+
+        expected_text = asset.get("expected_text")
+        if expected_text and expected_text.lower() not in content_text.lower():
+            print(f"[auto_capture] ALERTA: Texto esperado '{expected_text}' não encontrado na página {url}.")
+            is_error = True
+
+        if is_error:
+            print(f"[auto_capture] Página inválida ou 404 detectada em {url}. Acionando fallback editorial autêntico.")
+            generate_editorial_fallback(dest_path, asset)
+            context.close()
+            return True
+
+        # 6. Rolar para o trecho ou elemento específico se solicitado (ex: Art. 31 da lei)
+        scroll_to_text = asset.get("scroll_to_text")
+        if scroll_to_text:
+            scrolled = page.evaluate("""(textToFind) => {
+                const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+                let node;
+                while ((node = walker.nextNode())) {
+                    if (node.nodeValue && node.nodeValue.includes(textToFind)) {
+                        const parent = node.parentElement;
+                        if (parent) {
+                            parent.scrollIntoView({ block: 'center', inline: 'center' });
+                            return true;
+                        }
+                    }
+                }
+                return false;
+            }""", scroll_to_text)
+            if scrolled:
+                print(f"[auto_capture] Rolagem até '{scroll_to_text}' realizada com sucesso.")
+                page.wait_for_timeout(1000)
+
+        # 7. Screenshot do elemento ou viewport completa
+        target_selector = asset.get("target_selector")
+        captured_element = False
+
+        if target_selector:
+            try:
+                locator = page.locator(target_selector).first
+                if locator.is_visible(timeout=3000):
+                    locator.screenshot(path=str(dest_path))
+                    captured_element = True
+                    print(f"[auto_capture] Screenshot do elemento ({target_selector}) salvo com sucesso.")
+            except Exception as sel_exc:
+                print(f"[auto_capture] Seletor {target_selector} não encontrado: {sel_exc}")
+
+        if not captured_element:
+            page.screenshot(path=str(dest_path), full_page=False)
+            print(f"[auto_capture] Screenshot limpo salvo em: {dest_path.name}")
+
+        context.close()
+        return True
+
+    except Exception as exc:
+        print(f"[auto_capture] Erro ao capturar {url}: {exc}")
         generate_editorial_fallback(dest_path, asset)
         return True
 

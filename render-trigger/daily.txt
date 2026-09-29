@@ -1,2 +1,2 @@
-Split Payment do zero — Roteiro reformulado com tom didatico, informal e brasileiro (estilo Primo Rico / financas praticas), perenidade sem citacao de datas de calendario, pronuncia auditada 100% sem termos pendentes e nova estetica de papel rasgado.
-Trigger: 2026-09-29T17:49:58.332Z
+Split Payment — V2: Recortes documentais sanitizados sem 404, rolagem automatica para Art. 31 do Planalto (sem brasao), eliminacao de tela preta na cena 6 (linha do tempo desde frame 0), cards 3D com icones ampliados e escurecimento final de 10 segundos.
+Trigger: 2026-09-29T18:45:14.178Z
