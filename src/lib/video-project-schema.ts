@@ -111,10 +111,12 @@ const visualBeatSchema = z
         "equation",
         "stack",
         "signal",
+        "masked_emphasis",
+        "depth_photo",
       ])
       .default("kinetic_type"),
     transition: z
-      .enum(["cut", "fade", "slide_left", "slide_up", "zoom", "wipe"])
+      .enum(["cut", "fade", "slide_left", "slide_up", "zoom", "wipe", "bloom"])
       .default("cut"),
     placement: z
       .enum(["left", "center", "right", "full"])
