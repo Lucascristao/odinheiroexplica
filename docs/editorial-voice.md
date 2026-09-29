@@ -35,3 +35,16 @@ Pausas explícitas antecedem o bookmark quando ambos começam no mesmo trecho. O
 Escrever frases com uma ideia, variar comprimentos e conectar dado, exemplo e consequência. Dar espaço à compreensão dos recortes e gráficos. Não ler o texto inteiro da tela; a voz explica enquanto os elementos demonstram. O prompt diário deve elaborar a direção de fala junto com os eventos visuais.
 
 Referência técnica: [prosody e direção de voz no Azure](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-synthesis-markup-voice). Não usar `express-as` sem verificar suporte da voz selecionada. Referências técnicas e fontes de pesquisa ficam nos arquivos internos, sem links na descrição do YouTube.
+
+
+## Tom de conversa, analogias e linguagem brasileira (Estilo Didático)
+
+- **Conversa direta e informal:** O apresentador deve soar como um brasileiro autêntico explicando finanças para um amigo (estilo Primo Rico / canais didáticos de economia), sem afetação acadêmica ou jargão jurídico distante.
+- **Analogias e exemplos do cotidiano:** Todo conceito complexo (ex: segregação na liquidação, IBS dual, split payment) deve ser acompanhado de uma analogia simples e prática (ex: a compra na padaria, a maquininha de cartão separando o valor do café, o fluxo de caixa do pequeno comerciante).
+- **Gatilhos de conexão:** Usar frases de engajamento natural: *"Pensa comigo"*, *"Repara no detalhe"*, *"Na prática, o que acontece?"*, *"Imagina a seguinte cena..."*.
+- **Dicção brasileira natural:** Evitar fechamento exagerado de vogais ou palavras com sonoridade truncada. Se a voz neural fechar vogais de forma estranha (ex: soar "ue" ou travar em ditongos), aplicar alias fonético direto em `GLOBAL_PRONUNCIATIONS`.
+
+## Perenidade e datas no roteiro
+
+- **Nunca falar a data de hoje por extenso na narração** (ex: *"hoje, vinte e nove de setembro de 2026"*). Vídeos informativos no YouTube devem ser perenes (*evergreen*); ouvir a data exata do calendário faz o conteúdo parecer velho após poucos meses.
+- **Como contextualizar o tempo:** Usar referências relativas e marcos de ano quando necessário: *"Atualmente..."*, *"No cenário de hoje..."*, *"Nas regras previstas para 2026 e 2027..."*, *"A partir da implantação da lei..."*.
