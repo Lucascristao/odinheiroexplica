@@ -189,6 +189,12 @@ def main() -> None:
                     if asset_id not in visual_assets_by_id:
                         raise RuntimeError(f"Asset de palco não preparado: {asset_id}")
                     element["asset_file"] = visual_assets_by_id[asset_id]["public_file"]
+                    if element.get("kind") == "source_excerpt":
+                        prepared = visual_assets_by_id[asset_id]
+                        if prepared.get("type") != "source_excerpt" or not prepared.get("width") or not prepared.get("height"):
+                            raise RuntimeError(f"Recorte sem dimensões ou tipo documental: {asset_id}")
+                        element["asset_width"] = prepared["width"]
+                        element["asset_height"] = prepared["height"]
             scene_with_resolved_visual["visual"]["stage"] = stage
 
         output_scenes.append(

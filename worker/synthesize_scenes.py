@@ -133,58 +133,113 @@ def restore_bookmarks(rendered: str, bookmark_metadata: dict[str, dict]) -> str:
     return rendered
 
 
+# Editorial direction uses standard prosody, without voice-specific acting styles.
+DELIVERY = {
+    "hook": (3, 1, 140), "explain": (0, 0, 130),
+    "contrast": (-1, 0, 190), "question": (-1, 1, 220),
+    "closing": (-2, -1, 180),
+}
+CUE_DELIVERY = {"emphasis": (-3, 1), "number": (-5, 0), "contrast": (-2, 1)}
+
+
 def build_ssml(
     text: str,
     voice: str,
     tts: dict,
     beats: list[dict] | None = None,
 ) -> tuple[str, dict[str, dict]]:
-    base_rate = percent_value(tts.get("rate", DEFAULT_TTS_RATE), 0)
-    base_pitch = percent_value(tts.get("pitch", DEFAULT_TTS_PITCH), 0)
-    pause_ms = max(90, min(240, int(tts.get("pause_ms", 120))))
+    delivery = tts.get("delivery", "explain")
+    if delivery not in DELIVERY:
+        raise RuntimeError(f"Direção de voz desconhecida: {delivery}")
+    dr, dp, default_pause = DELIVERY[delivery]
+    base_rate = percent_value(tts.get("rate", DEFAULT_TTS_RATE)) + dr
+    base_pitch = percent_value(tts.get("pitch", DEFAULT_TTS_PITCH)) + dp
+    pause_ms = max(90, min(300, int(tts.get("pause_ms", default_pause))))
+    # Validate anchors using the same literal contract, but emit XML events at
+    # original text offsets. Tokens adjacent to a word can break pronunciation.
+    _, metadata = inject_bookmark_tokens(text, beats or [])
+    marks: dict[int, list[str]] = {}
+    for mark, meta in metadata.items():
+        marks.setdefault(text.index(meta["anchor"]), []).append(mark)
 
-    marked_text, bookmark_metadata = inject_bookmark_tokens(text, beats or [])
-    sentences = split_sentences(marked_text)
+    sentences = []
+    cursor = 0
+    for sentence in split_sentences(text):
+        start = text.index(sentence, cursor)
+        sentences.append((start, start + len(sentence), sentence))
+        cursor = start + len(sentence)
+
+    cues = []
+    raw_cues = tts.get("cues") or []
+    if len(raw_cues) > 6:
+        raise RuntimeError("Use no máximo seis direções de voz por cena.")
+    for cue in raw_cues:
+        phrase = str(cue.get("text", ""))
+        kind = cue.get("kind", "emphasis")
+        if not phrase.strip() or text.count(phrase) != 1 or kind not in CUE_DELIVERY:
+            raise RuntimeError(f"Direção de voz precisa de trecho literal único e tipo válido: {phrase!r}")
+        start = text.index(phrase)
+        end = start + len(phrase)
+        if not any(a <= start and end <= b for a, b, _ in sentences):
+            raise RuntimeError("Cada direção de voz deve ficar dentro de uma frase.")
+        if (start and text[start-1].isalnum() and phrase[0].isalnum()) or (end < len(text) and text[end].isalnum() and phrase[-1].isalnum()):
+            raise RuntimeError("Direção de voz não pode cortar uma palavra.")
+        cues.append((start, end, kind, max(0, min(300, int(cue.get("pause_before_ms", 0))))))
+    cues.sort()
+    if any(a[1] > b[0] for a, b in zip(cues, cues[1:])):
+        raise RuntimeError("Direções de voz não podem se sobrepor.")
+
+    boundaries = set(marks) | {n for a, b, _, _ in cues for n in (a, b)}
+    pronunciations = {**GLOBAL_PRONUNCIATIONS, **(tts.get("pronunciations") or {})}
+    for term in pronunciations:
+        if not term:
+            continue
+        for match in re.finditer(r"(?<!\w)" + re.escape(term) + r"(?!\w)", text, re.IGNORECASE):
+            if any(match.start() < n < match.end() for n in boundaries):
+                raise RuntimeError(f"Direção/bookmark corta pronúncia cadastrada: {term!r}")
+
+    def prosody(rate: int, pitch: int) -> str:
+        # Limits preserve the presenter's identity and keep data understandable.
+        return f'<prosody rate="{percent_text(max(-10, min(6, rate)))}" pitch="{percent_text(max(-3, min(3, pitch)))}">'
+
     rendered = []
-
-    for index, sentence in enumerate(sentences):
-        words = sentence.split()
-        rate = base_rate
-        pitch = base_pitch
-
-        if sentence.endswith("?"):
-            pitch += 1
-            rate -= 1
-        elif len(words) <= 7:
-            rate += 1
-        elif index % 3 == 1:
-            rate += 1
-        elif index % 3 == 2:
-            rate -= 1
-
-        sentence_xml = render_pronunciations(sentence, tts)
-        sentence_xml = restore_bookmarks(sentence_xml, bookmark_metadata)
-
-        # A voz já é pt-BR. Evitamos envolver bookmarks em <lang>, pois o
-        # serviço tem histórico de inconsistências de eventos nesse cenário.
-        rendered.append(
-            f'<s><prosody rate="{percent_text(rate)}" '
-            f'pitch="{percent_text(pitch)}">{sentence_xml}</prosody></s>'
-        )
-
+    for index, (start, end, sentence) in enumerate(sentences):
+        question = sentence.endswith("?")
+        # Extra clarity for numeric sentences, even with an older script.
+        rate = base_rate - (2 if re.search(r"\d", sentence) else 0) - (1 if question else 0)
+        pitch = base_pitch + (1 if question else 0)
+        local_cues = [cue for cue in cues if start <= cue[0] < end]
+        points = sorted({start, end} | {n for n in boundaries if start <= n <= end})
+        chunks = ["<s>", prosody(rate, pitch)]
+        for i, point in enumerate(points):
+            ending = next((c for c in local_cues if c[1] == point), None)
+            beginning = next((c for c in local_cues if c[0] == point), None)
+            if ending:
+                chunks.append("</prosody>")
+            if beginning:
+                # Pause before bookmark: the visual event must follow the pause.
+                if beginning[3]:
+                    chunks.append(f'<break time="{beginning[3]}ms"/>')
+                cr, cp = CUE_DELIVERY[beginning[2]]
+                chunks.append(prosody(rate + cr, pitch + cp))
+            if point < end:
+                chunks.extend(f'<bookmark mark="{mark}"/>' for mark in marks.get(point, []))
+            if i + 1 < len(points):
+                chunks.append(render_pronunciations(text[point:points[i+1]], tts))
+        chunks.append("</prosody></s>")
+        rendered.append("".join(chunks))
         if index < len(sentences) - 1:
-            extra = 35 if sentence.endswith("?") else 0
-            rendered.append(f'<break time="{pause_ms + extra}ms"/>')
-
+            next_cue = next((c for c in cues if c[0] == sentences[index+1][0]), None)
+            # Avoid stacking a sentence break with an explicit cue pause.
+            gap = max(0, min(300, pause_ms + (50 if question else 0)) - (next_cue[3] if next_cue else 0))
+            if gap:
+                rendered.append(f'<break time="{gap}ms"/>')
     body = "\n      ".join(rendered)
-    ssml = f"""<speak version="1.0"
-  xmlns="http://www.w3.org/2001/10/synthesis"
-  xml:lang="pt-BR">
-  <voice xml:lang="pt-BR" name="{voice}">
-      {body}
-  </voice>
-</speak>"""
-    return ssml, bookmark_metadata
+    return (
+        '<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="pt-BR">'
+        f'<voice xml:lang="pt-BR" name={quoteattr(voice)}>{body}</voice></speak>',
+        metadata,
+    )
 
 
 def synthesize(
@@ -294,6 +349,7 @@ def main() -> None:
         "pitch": DEFAULT_TTS_PITCH,
         "output_format": "audio-48khz-192kbitrate-mono-mp3",
         "timing_mode": "azure-ssml-bookmarks",
+        "delivery_version": "editorial-v2",
         "project_pronunciations": project_pronunciations,
         "scenes": [],
         "total_duration_seconds": 0.0,
@@ -307,6 +363,7 @@ def main() -> None:
             raise RuntimeError(f"Cena {scene_id} sem narração.")
 
         tts = dict(scene.get("tts") or {})
+        tts.setdefault("delivery", "hook" if position == 0 else "closing" if position == len(scenes) - 1 else "explain")
         scene_pronunciations = {
             str(key).lower(): str(value)
             for key, value in (tts.get("pronunciations") or {}).items()

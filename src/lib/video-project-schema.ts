@@ -1,5 +1,7 @@
+import {speechDirectionSchema, validateSpeechDirection} from "./speech-direction";
 import { z } from "zod";
 import {editorialStageSchema, stageEventFields, validateStageEvents} from "./editorial-stage";
+import {regionSchema} from "./editorial-evidence";
 
 const sourceSchema = z
   .object({
@@ -56,20 +58,28 @@ const claimSchema = z
   })
   .passthrough();
 
-const visualAssetSchema = z
+export const visualAssetSchema = z
   .object({
     id: z.string().min(1),
-    type: z.enum(["photo_cutout", "photo", "graphic"]),
+    type: z.enum(["photo_cutout", "photo", "graphic", "source_excerpt"]),
+    source_id: z.string().optional(),
+    captured_at: z.string().datetime().optional(),
+    capture_file: z.string().regex(/^research\/captures\/[a-zA-Z0-9_/-]+\.(png|jpg|jpeg|webp)$/).optional(),
+    crop: regionSchema.optional(),
     subject: z.string().min(1),
     narrative_role: z.string().min(1),
     country_context: z.enum(["BR", "global", "neutral"]).default("BR"),
     source_page_url: z.string().url(),
-    image_url: z.string().url(),
+    image_url: z.string().url().optional(),
     license: z.string().min(1),
     attribution: z.string().optional(),
-    needs_cutout: z.boolean().default(true),
+    needs_cutout: z.boolean().optional(),
   })
-  .passthrough();
+  .passthrough().superRefine((asset,ctx)=>{
+    if(Boolean(asset.image_url)===Boolean(asset.capture_file))ctx.addIssue({code:"custom",message:"Asset exige image_url ou capture_file, exclusivamente."});
+    if(asset.type==="source_excerpt" && (!asset.source_id||!asset.captured_at||asset.needs_cutout))ctx.addIssue({code:"custom",message:"Recorte exige source_id, captured_at e fundo preservado."});
+    if(asset.crop && asset.type!=="source_excerpt")ctx.addIssue({code:"custom",message:"Recorte regional exige tipo source_excerpt."});
+  });
 
 const visualBeatSchema = z
   .object({
@@ -165,6 +175,7 @@ const sceneSchema = z
     index: z.number().int().nonnegative(),
     title: z.string().optional(),
     narration: z.string().default(""),
+    tts: speechDirectionSchema.optional(),
     visual: z
       .object({
         type: z.string().min(1),
@@ -178,7 +189,10 @@ const sceneSchema = z
       .passthrough(),
     claim_ids: z.array(z.string()).default([]),
   })
-  .passthrough();
+  .passthrough()
+  .superRefine((scene, ctx) => {
+    validateSpeechDirection(scene.narration, scene.tts).forEach(message => ctx.addIssue({code: "custom", path: ["tts"], message}));
+  });
 
 export const videoProjectSchema = z
   .object({
@@ -339,6 +353,7 @@ export const videoProjectSchema = z
 
     const visualAssetIds = new Set<string>();
     project.visual_assets.forEach((asset, index) => {
+      if(asset.type==="source_excerpt"&&!sourceIds.has(asset.source_id??""))ctx.addIssue({code:"custom",path:["visual_assets",index],message:"Recorte referencia fonte inexistente."});
       if (visualAssetIds.has(asset.id)) {
         ctx.addIssue({
           code: "custom",
@@ -379,6 +394,8 @@ export const videoProjectSchema = z
           ctx.addIssue({code: "custom", path: ["script", "scenes", index, "visual"], message});
         }
         for (const element of scene.visual.stage.elements) {
+          if(element.chart&&!sourceIds.has(element.chart.source_id))ctx.addIssue({code:"custom",path:["script","scenes",index,"visual","stage"],message:"Gráfico referencia fonte inexistente."});
+          if(element.kind==="source_excerpt"&&!project.visual_assets.some(a=>a.id===element.asset_id&&a.type==="source_excerpt"))ctx.addIssue({code:"custom",path:["script","scenes",index,"visual","stage"],message:"Recorte precisa de asset documental."});
           if (element.asset_id && !visualAssetIds.has(element.asset_id)) {
             ctx.addIssue({code: "custom", path: ["script", "scenes", index, "visual", "stage"], message: `Asset inexistente: ${element.asset_id}`});
           }

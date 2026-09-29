@@ -1,9 +1,18 @@
 import {z} from "zod";
+import {annotationSchema, chartSchema, emphasisSchema, fullView, regionSchema, type Emphasis, type Region} from "./editorial-evidence";
 
 // Coordinates are percentages of the safe editorial canvas, not the full video.
 export const stageElementSchema = z.object({
   id: z.string().min(1),
-  kind: z.enum(["step", "label", "metric", "note", "photo", "object"]),
+  kind: z.enum(["step", "label", "metric", "note", "photo", "object", "source_excerpt", "chart"]),
+  chart: chartSchema.optional(),
+  annotations: z.array(annotationSchema).max(16).default([]),
+  asset_width: z.number().positive().optional(),
+  asset_height: z.number().positive().optional(),
+  overlay_on: z.string().optional(),
+  text_region: regionSchema.optional(),
+  label_size: z.number().min(32).max(120).optional(),
+  value_size: z.number().min(48).max(260).default(72),
   object_type: z.enum(["wallet", "bank", "receipt"]).optional(),
   label: z.string().min(1).max(80),
   detail: z.string().max(160).optional(),
@@ -24,6 +33,7 @@ export const stageElementSchema = z.object({
 });
 
 export const editorialStageSchema = z.object({
+  show_title: z.boolean().default(true),
   elements: z.array(stageElementSchema).min(1).max(12),
   connections: z.array(z.object({
     from: z.string(),
@@ -35,14 +45,23 @@ export const editorialStageSchema = z.object({
   for (const [index, element] of stage.elements.entries()) {
     if (ids.has(element.id)) ctx.addIssue({code: "custom", path: ["elements", index, "id"], message: "ID visual duplicado."});
     ids.add(element.id);
+    if(element.kind === "chart" && (!element.chart || element.width<60 || element.height<50))ctx.addIssue({code:"custom",path:["elements",index],message:"Gráfico exige dados e região de pelo menos 60% × 50%."});
+    if(new Set(element.annotations.map(a=>a.id)).size !== element.annotations.length)ctx.addIssue({code:"custom",path:["elements",index],message:"Marcação com ID duplicado."});
+    if(element.annotations.length && element.kind!=="source_excerpt")ctx.addIssue({code:"custom",path:["elements",index],message:"Marcações por região pertencem a recortes."});
+    if(element.overlay_on){
+      const parent=stage.elements.find(e=>e.id===element.overlay_on);
+      const region=parent?.text_region;
+      if(!parent || !region || !["photo","object"].includes(parent.kind) || !["label","metric"].includes(element.kind) || element.detail || element.icon || parent.overlay_on || element.x<parent.x+region.x*parent.width/100 || element.y<parent.y+region.y*parent.height/100 || element.x+element.width>parent.x+(region.x+region.width)*parent.width/100 || element.y+element.height>parent.y+(region.y+region.height)*parent.height/100)ctx.addIssue({code:"custom",path:["elements",index],message:"Camada de texto precisa caber na região reservada de uma foto/objeto, sem ícone ou detalhe."});
+    }
     if (element.kind === "object" && !element.object_type) ctx.addIssue({code: "custom", path: ["elements", index, "object_type"], message: "Objeto precisa de object_type."});
     if (element.x + element.width > 100 || element.y + element.height > 100) {
       ctx.addIssue({code: "custom", path: ["elements", index], message: "Elemento fora da área segura."});
     }
-    if (element.kind === "photo" && !element.asset_id) {
+    if (["photo", "source_excerpt"].includes(element.kind) && !element.asset_id) {
       ctx.addIssue({code: "custom", path: ["elements", index, "asset_id"], message: "Foto precisa de asset_id."});
     }
     for (const previous of stage.elements.slice(0, index)) {
+      if(element.overlay_on===previous.id || previous.overlay_on===element.id)continue;
       // Reserve space even for initially hidden elements: revealing a note must
       // never cover a previously visible fact. Layered photography is a separate treatment.
       if (element.x < previous.x + previous.width && element.x + element.width > previous.x &&
@@ -59,6 +78,11 @@ export const editorialStageSchema = z.object({
 });
 
 export const stageEventFields = {
+  motion_seconds: z.number().min(0.1).max(2).default(0.45),
+  mark_ids: z.array(z.string()).max(16).optional(),
+  view: regionSchema.optional(),
+  emphasis: emphasisSchema.nullable().optional(),
+  chart_focus: z.object({from:z.number().int().min(0),to:z.number().int().min(0)}).nullable().optional(),
   target_id: z.string().optional(),
   action: z.enum(["focus", "reveal", "update", "retire"]).default("focus"),
   prominence: z.enum(["support", "contextual", "takeover"]).default("contextual"),
@@ -71,6 +95,11 @@ export const stageEventFields = {
 export type EditorialStage = z.infer<typeof editorialStageSchema>;
 export type StageElement = z.infer<typeof stageElementSchema>;
 export type StageEvent = {
+  motion_seconds?: number;
+  mark_ids?: string[];
+  view?: Region;
+  emphasis?: Emphasis | null;
+  chart_focus?: {from:number;to:number} | null;
   target_id?: string;
   action?: "focus" | "reveal" | "update" | "retire";
   prominence?: "support" | "contextual" | "takeover";
@@ -90,6 +119,14 @@ export function validateStageEvents(stage: EditorialStage, beats: StageEvent[]):
   const visible = new Set(stage.elements.filter((e) => e.initially_visible).map((e) => e.id));
   const layout = stage.elements.map(e => ({...e}));
   for (const [index, beat] of beats.entries()) {
+    const target=layout.find(e=>e.id===beat.target_id);
+    if(target){
+      if(beat.action==="update"){target.label=beat.headline;}
+      if(beat.emphasis && (!target.label.includes(beat.emphasis.phrase) || target.label.split(beat.emphasis.phrase).length!==2 || !["label","note","step","metric"].includes(target.kind)))errors.push(`Beat ${index}: frase de marcação precisa ser única no rótulo de texto.`);
+      if(beat.view && target.kind!=="source_excerpt")errors.push(`Beat ${index}: enquadramento regional exige recorte.`);
+      if(beat.mark_ids && (target.kind!=="source_excerpt" || beat.mark_ids.some(id=>!target.annotations.some(a=>a.id===id))))errors.push(`Beat ${index}: marcação inexistente ou alvo incompatível.`);
+      if(beat.chart_focus && (target.kind!=="chart" || !target.chart || beat.chart_focus.from>beat.chart_focus.to || beat.chart_focus.to>=target.chart.points.length))errors.push(`Beat ${index}: intervalo de gráfico inválido.`);
+    }
     if (!beat.target_id || !ids.has(beat.target_id)) errors.push(`Beat ${index}: target_id inexistente.`);
     for (const id of [...(beat.reveal_ids ?? []), ...(beat.retire_ids ?? [])]) {
       if (!ids.has(id)) errors.push(`Beat ${index}: referência inexistente ${id}.`);
@@ -122,14 +159,14 @@ export function validateStageEvents(stage: EditorialStage, beats: StageEvent[]):
 
 // Pure frame evaluation works with parallel/out-of-order Remotion rendering.
 // Events preserve element identity and previous values until explicitly changed.
-export function resolveStage(stage: EditorialStage, beats: StageEvent[], frame: number) {
-  const elements = stage.elements.map((element) => ({...element, visible: element.initially_visible !== false, wasVisible: element.initially_visible !== false, changedAt: 0}));
+export function resolveStage(stage: EditorialStage, beats: StageEvent[], frame: number, fps=30) {
+  const elements = stage.elements.map((element) => ({...element, visible: element.initially_visible !== false, wasVisible: element.initially_visible !== false, changedAt: 0, cueFrame:0, cueDuration:fps*0.45, visibilityDuration:fps*0.35, markIds:[] as string[], markTiming:{} as Record<string,{frame:number;duration:number}>, emphasisTiming:{frame:0,duration:1}, view:{...fullView}, emphasis:null as Emphasis|null, chartFocus:null as {from:number;to:number}|null}));
   let active: StageEvent | undefined;
   const ordered = beats.filter((b) => Number.isFinite(b.resolved_frame)).slice().sort((a, b) => a.resolved_frame! - b.resolved_frame!);
   for (const [index, beat] of ordered.entries()) {
     if (beat.resolved_frame! > frame) break;
     active = beat;
-    const motionFrames = Math.max(1, Math.min(18, (ordered[index+1]?.resolved_frame ?? Infinity) - beat.resolved_frame!));
+    const motionFrames = Math.max(1, Math.min((beat.motion_seconds??0.45)*fps, (ordered[index+1]?.resolved_frame ?? Infinity) - beat.resolved_frame!));
     const p = Math.min(1, Math.max(0, (frame-beat.resolved_frame!)/motionFrames));
     const eased = p*p*(3-2*p);
     for (const element of elements) {
@@ -139,15 +176,21 @@ export function resolveStage(stage: EditorialStage, beats: StageEvent[], frame: 
       if (beat.reveal_ids?.includes(element.id)) visible = true;
       if (beat.retire_ids?.includes(element.id)) visible = false;
       if (element.id === beat.target_id) {
+        element.cueFrame=beat.resolved_frame!; element.cueDuration=motionFrames;
+        if(beat.mark_ids!==undefined){element.markTiming=Object.fromEntries(beat.mark_ids.map(id=>[id,element.markTiming[id]??{frame:beat.resolved_frame!,duration:motionFrames}]));element.markIds=beat.mark_ids;}
+        if(beat.emphasis!==undefined){element.emphasis=beat.emphasis;element.emphasisTiming={frame:beat.resolved_frame!,duration:motionFrames};}
+        if(beat.chart_focus!==undefined)element.chartFocus=beat.chart_focus;
+        if(beat.view)element.view={x:element.view.x+(beat.view.x-element.view.x)*eased,y:element.view.y+(beat.view.y-element.view.y)*eased,width:element.view.width+(beat.view.width-element.view.width)*eased,height:element.view.height+(beat.view.height-element.view.height)*eased};
         if (beat.action === "reveal") visible = true;
         if (beat.action === "retire") visible = false;
         if (beat.action === "update") {
+          if(beat.emphasis===undefined)element.emphasis=null;
           element.label = beat.headline;
           if (beat.detail !== undefined) element.detail = beat.detail;
           if (beat.value !== undefined) element.value = beat.value;
         }
       }
-      if (visible !== element.visible) {element.changedAt = beat.resolved_frame!; element.wasVisible = element.visible;}
+      if (visible !== element.visible) {element.changedAt = beat.resolved_frame!; element.wasVisible = element.visible; element.visibilityDuration=motionFrames;}
       element.visible = visible;
     }
   }

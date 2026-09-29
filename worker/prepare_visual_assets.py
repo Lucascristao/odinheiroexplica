@@ -3,15 +3,35 @@ import io
 import json
 import mimetypes
 import re
+import hashlib
 from pathlib import Path
 from urllib.parse import urlparse
 
 import requests
-from PIL import Image
+from PIL import Image, ImageOps
 from rembg import new_session, remove
 
 
 MAX_BYTES = 20 * 1024 * 1024
+CAPTURE_ROOT = Path(__file__).resolve().parents[1] / "research" / "captures"
+
+
+def prepare_excerpt(raw: bytes, output_dir: Path, asset: dict) -> tuple[str, dict]:
+    image = ImageOps.exif_transpose(Image.open(io.BytesIO(raw))).convert("RGB")
+    original_width, original_height = image.size
+    original = f"{safe_name(asset['id'])}.source.png"
+    image.save(output_dir / original)
+    region = asset.get("crop") or {"x": 0, "y": 0, "width": 100, "height": 100}
+    x, y, w, h = (float(region[k]) for k in ("x", "y", "width", "height"))
+    if not (0 <= x < 100 and 0 <= y < 100 and w > 0 and h > 0 and x+w <= 100 and y+h <= 100):
+        raise RuntimeError("Recorte fora da captura original.")
+    box = (round(x*image.width/100), round(y*image.height/100), round((x+w)*image.width/100), round((y+h)*image.height/100))
+    image = image.crop(box)
+    if min(image.size) < 100:
+        raise RuntimeError("Recorte muito pequeno. Capture uma região legível em maior resolução.")
+    filename = f"{safe_name(asset['id'])}.png"
+    image.save(output_dir / filename)
+    return filename, {"width": image.width, "height": image.height, "original_width": original_width, "original_height": original_height, "original_file": f"generated-assets/{original}", "crop": region, "sha256": hashlib.sha256(raw).hexdigest(), "source_id": asset.get("source_id"), "captured_at": asset.get("captured_at")}
 
 
 def safe_name(value: str) -> str:
@@ -85,10 +105,22 @@ def main() -> None:
     for asset in assets:
         asset_id = str(asset["id"])
         asset_type = str(asset.get("type") or "photo_cutout")
-        image_url = str(asset["image_url"])
-        raw, content_type = download(image_url)
+        if asset.get("capture_file"):
+            capture = (Path(__file__).resolve().parents[1] / asset["capture_file"]).resolve()
+            if not capture.is_relative_to(CAPTURE_ROOT.resolve()) or capture.suffix.lower() not in {".png", ".jpg", ".jpeg", ".webp"}:
+                raise RuntimeError("Captura precisa ser uma imagem em research/captures/.")
+            if capture.stat().st_size > MAX_BYTES:
+                raise RuntimeError("Captura excede 20 MB.")
+            raw, content_type = capture.read_bytes(), mimetypes.guess_type(capture.name)[0]
+        else:
+            raw, content_type = download(str(asset["image_url"]))
 
-        if asset_type == "graphic" and content_type == "image/svg+xml":
+        dimensions = {}
+        if asset_type == "source_excerpt":
+            if asset.get("needs_cutout"):
+                raise RuntimeError("Recorte documental não pode remover fundo.")
+            filename, dimensions = prepare_excerpt(raw, output_dir, asset)
+        elif asset_type == "graphic" and content_type == "image/svg+xml":
             filename = save_graphic(raw, content_type, output_dir, asset_id)
         else:
             needs_cutout = bool(asset.get("needs_cutout", asset_type == "photo_cutout"))
@@ -105,6 +137,7 @@ def main() -> None:
         prepared.append(
             {
                 "id": asset_id,
+                **dimensions,
                 "type": asset_type,
                 "subject": asset.get("subject"),
                 "narrative_role": asset.get("narrative_role"),

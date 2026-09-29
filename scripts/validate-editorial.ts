@@ -1,6 +1,8 @@
+import {validateSpeechDirection} from "../src/lib/speech-direction";
 import {readFileSync} from "node:fs";
 import {editorialStageSchema, stageEventFields, validateStageEvents} from "../src/lib/editorial-stage";
 import {z} from "zod";
+import {visualAssetSchema} from "../src/lib/video-project-schema";
 
 const path = process.argv[2] ?? "video/data/daily.json";
 const project = JSON.parse(readFileSync(path, "utf8"));
@@ -8,8 +10,15 @@ const scenes = project.scenes ?? project.script?.scenes ?? [];
 const assets = new Set((project.visual_assets ?? []).map((a: {id: string}) => a.id));
 const beatSchema = z.object({...stageEventFields, headline: z.string().min(1), anchor: z.string().min(1), detail: z.string().optional(), value: z.string().optional()}).passthrough();
 let failures = 0;
+const sourceIds=new Set((project.sources??[]).map((s:{id:string})=>s.id));
+for(const raw of project.visual_assets??[]){
+  const result=visualAssetSchema.safeParse(raw);
+  if(!result.success){console.error(result.error.message);failures++;}
+  if(raw.type==="source_excerpt"&&!sourceIds.has(raw.source_id)){console.error(`Fonte inexistente para recorte ${raw.id}`);failures++;}
+}
 for (const [index, scene] of scenes.entries()) {
   const error = (message: string) => {console.error(`Cena ${index}: ${message}`); failures++;};
+  validateSpeechDirection(String(scene.narration ?? ""), scene.tts).forEach(error);
   const raw = scene.visual?.beats ?? [];
   if (!raw.length && !scene.visual?.stage) continue; // Legacy scenes without events.
   const stage = editorialStageSchema.safeParse(scene.visual?.stage);
@@ -26,6 +35,8 @@ for (const [index, scene] of scenes.entries()) {
     previous = at;
   }
   for (const element of stage.data.elements) {
+    if(element.chart&&!sourceIds.has(element.chart.source_id))error(`Fonte inexistente para gráfico ${element.id}`);
+    if(element.kind==="source_excerpt" && !(project.visual_assets??[]).some((a:{id:string;type:string})=>a.id===element.asset_id&&a.type==="source_excerpt"))error(`Recorte precisa de asset documental: ${element.id}`);
     if (element.asset_id && !assets.has(element.asset_id)) error(`Asset inexistente: ${element.asset_id}`);
   }
 }

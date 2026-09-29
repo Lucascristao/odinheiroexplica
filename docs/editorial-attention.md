@@ -12,7 +12,9 @@ Antes de fechar o roteiro, identificar o que o espectador aprende em cada bloco.
 
 ## Repertório disponível no motor
 
-`visual.stage.elements` aceita `step`, `label`, `metric`, `note`, `photo` e `object`. Cada elemento ocupa uma região segura; o texto não pode invadir outra região.
+Recortes autênticos, gráficos com dados, marcações de frases/regiões e camadas reservadas seguem o contrato de `docs/editorial-evidence.md`. Consultá-lo durante a pesquisa e antes de construir o VideoProject.
+
+`visual.stage.elements` aceita `step`, `label`, `metric`, `note`, `photo`, `object`, `source_excerpt` e `chart`. Cada elemento ocupa uma região segura; sobreposição de texto só é permitida na região explicitamente reservada de uma foto/objeto.
 
 - `icon`: bank, wallet, person, search, bell, lock, check, refund, shield, warning, clock, phone, receipt, cart, key, eye-off, route, coins, chart, house, car, document, globe. SVG local, sem serviço pago. Escolher pelo significado; não colocar um ícone em toda frase por obrigação.
 - `kind: object` com `object_type: receipt | wallet | bank`: ilustrações vetoriais originais em camadas, para objetos dominantes. `label` é a legenda curta. São esquemas, não documentos ou comprovantes reais.

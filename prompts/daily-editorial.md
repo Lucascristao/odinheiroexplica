@@ -157,6 +157,8 @@ Antes de fechar o VideoProject, faça uma auditoria de repetição: se o vídeo 
 
 ### Plano visual persistente — obrigatório para cenas com beats
 
+Aplicar `docs/editorial-evidence.md`: durante a pesquisa, selecionar e salvar recortes reais que demonstrem as afirmações. Planejar quando apresentar, destacar, aproximar e retirar cada trecho durante a fala. Usar `source_excerpt`, marcações por região, `emphasis` por frase, gráficos com dados verificados e números dominantes conforme a necessidade da pauta. Capturas precisam estar disponíveis no repositório antes do render. Não basta informar a URL de uma notícia esperando que o motor encontre e capture o trecho sozinho. Não copiar a estrutura dos vídeos de referência.
+
 Siga também `docs/editorial-attention.md` para roteiro falado, escolha de imagens, objetos e ícones, texto legível, título e descrição. Essa diretriz vale para todas as próximas pautas. Não mostrar fontes no rodapé; manter fontes e créditos no pacote da descrição. O campo `icon` e `kind: object` estão disponíveis no palco; usar conforme o significado. Uma imagem relevante ou um objeto dominante deve substituir parágrafos quando explica melhor. Não transformar todo bloco em lista de texto.
 
 Siga docs/editorial-continuity.md. O motor usa visual.stage com objetos identificáveis e visual.beats como eventos sobre eles. Cada evento tem anchor literal, target_id, action e prominence. O padrão é contextual. reveal_ids/retire_ids controlam elementos auxiliares em regiões reservadas; moves permite reposicionar mantendo identidade.
@@ -224,3 +226,10 @@ Ao final, entregue somente um JSON válido seguindo o schema VideoProject v1.0 d
 ## Branding da thumbnail
 
 Não usar nome do canal, logotipo, ícone ou selo de marca por padrão. A identidade deve vir de tipografia, paleta, contraste e acabamento editorial. Só incluir branding explícito se o usuário pedir.
+
+
+## Direção da narração e edição em conjunto
+
+Seguir `docs/editorial-voice.md`. Escrever para o ouvido: frases curtas com uma ideia, exemplos concretos e alternância natural entre pergunta, explicação e consequência. Evitar listas lidas, introduções burocráticas e suspense sem resposta. Não copiar bordões ou imitar a voz dos vídeos de referência.
+
+Definir `scene.tts.delivery` pela função do trecho. Usar 1–3 `tts.cues` pontuais quando houver número decisivo, contraste ou conclusão; o limite de seis é técnico, não meta. Selecionar trechos literais únicos sem atravessar frases, sem cortar palavras ou pronúncias cadastradas. Associar a entrada do número, recorte ou grifo ao bookmark da mesma fala. Reservar tempo de leitura durante a explicação; não transformar cada palavra em animação. Manter a voz fixa do apresentador e o destaque amarelo da marca.
