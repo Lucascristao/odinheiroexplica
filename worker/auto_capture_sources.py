@@ -131,9 +131,20 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
         except Exception as nav_exc:
             print(f"[auto_capture] Timeout ou aviso na navegacao de {url}: {nav_exc}")
 
+        # Pressionar Escape para fechar modais/popovers nativos do Gov.br
+        try:
+            page.keyboard.press("Escape")
+            page.wait_for_timeout(500)
+        except Exception:
+            pass
+
         # Limpar modais, tooltips e névoas escuras
         sanitize_page(page)
-        page.wait_for_timeout(1000)
+        try:
+            page.keyboard.press("Escape")
+        except Exception:
+            pass
+        page.wait_for_timeout(800)
 
         # Enquadramento por seletor específico ou por elemento de conteúdo
         target_selector = asset.get("target_selector")
