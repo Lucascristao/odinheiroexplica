@@ -1,2 +1,4 @@
-Split Payment — nova execução após ajuste de legibilidade da cena de fluxo de caixa.
-Tema validado em 2026-09-29; Roberto/Macerio; 8 cenas; tipagem e layout corrigidos.
+﻿Split Payment — renderização com recortes autênticos, novas diretrizes de voz e identidade visual.
+Recortes incluídos: Lei Complementar 214/2025, Receita Federal Atos Técnicos e apuração setorial 2027.
+Siglas IBS/CBS soletradas e ritmo de fala conversacional.
+Data: 2026-09-29T12:25:00-03:00

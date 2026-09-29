@@ -21,7 +21,68 @@
     "why_now": "A infraestrutura técnica da Plataforma Pública do Split Payment foi publicada em 2026 e a Receita passou a detalhar uma implantação gradual, com primeira etapa planejada para transações entre empresas a partir do segundo semestre de 2027.",
     "category": "economy"
   },
-  "visual_assets": [],
+  "visual_assets": [
+    {
+      "id": "A1_lei_art31",
+      "type": "source_excerpt",
+      "source_id": "S1",
+      "capture_file": "research/captures/planalto-lcp214-art31.png",
+      "source_page_url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214compilado.htm",
+      "subject": "Lei Complementar nº 214/2025 - Art. 31 e Art. 32",
+      "narrative_role": "Comprovação legal do recolhimento na liquidação financeira (split payment) de IBS e CBS",
+      "country_context": "BR",
+      "license": "domínio público / legislação oficial",
+      "attribution": "Presidência da República / Imprensa Nacional",
+      "needs_cutout": false,
+      "crop": {
+        "x": 1,
+        "y": 0,
+        "width": 98,
+        "height": 42
+      },
+      "captured_at": "2026-09-29T15:00:00Z"
+    },
+    {
+      "id": "A2_receita_atos",
+      "type": "source_excerpt",
+      "source_id": "S3",
+      "capture_file": "research/captures/receita-atos-tecnicos.png",
+      "source_page_url": "https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/acoes-e-programas/programas-e-atividades/reforma-tributaria-do-consumo/legislacao/atos-tecnicos-conjuntos/",
+      "subject": "Ato Técnico Conjunto RFB/CGIBS nº 4",
+      "narrative_role": "Aprovação técnica da documentação da Plataforma Pública do Split Payment",
+      "country_context": "BR",
+      "license": "conteúdo público governamental",
+      "attribution": "Receita Federal do Brasil / Ministério da Fazenda",
+      "needs_cutout": false,
+      "crop": {
+        "x": 5,
+        "y": 30,
+        "width": 90,
+        "height": 58
+      },
+      "captured_at": "2026-09-29T15:00:00Z"
+    },
+    {
+      "id": "A3_noticia_2027",
+      "type": "source_excerpt",
+      "source_id": "S4",
+      "capture_file": "research/captures/noticia-split-payment-2027.png",
+      "source_page_url": "https://istoedinheiro.com.br/reforma-tributaria-split-payment-comecara-em-2027-de-forma-facultativa/",
+      "subject": "Manchete sobre início facultativo em 2027",
+      "narrative_role": "Comprovação informativa do início facultativo no 2º semestre de 2027",
+      "country_context": "BR",
+      "license": "uso editorial informativo",
+      "attribution": "IstoÉ Dinheiro / Economia",
+      "needs_cutout": false,
+      "crop": {
+        "x": 3,
+        "y": 20,
+        "width": 65,
+        "height": 26
+      },
+      "captured_at": "2026-09-29T15:00:00Z"
+    }
+  ],
   "visual_direction": {
     "concept": "Uma linha de pagamento que se bifurca: o vídeo acompanha uma mesma venda do documento fiscal à liquidação, separando visualmente dinheiro da empresa e recolhimento tributário sem simular aplicativo bancário.",
     "world": "digital",
@@ -118,14 +179,14 @@
     },
     {
       "id": "S4",
-      "title": "Split payment, da reforma tributária, começa de forma facultativa e só para empresas em 2027",
-      "url": "https://www1.folha.uol.com.br/mercado/2026/09/split-payment-da-reforma-tributaria-comeca-de-forma-facultativa-e-so-para-empresas-em-2027.shtml",
-      "publisher": "Folha de S.Paulo",
+      "title": "Split payment 2027: modelo começa facultativo e exige atenção",
+      "url": "https://istoedinheiro.com.br/reforma-tributaria-split-payment-comecara-em-2027-de-forma-facultativa/",
+      "publisher": "IstoÉ Dinheiro",
       "source_type": "secondary",
       "publisher_class": "independent_journalism",
       "editorial_role": "independent_reporting",
       "published_at": "2026-09-15",
-      "notes": "Relata, com base na Receita Federal, início gradual e facultativo no segundo semestre de 2027, inicialmente em transações entre empresas e produção assistida."
+      "notes": "Apuração com base na Receita Federal sobre início gradual e facultativo no segundo semestre de 2027, inicialmente entre empresas (B2B)."
     },
     {
       "id": "S5",
@@ -455,8 +516,11 @@
               "placement": "full",
               "medium": "motion_graphic",
               "sound": "none",
-              "target_id": "concept",
+              "target_id": "excerpt_lei",
               "action": "focus",
+              "mark_ids": [
+                "mark_split_legal"
+              ],
               "prominence": "contextual"
             },
             {
@@ -466,15 +530,12 @@
               "behavior": "transform",
               "treatment": "flow_diagram",
               "transition": "slide_left",
-              "placement": "full",
+              "placement": "right",
               "medium": "motion_graphic",
               "sound": "tick",
               "target_id": "link",
               "action": "focus",
-              "prominence": "contextual",
-              "reveal_ids": [
-                "payment"
-              ]
+              "prominence": "contextual"
             },
             {
               "anchor": "quanto daquele débito ainda precisa ser recolhido",
@@ -493,11 +554,11 @@
             {
               "anchor": "Ele muda o momento e o caminho pelo qual parte do imposto é paga",
               "kind": "compare",
-              "headline": "Muda o recolhimento",
+              "headline": "Muda o momento do recolhimento",
               "behavior": "transform",
               "treatment": "masked_emphasis",
               "transition": "wipe",
-              "placement": "full",
+              "placement": "right",
               "medium": "motion_graphic",
               "sound": "none",
               "target_id": "result",
@@ -508,49 +569,49 @@
           "stage": {
             "elements": [
               {
-                "id": "concept",
-                "kind": "object",
-                "label": "Documento fiscal",
+                "id": "excerpt_lei",
+                "kind": "source_excerpt",
+                "asset_id": "A1_lei_art31",
+                "label": "Lei Complementar nº 214/2025 • Art. 31",
                 "x": 0,
-                "y": 18,
-                "width": 24,
-                "height": 62,
+                "y": 12,
+                "width": 60,
+                "height": 72,
                 "initially_visible": true,
                 "photo_style": "clean",
-                "object_type": "receipt"
+                "annotations": [
+                  {
+                    "id": "mark_split_legal",
+                    "style": "highlight",
+                    "region": {
+                      "x": 2,
+                      "y": 2,
+                      "width": 96,
+                      "height": 26
+                    }
+                  }
+                ]
               },
               {
                 "id": "link",
                 "kind": "step",
-                "label": "VINCULAR",
-                "x": 30,
-                "y": 32,
-                "width": 18,
-                "height": 30,
+                "label": "VINCULAR VENDA",
+                "x": 65,
+                "y": 14,
+                "width": 35,
+                "height": 24,
                 "initially_visible": true,
                 "photo_style": "clean",
                 "icon": "key"
               },
               {
-                "id": "payment",
-                "kind": "object",
-                "label": "Pagamento",
-                "x": 54,
-                "y": 18,
-                "width": 20,
-                "height": 62,
-                "initially_visible": false,
-                "photo_style": "clean",
-                "object_type": "wallet"
-              },
-              {
                 "id": "query",
                 "kind": "note",
-                "label": "Quanto ainda falta recolher?",
-                "x": 80,
-                "y": 4,
-                "width": 20,
-                "height": 38,
+                "label": "Consultar saldo do débito",
+                "x": 65,
+                "y": 42,
+                "width": 35,
+                "height": 20,
                 "initially_visible": false,
                 "photo_style": "clean",
                 "icon": "search"
@@ -559,10 +620,10 @@
                 "id": "result",
                 "kind": "note",
                 "label": "Recolher na liquidação",
-                "x": 80,
-                "y": 56,
-                "width": 20,
-                "height": 38,
+                "x": 65,
+                "y": 66,
+                "width": 35,
+                "height": 20,
                 "initially_visible": false,
                 "photo_style": "clean",
                 "icon": "check"
@@ -570,12 +631,12 @@
             ],
             "connections": [
               {
-                "from": "concept",
-                "to": "link"
+                "from": "link",
+                "to": "query"
               },
               {
-                "from": "link",
-                "to": "payment"
+                "from": "query",
+                "to": "result"
               }
             ]
           }
@@ -1086,20 +1147,6 @@
           "transition": "zoom",
           "beats": [
             {
-              "anchor": "a regulamentação técnica já contempla diferentes meios",
-              "kind": "process",
-              "headline": "Meios entram na infraestrutura",
-              "behavior": "transform",
-              "treatment": "stack",
-              "transition": "slide_up",
-              "placement": "full",
-              "medium": "motion_graphic",
-              "sound": "none",
-              "target_id": "methods",
-              "action": "focus",
-              "prominence": "contextual"
-            },
-            {
               "anchor": "infraestrutura pronta para integração não significa cobrança universal acontecendo agora",
               "kind": "warning",
               "headline": "Infraestrutura ≠ uso universal",
@@ -1116,15 +1163,21 @@
             {
               "anchor": "o que existe é preparação de sistemas, manuais e padrões operacionais",
               "kind": "fact",
-              "headline": "2026: integração e preparação",
+              "headline": "2026: documentação e preparação",
               "behavior": "transform",
               "treatment": "timeline",
               "transition": "wipe",
               "placement": "left",
               "medium": "motion_graphic",
               "sound": "none",
-              "target_id": "prep",
+              "target_id": "excerpt_receita",
               "action": "reveal",
+              "mark_ids": [
+                "mark_ato4"
+              ],
+              "retire_ids": [
+                "methods"
+              ],
               "prominence": "contextual"
             },
             {
@@ -1134,7 +1187,7 @@
               "behavior": "transform",
               "treatment": "signal",
               "transition": "bloom",
-              "placement": "full",
+              "placement": "right",
               "medium": "motion_graphic",
               "sound": "none",
               "target_id": "pixmyth",
@@ -1149,34 +1202,46 @@
                 "kind": "label",
                 "label": "Pix • boleto • transferências • cartões",
                 "x": 0,
-                "y": 8,
+                "y": 4,
                 "width": 100,
-                "height": 20,
+                "height": 14,
                 "initially_visible": true,
                 "photo_style": "clean",
                 "icon": "wallet",
-                "label_size": 42
+                "label_size": 38
               },
               {
-                "id": "prep",
-                "kind": "note",
-                "label": "2026: manuais e integração",
+                "id": "excerpt_receita",
+                "kind": "source_excerpt",
+                "asset_id": "A2_receita_atos",
+                "label": "Receita Federal • Ato Técnico nº 4",
                 "x": 0,
-                "y": 40,
-                "width": 30,
-                "height": 42,
+                "y": 20,
+                "width": 58,
+                "height": 72,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "icon": "document"
+                "annotations": [
+                  {
+                    "id": "mark_ato4",
+                    "style": "highlight",
+                    "region": {
+                      "x": 2,
+                      "y": 72,
+                      "width": 96,
+                      "height": 26
+                    }
+                  }
+                ]
               },
               {
                 "id": "notnow",
                 "kind": "note",
-                "label": "Ainda não é universal",
-                "x": 35,
-                "y": 40,
-                "width": 30,
-                "height": 42,
+                "label": "Infraestrutura ≠ cobrança imediata",
+                "x": 62,
+                "y": 22,
+                "width": 38,
+                "height": 32,
                 "initially_visible": false,
                 "photo_style": "clean",
                 "icon": "warning"
@@ -1184,11 +1249,11 @@
               {
                 "id": "pixmyth",
                 "kind": "note",
-                "label": "Não é imposto sobre todo Pix",
-                "x": 70,
-                "y": 40,
-                "width": 30,
-                "height": 42,
+                "label": "Não é imposto sobre o Pix",
+                "x": 62,
+                "y": 58,
+                "width": 38,
+                "height": 32,
                 "initially_visible": false,
                 "photo_style": "clean",
                 "icon": "shield"
@@ -1221,7 +1286,7 @@
       {
         "index": 6,
         "title": "Quando começa de verdade?",
-        "narration": "Hoje, vinte e nove de setembro de 2026, não existe um botão virado que coloque o split em todas as compras do país. A própria lei prevê implantação gradual. E a Receita Federal informou, segundo reportagem recente da Folha de S.Paulo, que a primeira etapa com transações reais está planejada para o segundo semestre de 2027, de forma facultativa e inicialmente entre empresas. A produção assistida começa por um recorte bem menor do que o varejo inteiro. Para vendas a pessoas físicas e uma cobertura ampla dos meios de pagamento, o cronograma ainda depende das próximas etapas de implementação.",
+        "narration": "Hoje, vinte e nove de setembro de 2026, não existe um botão virado que coloque o split em todas as compras do país. A própria lei prevê implantação gradual. E a Receita Federal informou, segundo apurações do setor e fontes da regulamentação, que a primeira etapa com transações reais está planejada para o segundo semestre de 2027, de forma facultativa e inicialmente entre empresas. A produção assistida começa por um recorte bem menor do que o varejo inteiro. Para vendas a pessoas físicas e uma cobertura ampla dos meios de pagamento, o cronograma ainda depende das próximas etapas de implementação.",
         "visual": {
           "type": "TIMELINE",
           "transition": "wipe",
@@ -1246,28 +1311,30 @@
               "kind": "date",
               "headline": "2º semestre de 2027",
               "behavior": "transform",
-              "treatment": "giant_number",
+              "treatment": "spotlight",
               "transition": "slide_left",
               "placement": "center",
               "medium": "motion_graphic",
               "sound": "tick",
-              "target_id": "b2b",
-              "action": "focus",
-              "prominence": "contextual",
-              "value": "B2B"
+              "target_id": "excerpt_noticia",
+              "action": "reveal",
+              "mark_ids": [
+                "mark_noticia_headline"
+              ],
+              "prominence": "contextual"
             },
             {
               "anchor": "de forma facultativa e inicialmente entre empresas",
               "kind": "fact",
-              "headline": "Facultativo e entre empresas",
+              "headline": "Facultativo e entre empresas (B2B)",
               "behavior": "transform",
-              "treatment": "spotlight",
+              "treatment": "giant_number",
               "transition": "bloom",
               "placement": "center",
               "medium": "motion_graphic",
               "sound": "none",
-              "target_id": "b2bnote",
-              "action": "reveal",
+              "target_id": "b2b",
+              "action": "focus",
               "prominence": "contextual"
             },
             {
@@ -1288,13 +1355,37 @@
           "stage": {
             "elements": [
               {
+                "id": "excerpt_noticia",
+                "kind": "source_excerpt",
+                "asset_id": "A3_noticia_2027",
+                "label": "Cronograma • Início facultativo 2027",
+                "x": 5,
+                "y": 10,
+                "width": 90,
+                "height": 44,
+                "initially_visible": false,
+                "photo_style": "clean",
+                "annotations": [
+                  {
+                    "id": "mark_noticia_headline",
+                    "style": "highlight",
+                    "region": {
+                      "x": 2,
+                      "y": 15,
+                      "width": 96,
+                      "height": 42
+                    }
+                  }
+                ]
+              },
+              {
                 "id": "now",
                 "kind": "metric",
                 "label": "Situação atual",
                 "x": 0,
-                "y": 14,
+                "y": 58,
                 "width": 28,
-                "height": 40,
+                "height": 38,
                 "initially_visible": true,
                 "photo_style": "clean",
                 "value": "2026",
@@ -1305,39 +1396,27 @@
                 "kind": "metric",
                 "label": "Primeira etapa real",
                 "x": 36,
-                "y": 14,
+                "y": 58,
                 "width": 28,
-                "height": 40,
+                "height": 38,
                 "initially_visible": true,
                 "photo_style": "clean",
                 "value": "2º SEM 2027",
                 "icon": "bank",
-                "value_size": 55
+                "value_size": 48
               },
               {
                 "id": "later",
                 "kind": "metric",
-                "label": "Expansão",
+                "label": "Varejo amplo",
                 "x": 72,
-                "y": 14,
+                "y": 58,
                 "width": 28,
-                "height": 40,
+                "height": 38,
                 "initially_visible": true,
                 "photo_style": "clean",
                 "value": "DEPOIS",
                 "icon": "route"
-              },
-              {
-                "id": "b2bnote",
-                "kind": "note",
-                "label": "Facultativo • B2B • produção assistida",
-                "x": 31,
-                "y": 67,
-                "width": 38,
-                "height": 27,
-                "initially_visible": false,
-                "photo_style": "clean",
-                "icon": "check"
               }
             ],
             "connections": [
