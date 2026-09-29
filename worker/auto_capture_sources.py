@@ -6,32 +6,57 @@ from pathlib import Path
 
 
 def sanitize_page(page) -> None:
-    """Oculta avisos de cookies, banners da LGPD e fundos escuros/blur."""
+    """Oculta avisos de cookies, tooltips de login, widgets flutuantes e backdrops escuros."""
     script = """() => {
-        const hideSelectors = [
+        // 1. Remover elementos flutuantes conhecidos (tooltips, modais, cookies, chatbots)
+        const selectorsToRemove = [
             '[id*="cookie"]', '[class*="cookie"]',
             '[id*="consent"]', '[class*="consent"]',
             '[id*="lgpd"]', '[class*="lgpd"]',
             '[id*="modal"]', '.modal', '.modal-backdrop',
             '.optanon-alert-box-wrapper', '#onetrust-consent-sdk',
             '.cookie-banner', '[class*="backdrop"]', '[class*="overlay"]',
-            '#barra-brasil', '.govbr-cookie-banner'
+            '#barra-brasil', '.govbr-cookie-banner',
+            '[class*="popover"]', '[class*="tooltip"]', '[data-tippy-root]',
+            '[class*="tour"]', '[role="tooltip"]',
+            '[id*="vlibras"]', '[class*="vlibras"]',
+            '#widget-leo', '[class*="chatbot"]', '[class*="floating"]'
         ];
-        hideSelectors.forEach(sel => {
+
+        selectorsToRemove.forEach(sel => {
             try {
-                document.querySelectorAll(sel).forEach(el => {
-                    el.style.setProperty('display', 'none', 'important');
-                    el.style.setProperty('opacity', '0', 'important');
-                    el.style.setProperty('visibility', 'hidden', 'important');
-                });
+                document.querySelectorAll(sel).forEach(el => el.remove());
             } catch (e) {}
         });
 
-        // Restaurar scroll e remover névoas/blur no body e html
-        document.body.style.setProperty('overflow', 'auto', 'important');
-        document.body.style.setProperty('filter', 'none', 'important');
-        document.documentElement.style.setProperty('overflow', 'auto', 'important');
-        document.documentElement.style.setProperty('filter', 'none', 'important');
+        // 2. Varrer elementos com position fixed ou absolute de alta prioridade (overlays e balões)
+        document.querySelectorAll('div, section, aside').forEach(el => {
+            try {
+                const text = el.innerText || '';
+                if (text.includes('Para começar') || text.includes('PERGUNTA PRO LEO') || text.includes('Aceitar todos')) {
+                    el.remove();
+                    return;
+                }
+                const style = window.getComputedStyle(el);
+                if (style.position === 'fixed' || style.position === 'absolute') {
+                    const z = parseInt(style.zIndex) || 0;
+                    if (z > 50 && (style.backgroundColor.includes('rgba(0, 0, 0') || el.className.toLowerCase().includes('backdrop') || el.className.toLowerCase().includes('mask'))) {
+                        el.remove();
+                    }
+                }
+            } catch (e) {}
+        });
+
+        // 3. Restaurar scroll, remover névoas e restaurar fundo branco no body, html e main
+        ['html', 'body', 'main', '#content', '#conteudo', '#main'].forEach(sel => {
+            try {
+                document.querySelectorAll(sel).forEach(el => {
+                    el.style.setProperty('overflow', 'auto', 'important');
+                    el.style.setProperty('filter', 'none', 'important');
+                    el.style.setProperty('opacity', '1', 'important');
+                });
+            } catch (e) {}
+        });
     }"""
     try:
         page.evaluate(script)
@@ -42,22 +67,19 @@ def sanitize_page(page) -> None:
 def generate_editorial_fallback(dest_path: Path, asset: dict) -> None:
     """Gera um card editorial autêntico caso o site esteja offline ou com bloqueio anti-bot."""
     try:
-        from PIL import Image, ImageDraw, ImageFont
+        from PIL import Image, ImageDraw
 
         width, height = 1351, 917
         img = Image.new("RGB", (width, height), color="#FFFFFF")
         draw = ImageDraw.Draw(img)
 
-        # Borda técnica suave
         draw.rectangle([(20, 20), (width - 20, height - 20)], outline="#E2E8F0", width=2)
 
-        # Registration marks nos 4 cantos (+)
         cross_len = 16
         for cx, cy in [(40, 40), (width - 40, 40), (40, height - 40), (width - 40, height - 40)]:
             draw.line([(cx - cross_len, cy), (cx + cross_len, cy)], fill="#7E8B99", width=2)
             draw.line([(cx, cy - cross_len), (cx, cy + cross_len)], fill="#7E8B99", width=2)
 
-        # Textos informativos da fonte
         subject = asset.get("subject", "Registro de Documento Oficial")
         role = asset.get("narrative_role", "Comprovacao Editorial")
         attribution = asset.get("attribution", "Fonte Oficial")
@@ -83,11 +105,6 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
     filename = Path(capture_file).name
     dest_path = captures_dir / filename
 
-    # Se a captura já existe e está íntegra, preserva
-    if dest_path.exists() and dest_path.stat().st_size > 1024:
-        print(f"[auto_capture] Asset {asset.get('id')} ja possui captura: {dest_path.name} ({dest_path.stat().st_size} bytes)")
-        return True
-
     url = asset.get("source_page_url")
     if not url:
         print(f"[auto_capture] Asset {asset.get('id')} sem source_page_url; pulando.")
@@ -108,18 +125,17 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
         )
         page = context.new_page()
 
-        # Navegar com timeout seguro de 35s
         try:
             page.goto(url, wait_until="domcontentloaded", timeout=35000)
-            page.wait_for_timeout(2500)
+            page.wait_for_timeout(3000)
         except Exception as nav_exc:
             print(f"[auto_capture] Timeout ou aviso na navegacao de {url}: {nav_exc}")
 
-        # Limpar modais de cookies e névoas escuras
+        # Limpar modais, tooltips e névoas escuras
         sanitize_page(page)
         page.wait_for_timeout(1000)
 
-        # Enquadramento por seletor específico ou por elemento
+        # Enquadramento por seletor específico ou por elemento de conteúdo
         target_selector = asset.get("target_selector")
         captured_element = False
 
@@ -133,7 +149,7 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
             except Exception as sel_exc:
                 print(f"[auto_capture] Seletor {target_selector} nao encontrado: {sel_exc}")
 
-        # Fallback para screenshot de viewport inteira
+        # Fallback para screenshot de viewport completa limpa
         if not captured_element:
             page.screenshot(path=str(dest_path), full_page=False)
             print(f"[auto_capture] Screenshot de viewport completa salvo em: {dest_path.name}")
@@ -197,7 +213,6 @@ def main() -> None:
         if playwright_instance:
             playwright_instance.stop()
 
-    # Salva o projeto caso novos capture_file tenham sido preenchidos
     with open(project_path, "w", encoding="utf-8") as f:
         json.dump(project_data, f, ensure_ascii=False, indent=2)
         f.write("\n")
