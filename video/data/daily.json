@@ -65,7 +65,7 @@
       "requires_diversity": true,
       "public_policy_or_regulation": true,
       "official_sources_role": "Confirmar regras operacionais, prazos, escopo do MED e funcionamento atual do mecanismo.",
-      "independent_sources_role": "Contextualizar a implantação em 2026, explicar limitações práticas e checar interpretações exageradas sobre rastreamento.",
+      "independent_sources_role": "Revista Oeste, Gazeta do Povo, InfoMoney e Febraban ajudam a contextualizar a implantação, limitações práticas e evolução do rastreamento, evitando depender de uma única linha editorial.",
       "counterpoint_summary": "O MED 2.0 amplia o rastreamento e o bloqueio em contas subsequentes, mas não garante devolução: depende de análise, saldo disponível e de o dinheiro ainda permanecer no sistema financeiro.",
       "official_claims_attributed": true
     },
@@ -93,39 +93,50 @@
     },
     {
       "id": "S2",
-      "title": "Voto 7/2026 do Banco Central",
-      "url": "https://normativos.bcb.gov.br/Votos/BCB/20267/Voto_do_BC_7_2026.pdf",
+      "title": "Instrução Normativa BCB nº 766",
+      "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=766&tipo=Instru%C3%A7%C3%A3o+Normativa+BCB",
       "publisher": "Banco Central do Brasil",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "published_at": "2026-01-20",
-      "notes": "Registra cronologia de implantação do MED 2.0 e período de adequação dos participantes."
+      "published_at": "2026-08-10",
+      "notes": "Histórico normativo do rastreamento em camadas e ampliação de prazo no MED."
     },
     {
       "id": "S3",
-      "title": "Regra do Pix para rastrear dinheiro desviado em golpe entra em vigor",
-      "url": "https://www1.folha.uol.com.br/mercado/2026/02/regra-do-pix-para-rastrear-dinheiro-que-foi-desviado-em-golpe-entra-em-vigor-nesta-segunda-2.shtml",
-      "publisher": "Folha de S.Paulo",
+      "title": "Novas regras do Pix valem a partir de fevereiro; confira",
+      "url": "https://revistaoeste.com/economia/novas-regras-do-pix-valem-a-partir-de-fevereiro-confira/",
+      "publisher": "Revista Oeste",
       "source_type": "secondary",
       "publisher_class": "independent_journalism",
       "editorial_role": "independent_reporting",
-      "published_at": "2026-02-02",
-      "notes": "Explica a mudança do rastreamento limitado à primeira conta para várias camadas e ressalta a adoção obrigatória."
+      "published_at": "2025-12-21",
+      "notes": "Explica o rastreamento além da primeira conta e a finalidade antifraude do MED 2.0."
     },
     {
       "id": "S4",
-      "title": "Como é a nova regra do Pix que pode ajudar a inibir golpes",
-      "url": "https://www1.folha.uol.com.br/mercado/2026/09/como-e-a-nova-regra-do-pix-que-pode-ajudar-a-inibir-golpes.shtml",
-      "publisher": "Folha de S.Paulo",
+      "title": "Banco Central altera regras do Pix para combater fraudes; veja o que muda",
+      "url": "https://www.gazetadopovo.com.br/economia/mudancas-pix-seguranca-fraudes/",
+      "publisher": "Gazeta do Povo",
+      "source_type": "secondary",
+      "publisher_class": "independent_journalism",
+      "editorial_role": "independent_reporting",
+      "published_at": "2026-08-05",
+      "notes": "Contextualiza rastreamento em camadas, combate a contas laranja e mudanças de prazo."
+    },
+    {
+      "id": "S5",
+      "title": "Nova regra do Pix amplia prazo para contestar devolução e tenta barrar golpes",
+      "url": "https://www.gazetadopovo.com.br/economia/nova-regra-pix-prazo-para-contestacao-sobe-para-80-dias/",
+      "publisher": "Gazeta do Povo",
       "source_type": "secondary",
       "publisher_class": "independent_journalism",
       "editorial_role": "independent_reporting",
       "published_at": "2026-09-01",
-      "notes": "Atualiza o estágio operacional do MED 2.0 e destaca que rastreamento não garante devolução."
+      "notes": "Atualiza a mudança do prazo de contestação para 80 dias e o contexto antifraude."
     },
     {
-      "id": "S5",
+      "id": "S6",
       "title": "MED 2.0 passa a ser obrigatório em todas as plataformas que oferecem Pix",
       "url": "https://www.infomoney.com.br/minhas-financas/med-2-0-passa-a-ser-obrigatorio-em-todas-as-plataformas-que-oferecem-pix/",
       "publisher": "InfoMoney",
@@ -133,18 +144,7 @@
       "publisher_class": "independent_journalism",
       "editorial_role": "independent_reporting",
       "published_at": "2026-02-02",
-      "notes": "Contextualiza obrigatoriedade e período de adequação."
-    },
-    {
-      "id": "S6",
-      "title": "Novo formato do Pix reforça combate a golpes e não afeta os usuários",
-      "url": "https://noticias.uol.com.br/comprova/ultimas-noticias/2025/11/28/novo-formato-do-pix-reforca-combate-a-golpes-e-nao-afeta-os-usuarios.htm",
-      "publisher": "Projeto Comprova / UOL",
-      "source_type": "secondary",
-      "publisher_class": "fact_check",
-      "editorial_role": "fact_check",
-      "published_at": "2025-11-28",
-      "notes": "Checa a alegação de que toda transação Pix passaria a ser rastreada; o rastreamento ocorre após contestação de fraude."
+      "notes": "Contextualiza obrigatoriedade e adoção do MED 2.0."
     },
     {
       "id": "S7",
@@ -210,6 +210,7 @@
       "text": "O rastreamento ampliado não garante devolução; a recuperação depende da análise do caso e de ainda existirem recursos disponíveis nas contas identificadas.",
       "source_ids": [
         "S1",
+        "S3",
         "S4"
       ],
       "confidence": "high",
@@ -233,7 +234,8 @@
       "text": "O MED 2.0 não significa monitoramento indiscriminado de todas as transferências Pix; o rastreamento tratado pelo mecanismo é acionado no contexto de uma contestação de fraude.",
       "source_ids": [
         "S1",
-        "S6"
+        "S3",
+        "S4"
       ],
       "confidence": "high",
       "verification_status": "verified",
@@ -246,7 +248,7 @@
       "source_ids": [
         "S2",
         "S3",
-        "S5"
+        "S6"
       ],
       "confidence": "high",
       "verification_status": "verified",
@@ -308,7 +310,7 @@
               "CONTA 3"
             ],
             "headline": "O dinheiro não para na primeira conta",
-            "source": "BC • Folha • Comprova"
+            "source": "BC • Oeste • Gazeta do Povo"
           },
           "beats": [
             {
@@ -379,7 +381,7 @@
             "from": "VÍTIMA",
             "via": "CONTA 1",
             "to": "CONTA 2 / CONTA 3",
-            "source": "Folha • Febraban"
+            "source": "Oeste • Febraban"
           },
           "beats": [
             {
@@ -447,7 +449,7 @@
             "eyebrow": "Contestação",
             "date": "ATÉ 80 DIAS",
             "headline": "O pedido começa no banco da vítima",
-            "source": "Banco Central • Comprova"
+            "source": "Banco Central • Gazeta do Povo"
           },
           "beats": [
             {
@@ -583,7 +585,7 @@
               "Garantir devolução",
               "Cancelar qualquer Pix"
             ],
-            "source": "BC • Folha"
+            "source": "BC • Oeste"
           },
           "beats": [
             {
@@ -700,7 +702,7 @@
             "before_text": "Todo Pix passou a ser rastreado.",
             "after_title": "REGRA",
             "after_text": "O rastreamento está ligado a uma contestação de fraude.",
-            "source": "Comprova • Banco Central"
+            "source": "Gazeta do Povo • Banco Central"
           },
           "beats": [
             {
@@ -752,7 +754,7 @@
           "payload": {
             "eyebrow": "Na prática",
             "headline": "Mais rastro. Mais chance. Nenhuma garantia.",
-            "source": "BC • Folha • Comprova"
+            "source": "BC • Oeste • Gazeta do Povo"
           },
           "beats": [
             {
