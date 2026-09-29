@@ -25,6 +25,13 @@ import {
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import {
+  AnimatedNumberText,
+  BloomAccent,
+  DepthPhotoComposition,
+  MaskedSweepHeadline,
+  WordCascadeHeadline,
+} from "./EditorialMotionPrimitives";
 
 export type EditorialDirection = {
   concept?: string;
@@ -55,8 +62,10 @@ export type EditorialBeat = {
     | "spotlight"
     | "equation"
     | "stack"
-    | "signal";
-  transition?: "cut" | "fade" | "slide_left" | "slide_up" | "zoom" | "wipe";
+    | "signal"
+    | "masked_emphasis"
+    | "depth_photo";
+  transition?: "cut" | "fade" | "slide_left" | "slide_up" | "zoom" | "wipe" | "bloom";
   placement?: "left" | "center" | "right" | "full";
   medium?: "motion_graphic" | "photo_cutout" | "photo" | "mixed";
   asset_id?: string;
@@ -188,6 +197,11 @@ const entranceStyle = ({
       return {
         opacity: progress,
         transform: `scale(${0.88 + progress * 0.12})`,
+      };
+    case "bloom":
+      return {
+        opacity: Math.min(1, progress * 1.35),
+        transform: `scale(${0.97 + progress * 0.03})`,
       };
     case "wipe":
       return {
@@ -365,25 +379,17 @@ const KineticType = ({
             transformOrigin: textAlign,
           }}
         >
-          {beat.value}
+          <AnimatedNumberText value={beat.value} progress={progress} />
         </div>
       )}
-      <div
-        style={{
-          color: WHITE,
-          fontSize: beat.value ? 78 : 108,
-          maxWidth: 1450,
-          fontWeight: 950,
-          lineHeight: 0.98,
-          letterSpacing: -2.2,
-          textAlign,
-          textTransform: "uppercase",
-          transform: `translateY(${(1 - phase(progress, 0.05, 0.42)) * 26}px)`,
-          opacity: phase(progress, 0.03, 0.34),
-        }}
-      >
-        {beat.headline}
-      </div>
+      <WordCascadeHeadline
+        text={beat.headline}
+        progress={progress}
+        accent={accent}
+        fontSize={beat.value ? 78 : 108}
+        textAlign={textAlign}
+        maxWidth={1450}
+      />
       {beat.detail && (
         <div
           style={{
@@ -438,7 +444,7 @@ const GiantNumber = ({beat, accent, progress}: {beat: EditorialBeat; accent: str
         transform: `translateX(${progress * 46}px) scale(${1 + progress * 0.045})`,
       }}
     >
-      {beat.value ?? "01"}
+      {beat.value ? <AnimatedNumberText value={beat.value} progress={progress} /> : "01"}
     </div>
     <div style={{display: "flex", alignItems: "center", gap: 42}}>
       <div style={{color: accent, transform: `scale(${0.9 + phase(progress, 0.05, 0.45) * 0.12}) rotate(${(1 - phase(progress, 0.05, 0.45)) * -8}deg)`}}>
@@ -456,7 +462,7 @@ const GiantNumber = ({beat, accent, progress}: {beat: EditorialBeat; accent: str
             transformOrigin: "left center",
           }}
         >
-          {beat.value ?? beat.headline}
+          {beat.value ? <AnimatedNumberText value={beat.value} progress={progress} /> : beat.headline}
         </div>
         {beat.value && (
           <div
@@ -868,6 +874,47 @@ const SignalTreatment = ({beat, accent, progress}: {beat: EditorialBeat; accent:
   </AbsoluteFill>
 );
 
+const MaskedEmphasisTreatment = ({
+  beat,
+  accent,
+  progress,
+}: {
+  beat: EditorialBeat;
+  accent: string;
+  progress: number;
+}) => (
+  <MaskedSweepHeadline
+    text={beat.headline}
+    progress={progress}
+    accent={accent}
+    detail={beat.detail}
+    value={beat.value}
+  />
+);
+
+const DepthPhotoTreatment = ({
+  beat,
+  accent,
+  progress,
+}: {
+  beat: EditorialBeat;
+  accent: string;
+  progress: number;
+}) => {
+  if (!beat.asset_file) return null;
+  return (
+    <DepthPhotoComposition
+      src={beat.asset_file}
+      headline={beat.headline}
+      detail={beat.detail}
+      value={beat.value}
+      accent={accent}
+      progress={progress}
+      imageSide={beat.placement === "right" ? "right" : "left"}
+    />
+  );
+};
+
 const PhotoCutoutTreatment = ({
   beat,
   accent,
@@ -1066,13 +1113,20 @@ export const EditorialMicroScene = ({
   let body: React.ReactNode;
 
   if (beat.medium === "photo_cutout" && beat.asset_file) {
-    body = (
-      <PhotoCutoutTreatment
-        beat={beat}
-        accent={accent}
-        progress={beatProgress}
-      />
-    );
+    body =
+      treatment === "depth_photo" ? (
+        <DepthPhotoTreatment
+          beat={beat}
+          accent={accent}
+          progress={beatProgress}
+        />
+      ) : (
+        <PhotoCutoutTreatment
+          beat={beat}
+          accent={accent}
+          progress={beatProgress}
+        />
+      );
   } else {
     switch (treatment) {
     case "giant_number":
@@ -1101,6 +1155,9 @@ export const EditorialMicroScene = ({
       break;
     case "signal":
       body = <SignalTreatment beat={beat} accent={accent} progress={beatProgress} />;
+      break;
+    case "masked_emphasis":
+      body = <MaskedEmphasisTreatment beat={beat} accent={accent} progress={beatProgress} />;
       break;
     case "kinetic_type":
     default:
@@ -1136,6 +1193,9 @@ export const EditorialMicroScene = ({
           background: `radial-gradient(circle at 72% 36%, ${accent}16, transparent 38%)`,
         }}
       />
+      {beat.transition === "bloom" && (
+        <BloomAccent progress={enter} accent={accent} />
+      )}
       {body}
     </AbsoluteFill>
   );
@@ -1170,6 +1230,10 @@ export const SceneTransitionAccent = ({
         }}
       />
     );
+  }
+
+  if (type === "bloom") {
+    return <BloomAccent progress={p} accent={accent} />;
   }
 
   if (type === "zoom") {
