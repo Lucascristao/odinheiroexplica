@@ -64,6 +64,23 @@ jobs:
           rm -rf public/generated-sfx
           python worker/generate_sound_design.py --output-dir public/generated-sfx
 
+      - name: Audit source balance before TTS
+        run: |
+          mkdir -p video/generated
+          python worker/editorial_source_audit.py \
+            --input video/data/daily.json \
+            --output video/generated/daily-source-audit.json \
+            --strict
+
+      - name: Prepare narrative visual assets
+        run: |
+          rm -rf public/generated-assets
+          mkdir -p public/generated-assets video/generated
+          python worker/prepare_visual_assets.py \
+            --project video/data/daily.json \
+            --output-dir public/generated-assets \
+            --manifest video/generated/daily-visual-assets.json
+
       - name: Audit pronunciation before TTS
         run: |
           mkdir -p video/generated
@@ -106,6 +123,7 @@ jobs:
             --project video/data/daily.json \
             --tts-manifest video/generated/daily-tts-manifest.json \
             --audio-public-prefix generated-audio/daily \
+            --visual-assets-manifest video/generated/daily-visual-assets.json \
             --output video/generated/daily-render-input.json
 
       - name: Build YouTube package
