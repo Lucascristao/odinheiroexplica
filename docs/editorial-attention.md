@@ -30,13 +30,13 @@ Alternar escala e recurso quando muda a pergunta: objeto real para reconheciment
 
 Pesquisar imagem pelo que ela explica: local, produto, documento ou objeto relacionado à afirmação. Não preencher todas as pautas com o mesmo celular, cédulas e gráfico genérico. Conferir resolução, origem e licença; preferir domínio público, CC0, licença compatível ou material original. Usar recorte só quando o objeto precisa se integrar ao diagrama. Não remover fundo de documentos, ambientes ou fotos em que o contexto é evidência. Evitar texto gerado dentro de imagem para informações factuais.
 
-Não exibir rodapé com nomes de fontes no vídeo. Fontes, URLs e créditos ficam no pacote da descrição. Se a licença exigir crédito sobre a imagem, escolher outro material compatível com esta direção; nunca omitir obrigação de licença. Remover rodapé não autoriza remover referências da pesquisa.
+Não exibir rodapé com nomes de fontes no vídeo. A descrição não contém links: listar apenas títulos das fontes e créditos textuais. URLs ficam somente nos registros internos de pesquisa. Se a licença exigir link público ou crédito sobre a imagem, escolher outro material compatível com esta direção; nunca omitir obrigação de licença. Remover rodapé não autoriza remover referências da pesquisa.
 
 ## Título, descrição e descoberta
 
 Escolher internamente uma formulação centrada em busca e outra em curiosidade; entregar apenas a opção final, como exige o contrato atual. Identificar situação/assunto cedo, criar uma pergunta ou consequência específica e assegurar que o roteiro entrega a promessa. Até 100 caracteres, preferencialmente conciso; sem gritaria, urgência falsa ou resultado garantido. Não afirmar que uma formulação possui maior volume de busca sem dados.
 
-Descrição única: primeiras duas linhas dizem para quem é, qual pergunta responde e qual aprendizado entrega. Usar a expressão principal e sinônimos naturalmente, sem lista repetitiva de keywords. Explicar siglas. Depois entram contexto, capítulos, fontes com links e créditos. Reservar espaço dentro dos 5.000 caracteres para tudo isso. O pipeline usa os tempos reais e só publica capítulos que atendem aos limites do YouTube. Tags são apoio; não substituem assunto, título, conteúdo e descrição coerentes.
+Descrição única: primeiras duas linhas dizem para quem é, qual pergunta responde e qual aprendizado entrega. Usar a expressão principal e sinônimos naturalmente, sem lista repetitiva de keywords. Explicar siglas. Depois entram contexto, capítulos, nomes das fontes e créditos textuais, sem links. Reservar espaço dentro dos 5.000 caracteres para tudo isso. O pipeline usa os tempos reais e só publica capítulos que atendem aos limites do YouTube. Tags são apoio; não substituem assunto, título, conteúdo e descrição coerentes.
 
 Para buscas fora do YouTube, a descrição pública deve ser compreensível isoladamente e nomear o assunto com clareza. Não há garantia de indexação ou posição. O painel privado não vira uma página pública de SEO, nem publica projetos sem autorização.
 

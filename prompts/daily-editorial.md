@@ -115,7 +115,7 @@ SEO da publicação:
 - inclua sinônimos e termos relacionados de modo natural, nunca como bloco de palavras-chave;
 - não faça keyword stuffing;
 - não encha a descrição de tags; tags têm importância secundária e só devem existir quando forem úteis, por exemplo para grafias alternativas;
-- capítulos válidos e uma seção `Bases do vídeo:` serão acrescentados pelo pipeline depois da descrição editorial, com títulos e links das fontes; créditos de imagens também ficam na descrição.
+- a descrição não pode conter links. Capítulos válidos e uma seção `Bases do vídeo:` serão acrescentados pelo pipeline com apenas os títulos das fontes; créditos de imagens são textuais, sem URLs. Manter URLs somente nos registros internos de pesquisa. Escolher imagens cuja licença permita esse formato de crédito.
 
 Preencha publication.seo com:
 - primary_keyword;

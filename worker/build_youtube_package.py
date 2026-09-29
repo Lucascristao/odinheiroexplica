@@ -1,5 +1,6 @@
 import argparse
 import json
+import re
 from pathlib import Path
 
 
@@ -56,7 +57,7 @@ def main() -> None:
 
     sources = project.get("sources", [])
     source_text = "\n".join(
-        f"- {source.get('title', 'Fonte')}" + (f" — {source['url']}" if source.get('url') else "")
+        f"- {source.get('title', 'Fonte')}"
         for source in sources
     )
 
@@ -64,14 +65,11 @@ def main() -> None:
     visual_credit_lines = []
     for asset in visual_assets:
         attribution = str(asset.get("attribution") or "").strip()
-        source_page_url = str(asset.get("source_page_url") or "").strip()
         license_name = str(asset.get("license") or "").strip()
         if attribution:
             line = f"- {attribution}"
             if license_name:
                 line += f" — {license_name}"
-            if source_page_url:
-                line += f" — {source_page_url}"
             visual_credit_lines.append(line)
 
     visual_credit_text = "\n".join(visual_credit_lines)
@@ -93,6 +91,9 @@ def main() -> None:
         full_description += f"\n\nBases do vídeo:\n{source_text}"
     if visual_credit_text:
         full_description += f"\n\nCréditos visuais:\n{visual_credit_text}"
+    # Public descriptions are link-free; research URLs remain in the project.
+    if re.search(r"https?://|www\.|\[[^\]]+\]\([^)]+\)", full_description, re.IGNORECASE):
+        raise RuntimeError("Descrição não pode conter links. Mantenha URLs somente nos registros internos e escolha imagens com crédito textual compatível.")
     if len(full_description) > 5000:
         raise RuntimeError("Descrição final excede 5.000 caracteres. Encurte a redação sem remover fontes ou créditos obrigatórios.")
 
