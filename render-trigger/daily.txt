@@ -1,7 +1,2 @@
-video=med-2-0-pix-2026-09-28
-mode=daily-editorial
-cover=chat-final
-presenter=Roberto
-architecture=persistent-editorial-stage
-features=anchored-events,reserved-regions,measured-typography,photo-paper,selective-sound
-request=new-production-render-after-general-engine-update
+MED 2.0 — production revision: readable labels, editorial objects, icons, source-free frames and updated publication package.
+Requested by Lucas; 2026-09-29.
