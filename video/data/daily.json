@@ -36,17 +36,21 @@
     ],
     "motion_language": [
       "linhas que percorrem a rede",
-      "reframes entre contas",
-      "cortes secos",
-      "tipografia cinética",
-      "foco mudando de um nó para outro"
+      "profundidade com foto recortada",
+      "tipografia em cascade",
+      "contadores progressivos",
+      "sweeps de ênfase pontuais",
+      "bloom curto em revelações"
     ],
     "avoid": [
       "visual industrial do vídeo de combustíveis",
       "cards flutuantes",
       "mesmo grid de estatísticas",
       "autoridades como imagem principal",
-      "foto genérica de banco estrangeiro"
+      "foto genérica de banco estrangeiro",
+      "usar sweep em todo texto",
+      "bloom decorativo sem mudança de informação",
+      "fotografia chapada como fundo"
     ]
   },
   "editorial": {
@@ -319,8 +323,8 @@
               "headline": "O golpe começa no celular",
               "detail": "A contestação nasce de uma transação específica.",
               "behavior": "cut",
-              "treatment": "spotlight",
-              "transition": "fade",
+              "treatment": "depth_photo",
+              "transition": "bloom",
               "placement": "left",
               "medium": "photo_cutout",
               "asset_id": "phone-hand",
@@ -356,8 +360,8 @@
               "kind": "warning",
               "headline": "Rastrear não garante devolver",
               "behavior": "cut",
-              "treatment": "signal",
-              "transition": "cut",
+              "treatment": "masked_emphasis",
+              "transition": "bloom",
               "placement": "full",
               "medium": "motion_graphic",
               "sound": "alert"
@@ -458,8 +462,8 @@
               "headline": "Contestação no banco",
               "detail": "A partir de uma transação específica.",
               "behavior": "cut",
-              "treatment": "spotlight",
-              "transition": "fade",
+              "treatment": "depth_photo",
+              "transition": "bloom",
               "placement": "right",
               "medium": "photo_cutout",
               "asset_id": "phone-hand",
@@ -472,7 +476,7 @@
               "value": "ATÉ 80 DIAS",
               "behavior": "cut",
               "treatment": "giant_number",
-              "transition": "zoom",
+              "transition": "bloom",
               "placement": "left",
               "medium": "motion_graphic",
               "sound": "impact"
@@ -775,7 +779,7 @@
               "kind": "warning",
               "headline": "Mais chance não é garantia",
               "behavior": "cut",
-              "treatment": "kinetic_type",
+              "treatment": "masked_emphasis",
               "transition": "cut",
               "placement": "center",
               "medium": "motion_graphic",
@@ -787,8 +791,8 @@
               "headline": "Contestou? Faça isso rápido",
               "detail": "Use o canal do seu banco e registre as informações do golpe.",
               "behavior": "cut",
-              "treatment": "spotlight",
-              "transition": "fade",
+              "treatment": "depth_photo",
+              "transition": "bloom",
               "placement": "right",
               "medium": "photo_cutout",
               "asset_id": "phone-hand",
