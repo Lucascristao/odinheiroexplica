@@ -129,6 +129,8 @@ A descrição em publication.description deve sair pronta para publicação e ot
 
 Antes de escolher cenas e microcenas, crie uma direção visual específica para a história atual. A identidade do canal é o DNA, não um template. Consulte `docs/visual-history.md` somente para identificar padrões recentes que NÃO devem ser repetidos; nunca use esse histórico como molde de pauta, roteiro ou estrutura.
 
+Consulte também `docs/editorial-motion-library.md` e `docs/photography-narrative.md`. Eles descrevem capacidades disponíveis, não uma sequência obrigatória. Escolha só o que melhora a explicação daquela pauta.
+
 Preencha `visual_direction` com:
 - `concept`: a ideia visual que traduz esta história;
 - `world`: minimal, digital, industrial, documentary, market, network ou paper;
@@ -157,11 +159,18 @@ Antes de fechar o VideoProject, faça uma auditoria de repetição: se o vídeo 
 
 Cada `visual.beats[]` deve escolher explicitamente:
 - `behavior`: `cut`, `transform`, `reframe` ou `overlay`;
-- `treatment`: `kinetic_type`, `giant_number`, `flow_diagram`, `timeline`, `split_compare`, `meter`, `spotlight`, `equation`, `stack` ou `signal`;
-- `transition`: `cut`, `fade`, `slide_left`, `slide_up`, `zoom` ou `wipe`;
+- `treatment`: `kinetic_type`, `giant_number`, `flow_diagram`, `timeline`, `split_compare`, `meter`, `spotlight`, `equation`, `stack`, `signal`, `masked_emphasis` ou `depth_photo`;
+- `transition`: `cut`, `fade`, `slide_left`, `slide_up`, `zoom`, `wipe` ou `bloom`;
 - `placement`: `left`, `center`, `right` ou `full`.
 
 Esses campos não são decoração aleatória. Escolha-os pelo significado daquela informação.
+
+Regras adicionais:
+- `masked_emphasis` é para conclusão, contraste ou ressalva curta; não use como padrão de headline;
+- `depth_photo` só faz sentido com `medium: "photo_cutout"` e quando a fotografia realmente cria profundidade/interação com texto;
+- `bloom` é uma revelação curta; evite repetir em beats consecutivos;
+- `kinetic_type` já possui cascade de palavras;
+- valores numéricos em `giant_number` e outros tratamentos compatíveis podem evoluir durante o beat, então não duplique o mesmo número em vários elementos sem necessidade.
 
 O `anchor` continua sendo um trecho literal e único da narração. O TTS injeta um bookmark SSML nesse ponto e o render usa o timestamp devolvido pelo Azure, portanto a microcena deve entrar quando a fala realmente chega naquela informação, e não por uma estimativa proporcional do texto.
 
@@ -216,7 +225,7 @@ Cada beat deve conter:
 - `from` e `to`: somente para `flow`;
 - `sound`: none, tick, impact, whoosh ou alert. Use som apenas nos beats mais importantes, não em todos.
 
-O `anchor` é operacional: o pipeline procura esse trecho na narração e posiciona a microcena aproximadamente no momento em que Roberto ou Luana começa a dizê-lo. Por isso não parafraseie o anchor e não use texto que não exista literalmente na narração.
+O `anchor` é operacional: o pipeline injeta um bookmark SSML exatamente antes desse trecho e usa o timestamp devolvido pelo Azure. Por isso não parafraseie o anchor e não use texto que não exista literalmente e uma única vez na narração.
 
 O visual principal da cena continua dando contexto, mas os beats trocam o foco visual conforme a informação muda. Evite deixar o mesmo card ou a mesma pergunta dominando 20 ou 30 segundos enquanto a narração já mudou de assunto.
 
