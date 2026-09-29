@@ -15,6 +15,7 @@ from tts_config import (
     DEFAULT_TTS_RATE,
     DEFAULT_TTS_VOICE,
     GLOBAL_PRONUNCIATIONS,
+    GLOBAL_SPELLED_TERMS,
     PRESENTER_VOICES,
 )
 
@@ -64,7 +65,7 @@ def render_pronunciations(text: str, tts: dict) -> str:
     if not pronunciations:
         return escape(text)
 
-    terms = sorted(pronunciations, key=len, reverse=True)
+    terms = sorted(set(pronunciations) | set(GLOBAL_SPELLED_TERMS), key=len, reverse=True)
     pattern = re.compile(
         r"(?<!\w)(" + "|".join(re.escape(term) for term in terms) + r")(?!\w)",
         re.IGNORECASE,
@@ -75,9 +76,17 @@ def render_pronunciations(text: str, tts: dict) -> str:
     for match in pattern.finditer(text):
         parts.append(escape(text[last:match.start()]))
         spoken = pronunciations.get(match.group(0).lower(), match.group(0))
-        parts.append(
-            f"<sub alias={quoteattr(spoken)}>{escape(match.group(0))}</sub>"
-        )
+        # A pipe explicitly separates letters in any editorial pronunciation.
+        # Known initialisms also override older aliases with only spaces.
+        letters = tuple(part.strip() for part in spoken.split("|")) if "|" in spoken else GLOBAL_SPELLED_TERMS.get(match.group(0).lower())
+        if letters:
+            if any(not letter for letter in letters):
+                raise RuntimeError("Pronúncia soletrada contém letra vazia.")
+            parts.append('<break time="75ms"/>'.join(
+                f"<sub alias={quoteattr(letter)}>{escape(letter)}</sub>" for letter in letters
+            ))
+        else:
+            parts.append(f"<sub alias={quoteattr(spoken)}>{escape(match.group(0))}</sub>")
         last = match.end()
 
     parts.append(escape(text[last:]))
@@ -135,11 +144,11 @@ def restore_bookmarks(rendered: str, bookmark_metadata: dict[str, dict]) -> str:
 
 # Editorial direction uses standard prosody, without voice-specific acting styles.
 DELIVERY = {
-    "hook": (3, 1, 140), "explain": (0, 0, 130),
-    "contrast": (-1, 0, 190), "question": (-1, 1, 220),
-    "closing": (-2, -1, 180),
+    "hook": (1, 1, 0), "explain": (0, 0, 0),
+    "contrast": (0, 0, 0), "question": (0, 1, 0),
+    "closing": (0, -1, 0),
 }
-CUE_DELIVERY = {"emphasis": (-3, 1), "number": (-5, 0), "contrast": (-2, 1)}
+CUE_DELIVERY = {"emphasis": (-1, 1), "number": (-2, 0), "contrast": (0, 1)}
 
 
 def build_ssml(
@@ -154,7 +163,8 @@ def build_ssml(
     dr, dp, default_pause = DELIVERY[delivery]
     base_rate = percent_value(tts.get("rate", DEFAULT_TTS_RATE)) + dr
     base_pitch = percent_value(tts.get("pitch", DEFAULT_TTS_PITCH)) + dp
-    pause_ms = max(90, min(300, int(tts.get("pause_ms", default_pause))))
+    pause_ms = max(0, min(250, int(tts.get("sentence_gap_ms", default_pause))))
+    # Legacy pause_ms added silence on top of natural punctuation; no longer applied.
     # Validate anchors using the same literal contract, but emit XML events at
     # original text offsets. Tokens adjacent to a word can break pronunciation.
     _, metadata = inject_bookmark_tokens(text, beats or [])
@@ -190,7 +200,7 @@ def build_ssml(
         raise RuntimeError("Direções de voz não podem se sobrepor.")
 
     boundaries = set(marks) | {n for a, b, _, _ in cues for n in (a, b)}
-    pronunciations = {**GLOBAL_PRONUNCIATIONS, **(tts.get("pronunciations") or {})}
+    pronunciations = {**GLOBAL_PRONUNCIATIONS, **GLOBAL_SPELLED_TERMS, **(tts.get("pronunciations") or {})}
     for term in pronunciations:
         if not term:
             continue
@@ -200,13 +210,13 @@ def build_ssml(
 
     def prosody(rate: int, pitch: int) -> str:
         # Limits preserve the presenter's identity and keep data understandable.
-        return f'<prosody rate="{percent_text(max(-10, min(6, rate)))}" pitch="{percent_text(max(-3, min(3, pitch)))}">'
+        return f'<prosody rate="{percent_text(max(-6, min(6, rate)))}" pitch="{percent_text(max(-3, min(3, pitch)))}">'
 
     rendered = []
     for index, (start, end, sentence) in enumerate(sentences):
         question = sentence.endswith("?")
-        # Extra clarity for numeric sentences, even with an older script.
-        rate = base_rate - (2 if re.search(r"\d", sentence) else 0) - (1 if question else 0)
+        # A number slows only its explicit cue, never the entire sentence.
+        rate = base_rate
         pitch = base_pitch + (1 if question else 0)
         local_cues = [cue for cue in cues if start <= cue[0] < end]
         points = sorted({start, end} | {n for n in boundaries if start <= n <= end})
@@ -216,7 +226,9 @@ def build_ssml(
             beginning = next((c for c in local_cues if c[0] == point), None)
             if ending:
                 chunks.append("</prosody>")
+                chunks.append(prosody(rate, pitch))
             if beginning:
+                chunks.append("</prosody>")
                 # Pause before bookmark: the visual event must follow the pause.
                 if beginning[3]:
                     chunks.append(f'<break time="{beginning[3]}ms"/>')
@@ -231,7 +243,7 @@ def build_ssml(
         if index < len(sentences) - 1:
             next_cue = next((c for c in cues if c[0] == sentences[index+1][0]), None)
             # Avoid stacking a sentence break with an explicit cue pause.
-            gap = max(0, min(300, pause_ms + (50 if question else 0)) - (next_cue[3] if next_cue else 0))
+            gap = max(0, pause_ms - (next_cue[3] if next_cue else 0))
             if gap:
                 rendered.append(f'<break time="{gap}ms"/>')
     body = "\n      ".join(rendered)
@@ -349,7 +361,7 @@ def main() -> None:
         "pitch": DEFAULT_TTS_PITCH,
         "output_format": "audio-48khz-192kbitrate-mono-mp3",
         "timing_mode": "azure-ssml-bookmarks",
-        "delivery_version": "editorial-v2",
+        "delivery_version": "editorial-v3-conversational",
         "project_pronunciations": project_pronunciations,
         "scenes": [],
         "total_duration_seconds": 0.0,

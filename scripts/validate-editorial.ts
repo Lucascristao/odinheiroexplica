@@ -9,6 +9,16 @@ const project = JSON.parse(readFileSync(path, "utf8"));
 const scenes = project.scenes ?? project.script?.scenes ?? [];
 const assets = new Set((project.visual_assets ?? []).map((a: {id: string}) => a.id));
 const beatSchema = z.object({...stageEventFields, headline: z.string().min(1), anchor: z.string().min(1), detail: z.string().optional(), value: z.string().optional()}).passthrough();
+// Report what will actually be on stage, not merely assets registered in JSON.
+const imageScenes = scenes.filter((scene: any) => {
+  const visual = scene.visual ?? {};
+  return (visual.stage?.elements ?? []).some((e: any) =>
+    ["photo", "source_excerpt"].includes(e.kind) && assets.has(e.asset_id) &&
+    (e.initially_visible !== false || (visual.beats ?? []).some((b: any) =>
+      (b.action === "reveal" && b.target_id === e.id) || (b.reveal_ids ?? []).includes(e.id))));
+}).length;
+console.log(`Cobertura visual: ${imageScenes}/${scenes.length} cenas com foto ou recorte utilizável.`);
+if (scenes.length >= 4 && imageScenes === 0) console.warn("::warning::Plano sem fotos/recortes: o motor renderizará somente texto, ícones e objetos. Selecione imagens durante a pesquisa e vincule-as ao palco; URLs de fontes não viram imagens automaticamente.");
 let failures = 0;
 const sourceIds=new Set((project.sources??[]).map((s:{id:string})=>s.id));
 for(const raw of project.visual_assets??[]){

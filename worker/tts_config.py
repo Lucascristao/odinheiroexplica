@@ -1,5 +1,5 @@
 DEFAULT_TTS_VOICE = "pt-BR-MacerioMultilingualNeural"
-DEFAULT_TTS_RATE = "-2%"
+DEFAULT_TTS_RATE = "0%"
 DEFAULT_TTS_PITCH = "0%"
 
 # Vozes escolhidas para os dois apresentadores fixos do canal.
@@ -21,4 +21,10 @@ DEFAULT_PRESENTER = "male"
 GLOBAL_PRONUNCIATIONS = {
     "bet": "béte",
     "bets": "bétes",
+}
+
+# Siglas soletradas precisam de fronteiras acústicas, não apenas espaços.
+GLOBAL_SPELLED_TERMS = {
+    "ibs": ("i", "bê", "ésse"),
+    "cbs": ("cê", "bê", "ésse"),
 }
