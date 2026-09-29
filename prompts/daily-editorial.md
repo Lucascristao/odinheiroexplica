@@ -9,7 +9,7 @@ Pesquise profundamente acontecimentos recentes ligados a dinheiro, empresas, eco
 
 Não escolha simplesmente a notícia mais importante. Escolha a história com melhor combinação de novidade, impacto, surpresa, curiosidade, dimensão econômica, reconhecimento, narrativa, potencial visual, qualidade das fontes e potencial evergreen.
 
-Priorize fontes primárias. Confirme afirmações relevantes em fontes adicionais quando necessário. Não faça recomendação individual de compra ou venda de investimentos.
+Use fontes primárias para confirmar documentos, regras, números e posições institucionais, mas não deixe que elas definam sozinhas o enquadramento da história. Em pautas econômicas, regulatórias ou de interesse público, siga obrigatoriamente `docs/source-neutrality.md`, buscando fontes independentes de linhas editoriais diferentes, análise técnica quando houver e contrapontos sustentados por evidência. Não faça recomendação individual de compra ou venda de investimentos.
 
 Escolha um único assunto forte.
 
