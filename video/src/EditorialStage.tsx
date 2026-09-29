@@ -106,47 +106,202 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
       {elements.slice().sort((a,b)=>Number(Boolean(a.overlay_on))-Number(Boolean(b.overlay_on))).map(element => {
         const box = rect(element);
         const isExcerpt = element.kind === "source_excerpt";
-        const padding = isExcerpt ? 0 : 16;
         const selected = active?.target_id === element.id && active.action !== "retire";
         const reveal = interpolate(frame - element.changedAt, [0, element.visibilityDuration], [0, 1], clamp);
         const opacity = (element.visible ? reveal : element.wasVisible ? 1-reveal : 0) * (takeover && !selected ? 0.15 : 1);
         if (opacity === 0) return null;
-        const cueProgress=interpolate(frame-element.cueFrame,[0,element.cueDuration],[0,1],clamp);
-        const color = selected && active?.prominence !== "support" ? accent : WHITE;
-        const iconSize = element.icon ? Math.min(140, Math.max(68, box.h * 0.42)) : 0;
-        const stacked = element.kind === "step";
-        const iconSpace = element.icon ? iconSize + 18 : 0;
-        const innerW = box.w - padding*2 - (stacked ? 0 : iconSpace);
-        const innerH = box.h - padding*2 - (stacked ? iconSpace : 0);
-        const valueH = element.value ? innerH * (element.value_size>100 ? 0.72 : 0.4) : 0;
-        const detailH = element.detail ? innerH * (element.value ? (element.value_size>100 ? 0.12 : 0.3) : 0.45) : 0;
-        const labelH = innerH - valueH - detailH;
+
+        const isWideBanner = !isExcerpt && (element.width >= 50 && element.height <= 26);
+        const stacked = element.kind === "step" && !isWideBanner;
         const isCard = !isExcerpt && !["photo", "chart", "label"].includes(element.kind);
+
         const cardBg = isCard
-          ? (selected ? "linear-gradient(145deg, rgba(32, 38, 48, 0.95) 0%, rgba(18, 22, 28, 0.98) 100%)" : "linear-gradient(145deg, rgba(22, 27, 34, 0.85) 0%, rgba(13, 16, 21, 0.92) 100%)")
+          ? (selected ? "linear-gradient(145deg, rgba(30, 36, 46, 0.96) 0%, rgba(16, 20, 26, 0.98) 100%)" : "linear-gradient(145deg, rgba(20, 25, 32, 0.88) 0%, rgba(12, 15, 20, 0.94) 100%)")
           : (element.overlay_on ? "rgba(12,16,20,0.88)" : undefined);
         const cardBorder = isCard
-          ? (selected ? "2px solid #FFBD19" : "1px solid rgba(255, 255, 255, 0.12)")
+          ? (selected ? "2px solid #FFBD19" : "1px solid rgba(255, 255, 255, 0.10)")
           : undefined;
         const cardShadow = isCard
-          ? (selected ? "0 22px 50px rgba(255, 189, 25, 0.22), 0 8px 24px rgba(0,0,0,0.8)" : "0 14px 34px rgba(0, 0, 0, 0.65)")
+          ? (selected ? "0 20px 45px rgba(255, 189, 25, 0.25), 0 8px 24px rgba(0,0,0,0.8)" : "0 12px 30px rgba(0, 0, 0, 0.6)")
           : undefined;
-        const cardRadius = isCard ? 18 : (element.overlay_on ? 12 : undefined);
-        const cardPadding = isExcerpt ? 0 : isCard ? 22 : padding;
 
-        return <div key={element.id} data-element-id={element.id} style={{position: "absolute", left: box.x, top: box.y, width: box.w, height: box.h, padding: cardPadding, opacity, zIndex: element.overlay_on ? 2 : 1, background: cardBg, border: cardBorder, boxShadow: cardShadow, borderRadius: cardRadius, transform: isExcerpt ? `translateY(${element.visible ? (1-reveal)*16 : 0}px) scale(${element.visible ? 0.96 + 0.04*reveal : 0.96})` : `translateY(${element.visible ? (1-reveal)*16 : 0}px) scale(${element.visible ? 0.94 + 0.06*reveal : 0.94})`, boxSizing: "border-box", display: "flex", flexDirection: stacked ? "column" : "row", alignItems: stacked ? "flex-start" : "center", justifyContent: "center", gap: element.icon ? 22 : 0}}>
-          {element.kind === "source_excerpt" ? <SourceExcerpt element={element} view={element.view} markIds={element.markIds} markProgress={Object.fromEntries(Object.entries(element.markTiming).map(([id,t])=>[id,interpolate(frame-t.frame,[0,t.duration],[0,1],clamp)]))} /> : element.kind === "chart" && element.chart ? <EditorialChart chart={element.chart} title={element.label} width={box.w-32} height={box.h-32} focus={element.chartFocus} progress={cueProgress} /> : element.kind === "object" && element.object_type ? <div style={{width: "100%", height: "100%", display: "flex", flexDirection: "column"}}><div style={{flex: 1, minHeight: 0}}><EditorialObject type={element.object_type} accent={accent} progress={reveal} /></div><TextBox text={element.label} width={box.w-32} height={90} maxSize={42} /></div> : element.kind === "photo" ? <div style={{width: "100%", height: "100%", padding: element.photo_style === "paper" ? 14 : 0, overflow: "hidden", background: element.photo_style === "paper" ? "#eee8dc" : "transparent", clipPath: element.photo_style === "paper" ? "polygon(1% 2%, 18% 0, 35% 2%, 51% 0, 72% 2%, 99% 0, 98% 23%, 100% 47%, 98% 71%, 100% 99%, 77% 97%, 52% 100%, 29% 98%, 0 100%, 2% 73%, 0 48%)" : undefined}}>
-            {element.asset_file ? <Img src={staticFile(element.asset_file)} style={{height: "100%", width: "100%", objectFit: element.image_fit, objectPosition: `${element.focal_x}% ${element.focal_y}%`, transform: element.image_motion === "push" ? `scale(${1 + Math.min(1, Math.max(0, frame-element.changedAt)/(fps*8))*0.06})` : element.image_motion === "pan" ? `scale(1.06) translateX(${interpolate(frame-element.changedAt, [0, fps*8], [-2, 2], clamp)}%)` : undefined}} /> : <div style={{color: "#252a30", fontSize: 32}}>Foto: {element.label}</div>}
-          </div> : <>
-            {element.icon && <EditorialIcon name={element.icon} size={iconSize} color={color} progress={selected ? focus : reveal} />}
-            <div style={{width: innerW, flexShrink: 0}}>
-            {element.value && <TextBox text={element.value} width={innerW} height={valueH} maxSize={element.value_size} color={color} />}
-            <TextBox text={element.label} width={innerW} height={labelH} maxSize={element.label_size ?? (element.kind === "step" ? 38 : 46)} color={color} emphasis={element.emphasis} progress={interpolate(frame-element.emphasisTiming.frame,[0,element.emphasisTiming.duration],[0,1],clamp)} />
-            {element.detail && <TextBox text={element.detail} width={innerW} height={detailH} maxSize={34} color={MUTED} />}
-            </div>
-          </>}
-          {selected && !["photo","source_excerpt","chart"].includes(element.kind) && <div style={{position: "absolute", left: padding, bottom: 3, width: (box.w-padding*2)*focus, height: active?.prominence === "support" ? 2 : 4, background: accent}} />}
-        </div>;
+        const cardPadding = isExcerpt ? 0 : isCard ? 24 : 16;
+        const iconSize = element.icon ? (isWideBanner ? 48 : Math.min(130, Math.max(68, box.h * 0.38))) : 0;
+        const iconSpace = element.icon ? iconSize + 20 : 0;
+
+        // Cálculos de largura e altura internas com padding respeitado
+        const innerW = Math.max(40, box.w - cardPadding * 2 - (stacked ? 0 : iconSpace));
+        const innerH = Math.max(40, box.h - cardPadding * 2 - (stacked ? iconSpace : 0));
+
+        const valueH = element.value ? innerH * (isWideBanner ? 0.45 : (element.value_size > 100 ? 0.65 : 0.42)) : 0;
+        const detailH = element.detail ? innerH * (element.value ? (element.value_size > 100 ? 0.14 : 0.28) : 0.4) : 0;
+        const labelH = Math.max(20, innerH - valueH - detailH);
+
+        const cueProgress = interpolate(frame - element.cueFrame, [0, element.cueDuration], [0, 1], clamp);
+        const color = selected && active?.prominence !== "support" ? accent : WHITE;
+
+        // Movimento orgânico contínuo (Anti-Slide): flutuação senoidal suave em cada card
+        const timeSince = Math.max(0, frame - element.changedAt);
+        const floatY = isExcerpt ? 0 : Math.sin((timeSince + element.x * 2) / 14) * 3.5;
+        const scalePop = isExcerpt ? (element.visible ? 0.96 + 0.04 * reveal : 0.96) : (element.visible ? 0.94 + 0.06 * reveal : 0.94);
+        const translateY = isExcerpt ? (element.visible ? (1 - reveal) * 16 : 0) : ((element.visible ? (1 - reveal) * 16 : 0) + floatY);
+
+        return (
+          <div
+            key={element.id}
+            data-element-id={element.id}
+            style={{
+              position: "absolute",
+              left: box.x,
+              top: box.y,
+              width: box.w,
+              height: box.h,
+              padding: cardPadding,
+              opacity,
+              zIndex: element.overlay_on ? 2 : 1,
+              background: cardBg,
+              border: cardBorder,
+              boxShadow: cardShadow,
+              borderRadius: isCard ? 18 : (element.overlay_on ? 12 : undefined),
+              transform: `translateY(${translateY}px) scale(${scalePop})`,
+              boxSizing: "border-box",
+              display: "flex",
+              flexDirection: isWideBanner ? "row" : stacked ? "column" : "row",
+              alignItems: isWideBanner ? "center" : stacked ? "flex-start" : "center",
+              justifyContent: isWideBanner ? "flex-start" : "center",
+              gap: element.icon ? 20 : 0,
+            }}
+          >
+            {element.kind === "source_excerpt" ? (
+              <SourceExcerpt
+                element={element}
+                view={element.view}
+                markIds={element.markIds}
+                markProgress={Object.fromEntries(
+                  Object.entries(element.markTiming).map(([id, t]) => [
+                    id,
+                    interpolate(frame - t.frame, [0, t.duration], [0, 1], clamp),
+                  ])
+                )}
+              />
+            ) : element.kind === "chart" && element.chart ? (
+              <EditorialChart
+                chart={element.chart}
+                title={element.label}
+                width={box.w - 32}
+                height={box.h - 32}
+                focus={element.chartFocus}
+                progress={cueProgress}
+              />
+            ) : element.kind === "object" && element.object_type ? (
+              <div style={{width: "100%", height: "100%", display: "flex", flexDirection: "column"}}>
+                <div style={{flex: 1, minHeight: 0}}>
+                  <EditorialObject type={element.object_type} accent={accent} progress={reveal} />
+                </div>
+                <TextBox text={element.label} width={box.w - 32} height={90} maxSize={42} />
+              </div>
+            ) : element.kind === "photo" ? (
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  padding: element.photo_style === "paper" ? 14 : 0,
+                  overflow: "hidden",
+                  background: element.photo_style === "paper" ? "#eee8dc" : "transparent",
+                  clipPath: element.photo_style === "paper" ? "polygon(1% 2%, 18% 0, 35% 2%, 51% 0, 72% 2%, 99% 0, 98% 23%, 100% 47%, 98% 71%, 100% 99%, 77% 97%, 52% 100%, 29% 98%, 0 100%, 2% 73%, 0 48%)" : undefined,
+                }}
+              >
+                {element.asset_file ? (
+                  <Img
+                    src={staticFile(element.asset_file)}
+                    style={{
+                      height: "100%",
+                      width: "100%",
+                      objectFit: element.image_fit,
+                      objectPosition: `${element.focal_x}% ${element.focal_y}%`,
+                      transform: element.image_motion === "push" ? `scale(${1 + Math.min(1, Math.max(0, frame - element.changedAt) / (fps * 8)) * 0.06})` : undefined,
+                    }}
+                  />
+                ) : (
+                  <div style={{color: "#252a30", fontSize: 32}}>Foto: {element.label}</div>
+                )}
+              </div>
+            ) : (
+              <>
+                {element.icon && (
+                  <div
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      width: iconSize + 12,
+                      height: iconSize + 12,
+                      borderRadius: "50%",
+                      background: selected ? "rgba(255, 189, 25, 0.16)" : "rgba(255, 255, 255, 0.05)",
+                      boxShadow: selected ? "0 0 20px rgba(255, 189, 25, 0.35)" : undefined,
+                      flexShrink: 0,
+                      transform: `scale(${selected ? 1.05 : 1.0})`,
+                      transition: "transform 0.2s ease",
+                    }}
+                  >
+                    <EditorialIcon name={element.icon} size={iconSize} color={color} progress={selected ? focus : reveal} />
+                  </div>
+                )}
+                <div style={{width: innerW, flexShrink: 0, display: "flex", flexDirection: "column", justifyContent: "center"}}>
+                  {element.value && (
+                    <div style={{marginBottom: 4}}>
+                      <TextBox
+                        text={element.value}
+                        width={innerW}
+                        height={valueH}
+                        maxSize={element.value_size ?? 52}
+                        color={GOLD}
+                      />
+                    </div>
+                  )}
+                  <TextBox
+                    text={element.label}
+                    width={innerW}
+                    height={labelH}
+                    maxSize={element.label_size ?? (element.kind === "step" ? 38 : 46)}
+                    color={WHITE}
+                    emphasis={element.emphasis}
+                    progress={interpolate(
+                      frame - element.emphasisTiming.frame,
+                      [0, element.emphasisTiming.duration],
+                      [0, 1],
+                      clamp
+                    )}
+                  />
+                  {element.detail && (
+                    <div style={{marginTop: 6}}>
+                      <TextBox
+                        text={element.detail}
+                        width={innerW}
+                        height={detailH}
+                        maxSize={30}
+                        color={MUTED}
+                      />
+                    </div>
+                  )}
+                </div>
+              </>
+            )}
+            {selected && !["photo", "source_excerpt", "chart"].includes(element.kind) && (
+              <div
+                style={{
+                  position: "absolute",
+                  left: cardPadding,
+                  bottom: 3,
+                  width: (box.w - cardPadding * 2) * focus,
+                  height: active?.prominence === "support" ? 2 : 4,
+                  background: accent,
+                  borderRadius: 2,
+                }}
+              />
+            )}
+          </div>
+        );
       })}
     </div>
   </AbsoluteFill>;

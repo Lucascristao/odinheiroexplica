@@ -1,2 +1,2 @@
-Split Payment — V3: Blindagem total do motor de layout (TextBox auto-fit sem estouro), Cena 6 arejada com cards visiveis desde frame 0, Cena 7 com cards 3D e icones ampliados, e escurecimento de 10s no final.
-Trigger: 2026-09-29T19:01:35.075Z
+Split Payment — V4 Final: Recortes com texto real oficial (anti-papel branco), movimento continuo em SVGs e textos (nada estatico como slide), banners largos horizontais sem espremer e espacamento generoso.
+Trigger: 2026-09-29T20:17:05.405Z

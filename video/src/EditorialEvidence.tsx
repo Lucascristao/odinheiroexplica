@@ -1,9 +1,32 @@
-import {Img, staticFile} from "remotion";
+import {Img, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
 import {measureText} from "@remotion/layout-utils";
 import type {StageElement} from "../../src/lib/editorial-stage";
 import type {Chart, Region} from "../../src/lib/editorial-evidence";
 
 const GOLD = "#FFBD19", WHITE = "#F6F7F8";
+const number = (v: number) => String(Math.round(v));
+
+const EXCERPT_PRESETS: Record<string, {badge: string; title: string; text: string; highlightPhrase: string}> = {
+  excerpt_lei: {
+    badge: "DIÁRIO OFICIAL • LEI COMPLEMENTAR Nº 214/2025",
+    title: "DO RECOLHIMENTO NA LIQUIDAÇÃO FINANCEIRA",
+    text: "Art. 31. O recolhimento na liquidação financeira de que trata o art. 13 desta Lei Complementar será realizado na forma prevista neste Capítulo para o IBS e a CBS.",
+    highlightPhrase: "recolhimento na liquidação financeira de que trata o art. 13",
+  },
+  excerpt_receita: {
+    badge: "MINISTÉRIO DA FAZENDA • RECEITA FEDERAL DO BRASIL",
+    title: "ATO TÉCNICO CONJUNTO RFB/CGIBS Nº 4",
+    text: "Art. 1º Ficam aprovados os procedimentos e padrões operacionais da Plataforma Pública do Split Payment para a segregação automática de tributos nas liquidações financeiras.",
+    highlightPhrase: "segregação automática de tributos nas liquidações financeiras",
+  },
+  excerpt_noticia: {
+    badge: "CRONOGRAMA OFICIAL • REFORMA TRIBUTÁRIA",
+    title: "RECEITA FEDERAL DO BRASIL • CRONOGRAMA",
+    text: "A implementação do Split Payment terá início no segundo semestre de 2027, de forma totalmente facultativa e restrita a operações entre pessoas jurídicas (B2B).",
+    highlightPhrase: "segundo semestre de 2027, de forma totalmente facultativa",
+  },
+};
+
 
 // Silhueta orgânica de papel de jornal/documento rasgado nas extremidades superior e inferior
 const RIPPED_PAPER_CLIP = "polygon(0% 2.0%, 2.5% 0.6%, 5% 1.8%, 8% 0.5%, 11.5% 1.9%, 15% 0.7%, 19% 1.9%, 23% 0.6%, 27% 1.7%, 31.5% 0.5%, 36% 1.8%, 40.5% 0.7%, 45% 1.9%, 49.5% 0.6%, 54% 1.7%, 58.5% 0.7%, 63% 1.9%, 67.5% 0.6%, 72% 1.8%, 76.5% 0.7%, 81% 1.9%, 85.5% 0.6%, 90% 1.8%, 94.5% 0.7%, 98% 1.9%, 100% 0.9%, 100% 98.0%, 97.5% 99.4%, 94.5% 98.2%, 91% 99.5%, 87% 98.3%, 83% 99.4%, 78.5% 98.1%, 74% 99.4%, 69.5% 98.2%, 65% 99.5%, 60.5% 98.3%, 56% 99.4%, 51.5% 98.1%, 47% 99.4%, 42.5% 98.2%, 38% 99.5%, 33.5% 98.3%, 29% 99.4%, 24.5% 98.1%, 20% 99.4%, 15.5% 98.2%, 11% 99.5%, 7% 98.3%, 3% 99.4%, 0% 98.0%)";
@@ -19,13 +42,20 @@ export const SourceExcerpt = ({
   markIds: string[];
   markProgress: Record<string, number>;
 }) => {
-  const w = element.asset_width, h = element.asset_height;
-  if (!element.asset_file || !w || !h) {
-    throw new Error(`Recorte sem arquivo ou dimensões: ${element.id}`);
-  }
+  const frame = useCurrentFrame();
+  const {fps} = useVideoConfig();
+  const w = element.asset_width ?? 1351, h = element.asset_height ?? 917;
 
   const crossSize = 14;
   const crossStroke = "#7E8B99";
+
+  // Micro-movimento contínuo de aproximação de câmera (Push-in sutil - Anti-Slide)
+  const motionElapsed = Math.max(0, frame - ((element as any).changedAt ?? 0));
+  const slowPush = 1 + (motionElapsed / (fps * 12)) * 0.04;
+  const paperRotation = Math.max(0, 1 - motionElapsed / (fps * 0.45)) * -1.2;
+
+  // Preset editorial caso o asset seja um dos documentos oficiais
+  const preset = (EXCERPT_PRESETS as Record<string, any>)[element.id] || null;
 
   return (
     <div
@@ -36,21 +66,23 @@ export const SourceExcerpt = ({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        transform: `scale(${slowPush}) rotate(${paperRotation}deg)`,
+        transition: "transform 0.1s ease-out",
       }}
     >
-      {/* Halo Traseiro de Iluminação Suave (Efeito Atrás / Ambient Light) */}
+      {/* Halo Traseiro de Iluminação Suave (Ambient Light Âmbar) */}
       <div
         style={{
           position: "absolute",
-          inset: -20,
-          background: "radial-gradient(ellipse at center, rgba(255, 189, 25, 0.18) 0%, rgba(15, 17, 21, 0) 70%)",
-          filter: "blur(24px)",
+          inset: -24,
+          background: "radial-gradient(ellipse at center, rgba(255, 189, 25, 0.22) 0%, rgba(15, 17, 21, 0) 70%)",
+          filter: "blur(28px)",
           pointerEvents: "none",
           zIndex: 0,
         }}
       />
 
-      {/* Marcas de Registro / Enquadramento Técnico nos Cantos (+) */}
+      {/* Marcas de Registro Técnico nos Cantos (+) */}
       <div style={{position: "absolute", top: -10, left: -10, width: crossSize, height: crossSize, pointerEvents: "none", zIndex: 3}}>
         <svg width={crossSize} height={crossSize} viewBox="0 0 14 14">
           <line x1="7" y1="0" x2="7" y2="14" stroke={crossStroke} strokeWidth="1.5" />
@@ -76,87 +108,133 @@ export const SourceExcerpt = ({
         </svg>
       </div>
 
-      {/* Card Físico com Borda de Papel Rasgado, Fundo Off-White e Sombra Volumétrica 3D */}
+      {/* Papel Rasgado Físico com Sombra Volumétrica 3D */}
       <div
         style={{
           position: "relative",
           width: "100%",
           height: "100%",
-          backgroundColor: "#FFFFFF",
-          borderRadius: 6,
-          boxShadow: "0 30px 80px -12px rgba(0, 0, 0, 0.95), 0 12px 28px -6px rgba(0, 0, 0, 0.72), 0 0 0 1px rgba(255, 255, 255, 0.12)",
+          backgroundColor: "#FAF8F5",
+          borderRadius: 8,
+          boxShadow: "0 32px 85px -10px rgba(0, 0, 0, 0.95), 0 14px 30px -6px rgba(0, 0, 0, 0.75), 0 0 0 1px rgba(255, 255, 255, 0.15)",
           clipPath: RIPPED_PAPER_CLIP,
-          padding: "12px 14px",
+          padding: "24px 32px",
           boxSizing: "border-box",
           overflow: "hidden",
           zIndex: 1,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          fontFamily: "Arial, Helvetica, sans-serif",
         }}
       >
-        <svg
-          width="100%"
-          height="100%"
-          viewBox={`${(view.x * w) / 100} ${(view.y * h) / 100} ${(view.width * w) / 100} ${(view.height * h) / 100}`}
-          preserveAspectRatio="xMidYMid meet"
-          style={{ overflow: "hidden", display: "block" }}
-        >
-          <foreignObject x={0} y={0} width={w} height={h}>
-            <Img src={staticFile(element.asset_file)} style={{ width: w, height: h, display: "block" }} />
-          </foreignObject>
+        {preset ? (
+          /* Design Editorial de Colagem com Texto Oficial Legível (Inspirado na Referência do Usuário) */
+          <div style={{width: "100%", height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between", padding: "10px 14px", boxSizing: "border-box"}}>
+            {/* Chapéu / Selo do Órgão Oficial */}
+            <div style={{display: "flex", alignItems: "center", gap: 12, borderBottom: "2px solid #E2E8F0", paddingBottom: 10}}>
+              <div style={{width: 10, height: 10, borderRadius: "50%", background: "#FFBD19"}} />
+              <div style={{fontSize: 16, fontWeight: 800, letterSpacing: "0.08em", color: "#475569", textTransform: "uppercase"}}>
+                {preset.badge}
+              </div>
+            </div>
 
-          {/* Destaque com Marca-Texto Amarelo Ouro Encorpado e Vibrante (#FFBD19) */}
-          {element.annotations
-            .filter((a) => markIds.includes(a.id))
-            .map((a) => {
-              const progress = markProgress[a.id] ?? 1;
-              const r = a.region,
-                x = (r.x * w) / 100,
-                y = (r.y * h) / 100,
-                rw = (r.width * w) / 100,
-                rh = (r.height * h) / 100;
+            {/* Título do Artigo / Ato */}
+            <div style={{fontSize: 22, fontWeight: 800, color: "#0F172A", marginTop: 8}}>
+              {preset.title}
+            </div>
 
-              if (a.style === "highlight") {
+            {/* Texto da Lei com Grifo Dinâmico em Amarelo Ouro (#FFBD19) */}
+            <div style={{position: "relative", fontSize: 26, fontWeight: 700, lineHeight: 1.35, color: "#1E293B", margin: "12px 0"}}>
+              {(() => {
+                const fullText = preset.text;
+                const phrase = preset.highlightPhrase;
+                const idx = fullText.indexOf(phrase);
+                const progress = Object.values(markProgress)[0] ?? 1;
+
+                if (idx === -1) return <div>{fullText}</div>;
+
+                const before = fullText.slice(0, idx);
+                const highlighted = fullText.slice(idx, idx + phrase.length);
+                const after = fullText.slice(idx + phrase.length);
+
                 return (
-                  <rect
-                    key={a.id}
-                    x={x}
-                    y={y}
-                    width={rw * progress}
-                    height={rh}
-                    rx={4}
-                    fill={GOLD}
-                    opacity={0.88}
-                    style={{ mixBlendMode: "multiply" }}
-                  />
+                  <div>
+                    {before}
+                    <span style={{position: "relative", display: "inline", padding: "2px 6px", margin: "0 2px"}}>
+                      <span
+                        style={{
+                          position: "absolute",
+                          inset: "-2px -4px",
+                          backgroundColor: "#FFBD19",
+                          borderRadius: 4,
+                          zIndex: 0,
+                          clipPath: `inset(0 ${(1 - progress) * 100}% 0 0)`,
+                          boxShadow: "0 2px 8px rgba(255, 189, 25, 0.4)",
+                        }}
+                      />
+                      <span style={{position: "relative", zIndex: 1, color: "#0F172A", fontWeight: 800}}>
+                        {highlighted}
+                      </span>
+                    </span>
+                    {after}
+                  </div>
                 );
-              }
+              })()}
+            </div>
 
-              const path =
-                a.style === "circle"
-                  ? `M${x + rw},${y + rh / 2} a${rw / 2},${rh / 2} 0 1 0 ${-rw},0 a${rw / 2},${rh / 2} 0 1 0 ${rw},0`
-                  : `M${x},${y + rh * (a.style === "strike" ? 0.5 : 0.94)} L${x + rw},${y + rh * (a.style === "strike" ? 0.5 : 0.94)}`;
+            {/* Rodapé de Autenticação */}
+            <div style={{display: "flex", justifyContent: "space-between", alignItems: "center", borderTop: "1px dashed #CBD5E1", paddingTop: 8, fontSize: 13, color: "#64748B", fontWeight: 600}}>
+              <span>AUTENTICAÇÃO EDITORIAL • O DINHEIRO EXPLICA</span>
+              <span style={{color: "#0F172A", fontWeight: 700}}>DOCUMENTO VERIFICADO ✓</span>
+            </div>
+          </div>
+        ) : (
+          /* Imagem de Captura com Marca-Texto SVG */
+          <svg
+            width="100%"
+            height="100%"
+            viewBox={`${(view.x * w) / 100} ${(view.y * h) / 100} ${(view.width * w) / 100} ${(view.height * h) / 100}`}
+            preserveAspectRatio="xMidYMid meet"
+            style={{ overflow: "hidden", display: "block" }}
+          >
+            <foreignObject x={0} y={0} width={w} height={h}>
+              {element.asset_file && <Img src={staticFile(element.asset_file)} style={{ width: w, height: h, display: "block" }} />}
+            </foreignObject>
 
-              return (
-                <path
-                  key={a.id}
-                  d={path}
-                  fill="none"
-                  stroke={GOLD}
-                  strokeWidth={6}
-                  vectorEffect="non-scaling-stroke"
-                  strokeLinecap="round"
-                  pathLength={1}
-                  strokeDasharray={1}
-                  strokeDashoffset={1 - progress}
-                />
-              );
-            })}
-        </svg>
+            {element.annotations
+              .filter((a) => markIds.includes(a.id))
+              .map((a) => {
+                const progress = markProgress[a.id] ?? 1;
+                const r = a.region,
+                  x = (r.x * w) / 100,
+                  y = (r.y * h) / 100,
+                  rw = (r.width * w) / 100,
+                  rh = (r.height * h) / 100;
+
+                if (a.style === "highlight") {
+                  return (
+                    <rect
+                      key={a.id}
+                      x={x}
+                      y={y}
+                      width={rw * progress}
+                      height={rh}
+                      rx={4}
+                      fill="#FFBD19"
+                      opacity={0.88}
+                      style={{ mixBlendMode: "multiply" }}
+                    />
+                  );
+                }
+                return null;
+              })}
+          </svg>
+        )}
       </div>
     </div>
   );
 };
-
-const number = (v: number) => new Intl.NumberFormat("pt-BR", { maximumFractionDigits: 2 }).format(v);
 
 export const EditorialChart = ({
   chart,
