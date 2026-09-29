@@ -1804,7 +1804,7 @@ const SceneComposition = ({
 
   if (scene.visual.stage) {
     return <AbsoluteFill>
-      <EditorialStage stage={scene.visual.stage} beats={beats} title={scene.title} accent={direction.secondary_color ?? GOLD} />
+      <EditorialStage stage={scene.visual.stage} beats={beats} title={scene.title} />
       <SoundDesign scene={scene} isLast={isLast} />
       <Audio src={staticFile(scene.audio_file)} />
     </AbsoluteFill>;
@@ -1842,9 +1842,10 @@ const SceneComposition = ({
 
 export const DailyEditorial = () => {
   const scenes = renderInput.scenes as Scene[];
-  const direction =
-    ((renderInput as unknown as {visual_direction?: EditorialDirection})
-      .visual_direction ?? {}) as EditorialDirection;
+  const direction: EditorialDirection = {
+    ...((renderInput as unknown as {visual_direction?: EditorialDirection}).visual_direction ?? {}),
+    secondary_color: GOLD,
+  };
 
   return (
     <AbsoluteFill style={{backgroundColor: BG}}>

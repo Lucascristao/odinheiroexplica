@@ -45,7 +45,8 @@ const TextBox = ({text, width, height, maxSize = 42, minSize = 32, color = WHITE
   return <div style={{fontSize: size, lineHeight: 1.18, fontWeight: 700, color, whiteSpace: "pre", letterSpacing: 0}}>{lines.join("\n")}</div>;
 };
 
-export const EditorialStage = ({stage, beats, title, accent = GOLD}: {stage: Stage; beats: StageEvent[]; title?: string; accent?: string}) => {
+export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: StageEvent[]; title?: string}) => {
+  const accent = GOLD;
   const frame = useCurrentFrame();
   const {fps, width, height} = useVideoConfig();
   const ready = useEditorialFont();

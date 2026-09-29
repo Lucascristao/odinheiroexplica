@@ -215,8 +215,8 @@ const entranceStyle = ({
   }
 };
 
-const worldAccent = (direction?: EditorialDirection) =>
-  direction?.secondary_color ?? "#ff7a1a";
+const worldAccent = (_direction?: EditorialDirection) =>
+  GOLD;
 
 const phase = (progress: number, start: number, end: number) =>
   interpolate(progress, [start, end], [0, 1], clamp);
@@ -1204,7 +1204,6 @@ export const EditorialMicroScene = ({
 export const SceneTransitionAccent = ({
   type,
   sceneIndex,
-  secondaryColor,
 }: {
   type?: EditorialBeat["transition"];
   sceneIndex: number;
@@ -1214,7 +1213,7 @@ export const SceneTransitionAccent = ({
   if (!type || type === "cut" || sceneIndex === 0) return null;
 
   const p = interpolate(frame, [0, 11], [0, 1], clamp);
-  const accent = secondaryColor ?? GOLD;
+  const accent = GOLD;
 
   if (type === "wipe") {
     return (

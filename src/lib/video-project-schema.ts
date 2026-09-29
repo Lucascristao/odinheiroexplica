@@ -153,7 +153,7 @@ const visualDirectionSchema = z
       "network",
       "paper",
     ]),
-    secondary_color: z.string().regex(/^#[0-9a-fA-F]{6}$/).default("#ff7a1a"),
+    secondary_color: z.string().regex(/^#[0-9a-fA-F]{6}$/).default("#FFBD19"),
     motifs: z.array(z.string().min(1)).min(2).max(6),
     motion_language: z.array(z.string().min(1)).min(2).max(6),
     avoid: z.array(z.string().min(1)).min(2).max(8),
@@ -196,7 +196,7 @@ export const videoProjectSchema = z
     visual_direction: visualDirectionSchema.default({
       concept: "Editorial financeiro",
       world: "minimal",
-      secondary_color: "#ff7a1a",
+      secondary_color: "#FFBD19",
       motifs: ["tipografia", "dados"],
       motion_language: ["cut", "reframe"],
       avoid: ["cards repetitivos", "layout fixo"],

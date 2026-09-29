@@ -9,7 +9,7 @@ A capa precisa funcionar primeiro como peça de clique e depois como peça de ma
 ## DNA visual fixo
 
 - base escura em preto/carvão profundo;
-- dourado O Dinheiro Explica como cor de assinatura: #FFBD19;
+- amarelo O Dinheiro Explica como cor de assinatura e destaque: #FFBD19; não trocar pelo verde do Pix ou pela cor de outra marca;
 - branco quente para texto principal: #F6F7F8;
 - vermelho apenas como cor de tensão/alerta quando o assunto justificar;
 - contraste alto e iluminação cinematográfica;
@@ -23,7 +23,7 @@ A capa precisa funcionar primeiro como peça de clique e depois como peça de ma
 
 ## O que deve variar em toda capa
 
-A composição, o enquadramento, o objeto ou personagem central, a direção da luz, a escala do assunto, a cor secundária, a posição do texto, a metáfora visual e o recurso de tensão devem nascer da história atual.
+A composição, o enquadramento, o objeto ou personagem central, a direção da luz, a escala do assunto, a posição do texto, a metáfora visual e o recurso de tensão devem nascer da história atual.
 
 Não repetir automaticamente fórmulas de capas anteriores, como celular à direita + texto à esquerda, seta amarela, card bancário, gráfico, dinheiro flutuando ou rosto recortado.
 

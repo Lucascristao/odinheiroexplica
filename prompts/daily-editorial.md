@@ -134,7 +134,7 @@ Consulte também `docs/editorial-motion-library.md` e `docs/photography-narrativ
 Preencha `visual_direction` com:
 - `concept`: a ideia visual que traduz esta história;
 - `world`: minimal, digital, industrial, documentary, market, network ou paper;
-- `secondary_color`: uma cor secundária coerente com a pauta, preservando preto/carvão, branco e dourado como base do canal;
+- `secondary_color`: usar sempre `#FFBD19`, o amarelo do canal. Destaques, ícones, linhas e transições não mudam de cor conforme a pauta; preservar preto/carvão e branco como base;
 - `motifs`: 2 a 6 objetos, formas ou símbolos próprios desta história;
 - `motion_language`: 2 a 6 decisões de movimento/corte que combinam com a narrativa;
 - `avoid`: padrões visuais que fariam este vídeo parecer uma cópia dos anteriores.

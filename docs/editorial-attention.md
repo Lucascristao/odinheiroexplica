@@ -22,6 +22,10 @@ Antes de fechar o roteiro, identificar o que o espectador aprende em cada bloco.
 
 Não há suporte novo a B-roll de vídeo, câmera 3D ou J/L cuts nesta revisão. Não inventar campos para essas capacidades. Compor dinamismo com o repertório implementado.
 
+## Cor de identidade
+
+Destaques editoriais, ícones de foco, conexões, objetos e transições usam amarelo `#FFBD19` com preto/carvão e branco. Não substituir o amarelo pela cor do assunto, do Pix, de banco ou de empresa. Fotografias preservam suas cores naturais; cores semânticas em dados só entram quando necessárias à compreensão, não como decoração.
+
 ## Texto, imagens e movimento
 
 Uma ideia dominante por momento, com poucos apoios. Preferir rótulos de 2–6 palavras. Texto de apoio é opcional e deve acrescentar algo que a imagem não explica. Fonte mínima do palco: 32 px em 1080p; rótulos normalmente 38–46, métricas até 72. Se não couber, reduzir a redação ou ampliar a região. Não reduzir fonte indefinidamente. Reservar largura para ícones e altura para números antes de escrever.
