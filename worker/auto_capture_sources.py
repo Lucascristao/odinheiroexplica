@@ -5,22 +5,33 @@ import sys
 from pathlib import Path
 
 
-def sanitize_page(page) -> None:
-    """Oculta avisos de cookies, tooltips de login, widgets flutuantes e backdrops escuros."""
+def sanitize_page_thoroughly(page) -> None:
+    """Aplica a sanitização completa testada: clica para aceitar/fechar, remove overlays e reseta opacidade."""
     script = """() => {
-        // 1. Remover elementos flutuantes conhecidos (tooltips, modais, cookies, chatbots)
+        // 1. Clicar em botões de rejeitar, aceitar ou fechar
+        document.querySelectorAll('button, a').forEach(el => {
+            try {
+                const text = el.textContent || '';
+                const aria = el.getAttribute('aria-label') || '';
+                if (/rejeitar|aceitar|fechar|dispensar|entendi|close/i.test(text) || /fechar|close/i.test(aria) || el.classList.contains('close')) {
+                    el.click();
+                }
+            } catch (e) {}
+        });
+
+        // 2. Remover todos os modais, backdrops, popovers, tooltips, banners e widgets flutuantes
         const selectorsToRemove = [
-            '[id*="cookie"]', '[class*="cookie"]',
-            '[id*="consent"]', '[class*="consent"]',
-            '[id*="lgpd"]', '[class*="lgpd"]',
-            '[id*="modal"]', '.modal', '.modal-backdrop',
-            '.optanon-alert-box-wrapper', '#onetrust-consent-sdk',
-            '.cookie-banner', '[class*="backdrop"]', '[class*="overlay"]',
+            '.modal', '.backdrop', '.modal-backdrop',
+            '[class*="cookie"]', '[id*="cookie"]',
+            '[class*="consent"]', '[id*="consent"]',
+            '[class*="lgpd"]', '[id*="lgpd"]',
+            '.popover', '[class*="popover"]',
+            '.tooltip', '[class*="tooltip"]', '[data-tippy-root]',
+            '[class*="overlay"]', '[class*="mask"]',
+            '[class*="banner"]', '[id*="banner"]',
             '#barra-brasil', '.govbr-cookie-banner',
-            '[class*="popover"]', '[class*="tooltip"]', '[data-tippy-root]',
-            '[class*="tour"]', '[role="tooltip"]',
             '[id*="vlibras"]', '[class*="vlibras"]',
-            '#widget-leo', '[class*="chatbot"]', '[class*="floating"]'
+            '#widget-leo', '[class*="chatbot"]'
         ];
 
         selectorsToRemove.forEach(sel => {
@@ -29,43 +40,42 @@ def sanitize_page(page) -> None:
             } catch (e) {}
         });
 
-        // 2. Varrer elementos com position fixed ou absolute de alta prioridade (overlays e balões)
+        // 3. Eliminar qualquer elemento fixo que esteja aplicando sombra ou escurecimento
         document.querySelectorAll('div, section, aside').forEach(el => {
             try {
                 const text = el.innerText || '';
-                if (text.includes('Para começar') || text.includes('PERGUNTA PRO LEO') || text.includes('Aceitar todos')) {
+                if (text.includes('Para começar') || text.includes('PERGUNTA PRO LEO')) {
                     el.remove();
                     return;
                 }
-                const style = window.getComputedStyle(el);
-                if (style.position === 'fixed' || style.position === 'absolute') {
-                    const z = parseInt(style.zIndex) || 0;
-                    if (z > 50 && (style.backgroundColor.includes('rgba(0, 0, 0') || el.className.toLowerCase().includes('backdrop') || el.className.toLowerCase().includes('mask'))) {
-                        el.remove();
-                    }
+                const s = window.getComputedStyle(el);
+                if ((s.position === 'fixed' || s.position === 'absolute') && (s.backgroundColor.includes('rgba(0, 0, 0') || parseInt(s.zIndex) > 50)) {
+                    el.remove();
                 }
             } catch (e) {}
         });
 
-        // 3. Restaurar scroll, remover névoas e restaurar fundo branco no body, html e main
-        ['html', 'body', 'main', '#content', '#conteudo', '#main'].forEach(sel => {
+        // 4. Resetar 100% de qualquer filtro de blur, névoa ou opacidade reduzida na página
+        document.documentElement.style.filter = 'none';
+        document.body.style.filter = 'none';
+        document.body.style.opacity = '1';
+        document.body.style.backgroundColor = '#ffffff';
+
+        document.querySelectorAll('*').forEach(el => {
             try {
-                document.querySelectorAll(sel).forEach(el => {
-                    el.style.setProperty('overflow', 'auto', 'important');
-                    el.style.setProperty('filter', 'none', 'important');
-                    el.style.setProperty('opacity', '1', 'important');
-                });
+                const s = window.getComputedStyle(el);
+                if (s.filter && s.filter !== 'none') el.style.filter = 'none';
+                if (s.opacity && parseFloat(s.opacity) < 0.95 && el.tagName !== 'svg') el.style.opacity = '1';
             } catch (e) {}
         });
     }"""
     try:
         page.evaluate(script)
     except Exception as exc:
-        print(f"[auto_capture] Aviso na sanitizacao de cookies: {exc}")
+        print(f"[auto_capture] Aviso na sanitizacao: {exc}")
 
 
 def generate_editorial_fallback(dest_path: Path, asset: dict) -> None:
-    """Gera um card editorial autêntico caso o site esteja offline ou com bloqueio anti-bot."""
     try:
         from PIL import Image, ImageDraw
 
@@ -125,28 +135,28 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
         )
         page = context.new_page()
 
+        # 1. Navegar na URL
         try:
-            page.goto(url, wait_until="domcontentloaded", timeout=35000)
-            page.wait_for_timeout(3000)
+            page.goto(url, wait_until="domcontentloaded", timeout=40000)
         except Exception as nav_exc:
             print(f"[auto_capture] Timeout ou aviso na navegacao de {url}: {nav_exc}")
 
-        # Pressionar Escape para fechar modais/popovers nativos do Gov.br
-        try:
-            page.keyboard.press("Escape")
-            page.wait_for_timeout(500)
-        except Exception:
-            pass
+        # 2. Aguardar 6s para os scripts assíncronos e modais carregarem
+        page.wait_for_timeout(6000)
 
-        # Limpar modais, tooltips e névoas escuras
-        sanitize_page(page)
+        # 3. Pressionar Escape para dispensar popovers
         try:
             page.keyboard.press("Escape")
         except Exception:
             pass
-        page.wait_for_timeout(800)
 
-        # Enquadramento por seletor específico ou por elemento de conteúdo
+        # 4. Sanitizar completamente (clicar em aceitar/fechar, remover overlays, restaurar fundo branco e opacidade)
+        sanitize_page_thoroughly(page)
+
+        # 5. Aguardar 1.5s para a renderização limpa estabilizar
+        page.wait_for_timeout(1500)
+
+        # 6. Screenshot do elemento ou viewport completa
         target_selector = asset.get("target_selector")
         captured_element = False
 
@@ -160,10 +170,9 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
             except Exception as sel_exc:
                 print(f"[auto_capture] Seletor {target_selector} nao encontrado: {sel_exc}")
 
-        # Fallback para screenshot de viewport completa limpa
         if not captured_element:
             page.screenshot(path=str(dest_path), full_page=False)
-            print(f"[auto_capture] Screenshot de viewport completa salvo em: {dest_path.name}")
+            print(f"[auto_capture] Screenshot limpo de viewport completa salvo em: {dest_path.name}")
 
         context.close()
         return True
