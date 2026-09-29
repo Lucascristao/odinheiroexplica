@@ -7,6 +7,26 @@ const sourceSchema = z
     url: z.string().url(),
     publisher: z.string().optional(),
     source_type: z.enum(["primary", "secondary", "context"]).optional(),
+    publisher_class: z.enum([
+      "official",
+      "independent_journalism",
+      "technical",
+      "industry",
+      "academic",
+      "fact_check",
+      "company",
+      "other",
+    ]).default("other"),
+    editorial_role: z.enum([
+      "primary_document",
+      "independent_reporting",
+      "technical_analysis",
+      "industry_view",
+      "fact_check",
+      "data_context",
+      "company_position",
+      "other",
+    ]).default("other"),
     published_at: z.string().optional(),
     license: z.string().optional(),
     notes: z.string().optional(),
@@ -23,6 +43,14 @@ const claimSchema = z
     verification_status: z
       .enum(["unverified", "verified", "conflicting", "rejected"])
       .default("unverified"),
+    framing: z.enum([
+      "verified_fact",
+      "official_position",
+      "reported_claim",
+      "analysis",
+      "context",
+    ]).default("verified_fact"),
+    attribution_required: z.boolean().default(false),
     metadata: z.record(z.string(), z.unknown()).optional(),
   })
   .passthrough();
