@@ -9,10 +9,14 @@
   "speech": {
     "pronunciations": {
       "payment": "pêimênt",
-      "ibs": "i bê és",
-      "cbs": "cê bê és",
-      "b2b": "bê dois bê"
-    }
+      "ibs": "i-bê-ésse",
+      "cbs": "cê-bê-ésse",
+      "b2b": "bê dois bê",
+      "like": "láiki"
+    },
+    "ignore_pronunciation_terms": [
+      "like"
+    ]
   },
   "story": {
     "subject": "Como o split payment da reforma tributária separará IBS e CBS no momento do pagamento e o que muda para o caixa das empresas",
@@ -1334,7 +1338,7 @@
       {
         "index": 7,
         "title": "As três regras de ouro",
-        "narration": "Para resumir essa conversa, guarda três pontos fundamentais. Primeiro: o split payment não é um imposto novo sobre o Pix, é apenas um método de cobrança na hora da venda. Segundo: ele exige que as empresas cuidem muito bem do capital de giro, já que o imposto não vai mais passear pelo caixa antes de ser pago. E terceiro: a transição é longa, facultativa no início e vai dar tempo de todo mundo se adaptar. No fim das contas, a grande revolução é a tecnologia aproximando o pagamento e o imposto. Se esse vídeo te ajudou a entender de verdade, deixa o seu like e se inscreve no canal.",
+        "narration": "Para resumir essa conversa, guarda três pontos fundamentais. Primeiro: o split payment não é um imposto novo sobre o Pix, é apenas um método de cobrança na hora da venda. Segundo: ele exige que as empresas cuidem muito bem do capital de giro, já que o imposto não vai mais passear pelo caixa antes de ser pago. E terceiro: a transição é longa, facultativa no início e vai dar tempo de todo mundo se adaptar. No fim das contas, a grande revolução é a tecnologia aproximando o pagamento e o imposto. Se esse vídeo te ajudou a entender de verdade, deixa a sua curtida e se inscreve no canal.",
         "visual": {
           "type": "SUMMARY",
           "transition": "cut",
@@ -1465,7 +1469,7 @@
               "pause_before_ms": 90
             },
             {
-              "text": "deixa o seu like e se inscreve no canal",
+              "text": "deixa a sua curtida e se inscreve no canal",
               "kind": "emphasis",
               "pause_before_ms": 100
             }
