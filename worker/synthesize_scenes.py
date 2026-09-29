@@ -15,7 +15,6 @@ from tts_config import (
     DEFAULT_TTS_RATE,
     DEFAULT_TTS_VOICE,
     GLOBAL_PRONUNCIATIONS,
-    GLOBAL_SPELLED_TERMS,
     PRESENTER_VOICES,
 )
 
@@ -65,9 +64,9 @@ def render_pronunciations(text: str, tts: dict) -> str:
     if not pronunciations:
         return escape(text)
 
-    terms = sorted(set(pronunciations) | set(GLOBAL_SPELLED_TERMS), key=len, reverse=True)
+    terms = sorted(pronunciations, key=len, reverse=True)
     pattern = re.compile(
-        r"(?<!\w)(" + "|".join(re.escape(term) for term in terms) + r")(?!\w)",
+                r"(?<!\w)(" + "|".join(re.escape(term) for term in terms) + r")(?!\w)",
         re.IGNORECASE,
     )
 
@@ -76,17 +75,7 @@ def render_pronunciations(text: str, tts: dict) -> str:
     for match in pattern.finditer(text):
         parts.append(escape(text[last:match.start()]))
         spoken = pronunciations.get(match.group(0).lower(), match.group(0))
-        # A pipe explicitly separates letters in any editorial pronunciation.
-        # Known initialisms also override older aliases with only spaces.
-        letters = tuple(part.strip() for part in spoken.split("|")) if "|" in spoken else GLOBAL_SPELLED_TERMS.get(match.group(0).lower())
-        if letters:
-            if any(not letter for letter in letters):
-                raise RuntimeError("Pronúncia soletrada contém letra vazia.")
-            parts.append('<break time="75ms"/>'.join(
-                f"<sub alias={quoteattr(letter)}>{escape(letter)}</sub>" for letter in letters
-            ))
-        else:
-            parts.append(f"<sub alias={quoteattr(spoken)}>{escape(match.group(0))}</sub>")
+        parts.append(f"<sub alias={quoteattr(spoken)}>{escape(match.group(0))}</sub>")
         last = match.end()
 
     parts.append(escape(text[last:]))
@@ -200,7 +189,7 @@ def build_ssml(
         raise RuntimeError("Direções de voz não podem se sobrepor.")
 
     boundaries = set(marks) | {n for a, b, _, _ in cues for n in (a, b)}
-    pronunciations = {**GLOBAL_PRONUNCIATIONS, **GLOBAL_SPELLED_TERMS, **(tts.get("pronunciations") or {})}
+    pronunciations = {**GLOBAL_PRONUNCIATIONS, **(tts.get("pronunciations") or {})}
     for term in pronunciations:
         if not term:
             continue

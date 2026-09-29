@@ -103,13 +103,14 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
       </svg>
       {elements.slice().sort((a,b)=>Number(Boolean(a.overlay_on))-Number(Boolean(b.overlay_on))).map(element => {
         const box = rect(element);
+        const isExcerpt = element.kind === "source_excerpt";
+        const padding = isExcerpt ? 0 : 16;
         const selected = active?.target_id === element.id && active.action !== "retire";
         const reveal = interpolate(frame - element.changedAt, [0, element.visibilityDuration], [0, 1], clamp);
         const opacity = (element.visible ? reveal : element.wasVisible ? 1-reveal : 0) * (takeover && !selected ? 0.15 : 1);
         if (opacity === 0) return null;
         const cueProgress=interpolate(frame-element.cueFrame,[0,element.cueDuration],[0,1],clamp);
         const color = selected && active?.prominence !== "support" ? accent : WHITE;
-        const padding = 16;
         const iconSize = element.icon ? Math.min(112, Math.max(56, box.h * 0.3)) : 0;
         const stacked = element.kind === "step";
         const iconSpace = element.icon ? iconSize + 18 : 0;
@@ -118,7 +119,7 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
         const valueH = element.value ? innerH * (element.value_size>100 ? 0.72 : 0.4) : 0;
         const detailH = element.detail ? innerH * (element.value ? (element.value_size>100 ? 0.12 : 0.3) : 0.45) : 0;
         const labelH = innerH - valueH - detailH;
-        return <div key={element.id} data-element-id={element.id} style={{position: "absolute", left: box.x, top: box.y, width: box.w, height: box.h, padding, opacity, zIndex: element.overlay_on ? 2 : 1, background: element.overlay_on ? "rgba(12,16,20,0.88)" : undefined, borderRadius: element.overlay_on ? 12 : undefined, transform: `translateY(${element.visible ? (1-reveal)*12 : 0}px)`, boxSizing: "border-box", display: "flex", flexDirection: stacked ? "column" : "row", alignItems: stacked ? "flex-start" : "center", justifyContent: "center", gap: element.icon ? 18 : 0}}>
+        return <div key={element.id} data-element-id={element.id} style={{position: "absolute", left: box.x, top: box.y, width: box.w, height: box.h, padding, opacity, zIndex: element.overlay_on ? 2 : 1, background: element.overlay_on ? "rgba(12,16,20,0.88)" : undefined, borderRadius: element.overlay_on ? 12 : undefined, transform: isExcerpt ? `translateY(${element.visible ? (1-reveal)*16 : 0}px) scale(${element.visible ? 0.96 + 0.04*reveal : 0.96})` : `translateY(${element.visible ? (1-reveal)*12 : 0}px)`, boxSizing: "border-box", display: "flex", flexDirection: stacked ? "column" : "row", alignItems: stacked ? "flex-start" : "center", justifyContent: "center", gap: element.icon ? 18 : 0}}>
           {element.kind === "source_excerpt" ? <SourceExcerpt element={element} view={element.view} markIds={element.markIds} markProgress={Object.fromEntries(Object.entries(element.markTiming).map(([id,t])=>[id,interpolate(frame-t.frame,[0,t.duration],[0,1],clamp)]))} /> : element.kind === "chart" && element.chart ? <EditorialChart chart={element.chart} title={element.label} width={box.w-32} height={box.h-32} focus={element.chartFocus} progress={cueProgress} /> : element.kind === "object" && element.object_type ? <div style={{width: "100%", height: "100%", display: "flex", flexDirection: "column"}}><div style={{flex: 1, minHeight: 0}}><EditorialObject type={element.object_type} accent={accent} progress={reveal} /></div><TextBox text={element.label} width={box.w-32} height={90} maxSize={42} /></div> : element.kind === "photo" ? <div style={{width: "100%", height: "100%", padding: element.photo_style === "paper" ? 14 : 0, overflow: "hidden", background: element.photo_style === "paper" ? "#eee8dc" : "transparent", clipPath: element.photo_style === "paper" ? "polygon(1% 2%, 18% 0, 35% 2%, 51% 0, 72% 2%, 99% 0, 98% 23%, 100% 47%, 98% 71%, 100% 99%, 77% 97%, 52% 100%, 29% 98%, 0 100%, 2% 73%, 0 48%)" : undefined}}>
             {element.asset_file ? <Img src={staticFile(element.asset_file)} style={{height: "100%", width: "100%", objectFit: element.image_fit, objectPosition: `${element.focal_x}% ${element.focal_y}%`, transform: element.image_motion === "push" ? `scale(${1 + Math.min(1, Math.max(0, frame-element.changedAt)/(fps*8))*0.06})` : element.image_motion === "pan" ? `scale(1.06) translateX(${interpolate(frame-element.changedAt, [0, fps*8], [-2, 2], clamp)}%)` : undefined}} /> : <div style={{color: "#252a30", fontSize: 32}}>Foto: {element.label}</div>}
           </div> : <>

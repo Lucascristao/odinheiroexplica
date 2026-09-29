@@ -17,14 +17,10 @@ PRESENTER_NAMES = {
 DEFAULT_PRESENTER = "male"
 
 # Correções de pronúncia que só afetam a fala, sem alterar o texto publicado.
-# "bet/bets" precisam soar com a vogal final audível, como "béte/bétes" em português brasileiro.
+# Siglas econômicas e tributárias faladas de forma contínua e natural brasileira.
 GLOBAL_PRONUNCIATIONS = {
     "bet": "béte",
     "bets": "bétes",
-}
-
-# Siglas soletradas precisam de fronteiras acústicas, não apenas espaços.
-GLOBAL_SPELLED_TERMS = {
-    "ibs": ("i", "bê", "ésse"),
-    "cbs": ("cê", "bê", "ésse"),
+    "ibs": "i-bê-ésse",
+    "cbs": "cê-bê-ésse",
 }
