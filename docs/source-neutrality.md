@@ -46,3 +46,19 @@ Quando framing for official_position, attribution_required deve ser true.
 ## Auditoria
 
 O pipeline executa uma auditoria antes do TTS. Quando requires_diversity=true, a produção deve ter fontes não oficiais suficientes, publicadores diferentes, contexto independente e contraponto documentado.
+
+
+## Diversidade de linhas editoriais
+
+Em temas com disputa política, econômica ou regulatória, não concentre as fontes não oficiais em veículos com linha editorial semelhante.
+
+Busque deliberadamente cobertura de linhas editoriais diferentes quando existir material relevante. Revista Oeste e Gazeta do Povo devem entrar no radar de pesquisa junto com outros veículos nacionais, sem que qualquer publicação seja tratada como autoridade por sua orientação editorial.
+
+Regras:
+- evitar montar o contexto independente somente com Folha/UOL ou somente com qualquer outro grupo de veículos;
+- quando Revista Oeste, Gazeta do Povo ou outro veículo de linha editorial distinta tiver cobertura factual relevante da pauta, considerar essa cobertura na pesquisa;
+- separar notícia/reportagem de coluna de opinião;
+- opinião pode ser usada para mapear argumentos ou críticas, mas nunca como prova factual por si só;
+- fatos importantes devem ser cruzados com documento, dado, fonte técnica ou outra reportagem independente;
+- a meta é diversidade de perspectiva, não uma cota ideológica nem compensação artificial;
+- quando duas fontes divergem, explicitar a divergência e buscar evidência adicional em vez de escolher uma narrativa por afinidade editorial.
