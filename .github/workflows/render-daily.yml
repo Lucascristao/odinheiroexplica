@@ -68,7 +68,9 @@ jobs:
           sudo apt-get install -y ffmpeg
 
       - name: Install Python dependencies
-        run: pip install --no-cache-dir -r worker/requirements.txt
+        run: |
+          pip install --no-cache-dir -r worker/requirements.txt
+          playwright install --with-deps chromium
 
       - name: Generate editorial sound design
         run: |
@@ -82,6 +84,13 @@ jobs:
             --input video/data/daily.json \
             --output video/generated/daily-source-audit.json \
             --strict
+
+      - name: Auto-capture editorial source excerpts
+        run: |
+          mkdir -p research/captures
+          python worker/auto_capture_sources.py \
+            --project video/data/daily.json \
+            --captures-dir research/captures
 
       - name: Prepare narrative visual assets
         run: |
