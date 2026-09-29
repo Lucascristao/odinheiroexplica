@@ -1,9 +1,9 @@
-video=combustiveis-em-alta-2026-09-28
+video=med-2-0-pix-2026-09-28
 date=2026-09-28
 mode=daily-editorial
-retry=3
+retry=1
 cover=chat-final
 presenter=Roberto
-features=beats-informativos,evolucao-interna,sound-design-audivel,oralidade-natural
+features=source-balance,photo-cutout,beats-informativos,evolucao-interna,sound-design-audivel,oralidade-natural
 architecture=editorial-micro-scenes
 motion=entry-development-conclusion
