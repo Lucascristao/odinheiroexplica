@@ -161,7 +161,8 @@ Cada `visual.beats[]` deve escolher explicitamente:
 - `behavior`: `cut`, `transform`, `reframe` ou `overlay`;
 - `treatment`: `kinetic_type`, `giant_number`, `flow_diagram`, `timeline`, `split_compare`, `meter`, `spotlight`, `equation`, `stack`, `signal`, `masked_emphasis` ou `depth_photo`;
 - `transition`: `cut`, `fade`, `slide_left`, `slide_up`, `zoom`, `wipe` ou `bloom`;
-- `placement`: `left`, `center`, `right` ou `full`.
+- `placement`: `left`, `center`, `right` ou `full`;
+- `medium`: `motion_graphic`, `photo_cutout`, `photo` ou `mixed`; quando usar foto, siga `docs/photography-narrative.md`.
 
 Esses campos não são decoração aleatória. Escolha-os pelo significado daquela informação.
 
