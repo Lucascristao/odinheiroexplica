@@ -1,0 +1,22 @@
+{
+  "project_id": "test-auto-capture",
+  "visual_assets": [
+    {
+      "id": "A_test_gov",
+      "type": "source_excerpt",
+      "source_id": "S_test",
+      "source_page_url": "https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/acoes-e-programas/programas-e-atividades/reforma-tributaria-do-consumo/legislacao/atos-tecnicos-conjuntos/",
+      "capture_file": "research/captures/test-gov-captura.png",
+      "captured_at": "2026-09-29T15:00:00Z",
+      "subject": "Teste de Auto-Captura Receita Federal",
+      "narrative_role": "Validar captura automatizada em nuvem",
+      "license": "conteúdo público",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 100,
+        "height": 100
+      }
+    }
+  ]
+}

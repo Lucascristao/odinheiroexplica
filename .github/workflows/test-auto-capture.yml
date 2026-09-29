@@ -1,0 +1,35 @@
+name: Teste Auto-Captura de Fontes
+
+on:
+  workflow_dispatch:
+
+jobs:
+  test-capture:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: |
+          pip install playwright Pillow
+          playwright install --with-deps chromium
+
+      - name: Run Auto-Capture Robot
+        run: |
+          mkdir -p research/captures
+          python worker/auto_capture_sources.py \
+            --project video/data/test-auto-capture.json \
+            --captures-dir research/captures
+
+      - name: Upload Captured Image Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: auto-captured-proof
+          path: research/captures/test-gov-captura.png
+          if-no-files-found: error
