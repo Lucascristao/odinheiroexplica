@@ -332,6 +332,18 @@ export const videoProjectSchema = z
       });
     });
 
+    const visualAssetIds = new Set<string>();
+    project.visual_assets.forEach((asset, index) => {
+      if (visualAssetIds.has(asset.id)) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["visual_assets", index, "id"],
+          message: "ID de recurso visual duplicado.",
+        });
+      }
+      visualAssetIds.add(asset.id);
+    });
+
     const sceneIndexes = new Set<number>();
     project.script.scenes.forEach((scene, index) => {
       if (sceneIndexes.has(scene.index)) {
@@ -355,6 +367,14 @@ export const videoProjectSchema = z
 
       const beats = scene.visual.beats ?? [];
       beats.forEach((beat, beatIndex) => {
+        if (beat.asset_id && !visualAssetIds.has(beat.asset_id)) {
+          ctx.addIssue({
+            code: "custom",
+            path: ["script", "scenes", index, "visual", "beats", beatIndex, "asset_id"],
+            message: `Beat referencia recurso visual inexistente: ${beat.asset_id}`,
+          });
+        }
+
         if (beat.anchor) {
           const occurrences = scene.narration.split(beat.anchor).length - 1;
           if (occurrences !== 1) {
