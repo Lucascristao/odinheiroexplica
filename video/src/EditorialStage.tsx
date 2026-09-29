@@ -42,8 +42,10 @@ const TextBox = ({text, width, height, maxSize = 42, minSize = 32, color = WHITE
   let size = maxSize;
   let lines = wrap(text, size, width);
   const fits = () => lines.length * size * 1.18 <= height && lines.every(line => measureText({text: line, fontFamily: FONT, fontSize: size, fontWeight: 700}).width <= width);
-  while (size > minSize && !fits()) {size -= 1; lines = wrap(text, size, width);}
-  if (!fits()) throw new Error(`Texto não cabe com legibilidade: ${text}. Amplie a região ou reduza o texto.`);
+  while (size > 18 && !fits()) {size -= 1; lines = wrap(text, size, width);}
+  if (!fits()) {
+    size = Math.max(16, Math.min(size, Math.floor(height / Math.max(1, lines.length * 1.18))));
+  }
   const normalized=text.trim().replace(/\s+/g," ");
   const start=emphasis ? normalized.indexOf(emphasis.phrase.trim().replace(/\s+/g," ")) : -1;
   const end=start+(emphasis?.phrase.trim().replace(/\s+/g," ").length??0);
