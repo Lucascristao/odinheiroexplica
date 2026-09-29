@@ -181,6 +181,23 @@ export const videoProjectSchema = z
         viral_score: z.number().int().min(0).max(100).optional(),
         strengths: z.array(z.string()).default([]),
         risk_flags: z.array(z.string()).default([]),
+        source_balance: z
+          .object({
+            requires_diversity: z.boolean().default(false),
+            public_policy_or_regulation: z.boolean().default(false),
+            official_sources_role: z.string().default(""),
+            independent_sources_role: z.string().default(""),
+            counterpoint_summary: z.string().default(""),
+            official_claims_attributed: z.boolean().default(false),
+          })
+          .default({
+            requires_diversity: false,
+            public_policy_or_regulation: false,
+            official_sources_role: "",
+            independent_sources_role: "",
+            counterpoint_summary: "",
+            official_claims_attributed: false,
+          }),
         youtube_suitability: z
           .object({
             risk_level: z.enum(["low", "medium", "high"]).default("low"),
