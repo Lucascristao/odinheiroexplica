@@ -46,6 +46,22 @@ def main() -> None:
         for source in sources
     )
 
+    visual_assets = project.get("visual_assets", [])
+    visual_credit_lines = []
+    for asset in visual_assets:
+        attribution = str(asset.get("attribution") or "").strip()
+        source_page_url = str(asset.get("source_page_url") or "").strip()
+        license_name = str(asset.get("license") or "").strip()
+        if attribution:
+            line = f"- {attribution}"
+            if license_name:
+                line += f" — {license_name}"
+            if source_page_url:
+                line += f" — {source_page_url}"
+            visual_credit_lines.append(line)
+
+    visual_credit_text = "\n".join(visual_credit_lines)
+
     publication = project.get("publication", {})
     description = publication.get("description", "").strip()
     seo = publication.get("seo", {})
@@ -60,6 +76,8 @@ def main() -> None:
         f"{description}\n\nCAPÍTULOS\n{chapter_text}"
         f"\n\nBases do vídeo:\n{source_text}"
     )
+    if visual_credit_text:
+        full_description += f"\n\nCréditos visuais:\n{visual_credit_text}"
 
     payload = {
         "title": title,
