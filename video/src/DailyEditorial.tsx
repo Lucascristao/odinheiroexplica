@@ -1841,7 +1841,7 @@ const SceneComposition = ({
 };
 
 export const DailyEditorial = () => {
-  const scenes = renderInput.scenes as Scene[];
+  const scenes = renderInput.scenes as unknown as Scene[];
   const direction: EditorialDirection = {
     ...((renderInput as unknown as {visual_direction?: EditorialDirection}).visual_direction ?? {}),
     secondary_color: GOLD,
