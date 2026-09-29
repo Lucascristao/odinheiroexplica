@@ -1,6 +1,6 @@
 {
   "project_id": "split-payment-2026-09-29",
-  "title": "Split Payment: O Imposto Vai Sair Antes de o Dinheiro Chegar?",
+  "title": "Split Payment: o imposto vai sair antes de o dinheiro cair na sua conta?",
   "version": "1.0",
   "presenter": {
     "gender": "male",
@@ -343,16 +343,16 @@
     "scenes": [
       {
         "index": 0,
-        "title": "Seu dinheiro pode chegar já dividido?",
-        "narration": "Imagina uma venda de cem reais. O cliente paga os cem. Hoje, muita gente imagina que a empresa sempre recebe tudo e só depois acerta os tributos. Com o split payment, a lógica pode mudar: na liquidação do pagamento, a parcela de IBS e CBS que ainda precisa ser recolhida pode ser separada antes de o restante ficar disponível para a empresa. Mas calma: isso não significa imposto novo sobre Pix e nem está acontecendo em todo pagamento hoje. Eu sou o Roberto, e vou te mostrar exatamente onde o dinheiro se divide.",
+        "title": "O imposto vai sair na hora da venda?",
+        "narration": "Imagina que você tem uma loja e fez uma venda de cem reais. Hoje, esse dinheiro cai inteiro na sua conta e você só acerta os tributos semanas depois. Mas com o split payment, a lógica muda: na hora em que o pagamento é aprovado, a maquininha ou o banco já separam a parte do imposto antes de liberar o restante para a sua empresa. Calma: isso não é imposto novo sobre o Pix e não tá valendo para tudo hoje. Eu sou o Roberto, e vou te mostrar de um jeito muito simples como essa divisão funciona.",
         "visual": {
           "type": "PROCESS",
           "transition": "cut",
           "beats": [
             {
-              "anchor": "Imagina uma venda de cem reais",
+              "anchor": "fez uma venda de cem reais",
               "kind": "money",
-              "headline": "Venda: R$ 100",
+              "headline": "Venda no balcão: R$ 100",
               "behavior": "transform",
               "treatment": "giant_number",
               "transition": "bloom",
@@ -364,9 +364,9 @@
               "prominence": "contextual"
             },
             {
-              "anchor": "a parcela de IBS e CBS que ainda precisa ser recolhida pode ser separada",
+              "anchor": "a maquininha ou o banco já separam a parte do imposto",
               "kind": "flow",
-              "headline": "O pagamento se bifurca",
+              "headline": "O pagamento se divide",
               "behavior": "transform",
               "treatment": "flow_diagram",
               "transition": "wipe",
@@ -382,7 +382,7 @@
               ]
             },
             {
-              "anchor": "isso não significa imposto novo sobre Pix",
+              "anchor": "isso não é imposto novo sobre o Pix",
               "kind": "warning",
               "headline": "Não é imposto sobre Pix",
               "behavior": "transform",
@@ -482,16 +482,16 @@
         ],
         "tts": {
           "delivery": "hook",
-          "rate": "-1%",
-          "pause_ms": 130,
+          "rate": "0%",
+          "pause_ms": 120,
           "cues": [
             {
-              "text": "Mas calma: isso não significa imposto novo sobre Pix",
+              "text": "Calma: isso não é imposto novo sobre o Pix",
               "kind": "contrast",
               "pause_before_ms": 120
             },
             {
-              "text": "exatamente onde o dinheiro se divide",
+              "text": "como essa divisão funciona",
               "kind": "emphasis",
               "pause_before_ms": 80
             }
@@ -500,65 +500,52 @@
       },
       {
         "index": 1,
-        "title": "O que é split payment de verdade",
-        "narration": "O nome em inglês parece complicado, mas a ideia central é simples. A lei chama isso de recolhimento na liquidação financeira. A operação de venda precisa ser ligada à transação de pagamento, e as informações permitem identificar o IBS e a CBS daquela operação. Antes de liberar os recursos para o fornecedor, o sistema pode consultar quanto daquele débito ainda precisa ser recolhido. Então o split payment não cria o imposto. Ele muda o momento e o caminho pelo qual parte do imposto é paga.",
+        "title": "A regra escrita na lei",
+        "narration": "O nome parece complicado, mas a ideia central é simples. Na Reforma Tributária, a lei chama isso de recolhimento na liquidação financeira. Funciona assim: quando você vende um produto, o sistema do banco consulta as informações fiscais daquela operação. Se tiver imposto a pagar, o sistema separa a parcela do IBS e da CBS no momento do acerto. Ou seja: o split payment não inventa nenhum tributo novo. Ele só muda o caminho e a hora em que o dinheiro do imposto é recolhido.",
         "visual": {
-          "type": "MONEY_FLOW",
-          "transition": "slide_left",
+          "type": "EVIDENCE",
+          "transition": "fade",
           "beats": [
             {
-              "anchor": "A lei chama isso de recolhimento na liquidação financeira",
+              "anchor": "a lei chama isso de recolhimento na liquidação financeira",
               "kind": "fact",
-              "headline": "Recolhimento na liquidação",
+              "headline": "O texto oficial da lei",
               "behavior": "transform",
               "treatment": "kinetic_type",
-              "transition": "cut",
-              "placement": "full",
-              "medium": "motion_graphic",
+              "transition": "bloom",
+              "placement": "left",
+              "medium": "source_excerpt",
               "sound": "none",
               "target_id": "excerpt_lei",
               "action": "focus",
               "mark_ids": [
                 "mark_split_legal"
               ],
-              "prominence": "contextual"
+              "prominence": "takeover",
+              "takeover_reason": "Exibe o texto oficial da Lei Complementar 214 com a definição do split payment"
             },
             {
-              "anchor": "A operação de venda precisa ser ligada à transação de pagamento",
+              "anchor": "o sistema do banco consulta as informações fiscais",
               "kind": "flow",
-              "headline": "Venda e pagamento conectados",
+              "headline": "Consulta de saldo",
               "behavior": "transform",
               "treatment": "flow_diagram",
-              "transition": "slide_left",
+              "transition": "wipe",
               "placement": "right",
               "medium": "motion_graphic",
               "sound": "tick",
-              "target_id": "link",
-              "action": "focus",
-              "prominence": "contextual"
-            },
-            {
-              "anchor": "quanto daquele débito ainda precisa ser recolhido",
-              "kind": "process",
-              "headline": "Consulta do valor ainda devido",
-              "behavior": "transform",
-              "treatment": "spotlight",
-              "transition": "bloom",
-              "placement": "right",
-              "medium": "motion_graphic",
-              "sound": "none",
               "target_id": "query",
               "action": "reveal",
               "prominence": "contextual"
             },
             {
-              "anchor": "Ele muda o momento e o caminho pelo qual parte do imposto é paga",
+              "anchor": "o split payment não inventa nenhum tributo novo",
               "kind": "compare",
-              "headline": "Muda o momento do recolhimento",
+              "headline": "Muda o caminho, não o imposto",
               "behavior": "transform",
               "treatment": "masked_emphasis",
-              "transition": "wipe",
-              "placement": "right",
+              "transition": "bloom",
+              "placement": "full",
               "medium": "motion_graphic",
               "sound": "none",
               "target_id": "result",
@@ -575,7 +562,7 @@
                 "label": "Lei Complementar nº 214/2025 • Art. 31",
                 "x": 0,
                 "y": 12,
-                "width": 60,
+                "width": 58,
                 "height": 72,
                 "initially_visible": true,
                 "photo_style": "clean",
@@ -593,25 +580,13 @@
                 ]
               },
               {
-                "id": "link",
-                "kind": "step",
-                "label": "VINCULAR VENDA",
-                "x": 65,
-                "y": 14,
-                "width": 35,
-                "height": 24,
-                "initially_visible": true,
-                "photo_style": "clean",
-                "icon": "key"
-              },
-              {
                 "id": "query",
                 "kind": "note",
-                "label": "Consultar saldo do débito",
-                "x": 65,
-                "y": 42,
-                "width": 35,
-                "height": 20,
+                "label": "Consulta de saldo do débito",
+                "x": 62,
+                "y": 24,
+                "width": 36,
+                "height": 25,
                 "initially_visible": false,
                 "photo_style": "clean",
                 "icon": "search"
@@ -619,21 +594,17 @@
               {
                 "id": "result",
                 "kind": "note",
-                "label": "Recolher na liquidação",
-                "x": 65,
-                "y": 66,
-                "width": 35,
-                "height": 20,
+                "label": "Segregação na liquidação",
+                "x": 62,
+                "y": 55,
+                "width": 36,
+                "height": 25,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "icon": "check"
+                "icon": "shield"
               }
             ],
             "connections": [
-              {
-                "from": "link",
-                "to": "query"
-              },
               {
                 "from": "query",
                 "to": "result"
@@ -647,23 +618,36 @@
         ],
         "tts": {
           "delivery": "explain",
-          "pause_ms": 125
+          "rate": "0%",
+          "pause_ms": 120,
+          "cues": [
+            {
+              "text": "recolhimento na liquidação financeira",
+              "kind": "emphasis",
+              "pause_before_ms": 80
+            },
+            {
+              "text": "o split payment não inventa nenhum tributo novo",
+              "kind": "contrast",
+              "pause_before_ms": 110
+            }
+          ]
         }
       },
       {
         "index": 2,
-        "title": "Não é simplesmente pegar o imposto inteiro da nota",
-        "narration": "Aqui tem um detalhe que evita uma explicação errada. No procedimento padrão, o sistema olha os débitos de IBS e CBS daquela operação e desconta as parcelas que já foram extintas por outras formas. O que sobra, se houver valor positivo, é o que entra na segregação. E se a consulta não puder ser feita naquele momento, a lei prevê um caminho de contingência: recolhe com base nas informações recebidas e, se houver valor a mais, esse excesso deve ser transferido de volta ao fornecedor em até três dias úteis. Ou seja, o desenho tenta separar o que ainda é devido, não simplesmente arrancar uma porcentagem fixa de toda venda.",
+        "title": "Não é morder toda venda às cegas",
+        "narration": "Aqui tem uma pegadinha que muita gente confunde. O sistema não vai simplesmente arrancar uma porcentagem cega de toda transação. A regra manda verificar se aquele imposto já não foi compensado ou pago de outra forma. E se o sistema tiver alguma instabilidade na hora da consulta, a lei garante que qualquer valor recolhido a mais tem que voltar para a conta da empresa em até três dias úteis. A intenção da lei é cobrar só o saldo que realmente falta quitar, e não travar o dinheiro do comerciante sem motivo.",
         "visual": {
           "type": "PROCESS",
-          "transition": "wipe",
+          "transition": "cut",
           "beats": [
             {
-              "anchor": "o sistema olha os débitos de IBS e CBS daquela operação",
-              "kind": "money",
-              "headline": "Débitos da operação",
+              "anchor": "O sistema não vai simplesmente arrancar uma porcentagem cega",
+              "kind": "rule",
+              "headline": "Cálculo sobre o saldo devido",
               "behavior": "transform",
-              "treatment": "giant_number",
+              "treatment": "masked_emphasis",
               "transition": "bloom",
               "placement": "left",
               "medium": "motion_graphic",
@@ -673,47 +657,32 @@
               "prominence": "contextual"
             },
             {
-              "anchor": "desconta as parcelas que já foram extintas por outras formas",
-              "kind": "process",
-              "headline": "Menos o que já foi extinto",
+              "anchor": "se aquele imposto já não foi compensado",
+              "kind": "money",
+              "headline": "Desconta o que já foi extinto",
               "behavior": "transform",
-              "treatment": "equation",
-              "transition": "slide_left",
-              "placement": "full",
+              "treatment": "giant_number",
+              "transition": "bloom",
+              "placement": "center",
               "medium": "motion_graphic",
               "sound": "tick",
               "target_id": "paid",
-              "action": "focus",
+              "action": "reveal",
               "prominence": "contextual"
             },
             {
-              "anchor": "O que sobra, se houver valor positivo, é o que entra na segregação",
-              "kind": "money",
-              "headline": "Saldo a segregar",
+              "anchor": "tem que voltar para a conta da empresa em até três dias úteis",
+              "kind": "warning",
+              "headline": "Devolução de excesso em 3 dias",
               "behavior": "transform",
-              "treatment": "spotlight",
+              "treatment": "masked_emphasis",
               "transition": "bloom",
-              "placement": "right",
-              "medium": "motion_graphic",
-              "sound": "none",
-              "target_id": "remainder",
-              "action": "focus",
-              "prominence": "contextual"
-            },
-            {
-              "anchor": "esse excesso deve ser transferido de volta ao fornecedor em até três dias úteis",
-              "kind": "date",
-              "headline": "Excesso: até 3 dias úteis",
-              "behavior": "transform",
-              "treatment": "timeline",
-              "transition": "wipe",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "tick",
+              "sound": "none",
               "target_id": "return",
               "action": "reveal",
-              "prominence": "contextual",
-              "value": "ATÉ 3 DIAS"
+              "prominence": "contextual"
             }
           ],
           "stage": {
@@ -721,50 +690,35 @@
               {
                 "id": "debit",
                 "kind": "metric",
-                "label": "Débitos da operação",
-                "x": 0,
-                "y": 10,
-                "width": 29,
-                "height": 38,
+                "label": "Débito da operação",
+                "x": 4,
+                "y": 25,
+                "width": 26,
+                "height": 45,
                 "initially_visible": true,
                 "photo_style": "clean",
-                "value": "IBS + CBS",
                 "icon": "document"
               },
               {
                 "id": "paid",
                 "kind": "metric",
-                "label": "Já extinto",
-                "x": 35,
-                "y": 10,
-                "width": 29,
-                "height": 38,
-                "initially_visible": true,
+                "label": "Já compensado",
+                "x": 36,
+                "y": 25,
+                "width": 26,
+                "height": 45,
+                "initially_visible": false,
                 "photo_style": "clean",
-                "value": "−",
-                "icon": "check"
-              },
-              {
-                "id": "remainder",
-                "kind": "metric",
-                "label": "A segregar",
-                "x": 70,
-                "y": 10,
-                "width": 30,
-                "height": 38,
-                "initially_visible": true,
-                "photo_style": "clean",
-                "value": "SALDO",
-                "icon": "coins"
+                "icon": "receipt"
               },
               {
                 "id": "return",
                 "kind": "note",
-                "label": "Excesso volta ao fornecedor",
-                "x": 22,
-                "y": 61,
-                "width": 56,
-                "height": 34,
+                "label": "Devolução do excesso em 3 dias úteis",
+                "x": 68,
+                "y": 25,
+                "width": 28,
+                "height": 45,
                 "initially_visible": false,
                 "photo_style": "clean",
                 "icon": "refund"
@@ -777,7 +731,7 @@
               },
               {
                 "from": "paid",
-                "to": "remainder"
+                "to": "return"
               }
             ]
           }
@@ -787,37 +741,38 @@
           "C4"
         ],
         "tts": {
-          "delivery": "contrast",
-          "pause_ms": 145,
+          "delivery": "explain",
+          "rate": "0%",
+          "pause_ms": 120,
           "cues": [
             {
-              "text": "Aqui tem um detalhe que evita uma explicação errada",
+              "text": "arrancar uma porcentagem cega",
               "kind": "emphasis",
-              "pause_before_ms": 0
+              "pause_before_ms": 70
             },
             {
-              "text": "não simplesmente arrancar uma porcentagem fixa de toda venda",
-              "kind": "contrast",
-              "pause_before_ms": 100
+              "text": "em até três dias úteis",
+              "kind": "number",
+              "pause_before_ms": 60
             }
           ]
         }
       },
       {
         "index": 3,
-        "title": "O que muda no caixa da empresa",
-        "narration": "É aqui que o split payment deixa de ser só assunto do fiscal e vira assunto de caixa. Hoje, em muitas operações, a empresa recebe o valor bruto e a saída do tributo acontece depois, no calendário de recolhimento. Com o split payment funcionando naquela transação, a parcela tributária pode deixar de ficar disponível para a empresa já na liquidação. O imposto devido não fica maior só por causa disso. O que muda é o timing: uma parte do dinheiro que antes podia permanecer temporariamente no caixa passa a seguir outro caminho desde o pagamento. É por isso que especialistas vêm chamando atenção para capital de giro.",
+        "title": "O que muda no capital de giro",
+        "narration": "É por isso que esse assunto mexe tanto com quem tem negócio. Pensa comigo: hoje, o comerciante recebe o dinheiro bruto da venda e usa esse valor como capital de giro até o dia vinte do mês seguinte, que é quando vence a guia. Com o split payment, essa folga no caixa diminui, porque a parcela do imposto já fica retida na largada. A alíquota do imposto continua a mesma, mas a empresa vai precisar se planejar melhor para não tomar susto no fluxo de caixa do dia a dia.",
         "visual": {
-          "type": "BEFORE_AFTER",
-          "transition": "slide_left",
+          "type": "COMPARISON",
+          "transition": "cut",
           "beats": [
             {
-              "anchor": "a empresa recebe o valor bruto e a saída do tributo acontece depois",
-              "kind": "compare",
-              "headline": "Hoje: bruto entra primeiro",
+              "anchor": "Pensa comigo: hoje, o comerciante recebe o dinheiro bruto",
+              "kind": "state",
+              "headline": "Hoje: imposto sai depois",
               "behavior": "transform",
-              "treatment": "split_compare",
-              "transition": "slide_left",
+              "treatment": "masked_emphasis",
+              "transition": "bloom",
               "placement": "left",
               "medium": "motion_graphic",
               "sound": "none",
@@ -826,26 +781,23 @@
               "prominence": "contextual"
             },
             {
-              "anchor": "a parcela tributária pode deixar de ficar disponível para a empresa já na liquidação",
-              "kind": "money",
-              "headline": "Split: parcela tributária sai na liquidação",
+              "anchor": "a parcela do imposto já fica retida na largada",
+              "kind": "state",
+              "headline": "Com split: imposto separado na hora",
               "behavior": "transform",
-              "treatment": "flow_diagram",
+              "treatment": "masked_emphasis",
               "transition": "wipe",
               "placement": "right",
               "medium": "motion_graphic",
               "sound": "tick",
               "target_id": "splitcash",
-              "action": "focus",
-              "prominence": "contextual",
-              "reveal_ids": [
-                "taxnow"
-              ]
+              "action": "reveal",
+              "prominence": "contextual"
             },
             {
-              "anchor": "O imposto devido não fica maior só por causa disso",
-              "kind": "warning",
-              "headline": "Não aumenta a alíquota por si só",
+              "anchor": "A alíquota do imposto continua a mesma",
+              "kind": "rule",
+              "headline": "Não muda alíquota • muda o timing",
               "behavior": "transform",
               "treatment": "masked_emphasis",
               "transition": "bloom",
@@ -853,20 +805,6 @@
               "medium": "motion_graphic",
               "sound": "none",
               "target_id": "rate",
-              "action": "reveal",
-              "prominence": "contextual"
-            },
-            {
-              "anchor": "O que muda é o timing",
-              "kind": "fact",
-              "headline": "Muda o timing do caixa",
-              "behavior": "transform",
-              "treatment": "kinetic_type",
-              "transition": "cut",
-              "placement": "center",
-              "medium": "motion_graphic",
-              "sound": "none",
-              "target_id": "timing",
               "action": "reveal",
               "prominence": "contextual"
             }
@@ -877,119 +815,90 @@
                 "id": "today",
                 "kind": "metric",
                 "label": "HOJE",
-                "x": 0,
-                "y": 14,
-                "width": 44,
-                "height": 32,
+                "x": 6,
+                "y": 20,
+                "width": 38,
+                "height": 38,
                 "initially_visible": true,
                 "photo_style": "clean",
-                "value": "BRUTO PRIMEIRO",
-                "icon": "wallet",
-                "value_size": 56
-              },
-              {
-                "id": "todaytax",
-                "kind": "note",
-                "label": "Tributo sai depois",
-                "x": 0,
-                "y": 66,
-                "width": 44,
-                "height": 30,
-                "initially_visible": true,
-                "photo_style": "clean",
-                "icon": "clock"
+                "detail": "Dinheiro entra cheio no caixa",
+                "icon": "wallet"
               },
               {
                 "id": "splitcash",
                 "kind": "metric",
                 "label": "COM SPLIT",
                 "x": 56,
-                "y": 14,
-                "width": 44,
-                "height": 32,
-                "initially_visible": true,
-                "photo_style": "clean",
-                "value": "LÍQUIDO",
-                "icon": "bank"
-              },
-              {
-                "id": "taxnow",
-                "kind": "note",
-                "label": "Parcela tributária separada",
-                "x": 56,
-                "y": 66,
-                "width": 44,
-                "height": 30,
+                "y": 20,
+                "width": 38,
+                "height": 38,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "icon": "route"
+                "detail": "Imposto separado na largada",
+                "icon": "coins"
               },
               {
                 "id": "rate",
                 "kind": "label",
-                "label": "Não muda a alíquota por si só",
-                "x": 20,
-                "y": 50,
-                "width": 60,
-                "height": 12,
+                "label": "A alíquota não muda • O que muda é o capital de giro",
+                "x": 10,
+                "y": 66,
+                "width": 80,
+                "height": 22,
                 "initially_visible": false,
-                "photo_style": "clean",
-                "icon": "shield",
-                "label_size": 34
-              },
-              {
-                "id": "timing",
-                "kind": "label",
-                "label": "Muda o timing do caixa",
-                "x": 20,
-                "y": 0,
-                "width": 60,
-                "height": 12,
-                "initially_visible": false,
-                "photo_style": "clean",
-                "icon": "clock",
-                "label_size": 34
+                "photo_style": "clean"
               }
             ],
-            "connections": []
+            "connections": [
+              {
+                "from": "today",
+                "to": "splitcash"
+              }
+            ]
           }
         },
         "claim_ids": [
-          "C8"
+          "C5"
         ],
         "tts": {
-          "delivery": "explain",
-          "pause_ms": 135,
+          "delivery": "contrast",
+          "rate": "0%",
+          "pause_ms": 120,
           "cues": [
             {
-              "text": "O imposto devido não fica maior só por causa disso",
-              "kind": "contrast",
-              "pause_before_ms": 100
+              "text": "Pensa comigo",
+              "kind": "emphasis",
+              "pause_before_ms": 90
             },
             {
-              "text": "O que muda é o timing",
+              "text": "já fica retida na largada",
               "kind": "emphasis",
               "pause_before_ms": 80
+            },
+            {
+              "text": "A alíquota do imposto continua a mesma",
+              "kind": "contrast",
+              "pause_before_ms": 100
             }
           ]
         }
       },
       {
         "index": 4,
-        "title": "E se a venda for parcelada?",
-        "narration": "Se a própria venda é parcelada, a lei também evita que o imposto inteiro seja puxado de uma vez só. A regra é proporcional: em cada parcela que for liquidada, acontece a segregação correspondente àquela parcela. E tem outro ponto importante para quem antecipa recebíveis. Antecipar o dinheiro com uma instituição financeira não muda a obrigação de segregação no fluxo original das parcelas. Então a linha do tempo do imposto continua acompanhando a liquidação de cada pagamento, mesmo que a empresa tenha antecipado o recebível.",
+        "title": "E nas vendas parceladas no cartão?",
+        "narration": "E se você vender uma mercadoria parcelada em três vezes no cartão? A lei pensou nisso: o imposto também não é puxado de uma vez só na primeira parcela. O recolhimento acontece de forma proporcional, mês a mês, conforme cada parcela for sendo paga. E mesmo se a sua empresa resolver antecipar esses recebíveis com o banco para pegar o dinheiro adiantado, a retenção do imposto continua seguindo o calendário original de cada pagamento.",
         "visual": {
-          "type": "TIMELINE",
-          "transition": "slide_up",
+          "type": "PROCESS",
+          "transition": "cut",
           "beats": [
             {
-              "anchor": "A regra é proporcional",
-              "kind": "fact",
-              "headline": "Segregação proporcional",
+              "anchor": "parcelada em três vezes no cartão",
+              "kind": "flow",
+              "headline": "Venda em 3 vezes",
               "behavior": "transform",
-              "treatment": "kinetic_type",
-              "transition": "cut",
-              "placement": "full",
+              "treatment": "flow_diagram",
+              "transition": "bloom",
+              "placement": "left",
               "medium": "motion_graphic",
               "sound": "none",
               "target_id": "p1",
@@ -997,28 +906,29 @@
               "prominence": "contextual"
             },
             {
-              "anchor": "em cada parcela que for liquidada, acontece a segregação correspondente àquela parcela",
-              "kind": "flow",
-              "headline": "Cada parcela leva sua parte",
+              "anchor": "O recolhimento acontece de forma proporcional",
+              "kind": "rule",
+              "headline": "Split proporcional em cada parcela",
               "behavior": "transform",
-              "treatment": "flow_diagram",
-              "transition": "slide_left",
+              "treatment": "masked_emphasis",
+              "transition": "wipe",
               "placement": "full",
               "medium": "motion_graphic",
               "sound": "tick",
               "target_id": "p2",
-              "action": "focus",
-              "prominence": "contextual",
+              "action": "reveal",
               "reveal_ids": [
+                "p3",
                 "t1",
                 "t2",
                 "t3"
-              ]
+              ],
+              "prominence": "contextual"
             },
             {
-              "anchor": "Antecipar o dinheiro com uma instituição financeira não muda a obrigação de segregação",
-              "kind": "warning",
-              "headline": "Antecipação não muda a regra",
+              "anchor": "a retenção do imposto continua seguindo o calendário original",
+              "kind": "rule",
+              "headline": "Antecipação bancária não acelera o imposto",
               "behavior": "transform",
               "treatment": "masked_emphasis",
               "transition": "bloom",
@@ -1036,10 +946,10 @@
                 "id": "p1",
                 "kind": "step",
                 "label": "PARCELA 1",
-                "x": 0,
-                "y": 8,
-                "width": 28,
-                "height": 30,
+                "x": 6,
+                "y": 20,
+                "width": 24,
+                "height": 28,
                 "initially_visible": true,
                 "photo_style": "clean",
                 "icon": "receipt"
@@ -1048,11 +958,11 @@
                 "id": "p2",
                 "kind": "step",
                 "label": "PARCELA 2",
-                "x": 36,
-                "y": 8,
-                "width": 28,
-                "height": 30,
-                "initially_visible": true,
+                "x": 38,
+                "y": 20,
+                "width": 24,
+                "height": 28,
+                "initially_visible": false,
                 "photo_style": "clean",
                 "icon": "receipt"
               },
@@ -1060,62 +970,57 @@
                 "id": "p3",
                 "kind": "step",
                 "label": "PARCELA 3",
-                "x": 72,
-                "y": 8,
-                "width": 28,
-                "height": 30,
-                "initially_visible": true,
+                "x": 70,
+                "y": 20,
+                "width": 24,
+                "height": 28,
+                "initially_visible": false,
                 "photo_style": "clean",
                 "icon": "receipt"
               },
               {
                 "id": "t1",
                 "kind": "note",
-                "label": "Split proporcional",
-                "x": 0,
-                "y": 52,
-                "width": 28,
-                "height": 28,
+                "label": "Split da 1ª parcela",
+                "x": 6,
+                "y": 54,
+                "width": 24,
+                "height": 20,
                 "initially_visible": false,
-                "photo_style": "clean",
-                "icon": "coins"
+                "photo_style": "clean"
               },
               {
                 "id": "t2",
                 "kind": "note",
-                "label": "Split proporcional",
-                "x": 36,
-                "y": 52,
-                "width": 28,
-                "height": 28,
+                "label": "Split da 2ª parcela",
+                "x": 38,
+                "y": 54,
+                "width": 24,
+                "height": 20,
                 "initially_visible": false,
-                "photo_style": "clean",
-                "icon": "coins"
+                "photo_style": "clean"
               },
               {
                 "id": "t3",
                 "kind": "note",
-                "label": "Split proporcional",
-                "x": 72,
-                "y": 52,
-                "width": 28,
-                "height": 28,
+                "label": "Split da 3ª parcela",
+                "x": 70,
+                "y": 54,
+                "width": 24,
+                "height": 20,
                 "initially_visible": false,
-                "photo_style": "clean",
-                "icon": "coins"
+                "photo_style": "clean"
               },
               {
                 "id": "advance",
                 "kind": "label",
-                "label": "Antecipar recebível ≠ antecipar o split",
-                "x": 20,
-                "y": 84,
-                "width": 60,
-                "height": 12,
+                "label": "Antecipar recebível no banco não antecipa a guia tributária",
+                "x": 10,
+                "y": 78,
+                "width": 80,
+                "height": 18,
                 "initially_visible": false,
-                "photo_style": "clean",
-                "icon": "warning",
-                "label_size": 34
+                "photo_style": "clean"
               }
             ],
             "connections": [
@@ -1131,66 +1036,77 @@
           }
         },
         "claim_ids": [
-          "C5"
+          "C6"
         ],
         "tts": {
           "delivery": "explain",
-          "pause_ms": 130
+          "rate": "0%",
+          "pause_ms": 120,
+          "cues": [
+            {
+              "text": "não é puxado de uma vez só",
+              "kind": "emphasis",
+              "pause_before_ms": 80
+            },
+            {
+              "text": "de forma proporcional, mês a mês",
+              "kind": "emphasis",
+              "pause_before_ms": 70
+            }
+          ]
         }
       },
       {
         "index": 5,
-        "title": "Isso já vale para Pix, cartão e boleto?",
-        "narration": "Essa é a parte em que mais aparece confusão. A lei desenhou o split payment para os sistemas de pagamento das operações com bens e serviços, e a regulamentação técnica já contempla diferentes meios. Só que infraestrutura pronta para integração não significa cobrança universal acontecendo agora. Em setembro de 2026, o que existe é preparação de sistemas, manuais e padrões operacionais. A lei manda que a implantação seja gradual e permite fases facultativas. Então ver a palavra Pix num manual técnico não significa que todo Pix da sua conta vai sofrer desconto de imposto.",
+        "title": "Isso vale para todo Pix?",
+        "narration": "Essa é a maior dúvida de todo mundo: o governo vai taxar o Pix? A resposta é não. A Receita Federal e os órgãos da reforma já publicaram os manuais técnicos que integram os meios de pagamento, como Pix, cartões e boletos. Mas ter o sistema preparado não significa que tem imposto sendo cobrado agora. Fazer um Pix para um amigo, dividir a conta do restaurante ou transferir dinheiro continua exatamente como sempre foi. O split só se aplica a vendas comerciais devidamente registradas.",
         "visual": {
-          "type": "DO_DONT",
-          "transition": "zoom",
+          "type": "EVIDENCE",
+          "transition": "fade",
           "beats": [
             {
-              "anchor": "infraestrutura pronta para integração não significa cobrança universal acontecendo agora",
+              "anchor": "A resposta é não",
               "kind": "warning",
-              "headline": "Infraestrutura ≠ uso universal",
+              "headline": "Não é taxa sobre Pix",
               "behavior": "transform",
               "treatment": "masked_emphasis",
               "transition": "bloom",
               "placement": "full",
               "medium": "motion_graphic",
-              "sound": "tick",
-              "target_id": "notnow",
+              "sound": "none",
+              "target_id": "pixmyth",
               "action": "reveal",
               "prominence": "contextual"
             },
             {
-              "anchor": "o que existe é preparação de sistemas, manuais e padrões operacionais",
+              "anchor": "A Receita Federal e os órgãos da reforma já publicaram os manuais técnicos",
               "kind": "fact",
-              "headline": "2026: documentação e preparação",
+              "headline": "Atos técnicos conjuntos",
               "behavior": "transform",
               "treatment": "timeline",
-              "transition": "wipe",
+              "transition": "bloom",
               "placement": "left",
-              "medium": "motion_graphic",
+              "medium": "source_excerpt",
               "sound": "none",
               "target_id": "excerpt_receita",
               "action": "reveal",
               "mark_ids": [
                 "mark_ato4"
               ],
-              "retire_ids": [
-                "methods"
-              ],
-              "prominence": "contextual"
+              "prominence": "takeover",
+              "takeover_reason": "Exibe a publicação oficial da Receita Federal com os atos técnicos do split payment"
             },
             {
-              "anchor": "todo Pix da sua conta vai sofrer desconto de imposto",
-              "kind": "block",
-              "headline": "Pix pessoal não vira imposto automático",
+              "anchor": "O split só se aplica a vendas comerciais devidamente registradas",
+              "kind": "rule",
+              "headline": "Apenas operações com nota fiscal",
               "behavior": "transform",
-              "treatment": "signal",
-              "transition": "bloom",
+              "treatment": "masked_emphasis",
+              "transition": "wipe",
               "placement": "right",
               "medium": "motion_graphic",
-              "sound": "none",
-              "target_id": "pixmyth",
+              "sound": "tick",
+              "target_id": "notnow",
               "action": "reveal",
               "prominence": "contextual"
             }
@@ -1198,17 +1114,16 @@
           "stage": {
             "elements": [
               {
-                "id": "methods",
-                "kind": "label",
-                "label": "Pix • boleto • transferências • cartões",
-                "x": 0,
-                "y": 4,
-                "width": 100,
-                "height": 14,
-                "initially_visible": true,
+                "id": "pixmyth",
+                "kind": "note",
+                "label": "Pix entre pessoas físicas segue 100% isento",
+                "x": 6,
+                "y": 6,
+                "width": 88,
+                "height": 18,
+                "initially_visible": false,
                 "photo_style": "clean",
-                "icon": "wallet",
-                "label_size": 38
+                "icon": "shield"
               },
               {
                 "id": "excerpt_receita",
@@ -1216,9 +1131,9 @@
                 "asset_id": "A2_receita_atos",
                 "label": "Receita Federal • Ato Técnico nº 4",
                 "x": 0,
-                "y": 20,
+                "y": 28,
                 "width": 58,
-                "height": 72,
+                "height": 66,
                 "initially_visible": false,
                 "photo_style": "clean",
                 "annotations": [
@@ -1237,26 +1152,14 @@
               {
                 "id": "notnow",
                 "kind": "note",
-                "label": "Infraestrutura ≠ cobrança imediata",
+                "label": "Infraestrutura técnica pronta ≠ cobrança imediata",
                 "x": 62,
-                "y": 22,
-                "width": 38,
-                "height": 32,
+                "y": 38,
+                "width": 36,
+                "height": 45,
                 "initially_visible": false,
                 "photo_style": "clean",
-                "icon": "warning"
-              },
-              {
-                "id": "pixmyth",
-                "kind": "note",
-                "label": "Não é imposto sobre o Pix",
-                "x": 62,
-                "y": 58,
-                "width": 38,
-                "height": 32,
-                "initially_visible": false,
-                "photo_style": "clean",
-                "icon": "shield"
+                "icon": "bank"
               }
             ],
             "connections": []
@@ -1264,21 +1167,22 @@
         },
         "claim_ids": [
           "C7",
-          "C9"
+          "C8"
         ],
         "tts": {
           "delivery": "contrast",
-          "pause_ms": 150,
+          "rate": "0%",
+          "pause_ms": 120,
           "cues": [
             {
-              "text": "infraestrutura pronta para integração não significa cobrança universal acontecendo agora",
-              "kind": "contrast",
+              "text": "A resposta é não",
+              "kind": "emphasis",
               "pause_before_ms": 100
             },
             {
-              "text": "não significa que todo Pix da sua conta vai sofrer desconto de imposto",
-              "kind": "emphasis",
-              "pause_before_ms": 80
+              "text": "não significa que tem imposto sendo cobrado agora",
+              "kind": "contrast",
+              "pause_before_ms": 90
             }
           ]
         }
@@ -1286,69 +1190,45 @@
       {
         "index": 6,
         "title": "Quando começa de verdade?",
-        "narration": "Hoje, vinte e nove de setembro de 2026, não existe um botão virado que coloque o split em todas as compras do país. A própria lei prevê implantação gradual. E a Receita Federal informou, segundo apurações do setor e fontes da regulamentação, que a primeira etapa com transações reais está planejada para o segundo semestre de 2027, de forma facultativa e inicialmente entre empresas. A produção assistida começa por um recorte bem menor do que o varejo inteiro. Para vendas a pessoas físicas e uma cobertura ampla dos meios de pagamento, o cronograma ainda depende das próximas etapas de implementação.",
+        "narration": "Na prática, não existe nenhum botão mágico que vá virar todas as compras do país de um dia para o outro. O cronograma desenhado na regulamentação prevê uma implantação muito gradual. A previsão é que os primeiros testes com dinheiro real comecem no segundo semestre de 2027, de forma totalmente facultativa e apenas entre empresas selecionadas. Para o comércio de rua, padarias e vendas para o consumidor comum, a entrada só deve acontecer anos mais tarde, conforme as etapas forem amadurecendo.",
         "visual": {
-          "type": "TIMELINE",
-          "transition": "wipe",
+          "type": "EVIDENCE",
+          "transition": "fade",
           "beats": [
             {
-              "anchor": "Hoje, vinte e nove de setembro de 2026",
-              "kind": "date",
-              "headline": "29 SET 2026",
-              "behavior": "transform",
-              "treatment": "timeline",
-              "transition": "cut",
-              "placement": "left",
-              "medium": "motion_graphic",
-              "sound": "none",
-              "target_id": "now",
-              "action": "focus",
-              "prominence": "contextual",
-              "value": "HOJE"
-            },
-            {
-              "anchor": "a primeira etapa com transações reais está planejada para o segundo semestre de 2027",
-              "kind": "date",
-              "headline": "2º semestre de 2027",
+              "anchor": "A previsão é que os primeiros testes com dinheiro real comecem no segundo semestre de 2027",
+              "kind": "fact",
+              "headline": "Início facultativo em 2027",
               "behavior": "transform",
               "treatment": "spotlight",
-              "transition": "slide_left",
-              "placement": "center",
-              "medium": "motion_graphic",
-              "sound": "tick",
+              "transition": "bloom",
+              "placement": "full",
+              "medium": "source_excerpt",
+              "sound": "none",
               "target_id": "excerpt_noticia",
               "action": "reveal",
               "mark_ids": [
                 "mark_noticia_headline"
               ],
-              "prominence": "contextual"
+              "prominence": "takeover",
+              "takeover_reason": "Exibe a matéria da IstoÉ Dinheiro confirmando a adesão facultativa em 2027"
             },
             {
-              "anchor": "de forma facultativa e inicialmente entre empresas",
-              "kind": "fact",
-              "headline": "Facultativo e entre empresas (B2B)",
+              "anchor": "de forma totalmente facultativa e apenas entre empresas selecionadas",
+              "kind": "step",
+              "headline": "Etapa piloto B2B",
               "behavior": "transform",
-              "treatment": "giant_number",
-              "transition": "bloom",
+              "treatment": "flow_diagram",
+              "transition": "wipe",
               "placement": "center",
               "medium": "motion_graphic",
-              "sound": "none",
+              "sound": "tick",
               "target_id": "b2b",
-              "action": "focus",
-              "prominence": "contextual"
-            },
-            {
-              "anchor": "o cronograma ainda depende das próximas etapas de implementação",
-              "kind": "warning",
-              "headline": "Varejo amplo: próximas etapas",
-              "behavior": "transform",
-              "treatment": "masked_emphasis",
-              "transition": "wipe",
-              "placement": "right",
-              "medium": "motion_graphic",
-              "sound": "none",
-              "target_id": "later",
-              "action": "focus",
+              "action": "reveal",
+              "reveal_ids": [
+                "now",
+                "later"
+              ],
               "prominence": "contextual"
             }
           ],
@@ -1358,11 +1238,11 @@
                 "id": "excerpt_noticia",
                 "kind": "source_excerpt",
                 "asset_id": "A3_noticia_2027",
-                "label": "Cronograma • Início facultativo 2027",
+                "label": "Cronograma oficial • Início facultativo 2027",
                 "x": 5,
-                "y": 10,
+                "y": 8,
                 "width": 90,
-                "height": 44,
+                "height": 45,
                 "initially_visible": false,
                 "photo_style": "clean",
                 "annotations": [
@@ -1382,38 +1262,37 @@
                 "id": "now",
                 "kind": "metric",
                 "label": "Situação atual",
-                "x": 0,
-                "y": 58,
-                "width": 28,
-                "height": 38,
-                "initially_visible": true,
+                "x": 5,
+                "y": 62,
+                "width": 26,
+                "height": 32,
+                "initially_visible": false,
                 "photo_style": "clean",
-                "value": "2026",
+                "value": "Fase Atual",
                 "icon": "document"
               },
               {
                 "id": "b2b",
                 "kind": "metric",
                 "label": "Primeira etapa real",
-                "x": 36,
-                "y": 58,
-                "width": 28,
-                "height": 38,
-                "initially_visible": true,
+                "x": 37,
+                "y": 62,
+                "width": 26,
+                "height": 32,
+                "initially_visible": false,
                 "photo_style": "clean",
                 "value": "2º SEM 2027",
-                "icon": "bank",
-                "value_size": 48
+                "icon": "bank"
               },
               {
                 "id": "later",
                 "kind": "metric",
                 "label": "Varejo amplo",
-                "x": 72,
-                "y": 58,
-                "width": 28,
-                "height": 38,
-                "initially_visible": true,
+                "x": 69,
+                "y": 62,
+                "width": 26,
+                "height": 32,
+                "initially_visible": false,
                 "photo_style": "clean",
                 "value": "DEPOIS",
                 "icon": "route"
@@ -1432,42 +1311,42 @@
           }
         },
         "claim_ids": [
-          "C6",
-          "C7"
+          "C8"
         ],
         "tts": {
           "delivery": "explain",
-          "pause_ms": 145,
+          "rate": "0%",
+          "pause_ms": 120,
           "cues": [
             {
-              "text": "não existe um botão virado que coloque o split em todas as compras do país",
-              "kind": "contrast",
+              "text": "não existe nenhum botão mágico",
+              "kind": "emphasis",
               "pause_before_ms": 80
             },
             {
-              "text": "segundo semestre de 2027",
+              "text": "no segundo semestre de 2027",
               "kind": "number",
-              "pause_before_ms": 80
+              "pause_before_ms": 70
             }
           ]
         }
       },
       {
         "index": 7,
-        "title": "O que você precisa guardar dessa história",
-        "narration": "Então guarda três coisas. Primeiro: split payment não é um novo imposto sobre Pix. É uma forma de recolher IBS e CBS ligada a uma operação de compra ou serviço. Segundo: quando estiver ativo naquela transação, ele pode mudar bastante o fluxo de caixa porque a parcela tributária deixa de passar livremente pela conta da empresa antes do recolhimento. E terceiro: em setembro de 2026 a implantação ainda é gradual, com a primeira etapa real anunciada para 2027 e sem varejo inteiro entrando de uma vez. No fim das contas, a grande mudança não é o Pix ser taxado. É o imposto seguir o pagamento muito mais de perto.",
+        "title": "As três regras de ouro",
+        "narration": "Para resumir essa conversa, guarda três pontos fundamentais. Primeiro: o split payment não é um imposto novo sobre o Pix, é apenas um método de cobrança na hora da venda. Segundo: ele exige que as empresas cuidem muito bem do capital de giro, já que o imposto não vai mais passear pelo caixa antes de ser pago. E terceiro: a transição é longa, facultativa no início e vai dar tempo de todo mundo se adaptar. No fim das contas, a grande revolução é a tecnologia aproximando o pagamento e o imposto. Se esse vídeo te ajudou a entender de verdade, deixa o seu like e se inscreve no canal.",
         "visual": {
-          "type": "CLOSING",
+          "type": "SUMMARY",
           "transition": "cut",
           "beats": [
             {
-              "anchor": "split payment não é um novo imposto sobre Pix",
-              "kind": "fact",
-              "headline": "1. Não é imposto sobre Pix",
+              "anchor": "Primeiro: o split payment não é um imposto novo sobre o Pix",
+              "kind": "takeaway",
+              "headline": "Não é imposto sobre Pix",
               "behavior": "transform",
-              "treatment": "kinetic_type",
-              "transition": "cut",
-              "placement": "full",
+              "treatment": "masked_emphasis",
+              "transition": "bloom",
+              "placement": "left",
               "medium": "motion_graphic",
               "sound": "none",
               "target_id": "one",
@@ -1475,37 +1354,37 @@
               "prominence": "contextual"
             },
             {
-              "anchor": "ele pode mudar bastante o fluxo de caixa",
-              "kind": "money",
-              "headline": "2. Muda o timing do caixa",
+              "anchor": "Segundo: ele exige que as empresas cuidem muito bem do capital de giro",
+              "kind": "takeaway",
+              "headline": "Cuidado com o capital de giro",
               "behavior": "transform",
-              "treatment": "flow_diagram",
-              "transition": "slide_left",
-              "placement": "full",
+              "treatment": "masked_emphasis",
+              "transition": "wipe",
+              "placement": "center",
               "medium": "motion_graphic",
               "sound": "tick",
               "target_id": "two",
-              "action": "focus",
+              "action": "reveal",
               "prominence": "contextual"
             },
             {
-              "anchor": "a implantação ainda é gradual",
-              "kind": "date",
-              "headline": "3. Implantação gradual",
+              "anchor": "E terceiro: a transição é longa, facultativa no início",
+              "kind": "takeaway",
+              "headline": "Implantação gradual e planejada",
               "behavior": "transform",
-              "treatment": "timeline",
-              "transition": "wipe",
-              "placement": "full",
+              "treatment": "masked_emphasis",
+              "transition": "bloom",
+              "placement": "right",
               "medium": "motion_graphic",
               "sound": "none",
               "target_id": "three",
-              "action": "focus",
+              "action": "reveal",
               "prominence": "contextual"
             },
             {
-              "anchor": "É o imposto seguir o pagamento muito mais de perto",
-              "kind": "fact",
-              "headline": "O imposto acompanha o pagamento",
+              "anchor": "a grande revolução é a tecnologia aproximando o pagamento e o imposto",
+              "kind": "takeaway",
+              "headline": "Pagamento e imposto sincronizados",
               "behavior": "transform",
               "treatment": "masked_emphasis",
               "transition": "bloom",
@@ -1522,11 +1401,11 @@
               {
                 "id": "one",
                 "kind": "note",
-                "label": "NÃO É IMPOSTO SOBRE PIX",
-                "x": 0,
-                "y": 17,
-                "width": 30,
-                "height": 42,
+                "label": "1. NÃO É IMPOSTO SOBRE PIX",
+                "x": 4,
+                "y": 20,
+                "width": 28,
+                "height": 45,
                 "initially_visible": true,
                 "photo_style": "clean",
                 "icon": "shield"
@@ -1534,39 +1413,37 @@
               {
                 "id": "two",
                 "kind": "note",
-                "label": "MUDA O CAIXA",
-                "x": 35,
-                "y": 17,
-                "width": 30,
-                "height": 42,
-                "initially_visible": true,
+                "label": "2. MUDA O CAPITAL DE GIRO",
+                "x": 36,
+                "y": 20,
+                "width": 28,
+                "height": 45,
+                "initially_visible": false,
                 "photo_style": "clean",
                 "icon": "wallet"
               },
               {
                 "id": "three",
                 "kind": "note",
-                "label": "IMPLANTAÇÃO GRADUAL",
-                "x": 70,
-                "y": 17,
-                "width": 30,
-                "height": 42,
-                "initially_visible": true,
+                "label": "3. TRANSIÇÃO GRADUAL",
+                "x": 68,
+                "y": 20,
+                "width": 28,
+                "height": 45,
+                "initially_visible": false,
                 "photo_style": "clean",
-                "icon": "clock"
+                "icon": "route"
               },
               {
                 "id": "final",
                 "kind": "label",
-                "label": "Imposto e pagamento mais próximos",
-                "x": 15,
+                "label": "A tecnologia sincronizando pagamento e tributo na velocidade da luz",
+                "x": 10,
                 "y": 72,
-                "width": 70,
-                "height": 20,
+                "width": 80,
+                "height": 18,
                 "initially_visible": false,
-                "photo_style": "clean",
-                "icon": "route",
-                "label_size": 40
+                "photo_style": "clean"
               }
             ],
             "connections": []
@@ -1574,27 +1451,21 @@
         },
         "claim_ids": [
           "C1",
-          "C6",
-          "C8",
-          "C9"
+          "C5",
+          "C8"
         ],
         "tts": {
           "delivery": "closing",
-          "rate": "-2%",
-          "pause_ms": 170,
+          "rate": "0%",
+          "pause_ms": 120,
           "cues": [
             {
-              "text": "Então guarda três coisas",
+              "text": "guarda três pontos fundamentais",
               "kind": "emphasis",
-              "pause_before_ms": 0
+              "pause_before_ms": 90
             },
             {
-              "text": "a grande mudança não é o Pix ser taxado",
-              "kind": "contrast",
-              "pause_before_ms": 120
-            },
-            {
-              "text": "É o imposto seguir o pagamento muito mais de perto",
+              "text": "deixa o seu like e se inscreve no canal",
               "kind": "emphasis",
               "pause_before_ms": 100
             }

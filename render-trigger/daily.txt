@@ -1,5 +1,2 @@
-Split Payment — recortes editoriais com efeito de papel rasgado, sombra 3D e iluminação traseira.
-Captura limpa da Receita Federal sem aviso de cookies.
-Marca-texto amarelo encorpado (#FFBD19) e marcas de corte técnico nos cantos.
-Pronúncia natural contínua de IBS e CBS (sem quebras de soletrar).
-Trigger: 2026-09-29T16:19:28.764Z
+Split Payment do zero — Roteiro reformulado com tom didatico, informal e brasileiro (estilo Primo Rico / financas praticas), perenidade sem citacao de datas de calendario, pronuncia refinada fluida de IBS e CBS, sem contracoes duras, e nova estetica documental de papel rasgado aprovada.
+Trigger: 2026-09-29T17:43:29.343Z
