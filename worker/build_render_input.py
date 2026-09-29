@@ -110,6 +110,7 @@ def main() -> None:
     parser.add_argument("--project", required=True)
     parser.add_argument("--tts-manifest", required=True)
     parser.add_argument("--audio-public-prefix", required=True)
+    parser.add_argument("--visual-assets-manifest")
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
 
@@ -117,6 +118,18 @@ def main() -> None:
     manifest = json.loads(Path(args.tts_manifest).read_text(encoding="utf-8"))
 
     audio_by_id = {item["id"]: item for item in manifest["scenes"]}
+
+    visual_assets_by_id = {}
+    if args.visual_assets_manifest:
+        visual_manifest_path = Path(args.visual_assets_manifest)
+        if visual_manifest_path.exists():
+            visual_manifest = json.loads(
+                visual_manifest_path.read_text(encoding="utf-8")
+            )
+            visual_assets_by_id = {
+                str(item["id"]): item
+                for item in (visual_manifest.get("assets") or [])
+            }
 
     output_scenes = []
     cursor = 0
@@ -140,11 +153,25 @@ def main() -> None:
             scene,
             audio,
         )
+        resolved_beats_with_assets = []
+        for beat in resolved_beats:
+            asset_id = str(beat.get("asset_id") or "").strip()
+            if asset_id and asset_id in visual_assets_by_id:
+                resolved_beats_with_assets.append(
+                    {
+                        **beat,
+                        "asset_file": visual_assets_by_id[asset_id]["public_file"],
+                        "asset_type": visual_assets_by_id[asset_id].get("type"),
+                    }
+                )
+            else:
+                resolved_beats_with_assets.append(beat)
+
         scene_with_resolved_visual = {
             **scene,
             "visual": {
                 **(scene.get("visual") or {}),
-                "beats": resolved_beats,
+                "beats": resolved_beats_with_assets,
             },
         }
 
