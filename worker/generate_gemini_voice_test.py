@@ -15,21 +15,21 @@ VOICES = [
         "gender": "masculina",
         "voice": "Puck",
         "label": "Puck (Jovem, dinâmico e conversacional - estilo Creator)",
-        "description": "Tom moderno, ágil e descontraído, ótimo para YouTube."
+        "description": "Tom moderno, ágil e descontraído, ótimo para prender a atenção no YouTube."
     },
     {
         "id": "M2",
         "gender": "masculina",
         "voice": "Charon",
         "label": "Charon (Firme, encorpado e informativo - estilo Âncora)",
-        "description": "Tom maduro, seguro e confiável para análises de mercado."
+        "description": "Tom maduro, seguro e confiável para análises financeiras aprofundadas."
     },
     {
         "id": "M3",
         "gender": "masculina",
         "voice": "Fenrir",
         "label": "Fenrir (Vibrante, enérgico e assertivo)",
-        "description": "Tom expressivo e marcante para notícias quentes."
+        "description": "Tom expressivo e marcante para notícias quentes e explicações rápidas."
     },
     {
         "id": "M4",
@@ -43,7 +43,7 @@ VOICES = [
         "gender": "masculina",
         "voice": "Enceladus",
         "label": "Enceladus (Tranquilo, pausado e didático)",
-        "description": "Tom suave e explicativo para tutoriais e conceitos."
+        "description": "Tom suave e explicativo para tutoriais e conceitos passo a passo."
     },
     # Femininas
     {
@@ -58,7 +58,7 @@ VOICES = [
         "gender": "feminina",
         "voice": "Kore",
         "label": "Kore (Firme, moderna, segura e articulada)",
-        "description": "Dicção muito clara, autoridade amigável para finanças."
+        "description": "Dicção muito clara, autoridade amigável excelente para finanças."
     },
     {
         "id": "F3",
@@ -94,26 +94,14 @@ TEST_TEXT = (
 
 
 def synthesize_gemini(text: str, voice_name: str, api_key: str, output_path: Path) -> str:
-    models_to_try = ["gemini-2.0-flash", "gemini-2.0-flash-exp"]
+    models_to_try = ["gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts", "gemini-3.8-flash"]
     last_error = None
 
     for model in models_to_try:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
         payload = {
-            "systemInstruction": {
-                "parts": [
-                    {
-                        "text": (
-                            "Você é um motor de Text-to-Speech de alto nível em português do Brasil para o canal O Dinheiro Explica. "
-                            "Sua única tarefa é narrar em voz alta exatamente o texto fornecido pelo usuário, com entonação humana impecável, ritmo natural, clareza e expressividade. "
-                            "NUNCA adicione palavras antes ou depois. NUNCA diga saudações adicionais nem 'Claro', 'Aqui está' ou comentários. Apenas leia o texto fornecido."
-                        )
-                    }
-                ]
-            },
             "contents": [
                 {
-                    "role": "user",
                     "parts": [{"text": text}]
                 }
             ],
@@ -143,7 +131,6 @@ def synthesize_gemini(text: str, voice_name: str, api_key: str, output_path: Pat
                     mime_type = audio_part["inlineData"].get("mimeType", "")
                     raw_bytes = base64.b64decode(b64_audio)
 
-                    # Salva arquivo temporário de áudio
                     temp_wav = output_path.with_suffix(".temp.wav")
                     if raw_bytes.startswith(b"RIFF") or "wav" in mime_type:
                         temp_wav.write_bytes(raw_bytes)
@@ -158,7 +145,7 @@ def synthesize_gemini(text: str, voice_name: str, api_key: str, output_path: Pat
                             wf.setframerate(24000)
                             wf.writeframes(raw_bytes)
 
-                    # Converte para MP3 com ffmpeg se disponível
+                    # Converte para MP3 com ffmpeg
                     try:
                         subprocess.run(
                             ["ffmpeg", "-y", "-i", str(temp_wav), "-b:a", "192k", str(output_path)],
@@ -168,7 +155,6 @@ def synthesize_gemini(text: str, voice_name: str, api_key: str, output_path: Pat
                         temp_wav.unlink(missing_ok=True)
                         return output_path.name
                     except Exception:
-                        # Se ffmpeg falhar, renomeia para wav
                         final_wav = output_path.with_suffix(".wav")
                         temp_wav.rename(final_wav)
                         return final_wav.name
@@ -177,10 +163,11 @@ def synthesize_gemini(text: str, voice_name: str, api_key: str, output_path: Pat
                     time.sleep(3 * attempt)
                     continue
                 else:
-                    last_error = f"HTTP {response.status_code}: {response.text}"
+                    last_error = f"HTTP {response.status_code} ({model}): {response.text}"
+                    print(f"    [TTS] {model} retornou: {last_error[:160]}", flush=True)
                     break
             except Exception as exc:
-                last_error = exc
+                last_error = f"{type(exc).__name__}: {exc}"
                 time.sleep(2 * attempt)
 
     raise RuntimeError(f"Falha ao sintetizar voz '{voice_name}': {last_error}")
@@ -218,14 +205,14 @@ def main() -> None:
             print(f"[Gemini TTS] ❌ Falhou: {exc}", flush=True)
 
         results.append(item)
-        time.sleep(2)  # Respeita o limite de requisições por minuto
+        time.sleep(2)
 
     ok_count = sum(1 for r in results if r["status"] == "ok")
     if ok_count == 0:
         raise RuntimeError("Nenhuma voz do Gemini foi sintetizada com sucesso.")
 
     manifest = {
-        "purpose": "Escolha do apresentador masculino e da apresentadora feminina para O Dinheiro Explica usando Google Gemini 2.0.",
+        "purpose": "Escolha do apresentador masculino e da apresentadora feminina para O Dinheiro Explica usando Google Gemini TTS.",
         "instruction": "Ouça os áudios e selecione 1 voz masculina (M1 a M5) e 1 voz feminina (F1 a F5).",
         "test_text": TEST_TEXT,
         "voices": results,
@@ -237,7 +224,7 @@ def main() -> None:
     readme = output_dir / "LEIA-ME.txt"
     lines = [
         "============================================================",
-        "TESTE DE VOZES GOOGLE GEMINI 2.0 - O DINHEIRO EXPLICA",
+        "TESTE DE VOZES GOOGLE GEMINI TTS - O DINHEIRO EXPLICA",
         "============================================================",
         "",
         "Instruções:",

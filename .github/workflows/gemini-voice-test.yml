@@ -23,7 +23,7 @@ jobs:
         run: |
           pip install --no-cache-dir -r worker/requirements.txt
 
-      - name: Debug Gemini API
+      - name: Test Gemini Models
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
@@ -40,19 +40,16 @@ jobs:
             --manifest voice-test-output/manifest.json
 
       - name: Upload to Google Drive
-        if: always()
         env:
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
           GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
         run: |
-          if [ -f "voice-test-output/manifest.json" ]; then
-            python worker/upload_voice_test_to_drive.py \
-              --input-dir voice-test-output \
-              --manifest voice-test-output/manifest.json \
-              --output voice-test-output/drive.json
-          fi
+          python worker/upload_voice_test_to_drive.py \
+            --input-dir voice-test-output \
+            --manifest voice-test-output/manifest.json \
+            --output voice-test-output/drive.json
 
       - name: Upload Artifact
         if: always()
@@ -60,3 +57,19 @@ jobs:
         with:
           name: gemini-voice-test-audio
           path: voice-test-output/
+
+      - name: Summary
+        run: |
+          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json
+          p = json.load(open("voice-test-output/drive.json", encoding="utf-8"))
+          print("## 🎙️ Teste de Vozes Gemini Concluído!")
+          print("")
+          print(f"📁 **[Abrir Pasta Completa no Google Drive]({p['folder_url']})**")
+          print(f"📄 **[Ver Roteiro e Descrição (LEIA-ME)]({p['readme_url']})**")
+          print("")
+          print("### 🎧 Amostras para Escolher:")
+          for v in p["voices"]:
+              genero = "👨 Masculina" if v["gender"] == "masculina" else "👩 Feminina"
+              print(f"- **{v['id']}** ({genero}): [{v['label']}]({v['url']})")
+          PY

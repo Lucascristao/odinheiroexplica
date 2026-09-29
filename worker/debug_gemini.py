@@ -1,37 +1,38 @@
 ﻿import os
 import requests
+import base64
 
 api_key = os.environ.get("GEMINI_API_KEY", "").strip()
-print(f"API key length: {len(api_key)}")
 
-# 1. List models
-resp = requests.get(f"https://generativelanguage.googleapis.com/v1beta/models?key={api_key}")
-print(f"List models status: {resp.status_code}")
-if resp.status_code == 200:
-    models = resp.json().get("models", [])
-    print(f"Total models: {len(models)}")
-    for m in models:
-        methods = m.get("supportedGenerationMethods", [])
-        if "generateContent" in methods:
-            print(f"- {m['name']} (displayName: {m.get('displayName')})")
-else:
-    print(resp.text)
+models_to_test = ["gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts", "gemini-3.8-flash"]
 
-# 2. Test generateContent with AUDIO on gemini-2.0-flash
-url = f"https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key={api_key}"
-payload = {
-    "contents": [{"parts": [{"text": "Diga apenas: Testando áudio do Gemini."}]}],
-    "generationConfig": {
-        "responseModalities": ["AUDIO"],
-        "speechConfig": {
-            "voiceConfig": {
-                "prebuiltVoiceConfig": {
-                    "voiceName": "Puck"
+for m in models_to_test:
+    url = f"https://generativelanguage.googleapis.com/v1beta/models/{m}:generateContent?key={api_key}"
+    payload = {
+        "contents": [{"parts": [{"text": "Olá! Testando áudio das vozes do Gemini para O Dinheiro Explica."}]}],
+        "generationConfig": {
+            "responseModalities": ["AUDIO"],
+            "speechConfig": {
+                "voiceConfig": {
+                    "prebuiltVoiceConfig": {
+                        "voiceName": "Puck"
+                    }
                 }
             }
         }
     }
-}
-resp2 = requests.post(url, json=payload)
-print(f"gemini-2.0-flash status: {resp2.status_code}")
-print(resp2.text[:1000])
+    resp = requests.post(url, json=payload, timeout=60)
+    print(f"Model {m} status: {resp.status_code}")
+    if resp.status_code == 200:
+        data = resp.json()
+        parts = data.get("candidates", [{}])[0].get("content", {}).get("parts", [])
+        audio_part = next((p for p in parts if "inlineData" in p and "data" in p["inlineData"]), None)
+        if audio_part:
+            raw = base64.b64decode(audio_part["inlineData"]["data"])
+            mime = audio_part["inlineData"].get("mimeType", "")
+            print(f"  SUCCESS! Audio received: {len(raw)} bytes, mimeType: {mime}")
+            break
+        else:
+            print(f"  200 OK but parts structure: {parts}")
+    else:
+        print(f"  Error: {resp.text[:500]}")
