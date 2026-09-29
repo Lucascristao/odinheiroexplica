@@ -18,8 +18,10 @@ import {
 } from "lucide-react";
 import {
   AbsoluteFill,
+  Img,
   interpolate,
   spring,
+  staticFile,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
@@ -56,6 +58,10 @@ export type EditorialBeat = {
     | "signal";
   transition?: "cut" | "fade" | "slide_left" | "slide_up" | "zoom" | "wipe";
   placement?: "left" | "center" | "right" | "full";
+  medium?: "motion_graphic" | "photo_cutout" | "photo" | "mixed";
+  asset_id?: string;
+  asset_file?: string;
+  asset_type?: string;
   sound?: "none" | "tick" | "impact" | "whoosh" | "alert";
   resolved_ratio?: number;
   resolved_frame?: number;
@@ -862,6 +868,126 @@ const SignalTreatment = ({beat, accent, progress}: {beat: EditorialBeat; accent:
   </AbsoluteFill>
 );
 
+const PhotoCutoutTreatment = ({
+  beat,
+  accent,
+  progress,
+}: {
+  beat: EditorialBeat;
+  accent: string;
+  progress: number;
+}) => {
+  const imageOnLeft = beat.placement !== "right";
+  const imageEnter = phase(progress, 0.02, 0.28);
+  const headlineEnter = phase(progress, 0.16, 0.48);
+  const detailEnter = phase(progress, 0.38, 0.7);
+  const slowMove = phase(progress, 0.22, 0.94);
+
+  if (!beat.asset_file) return null;
+
+  return (
+    <AbsoluteFill style={{fontFamily: FONT, overflow: "hidden"}}>
+      <div
+        style={{
+          position: "absolute",
+          top: 84,
+          bottom: 42,
+          width: "55%",
+          left: imageOnLeft ? -34 : undefined,
+          right: imageOnLeft ? undefined : -34,
+          display: "flex",
+          alignItems: "flex-end",
+          justifyContent: "center",
+          opacity: imageEnter,
+          transform: `translateX(${(1 - imageEnter) * (imageOnLeft ? -95 : 95)}px) scale(${0.97 + slowMove * 0.05})`,
+          transformOrigin: imageOnLeft ? "left bottom" : "right bottom",
+          filter: "drop-shadow(0 34px 48px rgba(0,0,0,.48))",
+        }}
+      >
+        <Img
+          src={staticFile(beat.asset_file)}
+          style={{
+            width: "100%",
+            height: "100%",
+            objectFit: "contain",
+            objectPosition: imageOnLeft ? "left bottom" : "right bottom",
+          }}
+        />
+      </div>
+
+      <div
+        style={{
+          position: "absolute",
+          top: 220,
+          bottom: 160,
+          left: imageOnLeft ? "51%" : 145,
+          right: imageOnLeft ? 145 : "51%",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: imageOnLeft ? "flex-start" : "flex-end",
+          textAlign: imageOnLeft ? "left" : "right",
+        }}
+      >
+        {beat.value && (
+          <div
+            style={{
+              color: accent,
+              fontSize: 100,
+              lineHeight: 0.94,
+              fontWeight: 950,
+              letterSpacing: -3,
+              opacity: headlineEnter,
+              transform: `translateY(${(1 - headlineEnter) * 24}px)`,
+            }}
+          >
+            {beat.value}
+          </div>
+        )}
+        <div
+          style={{
+            color: WHITE,
+            fontSize: beat.value ? 62 : 80,
+            lineHeight: 1,
+            fontWeight: 950,
+            letterSpacing: -1.6,
+            maxWidth: 820,
+            marginTop: beat.value ? 18 : 0,
+            opacity: headlineEnter,
+            transform: `translateY(${(1 - headlineEnter) * 24}px)`,
+          }}
+        >
+          {beat.headline}
+        </div>
+        {beat.detail && (
+          <div
+            style={{
+              color: MUTED,
+              fontSize: 28,
+              lineHeight: 1.32,
+              fontWeight: 700,
+              maxWidth: 760,
+              marginTop: 24,
+              opacity: detailEnter,
+            }}
+          >
+            {beat.detail}
+          </div>
+        )}
+        <div
+          style={{
+            width: `${240 * phase(progress, 0.28, 0.82)}px`,
+            height: 7,
+            background: accent,
+            borderRadius: 99,
+            marginTop: 30,
+          }}
+        />
+      </div>
+    </AbsoluteFill>
+  );
+};
+
 const OverlayTreatment = ({beat, accent, progress}: {beat: EditorialBeat; accent: string; progress: number}) => (
   <AbsoluteFill style={{fontFamily: FONT, pointerEvents: "none"}}>
     <div
@@ -938,7 +1064,17 @@ export const EditorialMicroScene = ({
   }
 
   let body: React.ReactNode;
-  switch (treatment) {
+
+  if (beat.medium === "photo_cutout" && beat.asset_file) {
+    body = (
+      <PhotoCutoutTreatment
+        beat={beat}
+        accent={accent}
+        progress={beatProgress}
+      />
+    );
+  } else {
+    switch (treatment) {
     case "giant_number":
       body = <GiantNumber beat={beat} accent={accent} progress={beatProgress} />;
       break;
@@ -977,6 +1113,7 @@ export const EditorialMicroScene = ({
         />
       );
       break;
+    }
   }
 
   return (
