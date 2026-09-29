@@ -55,6 +55,21 @@ const claimSchema = z
   })
   .passthrough();
 
+const visualAssetSchema = z
+  .object({
+    id: z.string().min(1),
+    type: z.enum(["photo_cutout", "photo", "graphic"]),
+    subject: z.string().min(1),
+    narrative_role: z.string().min(1),
+    country_context: z.enum(["BR", "global", "neutral"]).default("BR"),
+    source_page_url: z.string().url(),
+    image_url: z.string().url(),
+    license: z.string().min(1),
+    attribution: z.string().optional(),
+    needs_cutout: z.boolean().default(true),
+  })
+  .passthrough();
+
 const visualBeatSchema = z
   .object({
     anchor: z.string().min(1).optional(),
@@ -104,6 +119,10 @@ const visualBeatSchema = z
     placement: z
       .enum(["left", "center", "right", "full"])
       .default("full"),
+    medium: z
+      .enum(["motion_graphic", "photo_cutout", "photo", "mixed"])
+      .default("motion_graphic"),
+    asset_id: z.string().optional(),
     sound: z
       .enum(["none", "tick", "impact", "whoosh", "alert"])
       .default("none"),
@@ -168,6 +187,7 @@ export const videoProjectSchema = z
         category: z.enum(["news", "company", "economy", "money", "evergreen"]),
       })
       .passthrough(),
+    visual_assets: z.array(visualAssetSchema).default([]),
     visual_direction: visualDirectionSchema.default({
       concept: "Editorial financeiro",
       world: "minimal",
