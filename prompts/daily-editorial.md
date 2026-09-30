@@ -57,6 +57,14 @@ A narração deve soar como uma pessoa explicando algo interessante para outra p
 
 O roteiro é texto de boca, não texto de artigo. Antes de aprovar cada cena, leia mentalmente como Roberto ou Luana falariam aquilo numa conversa.
 
+### Não datar o vídeo pela data de publicação
+
+O vídeo deve continuar natural se for publicado no mesmo dia, alguns dias depois ou mais tarde. Na narração, não use a data de produção/publicação como referência com expressões como "hoje", "ontem", "amanhã", "hoje, dia 30", "na manhã de hoje", "nesta tarde" ou equivalentes.
+
+Datas de fatos continuam permitidas e são preferíveis quando ajudam a precisão. Exemplos: "em 30 de setembro o Banco Central divulgou...", "o primeiro turno está marcado para 4 de outubro de 2026" ou "nos dados de agosto". "Atualmente" também pode ser usado quando descreve de fato o estado atual do assunto e não funciona como carimbo da data do vídeo.
+
+Evite contagens relativas ligadas à publicação, como "faltam quatro dias para a eleição", quando a mesma informação pode ser dada por uma data objetiva. Diferencie sempre a data do acontecimento da data em que o espectador apertou play.
+
 Regras:
 - prefira frases que uma pessoa realmente diria em voz alta;
 - misture frases curtas com frases médias; evite sequência de períodos com a mesma estrutura;
