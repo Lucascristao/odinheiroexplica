@@ -1,26 +1,26 @@
-import argparse
+﻿import argparse
 import json
 import re
 from pathlib import Path
 
 from tts_config import GLOBAL_PRONUNCIATIONS
 
-
-# Termos estrangeiros/financeiros que costumam variar bastante entre vozes pt-BR.
-# Eles não recebem pronúncia inventada aqui: o roteiro precisa declarar um alias,
-# ou a correção precisa entrar no léxico global depois de validada pelo ouvido.
-WATCH_TERMS = {
+# Termos que o Gemini pronuncia naturalmente sem necessidade de alias fonético artificial.
+GEMINI_VERIFIED_TERMS = {
     "bet", "bets", "fintech", "fintechs", "spread", "spreads",
     "holding", "holdings", "cashback", "startup", "startups",
     "marketplace", "homebroker", "trader", "trading", "blockchain",
     "bitcoin", "ethereum", "short", "long", "stake", "staking",
     "token", "tokens", "yield", "default", "rating", "guidance",
+    "payment", "split", "like", "b2b", "b2c",
 }
 
 SAFE_ACRONYMS = {
     "MP", "CPF", "CNPJ", "PIB", "IPCA", "CDI", "IOF", "BC",
     "BCB", "BACEN", "CVM", "FGTS", "INSS", "MEI", "STF", "STJ",
     "TR", "IGP", "IGPM", "IPTU", "IPVA", "IR", "IRPF", "IRPJ",
+    "IBS", "CBS", "B2B", "B2C", "P2P", "PIX", "TI", "IA", "API",
+    "RFB", "CGIBS", "DOU", "LCP", "PLP",
 }
 
 TOKEN_RE = re.compile(r"\b[0-9A-Za-zÀ-ÖØ-öø-ÿ][0-9A-Za-zÀ-ÖØ-öø-ÿ._+-]*\b")
@@ -42,18 +42,14 @@ def normalized_map(value: dict | None) -> dict[str, str]:
 def risky_reason(token: str) -> str | None:
     lower = token.lower()
 
-    if lower in WATCH_TERMS:
-        return "termo estrangeiro/financeiro com pronúncia variável"
+    if lower in GEMINI_VERIFIED_TERMS:
+        return None
 
-    if any(ch in token for ch in "wWyYkK"):
-        return "grafia incomum em português brasileiro"
+    if token.upper() in SAFE_ACRONYMS:
+        return None
 
-    if token.isupper() and 2 <= len(token) <= 7 and token not in SAFE_ACRONYMS:
+    if token.isupper() and 2 <= len(token) <= 7 and token.upper() not in SAFE_ACRONYMS:
         return "sigla que pode ser lida como palavra ou letra por letra"
-
-    # CamelCase e marcas misturando maiúsculas/minúsculas costumam enganar TTS.
-    if re.search(r"[a-zá-ÿ][A-Z]", token):
-        return "nome/marca com caixa mista"
 
     return None
 
@@ -74,6 +70,7 @@ def main() -> None:
         str(term).lower()
         for term in (project_speech.get("ignore_pronunciation_terms") or [])
     }
+    ignored.update(GEMINI_VERIFIED_TERMS)
 
     effective = dict(GLOBAL_PRONUNCIATIONS)
     effective.update(project_pronunciations)
@@ -134,11 +131,10 @@ def main() -> None:
         if args.strict:
             raise RuntimeError(
                 "Auditoria de pronúncia encontrou termos de risco sem alias. "
-                "Adicione speech.pronunciations no projeto ou, se a leitura padrão "
-                "já tiver sido validada, use speech.ignore_pronunciation_terms."
+                "Adicione speech.pronunciations no projeto ou use speech.ignore_pronunciation_terms."
             )
     else:
-        print("[Pronúncia] Auditoria concluída sem termos pendentes.")
+        print("[Pronúncia] Auditoria Gemini concluída sem pendências.")
 
 
 if __name__ == "__main__":

@@ -55,7 +55,7 @@ def resolve_visual_beats(
             seconds = float(timing_by_index[index]["audio_offset_seconds"])
             frame = min(audio_frames - 1, max(0, round(seconds * FPS)))
             ratio = frame / max(1, audio_frames - 1)
-            timing_source = "azure-bookmark"
+            timing_source = timing_by_index[index].get("timing_source", "gemini-bookmark")
 
         elif isinstance(explicit_at, (int, float)):
             ratio = max(0.0, min(1.0, float(explicit_at)))
@@ -96,7 +96,7 @@ def resolve_visual_beats(
     minimum_gap = max(12, round(FPS * 0.35))
     previous = -minimum_gap
     for item in resolved:
-        if item.get("timing_source") != "azure-bookmark":
+        if item.get("timing_source") not in ("azure-bookmark", "gemini-bookmark", "tts-bookmark"):
             item["resolved_frame"] = min(
                 audio_frames - 1,
                 max(item["resolved_frame"], previous + minimum_gap),
@@ -155,7 +155,7 @@ def main() -> None:
             audio,
         )
         if (scene.get("visual") or {}).get("stage"):
-            if any(beat.get("timing_source") != "azure-bookmark" for beat in resolved_beats):
+            if any(beat.get("timing_source") not in ("azure-bookmark", "gemini-bookmark", "tts-bookmark") for beat in resolved_beats):
                 raise RuntimeError(f"Palco persistente exige bookmarks reais: {scene_id}")
             frames = [beat["resolved_frame"] for beat in resolved_beats]
             if len(frames) != len(set(frames)):

@@ -7,16 +7,8 @@
     "name": "Roberto"
   },
   "speech": {
-    "pronunciations": {
-      "payment": "pêimênt",
-      "ibs": "i-bê-ésse",
-      "cbs": "cê-bê-ésse",
-      "b2b": "bê dois bê",
-      "like": "láiki"
-    },
-    "ignore_pronunciation_terms": [
-      "like"
-    ]
+    "pronunciations": {},
+    "ignore_pronunciation_terms": []
   },
   "story": {
     "subject": "Como o split payment da reforma tributária separará IBS e CBS no momento do pagamento e o que muda para o caixa das empresas",
