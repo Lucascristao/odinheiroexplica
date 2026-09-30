@@ -70,7 +70,7 @@
       "seta que sugira causalidade eleitoral",
       "movimento ornamental contínuo"
     ],
-    "implementation_note": "O palco atual anima foco, revelação, atualização e conexões; morph espacial entre cenas e imagens documentais exigem composição Remotion/capturas adicionais."
+    "implementation_note": "O palco anima foco, revelação, atualização, conexões e enquadramentos de câmera nos beats escolhidos. A continuidade espacial entre cenas e imagens documentais ainda exige composição Remotion/capturas adicionais."
   },
   "editorial": {
     "strengths": [
@@ -296,6 +296,11 @@
         "transition": "cut",
         "stage": {
           "show_title": false,
+          "initial_camera": {
+            "x": 18,
+            "y": 50,
+            "zoom": 1.3
+          },
           "elements": [
             {
               "id": "fx",
@@ -374,7 +379,13 @@
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.48
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 18,
+              "y": 50,
+              "zoom": 1.4,
+              "motion_seconds": 0.65
+            }
           },
           {
             "anchor": "trigo e diesel",
@@ -392,7 +403,13 @@
             "motion_seconds": 0.48,
             "reveal_ids": [
               "diesel"
-            ]
+            ],
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.05,
+              "motion_seconds": 1.2
+            }
           },
           {
             "anchor": "chega ao caixa",
@@ -407,7 +424,13 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 83,
+              "y": 50,
+              "zoom": 1.32,
+              "motion_seconds": 0.65
+            }
           }
         ]
       }
@@ -671,7 +694,13 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 17,
+              "y": 72,
+              "zoom": 1.18,
+              "motion_seconds": 0.85
+            }
           },
           {
             "anchor": "custo do frete",
@@ -686,7 +715,13 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 50,
+              "y": 72,
+              "zoom": 1.18,
+              "motion_seconds": 0.9
+            }
           },
           {
             "anchor": "preço no mercado",
@@ -701,7 +736,13 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 83,
+              "y": 72,
+              "zoom": 1.18,
+              "motion_seconds": 0.9
+            }
           }
         ]
       }

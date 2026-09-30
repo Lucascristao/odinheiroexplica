@@ -6,7 +6,7 @@ import {useEffect, useId, useMemo, useState} from "react";
 import {AbsoluteFill, Img, cancelRender, continueRender, delayRender, interpolate, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
 import {loadFont} from "@remotion/fonts";
 import {measureText} from "@remotion/layout-utils";
-import {editorialStageSchema, resolveStage, type EditorialStage as Stage, type StageEvent} from "../../src/lib/editorial-stage";
+import {editorialStageSchema, resolveStage, resolveStageCamera, type EditorialStage as Stage, type StageEvent} from "../../src/lib/editorial-stage";
 
 const FONT = "ODE Inter";
 const WHITE = "#f6f7f8";
@@ -73,6 +73,10 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
   const {elements, active} = resolveStage(checkedStage, beats, frame, fps);
   const routeNodes = new Set(checkedStage.connections.flatMap(({from, to}) => [from, to]));
   const canvas = {x: 130, y: checkedStage.show_title ? 230 : 130, width: width - 260, height: height - (checkedStage.show_title ? 360 : 230)};
+  const cameraEnabled = Boolean(checkedStage.initial_camera || beats.some((beat) => beat.camera));
+  const camera = resolveStageCamera(checkedStage, beats, frame, fps);
+  const cameraX = (50 - camera.x) * canvas.width * camera.zoom / 100;
+  const cameraY = (50 - camera.y) * canvas.height * camera.zoom / 100;
   const rect = (e: typeof elements[number]) => ({x: e.x * canvas.width / 100, y: e.y * canvas.height / 100, w: e.width * canvas.width / 100, h: e.height * canvas.height / 100});
   const focus = interpolate(frame - (active?.resolved_frame ?? 0), [0, (active?.motion_seconds??0.45)*fps], [0, 1], clamp);
   const takeover = active?.prominence === "takeover";
@@ -80,7 +84,8 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
     {checkedStage.show_title && <div style={{position: "absolute", top: 118, left: 130}}>
       <TextBox text={title ?? ""} width={canvas.width} height={90} maxSize={46} />
     </div>}
-    <div style={{position: "absolute", left: canvas.x, top: canvas.y, width: canvas.width, height: canvas.height}}>
+    <div style={{position: "absolute", left: canvas.x, top: canvas.y, width: canvas.width, height: canvas.height, overflow: cameraEnabled ? "hidden" : "visible"}}>
+    <div style={{position: "absolute", inset: 0, transformOrigin: "50% 50%", transform: cameraEnabled ? `translate(${cameraX}px, ${cameraY}px) scale(${camera.zoom})` : undefined}}>
       <svg width={canvas.width} height={canvas.height} style={{position: "absolute", inset: 0}}>
         <defs><marker id={arrowId} markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#78858e" strokeWidth="1.5" /></marker></defs>
         {checkedStage.connections.map((edge, i) => {
@@ -328,6 +333,7 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
           </div>
         );
       })}
+    </div>
     </div>
   </AbsoluteFill>;
 };

@@ -65,8 +65,10 @@ Faça uma última auditoria de oralidade: se o apresentador provavelmente não f
 ## Apresentadores do canal
 
 O canal trabalha com dois apresentadores fixos:
-- Roberto: voz masculina pt-BR-MacerioMultilingualNeural;
-- Luana: voz feminina pt-BR-ThalitaMultilingualNeural.
+- Roberto: voz predefinida Gemini `Charon`;
+- Luana: voz predefinida Gemini `Autonoe`.
+
+O render diário usa somente Gemini TTS. Escolha o apresentador antes da síntese e mantenha o mesmo modelo TTS e a mesma voz em todas as cenas do episódio. Não trocar de modelo ou serviço depois de um erro de quota; interromper e retomar as cenas faltantes quando houver cota. O modelo padrão é `gemini-3.8-flash-tts`, configurável por `GEMINI_TTS_MODEL` antes do início do vídeo. O mesmo nome de voz em modelos diferentes não garante timbre idêntico; só mudar o modelo para um episódio inteiro depois de comparar amostras de voz.
 
 Roberto e Luana são personagens editoriais fixos do canal. Use seus nomes de forma natural quando houver apresentação no roteiro. A escolha do apresentador deve considerar o assunto, o enquadramento e o público provável do vídeo, sem usar estereótipos simplistas de gênero.
 
@@ -162,6 +164,8 @@ Aplicar `docs/editorial-evidence.md`: durante a pesquisa, selecionar e salvar re
 Siga também `docs/editorial-attention.md` para roteiro falado, escolha de imagens, objetos e ícones, texto legível, título e descrição. Essa diretriz vale para todas as próximas pautas. Não mostrar fontes no rodapé; manter fontes e créditos no pacote da descrição. O campo `icon` e `kind: object` estão disponíveis no palco; usar conforme o significado. Uma imagem relevante ou um objeto dominante deve substituir parágrafos quando explica melhor. Não transformar todo bloco em lista de texto.
 
 Siga docs/editorial-continuity.md. O motor usa visual.stage com objetos identificáveis e visual.beats como eventos sobre eles. Cada evento tem anchor literal, target_id, action e prominence. O padrão é contextual. reveal_ids/retire_ids controlam elementos auxiliares em regiões reservadas; moves permite reposicionar mantendo identidade.
+
+Quando a relação pedir um percurso espacial, defina `visual.stage.initial_camera` e câmeras nos beats relevantes como `{x, y, zoom, motion_seconds}`. `x` e `y` são percentuais do palco seguro (0–100), `zoom` vai de 1 a 1,6 e o movimento dura 0,2–2 segundos. Enquadre o objeto alvo inteiro; a validação rejeita câmera que o corte. A câmera deve seguir a informação narrada e parar para leitura, não passear continuamente por decoração. Revise a prévia descrita em `docs/visual-preview.md` antes do render final.
 
 Não copiar a composição do MED. Definir palco e relações conforme a informação da pauta. Usar fotografia, fluxo, comparação ou texto quando explicam melhor, com identidade do canal preservada.
 
