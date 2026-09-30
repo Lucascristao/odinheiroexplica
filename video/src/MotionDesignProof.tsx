@@ -58,13 +58,21 @@ const Basket = ({progress}: {progress: number}) => (
  */
 export const MotionDesignProof = () => {
   const frame = useCurrentFrame();
-  const camera = interpolate(frame, [0, 60, 165, 300, 425], [0, 0, -610, -1500, -2200], clamped);
+  const camera = interpolate(
+    frame,
+    [0, 90, 130, 210, 270, 325, 385, 480],
+    [0, 0, -610, -610, -1500, -1500, -2200, -2200],
+    clamped,
+  );
   const route = range(frame, 72, 355);
   const first = range(frame, 0, 34);
   const wheat = range(frame, 112, 170);
   const truck = range(frame, 218, 270);
   const basket = range(frame, 340, 400);
   const final = range(frame, 425, 465);
+  const firstVisible = first * (1 - range(frame, 95, 130));
+  const wheatVisible = wheat * (1 - range(frame, 220, 255));
+  const truckVisible = truck * (1 - range(frame, 335, 370));
 
   return (
     <AbsoluteFill style={{overflow: "hidden", background: "#0d1116", fontFamily: "Inter, Arial, sans-serif"}}>
@@ -81,23 +89,23 @@ export const MotionDesignProof = () => {
             stroke={GOLD} strokeWidth="11" fill="none" pathLength="1" strokeDasharray="1" strokeDashoffset={1 - route} />
         </svg>
 
-        <div style={{position: "absolute", left: 105, top: 285, width: 530, opacity: first, transform: `translateY(${(1-first)*42}px)`}}>
+        <div style={{position: "absolute", left: 105, top: 285, width: 530, opacity: firstVisible, transform: `translateY(${(1-first)*42}px)`}}>
           <Caption x={5} y={0}>01 / CÂMBIO</Caption>
           <div style={{...titleStyle, position: "absolute", top: 85, left: 0, fontSize: 107}}>Se o dólar<br /><span style={{color: GOLD}}>sobe...</span></div>
           <div style={{position: "absolute", top: 297, left: 0, width: 220, height: 220, borderRadius: "50%", border: `12px solid ${GOLD}`, display: "grid", placeItems: "center", color: GOLD, fontSize: 136, fontWeight: 700, background: "#10171b", boxShadow: `0 0 ${70 * route}px #ffbd1955`}}>$</div>
         </div>
 
         <div style={{position: "absolute", left: 920, top: 305, width: 680, height: 560}}>
-          <Caption x={0} y={0} opacity={wheat}>02 / INSUMOS</Caption>
-          <div style={{...titleStyle, position: "absolute", top: 82, left: 0, fontSize: 91, opacity: wheat}}>O custo<br />entra na cadeia.</div>
-          <div style={{position: "absolute", top: 265, left: 80, transform: `translateY(${(1-wheat)*70}px)`, opacity: wheat}}><Wheat progress={wheat} /></div>
-          <div style={{position: "absolute", top: 335, left: 375, color: WHITE, fontSize: 52, fontWeight: 700, opacity: wheat}}>trigo<br /><span style={{color: MUTED, fontSize: 30}}>importado</span></div>
+          <Caption x={0} y={0} opacity={wheatVisible}>02 / INSUMOS</Caption>
+          <div style={{...titleStyle, position: "absolute", top: 82, left: 0, fontSize: 91, opacity: wheatVisible}}>O custo<br />entra na cadeia.</div>
+          <div style={{position: "absolute", top: 265, left: 80, transform: `translateY(${(1-wheat)*70}px)`, opacity: wheatVisible}}><Wheat progress={wheat} /></div>
+          <div style={{position: "absolute", top: 335, left: 375, color: WHITE, fontSize: 52, fontWeight: 700, opacity: wheatVisible}}>trigo<br /><span style={{color: MUTED, fontSize: 30}}>importado</span></div>
         </div>
 
         <div style={{position: "absolute", left: 1780, top: 305, width: 700, height: 570}}>
-          <Caption x={0} y={0} opacity={truck}>03 / TRANSPORTE</Caption>
-          <div style={{...titleStyle, position: "absolute", top: 82, left: 0, fontSize: 91, opacity: truck}}>E percorre<br />o país.</div>
-          <div style={{position: "absolute", top: 310, left: 100, transform: `translateX(${(1-truck)*110}px)`, opacity: truck}}><Truck progress={truck} /></div>
+          <Caption x={0} y={0} opacity={truckVisible}>03 / TRANSPORTE</Caption>
+          <div style={{...titleStyle, position: "absolute", top: 82, left: 0, fontSize: 91, opacity: truckVisible}}>E percorre<br />o país.</div>
+          <div style={{position: "absolute", top: 310, left: 100, transform: `translateX(${(1-truck)*110}px)`, opacity: truckVisible}}><Truck progress={truck} /></div>
         </div>
 
         <div style={{position: "absolute", left: 2715, top: 305, width: 760, height: 600}}>
