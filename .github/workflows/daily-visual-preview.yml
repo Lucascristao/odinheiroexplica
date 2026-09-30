@@ -152,7 +152,7 @@ jobs:
           npx remotion render video/src/index.ts DailyEditorial \
             render-output/daily-visual-preview.mp4 \
             --frames="0-$LAST_FRAME" --muted --codec=h264 \
-            --concurrency=2 --scale=0.6666667 --bundle-cache
+            --concurrency=2 --scale=0.75 --bundle-cache
 
       - name: Render representative stills
         run: |
@@ -165,7 +165,7 @@ jobs:
               subprocess.run([
                   "npx", "remotion", "still", "video/src/index.ts", "DailyEditorial",
                   f"render-output/scene-{index:02d}.png",
-                  f"--frame={still['frame']}", "--scale=0.6666667", "--bundle-cache",
+                  f"--frame={still['frame']}", "--scale=0.75", "--bundle-cache",
               ], check=True)
           PY
 
