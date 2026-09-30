@@ -13,14 +13,15 @@ from pathlib import Path
 import re
 import shutil
 import subprocess
-import wave
 
 import numpy as np
 
 
 VERSION = "adaptive-voice-continuity-v1"
 PRIMARY_MODEL = "gemini-3.8-flash-tts"
+SECONDARY_MODEL = "gemini-3.8-flash-lite-tts"
 FALLBACK_MODEL = "gemini-3.1-flash-tts-preview"
+FALLBACK_MODELS = {SECONDARY_MODEL, FALLBACK_MODEL}
 SAMPLE_RATE = 48000
 LOUDNESS_TOLERANCE = 0.5
 TRUE_PEAK_CEILING = -1.0
@@ -41,6 +42,31 @@ def decode(ffmpeg, path):
     if len(samples) < SAMPLE_RATE or not np.isfinite(samples).all():
         raise RuntimeError(f"Invalid or too short scene audio: {path}")
     return samples
+
+
+def probe_audio_format(ffprobe, path):
+    result = subprocess.run(
+        [
+            ffprobe, "-v", "error", "-select_streams", "a:0",
+            "-show_entries", "stream=codec_name,sample_rate,channels",
+            "-of", "json", str(path),
+        ],
+        capture_output=True,
+    )
+    if result.returncode:
+        raise RuntimeError(
+            "ffprobe failed: " + result.stderr.decode("utf-8", errors="replace")[-2000:]
+        )
+    try:
+        streams = json.loads(result.stdout.decode("utf-8")).get("streams") or []
+        stream = streams[0]
+        return {
+            "codec_name": str(stream["codec_name"]),
+            "sample_rate": int(stream["sample_rate"]),
+            "channels": int(stream["channels"]),
+        }
+    except (ValueError, TypeError, KeyError, IndexError, json.JSONDecodeError):
+        raise RuntimeError(f"Invalid ffprobe audio metadata: {path}") from None
 
 
 def measure(ffmpeg, path, target):
@@ -111,8 +137,9 @@ def main():
     if output_manifest_path == input_manifest_path:
         raise RuntimeError("Processed manifest must not overwrite the source manifest.")
     ffmpeg = shutil.which("ffmpeg")
-    if not ffmpeg:
-        raise RuntimeError("ffmpeg is required for voice continuity processing.")
+    ffprobe = shutil.which("ffprobe")
+    if not ffmpeg or not ffprobe:
+        raise RuntimeError("ffmpeg and ffprobe are required for voice continuity processing.")
     source_manifest = json.loads(input_manifest_path.read_text(encoding="utf-8"))
     scenes = source_manifest.get("scenes") or []
     if not scenes:
@@ -150,7 +177,7 @@ def main():
         info = inspections[scene_id]
         gains = np.zeros(len(BANDS))
         reason = "primary-no-spectral-correction"
-        if scene.get("model") == FALLBACK_MODEL:
+        if scene.get("model") in FALLBACK_MODELS:
             if reference_profile is None:
                 reason = reference_reason
             elif info["profile"] is None:
@@ -158,10 +185,10 @@ def main():
             else:
                 residual = reference_profile - info["profile"]
                 residual -= np.median(residual)
-                # Existing EQv1 is already present in the source file. The
-                # correction is residual, shrunk to avoid matching phonemes.
+                # Charon 3.1 may already carry the fixed pre-EQ. This pass is
+                # intentionally residual and also handles 3.8 Flash-Lite.
                 gains = np.clip(residual * 0.6, -3, 3)
-                reason = "residual-match-to-current-episode-primary"
+                reason = f"residual-match-{scene.get('model')}-to-current-episode-primary"
         elif scene.get("model") != PRIMARY_MODEL:
             reason = "unknown-model-no-spectral-correction"
         output_path = output_dir / f"{scene_id}.wav"
@@ -179,7 +206,14 @@ def main():
                 f"measured_LRA={measured['input_lra']}:measured_thresh={measured['input_thresh']}:"
                 f"offset={measured['target_offset']}:linear=true:print_format=json"
             )
-            normalized = run(ffmpeg, ["-y", "-i", str(intermediate), "-af", norm, "-ar", str(SAMPLE_RATE), "-ac", "1", "-c:a", "pcm_s24le", str(output_path)])
+            exact_length = f"apad=whole_len={len(info['samples'])},atrim=end_sample={len(info['samples'])}"
+            normalized = run(
+                ffmpeg,
+                [
+                    "-y", "-i", str(intermediate), "-af", f"{norm},{exact_length}",
+                    "-ar", str(SAMPLE_RATE), "-ac", "1", "-c:a", "pcm_s24le", str(output_path),
+                ],
+            )
             normalization_data = re.findall(r'\{\s*"input_i".*?\}', normalized.stderr.decode("utf-8", errors="replace"), flags=re.S)
             if normalization_data:
                 normalization_type = json.loads(normalization_data[-1]).get("normalization_type")
@@ -195,17 +229,25 @@ def main():
                 filter_chain = (
                     f"volume={gain:.4f}dB,aresample=192000,"
                     f"alimiter=limit={limit:.8f}:attack=5:release=60:level=false:latency=true,"
-                    f"aresample={SAMPLE_RATE},atrim=end_sample={len(info['samples'])}"
+                    f"aresample={SAMPLE_RATE},apad=whole_len={len(info['samples'])},"
+                    f"atrim=end_sample={len(info['samples'])}"
                 )
                 run(ffmpeg, ["-y", "-i", str(output_path), "-af", filter_chain, "-ar", str(SAMPLE_RATE), "-ac", "1", "-c:a", "pcm_s24le", str(replacement)])
                 replacement.replace(output_path)
                 final_measurement = measure(ffmpeg, output_path, target)
                 remediation.append({"attempt": attempt + 1, "gain_db": round(gain, 4), "output_lufs": float(final_measurement["input_i"]), "true_peak_dbtp": float(final_measurement["input_tp"])})
-            with wave.open(str(output_path), "rb") as wav:
-                output_frames = wav.getnframes()
-                duration = output_frames / wav.getframerate()
-                if wav.getframerate() != SAMPLE_RATE or wav.getnchannels() != 1:
-                    raise RuntimeError(f"Invalid processed sample format for {scene_id}")
+            output_samples = decode(ffmpeg, output_path)
+            output_frames = len(output_samples)
+            duration = output_frames / SAMPLE_RATE
+            audio_format = probe_audio_format(ffprobe, output_path)
+            if (
+                audio_format["sample_rate"] != SAMPLE_RATE
+                or audio_format["channels"] != 1
+                or audio_format["codec_name"] != "pcm_s24le"
+            ):
+                raise RuntimeError(
+                    f"Invalid processed sample format for {scene_id}: {audio_format}"
+                )
             if abs(output_frames - len(info["samples"])) > 2:
                 raise RuntimeError(f"Processing changed scene sample clock/length for {scene_id}: {len(info['samples'])} -> {output_frames}")
             peak = float(final_measurement["input_tp"])
@@ -255,6 +297,7 @@ def main():
         "spectral_max_gain_db": 3, "spectral_residual_shrinkage": .6,
         "target_lufs": target, "target_source": "clamped-primary-scene-median" if primary_loudness else "no-primary-default-minus19",
         "true_peak_ceiling_dbtp": TRUE_PEAK_CEILING, "loudness_tolerance_lu": LOUDNESS_TOLERANCE,
+        "fallback_models_matched": sorted(FALLBACK_MODELS),
         "limitations": ["Energy activity is not phonetic VAD.", "Different texts confound spectral identity comparisons.", "EQ and compression do not normalize timbre identity, prosody or speaking pace.", "No pitch, speed or speech crossfade is applied."],
     }
     temporary_manifest = output_manifest_path.with_suffix(output_manifest_path.suffix + ".tmp")

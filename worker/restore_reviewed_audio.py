@@ -26,10 +26,13 @@ from synthesize_scenes import (
     FALLBACK_VOICE_TREATMENT,
     NO_VOICE_TREATMENT,
     PRIMARY_TTS_MODEL,
+    SECONDARY_TTS_MODEL,
+    TTS_MODEL_CASCADE,
     audio_sha256,
     cached_duration,
     duration_seconds,
     save_audio_sidecar,
+    voice_treatment_for_model,
 )
 from tts_config import DEFAULT_PRESENTER, DEFAULT_TTS_VOICE, PRESENTER_VOICES
 
@@ -243,8 +246,7 @@ def restore(project: dict, archive_path: Path, output_dir: Path, provenance: dic
     targets = scene_jobs(project)
     presenter = project.get("presenter") or {}
     presenter_key = str(presenter.get("gender") or presenter.get("voice_id") or DEFAULT_PRESENTER)
-    if PRESENTER_VOICES.get(presenter_key, DEFAULT_TTS_VOICE) != "Charon":
-        return 0, len(targets)
+    project_voice = PRESENTER_VOICES.get(presenter_key, DEFAULT_TTS_VOICE)
     with zipfile.ZipFile(archive_path) as archive:
         members = safe_members(archive)
         manifest = read_json(archive, unique_member(members, "daily-tts-manifest.json"))
@@ -253,8 +255,8 @@ def restore(project: dict, archive_path: Path, output_dir: Path, provenance: dic
             print("[Audio Restore] Projeto diferente do artifact; todas as cenas permanecem pendentes.", flush=True)
             return 0, len(targets)
         originals = scene_jobs(original_render)
-        if manifest.get("engine") != "google-gemini-tts" or manifest.get("voice") != "Charon":
-            raise RuntimeError("Artifact sem narração Google Gemini/Charon comprovada.")
+        if manifest.get("engine") != "google-gemini-tts" or manifest.get("voice") != project_voice:
+            raise RuntimeError("Artifact sem narração Google Gemini na mesma voz do projeto.")
         audio_scenes = manifest.get("scenes")
         if not isinstance(audio_scenes, list):
             raise RuntimeError("Manifest de áudio não contém cenas válidas.")
@@ -276,10 +278,10 @@ def restore(project: dict, archive_path: Path, output_dir: Path, provenance: dic
             model = source.get("model")
             treatment = source.get("voice_treatment", NO_VOICE_TREATMENT)
             allowed = (
-                model == PRIMARY_TTS_MODEL and treatment == NO_VOICE_TREATMENT
-                or model == FALLBACK_TTS_MODEL and treatment == FALLBACK_VOICE_TREATMENT
+                model in TTS_MODEL_CASCADE
+                and treatment == voice_treatment_for_model(model, project_voice)
             )
-            if source.get("engine") != "google-gemini-tts" or source.get("voice") != "Charon" or not allowed:
+            if source.get("engine") != "google-gemini-tts" or source.get("voice") != project_voice or not allowed:
                 raise RuntimeError(f"Modelo, voz ou tratamento não permitido na origem de {scene_id}.")
             if source.get("file") != f"{scene_id}.mp3":
                 raise RuntimeError(f"Nome do MP3 não corresponde à cena {scene_id}.")
@@ -305,7 +307,7 @@ def restore(project: dict, archive_path: Path, output_dir: Path, provenance: dic
                 # authenticated GitHub ZIP digest binds their original MP3 bytes.
                 temporary.replace(output)
                 save_audio_sidecar(
-                    output, target["hash"], model, "Charon", actual_duration,
+                    output, target["hash"], model, project_voice, actual_duration,
                     treatment, source.get("fallback_reason"),
                 )
                 sidecar = output.with_suffix(".tts.json")
@@ -314,7 +316,7 @@ def restore(project: dict, archive_path: Path, output_dir: Path, provenance: dic
                 sidecar_tmp = sidecar.with_name(sidecar.name + ".tmp")
                 sidecar_tmp.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
                 sidecar_tmp.replace(sidecar)
-                if cached_duration(output, target["hash"], model, "Charon", treatment) is None:
+                if cached_duration(output, target["hash"], model, project_voice, treatment) is None:
                     raise RuntimeError(f"Cache restaurado não passou pela validação do worker em {scene_id}.")
                 restored += 1
             finally:

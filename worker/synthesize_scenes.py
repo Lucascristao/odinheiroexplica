@@ -26,10 +26,16 @@ from tts_config import (
 
 
 PRIMARY_TTS_MODEL = "gemini-3.8-flash-tts"
+SECONDARY_TTS_MODEL = "gemini-3.8-flash-lite-tts"
 FALLBACK_TTS_MODEL = "gemini-3.1-flash-tts-preview"
-# Measured against the user's three Charon samples: 3.1 has more energy above
-# 4 kHz, less around 1.5 kHz, and nearly identical overall RMS to 3.8.
-# This is deliberately mild EQ, not pitch or timing manipulation.
+TTS_MODEL_CASCADE = (PRIMARY_TTS_MODEL, SECONDARY_TTS_MODEL, FALLBACK_TTS_MODEL)
+ELIGIBLE_FALLBACK_FAILURES = {
+    "rpd", "rate-limit-persistent", "server-unavailable", "request-timeout",
+}
+
+# The legacy 3.1 Charon output has a measured fixed pre-EQ before the adaptive
+# episode-level matcher. Flash-Lite and other voices stay untouched here and
+# are matched only by process_voice_continuity.py.
 FALLBACK_VOICE_TREATMENT = "charon-3.1-to-3.8-eq-v1"
 FALLBACK_AUDIO_FILTER = (
     "lowshelf=f=160:g=-1.0,"
@@ -37,6 +43,41 @@ FALLBACK_AUDIO_FILTER = (
     "highshelf=f=4200:g=-2.5"
 )
 NO_VOICE_TREATMENT = "none"
+
+
+def voice_treatment_for_model(model: str, voice: str) -> str:
+    if model == FALLBACK_TTS_MODEL and voice == "Charon":
+        return FALLBACK_VOICE_TREATMENT
+    return NO_VOICE_TREATMENT
+
+
+def configured_fallback_models(primary_model: str) -> list[str]:
+    """Return a validated, same-voice model cascade after the primary."""
+    if primary_model != PRIMARY_TTS_MODEL:
+        return []
+
+    explicit = os.environ.get("GEMINI_TTS_FALLBACK_MODELS")
+    if explicit is not None:
+        requested = [item.strip() for item in explicit.split(",") if item.strip()]
+    else:
+        # Backward compatibility: an explicitly empty old variable disables
+        # fallback; a non-empty old value selects only that one model.
+        legacy = os.environ.get("GEMINI_TTS_FALLBACK_MODEL")
+        if legacy is not None:
+            legacy = legacy.strip()
+            requested = [legacy] if legacy else []
+        else:
+            requested = [SECONDARY_TTS_MODEL, FALLBACK_TTS_MODEL]
+
+    allowed_order = [SECONDARY_TTS_MODEL, FALLBACK_TTS_MODEL]
+    if len(requested) != len(set(requested)) or any(model not in allowed_order for model in requested):
+        raise RuntimeError(
+            "Fallback Gemini inválido. Use somente gemini-3.8-flash-lite-tts "
+            "e/ou gemini-3.1-flash-tts-preview."
+        )
+    if requested != [model for model in allowed_order if model in requested]:
+        raise RuntimeError("A ordem do fallback deve ser Flash-Lite 3.8 antes do 3.1 preview.")
+    return requested
 
 
 @dataclass(frozen=True)
@@ -461,7 +502,6 @@ def main() -> None:
 
     gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
     gemini_model = os.environ.get("GEMINI_TTS_MODEL", PRIMARY_TTS_MODEL).strip()
-    fallback_model = os.environ.get("GEMINI_TTS_FALLBACK_MODEL", FALLBACK_TTS_MODEL).strip()
 
     if not gemini_key:
         raise RuntimeError("GEMINI_API_KEY não disponível; este render aceita apenas voz Gemini.")
@@ -469,8 +509,6 @@ def main() -> None:
         raise RuntimeError("GEMINI_TTS_MODEL vazio.")
     if not re.fullmatch(r"[A-Za-z0-9._-]+", gemini_model):
         raise RuntimeError("GEMINI_TTS_MODEL inválido.")
-    if fallback_model and fallback_model != FALLBACK_TTS_MODEL:
-        raise RuntimeError("GEMINI_TTS_FALLBACK_MODEL deve ser o Gemini 3.1 Flash TTS preview ou vazio.")
 
     payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
     scenes = payload.get("scenes") or payload.get("script", {}).get("scenes", [])
@@ -485,13 +523,8 @@ def main() -> None:
     )
     project_voice = PRESENTER_VOICES.get(presenter_key, DEFAULT_TTS_VOICE)
     presenter_name = PRESENTER_NAMES.get(presenter_key, "Roberto")
-    fallback_enabled = (
-        gemini_model == PRIMARY_TTS_MODEL
-        and fallback_model == FALLBACK_TTS_MODEL
-        and project_voice == "Charon"
-    )
-    if not fallback_enabled:
-        fallback_model = ""
+    fallback_models = configured_fallback_models(gemini_model)
+    model_cascade = [gemini_model, *fallback_models]
 
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -499,7 +532,9 @@ def main() -> None:
     manifest = {
         "engine": "pending",
         "model": gemini_model,
-        "fallback_model": fallback_model or None,
+        "fallback_model": fallback_models[0] if fallback_models else None,
+        "fallback_models": fallback_models,
+        "model_cascade": model_cascade,
         "voice": project_voice,
         "requested_voice": project_voice,
         "presenter": presenter_key,
@@ -533,77 +568,83 @@ def main() -> None:
 
     synthesis_by_id = {}
     request_pacer = GeminiRequestPacer()
-    fallback_active = False
+    active_model_index = 0
+    cascade_failures: list[str] = []
+
     for position, job in enumerate(scene_jobs):
         print(f"  [Gemini {position + 1}/{len(scene_jobs)}] {job['scene_id']}...", flush=True)
-        duration = cached_duration(
-            job["output_file"], job["narration_hash"], gemini_model, project_voice
-        )
-        if duration is not None:
-            print(f"    [Gemini Cache] Áudio validado e reutilizado ({duration}s).", flush=True)
+
+        cached = False
+        for candidate_model in model_cascade:
+            treatment = voice_treatment_for_model(candidate_model, project_voice)
+            duration = cached_duration(
+                job["output_file"], job["narration_hash"], candidate_model,
+                project_voice, treatment,
+            )
+            if duration is None:
+                continue
+            label = "principal" if candidate_model == gemini_model else candidate_model
+            print(
+                f"    [Gemini Cache] Áudio {label} validado e reutilizado ({duration}s).",
+                flush=True,
+            )
+            sidecar = json.loads(
+                job["output_file"].with_suffix(".tts.json").read_text(encoding="utf-8")
+            )
             job["duration"] = duration
             synthesis_by_id[job["scene_id"]] = {
-                "engine": "google-gemini-tts", "model": gemini_model,
-                "voice": project_voice, "voice_treatment": NO_VOICE_TREATMENT,
-                "fallback_reason": None,
+                "engine": "google-gemini-tts",
+                "model": candidate_model,
+                "voice": project_voice,
+                "voice_treatment": treatment,
+                "fallback_reason": sidecar.get("fallback_reason"),
             }
+            cached = True
+            break
+        if cached:
+            # A cached fallback clip does not prove that the current primary is
+            # unavailable. New uncached scenes still start from active_model_index.
             continue
-        if fallback_enabled:
-            duration = cached_duration(
-                job["output_file"], job["narration_hash"], fallback_model,
-                project_voice, FALLBACK_VOICE_TREATMENT,
-            )
-            if duration is not None:
-                print(f"    [Gemini Cache] Fallback 3.1 tratado reutilizado ({duration}s).", flush=True)
-                sidecar = json.loads(
-                    job["output_file"].with_suffix(".tts.json").read_text(encoding="utf-8")
-                )
-                # A valid fallback cache proves why this existing clip used 3.1,
-                # but does not establish a current outage of the primary. Only
-                # a failed primary request in this run activates new fallback.
-                job["duration"] = duration
-                synthesis_by_id[job["scene_id"]] = {
-                    "engine": "google-gemini-tts", "model": fallback_model,
-                    "voice": project_voice,
-                    "voice_treatment": FALLBACK_VOICE_TREATMENT,
-                    "fallback_reason": sidecar.get("fallback_reason") or "cached-fallback",
-                }
-                continue
 
-        model_to_request = fallback_model if fallback_active else gemini_model
-        outcome = synthesize_gemini_audio(
-            job["narration"], project_voice, job["output_file"], gemini_key,
-            model_to_request, request_pacer,
-        )
-        fallback_reason = "earlier-primary-failure" if fallback_active else None
-        if outcome.model is None and model_to_request == gemini_model:
-            if fallback_enabled and outcome.failure in {
-                "rpd", "rate-limit-persistent", "server-unavailable", "request-timeout",
-            }:
-                fallback_active = True
-                fallback_reason = outcome.failure
-                print(
-                    f"    [Gemini Fallback] Primário indisponível ({fallback_reason}); "
-                    f"completando as cenas restantes com {fallback_model}, voz {project_voice}.",
-                    flush=True,
-                )
-                model_to_request = fallback_model
-                outcome = synthesize_gemini_audio(
-                    job["narration"], project_voice, job["output_file"],
-                    gemini_key, fallback_model, request_pacer,
-                )
-        if outcome.model is None:
-            raise RuntimeError(
-                f"Gemini TTS falhou na cena {job['scene_id']} "
-                f"({model_to_request}: {outcome.failure}); render interrompido."
+        fallback_reason = ";".join(cascade_failures) or None
+        outcome = SynthesisOutcome(None, "other")
+        model_to_request = model_cascade[active_model_index]
+
+        while True:
+            model_to_request = model_cascade[active_model_index]
+            outcome = synthesize_gemini_audio(
+                job["narration"], project_voice, job["output_file"], gemini_key,
+                model_to_request, request_pacer,
             )
+            if outcome.model is not None:
+                break
+
+            can_advance = (
+                outcome.failure in ELIGIBLE_FALLBACK_FAILURES
+                and active_model_index + 1 < len(model_cascade)
+            )
+            if not can_advance:
+                raise RuntimeError(
+                    f"Gemini TTS falhou na cena {job['scene_id']} "
+                    f"({model_to_request}: {outcome.failure}); render interrompido."
+                )
+
+            cascade_failures.append(f"{model_to_request}:{outcome.failure}")
+            fallback_reason = ";".join(cascade_failures)
+            previous_model = model_to_request
+            active_model_index += 1
+            next_model = model_cascade[active_model_index]
+            print(
+                f"    [Gemini Fallback] {previous_model} indisponível ({outcome.failure}); "
+                f"tentando {next_model} com a mesma voz {project_voice}.",
+                flush=True,
+            )
+
         model = outcome.model
-        voice_treatment = (
-            FALLBACK_VOICE_TREATMENT if model == fallback_model and fallback_enabled
-            else NO_VOICE_TREATMENT
-        )
-        if voice_treatment != NO_VOICE_TREATMENT:
+        voice_treatment = voice_treatment_for_model(model, project_voice)
+        if voice_treatment == FALLBACK_VOICE_TREATMENT:
             apply_fallback_voice_treatment(job["output_file"])
+
         duration = duration_seconds(job["output_file"])
         if not math.isfinite(duration) or duration <= 0:
             raise RuntimeError(f"Gemini TTS gerou áudio sem duração válida em {job['scene_id']}.")
@@ -613,8 +654,10 @@ def main() -> None:
         )
         job["duration"] = duration
         synthesis_by_id[job["scene_id"]] = {
-            "engine": "google-gemini-tts", "model": model,
-            "voice": project_voice, "voice_treatment": voice_treatment,
+            "engine": "google-gemini-tts",
+            "model": model,
+            "voice": project_voice,
+            "voice_treatment": voice_treatment,
             "fallback_reason": fallback_reason,
         }
 
@@ -649,8 +692,13 @@ def main() -> None:
     manifest["models_used"] = sorted({scene["model"] for scene in manifest["scenes"]})
     manifest["fallback_scene_ids"] = [
         scene["id"] for scene in manifest["scenes"]
-        if scene["model"] == FALLBACK_TTS_MODEL
+        if scene["model"] != gemini_model
     ]
+    manifest["fallback_scene_ids_by_model"] = {
+        model: [scene["id"] for scene in manifest["scenes"] if scene["model"] == model]
+        for model in fallback_models
+        if any(scene["model"] == model for scene in manifest["scenes"])
+    }
     Path(args.manifest).write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",

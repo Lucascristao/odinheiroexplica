@@ -189,7 +189,7 @@ class SynthesizeScenesTests(unittest.TestCase):
         self.assertNotIn(secret, diagnostic)
         self.assertNotIn("https://", diagnostic)
 
-    def test_rpd_switches_once_to_treated_3_1_and_resume_reuses_audio(self) -> None:
+    def test_rpd_switches_to_flash_lite_and_resume_reuses_audio(self) -> None:
         project = json.loads(self.project_path.read_text(encoding="utf-8"))
         project["scenes"].append({"id": "scene-02", "narration": "O preço muda."})
         self.project_path.write_text(json.dumps(project), encoding="utf-8")
@@ -202,8 +202,8 @@ class SynthesizeScenesTests(unittest.TestCase):
         schedule = [
             (synth.PRIMARY_TTS_MODEL, FakeResponse(200)),
             (synth.PRIMARY_TTS_MODEL, rpd),
-            (synth.FALLBACK_TTS_MODEL, FakeResponse(200)),
-            (synth.FALLBACK_TTS_MODEL, FakeResponse(200)),
+            (synth.SECONDARY_TTS_MODEL, FakeResponse(200)),
+            (synth.SECONDARY_TTS_MODEL, FakeResponse(200)),
         ]
         calls = []
         treated = []
@@ -226,42 +226,90 @@ class SynthesizeScenesTests(unittest.TestCase):
             patch.dict(os.environ, {
                 "GEMINI_API_KEY": "dummy-test-key",
                 "GEMINI_TTS_MODEL": synth.PRIMARY_TTS_MODEL,
-            }),
+            }, clear=False),
             patch.object(sys, "argv", self.argv),
             patch.object(synth.requests, "post", fake_post, create=True),
             patch.object(synth.subprocess, "run", fake_run),
             patch.object(synth, "apply_fallback_voice_treatment", fake_treatment),
             patch.object(synth.time, "sleep", lambda _seconds: None),
         ):
+            os.environ.pop("GEMINI_TTS_FALLBACK_MODEL", None)
+            os.environ.pop("GEMINI_TTS_FALLBACK_MODELS", None)
             synth.main()
             self.assertEqual(schedule, [])
-            self.assertEqual(treated, ["scene-01.mp3", "scene-02.mp3"])
+            self.assertEqual(treated, [], "Flash-Lite usa o matcher adaptativo, não a EQ fixa do 3.1")
             manifest = json.loads(self.manifest_path.read_text(encoding="utf-8"))
+            self.assertEqual(manifest["fallback_models"], [
+                synth.SECONDARY_TTS_MODEL, synth.FALLBACK_TTS_MODEL,
+            ])
             self.assertEqual(manifest["fallback_scene_ids"], ["scene-01", "scene-02"])
-            self.assertEqual(manifest["scenes"][1]["fallback_reason"], "rpd")
-            self.assertEqual(manifest["scenes"][2]["fallback_reason"], "earlier-primary-failure")
-            self.assertEqual(manifest["scenes"][0]["voice_treatment"], "none")
-            self.assertEqual(manifest["scenes"][1]["voice_treatment"], synth.FALLBACK_VOICE_TREATMENT)
-            self.assertEqual({s["voice"] for s in manifest["scenes"]}, {"Charon"})
+            self.assertEqual(
+                manifest["fallback_scene_ids_by_model"][synth.SECONDARY_TTS_MODEL],
+                ["scene-01", "scene-02"],
+            )
+            self.assertEqual(manifest["scenes"][1]["voice_treatment"], "none")
+            self.assertEqual({scene["voice"] for scene in manifest["scenes"]}, {"Charon"})
             render.require_gemini_manifest(manifest)
             sidecar = json.loads((self.output_dir / "scene-01.tts.json").read_text(encoding="utf-8"))
-            self.assertEqual(sidecar["model"], synth.FALLBACK_TTS_MODEL)
-            self.assertEqual(sidecar["voice_treatment"], synth.FALLBACK_VOICE_TREATMENT)
-            self.assertIsNone(synth.cached_duration(
-                self.output_dir / "scene-01.mp3", sidecar["narration_sha256"],
-                synth.FALLBACK_TTS_MODEL, "Charon", "none",
-            ))
+            self.assertEqual(sidecar["model"], synth.SECONDARY_TTS_MODEL)
+            self.assertEqual(sidecar["voice_treatment"], "none")
             synth.main()
             self.assertEqual(len(calls), 4, "Reexecução com cache não deve chamar a API")
 
-            invalid = json.loads(json.dumps(manifest))
-            invalid["scenes"][1]["voice_treatment"] = "none"
-            with self.assertRaisesRegex(RuntimeError, "outro motor"):
-                render.require_gemini_manifest(invalid)
-            invalid = json.loads(json.dumps(manifest))
-            invalid["scenes"][1]["model"] = "gemini-3.8-flash-lite-tts"
-            with self.assertRaisesRegex(RuntimeError, "outro motor"):
-                render.require_gemini_manifest(invalid)
+    def test_flash_lite_failure_cascades_to_treated_3_1(self) -> None:
+        rpd = FakeResponse(429, error={
+            "status": "RESOURCE_EXHAUSTED",
+            "details": [{"@type": "type.googleapis.com/google.rpc.QuotaFailure", "violations": [{
+                "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            }]}],
+        })
+        schedule = [
+            (synth.PRIMARY_TTS_MODEL, rpd),
+            (synth.SECONDARY_TTS_MODEL, rpd),
+            (synth.FALLBACK_TTS_MODEL, FakeResponse(200)),
+            (synth.FALLBACK_TTS_MODEL, FakeResponse(200)),
+        ]
+        treated = []
+
+        def fake_post(url, **_kwargs):
+            expected_model, response = schedule.pop(0)
+            self.assertIn(f"/{expected_model}:generateContent", url)
+            return response
+
+        def fake_run(command, **_kwargs):
+            self.assertEqual(command[0], "ffprobe")
+            return types.SimpleNamespace(stdout="3.0\n")
+
+        def fake_treatment(path):
+            treated.append(path.name)
+            path.write_bytes(path.read_bytes() + b"TREATED")
+
+        with (
+            patch.dict(os.environ, {
+                "GEMINI_API_KEY": "dummy-test-key",
+                "GEMINI_TTS_MODEL": synth.PRIMARY_TTS_MODEL,
+            }, clear=False),
+            patch.object(sys, "argv", self.argv),
+            patch.object(synth.requests, "post", fake_post, create=True),
+            patch.object(synth.subprocess, "run", fake_run),
+            patch.object(synth, "apply_fallback_voice_treatment", fake_treatment),
+            patch.object(synth.time, "sleep", lambda _seconds: None),
+        ):
+            os.environ.pop("GEMINI_TTS_FALLBACK_MODEL", None)
+            os.environ.pop("GEMINI_TTS_FALLBACK_MODELS", None)
+            synth.main()
+
+        self.assertEqual(schedule, [])
+        self.assertEqual(treated, ["scene-00.mp3", "scene-01.mp3"])
+        manifest = json.loads(self.manifest_path.read_text(encoding="utf-8"))
+        self.assertEqual({scene["model"] for scene in manifest["scenes"]}, {synth.FALLBACK_TTS_MODEL})
+        self.assertTrue(all(
+            scene["voice_treatment"] == synth.FALLBACK_VOICE_TREATMENT
+            for scene in manifest["scenes"]
+        ))
+        self.assertIn(synth.PRIMARY_TTS_MODEL + ":rpd", manifest["scenes"][0]["fallback_reason"])
+        self.assertIn(synth.SECONDARY_TTS_MODEL + ":rpd", manifest["scenes"][0]["fallback_reason"])
+        render.require_gemini_manifest(manifest)
 
     def test_persistent_server_error_eligible_for_fallback_but_404_is_not(self) -> None:
         responses = [FakeResponse(500), FakeResponse(502), FakeResponse(503)]

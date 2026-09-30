@@ -141,29 +141,37 @@ def require_gemini_manifest(manifest: dict) -> None:
     engine = "google-gemini-tts"
     if not scenes or manifest.get("engine") != engine:
         raise RuntimeError("Render diário exige manifesto de áudio exclusivamente Gemini.")
+
     primary_model = "gemini-3.8-flash-tts"
-    fallback_model = "gemini-3.1-flash-tts-preview"
-    fallback_treatment = "charon-3.1-to-3.8-eq-v1"
+    secondary_model = "gemini-3.8-flash-lite-tts"
+    legacy_fallback_model = "gemini-3.1-flash-tts-preview"
+    allowed_models = {primary_model, secondary_model, legacy_fallback_model}
+    legacy_charon_treatment = "charon-3.1-to-3.8-eq-v1"
+
     models = {item.get("model") for item in scenes}
     voices = {item.get("voice") for item in scenes}
+    configured_fallbacks = manifest.get("fallback_models")
+    if configured_fallbacks is None:
+        single = manifest.get("fallback_model")
+        configured_fallbacks = [single] if single else []
+    configured_fallbacks = [model for model in configured_fallbacks if model]
+
+    def expected_treatment(item: dict) -> str:
+        if item.get("model") == legacy_fallback_model and item.get("voice") == "Charon":
+            return legacy_charon_treatment
+        return "none"
+
     if (
         any(item.get("engine") != engine for item in scenes)
-        or not models.issubset({primary_model, fallback_model})
+        or not models.issubset(allowed_models)
         or len(voices) != 1
         or None in voices
         or manifest.get("model") != primary_model
         or manifest.get("voice") not in voices
-        or (
-            fallback_model in models
-            and (
-                manifest.get("fallback_model") != fallback_model
-                or manifest.get("voice") != "Charon"
-            )
-        )
+        or any(model not in {secondary_model, legacy_fallback_model} for model in configured_fallbacks)
+        or any(model not in configured_fallbacks for model in models if model != primary_model)
         or any(
-            item.get("voice_treatment", "none") != (
-                fallback_treatment if item.get("model") == fallback_model else "none"
-            )
+            item.get("voice_treatment", "none") != expected_treatment(item)
             for item in scenes
         )
     ):
