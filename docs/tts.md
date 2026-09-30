@@ -2,7 +2,7 @@
 
 ## Fluxo atual
 
-O render diário usa somente Gemini TTS. Para o apresentador masculino, solicita a voz `Charon`; para o feminino, `Autonoe`. O modelo principal é `gemini-3.8-flash-tts`. Para `Charon`, `gemini-3.1-flash-tts-preview` fica disponível **somente como fallback** quando o principal devolve RPD esgotado, 429 persistente após três tentativas espaçadas, ou 5xx persistente. O 3.1 não recebe nenhuma chamada se o 3.8 concluir as cenas. Erro de autenticação, configuração, modelo inexistente, resposta sem áudio ou falha de rede não aciona troca automática. Para `Autonoe`, a produção permanece no modelo principal até que haja uma calibração específica.
+O render diário usa somente Gemini TTS. Para o apresentador masculino, solicita a voz `Charon`; para o feminino, `Autonoe`. O modelo principal é `gemini-3.8-flash-tts`. Para `Charon`, `gemini-3.1-flash-tts-preview` fica disponível **somente como fallback** quando o principal devolve RPD esgotado, 429 persistente após três tentativas espaçadas, 5xx persistente ou timeout persistente após as tentativas. Cada pedido pode aguardar até 180 segundos pela resposta para evitar repetir a síntese enquanto o servidor ainda trabalha. O 3.1 não recebe nenhuma chamada se o 3.8 concluir as cenas. Erro de autenticação, configuração, modelo inexistente, resposta sem áudio ou erro de conexão não aciona troca automática. Para `Autonoe`, a produção permanece no modelo principal até que haja uma calibração específica.
 
 O worker espaça o início das chamadas por pelo menos 22 segundos para respeitar a cota Free de 3 RPM mostrada no AI Studio. Em 429, registra os detalhes estruturados de cota sem expor a chave; RPM transitório espera e tenta novamente no 3.8. Ao entrar no fallback, não testa o 3.8 de novo nas cenas ainda sem áudio dessa execução. Se o 3.1 também falhar, o render para e preserva as cenas já geradas no cache. Não existe Azure nem terceiro modelo.
 
@@ -15,6 +15,8 @@ Cada arquivo de áudio tem um sidecar `.tts.json` com hash da narração, modelo
 As três amostras de Charon enviadas pelo usuário em 30/09/2026 têm nível médio muito próximo: 3.8 Flash a −18,42 dBFS e 3.1 a −18,26 dBFS. A amostra 3.1 apresentou cerca de 6 dB a mais na faixa de 4–8 kHz e menos presença em 1–2 kHz. Só no trecho 3.1, o worker aplica EQ fixa e leve: graves abaixo de 160 Hz −1 dB, região de 1,5 kHz +1,5 dB, agudos acima de 4,2 kHz −2,5 dB. O tratamento não muda velocidade ou altura de voz e não promete timbre idêntico: interpretação e prosódia ainda podem variar. O vídeo final é entregue para escuta e aprovação manual.
 
 ## Timeline
+
+A divisão em cenas e a extensão do roteiro são decisões editoriais: use o necessário para explicar a história inteira. Os limites da API controlam o agendamento da síntese, não a quantidade de cenas nem o conteúdo. Em caso de quota, use cache, espera, retomada e o fallback autorizado; preserve o roteiro completo se a síntese precisar continuar depois.
 
 roteiro por cena → TTS por cena → duração medida do áudio → estimativa de posição das âncoras → timeline → render.
 

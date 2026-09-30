@@ -277,7 +277,7 @@ def synthesize_gemini_audio(
             try:
                 pacer.wait_before_request()
                 response = requests.post(
-                    url, json=payload, timeout=90,
+                    url, json=payload, timeout=180,
                     headers={"x-goog-api-key": gemini_key},
                 )
                 if response.status_code == 200:
@@ -357,6 +357,12 @@ def synthesize_gemini_audio(
                 else:
                     print(f"    [Gemini Erro {response.status_code} em {model}] Resposta HTTP sem áudio.", flush=True)
                     break
+            except requests.exceptions.Timeout:
+                print(f"    [Gemini Tempo esgotado em {model}] tentativa {attempt}/{max_attempts}.", flush=True)
+                if attempt < max_attempts:
+                    time.sleep(3 * attempt)
+                else:
+                    return SynthesisOutcome(None, "request-timeout")
             except Exception as exc:
                 print(f"    [Gemini Exceção em {model}] {type(exc).__name__}; tentativa {attempt}/{max_attempts}.", flush=True)
                 if attempt < max_attempts:
@@ -570,7 +576,7 @@ def main() -> None:
         fallback_reason = "earlier-primary-failure" if fallback_active else None
         if outcome.model is None and model_to_request == gemini_model:
             if fallback_enabled and outcome.failure in {
-                "rpd", "rate-limit-persistent", "server-unavailable",
+                "rpd", "rate-limit-persistent", "server-unavailable", "request-timeout",
             }:
                 fallback_active = True
                 fallback_reason = outcome.failure

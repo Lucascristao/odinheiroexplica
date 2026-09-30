@@ -125,6 +125,31 @@ export type StageEvent = {
 
 export type StageCamera = z.infer<typeof stageCameraSchema>;
 
+// Informational elements enter the camera as whole units. Cropping a future
+// metric or label at the edge makes it look like damaged content.
+export function fitsStageCamera(region: {x: number; y: number; width: number; height: number}, camera: StageCamera): boolean {
+  const left = 50 + (region.x - camera.x) * camera.zoom;
+  const top = 50 + (region.y - camera.y) * camera.zoom;
+  const right = left + region.width * camera.zoom;
+  const bottom = top + region.height * camera.zoom;
+  return left >= -0.001 && top >= -0.001 && right <= 100.001 && bottom <= 100.001;
+}
+
+// Fade only inside a complete frame. Looking in both directions gives a smooth
+// entrance/exit while keeping frame evaluation independent of render order.
+export function stageCameraVisibility(fitsAtFrame: (frame: number) => boolean, frame: number, fadeFrames: number): number {
+  if (!fitsAtFrame(frame)) return 0;
+  const duration = Math.max(1, Math.round(fadeFrames));
+  let progress = 1;
+  for (let offset = 1; offset < duration; offset++) {
+    if (!fitsAtFrame(frame - offset) || !fitsAtFrame(frame + offset)) {
+      progress = offset / duration;
+      break;
+    }
+  }
+  return progress * progress * (3 - 2 * progress);
+}
+
 // Camera cues share the same frame clock as the stage. A cue reaches its
 // destination before the next camera cue, so parallel Remotion workers resolve
 // identical positions regardless of frame order. Without cues, this is identity.

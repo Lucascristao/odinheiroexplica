@@ -2,6 +2,8 @@
 
 ## Regra de independência editorial
 
+Preserve a pauta aprovada pelo usuário ao atualizar datas, dados ou visuais de um episódio em andamento. Só selecione outro assunto quando a solicitação pedir essa nova escolha.
+
 Arquivos de piloto, testes, demonstrações e exemplos anteriores existem apenas para validar a tecnologia. Nunca use o assunto, a estrutura narrativa, o título, a thumbnail, os visuais ou o enquadramento de um piloto como molde ou preferência para um novo vídeo. Cada pauta deve nascer da solicitação atual e da pesquisa atual. O piloto do Pix é somente um teste técnico e não deve influenciar a seleção ou a forma dos próximos vídeos.
 
 
@@ -13,7 +15,7 @@ Use fontes primárias para confirmar documentos, regras, números e posições i
 
 Em toda pauta, consulte ao menos uma matéria específica de veículo com linha editorial à direita ou centro-direita e registre `publisher`, URL e resumo em `editorial.source_balance.right_editorial_review.consulted`. Use essa leitura para testar o enquadramento, os custos e os efeitos práticos da narrativa oficial. Não atribua a essa matéria dados que ela não traz; confirme números na fonte primária e cruze as interpretações. A voz do canal pode dar espaço maior a críticas bem sustentadas, mantendo linguagem sóbria e sem militância partidária.
 
-Escolha um único assunto forte.
+Escolha um único assunto forte. Se o usuário já definiu a pauta, preserve esse assunto e atualize a pesquisa, os dados e o enquadramento; pedir um vídeo novo ou atualizado não autoriza trocar a pauta.
 
 Antes de fechar o roteiro, resolva a embalagem. Título + thumbnail formam uma única decisão editorial e precisam vender exatamente a história que o vídeo entrega.
 
@@ -72,11 +74,18 @@ O canal trabalha com dois apresentadores fixos:
 
 O render diário usa somente Gemini TTS. Escolha o apresentador antes da síntese e mantenha a mesma voz predefinida em todas as cenas. O modelo principal é `gemini-3.8-flash-tts`, configurável por `GEMINI_TTS_MODEL` antes do início do vídeo. Primeiro aguarde e tente novamente quando a falha for temporária. Se o principal continuar indisponível, o worker pode completar as cenas pendentes com `gemini-3.1-flash-tts-preview` como fallback, aplicando o tratamento leve e registrando modelo e tratamento por cena. O mesmo nome de voz em modelos diferentes não garante timbre idêntico: escute o vídeo completo e ajuste a continuidade vocal antes de aprová-lo.
 
-Roberto e Luana são personagens editoriais fixos do canal. Use seus nomes de forma natural quando houver apresentação no roteiro. A escolha do apresentador deve considerar o assunto, o enquadramento e o público provável do vídeo, sem usar estereótipos simplistas de gênero.
+Roberto e Luana são personagens editoriais fixos do canal. Todo vídeo deve ter uma apresentação falada breve do apresentador escolhido. A escolha do apresentador deve considerar o assunto, o enquadramento e o público provável do vídeo, sem usar estereótipos simplistas de gênero.
 
-A apresentação do narrador deve variar naturalmente quando fizer sentido. Não use sempre a mesma frase de abertura. É válido começar pelo gancho e só depois o apresentador se identificar. Evite introduções longas que atrasem a entrega da promessa do vídeo.
+A abertura deve nomear o assunto e deixar clara a pergunta que o vídeo vai responder. Explique siglas e conceitos no primeiro uso, com linguagem comum e um exemplo quando necessário. Logo após o gancho, apresente Roberto ou Luana em uma frase natural integrada à explicação. Varie a formulação; não reserve uma cena ou vinheta longa para a apresentação.
 
-Inclua pedido de inscrição apenas quando houver um ponto natural de respiro. Varie a formulação e a posição. Não coloque o CTA sempre no mesmo minuto e não use a mesma frase em todos os vídeos. Em alguns vídeos, se o CTA quebrar a narrativa, prefira apenas um elemento visual discreto ou omita a fala.
+Todo vídeo deve incluir um pedido falado breve de inscrição depois de uma primeira entrega de valor, em um respiro natural ou no encerramento. Faça apenas um pedido, ligado ao benefício de acompanhar o canal. Varie a formulação e a posição conforme a narrativa, sem determinar um minuto fixo e sem interromper uma explicação pela metade.
+
+Preencha `editorial.narrative_contract` com três strings copiadas literalmente da narração, cada uma com uma ocorrência única no roteiro:
+- `topic_explanation`: trecho que explica o assunto com linguagem comum, nas duas primeiras cenas;
+- `presenter_introduction`: apresentação com o nome do narrador escolhido, na primeira cena, depois do gancho;
+- `subscription_request`: pedido de inscrição, depois da apresentação e de uma entrega de valor.
+
+O validador exige esse contrato antes da síntese. Os campos identificam trechos do roteiro, sem gerar falas ou inserir conteúdo automaticamente. Revise também o sentido: uma sigla solta não explica o assunto, mencionar Roberto fora de uma apresentação não identifica o narrador, e um CTA não substitui a conclusão. Não há frase pronta, layout ou duração obrigatória para esses momentos.
 
 Antes de fechar o texto da narração, faça uma auditoria explícita de pronúncia. Identifique termos estrangeiros, siglas, nomes próprios, marcas e palavras que possam soar artificiais no TTS. Mantenha sempre a grafia correta no roteiro, no vídeo e na publicação; a adaptação é somente para a fala.
 
@@ -146,6 +155,7 @@ Preencha `visual_direction` com:
 Regras:
 - dois vídeos do canal podem compartilhar paleta, tipografia e acabamento, mas não devem parecer o mesmo projeto com texto e áudio trocados;
 - não usar sempre o mesmo fundo, grade, cards, posição de texto, setas, timelines ou entrada;
+- linha do tempo não é o formato padrão: use-a somente quando datas ou sequência temporal explicam o assunto; escolha a composição de cada trecho pela relação que a fala precisa mostrar, e compare o storyboard com o episódio anterior;
 - não criar uma biblioteca de “templates fixos” e simplesmente escolher um deles;
 - a composição nasce da informação: número pode dominar a tela, fluxo pode virar diagrama espacial, comparação pode dividir o quadro, processo pode transformar a própria cena;
 - use o quadro inteiro como espaço narrativo. Card flutuante é exceção, não padrão;
@@ -167,7 +177,7 @@ Siga também `docs/editorial-attention.md` para roteiro falado, escolha de image
 
 Siga docs/editorial-continuity.md. O motor usa visual.stage com objetos identificáveis e visual.beats como eventos sobre eles. Cada evento tem anchor literal, target_id, action e prominence. O padrão é contextual. reveal_ids/retire_ids controlam elementos auxiliares em regiões reservadas; moves permite reposicionar mantendo identidade.
 
-Quando a relação pedir um percurso espacial, defina `visual.stage.initial_camera` e câmeras nos beats relevantes como `{x, y, zoom, motion_seconds}`. `x` e `y` são percentuais do palco seguro (0–100), `zoom` vai de 1 a 1,6 e o movimento dura 0,2–2 segundos. Enquadre o objeto alvo inteiro; a validação rejeita câmera que o corte. A câmera deve seguir a informação narrada e parar para leitura, não passear continuamente por decoração. Revise a prévia descrita em `docs/visual-preview.md` antes do render final.
+Quando a relação pedir um percurso espacial, defina `visual.stage.initial_camera` e câmeras nos beats relevantes como `{x, y, zoom, motion_seconds}`. `x` e `y` são percentuais do palco seguro (0–100), `zoom` vai de 1 a 1,6 e o movimento dura 0,2–2 segundos. Enquadre o objeto alvo inteiro, incluindo rótulo, dado e unidade; a validação rejeita câmera que o corte. Informações que só serão explicadas depois começam com `initially_visible:false` e aparecem por `action:reveal` ou `reveal_ids` no beat correspondente. Não use texto ou dado cortado na borda para antecipar o próximo conteúdo. A câmera deve seguir a informação narrada e parar para leitura. Revise a prévia descrita em `docs/visual-preview.md`, incluindo quadros intermediários dos movimentos, antes do render final.
 
 Não copiar a composição do MED. Definir palco e relações conforme a informação da pauta. Usar fotografia, fluxo, comparação ou texto quando explicam melhor, com identidade do canal preservada.
 
@@ -210,7 +220,13 @@ Regras globais:
 
 Não determine previamente a duração. O vídeo termina quando a história estiver completa, sem repetição para aumentar tempo.
 
+A quantidade de cenas deve ser a necessária para explicar o assunto do começo ao fim. Quotas de voz, número de chamadas TTS e tempo de render não são critérios para cortar explicações, reduzir cenas ou encurtar o roteiro. Resolva restrições de produção com cache, espera, retomada e o fallback autorizado; se elas impedirem concluir a síntese, preserve o roteiro completo para a retomada.
+
 Audite:
+- assunto e pergunta central claros desde a abertura, com siglas e conceitos explicados no primeiro uso;
+- apresentação breve do narrador logo após o gancho e um pedido de inscrição após a entrega de valor;
+- resposta à pergunta inicial na conclusão e explicação completa do assunto;
+- textos e dados inteiros no enquadramento, sem antecipação recortada de informações futuras;
 - afirmações sem fonte;
 - números conflitantes;
 - exageros;
@@ -238,12 +254,12 @@ Não usar nome do canal, logotipo, ícone ou selo de marca por padrão. A identi
 
 Seguir `docs/editorial-voice.md`. Escrever para o ouvido: frases curtas com uma ideia, exemplos concretos e alternância natural entre pergunta, explicação e consequência. Evitar listas lidas, introduções burocráticas e suspense sem resposta. Não copiar bordões ou imitar a voz dos vídeos de referência.
 
-Definir `scene.tts.delivery` pela função do trecho. Usar 1–3 `tts.cues` pontuais quando houver número decisivo, contraste ou conclusão; o limite de seis é técnico, não meta. Selecionar trechos literais únicos sem atravessar frases, sem cortar palavras ou pronúncias cadastradas. Associar a entrada do número, recorte ou grifo ao bookmark da mesma fala. Reservar tempo de leitura durante a explicação; não transformar cada palavra em animação. Manter a voz fixa do apresentador e o destaque amarelo da marca.
+Escrever intenção, contraste e pausas na própria narração. O worker Gemini não aplica `tts.delivery`, `tts.cues`, `rate` ou `pitch`; esses campos antigos não comprovam direção de atuação. Associar a entrada de número, recorte ou grifo a uma âncora literal única de `visual.beats`. Os tempos são estimados a partir do texto e da duração real, sem bookmarks medidos por palavra; revisar a sincronização no MP4. Reservar tempo de leitura durante a explicação e manter a voz do apresentador e o destaque amarelo da marca.
 
 
 ### Direção de motion design por episódio
 
-- Abra com uma consequência concreta ou uma pergunta específica e mostre um elemento visual pertinente desde o início. A identificação do apresentador pode vir depois, em uma frase curta, se não interromper o gancho. Não reservar segundos de tela vazia para uma saudação fixa.
+- Abra com uma consequência concreta ou uma pergunta específica, nomeie o assunto e mostre um elemento visual pertinente desde o início. Logo após o gancho, identifique o apresentador em uma frase curta integrada à explicação. Não reservar segundos de tela vazia para uma saudação fixa.
 - Desenhe um percurso visual para a ideia central: o mesmo objeto pode deslocar-se, mudar de escala ou de função enquanto a relação causal se revela. Indique o que permanece na tela, o que muda e o que o espectador entende em cada beat.
 - Faça cada corte, movimento de câmera, linha desenhada, gráfico progressivo ou recorte ter uma função na explicação. Pausas estáveis são úteis para ler uma prova; movimento constante de cartões não substitui progressão narrativa.
 - Use os tipos visuais exigidos pela história, sem cota de formatos e sem proibir a repetição de uma composição que mantém a mesma explicação. Evite a sequência mecânica de título no topo mais cartões em todas as cenas.

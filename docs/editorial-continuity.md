@@ -10,6 +10,8 @@ stage.elements contém objetos com id estável, kind (step, label, metric, note 
 
 stage.connections liga IDs from/to; a conexão acompanha a geometria e o destaque da fala. Não desenhar ligações causais apenas por decoração.
 
+Informações que pertencem a um momento futuro da explicação começam com `initially_visible:false` e só aparecem por `action:reveal` ou `reveal_ids` quando a fala chega a elas. Não mostrar o próximo texto, número ou dado cortado na borda como antecipação. O estado inicial e cada movimento de câmera devem preservar inteiros o objeto em foco, seu rótulo, dado e unidade; revisar os quadros intermediários, além do início e do fim do movimento. A câmera acompanha informação já apresentada e para para leitura. Esta regra vale para todos os vídeos, sem impor geometria ou percurso fixos.
+
 Cada beat precisa de:
 - anchor literal, único, na ordem da narração;
 - target_id existente;

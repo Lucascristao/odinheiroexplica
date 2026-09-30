@@ -1,6 +1,6 @@
 # Direção de voz editorial
 
-O render diário usa apenas Gemini TTS. Roberto solicita a voz `Charon` e Luana solicita `Autonoe`. O modelo principal é Gemini 3.8 Flash TTS. Para Roberto, se o 3.8 esgotar a cota, mantiver HTTP 429 após as tentativas espaçadas ou ficar indisponível com 5xx persistente, o motor pode completar as cenas faltantes com Gemini 3.1 Flash TTS preview, ainda com Charon. Se o 3.8 funcionar, não há chamada ao 3.1. Uma EQ leve aproxima o timbre do trecho complementar, mas não garante identidade perfeita; escute a transição no MP4 final. O manifesto informa o modelo e tratamento de cada cena. Para Luana, o fallback ainda não foi calibrado e fica desativado.
+O render diário usa apenas Gemini TTS. Roberto solicita a voz `Charon` e Luana solicita `Autonoe`. O modelo principal é Gemini 3.8 Flash TTS. Para Roberto, se o 3.8 esgotar a cota, mantiver HTTP 429 após as tentativas espaçadas ou ficar indisponível com 5xx ou timeout persistente, o motor pode completar as cenas faltantes com Gemini 3.1 Flash TTS preview, ainda com Charon. Se o 3.8 funcionar, não há chamada ao 3.1. Uma EQ leve aproxima o timbre do trecho complementar, mas não garante identidade perfeita; escute a transição no MP4 final. O manifesto informa o modelo e tratamento de cada cena. Para Luana, o fallback ainda não foi calibrado e fica desativado.
 
 ## O que o motor aplica de fato
 
@@ -25,5 +25,10 @@ Escrever frases com uma ideia, variar comprimentos e conectar dado, exemplo e co
 ## Datas e abertura
 
 - Diga a data quando ela identifica o dado ou evento que está sendo explicado; omiti-la pode tirar contexto de uma notícia econômica. Evite repetir o calendário sem função narrativa.
-- Comece com uma pergunta ou consequência concreta. A saudação e o nome do apresentador entram depois, quando ajudarem a relação com o público. Não reserve automaticamente segundos vazios antes de mostrar o assunto.
+- Comece com uma pergunta ou consequência concreta e nomeie o assunto. Explique siglas e conceitos no primeiro uso, sem presumir conhecimento prévio; acrescente um exemplo simples quando a definição não bastar.
+- Todo vídeo deve apresentar Roberto ou Luana em uma frase falada natural logo após o gancho, integrada à explicação. Não reserve uma cena, vinheta longa ou segundos vazios para a apresentação.
 - Varie a abertura conforme a pauta. A primeira imagem deve tornar a pergunta visível, não apenas apresentar uma frase num cartão.
+- Todo vídeo deve incluir um único pedido falado breve de inscrição após entregar valor, em um respiro da narrativa ou no encerramento. Relacione o convite ao benefício de acompanhar o canal, sem interromper uma explicação nem repetir a mesma frase entre vídeos.
+- A conclusão responde à pergunta inicial. Duração e número de cenas seguem a explicação necessária; a quota da voz é tratada pela produção, sem cortar o roteiro.
+
+Antes do TTS, registre em `editorial.narrative_contract` as strings `topic_explanation`, `presenter_introduction` e `subscription_request`, copiadas literalmente de trechos com ocorrência única na narração. A explicação está nas duas primeiras cenas, a apresentação com nome na primeira cena após o gancho, e o pedido depois da apresentação e de uma entrega de valor. O validador confere o contrato; a revisão editorial confere se os trechos realmente explicam, apresentam e convidam. As falas continuam sendo escritas para cada pauta.

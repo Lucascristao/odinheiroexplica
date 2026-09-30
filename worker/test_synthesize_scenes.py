@@ -17,6 +17,7 @@ from unittest.mock import patch
 # CI does not install worker/requirements.txt. The tests replace the only
 # requests method used by the module, so importing the real package is needless.
 sys.modules["requests"] = types.ModuleType("requests")
+sys.modules["requests"].exceptions = types.SimpleNamespace(Timeout=type("RequestTimeout", (Exception,), {}))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import build_render_input as render  # noqa: E402
@@ -285,6 +286,20 @@ class SynthesizeScenesTests(unittest.TestCase):
                 "Narration", "Charon", self.folder / "invalid.mp3", "test-key",
                 "https://example.test/?key=test-key",
             )
+
+    def test_persistent_timeout_reports_failure_for_fallback(self) -> None:
+        with (
+            patch.object(synth.requests, "post", side_effect=synth.requests.exceptions.Timeout, create=True) as post,
+            patch.object(synth.time, "sleep", lambda _seconds: None),
+        ):
+            outcome = synth.synthesize_gemini_audio(
+                "Teste", "Charon", self.folder / "timeout.mp3", "test-key", synth.PRIMARY_TTS_MODEL,
+                synth.GeminiRequestPacer(minimum_interval_seconds=0),
+            )
+        self.assertEqual(post.call_count, 3)
+        self.assertIsNone(outcome.model)
+        self.assertEqual(outcome.failure, "request-timeout")
+        self.assertEqual(post.call_args.kwargs["timeout"], 180)
 
     def test_rpd_429_stops_immediately_and_reports_daily_quota(self) -> None:
         secret = "AIza-secret-test-key"

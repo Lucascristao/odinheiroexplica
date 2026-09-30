@@ -1,6 +1,6 @@
 {
-  "project_id": "ipp-fabrica-carrinho-2026-09-30",
-  "title": "A fábrica subiu o preço. Por que o carrinho caiu?",
+  "project_id": "dolar-politica-bolso-2026-09-30",
+  "title": "Dólar e eleições: como a política pode chegar ao seu bolso",
   "version": "1.0",
   "presenter": {
     "gender": "male",
@@ -8,74 +8,115 @@
   },
   "speech": {
     "pronunciations": {
-      "IPP": "í pê pê",
-      "IPCA": "í pê cê á",
-      "IBGE": "í bê gê é"
+      "PTAX": "pêtax",
+      "TSE": "tê ésse ê",
+      "PIB": "pib",
+      "EUA": "Estados Unidos",
+      "Insper": "ínsper"
     },
     "ignore_pronunciation_terms": []
   },
   "story": {
-    "subject": "O IPP de agosto de 2026, divulgado pelo IBGE em 30 de setembro, e a diferença entre preços na fábrica e preços pagos pelas famílias.",
-    "angle": "O mesmo agosto trouxe IPP positivo e IPCA negativo. Seguir as duas medidas até a cadeia de preços sem prometer repasse automático.",
-    "promise": "Entender por que números de fábrica e de consumo têm sinais opostos e o que a divulgação de hoje realmente permite concluir.",
-    "why_now": "O IBGE publicou às 09h de 30/09/2026 as tabelas do IPP de agosto. O resultado de +0,36% é um dado novo de hoje; o IPCA de agosto havia sido divulgado em 11/09.",
+    "subject": "Dólar e política na reta final da eleição de2026, atualizado com PTAX e estatísticas fiscais divulgados em30/09.",
+    "angle": "Seguir o caminho entre decisões fiscais, percepção de risco, câmbio e custos, separando dado verificado de interpretação e de torcida.",
+    "promise": "Entender como a política pode mexer no dólar, por que o mundo também importa e quando isso chega a uma compra.",
+    "why_now": "Faltam quatro dias para o primeiro turno. A PTAX de30/09 e as estatísticas fiscais deagosto foram verificadas hoje, preservando a pauta original dólar e política.",
     "category": "economy"
   },
-  "visual_assets": [],
+  "visual_assets": [
+    {
+      "id": "A_wheat_field",
+      "type": "photo_cutout",
+      "subject": "Campo de trigo (imagem ilustrativa)",
+      "narrative_role": "Dar textura real ao trecho sobre a cadeia do trigo, sem representar a safra brasileira ou provar a projeção da Conab.",
+      "country_context": "global",
+      "source_page_url": "https://commons.wikimedia.org/wiki/File:Wheat_Field_in_Walla_Walla,_Washington,_2018.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Wheat_Field_in_Walla_Walla%2C_Washington%2C_2018.jpg/1280px-Wheat_Field_in_Walla_Walla%2C_Washington%2C_2018.jpg",
+      "image_fallback_urls": [
+        "https://upload.wikimedia.org/wikipedia/commons/b/bc/Wheat_Field_in_Walla_Walla%2C_Washington%2C_2018.jpg"
+      ],
+      "license": "CC0 1.0",
+      "attribution": "Jason W Lacey / Wikimedia Commons",
+      "needs_cutout": false
+    },
+    {
+      "id": "A_shopping_cart",
+      "type": "photo_cutout",
+      "subject": "Carrinho no supermercado (imagem ilustrativa)",
+      "narrative_role": "Aproximar as perguntas finais da compra real; imagem ilustrativa feita fora do Brasil, não evidência de preços.",
+      "country_context": "global",
+      "source_page_url": "https://commons.wikimedia.org/wiki/File:Shopping_Cart_Supermarket.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Shopping_Cart_Supermarket.jpg/1280px-Shopping_Cart_Supermarket.jpg",
+      "image_fallback_urls": [
+        "https://upload.wikimedia.org/wikipedia/commons/f/f7/Shopping_Cart_Supermarket.jpg"
+      ],
+      "license": "CC0 1.0",
+      "attribution": "Safaritravelplus / Wikimedia Commons",
+      "needs_cutout": false
+    }
+  ],
   "visual_direction": {
-    "concept": "Dois termômetros de preços percorrem trilhas diferentes: a saída da fábrica e o caixa da loja. Os números se afastam antes de se encontrarem numa cadeia com filtros.",
-    "world": "industrial",
+    "concept": "Uma decisão eleitoral percorre três escalas: expectativas em Brasília, troca entre moedas, e uma compra concreta. A carteira reaparece como destino; números dehoje são provas, não eixo de uma apresentação.",
+    "world": "market",
     "secondary_color": "#FFBD19",
     "motifs": [
-      "portão da fábrica",
-      "etiqueta de preço",
-      "linha de dados",
-      "esteira",
-      "carrinho",
-      "calendário"
+      "calendário eleitoral",
+      "carteira",
+      "troca de moedas",
+      "contas públicas",
+      "nota de compra",
+      "cadeia de custos"
     ],
     "motion_language": [
-      "abrir com dois números de sinais opostos",
-      "transformar três meses de queda em um único novo dado de agosto, sem quantificar julho",
-      "usar contrapesos para setores em direções opostas",
-      "seguir uma esteira de etapas entre fábrica e caixa",
-      "fechar com datas verificadas, sem projetar valor futuro"
+      "abrir com data eleitoral e revelar carteira só quando a fala chega ao bolso",
+      "comparar PTAX e spot com identificação e horários explícitos",
+      "seguir a ligação risco → decisão → moeda",
+      "transformar uma nota decompra hipotética conservandoUS$100",
+      "percorrer estoque → produção → loja",
+      "encerrar no mesmo objeto carteira com uma conclusão"
     ],
     "avoid": [
-      "trigo e dólar do vídeo anterior",
-      "grade fixa de cartões",
-      "linhas com dados futuros",
-      "fotografia genérica como evidência",
-      "aula com título persistente"
+      "cartelas deparágrafos",
+      "informação futura cortada na borda",
+      "gráfico com pontos futuros",
+      "atribuição eleitoral sem evidência",
+      "palco doIPP",
+      "copiar composição do vídeo anterior"
     ],
-    "implementation_note": "Toda a composição é Remotion de palco com dados reais, cortes e zoom por âncora. Não há imagem externa cuja licença ou download possa impedir a produção."
+    "implementation_note": "Palcos reais doDailyEditorial; objetos/diagramas, duas fotosCC0 como ilustração e câmeras focadas no alvo inteiro. Os elementos futuros começam ocultos e aparecem por beats."
   },
   "editorial": {
     "strengths": [
-      "Dado divulgado em 30/09 sustenta uma pauta de hoje, não uma troca de data do episódio anterior.",
-      "O contraste com IPCA explica medidas diferentes, sem insinuar repasse instantâneo.",
-      "As cinco cenas requerem cinco chamadas TTS, dentro do limite diário observado de 10 RPD se o saldo estiver livre."
+      "Preserva dólar e política com atualização real de30/09.",
+      "Explica tema e mecanismo antes de desenvolver exemplos.",
+      "Roberto seapresenta após gancho eCTA surge depois deentregar valor.",
+      "Detalha efeitos e limites sem reduzir conteúdo porquotaTTS."
     ],
     "risk_flags": [
-      "O XLSX oficial está publicado no diretório do IBGE, mas esta sessão não conseguiu abrir seu conteúdo binário; o valor de 0,36% foi checado em cobertura de 30/09 às 09h06.",
-      "IPP e IPCA têm cestas, pontos de coleta e pesos diferentes; não calcular diferença como repasse.",
-      "A alta do IPP de agosto não prevê o IPCA de setembro ou o preço de produto individual.",
-      "Prévia visual deve confirmar legibilidade do gráfico e timing da narração Gemini.",
-      "Uma reportagem Reuters de 30/09 cita julho -0,3%, divergindo da página de julho do IBGE (-0,83%) e de outra cobertura; valor de julho foi retirado da narração e dos gráficos até checagem da revisão oficial."
+      "PTAX nãoé fechamento comercial; spot é snapshot10h42, não cotação atual depublicação.",
+      "Nenhuma causalidade de pesquisaeleitoral foi demonstrada para a queda do dia.",
+      "Foto detrigo nosEUA e supermercado noQuênia são ilustrações globais, não evidência brasileira.",
+      "Debt82,9% refere-se a agosto, divulgada30/09; a comparação de déficit é agosto2026/2025.",
+      "A hipótese aritméticaR$5/R$5,50 nãoé previsão e é identificada antes dos valores."
     ],
+    "narrative_contract": {
+      "topic_explanation": "vamos seguir esse caminho: das decisões sobre as contas do governo, passando pelo câmbio, até o custo que aparece no seu bolso",
+      "presenter_introduction": "Eu sou o Roberto, do O Dinheiro Explica.",
+      "subscription_request": "se inscreva no O Dinheiro Explica para acompanhar as próximas histórias"
+    },
     "source_balance": {
       "requires_diversity": true,
-      "public_policy_or_regulation": false,
-      "official_sources_role": "IBGE confirma calendário, arquivo do IPP publicado hoje, metodologia do IPP, resultado do IPCA e próxima data de divulgação.",
-      "independent_sources_role": "BPMoney repercutiu às 09h06 o resultado divulgado hoje, com taxas setoriais e comentário de contexto.",
-      "counterpoint_summary": "Preço recebido na fábrica pode divergir do preço no varejo por composição da cesta, tributação, frete, margens, estoques e momento de coleta; o efeito futuro não é garantido.",
+      "public_policy_or_regulation": true,
+      "official_sources_role": "Confirmar metodologiaPTAX, dataeleitoral, dívida/resultadofiscal e estudo derepasse; posições são atribuídas, não selo deinfalibilidade.",
+      "independent_sources_role": "Exame situa o pregão e os fatores simultâneos; Reuters confere melhora mensal; Oeste coloca o endividamento em pauta e foi confrontada comPDFprimário.",
+      "counterpoint_summary": "Câmbio tem forças domésticas eglobais. Dívida alta merece escrutínio; déficit mensal melhor não elimina estoque. Identidade partidária não demonstra causalidade cambial.",
       "official_claims_attributed": true,
       "right_editorial_review": {
         "consulted": [
           {
-            "publisher": "Gazeta do Povo",
-            "url": "https://www.gazetadopovo.com.br/economia/inflacao-cai-0-32-agosto-reducao-conta-de-luz-alimentos-transportes/",
-            "summary": "Cobertura de 11/09 confirma IPCA de agosto em -0,32% e contextualiza energia, alimentos e transporte. Foi consultada para confrontar a leitura do consumidor; não sustenta o IPP divulgado em 30/09."
+            "publisher": "Revista Oeste",
+            "url": "https://revistaoeste.com/economia/divida-publica-avanca-a-829-do-pib-e-bate-r-11-trilhoes-sob-lula/",
+            "summary": "Cobertura crítica publicada30/09 às11h49 destacou estoque/RelaçãoPIB sob ogovernoLula. Conferi82,9% eR$11,1tri noPDFprimário; acrescentei déficit mensalmenor e limites decausalidade. O roteiro não reproduz os demais comparativos históricos da matéria nem seu tom partidário."
           }
         ]
       }
@@ -83,155 +124,316 @@
     "youtube_suitability": {
       "risk_level": "low",
       "sensitive_topics": [
-        "inflação",
-        "preços de alimentos"
+        "eleições",
+        "políticafiscal",
+        "câmbio"
       ],
-      "context_notes": "Explicação estatística e econômica, sem promessa financeira ou previsão de preço.",
+      "context_notes": "Conteúdo econômico explicativo, sem orientação devoto, promoção decandidato ou recomendação individual de investimento.",
       "title_thumbnail_safe": true,
-      "monetization_notes": "Título apresenta um contraste verificável e explica limites da comparação."
+      "monetization_notes": "Título usa possibilidade; aexplicação entrega mecanismo e seus limites."
     },
     "render_review": {
       "status": "visual_evidence_pending",
-      "note": "Figura temporal usa apenas o sinal dos três meses negativos anteriores e o novo +0,36% de agosto; conferir legibilidade e timing do render."
+      "note": "VerificarLegibilidade, sincronismo e continuidadevocal no render; nenhuma quota devoz altera roteiro/cenas."
     }
   },
   "sources": [
     {
       "id": "S1",
-      "title": "IBGE — Tabela IPP agosto de 2026",
-      "url": "https://ftp.ibge.gov.br/Precos_Indices_de_Precos_ao_Produtor/Tabelas_xls/2026/ipp_202608_03.xlsx",
-      "publisher": "IBGE",
+      "title": "Banco Central — API PTAX, cotação de 30/09/2026",
+      "url": "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?%40dataCotacao=%2709-30-2026%27&%24format=json",
+      "publisher": "Banco Central do Brasil",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "published_at": "2026-09-30",
-      "notes": "Arquivo primário listado no diretório do IBGE com carimbo 30/09/2026 09:00. Valor numérico confirmado também por S2."
+      "notes": "Consultado diretamente em 30/09/2026: compra 5,18030; venda 5,18090; dataHoraCotacao 2026-09-30 13:11:44.783262. Taxa de referência PTAX, não fechamento comercial nem preço turismo.",
+      "published_at": "2026-09-30"
     },
     {
       "id": "S2",
-      "title": "IPP sobe 0,36% em agosto, diz IBGE",
-      "url": "https://bpmoney.com.br/economia/indice-de-precos-ao-produtor-ipp-sobe-036-em-agosto-diz-ibge/",
-      "publisher": "BPMoney",
-      "source_type": "secondary",
-      "publisher_class": "independent_journalism",
-      "editorial_role": "independent_reporting",
-      "published_at": "2026-09-30T09:06:00-03:00",
-      "notes": "Reportagem de 30/09 às 09h06: IPP +0,36% em agosto, alimentos +1,99%, outros químicos -2,97%. Número de julho não usado por divergência entre coberturas publicadas no dia."
+      "title": "Banco Central — metodologia das cotações diárias do dólar",
+      "url": "https://dadosabertos.bcb.gov.br/dataset/dolar-americano-usd-todos-os-boletins-diarios",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "publisher_class": "official",
+      "editorial_role": "primary_document",
+      "notes": "PTAX é média aritmética de quatro consultas aos dealers; boletim de fechamento PTAX é média dos boletins do dia."
     },
     {
       "id": "S3",
-      "title": "IBGE — IPCA, resultados de agosto de 2026",
-      "url": "https://www.ibge.gov.br/estatisticas-novoportal/economicas/precos-e-custos/9256-indice-nacional-de-precos-ao-consumidor-amplo.html?=&t=resultados",
-      "publisher": "IBGE",
+      "title": "TSE — Centro de Divulgação das Eleições 2026",
+      "url": "https://www.tse.jus.br/eleicoes/cde-2026",
+      "publisher": "Tribunal Superior Eleitoral",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "published_at": "2026-09-11",
-      "notes": "IPCA de agosto -0,32%; Alimentação e bebidas -0,34%. Define preços no varejo para famílias, distinta da porta de fábrica."
+      "notes": "FAQ confirma primeiro turno em 04/10/2026. Não sustenta causalidade cambial."
     },
     {
       "id": "S4",
-      "title": "IBGE — metodologia e calendário do IPP",
-      "url": "https://www.ibge.gov.br/estatisticas/economicas/precos-e-custos/9282-indice-de-precos-ao-produtor-industrias-extrativas-e-de-transformacao.html",
-      "publisher": "IBGE",
-      "source_type": "primary",
-      "publisher_class": "official",
-      "editorial_role": "data_context",
-      "notes": "IPP mede preços de venda recebidos por produtores, sem impostos, tarifas ou fretes. Calendário lista divulgação de 30/09 para agosto."
-    },
-    {
-      "id": "S5",
-      "title": "IBGE — calendário de outubro de 2026",
-      "url": "https://www.ibge.gov.br/calendario/mensal.html?ano=2026&mes=10",
-      "publisher": "IBGE",
+      "title": "Banco Central — Estatísticas fiscais, nota de 30/09/2026",
+      "url": "https://www.bcb.gov.br/content/estatisticas/hist_estatisticasfiscais/202609_Texto_de_estatisticas_fiscais.pdf",
+      "publisher": "Banco Central do Brasil",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "notes": "IPCA de setembro está previsto para 09/10/2026."
+      "notes": "PDF primário lido em 30/09: página 2, DBGG agosto 82,9% do PIB/R$11,1tri, alta mensal0,3pp; página1 déficit primário agosto R$10,0bi contra R$17,3bi agosto2025. Não confundir estoque/déficit ou primário/nominal.",
+      "published_at": "2026-09-30"
+    },
+    {
+      "id": "S5",
+      "title": "Exame — Ibovespa ganha força com bancos, Petrobras e eleições; dólar recua para R$5,18",
+      "url": "https://exame.com/invest/mercados/ibovespa-ganha-forca-com-bancos-petrobras-e-eleicoes-dolar-recua-para-r-518/",
+      "publisher": "Exame",
+      "source_type": "context",
+      "publisher_class": "independent_journalism",
+      "editorial_role": "independent_reporting",
+      "notes": "Matéria de 30/09 às11h02: spot comercial R$5,1870, queda0,57%, recorte10h42 Brasília. Relaciona movimentos a ambiente externo/dados americanos e registra eleição no radar. Não é fechamento, nem prova de causa eleitoral única.",
+      "published_at": "2026-09-30T11:02:00-03:00"
     },
     {
       "id": "S6",
-      "title": "Inflação cai 0,32% em agosto com redução da conta de luz, alimentos e transportes",
-      "url": "https://www.gazetadopovo.com.br/economia/inflacao-cai-0-32-agosto-reducao-conta-de-luz-alimentos-transportes/",
-      "publisher": "Gazeta do Povo",
-      "source_type": "secondary",
+      "title": "Revista Oeste — Dívida pública avança a82,9% do PIB e bate R$11 trilhões sob Lula",
+      "url": "https://revistaoeste.com/economia/divida-publica-avanca-a-829-do-pib-e-bate-r-11-trilhoes-sob-lula/",
+      "publisher": "Revista Oeste",
+      "source_type": "context",
       "publisher_class": "independent_journalism",
       "editorial_role": "independent_reporting",
-      "published_at": "2026-09-11",
-      "notes": "Veículo de linha editorial à direita consultado para checar o contraste do IPCA; esta matéria não cobre o IPP de 30/09."
+      "notes": "Consultada em 30/09, publicada11h49. Cobertura crítica do endividamento. O roteiro usa82,9%/11,1tri conferidos noPDF primário, e não copia as comparações históricas ou conclusões políticas da manchete.",
+      "published_at": "2026-09-30T11:49:00-03:00"
+    },
+    {
+      "id": "S7",
+      "title": "Reuters — Dívida bruta do Brasil sobe a82,9% do PIB em agosto",
+      "url": "https://www.infomoney.com.br/economia/divida-bruta-do-brasil-sobe-a-829-do-pib-em-agosto/",
+      "publisher": "Reuters / InfoMoney",
+      "source_type": "context",
+      "publisher_class": "independent_journalism",
+      "editorial_role": "independent_reporting",
+      "notes": "Cobertura de30/09 às09h02 confirma dívida82,9% e déficit menor do que expectativaReuters. Contextualiza melhoria mensal sem eliminar crescimento do estoque.",
+      "published_at": "2026-09-30T09:02:00-03:00"
+    },
+    {
+      "id": "S8",
+      "title": "Banco Central — Repasse cambial: estimativas por projeções locais",
+      "url": "https://www.bcb.gov.br/content/ri/relatorioinflacao/202603/rpm202603b8p.pdf",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "publisher_class": "official",
+      "editorial_role": "technical_analysis",
+      "notes": "Relatório março2026 páginas65–69: efeitos heterogêneos sobre IPCA, mais altos em alimentos/bens industriais e próximo dezero serviços; ampla incerteza. Nenhuma projeção de preço individual amanhã.",
+      "published_at": "2026-03-27"
+    },
+    {
+      "id": "S9",
+      "title": "Insper — A alta do dólar deveria ser uma preocupação para o Banco Central do Brasil?",
+      "url": "https://repositorio.insper.edu.br/entities/publication/977a0125-d438-4563-8a82-23cadb236df5",
+      "publisher": "Insper",
+      "source_type": "context",
+      "publisher_class": "academic",
+      "editorial_role": "technical_analysis",
+      "notes": "TCC2020 deAlejandro Ortiz Cruceño. Página descreve objetivo de analisar repasse cambial, determinantes/características/canais. Contexto metodológico apenas, sem usar aSelic2020 como atual.",
+      "published_at": "2020"
+    },
+    {
+      "id": "S10",
+      "title": "Banco Central — Cenários alternativos de projeção de inflação: riscos fiscais",
+      "url": "https://cdn-www.bcb.gov.br/content/ri/relatorioinflacao/202103/ri202103b6p.pdf",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "publisher_class": "official",
+      "editorial_role": "technical_analysis",
+      "notes": "Estudo de2021 usado somente para mecanismo de risco fiscal, câmbio e inflação; cenários condicionais, sem aplicar resultados numéricos ao pregão de2026."
+    },
+    {
+      "id": "S11",
+      "title": "Banco Central — O que é câmbio e quais fatores afetam a taxa?",
+      "url": "https://www.bcb.gov.br/estabilidadefinanceira/taxacambio",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "publisher_class": "official",
+      "editorial_role": "data_context",
+      "notes": "Referência conceitual de câmbio: preço da moeda e condições de oferta/procura. A simulaçãoUS$100 comR$5/R$5,50 é aritmética declarada, não dado observado."
     }
   ],
   "claims": [
     {
       "id": "C1",
-      "text": "IPP das indústrias extrativas e de transformação variou +0,36% em agosto de 2026; as tabelas foram divulgadas pelo IBGE em 30/09.",
+      "text": "Primeiro turno em04/10/2026, quatro dias depois do episódio de30/09.",
       "source_ids": [
-        "S1",
-        "S2",
-        "S4"
+        "S3"
       ],
       "confidence": "high",
       "verification_status": "verified",
       "framing": "verified_fact",
-      "attribution_required": true
+      "attribution_required": true,
+      "metadata": {}
     },
     {
       "id": "C2",
-      "text": "IPCA geral de agosto foi -0,32%, conforme IBGE.",
+      "text": "PTAX venda30/09/2026 foiR$5,1809; valor falado arredondadoR$5,18.",
       "source_ids": [
-        "S3",
-        "S6"
+        "S1"
       ],
       "confidence": "high",
       "verification_status": "verified",
       "framing": "verified_fact",
-      "attribution_required": true
+      "attribution_required": true,
+      "metadata": {}
     },
     {
       "id": "C3",
-      "text": "No IPP de agosto, alimentos variaram +1,99% e outros produtos químicos -2,97%.",
+      "text": "PTAX é referência baseada em consultas ao mercado; não preço ao consumidor em casa de câmbio.",
       "source_ids": [
-        "S1",
         "S2"
       ],
       "confidence": "high",
       "verification_status": "verified",
-      "framing": "reported_claim",
-      "attribution_required": true
+      "framing": "verified_fact",
+      "attribution_required": true,
+      "metadata": {}
     },
     {
       "id": "C4",
-      "text": "IPP mede preços recebidos na indústria, sem impostos e fretes; IPCA mede preços pagos por famílias no varejo.",
-      "source_ids": [
-        "S3",
-        "S4"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "context",
-      "attribution_required": true
-    },
-    {
-      "id": "C5",
-      "text": "O calendário do IBGE prevê divulgar o IPCA de setembro em 09/10/2026.",
+      "text": "Exame registrou spot comercialR$5,1870 às10h42 em30/09, em matéria11h02.",
       "source_ids": [
         "S5"
       ],
       "confidence": "high",
       "verification_status": "verified",
+      "framing": "reported_claim",
+      "attribution_required": true,
+      "metadata": {}
+    },
+    {
+      "id": "C5",
+      "text": "Compras/vendas e expectativas podem pressionar câmbio conforme oferta e procura.",
+      "source_ids": [
+        "S2",
+        "S11",
+        "S5"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "analysis",
+      "attribution_required": true,
+      "metadata": {}
+    },
+    {
+      "id": "C6",
+      "text": "Percepção de risco fiscal e de execução de propostas pode alterar exposição aoBrasil e demanda por moeda; direção é condicional.",
+      "source_ids": [
+        "S10",
+        "S5",
+        "S6"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "analysis",
+      "attribution_required": true,
+      "metadata": {}
+    },
+    {
+      "id": "C7",
+      "text": "Dívida bruta do governo geral foi82,9%PIB/R$11,1tri agosto2026 segundo notaBCB30/09.",
+      "source_ids": [
+        "S4",
+        "S6",
+        "S7"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
       "framing": "verified_fact",
-      "attribution_required": true
+      "attribution_required": true,
+      "metadata": {}
+    },
+    {
+      "id": "C8",
+      "text": "Déficit primário consolidado agosto2026R$10bi é menor que agosto2025R$17,3bi; isso não apaga estoque nem prova efeito único no câmbio.",
+      "source_ids": [
+        "S4",
+        "S7"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "analysis",
+      "attribution_required": true,
+      "metadata": {}
+    },
+    {
+      "id": "C9",
+      "text": "Exame reportou queda do dólar com dadosamericanos/apetiteporrisco e eleição no radar; proximidade não prova causa de pesquisa específica.",
+      "source_ids": [
+        "S5"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "reported_claim",
+      "attribution_required": true,
+      "metadata": {}
+    },
+    {
+      "id": "C10",
+      "text": "Exemplo hipotéticoUS$100×R$5=R$500 e×R$5,50=R$550, antes impostos/frete; não cotação observada nem previsão.",
+      "source_ids": [
+        "S11"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "context",
+      "attribution_required": true,
+      "metadata": {
+        "illustrative": true
+      }
+    },
+    {
+      "id": "C11",
+      "text": "Estoques, proteção cambial, margem e concorrência podem modificar tempo/intensidade de repasse.",
+      "source_ids": [
+        "S8",
+        "S9"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "analysis",
+      "attribution_required": true,
+      "metadata": {}
+    },
+    {
+      "id": "C12",
+      "text": "BCBmarço2026 estima repasse heterogêneo com incerteza; Insper pesquisa os canais, sem previsão de itemindividual.",
+      "source_ids": [
+        "S8",
+        "S9"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "analysis",
+      "attribution_required": true,
+      "metadata": {}
+    },
+    {
+      "id": "C13",
+      "text": "Avaliar cotação/horário, mudanças fiscais e persistência é uma leitura prudente; nenhum investimento ou candidato é recomendado.",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S8"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "context",
+      "attribution_required": true,
+      "metadata": {}
     }
   ],
   "scenes": [
     {
       "index": 0,
-      "title": "Dois preços, duas direções",
-      "narration": "Como a fábrica pode subir o preço e o consumidor ver queda no mesmo mês? Hoje, trinta de setembro, o IBGE divulgou o IPP de agosto: alta de 0,36%. Mas o IPCA de agosto, que mede o consumo das famílias, havia marcado queda de 0,32%. Os dois números são reais. O erro seria tratá-los como se medissem a mesma compra.",
+      "title": "A eleição pode mexer no seu dinheiro",
+      "narration": "Faltam quatro dias para a eleição, e uma mudança no dólar pode chegar à sua compra mesmo que você nunca tenha comprado um dólar. Mas como uma promessa de campanha vira preço? Eu sou o Roberto, do O Dinheiro Explica. Hoje, trinta de setembro, vamos seguir esse caminho: das decisões sobre as contas do governo, passando pelo câmbio, até o custo que aparece no seu bolso.",
       "claim_ids": [
-        "C1",
-        "C2",
-        "C4"
+        "C1"
       ],
       "visual": {
         "type": "DOCUMENT",
@@ -240,110 +442,109 @@
           "show_title": false,
           "elements": [
             {
-              "id": "factory",
+              "id": "vote",
               "kind": "metric",
-              "label": "IPP · fábrica · agosto",
-              "x": 4,
-              "y": 23,
-              "width": 42,
+              "label": "Primeiro turno · 2026",
+              "x": 5,
+              "y": 15,
+              "width": 40,
               "height": 60,
               "initially_visible": true,
-              "value": "+0,36%",
-              "value_size": 126
+              "value": "04 OUT",
+              "value_size": 132
             },
             {
-              "id": "checkout",
-              "kind": "metric",
-              "label": "IPCA · consumidor · agosto",
-              "x": 54,
-              "y": 23,
-              "width": 42,
-              "height": 60,
-              "initially_visible": true,
-              "value": "-0,32%",
-              "value_size": 126
+              "id": "wallet",
+              "kind": "object",
+              "label": "Seu bolso",
+              "x": 60,
+              "y": 12,
+              "width": 33,
+              "height": 63,
+              "initially_visible": false,
+              "object_type": "wallet"
             },
             {
-              "id": "question",
-              "kind": "note",
-              "label": "Duas medidas. Duas etapas do preço.",
-              "x": 4,
-              "y": 87,
-              "width": 92,
-              "height": 10,
-              "initially_visible": true,
-              "label_size": 37
+              "id": "presenter",
+              "kind": "label",
+              "label": "Roberto · O Dinheiro Explica",
+              "x": 10,
+              "y": 82,
+              "width": 80,
+              "height": 14,
+              "initially_visible": false,
+              "label_size": 40
             }
           ],
-          "connections": [],
-          "initial_camera": {
-            "x": 25,
-            "y": 53,
-            "zoom": 1.12
-          }
+          "connections": [
+            {
+              "from": "vote",
+              "to": "wallet"
+            }
+          ]
         },
         "beats": [
           {
-            "anchor": "alta de 0,36%",
-            "headline": "IPP · +0,36%",
-            "target_id": "factory",
+            "anchor": "quatro dias",
+            "target_id": "vote",
             "action": "focus",
-            "kind": "number",
+            "headline": "Primeiro turno · 2026",
+            "kind": "fact",
             "behavior": "transform",
-            "treatment": "giant_number",
-            "transition": "cut",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.45,
+            "motion_seconds": 0.48,
             "camera": {
-              "x": 25,
-              "y": 53,
-              "zoom": 1.12,
-              "motion_seconds": 0.65
+              "x": 27,
+              "y": 45,
+              "zoom": 1.15,
+              "motion_seconds": 0.8
             }
           },
           {
-            "anchor": "queda de 0,32%",
-            "headline": "IPCA · -0,32%",
-            "target_id": "checkout",
-            "action": "focus",
-            "kind": "compare",
+            "anchor": "sua compra",
+            "target_id": "wallet",
+            "action": "reveal",
+            "headline": "Seu bolso",
+            "kind": "fact",
             "behavior": "transform",
-            "treatment": "split_compare",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.45,
-            "camera": {
-              "x": 75,
-              "y": 53,
-              "zoom": 1.12,
-              "motion_seconds": 0.7
-            }
-          },
-          {
-            "anchor": "mesma compra",
-            "headline": "Não é a mesma medida",
-            "target_id": "question",
-            "action": "focus",
-            "kind": "warning",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "cut",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.45,
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 75,
+              "y": 44,
+              "zoom": 1.2,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "Eu sou o Roberto",
+            "target_id": "presenter",
+            "action": "reveal",
+            "headline": "Roberto · O Dinheiro Explica",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
             "camera": {
               "x": 50,
               "y": 50,
               "zoom": 1,
-              "motion_seconds": 0.9
+              "motion_seconds": 0.8
             }
           }
         ]
@@ -351,10 +552,11 @@
     },
     {
       "index": 1,
-      "title": "A virada publicada hoje",
-      "narration": "Antes de agosto, o IPP vinha de três meses de queda. Hoje saiu o dado novo: mais 0,36% em agosto. O sinal virou nos preços recebidos pela indústria. Isso não é uma previsão para a etiqueta de amanhã. É um retrato da porta da fábrica, divulgado agora pelo IBGE.",
+      "title": "Qual dólar está na tela?",
+      "narration": "Primeiro, saiba qual número está olhando. A PTAX de venda publicada hoje pelo Banco Central ficou em cinco reais e dezoito centavos, arredondando. Ela é uma taxa de referência calculada a partir de consultas ao mercado. Já o dólar comercial muda durante o pregão: a Exame registrou cinco reais e dezoito centavos às dez e quarenta e dois. Os números são próximos, mas têm horários e métodos diferentes. Nenhum deles é o preço final de uma casa de câmbio.",
       "claim_ids": [
-        "C1",
+        "C2",
+        "C3",
         "C4"
       ],
       "visual": {
@@ -364,125 +566,100 @@
           "show_title": false,
           "elements": [
             {
-              "id": "may",
-              "kind": "step",
-              "label": "MAIO · QUEDA",
-              "x": 4,
-              "y": 23,
-              "width": 20,
-              "height": 55,
-              "initially_visible": true
-            },
-            {
-              "id": "jun",
-              "kind": "step",
-              "label": "JUNHO · QUEDA",
-              "x": 28,
-              "y": 23,
-              "width": 20,
-              "height": 55,
-              "initially_visible": true
-            },
-            {
-              "id": "jul",
-              "kind": "step",
-              "label": "JULHO · QUEDA",
-              "x": 52,
-              "y": 23,
-              "width": 20,
-              "height": 55,
-              "initially_visible": true
-            },
-            {
-              "id": "ago",
+              "id": "ptax",
               "kind": "metric",
-              "label": "AGOSTO · DADO NOVO",
-              "x": 76,
-              "y": 23,
-              "width": 20,
-              "height": 55,
-              "initially_visible": false,
-              "value": "+0,36%",
-              "value_size": 84
+              "label": "PTAX venda · 30/09",
+              "x": 4,
+              "y": 12,
+              "width": 45,
+              "height": 53,
+              "initially_visible": true,
+              "value": "R$ 5,1809",
+              "value_size": 104
             },
             {
-              "id": "note",
-              "kind": "note",
-              "label": "IPP mede preços na porta da fábrica.",
-              "x": 4,
-              "y": 84,
-              "width": 92,
-              "height": 12,
-              "initially_visible": true,
-              "label_size": 36
+              "id": "spot",
+              "kind": "metric",
+              "label": "Comercial · 10h42",
+              "x": 55,
+              "y": 12,
+              "width": 41,
+              "height": 53,
+              "initially_visible": false,
+              "value": "R$ 5,1870",
+              "value_size": 96
+            },
+            {
+              "id": "method",
+              "kind": "label",
+              "label": "Referência ≠ cotação ao vivo",
+              "x": 10,
+              "y": 78,
+              "width": 80,
+              "height": 17,
+              "initially_visible": false,
+              "label_size": 46
             }
           ],
-          "connections": [
-            {
-              "from": "may",
-              "to": "jun"
-            },
-            {
-              "from": "jun",
-              "to": "jul"
-            },
-            {
-              "from": "jul",
-              "to": "ago"
-            }
-          ]
+          "connections": []
         },
         "beats": [
           {
-            "anchor": "três meses de queda",
-            "headline": "Três meses de queda",
-            "target_id": "jul",
+            "anchor": "A PTAX de venda",
+            "target_id": "ptax",
             "action": "focus",
-            "kind": "trend_down",
+            "headline": "PTAX venda · 30/09",
+            "kind": "fact",
             "behavior": "transform",
-            "treatment": "timeline",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "mais 0,36%",
-            "headline": "Agosto: +0,36%",
-            "target_id": "ago",
-            "action": "reveal",
-            "kind": "trend_up",
-            "behavior": "transform",
-            "treatment": "giant_number",
+            "treatment": "kinetic_type",
             "transition": "wipe",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.55,
+            "motion_seconds": 0.48,
             "camera": {
-              "x": 86,
-              "y": 50,
-              "zoom": 1.2,
-              "motion_seconds": 0.7
+              "x": 27,
+              "y": 40,
+              "zoom": 1.08,
+              "motion_seconds": 0.8
             }
           },
           {
-            "anchor": "etiqueta de amanhã",
-            "headline": "Sem previsão para o varejo",
-            "target_id": "note",
-            "action": "focus",
-            "kind": "warning",
-            "behavior": "reframe",
-            "treatment": "masked_emphasis",
-            "transition": "cut",
+            "anchor": "Já o dólar comercial",
+            "target_id": "spot",
+            "action": "reveal",
+            "headline": "Comercial · 10h42",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.45,
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 75,
+              "y": 40,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "horários e métodos diferentes",
+            "target_id": "method",
+            "action": "reveal",
+            "headline": "Referência ≠ cotação ao vivo",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
             "camera": {
               "x": 50,
               "y": 50,
@@ -495,296 +672,9 @@
     },
     {
       "index": 2,
-      "title": "Setores empurram em sentidos opostos",
-      "narration": "Essa média esconde forças contrárias. No IPP de agosto, a indústria de alimentos subiu 1,99%, com pressão de arroz e carnes. Outros produtos químicos caíram 2,97%. As vinte e quatro atividades não se movem em bloco: altas e baixas formam o resultado geral de 0,36%. Um número sozinho esconde a mistura.",
+      "title": "A cotação tem compradores e vendedores",
+      "narration": "O câmbio é o preço de uma moeda em outra: quantos reais você precisa para comprar um dólar. Esse preço nasce de compradores e vendedores. Uma empresa importa uma máquina e precisa de dólares. Outra exporta e recebe dólares, que pode trocar por reais. Investidores também entram e saem. Quando cresce a procura por dólares em relação à oferta, há pressão de alta. Quando a oferta ganha força, a pressão pode ser de queda. É por isso que uma expectativa já pode mexer no preço antes de virar uma lei.",
       "claim_ids": [
-        "C1",
-        "C3"
-      ],
-      "visual": {
-        "type": "DOCUMENT",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "elements": [
-            {
-              "id": "food",
-              "kind": "metric",
-              "label": "ALIMENTOS NA INDÚSTRIA",
-              "x": 4,
-              "y": 13,
-              "width": 53,
-              "height": 70,
-              "initially_visible": true,
-              "value": "+1,99%",
-              "value_size": 132
-            },
-            {
-              "id": "chemical",
-              "kind": "metric",
-              "label": "OUTROS QUÍMICOS",
-              "x": 64,
-              "y": 31,
-              "width": 32,
-              "height": 45,
-              "initially_visible": false,
-              "value": "-2,97%",
-              "value_size": 89
-            },
-            {
-              "id": "balance",
-              "kind": "note",
-              "label": "O índice geral é uma média ponderada.",
-              "x": 4,
-              "y": 87,
-              "width": 92,
-              "height": 10,
-              "initially_visible": true,
-              "label_size": 35
-            }
-          ],
-          "connections": [],
-          "initial_camera": {
-            "x": 30,
-            "y": 48,
-            "zoom": 1.08
-          }
-        },
-        "beats": [
-          {
-            "anchor": "1,99%",
-            "headline": "Alimentos sobem",
-            "target_id": "food",
-            "action": "focus",
-            "kind": "number",
-            "behavior": "transform",
-            "treatment": "giant_number",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.45,
-            "camera": {
-              "x": 30,
-              "y": 48,
-              "zoom": 1.08,
-              "motion_seconds": 0.7
-            }
-          },
-          {
-            "anchor": "2,97%",
-            "headline": "Químicos recuam",
-            "target_id": "chemical",
-            "action": "reveal",
-            "kind": "compare",
-            "behavior": "transform",
-            "treatment": "split_compare",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.45,
-            "camera": {
-              "x": 77,
-              "y": 53,
-              "zoom": 1.12,
-              "motion_seconds": 0.75
-            }
-          },
-          {
-            "anchor": "resultado geral de 0,36%",
-            "headline": "Média: +0,36%",
-            "target_id": "balance",
-            "action": "focus",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "equation",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.45,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.9
-            }
-          }
-        ]
-      }
-    },
-    {
-      "index": 3,
-      "title": "O caminho até o caixa",
-      "narration": "O IPP observa a saída da fábrica, antes de impostos e frete. O IPCA olha o preço pago pelas famílias. Entre um ponto e outro entram transporte, estoque, contratos e a margem do comércio. Além disso, as cestas pesquisadas não são idênticas. Por isso, sinais opostos em agosto não são contradição e não provam o que acontecerá com um produto específico.",
-      "claim_ids": [
-        "C4"
-      ],
-      "visual": {
-        "type": "DOCUMENT",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "elements": [
-            {
-              "id": "gate",
-              "kind": "step",
-              "label": "FÁBRICA · IPP",
-              "x": 4,
-              "y": 20,
-              "width": 24,
-              "height": 58,
-              "initially_visible": true,
-              "icon": "document"
-            },
-            {
-              "id": "middle",
-              "kind": "step",
-              "label": "CUSTOS E TEMPO",
-              "x": 38,
-              "y": 20,
-              "width": 24,
-              "height": 58,
-              "initially_visible": false,
-              "icon": "route"
-            },
-            {
-              "id": "cash",
-              "kind": "step",
-              "label": "CAIXA · IPCA",
-              "x": 72,
-              "y": 20,
-              "width": 24,
-              "height": 58,
-              "initially_visible": false,
-              "icon": "cart"
-            },
-            {
-              "id": "not_same",
-              "kind": "note",
-              "label": "Cestas e datas de coleta também diferem.",
-              "x": 4,
-              "y": 84,
-              "width": 92,
-              "height": 12,
-              "initially_visible": true,
-              "label_size": 34
-            }
-          ],
-          "connections": [
-            {
-              "from": "gate",
-              "to": "middle"
-            },
-            {
-              "from": "middle",
-              "to": "cash"
-            }
-          ],
-          "initial_camera": {
-            "x": 16,
-            "y": 50,
-            "zoom": 1.15
-          }
-        },
-        "beats": [
-          {
-            "anchor": "saída da fábrica",
-            "headline": "IPP · origem",
-            "target_id": "gate",
-            "action": "focus",
-            "kind": "process",
-            "behavior": "transform",
-            "treatment": "flow_diagram",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.45,
-            "camera": {
-              "x": 16,
-              "y": 50,
-              "zoom": 1.15,
-              "motion_seconds": 0.65
-            }
-          },
-          {
-            "anchor": "transporte, estoque, contratos",
-            "headline": "Etapas intermediárias",
-            "target_id": "middle",
-            "action": "reveal",
-            "kind": "flow",
-            "behavior": "transform",
-            "treatment": "flow_diagram",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.45,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.12,
-              "motion_seconds": 0.75
-            }
-          },
-          {
-            "anchor": "cestas pesquisadas",
-            "headline": "Cestas diferentes",
-            "target_id": "cash",
-            "action": "reveal",
-            "kind": "compare",
-            "behavior": "transform",
-            "treatment": "flow_diagram",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.45,
-            "camera": {
-              "x": 84,
-              "y": 50,
-              "zoom": 1.15,
-              "motion_seconds": 0.75
-            }
-          },
-          {
-            "anchor": "não provam",
-            "headline": "Sem previsão automática",
-            "target_id": "not_same",
-            "action": "focus",
-            "kind": "warning",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.45,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.7
-            }
-          }
-        ]
-      }
-    },
-    {
-      "index": 4,
-      "title": "O próximo dado",
-      "narration": "Então o que sabemos hoje, trinta de setembro? O preço recebido pela indústria em agosto voltou a subir. O dado seguinte sobre o consumidor, o IPCA de setembro, está previsto para nove de outubro. Ele mostrará outra fotografia, não uma resposta automática para cada produto. Até lá, dizer que a sua compra já encareceu por causa do IPP de hoje seria pular etapas.",
-      "claim_ids": [
-        "C1",
         "C5"
       ],
       "visual": {
@@ -794,110 +684,298 @@
           "show_title": false,
           "elements": [
             {
-              "id": "today",
-              "kind": "metric",
-              "label": "DADO NOVO · IPP",
-              "x": 7,
-              "y": 18,
-              "width": 35,
-              "height": 62,
+              "id": "buy",
+              "kind": "step",
+              "label": "Importação · compra dólares",
+              "x": 5,
+              "y": 9,
+              "width": 34,
+              "height": 35,
               "initially_visible": true,
-              "value": "30 SET",
-              "value_size": 105
+              "icon": "globe"
             },
             {
-              "id": "next",
-              "kind": "metric",
-              "label": "PRÓXIMO IPCA",
-              "x": 58,
-              "y": 18,
-              "width": 35,
-              "height": 62,
-              "initially_visible": true,
-              "value": "09 OUT",
-              "value_size": 105
+              "id": "sell",
+              "kind": "step",
+              "label": "Exportação · vende dólares",
+              "x": 61,
+              "y": 9,
+              "width": 34,
+              "height": 35,
+              "initially_visible": false,
+              "icon": "route"
             },
             {
-              "id": "limit",
-              "kind": "note",
-              "label": "Observação futura ≠ repasse garantido.",
-              "x": 4,
-              "y": 86,
-              "width": 92,
-              "height": 10,
-              "initially_visible": true,
-              "label_size": 36
+              "id": "market",
+              "kind": "object",
+              "label": "Troca entre reais e dólares",
+              "x": 32,
+              "y": 53,
+              "width": 36,
+              "height": 43,
+              "initially_visible": false,
+              "object_type": "bank"
             }
           ],
           "connections": [
             {
-              "from": "today",
-              "to": "next"
+              "from": "buy",
+              "to": "market"
+            },
+            {
+              "from": "sell",
+              "to": "market"
             }
-          ],
-          "initial_camera": {
-            "x": 25,
-            "y": 50,
-            "zoom": 1.08
-          }
+          ]
         },
         "beats": [
           {
-            "anchor": "trinta de setembro",
-            "headline": "IPP divulgado hoje",
-            "target_id": "today",
+            "anchor": "compradores e vendedores",
+            "target_id": "buy",
             "action": "focus",
-            "kind": "date",
+            "headline": "Importação · compra dólares",
+            "kind": "fact",
             "behavior": "transform",
-            "treatment": "timeline",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.45,
-            "camera": {
-              "x": 25,
-              "y": 50,
-              "zoom": 1.08,
-              "motion_seconds": 0.7
-            }
-          },
-          {
-            "anchor": "nove de outubro",
-            "headline": "IPCA previsto para 09/10",
-            "target_id": "next",
-            "action": "focus",
-            "kind": "date",
-            "behavior": "transform",
-            "treatment": "timeline",
-            "transition": "cut",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.45,
+            "motion_seconds": 0.48,
             "camera": {
-              "x": 75,
-              "y": 50,
-              "zoom": 1.08,
+              "x": 25,
+              "y": 28,
+              "zoom": 1.2,
               "motion_seconds": 0.8
             }
           },
           {
-            "anchor": "pular etapas",
-            "headline": "Sem repasse automático",
-            "target_id": "limit",
-            "action": "focus",
-            "kind": "warning",
+            "anchor": "Outra exporta",
+            "target_id": "sell",
+            "action": "reveal",
+            "headline": "Exportação · vende dólares",
+            "kind": "fact",
             "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "cut",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.45,
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 76,
+              "y": 28,
+              "zoom": 1.2,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "Investidores também",
+            "target_id": "market",
+            "action": "reveal",
+            "headline": "Troca entre reais e dólares",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "antes de virar uma lei",
+            "target_id": "market",
+            "action": "update",
+            "headline": "Expectativas também mudam decisões",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          }
+        ]
+      }
+    },
+    {
+      "index": 3,
+      "title": "Onde a política entra",
+      "narration": "A eleição entra pela expectativa sobre o que o próximo governo vai fazer. Quanto pretende gastar? De onde virá o dinheiro? As regras serão previsíveis? Se investidores enxergarem mais risco, podem exigir retorno maior ou reduzir a exposição ao Brasil. Quem decide sair e trocar reais por dólares ajuda a pressionar o câmbio. Um plano crível pode agir no sentido contrário. Isso depende da proposta, da execução e do resto da economia. Um candidato ser de direita ou de esquerda, sozinho, não resolve essa conta.",
+      "claim_ids": [
+        "C6"
+      ],
+      "visual": {
+        "type": "DOCUMENT",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "plan",
+              "kind": "label",
+              "label": "Quanto gasta? Como financia?",
+              "x": 7,
+              "y": 5,
+              "width": 86,
+              "height": 19,
+              "initially_visible": true,
+              "label_size": 62
+            },
+            {
+              "id": "risk",
+              "kind": "step",
+              "label": "Risco percebido",
+              "x": 5,
+              "y": 42,
+              "width": 27,
+              "height": 44,
+              "initially_visible": false,
+              "icon": "warning"
+            },
+            {
+              "id": "flow",
+              "kind": "step",
+              "label": "Decisão de investir ou sair",
+              "x": 37,
+              "y": 42,
+              "width": 28,
+              "height": 44,
+              "initially_visible": false,
+              "icon": "route"
+            },
+            {
+              "id": "fx",
+              "kind": "step",
+              "label": "Compra ou venda de dólares",
+              "x": 70,
+              "y": 42,
+              "width": 27,
+              "height": 44,
+              "initially_visible": false,
+              "icon": "coins"
+            }
+          ],
+          "connections": [
+            {
+              "from": "risk",
+              "to": "flow"
+            },
+            {
+              "from": "flow",
+              "to": "fx"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "anchor": "Quanto pretende gastar",
+            "target_id": "plan",
+            "action": "focus",
+            "headline": "Quanto gasta? Como financia?",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "emphasis": {
+              "phrase": "Como financia?",
+              "style": "underline"
+            }
+          },
+          {
+            "anchor": "mais risco",
+            "target_id": "risk",
+            "action": "reveal",
+            "headline": "Risco percebido",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 22,
+              "y": 65,
+              "zoom": 1.15,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "reduzir a exposição",
+            "target_id": "flow",
+            "action": "reveal",
+            "headline": "Decisão de investir ou sair",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 51,
+              "y": 65,
+              "zoom": 1.2,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "trocar reais por dólares",
+            "target_id": "fx",
+            "action": "reveal",
+            "headline": "Compra ou venda de dólares",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 82,
+              "y": 65,
+              "zoom": 1.15,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "Isso depende da proposta",
+            "target_id": "plan",
+            "action": "focus",
+            "headline": "Quanto gasta? Como financia?",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
             "camera": {
               "x": 50,
               "y": 50,
@@ -907,53 +985,926 @@
           }
         ]
       }
+    },
+    {
+      "index": 4,
+      "title": "O dado fiscal divulgado hoje",
+      "narration": "E hoje saiu um dado concreto para essa discussão. Segundo o Banco Central, a dívida bruta chegou a oitenta e dois vírgula nove por cento do PIB em agosto, somando onze vírgula um trilhões de reais. É uma comparação entre o estoque da dívida e o tamanho da economia. A Revista Oeste destacou a pressão desse endividamento sobre o governo. No mesmo documento, porém, o déficit primário de agosto foi menor que o de agosto do ano passado. Essa melhora mensal não apaga o estoque da dívida. E o estoque, sozinho, não prova calote nem explica toda a cotação do dia.",
+      "claim_ids": [
+        "C7",
+        "C8"
+      ],
+      "visual": {
+        "type": "DOCUMENT",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "debt",
+              "kind": "metric",
+              "label": "Dívida bruta · agosto/2026",
+              "x": 8,
+              "y": 7,
+              "width": 84,
+              "height": 40,
+              "initially_visible": true,
+              "value": "82,9% do PIB",
+              "value_size": 146
+            },
+            {
+              "id": "stock",
+              "kind": "metric",
+              "label": "Estoque da dívida",
+              "x": 5,
+              "y": 58,
+              "width": 42,
+              "height": 35,
+              "initially_visible": false,
+              "value": "R$ 11,1 tri",
+              "value_size": 96
+            },
+            {
+              "id": "monthly",
+              "kind": "label",
+              "label": "Déficit menor no mês ≠ dívida resolvida",
+              "x": 57,
+              "y": 57,
+              "width": 39,
+              "height": 37,
+              "initially_visible": false,
+              "label_size": 46
+            }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "oitenta e dois vírgula nove",
+            "target_id": "debt",
+            "action": "focus",
+            "headline": "Dívida bruta · agosto/2026",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "onze vírgula um trilhões",
+            "target_id": "stock",
+            "action": "reveal",
+            "headline": "Estoque da dívida",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 27,
+              "y": 75,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "déficit primário de agosto",
+            "target_id": "monthly",
+            "action": "reveal",
+            "headline": "Déficit menor no mês ≠ dívida resolvida",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 76,
+              "y": 75,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "nem explica toda a cotação",
+            "target_id": "debt",
+            "action": "focus",
+            "headline": "Dívida bruta · agosto/2026",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.8
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 5,
+      "title": "O mundo também entra nessa conta",
+      "narration": "Só que Brasília não controla o mundo. Juros e inflação nos Estados Unidos mudam a atratividade de manter dinheiro em dólar. O humor global e o comércio também alteram os fluxos. Na manhã de hoje, a Exame relacionou o recuo do dólar a dados americanos e à melhora do apetite por risco, enquanto a eleição seguia no radar. São fatores ao mesmo tempo. Então, dizer que o dólar caiu por causa de uma pesquisa exige identificar a pesquisa, o horário e uma reação compatível. A proximidade da eleição não demonstra essa causa.",
+      "claim_ids": [
+        "C9"
+      ],
+      "visual": {
+        "type": "DOCUMENT",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "world",
+              "kind": "step",
+              "label": "Juros e inflação nos EUA",
+              "x": 5,
+              "y": 10,
+              "width": 37,
+              "height": 38,
+              "initially_visible": true,
+              "icon": "globe"
+            },
+            {
+              "id": "brasil",
+              "kind": "step",
+              "label": "Contas públicas e eleição",
+              "x": 59,
+              "y": 10,
+              "width": 36,
+              "height": 38,
+              "initially_visible": false,
+              "icon": "house"
+            },
+            {
+              "id": "fx",
+              "kind": "metric",
+              "label": "Câmbio · vários fatores",
+              "x": 29,
+              "y": 61,
+              "width": 42,
+              "height": 33,
+              "initially_visible": false,
+              "value": "R$ / US$",
+              "value_size": 84
+            }
+          ],
+          "connections": [
+            {
+              "from": "world",
+              "to": "fx"
+            },
+            {
+              "from": "brasil",
+              "to": "fx"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "anchor": "Juros e inflação",
+            "target_id": "world",
+            "action": "focus",
+            "headline": "Juros e inflação nos EUA",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 25,
+              "y": 30,
+              "zoom": 1.15,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "eleição seguia no radar",
+            "target_id": "brasil",
+            "action": "reveal",
+            "headline": "Contas públicas e eleição",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 76,
+              "y": 30,
+              "zoom": 1.15,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "São fatores ao mesmo tempo",
+            "target_id": "fx",
+            "action": "reveal",
+            "headline": "Câmbio · vários fatores",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "não demonstra essa causa",
+            "target_id": "fx",
+            "action": "update",
+            "headline": "Data próxima não prova causa",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "emphasis": {
+              "phrase": "não prova",
+              "style": "underline"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "title": "Como isso chega a uma compra",
+      "narration": "Agora vamos trazer essa história para uma conta simples. Imagine uma peça importada que custa cem dólares. É um exemplo, não a cotação de hoje. Com dólar a cinco reais, ela custa quinhentos reais antes de impostos e frete. Se o dólar for para cinco e cinquenta, vira quinhentos e cinquenta reais. A peça não mudou de preço lá fora. O real é que compra menos dólares. Essa pressão pode entrar no custo de um produto fabricado aqui, quando ele usa componentes ou matérias-primas comprados em moeda estrangeira.",
+      "claim_ids": [
+        "C10"
+      ],
+      "visual": {
+        "type": "DOCUMENT",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "invoice",
+              "kind": "object",
+              "label": "Peça importada · exemplo",
+              "x": 4,
+              "y": 10,
+              "width": 27,
+              "height": 71,
+              "initially_visible": true,
+              "object_type": "receipt"
+            },
+            {
+              "id": "base",
+              "kind": "metric",
+              "label": "US$ 100 × R$ 5,00",
+              "x": 38,
+              "y": 11,
+              "width": 56,
+              "height": 31,
+              "initially_visible": false,
+              "value": "R$ 500",
+              "value_size": 108
+            },
+            {
+              "id": "changed",
+              "kind": "metric",
+              "label": "US$ 100 × R$ 5,50",
+              "x": 38,
+              "y": 60,
+              "width": 56,
+              "height": 31,
+              "initially_visible": false,
+              "value": "R$ 550",
+              "value_size": 108
+            }
+          ],
+          "connections": [
+            {
+              "from": "invoice",
+              "to": "base"
+            },
+            {
+              "from": "base",
+              "to": "changed"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "anchor": "cem dólares",
+            "target_id": "invoice",
+            "action": "focus",
+            "headline": "Peça importada · exemplo",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 20,
+              "y": 47,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "quinhentos reais",
+            "target_id": "base",
+            "action": "reveal",
+            "headline": "US$ 100 × R$ 5,00",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 65,
+              "y": 27,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "quinhentos e cinquenta reais",
+            "target_id": "changed",
+            "action": "reveal",
+            "headline": "US$ 100 × R$ 5,50",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 65,
+              "y": 75,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "O real é que compra menos",
+            "target_id": "changed",
+            "action": "focus",
+            "headline": "US$ 100 × R$ 5,50",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.8
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 7,
+      "title": "Do custo até o preço da loja",
+      "narration": "Mas o custo não atravessa a cadeia num passe de mágica. Um importador pode ter estoque comprado antes da mudança. Pode ter protegido o câmbio por contrato. E uma loja pode reduzir sua margem para não perder cliente. No caminho de um alimento feito com insumo importado, entram também produção, transporte e concorrência. Por isso, uma alta ou queda do dólar não produz o mesmo reajuste em tudo. O tempo, a duração do movimento e as condições de cada mercado fazem diferença.",
+      "claim_ids": [
+        "C11"
+      ],
+      "visual": {
+        "type": "DOCUMENT",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "wheat",
+              "kind": "photo",
+              "label": "Insumo importado · ilustração",
+              "x": 3,
+              "y": 9,
+              "width": 33,
+              "height": 83,
+              "initially_visible": true,
+              "asset_id": "A_wheat_field",
+              "image_fit": "cover",
+              "image_motion": "push"
+            },
+            {
+              "id": "inventory",
+              "kind": "step",
+              "label": "Estoque e contrato",
+              "x": 43,
+              "y": 10,
+              "width": 52,
+              "height": 23,
+              "initially_visible": false,
+              "icon": "lock"
+            },
+            {
+              "id": "production",
+              "kind": "step",
+              "label": "Produção e transporte",
+              "x": 43,
+              "y": 44,
+              "width": 52,
+              "height": 23,
+              "initially_visible": false,
+              "icon": "route"
+            },
+            {
+              "id": "shop",
+              "kind": "step",
+              "label": "Margem e concorrência",
+              "x": 43,
+              "y": 78,
+              "width": 52,
+              "height": 19,
+              "initially_visible": false,
+              "icon": "cart"
+            }
+          ],
+          "connections": [
+            {
+              "from": "inventory",
+              "to": "production"
+            },
+            {
+              "from": "production",
+              "to": "shop"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "anchor": "estoque comprado antes",
+            "target_id": "inventory",
+            "action": "reveal",
+            "headline": "Estoque e contrato",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 66,
+              "y": 24,
+              "zoom": 1.15,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "produção, transporte",
+            "target_id": "production",
+            "action": "reveal",
+            "headline": "Produção e transporte",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 66,
+              "y": 56,
+              "zoom": 1.15,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "não produz o mesmo reajuste",
+            "target_id": "shop",
+            "action": "reveal",
+            "headline": "Margem e concorrência",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 66,
+              "y": 85,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "fazem diferença",
+            "target_id": "wheat",
+            "action": "focus",
+            "headline": "Insumo importado · ilustração",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.8
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 8,
+      "title": "O que a pesquisa permite dizer",
+      "narration": "Isso também aparece nas pesquisas. Um estudo do Banco Central publicado em março encontrou efeitos diferentes do câmbio sobre os preços: maiores em alimentos em casa e bens industriais, e próximos de zero em serviços. Mas os autores alertam que a incerteza é ampla. O estudo do Insper sobre repasse cambial também trata esse caminho como uma relação que precisa ser investigada. Esses trabalhos ajudam a entender o mecanismo. Não são uma tabela de quanto cada item do supermercado vai subir amanhã.",
+      "claim_ids": [
+        "C12"
+      ],
+      "visual": {
+        "type": "DOCUMENT",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "cart",
+              "kind": "photo",
+              "label": "Compra real · imagem ilustrativa",
+              "x": 54,
+              "y": 6,
+              "width": 43,
+              "height": 90,
+              "initially_visible": true,
+              "asset_id": "A_shopping_cart",
+              "image_fit": "cover",
+              "image_motion": "pan"
+            },
+            {
+              "id": "food",
+              "kind": "label",
+              "label": "Alimentos e bens: mais sensíveis",
+              "x": 3,
+              "y": 10,
+              "width": 45,
+              "height": 32,
+              "initially_visible": false,
+              "label_size": 56
+            },
+            {
+              "id": "services",
+              "kind": "label",
+              "label": "Serviços: efeito estimado menor",
+              "x": 3,
+              "y": 49,
+              "width": 45,
+              "height": 28,
+              "initially_visible": false,
+              "label_size": 48
+            },
+            {
+              "id": "limit",
+              "kind": "label",
+              "label": "Estimativa tem incerteza",
+              "x": 3,
+              "y": 84,
+              "width": 45,
+              "height": 13,
+              "initially_visible": false,
+              "label_size": 34
+            }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "alimentos em casa",
+            "target_id": "food",
+            "action": "reveal",
+            "headline": "Alimentos e bens: mais sensíveis",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 27,
+              "y": 27,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "em serviços",
+            "target_id": "services",
+            "action": "reveal",
+            "headline": "Serviços: efeito estimado menor",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 27,
+              "y": 65,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "incerteza é ampla",
+            "target_id": "limit",
+            "action": "reveal",
+            "headline": "Estimativa tem incerteza",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "quanto cada item",
+            "target_id": "cart",
+            "action": "focus",
+            "headline": "Compra real · imagem ilustrativa",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 75,
+              "y": 52,
+              "zoom": 1.05,
+              "motion_seconds": 0.8
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 9,
+      "title": "O que olhar depois da manchete",
+      "narration": "Se essa ligação entre política e seu bolso ficou mais clara, se inscreva no O Dinheiro Explica para acompanhar as próximas histórias. E guarde três perguntas para a próxima manchete: qual cotação está sendo usada, e de que horário? O que mudou nas propostas e nas contas públicas? E o movimento continua depois que o ruído passa? A eleição pode mudar expectativas, o câmbio pode mudar custos, e os custos podem chegar aos preços. Entre uma ponta e a outra, procure evidência. É assim que a gente entende a notícia sem transformar torcida política em previsão para o seu dinheiro.",
+      "claim_ids": [
+        "C13"
+      ],
+      "visual": {
+        "type": "DOCUMENT",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "subscribe",
+              "kind": "label",
+              "label": "Inscreva-se · O Dinheiro Explica",
+              "x": 7,
+              "y": 4,
+              "width": 86,
+              "height": 18,
+              "initially_visible": true,
+              "label_size": 52
+            },
+            {
+              "id": "question",
+              "kind": "label",
+              "label": "Qual cotação? Qual horário?",
+              "x": 7,
+              "y": 38,
+              "width": 86,
+              "height": 32,
+              "initially_visible": false,
+              "label_size": 68
+            },
+            {
+              "id": "wallet",
+              "kind": "object",
+              "label": "Seu dinheiro merece evidência",
+              "x": 32,
+              "y": 74,
+              "width": 36,
+              "height": 23,
+              "initially_visible": false,
+              "object_type": "wallet"
+            }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "se inscreva",
+            "target_id": "subscribe",
+            "action": "focus",
+            "headline": "Inscreva-se · O Dinheiro Explica",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "qual cotação está sendo usada",
+            "target_id": "question",
+            "action": "reveal",
+            "headline": "Qual cotação? Qual horário?",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "O que mudou nas propostas",
+            "target_id": "question",
+            "action": "update",
+            "headline": "Proposta e contas: o que mudou?",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "o ruído passa",
+            "target_id": "question",
+            "action": "update",
+            "headline": "O movimento persistiu?",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "procure evidência",
+            "target_id": "wallet",
+            "action": "reveal",
+            "headline": "Seu dinheiro merece evidência",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "retire_ids": [
+              "subscribe",
+              "question"
+            ]
+          }
+        ]
+      }
     }
   ],
   "packaging": {
     "strategy": {
-      "click_reason": "Dois índices brasileiros de agosto têm sinais opostos e exigem explicação.",
-      "visual_focus": "Portão da fábrica com +0,36% de um lado, carrinho com -0,32% do outro.",
-      "curiosity_gap": "Como duas medições do IBGE sobre preços chegaram a direções contrárias no mesmo mês?",
-      "mobile_readability": "Apenas dois números grandes e rótulos curtos.",
-      "anti_clickbait_check": "O vídeo explica medidas diferentes e não promete alta imediata no varejo.",
-      "repetition_check": "Roteiro centrado em IPP x IPCA, sem dólar, trigo, diesel, eleições ou rota bifurcada do episódio anterior.",
-      "youtube_safety_check": "Tema econômico factual com data de divulgação e sem previsões ou recomendação de investimento."
+      "click_reason": "Ligar uma preocupação concreta com seu dinheiro à eleição sem promessa de cotação.",
+      "visual_focus": "Uma carteira grande recebe um percurso iniciado em símbolo eleitoral e atravessado porR$/US$.",
+      "curiosity_gap": "Como uma proposta que ainda não virou lei pode chegar ao preço de uma compra?",
+      "mobile_readability": "Objeto dominante e texto curto, sem pequeno gráfico eleitoral ou números voláteis.",
+      "anti_clickbait_check": "O roteiro explica canais e limites; não afirma que determinado candidato controla dólar ou supermercado.",
+      "repetition_check": "Percurso de expectativa até carteira com documentos/dados e comparação aritmética; não repetirgrade de cards doIPP.",
+      "youtube_safety_check": "Análise econômica atribuída, sem orientação devoto ou previsão de ganho."
     },
     "titles": [
       {
         "id": "title_main",
-        "text": "A fábrica subiu o preço. Por que o consumidor viu queda?",
-        "rationale": "O contraste de agosto é real e as medidas diferentes são explicadas."
+        "text": "Dólar e eleições: como a política pode chegar ao seu bolso",
+        "rationale": "Nomeia dólar/eleições e oferece relação concreta entregue no roteiro."
       }
     ],
     "thumbnails": [
       {
         "id": "thumb_main",
-        "headline": "FÁBRICA ↑ CAIXA ↓",
-        "concept": "Dois números em lados opostos da mesma esteira, +0,36% e -0,32%.",
-        "visual_prompt": "Thumbnail editorial 16:9, carvão, branco e amarelo #FFBD19. À esquerda um portão industrial estilizado com +0,36%; à direita um carrinho de compras com -0,32%. Uma esteira interrompida no centro sugere etapas e tempo. Texto grande FÁBRICA ↑ CAIXA ↓. Sem fotos de pessoas, logotipos ou outros números."
+        "headline": "ELEIÇÃO NO BOLSO?",
+        "concept": "Carteira àdireita e um símbolo deurna àesquerda conectados por uma faixaR$/US$, sem rosto decandidato.",
+        "visual_prompt": "Capa completa16:9 doODinheiroExplica: fundo carvão, amarelo#FFBD19 ebranco. Carteira brasileira reconhecível grande no lado direito, símbolo deurna eletrônica no lado esquerdo, faixa visual de conversãoR$/US$ liga osdois. Texto principalELEIÇÃO NO BOLSO? em tipografia forte. Composição editorial limpa, profundidade e luz pontual. Sem logotipo, rosto de candidato, promessa de cotação, gráfico inventado ou dados minúsculos."
       }
     ]
   },
   "publication": {
-    "description": "O IPP divulgado pelo IBGE hoje, 30 de setembro, mostrou alta de 0,36% nos preços recebidos pela indústria em agosto. No mesmo mês, o IPCA do consumidor havia registrado queda de 0,32%. Como os dois índices podem andar em direções opostas?\n\nEste vídeo compara o preço na porta da fábrica ao preço pago pelas famílias, mostra a diferença entre os setores e explica o que contratos, estoques, transporte e cestas de produtos mudam no caminho. O IPCA de setembro está previsto para 9 de outubro. Os números de agosto não permitem prever o preço da sua próxima compra.\n\n#IPP #IPCA #Inflação #Economia #ODinheiroExplica",
+    "description": "Como a eleição pode mexer no dólar e chegar ao seu bolso? Roberto explica o caminho entre decisões fiscais, expectativas, câmbio e custos, com dados atualizados em 30 de setembro de 2026.\n\nA PTAX de venda de 30/09 foi R$ 5,1809. Ela é uma taxa de referência e não deve ser confundida com o dólar comercial ao vivo ou o preço de uma casa de câmbio. O vídeo também apresenta a dívida bruta de agosto divulgada hoje pelo Banco Central, confronta a cobertura sobre as contas públicas e mostra por que o contexto internacional continua importante.\n\nUma conta hipotética com uma peça de cem dólares ajuda a enxergar o mecanismo. Depois, seguimos os limites do repasse: estoque, contratos, margem, concorrência e a incerteza das pesquisas. Nenhum exemplo é previsão de preço ou recomendação de investimento.\n\n#Dolar #Eleicoes2026 #Economia #ODinheiroExplica",
     "seo": {
-      "primary_keyword": "IPP e IPCA",
+      "primary_keyword": "dólar e eleições",
       "secondary_keywords": [
-        "preços da indústria",
-        "inflação em agosto",
-        "preços no supermercado",
-        "IBGE 30 de setembro"
+        "dólar e política",
+        "câmbio",
+        "contas públicas",
+        "dívida pública",
+        "repasse cambial",
+        "preços"
       ],
-      "search_intent": "Entender por que preços da indústria e inflação ao consumidor variaram em sentidos diferentes.",
-      "description_strategy": "Abrir com o dado novo do IPP e o contraste com IPCA; explicar metodologias, sem previsão de preço."
+      "search_intent": "Entender como decisões políticas podem influenciar o dólar e as compras noBrasil.",
+      "description_strategy": "Explicar a promessa nasduasprimeiraslinhas e identificar data/tipo das cotações, fontes e limites dos exemplos."
     },
     "tags": [
-      "IPP",
-      "IPCA",
-      "IBGE",
-      "inflação",
-      "preços da indústria"
+      "dólar",
+      "eleições2026",
+      "dólar e política",
+      "câmbio",
+      "contas públicas",
+      "dívida pública",
+      "repasse cambial",
+      "O Dinheiro Explica"
     ],
     "chapters": [],
     "disclosure_ai": false

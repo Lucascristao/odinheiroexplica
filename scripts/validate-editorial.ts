@@ -21,6 +21,38 @@ const imageScenes = scenes.filter((scene: any) => {
 }).length;
 console.log(`Cobertura visual: ${imageScenes}/${scenes.length} cenas com foto ou recorte utilizável.`);
 let failures = 0;
+// Check the spoken script, rather than assuming the agent followed prose docs.
+const contract = project.editorial?.narrative_contract ?? {};
+const narrations = scenes.map((scene: any) => String(scene.narration ?? ""));
+const spokenScript = narrations.join("\n\n");
+const contractError = (message: string) => {console.error(`Contrato narrativo: ${message}`); failures++;};
+const excerpt = (key: string): string => {
+  const value = String(contract[key] ?? "").trim();
+  if (!value || spokenScript.split(value).length !== 2) {
+    contractError(`${key} deve conter um trecho literal e único da narração.`);
+    return "";
+  }
+  return value;
+};
+const explanation = excerpt("topic_explanation");
+const introduction = excerpt("presenter_introduction");
+const subscription = excerpt("subscription_request");
+const presenterName = project.presenter?.name ?? (project.presenter?.gender === "female" ? "Luana" : "Roberto");
+if (explanation && !narrations.slice(0, 2).join("\n\n").includes(explanation)) {
+  contractError("explique o assunto na abertura, nas primeiras cenas.");
+}
+if (introduction && (!narrations[0]?.includes(introduction) || !introduction.includes(presenterName))) {
+  contractError(`a primeira cena deve apresentar ${presenterName} naturalmente após o gancho.`);
+}
+if (introduction && spokenScript.indexOf(introduction) === 0) {
+  contractError("entregue o gancho antes da apresentação.");
+}
+if (subscription && !/inscrev|inscri[cç][aã]o/i.test(subscription)) {
+  contractError("subscription_request deve pedir inscrição no canal.");
+}
+if (subscription && introduction && spokenScript.indexOf(subscription) <= spokenScript.indexOf(introduction)) {
+  contractError("o pedido de inscrição deve vir após a apresentação e a entrega de valor.");
+}
 if (scenes.length >= 4 && imageScenes === 0) {
   console.warn("::warning::Nenhuma foto/recorte aparece no palco. Confirme que o episódio usa motion graphics por decisão editorial, e não por omissão de assets.");
 }
