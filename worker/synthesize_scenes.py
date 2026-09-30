@@ -38,10 +38,6 @@ ELIGIBLE_FALLBACK_FAILURES = {
 FALLBACK_VOICE_TREATMENT = "legacy-charon-3.1-to-3.8-eq-v1"
 FALLBACK_AUDIO_FILTER = ""
 NO_VOICE_TREATMENT = "none"
-TRANSITION_MARKER_TEXT = "A-hã..."
-TRANSITION_MARKER_PAUSE_SECONDS = 0.18
-
-
 def voice_treatment_for_model(model: str, voice: str) -> str:
     return NO_VOICE_TREATMENT
 
@@ -158,64 +154,6 @@ def save_audio_sidecar(
     }
     temporary = sidecar.with_name(sidecar.name + ".tmp")
     temporary.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    temporary.replace(sidecar)
-
-
-def cached_transition_marker(
-    output_file: Path,
-    from_model: str,
-    to_model: str,
-    voice: str,
-) -> float | None:
-    sidecar = output_file.with_suffix(".transition.json")
-    if not output_file.is_file() or not sidecar.is_file():
-        return None
-    try:
-        metadata = json.loads(sidecar.read_text(encoding="utf-8"))
-        marker_hash = hashlib.sha256(TRANSITION_MARKER_TEXT.encode("utf-8")).hexdigest()
-        if any((
-            metadata.get("kind") != "model-switch-vocal-marker",
-            metadata.get("from_model") != from_model,
-            metadata.get("to_model") != to_model,
-            metadata.get("voice") != voice,
-            metadata.get("marker_text_sha256") != marker_hash,
-            metadata.get("audio_sha256") != audio_sha256(output_file),
-            output_file.stat().st_size <= 1000,
-        )):
-            return None
-        actual_duration = duration_seconds(output_file)
-        if abs(actual_duration - float(metadata["duration_seconds"])) > 0.05:
-            return None
-        return actual_duration
-    except (OSError, ValueError, TypeError, KeyError, subprocess.CalledProcessError):
-        return None
-
-
-def save_transition_marker_sidecar(
-    output_file: Path,
-    from_model: str,
-    to_model: str,
-    voice: str,
-    duration: float,
-) -> None:
-    sidecar = output_file.with_suffix(".transition.json")
-    metadata = {
-        "kind": "model-switch-vocal-marker",
-        "from_model": from_model,
-        "to_model": to_model,
-        "voice": voice,
-        "voice_treatment": NO_VOICE_TREATMENT,
-        "marker_text_sha256": hashlib.sha256(
-            TRANSITION_MARKER_TEXT.encode("utf-8")
-        ).hexdigest(),
-        "audio_sha256": audio_sha256(output_file),
-        "duration_seconds": duration,
-    }
-    temporary = sidecar.with_name(sidecar.name + ".tmp")
-    temporary.write_text(
-        json.dumps(metadata, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
-    )
     temporary.replace(sidecar)
 
 
@@ -702,62 +640,15 @@ def main() -> None:
         if previous["model"] == current["model"]:
             continue
 
-        from_model = previous["model"]
-        to_model = current["model"]
-        marker_file = output_dir / f"{job['scene_id']}.transition.mp3"
-        marker_duration = cached_transition_marker(
-            marker_file, from_model, to_model, project_voice,
-        )
-        marker_status = "cached"
-        if marker_duration is None:
-            marker_status = "generated"
-            marker_outcome = synthesize_gemini_audio(
-                TRANSITION_MARKER_TEXT,
-                project_voice,
-                marker_file,
-                gemini_key,
-                to_model,
-                request_pacer,
-            )
-            if marker_outcome.model != to_model:
-                marker_status = "unavailable"
-                marker_file.unlink(missing_ok=True)
-                marker_file.with_suffix(".transition.json").unlink(missing_ok=True)
-                current["model_transition"] = {
-                    "from_model": from_model,
-                    "to_model": to_model,
-                    "marker_status": marker_status,
-                }
-                transition_scene_ids.append(job["scene_id"])
-                print(
-                    f"    [Gemini Transição] {from_model} -> {to_model} em "
-                    f"{job['scene_id']}; marcador vocal indisponível "
-                    f"({marker_outcome.failure}).",
-                    flush=True,
-                )
-                continue
-            marker_duration = duration_seconds(marker_file)
-            save_transition_marker_sidecar(
-                marker_file, from_model, to_model, project_voice, marker_duration,
-            )
-
         current["model_transition"] = {
-            "from_model": from_model,
-            "to_model": to_model,
-            "marker_status": marker_status,
-            "marker_kind": "brief-throat-clear",
-            "marker_text": TRANSITION_MARKER_TEXT,
-            "marker_file": marker_file.name,
-            "marker_model": to_model,
-            "marker_voice": project_voice,
-            "marker_duration_seconds": marker_duration,
-            "pause_after_seconds": TRANSITION_MARKER_PAUSE_SECONDS,
+            "from_model": previous["model"],
+            "to_model": current["model"],
+            "marker_status": "disabled",
         }
         transition_scene_ids.append(job["scene_id"])
         print(
-            f"    [Gemini Transição] {from_model} -> {to_model} em "
-            f"{job['scene_id']}; marcador vocal {marker_status} com "
-            f"{to_model}/{project_voice}.",
+            f"    [Gemini Transição] {previous['model']} -> {current['model']} "
+            f"em {job['scene_id']}; troca registrada sem marcador audível.",
             flush=True,
         )
 
