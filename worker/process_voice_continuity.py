@@ -206,7 +206,12 @@ def main():
                 f"measured_LRA={measured['input_lra']}:measured_thresh={measured['input_thresh']}:"
                 f"offset={measured['target_offset']}:linear=true:print_format=json"
             )
-            exact_length = f"apad=whole_len={len(info['samples'])},atrim=end_sample={len(info['samples'])}"
+            # loudnorm may internally run at 192 kHz. Resample back to the
+            # delivery clock before using sample-based padding/trimming.
+            exact_length = (
+                f"aresample={SAMPLE_RATE},apad=whole_len={len(info['samples'])},"
+                f"atrim=end_sample={len(info['samples'])}"
+            )
             normalized = run(
                 ffmpeg,
                 [
