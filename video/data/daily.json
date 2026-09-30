@@ -28,7 +28,8 @@
       "narrative_role": "Dar textura real ao trecho sobre a cadeia do trigo, sem representar a safra brasileira ou provar a projeção da Conab.",
       "country_context": "global",
       "source_page_url": "https://commons.wikimedia.org/wiki/File:Wheat_Field_in_Walla_Walla,_Washington,_2018.jpg",
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Wheat_Field_in_Walla_Walla%2C_Washington%2C_2018.jpg/1280px-Wheat_Field_in_Walla_Walla%2C_Washington%2C_2018.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Wheat_Field_in_Walla_Walla%2C_Washington%2C_2018.jpg/1280px-Wheat_Field_in_Walla_Walla%2C_Washington%2C_2018.jpg",
+      "image_fallback_urls": ["https://upload.wikimedia.org/wikipedia/commons/b/bc/Wheat_Field_in_Walla_Walla%2C_Washington%2C_2018.jpg"],
       "license": "CC0 1.0",
       "attribution": "Jason W Lacey / Wikimedia Commons",
       "needs_cutout": false
@@ -40,7 +41,8 @@
       "narrative_role": "Aproximar as perguntas finais da compra real; imagem ilustrativa feita fora do Brasil, não evidência de preços.",
       "country_context": "global",
       "source_page_url": "https://commons.wikimedia.org/wiki/File:Shopping_Cart_Supermarket.jpg",
-      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Shopping_Cart_Supermarket.jpg/1280px-Shopping_Cart_Supermarket.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Shopping_Cart_Supermarket.jpg/1280px-Shopping_Cart_Supermarket.jpg",
+      "image_fallback_urls": ["https://upload.wikimedia.org/wikipedia/commons/f/f7/Shopping_Cart_Supermarket.jpg"],
       "license": "CC0 1.0",
       "attribution": "Safaritravelplus / Wikimedia Commons",
       "needs_cutout": false

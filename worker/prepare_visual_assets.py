@@ -4,6 +4,7 @@ import json
 import mimetypes
 import re
 import hashlib
+import time
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -62,24 +63,47 @@ def safe_name(value: str) -> str:
     return value or "asset"
 
 
-def download(url: str) -> tuple[bytes, str]:
-    parsed = urlparse(url)
-    if parsed.scheme != "https":
-        raise RuntimeError("Asset visual precisa usar URL https.")
+def download(url: str, fallback_urls: list[str] | None = None) -> tuple[bytes, str]:
+    urls = [url, *(fallback_urls or [])]
+    for candidate in urls:
+        if urlparse(candidate).scheme != "https":
+            raise RuntimeError("Asset visual precisa usar URL https.")
 
-    response = requests.get(
-        url,
-        headers={"User-Agent": "odinheiroexplica-visual-assets/1.0"},
-        timeout=60,
-        allow_redirects=True,
-    )
-    response.raise_for_status()
-    content = response.content
-    if len(content) > MAX_BYTES:
-        raise RuntimeError(
-            f"Asset visual excede {MAX_BYTES // 1024 // 1024} MB."
-        )
-    return content, response.headers.get("content-type", "").split(";")[0].strip()
+    last_error = "sem resposta"
+    for candidate in urls:
+        for attempt in range(2):
+            try:
+                response = requests.get(
+                    candidate,
+                    headers={
+                        "User-Agent": "ODinheiroExplica-VisualAssets/1.1 (https://github.com/Lucascristao/odinheiroexplica)"
+                    },
+                    timeout=60,
+                    allow_redirects=True,
+                )
+            except requests.RequestException as exc:
+                last_error = type(exc).__name__
+                if attempt == 0:
+                    time.sleep(4)
+                    continue
+                break
+
+            if response.status_code == 200:
+                content = response.content
+                if len(content) > MAX_BYTES:
+                    raise RuntimeError(f"Asset visual excede {MAX_BYTES // 1024 // 1024} MB.")
+                return content, response.headers.get("content-type", "").split(";")[0].strip()
+
+            last_error = f"HTTP {response.status_code}"
+            if response.status_code in {429, 500, 502, 503, 504} and attempt == 0:
+                retry_after = response.headers.get("Retry-After", "")
+                delay = min(int(retry_after), 120) if retry_after.isdigit() else 5
+                print(f"Asset visual: {last_error}; aguardando {delay}s antes de tentar novamente.")
+                time.sleep(delay)
+                continue
+            break
+
+    raise RuntimeError(f"Download do asset visual falhou após {len(urls)} URL(s): {last_error}.")
 
 
 def save_graphic(raw: bytes, content_type: str, output_dir: Path, asset_id: str) -> str:
@@ -140,7 +164,9 @@ def main() -> None:
         else:
             if asset_type == "source_excerpt" and not asset.get("image_url"):
                 raise RuntimeError(f"Asset {asset_id}: source_excerpt exige capture_file existente ou image_url HTTPS.")
-            raw, content_type = download(str(asset["image_url"]))
+            raw, content_type = download(
+                str(asset["image_url"]), asset.get("image_fallback_urls") or []
+            )
 
         dimensions = {}
         if asset_type == "source_excerpt":

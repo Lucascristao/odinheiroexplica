@@ -159,5 +159,22 @@ class SourceGuardTests(unittest.TestCase):
                 prepare.main()
 
 
+class VisualDownloadTests(unittest.TestCase):
+    def test_rate_limit_retries_then_uses_original_file(self):
+        throttled = types.SimpleNamespace(status_code=429, headers={"Retry-After": "1"})
+        image = types.SimpleNamespace(status_code=200, headers={"content-type": "image/jpeg"}, content=b"photo")
+        primary = "https://thumb.wikimedia.org/example.jpg"
+        fallback = "https://upload.wikimedia.org/example.jpg"
+        with patch.object(prepare.requests, "get", side_effect=[throttled, throttled, image], create=True) as get, patch.object(prepare.time, "sleep") as sleep:
+            content, content_type = prepare.download(primary, [fallback])
+        self.assertEqual((content, content_type), (b"photo", "image/jpeg"))
+        self.assertEqual([call.args[0] for call in get.call_args_list], [primary, primary, fallback])
+        sleep.assert_called_once_with(1)
+
+    def test_fallback_urls_must_be_https(self):
+        with self.assertRaisesRegex(RuntimeError, "https"):
+            prepare.download("https://example.org/image.jpg", ["http://example.org/image.jpg"])
+
+
 if __name__ == "__main__":
     unittest.main()
