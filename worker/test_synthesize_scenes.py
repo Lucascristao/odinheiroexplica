@@ -204,9 +204,9 @@ class SynthesizeScenesTests(unittest.TestCase):
             (synth.PRIMARY_TTS_MODEL, rpd),
             (synth.SECONDARY_TTS_MODEL, FakeResponse(200)),
             (synth.SECONDARY_TTS_MODEL, FakeResponse(200)),
+            (synth.SECONDARY_TTS_MODEL, FakeResponse(200)),  # transition marker
         ]
         calls = []
-        treated = []
 
         def fake_post(url, **_kwargs):
             expected_model, response = schedule.pop(0)
@@ -218,10 +218,6 @@ class SynthesizeScenesTests(unittest.TestCase):
             self.assertEqual(command[0], "ffprobe")
             return types.SimpleNamespace(stdout="3.0\n")
 
-        def fake_treatment(path):
-            treated.append(path.name)
-            path.write_bytes(path.read_bytes() + b"TREATED")
-
         with (
             patch.dict(os.environ, {
                 "GEMINI_API_KEY": "dummy-test-key",
@@ -230,33 +226,33 @@ class SynthesizeScenesTests(unittest.TestCase):
             patch.object(sys, "argv", self.argv),
             patch.object(synth.requests, "post", fake_post, create=True),
             patch.object(synth.subprocess, "run", fake_run),
-            patch.object(synth, "apply_fallback_voice_treatment", fake_treatment),
             patch.object(synth.time, "sleep", lambda _seconds: None),
         ):
             os.environ.pop("GEMINI_TTS_FALLBACK_MODEL", None)
             os.environ.pop("GEMINI_TTS_FALLBACK_MODELS", None)
             synth.main()
             self.assertEqual(schedule, [])
-            self.assertEqual(treated, [], "Flash-Lite usa o matcher adaptativo, não a EQ fixa do 3.1")
             manifest = json.loads(self.manifest_path.read_text(encoding="utf-8"))
             self.assertEqual(manifest["fallback_models"], [
                 synth.SECONDARY_TTS_MODEL, synth.FALLBACK_TTS_MODEL,
             ])
             self.assertEqual(manifest["fallback_scene_ids"], ["scene-01", "scene-02"])
-            self.assertEqual(
-                manifest["fallback_scene_ids_by_model"][synth.SECONDARY_TTS_MODEL],
-                ["scene-01", "scene-02"],
-            )
+            self.assertEqual(manifest["model_transition_count"], 1)
+            transition = manifest["scenes"][1]["model_transition"]
+            self.assertEqual(transition["from_model"], synth.PRIMARY_TTS_MODEL)
+            self.assertEqual(transition["to_model"], synth.SECONDARY_TTS_MODEL)
+            self.assertEqual(transition["marker_model"], synth.SECONDARY_TTS_MODEL)
+            self.assertEqual(transition["marker_voice"], "Charon")
             self.assertEqual(manifest["scenes"][1]["voice_treatment"], "none")
             self.assertEqual({scene["voice"] for scene in manifest["scenes"]}, {"Charon"})
             render.require_gemini_manifest(manifest)
-            sidecar = json.loads((self.output_dir / "scene-01.tts.json").read_text(encoding="utf-8"))
-            self.assertEqual(sidecar["model"], synth.SECONDARY_TTS_MODEL)
-            self.assertEqual(sidecar["voice_treatment"], "none")
+            marker = self.output_dir / "scene-01.transition.mp3"
+            self.assertTrue(marker.is_file())
+            self.assertTrue(marker.with_suffix(".transition.json").is_file())
             synth.main()
-            self.assertEqual(len(calls), 4, "Reexecução com cache não deve chamar a API")
+            self.assertEqual(len(calls), 5, "Reexecução com cache e marcador não deve chamar a API")
 
-    def test_flash_lite_failure_cascades_to_treated_3_1(self) -> None:
+    def test_flash_lite_failure_cascades_to_raw_3_1_without_transition_marker(self) -> None:
         rpd = FakeResponse(429, error={
             "status": "RESOURCE_EXHAUSTED",
             "details": [{"@type": "type.googleapis.com/google.rpc.QuotaFailure", "violations": [{
@@ -269,7 +265,6 @@ class SynthesizeScenesTests(unittest.TestCase):
             (synth.FALLBACK_TTS_MODEL, FakeResponse(200)),
             (synth.FALLBACK_TTS_MODEL, FakeResponse(200)),
         ]
-        treated = []
 
         def fake_post(url, **_kwargs):
             expected_model, response = schedule.pop(0)
@@ -280,10 +275,6 @@ class SynthesizeScenesTests(unittest.TestCase):
             self.assertEqual(command[0], "ffprobe")
             return types.SimpleNamespace(stdout="3.0\n")
 
-        def fake_treatment(path):
-            treated.append(path.name)
-            path.write_bytes(path.read_bytes() + b"TREATED")
-
         with (
             patch.dict(os.environ, {
                 "GEMINI_API_KEY": "dummy-test-key",
@@ -292,7 +283,6 @@ class SynthesizeScenesTests(unittest.TestCase):
             patch.object(sys, "argv", self.argv),
             patch.object(synth.requests, "post", fake_post, create=True),
             patch.object(synth.subprocess, "run", fake_run),
-            patch.object(synth, "apply_fallback_voice_treatment", fake_treatment),
             patch.object(synth.time, "sleep", lambda _seconds: None),
         ):
             os.environ.pop("GEMINI_TTS_FALLBACK_MODEL", None)
@@ -300,13 +290,14 @@ class SynthesizeScenesTests(unittest.TestCase):
             synth.main()
 
         self.assertEqual(schedule, [])
-        self.assertEqual(treated, ["scene-00.mp3", "scene-01.mp3"])
         manifest = json.loads(self.manifest_path.read_text(encoding="utf-8"))
         self.assertEqual({scene["model"] for scene in manifest["scenes"]}, {synth.FALLBACK_TTS_MODEL})
         self.assertTrue(all(
-            scene["voice_treatment"] == synth.FALLBACK_VOICE_TREATMENT
+            scene["voice_treatment"] == synth.NO_VOICE_TREATMENT
             for scene in manifest["scenes"]
         ))
+        self.assertEqual(manifest["model_transition_count"], 0)
+        self.assertFalse((self.output_dir / "scene-00.transition.mp3").exists())
         self.assertIn(synth.PRIMARY_TTS_MODEL + ":rpd", manifest["scenes"][0]["fallback_reason"])
         self.assertIn(synth.SECONDARY_TTS_MODEL + ":rpd", manifest["scenes"][0]["fallback_reason"])
         render.require_gemini_manifest(manifest)
