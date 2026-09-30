@@ -1,40 +1,18 @@
 # Direção de voz editorial
 
-A mesma voz fixa do apresentador passa a receber direção por intenção. O motor usa `prosody`, `break` e bookmarks do Azure, sem outro serviço ou nova dependência. A interpretação final depende da voz sintetizada; os parâmetros não substituem a escuta da produção.
+O render diário usa apenas Gemini TTS. Roberto solicita a voz `Charon` e Luana solicita `Autonoe`. O modelo principal é Gemini 3.8 Flash TTS. Para Roberto, se o 3.8 esgotar a cota, mantiver HTTP 429 após as tentativas espaçadas ou ficar indisponível com 5xx ou timeout persistente, o motor pode completar as cenas faltantes com Gemini 3.1 Flash TTS preview, ainda com Charon. Se o 3.8 funcionar, não há chamada ao 3.1. Uma EQ leve aproxima o timbre do trecho complementar, mas não garante identidade perfeita; escute a transição no MP4 final. O manifesto informa o modelo e tratamento de cada cena. Para Luana, o fallback ainda não foi calibrado e fica desativado.
 
-## Contrato por cena
+## O que o motor aplica de fato
 
-```json
-{
-  "narration": "Parece pouco. Mas esse valor muda o resultado.",
-  "tts": {
-    "delivery": "contrast",
-    "cues": [
-      {"text": "muda o resultado", "kind": "emphasis", "pause_before_ms": 100}
-    ]
-  }
-}
-```
+O worker envia o texto da `narration` e a voz predefinida ao Gemini. `speech.pronunciations` substitui termos de risco **somente na fala**, preservando a grafia em tela. Campos antigos de `tts.delivery`, `tts.cues`, `rate` ou `pitch` ainda podem estar no contrato, mas o worker Gemini atual não os aplica ao áudio; não os use como prova de que houve direção de atuação. SSML, `prosody`, `break` e bookmarks do Azure não fazem parte deste fluxo.
 
-- `hook`: abertura um pouco mais ágil, com energia moderada.
-- `explain`: ritmo conversacional para acompanhar a explicação visual.
-- `contrast`: respiro maior entre frases para perceber a mudança.
-- `question`: pausa para absorver a pergunta; não alongar artificialmente cada palavra.
-- `closing`: conclusão mais firme e ligeiramente desacelerada.
+Escreva a intenção na própria narração: frases com uma ideia, pontuação que ajude a leitura, perguntas naturais e contraste claro. Ouça o áudio pronto antes da aprovação. Se a interpretação variar entre cenas, revise o roteiro e considere blocos contínuos de narração após testar duração e sincronização. Evite alternar modelos manualmente; o fallback automático documentado acima é a única exceção.
 
-Projetos sem direção explícita recebem `hook` na primeira cena, `closing` na última e `explain` nas demais. Frases com algarismos desaceleram ligeiramente; perguntas recebem variação discreta. A alternância mecânica por índice de frase foi removida.
+## Sincronização
 
-`cues` controla trechos curtos: `emphasis` destaca uma ideia, `number` dá clareza ao dado, `contrast` marca uma virada. `pause_before_ms` vai de 0 a 300. Cada trecho deve ser literal, único, contido numa frase e sem sobreposição. Preferir 1–3 indicações importantes por cena, no máximo seis. Não separar uma pronúncia cadastrada em partes. A produção recusa essas divisões antes de enviar a respectiva fala ao Azure.
+O Gemini usado no projeto devolve áudio sem instantes medidos de cada palavra. O pipeline mede a duração real de cada cena e **estima** as posições dos eventos visuais a partir das âncoras literais do texto. Revise a entrada dos números, fotos e gráficos no MP4 pronto. Ao alterar a narração, gere novamente o áudio da cena; o cache valida o hash do texto, modelo e voz.
 
-O ritmo final fica entre -10% e +6%; a altura, entre -3% e +3%. Não há aumento de volume, troca de personagem, risadas ou efeitos de atuação automáticos. `rate`, `pitch`, `pause_ms` e `pronunciations` existentes continuam aceitos; valores extremos de ritmo/altura são limitados pelo motor.
-
-## Sincronização e roteiro
-
-Pausas explícitas antecedem o bookmark quando ambos começam no mesmo trecho. O render continua usando o instante real retornado pelo Azure, sem estimar duração pelo número de palavras. Ao mudar a direção de voz, gerar novamente áudio e manifesto antes do vídeo. Não reutilizar timings de uma produção anterior.
-
-Escrever frases com uma ideia, variar comprimentos e conectar dado, exemplo e consequência. Dar espaço à compreensão dos recortes e gráficos. Não ler o texto inteiro da tela; a voz explica enquanto os elementos demonstram. O prompt diário deve elaborar a direção de fala junto com os eventos visuais.
-
-Referência técnica: [prosody e direção de voz no Azure](https://learn.microsoft.com/en-us/azure/ai-services/speech-service/speech-synthesis-markup-voice). Não usar `express-as` sem verificar suporte da voz selecionada. Referências técnicas e fontes de pesquisa ficam nos arquivos internos, sem links na descrição do YouTube.
+Escrever frases com uma ideia, variar comprimentos e conectar dado, exemplo e consequência. Dar espaço à compreensão dos recortes e gráficos. Não ler o texto inteiro da tela; a voz explica enquanto os elementos demonstram. Referências técnicas e fontes de pesquisa ficam nos arquivos internos, sem links na descrição do YouTube.
 
 
 ## Tom de conversa, analogias e linguagem brasileira (Estilo Didático)
@@ -44,14 +22,13 @@ Referência técnica: [prosody e direção de voz no Azure](https://learn.micros
 - **Gatilhos de conexão:** Usar frases de engajamento natural: *"Pensa comigo"*, *"Repara no detalhe"*, *"Na prática, o que acontece?"*, *"Imagina a seguinte cena..."*.
 - **Dicção brasileira natural:** Evitar fechamento exagerado de vogais ou palavras com sonoridade truncada. Se a voz neural fechar vogais de forma estranha (ex: soar "ue" ou travar em ditongos), aplicar alias fonético direto em `GLOBAL_PRONUNCIATIONS`.
 
-## Perenidade e datas no roteiro
+## Datas e abertura
 
-- **Nunca falar a data de hoje por extenso na narração** (ex: *"hoje, vinte e nove de setembro de 2026"*). Vídeos informativos no YouTube devem ser perenes (*evergreen*); ouvir a data exata do calendário faz o conteúdo parecer velho após poucos meses.
-- **Como contextualizar o tempo:** Usar referências relativas e marcos de ano quando necessário: *"Atualmente..."*, *"No cenário de hoje..."*, *"Nas regras previstas para 2026 e 2027..."*, *"A partir da implantação da lei..."*.
+- Diga a data quando ela identifica o dado ou evento que está sendo explicado; omiti-la pode tirar contexto de uma notícia econômica. Evite repetir o calendário sem função narrativa.
+- Comece com uma pergunta ou consequência concreta e nomeie o assunto. Explique siglas e conceitos no primeiro uso, sem presumir conhecimento prévio; acrescente um exemplo simples quando a definição não bastar.
+- Todo vídeo deve apresentar Roberto ou Luana em uma frase falada natural logo após o gancho, integrada à explicação. Não reserve uma cena, vinheta longa ou segundos vazios para a apresentação.
+- Varie a abertura conforme a pauta. A primeira imagem deve tornar a pergunta visível, não apenas apresentar uma frase num cartão.
+- Todo vídeo deve incluir um único pedido falado breve de inscrição após entregar valor, em um respiro da narrativa ou no encerramento. Relacione o convite ao benefício de acompanhar o canal, sem interromper uma explicação nem repetir a mesma frase entre vídeos.
+- A conclusão responde à pergunta inicial. Duração e número de cenas seguem a explicação necessária; a quota da voz é tratada pela produção, sem cortar o roteiro.
 
-
-## Abertura Leve, Humana e Variada (Regra de Ouro do Canal)
-
-- **Saudação inicial acolhedora:** O apresentador Roberto deve abrir a Cena 0 cumprimentando o público de forma calorosa, amigável e descontraída (*'Fala, pessoal! Tudo bem com vocês? Aqui é o Roberto, do canal O Dinheiro Explica!'*, *'Olá, pessoal! Roberto por aqui...',* etc.).
-- **Variação natural de aberturas:** Nunca usar exatamente a mesma frase mecânica em todos os vídeos. Variar a fórmula mantendo a personalidade humana, próxima e brasileira do canal.
-- **Respiro visual inicial (Sem atropelos no segundo 0):** Os primeiros 3 a 5 segundos de áudio devem ser dedicados à saudação e à introdução leve do tema. No palco (stage), os elementos da Cena 0 devem ter `initially_visible: false` para permitir que a tela respire. O primeiro elemento gráfico só deve surgir na tela quando o apresentador introduzir o dado principal ou a pergunta de impacto.
+Antes do TTS, registre em `editorial.narrative_contract` as strings `topic_explanation`, `presenter_introduction` e `subscription_request`, copiadas literalmente de trechos com ocorrência única na narração. A explicação está nas duas primeiras cenas, a apresentação com nome na primeira cena após o gancho, e o pedido depois da apresentação e de uma entrega de valor. O validador confere o contrato; a revisão editorial confere se os trechos realmente explicam, apresentam e convidam. As falas continuam sendo escritas para cada pauta.

@@ -1,5 +1,7 @@
 # VideoProject v1.0
 
+> Nota histórica: as seções abaixo que descrevem SSML e bookmarks do Azure pertencem ao fluxo antigo. O render diário atual usa somente Gemini TTS e estimativas de tempo por âncora; consulte `docs/tts.md` e `docs/editorial-voice.md` para a produção vigente.
+
 O `VideoProject` é o contrato entre o ChatGPT e o sistema.
 
 ## Objetivo

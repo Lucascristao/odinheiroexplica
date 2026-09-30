@@ -6,7 +6,7 @@ import {useEffect, useId, useMemo, useState} from "react";
 import {AbsoluteFill, Img, cancelRender, continueRender, delayRender, interpolate, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
 import {loadFont} from "@remotion/fonts";
 import {measureText} from "@remotion/layout-utils";
-import {editorialStageSchema, resolveStage, type EditorialStage as Stage, type StageEvent} from "../../src/lib/editorial-stage";
+import {editorialStageSchema, fitsStageCamera, resolveStage, resolveStageCamera, stageCameraVisibility, type EditorialStage as Stage, type StageEvent} from "../../src/lib/editorial-stage";
 
 const FONT = "ODE Inter";
 const WHITE = "#f6f7f8";
@@ -71,21 +71,65 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
   const checkedStage = useMemo(() => editorialStageSchema.parse(stage), [stage]);
   if (!ready) return null;
   const {elements, active} = resolveStage(checkedStage, beats, frame, fps);
+  const routeNodes = new Set(checkedStage.connections.flatMap(({from, to}) => [from, to]));
   const canvas = {x: 130, y: checkedStage.show_title ? 230 : 130, width: width - 260, height: height - (checkedStage.show_title ? 360 : 230)};
+  const cameraEnabled = Boolean(checkedStage.initial_camera || beats.some((beat) => beat.camera));
+  const camera = resolveStageCamera(checkedStage, beats, frame, fps);
+  const cameraX = (50 - camera.x) * canvas.width * camera.zoom / 100;
+  const cameraY = (50 - camera.y) * canvas.height * camera.zoom / 100;
   const rect = (e: typeof elements[number]) => ({x: e.x * canvas.width / 100, y: e.y * canvas.height / 100, w: e.width * canvas.width / 100, h: e.height * canvas.height / 100});
+  const revealMotion = (e: typeof elements[number], at: number) => {
+    const reveal = interpolate(at - e.changedAt, [0, e.visibilityDuration], [0, 1], clamp);
+    const heroMetric = e.kind === "metric" && e.width >= 40 && !e.overlay_on;
+    const diagramStep = e.kind === "step" && !e.overlay_on;
+    return {
+      reveal,
+      scale: heroMetric ? 0.82 + 0.18 * reveal : 0.96 + 0.04 * reveal,
+      x: diagramStep ? (1 - reveal) * (e.x > 50 ? 42 : -42) : 0,
+      y: (1 - reveal) * (heroMetric ? 8 : 28),
+    };
+  };
+  const samples = new Map([[frame, {elements, camera}]]);
+  const fitsAt = (id: string, at: number) => {
+    if (!samples.has(at)) samples.set(at, {
+      elements: resolveStage(checkedStage, beats, at, fps).elements,
+      camera: resolveStageCamera(checkedStage, beats, at, fps),
+    });
+    const sample = samples.get(at)!;
+    const element = sample.elements.find(e => e.id === id)!;
+    const motion = revealMotion(element, at);
+    // Account for the element's own centered scale and pixel translation before
+    // applying the stage camera. Otherwise reveal motion can still clip text.
+    return fitsStageCamera({
+      x: element.x + element.width * (1 - motion.scale) / 2 + motion.x / canvas.width * 100,
+      y: element.y + element.height * (1 - motion.scale) / 2 + motion.y / canvas.height * 100,
+      width: element.width * motion.scale,
+      height: element.height * motion.scale,
+    }, sample.camera);
+  };
+  const cameraOpacityById = new Map(elements.map(e => [e.id,
+    !cameraEnabled || ["photo", "source_excerpt"].includes(e.kind) ? 1 :
+      stageCameraVisibility(at => fitsAt(e.id, at), frame, fps * 0.2),
+  ]));
+  const cameraOpacity = (e: typeof elements[number]) => Math.min(
+    cameraOpacityById.get(e.id) ?? 1,
+    e.overlay_on ? cameraOpacityById.get(e.overlay_on) ?? 1 : 1,
+  );
   const focus = interpolate(frame - (active?.resolved_frame ?? 0), [0, (active?.motion_seconds??0.45)*fps], [0, 1], clamp);
   const takeover = active?.prominence === "takeover";
   return <AbsoluteFill style={{fontFamily: FONT}}>
     {checkedStage.show_title && <div style={{position: "absolute", top: 118, left: 130}}>
       <TextBox text={title ?? ""} width={canvas.width} height={90} maxSize={46} />
     </div>}
-    <div style={{position: "absolute", left: canvas.x, top: canvas.y, width: canvas.width, height: canvas.height}}>
+    <div style={{position: "absolute", left: canvas.x, top: canvas.y, width: canvas.width, height: canvas.height, overflow: cameraEnabled ? "hidden" : "visible"}}>
+    <div style={{position: "absolute", inset: 0, transformOrigin: "50% 50%", transform: cameraEnabled ? `translate(${cameraX}px, ${cameraY}px) scale(${camera.zoom})` : undefined}}>
       <svg width={canvas.width} height={canvas.height} style={{position: "absolute", inset: 0}}>
         <defs><marker id={arrowId} markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#78858e" strokeWidth="1.5" /></marker></defs>
         {checkedStage.connections.map((edge, i) => {
           const from = elements.find(e => e.id === edge.from)!;
           const to = elements.find(e => e.id === edge.to)!;
-          if (!from.visible || !to.visible) return null;
+          const cameraAlpha = Math.min(cameraOpacity(from), cameraOpacity(to));
+          if (!from.visible || !to.visible || cameraAlpha === 0) return null;
           const a = rect(from), b = rect(to);
           const horizontal = Math.abs((b.x+b.w/2)-(a.x+a.w/2)) >= Math.abs((b.y+b.h/2)-(a.y+a.h/2));
           const forward = horizontal ? b.x > a.x : b.y > a.y;
@@ -93,39 +137,58 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
           const x2 = horizontal ? b.x + (forward ? 0 : b.w) : b.x+b.w/2;
           const y1 = horizontal ? a.y+a.h/2 : a.y+(forward ? a.h : 0);
           const y2 = horizontal ? b.y+b.h/2 : b.y+(forward ? 0 : b.h);
-          const selected = active?.target_id === edge.to;
+          const bend = Math.min(55, Math.max(18, (horizontal ? Math.abs(x2-x1) : Math.abs(y2-y1)) * 0.22));
+          const controlX = horizontal ? (x1+x2)/2 : (x1+x2)/2 + (forward ? bend*2 : -bend*2);
+          const controlY = horizontal ? (y1+y2)/2 - bend*2 : (y1+y2)/2;
+          const path = `M${x1},${y1} Q${controlX},${controlY} ${x2},${y2}`;
+          const arrival = beats.find(beat => beat.target_id === edge.to && beat.action !== "retire" &&
+            typeof beat.resolved_frame === "number" && beat.resolved_frame <= frame);
+          const routeProgress = arrival ? interpolate(frame - arrival.resolved_frame!, [0, (arrival.motion_seconds ?? 0.45) * fps], [0, 1], clamp) : 0;
+          const selected = active?.target_id === edge.to && routeProgress < 1;
+          const dotX = (1-routeProgress)**2*x1 + 2*(1-routeProgress)*routeProgress*controlX + routeProgress**2*x2;
+          const dotY = (1-routeProgress)**2*y1 + 2*(1-routeProgress)*routeProgress*controlY + routeProgress**2*y2;
           const edgeEnter = interpolate(frame - Math.max(from.changedAt, to.changedAt), [0, fps * 0.35], [0, 1], clamp);
-          return <g key={`${edge.from}-${edge.to}-${i}`} opacity={edgeEnter * (takeover ? 0.15 : 1)}>
-            <path d={`M${x1},${y1} L${x2},${y2}`} stroke="#45515a" strokeWidth={2} markerEnd={`url(#${arrowId})`} />
-            {selected && <path d={`M${x1},${y1} L${x2},${y2}`} pathLength={1} stroke={accent} strokeWidth={4} strokeDasharray={1} strokeDashoffset={1-focus} />}
-            {selected && focus < 1 && <circle cx={x1+(x2-x1)*focus} cy={y1+(y2-y1)*focus} r={7} fill={accent} />}
-            {edge.label && <text x={(x1+x2)/2} y={(y1+y2)/2-14} textAnchor="middle" fill={MUTED} fontSize={32}>{edge.label}</text>}
+          return <g key={`${edge.from}-${edge.to}-${i}`} opacity={edgeEnter * cameraAlpha * (takeover ? 0.15 : 1)}>
+            <path d={path} fill="none" stroke="#45515a" strokeWidth={2} strokeDasharray="8 10" markerEnd={`url(#${arrowId})`} />
+            {routeProgress > 0 && <path d={path} fill="none" pathLength={1} stroke={accent} strokeWidth={5} strokeLinecap="round" strokeDasharray={1} strokeDashoffset={1-routeProgress} />}
+            {selected && routeProgress > 0 && <circle cx={dotX} cy={dotY} r={8} fill={accent} stroke="#101317" strokeWidth={3} />}
+            {edge.label && <text x={(x1+x2)/2} y={horizontal ? (y1+y2)/2-bend-18 : (y1+y2)/2-14} textAnchor="middle" fill={routeProgress === 1 ? accent : MUTED} fontSize={30}>{edge.label}</text>}
           </g>;
         })}
       </svg>
       {elements.slice().sort((a,b)=>Number(Boolean(a.overlay_on))-Number(Boolean(b.overlay_on))).map(element => {
+        const cameraAlpha = cameraOpacity(element);
+        if (cameraAlpha === 0) return null;
         const box = rect(element);
         const isExcerpt = element.kind === "source_excerpt";
         const selected = active?.target_id === element.id && active.action !== "retire";
-        const reveal = interpolate(frame - element.changedAt, [0, element.visibilityDuration], [0, 1], clamp);
-        const opacity = (element.visible ? reveal : element.wasVisible ? 1-reveal : 0) * (takeover && !selected ? 0.15 : 1);
+        const motion = revealMotion(element, frame);
+        const reveal = motion.reveal;
+        const opacity = (element.visible ? reveal : element.wasVisible ? 1-reveal : 0) * cameraAlpha * (takeover && !selected ? 0.15 : 1);
         if (opacity === 0) return null;
 
         const isWideBanner = !isExcerpt && (element.width >= 50 && element.height <= 26);
         const stacked = element.kind === "step" && !isWideBanner;
-        const isCard = !isExcerpt && !["photo", "chart", "label"].includes(element.kind);
+        // Surface follows the information: large figures and causal steps live
+        // directly in the scene; only notes and small figures need a panel.
+        const isHeroMetric = element.kind === "metric" && element.width >= 40 && !element.overlay_on;
+        const isDiagramStep = element.kind === "step" && !element.overlay_on;
+        const isCard = element.kind === "note" || (element.kind === "metric" && !isHeroMetric);
+        const isRouteNode = !element.overlay_on && routeNodes.has(element.id) && ["step", "note", "metric"].includes(element.kind);
 
-        const cardBg = isCard
+        const cardBg = isRouteNode
+          ? (selected ? "radial-gradient(circle at 50% 45%, rgba(255, 189, 25, 0.13), transparent 75%)" : "transparent")
+          : isCard
           ? (selected ? "linear-gradient(145deg, rgba(30, 36, 46, 0.96) 0%, rgba(16, 20, 26, 0.98) 100%)" : "linear-gradient(145deg, rgba(20, 25, 32, 0.88) 0%, rgba(12, 15, 20, 0.94) 100%)")
           : (element.overlay_on ? "rgba(12,16,20,0.88)" : undefined);
-        const cardBorder = isCard
+        const cardBorder = isCard && !isRouteNode
           ? (selected ? "2px solid #FFBD19" : "1px solid rgba(255, 255, 255, 0.10)")
           : undefined;
-        const cardShadow = isCard
+        const cardShadow = isCard && !isRouteNode
           ? (selected ? "0 20px 45px rgba(255, 189, 25, 0.25), 0 8px 24px rgba(0,0,0,0.8)" : "0 12px 30px rgba(0, 0, 0, 0.6)")
           : undefined;
 
-        const cardPadding = isExcerpt ? 0 : isCard ? 24 : 16;
+        const cardPadding = isExcerpt ? 0 : isCard && !isRouteNode ? 24 : 16;
         const iconSize = element.icon ? (isWideBanner ? 48 : Math.min(130, Math.max(68, box.h * 0.38))) : 0;
         const iconSpace = element.icon ? iconSize + 20 : 0;
 
@@ -140,11 +203,11 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
         const cueProgress = interpolate(frame - element.cueFrame, [0, element.cueDuration], [0, 1], clamp);
         const color = selected && active?.prominence !== "support" ? accent : WHITE;
 
-        // Movimento orgânico contínuo (Anti-Slide): flutuação senoidal suave em cada card
-        const timeSince = Math.max(0, frame - element.changedAt);
-        const floatY = isExcerpt ? 0 : Math.sin((timeSince + element.x * 2) / 14) * 3.5;
-        const scalePop = isExcerpt ? (element.visible ? 0.96 + 0.04 * reveal : 0.96) : (element.visible ? 0.94 + 0.06 * reveal : 0.94);
-        const translateY = isExcerpt ? (element.visible ? (1 - reveal) * 16 : 0) : ((element.visible ? (1 - reveal) * 16 : 0) + floatY);
+        // Motion is tied to an editorial event. Constant floating made even
+        // unrelated scenes feel like the same collection of animated cards.
+        const scalePop = motion.scale;
+        const translateY = motion.y;
+        const translateX = motion.x;
 
         return (
           <div
@@ -161,9 +224,10 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
               zIndex: element.overlay_on ? 2 : 1,
               background: cardBg,
               border: cardBorder,
+              borderLeft: isDiagramStep && !isRouteNode ? `5px solid ${selected ? GOLD : "#45515a"}` : undefined,
               boxShadow: cardShadow,
-              borderRadius: isCard ? 18 : (element.overlay_on ? 12 : undefined),
-              transform: `translateY(${translateY}px) scale(${scalePop})`,
+              borderRadius: isCard && !isRouteNode ? 18 : (element.overlay_on ? 12 : undefined),
+              transform: `translate(${translateX}px, ${translateY}px) scale(${scalePop})`,
               boxSizing: "border-box",
               display: "flex",
               flexDirection: isWideBanner ? "row" : stacked ? "column" : "row",
@@ -203,6 +267,7 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
             ) : element.kind === "photo" ? (
               <div
                 style={{
+                  position: "relative",
                   width: "100%",
                   height: "100%",
                   padding: element.photo_style === "paper" ? 14 : 0,
@@ -224,6 +289,12 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
                   />
                 ) : (
                   <div style={{color: "#252a30", fontSize: 32}}>Foto: {element.label}</div>
+                )}
+                {element.asset_file && !checkedStage.elements.some(child => child.overlay_on === element.id) && (
+                  <div style={{position: "absolute", left: 0, right: 0, bottom: 0, padding: "34px 20px 14px", background: "linear-gradient(transparent, rgba(8, 12, 16, 0.88))", color: WHITE, fontSize: 20, fontWeight: 700, lineHeight: 1.2}}>
+                    {element.label}
+                    {element.detail && <span style={{display: "block", color: MUTED, fontSize: 17, marginTop: 3}}>{element.detail}</span>}
+                  </div>
                 )}
               </div>
             ) : (
@@ -254,7 +325,7 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
                         text={element.value}
                         width={innerW}
                         height={valueH}
-                        maxSize={element.value_size ?? 52}
+                        maxSize={isHeroMetric ? Math.max(108, element.value_size ?? 72) : element.value_size ?? 52}
                         color={GOLD}
                       />
                     </div>
@@ -263,7 +334,7 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
                     text={element.label}
                     width={innerW}
                     height={labelH}
-                    maxSize={element.label_size ?? (element.kind === "step" ? 38 : 46)}
+                    maxSize={element.label_size ?? (isHeroMetric ? 58 : element.kind === "step" ? 38 : 46)}
                     color={WHITE}
                     emphasis={element.emphasis}
                     progress={interpolate(
@@ -303,6 +374,7 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
           </div>
         );
       })}
+    </div>
     </div>
   </AbsoluteFill>;
 };

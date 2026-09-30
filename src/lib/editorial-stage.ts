@@ -2,6 +2,13 @@ import {z} from "zod";
 import {annotationSchema, chartSchema, emphasisSchema, fullView, regionSchema, type Emphasis, type Region} from "./editorial-evidence";
 
 // Coordinates are percentages of the safe editorial canvas, not the full video.
+const stageCameraSchema = z.object({
+  x: z.number().min(0).max(100),
+  y: z.number().min(0).max(100),
+  zoom: z.number().min(1).max(1.6),
+  motion_seconds: z.number().min(0.2).max(2).optional(),
+});
+
 export const stageElementSchema = z.object({
   id: z.string().min(1),
   kind: z.enum(["step", "label", "metric", "note", "photo", "object", "source_excerpt", "chart"]),
@@ -34,6 +41,7 @@ export const stageElementSchema = z.object({
 
 export const editorialStageSchema = z.object({
   show_title: z.boolean().default(true),
+  initial_camera: stageCameraSchema.optional(),
   elements: z.array(stageElementSchema).min(1).max(12),
   connections: z.array(z.object({
     from: z.string(),
@@ -79,6 +87,7 @@ export const editorialStageSchema = z.object({
 
 export const stageEventFields = {
   motion_seconds: z.number().min(0.1).max(2).default(0.45),
+  camera: stageCameraSchema.optional(),
   mark_ids: z.array(z.string()).max(16).optional(),
   view: regionSchema.optional(),
   emphasis: emphasisSchema.nullable().optional(),
@@ -96,6 +105,7 @@ export type EditorialStage = z.infer<typeof editorialStageSchema>;
 export type StageElement = z.infer<typeof stageElementSchema>;
 export type StageEvent = {
   motion_seconds?: number;
+  camera?: StageCamera;
   mark_ids?: string[];
   view?: Region;
   emphasis?: Emphasis | null;
@@ -112,6 +122,55 @@ export type StageEvent = {
   value?: string;
   resolved_frame?: number;
 };
+
+export type StageCamera = z.infer<typeof stageCameraSchema>;
+
+// Informational elements enter the camera as whole units. Cropping a future
+// metric or label at the edge makes it look like damaged content.
+export function fitsStageCamera(region: {x: number; y: number; width: number; height: number}, camera: StageCamera): boolean {
+  const left = 50 + (region.x - camera.x) * camera.zoom;
+  const top = 50 + (region.y - camera.y) * camera.zoom;
+  const right = left + region.width * camera.zoom;
+  const bottom = top + region.height * camera.zoom;
+  return left >= -0.001 && top >= -0.001 && right <= 100.001 && bottom <= 100.001;
+}
+
+// Fade only inside a complete frame. Looking in both directions gives a smooth
+// entrance/exit while keeping frame evaluation independent of render order.
+export function stageCameraVisibility(fitsAtFrame: (frame: number) => boolean, frame: number, fadeFrames: number): number {
+  if (!fitsAtFrame(frame)) return 0;
+  const duration = Math.max(1, Math.round(fadeFrames));
+  let progress = 1;
+  for (let offset = 1; offset < duration; offset++) {
+    if (!fitsAtFrame(frame - offset) || !fitsAtFrame(frame + offset)) {
+      progress = offset / duration;
+      break;
+    }
+  }
+  return progress * progress * (3 - 2 * progress);
+}
+
+// Camera cues share the same frame clock as the stage. A cue reaches its
+// destination before the next camera cue, so parallel Remotion workers resolve
+// identical positions regardless of frame order. Without cues, this is identity.
+export function resolveStageCamera(stage: EditorialStage, beats: StageEvent[], frame: number, fps=30): StageCamera {
+  let camera: StageCamera = stage.initial_camera ?? {x: 50, y: 50, zoom: 1};
+  const cues = beats.filter((beat) => beat.camera && Number.isFinite(beat.resolved_frame))
+    .slice().sort((a, b) => a.resolved_frame! - b.resolved_frame!);
+  for (const [index, beat] of cues.entries()) {
+    if (beat.resolved_frame! > frame) break;
+    const nextFrame = cues[index + 1]?.resolved_frame ?? Infinity;
+    const duration = Math.max(1, Math.min((beat.camera!.motion_seconds ?? 0.9) * fps, nextFrame - beat.resolved_frame!));
+    const p = Math.min(1, Math.max(0, (frame - beat.resolved_frame!) / duration));
+    const eased = p * p * (3 - 2 * p);
+    camera = {
+      x: camera.x + (beat.camera!.x - camera.x) * eased,
+      y: camera.y + (beat.camera!.y - camera.y) * eased,
+      zoom: camera.zoom + (beat.camera!.zoom - camera.zoom) * eased,
+    };
+  }
+  return camera;
+}
 
 export function validateStageEvents(stage: EditorialStage, beats: StageEvent[]): string[] {
   const ids = new Set(stage.elements.map((element) => element.id));
@@ -143,6 +202,19 @@ export function validateStageEvents(stage: EditorialStage, beats: StageEvent[]):
       const element = layout.find(e => e.id === move.id);
       if (!element) errors.push(`Beat ${index}: movimento referencia ${move.id} inexistente.`);
       else {element.x = move.x; element.y = move.y;}
+    }
+    if (beat.camera && beat.action !== "retire") {
+      const subject = layout.find(e => e.id === beat.target_id);
+      if (subject) {
+        const {x, y, zoom} = beat.camera;
+        const left = 50 + zoom * (subject.x - x);
+        const right = 50 + zoom * (subject.x + subject.width - x);
+        const top = 50 + zoom * (subject.y - y);
+        const bottom = 50 + zoom * (subject.y + subject.height - y);
+        if (left < 0 || right > 100 || top < 0 || bottom > 100) {
+          errors.push(`Beat ${index}: câmera corta o alvo ${subject.id} fora da área segura.`);
+        }
+      }
     }
     // Check the movement corridor, not just its endpoints. Linear motion is
     // deliberately bounded and does not overshoot its reserved area.

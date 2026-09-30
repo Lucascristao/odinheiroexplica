@@ -4,11 +4,12 @@ import json
 import mimetypes
 import re
 import hashlib
+import time
 from pathlib import Path
 from urllib.parse import urlparse
 
 import requests
-from PIL import Image, ImageOps
+from PIL import Image, ImageOps, ImageStat, UnidentifiedImageError
 from rembg import new_session, remove
 
 
@@ -16,11 +17,32 @@ MAX_BYTES = 20 * 1024 * 1024
 CAPTURE_ROOT = Path(__file__).resolve().parents[1] / "research" / "captures"
 
 
+def validate_excerpt_image(image: Image.Image, asset_id: str) -> None:
+    """Rejeita capturas sem conteúdo visual suficiente para servir como evidência."""
+    sample = image.copy()
+    sample.thumbnail((512, 512))
+    sample = sample.convert("RGB")
+    pixels = memoryview(sample.tobytes())
+    dark_count = sum(
+        pixels[index] < 238 or pixels[index + 1] < 238 or pixels[index + 2] < 238
+        for index in range(0, len(pixels), 3)
+    )
+    dark_ratio = dark_count / (sample.width * sample.height)
+    contrast = max(ImageStat.Stat(sample).stddev)
+    if dark_ratio < 0.012 or contrast < 8:
+        raise RuntimeError(
+            f"Asset {asset_id}: recorte quase branco ou vazio; revise a URL, o seletor e a área de crop."
+        )
+
+
 def prepare_excerpt(raw: bytes, output_dir: Path, asset: dict) -> tuple[str, dict]:
-    image = ImageOps.exif_transpose(Image.open(io.BytesIO(raw))).convert("RGB")
+    try:
+        image = ImageOps.exif_transpose(Image.open(io.BytesIO(raw))).convert("RGB")
+    except (UnidentifiedImageError, OSError) as exc:
+        raise RuntimeError(f"Asset {asset['id']}: captura não é uma imagem válida.") from exc
     original_width, original_height = image.size
+    original_image = image
     original = f"{safe_name(asset['id'])}.source.png"
-    image.save(output_dir / original)
     region = asset.get("crop") or {"x": 0, "y": 0, "width": 100, "height": 100}
     x, y, w, h = (float(region[k]) for k in ("x", "y", "width", "height"))
     if not (0 <= x < 100 and 0 <= y < 100 and w > 0 and h > 0 and x+w <= 100 and y+h <= 100):
@@ -29,7 +51,9 @@ def prepare_excerpt(raw: bytes, output_dir: Path, asset: dict) -> tuple[str, dic
     image = image.crop(box)
     if min(image.size) < 100:
         raise RuntimeError("Recorte muito pequeno. Capture uma região legível em maior resolução.")
+    validate_excerpt_image(image, str(asset["id"]))
     filename = f"{safe_name(asset['id'])}.png"
+    original_image.save(output_dir / original)
     image.save(output_dir / filename)
     return filename, {"width": image.width, "height": image.height, "original_width": original_width, "original_height": original_height, "original_file": f"generated-assets/{original}", "crop": region, "sha256": hashlib.sha256(raw).hexdigest(), "source_id": asset.get("source_id"), "captured_at": asset.get("captured_at")}
 
@@ -39,24 +63,47 @@ def safe_name(value: str) -> str:
     return value or "asset"
 
 
-def download(url: str) -> tuple[bytes, str]:
-    parsed = urlparse(url)
-    if parsed.scheme != "https":
-        raise RuntimeError("Asset visual precisa usar URL https.")
+def download(url: str, fallback_urls: list[str] | None = None) -> tuple[bytes, str]:
+    urls = [url, *(fallback_urls or [])]
+    for candidate in urls:
+        if urlparse(candidate).scheme != "https":
+            raise RuntimeError("Asset visual precisa usar URL https.")
 
-    response = requests.get(
-        url,
-        headers={"User-Agent": "odinheiroexplica-visual-assets/1.0"},
-        timeout=60,
-        allow_redirects=True,
-    )
-    response.raise_for_status()
-    content = response.content
-    if len(content) > MAX_BYTES:
-        raise RuntimeError(
-            f"Asset visual excede {MAX_BYTES // 1024 // 1024} MB."
-        )
-    return content, response.headers.get("content-type", "").split(";")[0].strip()
+    last_error = "sem resposta"
+    for candidate in urls:
+        for attempt in range(2):
+            try:
+                response = requests.get(
+                    candidate,
+                    headers={
+                        "User-Agent": "ODinheiroExplica-VisualAssets/1.1 (https://github.com/Lucascristao/odinheiroexplica)"
+                    },
+                    timeout=60,
+                    allow_redirects=True,
+                )
+            except requests.RequestException as exc:
+                last_error = type(exc).__name__
+                if attempt == 0:
+                    time.sleep(4)
+                    continue
+                break
+
+            if response.status_code == 200:
+                content = response.content
+                if len(content) > MAX_BYTES:
+                    raise RuntimeError(f"Asset visual excede {MAX_BYTES // 1024 // 1024} MB.")
+                return content, response.headers.get("content-type", "").split(";")[0].strip()
+
+            last_error = f"HTTP {response.status_code}"
+            if response.status_code in {429, 500, 502, 503, 504} and attempt == 0:
+                retry_after = response.headers.get("Retry-After", "")
+                delay = min(int(retry_after), 120) if retry_after.isdigit() else 5
+                print(f"Asset visual: {last_error}; aguardando {delay}s antes de tentar novamente.")
+                time.sleep(delay)
+                continue
+            break
+
+    raise RuntimeError(f"Download do asset visual falhou após {len(urls)} URL(s): {last_error}.")
 
 
 def save_graphic(raw: bytes, content_type: str, output_dir: Path, asset_id: str) -> str:
@@ -108,12 +155,18 @@ def main() -> None:
         if asset.get("capture_file"):
             capture = (Path(__file__).resolve().parents[1] / asset["capture_file"]).resolve()
             if not capture.is_relative_to(CAPTURE_ROOT.resolve()) or capture.suffix.lower() not in {".png", ".jpg", ".jpeg", ".webp"}:
-                raise RuntimeError("Captura precisa ser uma imagem em research/captures/.")
+                raise RuntimeError(f"Asset {asset_id}: captura precisa ser uma imagem em research/captures/.")
+            if not capture.is_file():
+                raise RuntimeError(f"Asset {asset_id}: capture_file não encontrado: {capture}")
             if capture.stat().st_size > MAX_BYTES:
-                raise RuntimeError("Captura excede 20 MB.")
+                raise RuntimeError(f"Asset {asset_id}: captura excede 20 MB.")
             raw, content_type = capture.read_bytes(), mimetypes.guess_type(capture.name)[0]
         else:
-            raw, content_type = download(str(asset["image_url"]))
+            if asset_type == "source_excerpt" and not asset.get("image_url"):
+                raise RuntimeError(f"Asset {asset_id}: source_excerpt exige capture_file existente ou image_url HTTPS.")
+            raw, content_type = download(
+                str(asset["image_url"]), asset.get("image_fallback_urls") or []
+            )
 
         dimensions = {}
         if asset_type == "source_excerpt":

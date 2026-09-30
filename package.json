@@ -15,6 +15,7 @@
     "render:pix-pilot": "remotion render video/src/index.ts EditorialPilot render-output/pix-med-pilot.mp4 --codec=h264 --concurrency=2",
     "still:pix-pilot": "remotion still video/src/index.ts PixPilotThumbnail render-output/pix-med-thumbnail-a.png",
     "render:daily": "remotion render video/src/index.ts DailyEditorial render-output/daily-video.mp4 --codec=h264 --concurrency=2",
+    "render:motion-proof": "remotion render video/src/index.ts MotionDesignProof render-output/motion-design-proof.mp4 --codec=h264 --concurrency=2",
     "still:daily": "remotion still video/src/index.ts DailyThumbnail render-output/daily-thumbnail.png",
     "prepare:editorial-font": "node scripts/prepare-editorial-font.mjs",
     "postinstall": "npm run prepare:editorial-font",

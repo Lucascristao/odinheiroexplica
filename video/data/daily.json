@@ -1,1353 +1,1909 @@
 {
-  "project_id": "dolar-eleicoes-2026-09-29",
-  "title": "Dólar a R$ 5,21 na reta final: o que a eleição vai fazer com o seu dinheiro e com os preços?",
+  "project_id": "dolar-politica-bolso-2026-09-30",
+  "title": "Dólar e eleições: como a política pode chegar ao seu bolso",
   "version": "1.0",
   "presenter": {
     "gender": "male",
     "name": "Roberto"
   },
   "speech": {
-    "pronunciations": {},
+    "pronunciations": {
+      "PTAX": "pêtax",
+      "TSE": "tê ésse ê",
+      "PIB": "pib",
+      "EUA": "Estados Unidos",
+      "Insper": "ínsper"
+    },
     "ignore_pronunciation_terms": []
   },
   "story": {
-    "subject": "A oscilação do dólar a R$ 5,21 às vésperas do primeiro turno eleitoral e como a volatilidade cambial impacta a inflação, o custo de vida e os investimentos no Brasil.",
-    "angle": "Explicar de forma prática o mecanismo de repasse cambial (pass-through) para quem não consome em dólar, mostrando o efeito cascata nos alimentos (trigo, soja) e combustíveis (diesel, frete), e como proteger o dinheiro sem cair em especulação cega.",
-    "promise": "Mostrar com clareza o caminho do dólar até o carrinho do supermercado e orientar o que fazer com os investimentos enquanto a Selic paga 13,75% ao ano.",
-    "why_now": "Em 29 de setembro de 2026, o dólar registrou forte volatilidade intradiária (tocando R$ 5,24 e fechando a R$ 5,21), impulsionado pelas pesquisas eleitorais para o primeiro turno de domingo.",
+    "subject": "Dólar e política na reta final da eleição de2026, atualizado com PTAX e estatísticas fiscais divulgados em30/09.",
+    "angle": "Seguir o caminho entre decisões fiscais, percepção de risco, câmbio e custos, separando dado verificado de interpretação e de torcida.",
+    "promise": "Entender como a política pode mexer no dólar, por que o mundo também importa e quando isso chega a uma compra.",
+    "why_now": "Faltam quatro dias para o primeiro turno. A PTAX de30/09 e as estatísticas fiscais deagosto foram verificadas hoje, preservando a pauta original dólar e política.",
     "category": "economy"
   },
   "visual_assets": [
     {
-      "id": "A1_dolar_bcb",
-      "type": "source_excerpt",
-      "source_id": "S1",
-      "capture_file": "research/captures/bcb-cotacao-dolar.png",
-      "source_page_url": "https://www.bcb.gov.br",
-      "subject": "Banco Central do Brasil • Cotação Oficial do Dólar Comercial",
-      "narrative_role": "Comprovação do pregão e cotação a R$ 5,21",
-      "country_context": "BR",
-      "license": "domínio público / dados abertos governamentais",
-      "attribution": "Banco Central do Brasil / PTAX",
-      "needs_cutout": false,
-      "crop": {
-        "x": 0,
-        "y": 0,
-        "width": 100,
-        "height": 100
-      },
-      "captured_at": "2026-09-29T18:00:00Z"
+      "id": "A_wheat_field",
+      "type": "photo_cutout",
+      "subject": "Campo de trigo (imagem ilustrativa)",
+      "narrative_role": "Dar textura real ao trecho sobre a cadeia do trigo, sem representar a safra brasileira ou provar a projeção da Conab.",
+      "country_context": "global",
+      "source_page_url": "https://commons.wikimedia.org/wiki/File:Wheat_Field_in_Walla_Walla,_Washington,_2018.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Wheat_Field_in_Walla_Walla%2C_Washington%2C_2018.jpg/1280px-Wheat_Field_in_Walla_Walla%2C_Washington%2C_2018.jpg",
+      "image_fallback_urls": [
+        "https://upload.wikimedia.org/wikipedia/commons/b/bc/Wheat_Field_in_Walla_Walla%2C_Washington%2C_2018.jpg"
+      ],
+      "license": "CC0 1.0",
+      "attribution": "Jason W Lacey / Wikimedia Commons",
+      "needs_cutout": false
     },
     {
-      "id": "A2_copom_selic",
-      "type": "source_excerpt",
-      "source_id": "S2",
-      "capture_file": "research/captures/bcb-ata-copom.png",
-      "source_page_url": "https://www.bcb.gov.br/publicacoes/atascopom",
-      "subject": "Banco Central do Brasil • Ata do Copom • Transmissão Cambial e Selic",
-      "narrative_role": "Documentação da política monetária e vigilância cambial",
-      "country_context": "BR",
-      "license": "domínio público / publicação oficial",
-      "attribution": "Comitê de Política Monetária (Copom) / Banco Central do Brasil",
-      "needs_cutout": false,
-      "crop": {
-        "x": 0,
-        "y": 0,
-        "width": 100,
-        "height": 100
-      },
-      "captured_at": "2026-09-29T18:00:00Z"
-    },
-    {
-      "id": "A3_noticia_mercado",
-      "type": "source_excerpt",
-      "source_id": "S3",
-      "capture_file": "research/captures/noticia-dolar-eleicoes.png",
-      "source_page_url": "https://g1.globo.com/economia/",
-      "subject": "G1 Economia • Dólar a R$ 5,21 e Volatilidade na Semana Eleitoral",
-      "narrative_role": "Comprovação da cobertura de mercado sobre a reta final das eleições",
-      "country_context": "BR",
-      "license": "imprensa independente",
-      "attribution": "G1 Economia",
-      "needs_cutout": false,
-      "crop": {
-        "x": 0,
-        "y": 0,
-        "width": 100,
-        "height": 100
-      },
-      "captured_at": "2026-09-29T18:00:00Z"
+      "id": "A_shopping_cart",
+      "type": "photo_cutout",
+      "subject": "Carrinho no supermercado (imagem ilustrativa)",
+      "narrative_role": "Aproximar as perguntas finais da compra real; imagem ilustrativa feita fora do Brasil, não evidência de preços.",
+      "country_context": "global",
+      "source_page_url": "https://commons.wikimedia.org/wiki/File:Shopping_Cart_Supermarket.jpg",
+      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Shopping_Cart_Supermarket.jpg/1280px-Shopping_Cart_Supermarket.jpg",
+      "image_fallback_urls": [
+        "https://upload.wikimedia.org/wikipedia/commons/f/f7/Shopping_Cart_Supermarket.jpg"
+      ],
+      "license": "CC0 1.0",
+      "attribution": "Safaritravelplus / Wikimedia Commons",
+      "needs_cutout": false
     }
   ],
   "visual_direction": {
-    "concept": "O termômetro do câmbio na economia real: acompanhamos a oscilação do dólar a R$ 5,21 e o seu percurso até as prateleiras de supermercados e postos de combustível, com comparações claras de investimento.",
-    "world": "digital",
+    "concept": "Uma decisão eleitoral percorre três escalas: expectativas em Brasília, troca entre moedas, e uma compra concreta. A carteira reaparece como destino; números dehoje são provas, não eixo de uma apresentação.",
+    "world": "market",
     "secondary_color": "#FFBD19",
     "motifs": [
-      "termômetro cambial",
-      "efeito cascata no consumo",
-      "comparativo de rendimento Selic vs Dólar",
-      "gráfico de volatilidade"
+      "calendário eleitoral",
+      "carteira",
+      "troca de moedas",
+      "contas públicas",
+      "nota de compra",
+      "cadeia de custos"
     ],
     "motion_language": [
-      "movimento contínuo em ícones e cartões",
-      "transições suaves e precisas",
-      "destaque por contraste e respiração visual"
+      "abrir com data eleitoral e revelar carteira só quando a fala chega ao bolso",
+      "comparar PTAX e spot com identificação e horários explícitos",
+      "seguir a ligação risco → decisão → moeda",
+      "transformar uma nota decompra hipotética conservandoUS$100",
+      "percorrer estoque → produção → loja",
+      "encerrar no mesmo objeto carteira com uma conclusão"
     ],
     "avoid": [
-      "pânico infundado",
-      "gráficos estáticos sem animação",
-      "especulação de day trade",
-      "layout confuso"
-    ]
+      "cartelas deparágrafos",
+      "informação futura cortada na borda",
+      "gráfico com pontos futuros",
+      "atribuição eleitoral sem evidência",
+      "palco doIPP",
+      "copiar composição do vídeo anterior"
+    ],
+    "implementation_note": "Palcos reais doDailyEditorial; objetos/diagramas, duas fotosCC0 como ilustração e câmeras focadas no alvo inteiro. Os elementos futuros começam ocultos e aparecem por beats."
   },
   "editorial": {
     "strengths": [
-      "Fato econômico real de hoje (29/09/2026) com alta relevância nacional",
-      "Explica o repasse cambial de forma didática para o cidadão comum",
-      "Desmistifica o pânico eleitoral e orienta proteção com base em dados",
-      "Equilíbrio entre fontes primárias oficiais e jornalismo independente"
+      "Preserva dólar e política com atualização real de30/09.",
+      "Explica tema e mecanismo antes de desenvolver exemplos.",
+      "Roberto seapresenta após gancho eCTA surge depois deentregar valor.",
+      "Detalha efeitos e limites sem reduzir conteúdo porquotaTTS."
     ],
     "risk_flags": [
-      "Não fazer previsão eleitoral nem tomar partido de candidatos",
-      "Não recomendar especulação cambial de curto prazo",
-      "Distinguir impacto em produtos importados de inflação generalizada"
+      "PTAX nãoé fechamento comercial; spot é snapshot10h42, não cotação atual depublicação.",
+      "Nenhuma causalidade de pesquisaeleitoral foi demonstrada para a queda do dia.",
+      "Foto detrigo nosEUA e supermercado noQuênia são ilustrações globais, não evidência brasileira.",
+      "Debt82,9% refere-se a agosto, divulgada30/09; a comparação de déficit é agosto2026/2025.",
+      "A hipótese aritméticaR$5/R$5,50 nãoé previsão e é identificada antes dos valores."
     ],
+    "narrative_contract": {
+      "topic_explanation": "vamos seguir esse caminho: das decisões sobre as contas do governo, passando pelo câmbio, até o custo que aparece no seu bolso",
+      "presenter_introduction": "Eu sou o Roberto, do O Dinheiro Explica.",
+      "subscription_request": "se inscreva no O Dinheiro Explica para acompanhar as próximas histórias"
+    },
     "source_balance": {
       "requires_diversity": true,
       "public_policy_or_regulation": true,
-      "official_sources_role": "Banco Central do Brasil fornece a cotação oficial PTAX e a política de juros do Copom.",
-      "independent_sources_role": "G1 Economia e FGV IBRE contextualizam a volatilidade das pesquisas e o impacto do repasse nos preços ao consumidor.",
-      "counterpoint_summary": "Embora a alta do dólar pressione custos de importação e combustíveis, a taxa Selic em 13,75% ao ano atua como freio de segurança para atrair capital e mitigar a desvalorização cambial.",
-      "official_claims_attributed": true
+      "official_sources_role": "Confirmar metodologiaPTAX, dataeleitoral, dívida/resultadofiscal e estudo derepasse; posições são atribuídas, não selo deinfalibilidade.",
+      "independent_sources_role": "Exame situa o pregão e os fatores simultâneos; Reuters confere melhora mensal; Oeste coloca o endividamento em pauta e foi confrontada comPDFprimário.",
+      "counterpoint_summary": "Câmbio tem forças domésticas eglobais. Dívida alta merece escrutínio; déficit mensal melhor não elimina estoque. Identidade partidária não demonstra causalidade cambial.",
+      "official_claims_attributed": true,
+      "right_editorial_review": {
+        "consulted": [
+          {
+            "publisher": "Revista Oeste",
+            "url": "https://revistaoeste.com/economia/divida-publica-avanca-a-829-do-pib-e-bate-r-11-trilhoes-sob-lula/",
+            "summary": "Cobertura crítica publicada30/09 às11h49 destacou estoque/RelaçãoPIB sob ogovernoLula. Conferi82,9% eR$11,1tri noPDFprimário; acrescentei déficit mensalmenor e limites decausalidade. O roteiro não reproduz os demais comparativos históricos da matéria nem seu tom partidário."
+          }
+        ]
+      }
     },
     "youtube_suitability": {
       "risk_level": "low",
       "sensitive_topics": [
         "eleições",
-        "câmbio",
-        "inflação"
+        "políticafiscal",
+        "câmbio"
       ],
-      "context_notes": "Conteúdo estritamente educacional de economia e finanças pessoais, sem viés político-partidário.",
+      "context_notes": "Conteúdo econômico explicativo, sem orientação devoto, promoção decandidato ou recomendação individual de investimento.",
       "title_thumbnail_safe": true,
-      "monetization_notes": "Análise econômica factual com alto valor educativo para o público."
+      "monetization_notes": "Título usa possibilidade; aexplicação entrega mecanismo e seus limites."
+    },
+    "render_review": {
+      "status": "visual_evidence_pending",
+      "note": "VerificarLegibilidade, sincronismo e continuidadevocal no render; nenhuma quota devoz altera roteiro/cenas."
     }
   },
   "sources": [
     {
       "id": "S1",
-      "title": "Banco Central do Brasil — Cotações de Fechamento do Câmbio e Sistema PTAX",
-      "url": "https://www.bcb.gov.br/estabilidadefinanceira/historicocotacoes",
+      "title": "Banco Central — API PTAX, cotação de 30/09/2026",
+      "url": "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?%40dataCotacao=%2709-30-2026%27&%24format=json",
       "publisher": "Banco Central do Brasil",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "published_at": "2026-09-29",
-      "notes": "Registro da cotação do dólar comercial a R$ 5,21 no pregão de 29 de setembro de 2026."
+      "notes": "Consultado diretamente em 30/09/2026: compra 5,18030; venda 5,18090; dataHoraCotacao 2026-09-30 13:11:44.783262. Taxa de referência PTAX, não fechamento comercial nem preço turismo.",
+      "published_at": "2026-09-30"
     },
     {
       "id": "S2",
-      "title": "Banco Central do Brasil — Atas do Copom e Relatório de Inflação",
-      "url": "https://www.bcb.gov.br/publicacoes/atascopom",
+      "title": "Banco Central — metodologia das cotações diárias do dólar",
+      "url": "https://dadosabertos.bcb.gov.br/dataset/dolar-americano-usd-todos-os-boletins-diarios",
       "publisher": "Banco Central do Brasil",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "published_at": "2026-09-25",
-      "notes": "Acompanhamento da transmissão cambial e a taxa Selic em 13,75% ao ano como instrumento de controle inflacionário."
+      "notes": "PTAX é média aritmética de quatro consultas aos dealers; boletim de fechamento PTAX é média dos boletins do dia."
     },
     {
       "id": "S3",
-      "title": "Dólar fecha a R$ 5,21 em pregão volátil de reta final eleitoral",
-      "url": "https://g1.globo.com/economia/",
-      "publisher": "G1 Economia",
-      "source_type": "secondary",
-      "publisher_class": "independent_journalism",
-      "editorial_role": "independent_reporting",
-      "published_at": "2026-09-29",
-      "notes": "Apuração jornalística sobre a volatilidade cambial na semana que antecede o primeiro turno das eleições."
+      "title": "TSE — Centro de Divulgação das Eleições 2026",
+      "url": "https://www.tse.jus.br/eleicoes/cde-2026",
+      "publisher": "Tribunal Superior Eleitoral",
+      "source_type": "primary",
+      "publisher_class": "official",
+      "editorial_role": "primary_document",
+      "notes": "FAQ confirma primeiro turno em 04/10/2026. Não sustenta causalidade cambial."
     },
     {
       "id": "S4",
-      "title": "O repasse cambial e o impacto do dólar nos preços ao consumidor",
-      "url": "https://portalibre.fgv.br/estudos-e-pesquisas",
-      "publisher": "FGV IBRE",
+      "title": "Banco Central — Estatísticas fiscais, nota de 30/09/2026",
+      "url": "https://www.bcb.gov.br/content/estatisticas/hist_estatisticasfiscais/202609_Texto_de_estatisticas_fiscais.pdf",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "publisher_class": "official",
+      "editorial_role": "primary_document",
+      "notes": "PDF primário lido em 30/09: página 2, DBGG agosto 82,9% do PIB/R$11,1tri, alta mensal0,3pp; página1 déficit primário agosto R$10,0bi contra R$17,3bi agosto2025. Não confundir estoque/déficit ou primário/nominal.",
+      "published_at": "2026-09-30"
+    },
+    {
+      "id": "S5",
+      "title": "Exame — Ibovespa ganha força com bancos, Petrobras e eleições; dólar recua para R$5,18",
+      "url": "https://exame.com/invest/mercados/ibovespa-ganha-forca-com-bancos-petrobras-e-eleicoes-dolar-recua-para-r-518/",
+      "publisher": "Exame",
       "source_type": "context",
-      "publisher_class": "technical",
+      "publisher_class": "independent_journalism",
+      "editorial_role": "independent_reporting",
+      "notes": "Matéria de 30/09 às11h02: spot comercial R$5,1870, queda0,57%, recorte10h42 Brasília. Relaciona movimentos a ambiente externo/dados americanos e registra eleição no radar. Não é fechamento, nem prova de causa eleitoral única.",
+      "published_at": "2026-09-30T11:02:00-03:00"
+    },
+    {
+      "id": "S6",
+      "title": "Revista Oeste — Dívida pública avança a82,9% do PIB e bate R$11 trilhões sob Lula",
+      "url": "https://revistaoeste.com/economia/divida-publica-avanca-a-829-do-pib-e-bate-r-11-trilhoes-sob-lula/",
+      "publisher": "Revista Oeste",
+      "source_type": "context",
+      "publisher_class": "independent_journalism",
+      "editorial_role": "independent_reporting",
+      "notes": "Consultada em 30/09, publicada11h49. Cobertura crítica do endividamento. O roteiro usa82,9%/11,1tri conferidos noPDF primário, e não copia as comparações históricas ou conclusões políticas da manchete.",
+      "published_at": "2026-09-30T11:49:00-03:00"
+    },
+    {
+      "id": "S7",
+      "title": "Reuters — Dívida bruta do Brasil sobe a82,9% do PIB em agosto",
+      "url": "https://www.infomoney.com.br/economia/divida-bruta-do-brasil-sobe-a-829-do-pib-em-agosto/",
+      "publisher": "Reuters / InfoMoney",
+      "source_type": "context",
+      "publisher_class": "independent_journalism",
+      "editorial_role": "independent_reporting",
+      "notes": "Cobertura de30/09 às09h02 confirma dívida82,9% e déficit menor do que expectativaReuters. Contextualiza melhoria mensal sem eliminar crescimento do estoque.",
+      "published_at": "2026-09-30T09:02:00-03:00"
+    },
+    {
+      "id": "S8",
+      "title": "Banco Central — Repasse cambial: estimativas por projeções locais",
+      "url": "https://www.bcb.gov.br/content/ri/relatorioinflacao/202603/rpm202603b8p.pdf",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "publisher_class": "official",
       "editorial_role": "technical_analysis",
-      "published_at": "2026-09-20",
-      "notes": "Análise técnica sobre o mecanismo de repasse cambial (pass-through) para alimentos e combustíveis."
+      "notes": "Relatório março2026 páginas65–69: efeitos heterogêneos sobre IPCA, mais altos em alimentos/bens industriais e próximo dezero serviços; ampla incerteza. Nenhuma projeção de preço individual amanhã.",
+      "published_at": "2026-03-27"
+    },
+    {
+      "id": "S9",
+      "title": "Insper — A alta do dólar deveria ser uma preocupação para o Banco Central do Brasil?",
+      "url": "https://repositorio.insper.edu.br/entities/publication/977a0125-d438-4563-8a82-23cadb236df5",
+      "publisher": "Insper",
+      "source_type": "context",
+      "publisher_class": "academic",
+      "editorial_role": "technical_analysis",
+      "notes": "TCC2020 deAlejandro Ortiz Cruceño. Página descreve objetivo de analisar repasse cambial, determinantes/características/canais. Contexto metodológico apenas, sem usar aSelic2020 como atual.",
+      "published_at": "2020"
+    },
+    {
+      "id": "S10",
+      "title": "Banco Central — Cenários alternativos de projeção de inflação: riscos fiscais",
+      "url": "https://cdn-www.bcb.gov.br/content/ri/relatorioinflacao/202103/ri202103b6p.pdf",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "publisher_class": "official",
+      "editorial_role": "technical_analysis",
+      "notes": "Estudo de2021 usado somente para mecanismo de risco fiscal, câmbio e inflação; cenários condicionais, sem aplicar resultados numéricos ao pregão de2026."
+    },
+    {
+      "id": "S11",
+      "title": "Banco Central — O que é câmbio e quais fatores afetam a taxa?",
+      "url": "https://www.bcb.gov.br/estabilidadefinanceira/taxacambio",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "publisher_class": "official",
+      "editorial_role": "data_context",
+      "notes": "Referência conceitual de câmbio: preço da moeda e condições de oferta/procura. A simulaçãoUS$100 comR$5/R$5,50 é aritmética declarada, não dado observado."
     }
   ],
   "claims": [
     {
       "id": "C1",
-      "text": "O dólar operou com forte volatilidade no pregão de 29 de setembro de 2026, atingindo máxima de R$ 5,24 e fechando cotado a R$ 5,21.",
+      "text": "Primeiro turno em04/10/2026, quatro dias depois do episódio de30/09.",
       "source_ids": [
-        "S1",
         "S3"
       ],
       "confidence": "high",
       "verification_status": "verified",
       "framing": "verified_fact",
-      "attribution_required": false
+      "attribution_required": true,
+      "metadata": {}
     },
     {
       "id": "C2",
-      "text": "O repasse cambial afeta a inflação doméstica através de commodities cotadas em moeda americana, como trigo, soja e petróleo.",
+      "text": "PTAX venda30/09/2026 foiR$5,1809; valor falado arredondadoR$5,18.",
       "source_ids": [
-        "S2",
-        "S4"
+        "S1"
       ],
       "confidence": "high",
       "verification_status": "verified",
       "framing": "verified_fact",
-      "attribution_required": false
+      "attribution_required": true,
+      "metadata": {}
     },
     {
       "id": "C3",
-      "text": "A taxa básica Selic em 13,75% ao ano é utilizada pelo Banco Central para atrair capital e conter pressões descontroladas no câmbio.",
+      "text": "PTAX é referência baseada em consultas ao mercado; não preço ao consumidor em casa de câmbio.",
       "source_ids": [
         "S2"
       ],
       "confidence": "high",
       "verification_status": "verified",
       "framing": "verified_fact",
-      "attribution_required": false
+      "attribution_required": true,
+      "metadata": {}
     },
     {
       "id": "C4",
-      "text": "A incerteza eleitoral tradicionalmente eleva o prêmio de risco e a busca por moeda estrangeira como proteção de curto prazo.",
+      "text": "Exame registrou spot comercialR$5,1870 às10h42 em30/09, em matéria11h02.",
       "source_ids": [
-        "S3",
-        "S4"
+        "S5"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "reported_claim",
+      "attribution_required": true,
+      "metadata": {}
+    },
+    {
+      "id": "C5",
+      "text": "Compras/vendas e expectativas podem pressionar câmbio conforme oferta e procura.",
+      "source_ids": [
+        "S2",
+        "S11",
+        "S5"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "analysis",
+      "attribution_required": true,
+      "metadata": {}
+    },
+    {
+      "id": "C6",
+      "text": "Percepção de risco fiscal e de execução de propostas pode alterar exposição aoBrasil e demanda por moeda; direção é condicional.",
+      "source_ids": [
+        "S10",
+        "S5",
+        "S6"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "analysis",
+      "attribution_required": true,
+      "metadata": {}
+    },
+    {
+      "id": "C7",
+      "text": "Dívida bruta do governo geral foi82,9%PIB/R$11,1tri agosto2026 segundo notaBCB30/09.",
+      "source_ids": [
+        "S4",
+        "S6",
+        "S7"
       ],
       "confidence": "high",
       "verification_status": "verified",
       "framing": "verified_fact",
-      "attribution_required": false
+      "attribution_required": true,
+      "metadata": {}
+    },
+    {
+      "id": "C8",
+      "text": "Déficit primário consolidado agosto2026R$10bi é menor que agosto2025R$17,3bi; isso não apaga estoque nem prova efeito único no câmbio.",
+      "source_ids": [
+        "S4",
+        "S7"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "analysis",
+      "attribution_required": true,
+      "metadata": {}
+    },
+    {
+      "id": "C9",
+      "text": "Exame reportou queda do dólar com dadosamericanos/apetiteporrisco e eleição no radar; proximidade não prova causa de pesquisa específica.",
+      "source_ids": [
+        "S5"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "reported_claim",
+      "attribution_required": true,
+      "metadata": {}
+    },
+    {
+      "id": "C10",
+      "text": "Exemplo hipotéticoUS$100×R$5=R$500 e×R$5,50=R$550, antes impostos/frete; não cotação observada nem previsão.",
+      "source_ids": [
+        "S11"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "context",
+      "attribution_required": true,
+      "metadata": {
+        "illustrative": true
+      }
+    },
+    {
+      "id": "C11",
+      "text": "Estoques, proteção cambial, margem e concorrência podem modificar tempo/intensidade de repasse.",
+      "source_ids": [
+        "S8",
+        "S9"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "analysis",
+      "attribution_required": true,
+      "metadata": {}
+    },
+    {
+      "id": "C12",
+      "text": "BCBmarço2026 estima repasse heterogêneo com incerteza; Insper pesquisa os canais, sem previsão de itemindividual.",
+      "source_ids": [
+        "S8",
+        "S9"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "analysis",
+      "attribution_required": true,
+      "metadata": {}
+    },
+    {
+      "id": "C13",
+      "text": "Avaliar cotação/horário, mudanças fiscais e persistência é uma leitura prudente; nenhum investimento ou candidato é recomendado.",
+      "source_ids": [
+        "S2",
+        "S4",
+        "S8"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "context",
+      "attribution_required": true,
+      "metadata": {}
     }
   ],
   "scenes": [
     {
       "index": 0,
-      "title": "O que o dólar em alta faz com o seu dinheiro?",
-      "narration": "Fala, pessoal! Tudo bem com vocês? Aqui é o Roberto, do canal O Dinheiro Explica! Hoje a gente precisa ter uma conversa bem franca e direta: o dólar chegou a encostar em cinco e vinte e quatro e fechou cotado em cinco e vinte e um. Muita gente me pergunta: eu não compro dólar e nem viajo pra fora, por que isso mexe com a minha vida? Só que essa oscilação afeta o seu bolso todos os dias, desde a padaria até o supermercado. Vem comigo que eu vou te mostrar na prática o que realmente está em jogo.",
+      "title": "A eleição pode mexer no seu dinheiro",
+      "narration": "Faltam quatro dias para a eleição, e uma mudança no dólar pode chegar à sua compra mesmo que você nunca tenha comprado um dólar. Mas como uma promessa de campanha vira preço? Eu sou o Roberto, do O Dinheiro Explica. Hoje, trinta de setembro, vamos seguir esse caminho: das decisões sobre as contas do governo, passando pelo câmbio, até o custo que aparece no seu bolso.",
+      "claim_ids": [
+        "C1"
+      ],
       "visual": {
         "type": "DOCUMENT",
-        "transition": "fade",
-        "beats": [
-          {
-            "anchor": "dólar chegou a encostar em cinco e vinte e quatro",
-            "kind": "metric",
-            "headline": "Máxima do Dia",
-            "behavior": "transform",
-            "treatment": "giant_number",
-            "transition": "bloom",
-            "placement": "center",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "hero_dolar",
-            "action": "update",
-            "value": "R$ 5,24",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "fechou cotado em cinco e vinte e um",
-            "kind": "metric",
-            "headline": "Fechamento Oficial",
-            "behavior": "transform",
-            "treatment": "giant_number",
-            "transition": "bloom",
-            "placement": "center",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "hero_dolar",
-            "action": "update",
-            "value": "R$ 5,21",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "essa oscilação afeta o seu bolso",
-            "kind": "warning",
-            "headline": "Impacto no Dia a Dia",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "wipe",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "carteira_obj",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "o que realmente está em jogo",
-            "kind": "note",
-            "headline": "Vem Comigo Entender",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "agenda_label",
-            "action": "reveal",
-            "prominence": "contextual"
-          }
-        ],
+        "transition": "cut",
         "stage": {
+          "show_title": false,
           "elements": [
             {
-              "id": "hero_dolar",
+              "id": "vote",
               "kind": "metric",
-              "label": "Cotação do Dólar Comercial",
-              "value": "R$ 5,21",
-              "value_size": 160,
-              "detail": "Cotação de fechamento do pregão de hoje",
-              "icon": "coins",
-              "x": 4,
-              "y": 8,
-              "width": 58,
-              "height": 62,
-              "initially_visible": true
+              "label": "Primeiro turno · 2026",
+              "x": 5,
+              "y": 15,
+              "width": 40,
+              "height": 60,
+              "initially_visible": true,
+              "value": "04 OUT",
+              "value_size": 132
             },
             {
-              "id": "carteira_obj",
+              "id": "wallet",
               "kind": "object",
-              "object_type": "wallet",
-              "label": "Seu Bolso Sente",
-              "x": 66,
-              "y": 8,
-              "width": 30,
-              "height": 38,
-              "initially_visible": false
+              "label": "Seu bolso",
+              "x": 60,
+              "y": 12,
+              "width": 33,
+              "height": 63,
+              "initially_visible": false,
+              "object_type": "wallet"
             },
             {
-              "id": "agenda_label",
+              "id": "presenter",
               "kind": "label",
-              "label": "A alta do dólar muda o preço de tudo que você consome no dia a dia",
-              "label_size": 42,
-              "x": 4,
-              "y": 73,
-              "width": 92,
-              "height": 18,
-              "initially_visible": false
-            }
-          ]
-        }
-      }
-    },
-    {
-      "index": 1,
-      "title": "Por que o mercado fica tão nervoso na eleição?",
-      "narration": "Nesta reta final de eleição, o mercado financeiro parece uma montanha-russa. As pesquisas apontam uma disputa voto a voto para domingo, e o clima de incerteza dispara. Quando ninguém sabe ao certo qual será o plano de gastos do próximo governo, os grandes investidores pisam no freio. E no mundo dos investimentos, a regra é clara: quando o medo cresce, os fundos internacionais correm para comprar dólar como um seguro financeiro.",
-      "visual": {
-        "type": "DOCUMENT",
-        "transition": "fade",
-        "beats": [
-          {
-            "anchor": "o mercado financeiro parece uma montanha-russa",
-            "kind": "metric",
-            "headline": "Volatilidade Extrema",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "left",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "volatilidade_chart",
-            "action": "focus",
-            "chart_focus": {
-              "from": 3,
-              "to": 5
-            },
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "o clima de incerteza dispara",
-            "kind": "warning",
-            "headline": "Incerteza Política",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "banco_obj",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "os grandes investidores pisam no freio",
-            "kind": "evidence",
-            "headline": "Fuga de Capital Estrangeiro",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "fuga_note",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "correm para comprar dólar como um seguro financeiro",
-            "kind": "note",
-            "headline": "Dólar como Proteção",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "protecao_label",
-            "action": "reveal",
-            "prominence": "contextual"
-          }
-        ],
-        "stage": {
-          "elements": [
-            {
-              "id": "volatilidade_chart",
-              "kind": "chart",
-              "label": "Cotação do Dólar na Semana Eleitoral",
-              "chart": {
-                "type": "line",
-                "x_label": "Dias da semana",
-                "y_min": 4.9,
-                "y_max": 5.3,
-                "unit": "R$ por US$",
-                "points": [
-                  {
-                    "x": 0,
-                    "label": "Seg",
-                    "value": 5.05
-                  },
-                  {
-                    "x": 1,
-                    "label": "Ter",
-                    "value": 5.08
-                  },
-                  {
-                    "x": 2,
-                    "label": "Qua",
-                    "value": 5.12
-                  },
-                  {
-                    "x": 3,
-                    "label": "Qui",
-                    "value": 5.18
-                  },
-                  {
-                    "x": 4,
-                    "label": "Sex",
-                    "value": 5.24
-                  },
-                  {
-                    "x": 5,
-                    "label": "Fech",
-                    "value": 5.21
-                  }
-                ],
-                "source_id": "S1"
-              },
-              "x": 4,
-              "y": 8,
-              "width": 60,
-              "height": 82,
-              "initially_visible": true
-            },
-            {
-              "id": "banco_obj",
-              "kind": "object",
-              "object_type": "bank",
-              "label": "Sistema Financeiro em Alerta",
-              "x": 66,
-              "y": 8,
-              "width": 30,
-              "height": 36,
-              "initially_visible": false
-            },
-            {
-              "id": "fuga_note",
-              "kind": "note",
-              "label": "Investidores Internacionais Saem",
-              "detail": "Fundos globais reduzem posições em emergentes quando o risco sobe",
-              "icon": "globe",
-              "x": 66,
-              "y": 47,
-              "width": 30,
-              "height": 22,
-              "initially_visible": false
-            },
-            {
-              "id": "protecao_label",
-              "kind": "label",
-              "label": "O dólar é o porto seguro global em tempos de instabilidade",
-              "label_size": 38,
-              "x": 66,
-              "y": 72,
-              "width": 30,
-              "height": 18,
-              "initially_visible": false
-            }
-          ]
-        }
-      }
-    },
-    {
-      "index": 2,
-      "title": "O repasse cambial que ninguém vê",
-      "narration": "Você já deve ter ouvido alguém dizer: se eu ganho em real e compro em real, o que eu tenho a ver com o dólar? Pois é, mas existe um mecanismo invisível chamado repasse cambial. Quase tudo o que é fabricado no Brasil usa peças, máquinas e fertilizantes comprados lá fora. Quando o dólar sobe, essa matéria-prima fica mais cara para as fábricas. E a indústria não absorve esse custo: ela repassa de elo em elo da cadeia produtiva até chegar no preço do produto que você compra na gôndola do mercado.",
-      "visual": {
-        "type": "DOCUMENT",
-        "transition": "fade",
-        "beats": [
-          {
-            "anchor": "mecanismo invisível chamado repasse cambial",
-            "kind": "step",
-            "headline": "Repasse Cambial",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "left",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "elo_dolar",
-            "action": "focus",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "matéria-prima fica mais cara para as fábricas",
-            "kind": "step",
-            "headline": "Custo Industrial",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "center",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "elo_fabrica",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "repassa de elo em elo da cadeia produtiva",
-            "kind": "step",
-            "headline": "Cadeia de Preços",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "center",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "elo_transporte",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "preço do produto que você compra na gôndola",
-            "kind": "warning",
-            "headline": "Preço Final",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "elo_consumidor",
-            "action": "reveal",
-            "prominence": "contextual"
-          }
-        ],
-        "stage": {
-          "elements": [
-            {
-              "id": "elo_dolar",
-              "kind": "metric",
-              "label": "Dólar Sobe",
-              "value": "US$ ↑",
-              "value_size": 56,
-              "icon": "coins",
-              "x": 4,
-              "y": 12,
-              "width": 21,
-              "height": 72,
-              "initially_visible": true
-            },
-            {
-              "id": "elo_fabrica",
-              "kind": "step",
-              "step_number": 1,
-              "label": "Insumo Importado",
-              "detail": "Peças, fertilizantes e máquinas ficam mais caros",
-              "icon": "document",
-              "x": 28,
-              "y": 12,
-              "width": 21,
-              "height": 72,
-              "initially_visible": false
-            },
-            {
-              "id": "elo_transporte",
-              "kind": "step",
-              "step_number": 2,
-              "label": "Cadeia Produtiva",
-              "detail": "Fábricas e distribuidores repassam o aumento de custo",
-              "icon": "route",
-              "x": 52,
-              "y": 12,
-              "width": 21,
-              "height": 72,
-              "initially_visible": false
-            },
-            {
-              "id": "elo_consumidor",
-              "kind": "note",
-              "label": "Você Paga Mais",
-              "detail": "O preço final na prateleira sobe mesmo em produto 100% nacional",
-              "icon": "cart",
-              "x": 76,
-              "y": 12,
-              "width": 21,
-              "height": 72,
-              "initially_visible": false
+              "label": "Roberto · O Dinheiro Explica",
+              "x": 10,
+              "y": 82,
+              "width": 80,
+              "height": 14,
+              "initially_visible": false,
+              "label_size": 40
             }
           ],
           "connections": [
             {
-              "from": "elo_dolar",
-              "to": "elo_fabrica",
-              "label": "encarece"
-            },
-            {
-              "from": "elo_fabrica",
-              "to": "elo_transporte",
-              "label": "repassa"
-            },
-            {
-              "from": "elo_transporte",
-              "to": "elo_consumidor",
-              "label": "sobe"
+              "from": "vote",
+              "to": "wallet"
             }
           ]
-        }
+        },
+        "beats": [
+          {
+            "anchor": "quatro dias",
+            "target_id": "vote",
+            "action": "focus",
+            "headline": "Primeiro turno · 2026",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 27,
+              "y": 45,
+              "zoom": 1.15,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "sua compra",
+            "target_id": "wallet",
+            "action": "reveal",
+            "headline": "Seu bolso",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 75,
+              "y": 44,
+              "zoom": 1.2,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "Eu sou o Roberto",
+            "target_id": "presenter",
+            "action": "reveal",
+            "headline": "Roberto · O Dinheiro Explica",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.8
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 1,
+      "title": "Qual dólar está na tela?",
+      "narration": "Primeiro, saiba qual número está olhando. A PTAX de venda publicada hoje pelo Banco Central ficou em cinco reais e dezoito centavos, arredondando. Ela é uma taxa de referência calculada a partir de consultas ao mercado. Já o dólar comercial muda durante o pregão: a Exame registrou cinco reais e dezoito centavos às dez e quarenta e dois. Os números são próximos, mas têm horários e métodos diferentes. Nenhum deles é o preço final de uma casa de câmbio.",
+      "claim_ids": [
+        "C2",
+        "C3",
+        "C4"
+      ],
+      "visual": {
+        "type": "DOCUMENT",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "ptax",
+              "kind": "metric",
+              "label": "PTAX venda · 30/09",
+              "x": 4,
+              "y": 12,
+              "width": 45,
+              "height": 53,
+              "initially_visible": true,
+              "value": "R$ 5,1809",
+              "value_size": 104
+            },
+            {
+              "id": "spot",
+              "kind": "metric",
+              "label": "Comercial · 10h42",
+              "x": 55,
+              "y": 12,
+              "width": 41,
+              "height": 53,
+              "initially_visible": false,
+              "value": "R$ 5,1870",
+              "value_size": 96
+            },
+            {
+              "id": "method",
+              "kind": "label",
+              "label": "Referência ≠ cotação ao vivo",
+              "x": 10,
+              "y": 78,
+              "width": 80,
+              "height": 17,
+              "initially_visible": false,
+              "label_size": 46
+            }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "A PTAX de venda",
+            "target_id": "ptax",
+            "action": "focus",
+            "headline": "PTAX venda · 30/09",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 27,
+              "y": 40,
+              "zoom": 1.08,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "Já o dólar comercial",
+            "target_id": "spot",
+            "action": "reveal",
+            "headline": "Comercial · 10h42",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 75,
+              "y": 40,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "horários e métodos diferentes",
+            "target_id": "method",
+            "action": "reveal",
+            "headline": "Referência ≠ cotação ao vivo",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.8
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "A cotação tem compradores e vendedores",
+      "narration": "O câmbio é o preço de uma moeda em outra: quantos reais você precisa para comprar um dólar. Esse preço nasce de compradores e vendedores. Uma empresa importa uma máquina e precisa de dólares. Outra exporta e recebe dólares, que pode trocar por reais. Investidores também entram e saem. Quando cresce a procura por dólares em relação à oferta, há pressão de alta. Quando a oferta ganha força, a pressão pode ser de queda. É por isso que uma expectativa já pode mexer no preço antes de virar uma lei.",
+      "claim_ids": [
+        "C5"
+      ],
+      "visual": {
+        "type": "DOCUMENT",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "buy",
+              "kind": "step",
+              "label": "Importação · compra dólares",
+              "x": 5,
+              "y": 9,
+              "width": 34,
+              "height": 35,
+              "initially_visible": true,
+              "icon": "globe"
+            },
+            {
+              "id": "sell",
+              "kind": "step",
+              "label": "Exportação · vende dólares",
+              "x": 61,
+              "y": 9,
+              "width": 34,
+              "height": 35,
+              "initially_visible": false,
+              "icon": "route"
+            },
+            {
+              "id": "market",
+              "kind": "object",
+              "label": "Troca entre reais e dólares",
+              "x": 32,
+              "y": 53,
+              "width": 36,
+              "height": 43,
+              "initially_visible": false,
+              "object_type": "bank"
+            }
+          ],
+          "connections": [
+            {
+              "from": "buy",
+              "to": "market"
+            },
+            {
+              "from": "sell",
+              "to": "market"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "anchor": "compradores e vendedores",
+            "target_id": "buy",
+            "action": "focus",
+            "headline": "Importação · compra dólares",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 25,
+              "y": 28,
+              "zoom": 1.2,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "Outra exporta",
+            "target_id": "sell",
+            "action": "reveal",
+            "headline": "Exportação · vende dólares",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 76,
+              "y": 28,
+              "zoom": 1.2,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "Investidores também",
+            "target_id": "market",
+            "action": "reveal",
+            "headline": "Troca entre reais e dólares",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "antes de virar uma lei",
+            "target_id": "market",
+            "action": "update",
+            "headline": "Expectativas também mudam decisões",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          }
+        ]
       }
     },
     {
       "index": 3,
-      "title": "Como o dólar vai parar no seu prato de comida",
-      "narration": "Quer ver um exemplo que dói no estômago? O pão francês da padaria. Mais da metade do trigo consumido no Brasil vem de fora, comprado em dólar. Se o câmbio sobe, a farinha fica mais cara no mesmo dia. E não para por aí: o milho e a soja que alimentam as aves e os porcos são negociados no mercado mundial em dólar. Quando a cotação dispara, o produtor repassa essa conta para a ração animal. Resultado na prática: o pãozinho, o macarrão, o frango e a carne bovina sobem de preço.",
+      "title": "Onde a política entra",
+      "narration": "A eleição entra pela expectativa sobre o que o próximo governo vai fazer. Quanto pretende gastar? De onde virá o dinheiro? As regras serão previsíveis? Se investidores enxergarem mais risco, podem exigir retorno maior ou reduzir a exposição ao Brasil. Quem decide sair e trocar reais por dólares ajuda a pressionar o câmbio. Um plano crível pode agir no sentido contrário. Isso depende da proposta, da execução e do resto da economia. Um candidato ser de direita ou de esquerda, sozinho, não resolve essa conta.",
+      "claim_ids": [
+        "C6"
+      ],
       "visual": {
         "type": "DOCUMENT",
-        "transition": "fade",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "plan",
+              "kind": "label",
+              "label": "Quanto gasta? Como financia?",
+              "x": 7,
+              "y": 5,
+              "width": 86,
+              "height": 19,
+              "initially_visible": true,
+              "label_size": 62
+            },
+            {
+              "id": "risk",
+              "kind": "step",
+              "label": "Risco percebido",
+              "x": 5,
+              "y": 42,
+              "width": 27,
+              "height": 44,
+              "initially_visible": false,
+              "icon": "warning"
+            },
+            {
+              "id": "flow",
+              "kind": "step",
+              "label": "Decisão de investir ou sair",
+              "x": 37,
+              "y": 42,
+              "width": 28,
+              "height": 44,
+              "initially_visible": false,
+              "icon": "route"
+            },
+            {
+              "id": "fx",
+              "kind": "step",
+              "label": "Compra ou venda de dólares",
+              "x": 70,
+              "y": 42,
+              "width": 27,
+              "height": 44,
+              "initially_visible": false,
+              "icon": "coins"
+            }
+          ],
+          "connections": [
+            {
+              "from": "risk",
+              "to": "flow"
+            },
+            {
+              "from": "flow",
+              "to": "fx"
+            }
+          ]
+        },
         "beats": [
           {
-            "anchor": "Mais da metade do trigo consumido no Brasil vem de fora",
-            "kind": "metric",
-            "headline": "Trigo Importado",
-            "behavior": "transform",
-            "treatment": "giant_number",
-            "transition": "bloom",
-            "placement": "left",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "trigo_hero",
+            "anchor": "Quanto pretende gastar",
+            "target_id": "plan",
             "action": "focus",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "milho e a soja que alimentam as aves e os porcos",
-            "kind": "note",
-            "headline": "Ração Animal em Dólar",
+            "headline": "Quanto gasta? Como financia?",
+            "kind": "fact",
             "behavior": "transform",
-            "treatment": "step_card",
+            "treatment": "kinetic_type",
             "transition": "wipe",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "racao_card",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "o produtor repassa essa conta",
-            "kind": "step",
-            "headline": "Custo Repassado",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "repasse_card",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "o frango e a carne bovina sobem de preço",
-            "kind": "warning",
-            "headline": "Tudo Mais Caro na Mesa",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
-            "target_id": "impacto_banner",
-            "action": "reveal",
-            "prominence": "contextual"
-          }
-        ],
-        "stage": {
-          "elements": [
-            {
-              "id": "trigo_hero",
-              "kind": "metric",
-              "value": "> 50%",
-              "value_size": 120,
-              "label": "Trigo Importado",
-              "detail": "Base do pão, biscoito e massas no Brasil",
-              "icon": "cart",
-              "x": 4,
-              "y": 8,
-              "width": 48,
-              "height": 56,
-              "initially_visible": true
-            },
-            {
-              "id": "racao_card",
-              "kind": "note",
-              "label": "Soja e Milho em Dólar",
-              "detail": "Commodities cotadas no mercado internacional encarecem a ração",
-              "icon": "coins",
-              "x": 56,
-              "y": 8,
-              "width": 40,
-              "height": 26,
-              "initially_visible": false
-            },
-            {
-              "id": "repasse_card",
-              "kind": "step",
-              "step_number": 1,
-              "label": "Produtor Repassa",
-              "detail": "O custo da ração animal sobe e é transferido ao consumidor final",
-              "icon": "route",
-              "x": 56,
-              "y": 37,
-              "width": 40,
-              "height": 27,
-              "initially_visible": false
-            },
-            {
-              "id": "impacto_banner",
-              "kind": "note",
-              "label": "Pão, Frango e Carne Mais Caros",
-              "detail": "Produtos nacionais ficam mais caros por causa do câmbio",
-              "icon": "warning",
-              "x": 4,
-              "y": 68,
-              "width": 92,
-              "height": 22,
-              "initially_visible": false
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "emphasis": {
+              "phrase": "Como financia?",
+              "style": "underline"
             }
-          ]
-        }
+          },
+          {
+            "anchor": "mais risco",
+            "target_id": "risk",
+            "action": "reveal",
+            "headline": "Risco percebido",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 22,
+              "y": 65,
+              "zoom": 1.15,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "reduzir a exposição",
+            "target_id": "flow",
+            "action": "reveal",
+            "headline": "Decisão de investir ou sair",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 51,
+              "y": 65,
+              "zoom": 1.2,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "trocar reais por dólares",
+            "target_id": "fx",
+            "action": "reveal",
+            "headline": "Compra ou venda de dólares",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 82,
+              "y": 65,
+              "zoom": 1.15,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "Isso depende da proposta",
+            "target_id": "plan",
+            "action": "focus",
+            "headline": "Quanto gasta? Como financia?",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.8
+            }
+          }
+        ]
       }
     },
     {
       "index": 4,
-      "title": "O combustível e o frete que empurram os preços",
-      "narration": "Outro canal poderoso que atinge o seu bolso é o combustível. O petróleo é uma commodity global negociada em dólar americano. O Brasil importa uma parte significativa do óleo diesel para manter os caminhões rodando. Se o dólar sobe, o custo do diesel sobe junto. E como a imensa maioria dos produtos no Brasil viaja pelas rodovias, o frete mais caro encarece tudo: do saco de cimento ao remédio na farmácia e à verdura na feira.",
+      "title": "O dado fiscal divulgado hoje",
+      "narration": "E hoje saiu um dado concreto para essa discussão. Segundo o Banco Central, a dívida bruta chegou a oitenta e dois vírgula nove por cento do PIB em agosto, somando onze vírgula um trilhões de reais. É uma comparação entre o estoque da dívida e o tamanho da economia. A Revista Oeste destacou a pressão desse endividamento sobre o governo. No mesmo documento, porém, o déficit primário de agosto foi menor que o de agosto do ano passado. Essa melhora mensal não apaga o estoque da dívida. E o estoque, sozinho, não prova calote nem explica toda a cotação do dia.",
+      "claim_ids": [
+        "C7",
+        "C8"
+      ],
       "visual": {
         "type": "DOCUMENT",
-        "transition": "fade",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "debt",
+              "kind": "metric",
+              "label": "Dívida bruta · agosto/2026",
+              "x": 8,
+              "y": 7,
+              "width": 84,
+              "height": 40,
+              "initially_visible": true,
+              "value": "82,9% do PIB",
+              "value_size": 146
+            },
+            {
+              "id": "stock",
+              "kind": "metric",
+              "label": "Estoque da dívida",
+              "x": 5,
+              "y": 58,
+              "width": 42,
+              "height": 35,
+              "initially_visible": false,
+              "value": "R$ 11,1 tri",
+              "value_size": 96
+            },
+            {
+              "id": "monthly",
+              "kind": "label",
+              "label": "Déficit menor no mês ≠ dívida resolvida",
+              "x": 57,
+              "y": 57,
+              "width": 39,
+              "height": 37,
+              "initially_visible": false,
+              "label_size": 46
+            }
+          ],
+          "connections": []
+        },
         "beats": [
           {
-            "anchor": "commodity global negociada em dólar americano",
-            "kind": "metric",
-            "headline": "Petróleo em Dólar",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "left",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "petroleo_top",
+            "anchor": "oitenta e dois vírgula nove",
+            "target_id": "debt",
             "action": "focus",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "o custo do diesel sobe junto",
-            "kind": "step",
-            "headline": "Diesel Importado",
+            "headline": "Dívida bruta · agosto/2026",
+            "kind": "fact",
             "behavior": "transform",
-            "treatment": "step_card",
+            "treatment": "kinetic_type",
             "transition": "wipe",
-            "placement": "center",
+            "placement": "full",
             "medium": "motion_graphic",
             "sound": "tick",
-            "target_id": "diesel_mid",
-            "action": "reveal",
-            "prominence": "contextual"
+            "prominence": "contextual",
+            "motion_seconds": 0.48
           },
           {
-            "anchor": "o frete mais caro encarece tudo",
-            "kind": "warning",
-            "headline": "Efeito Cascata",
+            "anchor": "onze vírgula um trilhões",
+            "target_id": "stock",
+            "action": "reveal",
+            "headline": "Estoque da dívida",
+            "kind": "fact",
             "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
-            "target_id": "frete_wide",
-            "action": "reveal",
-            "prominence": "contextual"
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 27,
+              "y": 75,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
           },
           {
-            "anchor": "à verdura na feira",
-            "kind": "note",
-            "headline": "Tudo Mais Caro",
+            "anchor": "déficit primário de agosto",
+            "target_id": "monthly",
+            "action": "reveal",
+            "headline": "Déficit menor no mês ≠ dívida resolvida",
+            "kind": "fact",
             "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
-            "placement": "right",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
-            "target_id": "recibo_obj",
-            "action": "reveal",
-            "prominence": "contextual"
-          }
-        ],
-        "stage": {
-          "elements": [
-            {
-              "id": "petroleo_top",
-              "kind": "metric",
-              "label": "Barril de Petróleo",
-              "value": "Cotação Global em US$",
-              "value_size": 48,
-              "detail": "Negociado internacionalmente em moeda americana",
-              "icon": "globe",
-              "x": 20,
-              "y": 6,
-              "width": 56,
-              "height": 20,
-              "initially_visible": true
-            },
-            {
-              "id": "diesel_mid",
-              "kind": "step",
-              "step_number": 1,
-              "label": "Diesel Importado Encarece",
-              "detail": "O Brasil depende de importação para abastecer os caminhões",
-              "icon": "car",
-              "x": 12,
-              "y": 29,
-              "width": 72,
-              "height": 22,
-              "initially_visible": false
-            },
-            {
-              "id": "frete_wide",
-              "kind": "note",
-              "label": "Frete Rodoviário Mais Caro em Todo o País",
-              "detail": "Quase tudo que você compra viajou por rodovia antes de chegar à loja",
-              "icon": "route",
-              "x": 4,
-              "y": 54,
-              "width": 68,
-              "height": 36,
-              "initially_visible": false
-            },
-            {
-              "id": "recibo_obj",
-              "kind": "object",
-              "object_type": "receipt",
-              "label": "Conta Chega Pro Consumidor",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
               "x": 76,
-              "y": 54,
-              "width": 20,
-              "height": 36,
-              "initially_visible": false
+              "y": 75,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
             }
-          ]
-        }
+          },
+          {
+            "anchor": "nem explica toda a cotação",
+            "target_id": "debt",
+            "action": "focus",
+            "headline": "Dívida bruta · agosto/2026",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.8
+            }
+          }
+        ]
       }
     },
     {
       "index": 5,
-      "title": "A defesa do Banco Central: juros a 13,75%",
-      "narration": "Para impedir que o dólar alto vire uma bola de neve de inflação pelo país, o Banco Central mantém uma linha dura de defesa. A taxa Selic foi fixada em treze vírgula setenta e cinco por cento ao ano. Esse patamar garante um dos maiores juros reais do mundo. E isso faz o quê na prática? Atrai investidores internacionais que querem lucrar com esses juros altos, trazendo dólares para dentro do país para tentar equilibrar o câmbio e segurar a inflação para baixo.",
+      "title": "O mundo também entra nessa conta",
+      "narration": "Só que Brasília não controla o mundo. Juros e inflação nos Estados Unidos mudam a atratividade de manter dinheiro em dólar. O humor global e o comércio também alteram os fluxos. Na manhã de hoje, a Exame relacionou o recuo do dólar a dados americanos e à melhora do apetite por risco, enquanto a eleição seguia no radar. São fatores ao mesmo tempo. Então, dizer que o dólar caiu por causa de uma pesquisa exige identificar a pesquisa, o horário e uma reação compatível. A proximidade da eleição não demonstra essa causa.",
+      "claim_ids": [
+        "C9"
+      ],
       "visual": {
         "type": "DOCUMENT",
-        "transition": "fade",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "world",
+              "kind": "step",
+              "label": "Juros e inflação nos EUA",
+              "x": 5,
+              "y": 10,
+              "width": 37,
+              "height": 38,
+              "initially_visible": true,
+              "icon": "globe"
+            },
+            {
+              "id": "brasil",
+              "kind": "step",
+              "label": "Contas públicas e eleição",
+              "x": 59,
+              "y": 10,
+              "width": 36,
+              "height": 38,
+              "initially_visible": false,
+              "icon": "house"
+            },
+            {
+              "id": "fx",
+              "kind": "metric",
+              "label": "Câmbio · vários fatores",
+              "x": 29,
+              "y": 61,
+              "width": 42,
+              "height": 33,
+              "initially_visible": false,
+              "value": "R$ / US$",
+              "value_size": 84
+            }
+          ],
+          "connections": [
+            {
+              "from": "world",
+              "to": "fx"
+            },
+            {
+              "from": "brasil",
+              "to": "fx"
+            }
+          ]
+        },
         "beats": [
           {
-            "anchor": "taxa Selic foi fixada em treze vírgula setenta e cinco por cento",
-            "kind": "metric",
-            "headline": "Selic Oficial",
-            "behavior": "transform",
-            "treatment": "giant_number",
-            "transition": "bloom",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "selic_metric",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "maiores juros reais do mundo",
-            "kind": "note",
-            "headline": "Ranking Global",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "selic_chart",
+            "anchor": "Juros e inflação",
+            "target_id": "world",
             "action": "focus",
-            "chart_focus": {
-              "from": 5,
-              "to": 7
-            },
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "Atrai investidores internacionais",
-            "kind": "evidence",
-            "headline": "Fluxo Estrangeiro",
+            "headline": "Juros e inflação nos EUA",
+            "kind": "fact",
             "behavior": "transform",
-            "treatment": "step_card",
+            "treatment": "kinetic_type",
             "transition": "wipe",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "carry_note",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "segurar a inflação para baixo",
-            "kind": "step",
-            "headline": "Objetivo do Banco Central",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
-            "target_id": "objetivo_label",
-            "action": "reveal",
-            "prominence": "contextual"
-          }
-        ],
-        "stage": {
-          "elements": [
-            {
-              "id": "selic_chart",
-              "kind": "chart",
-              "label": "Evolução da Taxa Selic",
-              "chart": {
-                "type": "line",
-                "x_label": "Meses de 2026",
-                "y_min": 10,
-                "y_max": 15,
-                "unit": "% ao ano",
-                "points": [
-                  {
-                    "x": 0,
-                    "label": "Jan",
-                    "value": 11.75
-                  },
-                  {
-                    "x": 1,
-                    "label": "Mar",
-                    "value": 12.25
-                  },
-                  {
-                    "x": 2,
-                    "label": "Mai",
-                    "value": 12.75
-                  },
-                  {
-                    "x": 3,
-                    "label": "Jun",
-                    "value": 13.25
-                  },
-                  {
-                    "x": 4,
-                    "label": "Jul",
-                    "value": 13.5
-                  },
-                  {
-                    "x": 5,
-                    "label": "Ago",
-                    "value": 13.75
-                  },
-                  {
-                    "x": 6,
-                    "label": "Set",
-                    "value": 13.75
-                  },
-                  {
-                    "x": 7,
-                    "label": "Out",
-                    "value": 13.75
-                  }
-                ],
-                "source_id": "S2"
-              },
-              "x": 4,
-              "y": 8,
-              "width": 60,
-              "height": 82,
-              "initially_visible": true
-            },
-            {
-              "id": "selic_metric",
-              "kind": "metric",
-              "value": "13,75%",
-              "value_size": 86,
-              "label": "Taxa Selic ao Ano",
-              "detail": "Patamar restritivo para conter pressão cambial",
-              "icon": "bank",
-              "x": 66,
-              "y": 8,
-              "width": 30,
-              "height": 36,
-              "initially_visible": false
-            },
-            {
-              "id": "carry_note",
-              "kind": "note",
-              "label": "Atração de Capital Estrangeiro",
-              "detail": "Fundos trazem dólares buscando rendimento em reais",
-              "icon": "globe",
-              "x": 66,
-              "y": 47,
-              "width": 30,
-              "height": 22,
-              "initially_visible": false
-            },
-            {
-              "id": "objetivo_label",
-              "kind": "label",
-              "label": "Missão: equilibrar câmbio e defender o poder de compra",
-              "label_size": 38,
-              "x": 66,
-              "y": 72,
-              "width": 30,
-              "height": 18,
-              "initially_visible": false
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 25,
+              "y": 30,
+              "zoom": 1.15,
+              "motion_seconds": 0.8
             }
-          ]
-        }
+          },
+          {
+            "anchor": "eleição seguia no radar",
+            "target_id": "brasil",
+            "action": "reveal",
+            "headline": "Contas públicas e eleição",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 76,
+              "y": 30,
+              "zoom": 1.15,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "São fatores ao mesmo tempo",
+            "target_id": "fx",
+            "action": "reveal",
+            "headline": "Câmbio · vários fatores",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "não demonstra essa causa",
+            "target_id": "fx",
+            "action": "update",
+            "headline": "Data próxima não prova causa",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "emphasis": {
+              "phrase": "não prova",
+              "style": "underline"
+            }
+          }
+        ]
       }
     },
     {
       "index": 6,
-      "title": "Vale a pena sair correndo para comprar dólar?",
-      "narration": "E agora a pergunta que eu mais recebo: Roberto, devo correr pra casa de câmbio e comprar dólar agora na semana da eleição? Minha recomendação prática é: muito cuidado com o pânico. Tentar adivinhar a cotação no meio de uma eleição acirrada é pura loteria. Quem compra no desespero paga caro e vê a moeda despencar logo depois. Em vez disso, a renda fixa brasileira pagando mais de um por cento líquido todo mês dá previsibilidade e segurança. O CDI e a Selic rendem sem risco cambial nenhum.",
+      "title": "Como isso chega a uma compra",
+      "narration": "Agora vamos trazer essa história para uma conta simples. Imagine uma peça importada que custa cem dólares. É um exemplo, não a cotação de hoje. Com dólar a cinco reais, ela custa quinhentos reais antes de impostos e frete. Se o dólar for para cinco e cinquenta, vira quinhentos e cinquenta reais. A peça não mudou de preço lá fora. O real é que compra menos dólares. Essa pressão pode entrar no custo de um produto fabricado aqui, quando ele usa componentes ou matérias-primas comprados em moeda estrangeira.",
+      "claim_ids": [
+        "C10"
+      ],
       "visual": {
         "type": "DOCUMENT",
-        "transition": "fade",
-        "beats": [
-          {
-            "anchor": "muito cuidado com o pânico",
-            "kind": "warning",
-            "headline": "Cilada do Desespero",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "left",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "perigo_card",
-            "action": "focus",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "pura loteria",
-            "kind": "note",
-            "headline": "Risco Especulativo",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
-            "placement": "left",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "loteria_card",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "renda fixa brasileira pagando mais de um por cento líquido",
-            "kind": "metric",
-            "headline": "Rendimento Previsível",
-            "behavior": "transform",
-            "treatment": "giant_number",
-            "transition": "bloom",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "cdi_metric",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "CDI e a Selic rendem sem risco cambial nenhum",
-            "kind": "step",
-            "headline": "Sem Risco Cambial",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "seguranca_card",
-            "action": "reveal",
-            "prominence": "contextual"
-          }
-        ],
+        "transition": "cut",
         "stage": {
+          "show_title": false,
           "elements": [
             {
-              "id": "perigo_card",
-              "kind": "note",
-              "label": "Comprar Dólar no Pânico",
-              "detail": "Alto risco de pagar na máxima e ver a moeda despencar",
-              "icon": "warning",
+              "id": "invoice",
+              "kind": "object",
+              "label": "Peça importada · exemplo",
               "x": 4,
-              "y": 8,
-              "width": 44,
-              "height": 28,
-              "initially_visible": true
+              "y": 10,
+              "width": 27,
+              "height": 71,
+              "initially_visible": true,
+              "object_type": "receipt"
             },
             {
-              "id": "loteria_card",
-              "kind": "note",
-              "label": "Especulação é Loteria",
-              "detail": "Ninguém acerta a cotação exata no curto prazo de forma consistente",
-              "icon": "eye-off",
-              "x": 4,
-              "y": 39,
-              "width": 44,
-              "height": 28,
-              "initially_visible": false
-            },
-            {
-              "id": "cdi_metric",
+              "id": "base",
               "kind": "metric",
-              "value": "> 1% /mês",
-              "value_size": 72,
-              "label": "Renda Fixa Brasileira",
-              "detail": "CDI e Selic garantem ganho previsível todo mês",
-              "icon": "shield",
-              "x": 52,
-              "y": 8,
-              "width": 44,
-              "height": 38,
-              "initially_visible": false
+              "label": "US$ 100 × R$ 5,00",
+              "x": 38,
+              "y": 11,
+              "width": 56,
+              "height": 31,
+              "initially_visible": false,
+              "value": "R$ 500",
+              "value_size": 108
             },
             {
-              "id": "seguranca_card",
-              "kind": "step",
-              "step_number": 1,
-              "label": "Proteção Sem Risco Cambial",
-              "detail": "Rendimento em reais com liquidez diária e total previsibilidade",
-              "icon": "coins",
-              "x": 52,
-              "y": 49,
-              "width": 44,
-              "height": 18,
-              "initially_visible": false
+              "id": "changed",
+              "kind": "metric",
+              "label": "US$ 100 × R$ 5,50",
+              "x": 38,
+              "y": 60,
+              "width": 56,
+              "height": 31,
+              "initially_visible": false,
+              "value": "R$ 550",
+              "value_size": 108
+            }
+          ],
+          "connections": [
+            {
+              "from": "invoice",
+              "to": "base"
+            },
+            {
+              "from": "base",
+              "to": "changed"
             }
           ]
-        }
+        },
+        "beats": [
+          {
+            "anchor": "cem dólares",
+            "target_id": "invoice",
+            "action": "focus",
+            "headline": "Peça importada · exemplo",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 20,
+              "y": 47,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "quinhentos reais",
+            "target_id": "base",
+            "action": "reveal",
+            "headline": "US$ 100 × R$ 5,00",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 65,
+              "y": 27,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "quinhentos e cinquenta reais",
+            "target_id": "changed",
+            "action": "reveal",
+            "headline": "US$ 100 × R$ 5,50",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 65,
+              "y": 75,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "O real é que compra menos",
+            "target_id": "changed",
+            "action": "focus",
+            "headline": "US$ 100 × R$ 5,50",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.8
+            }
+          }
+        ]
       }
     },
     {
       "index": 7,
-      "title": "O melhor escudo para o seu bolso",
-      "narration": "O dólar a cinco e vinte e um não é motivo de desespero, mas sim de planejamento. A melhor proteção para o seu bolso é manter a reserva de emergência rendendo, eliminar dívidas caras de cartão e entender como a economia funciona antes de tomar decisões precipitadas. Se você gosta desse jeito direto de entender o seu dinheiro, já se inscreve no canal O Dinheiro Explica e deixa aqui nos comentários: o preço das coisas já começou a pesar na sua região? Um grande abraço do Roberto e até o próximo vídeo!",
+      "title": "Do custo até o preço da loja",
+      "narration": "Mas o custo não atravessa a cadeia num passe de mágica. Um importador pode ter estoque comprado antes da mudança. Pode ter protegido o câmbio por contrato. E uma loja pode reduzir sua margem para não perder cliente. No caminho de um alimento feito com insumo importado, entram também produção, transporte e concorrência. Por isso, uma alta ou queda do dólar não produz o mesmo reajuste em tudo. O tempo, a duração do movimento e as condições de cada mercado fazem diferença.",
+      "claim_ids": [
+        "C11"
+      ],
       "visual": {
         "type": "DOCUMENT",
-        "transition": "fade",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "wheat",
+              "kind": "photo",
+              "label": "Insumo importado · ilustração",
+              "x": 3,
+              "y": 9,
+              "width": 33,
+              "height": 83,
+              "initially_visible": true,
+              "asset_id": "A_wheat_field",
+              "image_fit": "cover",
+              "image_motion": "push"
+            },
+            {
+              "id": "inventory",
+              "kind": "step",
+              "label": "Estoque e contrato",
+              "x": 43,
+              "y": 10,
+              "width": 52,
+              "height": 23,
+              "initially_visible": false,
+              "icon": "lock"
+            },
+            {
+              "id": "production",
+              "kind": "step",
+              "label": "Produção e transporte",
+              "x": 43,
+              "y": 44,
+              "width": 52,
+              "height": 23,
+              "initially_visible": false,
+              "icon": "route"
+            },
+            {
+              "id": "shop",
+              "kind": "step",
+              "label": "Margem e concorrência",
+              "x": 43,
+              "y": 78,
+              "width": 52,
+              "height": 19,
+              "initially_visible": false,
+              "icon": "cart"
+            }
+          ],
+          "connections": [
+            {
+              "from": "inventory",
+              "to": "production"
+            },
+            {
+              "from": "production",
+              "to": "shop"
+            }
+          ]
+        },
         "beats": [
           {
-            "anchor": "reserva de emergência rendendo",
-            "kind": "step",
-            "headline": "Reserva Rendendo",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "left",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "pilar_reserva",
-            "action": "focus",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "eliminar dívidas caras de cartão",
-            "kind": "warning",
-            "headline": "Cortar Dívidas",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "center",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "pilar_dividas",
+            "anchor": "estoque comprado antes",
+            "target_id": "inventory",
             "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "entender como a economia funciona",
-            "kind": "note",
-            "headline": "Conhecimento é Proteção",
+            "headline": "Estoque e contrato",
+            "kind": "fact",
             "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "pilar_educacao",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "se inscreve no canal O Dinheiro Explica",
-            "kind": "note",
-            "headline": "O Dinheiro Explica",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
-            "target_id": "cta_banner",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 66,
+              "y": 24,
+              "zoom": 1.15,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "produção, transporte",
+            "target_id": "production",
             "action": "reveal",
-            "prominence": "contextual"
+            "headline": "Produção e transporte",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 66,
+              "y": 56,
+              "zoom": 1.15,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "não produz o mesmo reajuste",
+            "target_id": "shop",
+            "action": "reveal",
+            "headline": "Margem e concorrência",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 66,
+              "y": 85,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "fazem diferença",
+            "target_id": "wheat",
+            "action": "focus",
+            "headline": "Insumo importado · ilustração",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.8
+            }
           }
-        ],
+        ]
+      }
+    },
+    {
+      "index": 8,
+      "title": "O que a pesquisa permite dizer",
+      "narration": "Isso também aparece nas pesquisas. Um estudo do Banco Central publicado em março encontrou efeitos diferentes do câmbio sobre os preços: maiores em alimentos em casa e bens industriais, e próximos de zero em serviços. Mas os autores alertam que a incerteza é ampla. O estudo do Insper sobre repasse cambial também trata esse caminho como uma relação que precisa ser investigada. Esses trabalhos ajudam a entender o mecanismo. Não são uma tabela de quanto cada item do supermercado vai subir amanhã.",
+      "claim_ids": [
+        "C12"
+      ],
+      "visual": {
+        "type": "DOCUMENT",
+        "transition": "cut",
         "stage": {
+          "show_title": false,
           "elements": [
             {
-              "id": "pilar_reserva",
-              "kind": "metric",
-              "value": "R$ 5,21",
-              "value_size": 56,
-              "label": "Não é Desespero",
-              "detail": "Mantenha sua reserva de emergência rendendo na renda fixa",
-              "icon": "shield",
-              "x": 4,
-              "y": 8,
-              "width": 29,
-              "height": 56,
-              "initially_visible": true
+              "id": "cart",
+              "kind": "photo",
+              "label": "Compra real · imagem ilustrativa",
+              "x": 54,
+              "y": 6,
+              "width": 43,
+              "height": 90,
+              "initially_visible": true,
+              "asset_id": "A_shopping_cart",
+              "image_fit": "cover",
+              "image_motion": "pan"
             },
             {
-              "id": "pilar_dividas",
-              "kind": "step",
-              "step_number": 1,
-              "label": "Zerar Dívidas Caras",
-              "detail": "Cartão e cheque especial consomem seu patrimônio",
-              "icon": "receipt",
-              "x": 36,
-              "y": 8,
-              "width": 28,
-              "height": 45,
-              "initially_visible": false
+              "id": "food",
+              "kind": "label",
+              "label": "Alimentos e bens: mais sensíveis",
+              "x": 3,
+              "y": 10,
+              "width": 45,
+              "height": 32,
+              "initially_visible": false,
+              "label_size": 56
             },
             {
-              "id": "pilar_educacao",
-              "kind": "note",
-              "label": "Entender Antes de Agir",
-              "detail": "Informação de qualidade é a melhor blindagem financeira",
-              "icon": "search",
-              "x": 67,
-              "y": 8,
-              "width": 29,
-              "height": 56,
-              "initially_visible": false
+              "id": "services",
+              "kind": "label",
+              "label": "Serviços: efeito estimado menor",
+              "x": 3,
+              "y": 49,
+              "width": 45,
+              "height": 28,
+              "initially_visible": false,
+              "label_size": 48
             },
             {
-              "id": "cta_banner",
-              "kind": "note",
-              "label": "Inscreva-se e Comente!",
-              "detail": "O preço das coisas já começou a pesar na sua região?",
-              "icon": "bell",
-              "x": 4,
-              "y": 68,
-              "width": 92,
-              "height": 22,
-              "initially_visible": false
+              "id": "limit",
+              "kind": "label",
+              "label": "Estimativa tem incerteza",
+              "x": 3,
+              "y": 84,
+              "width": 45,
+              "height": 13,
+              "initially_visible": false,
+              "label_size": 34
             }
-          ]
-        }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "alimentos em casa",
+            "target_id": "food",
+            "action": "reveal",
+            "headline": "Alimentos e bens: mais sensíveis",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 27,
+              "y": 27,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "em serviços",
+            "target_id": "services",
+            "action": "reveal",
+            "headline": "Serviços: efeito estimado menor",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 27,
+              "y": 65,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "incerteza é ampla",
+            "target_id": "limit",
+            "action": "reveal",
+            "headline": "Estimativa tem incerteza",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "quanto cada item",
+            "target_id": "cart",
+            "action": "focus",
+            "headline": "Compra real · imagem ilustrativa",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "camera": {
+              "x": 75,
+              "y": 52,
+              "zoom": 1.05,
+              "motion_seconds": 0.8
+            }
+          }
+        ]
+      }
+    },
+    {
+      "index": 9,
+      "title": "O que olhar depois da manchete",
+      "narration": "Se essa ligação entre política e seu bolso ficou mais clara, se inscreva no O Dinheiro Explica para acompanhar as próximas histórias. E guarde três perguntas para a próxima manchete: qual cotação está sendo usada, e de que horário? O que mudou nas propostas e nas contas públicas? E o movimento continua depois que o ruído passa? A eleição pode mudar expectativas, o câmbio pode mudar custos, e os custos podem chegar aos preços. Entre uma ponta e a outra, procure evidência. É assim que a gente entende a notícia sem transformar torcida política em previsão para o seu dinheiro.",
+      "claim_ids": [
+        "C13"
+      ],
+      "visual": {
+        "type": "DOCUMENT",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "subscribe",
+              "kind": "label",
+              "label": "Inscreva-se · O Dinheiro Explica",
+              "x": 7,
+              "y": 4,
+              "width": 86,
+              "height": 18,
+              "initially_visible": true,
+              "label_size": 52
+            },
+            {
+              "id": "question",
+              "kind": "label",
+              "label": "Qual cotação? Qual horário?",
+              "x": 7,
+              "y": 38,
+              "width": 86,
+              "height": 32,
+              "initially_visible": false,
+              "label_size": 68
+            },
+            {
+              "id": "wallet",
+              "kind": "object",
+              "label": "Seu dinheiro merece evidência",
+              "x": 32,
+              "y": 74,
+              "width": 36,
+              "height": 23,
+              "initially_visible": false,
+              "object_type": "wallet"
+            }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "se inscreva",
+            "target_id": "subscribe",
+            "action": "focus",
+            "headline": "Inscreva-se · O Dinheiro Explica",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "qual cotação está sendo usada",
+            "target_id": "question",
+            "action": "reveal",
+            "headline": "Qual cotação? Qual horário?",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "O que mudou nas propostas",
+            "target_id": "question",
+            "action": "update",
+            "headline": "Proposta e contas: o que mudou?",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "o ruído passa",
+            "target_id": "question",
+            "action": "update",
+            "headline": "O movimento persistiu?",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "procure evidência",
+            "target_id": "wallet",
+            "action": "reveal",
+            "headline": "Seu dinheiro merece evidência",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "retire_ids": [
+              "subscribe",
+              "question"
+            ]
+          }
+        ]
       }
     }
   ],
   "packaging": {
     "strategy": {
-      "click_reason": "A oscilação do dólar a R$ 5,21 às vésperas da eleição gera dúvida direta sobre aumento de preços no supermercado, combustíveis e proteção de patrimônio.",
-      "visual_focus": "O número 5,21 em destaque com o símbolo do dólar e da inflação/mercado, sem gráficos caóticos.",
-      "curiosity_gap": "Se eu não viajo nem compro em dólar, por que a alta vai pesar no meu bolso e o que fazer com os juros a 13,75%?",
-      "mobile_readability": "Tipografia pesada, números gigantes, contraste alto em 320x180.",
-      "anti_clickbait_check": "O título e a capa refletem com precisão a cotação real e a mecânica de repasse cambial.",
-      "repetition_check": "Abordagem focada em economia doméstica e câmbio, sem metáforas repetidas de outros temas.",
-      "youtube_safety_check": "Conteúdo factual de educação financeira, sem viés político-partidário."
+      "click_reason": "Ligar uma preocupação concreta com seu dinheiro à eleição sem promessa de cotação.",
+      "visual_focus": "Uma carteira grande recebe um percurso iniciado em símbolo eleitoral e atravessado porR$/US$.",
+      "curiosity_gap": "Como uma proposta que ainda não virou lei pode chegar ao preço de uma compra?",
+      "mobile_readability": "Objeto dominante e texto curto, sem pequeno gráfico eleitoral ou números voláteis.",
+      "anti_clickbait_check": "O roteiro explica canais e limites; não afirma que determinado candidato controla dólar ou supermercado.",
+      "repetition_check": "Percurso de expectativa até carteira com documentos/dados e comparação aritmética; não repetirgrade de cards doIPP.",
+      "youtube_safety_check": "Análise econômica atribuída, sem orientação devoto ou previsão de ganho."
     },
     "titles": [
       {
         "id": "title_main",
-        "text": "Dólar a R$ 5,21 na reta final: o que a eleição vai fazer com o seu dinheiro e com os preços?",
-        "rationale": "Conecta o fato do dia com o impacto direto na vida prática do brasileiro."
+        "text": "Dólar e eleições: como a política pode chegar ao seu bolso",
+        "rationale": "Nomeia dólar/eleições e oferece relação concreta entregue no roteiro."
       }
     ],
     "thumbnails": [
       {
         "id": "thumb_main",
-        "headline": "DÓLAR A R$ 5,21: E O SEU BOLSO?",
-        "concept": "Cotação do dólar em destaque com seta de repasse para o consumo e o selo de proteção da Selic.",
-        "visual_prompt": "Capa editorial financeira YouTube 16:9, fundo carvão escuro com detalhes em dourado #FFBD19, tipografia pesada e limpa."
+        "headline": "ELEIÇÃO NO BOLSO?",
+        "concept": "Carteira àdireita e um símbolo deurna àesquerda conectados por uma faixaR$/US$, sem rosto decandidato.",
+        "visual_prompt": "Capa completa16:9 doODinheiroExplica: fundo carvão, amarelo#FFBD19 ebranco. Carteira brasileira reconhecível grande no lado direito, símbolo deurna eletrônica no lado esquerdo, faixa visual de conversãoR$/US$ liga osdois. Texto principalELEIÇÃO NO BOLSO? em tipografia forte. Composição editorial limpa, profundidade e luz pontual. Sem logotipo, rosto de candidato, promessa de cotação, gráfico inventado ou dados minúsculos."
       }
     ]
   },
   "publication": {
-    "description": "O dólar operou com forte volatilidade no pregão de 29 de setembro de 2026, tocando a máxima de R$ 5,24 e fechando cotado a R$ 5,21. A poucos dias do primeiro turno das eleições, a oscilação do câmbio acende o alerta no mercado e no bolso dos brasileiros.\n\nNeste vídeo, explicamos na prática o mecanismo de repasse cambial (pass-through): por que a alta da moeda americana mexe diretamente com o preço do pão, da carne e do combustível, mesmo para quem não gasta um centavo em dólar. Além disso, analisamos o papel da taxa Selic em 13,75% ao ano e as melhores estratégias para proteger seu patrimônio sem cair em desespero especulativo.\n\nBases do vídeo:\nBanco Central do Brasil — Cotações de Fechamento do Câmbio (PTAX)\nBanco Central do Brasil — Atas do Copom e Relatório de Inflação\nG1 Economia — Cobertura de Mercados e Câmbio\nFGV IBRE — Estudos sobre Transmissão Cambial e Preços ao Consumidor\n\n#Dolar #Economia #Eleicoes2026 #Inflacao #Selic #ODinheiroExplica",
+    "description": "Como a eleição pode mexer no dólar e chegar ao seu bolso? Roberto explica o caminho entre decisões fiscais, expectativas, câmbio e custos, com dados atualizados em 30 de setembro de 2026.\n\nA PTAX de venda de 30/09 foi R$ 5,1809. Ela é uma taxa de referência e não deve ser confundida com o dólar comercial ao vivo ou o preço de uma casa de câmbio. O vídeo também apresenta a dívida bruta de agosto divulgada hoje pelo Banco Central, confronta a cobertura sobre as contas públicas e mostra por que o contexto internacional continua importante.\n\nUma conta hipotética com uma peça de cem dólares ajuda a enxergar o mecanismo. Depois, seguimos os limites do repasse: estoque, contratos, margem, concorrência e a incerteza das pesquisas. Nenhum exemplo é previsão de preço ou recomendação de investimento.\n\n#Dolar #Eleicoes2026 #Economia #ODinheiroExplica",
     "seo": {
-      "primary_keyword": "dólar hoje",
+      "primary_keyword": "dólar e eleições",
       "secondary_keywords": [
-        "dólar a 5 21",
-        "dólar e eleições",
+        "dólar e política",
+        "câmbio",
+        "contas públicas",
+        "dívida pública",
         "repasse cambial",
-        "inflação dólar",
-        "o dinheiro explica",
-        "taxa selic",
-        "investimentos hoje"
+        "preços"
       ],
-      "search_intent": "Entender o impacto da subida do dólar para 5,21 na reta final eleitoral sobre a inflação e finanças pessoais.",
-      "description_strategy": "Apresentar a cotação real, conectar à rotina do consumidor e elencar as fontes oficiais."
+      "search_intent": "Entender como decisões políticas podem influenciar o dólar e as compras noBrasil.",
+      "description_strategy": "Explicar a promessa nasduasprimeiraslinhas e identificar data/tipo das cotações, fontes e limites dos exemplos."
     },
     "tags": [
       "dólar",
-      "dólar hoje",
-      "dólar 5 21",
-      "eleições 2026",
-      "inflação",
+      "eleições2026",
+      "dólar e política",
+      "câmbio",
+      "contas públicas",
+      "dívida pública",
       "repasse cambial",
-      "selic",
-      "banco central",
-      "economia brasileira",
       "O Dinheiro Explica"
     ],
     "chapters": [],
