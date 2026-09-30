@@ -1,5 +1,5 @@
-Produção autorizada: dólar e política — 30/09/2026 — v4 do zero.
-Narração gerada integralmente pela API atual do GitHub, sem cache nem artifact anterior.
-Continuidade v2: match espectral lento em janelas, ganho estático e limiter apenas de segurança.
+Produção autorizada: dólar e política — nova geração com áudio bruto quando homogêneo.
+Narração sem carimbo da data de publicação; datas aparecem apenas quando pertencem ao fato.
+Se houver troca real de modelo, inserir marcador vocal curto com a própria voz/modelo novo.
 force_fresh_audio=true
-Trigger: 2026-09-30T21:48Z
+Trigger: 2026-09-30T23:31Z
