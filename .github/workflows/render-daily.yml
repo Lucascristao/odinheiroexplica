@@ -33,8 +33,11 @@ jobs:
           p = json.load(open("video/data/daily.json", encoding="utf-8"))
           title = p.get("packaging", {}).get("titles", [{}])[0].get("text") or p.get("title", "O Dinheiro Explica")
           slug = p.get("project_id", "video-diario")
+          trigger = open("render-trigger/daily.txt", encoding="utf-8").read().splitlines()
+          force_fresh = any(line.strip().lower() == "force_fresh_audio=true" for line in trigger)
           print("ODE_VIDEO_TITLE=" + title.replace("\n", " "))
           print("ODE_PROJECT_SLUG=" + slug.replace("\n", "-"))
+          print("ODE_FORCE_FRESH_AUDIO=" + ("true" if force_fresh else "false"))
           PY
 
       - name: Python
@@ -111,6 +114,7 @@ jobs:
             --strict
 
       - name: Restore matching Gemini audio
+        if: env.ODE_FORCE_FRESH_AUDIO != 'true'
         uses: actions/cache/restore@v4
         with:
           path: public/generated-audio/daily
@@ -119,6 +123,7 @@ jobs:
             gemini-audio-v2-
 
       - name: Restore reviewed audio when requested
+        if: env.ODE_FORCE_FRESH_AUDIO != 'true'
         env:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
@@ -139,6 +144,10 @@ jobs:
             --percent 10 \
             --detail "Pronúncia revisada. Gerando a narração com a voz do apresentador."
 
+          if [ "$ODE_FORCE_FRESH_AUDIO" = "true" ]; then
+            echo "[Audio Engine] Execução do zero solicitada; ignorando cache e artifacts anteriores."
+            rm -rf public/generated-audio/daily
+          fi
           mkdir -p public/generated-audio/daily video/generated render-output
           python worker/synthesize_scenes.py \
             --input video/data/daily.json \

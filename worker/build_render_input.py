@@ -194,7 +194,7 @@ def main() -> None:
     if args.require_gemini:
         require_gemini_manifest(manifest)
     if args.require_voice_continuity:
-        version = "adaptive-voice-continuity-v1"
+        version = "adaptive-voice-continuity-v2"
         if manifest.get("postprocess", {}).get("version") != version or any(
             scene.get("postprocess", {}).get("version") != version
             for scene in manifest.get("scenes", [])

@@ -79,7 +79,16 @@ class VoiceContinuityIntegrationTests(unittest.TestCase):
             self.assertEqual(result["postprocess"]["version"], continuity.VERSION)
             self.assertEqual(len(result["scenes"]), 3)
             fallback = next(scene for scene in result["scenes"] if scene["id"] == "scene-02")
-            self.assertIn("residual-match-gemini-3.8-flash-lite-tts", fallback["postprocess"]["reason"])
+            self.assertIn("slow-window-match-gemini-3.8-flash-lite-tts", fallback["postprocess"]["reason"])
+            self.assertGreaterEqual(len(fallback["postprocess"]["adaptive_windows"]), 2)
+            self.assertEqual(
+                fallback["postprocess"]["normalization_type"],
+                "static-gain-with-safety-limiter",
+            )
+            self.assertEqual(
+                result["postprocess"]["normalization_type"],
+                "static-gain-with-safety-limiter",
+            )
 
             for scene in result["scenes"]:
                 wav = output / scene["file"]
