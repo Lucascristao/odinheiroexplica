@@ -1,3 +1,4 @@
-Produção autorizada: dólar e política — 30/09/2026 — v2.
-Continuidade de voz adaptativa, volume uniforme, fontes sem marcas na fala e direção visual revisada.
+Produção autorizada: dólar e política — 30/09/2026 — v3.
+Fallback de voz em cascata 3.8 Flash → 3.8 Flash-Lite → 3.1, mesma voz, continuidade adaptativa corrigida e validação WAV por ffprobe.
 restore_audio_artifact=11121120586
+Trigger: 2026-09-30T21:05Z
