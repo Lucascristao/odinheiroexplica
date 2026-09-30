@@ -1,5 +1,6 @@
-"""Integration regression for processed 24-bit WAV voice continuity output."""
+"""Integration regression for voice continuity v3."""
 
+import hashlib
 import json
 from pathlib import Path
 import shutil
@@ -13,32 +14,51 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import process_voice_continuity as continuity  # noqa: E402
 
 
-@unittest.skipUnless(shutil.which("ffmpeg") and shutil.which("ffprobe"), "ffmpeg/ffprobe required")
+@unittest.skipUnless(
+    shutil.which("ffmpeg") and shutil.which("ffprobe"),
+    "ffmpeg/ffprobe required",
+)
 class VoiceContinuityIntegrationTests(unittest.TestCase):
-    def make_tone(self, path: Path, frequency: int) -> None:
+    def make_tone(
+        self, path: Path, frequency: int, duration: float = 7.0
+    ) -> None:
         subprocess.run(
             [
                 "ffmpeg", "-hide_banner", "-loglevel", "error", "-y",
                 "-f", "lavfi", "-i",
-                f"sine=frequency={frequency}:sample_rate=48000:duration=7",
+                f"sine=frequency={frequency}:sample_rate=48000:duration={duration}",
                 "-ac", "1", "-b:a", "192k", str(path),
             ],
             check=True,
         )
 
-    def test_pcm_s24le_output_is_validated_with_ffprobe_not_python_wave(self) -> None:
+    def run_worker(
+        self, manifest: dict, source: Path, output: Path, root: Path
+    ) -> dict:
+        manifest_in = root / "tts.json"
+        manifest_out = root / "processed.json"
+        manifest_in.write_text(json.dumps(manifest), encoding="utf-8")
+        argv = [
+            "process_voice_continuity.py",
+            "--input-manifest", str(manifest_in),
+            "--source-dir", str(source),
+            "--output-dir", str(output),
+            "--output-manifest", str(manifest_out),
+        ]
+        with patch.object(sys, "argv", argv):
+            continuity.main()
+        return json.loads(manifest_out.read_text(encoding="utf-8"))
+
+    def test_single_model_is_byte_identical_with_zero_effects(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             source = root / "source"
             output = root / "processed"
             source.mkdir()
+
             scenes = []
-            specs = [
-                ("scene-00", 330, continuity.PRIMARY_MODEL),
-                ("scene-01", 390, continuity.PRIMARY_MODEL),
-                ("scene-02", 440, continuity.SECONDARY_MODEL),
-            ]
-            for scene_id, frequency, model in specs:
+            for idx, frequency in enumerate((330, 390)):
+                scene_id = f"scene-{idx:02d}"
                 audio = source / f"{scene_id}.mp3"
                 self.make_tone(audio, frequency)
                 scenes.append({
@@ -46,57 +66,121 @@ class VoiceContinuityIntegrationTests(unittest.TestCase):
                     "file": audio.name,
                     "duration_seconds": 7.0,
                     "engine": "google-gemini-tts",
-                    "model": model,
+                    "model": continuity.PRIMARY_MODEL,
                     "voice": "Charon",
                     "voice_treatment": "none",
-                    "fallback_reason": None if model == continuity.PRIMARY_MODEL else "test-fallback",
+                    "fallback_reason": None,
                     "beat_timings": [],
                 })
 
             manifest = {
                 "engine": "google-gemini-tts",
                 "model": continuity.PRIMARY_MODEL,
-                "fallback_model": continuity.SECONDARY_MODEL,
-                "fallback_models": [continuity.SECONDARY_MODEL, continuity.FALLBACK_MODEL],
+                "fallback_models": [
+                    continuity.SECONDARY_MODEL,
+                    continuity.FALLBACK_MODEL,
+                ],
                 "voice": "Charon",
+                "model_transition_count": 0,
                 "scenes": scenes,
             }
-            manifest_in = root / "tts.json"
-            manifest_out = root / "processed.json"
-            manifest_in.write_text(json.dumps(manifest), encoding="utf-8")
-
-            argv = [
-                "process_voice_continuity.py",
-                "--input-manifest", str(manifest_in),
-                "--source-dir", str(source),
-                "--output-dir", str(output),
-                "--output-manifest", str(manifest_out),
-            ]
-            with patch.object(sys, "argv", argv):
-                continuity.main()
-
-            result = json.loads(manifest_out.read_text(encoding="utf-8"))
-            self.assertEqual(result["postprocess"]["version"], continuity.VERSION)
-            self.assertEqual(len(result["scenes"]), 3)
-            fallback = next(scene for scene in result["scenes"] if scene["id"] == "scene-02")
-            self.assertIn("slow-window-match-gemini-3.8-flash-lite-tts", fallback["postprocess"]["reason"])
-            self.assertGreaterEqual(len(fallback["postprocess"]["adaptive_windows"]), 2)
+            result = self.run_worker(manifest, source, output, root)
             self.assertEqual(
-                fallback["postprocess"]["normalization_type"],
-                "static-gain-with-safety-limiter",
+                result["postprocess"]["mode"],
+                "homogeneous-passthrough",
             )
-            self.assertEqual(
-                result["postprocess"]["normalization_type"],
-                "static-gain-with-safety-limiter",
-            )
+            self.assertFalse(result["postprocess"]["effects_applied"])
 
             for scene in result["scenes"]:
-                wav = output / scene["file"]
-                metadata = continuity.probe_audio_format(shutil.which("ffprobe"), wav)
-                self.assertEqual(metadata["codec_name"], "pcm_s24le")
-                self.assertEqual(metadata["sample_rate"], 48000)
-                self.assertEqual(metadata["channels"], 1)
-                self.assertEqual(scene["postprocess"]["output_samples"], 7 * 48000)
+                original = source / scene["file"]
+                copied = output / scene["file"]
+                self.assertEqual(
+                    hashlib.sha256(original.read_bytes()).hexdigest(),
+                    hashlib.sha256(copied.read_bytes()).hexdigest(),
+                )
+                self.assertTrue(scene["postprocess"]["byte_identical"])
+                self.assertFalse(scene["postprocess"]["eq_applied"])
+                self.assertFalse(scene["postprocess"]["gain_applied"])
+                self.assertFalse(scene["postprocess"]["limiter_applied"])
+                self.assertFalse(scene["postprocess"]["reencoded"])
+
+    def test_mixed_model_processes_only_fallback_and_prepends_marker(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "source"
+            output = root / "processed"
+            source.mkdir()
+
+            primary = source / "scene-00.mp3"
+            fallback = source / "scene-01.mp3"
+            marker = source / "scene-01.transition.mp3"
+            self.make_tone(primary, 330)
+            self.make_tone(fallback, 440)
+            self.make_tone(marker, 220, 0.6)
+
+            scenes = [
+                {
+                    "id": "scene-00",
+                    "file": primary.name,
+                    "duration_seconds": 7.0,
+                    "engine": "google-gemini-tts",
+                    "model": continuity.PRIMARY_MODEL,
+                    "voice": "Charon",
+                    "voice_treatment": "none",
+                    "fallback_reason": None,
+                    "beat_timings": [],
+                },
+                {
+                    "id": "scene-01",
+                    "file": fallback.name,
+                    "duration_seconds": 7.0,
+                    "engine": "google-gemini-tts",
+                    "model": continuity.SECONDARY_MODEL,
+                    "voice": "Charon",
+                    "voice_treatment": "none",
+                    "fallback_reason": "test",
+                    "beat_timings": [{"audio_offset_seconds": 1.0}],
+                    "model_transition": {
+                        "from_model": continuity.PRIMARY_MODEL,
+                        "to_model": continuity.SECONDARY_MODEL,
+                        "marker_status": "generated",
+                        "marker_file": marker.name,
+                        "marker_duration_seconds": 0.6,
+                        "pause_after_seconds": 0.18,
+                    },
+                },
+            ]
+            manifest = {
+                "engine": "google-gemini-tts",
+                "model": continuity.PRIMARY_MODEL,
+                "fallback_models": [
+                    continuity.SECONDARY_MODEL,
+                    continuity.FALLBACK_MODEL,
+                ],
+                "voice": "Charon",
+                "model_transition_count": 1,
+                "scenes": scenes,
+            }
+            result = self.run_worker(manifest, source, output, root)
+            self.assertEqual(
+                result["postprocess"]["mode"],
+                "mixed-model-fallback-only",
+            )
+            first, second = result["scenes"]
+            self.assertTrue(first["postprocess"]["byte_identical"])
+            self.assertFalse(first["postprocess"]["eq_applied"])
+            self.assertFalse(first["postprocess"]["gain_applied"])
+            self.assertTrue(
+                second["postprocess"]["transition_marker_applied"]
+            )
+            self.assertGreater(second["duration_seconds"], 7.5)
+            self.assertGreater(
+                second["beat_timings"][0]["audio_offset_seconds"],
+                1.7,
+            )
+            self.assertFalse(second["postprocess"]["limiter_applied"])
+            self.assertEqual((output / first["file"]).suffix, ".mp3")
+            self.assertEqual((output / second["file"]).suffix, ".wav")
 
 
 if __name__ == "__main__":
