@@ -5,6 +5,7 @@ import {DynamicMotionV2} from "./DynamicMotionV2";
 import {EditorialPilot, PixPilotThumbnail} from "./EditorialPilot";
 import {DailyEditorial} from "./DailyEditorial";
 import {DailyThumbnail} from "./DailyThumbnail";
+import {MotionDesignProof} from "./MotionDesignProof";
 import renderInput from "../generated/render-input.json";
 import pilotRenderInput from "../generated/pilot-render-input.json";
 import dailyRenderInput from "../generated/daily-render-input.json";
@@ -12,6 +13,14 @@ import dailyRenderInput from "../generated/daily-render-input.json";
 export const RemotionRoot = () => {
   return (
     <>
+      <Composition
+        id="MotionDesignProof"
+        component={MotionDesignProof}
+        durationInFrames={480}
+        fps={30}
+        width={1920}
+        height={1080}
+      />
       <Composition
         id="BrandMotionTest"
         component={BrandMotionTest}

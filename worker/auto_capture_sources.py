@@ -1,8 +1,8 @@
 import argparse
 import json
-import os
 import sys
 from pathlib import Path
+from urllib.parse import parse_qs, urlparse
 
 
 def sanitize_page_thoroughly(page) -> None:
@@ -75,37 +75,37 @@ def sanitize_page_thoroughly(page) -> None:
         print(f"[auto_capture] Aviso na sanitizacao: {exc}")
 
 
-def generate_editorial_fallback(dest_path: Path, asset: dict) -> None:
-    try:
-        from PIL import Image, ImageDraw
-
-        width, height = 1351, 917
-        img = Image.new("RGB", (width, height), color="#FFFFFF")
-        draw = ImageDraw.Draw(img)
-
-        draw.rectangle([(20, 20), (width - 20, height - 20)], outline="#E2E8F0", width=2)
-
-        cross_len = 16
-        for cx, cy in [(40, 40), (width - 40, 40), (40, height - 40), (width - 40, height - 40)]:
-            draw.line([(cx - cross_len, cy), (cx + cross_len, cy)], fill="#7E8B99", width=2)
-            draw.line([(cx, cy - cross_len), (cx, cy + cross_len)], fill="#7E8B99", width=2)
-
-        subject = asset.get("subject", "Registro de Documento Oficial")
-        role = asset.get("narrative_role", "Comprovacao Editorial")
-        attribution = asset.get("attribution", "Fonte Oficial")
-
-        draw.text((60, 60), f"FONTE: {attribution.upper()}", fill="#64748B")
-        draw.text((60, 140), subject, fill="#0F172A")
-        draw.text((60, 220), role, fill="#334155")
-
-        dest_path.parent.mkdir(parents=True, exist_ok=True)
-        img.save(dest_path, "PNG")
-        print(f"[auto_capture] Fallback editorial gerado em: {dest_path.name}")
-    except Exception as exc:
-        print(f"[auto_capture] Falha ao gerar fallback: {exc}")
+def validate_source_asset(asset: dict) -> tuple[str, str]:
+    """Exige um documento identificável e uma frase verificável antes de abrir o navegador."""
+    asset_id = asset.get("id", "<sem id>")
+    url = asset.get("source_page_url")
+    expected_text = asset.get("expected_text")
+    if not isinstance(url, str) or not url.strip():
+        raise RuntimeError(f"Asset {asset_id}: source_excerpt exige source_page_url específica.")
+    url = url.strip()
+    parsed = urlparse(url)
+    path_parts = [part for part in parsed.path.split("/") if part]
+    meaningful_query = any(
+        not key.lower().startswith("utm_") and key.lower() not in {"fbclid", "gclid"}
+        for key in parse_qs(parsed.query)
+    )
+    has_document_path = len(path_parts) >= 2 or (
+        len(path_parts) == 1
+        and ("." in path_parts[0] or ("-" in path_parts[0] and len(path_parts[0]) >= 16))
+    )
+    if parsed.scheme != "https" or not parsed.netloc or not (has_document_path or meaningful_query):
+        raise RuntimeError(
+            f"Asset {asset_id}: source_page_url deve ser HTTPS e apontar para uma página específica, não uma homepage ou seção: {url}"
+        )
+    if not isinstance(expected_text, str) or len(expected_text.strip()) < 8:
+        raise RuntimeError(
+            f"Asset {asset_id}: source_excerpt exige expected_text com uma frase do documento (mínimo 8 caracteres)."
+        )
+    return url, expected_text.strip()
 
 
 def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> bool:
+    url, expected_text = validate_source_asset(asset)
     capture_file = asset.get("capture_file")
     if not capture_file:
         safe_id = "".join(c if c.isalnum() or c in "-_" else "-" for c in asset.get("id", "asset"))
@@ -114,20 +114,13 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
 
     filename = Path(capture_file).name
     dest_path = captures_dir / filename
-
-    url = asset.get("source_page_url")
-    if not url:
-        print(f"[auto_capture] Asset {asset.get('id')} sem source_page_url; gerando editorial.")
-        generate_editorial_fallback(dest_path, asset)
-        return True
+    if playwright_browser is None:
+        raise RuntimeError(f"Asset {asset.get('id')}: navegador Playwright indisponível; nenhuma captura foi criada.")
 
     print(f"[auto_capture] Processando captura: {url} -> {dest_path.name}")
     dest_path.parent.mkdir(parents=True, exist_ok=True)
-
-    if playwright_browser is None:
-        generate_editorial_fallback(dest_path, asset)
-        return True
-
+    temp_path = dest_path.with_name(f".{dest_path.stem}.tmp.png")
+    context = None
     try:
         context = playwright_browser.new_context(
             viewport={"width": 1351, "height": 917},
@@ -136,16 +129,10 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
         )
         page = context.new_page()
 
-        # 1. Navegar na URL
-        try:
-            response = page.goto(url, wait_until="domcontentloaded", timeout=40000)
-            if response and response.status in (404, 500, 502, 503):
-                print(f"[auto_capture] ALERTA: Status HTTP {response.status} em {url}. Acionando fallback editorial.")
-                generate_editorial_fallback(dest_path, asset)
-                context.close()
-                return True
-        except Exception as nav_exc:
-            print(f"[auto_capture] Aviso na navegação de {url}: {nav_exc}")
+        response = page.goto(url, wait_until="domcontentloaded", timeout=40000)
+        if response is None or response.status >= 400:
+            status = response.status if response else "sem resposta HTTP"
+            raise RuntimeError(f"página retornou {status}")
 
         # 2. Aguardar scripts assíncronos
         page.wait_for_timeout(5000)
@@ -172,37 +159,35 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
         ]
         is_error = any(ind in content_text.lower() for ind in error_indicators) or any(ind in page_title.lower() for ind in error_indicators)
 
-        expected_text = asset.get("expected_text")
-        if expected_text and expected_text.lower() not in content_text.lower():
-            print(f"[auto_capture] ALERTA: Texto esperado '{expected_text}' não encontrado na página {url}.")
-            is_error = True
-
         if is_error:
-            print(f"[auto_capture] Página inválida ou 404 detectada em {url}. Acionando fallback editorial autêntico.")
-            generate_editorial_fallback(dest_path, asset)
-            context.close()
-            return True
+            raise RuntimeError("página de erro ou conteúdo não encontrado")
+        normalized_content = " ".join(content_text.casefold().split())
+        normalized_expected = " ".join(expected_text.casefold().split())
+        if normalized_expected not in normalized_content:
+            raise RuntimeError(f"expected_text não encontrado na página: {expected_text!r}")
 
         # 6. Rolar para o trecho ou elemento específico se solicitado (ex: Art. 31 da lei)
-        scroll_to_text = asset.get("scroll_to_text")
+        scroll_to_text = asset.get("scroll_to_text") or expected_text
         if scroll_to_text:
-            scrolled = page.evaluate("""(textToFind) => {
-                const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
-                let node;
-                while ((node = walker.nextNode())) {
-                    if (node.nodeValue && node.nodeValue.includes(textToFind)) {
-                        const parent = node.parentElement;
-                        if (parent) {
-                            parent.scrollIntoView({ block: 'center', inline: 'center' });
-                            return true;
-                        }
+            scrolled = page.evaluate(r"""(textToFind) => {
+                const normalize = text => (text || '').replace(/\s+/g, ' ').trim().toLocaleLowerCase();
+                const needle = normalize(textToFind);
+                let best = null;
+                for (const el of document.querySelectorAll('h1, h2, h3, p, td, li, span, div, section, article, main')) {
+                    if (!el.getClientRects().length) continue;
+                    const text = normalize(el.innerText);
+                    if (text.includes(needle) && (!best || text.length < best.textLength)) {
+                        best = { element: el, textLength: text.length };
                     }
                 }
-                return false;
+                if (!best) return false;
+                best.element.scrollIntoView({ block: 'center', inline: 'center' });
+                return true;
             }""", scroll_to_text)
-            if scrolled:
-                print(f"[auto_capture] Rolagem até '{scroll_to_text}' realizada com sucesso.")
-                page.wait_for_timeout(1000)
+            if not scrolled:
+                raise RuntimeError(f"trecho esperado não foi localizado para a captura: {scroll_to_text!r}")
+            print(f"[auto_capture] Rolagem até '{scroll_to_text}' realizada com sucesso.")
+            page.wait_for_timeout(1000)
 
         # 7. Screenshot do elemento ou viewport completa
         target_selector = asset.get("target_selector")
@@ -212,78 +197,27 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
             try:
                 locator = page.locator(target_selector).first
                 if locator.is_visible(timeout=3000):
-                    locator.screenshot(path=str(dest_path))
+                    locator.screenshot(path=str(temp_path))
                     captured_element = True
                     print(f"[auto_capture] Screenshot do elemento ({target_selector}) salvo com sucesso.")
             except Exception as sel_exc:
-                print(f"[auto_capture] Seletor {target_selector} não encontrado: {sel_exc}")
+                raise RuntimeError(f"target_selector não encontrado: {target_selector}") from sel_exc
+            if not captured_element:
+                raise RuntimeError(f"target_selector não visível: {target_selector}")
 
         if not captured_element:
-            page.screenshot(path=str(dest_path), full_page=False)
+            page.screenshot(path=str(temp_path), full_page=False)
             print(f"[auto_capture] Screenshot limpo salvo em: {dest_path.name}")
 
-        context.close()
+        temp_path.replace(dest_path)
         return True
 
     except Exception as exc:
-        print(f"[auto_capture] Erro ao capturar {url}: {exc}")
-        generate_editorial_fallback(dest_path, asset)
-        return True
-
-    try:
-        context = playwright_browser.new_context(
-            viewport={"width": 1351, "height": 917},
-            user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
-            device_scale_factor=1,
-        )
-        page = context.new_page()
-
-        # 1. Navegar na URL
-        try:
-            page.goto(url, wait_until="domcontentloaded", timeout=40000)
-        except Exception as nav_exc:
-            print(f"[auto_capture] Timeout ou aviso na navegacao de {url}: {nav_exc}")
-
-        # 2. Aguardar 6s para os scripts assíncronos e modais carregarem
-        page.wait_for_timeout(6000)
-
-        # 3. Pressionar Escape para dispensar popovers
-        try:
-            page.keyboard.press("Escape")
-        except Exception:
-            pass
-
-        # 4. Sanitizar completamente (clicar em aceitar/fechar, remover overlays, restaurar fundo branco e opacidade)
-        sanitize_page_thoroughly(page)
-
-        # 5. Aguardar 1.5s para a renderização limpa estabilizar
-        page.wait_for_timeout(1500)
-
-        # 6. Screenshot do elemento ou viewport completa
-        target_selector = asset.get("target_selector")
-        captured_element = False
-
-        if target_selector:
-            try:
-                locator = page.locator(target_selector).first
-                if locator.is_visible(timeout=3000):
-                    locator.screenshot(path=str(dest_path))
-                    captured_element = True
-                    print(f"[auto_capture] Screenshot do elemento ({target_selector}) salvo com sucesso.")
-            except Exception as sel_exc:
-                print(f"[auto_capture] Seletor {target_selector} nao encontrado: {sel_exc}")
-
-        if not captured_element:
-            page.screenshot(path=str(dest_path), full_page=False)
-            print(f"[auto_capture] Screenshot limpo de viewport completa salvo em: {dest_path.name}")
-
-        context.close()
-        return True
-
-    except Exception as exc:
-        print(f"[auto_capture] Erro ao capturar {url}: {exc}")
-        generate_editorial_fallback(dest_path, asset)
-        return True
+        raise RuntimeError(f"Asset {asset.get('id')}: captura de {url} falhou: {exc}") from exc
+    finally:
+        temp_path.unlink(missing_ok=True)
+        if context is not None:
+            context.close()
 
 
 def main() -> None:
@@ -310,6 +244,8 @@ def main() -> None:
         return
 
     print(f"[auto_capture] Processando {len(excerpts)} recortes documentais...")
+    for asset in excerpts:
+        validate_source_asset(asset)
 
     playwright_instance = None
     browser = None
@@ -323,7 +259,7 @@ def main() -> None:
         )
         print("[auto_capture] Playwright Chromium inicializado com sucesso.")
     except Exception as exc:
-        print(f"[auto_capture] Playwright nao disponivel localmente ({exc}). Sera executado no GitHub Actions.")
+        raise RuntimeError(f"Playwright Chromium indisponível; captura interrompida: {exc}") from exc
 
     success_count = 0
     try:

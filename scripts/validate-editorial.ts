@@ -8,6 +8,8 @@ const path = process.argv[2] ?? "video/data/daily.json";
 const project = JSON.parse(readFileSync(path, "utf8"));
 const scenes = project.scenes ?? project.script?.scenes ?? [];
 const assets = new Set((project.visual_assets ?? []).map((a: {id: string}) => a.id));
+const stagedAssets = new Set<string>(scenes.flatMap((scene: any) =>
+  (scene.visual?.stage?.elements ?? []).map((element: any) => element.asset_id).filter(Boolean)));
 const beatSchema = z.object({...stageEventFields, headline: z.string().min(1), anchor: z.string().min(1), detail: z.string().optional(), value: z.string().optional()}).passthrough();
 // Report what will actually be on stage, not merely assets registered in JSON.
 const imageScenes = scenes.filter((scene: any) => {
@@ -18,13 +20,17 @@ const imageScenes = scenes.filter((scene: any) => {
       (b.action === "reveal" && b.target_id === e.id) || (b.reveal_ids ?? []).includes(e.id))));
 }).length;
 console.log(`Cobertura visual: ${imageScenes}/${scenes.length} cenas com foto ou recorte utilizável.`);
-if (scenes.length >= 4 && imageScenes === 0) console.warn("::warning::Plano sem fotos/recortes: o motor renderizará somente texto, ícones e objetos. Selecione imagens durante a pesquisa e vincule-as ao palco; URLs de fontes não viram imagens automaticamente.");
 let failures = 0;
+if (scenes.length >= 4 && imageScenes === 0) {
+  console.warn("::warning::Nenhuma foto/recorte aparece no palco. Confirme que o episódio usa motion graphics por decisão editorial, e não por omissão de assets.");
+}
 const sourceIds=new Set((project.sources??[]).map((s:{id:string})=>s.id));
 for(const raw of project.visual_assets??[]){
   const result=visualAssetSchema.safeParse(raw);
   if(!result.success){console.error(result.error.message);failures++;}
   if(raw.type==="source_excerpt"&&!sourceIds.has(raw.source_id)){console.error(`Fonte inexistente para recorte ${raw.id}`);failures++;}
+  if(raw.type==="source_excerpt"&&!stagedAssets.has(raw.id)){console.error(`Recorte cadastrado mas ausente do palco: ${raw.id}`);failures++;}
+  if(raw.type==="source_excerpt"&&!String(raw.expected_text??"").trim()){console.error(`Recorte sem expected_text verificável: ${raw.id}`);failures++;}
 }
 for (const [index, scene] of scenes.entries()) {
   const error = (message: string) => {console.error(`Cena ${index}: ${message}`); failures++;};

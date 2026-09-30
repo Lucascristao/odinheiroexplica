@@ -1,124 +1,95 @@
 {
-  "project_id": "dolar-eleicoes-2026-09-29",
-  "title": "Dólar a R$ 5,21 na reta final: o que a eleição vai fazer com o seu dinheiro e com os preços?",
+  "project_id": "dolar-repasse-2026-09-29",
+  "title": "Dólar e preços: o caminho até o pão e o frete",
   "version": "1.0",
   "presenter": {
     "gender": "male",
     "name": "Roberto"
   },
   "speech": {
-    "pronunciations": {},
+    "pronunciations": {
+      "PTAX": "pê táx",
+      "ANP": "a ene pê"
+    },
     "ignore_pronunciation_terms": []
   },
   "story": {
-    "subject": "A oscilação do dólar a R$ 5,21 às vésperas do primeiro turno eleitoral e como a volatilidade cambial impacta a inflação, o custo de vida e os investimentos no Brasil.",
-    "angle": "Explicar de forma prática o mecanismo de repasse cambial (pass-through) para quem não consome em dólar, mostrando o efeito cascata nos alimentos (trigo, soja) e combustíveis (diesel, frete), e como proteger o dinheiro sem cair em especulação cega.",
-    "promise": "Mostrar com clareza o caminho do dólar até o carrinho do supermercado e orientar o que fazer com os investimentos enquanto a Selic paga 13,75% ao ano.",
-    "why_now": "Em 29 de setembro de 2026, o dólar registrou forte volatilidade intradiária (tocando R$ 5,24 e fechando a R$ 5,21), impulsionado pelas pesquisas eleitorais para o primeiro turno de domingo.",
+    "subject": "O dado PTAX de 29 de setembro de 2026 e os canais pelos quais uma mudança persistente no câmbio pode afetar trigo, diesel e preços ao consumidor.",
+    "angle": "Seguir dois caminhos concretos, trigo e diesel, e mostrar onde o repasse pode ser amortecido ou demorar, sem atribuir ao primeiro turno uma oscilação específica sem prova.",
+    "promise": "Distinguir o dado do dia, a exposição de custos e o preço que a pessoa efetivamente paga.",
+    "why_now": "A PTAX de venda de 29/09/2026 foi R$ 5,2204 segundo o Banco Central; o TSE marcou o primeiro turno das eleições para 04/10/2026.",
     "category": "economy"
   },
   "visual_assets": [
     {
-      "id": "A1_dolar_bcb",
-      "type": "source_excerpt",
-      "source_id": "S1",
-      "capture_file": "research/captures/bcb-cotacao-dolar.png",
-      "source_page_url": "https://www.bcb.gov.br",
-      "subject": "Banco Central do Brasil • Cotação Oficial do Dólar Comercial",
-      "narrative_role": "Comprovação do pregão e cotação a R$ 5,21",
-      "country_context": "BR",
-      "license": "domínio público / dados abertos governamentais",
-      "attribution": "Banco Central do Brasil / PTAX",
-      "needs_cutout": false,
-      "crop": {
-        "x": 0,
-        "y": 0,
-        "width": 100,
-        "height": 100
-      },
-      "captured_at": "2026-09-29T18:00:00Z"
+      "id": "A_wheat_field",
+      "type": "photo_cutout",
+      "subject": "Campo de trigo (imagem ilustrativa)",
+      "narrative_role": "Dar textura real ao trecho sobre a cadeia do trigo, sem representar a safra brasileira ou provar a projeção da Conab.",
+      "country_context": "global",
+      "source_page_url": "https://commons.wikimedia.org/wiki/File:Wheat_Field_in_Walla_Walla,_Washington,_2018.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Wheat_Field_in_Walla_Walla%2C_Washington%2C_2018.jpg/1280px-Wheat_Field_in_Walla_Walla%2C_Washington%2C_2018.jpg",
+      "license": "CC0 1.0",
+      "attribution": "Jason W Lacey / Wikimedia Commons",
+      "needs_cutout": false
     },
     {
-      "id": "A2_copom_selic",
-      "type": "source_excerpt",
-      "source_id": "S2",
-      "capture_file": "research/captures/bcb-ata-copom.png",
-      "source_page_url": "https://www.bcb.gov.br/publicacoes/atascopom",
-      "subject": "Banco Central do Brasil • Ata do Copom • Transmissão Cambial e Selic",
-      "narrative_role": "Documentação da política monetária e vigilância cambial",
-      "country_context": "BR",
-      "license": "domínio público / publicação oficial",
-      "attribution": "Comitê de Política Monetária (Copom) / Banco Central do Brasil",
-      "needs_cutout": false,
-      "crop": {
-        "x": 0,
-        "y": 0,
-        "width": 100,
-        "height": 100
-      },
-      "captured_at": "2026-09-29T18:00:00Z"
-    },
-    {
-      "id": "A3_noticia_mercado",
-      "type": "source_excerpt",
-      "source_id": "S3",
-      "capture_file": "research/captures/noticia-dolar-eleicoes.png",
-      "source_page_url": "https://g1.globo.com/economia/",
-      "subject": "G1 Economia • Dólar a R$ 5,21 e Volatilidade na Semana Eleitoral",
-      "narrative_role": "Comprovação da cobertura de mercado sobre a reta final das eleições",
-      "country_context": "BR",
-      "license": "imprensa independente",
-      "attribution": "G1 Economia",
-      "needs_cutout": false,
-      "crop": {
-        "x": 0,
-        "y": 0,
-        "width": 100,
-        "height": 100
-      },
-      "captured_at": "2026-09-29T18:00:00Z"
+      "id": "A_shopping_cart",
+      "type": "photo_cutout",
+      "subject": "Carrinho no supermercado (imagem ilustrativa)",
+      "narrative_role": "Aproximar as perguntas finais da compra real; imagem ilustrativa feita fora do Brasil, não evidência de preços.",
+      "country_context": "global",
+      "source_page_url": "https://commons.wikimedia.org/wiki/File:Shopping_Cart_Supermarket.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Shopping_Cart_Supermarket.jpg/1280px-Shopping_Cart_Supermarket.jpg",
+      "license": "CC0 1.0",
+      "attribution": "Safaritravelplus / Wikimedia Commons",
+      "needs_cutout": false
     }
   ],
   "visual_direction": {
-    "concept": "O termômetro do câmbio na economia real: acompanhamos a oscilação do dólar a R$ 5,21 e o seu percurso até as prateleiras de supermercados e postos de combustível, com comparações claras de investimento.",
-    "world": "digital",
+    "concept": "Uma cotação percorre duas rotas, trigo e diesel. As rotas só se encontram no recibo quando há repasse real; contrato, estoque e tempo aparecem como filtros entre custo e preço.",
+    "world": "market",
     "secondary_color": "#FFBD19",
     "motifs": [
-      "termômetro cambial",
-      "efeito cascata no consumo",
-      "comparativo de rendimento Selic vs Dólar",
-      "gráfico de volatilidade"
+      "cotação como ponto de partida",
+      "trigo importado",
+      "caminhão e frete",
+      "recibo no caixa",
+      "filtros entre custo e preço"
     ],
     "motion_language": [
-      "movimento contínuo em ícones e cartões",
-      "transições suaves e precisas",
-      "destaque por contraste e respiração visual"
+      "conexões surgem quando o elo é explicado",
+      "o mesmo número permanece enquanto a rota se abre",
+      "grandeza numérica entra apenas com dado verificado",
+      "um enunciado se transforma no seguinte sem trocar toda a tela"
     ],
     "avoid": [
-      "pânico infundado",
-      "gráficos estáticos sem animação",
-      "especulação de day trade",
-      "layout confuso"
-    ]
+      "título no topo de todas as cenas",
+      "grade fixa de cartões",
+      "gráfico com pontos inventados",
+      "seta que sugira causalidade eleitoral",
+      "movimento ornamental contínuo"
+    ],
+    "implementation_note": "O palco atual anima foco, revelação, atualização e conexões; morph espacial entre cenas e imagens documentais exigem composição Remotion/capturas adicionais."
   },
   "editorial": {
     "strengths": [
-      "Fato econômico real de hoje (29/09/2026) com alta relevância nacional",
-      "Explica o repasse cambial de forma didática para o cidadão comum",
-      "Desmistifica o pânico eleitoral e orienta proteção com base em dados",
-      "Equilíbrio entre fontes primárias oficiais e jornalismo independente"
+      "Cotação PTAX, data eleitoral, exposição do trigo, participação do diesel importado e Selic têm documentos específicos.",
+      "O roteiro distingue preço de custo e repasse possível de alta automática.",
+      "O percurso visual usa objetos recorrentes e relações causais demonstráveis."
     ],
     "risk_flags": [
-      "Não fazer previsão eleitoral nem tomar partido de candidatos",
-      "Não recomendar especulação cambial de curto prazo",
-      "Distinguir impacto em produtos importados de inflação generalizada"
+      "Sem prova de que pesquisas eleitorais causaram a cotação de 29/09.",
+      "Sem máxima intradiária ou fechamento comercial verificados; usar somente PTAX.",
+      "Duas fotos CC0 são ilustrativas e ainda dependem de download e revisão visual no render remoto; nenhum recorte documental foi capturado e auditado.",
+      "Evitar inferir ganho mensal líquido de taxa anual e recomendação de produto financeiro."
     ],
     "source_balance": {
       "requires_diversity": true,
       "public_policy_or_regulation": true,
-      "official_sources_role": "Banco Central do Brasil fornece a cotação oficial PTAX e a política de juros do Copom.",
-      "independent_sources_role": "G1 Economia e FGV IBRE contextualizam a volatilidade das pesquisas e o impacto do repasse nos preços ao consumidor.",
-      "counterpoint_summary": "Embora a alta do dólar pressione custos de importação e combustíveis, a taxa Selic em 13,75% ao ano atua como freio de segurança para atrair capital e mitigar a desvalorização cambial.",
+      "official_sources_role": "Banco Central, Conab, ANP e TSE confirmam dados, estimativas e datas diretamente.",
+      "independent_sources_role": "FGV IBRE e pesquisa acadêmica do Insper oferecem contexto independente sobre repasse cambial; não há apuração que permita atribuir o câmbio do dia à eleição.",
+      "counterpoint_summary": "O câmbio pode elevar custos, mas magnitude, produto e horizonte do repasse variam; um dia de cotação não prova alta imediata de preços.",
       "official_claims_attributed": true
     },
     "youtube_suitability": {
@@ -126,1228 +97,1094 @@
       "sensitive_topics": [
         "eleições",
         "câmbio",
-        "inflação"
+        "investimentos"
       ],
-      "context_notes": "Conteúdo estritamente educacional de economia e finanças pessoais, sem viés político-partidário.",
+      "context_notes": "Explicação econômica baseada em dados oficiais, sem afirmação partidária ou recomendação individual de investimento.",
       "title_thumbnail_safe": true,
-      "monetization_notes": "Análise econômica factual com alto valor educativo para o público."
+      "monetization_notes": "Título e capa descrevem relação econômica possível e não prometem lucro ou crise inevitável."
+    },
+    "render_review": {
+      "status": "visual_evidence_pending",
+      "note": "Duas fotos CC0 ilustrativas foram vinculadas ao palco. Nenhum source_excerpt foi incluído porque não há captura documental legível e validada. O download das fotos e a composição final exigem inspeção visual antes de publicação."
     }
   },
   "sources": [
     {
       "id": "S1",
-      "title": "Banco Central do Brasil — Cotações de Fechamento do Câmbio e Sistema PTAX",
-      "url": "https://www.bcb.gov.br/estabilidadefinanceira/historicocotacoes",
+      "title": "Banco Central — API PTAX, cotação de 29/09/2026",
+      "url": "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?%40dataCotacao=%2709-29-2026%27&%24format=json",
       "publisher": "Banco Central do Brasil",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "primary_document",
       "published_at": "2026-09-29",
-      "notes": "Registro da cotação do dólar comercial a R$ 5,21 no pregão de 29 de setembro de 2026."
+      "notes": "Resposta datada da API oficial: compra 5,21980; venda 5,22040; dataHoraCotacao 2026-09-29 13:06:06. Não é máxima intradiária nem fechamento comercial."
     },
     {
       "id": "S2",
-      "title": "Banco Central do Brasil — Atas do Copom e Relatório de Inflação",
-      "url": "https://www.bcb.gov.br/publicacoes/atascopom",
+      "title": "Conab — 12º Levantamento da Safra 2025/26, tabela 18",
+      "url": "https://www.gov.br/conab/pt-br/atuacao/informacoes-agropecuarias/safras/safra-de-graos/boletim-da-safra-de-graos/12o-levantamento-safra-2025-26/e-book_boletim-de-safras-12o-levantamento_-2026-3-compactado.pdf",
+      "publisher": "Conab",
+      "source_type": "primary",
+      "publisher_class": "official",
+      "editorial_role": "primary_document",
+      "published_at": "2026-09-15",
+      "notes": "Página 102: previsão 2026 de importação de 7.056,6 mil t e consumo de 12.000 mil t de trigo; são previsões, não volume realizado."
+    },
+    {
+      "id": "S3",
+      "title": "ANP — Nota Técnica 16/2026, mercado de diesel",
+      "url": "https://www.gov.br/anp/pt-br/assuntos/consultas-e-audiencias-publicas/consulta-audiencia-publica/2026/arquivos/cp-04-2026/nt-16-2026.pdf",
+      "publisher": "ANP",
+      "source_type": "primary",
+      "publisher_class": "official",
+      "editorial_role": "primary_document",
+      "notes": "Parágrafo 15: importações líquidas de 16,3 milhões m³ equivaleram a 27,3% da demanda interna em 2025."
+    },
+    {
+      "id": "S4",
+      "title": "Banco Central — Repasse cambial: estimativas por projeções locais",
+      "url": "https://www.bcb.gov.br/content/ri/relatorioinflacao/202603/rpm202603b8p.pdf",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "publisher_class": "official",
+      "editorial_role": "technical_analysis",
+      "published_at": "2026-03-27",
+      "notes": "Estudo encontra repasse heterogêneo, maior para alimentos no domicílio e bens industriais, próximo de zero para serviços, com intervalos de confiança amplos."
+    },
+    {
+      "id": "S5",
+      "title": "TSE — Central das Eleições 2026",
+      "url": "https://www.tse.jus.br/eleicoes/cde-2026",
+      "publisher": "Tribunal Superior Eleitoral",
+      "source_type": "primary",
+      "publisher_class": "official",
+      "editorial_role": "primary_document",
+      "notes": "Confirma primeiro turno em 4 de outubro de 2026; não sustenta hipótese de efeito eleitoral sobre câmbio."
+    },
+    {
+      "id": "S6",
+      "title": "Banco Central — Ata da 281ª reunião do Copom",
+      "url": "https://www.bcb.gov.br/publicacoes/atascopom/16092026",
       "publisher": "Banco Central do Brasil",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "published_at": "2026-09-25",
-      "notes": "Acompanhamento da transmissão cambial e a taxa Selic em 13,75% ao ano como instrumento de controle inflacionário."
+      "published_at": "2026-09-22",
+      "notes": "Redução da meta Selic para 13,75% ao ano em 16/09/2026, com estratégia de convergência da inflação para a meta."
     },
     {
-      "id": "S3",
-      "title": "Dólar fecha a R$ 5,21 em pregão volátil de reta final eleitoral",
-      "url": "https://g1.globo.com/economia/",
-      "publisher": "G1 Economia",
-      "source_type": "secondary",
-      "publisher_class": "independent_journalism",
-      "editorial_role": "independent_reporting",
-      "published_at": "2026-09-29",
-      "notes": "Apuração jornalística sobre a volatilidade cambial na semana que antecede o primeiro turno das eleições."
+      "id": "S7",
+      "title": "Receita Federal — Tributação de 2026",
+      "url": "https://www.gov.br/receitafederal/pt-br/assuntos/meu-imposto-de-renda/tabelas/2026",
+      "publisher": "Receita Federal",
+      "source_type": "primary",
+      "publisher_class": "official",
+      "editorial_role": "primary_document",
+      "notes": "Tabela vigente em 2026 de IR para renda fixa: 22,5% até 180 dias e 15% acima de 720 dias, com faixas intermediárias."
     },
     {
-      "id": "S4",
-      "title": "O repasse cambial e o impacto do dólar nos preços ao consumidor",
-      "url": "https://portalibre.fgv.br/estudos-e-pesquisas",
+      "id": "S8",
+      "title": "FGV IBRE — Conjuntura Econômica, janeiro de 2026",
+      "url": "https://portalibre.fgv.br/sites/default/files/2026-01/conjuntura-economica-2026-01-baixa.pdf",
       "publisher": "FGV IBRE",
       "source_type": "context",
       "publisher_class": "technical",
       "editorial_role": "technical_analysis",
-      "published_at": "2026-09-20",
-      "notes": "Análise técnica sobre o mecanismo de repasse cambial (pass-through) para alimentos e combustíveis."
+      "notes": "Artigo sobre inflação discute por que susto no câmbio não vira inflação automática."
+    },
+    {
+      "id": "S9",
+      "title": "Insper — A alta do dólar deveria ser uma preocupação para o Banco Central do Brasil?",
+      "url": "https://repositorio.insper.edu.br/entities/publication/977a0125-d438-4563-8a82-23cadb236df5",
+      "publisher": "Insper",
+      "source_type": "context",
+      "publisher_class": "academic",
+      "editorial_role": "technical_analysis",
+      "published_at": "2020",
+      "notes": "Pesquisa acadêmica sobre canais e determinantes do repasse cambial; usada apenas como contexto, não para cotação de 2026."
     }
   ],
   "claims": [
     {
       "id": "C1",
-      "text": "O dólar operou com forte volatilidade no pregão de 29 de setembro de 2026, atingindo máxima de R$ 5,24 e fechando cotado a R$ 5,21.",
+      "text": "Em 29/09/2026, a PTAX de venda do dólar publicada pelo BCB foi R$ 5,2204.",
       "source_ids": [
-        "S1",
-        "S3"
+        "S1"
       ],
       "confidence": "high",
       "verification_status": "verified",
       "framing": "verified_fact",
-      "attribution_required": false
+      "attribution_required": true
     },
     {
       "id": "C2",
-      "text": "O repasse cambial afeta a inflação doméstica através de commodities cotadas em moeda americana, como trigo, soja e petróleo.",
+      "text": "O primeiro turno das eleições gerais de 2026 está marcado para 04/10/2026.",
       "source_ids": [
-        "S2",
-        "S4"
+        "S5"
       ],
       "confidence": "high",
       "verification_status": "verified",
       "framing": "verified_fact",
-      "attribution_required": false
+      "attribution_required": true
     },
     {
       "id": "C3",
-      "text": "A taxa básica Selic em 13,75% ao ano é utilizada pelo Banco Central para atrair capital e conter pressões descontroladas no câmbio.",
+      "text": "A Conab prevê, para 2026, importação de 7,0566 milhões de toneladas de trigo e consumo de 12 milhões.",
       "source_ids": [
         "S2"
       ],
       "confidence": "high",
       "verification_status": "verified",
-      "framing": "verified_fact",
-      "attribution_required": false
+      "framing": "official_position",
+      "attribution_required": true
     },
     {
       "id": "C4",
-      "text": "A incerteza eleitoral tradicionalmente eleva o prêmio de risco e a busca por moeda estrangeira como proteção de curto prazo.",
+      "text": "Segundo a ANP, importações líquidas de diesel corresponderam a 27,3% da demanda interna em 2025.",
       "source_ids": [
-        "S3",
-        "S4"
+        "S3"
       ],
       "confidence": "high",
       "verification_status": "verified",
       "framing": "verified_fact",
-      "attribution_required": false
+      "attribution_required": true
+    },
+    {
+      "id": "C5",
+      "text": "O estudo do BCB de março de 2026 estima repasse cambial heterogêneo, maior em alimentação no domicílio e bens industriais e próximo de zero para serviços, com incerteza ampla.",
+      "source_ids": [
+        "S4",
+        "S8",
+        "S9"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "analysis",
+      "attribution_required": true
+    },
+    {
+      "id": "C6",
+      "text": "O Copom reduziu a meta Selic para 13,75% ao ano em 16/09/2026 para perseguir a convergência da inflação à meta.",
+      "source_ids": [
+        "S6"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "official_position",
+      "attribution_required": true
+    },
+    {
+      "id": "C7",
+      "text": "As alíquotas de IR de renda fixa em 2026 variam com o prazo, de 22,5% até 180 dias a 15% acima de 720 dias.",
+      "source_ids": [
+        "S7"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "verified_fact",
+      "attribution_required": true
     }
   ],
   "scenes": [
     {
       "index": 0,
-      "title": "O que o dólar em alta faz com o seu dinheiro?",
-      "narration": "Fala, pessoal! Tudo bem com vocês? Aqui é o Roberto, do canal O Dinheiro Explica! Hoje a gente precisa ter uma conversa bem franca e direta: o dólar chegou a encostar em cinco e vinte e quatro e fechou cotado em cinco e vinte e um. Muita gente me pergunta: eu não compro dólar e nem viajo pra fora, por que isso mexe com a minha vida? Só que essa oscilação afeta o seu bolso todos os dias, desde a padaria até o supermercado. Vem comigo que eu vou te mostrar na prática o que realmente está em jogo.",
+      "title": "A cotação e o recibo",
+      "narration": "Você compra pão em reais. Por que o dólar entraria nessa conta? Em 29 de setembro, a PTAX de venda do Banco Central foi R$ 5,2204. O primeiro turno é em quatro de outubro. Uma data perto da outra não prova que a eleição moveu o câmbio. Pra entender o seu bolso, vamos seguir dois caminhos: trigo e diesel. Só depois dá para perguntar se algo chega ao caixa.",
       "visual": {
         "type": "DOCUMENT",
-        "transition": "fade",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "fx",
+              "kind": "metric",
+              "label": "PTAX de venda · 29/09",
+              "x": 4,
+              "y": 18,
+              "width": 28,
+              "height": 64,
+              "initially_visible": true,
+              "value": "R$ 5,2204",
+              "value_size": 116
+            },
+            {
+              "id": "wheat",
+              "kind": "step",
+              "label": "TRIGO",
+              "x": 40,
+              "y": 5,
+              "width": 20,
+              "height": 32,
+              "initially_visible": false
+            },
+            {
+              "id": "diesel",
+              "kind": "step",
+              "label": "DIESEL",
+              "x": 40,
+              "y": 63,
+              "width": 20,
+              "height": 32,
+              "initially_visible": false
+            },
+            {
+              "id": "receipt",
+              "kind": "object",
+              "label": "Preço no caixa",
+              "x": 70,
+              "y": 18,
+              "width": 26,
+              "height": 64,
+              "initially_visible": false,
+              "object_type": "receipt"
+            }
+          ],
+          "connections": [
+            {
+              "from": "fx",
+              "to": "wheat"
+            },
+            {
+              "from": "fx",
+              "to": "diesel"
+            },
+            {
+              "from": "wheat",
+              "to": "receipt"
+            },
+            {
+              "from": "diesel",
+              "to": "receipt"
+            }
+          ]
+        },
         "beats": [
           {
-            "anchor": "dólar chegou a encostar em cinco e vinte e quatro",
-            "kind": "metric",
-            "headline": "Máxima do Dia",
+            "anchor": "R$ 5,2204",
+            "headline": "PTAX de venda · 29/09",
+            "target_id": "fx",
+            "action": "focus",
+            "kind": "money",
             "behavior": "transform",
             "treatment": "giant_number",
-            "transition": "bloom",
-            "placement": "center",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "hero_dolar",
-            "action": "update",
-            "value": "R$ 5,24",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "fechou cotado em cinco e vinte e um",
-            "kind": "metric",
-            "headline": "Fechamento Oficial",
-            "behavior": "transform",
-            "treatment": "giant_number",
-            "transition": "bloom",
-            "placement": "center",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "hero_dolar",
-            "action": "update",
-            "value": "R$ 5,21",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "essa oscilação afeta o seu bolso",
-            "kind": "warning",
-            "headline": "Impacto no Dia a Dia",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
             "transition": "wipe",
-            "placement": "right",
+            "placement": "full",
             "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "carteira_obj",
-            "action": "reveal",
-            "prominence": "contextual"
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
           },
           {
-            "anchor": "o que realmente está em jogo",
-            "kind": "note",
-            "headline": "Vem Comigo Entender",
+            "anchor": "trigo e diesel",
+            "headline": "Duas rotas possíveis",
+            "target_id": "wheat",
+            "action": "reveal",
+            "kind": "flow",
             "behavior": "transform",
-            "treatment": "masked_emphasis",
+            "treatment": "flow_diagram",
             "transition": "wipe",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
-            "target_id": "agenda_label",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "reveal_ids": [
+              "diesel"
+            ]
+          },
+          {
+            "anchor": "chega ao caixa",
+            "headline": "Preço no caixa",
+            "target_id": "receipt",
             "action": "reveal",
-            "prominence": "contextual"
+            "kind": "warning",
+            "behavior": "transform",
+            "treatment": "flow_diagram",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
           }
-        ],
-        "stage": {
-          "elements": [
-            {
-              "id": "hero_dolar",
-              "kind": "metric",
-              "label": "Cotação do Dólar Comercial",
-              "value": "R$ 5,21",
-              "value_size": 160,
-              "detail": "Cotação de fechamento do pregão de hoje",
-              "icon": "coins",
-              "x": 4,
-              "y": 8,
-              "width": 58,
-              "height": 62,
-              "initially_visible": true
-            },
-            {
-              "id": "carteira_obj",
-              "kind": "object",
-              "object_type": "wallet",
-              "label": "Seu Bolso Sente",
-              "x": 66,
-              "y": 8,
-              "width": 30,
-              "height": 38,
-              "initially_visible": false
-            },
-            {
-              "id": "agenda_label",
-              "kind": "label",
-              "label": "A alta do dólar muda o preço de tudo que você consome no dia a dia",
-              "label_size": 42,
-              "x": 4,
-              "y": 73,
-              "width": 92,
-              "height": 18,
-              "initially_visible": false
-            }
-          ]
-        }
+        ]
       }
     },
     {
       "index": 1,
-      "title": "Por que o mercado fica tão nervoso na eleição?",
-      "narration": "Nesta reta final de eleição, o mercado financeiro parece uma montanha-russa. As pesquisas apontam uma disputa voto a voto para domingo, e o clima de incerteza dispara. Quando ninguém sabe ao certo qual será o plano de gastos do próximo governo, os grandes investidores pisam no freio. E no mundo dos investimentos, a regra é clara: quando o medo cresce, os fundos internacionais correm para comprar dólar como um seguro financeiro.",
+      "title": "Do trigo ao pão",
+      "narration": "Na previsão da Conab para 2026, o Brasil deve importar 7,06 milhões de toneladas de trigo, para um consumo de 12 milhões. Isso deixa uma parte grande do abastecimento exposta ao câmbio. Só que a compra pode vir de contratos anteriores. A farinha também pode ficar em estoque. E a padaria tem outros custos. Então o dólar pode pressionar o pão na padaria se a mudança durar, mas não muda a etiqueta no mesmo minuto.",
       "visual": {
         "type": "DOCUMENT",
-        "transition": "fade",
-        "beats": [
-          {
-            "anchor": "o mercado financeiro parece uma montanha-russa",
-            "kind": "metric",
-            "headline": "Volatilidade Extrema",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "left",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "volatilidade_chart",
-            "action": "focus",
-            "chart_focus": {
-              "from": 3,
-              "to": 5
-            },
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "o clima de incerteza dispara",
-            "kind": "warning",
-            "headline": "Incerteza Política",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "banco_obj",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "os grandes investidores pisam no freio",
-            "kind": "evidence",
-            "headline": "Fuga de Capital Estrangeiro",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "fuga_note",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "correm para comprar dólar como um seguro financeiro",
-            "kind": "note",
-            "headline": "Dólar como Proteção",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "protecao_label",
-            "action": "reveal",
-            "prominence": "contextual"
-          }
-        ],
+        "transition": "cut",
         "stage": {
+          "show_title": false,
           "elements": [
             {
-              "id": "volatilidade_chart",
-              "kind": "chart",
-              "label": "Cotação do Dólar na Semana Eleitoral",
-              "chart": {
-                "type": "line",
-                "x_label": "Dias da semana",
-                "y_min": 4.9,
-                "y_max": 5.3,
-                "unit": "R$ por US$",
-                "points": [
-                  {
-                    "x": 0,
-                    "label": "Seg",
-                    "value": 5.05
-                  },
-                  {
-                    "x": 1,
-                    "label": "Ter",
-                    "value": 5.08
-                  },
-                  {
-                    "x": 2,
-                    "label": "Qua",
-                    "value": 5.12
-                  },
-                  {
-                    "x": 3,
-                    "label": "Qui",
-                    "value": 5.18
-                  },
-                  {
-                    "x": 4,
-                    "label": "Sex",
-                    "value": 5.24
-                  },
-                  {
-                    "x": 5,
-                    "label": "Fech",
-                    "value": 5.21
-                  }
-                ],
-                "source_id": "S1"
-              },
+              "id": "wheat_photo",
+              "kind": "photo",
+              "label": "Trigo: imagem ilustrativa",
               "x": 4,
-              "y": 8,
-              "width": 60,
-              "height": 82,
-              "initially_visible": true
+              "y": 7,
+              "width": 50,
+              "height": 78,
+              "initially_visible": true,
+              "asset_id": "A_wheat_field",
+              "image_fit": "cover",
+              "image_motion": "push",
+              "text_region": {
+                "x": 0,
+                "y": 0,
+                "width": 100,
+                "height": 100
+              }
             },
             {
-              "id": "banco_obj",
-              "kind": "object",
-              "object_type": "bank",
-              "label": "Sistema Financeiro em Alerta",
-              "x": 66,
-              "y": 8,
-              "width": 30,
-              "height": 36,
-              "initially_visible": false
-            },
-            {
-              "id": "fuga_note",
-              "kind": "note",
-              "label": "Investidores Internacionais Saem",
-              "detail": "Fundos globais reduzem posições em emergentes quando o risco sobe",
-              "icon": "globe",
-              "x": 66,
-              "y": 47,
-              "width": 30,
-              "height": 22,
-              "initially_visible": false
-            },
-            {
-              "id": "protecao_label",
-              "kind": "label",
-              "label": "O dólar é o porto seguro global em tempos de instabilidade",
-              "label_size": 38,
-              "x": 66,
-              "y": 72,
-              "width": 30,
-              "height": 18,
-              "initially_visible": false
-            }
-          ]
-        }
-      }
-    },
-    {
-      "index": 2,
-      "title": "O repasse cambial que ninguém vê",
-      "narration": "Você já deve ter ouvido alguém dizer: se eu ganho em real e compro em real, o que eu tenho a ver com o dólar? Pois é, mas existe um mecanismo invisível chamado repasse cambial. Quase tudo o que é fabricado no Brasil usa peças, máquinas e fertilizantes comprados lá fora. Quando o dólar sobe, essa matéria-prima fica mais cara para as fábricas. E a indústria não absorve esse custo: ela repassa de elo em elo da cadeia produtiva até chegar no preço do produto que você compra na gôndola do mercado.",
-      "visual": {
-        "type": "DOCUMENT",
-        "transition": "fade",
-        "beats": [
-          {
-            "anchor": "mecanismo invisível chamado repasse cambial",
-            "kind": "step",
-            "headline": "Repasse Cambial",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "left",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "elo_dolar",
-            "action": "focus",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "matéria-prima fica mais cara para as fábricas",
-            "kind": "step",
-            "headline": "Custo Industrial",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "center",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "elo_fabrica",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "repassa de elo em elo da cadeia produtiva",
-            "kind": "step",
-            "headline": "Cadeia de Preços",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "center",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "elo_transporte",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "preço do produto que você compra na gôndola",
-            "kind": "warning",
-            "headline": "Preço Final",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "elo_consumidor",
-            "action": "reveal",
-            "prominence": "contextual"
-          }
-        ],
-        "stage": {
-          "elements": [
-            {
-              "id": "elo_dolar",
+              "id": "wheat_amount",
               "kind": "metric",
-              "label": "Dólar Sobe",
-              "value": "US$ ↑",
-              "value_size": 56,
-              "icon": "coins",
+              "label": "Importação prevista de trigo",
+              "x": 8,
+              "y": 42,
+              "width": 42,
+              "height": 37,
+              "initially_visible": true,
+              "value": "7,06 mi t",
+              "value_size": 112,
+              "overlay_on": "wheat_photo"
+            },
+            {
+              "id": "wheat_caption",
+              "kind": "label",
+              "label": "IMAGEM ILUSTRATIVA",
               "x": 4,
-              "y": 12,
-              "width": 21,
-              "height": 72,
-              "initially_visible": true
+              "y": 88,
+              "width": 50,
+              "height": 8,
+              "initially_visible": true,
+              "label_size": 32
             },
             {
-              "id": "elo_fabrica",
+              "id": "contract",
               "kind": "step",
-              "step_number": 1,
-              "label": "Insumo Importado",
-              "detail": "Peças, fertilizantes e máquinas ficam mais caros",
-              "icon": "document",
-              "x": 28,
-              "y": 12,
-              "width": 21,
-              "height": 72,
+              "label": "Contrato anterior",
+              "x": 63,
+              "y": 5,
+              "width": 33,
+              "height": 25,
               "initially_visible": false
             },
             {
-              "id": "elo_transporte",
+              "id": "stock",
               "kind": "step",
-              "step_number": 2,
-              "label": "Cadeia Produtiva",
-              "detail": "Fábricas e distribuidores repassam o aumento de custo",
-              "icon": "route",
-              "x": 52,
-              "y": 12,
-              "width": 21,
-              "height": 72,
+              "label": "Estoque de farinha",
+              "x": 63,
+              "y": 38,
+              "width": 33,
+              "height": 25,
               "initially_visible": false
             },
             {
-              "id": "elo_consumidor",
-              "kind": "note",
-              "label": "Você Paga Mais",
-              "detail": "O preço final na prateleira sobe mesmo em produto 100% nacional",
-              "icon": "cart",
-              "x": 76,
-              "y": 12,
-              "width": 21,
-              "height": 72,
+              "id": "bread",
+              "kind": "step",
+              "label": "Preço do pão",
+              "x": 63,
+              "y": 71,
+              "width": 33,
+              "height": 24,
               "initially_visible": false
             }
           ],
           "connections": [
             {
-              "from": "elo_dolar",
-              "to": "elo_fabrica",
-              "label": "encarece"
+              "from": "wheat_amount",
+              "to": "contract"
             },
             {
-              "from": "elo_fabrica",
-              "to": "elo_transporte",
-              "label": "repassa"
+              "from": "contract",
+              "to": "stock"
             },
             {
-              "from": "elo_transporte",
-              "to": "elo_consumidor",
-              "label": "sobe"
+              "from": "stock",
+              "to": "bread"
             }
           ]
-        }
+        },
+        "beats": [
+          {
+            "anchor": "7,06 milhões",
+            "headline": "Importação prevista de trigo",
+            "target_id": "wheat_amount",
+            "action": "focus",
+            "kind": "number",
+            "behavior": "transform",
+            "treatment": "giant_number",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "contratos anteriores",
+            "headline": "Contrato anterior",
+            "target_id": "contract",
+            "action": "reveal",
+            "kind": "process",
+            "behavior": "transform",
+            "treatment": "flow_diagram",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "em estoque",
+            "headline": "Estoque de farinha",
+            "target_id": "stock",
+            "action": "reveal",
+            "kind": "process",
+            "behavior": "transform",
+            "treatment": "flow_diagram",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "pão na padaria",
+            "headline": "Preço do pão",
+            "target_id": "bread",
+            "action": "reveal",
+            "kind": "flow",
+            "behavior": "transform",
+            "treatment": "flow_diagram",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          }
+        ]
+      }
+    },
+    {
+      "index": 2,
+      "title": "Do diesel ao frete",
+      "narration": "O outro caminho começa no combustível. Segundo a ANP, as importações líquidas de diesel representaram 27,3% da demanda interna em 2025. Essa parte do abastecimento sente o preço externo e o câmbio. Se o diesel vendido aqui encarece, pode aumentar o custo do frete. E só então uma parte pode chegar ao preço no mercado. É uma sequência possível, não uma tabela automática de aumentos.",
+      "visual": {
+        "type": "DOCUMENT",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "diesel_share",
+              "kind": "metric",
+              "label": "Diesel importado · demanda de 2025",
+              "x": 5,
+              "y": 4,
+              "width": 90,
+              "height": 34,
+              "initially_visible": true,
+              "value": "27,3%",
+              "value_size": 120
+            },
+            {
+              "id": "diesel_cost",
+              "kind": "step",
+              "label": "Custo do diesel",
+              "x": 4,
+              "y": 52,
+              "width": 26,
+              "height": 39,
+              "initially_visible": false,
+              "icon": "car"
+            },
+            {
+              "id": "truck",
+              "kind": "step",
+              "label": "Custo do frete",
+              "x": 37,
+              "y": 52,
+              "width": 26,
+              "height": 39,
+              "initially_visible": false,
+              "icon": "route"
+            },
+            {
+              "id": "market",
+              "kind": "step",
+              "label": "Preço no mercado",
+              "x": 70,
+              "y": 52,
+              "width": 26,
+              "height": 39,
+              "initially_visible": false,
+              "icon": "cart"
+            }
+          ],
+          "connections": [
+            {
+              "from": "diesel_cost",
+              "to": "truck"
+            },
+            {
+              "from": "truck",
+              "to": "market"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "anchor": "27,3% da demanda",
+            "headline": "Importações líquidas, 2025",
+            "target_id": "diesel_share",
+            "action": "focus",
+            "kind": "number",
+            "behavior": "transform",
+            "treatment": "giant_number",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "diesel vendido aqui",
+            "headline": "Custo do diesel",
+            "target_id": "diesel_cost",
+            "action": "reveal",
+            "kind": "fuel",
+            "behavior": "transform",
+            "treatment": "flow_diagram",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "custo do frete",
+            "headline": "Custo do frete",
+            "target_id": "truck",
+            "action": "reveal",
+            "kind": "flow",
+            "behavior": "transform",
+            "treatment": "flow_diagram",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "preço no mercado",
+            "headline": "Preço no mercado",
+            "target_id": "market",
+            "action": "reveal",
+            "kind": "flow",
+            "behavior": "transform",
+            "treatment": "flow_diagram",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          }
+        ]
       }
     },
     {
       "index": 3,
-      "title": "Como o dólar vai parar no seu prato de comida",
-      "narration": "Quer ver um exemplo que dói no estômago? O pão francês da padaria. Mais da metade do trigo consumido no Brasil vem de fora, comprado em dólar. Se o câmbio sobe, a farinha fica mais cara no mesmo dia. E não para por aí: o milho e a soja que alimentam as aves e os porcos são negociados no mercado mundial em dólar. Quando a cotação dispara, o produtor repassa essa conta para a ração animal. Resultado na prática: o pãozinho, o macarrão, o frango e a carne bovina sobem de preço.",
+      "title": "Repasse não é automático",
+      "narration": "Um estudo do Banco Central de março de 2026 estima repasse cambial relevante, mas diferente conforme o produto. A resposta tende a ser maior em alimentos em casa e bens industriais. Para serviços, a estimativa ficou perto de zero. O próprio estudo diz que as faixas de incerteza são amplas. Ou seja, não existe regra que transforme uma alta do câmbio hoje em reajuste geral amanhã. Esses resultados precisam ser lidos com cautela.",
       "visual": {
         "type": "DOCUMENT",
-        "transition": "fade",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "pass_through",
+              "kind": "label",
+              "label": "REPASSE CAMBIAL",
+              "x": 25,
+              "y": 7,
+              "width": 50,
+              "height": 20,
+              "initially_visible": true,
+              "label_size": 74
+            },
+            {
+              "id": "food",
+              "kind": "step",
+              "label": "Alimentos em casa e bens industriais",
+              "x": 4,
+              "y": 39,
+              "width": 42,
+              "height": 34,
+              "initially_visible": false
+            },
+            {
+              "id": "services",
+              "kind": "step",
+              "label": "Serviços: efeito estimado próximo de zero",
+              "x": 54,
+              "y": 39,
+              "width": 42,
+              "height": 34,
+              "initially_visible": false
+            },
+            {
+              "id": "uncertainty",
+              "kind": "label",
+              "label": "ESTIMATIVAS COM INCERTEZA",
+              "x": 21,
+              "y": 82,
+              "width": 58,
+              "height": 15,
+              "initially_visible": false,
+              "label_size": 39
+            }
+          ],
+          "connections": [
+            {
+              "from": "pass_through",
+              "to": "food"
+            },
+            {
+              "from": "pass_through",
+              "to": "services"
+            }
+          ]
+        },
         "beats": [
           {
-            "anchor": "Mais da metade do trigo consumido no Brasil vem de fora",
-            "kind": "metric",
-            "headline": "Trigo Importado",
-            "behavior": "transform",
-            "treatment": "giant_number",
-            "transition": "bloom",
-            "placement": "left",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "trigo_hero",
+            "anchor": "repasse cambial relevante",
+            "headline": "REPASSE CAMBIAL",
+            "target_id": "pass_through",
             "action": "focus",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "milho e a soja que alimentam as aves e os porcos",
-            "kind": "note",
-            "headline": "Ração Animal em Dólar",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "racao_card",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "o produtor repassa essa conta",
-            "kind": "step",
-            "headline": "Custo Repassado",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "repasse_card",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "o frango e a carne bovina sobem de preço",
-            "kind": "warning",
-            "headline": "Tudo Mais Caro na Mesa",
+            "kind": "process",
             "behavior": "transform",
             "treatment": "masked_emphasis",
-            "transition": "bloom",
+            "transition": "wipe",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
-            "target_id": "impacto_banner",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "alimentos em casa",
+            "headline": "Alimentos em casa e bens industriais",
+            "target_id": "food",
             "action": "reveal",
-            "prominence": "contextual"
+            "kind": "compare",
+            "behavior": "transform",
+            "treatment": "flow_diagram",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "serviços",
+            "headline": "Serviços: efeito estimado próximo de zero",
+            "target_id": "services",
+            "action": "reveal",
+            "kind": "compare",
+            "behavior": "transform",
+            "treatment": "flow_diagram",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "com cautela",
+            "headline": "ESTIMATIVAS COM INCERTEZA",
+            "target_id": "uncertainty",
+            "action": "reveal",
+            "kind": "warning",
+            "behavior": "transform",
+            "treatment": "flow_diagram",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
           }
-        ],
-        "stage": {
-          "elements": [
-            {
-              "id": "trigo_hero",
-              "kind": "metric",
-              "value": "> 50%",
-              "value_size": 120,
-              "label": "Trigo Importado",
-              "detail": "Base do pão, biscoito e massas no Brasil",
-              "icon": "cart",
-              "x": 4,
-              "y": 8,
-              "width": 48,
-              "height": 56,
-              "initially_visible": true
-            },
-            {
-              "id": "racao_card",
-              "kind": "note",
-              "label": "Soja e Milho em Dólar",
-              "detail": "Commodities cotadas no mercado internacional encarecem a ração",
-              "icon": "coins",
-              "x": 56,
-              "y": 8,
-              "width": 40,
-              "height": 26,
-              "initially_visible": false
-            },
-            {
-              "id": "repasse_card",
-              "kind": "step",
-              "step_number": 1,
-              "label": "Produtor Repassa",
-              "detail": "O custo da ração animal sobe e é transferido ao consumidor final",
-              "icon": "route",
-              "x": 56,
-              "y": 37,
-              "width": 40,
-              "height": 27,
-              "initially_visible": false
-            },
-            {
-              "id": "impacto_banner",
-              "kind": "note",
-              "label": "Pão, Frango e Carne Mais Caros",
-              "detail": "Produtos nacionais ficam mais caros por causa do câmbio",
-              "icon": "warning",
-              "x": 4,
-              "y": 68,
-              "width": 92,
-              "height": 22,
-              "initially_visible": false
-            }
-          ]
-        }
+        ]
       }
     },
     {
       "index": 4,
-      "title": "O combustível e o frete que empurram os preços",
-      "narration": "Outro canal poderoso que atinge o seu bolso é o combustível. O petróleo é uma commodity global negociada em dólar americano. O Brasil importa uma parte significativa do óleo diesel para manter os caminhões rodando. Se o dólar sobe, o custo do diesel sobe junto. E como a imensa maioria dos produtos no Brasil viaja pelas rodovias, o frete mais caro encarece tudo: do saco de cimento ao remédio na farmácia e à verdura na feira.",
+      "title": "A eleição é contexto",
+      "narration": "E a eleição? A PTAX citada é de 29 de setembro. O Tribunal Superior Eleitoral marcou o primeiro turno para quatro de outubro. Essas datas cabem na mesma semana, mas a tabela do Banco Central não identifica o motivo da cotação. Para afirmar que uma pesquisa moveu o câmbio naquele pregão, precisaríamos de uma pesquisa específica e dados de mercado ligados a ela. Sem isso, eleição é contexto, não uma causa demonstrada.",
       "visual": {
         "type": "DOCUMENT",
-        "transition": "fade",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "day_fx",
+              "kind": "metric",
+              "label": "PTAX · 29/09",
+              "x": 5,
+              "y": 15,
+              "width": 42,
+              "height": 64,
+              "initially_visible": true,
+              "value": "R$ 5,2204",
+              "value_size": 108
+            },
+            {
+              "id": "day_vote",
+              "kind": "metric",
+              "label": "Primeiro turno",
+              "x": 56,
+              "y": 10,
+              "width": 39,
+              "height": 35,
+              "initially_visible": false,
+              "value": "04/10",
+              "value_size": 94
+            },
+            {
+              "id": "no_cause",
+              "kind": "label",
+              "label": "DATA NÃO PROVA CAUSA",
+              "x": 53,
+              "y": 62,
+              "width": 43,
+              "height": 26,
+              "initially_visible": false,
+              "label_size": 50
+            }
+          ],
+          "connections": []
+        },
         "beats": [
           {
-            "anchor": "commodity global negociada em dólar americano",
-            "kind": "metric",
-            "headline": "Petróleo em Dólar",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "left",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "petroleo_top",
+            "anchor": "29 de setembro",
+            "headline": "PTAX · 29/09",
+            "target_id": "day_fx",
             "action": "focus",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "o custo do diesel sobe junto",
-            "kind": "step",
-            "headline": "Diesel Importado",
+            "kind": "date",
             "behavior": "transform",
-            "treatment": "step_card",
+            "treatment": "giant_number",
             "transition": "wipe",
-            "placement": "center",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "diesel_mid",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "o frete mais caro encarece tudo",
-            "kind": "warning",
-            "headline": "Efeito Cascata",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
-            "target_id": "frete_wide",
-            "action": "reveal",
-            "prominence": "contextual"
+            "prominence": "contextual",
+            "motion_seconds": 0.48
           },
           {
-            "anchor": "à verdura na feira",
-            "kind": "note",
-            "headline": "Tudo Mais Caro",
+            "anchor": "quatro de outubro",
+            "headline": "Primeiro turno",
+            "target_id": "day_vote",
+            "action": "reveal",
+            "kind": "date",
             "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
-            "placement": "right",
+            "treatment": "giant_number",
+            "transition": "wipe",
+            "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
-            "target_id": "recibo_obj",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "não identifica o motivo",
+            "headline": "DATA NÃO PROVA CAUSA",
+            "target_id": "no_cause",
             "action": "reveal",
-            "prominence": "contextual"
+            "kind": "warning",
+            "behavior": "transform",
+            "treatment": "flow_diagram",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
           }
-        ],
-        "stage": {
-          "elements": [
-            {
-              "id": "petroleo_top",
-              "kind": "metric",
-              "label": "Barril de Petróleo",
-              "value": "Cotação Global em US$",
-              "value_size": 48,
-              "detail": "Negociado internacionalmente em moeda americana",
-              "icon": "globe",
-              "x": 20,
-              "y": 6,
-              "width": 56,
-              "height": 20,
-              "initially_visible": true
-            },
-            {
-              "id": "diesel_mid",
-              "kind": "step",
-              "step_number": 1,
-              "label": "Diesel Importado Encarece",
-              "detail": "O Brasil depende de importação para abastecer os caminhões",
-              "icon": "car",
-              "x": 12,
-              "y": 29,
-              "width": 72,
-              "height": 22,
-              "initially_visible": false
-            },
-            {
-              "id": "frete_wide",
-              "kind": "note",
-              "label": "Frete Rodoviário Mais Caro em Todo o País",
-              "detail": "Quase tudo que você compra viajou por rodovia antes de chegar à loja",
-              "icon": "route",
-              "x": 4,
-              "y": 54,
-              "width": 68,
-              "height": 36,
-              "initially_visible": false
-            },
-            {
-              "id": "recibo_obj",
-              "kind": "object",
-              "object_type": "receipt",
-              "label": "Conta Chega Pro Consumidor",
-              "x": 76,
-              "y": 54,
-              "width": 20,
-              "height": 36,
-              "initially_visible": false
-            }
-          ]
-        }
+        ]
       }
     },
     {
       "index": 5,
-      "title": "A defesa do Banco Central: juros a 13,75%",
-      "narration": "Para impedir que o dólar alto vire uma bola de neve de inflação pelo país, o Banco Central mantém uma linha dura de defesa. A taxa Selic foi fixada em treze vírgula setenta e cinco por cento ao ano. Esse patamar garante um dos maiores juros reais do mundo. E isso faz o quê na prática? Atrai investidores internacionais que querem lucrar com esses juros altos, trazendo dólares para dentro do país para tentar equilibrar o câmbio e segurar a inflação para baixo.",
+      "title": "Selic não é promessa mensal",
+      "narration": "A outra taxa que entrou na conversa é a Selic. Em 16 de setembro, o Copom reduziu a meta para 13,75% ao ano. A ata apresenta essa decisão como parte da busca da inflação em torno da meta. Ela não promete uma cotação para o dólar. E essa taxa anual não é retorno líquido mensal garantido: num investimento concreto, imposto, taxas, prazo e regras de resgate mudam a conta. Compare produtos e riscos antes de decidir.",
       "visual": {
         "type": "DOCUMENT",
-        "transition": "fade",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "selic",
+              "kind": "metric",
+              "label": "Meta Selic ao ano",
+              "x": 4,
+              "y": 13,
+              "width": 47,
+              "height": 68,
+              "initially_visible": true,
+              "value": "13,75%",
+              "value_size": 130
+            },
+            {
+              "id": "inflation",
+              "kind": "step",
+              "label": "Objetivo: inflação perto da meta",
+              "x": 61,
+              "y": 8,
+              "width": 35,
+              "height": 31,
+              "initially_visible": false,
+              "icon": "bank"
+            },
+            {
+              "id": "net",
+              "kind": "step",
+              "label": "Líquido depende do produto e do prazo",
+              "x": 61,
+              "y": 54,
+              "width": 35,
+              "height": 34,
+              "initially_visible": false,
+              "icon": "wallet"
+            }
+          ],
+          "connections": [
+            {
+              "from": "selic",
+              "to": "inflation"
+            },
+            {
+              "from": "selic",
+              "to": "net"
+            }
+          ]
+        },
         "beats": [
           {
-            "anchor": "taxa Selic foi fixada em treze vírgula setenta e cinco por cento",
-            "kind": "metric",
-            "headline": "Selic Oficial",
+            "anchor": "13,75% ao ano",
+            "headline": "Meta Selic ao ano",
+            "target_id": "selic",
+            "action": "focus",
+            "kind": "number",
             "behavior": "transform",
             "treatment": "giant_number",
-            "transition": "bloom",
-            "placement": "right",
+            "transition": "wipe",
+            "placement": "full",
             "medium": "motion_graphic",
             "sound": "tick",
-            "target_id": "selic_metric",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "inflação em torno da meta",
+            "headline": "Objetivo: inflação perto da meta",
+            "target_id": "inflation",
             "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "maiores juros reais do mundo",
-            "kind": "note",
-            "headline": "Ranking Global",
+            "kind": "process",
             "behavior": "transform",
-            "treatment": "step_card",
+            "treatment": "flow_diagram",
             "transition": "wipe",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "selic_chart",
-            "action": "focus",
-            "chart_focus": {
-              "from": 5,
-              "to": 7
-            },
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "Atrai investidores internacionais",
-            "kind": "evidence",
-            "headline": "Fluxo Estrangeiro",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "carry_note",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "segurar a inflação para baixo",
-            "kind": "step",
-            "headline": "Objetivo do Banco Central",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
-            "target_id": "objetivo_label",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "retorno líquido mensal garantido",
+            "headline": "Líquido depende do produto e do prazo",
+            "target_id": "net",
             "action": "reveal",
-            "prominence": "contextual"
+            "kind": "warning",
+            "behavior": "transform",
+            "treatment": "flow_diagram",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
           }
-        ],
-        "stage": {
-          "elements": [
-            {
-              "id": "selic_chart",
-              "kind": "chart",
-              "label": "Evolução da Taxa Selic",
-              "chart": {
-                "type": "line",
-                "x_label": "Meses de 2026",
-                "y_min": 10,
-                "y_max": 15,
-                "unit": "% ao ano",
-                "points": [
-                  {
-                    "x": 0,
-                    "label": "Jan",
-                    "value": 11.75
-                  },
-                  {
-                    "x": 1,
-                    "label": "Mar",
-                    "value": 12.25
-                  },
-                  {
-                    "x": 2,
-                    "label": "Mai",
-                    "value": 12.75
-                  },
-                  {
-                    "x": 3,
-                    "label": "Jun",
-                    "value": 13.25
-                  },
-                  {
-                    "x": 4,
-                    "label": "Jul",
-                    "value": 13.5
-                  },
-                  {
-                    "x": 5,
-                    "label": "Ago",
-                    "value": 13.75
-                  },
-                  {
-                    "x": 6,
-                    "label": "Set",
-                    "value": 13.75
-                  },
-                  {
-                    "x": 7,
-                    "label": "Out",
-                    "value": 13.75
-                  }
-                ],
-                "source_id": "S2"
-              },
-              "x": 4,
-              "y": 8,
-              "width": 60,
-              "height": 82,
-              "initially_visible": true
-            },
-            {
-              "id": "selic_metric",
-              "kind": "metric",
-              "value": "13,75%",
-              "value_size": 86,
-              "label": "Taxa Selic ao Ano",
-              "detail": "Patamar restritivo para conter pressão cambial",
-              "icon": "bank",
-              "x": 66,
-              "y": 8,
-              "width": 30,
-              "height": 36,
-              "initially_visible": false
-            },
-            {
-              "id": "carry_note",
-              "kind": "note",
-              "label": "Atração de Capital Estrangeiro",
-              "detail": "Fundos trazem dólares buscando rendimento em reais",
-              "icon": "globe",
-              "x": 66,
-              "y": 47,
-              "width": 30,
-              "height": 22,
-              "initially_visible": false
-            },
-            {
-              "id": "objetivo_label",
-              "kind": "label",
-              "label": "Missão: equilibrar câmbio e defender o poder de compra",
-              "label_size": 38,
-              "x": 66,
-              "y": 72,
-              "width": 30,
-              "height": 18,
-              "initially_visible": false
-            }
-          ]
-        }
+        ]
       }
     },
     {
       "index": 6,
-      "title": "Vale a pena sair correndo para comprar dólar?",
-      "narration": "E agora a pergunta que eu mais recebo: Roberto, devo correr pra casa de câmbio e comprar dólar agora na semana da eleição? Minha recomendação prática é: muito cuidado com o pânico. Tentar adivinhar a cotação no meio de uma eleição acirrada é pura loteria. Quem compra no desespero paga caro e vê a moeda despencar logo depois. Em vez disso, a renda fixa brasileira pagando mais de um por cento líquido todo mês dá previsibilidade e segurança. O CDI e a Selic rendem sem risco cambial nenhum.",
+      "title": "O que observar de verdade",
+      "narration": "Na próxima vez que o dólar mexer, faça três perguntas antes da próxima compra. O câmbio persistiu ou voltou? O trigo e o diesel mudaram de preço também? E os preços ao consumidor confirmam algum repasse depois? O número de hoje é o começo da investigação, não o preço de amanhã. Eu sou o Roberto. Se quiser acompanhar outras histórias do seu dinheiro com essa calma, fica por aqui.",
       "visual": {
         "type": "DOCUMENT",
-        "transition": "fade",
-        "beats": [
-          {
-            "anchor": "muito cuidado com o pânico",
-            "kind": "warning",
-            "headline": "Cilada do Desespero",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "left",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "perigo_card",
-            "action": "focus",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "pura loteria",
-            "kind": "note",
-            "headline": "Risco Especulativo",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
-            "placement": "left",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "loteria_card",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "renda fixa brasileira pagando mais de um por cento líquido",
-            "kind": "metric",
-            "headline": "Rendimento Previsível",
-            "behavior": "transform",
-            "treatment": "giant_number",
-            "transition": "bloom",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "cdi_metric",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "CDI e a Selic rendem sem risco cambial nenhum",
-            "kind": "step",
-            "headline": "Sem Risco Cambial",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "seguranca_card",
-            "action": "reveal",
-            "prominence": "contextual"
-          }
-        ],
+        "transition": "cut",
         "stage": {
+          "show_title": false,
           "elements": [
             {
-              "id": "perigo_card",
-              "kind": "note",
-              "label": "Comprar Dólar no Pânico",
-              "detail": "Alto risco de pagar na máxima e ver a moeda despencar",
-              "icon": "warning",
+              "id": "question",
+              "kind": "label",
+              "label": "O câmbio persistiu?",
               "x": 4,
-              "y": 8,
-              "width": 44,
-              "height": 28,
-              "initially_visible": true
+              "y": 27,
+              "width": 52,
+              "height": 43,
+              "initially_visible": true,
+              "label_size": 58
             },
             {
-              "id": "loteria_card",
-              "kind": "note",
-              "label": "Especulação é Loteria",
-              "detail": "Ninguém acerta a cotação exata no curto prazo de forma consistente",
-              "icon": "eye-off",
-              "x": 4,
-              "y": 39,
-              "width": 44,
-              "height": 28,
-              "initially_visible": false
-            },
-            {
-              "id": "cdi_metric",
-              "kind": "metric",
-              "value": "> 1% /mês",
-              "value_size": 72,
-              "label": "Renda Fixa Brasileira",
-              "detail": "CDI e Selic garantem ganho previsível todo mês",
-              "icon": "shield",
-              "x": 52,
-              "y": 8,
-              "width": 44,
-              "height": 38,
-              "initially_visible": false
-            },
-            {
-              "id": "seguranca_card",
-              "kind": "step",
-              "step_number": 1,
-              "label": "Proteção Sem Risco Cambial",
-              "detail": "Rendimento em reais com liquidez diária e total previsibilidade",
-              "icon": "coins",
-              "x": 52,
-              "y": 49,
-              "width": 44,
-              "height": 18,
-              "initially_visible": false
+              "id": "cart_photo",
+              "kind": "photo",
+              "label": "Carrinho: imagem ilustrativa",
+              "x": 64,
+              "y": 10,
+              "width": 33,
+              "height": 84,
+              "initially_visible": true,
+              "asset_id": "A_shopping_cart",
+              "image_fit": "cover",
+              "image_motion": "push"
             }
-          ]
-        }
-      }
-    },
-    {
-      "index": 7,
-      "title": "O melhor escudo para o seu bolso",
-      "narration": "O dólar a cinco e vinte e um não é motivo de desespero, mas sim de planejamento. A melhor proteção para o seu bolso é manter a reserva de emergência rendendo, eliminar dívidas caras de cartão e entender como a economia funciona antes de tomar decisões precipitadas. Se você gosta desse jeito direto de entender o seu dinheiro, já se inscreve no canal O Dinheiro Explica e deixa aqui nos comentários: o preço das coisas já começou a pesar na sua região? Um grande abraço do Roberto e até o próximo vídeo!",
-      "visual": {
-        "type": "DOCUMENT",
-        "transition": "fade",
+          ],
+          "connections": []
+        },
         "beats": [
           {
-            "anchor": "reserva de emergência rendendo",
-            "kind": "step",
-            "headline": "Reserva Rendendo",
-            "behavior": "transform",
-            "treatment": "step_card",
-            "transition": "wipe",
-            "placement": "left",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "target_id": "pilar_reserva",
+            "anchor": "O câmbio persistiu",
+            "headline": "O câmbio persistiu?",
+            "target_id": "question",
             "action": "focus",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "eliminar dívidas caras de cartão",
-            "kind": "warning",
-            "headline": "Cortar Dívidas",
+            "kind": "process",
             "behavior": "transform",
-            "treatment": "step_card",
+            "treatment": "kinetic_type",
             "transition": "wipe",
-            "placement": "center",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "pilar_dividas",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "entender como a economia funciona",
-            "kind": "note",
-            "headline": "Conhecimento é Proteção",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
-            "placement": "right",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "target_id": "pilar_educacao",
-            "action": "reveal",
-            "prominence": "contextual"
-          },
-          {
-            "anchor": "se inscreve no canal O Dinheiro Explica",
-            "kind": "note",
-            "headline": "O Dinheiro Explica",
-            "behavior": "transform",
-            "treatment": "masked_emphasis",
-            "transition": "bloom",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
-            "target_id": "cta_banner",
-            "action": "reveal",
-            "prominence": "contextual"
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "trigo e o diesel mudaram",
+            "headline": "Trigo e diesel mudaram?",
+            "target_id": "question",
+            "action": "update",
+            "kind": "process",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "preços ao consumidor confirmam",
+            "headline": "Os preços confirmam?",
+            "target_id": "question",
+            "action": "update",
+            "kind": "process",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48
+          },
+          {
+            "anchor": "preço de amanhã",
+            "headline": "A próxima compra",
+            "target_id": "cart_photo",
+            "action": "focus",
+            "kind": "warning",
+            "behavior": "transform",
+            "treatment": "depth_photo",
+            "transition": "wipe",
+            "placement": "full",
+            "medium": "photo_cutout",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.48,
+            "asset_id": "A_shopping_cart"
           }
-        ],
-        "stage": {
-          "elements": [
-            {
-              "id": "pilar_reserva",
-              "kind": "metric",
-              "value": "R$ 5,21",
-              "value_size": 56,
-              "label": "Não é Desespero",
-              "detail": "Mantenha sua reserva de emergência rendendo na renda fixa",
-              "icon": "shield",
-              "x": 4,
-              "y": 8,
-              "width": 29,
-              "height": 56,
-              "initially_visible": true
-            },
-            {
-              "id": "pilar_dividas",
-              "kind": "step",
-              "step_number": 1,
-              "label": "Zerar Dívidas Caras",
-              "detail": "Cartão e cheque especial consomem seu patrimônio",
-              "icon": "receipt",
-              "x": 36,
-              "y": 8,
-              "width": 28,
-              "height": 45,
-              "initially_visible": false
-            },
-            {
-              "id": "pilar_educacao",
-              "kind": "note",
-              "label": "Entender Antes de Agir",
-              "detail": "Informação de qualidade é a melhor blindagem financeira",
-              "icon": "search",
-              "x": 67,
-              "y": 8,
-              "width": 29,
-              "height": 56,
-              "initially_visible": false
-            },
-            {
-              "id": "cta_banner",
-              "kind": "note",
-              "label": "Inscreva-se e Comente!",
-              "detail": "O preço das coisas já começou a pesar na sua região?",
-              "icon": "bell",
-              "x": 4,
-              "y": 68,
-              "width": 92,
-              "height": 22,
-              "initially_visible": false
-            }
-          ]
-        }
+        ]
       }
     }
   ],
   "packaging": {
     "strategy": {
-      "click_reason": "A oscilação do dólar a R$ 5,21 às vésperas da eleição gera dúvida direta sobre aumento de preços no supermercado, combustíveis e proteção de patrimônio.",
-      "visual_focus": "O número 5,21 em destaque com o símbolo do dólar e da inflação/mercado, sem gráficos caóticos.",
-      "curiosity_gap": "Se eu não viajo nem compro em dólar, por que a alta vai pesar no meu bolso e o que fazer com os juros a 13,75%?",
-      "mobile_readability": "Tipografia pesada, números gigantes, contraste alto em 320x180.",
-      "anti_clickbait_check": "O título e a capa refletem com precisão a cotação real e a mecânica de repasse cambial.",
-      "repetition_check": "Abordagem focada em economia doméstica e câmbio, sem metáforas repetidas de outros temas.",
-      "youtube_safety_check": "Conteúdo factual de educação financeira, sem viés político-partidário."
+      "click_reason": "Uma pergunta concreta sobre o caminho entre dólar, pão e frete.",
+      "visual_focus": "Uma cédula estilizada se divide em duas rotas, trigo e caminhão, que chegam a um recibo.",
+      "curiosity_gap": "Por que uma cotação em dólar pode afetar quem só paga em reais, e quando isso de fato ocorre?",
+      "mobile_readability": "Dois símbolos grandes e texto curto, legíveis em tela pequena.",
+      "anti_clickbait_check": "O roteiro mostra possibilidade e limites do repasse, sem prometer aumento imediato.",
+      "repetition_check": "Percurso bifurcado com recibo como desfecho visual, sem grade de cards ou gráfico de mercado inventado.",
+      "youtube_safety_check": "Linguagem econômica explicativa, sem previsão eleitoral ou promessa financeira."
     },
     "titles": [
       {
         "id": "title_main",
-        "text": "Dólar a R$ 5,21 na reta final: o que a eleição vai fazer com o seu dinheiro e com os preços?",
-        "rationale": "Conecta o fato do dia com o impacto direto na vida prática do brasileiro."
+        "text": "Por que o dólar pode mudar o preço do pão e do frete?",
+        "rationale": "A pergunta é entregue pelas duas rotas documentadas e pelo limite do repasse."
       }
     ],
     "thumbnails": [
       {
         "id": "thumb_main",
-        "headline": "DÓLAR A R$ 5,21: E O SEU BOLSO?",
-        "concept": "Cotação do dólar em destaque com seta de repasse para o consumo e o selo de proteção da Selic.",
-        "visual_prompt": "Capa editorial financeira YouTube 16:9, fundo carvão escuro com detalhes em dourado #FFBD19, tipografia pesada e limpa."
+        "headline": "DÓLAR → PÃO?",
+        "concept": "Dólar à esquerda, trigo e caminhão como duas rotas, recibo à direita.",
+        "visual_prompt": "Thumbnail editorial 16:9 do canal O Dinheiro Explica. Fundo carvão escuro, branco e amarelo #FFBD19. Uma nota de dólar estilizada à esquerda se divide em dois caminhos gráficos: espiga de trigo e caminhão; ambos apontam para um recibo grande à direita. Texto curto DÓLAR → PÃO? em tipografia pesada. Composição simples, sem logotipo, sem dados de câmbio ou Selic."
       }
     ]
   },
   "publication": {
-    "description": "O dólar operou com forte volatilidade no pregão de 29 de setembro de 2026, tocando a máxima de R$ 5,24 e fechando cotado a R$ 5,21. A poucos dias do primeiro turno das eleições, a oscilação do câmbio acende o alerta no mercado e no bolso dos brasileiros.\n\nNeste vídeo, explicamos na prática o mecanismo de repasse cambial (pass-through): por que a alta da moeda americana mexe diretamente com o preço do pão, da carne e do combustível, mesmo para quem não gasta um centavo em dólar. Além disso, analisamos o papel da taxa Selic em 13,75% ao ano e as melhores estratégias para proteger seu patrimônio sem cair em desespero especulativo.\n\nBases do vídeo:\nBanco Central do Brasil — Cotações de Fechamento do Câmbio (PTAX)\nBanco Central do Brasil — Atas do Copom e Relatório de Inflação\nG1 Economia — Cobertura de Mercados e Câmbio\nFGV IBRE — Estudos sobre Transmissão Cambial e Preços ao Consumidor\n\n#Dolar #Economia #Eleicoes2026 #Inflacao #Selic #ODinheiroExplica",
+    "description": "Como uma mudança no dólar pode chegar ao preço do pão e ao custo do frete? Seguimos os caminhos do trigo importado e do diesel, com dados da Conab e da ANP, e explicamos por que o repasse aos preços não é automático.\n\nA PTAX de venda publicada pelo Banco Central para 29 de setembro de 2026 foi R$ 5,2204. O primeiro turno das eleições está marcado para 4 de outubro, mas a proximidade das datas não demonstra que a eleição causou aquela cotação. O estudo do Banco Central sobre repasse cambial mostra efeitos diferentes conforme o produto e o horizonte. Também distinguimos a Selic anual de um rendimento líquido mensal de investimento.\n\n#Dolar #Economia #Inflacao #Frete #ODinheiroExplica",
     "seo": {
-      "primary_keyword": "dólar hoje",
+      "primary_keyword": "dólar e preços",
       "secondary_keywords": [
-        "dólar a 5 21",
-        "dólar e eleições",
+        "dólar e inflação",
+        "trigo importado",
+        "diesel e frete",
         "repasse cambial",
-        "inflação dólar",
-        "o dinheiro explica",
-        "taxa selic",
-        "investimentos hoje"
+        "Selic"
       ],
-      "search_intent": "Entender o impacto da subida do dólar para 5,21 na reta final eleitoral sobre a inflação e finanças pessoais.",
-      "description_strategy": "Apresentar a cotação real, conectar à rotina do consumidor e elencar as fontes oficiais."
+      "search_intent": "Entender por que e quando uma mudança no dólar pode afetar os preços no Brasil.",
+      "description_strategy": "Abrir com a pergunta do vídeo e apresentar os dois canais concretos sem promessa de repasse imediato."
     },
     "tags": [
       "dólar",
-      "dólar hoje",
-      "dólar 5 21",
-      "eleições 2026",
-      "inflação",
       "repasse cambial",
-      "selic",
-      "banco central",
-      "economia brasileira",
+      "trigo",
+      "diesel",
+      "inflação",
       "O Dinheiro Explica"
     ],
     "chapters": [],

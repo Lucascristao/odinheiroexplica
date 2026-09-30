@@ -43,7 +43,7 @@ A fonte Inter é distribuída com sua licença e carregada antes de medir texto.
 ## Pesquisa aplicada e limites
 
 - Remotion: animação derivada do frame, para reprodução e render paralelo consistentes. Aplicado ao estado persistente, conexões, entrada e reposicionamento. Fonte: https://www.remotion.dev/docs/animating-properties
-- Remotion Bits: stagger e mudanças coordenadas ajudam a organizar elementos, mas não decidem o significado da cena. Mantemos primitivas próprias pequenas e sincronizadas com bookmarks, sem instalar um catálogo de efeitos. Fonte: https://remotion-bits.dev/docs/reference/staggered-motion/
+- Remotion Bits: stagger e mudanças coordenadas ajudam a organizar elementos, mas não decidem o significado da cena. Mantemos primitivas próprias pequenas e acionadas por tempos estimados das âncoras da narração, sem instalar um catálogo de efeitos. Esses tempos não são bookmarks emitidos pelo TTS. Fonte: https://remotion-bits.dev/docs/reference/staggered-motion/
 - Curvable: determinismo e componentes de texto são úteis; os templates de lançamento SaaS não são a composição editorial do canal. Fonte: https://github.com/Curvable/motion
 - Edição: match cuts e continuidade de atenção inspiram manter o mesmo objeto ao mudar seu papel. J/L cuts separam o momento do corte de imagem e do áudio; são uma evolução futura que exige modelo de sobreposição de cenas, não aplicada implicitamente ao áudio atual. Fonte: https://www.adobe.com/in/creativecloud/video/discover/match-cut.html e https://helpx.adobe.com/sg/premiere/desktop/edit-projects/trim-clips/perform-j-cuts-and-l-cuts.html
 

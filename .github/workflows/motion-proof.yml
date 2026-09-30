@@ -1,0 +1,30 @@
+name: Motion design proof
+
+on:
+  pull_request:
+    paths:
+      - "video/src/MotionDesignProof.tsx"
+      - "video/src/Root.tsx"
+      - "package.json"
+      - ".github/workflows/motion-proof.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci --no-audit --no-fund
+      - run: mkdir -p render-output && npm run render:motion-proof
+      - uses: actions/upload-artifact@v4
+        with:
+          name: motion-design-proof
+          path: render-output/motion-design-proof.mp4
+          if-no-files-found: error
+          retention-days: 7

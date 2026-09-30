@@ -109,11 +109,17 @@ jobs:
             --output video/generated/daily-pronunciation-audit.json \
             --strict
 
+      - name: Restore matching Gemini audio
+        uses: actions/cache/restore@v4
+        with:
+          path: public/generated-audio/daily
+          key: gemini-audio-v2-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            gemini-audio-v2-
+
       - name: Generate presenter audio per scene
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}
-          AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
         run: |
           python worker/progress_callback.py \
             --run-id "${{ github.run_id }}" \
@@ -123,12 +129,18 @@ jobs:
             --percent 10 \
             --detail "Pronúncia revisada. Gerando a narração com a voz do apresentador."
 
-          rm -rf public/generated-audio/daily
           mkdir -p public/generated-audio/daily video/generated render-output
           python worker/synthesize_scenes.py \
             --input video/data/daily.json \
             --output-dir public/generated-audio/daily \
             --manifest video/generated/daily-tts-manifest.json
+
+      - name: Save partial Gemini audio for a safe retry
+        if: always() && hashFiles('public/generated-audio/daily/*.tts.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: public/generated-audio/daily
+          key: gemini-audio-v2-${{ github.run_id }}-${{ github.run_attempt }}
 
       - name: Build timeline from real narration
         run: |
@@ -143,6 +155,7 @@ jobs:
           python worker/build_render_input.py \
             --project video/data/daily.json \
             --tts-manifest video/generated/daily-tts-manifest.json \
+            --require-gemini \
             --audio-public-prefix generated-audio/daily \
             --visual-assets-manifest video/generated/daily-visual-assets.json \
             --output video/generated/daily-render-input.json
