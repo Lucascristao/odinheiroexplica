@@ -15,6 +15,12 @@ Use fontes primárias para confirmar documentos, regras, números e posições i
 
 Em toda pauta, consulte ao menos uma matéria específica de veículo com linha editorial à direita ou centro-direita e registre `publisher`, URL e resumo em `editorial.source_balance.right_editorial_review.consulted`. Use essa leitura para testar o enquadramento, os custos e os efeitos práticos da narrativa oficial. Não atribua a essa matéria dados que ela não traz; confirme números na fonte primária e cruze as interpretações. A voz do canal pode dar espaço maior a críticas bem sustentadas, mantendo linguagem sóbria e sem militância partidária.
 
+### Atribuição das fontes na fala
+
+Evite nomes de jornais, revistas e portais na narração. Use atribuição natural quando necessária, como "uma reportagem consultada destacou" ou "as reportagens consultadas apontaram". A forma no singular ou no plural precisa corresponder às fontes que realmente sustentam aquela afirmação. Não substitua o nome de um veículo por "o mercado", "a imprensa" ou "os especialistas" para sugerir consenso que a pesquisa não demonstrou. Preserve opiniões e interpretações como posições atribuídas, sem apresentá-las como fatos confirmados.
+
+Mantenha o nome exato do veículo, o título e a URL específica em `sources` e no pacote técnico. Preserve nomes reais e créditos na seção de fontes da descrição, mantendo seu formato público sem links. A preferência de não falar marcas de veículos não elimina pesquisa, diversidade editorial nem rastreabilidade. Instituições oficiais, como Banco Central, IBGE e TSE, podem ser nomeadas na narração quando isso ajuda a identificar o dado, documento ou metodologia usado; continue separando dados verificáveis de interpretações institucionais.
+
 Escolha um único assunto forte. Se o usuário já definiu a pauta, preserve esse assunto e atualize a pesquisa, os dados e o enquadramento; pedir um vídeo novo ou atualizado não autoriza trocar a pauta.
 
 Antes de fechar o roteiro, resolva a embalagem. Título + thumbnail formam uma única decisão editorial e precisam vender exatamente a história que o vídeo entrega.

@@ -4,6 +4,14 @@ import type {StageElement} from "../../src/lib/editorial-stage";
 export const EditorialObject = ({type, accent, progress}: {type: NonNullable<StageElement["object_type"]>; accent: string; progress: number}) => <svg viewBox="0 0 400 400" width="100%" height="100%">
   <ellipse cx="200" cy="359" rx="139" ry="15" fill="#000" opacity=".28" />
   <g transform={`translate(0 ${12*(1-progress)})`} strokeLinejoin="round">
+    {type === "component" && <>
+      <path d="M70 88 H330 V312 H70 Z" fill="#24423a" stroke="#7faaa0" strokeWidth="6" />
+      {[110,150,190,230,270].map(x=><g key={x} stroke={accent} strokeWidth="8"><path d={`M${x} 66 V102 M${x} 300 V336`} /></g>)}
+      <path d="M94 146 H136 V184 M308 246 H270 V218 M92 268 H142 V236 M305 126 H265 V160" fill="none" stroke="#7faaa0" strokeWidth="7" />
+      <rect x="144" y="148" width="112" height="108" rx="12" fill="#10191d" stroke={accent} strokeWidth="5" />
+      <path d="M176 177 H224 M176 195 H213 M176 213 H224" stroke="#b5cec7" strokeWidth="7" strokeLinecap="round" />
+      {[94,305].map(x=><circle key={x} cx={x} cy="290" r="7" fill={accent} />)}
+    </>}
     {type === "receipt" && <>
       <path d="M90 36 H310 V348 L288 336 L266 348 L244 336 L222 348 L200 336 L178 348 L156 336 L134 348 L112 336 L90 348 Z" fill="#f0ebe1" />
       <path d="M125 88 H275 M125 120 H235 M125 174 H275 M125 203 H247" stroke="#a3aaa9" strokeWidth="12" strokeLinecap="round" />

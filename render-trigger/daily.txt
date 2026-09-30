@@ -1,2 +1,3 @@
-Split Payment — V4 Final: Recortes com texto real oficial (anti-papel branco), movimento continuo em SVGs e textos (nada estatico como slide), banners largos horizontais sem espremer e espacamento generoso.
-Trigger: 2026-09-29T20:17:05.405Z
+Produção autorizada: dólar e política — 30/09/2026 — v2.
+Continuidade de voz adaptativa, volume uniforme, fontes sem marcas na fala e direção visual revisada.
+restore_audio_artifact=11121120586

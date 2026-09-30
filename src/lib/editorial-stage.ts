@@ -20,7 +20,7 @@ export const stageElementSchema = z.object({
   text_region: regionSchema.optional(),
   label_size: z.number().min(32).max(120).optional(),
   value_size: z.number().min(48).max(260).default(72),
-  object_type: z.enum(["wallet", "bank", "receipt"]).optional(),
+  object_type: z.enum(["wallet", "bank", "receipt", "component"]).optional(),
   label: z.string().min(1).max(80),
   detail: z.string().max(160).optional(),
   value: z.string().max(32).optional(),

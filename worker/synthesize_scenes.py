@@ -555,10 +555,12 @@ def main() -> None:
             )
             if duration is not None:
                 print(f"    [Gemini Cache] Fallback 3.1 tratado reutilizado ({duration}s).", flush=True)
-                fallback_active = True
                 sidecar = json.loads(
                     job["output_file"].with_suffix(".tts.json").read_text(encoding="utf-8")
                 )
+                # A valid fallback cache proves why this existing clip used 3.1,
+                # but does not establish a current outage of the primary. Only
+                # a failed primary request in this run activates new fallback.
                 job["duration"] = duration
                 synthesis_by_id[job["scene_id"]] = {
                     "engine": "google-gemini-tts", "model": fallback_model,

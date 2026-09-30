@@ -7,6 +7,7 @@ dist
 *.log
 render-output/
 public/generated-audio/
+public/processed-audio/
 public/generated-assets/
 public/generated-sfx/
 video/generated/

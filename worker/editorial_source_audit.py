@@ -1,6 +1,8 @@
 import argparse
 import json
 from pathlib import Path
+import re
+import unicodedata
 from urllib.parse import urlparse
 
 
@@ -23,6 +25,39 @@ CONTEXT_CLASSES = {
 }
 
 
+def spoken_words(text: str) -> str:
+    normalized = unicodedata.normalize("NFKD", text.casefold())
+    unaccented = "".join(char for char in normalized if not unicodedata.combining(char))
+    return " " + " ".join(re.findall(r"[^\W_]+", unaccented)) + " "
+
+
+def narration_publisher_issues(sources: list, scenes: list) -> list[str]:
+    names: dict[str, str] = {}
+    for source in sources:
+        if source.get("publisher_class") != "independent_journalism":
+            continue
+        # A slash explicitly credits distinct publishers (Reuters / InfoMoney).
+        # Do not invent shortened names such as Oeste for Revista Oeste.
+        for name in str(source.get("publisher") or "").split("/"):
+            name = name.strip()
+            words = spoken_words(name)
+            if words.strip():
+                names.setdefault(words, name)
+
+    issues = []
+    for position, scene in enumerate(scenes):
+        narration = spoken_words(str(scene.get("narration") or ""))
+        scene_id = scene.get("id") or scene.get("index", position)
+        for words, name in names.items():
+            if words in narration:
+                issues.append(
+                    f"Cena {scene_id}: nome do veículo '{name}' na narração. "
+                    "Use atribuição natural sem sugerir consenso indevido; "
+                    "preserve o nome nas fontes e nos créditos da descrição."
+                )
+    return issues
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--input", required=True)
@@ -38,6 +73,8 @@ def main() -> None:
 
     issues: list[str] = []
     warnings: list[str] = []
+    scenes = project.get("scenes") or project.get("script", {}).get("scenes", [])
+    issues.extend(narration_publisher_issues(sources, scenes))
     right_review = balance.get("right_editorial_review") or {}
     consulted = right_review.get("consulted") or []
     if not isinstance(consulted, list) or not consulted:

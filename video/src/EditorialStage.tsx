@@ -74,7 +74,30 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
   const routeNodes = new Set(checkedStage.connections.flatMap(({from, to}) => [from, to]));
   const canvas = {x: 130, y: checkedStage.show_title ? 230 : 130, width: width - 260, height: height - (checkedStage.show_title ? 360 : 230)};
   const cameraEnabled = Boolean(checkedStage.initial_camera || beats.some((beat) => beat.camera));
-  const camera = resolveStageCamera(checkedStage, beats, frame, fps);
+  const fitRelationCamera = (at: number) => {
+    const requested = resolveStageCamera(checkedStage, beats, at, fps);
+    const state = at === frame ? {elements, active} : resolveStage(checkedStage, beats, at, fps);
+    const ids = new Set(state.active?.target_id ? [state.active.target_id] : []);
+    // A connection explains two ends. Keep the visible causal group together
+    // when an authored close-up would otherwise remove the other end.
+    let changed = true;
+    while (changed) {
+      changed = false;
+      for (const edge of checkedStage.connections) {
+        if (!ids.has(edge.from) && !ids.has(edge.to)) continue;
+        for (const id of [edge.from, edge.to]) {
+          if (!ids.has(id) && state.elements.some(e => e.id === id && e.visible)) {ids.add(id); changed = true;}
+        }
+      }
+    }
+    const group = state.elements.filter(e => ids.has(e.id) && e.visible);
+    if (group.length < 2 || group.every(e => fitsStageCamera(e, requested))) return requested;
+    const left = Math.min(...group.map(e => e.x)), right = Math.max(...group.map(e => e.x + e.width));
+    const top = Math.min(...group.map(e => e.y)), bottom = Math.max(...group.map(e => e.y + e.height));
+    const zoom = Math.max(1, Math.min(requested.zoom, 100 / (right-left+6), 100 / (bottom-top+6)));
+    return {x:(left+right)/2,y:(top+bottom)/2,zoom};
+  };
+  const camera = cameraEnabled ? fitRelationCamera(frame) : {x:50,y:50,zoom:1};
   const cameraX = (50 - camera.x) * canvas.width * camera.zoom / 100;
   const cameraY = (50 - camera.y) * canvas.height * camera.zoom / 100;
   const rect = (e: typeof elements[number]) => ({x: e.x * canvas.width / 100, y: e.y * canvas.height / 100, w: e.width * canvas.width / 100, h: e.height * canvas.height / 100});
@@ -93,7 +116,7 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
   const fitsAt = (id: string, at: number) => {
     if (!samples.has(at)) samples.set(at, {
       elements: resolveStage(checkedStage, beats, at, fps).elements,
-      camera: resolveStageCamera(checkedStage, beats, at, fps),
+      camera: cameraEnabled ? fitRelationCamera(at) : {x:50,y:50,zoom:1},
     });
     const sample = samples.get(at)!;
     const element = sample.elements.find(e => e.id === id)!;
@@ -141,10 +164,11 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
           const controlX = horizontal ? (x1+x2)/2 : (x1+x2)/2 + (forward ? bend*2 : -bend*2);
           const controlY = horizontal ? (y1+y2)/2 - bend*2 : (y1+y2)/2;
           const path = `M${x1},${y1} Q${controlX},${controlY} ${x2},${y2}`;
-          const arrival = beats.find(beat => beat.target_id === edge.to && beat.action !== "retire" &&
-            typeof beat.resolved_frame === "number" && beat.resolved_frame <= frame);
-          const routeProgress = arrival ? interpolate(frame - arrival.resolved_frame!, [0, (arrival.motion_seconds ?? 0.45) * fps], [0, 1], clamp) : 0;
-          const selected = active?.target_id === edge.to && routeProgress < 1;
+          const arrival = beats.filter(beat => [edge.from, edge.to].includes(beat.target_id ?? "") && beat.action !== "retire" &&
+            typeof beat.resolved_frame === "number" && beat.resolved_frame <= frame).at(-1);
+          const routeDuration = Math.max(arrival?.motion_seconds ?? 0.45, 1.15) * fps;
+          const routeProgress = arrival ? interpolate(frame - arrival.resolved_frame!, [0, routeDuration], [0, 1], clamp) : 0;
+          const selected = Boolean(arrival && frame - arrival.resolved_frame! < routeDuration);
           const dotX = (1-routeProgress)**2*x1 + 2*(1-routeProgress)*routeProgress*controlX + routeProgress**2*x2;
           const dotY = (1-routeProgress)**2*y1 + 2*(1-routeProgress)*routeProgress*controlY + routeProgress**2*y2;
           const edgeEnter = interpolate(frame - Math.max(from.changedAt, to.changedAt), [0, fps * 0.35], [0, 1], clamp);
@@ -152,6 +176,13 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
             <path d={path} fill="none" stroke="#45515a" strokeWidth={2} strokeDasharray="8 10" markerEnd={`url(#${arrowId})`} />
             {routeProgress > 0 && <path d={path} fill="none" pathLength={1} stroke={accent} strokeWidth={5} strokeLinecap="round" strokeDasharray={1} strokeDashoffset={1-routeProgress} />}
             {selected && routeProgress > 0 && <circle cx={dotX} cy={dotY} r={8} fill={accent} stroke="#101317" strokeWidth={3} />}
+            {selected && /dólar|US\$|R\$|moeda/i.test(`${from.label} ${to.label} ${edge.label ?? ""}`) && [0, 0.22, 0.44].map((delay, coin) => {
+              const p = (routeProgress - delay) / (1 - delay);
+              if (p < 0 || p > 1) return null;
+              const x = (1-p)**2*x1 + 2*(1-p)*p*controlX + p*p*x2;
+              const y = (1-p)**2*y1 + 2*(1-p)*p*controlY + p*p*y2;
+              return <g key={coin} transform={`translate(${x},${y})`}><circle r={17} fill={GOLD} stroke="#101317" strokeWidth={3}/><text textAnchor="middle" dominantBaseline="central" fontSize={20} fontWeight={700} fill="#101317">$</text></g>;
+            })}
             {edge.label && <text x={(x1+x2)/2} y={horizontal ? (y1+y2)/2-bend-18 : (y1+y2)/2-14} textAnchor="middle" fill={routeProgress === 1 ? accent : MUTED} fontSize={30}>{edge.label}</text>}
           </g>;
         })}
@@ -202,6 +233,17 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
 
         const cueProgress = interpolate(frame - element.cueFrame, [0, element.cueDuration], [0, 1], clamp);
         const color = selected && active?.prominence !== "support" ? accent : WHITE;
+        let displayedValue = element.value;
+        const currency = /^(R\$|US\$)\s*(\d+(?:[.,]\d+)?)$/;
+        if (displayedValue && active?.action === "update" && active.target_id === element.id && active.value) {
+          const previous = [...beats].filter(b => b.target_id === element.id && b.value && typeof b.resolved_frame === "number" && b.resolved_frame < active.resolved_frame!).at(-1)?.value ?? checkedStage.elements.find(e => e.id === element.id)?.value;
+          const a = previous?.match(currency), b = displayedValue.match(currency);
+          if (a && b && a[1] === b[1]) {
+            const amount = Number(a[2].replace(',','.')) + (Number(b[2].replace(',','.')) - Number(a[2].replace(',','.'))) * cueProgress;
+            const decimals = Math.min(6, b[2].split(/[.,]/)[1]?.length ?? 0);
+            displayedValue = `${b[1]} ${amount.toLocaleString('pt-BR',{minimumFractionDigits:decimals,maximumFractionDigits:decimals})}`;
+          }
+        }
 
         // Motion is tied to an editorial event. Constant floating made even
         // unrelated scenes feel like the same collection of animated cards.
@@ -284,17 +326,11 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
                       width: "100%",
                       objectFit: element.image_fit,
                       objectPosition: `${element.focal_x}% ${element.focal_y}%`,
-                      transform: element.image_motion === "push" ? `scale(${1 + Math.min(1, Math.max(0, frame - element.changedAt) / (fps * 8)) * 0.06})` : undefined,
+                      transform: element.image_motion === "push" ? `scale(${1 + Math.min(1, Math.max(0, frame - element.changedAt) / (fps * 8)) * 0.06})` : element.image_motion === "pan" ? `translateX(${-3 + 6 * Math.min(1, Math.max(0, frame - element.changedAt) / (fps * 12))}%) scale(1.12)` : undefined,
                     }}
                   />
                 ) : (
                   <div style={{color: "#252a30", fontSize: 32}}>Foto: {element.label}</div>
-                )}
-                {element.asset_file && !checkedStage.elements.some(child => child.overlay_on === element.id) && (
-                  <div style={{position: "absolute", left: 0, right: 0, bottom: 0, padding: "34px 20px 14px", background: "linear-gradient(transparent, rgba(8, 12, 16, 0.88))", color: WHITE, fontSize: 20, fontWeight: 700, lineHeight: 1.2}}>
-                    {element.label}
-                    {element.detail && <span style={{display: "block", color: MUTED, fontSize: 17, marginTop: 3}}>{element.detail}</span>}
-                  </div>
                 )}
               </div>
             ) : (
@@ -322,7 +358,7 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
                   {element.value && (
                     <div style={{marginBottom: 4}}>
                       <TextBox
-                        text={element.value}
+                        text={displayedValue ?? element.value}
                         width={innerW}
                         height={valueH}
                         maxSize={isHeroMetric ? Math.max(108, element.value_size ?? 72) : element.value_size ?? 52}
@@ -376,5 +412,17 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
       })}
     </div>
     </div>
+    {elements.filter(element => element.kind === "photo" && element.asset_file && element.visible && !checkedStage.elements.some(child => child.overlay_on === element.id)).map(element => {
+      // The picture may be cropped by camera motion; its caption lives in screen
+      // coordinates and stays wholly inside the visible portion of the picture.
+      const left = Math.max(canvas.x, canvas.x + (50 + (element.x - camera.x) * camera.zoom) * canvas.width / 100);
+      const right = Math.min(canvas.x + canvas.width, canvas.x + (50 + (element.x + element.width - camera.x) * camera.zoom) * canvas.width / 100);
+      const top = Math.max(canvas.y, canvas.y + (50 + (element.y - camera.y) * camera.zoom) * canvas.height / 100);
+      const bottom = Math.min(canvas.y + canvas.height, canvas.y + (50 + (element.y + element.height - camera.y) * camera.zoom) * canvas.height / 100);
+      if (right - left < 180 || bottom - top < 95) return null;
+      return <div key={`caption-${element.id}`} style={{position: "absolute", left: left + 10, top: bottom - 94, width: right - left - 20, height: 84, padding: "10px 12px", boxSizing: "border-box", borderRadius: 8, background: "rgba(8,12,16,0.88)", opacity: revealMotion(element, frame).reveal}}>
+        <TextBox text={element.label} width={right - left - 44} height={64} maxSize={27} />
+      </div>;
+    })}
   </AbsoluteFill>;
 };

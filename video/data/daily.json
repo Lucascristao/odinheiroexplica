@@ -83,7 +83,7 @@
       "palco doIPP",
       "copiar composição do vídeo anterior"
     ],
-    "implementation_note": "Palcos reais doDailyEditorial; objetos/diagramas, duas fotosCC0 como ilustração e câmeras focadas no alvo inteiro. Os elementos futuros começam ocultos e aparecem por beats."
+    "implementation_note": "Objetos persistem e o custo se transforma no mesmo elemento. As relações ficam juntas na tela, as fotografias têm movimento interno e legenda segura. O fundo não simula série de dados."
   },
   "editorial": {
     "strengths": [
@@ -226,7 +226,7 @@
     },
     {
       "id": "S9",
-      "title": "Insper — A alta do dólar deveria ser uma preocupação para o Banco Central do Brasil?",
+      "title": "Insper — TCC de Alejandro Ortiz Cruceño (2020): A alta do dólar deveria ser uma preocupação para o Banco Central do Brasil?",
       "url": "https://repositorio.insper.edu.br/entities/publication/977a0125-d438-4563-8a82-23cadb236df5",
       "publisher": "Insper",
       "source_type": "context",
@@ -401,7 +401,7 @@
     },
     {
       "id": "C12",
-      "text": "BCBmarço2026 estima repasse heterogêneo com incerteza; Insper pesquisa os canais, sem previsão de itemindividual.",
+      "text": "BCBmarço2026 estima repasse heterogêneo com incerteza; TCC2020 de Alejandro Ortiz Cruceño, disponível no Insper, investiga os canais, sem previsão de itemindividual.",
       "source_ids": [
         "S8",
         "S9"
@@ -446,21 +446,22 @@
               "kind": "metric",
               "label": "Primeiro turno · 2026",
               "x": 5,
-              "y": 15,
-              "width": 40,
-              "height": 60,
+              "y": 2,
+              "width": 42,
+              "height": 22,
               "initially_visible": true,
               "value": "04 OUT",
-              "value_size": 132
+              "value_size": 80,
+              "label_size": 35
             },
             {
               "id": "wallet",
               "kind": "object",
-              "label": "Seu bolso",
-              "x": 60,
-              "y": 12,
-              "width": 33,
-              "height": 63,
+              "label": "A compra chega ao seu bolso",
+              "x": 55,
+              "y": 30,
+              "width": 39,
+              "height": 49,
               "initially_visible": false,
               "object_type": "wallet"
             },
@@ -468,18 +469,30 @@
               "id": "presenter",
               "kind": "label",
               "label": "Roberto · O Dinheiro Explica",
-              "x": 10,
-              "y": 82,
-              "width": 80,
-              "height": 14,
+              "x": 5,
+              "y": 85,
+              "width": 90,
+              "height": 12,
               "initially_visible": false,
               "label_size": 40
+            },
+            {
+              "id": "component",
+              "kind": "object",
+              "object_type": "component",
+              "label": "Uma peça importada",
+              "x": 5,
+              "y": 30,
+              "width": 39,
+              "height": 49,
+              "initially_visible": false
             }
           ],
           "connections": [
             {
-              "from": "vote",
-              "to": "wallet"
+              "from": "component",
+              "to": "wallet",
+              "label": "Custo"
             }
           ]
         },
@@ -497,13 +510,7 @@
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 27,
-              "y": 45,
-              "zoom": 1.15,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.8
           },
           {
             "anchor": "sua compra",
@@ -518,13 +525,10 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 75,
-              "y": 44,
-              "zoom": 1.2,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55,
+            "reveal_ids": [
+              "component"
+            ]
           },
           {
             "anchor": "Eu sou o Roberto",
@@ -539,13 +543,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           }
         ]
       }
@@ -553,7 +551,7 @@
     {
       "index": 1,
       "title": "Qual dólar está na tela?",
-      "narration": "Primeiro, saiba qual número está olhando. A PTAX de venda publicada hoje pelo Banco Central ficou em cinco reais e dezoito centavos, arredondando. Ela é uma taxa de referência calculada a partir de consultas ao mercado. Já o dólar comercial muda durante o pregão: a Exame registrou cinco reais e dezoito centavos às dez e quarenta e dois. Os números são próximos, mas têm horários e métodos diferentes. Nenhum deles é o preço final de uma casa de câmbio.",
+      "narration": "Primeiro, saiba qual número está olhando. A PTAX de venda publicada hoje pelo Banco Central ficou em cinco reais e dezoito centavos, arredondando. Ela é uma taxa de referência calculada a partir de consultas ao mercado. Já o dólar comercial muda durante o pregão: uma reportagem registrou cinco reais e dezenove centavos, arredondando a cotação das dez e quarenta e dois. Os números são próximos, mas têm horários e métodos diferentes. Nenhum deles é o preço final de uma casa de câmbio.",
       "claim_ids": [
         "C2",
         "C3",
@@ -569,36 +567,36 @@
               "id": "ptax",
               "kind": "metric",
               "label": "PTAX venda · 30/09",
-              "x": 4,
+              "x": 5,
               "y": 12,
-              "width": 45,
-              "height": 53,
+              "width": 43,
+              "height": 56,
               "initially_visible": true,
               "value": "R$ 5,1809",
-              "value_size": 104
+              "value_size": 154
             },
             {
               "id": "spot",
               "kind": "metric",
               "label": "Comercial · 10h42",
-              "x": 55,
+              "x": 53,
               "y": 12,
-              "width": 41,
-              "height": 53,
+              "width": 42,
+              "height": 56,
               "initially_visible": false,
               "value": "R$ 5,1870",
-              "value_size": 96
+              "value_size": 154
             },
             {
               "id": "method",
               "kind": "label",
               "label": "Referência ≠ cotação ao vivo",
-              "x": 10,
+              "x": 5,
               "y": 78,
-              "width": 80,
-              "height": 17,
+              "width": 90,
+              "height": 18,
               "initially_visible": false,
-              "label_size": 46
+              "label_size": 54
             }
           ],
           "connections": []
@@ -617,13 +615,7 @@
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 27,
-              "y": 40,
-              "zoom": 1.08,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.8
           },
           {
             "anchor": "Já o dólar comercial",
@@ -638,13 +630,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 75,
-              "y": 40,
-              "zoom": 1.1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
             "anchor": "horários e métodos diferentes",
@@ -659,13 +645,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           }
         ]
       }
@@ -688,31 +668,33 @@
               "kind": "step",
               "label": "Importação · compra dólares",
               "x": 5,
-              "y": 9,
-              "width": 34,
-              "height": 35,
+              "y": 5,
+              "width": 37,
+              "height": 37,
               "initially_visible": true,
-              "icon": "globe"
+              "icon": "globe",
+              "label_size": 43
             },
             {
               "id": "sell",
               "kind": "step",
               "label": "Exportação · vende dólares",
-              "x": 61,
-              "y": 9,
-              "width": 34,
-              "height": 35,
+              "x": 58,
+              "y": 5,
+              "width": 37,
+              "height": 37,
               "initially_visible": false,
-              "icon": "route"
+              "icon": "route",
+              "label_size": 43
             },
             {
               "id": "market",
               "kind": "object",
               "label": "Troca entre reais e dólares",
-              "x": 32,
-              "y": 53,
-              "width": 36,
-              "height": 43,
+              "x": 30,
+              "y": 50,
+              "width": 40,
+              "height": 46,
               "initially_visible": false,
               "object_type": "bank"
             }
@@ -720,11 +702,13 @@
           "connections": [
             {
               "from": "buy",
-              "to": "market"
+              "to": "market",
+              "label": "Procura por US$"
             },
             {
               "from": "sell",
-              "to": "market"
+              "to": "market",
+              "label": "Oferta de US$"
             }
           ]
         },
@@ -742,13 +726,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 25,
-              "y": 28,
-              "zoom": 1.2,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.8
           },
           {
             "anchor": "Outra exporta",
@@ -763,13 +741,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 76,
-              "y": 28,
-              "zoom": 1.2,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
             "anchor": "Investidores também",
@@ -784,13 +756,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
             "anchor": "antes de virar uma lei",
@@ -805,7 +771,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48
+            "motion_seconds": 0.7
           }
         ]
       }
@@ -827,45 +793,48 @@
               "id": "plan",
               "kind": "label",
               "label": "Quanto gasta? Como financia?",
-              "x": 7,
-              "y": 5,
-              "width": 86,
-              "height": 19,
+              "x": 5,
+              "y": 3,
+              "width": 90,
+              "height": 24,
               "initially_visible": true,
-              "label_size": 62
+              "label_size": 58
             },
             {
               "id": "risk",
               "kind": "step",
               "label": "Risco percebido",
               "x": 5,
-              "y": 42,
+              "y": 40,
               "width": 27,
-              "height": 44,
+              "height": 48,
               "initially_visible": false,
-              "icon": "warning"
+              "icon": "warning",
+              "label_size": 44
             },
             {
               "id": "flow",
               "kind": "step",
               "label": "Decisão de investir ou sair",
               "x": 37,
-              "y": 42,
+              "y": 40,
               "width": 28,
-              "height": 44,
+              "height": 48,
               "initially_visible": false,
-              "icon": "route"
+              "icon": "route",
+              "label_size": 44
             },
             {
               "id": "fx",
               "kind": "step",
               "label": "Compra ou venda de dólares",
               "x": 70,
-              "y": 42,
+              "y": 40,
               "width": 27,
-              "height": 44,
+              "height": 48,
               "initially_visible": false,
-              "icon": "coins"
+              "icon": "coins",
+              "label_size": 44
             }
           ],
           "connections": [
@@ -893,7 +862,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
+            "motion_seconds": 0.8,
             "emphasis": {
               "phrase": "Como financia?",
               "style": "underline"
@@ -912,13 +881,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 22,
-              "y": 65,
-              "zoom": 1.15,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
             "anchor": "reduzir a exposição",
@@ -933,13 +896,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 51,
-              "y": 65,
-              "zoom": 1.2,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
             "anchor": "trocar reais por dólares",
@@ -954,13 +911,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 82,
-              "y": 65,
-              "zoom": 1.15,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
             "anchor": "Isso depende da proposta",
@@ -975,13 +926,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.8
           }
         ]
       }
@@ -989,7 +934,7 @@
     {
       "index": 4,
       "title": "O dado fiscal divulgado hoje",
-      "narration": "E hoje saiu um dado concreto para essa discussão. Segundo o Banco Central, a dívida bruta chegou a oitenta e dois vírgula nove por cento do PIB em agosto, somando onze vírgula um trilhões de reais. É uma comparação entre o estoque da dívida e o tamanho da economia. A Revista Oeste destacou a pressão desse endividamento sobre o governo. No mesmo documento, porém, o déficit primário de agosto foi menor que o de agosto do ano passado. Essa melhora mensal não apaga o estoque da dívida. E o estoque, sozinho, não prova calote nem explica toda a cotação do dia.",
+      "narration": "E hoje saiu um dado concreto para essa discussão. Segundo o Banco Central, a dívida bruta chegou a oitenta e dois vírgula nove por cento do PIB em agosto, somando onze vírgula um trilhões de reais. PIB é o valor dos bens e serviços produzidos no país. Essa comparação ajuda a dimensionar a dívida. A cobertura jornalística destacou a pressão desse endividamento sobre o governo. No mesmo documento, porém, o déficit primário de agosto foi menor que o de agosto do ano passado. Primário é o resultado das receitas e despesas sem contar os juros da dívida. Essa melhora mensal não apaga o estoque acumulado. E o estoque, sozinho, não prova calote nem explica toda a cotação do dia.",
       "claim_ids": [
         "C7",
         "C8"
@@ -1004,36 +949,39 @@
               "id": "debt",
               "kind": "metric",
               "label": "Dívida bruta · agosto/2026",
-              "x": 8,
-              "y": 7,
-              "width": 84,
-              "height": 40,
+              "x": 5,
+              "y": 4,
+              "width": 90,
+              "height": 37,
               "initially_visible": true,
               "value": "82,9% do PIB",
-              "value_size": 146
+              "value_size": 168,
+              "label_size": 46
             },
             {
               "id": "stock",
               "kind": "metric",
               "label": "Estoque da dívida",
               "x": 5,
-              "y": 58,
-              "width": 42,
-              "height": 35,
+              "y": 54,
+              "width": 43,
+              "height": 40,
               "initially_visible": false,
               "value": "R$ 11,1 tri",
-              "value_size": 96
+              "value_size": 128,
+              "label_size": 42
             },
             {
               "id": "monthly",
               "kind": "label",
-              "label": "Déficit menor no mês ≠ dívida resolvida",
-              "x": 57,
-              "y": 57,
-              "width": 39,
-              "height": 37,
+              "label": "Menos déficit no mês",
+              "x": 53,
+              "y": 54,
+              "width": 42,
+              "height": 40,
               "initially_visible": false,
-              "label_size": 46
+              "label_size": 48,
+              "detail": "Não apaga a dívida acumulada"
             }
           ],
           "connections": []
@@ -1052,7 +1000,7 @@
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.48
+            "motion_seconds": 0.8
           },
           {
             "anchor": "onze vírgula um trilhões",
@@ -1067,19 +1015,13 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 27,
-              "y": 75,
-              "zoom": 1.1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
             "anchor": "déficit primário de agosto",
             "target_id": "monthly",
             "action": "reveal",
-            "headline": "Déficit menor no mês ≠ dívida resolvida",
+            "headline": "Menos déficit no mês",
             "kind": "fact",
             "behavior": "transform",
             "treatment": "kinetic_type",
@@ -1088,13 +1030,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 76,
-              "y": 75,
-              "zoom": 1.1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
             "anchor": "nem explica toda a cotação",
@@ -1109,13 +1045,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.8
           }
         ]
       }
@@ -1123,7 +1053,7 @@
     {
       "index": 5,
       "title": "O mundo também entra nessa conta",
-      "narration": "Só que Brasília não controla o mundo. Juros e inflação nos Estados Unidos mudam a atratividade de manter dinheiro em dólar. O humor global e o comércio também alteram os fluxos. Na manhã de hoje, a Exame relacionou o recuo do dólar a dados americanos e à melhora do apetite por risco, enquanto a eleição seguia no radar. São fatores ao mesmo tempo. Então, dizer que o dólar caiu por causa de uma pesquisa exige identificar a pesquisa, o horário e uma reação compatível. A proximidade da eleição não demonstra essa causa.",
+      "narration": "Só que Brasília não controla o mundo. Juros e inflação nos Estados Unidos mudam a atratividade de manter dinheiro em dólar. O humor global e o comércio também alteram os fluxos. Na manhã de hoje, uma reportagem relacionou o recuo do dólar a dados americanos e à melhora do apetite por risco, enquanto a eleição seguia no radar. São fatores ao mesmo tempo. Então, dizer que o dólar caiu por causa de uma pesquisa exige identificar a pesquisa, o horário e uma reação compatível. A proximidade da eleição não demonstra essa causa.",
       "claim_ids": [
         "C9"
       ],
@@ -1137,45 +1067,50 @@
               "id": "world",
               "kind": "step",
               "label": "Juros e inflação nos EUA",
-              "x": 5,
-              "y": 10,
-              "width": 37,
+              "x": 4,
+              "y": 6,
+              "width": 41,
               "height": 38,
               "initially_visible": true,
-              "icon": "globe"
+              "icon": "globe",
+              "label_size": 46
             },
             {
               "id": "brasil",
               "kind": "step",
               "label": "Contas públicas e eleição",
-              "x": 59,
-              "y": 10,
-              "width": 36,
+              "x": 55,
+              "y": 6,
+              "width": 41,
               "height": 38,
               "initially_visible": false,
-              "icon": "house"
+              "icon": "house",
+              "label_size": 46
             },
             {
               "id": "fx",
               "kind": "metric",
               "label": "Câmbio · vários fatores",
-              "x": 29,
+              "x": 18,
               "y": 61,
-              "width": 42,
-              "height": 33,
+              "width": 64,
+              "height": 34,
               "initially_visible": false,
               "value": "R$ / US$",
-              "value_size": 84
+              "value_size": 112,
+              "label_size": 46
             }
           ],
           "connections": [
             {
               "from": "world",
-              "to": "fx"
+              "to": "fx",
+              "label": "Fluxo de dólares"
             },
             {
               "from": "brasil",
-              "to": "fx"
+              "to": "fx",
+              "label": "Fluxo de dólares"
             }
           ]
         },
@@ -1193,13 +1128,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 25,
-              "y": 30,
-              "zoom": 1.15,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.8
           },
           {
             "anchor": "eleição seguia no radar",
@@ -1214,13 +1143,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 76,
-              "y": 30,
-              "zoom": 1.15,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
             "anchor": "São fatores ao mesmo tempo",
@@ -1235,19 +1158,13 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
             "anchor": "não demonstra essa causa",
             "target_id": "fx",
             "action": "update",
-            "headline": "Data próxima não prova causa",
+            "headline": "Eleição próxima não prova a causa",
             "kind": "fact",
             "behavior": "transform",
             "treatment": "kinetic_type",
@@ -1256,11 +1173,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "emphasis": {
-              "phrase": "não prova",
-              "style": "underline"
-            }
+            "motion_seconds": 0.7
           }
         ]
       }
@@ -1281,47 +1194,46 @@
             {
               "id": "invoice",
               "kind": "object",
-              "label": "Peça importada · exemplo",
-              "x": 4,
-              "y": 10,
-              "width": 27,
-              "height": 71,
+              "label": "A mesma peça · US$ 100",
+              "x": 5,
+              "y": 13,
+              "width": 37,
+              "height": 66,
               "initially_visible": true,
-              "object_type": "receipt"
+              "object_type": "component"
             },
             {
               "id": "base",
               "kind": "metric",
-              "label": "US$ 100 × R$ 5,00",
-              "x": 38,
-              "y": 11,
-              "width": 56,
-              "height": 31,
+              "label": "Custo com dólar a R$ 5,00",
+              "x": 51,
+              "y": 10,
+              "width": 44,
+              "height": 53,
               "initially_visible": false,
               "value": "R$ 500",
-              "value_size": 108
+              "value_size": 170,
+              "label_size": 46
             },
             {
               "id": "changed",
               "kind": "metric",
-              "label": "US$ 100 × R$ 5,50",
-              "x": 38,
-              "y": 60,
-              "width": 56,
-              "height": 31,
+              "label": "Só o câmbio mudou",
+              "x": 51,
+              "y": 75,
+              "width": 44,
+              "height": 20,
               "initially_visible": false,
-              "value": "R$ 550",
-              "value_size": 108
+              "value": "US$ 100",
+              "value_size": 62,
+              "label_size": 35
             }
           ],
           "connections": [
             {
               "from": "invoice",
-              "to": "base"
-            },
-            {
-              "from": "base",
-              "to": "changed"
+              "to": "base",
+              "label": "US$ 100"
             }
           ]
         },
@@ -1330,7 +1242,7 @@
             "anchor": "cem dólares",
             "target_id": "invoice",
             "action": "focus",
-            "headline": "Peça importada · exemplo",
+            "headline": "A mesma peça · US$ 100",
             "kind": "fact",
             "behavior": "transform",
             "treatment": "kinetic_type",
@@ -1339,19 +1251,13 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 20,
-              "y": 47,
-              "zoom": 1.1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.8
           },
           {
             "anchor": "quinhentos reais",
             "target_id": "base",
             "action": "reveal",
-            "headline": "US$ 100 × R$ 5,00",
+            "headline": "Custo com dólar a R$ 5,00",
             "kind": "fact",
             "behavior": "transform",
             "treatment": "kinetic_type",
@@ -1360,19 +1266,13 @@
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 65,
-              "y": 27,
-              "zoom": 1.1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
             "anchor": "quinhentos e cinquenta reais",
-            "target_id": "changed",
-            "action": "reveal",
-            "headline": "US$ 100 × R$ 5,50",
+            "target_id": "base",
+            "action": "update",
+            "headline": "Custo com dólar a R$ 5,50",
             "kind": "fact",
             "behavior": "transform",
             "treatment": "kinetic_type",
@@ -1381,19 +1281,17 @@
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 65,
-              "y": 75,
-              "zoom": 1.1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55,
+            "value": "R$ 550",
+            "reveal_ids": [
+              "changed"
+            ]
           },
           {
             "anchor": "O real é que compra menos",
             "target_id": "changed",
             "action": "focus",
-            "headline": "US$ 100 × R$ 5,50",
+            "headline": "Só o câmbio mudou",
             "kind": "fact",
             "behavior": "transform",
             "treatment": "kinetic_type",
@@ -1402,13 +1300,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.8
           }
         ]
       }
@@ -1431,46 +1323,49 @@
               "kind": "photo",
               "label": "Insumo importado · ilustração",
               "x": 3,
-              "y": 9,
-              "width": 33,
-              "height": 83,
+              "y": 6,
+              "width": 37,
+              "height": 86,
               "initially_visible": true,
               "asset_id": "A_wheat_field",
               "image_fit": "cover",
-              "image_motion": "push"
+              "image_motion": "pan"
             },
             {
               "id": "inventory",
               "kind": "step",
               "label": "Estoque e contrato",
-              "x": 43,
-              "y": 10,
-              "width": 52,
+              "x": 48,
+              "y": 7,
+              "width": 48,
               "height": 23,
               "initially_visible": false,
-              "icon": "lock"
+              "icon": "lock",
+              "label_size": 43
             },
             {
               "id": "production",
               "kind": "step",
               "label": "Produção e transporte",
-              "x": 43,
-              "y": 44,
-              "width": 52,
+              "x": 48,
+              "y": 40,
+              "width": 48,
               "height": 23,
               "initially_visible": false,
-              "icon": "route"
+              "icon": "route",
+              "label_size": 43
             },
             {
               "id": "shop",
               "kind": "step",
               "label": "Margem e concorrência",
-              "x": 43,
-              "y": 78,
-              "width": 52,
-              "height": 19,
+              "x": 48,
+              "y": 73,
+              "width": 48,
+              "height": 23,
               "initially_visible": false,
-              "icon": "cart"
+              "icon": "cart",
+              "label_size": 43
             }
           ],
           "connections": [
@@ -1498,13 +1393,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 66,
-              "y": 24,
-              "zoom": 1.15,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
             "anchor": "produção, transporte",
@@ -1519,13 +1408,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 66,
-              "y": 56,
-              "zoom": 1.15,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
             "anchor": "não produz o mesmo reajuste",
@@ -1540,13 +1423,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 66,
-              "y": 85,
-              "zoom": 1.1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
             "anchor": "fazem diferença",
@@ -1561,13 +1438,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.8
           }
         ]
       }
@@ -1589,10 +1460,10 @@
               "id": "cart",
               "kind": "photo",
               "label": "Compra real · imagem ilustrativa",
-              "x": 54,
+              "x": 53,
               "y": 6,
-              "width": 43,
-              "height": 90,
+              "width": 44,
+              "height": 88,
               "initially_visible": true,
               "asset_id": "A_shopping_cart",
               "image_fit": "cover",
@@ -1603,33 +1474,33 @@
               "kind": "label",
               "label": "Alimentos e bens: mais sensíveis",
               "x": 3,
-              "y": 10,
-              "width": 45,
+              "y": 6,
+              "width": 44,
               "height": 32,
               "initially_visible": false,
-              "label_size": 56
+              "label_size": 58
             },
             {
               "id": "services",
               "kind": "label",
               "label": "Serviços: efeito estimado menor",
               "x": 3,
-              "y": 49,
-              "width": 45,
+              "y": 45,
+              "width": 44,
               "height": 28,
               "initially_visible": false,
-              "label_size": 48
+              "label_size": 54
             },
             {
               "id": "limit",
               "kind": "label",
               "label": "Estimativa tem incerteza",
               "x": 3,
-              "y": 84,
-              "width": 45,
-              "height": 13,
+              "y": 81,
+              "width": 44,
+              "height": 14,
               "initially_visible": false,
-              "label_size": 34
+              "label_size": 38
             }
           ],
           "connections": []
@@ -1648,13 +1519,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 27,
-              "y": 27,
-              "zoom": 1.1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
             "anchor": "em serviços",
@@ -1669,13 +1534,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 27,
-              "y": 65,
-              "zoom": 1.1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
             "anchor": "incerteza é ampla",
@@ -1690,16 +1549,26 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.55
           },
           {
-            "anchor": "quanto cada item",
+          "anchor": "O estudo do Insper",
+          "target_id": "services",
+          "action": "update",
+          "headline": "Repasse cambial · TCC de 2020",
+          "detail": "Alejandro Ortiz Cruceño · repositório do Insper",
+          "kind": "fact",
+          "behavior": "transform",
+          "treatment": "kinetic_type",
+          "transition": "cut",
+          "placement": "full",
+          "medium": "motion_graphic",
+          "sound": "none",
+          "prominence": "contextual",
+          "motion_seconds": 0.55
+        },
+        {
+          "anchor": "quanto cada item",
             "target_id": "cart",
             "action": "focus",
             "headline": "Compra real · imagem ilustrativa",
@@ -1711,13 +1580,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
-            "camera": {
-              "x": 75,
-              "y": 52,
-              "zoom": 1.05,
-              "motion_seconds": 0.8
-            }
+            "motion_seconds": 0.8
           }
         ]
       }
@@ -1739,32 +1602,32 @@
               "id": "subscribe",
               "kind": "label",
               "label": "Inscreva-se · O Dinheiro Explica",
-              "x": 7,
-              "y": 4,
-              "width": 86,
-              "height": 18,
+              "x": 5,
+              "y": 2,
+              "width": 90,
+              "height": 16,
               "initially_visible": true,
-              "label_size": 52
+              "label_size": 46
             },
             {
               "id": "question",
               "kind": "label",
               "label": "Qual cotação? Qual horário?",
-              "x": 7,
-              "y": 38,
-              "width": 86,
-              "height": 32,
+              "x": 5,
+              "y": 26,
+              "width": 90,
+              "height": 26,
               "initially_visible": false,
-              "label_size": 68
+              "label_size": 66
             },
             {
               "id": "wallet",
               "kind": "object",
               "label": "Seu dinheiro merece evidência",
-              "x": 32,
-              "y": 74,
-              "width": 36,
-              "height": 23,
+              "x": 24,
+              "y": 56,
+              "width": 52,
+              "height": 43,
               "initially_visible": false,
               "object_type": "wallet"
             }
@@ -1785,7 +1648,7 @@
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.48
+            "motion_seconds": 0.8
           },
           {
             "anchor": "qual cotação está sendo usada",
@@ -1800,7 +1663,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48
+            "motion_seconds": 0.55
           },
           {
             "anchor": "O que mudou nas propostas",
@@ -1815,7 +1678,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48
+            "motion_seconds": 0.7
           },
           {
             "anchor": "o ruído passa",
@@ -1830,7 +1693,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48
+            "motion_seconds": 0.7
           },
           {
             "anchor": "procure evidência",
@@ -1845,7 +1708,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.48,
+            "motion_seconds": 0.55,
             "retire_ids": [
               "subscribe",
               "question"

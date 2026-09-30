@@ -9,6 +9,7 @@ on:
 
 permissions:
   contents: read
+  actions: read
 
 jobs:
   render:
@@ -117,6 +118,15 @@ jobs:
           restore-keys: |
             gemini-audio-v2-
 
+      - name: Restore reviewed audio when requested
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          python worker/restore_reviewed_audio.py \
+            --project video/data/daily.json \
+            --trigger-file render-trigger/daily.txt \
+            --output-dir public/generated-audio/daily
+
       - name: Generate presenter audio per scene
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
@@ -142,6 +152,22 @@ jobs:
           path: public/generated-audio/daily
           key: gemini-audio-v2-${{ github.run_id }}-${{ github.run_attempt }}
 
+      - name: Match voice continuity from this episode
+        run: |
+          python worker/progress_callback.py \
+            --run-id "${{ github.run_id }}" \
+            --title "$ODE_VIDEO_TITLE" \
+            --status running \
+            --stage audio \
+            --percent 18 \
+            --detail "Aproximando o timbre do fallback e igualando o volume entre as cenas."
+
+          python worker/process_voice_continuity.py \
+            --input-manifest video/generated/daily-tts-manifest.json \
+            --source-dir public/generated-audio/daily \
+            --output-dir public/processed-audio/daily \
+            --output-manifest video/generated/daily-processed-tts-manifest.json
+
       - name: Build timeline from real narration
         run: |
           python worker/progress_callback.py \
@@ -154,9 +180,10 @@ jobs:
 
           python worker/build_render_input.py \
             --project video/data/daily.json \
-            --tts-manifest video/generated/daily-tts-manifest.json \
+            --tts-manifest video/generated/daily-processed-tts-manifest.json \
             --require-gemini \
-            --audio-public-prefix generated-audio/daily \
+            --require-voice-continuity \
+            --audio-public-prefix processed-audio/daily \
             --visual-assets-manifest video/generated/daily-visual-assets.json \
             --output video/generated/daily-render-input.json
 
@@ -244,8 +271,10 @@ jobs:
             render-output/daily-youtube.json
             render-output/daily-youtube.txt
             video/generated/daily-tts-manifest.json
+            video/generated/daily-processed-tts-manifest.json
             video/generated/daily-render-input.json
             public/generated-audio/daily/*.mp3
+            public/processed-audio/daily/*.wav
           if-no-files-found: error
           retention-days: 7
 

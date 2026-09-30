@@ -14,11 +14,21 @@ Cada arquivo de áudio tem um sidecar `.tts.json` com hash da narração, modelo
 
 As três amostras de Charon enviadas pelo usuário em 30/09/2026 têm nível médio muito próximo: 3.8 Flash a −18,42 dBFS e 3.1 a −18,26 dBFS. A amostra 3.1 apresentou cerca de 6 dB a mais na faixa de 4–8 kHz e menos presença em 1–2 kHz. Só no trecho 3.1, o worker aplica EQ fixa e leve: graves abaixo de 160 Hz −1 dB, região de 1,5 kHz +1,5 dB, agudos acima de 4,2 kHz −2,5 dB. O tratamento não muda velocidade ou altura de voz e não promete timbre idêntico: interpretação e prosódia ainda podem variar. O vídeo final é entregue para escuta e aprovação manual.
 
+## Continuidade de voz por episódio
+
+Após obter os áudios, `worker/process_voice_continuity.py` processa os arquivos localmente no runner, sem chamadas de API. O perfil de referência vem das cenas 3.8 do próprio episódio: energia por faixa normalizada em cada trecho ativo, mediana dentro da cena e mediana entre cenas. Exige pelo menos duas cenas principais com doze segundos ativos no total; se não houver referência suficiente, registra o motivo e pula a aproximação espectral.
+
+Somente nas cenas 3.1, que já contêm a EQ inicial, aplica uma correção **residual** suave e limitada a ±3 dB por faixa. Em todas as cenas aplica compressão leve (ratio 1,18; ataque 15 ms; release 180 ms) e normalização de loudness para a mediana das cenas principais, limitada a −21…−17 LUFS. Sem cena principal, usa −19 LUFS. A normalização usa duas passagens, modo linear quando o pico permite e modo dinâmico registrado quando necessário, com pico verdadeiro máximo de −1 dBTP e tolerância de 0,5 LU. Não altera pitch, velocidade ou a quantidade de amostras, nem mistura falas na transição. Esse tratamento aproxima o equilíbrio espectral e o volume; não torna idênticos o timbre, o ritmo ou a interpretação.
+
+MP3s originais e sidecars do cache são preservados. A saída fica separada em `public/processed-audio/daily`, em WAV mono de 48 kHz e 24 bits. `video/generated/daily-processed-tts-manifest.json` mantém modelo, voz, tratamento original e motivo de fallback; acrescenta versão `adaptive-voice-continuity-v1`, cenas de referência, ganhos de EQ, loudness, pico, duração medida e hashes de origem e saída. O render usa esse manifesto e os WAVs processados.
+
+Ao refazer um vídeo revisado, o workflow pode restaurar seus áudios de um artefato anterior. Uma cena só é reutilizada se o hash da narração for o mesmo e os dados do cache, hash do áudio e duração forem válidos. Cenas com narração alterada ou cache inválido geram novo TTS; ajustes apenas de processamento ou visual reutilizam a gravação. Restaurar um trecho 3.1 não o identifica como 3.8 e não transforma o fallback em modelo principal.
+
 ## Timeline
 
 A divisão em cenas e a extensão do roteiro são decisões editoriais: use o necessário para explicar a história inteira. Os limites da API controlam o agendamento da síntese, não a quantidade de cenas nem o conteúdo. Em caso de quota, use cache, espera, retomada e o fallback autorizado; preserve o roteiro completo se a síntese precisar continuar depois.
 
-roteiro por cena → TTS por cena → duração medida do áudio → estimativa de posição das âncoras → timeline → render.
+roteiro por cena → cache válido ou TTS por cena → continuidade de voz offline → duração medida do WAV → estimativa de posição das âncoras → timeline → render.
 
 O Gemini usado aqui entrega áudio, sem offsets de palavras ou bookmarks. `compute_beat_timings` distribui cada âncora pela duração real do áudio segundo os caracteres e a pontuação da narração. Esses tempos têm `timing_source: estimated-text-alignment`; uma âncora não encontrada recebe `estimated-distributed` e não serve para um palco persistente. O render verifica que as âncoras de palcos persistentes existem uma única vez e aparecem na ordem da fala. Manifestos antigos com `gemini-bookmark` são lidos como estimativas textuais. Ajuste fino de sincronismo precisa de alinhamento forçado ou eventos de TTS realmente medidos.
 

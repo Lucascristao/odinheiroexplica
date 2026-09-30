@@ -177,6 +177,7 @@ def main() -> None:
     parser.add_argument("--audio-public-prefix", required=True)
     parser.add_argument("--visual-assets-manifest")
     parser.add_argument("--require-gemini", action="store_true")
+    parser.add_argument("--require-voice-continuity", action="store_true")
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
 
@@ -184,6 +185,13 @@ def main() -> None:
     manifest = json.loads(Path(args.tts_manifest).read_text(encoding="utf-8"))
     if args.require_gemini:
         require_gemini_manifest(manifest)
+    if args.require_voice_continuity:
+        version = "adaptive-voice-continuity-v1"
+        if manifest.get("postprocess", {}).get("version") != version or any(
+            scene.get("postprocess", {}).get("version") != version
+            for scene in manifest.get("scenes", [])
+        ):
+            raise RuntimeError("Render diário exige continuidade de voz processada em todas as cenas.")
 
     audio_by_id = {item["id"]: item for item in manifest["scenes"]}
 
@@ -272,6 +280,7 @@ def main() -> None:
                 "audio_voice": audio.get("voice"),
                 "audio_voice_treatment": audio.get("voice_treatment", "none"),
                 "audio_fallback_reason": audio.get("fallback_reason"),
+                "audio_postprocess": audio.get("postprocess"),
                 "audio_file": (
                     f"{args.audio_public_prefix.rstrip('/')}/{audio['file']}"
                 ),
@@ -286,6 +295,7 @@ def main() -> None:
         "fps": FPS,
         "duration_in_frames": cursor,
         "voice": manifest["voice"],
+        "voice_postprocess": manifest.get("postprocess"),
         "scenes": output_scenes,
     }
 

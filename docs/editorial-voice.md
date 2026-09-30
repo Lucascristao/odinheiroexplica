@@ -8,6 +8,12 @@ O worker envia o texto da `narration` e a voz predefinida ao Gemini. `speech.pro
 
 Escreva a intenção na própria narração: frases com uma ideia, pontuação que ajude a leitura, perguntas naturais e contraste claro. Ouça o áudio pronto antes da aprovação. Se a interpretação variar entre cenas, revise o roteiro e considere blocos contínuos de narração após testar duração e sincronização. Evite alternar modelos manualmente; o fallback automático documentado acima é a única exceção.
 
+## Continuidade entre cenas
+
+Roberto continua em Charon no 3.8 principal e no 3.1 somente como fallback. Após a síntese, o runner processa os áudios sem API: as cenas 3.8 do episódio fornecem a referência, e só o fallback recebe correção espectral residual sobre a EQ inicial. Sem referência suficiente, essa aproximação é omitida com motivo registrado. Todas as cenas recebem normalização comum de volume e compressão leve. Isso reduz diferenças de equilíbrio e intensidade; não promete timbre idêntico nem corrige prosódia, emoção ou ritmo. Não altera pitch ou velocidade e não sobrepõe falas.
+
+O processamento gera WAVs de 48 kHz em diretório separado, preservando os originais e o cache. O manifesto processado informa referência, ganhos, loudness, picos e modelo original de cada cena. Para refazer um vídeo revisado, podem ser restaurados os áudios do artefato anterior: só são reutilizadas cenas com o mesmo hash de narração e cache válido. Apenas narração alterada ou áudio inválido exige nova síntese; mudanças visuais e de processamento não consomem nova cota de voz. Veja os parâmetros em `docs/tts.md`.
+
 ## Sincronização
 
 O Gemini usado no projeto devolve áudio sem instantes medidos de cada palavra. O pipeline mede a duração real de cada cena e **estima** as posições dos eventos visuais a partir das âncoras literais do texto. Revise a entrada dos números, fotos e gráficos no MP4 pronto. Ao alterar a narração, gere novamente o áudio da cena; o cache valida o hash do texto, modelo e voz.

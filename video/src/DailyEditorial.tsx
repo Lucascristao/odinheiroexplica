@@ -1849,7 +1849,7 @@ export const DailyEditorial = () => {
 
   return (
     <AbsoluteFill style={{backgroundColor: BG}}>
-      <StoryWorldBackground direction={direction} />
+      {direction.world === "market" ? <AbsoluteFill style={{background: "radial-gradient(ellipse at 60% 35%, rgba(255,189,25,0.035), transparent 65%), linear-gradient(145deg,#10161b,#080c10)"}} /> : <StoryWorldBackground direction={direction} />}
       <Brand />
       {scenes.map((scene, index) => (
         <Sequence
