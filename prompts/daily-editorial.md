@@ -235,6 +235,15 @@ Seguir `docs/editorial-voice.md`. Escrever para o ouvido: frases curtas com uma 
 Definir `scene.tts.delivery` pela função do trecho. Usar 1–3 `tts.cues` pontuais quando houver número decisivo, contraste ou conclusão; o limite de seis é técnico, não meta. Selecionar trechos literais únicos sem atravessar frases, sem cortar palavras ou pronúncias cadastradas. Associar a entrada do número, recorte ou grifo ao bookmark da mesma fala. Reservar tempo de leitura durante a explicação; não transformar cada palavra em animação. Manter a voz fixa do apresentador e o destaque amarelo da marca.
 
 
+### Regra de Ouro: Identidade Visual Única por Vídeo (PROIBIDO TEMPLATE)
+
+- **CADA VÍDEO TEM SUA DINÂMICA.** Não existe um template fixo. O layout de cada cena deve ser criado do zero com base no TEMA do vídeo, não copiado de um padrão.
+- **Diversidade obrigatória de tipos visuais por vídeo.** Todo vídeo deve usar pelo menos 3 dos seguintes tipos visuais: chart (gráfico de linha ou barra), object (wallet/bank/receipt animados), connections (setas entre elementos), metric (hero number), note, step, label.
+- **Proibido repetir o mesmo layout entre cenas.** Se a cena 1 usa dois blocos lado a lado, a cena 2 NÃO pode usar dois blocos lado a lado. Varie radicalmente: fluxo horizontal com setas, gráfico dominante, hero metric gigante, cascata vertical, layout L assimétrico, duelo prós/contras, 3 colunas irregulares, etc.
+- **O tema dita a forma.** Um vídeo sobre inflação deve usar gráficos de linha mostrando a evolução. Um vídeo sobre cadeia produtiva deve usar connections/setas. Um vídeo sobre comparação deve usar duelo visual. Nunca force o mesmo molde em temas diferentes.
+- **Objetos SVG animados (wallet, bank, receipt)** devem ser usados quando o tema envolver dinheiro, sistema financeiro ou custos. São elementos visuais ricos que quebram a monotonia de blocos de texto.
+- **Gráficos reais (chart)** devem ser usados quando houver dados numéricos relevantes (cotações, taxas, percentuais ao longo do tempo). Use tanto line quanto bar conforme melhor representar os dados.
+
 ### Regra de Ouro da Cena 0: Abertura Leve e Variada do Roberto
 
 - **Abertura Humanizada:** O apresentador Roberto abre a Cena 0 cumprimentando o público de forma descontraída, próxima e calorosa (*'Fala, pessoal! Tudo bem com vocês? Aqui é o Roberto, do canal O Dinheiro Explica!'*, *'Olá, pessoal! Roberto por aqui...',* etc.).

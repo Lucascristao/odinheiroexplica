@@ -89,7 +89,6 @@ def synthesize_gemini_audio(
     models_to_try = [
         "gemini-3.8-flash-tts",
         "gemini-3.8-flash-lite-tts",
-        "gemini-2.0-flash",
     ]
     for model in models_to_try:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={gemini_key}"
