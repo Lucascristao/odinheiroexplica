@@ -3,7 +3,7 @@ name: Render vídeo diário - O Dinheiro Explica
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches: [main, codex/gemini-only-motion-design]
     paths:
       - "render-trigger/daily.txt"
 
@@ -234,6 +234,20 @@ jobs:
               --video-duration-seconds "$VIDEO_DURATION"
             exit "$CODE"
           fi
+
+      - name: Upload production review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-production-review
+          path: |
+            render-output/daily-video.mp4
+            render-output/daily-youtube.json
+            render-output/daily-youtube.txt
+            video/generated/daily-tts-manifest.json
+            video/generated/daily-render-input.json
+            public/generated-audio/daily/*.mp3
+          if-no-files-found: error
+          retention-days: 7
 
       - name: Upload package to Google Drive
         env:
