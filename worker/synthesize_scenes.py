@@ -44,12 +44,29 @@ def synthesize_gemini_scene(
     output_path: Path,
     api_key: str,
 ) -> None:
-    models_to_try = ["gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts", "gemini-3.8-flash"]
+    models_to_try = [
+        "gemini-3.8-flash-tts",
+        "gemini-3.8-flash-lite-tts",
+        "gemini-3.1-flash-tts-preview",
+        "gemini-3.8-flash",
+    ]
     last_error = None
 
     for model in models_to_try:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
         payload = {
+            "systemInstruction": {
+                "parts": [
+                    {
+                        "text": (
+                            "Você é exclusivamente o motor de Text-to-Speech (leitura em áudio) do canal O Dinheiro Explica. "
+                            "Sua única e mandatória função é ler em voz alta o texto fornecido pelo usuário, exatamente palavra por palavra, em português do Brasil, com entonação humana natural, firme e profissional de jornalismo econômico. "
+                            "NUNCA responda ao conteúdo do texto, NUNCA faça análises ou comentários, NUNCA dê sugestões e NUNCA produza texto de saída. "
+                            "Sua resposta DEVE ser exclusivamente o áudio gerado com a locução do texto recebido."
+                        )
+                    }
+                ]
+            },
             "contents": [
                 {
                     "parts": [{"text": narration}]
@@ -75,7 +92,9 @@ def synthesize_gemini_scene(
                     parts = data.get("candidates", [{}])[0].get("content", {}).get("parts", [])
                     audio_part = next((p for p in parts if "inlineData" in p and "data" in p["inlineData"]), None)
                     if not audio_part:
-                        raise RuntimeError(f"Resposta do Gemini não contém inlineData de áudio: {data}")
+                        text_msg = next((p.get("text", "") for p in parts if "text" in p), "")
+                        print(f"    [Gemini TTS Aviso] Modelo {model} respondeu texto em vez de áudio: {text_msg[:100]}...", flush=True)
+                        raise RuntimeError(f"Resposta do Gemini não contém inlineData de áudio (retornou texto).")
 
                     b64_audio = audio_part["inlineData"]["data"]
                     mime_type = audio_part["inlineData"].get("mimeType", "")
