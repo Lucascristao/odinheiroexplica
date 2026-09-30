@@ -14,7 +14,7 @@ Cada arquivo de áudio tem um sidecar `.tts.json` com hash da narração, modelo
 
 O cache guarda o áudio bruto devolvido pelo Gemini. Nenhuma EQ fixa é aplicada durante a síntese. Qualquer correção existe somente no pós-processamento e apenas quando o manifesto comprova que houve mais de um modelo no mesmo episódio.
 
-Quando o modelo muda entre duas cenas, o worker registra a fronteira exata. Na primeira cena do modelo novo, tenta gerar com **o próprio modelo novo e a mesma voz** um marcador vocal curto, atualmente `A-hã...`. Esse marcador funciona como uma pequena ação humana antes da troca de timbre e também deixa a contingência auditável. Se não há troca de modelo, ele não existe.
+Quando o modelo muda entre duas cenas, o worker registra a fronteira exata no manifesto, mas **não insere nenhum marcador audível**. A troca fica auditável tecnicamente sem acrescentar pigarro, fala extra ou efeito sonoro.
 
 ## Continuidade de voz por episódio
 
@@ -22,11 +22,11 @@ A versão `adaptive-voice-continuity-v3` usa uma regra rígida: **mesmo modelo +
 
 Se o episódio mistura modelos, o modelo de referência, normalmente `gemini-3.8-flash-tts`, permanece intocado. Somente as cenas de outro modelo recebem aproximação espectral lenta em janelas de 5 segundos com sobreposição de 2,5 segundos. O volume do fallback usa apenas ganho estático, limitado pela folga de pico. Não há compressor, limiter nem normalização dinâmica.
 
-Na primeira cena depois de uma troca real de modelo, o marcador vocal do modelo novo é colocado antes da narração e recebe uma pausa curta depois. Os beats visuais dessa cena são deslocados pelo mesmo intervalo para manter sincronismo.
+A troca de modelo não altera a duração da cena nem desloca os beats visuais. O registro fica apenas nos metadados.
 
 Se o vídeo inteiro sair em Flash-Lite ou 3.1 desde a primeira cena, também não há tentativa de transformar aquela voz em outro modelo, porque não existe transição interna. A correção existe apenas para episódios mistos.
 
-O manifesto registra `model_transition_count`, as cenas onde a troca aconteceu, o modelo anterior, o novo modelo, a voz usada no marcador, sua duração e o modo de pós-processamento. Em modo homogêneo, `effects_applied` fica falso e cada cena registra `byte_identical: true`.
+O manifesto registra `model_transition_count`, as cenas onde a troca aconteceu, o modelo anterior, o novo modelo e o modo de pós-processamento. Em modo homogêneo, `effects_applied` fica falso e cada cena registra `byte_identical: true`.
 
 ## Timeline
 
