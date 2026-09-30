@@ -104,7 +104,7 @@ class VoiceContinuityIntegrationTests(unittest.TestCase):
                 self.assertFalse(scene["postprocess"]["limiter_applied"])
                 self.assertFalse(scene["postprocess"]["reencoded"])
 
-    def test_mixed_model_processes_only_fallback_and_prepends_marker(self) -> None:
+    def test_mixed_model_processes_only_fallback_without_audible_marker(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             source = root / "source"
@@ -113,10 +113,8 @@ class VoiceContinuityIntegrationTests(unittest.TestCase):
 
             primary = source / "scene-00.mp3"
             fallback = source / "scene-01.mp3"
-            marker = source / "scene-01.transition.mp3"
             self.make_tone(primary, 330)
             self.make_tone(fallback, 440)
-            self.make_tone(marker, 220, 0.6)
 
             scenes = [
                 {
@@ -143,10 +141,7 @@ class VoiceContinuityIntegrationTests(unittest.TestCase):
                     "model_transition": {
                         "from_model": continuity.PRIMARY_MODEL,
                         "to_model": continuity.SECONDARY_MODEL,
-                        "marker_status": "generated",
-                        "marker_file": marker.name,
-                        "marker_duration_seconds": 0.6,
-                        "pause_after_seconds": 0.18,
+                        "marker_status": "disabled",
                     },
                 },
             ]
@@ -170,13 +165,13 @@ class VoiceContinuityIntegrationTests(unittest.TestCase):
             self.assertTrue(first["postprocess"]["byte_identical"])
             self.assertFalse(first["postprocess"]["eq_applied"])
             self.assertFalse(first["postprocess"]["gain_applied"])
-            self.assertTrue(
-                second["postprocess"]["transition_marker_applied"]
-            )
-            self.assertGreater(second["duration_seconds"], 7.5)
-            self.assertGreater(
+            self.assertTrue(second["postprocess"]["model_transition_recorded"])
+            self.assertFalse(second["postprocess"]["audible_transition_marker"])
+            self.assertAlmostEqual(second["duration_seconds"], 7.0, delta=0.1)
+            self.assertAlmostEqual(
                 second["beat_timings"][0]["audio_offset_seconds"],
-                1.7,
+                1.0,
+                delta=0.01,
             )
             self.assertFalse(second["postprocess"]["limiter_applied"])
             self.assertEqual((output / first["file"]).suffix, ".mp3")
