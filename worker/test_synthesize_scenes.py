@@ -204,7 +204,6 @@ class SynthesizeScenesTests(unittest.TestCase):
             (synth.PRIMARY_TTS_MODEL, rpd),
             (synth.SECONDARY_TTS_MODEL, FakeResponse(200)),
             (synth.SECONDARY_TTS_MODEL, FakeResponse(200)),
-            (synth.SECONDARY_TTS_MODEL, FakeResponse(200)),  # transition marker
         ]
         calls = []
 
@@ -241,16 +240,13 @@ class SynthesizeScenesTests(unittest.TestCase):
             transition = manifest["scenes"][1]["model_transition"]
             self.assertEqual(transition["from_model"], synth.PRIMARY_TTS_MODEL)
             self.assertEqual(transition["to_model"], synth.SECONDARY_TTS_MODEL)
-            self.assertEqual(transition["marker_model"], synth.SECONDARY_TTS_MODEL)
-            self.assertEqual(transition["marker_voice"], "Charon")
+            self.assertEqual(transition["marker_status"], "disabled")
             self.assertEqual(manifest["scenes"][1]["voice_treatment"], "none")
             self.assertEqual({scene["voice"] for scene in manifest["scenes"]}, {"Charon"})
             render.require_gemini_manifest(manifest)
-            marker = self.output_dir / "scene-01.transition.mp3"
-            self.assertTrue(marker.is_file())
-            self.assertTrue(marker.with_suffix(".transition.json").is_file())
+            self.assertFalse((self.output_dir / "scene-01.transition.mp3").exists())
             synth.main()
-            self.assertEqual(len(calls), 5, "Reexecução com cache e marcador não deve chamar a API")
+            self.assertEqual(len(calls), 4, "Reexecução com cache não deve chamar a API")
 
     def test_flash_lite_failure_cascades_to_raw_3_1_without_transition_marker(self) -> None:
         rpd = FakeResponse(429, error={
