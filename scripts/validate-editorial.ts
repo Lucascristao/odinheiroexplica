@@ -25,6 +25,14 @@ let failures = 0;
 const contract = project.editorial?.narrative_contract ?? {};
 const narrations = scenes.map((scene: any) => String(scene.narration ?? ""));
 const spokenScript = narrations.join("\n\n");
+const publicationRelativePattern = /\bhoje\b|\bontem\b|\bamanhã\b|\bno dia de hoje\b|\bna manhã de hoje\b|\bnesta manhã\b|\bnesta tarde\b|\bnesta noite\b/giu;
+const publicationRelativeMatches = spokenScript.match(publicationRelativePattern) ?? [];
+if (publicationRelativeMatches.length) {
+  console.error(
+    `Narração data o vídeo pela publicação: ${[...new Set(publicationRelativeMatches)].join(", ")}. Use a data objetiva do fato.`
+  );
+  failures++;
+}
 const contractError = (message: string) => {console.error(`Contrato narrativo: ${message}`); failures++;};
 const excerpt = (key: string): string => {
   const value = String(contract[key] ?? "").trim();
