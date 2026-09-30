@@ -33,21 +33,16 @@ ELIGIBLE_FALLBACK_FAILURES = {
     "rpd", "rate-limit-persistent", "server-unavailable", "request-timeout",
 }
 
-# The legacy 3.1 Charon output has a measured fixed pre-EQ before the adaptive
-# episode-level matcher. Flash-Lite and other voices stay untouched here and
-# are matched only by process_voice_continuity.py.
-FALLBACK_VOICE_TREATMENT = "charon-3.1-to-3.8-eq-v1"
-FALLBACK_AUDIO_FILTER = (
-    "lowshelf=f=160:g=-1.0,"
-    "equalizer=f=1500:t=q:w=0.8:g=1.5,"
-    "highshelf=f=4200:g=-2.5"
-)
+# Provider audio is cached untouched. Fallback matching happens only after
+# synthesis and only when an episode actually mixes TTS models.
+FALLBACK_VOICE_TREATMENT = "legacy-charon-3.1-to-3.8-eq-v1"
+FALLBACK_AUDIO_FILTER = ""
 NO_VOICE_TREATMENT = "none"
+TRANSITION_MARKER_TEXT = "A-hã..."
+TRANSITION_MARKER_PAUSE_SECONDS = 0.18
 
 
 def voice_treatment_for_model(model: str, voice: str) -> str:
-    if model == FALLBACK_TTS_MODEL and voice == "Charon":
-        return FALLBACK_VOICE_TREATMENT
     return NO_VOICE_TREATMENT
 
 
@@ -163,6 +158,64 @@ def save_audio_sidecar(
     }
     temporary = sidecar.with_name(sidecar.name + ".tmp")
     temporary.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    temporary.replace(sidecar)
+
+
+def cached_transition_marker(
+    output_file: Path,
+    from_model: str,
+    to_model: str,
+    voice: str,
+) -> float | None:
+    sidecar = output_file.with_suffix(".transition.json")
+    if not output_file.is_file() or not sidecar.is_file():
+        return None
+    try:
+        metadata = json.loads(sidecar.read_text(encoding="utf-8"))
+        marker_hash = hashlib.sha256(TRANSITION_MARKER_TEXT.encode("utf-8")).hexdigest()
+        if any((
+            metadata.get("kind") != "model-switch-vocal-marker",
+            metadata.get("from_model") != from_model,
+            metadata.get("to_model") != to_model,
+            metadata.get("voice") != voice,
+            metadata.get("marker_text_sha256") != marker_hash,
+            metadata.get("audio_sha256") != audio_sha256(output_file),
+            output_file.stat().st_size <= 1000,
+        )):
+            return None
+        actual_duration = duration_seconds(output_file)
+        if abs(actual_duration - float(metadata["duration_seconds"])) > 0.05:
+            return None
+        return actual_duration
+    except (OSError, ValueError, TypeError, KeyError, subprocess.CalledProcessError):
+        return None
+
+
+def save_transition_marker_sidecar(
+    output_file: Path,
+    from_model: str,
+    to_model: str,
+    voice: str,
+    duration: float,
+) -> None:
+    sidecar = output_file.with_suffix(".transition.json")
+    metadata = {
+        "kind": "model-switch-vocal-marker",
+        "from_model": from_model,
+        "to_model": to_model,
+        "voice": voice,
+        "voice_treatment": NO_VOICE_TREATMENT,
+        "marker_text_sha256": hashlib.sha256(
+            TRANSITION_MARKER_TEXT.encode("utf-8")
+        ).hexdigest(),
+        "audio_sha256": audio_sha256(output_file),
+        "duration_seconds": duration,
+    }
+    temporary = sidecar.with_name(sidecar.name + ".tmp")
+    temporary.write_text(
+        json.dumps(metadata, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
     temporary.replace(sidecar)
 
 
@@ -412,25 +465,6 @@ def synthesize_gemini_audio(
     return SynthesisOutcome(None, "other")
 
 
-def apply_fallback_voice_treatment(output_file: Path) -> None:
-    """Apply the measured, fixed Charon EQ to 3.1 audio before caching it."""
-    treated = output_file.with_name(output_file.stem + ".treated.mp3")
-    try:
-        subprocess.run(
-            [
-                "ffmpeg", "-y", "-i", str(output_file),
-                "-af", FALLBACK_AUDIO_FILTER,
-                "-ar", "48000", "-ac", "1", "-b:a", "192k", str(treated),
-            ],
-            check=True, capture_output=True,
-        )
-        if not treated.is_file() or treated.stat().st_size <= 1000:
-            raise RuntimeError("Áudio tratado ausente ou vazio.")
-        treated.replace(output_file)
-    finally:
-        treated.unlink(missing_ok=True)
-
-
 def compute_beat_timings(narration: str, beats: list[dict], duration: float) -> list[dict]:
     if not beats:
         return []
@@ -543,7 +577,7 @@ def main() -> None:
         "pitch": DEFAULT_TTS_PITCH,
         "output_format": "audio-48khz-192kbitrate-mono-mp3",
         "timing_mode": "estimated-character-alignment",
-        "delivery_version": "tts-per-scene-v2",
+        "delivery_version": "tts-per-scene-v3",
         "scenes": [],
         "total_duration_seconds": 0.0,
     }
@@ -642,8 +676,6 @@ def main() -> None:
 
         model = outcome.model
         voice_treatment = voice_treatment_for_model(model, project_voice)
-        if voice_treatment == FALLBACK_VOICE_TREATMENT:
-            apply_fallback_voice_treatment(job["output_file"])
 
         duration = duration_seconds(job["output_file"])
         if not math.isfinite(duration) or duration <= 0:
@@ -660,6 +692,74 @@ def main() -> None:
             "voice_treatment": voice_treatment,
             "fallback_reason": fallback_reason,
         }
+
+    transition_scene_ids = []
+    for position in range(1, len(scene_jobs)):
+        previous_job = scene_jobs[position - 1]
+        job = scene_jobs[position]
+        previous = synthesis_by_id[previous_job["scene_id"]]
+        current = synthesis_by_id[job["scene_id"]]
+        if previous["model"] == current["model"]:
+            continue
+
+        from_model = previous["model"]
+        to_model = current["model"]
+        marker_file = output_dir / f"{job['scene_id']}.transition.mp3"
+        marker_duration = cached_transition_marker(
+            marker_file, from_model, to_model, project_voice,
+        )
+        marker_status = "cached"
+        if marker_duration is None:
+            marker_status = "generated"
+            marker_outcome = synthesize_gemini_audio(
+                TRANSITION_MARKER_TEXT,
+                project_voice,
+                marker_file,
+                gemini_key,
+                to_model,
+                request_pacer,
+            )
+            if marker_outcome.model != to_model:
+                marker_status = "unavailable"
+                marker_file.unlink(missing_ok=True)
+                marker_file.with_suffix(".transition.json").unlink(missing_ok=True)
+                current["model_transition"] = {
+                    "from_model": from_model,
+                    "to_model": to_model,
+                    "marker_status": marker_status,
+                }
+                transition_scene_ids.append(job["scene_id"])
+                print(
+                    f"    [Gemini Transição] {from_model} -> {to_model} em "
+                    f"{job['scene_id']}; marcador vocal indisponível "
+                    f"({marker_outcome.failure}).",
+                    flush=True,
+                )
+                continue
+            marker_duration = duration_seconds(marker_file)
+            save_transition_marker_sidecar(
+                marker_file, from_model, to_model, project_voice, marker_duration,
+            )
+
+        current["model_transition"] = {
+            "from_model": from_model,
+            "to_model": to_model,
+            "marker_status": marker_status,
+            "marker_kind": "brief-throat-clear",
+            "marker_text": TRANSITION_MARKER_TEXT,
+            "marker_file": marker_file.name,
+            "marker_model": to_model,
+            "marker_voice": project_voice,
+            "marker_duration_seconds": marker_duration,
+            "pause_after_seconds": TRANSITION_MARKER_PAUSE_SECONDS,
+        }
+        transition_scene_ids.append(job["scene_id"])
+        print(
+            f"    [Gemini Transição] {from_model} -> {to_model} em "
+            f"{job['scene_id']}; marcador vocal {marker_status} com "
+            f"{to_model}/{project_voice}.",
+            flush=True,
+        )
 
     for job in scene_jobs:
         scene = job["scene"]
@@ -699,6 +799,8 @@ def main() -> None:
         for model in fallback_models
         if any(scene["model"] == model for scene in manifest["scenes"])
     }
+    manifest["model_transition_scene_ids"] = transition_scene_ids
+    manifest["model_transition_count"] = len(transition_scene_ids)
     Path(args.manifest).write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
