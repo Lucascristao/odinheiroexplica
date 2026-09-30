@@ -233,3 +233,11 @@ Não usar nome do canal, logotipo, ícone ou selo de marca por padrão. A identi
 Seguir `docs/editorial-voice.md`. Escrever para o ouvido: frases curtas com uma ideia, exemplos concretos e alternância natural entre pergunta, explicação e consequência. Evitar listas lidas, introduções burocráticas e suspense sem resposta. Não copiar bordões ou imitar a voz dos vídeos de referência.
 
 Definir `scene.tts.delivery` pela função do trecho. Usar 1–3 `tts.cues` pontuais quando houver número decisivo, contraste ou conclusão; o limite de seis é técnico, não meta. Selecionar trechos literais únicos sem atravessar frases, sem cortar palavras ou pronúncias cadastradas. Associar a entrada do número, recorte ou grifo ao bookmark da mesma fala. Reservar tempo de leitura durante a explicação; não transformar cada palavra em animação. Manter a voz fixa do apresentador e o destaque amarelo da marca.
+
+
+### Regra de Ouro da Cena 0: Abertura Leve e Variada do Roberto
+
+- **Abertura Humanizada:** O apresentador Roberto abre a Cena 0 cumprimentando o público de forma descontraída, próxima e calorosa (*'Fala, pessoal! Tudo bem com vocês? Aqui é o Roberto, do canal O Dinheiro Explica!'*, *'Olá, pessoal! Roberto por aqui...',* etc.).
+- **Variação:** Nunca repita a exata mesma fórmula em todos os dias; varie a saudação e o gancho mantendo a naturalidade.
+- **Respiração nos Primeiros Segundos:** Os primeiros 3 a 5 segundos de fala devem ser puramente de acolhimento e contextualização leve. No palco (stage), os elementos gráficos da Cena 0 devem ter `initially_visible: false`. O primeiro elemento só é revelado após a saudação, no momento em que a narração aborda o número ou fato central.
+- **Anti-Slide Radical:** Varie os layouts ao longo das cenas. Use Hero Metrics gigantes centralizados, duelos de cartões 50/50, fluxogramas horizontais e camadas verticais. Fuja do padrão repetitivo de 3 blocos idênticos lado a lado.

@@ -48,3 +48,10 @@ Referência técnica: [prosody e direção de voz no Azure](https://learn.micros
 
 - **Nunca falar a data de hoje por extenso na narração** (ex: *"hoje, vinte e nove de setembro de 2026"*). Vídeos informativos no YouTube devem ser perenes (*evergreen*); ouvir a data exata do calendário faz o conteúdo parecer velho após poucos meses.
 - **Como contextualizar o tempo:** Usar referências relativas e marcos de ano quando necessário: *"Atualmente..."*, *"No cenário de hoje..."*, *"Nas regras previstas para 2026 e 2027..."*, *"A partir da implantação da lei..."*.
+
+
+## Abertura Leve, Humana e Variada (Regra de Ouro do Canal)
+
+- **Saudação inicial acolhedora:** O apresentador Roberto deve abrir a Cena 0 cumprimentando o público de forma calorosa, amigável e descontraída (*'Fala, pessoal! Tudo bem com vocês? Aqui é o Roberto, do canal O Dinheiro Explica!'*, *'Olá, pessoal! Roberto por aqui...',* etc.).
+- **Variação natural de aberturas:** Nunca usar exatamente a mesma frase mecânica em todos os vídeos. Variar a fórmula mantendo a personalidade humana, próxima e brasileira do canal.
+- **Respiro visual inicial (Sem atropelos no segundo 0):** Os primeiros 3 a 5 segundos de áudio devem ser dedicados à saudação e à introdução leve do tema. No palco (stage), os elementos da Cena 0 devem ter `initially_visible: false` para permitir que a tela respire. O primeiro elemento gráfico só deve surgir na tela quando o apresentador introduzir o dado principal ou a pergunta de impacto.
