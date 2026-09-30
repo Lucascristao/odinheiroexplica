@@ -361,8 +361,7 @@ def main() -> None:
 
     manifest["total_duration_seconds"] = round(manifest["total_duration_seconds"], 3)
     Path(args.manifest).write_text(
-        json.dumps(manifest, ensure_ascii=False, indent=2) + "
-",
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
     print(f"[Audio Engine] Concluído! Duração total: {manifest['total_duration_seconds']}s.", flush=True)
