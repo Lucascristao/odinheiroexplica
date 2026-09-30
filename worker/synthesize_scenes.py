@@ -106,9 +106,7 @@ def synthesize_scene_with_fallback(
                                     "text": (
                                         narration
                                         if use_sys_inst
-                                        else f"Leia em áudio para gravação de telejornal o seguinte texto, exatamente como escrito:
-
-{narration}"
+                                        else "Leia em voz alta para telejornal o seguinte texto: " + narration
                                     )
                                 }
                             ]
