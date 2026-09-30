@@ -146,7 +146,7 @@ def require_gemini_manifest(manifest: dict) -> None:
     secondary_model = "gemini-3.8-flash-lite-tts"
     legacy_fallback_model = "gemini-3.1-flash-tts-preview"
     allowed_models = {primary_model, secondary_model, legacy_fallback_model}
-    legacy_charon_treatment = "charon-3.1-to-3.8-eq-v1"
+    legacy_charon_treatment = "none"
 
     models = {item.get("model") for item in scenes}
     voices = {item.get("voice") for item in scenes}
@@ -194,7 +194,7 @@ def main() -> None:
     if args.require_gemini:
         require_gemini_manifest(manifest)
     if args.require_voice_continuity:
-        version = "adaptive-voice-continuity-v2"
+        version = "adaptive-voice-continuity-v3"
         if manifest.get("postprocess", {}).get("version") != version or any(
             scene.get("postprocess", {}).get("version") != version
             for scene in manifest.get("scenes", [])
