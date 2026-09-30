@@ -414,7 +414,7 @@
               "kind": "chart",
               "label": "Cotação do Dólar na Semana Eleitoral",
               "chart": {
-                "type": "bar",
+                "type": "line",
                 "x_label": "Dias da semana",
                 "y_min": 4.9,
                 "y_max": 5.3,
@@ -450,11 +450,12 @@
                     "label": "Fech",
                     "value": 5.21
                   }
-                ]
+                ],
+                "source_id": "S1"
               },
               "x": 4,
               "y": 8,
-              "width": 58,
+              "width": 60,
               "height": 82,
               "initially_visible": true
             },
@@ -897,7 +898,7 @@
             "medium": "motion_graphic",
             "sound": "tick",
             "target_id": "selic_metric",
-            "action": "focus",
+            "action": "reveal",
             "prominence": "contextual"
           },
           {
@@ -1000,11 +1001,12 @@
                     "label": "Out",
                     "value": 13.75
                   }
-                ]
+                ],
+                "source_id": "S2"
               },
               "x": 4,
               "y": 8,
-              "width": 58,
+              "width": 60,
               "height": 82,
               "initially_visible": true
             },
