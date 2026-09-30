@@ -47,26 +47,12 @@ def synthesize_gemini_scene(
     models_to_try = [
         "gemini-3.8-flash-tts",
         "gemini-3.8-flash-lite-tts",
-        "gemini-3.1-flash-tts-preview",
-        "gemini-3.8-flash",
     ]
     last_error = None
 
     for model in models_to_try:
         url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
         payload = {
-            "systemInstruction": {
-                "parts": [
-                    {
-                        "text": (
-                            "Você é exclusivamente o motor de Text-to-Speech (leitura em áudio) do canal O Dinheiro Explica. "
-                            "Sua única e mandatória função é ler em voz alta o texto fornecido pelo usuário, exatamente palavra por palavra, em português do Brasil, com entonação humana natural, firme e profissional de jornalismo econômico. "
-                            "NUNCA responda ao conteúdo do texto, NUNCA faça análises ou comentários, NUNCA dê sugestões e NUNCA produza texto de saída. "
-                            "Sua resposta DEVE ser exclusivamente o áudio gerado com a locução do texto recebido."
-                        )
-                    }
-                ]
-            },
             "contents": [
                 {
                     "parts": [{"text": narration}]
@@ -84,7 +70,7 @@ def synthesize_gemini_scene(
             }
         }
 
-        for attempt in range(1, 4):
+        for attempt in range(1, 5):
             try:
                 response = requests.post(url, json=payload, timeout=90)
                 if response.status_code == 200:
@@ -92,9 +78,7 @@ def synthesize_gemini_scene(
                     parts = data.get("candidates", [{}])[0].get("content", {}).get("parts", [])
                     audio_part = next((p for p in parts if "inlineData" in p and "data" in p["inlineData"]), None)
                     if not audio_part:
-                        text_msg = next((p.get("text", "") for p in parts if "text" in p), "")
-                        print(f"    [Gemini TTS Aviso] Modelo {model} respondeu texto em vez de áudio: {text_msg[:100]}...", flush=True)
-                        raise RuntimeError(f"Resposta do Gemini não contém inlineData de áudio (retornou texto).")
+                        raise RuntimeError(f"Resposta de {model} 200 OK sem inlineData de áudio: {data}")
 
                     b64_audio = audio_part["inlineData"]["data"]
                     mime_type = audio_part["inlineData"].get("mimeType", "")
@@ -139,15 +123,24 @@ def synthesize_gemini_scene(
                         temp_wav.unlink(missing_ok=True)
                         return
 
-                elif response.status_code in (429, 500, 503):
-                    time.sleep(2 * attempt)
+                elif response.status_code == 429:
+                    wait_time = 15 * attempt
+                    print(f"    [Gemini TTS 429] Limite de quota em {model} (tentativa {attempt}/4). Aguardando {wait_time}s...", flush=True)
+                    time.sleep(wait_time)
+                    continue
+                elif response.status_code in (500, 503):
+                    wait_time = 5 * attempt
+                    print(f"    [Gemini TTS {response.status_code}] Instabilidade temporária em {model}. Aguardando {wait_time}s...", flush=True)
+                    time.sleep(wait_time)
                     continue
                 else:
                     last_error = f"HTTP {response.status_code} ({model}): {response.text}"
+                    print(f"    [Gemini TTS Erro] {last_error[:160]}", flush=True)
                     break
             except Exception as exc:
                 last_error = f"{type(exc).__name__}: {exc}"
-                time.sleep(2 * attempt)
+                print(f"    [Gemini TTS Exceção] {last_error}", flush=True)
+                time.sleep(5 * attempt)
 
     raise RuntimeError(f"Falha ao sintetizar cena com Gemini TTS ({voice_name}): {last_error}")
 
@@ -288,7 +281,7 @@ def main() -> None:
             "beat_timings": beat_timings,
         })
         manifest["total_duration_seconds"] += duration
-        time.sleep(1)
+        time.sleep(4)
 
     manifest["total_duration_seconds"] = round(manifest["total_duration_seconds"], 3)
     Path(args.manifest).write_text(
