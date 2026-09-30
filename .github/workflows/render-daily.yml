@@ -169,7 +169,7 @@ jobs:
             --status running \
             --stage audio \
             --percent 18 \
-            --detail "Aproximando o timbre do fallback e igualando o volume entre as cenas."
+            --detail "Verificando continuidade de voz; áudio homogêneo permanece intocado e apenas fallback real recebe correção."
 
           python worker/process_voice_continuity.py \
             --input-manifest video/generated/daily-tts-manifest.json \
@@ -283,7 +283,8 @@ jobs:
             video/generated/daily-processed-tts-manifest.json
             video/generated/daily-render-input.json
             public/generated-audio/daily/*.mp3
-            public/processed-audio/daily/*.wav
+            public/generated-audio/daily/*.transition.json
+            public/processed-audio/daily/*
           if-no-files-found: error
           retention-days: 7
 
