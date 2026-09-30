@@ -1,5 +1,6 @@
 import argparse
 import base64
+from dataclasses import dataclass
 from datetime import datetime, timezone
 from email.utils import parsedate_to_datetime
 import hashlib
@@ -22,6 +23,26 @@ from tts_config import (
     PRESENTER_NAMES,
     PRESENTER_VOICES,
 )
+
+
+PRIMARY_TTS_MODEL = "gemini-3.8-flash-tts"
+FALLBACK_TTS_MODEL = "gemini-3.1-flash-tts-preview"
+# Measured against the user's three Charon samples: 3.1 has more energy above
+# 4 kHz, less around 1.5 kHz, and nearly identical overall RMS to 3.8.
+# This is deliberately mild EQ, not pitch or timing manipulation.
+FALLBACK_VOICE_TREATMENT = "charon-3.1-to-3.8-eq-v1"
+FALLBACK_AUDIO_FILTER = (
+    "lowshelf=f=160:g=-1.0,"
+    "equalizer=f=1500:t=q:w=0.8:g=1.5,"
+    "highshelf=f=4200:g=-2.5"
+)
+NO_VOICE_TREATMENT = "none"
+
+
+@dataclass(frozen=True)
+class SynthesisOutcome:
+    model: str | None
+    failure: str | None = None
 
 
 def duration_seconds(path: Path) -> float:
@@ -52,7 +73,8 @@ def audio_sha256(path: Path) -> str:
 
 
 def cached_duration(
-    output_file: Path, narration_hash: str, model: str, voice: str
+    output_file: Path, narration_hash: str, model: str, voice: str,
+    voice_treatment: str = NO_VOICE_TREATMENT,
 ) -> float | None:
     sidecar = output_file.with_suffix(".tts.json")
     if not output_file.is_file() or not sidecar.is_file():
@@ -66,6 +88,7 @@ def cached_duration(
             metadata.get("narration_sha256") != narration_hash,
             metadata.get("model") != model,
             metadata.get("voice") != voice,
+            metadata.get("voice_treatment", NO_VOICE_TREATMENT) != voice_treatment,
             output_file.stat().st_size <= 1000,
             metadata.get("audio_sha256") != audio_sha256(output_file),
         )):
@@ -82,13 +105,17 @@ def cached_duration(
 
 
 def save_audio_sidecar(
-    output_file: Path, narration_hash: str, model: str, voice: str, duration: float
+    output_file: Path, narration_hash: str, model: str, voice: str, duration: float,
+    voice_treatment: str = NO_VOICE_TREATMENT,
+    fallback_reason: str | None = None,
 ) -> None:
     sidecar = output_file.with_suffix(".tts.json")
     metadata = {
         "engine": "google-gemini-tts",
         "model": model,
         "voice": voice,
+        "voice_treatment": voice_treatment,
+        "fallback_reason": fallback_reason,
         "narration_sha256": narration_hash,
         "audio_sha256": audio_sha256(output_file),
         "duration_seconds": duration,
@@ -220,12 +247,12 @@ def synthesize_gemini_audio(
     gemini_key: str,
     model: str,
     pacer: GeminiRequestPacer | None = None,
-) -> str | None:
+) -> SynthesisOutcome:
     if not re.fullmatch(r"[A-Za-z0-9._-]+", model):
         raise ValueError("Identificador do modelo Gemini inválido.")
     pacer = pacer or GeminiRequestPacer()
     for model in [model]:
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={gemini_key}"
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
         payload = {
             "contents": [
                 {
@@ -244,12 +271,15 @@ def synthesize_gemini_audio(
             }
         }
 
-        max_attempts = 8
-        retry_budget_seconds = 600.0
+        max_attempts = 3
+        retry_budget_seconds = 180.0
         for attempt in range(1, max_attempts + 1):
             try:
                 pacer.wait_before_request()
-                response = requests.post(url, json=payload, timeout=90)
+                response = requests.post(
+                    url, json=payload, timeout=90,
+                    headers={"x-goog-api-key": gemini_key},
+                )
                 if response.status_code == 200:
                     data = response.json()
                     parts = data.get("candidates", [{}])[0].get("content", {}).get("parts", [])
@@ -268,7 +298,7 @@ def synthesize_gemini_audio(
                     elif raw_bytes.startswith(b"ID3") or raw_bytes[:2] == b"\xff\xfb" or "mp3" in mime_type:
                         output_path.write_bytes(raw_bytes)
                         print(f"    [Gemini TTS Sucesso] Áudio direto via {model} (voz '{voice_name}')!", flush=True)
-                        return model
+                        return SynthesisOutcome(model)
                     else:
                         with wave.open(str(temp_wav), "wb") as wf:
                             wf.setnchannels(1)
@@ -296,7 +326,7 @@ def synthesize_gemini_audio(
                         )
                         temp_wav.unlink(missing_ok=True)
                         print(f"    [Gemini TTS Sucesso] Áudio convertido com sucesso via {model} (voz '{voice_name}')!", flush=True)
-                        return model
+                        return SynthesisOutcome(model)
                     except Exception as exc:
                         temp_wav.unlink(missing_ok=True)
                         print(f"    [Gemini TTS Erro] Conversão MP3 falhou ({type(exc).__name__}).", flush=True)
@@ -307,22 +337,23 @@ def synthesize_gemini_audio(
                     print(f"    [Gemini Quota 429] {diagnostic}", flush=True)
                     if daily_quota_exceeded:
                         print("    [Gemini Quota 429] Limite diário (RPD) atingido; interrompendo sem novas tentativas.", flush=True)
-                        return None
+                        return SynthesisOutcome(None, "rpd")
                     if attempt == max_attempts or retry_budget_seconds <= 0:
                         print(f"    [Gemini TTS Erro] HTTP 429 persistente em {model} após {attempt} tentativas; limite de quota não liberado.", flush=True)
-                        return None
+                        return SynthesisOutcome(None, "rate-limit-persistent")
                     delay = min(120, 15 * 2 ** (attempt - 1))
                     if suggested_retry is not None:
                         delay = max(delay, suggested_retry)
                     delay = min(delay, retry_budget_seconds)
-                    print(f"    [Gemini Quota 429] Tentativa {attempt}/{max_attempts}; aguardando {delay:.0f}s (limite total de espera: 600s)...", flush=True)
+                    print(f"    [Gemini Quota 429] Tentativa {attempt}/{max_attempts}; aguardando {delay:.0f}s (limite total de espera: 180s)...", flush=True)
                     time.sleep(delay)
                     retry_budget_seconds -= delay
                     continue
-                elif response.status_code in (500, 503):
+                elif response.status_code in (500, 502, 503, 504):
                     if attempt < max_attempts:
                         time.sleep(4 * attempt)
-                    continue
+                        continue
+                    return SynthesisOutcome(None, "server-unavailable")
                 else:
                     print(f"    [Gemini Erro {response.status_code} em {model}] Resposta HTTP sem áudio.", flush=True)
                     break
@@ -331,7 +362,26 @@ def synthesize_gemini_audio(
                 if attempt < max_attempts:
                     time.sleep(3 * attempt)
 
-    return None
+    return SynthesisOutcome(None, "other")
+
+
+def apply_fallback_voice_treatment(output_file: Path) -> None:
+    """Apply the measured, fixed Charon EQ to 3.1 audio before caching it."""
+    treated = output_file.with_name(output_file.stem + ".treated.mp3")
+    try:
+        subprocess.run(
+            [
+                "ffmpeg", "-y", "-i", str(output_file),
+                "-af", FALLBACK_AUDIO_FILTER,
+                "-ar", "48000", "-ac", "1", "-b:a", "192k", str(treated),
+            ],
+            check=True, capture_output=True,
+        )
+        if not treated.is_file() or treated.stat().st_size <= 1000:
+            raise RuntimeError("Áudio tratado ausente ou vazio.")
+        treated.replace(output_file)
+    finally:
+        treated.unlink(missing_ok=True)
 
 
 def compute_beat_timings(narration: str, beats: list[dict], duration: float) -> list[dict]:
@@ -404,7 +454,8 @@ def main() -> None:
     args = parser.parse_args()
 
     gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
-    gemini_model = os.environ.get("GEMINI_TTS_MODEL", "gemini-3.8-flash-tts").strip()
+    gemini_model = os.environ.get("GEMINI_TTS_MODEL", PRIMARY_TTS_MODEL).strip()
+    fallback_model = os.environ.get("GEMINI_TTS_FALLBACK_MODEL", FALLBACK_TTS_MODEL).strip()
 
     if not gemini_key:
         raise RuntimeError("GEMINI_API_KEY não disponível; este render aceita apenas voz Gemini.")
@@ -412,6 +463,8 @@ def main() -> None:
         raise RuntimeError("GEMINI_TTS_MODEL vazio.")
     if not re.fullmatch(r"[A-Za-z0-9._-]+", gemini_model):
         raise RuntimeError("GEMINI_TTS_MODEL inválido.")
+    if fallback_model and fallback_model != FALLBACK_TTS_MODEL:
+        raise RuntimeError("GEMINI_TTS_FALLBACK_MODEL deve ser o Gemini 3.1 Flash TTS preview ou vazio.")
 
     payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
     scenes = payload.get("scenes") or payload.get("script", {}).get("scenes", [])
@@ -426,6 +479,13 @@ def main() -> None:
     )
     project_voice = PRESENTER_VOICES.get(presenter_key, DEFAULT_TTS_VOICE)
     presenter_name = PRESENTER_NAMES.get(presenter_key, "Roberto")
+    fallback_enabled = (
+        gemini_model == PRIMARY_TTS_MODEL
+        and fallback_model == FALLBACK_TTS_MODEL
+        and project_voice == "Charon"
+    )
+    if not fallback_enabled:
+        fallback_model = ""
 
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -433,6 +493,7 @@ def main() -> None:
     manifest = {
         "engine": "pending",
         "model": gemini_model,
+        "fallback_model": fallback_model or None,
         "voice": project_voice,
         "requested_voice": project_voice,
         "presenter": presenter_key,
@@ -466,6 +527,7 @@ def main() -> None:
 
     synthesis_by_id = {}
     request_pacer = GeminiRequestPacer()
+    fallback_active = False
     for position, job in enumerate(scene_jobs):
         print(f"  [Gemini {position + 1}/{len(scene_jobs)}] {job['scene_id']}...", flush=True)
         duration = cached_duration(
@@ -475,24 +537,77 @@ def main() -> None:
             print(f"    [Gemini Cache] Áudio validado e reutilizado ({duration}s).", flush=True)
             job["duration"] = duration
             synthesis_by_id[job["scene_id"]] = {
-                "engine": "google-gemini-tts", "model": gemini_model, "voice": project_voice
+                "engine": "google-gemini-tts", "model": gemini_model,
+                "voice": project_voice, "voice_treatment": NO_VOICE_TREATMENT,
+                "fallback_reason": None,
             }
             continue
-        model = synthesize_gemini_audio(
-            job["narration"], project_voice, job["output_file"], gemini_key, gemini_model,
-            request_pacer,
+        if fallback_enabled:
+            duration = cached_duration(
+                job["output_file"], job["narration_hash"], fallback_model,
+                project_voice, FALLBACK_VOICE_TREATMENT,
+            )
+            if duration is not None:
+                print(f"    [Gemini Cache] Fallback 3.1 tratado reutilizado ({duration}s).", flush=True)
+                fallback_active = True
+                sidecar = json.loads(
+                    job["output_file"].with_suffix(".tts.json").read_text(encoding="utf-8")
+                )
+                job["duration"] = duration
+                synthesis_by_id[job["scene_id"]] = {
+                    "engine": "google-gemini-tts", "model": fallback_model,
+                    "voice": project_voice,
+                    "voice_treatment": FALLBACK_VOICE_TREATMENT,
+                    "fallback_reason": sidecar.get("fallback_reason") or "cached-fallback",
+                }
+                continue
+
+        model_to_request = fallback_model if fallback_active else gemini_model
+        outcome = synthesize_gemini_audio(
+            job["narration"], project_voice, job["output_file"], gemini_key,
+            model_to_request, request_pacer,
         )
-        if not model:
-            raise RuntimeError(f"Gemini TTS falhou na cena {job['scene_id']} após as tentativas; render interrompido sem trocar o motor de voz.")
+        fallback_reason = "earlier-primary-failure" if fallback_active else None
+        if outcome.model is None and model_to_request == gemini_model:
+            if fallback_enabled and outcome.failure in {
+                "rpd", "rate-limit-persistent", "server-unavailable",
+            }:
+                fallback_active = True
+                fallback_reason = outcome.failure
+                print(
+                    f"    [Gemini Fallback] Primário indisponível ({fallback_reason}); "
+                    f"completando as cenas restantes com {fallback_model}, voz {project_voice}.",
+                    flush=True,
+                )
+                model_to_request = fallback_model
+                outcome = synthesize_gemini_audio(
+                    job["narration"], project_voice, job["output_file"],
+                    gemini_key, fallback_model, request_pacer,
+                )
+        if outcome.model is None:
+            raise RuntimeError(
+                f"Gemini TTS falhou na cena {job['scene_id']} "
+                f"({model_to_request}: {outcome.failure}); render interrompido."
+            )
+        model = outcome.model
+        voice_treatment = (
+            FALLBACK_VOICE_TREATMENT if model == fallback_model and fallback_enabled
+            else NO_VOICE_TREATMENT
+        )
+        if voice_treatment != NO_VOICE_TREATMENT:
+            apply_fallback_voice_treatment(job["output_file"])
         duration = duration_seconds(job["output_file"])
         if not math.isfinite(duration) or duration <= 0:
             raise RuntimeError(f"Gemini TTS gerou áudio sem duração válida em {job['scene_id']}.")
         save_audio_sidecar(
-            job["output_file"], job["narration_hash"], model, project_voice, duration
+            job["output_file"], job["narration_hash"], model, project_voice,
+            duration, voice_treatment, fallback_reason,
         )
         job["duration"] = duration
         synthesis_by_id[job["scene_id"]] = {
-            "engine": "google-gemini-tts", "model": model, "voice": project_voice
+            "engine": "google-gemini-tts", "model": model,
+            "voice": project_voice, "voice_treatment": voice_treatment,
+            "fallback_reason": fallback_reason,
         }
 
     for job in scene_jobs:
@@ -523,6 +638,11 @@ def main() -> None:
         raise RuntimeError("A síntese produziu motores ou vozes diferentes no mesmo vídeo.")
     manifest["engine"] = next(iter(engines))
     manifest["voice"] = next(iter(voices))
+    manifest["models_used"] = sorted({scene["model"] for scene in manifest["scenes"]})
+    manifest["fallback_scene_ids"] = [
+        scene["id"] for scene in manifest["scenes"]
+        if scene["model"] == FALLBACK_TTS_MODEL
+    ]
     Path(args.manifest).write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",

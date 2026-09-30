@@ -1,2 +1,1 @@
-Split Payment — V4 Final: Recortes com texto real oficial (anti-papel branco), movimento continuo em SVGs e textos (nada estatico como slide), banners largos horizontais sem espremer e espacamento generoso.
-Trigger: 2026-09-29T20:17:05.405Z
+Produção autorizada: ipp-fabrica-carrinho-2026-09-30 | 2026-09-30 | Gemini 3.8 Charon; 3.1 somente fallback.

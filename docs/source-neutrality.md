@@ -50,6 +50,8 @@ O pipeline executa uma auditoria antes do TTS. Quando requires_diversity=true, a
 
 ## Diversidade de linhas editoriais
 
+Em toda pauta, consulte pelo menos uma reportagem ou análise de veículo com linha editorial à direita ou centro-direita, mesmo quando os dados centrais vierem de um órgão público. Essa é uma preferência editorial do canal para detectar perguntas, custos, limitações e efeitos práticos que um comunicado institucional pode deixar de lado. Registre a consulta em `editorial.source_balance.right_editorial_review.consulted`, com `publisher`, URL HTTPS da matéria específica e `summary` do que foi verificado. Se o veículo não cobrir o fato novo, registre a consulta contextual e não use essa matéria como fonte dos números do fato novo.
+
 Em temas com disputa política, econômica ou regulatória, não concentre as fontes não oficiais em veículos com linha editorial semelhante.
 
 Busque deliberadamente cobertura de linhas editoriais diferentes quando existir material relevante. Revista Oeste e Gazeta do Povo devem entrar no radar de pesquisa junto com outros veículos nacionais, sem que qualquer publicação seja tratada como autoridade por sua orientação editorial.
@@ -62,3 +64,5 @@ Regras:
 - fatos importantes devem ser cruzados com documento, dado, fonte técnica ou outra reportagem independente;
 - a meta é diversidade de perspectiva, não uma cota ideológica nem compensação artificial;
 - quando duas fontes divergem, explicitar a divergência e buscar evidência adicional em vez de escolher uma narrativa por afinidade editorial.
+- dados públicos podem ser a melhor fonte primária para a medida feita pelo órgão; confira metodologia, período, revisões e limites com outras fontes. Não presuma que um dado esteja errado pela orientação política do governo, nem transforme a interpretação oficial em conclusão do vídeo sem checagem.
+- incluir o ângulo crítico relevante quando houver evidência, sem adotar posição partidária nem forçar uma crítica por causa da linha editorial da fonte.

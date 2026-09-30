@@ -141,16 +141,31 @@ def require_gemini_manifest(manifest: dict) -> None:
     engine = "google-gemini-tts"
     if not scenes or manifest.get("engine") != engine:
         raise RuntimeError("Render diário exige manifesto de áudio exclusivamente Gemini.")
+    primary_model = "gemini-3.8-flash-tts"
+    fallback_model = "gemini-3.1-flash-tts-preview"
+    fallback_treatment = "charon-3.1-to-3.8-eq-v1"
     models = {item.get("model") for item in scenes}
     voices = {item.get("voice") for item in scenes}
     if (
         any(item.get("engine") != engine for item in scenes)
-        or len(models) != 1
-        or None in models
+        or not models.issubset({primary_model, fallback_model})
         or len(voices) != 1
         or None in voices
-        or manifest.get("model") not in models
+        or manifest.get("model") != primary_model
         or manifest.get("voice") not in voices
+        or (
+            fallback_model in models
+            and (
+                manifest.get("fallback_model") != fallback_model
+                or manifest.get("voice") != "Charon"
+            )
+        )
+        or any(
+            item.get("voice_treatment", "none") != (
+                fallback_treatment if item.get("model") == fallback_model else "none"
+            )
+            for item in scenes
+        )
     ):
         raise RuntimeError("Manifesto contém outro motor, modelo ou voz em alguma cena.")
 
@@ -253,6 +268,10 @@ def main() -> None:
                 "start_frame": cursor,
                 "duration_frames": duration_frames,
                 "audio_duration_seconds": audio["duration_seconds"],
+                "audio_model": audio.get("model"),
+                "audio_voice": audio.get("voice"),
+                "audio_voice_treatment": audio.get("voice_treatment", "none"),
+                "audio_fallback_reason": audio.get("fallback_reason"),
                 "audio_file": (
                     f"{args.audio_public_prefix.rstrip('/')}/{audio['file']}"
                 ),

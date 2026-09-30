@@ -105,7 +105,8 @@ class SynthesizeScenesTests(unittest.TestCase):
         with (
             patch.dict(os.environ, {
                 "GEMINI_API_KEY": "dummy-test-key",
-                "GEMINI_TTS_MODEL": "gemini-test-model",
+                "GEMINI_TTS_MODEL": synth.PRIMARY_TTS_MODEL,
+                "GEMINI_TTS_FALLBACK_MODEL": "",
                 "AZURE_SPEECH_KEY": "must-not-be-used",
             }),
             patch.object(sys, "argv", self.argv),
@@ -120,8 +121,8 @@ class SynthesizeScenesTests(unittest.TestCase):
             first_sidecar = self.output_dir / "scene-00.tts.json"
             self.assertTrue(first_sidecar.is_file())
             self.assertEqual(requests_made.count("scene-00"), 1)
-            self.assertEqual(requests_made.count("scene-01"), 8)
-            self.assertEqual(clock.waits, [22, 22, 30, 60, 120, 120, 120, 120])
+            self.assertEqual(requests_made.count("scene-01"), 3)
+            self.assertEqual(clock.waits, [22, 22, 30])
 
             phase = "complete_second"
             requests_made.clear()
@@ -136,7 +137,7 @@ class SynthesizeScenesTests(unittest.TestCase):
             manifest = json.loads(self.manifest_path.read_text(encoding="utf-8"))
             self.assertEqual(manifest["engine"], "google-gemini-tts")
             self.assertEqual(manifest["voice"], "Charon")
-            self.assertEqual(manifest["model"], "gemini-test-model")
+            self.assertEqual(manifest["model"], synth.PRIMARY_TTS_MODEL)
             self.assertEqual({scene["engine"] for scene in manifest["scenes"]}, {"google-gemini-tts"})
             self.assertEqual({scene["voice"] for scene in manifest["scenes"]}, {"Charon"})
             render.require_gemini_manifest(manifest)
@@ -150,9 +151,9 @@ class SynthesizeScenesTests(unittest.TestCase):
             narration_hash = hashlib.sha256("Um dólar sobe.".encode("utf-8")).hexdigest()
             self.assertIsNone(synth.cached_duration(audio, "different-narration", "gemini-test-model", "Charon"))
             self.assertIsNone(synth.cached_duration(audio, narration_hash, "different-model", "Charon"))
-            self.assertIsNone(synth.cached_duration(audio, narration_hash, "gemini-test-model", "Autonoe"))
+            self.assertIsNone(synth.cached_duration(audio, narration_hash, synth.PRIMARY_TTS_MODEL, "Autonoe"))
             audio.write_bytes(b"corrupted" * 300)
-            self.assertIsNone(synth.cached_duration(audio, narration_hash, "gemini-test-model", "Charon"))
+            self.assertIsNone(synth.cached_duration(audio, narration_hash, synth.PRIMARY_TTS_MODEL, "Charon"))
 
     def test_structured_429_reports_rpm_and_retry_without_echoing_secrets(self) -> None:
         secret = "AIza-secret-test-key"
@@ -187,6 +188,97 @@ class SynthesizeScenesTests(unittest.TestCase):
         self.assertNotIn(secret, diagnostic)
         self.assertNotIn("https://", diagnostic)
 
+    def test_rpd_switches_once_to_treated_3_1_and_resume_reuses_audio(self) -> None:
+        project = json.loads(self.project_path.read_text(encoding="utf-8"))
+        project["scenes"].append({"id": "scene-02", "narration": "O preço muda."})
+        self.project_path.write_text(json.dumps(project), encoding="utf-8")
+        rpd = FakeResponse(429, error={
+            "status": "RESOURCE_EXHAUSTED",
+            "details": [{"@type": "type.googleapis.com/google.rpc.QuotaFailure", "violations": [{
+                "quotaId": "GenerateRequestsPerDayPerProjectPerModel-FreeTier",
+            }]}],
+        })
+        schedule = [
+            (synth.PRIMARY_TTS_MODEL, FakeResponse(200)),
+            (synth.PRIMARY_TTS_MODEL, rpd),
+            (synth.FALLBACK_TTS_MODEL, FakeResponse(200)),
+            (synth.FALLBACK_TTS_MODEL, FakeResponse(200)),
+        ]
+        calls = []
+        treated = []
+
+        def fake_post(url, **_kwargs):
+            expected_model, response = schedule.pop(0)
+            self.assertIn(f"/{expected_model}:generateContent", url)
+            calls.append(expected_model)
+            return response
+
+        def fake_run(command, **_kwargs):
+            self.assertEqual(command[0], "ffprobe")
+            return types.SimpleNamespace(stdout="3.0\n")
+
+        def fake_treatment(path):
+            treated.append(path.name)
+            path.write_bytes(path.read_bytes() + b"TREATED")
+
+        with (
+            patch.dict(os.environ, {
+                "GEMINI_API_KEY": "dummy-test-key",
+                "GEMINI_TTS_MODEL": synth.PRIMARY_TTS_MODEL,
+            }),
+            patch.object(sys, "argv", self.argv),
+            patch.object(synth.requests, "post", fake_post, create=True),
+            patch.object(synth.subprocess, "run", fake_run),
+            patch.object(synth, "apply_fallback_voice_treatment", fake_treatment),
+            patch.object(synth.time, "sleep", lambda _seconds: None),
+        ):
+            synth.main()
+            self.assertEqual(schedule, [])
+            self.assertEqual(treated, ["scene-01.mp3", "scene-02.mp3"])
+            manifest = json.loads(self.manifest_path.read_text(encoding="utf-8"))
+            self.assertEqual(manifest["fallback_scene_ids"], ["scene-01", "scene-02"])
+            self.assertEqual(manifest["scenes"][1]["fallback_reason"], "rpd")
+            self.assertEqual(manifest["scenes"][2]["fallback_reason"], "earlier-primary-failure")
+            self.assertEqual(manifest["scenes"][0]["voice_treatment"], "none")
+            self.assertEqual(manifest["scenes"][1]["voice_treatment"], synth.FALLBACK_VOICE_TREATMENT)
+            self.assertEqual({s["voice"] for s in manifest["scenes"]}, {"Charon"})
+            render.require_gemini_manifest(manifest)
+            sidecar = json.loads((self.output_dir / "scene-01.tts.json").read_text(encoding="utf-8"))
+            self.assertEqual(sidecar["model"], synth.FALLBACK_TTS_MODEL)
+            self.assertEqual(sidecar["voice_treatment"], synth.FALLBACK_VOICE_TREATMENT)
+            self.assertIsNone(synth.cached_duration(
+                self.output_dir / "scene-01.mp3", sidecar["narration_sha256"],
+                synth.FALLBACK_TTS_MODEL, "Charon", "none",
+            ))
+            synth.main()
+            self.assertEqual(len(calls), 4, "Reexecução com cache não deve chamar a API")
+
+            invalid = json.loads(json.dumps(manifest))
+            invalid["scenes"][1]["voice_treatment"] = "none"
+            with self.assertRaisesRegex(RuntimeError, "outro motor"):
+                render.require_gemini_manifest(invalid)
+            invalid = json.loads(json.dumps(manifest))
+            invalid["scenes"][1]["model"] = "gemini-3.8-flash-lite-tts"
+            with self.assertRaisesRegex(RuntimeError, "outro motor"):
+                render.require_gemini_manifest(invalid)
+
+    def test_persistent_server_error_eligible_for_fallback_but_404_is_not(self) -> None:
+        responses = [FakeResponse(500), FakeResponse(502), FakeResponse(503)]
+        with (
+            patch.object(synth.requests, "post", lambda _url, **_kwargs: responses.pop(0), create=True),
+            patch.object(synth.time, "sleep", lambda _seconds: None),
+        ):
+            outcome = synth.synthesize_gemini_audio(
+                "Teste", "Charon", self.folder / "server.mp3", "test-key", synth.PRIMARY_TTS_MODEL,
+            )
+        self.assertIsNone(outcome.model)
+        self.assertEqual(outcome.failure, "server-unavailable")
+        with patch.object(synth.requests, "post", lambda _url, **_kwargs: FakeResponse(404), create=True):
+            outcome = synth.synthesize_gemini_audio(
+                "Teste", "Charon", self.folder / "not-found.mp3", "test-key", synth.PRIMARY_TTS_MODEL,
+            )
+        self.assertEqual(outcome.failure, "other")
+
     def test_model_identifier_cannot_inject_url_into_logs(self) -> None:
         with self.assertRaisesRegex(ValueError, "modelo Gemini inválido"):
             synth.synthesize_gemini_audio(
@@ -215,7 +307,8 @@ class SynthesizeScenesTests(unittest.TestCase):
             result = synth.synthesize_gemini_audio(
                 "Narration", "Charon", self.folder / "rpd.mp3", secret, "gemini-3.8-flash-tts"
             )
-        self.assertIsNone(result)
+        self.assertIsNone(result.model)
+        self.assertEqual(result.failure, "rpd")
         self.assertEqual(len(calls), 1)
         log = output.getvalue()
         self.assertIn("tipo=RPD", log)
@@ -241,10 +334,10 @@ class SynthesizeScenesTests(unittest.TestCase):
         ):
             self.assertEqual(synth.synthesize_gemini_audio(
                 "First", "Charon", self.folder / "first.mp3", "test-key", "gemini-test-model", pacer
-            ), "gemini-test-model")
+            ).model, "gemini-test-model")
             self.assertEqual(synth.synthesize_gemini_audio(
                 "Second", "Charon", self.folder / "second.mp3", "test-key", "gemini-test-model", pacer
-            ), "gemini-test-model")
+            ).model, "gemini-test-model")
         self.assertEqual(starts, [0.0, 22.0, 44.0])
         self.assertEqual(clock.waits, [15, 7, 22])
 

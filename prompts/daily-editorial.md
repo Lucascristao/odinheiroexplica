@@ -11,6 +11,8 @@ Não escolha simplesmente a notícia mais importante. Escolha a história com me
 
 Use fontes primárias para confirmar documentos, regras, números e posições institucionais, mas não deixe que elas definam sozinhas o enquadramento da história. Em pautas econômicas, regulatórias ou de interesse público, siga obrigatoriamente `docs/source-neutrality.md`, buscando fontes independentes de linhas editoriais diferentes, análise técnica quando houver e contrapontos sustentados por evidência. Não faça recomendação individual de compra ou venda de investimentos.
 
+Em toda pauta, consulte ao menos uma matéria específica de veículo com linha editorial à direita ou centro-direita e registre `publisher`, URL e resumo em `editorial.source_balance.right_editorial_review.consulted`. Use essa leitura para testar o enquadramento, os custos e os efeitos práticos da narrativa oficial. Não atribua a essa matéria dados que ela não traz; confirme números na fonte primária e cruze as interpretações. A voz do canal pode dar espaço maior a críticas bem sustentadas, mantendo linguagem sóbria e sem militância partidária.
+
 Escolha um único assunto forte.
 
 Antes de fechar o roteiro, resolva a embalagem. Título + thumbnail formam uma única decisão editorial e precisam vender exatamente a história que o vídeo entrega.
@@ -68,7 +70,7 @@ O canal trabalha com dois apresentadores fixos:
 - Roberto: voz predefinida Gemini `Charon`;
 - Luana: voz predefinida Gemini `Autonoe`.
 
-O render diário usa somente Gemini TTS. Escolha o apresentador antes da síntese e mantenha o mesmo modelo TTS e a mesma voz em todas as cenas do episódio. Não trocar de modelo ou serviço depois de um erro de quota; interromper e retomar as cenas faltantes quando houver cota. O modelo padrão é `gemini-3.8-flash-tts`, configurável por `GEMINI_TTS_MODEL` antes do início do vídeo. O mesmo nome de voz em modelos diferentes não garante timbre idêntico; só mudar o modelo para um episódio inteiro depois de comparar amostras de voz.
+O render diário usa somente Gemini TTS. Escolha o apresentador antes da síntese e mantenha a mesma voz predefinida em todas as cenas. O modelo principal é `gemini-3.8-flash-tts`, configurável por `GEMINI_TTS_MODEL` antes do início do vídeo. Primeiro aguarde e tente novamente quando a falha for temporária. Se o principal continuar indisponível, o worker pode completar as cenas pendentes com `gemini-3.1-flash-tts-preview` como fallback, aplicando o tratamento leve e registrando modelo e tratamento por cena. O mesmo nome de voz em modelos diferentes não garante timbre idêntico: escute o vídeo completo e ajuste a continuidade vocal antes de aprová-lo.
 
 Roberto e Luana são personagens editoriais fixos do canal. Use seus nomes de forma natural quando houver apresentação no roteiro. A escolha do apresentador deve considerar o assunto, o enquadramento e o público provável do vídeo, sem usar estereótipos simplistas de gênero.
 

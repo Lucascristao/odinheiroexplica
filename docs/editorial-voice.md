@@ -1,12 +1,12 @@
 # Direção de voz editorial
 
-O render diário usa apenas Gemini TTS. Roberto solicita a voz `Charon` e Luana solicita `Autonoe`. Escolher o modelo antes de iniciar um episódio e mantê-lo, junto com a voz, em todas as cenas. Um erro de quota interrompe a produção; a retomada reutiliza os áudios válidos e chama o mesmo modelo para as cenas restantes. O mesmo nome de voz em outro modelo não garante um timbre igual.
+O render diário usa apenas Gemini TTS. Roberto solicita a voz `Charon` e Luana solicita `Autonoe`. O modelo principal é Gemini 3.8 Flash TTS. Para Roberto, se o 3.8 esgotar a cota, mantiver HTTP 429 após as tentativas espaçadas ou ficar indisponível com 5xx persistente, o motor pode completar as cenas faltantes com Gemini 3.1 Flash TTS preview, ainda com Charon. Se o 3.8 funcionar, não há chamada ao 3.1. Uma EQ leve aproxima o timbre do trecho complementar, mas não garante identidade perfeita; escute a transição no MP4 final. O manifesto informa o modelo e tratamento de cada cena. Para Luana, o fallback ainda não foi calibrado e fica desativado.
 
 ## O que o motor aplica de fato
 
 O worker envia o texto da `narration` e a voz predefinida ao Gemini. `speech.pronunciations` substitui termos de risco **somente na fala**, preservando a grafia em tela. Campos antigos de `tts.delivery`, `tts.cues`, `rate` ou `pitch` ainda podem estar no contrato, mas o worker Gemini atual não os aplica ao áudio; não os use como prova de que houve direção de atuação. SSML, `prosody`, `break` e bookmarks do Azure não fazem parte deste fluxo.
 
-Escreva a intenção na própria narração: frases com uma ideia, pontuação que ajude a leitura, perguntas naturais e contraste claro. Ouça o áudio pronto antes da aprovação. Se a interpretação variar entre cenas, revise o roteiro e considere blocos contínuos de narração após testar duração e sincronização. Não troque o modelo no meio do vídeo.
+Escreva a intenção na própria narração: frases com uma ideia, pontuação que ajude a leitura, perguntas naturais e contraste claro. Ouça o áudio pronto antes da aprovação. Se a interpretação variar entre cenas, revise o roteiro e considere blocos contínuos de narração após testar duração e sincronização. Evite alternar modelos manualmente; o fallback automático documentado acima é a única exceção.
 
 ## Sincronização
 
