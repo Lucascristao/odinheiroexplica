@@ -20,7 +20,7 @@
     "subject": "Dólar e política na reta final da eleição de2026, atualizado com PTAX e estatísticas fiscais divulgados em30/09.",
     "angle": "Seguir o caminho entre decisões fiscais, percepção de risco, câmbio e custos, separando dado verificado de interpretação e de torcida.",
     "promise": "Entender como a política pode mexer no dólar, por que o mundo também importa e quando isso chega a uma compra.",
-    "why_now": "Faltam quatro dias para o primeiro turno. A PTAX de30/09 e as estatísticas fiscais deagosto foram verificadas hoje, preservando a pauta original dólar e política.",
+    "why_now": "O primeiro turno está marcado para 04/10/2026. A PTAX de 30/09 e as estatísticas fiscais de agosto atualizam a pauta sem transformar a data de produção em parte da narração.",
     "category": "economy"
   },
   "visual_assets": [
@@ -56,7 +56,7 @@
     }
   ],
   "visual_direction": {
-    "concept": "Uma decisão eleitoral percorre três escalas: expectativas em Brasília, troca entre moedas, e uma compra concreta. A carteira reaparece como destino; números dehoje são provas, não eixo de uma apresentação.",
+    "concept": "Uma decisão eleitoral percorre três escalas: expectativas em Brasília, troca entre moedas, e uma compra concreta. A carteira reaparece como destino; números recentes são provas, não eixo de uma apresentação.",
     "world": "market",
     "secondary_color": "#FFBD19",
     "motifs": [
@@ -100,7 +100,7 @@
       "A hipótese aritméticaR$5/R$5,50 nãoé previsão e é identificada antes dos valores."
     ],
     "narrative_contract": {
-      "topic_explanation": "vamos seguir esse caminho: das decisões sobre as contas do governo, passando pelo câmbio, até o custo que aparece no seu bolso",
+      "topic_explanation": "vamos seguir o caminho das decisões sobre as contas do governo, passando pelo câmbio, até o custo que aparece no seu bolso",
       "presenter_introduction": "Eu sou o Roberto, do O Dinheiro Explica.",
       "subscription_request": "se inscreva no O Dinheiro Explica para acompanhar as próximas histórias"
     },
@@ -431,7 +431,7 @@
     {
       "index": 0,
       "title": "A eleição pode mexer no seu dinheiro",
-      "narration": "Faltam quatro dias para a eleição, e uma mudança no dólar pode chegar à sua compra mesmo que você nunca tenha comprado um dólar. Mas como uma promessa de campanha vira preço? Eu sou o Roberto, do O Dinheiro Explica. Hoje, trinta de setembro, vamos seguir esse caminho: das decisões sobre as contas do governo, passando pelo câmbio, até o custo que aparece no seu bolso.",
+      "narration": "O primeiro turno está marcado para quatro de outubro de dois mil e vinte e seis, e uma mudança no dólar pode chegar à sua compra mesmo que você nunca tenha comprado um dólar. Mas como uma promessa de campanha vira preço? Eu sou o Roberto, do O Dinheiro Explica. Pra entender isso, vamos seguir o caminho das decisões sobre as contas do governo, passando pelo câmbio, até o custo que aparece no seu bolso.",
       "claim_ids": [
         "C1"
       ],
@@ -498,7 +498,7 @@
         },
         "beats": [
           {
-            "anchor": "quatro dias",
+            "anchor": "quatro de outubro",
             "target_id": "vote",
             "action": "focus",
             "headline": "Primeiro turno · 2026",
@@ -551,7 +551,7 @@
     {
       "index": 1,
       "title": "Qual dólar está na tela?",
-      "narration": "Primeiro, saiba qual número está olhando. A PTAX de venda publicada hoje pelo Banco Central ficou em cinco reais e dezoito centavos, arredondando. Ela é uma taxa de referência calculada a partir de consultas ao mercado. Já o dólar comercial muda durante o pregão: uma reportagem registrou cinco reais e dezenove centavos, arredondando a cotação das dez e quarenta e dois. Os números são próximos, mas têm horários e métodos diferentes. Nenhum deles é o preço final de uma casa de câmbio.",
+      "narration": "Primeiro, saiba qual número está olhando. A PTAX de venda referente a trinta de setembro ficou em cinco reais e dezoito centavos, arredondando. Ela é uma taxa de referência calculada pelo Banco Central a partir de consultas ao mercado. Já o dólar comercial muda durante o pregão: uma reportagem registrou cinco reais e dezenove centavos, arredondando a cotação das dez e quarenta e dois. Os números são próximos, mas têm horários e métodos diferentes. Nenhum deles é o preço final de uma casa de câmbio.",
       "claim_ids": [
         "C2",
         "C3",
@@ -933,8 +933,8 @@
     },
     {
       "index": 4,
-      "title": "O dado fiscal divulgado hoje",
-      "narration": "E hoje saiu um dado concreto para essa discussão. Segundo o Banco Central, a dívida bruta chegou a oitenta e dois vírgula nove por cento do PIB em agosto, somando onze vírgula um trilhões de reais. PIB é o valor dos bens e serviços produzidos no país. Essa comparação ajuda a dimensionar a dívida. A cobertura jornalística destacou a pressão desse endividamento sobre o governo. No mesmo documento, porém, o déficit primário de agosto foi menor que o de agosto do ano passado. Primário é o resultado das receitas e despesas sem contar os juros da dívida. Essa melhora mensal não apaga o estoque acumulado. E o estoque, sozinho, não prova calote nem explica toda a cotação do dia.",
+      "title": "O dado fiscal de agosto",
+      "narration": "Nos dados divulgados pelo Banco Central em trinta de setembro, a dívida bruta chegou a oitenta e dois vírgula nove por cento do PIB em agosto, somando onze vírgula um trilhões de reais. PIB é o valor dos bens e serviços produzidos no país. Essa comparação ajuda a dimensionar a dívida. A cobertura jornalística destacou a pressão desse endividamento sobre o governo. No mesmo documento, porém, o déficit primário de agosto foi menor que o de agosto do ano passado. Primário é o resultado das receitas e despesas sem contar os juros da dívida. Essa melhora mensal não apaga o estoque acumulado. E o estoque, sozinho, não prova calote nem explica toda a cotação daquele pregão.",
       "claim_ids": [
         "C7",
         "C8"
@@ -1053,7 +1053,7 @@
     {
       "index": 5,
       "title": "O mundo também entra nessa conta",
-      "narration": "Só que Brasília não controla o mundo. Juros e inflação nos Estados Unidos mudam a atratividade de manter dinheiro em dólar. O humor global e o comércio também alteram os fluxos. Na manhã de hoje, uma reportagem relacionou o recuo do dólar a dados americanos e à melhora do apetite por risco, enquanto a eleição seguia no radar. São fatores ao mesmo tempo. Então, dizer que o dólar caiu por causa de uma pesquisa exige identificar a pesquisa, o horário e uma reação compatível. A proximidade da eleição não demonstra essa causa.",
+      "narration": "Só que Brasília não controla o mundo. Juros e inflação nos Estados Unidos mudam a atratividade de manter dinheiro em dólar. O humor global e o comércio também alteram os fluxos. Na manhã de trinta de setembro, uma reportagem relacionou o recuo do dólar a dados americanos e à melhora do apetite por risco, enquanto a eleição seguia no radar. São fatores ao mesmo tempo. Então, dizer que o dólar caiu por causa de uma pesquisa exige identificar a pesquisa, o horário e uma reação compatível. A proximidade da eleição não demonstra essa causa.",
       "claim_ids": [
         "C9"
       ],
@@ -1181,7 +1181,7 @@
     {
       "index": 6,
       "title": "Como isso chega a uma compra",
-      "narration": "Agora vamos trazer essa história para uma conta simples. Imagine uma peça importada que custa cem dólares. É um exemplo, não a cotação de hoje. Com dólar a cinco reais, ela custa quinhentos reais antes de impostos e frete. Se o dólar for para cinco e cinquenta, vira quinhentos e cinquenta reais. A peça não mudou de preço lá fora. O real é que compra menos dólares. Essa pressão pode entrar no custo de um produto fabricado aqui, quando ele usa componentes ou matérias-primas comprados em moeda estrangeira.",
+      "narration": "Agora vamos trazer essa história para uma conta simples. Imagine uma peça importada que custa cem dólares. É um exemplo, não uma cotação observada. Com dólar a cinco reais, ela custa quinhentos reais antes de impostos e frete. Se o dólar for para cinco e cinquenta, vira quinhentos e cinquenta reais. A peça não mudou de preço lá fora. O real é que compra menos dólares. Essa pressão pode entrar no custo de um produto fabricado aqui, quando ele usa componentes ou matérias-primas comprados em moeda estrangeira.",
       "claim_ids": [
         "C10"
       ],
@@ -1552,23 +1552,23 @@
             "motion_seconds": 0.55
           },
           {
-          "anchor": "O estudo do Insper",
-          "target_id": "services",
-          "action": "update",
-          "headline": "Repasse cambial · TCC de 2020",
-          "detail": "Alejandro Ortiz Cruceño · repositório do Insper",
-          "kind": "fact",
-          "behavior": "transform",
-          "treatment": "kinetic_type",
-          "transition": "cut",
-          "placement": "full",
-          "medium": "motion_graphic",
-          "sound": "none",
-          "prominence": "contextual",
-          "motion_seconds": 0.55
-        },
-        {
-          "anchor": "quanto cada item",
+            "anchor": "O estudo do Insper",
+            "target_id": "services",
+            "action": "update",
+            "headline": "Repasse cambial · TCC de 2020",
+            "detail": "Alejandro Ortiz Cruceño · repositório do Insper",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.55
+          },
+          {
+            "anchor": "quanto cada item",
             "target_id": "cart",
             "action": "focus",
             "headline": "Compra real · imagem ilustrativa",
@@ -1745,7 +1745,7 @@
     ]
   },
   "publication": {
-    "description": "Como a eleição pode mexer no dólar e chegar ao seu bolso? Roberto explica o caminho entre decisões fiscais, expectativas, câmbio e custos, com dados atualizados em 30 de setembro de 2026.\n\nA PTAX de venda de 30/09 foi R$ 5,1809. Ela é uma taxa de referência e não deve ser confundida com o dólar comercial ao vivo ou o preço de uma casa de câmbio. O vídeo também apresenta a dívida bruta de agosto divulgada hoje pelo Banco Central, confronta a cobertura sobre as contas públicas e mostra por que o contexto internacional continua importante.\n\nUma conta hipotética com uma peça de cem dólares ajuda a enxergar o mecanismo. Depois, seguimos os limites do repasse: estoque, contratos, margem, concorrência e a incerteza das pesquisas. Nenhum exemplo é previsão de preço ou recomendação de investimento.\n\n#Dolar #Eleicoes2026 #Economia #ODinheiroExplica",
+    "description": "Como a eleição pode mexer no dólar e chegar ao seu bolso? Roberto explica o caminho entre decisões fiscais, expectativas, câmbio e custos, com dados atualizados em 30 de setembro de 2026.\n\nA PTAX de venda de 30/09 foi R$ 5,1809. Ela é uma taxa de referência e não deve ser confundida com o dólar comercial ao vivo ou o preço de uma casa de câmbio. O vídeo também apresenta a dívida bruta de agosto divulgada em 30 de setembro pelo Banco Central, confronta a cobertura sobre as contas públicas e mostra por que o contexto internacional continua importante.\n\nUma conta hipotética com uma peça de cem dólares ajuda a enxergar o mecanismo. Depois, seguimos os limites do repasse: estoque, contratos, margem, concorrência e a incerteza das pesquisas. Nenhum exemplo é previsão de preço ou recomendação de investimento.\n\n#Dolar #Eleicoes2026 #Economia #ODinheiroExplica",
     "seo": {
       "primary_keyword": "dólar e eleições",
       "secondary_keywords": [
