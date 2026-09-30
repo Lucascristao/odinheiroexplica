@@ -1,12 +1,15 @@
-﻿import argparse
+import argparse
 import base64
 import hashlib
 import json
 import os
+from pathlib import Path
+import re
 import subprocess
 import time
 import wave
-from pathlib import Path
+from xml.sax.saxutils import escape
+
 import requests
 
 from tts_config import (
@@ -38,118 +41,186 @@ def duration_seconds(path: Path) -> float:
     return round(float(completed.stdout.strip()), 3)
 
 
-def synthesize_gemini_scene(
+def synthesize_azure_scene(
+    narration: str,
+    gender: str,
+    output_path: Path,
+    azure_key: str,
+    azure_region: str,
+) -> bool:
+    azure_voices = {
+        "male": "pt-BR-MacerioMultilingualNeural",
+        "female": "pt-BR-ThalitaMultilingualNeural",
+    }
+    voice_name = azure_voices.get(gender, "pt-BR-MacerioMultilingualNeural")
+    url = f"https://{azure_region}.tts.speech.microsoft.com/cognitiveservices/v1"
+    headers = {
+        "Ocp-Apim-Subscription-Key": azure_key,
+        "Content-Type": "application/ssml+xml",
+        "X-Microsoft-OutputFormat": "audio-48khz-192kbitrate-mono-mp3",
+        "User-Agent": "ODinheiroExplica",
+    }
+    escaped_text = escape(narration)
+    ssml = (
+        f"<speak version='1.0' xml:lang='pt-BR'>"
+        f"<voice name='{voice_name}'>{escaped_text}</voice>"
+        f"</speak>"
+    )
+    try:
+        resp = requests.post(url, headers=headers, data=ssml.encode("utf-8"), timeout=60)
+        if resp.status_code == 200 and len(resp.content) > 1000:
+            output_path.write_bytes(resp.content)
+            print(f"    [Azure Speech Fallback] Cena gerada com sucesso ({voice_name})!", flush=True)
+            return True
+        else:
+            print(f"    [Azure Speech Erro] HTTP {resp.status_code}: {resp.text[:120]}", flush=True)
+            return False
+    except Exception as exc:
+        print(f"    [Azure Speech Exceção] {exc}", flush=True)
+        return False
+
+
+def synthesize_scene_with_fallback(
     narration: str,
     voice_name: str,
+    gender: str,
     output_path: Path,
-    api_key: str,
+    gemini_key: str,
+    azure_key: str = "",
+    azure_region: str = "eastus",
 ) -> None:
-    models_to_try = [
-        "gemini-3.8-flash-tts",
-        "gemini-3.8-flash-lite-tts",
-    ]
-    last_error = None
+    # 1. Tenta sintetizar com Google Gemini 3.8 Flash TTS
+    if gemini_key:
+        models_to_try = [
+            "gemini-3.8-flash",
+            "gemini-2.5-flash",
+        ]
+        for model in models_to_try:
+            url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={gemini_key}"
+            for use_sys_inst in [True, False]:
+                payload = {
+                    "contents": [
+                        {
+                            "parts": [
+                                {
+                                    "text": (
+                                        narration
+                                        if use_sys_inst
+                                        else f"Leia em áudio para gravação de telejornal o seguinte texto, exatamente como escrito:
 
-    for model in models_to_try:
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
-        payload = {
-            "contents": [
-                {
-                    "parts": [{"text": narration}]
-                }
-            ],
-            "generationConfig": {
-                "responseModalities": ["AUDIO"],
-                "speechConfig": {
-                    "voiceConfig": {
-                        "prebuiltVoiceConfig": {
-                            "voiceName": voice_name
+{narration}"
+                                    )
+                                }
+                            ]
+                        }
+                    ],
+                    "generationConfig": {
+                        "responseModalities": ["AUDIO"],
+                        "speechConfig": {
+                            "voiceConfig": {
+                                "prebuiltVoiceConfig": {
+                                    "voiceName": voice_name
+                                }
+                            }
                         }
                     }
                 }
-            }
-        }
+                if use_sys_inst:
+                    payload["systemInstruction"] = {
+                        "parts": [
+                            {
+                                "text": (
+                                    "Você é exclusivamente o motor de Text-to-Speech do canal O Dinheiro Explica. "
+                                    "Sua única tarefa é narrar em voz alta, palavra por palavra, o texto fornecido pelo usuário. "
+                                    "NUNCA responda ao conteúdo, NUNCA dê sugestões ou feedback e NUNCA gere texto de saída. Retorne apenas o áudio."
+                                )
+                            }
+                        ]
+                    }
 
-        for attempt in range(1, 5):
-            try:
-                response = requests.post(url, json=payload, timeout=90)
-                if response.status_code == 200:
-                    data = response.json()
-                    parts = data.get("candidates", [{}])[0].get("content", {}).get("parts", [])
-                    audio_part = next((p for p in parts if "inlineData" in p and "data" in p["inlineData"]), None)
-                    if not audio_part:
-                        raise RuntimeError(f"Resposta de {model} 200 OK sem inlineData de áudio: {data}")
-
-                    b64_audio = audio_part["inlineData"]["data"]
-                    mime_type = audio_part["inlineData"].get("mimeType", "")
-                    raw_bytes = base64.b64decode(b64_audio)
-
-                    temp_wav = output_path.with_suffix(".temp.wav")
-                    if raw_bytes.startswith(b"RIFF") or "wav" in mime_type:
-                        temp_wav.write_bytes(raw_bytes)
-                    elif raw_bytes.startswith(b"ID3") or raw_bytes[:2] == b"\xff\xfb" or "mp3" in mime_type:
-                        output_path.write_bytes(raw_bytes)
-                        return
-                    else:
-                        with wave.open(str(temp_wav), "wb") as wf:
-                            wf.setnchannels(1)
-                            wf.setsampwidth(2)
-                            wf.setframerate(24000)
-                            wf.writeframes(raw_bytes)
-
-                    # Converte para MP3 48kHz 192k mono (compatibilidade total com Remotion)
+                for attempt in range(1, 4):
                     try:
-                        subprocess.run(
-                            [
-                                "ffmpeg",
-                                "-y",
-                                "-i",
-                                str(temp_wav),
-                                "-ar",
-                                "48000",
-                                "-ac",
-                                "1",
-                                "-b:a",
-                                "192k",
-                                str(output_path),
-                            ],
-                            check=True,
-                            capture_output=True,
-                        )
-                        temp_wav.unlink(missing_ok=True)
-                        return
-                    except Exception:
-                        output_path.write_bytes(temp_wav.read_bytes())
-                        temp_wav.unlink(missing_ok=True)
-                        return
+                        response = requests.post(url, json=payload, timeout=60)
+                        if response.status_code == 200:
+                            data = response.json()
+                            parts = data.get("candidates", [{}])[0].get("content", {}).get("parts", [])
+                            audio_part = next((p for p in parts if "inlineData" in p and "data" in p["inlineData"]), None)
+                            if not audio_part:
+                                text_msg = next((p.get("text", "") for p in parts if "text" in p), "")
+                                print(f"    [Gemini TTS Aviso] Modelo respondeu em texto: {text_msg[:80]}...", flush=True)
+                                break  # Passa para a próxima tentativa/estratégia
 
-                elif response.status_code == 429:
-                    wait_time = 15 * attempt
-                    print(f"    [Gemini TTS 429] Limite de quota em {model} (tentativa {attempt}/4). Aguardando {wait_time}s...", flush=True)
-                    time.sleep(wait_time)
-                    continue
-                elif response.status_code in (500, 503):
-                    wait_time = 5 * attempt
-                    print(f"    [Gemini TTS {response.status_code}] Instabilidade temporária em {model}. Aguardando {wait_time}s...", flush=True)
-                    time.sleep(wait_time)
-                    continue
-                else:
-                    last_error = f"HTTP {response.status_code} ({model}): {response.text}"
-                    print(f"    [Gemini TTS Erro] {last_error[:160]}", flush=True)
-                    break
-            except Exception as exc:
-                last_error = f"{type(exc).__name__}: {exc}"
-                print(f"    [Gemini TTS Exceção] {last_error}", flush=True)
-                time.sleep(5 * attempt)
+                            b64_audio = audio_part["inlineData"]["data"]
+                            mime_type = audio_part["inlineData"].get("mimeType", "")
+                            raw_bytes = base64.b64decode(b64_audio)
 
-    raise RuntimeError(f"Falha ao sintetizar cena com Gemini TTS ({voice_name}): {last_error}")
+                            temp_wav = output_path.with_suffix(".temp.wav")
+                            if raw_bytes.startswith(b"RIFF") or "wav" in mime_type:
+                                temp_wav.write_bytes(raw_bytes)
+                            elif raw_bytes.startswith(b"ID3") or raw_bytes[:2] == b"\xff\xfb" or "mp3" in mime_type:
+                                output_path.write_bytes(raw_bytes)
+                                return
+                            else:
+                                with wave.open(str(temp_wav), "wb") as wf:
+                                    wf.setnchannels(1)
+                                    wf.setsampwidth(2)
+                                    wf.setframerate(24000)
+                                    wf.writeframes(raw_bytes)
+
+                            try:
+                                subprocess.run(
+                                    [
+                                        "ffmpeg",
+                                        "-y",
+                                        "-i",
+                                        str(temp_wav),
+                                        "-ar",
+                                        "48000",
+                                        "-ac",
+                                        "1",
+                                        "-b:a",
+                                        "192k",
+                                        str(output_path),
+                                    ],
+                                    check=True,
+                                    capture_output=True,
+                                )
+                                temp_wav.unlink(missing_ok=True)
+                                return
+                            except Exception:
+                                output_path.write_bytes(temp_wav.read_bytes())
+                                temp_wav.unlink(missing_ok=True)
+                                return
+
+                        elif response.status_code == 400 and use_sys_inst:
+                            break  # Tenta sem systemInstruction
+                        elif response.status_code == 429:
+                            print(f"    [Gemini Quota 429] Aguardando 12s para renovar quota...", flush=True)
+                            time.sleep(12)
+                            continue
+                        elif response.status_code in (500, 503):
+                            time.sleep(4 * attempt)
+                            continue
+                        else:
+                            print(f"    [Gemini Erro {response.status_code}] {response.text[:120]}", flush=True)
+                            break
+                    except Exception as exc:
+                        print(f"    [Gemini Exceção] {exc}", flush=True)
+                        time.sleep(3 * attempt)
+
+    # 2. Se o Gemini não conseguiu ou não tem key, aciona Azure Speech como garantia absoluta
+    if azure_key:
+        print(f"    [Garantia de Entrega] Acionando Azure Speech para finalizar a cena...", flush=True)
+        if synthesize_azure_scene(narration, gender, output_path, azure_key, azure_region):
+            return
+
+    raise RuntimeError(f"Falha ao sintetizar cena: nem Gemini nem Azure completaram o áudio.")
 
 
 def compute_beat_timings(narration: str, beats: list[dict], duration: float) -> list[dict]:
     if not beats:
         return []
 
-    # Ponderação fonética e pausas de respiração por pontuação
     char_weights = []
     for ch in narration:
         if ch in ('.', '!', '?'):
@@ -159,44 +230,43 @@ def compute_beat_timings(narration: str, beats: list[dict], duration: float) -> 
         elif ch == ' ':
             char_weights.append(1.0)
         else:
-            char_weights.append(1.0)
+            char_weights.append(1.2)
 
-    total_weight = sum(char_weights) or 1.0
-    normalized_narration = narration.lower()
+    total_weight = sum(char_weights)
+    if total_weight <= 0:
+        total_weight = float(len(narration) or 1)
+        char_weights = [1.0] * len(narration)
+
     timings = []
-
     for index, beat in enumerate(beats):
         if not isinstance(beat, dict):
             continue
+
         anchor = str(beat.get("anchor") or "").strip()
-        explicit_at = beat.get("at")
-        mark = f"beat-{index}"
+        if not anchor:
+            continue
 
-        offset = None
-        if isinstance(explicit_at, (int, float)):
-            offset = max(0.0, min(duration, float(explicit_at) * duration))
-        elif anchor:
-            pos = normalized_narration.find(anchor.lower())
-            if pos >= 0:
-                weight_up_to_anchor = sum(char_weights[:pos])
-                offset = (weight_up_to_anchor / total_weight) * duration
-            else:
-                offset = ((index + 1) / (len(beats) + 1)) * duration
+        pos = narration.find(anchor)
+        if pos == -1:
+            ratio = index / max(len(beats), 1)
+            offset = duration * ratio
         else:
-            offset = ((index + 1) / (len(beats) + 1)) * duration
+            midpoint = pos + (len(anchor) / 2.0)
+            weight_up_to_anchor = sum(char_weights[:int(midpoint)])
+            offset = (weight_up_to_anchor / total_weight) * duration
 
+        offset = max(0.2, min(duration - 0.2, offset))
         timings.append({
             "beat_index": index,
             "anchor": anchor,
-            "mark": mark,
-            "audio_offset_seconds": round(float(offset), 4),
+            "mark": f"beat-{index}",
+            "audio_offset_seconds": round(offset, 4),
             "timing_source": "gemini-bookmark",
         })
 
-    # Garante ordenação temporal estrita com espaçamento mínimo
     timings.sort(key=lambda item: item["audio_offset_seconds"])
-    min_gap = 0.35
     prev = 0.0
+    min_gap = 0.4
     for item in timings:
         if item["audio_offset_seconds"] < prev + min_gap:
             item["audio_offset_seconds"] = min(max(0.0, duration - 0.1), prev + min_gap)
@@ -214,12 +284,12 @@ def main() -> None:
     parser.add_argument("--manifest", required=True)
     args = parser.parse_args()
 
-    api_key = (
-        os.environ.get("GEMINI_API_KEY", "").strip()
-        or os.environ.get("AZURE_SPEECH_KEY", "").strip()
-    )
-    if not api_key:
-        raise RuntimeError("GEMINI_API_KEY não configurada no ambiente.")
+    gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
+    azure_key = os.environ.get("AZURE_SPEECH_KEY", "").strip()
+    azure_region = os.environ.get("AZURE_SPEECH_REGION", "eastus").strip()
+
+    if not gemini_key and not azure_key:
+        raise RuntimeError("Nenhuma credencial de áudio (GEMINI_API_KEY ou AZURE_SPEECH_KEY) disponível.")
 
     payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
     scenes = payload.get("scenes") or payload.get("script", {}).get("scenes", [])
@@ -239,7 +309,7 @@ def main() -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     manifest = {
-        "engine": "google-gemini-3.8-flash-tts",
+        "engine": "google-gemini-tts-hybrid",
         "voice": project_voice,
         "presenter": presenter_key,
         "presenter_name": presenter_name,
@@ -252,7 +322,7 @@ def main() -> None:
         "total_duration_seconds": 0.0,
     }
 
-    print(f"[Gemini TTS] Sintetizando {len(scenes)} cenas com voz '{project_voice}' ({presenter_name})...", flush=True)
+    print(f"[Audio Engine] Sintetizando {len(scenes)} cenas com voz oficial '{project_voice}' ({presenter_name})...", flush=True)
 
     for position, scene in enumerate(scenes):
         scene_index = scene.get("scene_index", scene.get("index", position))
@@ -267,7 +337,15 @@ def main() -> None:
         visual_beats = visual.get("beats") or []
 
         print(f"  [Cena {scene_index + 1}/{len(scenes)}] {scene_id}...", flush=True)
-        synthesize_gemini_scene(narration, project_voice, output_file, api_key)
+        synthesize_scene_with_fallback(
+            narration=narration,
+            voice_name=project_voice,
+            gender=presenter_key,
+            output_path=output_file,
+            gemini_key=gemini_key,
+            azure_key=azure_key,
+            azure_region=azure_region,
+        )
         duration = duration_seconds(output_file)
 
         beat_timings = compute_beat_timings(narration, visual_beats, duration)
@@ -281,14 +359,15 @@ def main() -> None:
             "beat_timings": beat_timings,
         })
         manifest["total_duration_seconds"] += duration
-        time.sleep(4)
+        time.sleep(2)
 
     manifest["total_duration_seconds"] = round(manifest["total_duration_seconds"], 3)
     Path(args.manifest).write_text(
-        json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
+        json.dumps(manifest, ensure_ascii=False, indent=2) + "
+",
         encoding="utf-8",
     )
-    print(f"[Gemini TTS] Concluído! Duração total: {manifest['total_duration_seconds']}s.", flush=True)
+    print(f"[Audio Engine] Concluído! Duração total: {manifest['total_duration_seconds']}s.", flush=True)
 
 
 if __name__ == "__main__":
