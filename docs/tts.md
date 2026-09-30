@@ -12,19 +12,21 @@ Cada arquivo de áudio tem um sidecar `.tts.json` com hash da narração, modelo
 
 ## Semelhança de voz no fallback
 
-As três amostras de Charon enviadas pelo usuário em 30/09/2026 têm nível médio muito próximo: 3.8 Flash a −18,42 dBFS e 3.1 a −18,26 dBFS. A amostra 3.1 apresentou cerca de 6 dB a mais na faixa de 4–8 kHz e menos presença em 1–2 kHz. Só no trecho 3.1, o worker aplica EQ fixa e leve: graves abaixo de 160 Hz −1 dB, região de 1,5 kHz +1,5 dB, agudos acima de 4,2 kHz −2,5 dB. O tratamento não muda velocidade ou altura de voz e não promete timbre idêntico: interpretação e prosódia ainda podem variar. O vídeo final é entregue para escuta e aprovação manual.
+O cache guarda o áudio bruto devolvido pelo Gemini. Nenhuma EQ fixa é aplicada durante a síntese. Qualquer correção existe somente no pós-processamento e apenas quando o manifesto comprova que houve mais de um modelo no mesmo episódio.
+
+Quando o modelo muda entre duas cenas, o worker registra a fronteira exata. Na primeira cena do modelo novo, tenta gerar com **o próprio modelo novo e a mesma voz** um marcador vocal curto, atualmente `A-hã...`. Esse marcador funciona como uma pequena ação humana antes da troca de timbre e também deixa a contingência auditável. Se não há troca de modelo, ele não existe.
 
 ## Continuidade de voz por episódio
 
-Após obter os áudios, `worker/process_voice_continuity.py` processa os arquivos localmente no runner, sem chamadas de API. O perfil de referência vem das cenas 3.8 do próprio episódio. Nas cenas 3.8 Flash-Lite e 3.1, a versão `adaptive-voice-continuity-v2` analisa janelas lentas de 5 segundos com sobreposição de 2,5 segundos. Cada janela calcula uma correção residual limitada; as correções são suavizadas entre janelas e têm limite de variação entre uma janela e outra. O objetivo é evitar a sensação de o tratamento entrar e sair durante a fala.
+A versão `adaptive-voice-continuity-v3` usa uma regra rígida: **mesmo modelo + mesma voz do começo ao fim = áudio intocado**. Nesse caso, cada MP3 é copiado byte por byte para a pasta usada no render. Não há EQ, ganho, limiter, compressor, normalização, resample nem re-encode.
 
-O match espectral usa no máximo ±2,5 dB por faixa, com transições interpoladas no tempo. O Charon 3.1 pode já conter a EQ fixa inicial; nesse caso a correção por janela continua sendo apenas residual. O 3.8 Flash principal não recebe correção de timbre e serve de referência quando há pelo menos duas cenas e doze segundos ativos.
+Se o episódio mistura modelos, o modelo de referência, normalmente `gemini-3.8-flash-tts`, permanece intocado. Somente as cenas de outro modelo recebem aproximação espectral lenta em janelas de 5 segundos com sobreposição de 2,5 segundos. O volume do fallback usa apenas ganho estático, limitado pela folga de pico. Não há compressor, limiter nem normalização dinâmica.
 
-A versão v2 remove compressor e normalização dinâmica do caminho de entrega. O loudness é medido, mas o áudio recebe **ganho estático por cena** para se aproximar da mediana das cenas 3.8, com limiter apenas como proteção de pico. Não há pitch, mudança de velocidade, crossfade de fala ou `loudnorm` dinâmico aplicado ao sinal. O teto permanece em −1 dBTP.
+Na primeira cena depois de uma troca real de modelo, o marcador vocal do modelo novo é colocado antes da narração e recebe uma pausa curta depois. Os beats visuais dessa cena são deslocados pelo mesmo intervalo para manter sincronismo.
 
-MP3s originais e sidecars do cache são preservados. A saída fica separada em `public/processed-audio/daily`, em WAV mono de 48 kHz e 24 bits. A validação usa FFmpeg/ffprobe, inclusive para WAVE_FORMAT_EXTENSIBLE. `video/generated/daily-processed-tts-manifest.json` registra as janelas, ganhos, loudness, pico, duração e hashes. O render usa esse manifesto e os WAVs processados.
+Se o vídeo inteiro sair em Flash-Lite ou 3.1 desde a primeira cena, também não há tentativa de transformar aquela voz em outro modelo, porque não existe transição interna. A correção existe apenas para episódios mistos.
 
-Ao refazer um vídeo revisado, o workflow pode restaurar seus áudios de um artefato anterior. Uma cena só é reutilizada se o hash da narração for o mesmo e os dados do cache, hash do áudio e duração forem válidos. Cenas com narração alterada ou cache inválido geram novo TTS; ajustes apenas de processamento ou visual reutilizam a gravação. Restaurar um trecho 3.1 não o identifica como 3.8 e não transforma o fallback em modelo principal.
+O manifesto registra `model_transition_count`, as cenas onde a troca aconteceu, o modelo anterior, o novo modelo, a voz usada no marcador, sua duração e o modo de pós-processamento. Em modo homogêneo, `effects_applied` fica falso e cada cena registra `byte_identical: true`.
 
 ## Timeline
 
