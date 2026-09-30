@@ -1,6 +1,7 @@
 import argparse
 import json
 from pathlib import Path
+from urllib.parse import urlparse
 
 
 NON_OFFICIAL_CLASSES = {
@@ -37,6 +38,27 @@ def main() -> None:
 
     issues: list[str] = []
     warnings: list[str] = []
+    right_review = balance.get("right_editorial_review") or {}
+    consulted = right_review.get("consulted") or []
+    if not isinstance(consulted, list) or not consulted:
+        issues.append(
+            "Registre ao menos um veículo de linha editorial à direita consultado "
+            "em editorial.source_balance.right_editorial_review.consulted."
+        )
+        consulted = []
+    for index, item in enumerate(consulted):
+        if not isinstance(item, dict):
+            issues.append(f"Consulta editorial {index + 1}: registro inválido.")
+            continue
+        publisher = str(item.get("publisher") or "").strip()
+        url = str(item.get("url") or "").strip()
+        summary = str(item.get("summary") or "").strip()
+        parsed = urlparse(url)
+        if not publisher or parsed.scheme != "https" or not parsed.netloc or not summary:
+            issues.append(
+                f"Consulta editorial {index + 1}: informe publisher, URL HTTPS "
+                "da matéria consultada e resumo do que foi verificado."
+            )
 
     source_by_id = {
         str(source.get("id")): source
@@ -144,6 +166,7 @@ def main() -> None:
         "source_count": len(sources),
         "publisher_count": len(publishers),
         "publisher_class_counts": counts,
+        "right_editorial_consulted_count": len(consulted),
         "issues": issues,
         "warnings": warnings,
         "passed": not issues,

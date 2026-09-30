@@ -1,0 +1,194 @@
+name: Prévia visual do vídeo diário
+
+on:
+  pull_request:
+    paths:
+      - "video/data/daily.json"
+      - "video/src/**"
+      - "src/lib/editorial-stage.ts"
+      - "worker/build_render_input.py"
+      - "worker/create_visual_preview_audio.py"
+      - "worker/prepare_visual_assets.py"
+      - "worker/auto_capture_sources.py"
+      - "scripts/validate-editorial.ts"
+      - "package.json"
+      - "package-lock.json"
+      - ".github/workflows/daily-visual-preview.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: daily-visual-preview-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Node dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Validate editorial plan
+        run: |
+          npm run validate:editorial -- video/data/daily.json
+          python worker/editorial_source_audit.py \
+            --input video/data/daily.json \
+            --output /tmp/daily-source-audit.json --strict
+          python worker/pronunciation_audit.py \
+            --input video/data/daily.json \
+            --output /tmp/daily-pronunciation-audit.json --strict
+
+      - name: Detect document captures
+        id: capture
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          project = json.load(open("video/data/daily.json", encoding="utf-8"))
+          required = any(asset.get("type") == "source_excerpt" for asset in project.get("visual_assets", []))
+          print(f"required={'true' if required else 'false'}")
+          PY
+
+      - name: Install visual asset dependencies
+        run: |
+          python -m pip install --disable-pip-version-check requests Pillow 'rembg[cpu]>=2.0.69'
+          if ! command -v ffmpeg >/dev/null 2>&1; then
+            sudo apt-get update
+            sudo apt-get install -y ffmpeg
+          fi
+
+      - name: Install document capture browser
+        if: steps.capture.outputs.required == 'true'
+        run: |
+          python -m pip install --disable-pip-version-check 'playwright>=1.40.0'
+          playwright install --with-deps chromium
+
+      - name: Capture source excerpts when authored
+        if: steps.capture.outputs.required == 'true'
+        run: |
+          mkdir -p research/captures
+          python worker/auto_capture_sources.py \
+            --project video/data/daily.json \
+            --captures-dir research/captures
+
+      - name: Prepare photos and documentary assets
+        run: |
+          mkdir -p public/generated-assets video/generated
+          python worker/prepare_visual_assets.py \
+            --project video/data/daily.json \
+            --output-dir public/generated-assets \
+            --manifest video/generated/daily-visual-assets.json
+
+      - name: Create silent estimated timeline
+        run: |
+          mkdir -p public/generated-audio/visual-preview render-output
+          python worker/generate_sound_design.py --output-dir public/generated-sfx
+          python worker/create_visual_preview_audio.py \
+            --project video/data/daily.json \
+            --output-dir public/generated-audio/visual-preview \
+            --manifest video/generated/visual-preview-tts-manifest.json
+          python worker/build_render_input.py \
+            --project video/data/daily.json \
+            --tts-manifest video/generated/visual-preview-tts-manifest.json \
+            --audio-public-prefix generated-audio/visual-preview \
+            --visual-assets-manifest video/generated/daily-visual-assets.json \
+            --output video/generated/daily-render-input.json
+          npm run typecheck
+
+      - name: Select frames for review
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path("video/generated/daily-render-input.json").read_text(encoding="utf-8"))
+          scenes = data["scenes"]
+          fps = data["fps"]
+          positions = sorted({0, len(scenes) // 3, 2 * len(scenes) // 3, len(scenes) - 1})
+          stills = []
+          for position in positions:
+              scene = scenes[position]
+              last_beat = max((beat["resolved_frame"] for beat in scene.get("visual", {}).get("beats", [])), default=0)
+              local_frame = min(
+                  scene["duration_frames"] - 2,
+                  max(round(scene["audio_duration_seconds"] * fps * 0.82), last_beat + 18),
+              )
+              stills.append({
+                  "scene_id": scene["id"],
+                  "title": scene.get("title", ""),
+                  "frame": scene["start_frame"] + max(0, local_frame),
+              })
+          plan = {
+              "preview_only": True,
+              "silent": True,
+              "timing": "estimated from written narration, not Gemini TTS",
+              "clip_last_frame": min(scenes[0]["duration_frames"] - 1, 24 * fps - 1),
+              "stills": stills,
+          }
+          Path("render-output/visual-preview-plan.json").write_text(
+              json.dumps(plan, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+          )
+          PY
+
+      - name: Render opening scene without audio
+        run: |
+          LAST_FRAME=$(python -c 'import json; print(json.load(open("render-output/visual-preview-plan.json"))["clip_last_frame"])')
+          npx remotion render video/src/index.ts DailyEditorial \
+            render-output/daily-visual-preview.mp4 \
+            --frames="0-$LAST_FRAME" --muted --codec=h264 \
+            --concurrency=2 --scale=0.75 --bundle-cache
+
+      - name: Render representative stills
+        run: |
+          python - <<'PY'
+          import json
+          import subprocess
+
+          plan = json.load(open("render-output/visual-preview-plan.json", encoding="utf-8"))
+          for index, still in enumerate(plan["stills"], start=1):
+              subprocess.run([
+                  "npx", "remotion", "still", "video/src/index.ts", "DailyEditorial",
+                  f"render-output/scene-{index:02d}.png",
+                  f"--frame={still['frame']}", "--scale=0.75", "--bundle-cache",
+              ], check=True)
+          PY
+
+      - name: Mark artifact as visual preview
+        run: |
+          cat > render-output/LEIA-ANTES.txt <<'EOF'
+          PRÉVIA VISUAL SILENCIOSA
+
+          Este vídeo e estes quadros mostram o DailyEditorial com assets reais do plano.
+          A duração das cenas e o momento dos movimentos são estimados do texto.
+          Não há voz Gemini, sincronização validada, vídeo final ou envio ao Drive.
+          Revise a composição e o movimento antes de executar o render diário.
+          EOF
+
+      - name: Upload visual review artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-visual-preview
+          path: |
+            render-output/daily-visual-preview.mp4
+            render-output/scene-*.png
+            render-output/visual-preview-plan.json
+            render-output/LEIA-ANTES.txt
+            video/generated/visual-preview-tts-manifest.json
+          if-no-files-found: error
+          retention-days: 7

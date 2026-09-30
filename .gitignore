@@ -7,3 +7,11 @@ dist
 *.log
 render-output/
 public/generated-audio/
+public/generated-assets/
+public/generated-sfx/
+video/generated/
+voice-model-comparison/
+work/
+*.tsbuildinfo
+__pycache__/
+*.pyc

@@ -1841,24 +1841,11 @@ const SceneComposition = ({
 };
 
 export const DailyEditorial = () => {
-  const frame = useCurrentFrame();
-  const {durationInFrames, fps} = useVideoConfig();
   const scenes = renderInput.scenes as unknown as Scene[];
   const direction: EditorialDirection = {
     ...((renderInput as unknown as {visual_direction?: EditorialDirection}).visual_direction ?? {}),
     secondary_color: GOLD,
   };
-
-  // Escurecimento suave e blackout de 10 segundos no encerramento (solicitado pelo usuário)
-  const blackoutFrames = Math.round(10 * fps);
-  const fadeStart = Math.max(0, durationInFrames - blackoutFrames);
-  const fadeDuration = Math.round(1.5 * fps);
-  const blackoutOpacity = interpolate(
-    frame,
-    [fadeStart, fadeStart + fadeDuration],
-    [0, 1],
-    clamp
-  );
 
   return (
     <AbsoluteFill style={{backgroundColor: BG}}>
@@ -1878,16 +1865,6 @@ export const DailyEditorial = () => {
         </Sequence>
       ))}
 
-      {/* Camada de escurecimento suave para os 10 segundos finais */}
-      {blackoutOpacity > 0 && (
-        <AbsoluteFill
-          style={{
-            backgroundColor: "#000000",
-            opacity: blackoutOpacity,
-            zIndex: 9999,
-          }}
-        />
-      )}
     </AbsoluteFill>
   );
 };

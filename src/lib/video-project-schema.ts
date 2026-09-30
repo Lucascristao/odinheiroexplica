@@ -71,12 +71,14 @@ export const visualAssetSchema = z
     country_context: z.enum(["BR", "global", "neutral"]).default("BR"),
     source_page_url: z.string().url(),
     image_url: z.string().url().optional(),
+    image_fallback_urls: z.array(z.string().url().startsWith("https://")).max(2).optional(),
     license: z.string().min(1),
     attribution: z.string().optional(),
     needs_cutout: z.boolean().optional(),
   })
   .passthrough().superRefine((asset,ctx)=>{
     if(Boolean(asset.image_url)===Boolean(asset.capture_file))ctx.addIssue({code:"custom",message:"Asset exige image_url ou capture_file, exclusivamente."});
+    if(asset.image_fallback_urls?.length && !asset.image_url)ctx.addIssue({code:"custom",message:"image_fallback_urls exige image_url principal."});
     if(asset.type==="source_excerpt" && (!asset.source_id||!asset.captured_at||asset.needs_cutout))ctx.addIssue({code:"custom",message:"Recorte exige source_id, captured_at e fundo preservado."});
     if(asset.crop && asset.type!=="source_excerpt")ctx.addIssue({code:"custom",message:"Recorte regional exige tipo source_excerpt."});
   });
@@ -228,7 +230,22 @@ export const videoProjectSchema = z
             independent_sources_role: z.string().default(""),
             counterpoint_summary: z.string().default(""),
             official_claims_attributed: z.boolean().default(false),
+            right_editorial_review: z
+              .object({
+                consulted: z.array(
+                  z
+                    .object({
+                      publisher: z.string().trim().min(1),
+                      url: z.string().url().startsWith("https://"),
+                      summary: z.string().trim().min(1),
+                    })
+                    .passthrough(),
+                ).default([]),
+              })
+              .passthrough()
+              .optional(),
           })
+          .passthrough()
           .default({
             requires_diversity: false,
             public_policy_or_regulation: false,

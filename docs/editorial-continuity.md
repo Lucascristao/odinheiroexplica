@@ -10,6 +10,8 @@ stage.elements contém objetos com id estável, kind (step, label, metric, note 
 
 stage.connections liga IDs from/to; a conexão acompanha a geometria e o destaque da fala. Não desenhar ligações causais apenas por decoração.
 
+Informações que pertencem a um momento futuro da explicação começam com `initially_visible:false` e só aparecem por `action:reveal` ou `reveal_ids` quando a fala chega a elas. Não mostrar o próximo texto, número ou dado cortado na borda como antecipação. O estado inicial e cada movimento de câmera devem preservar inteiros o objeto em foco, seu rótulo, dado e unidade; revisar os quadros intermediários, além do início e do fim do movimento. A câmera acompanha informação já apresentada e para para leitura. Esta regra vale para todos os vídeos, sem impor geometria ou percurso fixos.
+
 Cada beat precisa de:
 - anchor literal, único, na ordem da narração;
 - target_id existente;
@@ -43,7 +45,7 @@ A fonte Inter é distribuída com sua licença e carregada antes de medir texto.
 ## Pesquisa aplicada e limites
 
 - Remotion: animação derivada do frame, para reprodução e render paralelo consistentes. Aplicado ao estado persistente, conexões, entrada e reposicionamento. Fonte: https://www.remotion.dev/docs/animating-properties
-- Remotion Bits: stagger e mudanças coordenadas ajudam a organizar elementos, mas não decidem o significado da cena. Mantemos primitivas próprias pequenas e sincronizadas com bookmarks, sem instalar um catálogo de efeitos. Fonte: https://remotion-bits.dev/docs/reference/staggered-motion/
+- Remotion Bits: stagger e mudanças coordenadas ajudam a organizar elementos, mas não decidem o significado da cena. Mantemos primitivas próprias pequenas e acionadas por tempos estimados das âncoras da narração, sem instalar um catálogo de efeitos. Esses tempos não são bookmarks emitidos pelo TTS. Fonte: https://remotion-bits.dev/docs/reference/staggered-motion/
 - Curvable: determinismo e componentes de texto são úteis; os templates de lançamento SaaS não são a composição editorial do canal. Fonte: https://github.com/Curvable/motion
 - Edição: match cuts e continuidade de atenção inspiram manter o mesmo objeto ao mudar seu papel. J/L cuts separam o momento do corte de imagem e do áudio; são uma evolução futura que exige modelo de sobreposição de cenas, não aplicada implicitamente ao áudio atual. Fonte: https://www.adobe.com/in/creativecloud/video/discover/match-cut.html e https://helpx.adobe.com/sg/premiere/desktop/edit-projects/trim-clips/perform-j-cuts-and-l-cuts.html
 

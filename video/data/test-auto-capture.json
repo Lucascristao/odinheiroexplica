@@ -6,6 +6,7 @@
       "type": "source_excerpt",
       "source_id": "S_test",
       "source_page_url": "https://www.gov.br/receitafederal/pt-br/acesso-a-informacao/acoes-e-programas/programas-e-atividades/reforma-tributaria-do-consumo/legislacao/atos-tecnicos-conjuntos/",
+      "expected_text": "Atos Técnicos Conjuntos",
       "capture_file": "research/captures/test-gov-captura.png",
       "captured_at": "2026-09-29T15:00:00Z",
       "subject": "Teste de Auto-Captura Receita Federal",

@@ -4,11 +4,15 @@ Aplicável a todas as pautas. Esta diretriz complementa a continuidade visual e 
 
 ## Voz e estrutura
 
-Abrir com a consequência concreta para uma pessoa, uma pergunta específica ou uma contradição verificável. Entregar uma primeira resposta cedo. Construir cada bloco como pergunta → explicação → exemplo visual → consequência. A próxima pergunta deve nascer do que acabou de ser explicado. Não guardar todas as respostas para o fim nem fazer promessas vagas de revelação.
+Abrir com a consequência concreta para uma pessoa, uma pergunta específica ou uma contradição verificável, nomeando o assunto e a pergunta central. Entregar uma primeira resposta cedo. Desenvolver perguntas, explicações, exemplos visuais e consequências conforme o assunto pedir, sem uma sequência fixa para todas as cenas. A próxima pergunta deve nascer do que acabou de ser explicado. Não guardar todas as respostas para o fim nem fazer promessas vagas de revelação.
 
 Escrever para o ouvido: frases curtas alternadas com explicações, verbos concretos, linguagem cotidiana, siglas explicadas no primeiro uso. Separar fato, hipótese e exemplo. Não imitar bordões, voz ou persona do apresentador de referência. Evitar tom de comunicado e repetição de “agora vamos entender”. A fala conduz; a tela mostra relações, objetos e números em vez de transcrever parágrafos.
 
-Antes de fechar o roteiro, identificar o que o espectador aprende em cada bloco. Trechos sem uma informação, demonstração ou consequência nova devem ser cortados. Usar pergunta retórica com resposta e breve pausa de reflexão como interação; não criar botões falsos ou depender de clique dentro do MP4. A conclusão responde à pergunta inicial e entrega uma ação ou compreensão prática. CTA curta depois da entrega de valor.
+Todo vídeo deve ter uma apresentação falada de Roberto ou Luana em uma frase natural logo após o gancho e um único pedido falado breve de inscrição depois de entregar valor, em um respiro ou no encerramento. Variar a formulação conforme a pauta, sem vinheta longa, minuto fixo ou interrupção da explicação.
+
+O contrato `editorial.narrative_contract` deve apontar três trechos literais únicos da narração: `topic_explanation` nas duas primeiras cenas, `presenter_introduction` na primeira cena após o gancho, com o nome do narrador, e `subscription_request` depois da apresentação e da entrega de valor. A validação antes do TTS evita omissões; a revisão do roteiro ainda precisa confirmar que o assunto está compreensível e a conclusão responde à abertura.
+
+Antes de fechar o roteiro, identificar o que o espectador aprende em cada bloco. Trechos sem uma informação, demonstração ou consequência nova devem ser cortados. Usar pergunta retórica com resposta e breve pausa de reflexão como interação; não criar botões falsos ou depender de clique dentro do MP4. A conclusão responde à pergunta inicial e entrega uma ação ou compreensão prática. O assunto deve ser explicado do começo ao fim, com as cenas e a duração necessárias; limites TTS não determinam o conteúdo.
 
 ## Repertório disponível no motor
 
@@ -31,6 +35,8 @@ Destaques editoriais, ícones de foco, conexões, objetos e transições usam am
 ## Texto, imagens e movimento
 
 Uma ideia dominante por momento, com poucos apoios. Preferir rótulos de 2–6 palavras. Texto de apoio é opcional e deve acrescentar algo que a imagem não explica. Fonte mínima do palco: 32 px em 1080p; rótulos normalmente 38–46, métricas até 72. Se não couber, reduzir a redação ou ampliar a região. Não reduzir fonte indefinidamente. Reservar largura para ícones e altura para números antes de escrever.
+
+Textos, números e unidades da informação em foco devem aparecer inteiros. Informações futuras começam ocultas e são reveladas quando a fala chega a elas; não antecipar o próximo conteúdo parcialmente cortado na borda. Durante movimentos de câmera, verificar também os quadros intermediários e manter legível o conteúdo que está sendo explicado. Objetos de contexto podem permanecer quando contribuem para a compreensão, sem concorrer com o foco ou sugerir dados incompletos.
 
 Alternar escala e recurso quando muda a pergunta: objeto real para reconhecimento, diagrama para mecanismo, número grande para dimensão, contraste para limite. Isso é um repertório, não uma sequência fixa nem uma cota de efeitos por segundo. Preservar momentos de leitura e repouso. Não usar tremor, flash, zoom pulsante ou efeito sonoro em cada palavra. Um foco em movimento por vez.
 

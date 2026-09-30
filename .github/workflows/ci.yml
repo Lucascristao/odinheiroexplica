@@ -20,8 +20,14 @@ jobs:
       - name: Install
         run: npm install --no-audit --no-fund
 
+      - name: Validate daily editorial contract
+        run: npm run validate:editorial -- video/data/daily.json
+
       - name: Validate Python pipeline
         run: python -m py_compile worker/synthesize_scenes.py worker/build_render_input.py worker/build_youtube_package.py worker/editorial_source_audit.py worker/prepare_visual_assets.py
+
+      - name: Test TTS quota and resume (offline)
+        run: python worker/test_synthesize_scenes.py
 
       - name: Audit daily source balance
         run: python worker/editorial_source_audit.py --input video/data/daily.json --output /tmp/daily-source-audit.json --strict

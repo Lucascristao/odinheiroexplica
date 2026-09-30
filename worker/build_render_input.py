@@ -9,7 +9,10 @@ from pathlib import Path
 
 FPS = 30
 SCENE_TAIL_SECONDS = 0.28
-FINAL_SCENE_TAIL_SECONDS = 10.0
+FINAL_SCENE_TAIL_SECONDS = 1.9
+
+REAL_BOOKMARK_SOURCES = {"azure-bookmark", "tts-bookmark"}
+ESTIMATED_ANCHOR_SOURCES = {"estimated-text-alignment", "text-fallback"}
 
 
 
@@ -55,7 +58,10 @@ def resolve_visual_beats(
             seconds = float(timing_by_index[index]["audio_offset_seconds"])
             frame = min(audio_frames - 1, max(0, round(seconds * FPS)))
             ratio = frame / max(1, audio_frames - 1)
-            timing_source = timing_by_index[index].get("timing_source", "gemini-bookmark")
+            timing_source = timing_by_index[index].get("timing_source") or "estimated-text-alignment"
+            # Manifests antigos chamavam a estimativa textual de bookmark Gemini.
+            if timing_source == "gemini-bookmark":
+                timing_source = "estimated-text-alignment"
 
         elif isinstance(explicit_at, (int, float)):
             ratio = max(0.0, min(1.0, float(explicit_at)))
@@ -91,12 +97,12 @@ def resolve_visual_beats(
 
     resolved.sort(key=lambda item: item["resolved_frame"])
 
-    # Apenas fallbacks textuais recebem proteção contra colisão. Bookmarks do
-    # Azure preservam o timing real da fala e não são artificialmente movidos.
+    # Tempos estimados recebem proteção contra colisão. Bookmarks medidos pelo
+    # TTS preservam o offset fornecido pelo serviço.
     minimum_gap = max(12, round(FPS * 0.35))
     previous = -minimum_gap
     for item in resolved:
-        if item.get("timing_source") not in ("azure-bookmark", "gemini-bookmark", "tts-bookmark"):
+        if item.get("timing_source") not in REAL_BOOKMARK_SOURCES:
             item["resolved_frame"] = min(
                 audio_frames - 1,
                 max(item["resolved_frame"], previous + minimum_gap),
@@ -106,17 +112,78 @@ def resolve_visual_beats(
     return resolved
 
 
+def validate_stage_timing(scene: dict, resolved_beats: list[dict], scene_id: str) -> None:
+    beats = ((scene.get("visual") or {}).get("beats") or [])
+    if len(resolved_beats) != len(beats):
+        raise RuntimeError(f"Palco persistente tem beats inválidos: {scene_id}")
+
+    narration = normalize_text(scene.get("narration") or "")
+    previous_position = -1
+    for beat in beats:
+        anchor = normalize_text(beat.get("anchor") or "")
+        if not anchor or narration.count(anchor) != 1:
+            raise RuntimeError(f"Palco persistente exige âncora única na narração: {scene_id}")
+        position = narration.find(anchor)
+        if position <= previous_position:
+            raise RuntimeError(f"Âncoras fora da ordem da narração: {scene_id}")
+        previous_position = position
+
+    for beat in resolved_beats:
+        if beat.get("timing_source") not in REAL_BOOKMARK_SOURCES | ESTIMATED_ANCHOR_SOURCES:
+            raise RuntimeError(f"Palco persistente exige tempo estimado por âncora ou bookmark real: {scene_id}")
+    frames = [beat["resolved_frame"] for beat in resolved_beats]
+    if len(frames) != len(set(frames)):
+        raise RuntimeError(f"Eventos visuais simultâneos em {scene_id}; agrupe as mudanças no mesmo beat.")
+
+
+def require_gemini_manifest(manifest: dict) -> None:
+    scenes = manifest.get("scenes") or []
+    engine = "google-gemini-tts"
+    if not scenes or manifest.get("engine") != engine:
+        raise RuntimeError("Render diário exige manifesto de áudio exclusivamente Gemini.")
+    primary_model = "gemini-3.8-flash-tts"
+    fallback_model = "gemini-3.1-flash-tts-preview"
+    fallback_treatment = "charon-3.1-to-3.8-eq-v1"
+    models = {item.get("model") for item in scenes}
+    voices = {item.get("voice") for item in scenes}
+    if (
+        any(item.get("engine") != engine for item in scenes)
+        or not models.issubset({primary_model, fallback_model})
+        or len(voices) != 1
+        or None in voices
+        or manifest.get("model") != primary_model
+        or manifest.get("voice") not in voices
+        or (
+            fallback_model in models
+            and (
+                manifest.get("fallback_model") != fallback_model
+                or manifest.get("voice") != "Charon"
+            )
+        )
+        or any(
+            item.get("voice_treatment", "none") != (
+                fallback_treatment if item.get("model") == fallback_model else "none"
+            )
+            for item in scenes
+        )
+    ):
+        raise RuntimeError("Manifesto contém outro motor, modelo ou voz em alguma cena.")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--project", required=True)
     parser.add_argument("--tts-manifest", required=True)
     parser.add_argument("--audio-public-prefix", required=True)
     parser.add_argument("--visual-assets-manifest")
+    parser.add_argument("--require-gemini", action="store_true")
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
 
     project = json.loads(Path(args.project).read_text(encoding="utf-8"))
     manifest = json.loads(Path(args.tts_manifest).read_text(encoding="utf-8"))
+    if args.require_gemini:
+        require_gemini_manifest(manifest)
 
     audio_by_id = {item["id"]: item for item in manifest["scenes"]}
 
@@ -155,11 +222,7 @@ def main() -> None:
             audio,
         )
         if (scene.get("visual") or {}).get("stage"):
-            if any(beat.get("timing_source") not in ("azure-bookmark", "gemini-bookmark", "tts-bookmark") for beat in resolved_beats):
-                raise RuntimeError(f"Palco persistente exige bookmarks reais: {scene_id}")
-            frames = [beat["resolved_frame"] for beat in resolved_beats]
-            if len(frames) != len(set(frames)):
-                raise RuntimeError(f"Eventos visuais simultâneos em {scene_id}; agrupe as mudanças no mesmo beat.")
+            validate_stage_timing(scene, resolved_beats, scene_id)
         resolved_beats_with_assets = []
         for beat in resolved_beats:
             asset_id = str(beat.get("asset_id") or "").strip()
@@ -205,6 +268,10 @@ def main() -> None:
                 "start_frame": cursor,
                 "duration_frames": duration_frames,
                 "audio_duration_seconds": audio["duration_seconds"],
+                "audio_model": audio.get("model"),
+                "audio_voice": audio.get("voice"),
+                "audio_voice_treatment": audio.get("voice_treatment", "none"),
+                "audio_fallback_reason": audio.get("fallback_reason"),
                 "audio_file": (
                     f"{args.audio_public_prefix.rstrip('/')}/{audio['file']}"
                 ),
