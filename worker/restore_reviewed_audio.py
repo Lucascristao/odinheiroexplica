@@ -27,7 +27,7 @@ from synthesize_scenes import (
     NO_VOICE_TREATMENT,
     PRIMARY_TTS_MODEL,
     SECONDARY_TTS_MODEL,
-    TTS_MODEL_CASCADE,
+    TTS_MODEL_CASCADE, project_speech_fingerprint,
     audio_sha256,
     cached_duration,
     duration_seconds,
@@ -260,7 +260,7 @@ def restore(project: dict, archive_path: Path, output_dir: Path, provenance: dic
             print("[Audio Restore] Projeto diferente do artifact; todas as cenas permanecem pendentes.", flush=True)
             return 0, len(targets)
         originals = scene_jobs(original_render)
-        if manifest.get("engine") != "google-gemini-tts" or manifest.get("voice") != project_voice:
+        if manifest.get("engine") != "google-gemini-live" or manifest.get("voice") != project_voice:
             raise RuntimeError("Artifact sem narração Google Gemini na mesma voz do projeto.")
         audio_scenes = manifest.get("scenes")
         if not isinstance(audio_scenes, list):
@@ -282,9 +282,9 @@ def restore(project: dict, archive_path: Path, output_dir: Path, provenance: dic
                 raise RuntimeError(f"Narração de origem não corresponde ao manifest em {scene_id}.")
             model = source.get("model")
             treatment = source.get("voice_treatment", NO_VOICE_TREATMENT)
-            if source.get("engine") != "google-gemini-tts" or source.get("voice") != project_voice or model not in TTS_MODEL_CASCADE:
+            if source.get("engine") != "google-gemini-live" or source.get("voice") != project_voice or model not in TTS_MODEL_CASCADE:
                 raise RuntimeError(f"Modelo, voz ou tratamento não permitido na origem de {scene_id}.")
-            if source.get("voice_policy_fingerprint") != voice_policy_fingerprint(model, project_voice):
+            if source.get("voice_policy_fingerprint") != voice_policy_fingerprint(model, project_voice) or source.get("speech_profile_fingerprint") != project_speech_fingerprint(project):
                 print(
                     f"[Audio Restore] {scene_id}: política de voz de origem ausente/diferente; "
                     "mantida para o TTS normal.",
@@ -293,13 +293,13 @@ def restore(project: dict, archive_path: Path, output_dir: Path, provenance: dic
                 continue
             if treatment != voice_treatment_for_model(model, project_voice):
                 raise RuntimeError(f"Tratamento de áudio diverge da política de origem em {scene_id}.")
-            if source.get("file") != f"{scene_id}.mp3":
-                raise RuntimeError(f"Nome do MP3 não corresponde à cena {scene_id}.")
+            if source.get("file") != f"{scene_id}.wav":
+                raise RuntimeError(f"Nome do WAV não corresponde à cena {scene_id}.")
             audio_info = unique_member(members, source["file"])
             if not 1000 < audio_info.file_size <= MAX_AUDIO_BYTES:
                 raise RuntimeError(f"Tamanho de áudio inválido na cena {scene_id}.")
             output = output_dir / source["file"]
-            temporary = output.with_name(output.stem + ".restore.mp3")
+            temporary = output.with_name(output.stem + ".restore.wav")
             try:
                 temporary.write_bytes(archive.read(audio_info))
                 actual_duration = duration_seconds(temporary)
@@ -319,6 +319,9 @@ def restore(project: dict, archive_path: Path, output_dir: Path, provenance: dic
                 save_audio_sidecar(
                     output, target["hash"], model, project_voice, actual_duration,
                     treatment, source.get("fallback_reason"),
+                    project_speech_fingerprint(project),
+                    source.get("output_transcription"),
+                    source.get("output_transcription_similarity"),
                 )
                 sidecar = output.with_suffix(".tts.json")
                 metadata = json.loads(sidecar.read_text(encoding="utf-8"))
