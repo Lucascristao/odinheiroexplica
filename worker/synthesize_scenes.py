@@ -1,8 +1,8 @@
+"""Generate all presenter narration with one Gemini 3.8 Live voice model."""
+
 import argparse
-import base64
-from dataclasses import dataclass
-from datetime import datetime, timezone
-from email.utils import parsedate_to_datetime
+import asyncio
+from difflib import SequenceMatcher
 import hashlib
 import json
 import math
@@ -10,28 +10,35 @@ import os
 from pathlib import Path
 import re
 import subprocess
-import time
+import unicodedata
 import wave
-
-import requests
 
 from tts_config import (
     DEFAULT_PRESENTER,
     DEFAULT_TTS_VOICE,
+    FALLBACK_TTS_MODEL,
+    MINIMUM_TRANSCRIPTION_SIMILARITY,
+    NO_VOICE_TREATMENT,
     PRESENTER_NAMES,
     PRESENTER_VOICES,
-    PRIMARY_TTS_MODEL, SECONDARY_TTS_MODEL, FALLBACK_TTS_MODEL,
-    TTS_MODEL_CASCADE, ELIGIBLE_FALLBACK_FAILURES,
-    NO_VOICE_TREATMENT,
-    VOICE_POLICY, VOICE_POLICY_VERSION, VOICE_LANGUAGE, VOICE_DELIVERY_STYLE,
-    gemini_speech_request, voice_policy_fingerprint,
+    PRIMARY_TTS_MODEL,
+    SECONDARY_TTS_MODEL,
+    TTS_MODEL_CASCADE,
+    VOICE_DELIVERY_STYLE,
+    VOICE_LANGUAGE,
+    VOICE_POLICY,
+    VOICE_POLICY_VERSION,
+    live_session_config,
+    project_pronunciations,
+    project_speech_fingerprint,
+    voice_policy_fingerprint,
 )
 
-
-# Provider audio is cached untouched. This historical identifier remains only
-# for importers that recognize old artifacts; new audio never receives this EQ.
+SAMPLE_RATE = 24000
+CHANNELS = 1
+SAMPLE_WIDTH = 2
+ENGINE = "google-gemini-live"
 FALLBACK_VOICE_TREATMENT = "legacy-charon-3.1-to-3.8-eq-v1"
-FALLBACK_AUDIO_FILTER = ""
 
 
 def voice_treatment_for_model(model: str, voice: str) -> str:
@@ -39,51 +46,16 @@ def voice_treatment_for_model(model: str, voice: str) -> str:
 
 
 def configured_fallback_models(primary_model: str) -> list[str]:
-    """Return a validated, same-voice model cascade after the primary."""
     if primary_model != PRIMARY_TTS_MODEL:
-        return []
-
-    explicit = os.environ.get("GEMINI_TTS_FALLBACK_MODELS")
-    if explicit is not None:
-        requested = [item.strip() for item in explicit.split(",") if item.strip()]
-    else:
-        # Backward compatibility: an explicitly empty old variable disables
-        # fallback; a non-empty old value selects only that one model.
-        legacy = os.environ.get("GEMINI_TTS_FALLBACK_MODEL")
-        if legacy is not None:
-            legacy = legacy.strip()
-            requested = [legacy] if legacy else []
-        else:
-            requested = list(TTS_MODEL_CASCADE[1:])
-
-    allowed_order = list(TTS_MODEL_CASCADE[1:])
-    if len(requested) != len(set(requested)) or any(model not in allowed_order for model in requested):
-        raise RuntimeError(
-            "Fallback Gemini inválido. Use somente gemini-3.8-flash-lite-tts "
-            "e/ou gemini-3.1-flash-tts-preview."
-        )
-    if requested != [model for model in allowed_order if model in requested]:
-        raise RuntimeError("A ordem do fallback deve ser Flash-Lite 3.8 antes do 3.1 preview.")
-    return requested
-
-
-@dataclass(frozen=True)
-class SynthesisOutcome:
-    model: str | None
-    failure: str | None = None
+        raise RuntimeError("Modelo Gemini Live diferente da política canônica.")
+    return []
 
 
 def duration_seconds(path: Path) -> float:
     completed = subprocess.run(
         [
-            "ffprobe",
-            "-v",
-            "error",
-            "-show_entries",
-            "format=duration",
-            "-of",
-            "default=noprint_wrappers=1:nokey=1",
-            str(path),
+            "ffprobe", "-v", "error", "-show_entries", "format=duration",
+            "-of", "default=noprint_wrappers=1:nokey=1", str(path),
         ],
         check=True,
         capture_output=True,
@@ -100,33 +72,68 @@ def audio_sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
+def normalize_transcript(text: str) -> str:
+    value = unicodedata.normalize("NFKD", str(text).casefold())
+    value = "".join(char for char in value if not unicodedata.combining(char))
+    return " ".join(re.findall(r"[a-z0-9]+", value))
+
+
+def transcription_similarity(reference: str, transcript: str) -> float:
+    left = normalize_transcript(reference)
+    right = normalize_transcript(transcript)
+    if not left or not right:
+        return 0.0
+    return round(SequenceMatcher(None, left, right).ratio(), 6)
+
+
+def write_pcm_wav(path: Path, pcm: bytes) -> None:
+    temporary = path.with_name(path.name + ".tmp")
+    with wave.open(str(temporary), "wb") as handle:
+        handle.setnchannels(CHANNELS)
+        handle.setsampwidth(SAMPLE_WIDTH)
+        handle.setframerate(SAMPLE_RATE)
+        handle.writeframes(pcm)
+    temporary.replace(path)
+
+
 def cached_duration(
-    output_file: Path, narration_hash: str, model: str, voice: str,
+    output_file: Path,
+    narration_hash: str,
+    model: str,
+    voice: str,
     voice_treatment: str = NO_VOICE_TREATMENT,
+    speech_profile_fingerprint: str | None = None,
 ) -> float | None:
     sidecar = output_file.with_suffix(".tts.json")
     if not output_file.is_file() or not sidecar.is_file():
         return None
     try:
         metadata = json.loads(sidecar.read_text(encoding="utf-8"))
-        if not isinstance(metadata, dict):
-            return None
         if any((
-            metadata.get("engine") != "google-gemini-tts",
+            metadata.get("engine") != ENGINE,
             metadata.get("narration_sha256") != narration_hash,
             metadata.get("model") != model,
             metadata.get("voice") != voice,
-            metadata.get("voice_treatment", NO_VOICE_TREATMENT) != voice_treatment,
-            metadata.get("voice_policy_fingerprint") != voice_policy_fingerprint(model, voice),
+            metadata.get("voice_treatment", NO_VOICE_TREATMENT)
+            != voice_treatment,
+            metadata.get("voice_policy_fingerprint")
+            != voice_policy_fingerprint(model, voice),
+            metadata.get("speech_profile_fingerprint")
+            != speech_profile_fingerprint,
+            float(metadata.get("output_transcription_similarity", 0))
+            < MINIMUM_TRANSCRIPTION_SIMILARITY,
             output_file.stat().st_size <= 1000,
             metadata.get("audio_sha256") != audio_sha256(output_file),
         )):
             return None
         actual_duration = duration_seconds(output_file)
         recorded_duration = float(metadata["duration_seconds"])
-        if not math.isfinite(actual_duration) or actual_duration <= 0:
-            return None
-        if not math.isfinite(recorded_duration) or abs(actual_duration - recorded_duration) > 0.05:
+        if (
+            not math.isfinite(actual_duration)
+            or actual_duration <= 0
+            or not math.isfinite(recorded_duration)
+            or abs(actual_duration - recorded_duration) > 0.05
+        ):
             return None
         return actual_duration
     except (OSError, ValueError, TypeError, KeyError, subprocess.CalledProcessError):
@@ -134,315 +141,203 @@ def cached_duration(
 
 
 def save_audio_sidecar(
-    output_file: Path, narration_hash: str, model: str, voice: str, duration: float,
+    output_file: Path,
+    narration_hash: str,
+    model: str,
+    voice: str,
+    duration: float,
     voice_treatment: str = NO_VOICE_TREATMENT,
     fallback_reason: str | None = None,
+    speech_profile_fingerprint: str | None = None,
+    output_transcription: str | None = None,
+    output_transcription_similarity: float | None = None,
 ) -> None:
     sidecar = output_file.with_suffix(".tts.json")
     metadata = {
-        "engine": "google-gemini-tts",
+        "engine": ENGINE,
         "model": model,
         "voice": voice,
         "voice_treatment": voice_treatment,
-        "fallback_reason": fallback_reason,
+        "fallback_reason": None,
         "voice_policy_version": VOICE_POLICY_VERSION,
         "voice_policy_fingerprint": voice_policy_fingerprint(model, voice),
+        "speech_profile_fingerprint": speech_profile_fingerprint,
         "speech_endpoint": VOICE_POLICY["models"][model]["endpoint"],
         "narration_sha256": narration_hash,
         "audio_sha256": audio_sha256(output_file),
         "duration_seconds": duration,
+        "output_transcription": output_transcription,
+        "output_transcription_similarity": output_transcription_similarity,
     }
     temporary = sidecar.with_name(sidecar.name + ".tmp")
-    temporary.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    temporary.write_text(
+        json.dumps(metadata, ensure_ascii=False, indent=2) + "\n",
+        encoding="utf-8",
+    )
     temporary.replace(sidecar)
 
 
-def retry_after_seconds(header: str) -> float | None:
-    if not header:
-        return None
-    try:
-        return max(0.0, float(header))
-    except ValueError:
-        try:
-            retry_at = parsedate_to_datetime(header)
-            if retry_at.tzinfo is None:
-                retry_at = retry_at.replace(tzinfo=timezone.utc)
-            return max(0.0, (retry_at - datetime.now(timezone.utc)).total_seconds())
-        except (TypeError, ValueError, OverflowError):
-            return None
+async def _receive_live_turn(session) -> tuple[bytes, str]:
+    pcm_chunks: list[bytes] = []
+    transcript_chunks: list[str] = []
+    turn_complete = False
 
-
-class GeminiRequestPacer:
-    """Keep requests under the Free tier's three-starts-per-minute limit."""
-
-    def __init__(self, minimum_interval_seconds: float = 22.0) -> None:
-        self.minimum_interval_seconds = minimum_interval_seconds
-        self.last_started_at: float | None = None
-
-    def wait_before_request(self) -> None:
-        now = time.monotonic()
-        if self.last_started_at is not None:
-            wait = max(0.0, self.last_started_at + self.minimum_interval_seconds - now)
-            if wait > 0:
-                print(f"    [Gemini RPM] Aguardando {wait:.1f}s entre requisições.", flush=True)
-                time.sleep(wait)
-                now = time.monotonic()
-        self.last_started_at = now
-
-
-def _safe_quota_field(value: object, gemini_key: str, max_length: int = 160) -> str:
-    """Only log structured identifiers; never echo arbitrary API error text or URLs."""
-    if not isinstance(value, str) or len(value) > max_length:
-        return ""
-    if gemini_key and gemini_key in value:
-        return ""
-    if not re.fullmatch(r"[A-Za-z0-9_./-]+", value):
-        return ""
-    return value
-
-
-def _google_retry_delay_seconds(value: object) -> float | None:
-    if not isinstance(value, str):
-        return None
-    match = re.fullmatch(r"(\d+(?:\.\d+)?)s", value)
-    if not match:
-        return None
-    delay = float(match.group(1))
-    return delay if math.isfinite(delay) else None
-
-
-def gemini_429_diagnostic(response: object, gemini_key: str) -> tuple[str, float | None, bool]:
-    """Extract safe quota details and suggested wait from a Google 429 response."""
-    fragments = []
-    retry_delay = retry_after_seconds(response.headers.get("Retry-After", ""))
-    if retry_delay is not None:
-        fragments.append(f"Retry-After={retry_delay:.1f}s")
-    daily_quota_exceeded = False
-
-    try:
-        payload = response.json()
-    except (TypeError, ValueError):
-        payload = None
-    error = payload.get("error") if isinstance(payload, dict) else None
-    if not isinstance(error, dict):
-        return ("; ".join(fragments) or "detalhes de cota indisponíveis", retry_delay, False)
-
-    status = _safe_quota_field(error.get("status"), gemini_key)
-    if status:
-        fragments.insert(0, f"status={status}")
-    details = error.get("details")
-    if not isinstance(details, list):
-        details = []
-    for detail in details[:8]:
-        if not isinstance(detail, dict):
+    async for response in session.receive():
+        server = getattr(response, "server_content", None)
+        if server is None:
             continue
-        detail_type = detail.get("@type", "")
-        if detail_type == "type.googleapis.com/google.rpc.RetryInfo":
-            suggested = _google_retry_delay_seconds(detail.get("retryDelay"))
-            if suggested is not None:
-                retry_delay = max(retry_delay or 0.0, suggested)
-                fragments.append(f"RetryInfo={suggested:.1f}s")
-        elif detail_type == "type.googleapis.com/google.rpc.QuotaFailure":
-            violations = detail.get("violations")
-            if not isinstance(violations, list):
-                continue
-            for violation in violations[:3]:
-                if not isinstance(violation, dict):
-                    continue
-                metric = _safe_quota_field(violation.get("quotaMetric"), gemini_key)
-                quota_id = _safe_quota_field(violation.get("quotaId"), gemini_key)
-                quota_value = _safe_quota_field(violation.get("quotaValue"), gemini_key, 24)
-                kind = ""
-                lower_id = quota_id.lower()
-                if "perday" in lower_id and "request" in lower_id:
-                    kind = "RPD"
-                    daily_quota_exceeded = True
-                elif "perminute" in lower_id and "token" in lower_id:
-                    kind = "TPM"
-                elif "perminute" in lower_id and "request" in lower_id:
-                    kind = "RPM"
-                quota_fields = [
-                    f"tipo={kind}" if kind else "",
-                    f"métrica={metric}" if metric else "",
-                    f"cota={quota_id}" if quota_id else "",
-                    f"limite={quota_value}" if quota_value else "",
-                ]
-                fragments.extend(field for field in quota_fields if field)
 
-    return ("; ".join(fragments) or "detalhes de cota indisponíveis", retry_delay, daily_quota_exceeded)
-
-
-def gemini_audio_block(data: dict, model: str) -> tuple[str, str] | None:
-    """Read the raw REST response for the configured model-specific endpoint."""
-    if VOICE_POLICY["models"][model]["endpoint"] == "interactions":
-        blocks = [
-            content for step in data.get("steps", []) if isinstance(step, dict) and step.get("type") == "model_output"
-            for content in step.get("content", []) if isinstance(content, dict) and content.get("type") == "audio" and isinstance(content.get("data"), str)
-        ]
-        if blocks:
-            block = blocks[-1]
-            return block["data"], block.get("mime_type", "audio/wav")
-    else:
-        candidates = data.get("candidates") or []
-        parts = candidates[0].get("content", {}).get("parts", []) if candidates else []
-        block = next((part.get("inlineData") for part in parts if isinstance(part, dict) and isinstance(part.get("inlineData"), dict) and isinstance(part["inlineData"].get("data"), str)), None)
-        if block:
-            return block["data"], block.get("mimeType", "audio/l16;rate=24000")
-    return None
-
-
-def synthesize_gemini_audio(
-    narration: str,
-    voice_name: str,
-    output_path: Path,
-    gemini_key: str,
-    model: str,
-    pacer: GeminiRequestPacer | None = None,
-) -> SynthesisOutcome:
-    if not re.fullmatch(r"[A-Za-z0-9._-]+", model):
-        raise ValueError("Identificador do modelo Gemini inválido.")
-    pacer = pacer or GeminiRequestPacer()
-    for model in [model]:
-        url, payload = gemini_speech_request(narration, voice_name, model)
-
-        max_attempts = 3
-        retry_budget_seconds = 180.0
-        for attempt in range(1, max_attempts + 1):
-            try:
-                pacer.wait_before_request()
-                response = requests.post(
-                    url, json=payload, timeout=180,
-                    headers={"x-goog-api-key": gemini_key},
+        model_turn = getattr(server, "model_turn", None)
+        if model_turn is not None:
+            for part in getattr(model_turn, "parts", []) or []:
+                inline = getattr(part, "inline_data", None)
+                data = (
+                    getattr(inline, "data", None)
+                    if inline is not None else None
                 )
-                if response.status_code == 200:
-                    data = response.json()
-                    audio_block = gemini_audio_block(data, model)
-                    if not audio_block:
-                        print(f"    [Gemini TTS Aviso] Resposta sem bloco de áudio em {model}.", flush=True)
-                        break
+                if data:
+                    pcm_chunks.append(bytes(data))
 
-                    b64_audio, mime_type = audio_block
-                    raw_bytes = base64.b64decode(b64_audio, validate=True)
+        transcription = getattr(server, "output_transcription", None)
+        transcript_text = (
+            getattr(transcription, "text", None)
+            if transcription is not None else None
+        )
+        if transcript_text:
+            transcript_chunks.append(str(transcript_text))
 
-                    temp_wav = output_path.with_suffix(".temp.wav")
-                    if raw_bytes.startswith(b"RIFF") or "wav" in mime_type:
-                        temp_wav.write_bytes(raw_bytes)
-                    elif raw_bytes.startswith(b"ID3") or raw_bytes[:2] == b"\xff\xfb" or "mp3" in mime_type or "mpeg" in mime_type:
-                        output_path.write_bytes(raw_bytes)
-                        print(f"    [Gemini TTS Sucesso] Áudio direto via {model} (voz '{voice_name}')!", flush=True)
-                        return SynthesisOutcome(model)
-                    else:
-                        with wave.open(str(temp_wav), "wb") as wf:
-                            wf.setnchannels(1)
-                            wf.setsampwidth(2)
-                            wf.setframerate(24000)
-                            wf.writeframes(raw_bytes)
+        if bool(getattr(server, "turn_complete", False)):
+            turn_complete = True
+            break
 
-                    try:
-                        subprocess.run(
-                            [
-                                "ffmpeg",
-                                "-y",
-                                "-i",
-                                str(temp_wav),
-                                "-ar",
-                                "48000",
-                                "-ac",
-                                "1",
-                                "-b:a",
-                                "192k",
-                                str(output_path),
-                            ],
-                            check=True,
-                            capture_output=True,
-                        )
-                        temp_wav.unlink(missing_ok=True)
-                        print(f"    [Gemini TTS Sucesso] Áudio convertido com sucesso via {model} (voz '{voice_name}')!", flush=True)
-                        return SynthesisOutcome(model)
-                    except Exception as exc:
-                        temp_wav.unlink(missing_ok=True)
-                        print(f"    [Gemini TTS Erro] Conversão MP3 falhou ({type(exc).__name__}).", flush=True)
-                        break
+    if not turn_complete:
+        raise RuntimeError("Gemini Live encerrou a resposta sem turn_complete.")
 
-                elif response.status_code == 429:
-                    diagnostic, suggested_retry, daily_quota_exceeded = gemini_429_diagnostic(response, gemini_key)
-                    print(f"    [Gemini Quota 429] {diagnostic}", flush=True)
-                    if daily_quota_exceeded:
-                        print("    [Gemini Quota 429] Limite diário (RPD) atingido; interrompendo sem novas tentativas.", flush=True)
-                        return SynthesisOutcome(None, "rpd")
-                    if attempt == max_attempts or retry_budget_seconds <= 0:
-                        print(f"    [Gemini TTS Erro] HTTP 429 persistente em {model} após {attempt} tentativas; limite de quota não liberado.", flush=True)
-                        return SynthesisOutcome(None, "rate-limit-persistent")
-                    delay = min(120, 15 * 2 ** (attempt - 1))
-                    if suggested_retry is not None:
-                        delay = max(delay, suggested_retry)
-                    delay = min(delay, retry_budget_seconds)
-                    print(f"    [Gemini Quota 429] Tentativa {attempt}/{max_attempts}; aguardando {delay:.0f}s (limite total de espera: 180s)...", flush=True)
-                    time.sleep(delay)
-                    retry_budget_seconds -= delay
-                    continue
-                elif response.status_code in (500, 502, 503, 504):
-                    if attempt < max_attempts:
-                        time.sleep(4 * attempt)
-                        continue
-                    return SynthesisOutcome(None, "server-unavailable")
-                else:
-                    print(f"    [Gemini Erro {response.status_code} em {model}] Resposta HTTP sem áudio.", flush=True)
-                    break
-            except requests.exceptions.Timeout:
-                print(f"    [Gemini Tempo esgotado em {model}] tentativa {attempt}/{max_attempts}.", flush=True)
-                if attempt < max_attempts:
-                    time.sleep(3 * attempt)
-                else:
-                    return SynthesisOutcome(None, "request-timeout")
-            except Exception as exc:
-                print(f"    [Gemini Exceção em {model}] {type(exc).__name__}; tentativa {attempt}/{max_attempts}.", flush=True)
-                if attempt < max_attempts:
-                    time.sleep(3 * attempt)
-
-    return SynthesisOutcome(None, "other")
+    pcm = b"".join(pcm_chunks)
+    transcript = "".join(transcript_chunks).strip()
+    if len(pcm) < SAMPLE_RATE * SAMPLE_WIDTH:
+        raise RuntimeError("Gemini Live retornou menos de um segundo de áudio.")
+    if not transcript:
+        raise RuntimeError("Gemini Live não retornou a transcrição da própria saída.")
+    return pcm, transcript
 
 
-def compute_beat_timings(narration: str, beats: list[dict], duration: float) -> list[dict]:
+async def synthesize_missing_jobs(
+    jobs: list[dict],
+    *,
+    gemini_key: str,
+    voice: str,
+    pronunciations: dict[str, str],
+    speech_fingerprint: str,
+) -> dict[str, dict]:
+    if not jobs:
+        return {}
+
+    from google import genai
+
+    client = genai.Client(api_key=gemini_key)
+    config = live_session_config(voice, pronunciations)
+    completed: dict[str, dict] = {}
+
+    async with client.aio.live.connect(
+        model=PRIMARY_TTS_MODEL,
+        config=config,
+    ) as session:
+        for position, job in enumerate(jobs):
+            scene_id = job["scene_id"]
+            print(
+                f"  [Gemini Live {position + 1}/{len(jobs)}] {scene_id}...",
+                flush=True,
+            )
+            await session.send_client_content(
+                turns={
+                    "role": "user",
+                    "parts": [{
+                        "text": "ROTEIRO:\n" + job["narration"]
+                    }],
+                },
+                turn_complete=True,
+            )
+            pcm, transcript = await _receive_live_turn(session)
+            similarity = transcription_similarity(
+                job["narration"], transcript
+            )
+            if similarity < MINIMUM_TRANSCRIPTION_SIMILARITY:
+                raise RuntimeError(
+                    f"Gemini Live divergiu do roteiro em {scene_id}: "
+                    f"similaridade {similarity:.4f} < "
+                    f"{MINIMUM_TRANSCRIPTION_SIMILARITY:.4f}."
+                )
+
+            write_pcm_wav(job["output_file"], pcm)
+            duration = duration_seconds(job["output_file"])
+            if not math.isfinite(duration) or duration <= 0:
+                raise RuntimeError(
+                    f"Gemini Live gerou áudio sem duração válida em {scene_id}."
+                )
+
+            save_audio_sidecar(
+                job["output_file"],
+                job["narration_hash"],
+                PRIMARY_TTS_MODEL,
+                voice,
+                duration,
+                NO_VOICE_TREATMENT,
+                None,
+                speech_fingerprint,
+                transcript,
+                similarity,
+            )
+            completed[scene_id] = {
+                "duration": duration,
+                "transcript": transcript,
+                "similarity": similarity,
+            }
+            print(
+                f"    [Gemini Live] {duration:.2f}s; "
+                f"fidelidade do texto={similarity:.4f}; áudio PCM bruto.",
+                flush=True,
+            )
+
+    return completed
+
+
+def compute_beat_timings(
+    narration: str,
+    beats: list[dict],
+    duration: float,
+) -> list[dict]:
     if not beats:
         return []
 
     char_weights = []
     for ch in narration:
-        if ch in ('.', '!', '?'):
+        if ch in (".", "!", "?"):
             char_weights.append(5.0)
-        elif ch in (',', ';', ':'):
+        elif ch in (",", ";", ":"):
             char_weights.append(3.0)
-        elif ch == ' ':
+        elif ch == " ":
             char_weights.append(1.0)
         else:
             char_weights.append(1.2)
 
-    total_weight = sum(char_weights)
-    if total_weight <= 0:
-        total_weight = float(len(narration) or 1)
-        char_weights = [1.0] * len(narration)
-
+    total_weight = sum(char_weights) or float(len(narration) or 1)
     timings = []
     for index, beat in enumerate(beats):
         if not isinstance(beat, dict):
             continue
-
         anchor = str(beat.get("anchor") or "").strip()
         if not anchor:
             continue
-
         pos = narration.find(anchor)
         if pos == -1:
-            ratio = index / max(len(beats), 1)
-            offset = duration * ratio
+            offset = duration * (index / max(len(beats), 1))
             timing_source = "estimated-distributed"
         else:
-            midpoint = pos + (len(anchor) / 2.0)
-            weight_up_to_anchor = sum(char_weights[:int(midpoint)])
-            offset = (weight_up_to_anchor / total_weight) * duration
+            midpoint = pos + len(anchor) / 2.0
+            weight = sum(char_weights[: int(midpoint)])
+            offset = (weight / total_weight) * duration
             timing_source = "estimated-text-alignment"
-
         offset = max(0.2, min(duration - 0.2, offset))
         timings.append({
             "beat_index": index,
@@ -453,14 +348,16 @@ def compute_beat_timings(narration: str, beats: list[dict], duration: float) -> 
         })
 
     timings.sort(key=lambda item: item["audio_offset_seconds"])
-    prev = 0.0
-    min_gap = 0.4
+    previous = 0.0
     for item in timings:
-        if item["audio_offset_seconds"] < prev + min_gap:
-            item["audio_offset_seconds"] = min(max(0.0, duration - 0.1), prev + min_gap)
-        item["audio_offset_seconds"] = round(item["audio_offset_seconds"], 4)
-        prev = item["audio_offset_seconds"]
-
+        if item["audio_offset_seconds"] < previous + 0.4:
+            item["audio_offset_seconds"] = min(
+                max(0.0, duration - 0.1), previous + 0.4
+            )
+        item["audio_offset_seconds"] = round(
+            item["audio_offset_seconds"], 4
+        )
+        previous = item["audio_offset_seconds"]
     timings.sort(key=lambda item: item["beat_index"])
     return timings
 
@@ -473,17 +370,15 @@ def main() -> None:
     args = parser.parse_args()
 
     gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
-    gemini_model = os.environ.get("GEMINI_TTS_MODEL", PRIMARY_TTS_MODEL).strip()
-
     if not gemini_key:
-        raise RuntimeError("GEMINI_API_KEY não disponível; este render aceita apenas voz Gemini.")
-    if not gemini_model:
-        raise RuntimeError("GEMINI_TTS_MODEL vazio.")
-    if not re.fullmatch(r"[A-Za-z0-9._-]+", gemini_model):
-        raise RuntimeError("GEMINI_TTS_MODEL inválido.")
+        raise RuntimeError(
+            "GEMINI_API_KEY não disponível; este render exige Gemini Live."
+        )
 
     payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
-    scenes = payload.get("scenes") or payload.get("script", {}).get("scenes", [])
+    scenes = payload.get("scenes") or payload.get("script", {}).get(
+        "scenes", []
+    )
     if not scenes:
         raise RuntimeError("Nenhuma cena recebida.")
 
@@ -493,20 +388,108 @@ def main() -> None:
         or presenter.get("voice_id")
         or DEFAULT_PRESENTER
     )
-    project_voice = PRESENTER_VOICES.get(presenter_key, DEFAULT_TTS_VOICE)
+    project_voice = PRESENTER_VOICES.get(
+        presenter_key, DEFAULT_TTS_VOICE
+    )
     presenter_name = PRESENTER_NAMES.get(presenter_key, "Roberto")
-    fallback_models = configured_fallback_models(gemini_model)
-    model_cascade = [gemini_model, *fallback_models]
+    pronunciations = project_pronunciations(payload)
+    speech_fingerprint = project_speech_fingerprint(payload)
 
     output_dir = Path(args.output_dir)
     output_dir.mkdir(parents=True, exist_ok=True)
 
+    jobs = []
+    for position, scene in enumerate(scenes):
+        scene_index = scene.get(
+            "scene_index", scene.get("index", position)
+        )
+        scene_id = str(
+            scene.get("id") or f"scene-{int(scene_index):02d}"
+        )
+        narration = str(scene["narration"]).strip()
+        if not narration:
+            raise RuntimeError(f"Cena {scene_id} sem narração.")
+        jobs.append({
+            "scene": scene,
+            "scene_index": scene_index,
+            "scene_id": scene_id,
+            "narration": narration,
+            "narration_hash": hashlib.sha256(
+                narration.encode("utf-8")
+            ).hexdigest(),
+            "output_file": output_dir / f"{scene_id}.wav",
+        })
+
+    print(
+        f"[Audio Engine] Gemini 3.8 Live + {project_voice} "
+        f"({presenter_name}); {len(jobs)} cenas.",
+        flush=True,
+    )
+    print(
+        f"[Audio Engine] Política {VOICE_POLICY_VERSION}; "
+        f"{VOICE_DELIVERY_STYLE}",
+        flush=True,
+    )
+    if pronunciations:
+        print(
+            f"[Audio Engine] {len(pronunciations)} pronúncias explícitas "
+            "serão aplicadas como instrução, sem alterar o texto.",
+            flush=True,
+        )
+
+    missing = []
+    synthesis_by_id: dict[str, dict] = {}
+    for job in jobs:
+        duration = cached_duration(
+            job["output_file"],
+            job["narration_hash"],
+            PRIMARY_TTS_MODEL,
+            project_voice,
+            NO_VOICE_TREATMENT,
+            speech_fingerprint,
+        )
+        if duration is None:
+            missing.append(job)
+            continue
+
+        sidecar = json.loads(
+            job["output_file"].with_suffix(".tts.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        job["duration"] = duration
+        synthesis_by_id[job["scene_id"]] = sidecar
+        print(
+            f"  [Gemini Live Cache] {job['scene_id']} validado "
+            f"({duration}s).",
+            flush=True,
+        )
+
+    generated = asyncio.run(
+        synthesize_missing_jobs(
+            missing,
+            gemini_key=gemini_key,
+            voice=project_voice,
+            pronunciations=pronunciations,
+            speech_fingerprint=speech_fingerprint,
+        )
+    )
+    for job in missing:
+        data = generated[job["scene_id"]]
+        job["duration"] = data["duration"]
+        synthesis_by_id[job["scene_id"]] = json.loads(
+            job["output_file"].with_suffix(".tts.json").read_text(
+                encoding="utf-8"
+            )
+        )
+
     manifest = {
-        "engine": "pending",
-        "model": gemini_model,
-        "fallback_model": fallback_models[0] if fallback_models else None,
-        "fallback_models": fallback_models,
-        "model_cascade": model_cascade,
+        "engine": ENGINE,
+        "model": PRIMARY_TTS_MODEL,
+        "fallback_model": None,
+        "fallback_models": [],
+        "model_cascade": list(TTS_MODEL_CASCADE),
+        "models_used": [PRIMARY_TTS_MODEL],
         "voice": project_voice,
         "requested_voice": project_voice,
         "presenter": presenter_key,
@@ -514,197 +497,66 @@ def main() -> None:
         "voice_policy_version": VOICE_POLICY_VERSION,
         "voice_language": VOICE_LANGUAGE,
         "voice_delivery_style": VOICE_DELIVERY_STYLE,
-        "output_format": "audio-48khz-192kbitrate-mono-mp3",
+        "speech_profile_fingerprint": speech_fingerprint,
+        "output_format": "pcm-s16le-24000-mono-wav",
         "timing_mode": "estimated-character-alignment",
-        "delivery_version": "tts-per-scene-v4-directed-policy",
+        "delivery_version": "gemini-live-v1-exact-transcript",
+        "fallback_scene_ids": [],
+        "fallback_scene_ids_by_model": {},
+        "model_transition_scene_ids": [],
+        "model_transition_count": 0,
         "scenes": [],
         "total_duration_seconds": 0.0,
     }
 
-    print(f"[Audio Engine] Sintetizando {len(scenes)} cenas com voz solicitada '{project_voice}' ({presenter_name})...", flush=True)
-    print(f"[Audio Engine] Política {VOICE_POLICY_VERSION}; idioma {VOICE_LANGUAGE}; direção vocal constante aplicada pela API de cada modelo.", flush=True)
-    scene_jobs = []
-    for position, scene in enumerate(scenes):
-        scene_index = scene.get("scene_index", scene.get("index", position))
-        scene_id = str(scene.get("id") or f"scene-{int(scene_index):02d}")
-        narration = str(scene["narration"]).strip()
-        if not narration:
-            raise RuntimeError(f"Cena {scene_id} sem narração.")
-
-        scene_jobs.append({
-            "scene": scene,
-            "scene_index": scene_index,
-            "scene_id": scene_id,
-            "narration": narration,
-            "narration_hash": hashlib.sha256(narration.encode("utf-8")).hexdigest(),
-            "output_file": output_dir / f"{scene_id}.mp3",
-        })
-
-    synthesis_by_id = {}
-    request_pacer = GeminiRequestPacer()
-    active_model_index = 0
-    cascade_failures: list[str] = []
-
-    for position, job in enumerate(scene_jobs):
-        print(f"  [Gemini {position + 1}/{len(scene_jobs)}] {job['scene_id']}...", flush=True)
-
-        cached = False
-        for candidate_model in model_cascade:
-            treatment = voice_treatment_for_model(candidate_model, project_voice)
-            duration = cached_duration(
-                job["output_file"], job["narration_hash"], candidate_model,
-                project_voice, treatment,
-            )
-            if duration is None:
-                continue
-            label = "principal" if candidate_model == gemini_model else candidate_model
-            print(
-                f"    [Gemini Cache] Áudio {label} validado e reutilizado ({duration}s).",
-                flush=True,
-            )
-            sidecar = json.loads(
-                job["output_file"].with_suffix(".tts.json").read_text(encoding="utf-8")
-            )
-            job["duration"] = duration
-            synthesis_by_id[job["scene_id"]] = {
-                "engine": "google-gemini-tts",
-                "model": candidate_model,
-                "voice": project_voice,
-                "voice_treatment": treatment,
-                "fallback_reason": sidecar.get("fallback_reason"),
-                "voice_policy_version": sidecar["voice_policy_version"],
-                "voice_policy_fingerprint": sidecar["voice_policy_fingerprint"],
-                "speech_endpoint": sidecar["speech_endpoint"],
-            }
-            cached = True
-            break
-        if cached:
-            # A cached fallback clip does not prove that the current primary is
-            # unavailable. New uncached scenes still start from active_model_index.
-            continue
-
-        fallback_reason = ";".join(cascade_failures) or None
-        outcome = SynthesisOutcome(None, "other")
-        model_to_request = model_cascade[active_model_index]
-
-        while True:
-            model_to_request = model_cascade[active_model_index]
-            outcome = synthesize_gemini_audio(
-                job["narration"], project_voice, job["output_file"], gemini_key,
-                model_to_request, request_pacer,
-            )
-            if outcome.model is not None:
-                break
-
-            can_advance = (
-                outcome.failure in ELIGIBLE_FALLBACK_FAILURES
-                and active_model_index + 1 < len(model_cascade)
-            )
-            if not can_advance:
-                raise RuntimeError(
-                    f"Gemini TTS falhou na cena {job['scene_id']} "
-                    f"({model_to_request}: {outcome.failure}); render interrompido."
-                )
-
-            cascade_failures.append(f"{model_to_request}:{outcome.failure}")
-            fallback_reason = ";".join(cascade_failures)
-            previous_model = model_to_request
-            active_model_index += 1
-            next_model = model_cascade[active_model_index]
-            print(
-                f"    [Gemini Fallback] {previous_model} indisponível ({outcome.failure}); "
-                f"tentando {next_model} com a mesma voz {project_voice}.",
-                flush=True,
-            )
-
-        model = outcome.model
-        voice_treatment = voice_treatment_for_model(model, project_voice)
-
-        duration = duration_seconds(job["output_file"])
-        if not math.isfinite(duration) or duration <= 0:
-            raise RuntimeError(f"Gemini TTS gerou áudio sem duração válida em {job['scene_id']}.")
-        save_audio_sidecar(
-            job["output_file"], job["narration_hash"], model, project_voice,
-            duration, voice_treatment, fallback_reason,
-        )
-        job["duration"] = duration
-        synthesis_by_id[job["scene_id"]] = {
-            "engine": "google-gemini-tts",
-            "model": model,
-            "voice": project_voice,
-            "voice_treatment": voice_treatment,
-            "fallback_reason": fallback_reason,
-            "voice_policy_version": VOICE_POLICY_VERSION,
-            "voice_policy_fingerprint": voice_policy_fingerprint(model, project_voice),
-            "speech_endpoint": VOICE_POLICY["models"][model]["endpoint"],
-        }
-
-    transition_scene_ids = []
-    for position in range(1, len(scene_jobs)):
-        previous_job = scene_jobs[position - 1]
-        job = scene_jobs[position]
-        previous = synthesis_by_id[previous_job["scene_id"]]
-        current = synthesis_by_id[job["scene_id"]]
-        if previous["model"] == current["model"]:
-            continue
-
-        current["model_transition"] = {
-            "from_model": previous["model"],
-            "to_model": current["model"],
-            "marker_status": "disabled",
-        }
-        transition_scene_ids.append(job["scene_id"])
-        print(
-            f"    [Gemini Transição] {previous['model']} -> {current['model']} "
-            f"em {job['scene_id']}; troca registrada sem marcador audível.",
-            flush=True,
-        )
-
-    for job in scene_jobs:
+    for job in jobs:
         scene = job["scene"]
-        scene_id = job["scene_id"]
-        narration = job["narration"]
-        output_file = job["output_file"]
-        duration = job["duration"]
-        narration_hash = job["narration_hash"]
+        sidecar = synthesis_by_id[job["scene_id"]]
         beat_timings = compute_beat_timings(
-            narration, (scene.get("visual") or {}).get("beats") or [], duration
+            job["narration"],
+            (scene.get("visual") or {}).get("beats") or [],
+            job["duration"],
         )
         manifest["scenes"].append({
-            "id": scene_id,
+            "id": job["scene_id"],
             "scene_index": job["scene_index"],
-            "file": output_file.name,
-            "duration_seconds": duration,
-            "narration_sha256": narration_hash,
-            **synthesis_by_id[scene_id],
+            "file": job["output_file"].name,
+            "duration_seconds": job["duration"],
+            "narration_sha256": job["narration_hash"],
+            "engine": ENGINE,
+            "model": PRIMARY_TTS_MODEL,
+            "voice": project_voice,
+            "voice_treatment": NO_VOICE_TREATMENT,
+            "fallback_reason": None,
+            "voice_policy_version": VOICE_POLICY_VERSION,
+            "voice_policy_fingerprint": sidecar[
+                "voice_policy_fingerprint"
+            ],
+            "speech_profile_fingerprint": speech_fingerprint,
+            "speech_endpoint": "live-websocket",
+            "output_transcription": sidecar.get(
+                "output_transcription"
+            ),
+            "output_transcription_similarity": sidecar.get(
+                "output_transcription_similarity"
+            ),
+            "audio_sha256": sidecar["audio_sha256"],
             "beat_timings": beat_timings,
         })
-        manifest["total_duration_seconds"] += duration
+        manifest["total_duration_seconds"] += job["duration"]
 
-    manifest["total_duration_seconds"] = round(manifest["total_duration_seconds"], 3)
-    engines = {scene["engine"] for scene in manifest["scenes"]}
-    voices = {scene["voice"] for scene in manifest["scenes"]}
-    if len(engines) != 1 or len(voices) != 1:
-        raise RuntimeError("A síntese produziu motores ou vozes diferentes no mesmo vídeo.")
-    manifest["engine"] = next(iter(engines))
-    manifest["voice"] = next(iter(voices))
-    manifest["models_used"] = sorted({scene["model"] for scene in manifest["scenes"]})
-    manifest["fallback_scene_ids"] = [
-        scene["id"] for scene in manifest["scenes"]
-        if scene["model"] != gemini_model
-    ]
-    manifest["fallback_scene_ids_by_model"] = {
-        model: [scene["id"] for scene in manifest["scenes"] if scene["model"] == model]
-        for model in fallback_models
-        if any(scene["model"] == model for scene in manifest["scenes"])
-    }
-    manifest["model_transition_scene_ids"] = transition_scene_ids
-    manifest["model_transition_count"] = len(transition_scene_ids)
+    manifest["total_duration_seconds"] = round(
+        manifest["total_duration_seconds"], 3
+    )
     Path(args.manifest).write_text(
         json.dumps(manifest, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
     )
-    print(f"[Audio Engine] Concluído! Duração total: {manifest['total_duration_seconds']}s.", flush=True)
+    print(
+        "[Audio Engine] Concluído com um único modelo/voz, sem fallback "
+        f"e sem DSP. Duração total: {manifest['total_duration_seconds']}s.",
+        flush=True,
+    )
 
 
 if __name__ == "__main__":
