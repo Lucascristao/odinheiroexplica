@@ -12,6 +12,48 @@ def timestamp(total_seconds: int) -> str:
     return f"{minutes}:{seconds:02d}"
 
 
+def unique_nonempty(values: list[str]) -> list[str]:
+    seen: set[str] = set()
+    result: list[str] = []
+    for value in values:
+        clean = str(value or "").strip()
+        key = clean.casefold()
+        if clean and key not in seen:
+            seen.add(key)
+            result.append(clean)
+    return result
+
+
+def compose_description(
+    body: str,
+    chapter_text: str,
+    source_text: str,
+    visual_credit_text: str,
+    engagement_question: str,
+    hashtags: list[str],
+) -> str:
+    if re.search(
+        r"(?im)^\s*(fontes|bases do vídeo|capítulos|créditos visuais)\s*:?.*$",
+        body,
+    ):
+        raise RuntimeError(
+            "publication.description não deve repetir capítulos, fontes ou créditos; "
+            "essas seções são montadas pelo pipeline."
+        )
+    sections = [body.strip()]
+    if chapter_text:
+        sections.append(f"CAPÍTULOS\n{chapter_text}")
+    if source_text:
+        sections.append(f"FONTES\n{source_text}")
+    if visual_credit_text:
+        sections.append(f"Créditos visuais:\n{visual_credit_text}")
+    if engagement_question:
+        sections.append(engagement_question.strip())
+    if hashtags:
+        sections.append(" ".join(hashtags))
+    return "\n\n".join(section for section in sections if section)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--project", required=True)
@@ -56,10 +98,10 @@ def main() -> None:
     )
 
     sources = project.get("sources", [])
-    source_text = "\n".join(
-        f"- {source.get('title', 'Fonte')}"
-        for source in sources
+    source_titles = unique_nonempty(
+        [source.get("title", "Fonte") for source in sources]
     )
+    source_text = "\n".join(f"- {title}" for title in source_titles)
 
     visual_assets = project.get("visual_assets", [])
     visual_credit_lines = []
@@ -71,22 +113,24 @@ def main() -> None:
             if license_name:
                 line += f" — {license_name}"
             visual_credit_lines.append(line)
-
-    visual_credit_text = "\n".join(visual_credit_lines)
+    visual_credit_text = "\n".join(unique_nonempty(visual_credit_lines))
 
     publication = project.get("publication", {})
-    description = publication.get("description", "").strip()
+    description = str(publication.get("description") or "").strip()
     seo = publication.get("seo", {})
     tags = publication.get("tags", [])
+    engagement_question = str(publication.get("engagement_question") or "").strip()
+    hashtags = unique_nonempty(publication.get("hashtags", []))
 
     if not description:
         raise RuntimeError("Descrição editorial ausente.")
     if not seo.get("primary_keyword"):
         raise RuntimeError("SEO sem palavra-chave principal.")
-
     if not engagement_question or not engagement_question.endswith("?"):
         raise RuntimeError("Pergunta de engajamento ausente ou inválida.")
-    if len(hashtags) != 3 or any(not re.fullmatch(r"#[^\\s#]+", item) for item in hashtags):
+    if len(hashtags) != 3 or any(
+        not re.fullmatch(r"#[^\s#]+", item) for item in hashtags
+    ):
         raise RuntimeError("A publicação precisa de exatamente 3 hashtags válidas.")
 
     full_description = compose_description(
@@ -97,11 +141,22 @@ def main() -> None:
         engagement_question,
         hashtags,
     )
+
     # Public descriptions are link-free; research URLs remain in the project.
-    if re.search(r"https?://|www\.|\[[^\]]+\]\([^)]+\)", full_description, re.IGNORECASE):
-        raise RuntimeError("Descrição não pode conter links. Mantenha URLs somente nos registros internos e escolha imagens com crédito textual compatível.")
+    if re.search(
+        r"https?://|www\.|\[[^\]]+\]\([^)]+\)",
+        full_description,
+        re.IGNORECASE,
+    ):
+        raise RuntimeError(
+            "Descrição não pode conter links. Mantenha URLs somente nos registros "
+            "internos e escolha imagens com crédito textual compatível."
+        )
     if len(full_description) > 5000:
-        raise RuntimeError("Descrição final excede 5.000 caracteres. Encurte a redação sem remover fontes ou créditos obrigatórios.")
+        raise RuntimeError(
+            "Descrição final excede 5.000 caracteres. Encurte a redação sem "
+            "remover fontes ou créditos obrigatórios."
+        )
 
     payload = {
         "title": title,
@@ -110,11 +165,11 @@ def main() -> None:
         "youtube_suitability": project.get("editorial", {}).get("youtube_suitability", {}),
         "seo": seo,
         "tags": tags,
+        "engagement_question": engagement_question,
+        "hashtags": hashtags,
         "description": full_description,
         "chapters": chapters,
-        "duration_seconds": round(
-            render_input["duration_in_frames"] / render_input["fps"], 2
-        ),
+        "duration_seconds": round(duration_seconds, 2),
     }
 
     output = Path(args.output)
