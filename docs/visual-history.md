@@ -29,3 +29,13 @@ Ao criar um novo VideoProject, consulte apenas a seção mais recente para ident
 - comparação sem medidores inventados; fotografia limpa e papel como variação pontual;
 - evitar repetir automaticamente em outras pautas: trilha de contas, cinco etapas horizontais e foto de celular;
 - reaproveitar as operações de continuidade, não a composição pronta.
+
+## Banco24Horas e dinheiro físico — 2026-10-01
+
+- direção preparada para a produção; revisão do MP4 ainda pendente;
+- universo: infraestrutura física, atendimento compartilhado e circuito do comércio;
+- participantes: cédulas, caixa eletrônico, agência, loja, rede operacional e dados;
+- percurso: pergunta com cédula dominante, pesquisa de pessoas, conta hipotética, operação da rede, piloto de agência, circulação no comércio, resultado versus meta, informação e condições de acesso;
+- atuação: caixa dispensa cédula, fluxo mostra relações, dados recebem proteção, câmera abre para novas funções; movimentos sustentados são escolhidos por participante;
+- legenda falada de uma ou duas palavras procura espaço livre e varia de posição conforme a composição;
+- evitar repetir automaticamente: caixa eletrônico à esquerda, cédulas como abertura, conta de custo por saque, circuito loja/cliente e metáfora de agência compartilhada. Recursos do motor podem servir a outras histórias com direção própria.

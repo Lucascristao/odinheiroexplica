@@ -14,6 +14,7 @@ export type CaptionWord = {
 type CaptionPlacement = {box: Box; size: number; multiline: boolean};
 const clamp = {extrapolateLeft: "clamp", extrapolateRight: "clamp"} as const;
 const SCREEN_GAP = 24;
+const CAPTION_PADDING = 16;
 
 // Screen-space occupancy comes from the same camera and geometry as the scene.
 // Captions yield to evidence, labels, route corridors and operations, including
@@ -47,30 +48,39 @@ const placeCaption = (stage: EditorialStage, beats: StageEvent[], words: Caption
     return at >= first && at < last ? [at, Math.min(last - 1, at + 1)] : [];
   })])];
   const layouts = samples.map(at => occupiedAt(stage, beats, at, fps, width, height, title));
-  let safe = layouts[0].safe;
+  const canvasSafe = layouts[0].safe;
   const region = stage.captions?.region;
-  if (region) safe = {x: safe.x + region.x * safe.w / 100, y: safe.y + region.y * safe.h / 100, w: safe.w * region.width / 100, h: safe.h * region.height / 100};
+  // The author's region is preferred. A smaller region must not suppress a
+  // readable caption when another unoccupied area of the scene is available.
+  const regions = region ? [{
+    x: canvasSafe.x + region.x * canvasSafe.w / 100,
+    y: canvasSafe.y + region.y * canvasSafe.h / 100,
+    w: canvasSafe.w * region.width / 100,
+    h: canvasSafe.h * region.height / 100,
+  }, canvasSafe] : [canvasSafe];
   const occupied = layouts.flatMap(l => l.boxes);
   const side = stage.captions?.preferred_side ?? "auto";
-  const targetX = side === "left" ? safe.x + safe.w * .25 : side === "right" ? safe.x + safe.w * .75 : safe.x + safe.w / 2;
   const requested = stage.captions?.font_size ?? 112;
   const text = words.map(word => word.text.toLocaleUpperCase("pt-BR"));
   const sizes = [...new Set([requested, ...Array.from({length: Math.ceil((requested - 72) / 8)}, (_, i) => Math.max(72, requested - (i + 1) * 8)), 72])];
   for (const size of sizes) for (const multiline of words.length > 1 ? [false, true] : [false]) {
     const lines = multiline ? text : [text.join(" ")];
     const w = (multiline ? Math.max(...lines.map(line => measureEditorialText(line, size)))
-      : text.reduce((sum, word) => sum + measureEditorialText(word, size), 0) + Math.max(0, text.length - 1) * size * .28) + 48;
-    const h = lines.length * size * 1.12 + 48;
-    if (w > safe.w || h > safe.h) continue;
-    const xs = [safe.x, safe.x + (safe.w - w) / 2, safe.x + safe.w - w, targetX - w / 2,
-      ...occupied.flatMap(b => [b.x - w - SCREEN_GAP, b.x + b.w + SCREEN_GAP])];
-    const ys = [safe.y + (safe.h - h) / 2, safe.y, safe.y + safe.h - h,
-      ...occupied.flatMap(b => [b.y - h - SCREEN_GAP, b.y + b.h + SCREEN_GAP])];
-    const candidates = xs.flatMap(x => ys.map(y => ({x, y, w, h})))
-      .filter(box => contains(safe, box) && occupied.every(b => !intersects(box, b, SCREEN_GAP)))
-      .sort((a, b) => (Math.abs(a.x + w / 2 - targetX) + Math.abs(a.y + h / 2 - safe.y - safe.h / 2) * .35)
-        - (Math.abs(b.x + w / 2 - targetX) + Math.abs(b.y + h / 2 - safe.y - safe.h / 2) * .35));
-    if (candidates[0]) return {box: candidates[0], size, multiline};
+      : text.reduce((sum, word) => sum + measureEditorialText(word, size), 0) + Math.max(0, text.length - 1) * size * .28) + CAPTION_PADDING * 2;
+    const h = lines.length * size * 1.12 + CAPTION_PADDING * 2;
+    for (const safe of regions) {
+      if (w > safe.w || h > safe.h) continue;
+      const targetX = side === "left" ? safe.x + safe.w * .25 : side === "right" ? safe.x + safe.w * .75 : safe.x + safe.w / 2;
+      const xs = [safe.x, safe.x + (safe.w - w) / 2, safe.x + safe.w - w, targetX - w / 2,
+        ...occupied.flatMap(b => [b.x - w - SCREEN_GAP, b.x + b.w + SCREEN_GAP])];
+      const ys = [safe.y + (safe.h - h) / 2, safe.y, safe.y + safe.h - h,
+        ...occupied.flatMap(b => [b.y - h - SCREEN_GAP, b.y + b.h + SCREEN_GAP])];
+      const candidates = xs.flatMap(x => ys.map(y => ({x, y, w, h})))
+        .filter(box => contains(safe, box) && occupied.every(b => !intersects(box, b, SCREEN_GAP)))
+        .sort((a, b) => (Math.abs(a.x + w / 2 - targetX) + Math.abs(a.y + h / 2 - safe.y - safe.h / 2) * .35)
+          - (Math.abs(b.x + w / 2 - targetX) + Math.abs(b.y + h / 2 - safe.y - safe.h / 2) * .35));
+      if (candidates[0]) return {box: candidates[0], size, multiline};
+    }
   }
   return null;
 };
@@ -111,7 +121,7 @@ export const EditorialCaptions = ({stage: rawStage, beats, words, title}: {
   return <AbsoluteFill style={{pointerEvents: "none"}}>
     <div data-editorial-caption="narration" data-caption-timing={shown.some(w => w.timing_source !== "audio-word-alignment") ? "estimated" : "aligned"}
       style={{position: "absolute", left: layout.box.x, top: layout.box.y, width: layout.box.w, height: layout.box.h,
-        boxSizing: "border-box", padding: 24, display: "flex", flexDirection: layout.multiline ? "column" : "row",
+        boxSizing: "border-box", padding: CAPTION_PADDING, display: "flex", flexDirection: layout.multiline ? "column" : "row",
         justifyContent: "center", alignItems: "center", gap: layout.multiline ? 0 : layout.size * .28,
         fontFamily: EDITORIAL_FONT, fontWeight: 700, fontSize: layout.size, lineHeight: 1.12,
         textAlign: "center", color: "#f6f7f8", opacity: animate ? outgoing : 1,

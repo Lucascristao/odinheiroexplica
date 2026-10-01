@@ -1,0 +1,20 @@
+{
+  "purpose": "Registro da captura real do comunicado oficial, preservando o bloco da fonte.",
+  "assets": [
+    {
+      "id": "A_mini",
+      "type": "source_excerpt",
+      "source_id": "S3",
+      "capture_file": "research/captures/banco24horas-mini-2026.png",
+      "subject": "Manchete real de 15 palavras sobre a meta de instalação do mini em 2026",
+      "narrative_role": "Mostrar a linguagem de projeção do comunicado; o total de 2025 é apresentado como número autoral atribuído à mesma fonte.",
+      "country_context": "BR",
+      "source_page_url": "https://www.tecban.com.br/noticia/tecban-acelera-expansao-do-mini-banco24horas-e-projeta-instalacao-de-mil",
+      "license": "Recorte de comunicado público empresarial para citação e análise editorial; preservar contexto e crédito textual.",
+      "attribution": "Tecban — comunicado de 19/01/2026",
+      "needs_cutout": false,
+      "expected_text": "Tecban acelera expansão do mini Banco24Horas e projeta instalação de mil novos dispositivos em 2026",
+      "captured_at": "2026-10-01T23:29:32Z"
+    }
+  ]
+}

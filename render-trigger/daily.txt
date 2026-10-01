@@ -1,7 +1,8 @@
-Produção autorizada: Pix por aproximação — fim do teto específico de R$500.
-Projeto: pix-aproximacao-limite-2026-10-01
+Produção autorizada: O dinheiro físico está acabando? O curioso plano do Banco24Horas.
+Projeto: banco24horas-dinheiro-fisico-2026-10-01
 Narração: Luana / Autonoe, somente gemini-3.8-live conforme worker/voice-policy.json.
-Usar video/data/daily.json atual, validações e cache oficial do motor. Não trocar a pauta.
-Correção: scene-01 reescrita para evitar code-switch do Gemini Live após NFC; CI 36919847919 aprovada.
+Usar video/data/daily.json atual e cache oficial do motor. Não trocar a pauta.
+Usuário autorizou produção direta sem testes neste pedido; acionar workflow_dispatch após a publicação com [skip ci].
+Preservar as etapas necessárias de preparação, integridade de voz, alinhamento e render real, incluindo a entrega ao Drive.
 Retomar áudio válido em cache e gerar apenas cenas cujo fingerprint mudou ou ainda não existe.
-Trigger: pix-aproximacao-limite-2026-10-01-v3
+Trigger: banco24horas-dinheiro-fisico-2026-10-01-v1
