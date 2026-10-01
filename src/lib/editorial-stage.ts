@@ -39,14 +39,31 @@ export const stageElementSchema = z.object({
   image_motion: z.enum(["none", "push", "pan"]).default("none"),
 });
 
+export const visualOperationSchema = z.discriminatedUnion("kind", [
+  z.object({kind:z.literal("equation"),input_ids:z.array(z.string().min(1)).min(2),operator:z.enum(["+","-","×","÷"]),result_id:z.string().min(1)}),
+  z.object({kind:z.literal("compare"),element_ids:z.array(z.string().min(1)).min(2)}),
+  z.object({kind:z.literal("stack"),element_ids:z.array(z.string().min(1)).min(2)}),
+  z.object({kind:z.literal("meter"),value:z.number().finite(),min:z.number().finite(),max:z.number().finite(),unit:z.string().max(24).optional()}),
+  z.object({kind:z.literal("signal"),status:z.enum(["positive","neutral","warning"]),message:z.string().min(1).max(80)}),
+]);
+export type VisualOperation = z.infer<typeof visualOperationSchema>;
+
 export const editorialStageSchema = z.object({
   show_title: z.boolean().default(true),
   initial_camera: stageCameraSchema.optional(),
   elements: z.array(stageElementSchema).min(1).max(12),
   connections: z.array(z.object({
+    id: z.string().min(1).optional(),
     from: z.string(),
     to: z.string(),
     label: z.string().max(40).optional(),
+    from_port:z.enum(["auto","left","right","top","bottom"]).optional(),
+    to_port:z.enum(["auto","left","right","top","bottom"]).optional(),
+    label_region:regionSchema.optional(),
+    token_label:z.string().min(1).max(8).optional(),
+    label_position: z.enum(["auto", "above", "below", "left", "right", "between"]).default("auto"),
+    label_size: z.number().min(30).max(42).default(32),
+    semantic: z.enum(["relation", "transfer", "comparison", "cause", "sequence"]).default("relation"),
   })).max(16).default([]),
 }).superRefine((stage, ctx) => {
   const ids = new Set<string>();
@@ -79,6 +96,7 @@ export const editorialStageSchema = z.object({
     }
   }
   for (const [index, edge] of stage.connections.entries()) {
+    if (edge.id && stage.connections.slice(0,index).some(previous=>previous.id===edge.id)) ctx.addIssue({code:"custom",path:["connections",index,"id"],message:"ID de conexão duplicado."});
     if (!ids.has(edge.from) || !ids.has(edge.to) || edge.from === edge.to) {
       ctx.addIssue({code: "custom", path: ["connections", index], message: "Conexão precisa de dois alvos existentes e distintos."});
     }
@@ -86,6 +104,7 @@ export const editorialStageSchema = z.object({
 });
 
 export const stageEventFields = {
+  operation: visualOperationSchema.optional(),
   motion_seconds: z.number().min(0.1).max(2).default(0.45),
   camera: stageCameraSchema.optional(),
   mark_ids: z.array(z.string()).max(16).optional(),
@@ -104,6 +123,7 @@ export const stageEventFields = {
 export type EditorialStage = z.infer<typeof editorialStageSchema>;
 export type StageElement = z.infer<typeof stageElementSchema>;
 export type StageEvent = {
+  operation?: VisualOperation;
   treatment?: "kinetic_type" | "giant_number" | "flow_diagram" | "timeline" | "split_compare" | "meter" | "spotlight" | "equation" | "stack" | "signal" | "masked_emphasis" | "depth_photo";
   motion_seconds?: number;
   camera?: StageCamera;

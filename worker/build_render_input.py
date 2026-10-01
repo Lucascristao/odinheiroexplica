@@ -8,12 +8,33 @@ import hashlib
 import subprocess
 from pathlib import Path
 
-from tts_config import TTS_MODEL_CASCADE, PRESENTER_VOICES, VOICE_POLICY_VERSION, project_speech_fingerprint, voice_policy_fingerprint
+from tts_config import TTS_MODEL_CASCADE, PRESENTER_VOICES, VOICE_POLICY_VERSION, project_speech_fingerprint, voice_policy_fingerprint, scene_direction_fingerprint
+from editorial_project import normalize_project
 
 
 FPS = 30
 SCENE_TAIL_SECONDS = 0.28
 FINAL_SCENE_TAIL_SECONDS = 1.9
+
+
+def boundary_padding(audio: dict, following: dict | None, next_scene: dict | None = None) -> dict:
+    """Reduce extra timeline silence only; preserve every raw audio sample."""
+    if following is None:
+        return {"padding_seconds": FINAL_SCENE_TAIL_SECONDS, "reason": "final-card-hold"}
+    current_activity = audio.get("audio_activity") or {}
+    next_activity = following.get("audio_activity") or {}
+    if not current_activity.get("has_activity") or not next_activity.get("has_activity"):
+        return {"padding_seconds": SCENE_TAIL_SECONDS, "reason": "activity-unavailable-kept-legacy-padding"}
+    tail = float(current_activity.get("tail_seconds", 0))
+    lead = float(next_activity.get("lead_seconds", 0))
+    if not all(math.isfinite(v) and v >= 0 for v in (tail, lead)):
+        raise ValueError("Bordas de atividade vocal inválidas.")
+    delivery = ((next_scene or {}).get("tts") or {}).get("delivery")
+    # This caps added silence, not speech speed or intrinsic pauses.
+    budget = .8 if delivery in ("contrast", "question") else .65
+    natural = tail + lead
+    padding = round(min(SCENE_TAIL_SECONDS, max(0.0, budget-natural)), 4)
+    return {"padding_seconds": padding, "natural_gap_seconds": round(natural, 4), "estimated_activity_gap_seconds": round(natural+padding, 4), "reason": "reduced-extra-padding-for-natural-silence" if padding < SCENE_TAIL_SECONDS else "kept-extra-padding", "measurement_caveat": "energy activity estimate; original WAV remains intact"}
 
 REAL_BOOKMARK_SOURCES = {"azure-bookmark", "tts-bookmark", "audio-word-alignment"}
 ESTIMATED_ANCHOR_SOURCES = {"estimated-text-alignment", "text-fallback", "estimated-between-audio-anchors"}
@@ -183,6 +204,8 @@ def validate_audio_integrity(scene: dict, audio: dict, audio_dir: Path, project:
         raise RuntimeError(f"Áudio não corresponde à política vocal atual: {audio['id']}")
     if project is not None and audio.get("speech_profile_fingerprint") != project_speech_fingerprint(project):
         raise RuntimeError(f"Áudio não corresponde às pronúncias atuais: {audio['id']}")
+    if audio.get("scene_direction_fingerprint") != scene_direction_fingerprint(scene):
+        raise RuntimeError(f"Áudio não corresponde à direção vocal da cena: {audio['id']}")
     root = audio_dir.resolve()
     path = (root / audio["file"]).resolve()
     if not path.is_relative_to(root) or not path.is_file():
@@ -209,7 +232,7 @@ def main() -> None:
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
 
-    project = json.loads(Path(args.project).read_text(encoding="utf-8"))
+    project = normalize_project(json.loads(Path(args.project).read_text(encoding="utf-8")))
     manifest = json.loads(Path(args.tts_manifest).read_text(encoding="utf-8"))
     if args.require_gemini:
         require_gemini_manifest(manifest)
@@ -251,11 +274,10 @@ def main() -> None:
         if args.require_voice_continuity:
             validate_audio_integrity(scene, audio, audio_dir, project)
 
-        tail_seconds = (
-            FINAL_SCENE_TAIL_SECONDS
-            if position == len(scenes) - 1
-            else SCENE_TAIL_SECONDS
-        )
+        next_scene = scenes[position+1] if position+1 < len(scenes) else None
+        next_audio = audio_by_id.get(next_scene["id"]) if next_scene else None
+        gap = boundary_padding(audio, next_audio, next_scene)
+        tail_seconds = gap["padding_seconds"]
         duration_seconds = float(audio["duration_seconds"]) + tail_seconds
         duration_frames = max(30, math.ceil(duration_seconds * FPS))
         resolved_beats = resolve_visual_beats(
@@ -315,6 +337,9 @@ def main() -> None:
                 "audio_fallback_reason": audio.get("fallback_reason"),
                 "audio_postprocess": audio.get("postprocess"),
                 "audio_alignment": audio.get("alignment"),
+                "audio_activity": audio.get("audio_activity"),
+                "audio_boundary": gap,
+                "audio_scene_direction_fingerprint": audio.get("scene_direction_fingerprint"),
                 "audio_voice_policy_fingerprint": audio.get("voice_policy_fingerprint"),
                 "audio_file": (
                     f"{args.audio_public_prefix.rstrip('/')}/{audio['file']}"

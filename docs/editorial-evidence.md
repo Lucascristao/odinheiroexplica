@@ -6,11 +6,13 @@ Este é o contrato do motor para as próximas produções. Complementa `editoria
 
 Durante a leitura das fontes, escolher uma manchete, trecho ou gráfico que ajude a demonstrar uma afirmação do roteiro. Capturar a página real pelo navegador disponível e guardar a imagem em `research/captures/`, no repositório usado pelo render. Não gerar uma imitação de notícia com IA. Registrar a fonte em `sources`, a data real da captura e o papel do recorte na explicação. Uma página inteira com texto minúsculo não serve como recorte final.
 
-A captura é realizada na etapa de pesquisa conduzida pelo ChatGPT; o worker prepara o arquivo salvo, não abre páginas nem escolhe notícias autonomamente. Não enviar caminho temporário do computador para o Actions. Antes de disparar a produção, o arquivo precisa estar no commit, ou em uma URL HTTPS de imagem acessível ao worker. Preferir arquivo local versionado para reproduzir a mesma captura. Não usar URL HTML como `image_url`.
+O chat escolhe a fonte e o trecho durante a pesquisa. O runner pode executar `worker/auto_capture_sources.py` com `source_page_url` e `expected_text` para capturar a passagem real antes da voz. Ele verifica o texto na página, salva o bloco completo e registra `captured_at` com o UTC real. Não preencher uma data fictícia de captura no projeto planejado. Uma captura existente pode ser versionada ou fornecida por URL HTTPS de imagem; caminhos temporários do computador não servem ao Actions. Não usar URL HTML como `image_url`.
+
+Escolher `expected_text` e, quando necessário, `target_selector` para preservar quem, qual opção, período, unidade e condição sustentam a fala. Uma data isolada ou um cabeçalho não comprovam uma regra. A revisão compara o recorte com a passagem exata em que será mostrado. O capturador valida presença de texto; a suficiência do contexto exige revisão editorial.
 
 Em `visual_assets`, usar:
 
-- `type: source_excerpt`, `id`, `source_id` existente, `captured_at` em ISO UTC;
+- `type: source_excerpt`, `id`, `source_id` existente e `expected_text` literal; `captured_at` em ISO UTC depois da captura;
 - `capture_file: research/captures/nome.png` **ou** `image_url`, nunca ambos;
 - `source_page_url`, `subject`, `narrative_role`, `country_context`, `license` e atribuição quando aplicável;
 - `needs_cutout: false`;
@@ -20,7 +22,7 @@ O worker guarda a captura original, o recorte, dimensões, região escolhida e h
 
 ## Recorte no palco
 
-Criar elemento `kind: source_excerpt` com `asset_id`, região do palco e `label` identificador. Dimensões e caminho da imagem são preenchidos pelo compilador; não inventar `asset_width`, `asset_height` ou `asset_file` no roteiro. O rótulo não é impresso como rodapé. A identificação que já pertence ao recorte autêntico é preservada.
+Criar elemento `kind: source_excerpt` com `asset_id`, região do palco e `label` identificador. Dimensões e caminho da imagem são preenchidos pelo compilador; não inventar `asset_width`, `asset_height` ou `asset_file` no roteiro. A identificação que já pertence ao recorte autêntico é preservada. O renderer utiliza somente a imagem real preparada; não substitui o documento por texto predefinido nem imprime selo de verificação.
 
 `annotations` é uma lista de `{id, style, region}`. Estilos: `highlight`, `underline`, `strike`, `circle`. A região usa porcentagens **do recorte preparado**, não da página original ou da tela inteira. Definir regiões separadas para linhas de uma manchete. O destaque não pode ocultar ressalvas nem alterar a interpretação da fonte.
 

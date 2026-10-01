@@ -49,8 +49,8 @@ def prepare_excerpt(raw: bytes, output_dir: Path, asset: dict) -> tuple[str, dic
         raise RuntimeError("Recorte fora da captura original.")
     box = (round(x*image.width/100), round(y*image.height/100), round((x+w)*image.width/100), round((y+h)*image.height/100))
     image = image.crop(box)
-    if min(image.size) < 100:
-        raise RuntimeError("Recorte muito pequeno. Capture uma região legível em maior resolução.")
+    if image.width < 300 or image.height < 20:
+        raise RuntimeError("Recorte sem resolução documental suficiente. Capture o bloco textual completo em maior resolução.")
     validate_excerpt_image(image, str(asset["id"]))
     filename = f"{safe_name(asset['id'])}.png"
     original_image.save(output_dir / original)

@@ -191,7 +191,7 @@ Siga também `docs/editorial-attention.md` para roteiro falado, escolha de image
 
 Siga docs/editorial-continuity.md. O motor usa visual.stage com objetos identificáveis e visual.beats como eventos sobre eles. Cada evento tem anchor literal, target_id, action e prominence. O padrão é contextual. reveal_ids/retire_ids controlam elementos auxiliares em regiões reservadas; moves permite reposicionar mantendo identidade.
 
-Quando a relação pedir um percurso espacial, defina `visual.stage.initial_camera` e câmeras nos beats relevantes como `{x, y, zoom, motion_seconds}`. `x` e `y` são percentuais do palco seguro (0–100), `zoom` vai de 1 a 1,6 e o movimento dura 0,2–2 segundos. Enquadre o objeto alvo inteiro, incluindo rótulo, dado e unidade; a validação rejeita câmera que o corte. Informações que só serão explicadas depois começam com `initially_visible:false` e aparecem por `action:reveal` ou `reveal_ids` no beat correspondente. Não use texto ou dado cortado na borda para antecipar o próximo conteúdo. A câmera deve seguir a informação narrada e parar para leitura. Revise a prévia descrita em `docs/visual-preview.md`, incluindo quadros intermediários dos movimentos, antes do render final.
+Quando a relação pedir um percurso espacial, defina `visual.stage.initial_camera` e câmeras nos beats relevantes como `{x, y, zoom, motion_seconds}`. `x` e `y` são percentuais do palco seguro (0–100), `zoom` vai de 1 a 1,6 e o movimento dura 0,2–2 segundos. Enquadre o objeto alvo inteiro, incluindo rótulo, dado e unidade; a validação rejeita câmera que o corte. Informações que só serão explicadas depois começam com `initially_visible:false` e aparecem por `action:reveal` ou `reveal_ids` no beat correspondente. Não use texto ou dado cortado na borda para antecipar o próximo conteúdo. A câmera deve seguir a informação narrada e parar para leitura. Revise o vídeo real e os quadros intermediários dos movimentos conforme `docs/visual-preview.md`. A prévia silenciosa é opcional; a produção autorizada ocorre na main, sem PR obrigatório.
 
 Não copiar a composição do MED. Definir palco e relações conforme a informação da pauta. Usar fotografia, fluxo, comparação ou texto quando explicam melhor, com identidade do canal preservada.
 
@@ -280,3 +280,16 @@ Escrever intenção, contraste e pausas na própria narração. A direção comu
 - Para gráficos, registre valores observados, datas de cada ponto e uma fonte específica que sustente a série. Nunca invente pontos para dias ou meses futuros. Distinguir PTAX, fechamento comercial e máxima intradiária.
 - Recortes de fonte exigem uma URL da página específica, `expected_text` verificável e captura legível. Homepage, índice de notícias ou substituto sintético não são prova documental. Se a evidência não estiver disponível, troque o tratamento visual ou suspenda o plano.
 - O palco JSON resolve posição, revelação e atualização. Quando a história exigir morph, travelling, mapa animado ou montagem com ritmo próprio, especifique essa necessidade para uma composição Remotion autoral; não simule a capacidade com vários cartões iguais.
+
+
+## Contrato de compreensão e produção na main
+
+Leia `docs/editorial-explanation.md` antes de construir o roteiro. Novas produções preenchem `editorial.explanation`: conceitos definidos no momento necessário, exemplos observados/derivados/ilustrativos/analogias com origem e limites, unidades explicativas ligadas a claims e elementos reais, e revisão com trechos correspondentes ao hash do conteúdo atual. Quantidade de strings presentes não demonstra compreensão.
+
+Comece pela pergunta e pelo que muda para o público. Construa o storyboard a partir de participantes, operações e consequências. Demonstre a relação difícil com objetos, conta ou comparação quando útil. Não imponha quantidade de cenas, duração, exemplos ou efeitos. Uma conta hipotética precisa de identificação na fala e na tela; não invente alíquotas ou resultados reais. Regras de unidades, elegibilidade e compensação continuam válidas no exemplo.
+
+Use operações implementadas no beat quando a tela demonstra uma equação ou comparação. Tratamentos com nomes diferentes não substituem acontecimentos visuais. Reserve espaço para SVGs, legendas, operadores e relações, com fontes mínimas legíveis. A mudança visual acompanha a ideia narrada e preserva o beneficiário quando há mais de um crédito ou fluxo.
+
+Valide antes da voz e revise o significado com evidências: o público identifica a mudança, os participantes, o beneficiário, as condições e o limite? A conclusão entrega o que a abertura e o título prometeram? A automação verifica integridade, proveniência e aritmética; não certifica compreensão ou verdade das fontes por campos preenchidos.
+
+A produção real está autorizada na main. Não exigir PR, integração direta com outra IA, acesso ao PC ou amostras de voz a cada execução. O chat com acesso ao GitHub aplica o mesmo contrato; o Actions entrega o MP4 e os relatórios. Corrija os problemas necessários e retome usando o áudio válido. Voz segue exclusivamente `worker/voice-policy.json`: Gemini 3.8 Live, sem fallback ou DSP. Publicação manual.

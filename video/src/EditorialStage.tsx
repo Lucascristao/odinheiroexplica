@@ -2,55 +2,29 @@ import {SourceExcerpt, EditorialChart} from "./EditorialEvidence";
 import type {Emphasis} from "../../src/lib/editorial-evidence";
 import {EditorialIcon} from "./EditorialIcon";
 import {EditorialObject} from "./EditorialObject";
-import {useEffect, useId, useMemo, useState} from "react";
-import {AbsoluteFill, Img, cancelRender, continueRender, delayRender, interpolate, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
-import {loadFont} from "@remotion/fonts";
-import {measureText} from "@remotion/layout-utils";
-import {editorialStageSchema, fitsStageCamera, resolveStage, resolveStageCamera, stageCameraVisibility, type EditorialStage as Stage, type StageEvent} from "../../src/lib/editorial-stage";
+import {EditorialOperation} from "./EditorialOperation";
+import {useId, useMemo} from "react";
+import {AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
+import {useEditorialFont, measureEditorialText} from "./editorial-font";
+import {composeText, EDITORIAL_FONT} from "../../src/lib/editorial-typography";
+import {entranceMotion, layoutStage, nodeContent, pointOnRoute} from "../../src/lib/editorial-layout";
+import {editorialStageSchema, type EditorialStage as Stage, type StageEvent} from "../../src/lib/editorial-stage";
 
-const FONT = "ODE Inter";
+const FONT = EDITORIAL_FONT;
 const WHITE = "#f6f7f8";
 const GOLD = "#ffbd19";
 const MUTED = "#9ba4ae";
 const clamp = {extrapolateLeft: "clamp", extrapolateRight: "clamp"} as const;
-let fontPromise: Promise<unknown> | undefined;
-
-function useEditorialFont() {
-  const [handle] = useState(() => delayRender("Loading editorial font"));
-  const [ready, setReady] = useState(false);
-  useEffect(() => {
-    fontPromise ??= loadFont({family: FONT, url: staticFile("fonts/inter-latin-700-normal.woff2"), weight: "700"});
-    fontPromise.then(() => {setReady(true); continueRender(handle);}).catch(cancelRender);
-  }, [handle]);
-  return ready;
-}
-
-// Measure with the bundled font. Never squeeze letters or silently clip facts.
-const wrap = (text: string, size: number, width: number) => {
-  const lines: string[] = [];
-  for (const word of text.trim().split(/\s+/)) {
-    const last = lines.at(-1);
-    const candidate = last ? `${last} ${word}` : word;
-    if (last && measureText({text: candidate, fontFamily: FONT, fontSize: size, fontWeight: 700}).width > width) lines.push(word);
-    else if (last) lines[lines.length - 1] = candidate;
-    else lines.push(word);
-  }
-  return lines;
-};
 
 const TextBox = ({text, width, height, maxSize = 42, minSize = 32, color = WHITE, emphasis, progress = 1}: {emphasis?: Emphasis | null; progress?: number; text: string; width: number; height: number; maxSize?: number; minSize?: number; color?: string}) => {
-  let size = maxSize;
-  let lines = wrap(text, size, width);
-  const fits = () => lines.length * size * 1.18 <= height && lines.every(line => measureText({text: line, fontFamily: FONT, fontSize: size, fontWeight: 700}).width <= width);
-  while (size > 18 && !fits()) {size -= 1; lines = wrap(text, size, width);}
-  if (!fits()) {
-    size = Math.max(16, Math.min(size, Math.floor(height / Math.max(1, lines.length * 1.18))));
-  }
+  const layout=composeText(text,width,height,maxSize,minSize,measureEditorialText);
+  if(!layout.fits) throw new Error(`Texto não cabe na fonte mínima ${minSize}: “${text}” (${Math.ceil(layout.requiredWidth)} × ${Math.ceil(layout.requiredHeight)} px; disponíveis ${Math.floor(width)} × ${Math.floor(height)}).`);
+  const {size,lines}=layout;
   const normalized=text.trim().replace(/\s+/g," ");
   const start=emphasis ? normalized.indexOf(emphasis.phrase.trim().replace(/\s+/g," ")) : -1;
   const end=start+(emphasis?.phrase.trim().replace(/\s+/g," ").length??0);
   let cursor=0;
-  return <div style={{fontSize:size,lineHeight:1.18,fontWeight:700,color,whiteSpace:"pre",letterSpacing:0}}>{lines.map((line,i)=>{
+  return <div data-text-minimum={minSize} data-text-size={size} style={{fontSize:size,lineHeight:1.18,fontWeight:700,color,whiteSpace:"pre",letterSpacing:0}}>{lines.map((line,i)=>{
     const offset=cursor;cursor+=line.length+1;
     const a=Math.max(0,start-offset),b=Math.min(line.length,end-offset);
     if(start<0||b<=a)return <div key={i}>{line}</div>;
@@ -62,90 +36,34 @@ const TextBox = ({text, width, height, maxSize = 42, minSize = 32, color = WHITE
   })}</div>;
 };
 
-export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: StageEvent[]; title?: string}) => {
+export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Stage; beats: StageEvent[]; title?: string; frameOverride?: number}) => {
   const accent = GOLD;
-  const frame = useCurrentFrame();
+  const actualFrame = useCurrentFrame();
+  const frame = frameOverride ?? actualFrame;
   const {fps, width, height} = useVideoConfig();
   const ready = useEditorialFont();
   const arrowId = useId().replace(/:/g, "");
   const checkedStage = useMemo(() => editorialStageSchema.parse(stage), [stage]);
   if (!ready) return null;
-  const {elements, active} = resolveStage(checkedStage, beats, frame, fps);
+  const solved=layoutStage(checkedStage,beats,frame,fps,width,height,measureEditorialText,title);
+  const {elements,active,canvas,camera}=solved;
+  if(solved.issues.length) throw new Error(solved.issues.map(i=>`${i.element??i.connection??"Palco"}: ${i.message}`).join("\n"));
   const routeNodes = new Set(checkedStage.connections.flatMap(({from, to}) => [from, to]));
-  const canvas = {x: 130, y: checkedStage.show_title ? 230 : 130, width: width - 260, height: height - (checkedStage.show_title ? 360 : 230)};
-  const cameraEnabled = Boolean(checkedStage.initial_camera || beats.some((beat) => beat.camera));
-  const fitRelationCamera = (at: number) => {
-    const requested = resolveStageCamera(checkedStage, beats, at, fps);
-    const state = at === frame ? {elements, active} : resolveStage(checkedStage, beats, at, fps);
-    const ids = new Set(state.active?.target_id ? [state.active.target_id] : []);
-    // A connection explains two ends. Keep the visible causal group together
-    // when an authored close-up would otherwise remove the other end.
-    let changed = true;
-    while (changed) {
-      changed = false;
-      for (const edge of checkedStage.connections) {
-        if (!ids.has(edge.from) && !ids.has(edge.to)) continue;
-        for (const id of [edge.from, edge.to]) {
-          if (!ids.has(id) && state.elements.some(e => e.id === id && e.visible)) {ids.add(id); changed = true;}
-        }
-      }
-    }
-    const group = state.elements.filter(e => ids.has(e.id) && e.visible);
-    if (group.length < 2 || group.every(e => fitsStageCamera(e, requested))) return requested;
-    const left = Math.min(...group.map(e => e.x)), right = Math.max(...group.map(e => e.x + e.width));
-    const top = Math.min(...group.map(e => e.y)), bottom = Math.max(...group.map(e => e.y + e.height));
-    const zoom = Math.max(1, Math.min(requested.zoom, 100 / (right-left+6), 100 / (bottom-top+6)));
-    return {x:(left+right)/2,y:(top+bottom)/2,zoom};
-  };
-  const camera = cameraEnabled ? fitRelationCamera(frame) : {x:50,y:50,zoom:1};
   const cameraX = (50 - camera.x) * canvas.width * camera.zoom / 100;
   const cameraY = (50 - camera.y) * canvas.height * camera.zoom / 100;
-  const rect = (e: typeof elements[number]) => ({x: e.x * canvas.width / 100, y: e.y * canvas.height / 100, w: e.width * canvas.width / 100, h: e.height * canvas.height / 100});
-  const revealMotion = (e: typeof elements[number], at: number) => {
-    const reveal = interpolate(at - e.changedAt, [0, e.visibilityDuration], [0, 1], clamp);
-    const heroMetric = e.kind === "metric" && e.width >= 40 && !e.overlay_on;
-    const diagramStep = e.kind === "step" && !e.overlay_on;
-    return {
-      reveal,
-      scale: heroMetric ? 0.82 + 0.18 * reveal : 0.96 + 0.04 * reveal,
-      x: diagramStep ? (1 - reveal) * (e.x > 50 ? 42 : -42) : 0,
-      y: (1 - reveal) * (heroMetric ? 8 : 28),
-    };
-  };
-  const samples = new Map([[frame, {elements, camera}]]);
-  const fitsAt = (id: string, at: number) => {
-    if (!samples.has(at)) samples.set(at, {
-      elements: resolveStage(checkedStage, beats, at, fps).elements,
-      camera: cameraEnabled ? fitRelationCamera(at) : {x:50,y:50,zoom:1},
-    });
-    const sample = samples.get(at)!;
-    const element = sample.elements.find(e => e.id === id)!;
-    const motion = revealMotion(element, at);
-    // Account for the element's own centered scale and pixel translation before
-    // applying the stage camera. Otherwise reveal motion can still clip text.
-    return fitsStageCamera({
-      x: element.x + element.width * (1 - motion.scale) / 2 + motion.x / canvas.width * 100,
-      y: element.y + element.height * (1 - motion.scale) / 2 + motion.y / canvas.height * 100,
-      width: element.width * motion.scale,
-      height: element.height * motion.scale,
-    }, sample.camera);
-  };
-  const cameraOpacityById = new Map(elements.map(e => [e.id,
-    !cameraEnabled || ["photo", "source_excerpt"].includes(e.kind) ? 1 :
-      stageCameraVisibility(at => fitsAt(e.id, at), frame, fps * 0.2),
-  ]));
-  const cameraOpacity = (e: typeof elements[number]) => Math.min(
-    cameraOpacityById.get(e.id) ?? 1,
-    e.overlay_on ? cameraOpacityById.get(e.overlay_on) ?? 1 : 1,
-  );
+  const rect = (e: typeof elements[number]) => ({x:e.x*canvas.width/100,y:e.y*canvas.height/100,w:e.width*canvas.width/100,h:e.height*canvas.height/100});
+  const revealMotion = entranceMotion;
+  // Camera capacity is checked in the solver. Never conceal an information
+  // box to make an invalid close-up look valid.
+  const cameraOpacity = (_e: typeof elements[number]) => 1;
   const focus = interpolate(frame - (active?.resolved_frame ?? 0), [0, (active?.motion_seconds??0.45)*fps], [0, 1], clamp);
   const takeover = active?.prominence === "takeover";
   return <AbsoluteFill style={{fontFamily: FONT}}>
     {checkedStage.show_title && <div style={{position: "absolute", top: 118, left: 130}}>
-      <TextBox text={title ?? ""} width={canvas.width} height={90} maxSize={46} />
+      <TextBox text={title ?? ""} width={canvas.width} height={90} maxSize={46} minSize={36} />
     </div>}
-    <div style={{position: "absolute", left: canvas.x, top: canvas.y, width: canvas.width, height: canvas.height, overflow: cameraEnabled ? "hidden" : "visible"}}>
-    <div style={{position: "absolute", inset: 0, transformOrigin: "50% 50%", transform: cameraEnabled ? `translate(${cameraX}px, ${cameraY}px) scale(${camera.zoom})` : undefined}}>
+    <div data-editorial-canvas style={{position: "absolute", left: canvas.x, top: canvas.y, width: canvas.width, height: canvas.height, overflow: "hidden"}}>
+    <div style={{position: "absolute", inset: 0, transformOrigin: "50% 50%", transform: `translate(${cameraX}px, ${cameraY}px) scale(${camera.zoom})`}}>
       <svg width={canvas.width} height={canvas.height} style={{position: "absolute", inset: 0}}>
         <defs><marker id={arrowId} markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8" fill="none" stroke="#78858e" strokeWidth="1.5" /></marker></defs>
         {checkedStage.connections.map((edge, i) => {
@@ -153,40 +71,35 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
           const to = elements.find(e => e.id === edge.to)!;
           const cameraAlpha = Math.min(cameraOpacity(from), cameraOpacity(to));
           if (!from.visible || !to.visible || cameraAlpha === 0) return null;
-          const a = rect(from), b = rect(to);
-          const horizontal = Math.abs((b.x+b.w/2)-(a.x+a.w/2)) >= Math.abs((b.y+b.h/2)-(a.y+a.h/2));
-          const forward = horizontal ? b.x > a.x : b.y > a.y;
-          const x1 = horizontal ? a.x + (forward ? a.w : 0) : a.x+a.w/2;
-          const x2 = horizontal ? b.x + (forward ? 0 : b.w) : b.x+b.w/2;
-          const y1 = horizontal ? a.y+a.h/2 : a.y+(forward ? a.h : 0);
-          const y2 = horizontal ? b.y+b.h/2 : b.y+(forward ? 0 : b.h);
-          const bend = Math.min(55, Math.max(18, (horizontal ? Math.abs(x2-x1) : Math.abs(y2-y1)) * 0.22));
-          const controlX = horizontal ? (x1+x2)/2 : (x1+x2)/2 + (forward ? bend*2 : -bend*2);
-          const controlY = horizontal ? (y1+y2)/2 - bend*2 : (y1+y2)/2;
-          const path = `M${x1},${y1} Q${controlX},${controlY} ${x2},${y2}`;
+          const connection=solved.connections[i];
+          const path=connection.path;
           const arrival = beats.filter(beat => [edge.from, edge.to].includes(beat.target_id ?? "") && beat.action !== "retire" &&
             typeof beat.resolved_frame === "number" && beat.resolved_frame <= frame).at(-1);
           const routeDuration = Math.max(arrival?.motion_seconds ?? 0.45, 1.15) * fps;
           const routeProgress = arrival ? interpolate(frame - arrival.resolved_frame!, [0, routeDuration], [0, 1], clamp) : 0;
           const selected = Boolean(arrival && frame - arrival.resolved_frame! < routeDuration);
-          const dotX = (1-routeProgress)**2*x1 + 2*(1-routeProgress)*routeProgress*controlX + routeProgress**2*x2;
-          const dotY = (1-routeProgress)**2*y1 + 2*(1-routeProgress)*routeProgress*controlY + routeProgress**2*y2;
+          const dot=pointOnRoute(connection.points,routeProgress);
+          const dotX=dot.x,dotY=dot.y;
           const edgeEnter = interpolate(frame - Math.max(from.changedAt, to.changedAt), [0, fps * 0.35], [0, 1], clamp);
           return <g key={`${edge.from}-${edge.to}-${i}`} opacity={edgeEnter * cameraAlpha * (takeover ? 0.15 : 1)}>
             <path d={path} fill="none" stroke="#45515a" strokeWidth={2} strokeDasharray="8 10" markerEnd={`url(#${arrowId})`} />
             {routeProgress > 0 && <path d={path} fill="none" pathLength={1} stroke={accent} strokeWidth={5} strokeLinecap="round" strokeDasharray={1} strokeDashoffset={1-routeProgress} />}
             {selected && routeProgress > 0 && <circle cx={dotX} cy={dotY} r={8} fill={accent} stroke="#101317" strokeWidth={3} />}
-            {selected && /dólar|US\$|R\$|moeda/i.test(`${from.label} ${to.label} ${edge.label ?? ""}`) && [0, 0.22, 0.44].map((delay, coin) => {
+            {selected && edge.semantic === "transfer" && [0, 0.22, 0.44].map((delay, coin) => {
               const p = (routeProgress - delay) / (1 - delay);
               if (p < 0 || p > 1) return null;
-              const x = (1-p)**2*x1 + 2*(1-p)*p*controlX + p*p*x2;
-              const y = (1-p)**2*y1 + 2*(1-p)*p*controlY + p*p*y2;
-              return <g key={coin} transform={`translate(${x},${y})`}><circle r={17} fill={GOLD} stroke="#101317" strokeWidth={3}/><text textAnchor="middle" dominantBaseline="central" fontSize={20} fontWeight={700} fill="#101317">$</text></g>;
+              const {x,y}=pointOnRoute(connection.points,p);
+              return <g key={coin} transform={`translate(${x},${y})`}><circle r={edge.token_label?17:9} fill={GOLD} stroke="#101317" strokeWidth={3}/>{edge.token_label&&<text textAnchor="middle" dominantBaseline="central" fontSize={20} fontWeight={700} fill="#101317">{edge.token_label}</text>}</g>;
             })}
-            {edge.label && <text x={(x1+x2)/2} y={horizontal ? (y1+y2)/2-bend-18 : (y1+y2)/2-14} textAnchor="middle" fill={routeProgress === 1 ? accent : MUTED} fontSize={30}>{edge.label}</text>}
+            {connection.label && <foreignObject data-connection-id={connection.id} x={connection.label.box.x} y={connection.label.box.y} width={connection.label.box.w} height={connection.label.box.h}>
+              <div style={{padding:"8px 10px",boxSizing:"border-box",background:"rgba(10,14,18,.94)",borderRadius:8}}>
+                <TextBox text={connection.label.text} width={connection.label.box.w-20} height={connection.label.box.h-16} maxSize={connection.label.layout.size} minSize={30} color={routeProgress===1?accent:MUTED}/>
+              </div>
+            </foreignObject>}
           </g>;
         })}
       </svg>
+      {solved.operation&&<EditorialOperation operation={solved.operation} frame={frame} fps={fps}/>}
       {elements.slice().sort((a,b)=>Number(Boolean(a.overlay_on))-Number(Boolean(b.overlay_on))).map(element => {
         const cameraAlpha = cameraOpacity(element);
         if (cameraAlpha === 0) return null;
@@ -216,20 +129,11 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
           ? (selected ? "2px solid #FFBD19" : "1px solid rgba(255, 255, 255, 0.10)")
           : undefined;
         const cardShadow = isCard && !isRouteNode
-          ? (selected ? "0 20px 45px rgba(255, 189, 25, 0.25), 0 8px 24px rgba(0,0,0,0.8)" : "0 12px 30px rgba(0, 0, 0, 0.6)")
+          ? (selected ? "0 10px 26px rgba(0,0,0,0.65)" : "0 12px 30px rgba(0, 0, 0, 0.6)")
           : undefined;
 
-        const cardPadding = isExcerpt ? 0 : isCard && !isRouteNode ? 24 : 16;
-        const iconSize = element.icon ? (isWideBanner ? 48 : Math.min(130, Math.max(68, box.h * 0.38))) : 0;
-        const iconSpace = element.icon ? iconSize + 20 : 0;
-
-        // Cálculos de largura e altura internas com padding respeitado
-        const innerW = Math.max(40, box.w - cardPadding * 2 - (stacked ? 0 : iconSpace));
-        const innerH = Math.max(40, box.h - cardPadding * 2 - (stacked ? iconSpace : 0));
-
-        const valueH = element.value ? innerH * (isWideBanner ? 0.45 : (element.value_size > 100 ? 0.65 : 0.42)) : 0;
-        const detailH = element.detail ? innerH * (element.value ? (element.value_size > 100 ? 0.14 : 0.28) : 0.4) : 0;
-        const labelH = Math.max(20, innerH - valueH - detailH);
+        const content=nodeContent(element,box,isRouteNode);
+        const {padding:cardPadding,iconSize,innerW,valueH,detailH,labelH}=content;
 
         const cueProgress = interpolate(frame - element.cueFrame, [0, element.cueDuration], [0, 1], clamp);
         const cueEase = cueProgress * cueProgress * (3 - 2 * cueProgress);
@@ -354,7 +258,6 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
                       boxShadow: selected ? "0 0 20px rgba(255, 189, 25, 0.35)" : undefined,
                       flexShrink: 0,
                       transform: `scale(${selected ? 1.05 : 1.0})`,
-                      transition: "transform 0.2s ease",
                     }}
                   >
                     <EditorialIcon name={element.icon} size={iconSize} color={color} progress={selected ? focus : reveal} />
@@ -367,6 +270,7 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
                         text={displayedValue ?? element.value}
                         width={innerW}
                         height={valueH}
+                        minSize={48}
                         maxSize={isHeroMetric || giantNumber ? Math.max(108, element.value_size ?? 72) : element.value_size ?? 52}
                         color={GOLD}
                       />
@@ -393,6 +297,7 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
                         width={innerW}
                         height={detailH}
                         maxSize={30}
+                        minSize={28}
                         color={MUTED}
                       />
                     </div>
@@ -418,16 +323,12 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
       })}
     </div>
     </div>
-    {elements.filter(element => element.kind === "photo" && element.asset_file && element.visible && !checkedStage.elements.some(child => child.overlay_on === element.id)).map(element => {
-      // The picture may be cropped by camera motion; its caption lives in screen
-      // coordinates and stays wholly inside the visible portion of the picture.
-      const left = Math.max(canvas.x, canvas.x + (50 + (element.x - camera.x) * camera.zoom) * canvas.width / 100);
-      const right = Math.min(canvas.x + canvas.width, canvas.x + (50 + (element.x + element.width - camera.x) * camera.zoom) * canvas.width / 100);
-      const top = Math.max(canvas.y, canvas.y + (50 + (element.y - camera.y) * camera.zoom) * canvas.height / 100);
-      const bottom = Math.min(canvas.y + canvas.height, canvas.y + (50 + (element.y + element.height - camera.y) * camera.zoom) * canvas.height / 100);
-      if (right - left < 180 || bottom - top < 95) return null;
-      return <div key={`caption-${element.id}`} style={{position: "absolute", left: left + 10, top: bottom - 94, width: right - left - 20, height: 84, padding: "10px 12px", boxSizing: "border-box", borderRadius: 8, background: "rgba(8,12,16,0.88)", opacity: revealMotion(element, frame).reveal}}>
-        <TextBox text={element.label} width={right - left - 44} height={64} maxSize={27} />
+    {solved.photo_captions.map(caption => {
+      const element=elements.find(e=>e.id===caption.id)!;
+      // Screen-space caption capacity is solved and validated with the photo's
+      // current transform; an insufficient region fails instead of disappearing.
+      return <div key={`caption-${element.id}`} data-photo-caption-id={element.id} style={{position: "absolute", left: caption.box.x, top: caption.box.y, width: caption.box.w, height: caption.box.h, padding: "10px 12px", boxSizing: "border-box", borderRadius: 8, background: "rgba(8,12,16,0.88)", opacity: revealMotion(element, frame).reveal}}>
+        <TextBox text={caption.text} width={caption.box.w-24} height={64} maxSize={27} minSize={24} />
       </div>;
     })}
   </AbsoluteFill>;

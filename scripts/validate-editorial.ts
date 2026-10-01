@@ -1,11 +1,15 @@
 import {validateSpeechDirection} from "../src/lib/speech-direction";
 import {readFileSync} from "node:fs";
+import {createHash} from "node:crypto";
+import {normalizeEditorialProject,explanationReviewContent,stableJson} from "../src/lib/editorial-project";
+import {validateExplanation} from "../src/lib/editorial-explanation";
 import {editorialStageSchema, stageEventFields, validateStageEvents} from "../src/lib/editorial-stage";
 import {z} from "zod";
 import {visualAssetSchema} from "../src/lib/video-project-schema";
 
 const path = process.argv[2] ?? "video/data/daily.json";
-const project = JSON.parse(readFileSync(path, "utf8"));
+const rawProject = JSON.parse(readFileSync(path, "utf8"));
+const project = normalizeEditorialProject(rawProject);
 const scenes = project.scenes ?? project.script?.scenes ?? [];
 const assets = new Set((project.visual_assets ?? []).map((a: {id: string}) => a.id));
 const stagedAssets = new Set<string>(scenes.flatMap((scene: any) =>
@@ -21,6 +25,12 @@ const imageScenes = scenes.filter((scene: any) => {
 }).length;
 console.log(`Cobertura visual: ${imageScenes}/${scenes.length} cenas com foto ou recorte utilizável.`);
 let failures = 0;
+for(const error of validateExplanation(project)){console.error(`Explicação: ${error}`);failures++;}
+if(process.argv.includes("--require-explanation")&&!project.editorial?.explanation){console.error("Produção exige contrato editorial.explanation; migre conceitos, exemplos e unidades.");failures++;}
+if(project.editorial?.explanation) {
+  const digest=createHash("sha256").update(stableJson(explanationReviewContent(rawProject))).digest("hex");
+  if(project.editorial.explanation.review?.content_sha256!==digest){console.error("Revisão editorial corresponde a outro conteúdo; revise o roteiro e atualize a evidência.");failures++;}
+}
 // Check the spoken script, rather than assuming the agent followed prose docs.
 const contract = project.editorial?.narrative_contract ?? {};
 const narrations = scenes.map((scene: any) => String(scene.narration ?? ""));

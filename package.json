@@ -18,7 +18,10 @@
     "still:daily": "remotion still video/src/index.ts DailyThumbnail render-output/daily-thumbnail.png",
     "prepare:editorial-font": "node scripts/prepare-editorial-font.mjs",
     "postinstall": "npm run prepare:editorial-font",
-    "validate:editorial": "tsx scripts/validate-editorial.ts"
+    "validate:editorial": "tsx scripts/validate-editorial.ts",
+    "validate:layout": "tsx scripts/validate-editorial-layout.ts",
+    "test:explanation": "tsx scripts/test-editorial-explanation.ts",
+    "test:layout": "tsx scripts/test-editorial-layout.ts"
   },
   "dependencies": {
     "@netlify/blobs": "11.0.3",
@@ -31,6 +34,8 @@
   "devDependencies": {
     "@fontsource/inter": "^5.3.0",
     "@remotion/cli": "4.0.529",
+    "@remotion/bundler": "4.0.529",
+    "@remotion/renderer": "4.0.529",
     "@remotion/fonts": "4.0.529",
     "@remotion/layout-utils": "4.0.529",
     "@remotion/media": "4.0.529",

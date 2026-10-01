@@ -24,6 +24,18 @@ def recognized_words(words, probability=0.95):
 
 
 class AnchorAlignmentTests(unittest.TestCase):
+    def test_numeric_anchor_cannot_pass_with_one_changed_token(self):
+        narration = "O prazo é trinta de outubro e a escolha não muda o Simples."
+        recognized = recognized_words(["O", "prazo", "é", "trinta", "e", "um", "de", "outubro", "e", "a", "escolha", "não", "muda", "o", "Simples"])
+        accepted, report = alignment.locate_anchors(narration, [{"anchor": "trinta de outubro"}], recognized, 12)
+        self.assertEqual(accepted, {})
+
+    def test_boundary_padding_respects_natural_silence_without_cutting_audio(self):
+        current = {"audio_activity": {"has_activity": True, "tail_seconds": .4}}
+        following = {"audio_activity": {"has_activity": True, "lead_seconds": .3}}
+        self.assertEqual(render.boundary_padding(current, following)["padding_seconds"], 0)
+        self.assertEqual(render.boundary_padding({}, {})["padding_seconds"], render.SCENE_TAIL_SECONDS)
+        self.assertEqual(render.boundary_padding(current, None)["padding_seconds"], render.FINAL_SCENE_TAIL_SECONDS)
     def test_aliases_accents_and_numbers_share_spoken_tokens(self):
         self.assertEqual(
             alignment.tokens("A PTAX e o PIB chegam a 100.", {"PTAX": "pêtax"}),

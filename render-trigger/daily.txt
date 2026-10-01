@@ -1,4 +1,5 @@
-Produção autorizada: Simples Nacional híbrido — validação final com Gemini 3.8 Live.
-Narração: modelo único gemini-3.8-live, voz Charon, leitura literal com direção natural e pronúncias do projeto.
-Sem fallback de modelo e sem DSP; WAV bruto 24 kHz preservado byte a byte.
-Trigger: gemini-live-production-2026-10-01
+Produção autorizada: novo Simples Nacional híbrido, pesquisa revisada em 01/10/2026.
+Motor geral: layout compartilhado, legendas reservadas, operações visuais reais, conceitos e exemplos verificáveis e provas autênticas legíveis.
+Narração: somente gemini-3.8-live/Charon, direção por cena separada do texto, fidelidade literal e WAV bruto preservado.
+Verificações antes da voz, após a timeline real e antes da entrega ao Drive; publicação do vídeo permanece manual.
+Trigger: motor-general-live-simples-2026-10-01-v2

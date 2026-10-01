@@ -15,9 +15,37 @@ import os
 from pathlib import Path
 import re
 import unicodedata
+import wave
+
+from editorial_project import normalize_project
 
 
-VERSION = "audio-word-alignment-v1"
+VERSION = "audio-word-alignment-v2-activity"
+
+
+def audio_activity(path):
+    """Measure raw WAV only; never rewrite, normalize, trim or resample it."""
+    import numpy as np
+    with wave.open(str(path), "rb") as wav:
+        rate, channels, width = wav.getframerate(), wav.getnchannels(), wav.getsampwidth()
+        if channels != 1 or width != 2:
+            raise ValueError("Atividade Live exige WAV PCM16 mono bruto.")
+        samples = np.frombuffer(wav.readframes(wav.getnframes()), dtype="<i2").astype(np.float64) / 32768
+    if not len(samples):
+        raise ValueError("WAV Live vazio.")
+    duration = len(samples) / rate
+    window = max(1, round(rate * .02))
+    padded = np.pad(samples, (0, (-len(samples)) % window))
+    rms = np.sqrt(np.mean(padded.reshape(-1, window) ** 2, axis=1))
+    active = np.flatnonzero(rms > 10 ** (-45 / 20))
+    lead = float(active[0] * .02) if len(active) else duration
+    last = min(duration, float((active[-1] + 1) * .02)) if len(active) else duration
+    return {"method": "raw-pcm-energy-20ms-gate-minus45dbfs", "sample_rate_hz": rate,
+            "duration_seconds": round(duration, 6), "lead_seconds": round(lead, 6),
+            "tail_seconds": round(duration-last, 6), "active_seconds": round(len(active) * .02, 6),
+            "has_activity": bool(len(active)), "rms_dbfs": round(float(20 * np.log10(max(1e-12, np.sqrt(np.mean(samples**2))))), 3),
+            "sample_peak_dbfs": round(float(20 * np.log10(max(1e-12, np.max(np.abs(samples))))), 3),
+            "caveat": "activity estimates, not exact phonetic boundaries or a listening assessment"}
 
 
 def tokens(text, aliases=None):
@@ -70,7 +98,8 @@ def locate_anchors(narration, beats, recognized, duration, aliases=None):
             anchor_coverage = len(indices) / len(anchor)
             confidence = sum(offsets[i][2] for i in indices) / max(1, len(indices))
             reason = "low-confidence-or-coverage"
-            if coverage >= .65 and anchor_coverage >= .8 and confidence >= .65 and position in matched:
+            contiguous = bool(indices) and all(b == a + 1 for a, b in zip(indices, indices[1:]))
+            if coverage >= .65 and anchor_coverage == 1 and contiguous and confidence >= .65 and position in matched:
                 offset = offsets[matched[position]][0]
                 span = max((offsets[i][1] for i in indices), default=offset) - offset
                 earliest = previous_offset + .4 * (index - previous_index) if previous_index >= 0 else (.1 + .4 * index if index else 0.0)
@@ -120,7 +149,7 @@ def main():
     parser.add_argument("--model", default="base")
     args = parser.parse_args()
     source_dir = Path(args.source_dir).resolve()
-    project = json.loads(Path(args.project).read_text(encoding="utf-8"))
+    project = normalize_project(json.loads(Path(args.project).read_text(encoding="utf-8")))
     result = copy.deepcopy(json.loads(Path(args.input_manifest).read_text(encoding="utf-8")))
     aliases = (project.get("speech") or {}).get("pronunciations") or {}
     scenes = project.get("scenes") or project.get("script", {}).get("scenes", [])
@@ -144,17 +173,20 @@ def main():
         narration_hash = hashlib.sha256(scene["narration"].strip().encode()).hexdigest()
         if narration_hash != audio.get("narration_sha256"):
             raise RuntimeError(f"Narration hash differs for {audio['id']}.")
+        audio["audio_activity"] = audio_activity(path)
+        scene_aliases = {**aliases, **((scene.get("tts") or {}).get("pronunciations") or {})}
+        words = []
         accepted, details = {}, {"aligned_beats": 0, "total_beats": len((scene.get("visual") or {}).get("beats") or []), "reason": model_failure or "no-beats"}
         if model is not None and details["total_beats"]:
             try:
                 segments, _ = model.transcribe(str(path), language="pt", beam_size=1, word_timestamps=True, vad_filter=True, condition_on_previous_text=False, temperature=0)
                 words = [{"word": w.word, "start": w.start, "end": w.end, "probability": w.probability} for segment in segments for w in (segment.words or [])]
-                accepted, details = locate_anchors(scene["narration"], scene["visual"]["beats"], words, float(audio["duration_seconds"]), aliases)
+                accepted, details = locate_anchors(scene["narration"], scene["visual"]["beats"], words, float(audio["duration_seconds"]), scene_aliases)
             except Exception as exc:
                 details["reason"] = "recognition-failed-" + type(exc).__name__
         originals = {int(item["beat_index"]): item for item in audio.get("beat_timings", [])}
         audio["beat_timings"] = merge_timings(originals, accepted, float(audio["duration_seconds"]))
-        audio["alignment"] = {"version": VERSION, "source_audio_sha256": audio_hash, "narration_sha256": narration_hash, "model": args.model, **details}
+        audio["alignment"] = {"version": VERSION, "source_audio_sha256": audio_hash, "narration_sha256": narration_hash, "model": args.model, "recognized_words": words, **details}
         report["scenes"].append({"id": audio["id"], **audio["alignment"]})
         print(f"[Alignment] {audio['id']}: {len(accepted)}/{details['total_beats']} anchors located; remaining timings are estimates.", flush=True)
     result["alignment"] = {"version": VERSION, "engine": report["engine"], "model": args.model, "aligned_beats": sum(s["aligned_beats"] for s in report["scenes"]), "total_beats": sum(s["total_beats"] for s in report["scenes"])}

@@ -32,7 +32,12 @@ from tts_config import (
     project_pronunciations,
     project_speech_fingerprint,
     voice_policy_fingerprint,
+    scene_voice_direction,
+    scene_direction_fingerprint,
+    live_turn_text,
 )
+from editorial_project import normalize_project
+from gemini_live_fidelity import evaluate_transcription, canonical_tokens
 
 SAMPLE_RATE = 24000
 CHANNELS = 1
@@ -78,12 +83,8 @@ def normalize_transcript(text: str) -> str:
     return " ".join(re.findall(r"[a-z0-9]+", value))
 
 
-def transcription_similarity(reference: str, transcript: str) -> float:
-    left = normalize_transcript(reference)
-    right = normalize_transcript(transcript)
-    if not left or not right:
-        return 0.0
-    return round(SequenceMatcher(None, left, right).ratio(), 6)
+def transcription_similarity(reference: str, transcript: str, pronunciations=None) -> float:
+    return evaluate_transcription(reference, transcript, pronunciations)["similarity"]
 
 
 def write_pcm_wav(path: Path, pcm: bytes) -> None:
@@ -103,6 +104,10 @@ def cached_duration(
     voice: str,
     voice_treatment: str = NO_VOICE_TREATMENT,
     speech_profile_fingerprint: str | None = None,
+    *,
+    narration: str | None = None,
+    pronunciations: dict | None = None,
+    direction_fingerprint: str | None = None,
 ) -> float | None:
     sidecar = output_file.with_suffix(".tts.json")
     if not output_file.is_file() or not sidecar.is_file():
@@ -120,11 +125,14 @@ def cached_duration(
             != voice_policy_fingerprint(model, voice),
             metadata.get("speech_profile_fingerprint")
             != speech_profile_fingerprint,
+            metadata.get("scene_direction_fingerprint") != direction_fingerprint,
             float(metadata.get("output_transcription_similarity", 0))
             < MINIMUM_TRANSCRIPTION_SIMILARITY,
             output_file.stat().st_size <= 1000,
             metadata.get("audio_sha256") != audio_sha256(output_file),
         )):
+            return None
+        if narration is not None and not evaluate_transcription(narration, metadata.get("output_transcription") or "", pronunciations, MINIMUM_TRANSCRIPTION_SIMILARITY)["passed"]:
             return None
         actual_duration = duration_seconds(output_file)
         recorded_duration = float(metadata["duration_seconds"])
@@ -151,6 +159,9 @@ def save_audio_sidecar(
     speech_profile_fingerprint: str | None = None,
     output_transcription: str | None = None,
     output_transcription_similarity: float | None = None,
+    *,
+    direction_fingerprint: str | None = None,
+    fidelity: dict | None = None,
 ) -> None:
     sidecar = output_file.with_suffix(".tts.json")
     metadata = {
@@ -168,6 +179,8 @@ def save_audio_sidecar(
         "duration_seconds": duration,
         "output_transcription": output_transcription,
         "output_transcription_similarity": output_transcription_similarity,
+        "scene_direction_fingerprint": direction_fingerprint,
+        "output_fidelity": fidelity,
     }
     temporary = sidecar.with_name(sidecar.name + ".tmp")
     temporary.write_text(
@@ -186,6 +199,8 @@ async def _receive_live_turn(session) -> tuple[bytes, str]:
         server = getattr(response, "server_content", None)
         if server is None:
             continue
+        if bool(getattr(server, "interrupted", False)):
+            raise RuntimeError("Gemini Live interrompeu a fala; o áudio parcial não será aceito.")
 
         model_turn = getattr(server, "model_turn", None)
         if model_turn is not None:
@@ -196,6 +211,9 @@ async def _receive_live_turn(session) -> tuple[bytes, str]:
                     if inline is not None else None
                 )
                 if data:
+                    mime = str(getattr(inline, "mime_type", "") or "")
+                    if mime and (not mime.startswith("audio/pcm") or ("rate=" in mime and not re.search(r"rate=24000(?:;|$)", mime))):
+                        raise RuntimeError("Gemini Live retornou formato PCM diferente de 24 kHz bruto.")
                     pcm_chunks.append(bytes(data))
 
         transcription = getattr(server, "output_transcription", None)
@@ -215,7 +233,7 @@ async def _receive_live_turn(session) -> tuple[bytes, str]:
 
     pcm = b"".join(pcm_chunks)
     transcript = "".join(transcript_chunks).strip()
-    if len(pcm) < SAMPLE_RATE * SAMPLE_WIDTH:
+    if len(pcm) % SAMPLE_WIDTH or len(pcm) < SAMPLE_RATE * SAMPLE_WIDTH:
         raise RuntimeError("Gemini Live retornou menos de um segundo de áudio.")
     if not transcript:
         raise RuntimeError("Gemini Live não retornou a transcrição da própria saída.")
@@ -253,20 +271,19 @@ async def synthesize_missing_jobs(
                 turns={
                     "role": "user",
                     "parts": [{
-                        "text": "ROTEIRO:\n" + job["narration"]
+                        "text": live_turn_text(job["narration"], job.get("direction") or {})
                     }],
                 },
                 turn_complete=True,
             )
-            pcm, transcript = await _receive_live_turn(session)
-            similarity = transcription_similarity(
-                job["narration"], transcript
-            )
-            if similarity < MINIMUM_TRANSCRIPTION_SIMILARITY:
+            pcm, transcript = await asyncio.wait_for(_receive_live_turn(session), timeout=max(120, len(job["narration"]) * .2))
+            fidelity = evaluate_transcription(job["narration"], transcript, {**pronunciations, **(job.get("direction") or {}).get("pronunciations", {})}, MINIMUM_TRANSCRIPTION_SIMILARITY)
+            similarity = fidelity["similarity"]
+            if not fidelity["passed"]:
                 raise RuntimeError(
                     f"Gemini Live divergiu do roteiro em {scene_id}: "
-                    f"similaridade {similarity:.4f} < "
-                    f"{MINIMUM_TRANSCRIPTION_SIMILARITY:.4f}."
+                    f"similaridade {similarity:.4f}; alteração literal: "
+                    f"{json.dumps(fidelity['differences'][:3], ensure_ascii=False)}."
                 )
 
             write_pcm_wav(job["output_file"], pcm)
@@ -287,11 +304,14 @@ async def synthesize_missing_jobs(
                 speech_fingerprint,
                 transcript,
                 similarity,
+                direction_fingerprint=job.get("direction_fingerprint"),
+                fidelity=fidelity,
             )
             completed[scene_id] = {
                 "duration": duration,
                 "transcript": transcript,
                 "similarity": similarity,
+                "fidelity": fidelity,
             }
             print(
                 f"    [Gemini Live] {duration:.2f}s; "
@@ -375,7 +395,7 @@ def main() -> None:
             "GEMINI_API_KEY não disponível; este render exige Gemini Live."
         )
 
-    payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
+    payload = normalize_project(json.loads(Path(args.input).read_text(encoding="utf-8")))
     scenes = payload.get("scenes") or payload.get("script", {}).get(
         "scenes", []
     )
@@ -388,9 +408,9 @@ def main() -> None:
         or presenter.get("voice_id")
         or DEFAULT_PRESENTER
     )
-    project_voice = PRESENTER_VOICES.get(
-        presenter_key, DEFAULT_TTS_VOICE
-    )
+    if presenter_key not in PRESENTER_VOICES:
+        raise ValueError("Apresentador não previsto na política vocal.")
+    project_voice = PRESENTER_VOICES[presenter_key]
     presenter_name = PRESENTER_NAMES.get(presenter_key, "Roberto")
     pronunciations = project_pronunciations(payload)
     speech_fingerprint = project_speech_fingerprint(payload)
@@ -409,6 +429,8 @@ def main() -> None:
         narration = str(scene["narration"]).strip()
         if not narration:
             raise RuntimeError(f"Cena {scene_id} sem narração.")
+        # Check normalization dependencies before spending any Live requests.
+        canonical_tokens(narration, {**pronunciations, **scene_voice_direction(scene).get("pronunciations", {})})
         jobs.append({
             "scene": scene,
             "scene_index": scene_index,
@@ -418,6 +440,8 @@ def main() -> None:
                 narration.encode("utf-8")
             ).hexdigest(),
             "output_file": output_dir / f"{scene_id}.wav",
+            "direction": scene_voice_direction(scene),
+            "direction_fingerprint": scene_direction_fingerprint(scene),
         })
 
     print(
@@ -447,6 +471,9 @@ def main() -> None:
             project_voice,
             NO_VOICE_TREATMENT,
             speech_fingerprint,
+            narration=job["narration"],
+            pronunciations={**pronunciations, **job["direction"].get("pronunciations", {})},
+            direction_fingerprint=job["direction_fingerprint"],
         )
         if duration is None:
             missing.append(job)
@@ -500,7 +527,7 @@ def main() -> None:
         "speech_profile_fingerprint": speech_fingerprint,
         "output_format": "pcm-s16le-24000-mono-wav",
         "timing_mode": "estimated-character-alignment",
-        "delivery_version": "gemini-live-v1-exact-transcript",
+        "delivery_version": "gemini-live-v2-literal-tokens-directed-scenes",
         "fallback_scene_ids": [],
         "fallback_scene_ids_by_model": {},
         "model_transition_scene_ids": [],
@@ -541,6 +568,9 @@ def main() -> None:
                 "output_transcription_similarity"
             ),
             "audio_sha256": sidecar["audio_sha256"],
+            "scene_direction_fingerprint": job["direction_fingerprint"],
+            "scene_voice_direction": job["direction"],
+            "output_fidelity": evaluate_transcription(job["narration"], sidecar.get("output_transcription") or "", {**pronunciations, **job["direction"].get("pronunciations", {})}, MINIMUM_TRANSCRIPTION_SIMILARITY),
             "beat_timings": beat_timings,
         })
         manifest["total_duration_seconds"] += job["duration"]

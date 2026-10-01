@@ -6,6 +6,7 @@ on:
       - "video/data/daily.json"
       - "video/src/**"
       - "src/lib/editorial-stage.ts"
+      - "src/lib/editorial-*.ts"
       - "worker/build_render_input.py"
       - "worker/create_visual_preview_audio.py"
       - "worker/prepare_visual_assets.py"
@@ -42,6 +43,9 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Normalize portable editorial project
+        run: python worker/editorial_project.py --input video/data/daily.json --output video/generated/daily-project.json
+
       - name: Install Node dependencies
         run: npm ci --no-audit --no-fund
 
@@ -49,10 +53,10 @@ jobs:
         run: |
           npm run validate:editorial -- video/data/daily.json
           python worker/editorial_source_audit.py \
-            --input video/data/daily.json \
+            --input video/generated/daily-project.json \
             --output /tmp/daily-source-audit.json --strict
           python worker/pronunciation_audit.py \
-            --input video/data/daily.json \
+            --input video/generated/daily-project.json \
             --output /tmp/daily-pronunciation-audit.json --strict
 
       - name: Detect document captures
@@ -60,7 +64,7 @@ jobs:
         run: |
           python - <<'PY' >> "$GITHUB_OUTPUT"
           import json
-          project = json.load(open("video/data/daily.json", encoding="utf-8"))
+          project = json.load(open("video/generated/daily-project.json", encoding="utf-8"))
           required = any(asset.get("type") == "source_excerpt" for asset in project.get("visual_assets", []))
           print(f"required={'true' if required else 'false'}")
           PY
@@ -84,14 +88,14 @@ jobs:
         run: |
           mkdir -p research/captures
           python worker/auto_capture_sources.py \
-            --project video/data/daily.json \
+            --project video/generated/daily-project.json \
             --captures-dir research/captures
 
       - name: Prepare photos and documentary assets
         run: |
           mkdir -p public/generated-assets video/generated
           python worker/prepare_visual_assets.py \
-            --project video/data/daily.json \
+            --project video/generated/daily-project.json \
             --output-dir public/generated-assets \
             --manifest video/generated/daily-visual-assets.json
 
@@ -100,11 +104,11 @@ jobs:
           mkdir -p public/generated-audio/visual-preview render-output
           python worker/generate_sound_design.py --output-dir public/generated-sfx
           python worker/create_visual_preview_audio.py \
-            --project video/data/daily.json \
+            --project video/generated/daily-project.json \
             --output-dir public/generated-audio/visual-preview \
             --manifest video/generated/visual-preview-tts-manifest.json
           python worker/build_render_input.py \
-            --project video/data/daily.json \
+            --project video/generated/daily-project.json \
             --tts-manifest video/generated/visual-preview-tts-manifest.json \
             --audio-public-prefix generated-audio/visual-preview \
             --visual-assets-manifest video/generated/daily-visual-assets.json \

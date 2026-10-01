@@ -2,6 +2,8 @@ import {speechDirectionSchema, validateSpeechDirection} from "./speech-direction
 import { z } from "zod";
 import {editorialStageSchema, stageEventFields, validateStageEvents} from "./editorial-stage";
 import {regionSchema} from "./editorial-evidence";
+import {normalizeEditorialProject} from "./editorial-project";
+import {explanationSchema,validateExplanation} from "./editorial-explanation";
 
 const sourceSchema = z
   .object({
@@ -79,7 +81,7 @@ export const visualAssetSchema = z
   .passthrough().superRefine((asset,ctx)=>{
     if(Boolean(asset.image_url)===Boolean(asset.capture_file))ctx.addIssue({code:"custom",message:"Asset exige image_url ou capture_file, exclusivamente."});
     if(asset.image_fallback_urls?.length && !asset.image_url)ctx.addIssue({code:"custom",message:"image_fallback_urls exige image_url principal."});
-    if(asset.type==="source_excerpt" && (!asset.source_id||!asset.captured_at||asset.needs_cutout))ctx.addIssue({code:"custom",message:"Recorte exige source_id, captured_at e fundo preservado."});
+    if(asset.type==="source_excerpt" && (!asset.source_id||asset.needs_cutout))ctx.addIssue({code:"custom",message:"Recorte exige source_id e fundo preservado; captured_at é registrado pelo capturador."});
     if(asset.crop && asset.type!=="source_excerpt")ctx.addIssue({code:"custom",message:"Recorte regional exige tipo source_excerpt."});
   });
 
@@ -196,7 +198,7 @@ const sceneSchema = z
     validateSpeechDirection(scene.narration, scene.tts).forEach(message => ctx.addIssue({code: "custom", path: ["tts"], message}));
   });
 
-export const videoProjectSchema = z
+const canonicalVideoProjectSchema = z
   .object({
     version: z.literal("1.0"),
     story: z
@@ -219,6 +221,7 @@ export const videoProjectSchema = z
     }),
     editorial: z
       .object({
+        explanation: explanationSchema.optional(),
         viral_score: z.number().int().min(0).max(100).optional(),
         strengths: z.array(z.string()).default([]),
         risk_flags: z.array(z.string()).default([]),
@@ -334,6 +337,7 @@ export const videoProjectSchema = z
   })
   .passthrough()
   .superRefine((project, ctx) => {
+    validateExplanation(project).forEach(message=>ctx.addIssue({code:"custom",path:["editorial","explanation"],message}));
     const sourceIds = new Set<string>();
     project.sources.forEach((source, index) => {
       if (sourceIds.has(source.id)) {
@@ -467,6 +471,9 @@ export const videoProjectSchema = z
     });
   });
 
+export const videoProjectSchema = z.preprocess((raw,ctx)=>{
+  try{return normalizeEditorialProject(raw);}catch(error){ctx.addIssue({code:"custom",message:String(error)});return z.NEVER;}
+},canonicalVideoProjectSchema);
 export type VideoProject = z.infer<typeof videoProjectSchema>;
 
 export const hardRiskFlags = new Set([

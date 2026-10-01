@@ -1,9 +1,9 @@
-# Prévia visual pelo GitHub
+# Revisão visual pelo GitHub
 
-Ao abrir ou atualizar um pull request que altere o roteiro diário, o palco ou o renderer, a Action **Prévia visual do vídeo diário** valida `video/data/daily.json`, prepara as fotos e capturas documentais, monta a timeline e renderiza um trecho da primeira cena do componente `DailyEditorial`. O artifact `daily-visual-preview` contém também quadros de outras cenas e um plano que identifica os frames. A Action pode ser iniciada manualmente pelo GitHub com `workflow_dispatch`.
+A produção autorizada usa diretamente a `main`. O fluxo normal é pesquisa e storyboard → validações e revisão editorial → vídeo real com Gemini 3.8 Live → revisão dos artefatos → ajustes e retomada pelo cache. Não exige PR nem acesso ao computador do autor. A publicação é manual.
 
-Esta é uma revisão de **composição, movimento e legibilidade** que funciona em uma conta GitHub sem acesso ao computador do autor. Ela não usa `GEMINI_API_KEY`, não consome a cota TTS e não envia ao Drive. O helper `worker/create_visual_preview_audio.py` cria MP3s silenciosos e um manifesto marcado `preview_only`. Cada duração e beat é estimado da narração escrita; o arquivo de abertura é renderizado com `--muted`.
+Confira o MP4 final, os quadros e os relatórios do Actions/Drive. Revise textos e SVGs, rótulos das conexões, operadores, unidades, identificação dos exemplos e os quadros intermediários dos movimentos. Conferir apenas início e fim não comprova legibilidade da animação.
 
-O manifesto de prévia não passa em `build_render_input.py --require-gemini`. Portanto, a Action de produção continua exigindo áudio verdadeiro Gemini em todas as cenas e a mesma voz predefinida. O modelo 3.1 só pode complementar cenas pendentes após falha do 3.8, com tratamento de voz e registro por cena. **A prévia não comprova duração da fala, pronúncia, continuidade do timbre nem sincronização com a voz.** Essas verificações dependem do render com TTS real.
+A Action **Prévia visual do vídeo diário** continua disponível por `workflow_dispatch` na main quando houver uma dúvida concreta de composição. PRs são opcionais. Ela prepara assets e entrega `daily-visual-preview`, sem Gemini ou envio ao Drive. O helper cria áudio silencioso e tempos estimados, identificados como `preview_only`; esse material não pode entrar no render de produção.
 
-Fluxo para um pedido recebido por chat: produzir o roteiro e a direção visual no repositório, abrir/atualizar o PR, baixar e assistir ao artifact da prévia, corrigir o que for necessário, e só então acionar o render diário final. A Action de prévia não substitui a decisão editorial nem cria uma pauta automaticamente.
+Uma prévia silenciosa avalia composição, movimento e leitura. Naturalidade, pronúncia, integridade e sincronização dependem do vídeo com áudio real. Não gere amostras de voz ou renders extras por obrigação. Alterações visuais aproveitam áudio válido conforme `worker/voice-policy.json`.

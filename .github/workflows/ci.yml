@@ -23,13 +23,18 @@ jobs:
           python-version: "3.11"
 
       - name: Install
-        run: npm install --no-audit --no-fund
+        run: npm ci --no-audit --no-fund
 
       - name: Validate daily editorial contract
-        run: npm run validate:editorial -- video/data/daily.json
+        run: npm run validate:editorial -- video/data/daily.json --require-explanation
+
+      - name: Test explanatory contract and shared layout
+        run: |
+          npm run test:explanation
+          npm run test:layout
 
       - name: Validate Python pipeline
-        run: python -m py_compile worker/render_request.py worker/tts_config.py worker/synthesize_scenes.py worker/process_voice_continuity.py worker/restore_reviewed_audio.py worker/build_render_input.py worker/build_youtube_package.py worker/editorial_source_audit.py worker/prepare_visual_assets.py worker/auto_capture_sources.py
+        run: python -m py_compile worker/editorial_project.py worker/qa_delivery.py worker/render_request.py worker/tts_config.py worker/synthesize_scenes.py worker/process_voice_continuity.py worker/restore_reviewed_audio.py worker/build_render_input.py worker/build_youtube_package.py worker/editorial_source_audit.py worker/prepare_visual_assets.py worker/auto_capture_sources.py
 
       - name: Test source-capture navigation retry (offline)
         run: python worker/test_auto_capture_sources.py
@@ -57,6 +62,9 @@ jobs:
 
       - name: Test Gemini Live byte-identical passthrough
         run: python worker/test_process_voice_continuity.py
+
+      - name: Test delivery integrity and Live policy (offline)
+        run: python worker/test_qa_delivery.py
 
       - name: Audit daily source balance
         run: python worker/editorial_source_audit.py --input video/data/daily.json --output /tmp/daily-source-audit.json --strict

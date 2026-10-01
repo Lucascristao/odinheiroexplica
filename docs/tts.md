@@ -22,9 +22,11 @@ O Gemini Live devolve PCM mono de 16 bits a 24 kHz. O worker apenas encapsula es
 
 ## Cache e retomada
 
-Cada WAV tem um sidecar `.tts.json` com texto, modelo, voz, duração, hash do áudio, versão da política, fingerprint da direção vocal, fingerprint das pronúncias do projeto e transcrição de saída. Mudança de roteiro, voz, política ou pronúncias invalida o cache correspondente.
+Cada WAV tem um sidecar `.tts.json` com texto, modelo, voz, duração, hash do áudio, versão da política, fingerprint da direção vocal, fingerprint das pronúncias do projeto e transcrição de saída. A direção por cena em `tts.delivery` e `tts.cues` também integra o cache. Mudança de roteiro, voz, política, pronúncias ou direção invalida apenas as cenas correspondentes.
 
 Regeneração integral continua exigindo o input manual `force_fresh_audio` no primeiro attempt de um `workflow_dispatch`. Pushes e reruns retomam cache válido.
+
+`tts.delivery` aceita hook, explain, contrast, question ou closing. Os cues identificam até seis trechos literais e únicos com intenção de emphasis, number ou contrast; são enviados em instruções separadas da leitura. Pausas são intenções aproximadas, não tempos garantidos. Rate e pitch não alteram o áudio bruto. Não inserir marcações de atuação no texto narrado.
 
 ## Alinhamento e entrega
 

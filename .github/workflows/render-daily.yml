@@ -24,7 +24,7 @@ concurrency:
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    timeout-minutes: 90
 
     env:
       ODE_PROGRESS_URL: https://odinheiroexplica.netlify.app/.netlify/functions/render-progress
@@ -35,12 +35,15 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Normalize portable editorial project
+        run: python worker/editorial_project.py --input video/data/daily.json --output video/generated/daily-project.json
+
       - name: Read project metadata
         env:
           ODE_REQUESTED_FRESH_AUDIO: ${{ inputs.force_fresh_audio || false }}
         shell: bash
         run: |
-          python worker/render_request.py --project video/data/daily.json >> "$GITHUB_ENV"
+          python worker/render_request.py --project video/generated/daily-project.json >> "$GITHUB_ENV"
 
       - name: Python
         uses: actions/setup-python@v5
@@ -56,9 +59,12 @@ jobs:
         run: npm ci --no-audit --no-fund
 
       - name: Compile editorial contract before paid synthesis
-        run: npm run validate:editorial -- video/data/daily.json
+        run: npm run validate:editorial -- video/data/daily.json --require-explanation
 
-      - name: Validate canonical voice policy before TTS
+      - name: Typecheck before narration
+        run: npm run typecheck
+
+      - name: Validate canonical voice policy before narration
         run: python worker/validate_voice_policy.py
 
       - name: Report start
@@ -90,7 +96,7 @@ jobs:
         run: |
           mkdir -p video/generated
           python worker/editorial_source_audit.py \
-            --input video/data/daily.json \
+            --input video/generated/daily-project.json \
             --output video/generated/daily-source-audit.json \
             --strict
 
@@ -98,7 +104,7 @@ jobs:
         run: |
           mkdir -p research/captures
           python worker/auto_capture_sources.py \
-            --project video/data/daily.json \
+            --project video/generated/daily-project.json \
             --captures-dir research/captures
 
       - name: Prepare narrative visual assets
@@ -106,7 +112,7 @@ jobs:
           rm -rf public/generated-assets
           mkdir -p public/generated-assets video/generated
           python worker/prepare_visual_assets.py \
-            --project video/data/daily.json \
+            --project video/generated/daily-project.json \
             --output-dir public/generated-assets \
             --manifest video/generated/daily-visual-assets.json
 
@@ -114,9 +120,17 @@ jobs:
         run: |
           mkdir -p video/generated
           python worker/pronunciation_audit.py \
-            --input video/data/daily.json \
+            --input video/generated/daily-project.json \
             --output video/generated/daily-pronunciation-audit.json \
             --strict
+
+      - name: Check composition with production font before narration
+        run: |
+          npm run validate:layout -- \
+            --project video/generated/daily-project.json \
+            --visual-assets-manifest video/generated/daily-visual-assets.json \
+            --output video/generated/daily-layout-preflight.json \
+            --frames-dir render-output/layout-preflight
 
       - name: Restore matching Gemini audio
         if: env.ODE_FORCE_FRESH_AUDIO != 'true'
@@ -134,7 +148,7 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
         run: |
           python worker/restore_reviewed_audio.py \
-            --project video/data/daily.json \
+            --project video/generated/daily-project.json \
             --trigger-file render-trigger/daily.txt \
             --output-dir public/generated-audio/daily
 
@@ -156,7 +170,7 @@ jobs:
           fi
           mkdir -p public/generated-audio/daily video/generated render-output
           python worker/synthesize_scenes.py \
-            --input video/data/daily.json \
+            --input video/generated/daily-project.json \
             --output-dir public/generated-audio/daily \
             --manifest video/generated/daily-tts-manifest.json
 
@@ -186,7 +200,7 @@ jobs:
       - name: Align visual anchors with real narration
         run: |
           python worker/align_narration.py \
-            --project video/data/daily.json \
+            --project video/generated/daily-project.json \
             --input-manifest video/generated/daily-processed-tts-manifest.json \
             --source-dir public/processed-audio/daily \
             --output-manifest video/generated/daily-aligned-tts-manifest.json \
@@ -203,7 +217,7 @@ jobs:
             --detail "Narração pronta. Medindo a duração real e montando a timeline."
 
           python worker/build_render_input.py \
-            --project video/data/daily.json \
+            --project video/generated/daily-project.json \
             --tts-manifest video/generated/daily-aligned-tts-manifest.json \
             --require-gemini \
             --require-voice-continuity \
@@ -212,10 +226,18 @@ jobs:
             --visual-assets-manifest video/generated/daily-visual-assets.json \
             --output video/generated/daily-render-input.json
 
+      - name: Check layout with the actual narration clock
+        run: |
+          npm run validate:layout -- \
+            --project video/generated/daily-project.json \
+            --render-input video/generated/daily-render-input.json \
+            --output video/generated/daily-layout-final.json \
+            --frames-dir render-output/layout-final
+
       - name: Build YouTube package
         run: |
           python worker/build_youtube_package.py \
-            --project video/data/daily.json \
+            --project video/generated/daily-project.json \
             --render-input video/generated/daily-render-input.json \
             --output render-output/daily-youtube.json
 
@@ -228,9 +250,6 @@ jobs:
             --percent 28 \
             --detail "Timeline pronta. Preparando o Remotion." \
             --video-duration-seconds "$VIDEO_DURATION"
-
-      - name: Typecheck
-        run: npm run typecheck
 
       - name: Render video with live progress
         shell: bash
@@ -287,11 +306,32 @@ jobs:
             exit "$CODE"
           fi
 
+      - name: Verify delivery before Drive
+        run: |
+          python worker/qa_delivery.py \
+            --project video/generated/daily-project.json \
+            --render-input video/generated/daily-render-input.json \
+            --tts-manifest video/generated/daily-aligned-tts-manifest.json \
+            --audio-dir public/processed-audio/daily \
+            --video render-output/daily-video.mp4 \
+            --output video/generated/daily-delivery-qa.json
+
       - name: Upload production review artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: daily-production-review
           path: |
+            video/data/daily.json
+            video/generated/daily-project.json
+            video/generated/daily-layout-preflight.json
+            video/generated/daily-layout-final.json
+            video/generated/daily-delivery-qa.json
+            video/generated/daily-source-audit.json
+            video/generated/daily-pronunciation-audit.json
+            video/generated/daily-visual-assets.json
+            render-output/layout-preflight/
+            render-output/layout-final/
             render-output/daily-video.mp4
             render-output/daily-youtube.json
             render-output/daily-youtube.txt
@@ -302,7 +342,7 @@ jobs:
             video/generated/daily-render-input.json
             public/generated-audio/daily/*.wav
             public/processed-audio/daily/*
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 7
 
       - name: Upload package to Google Drive

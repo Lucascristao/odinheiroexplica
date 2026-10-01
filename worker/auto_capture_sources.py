@@ -1,6 +1,7 @@
 import argparse
 import json
 import sys
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
@@ -208,9 +209,9 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
     context = None
     try:
         context = playwright_browser.new_context(
-            viewport={"width": 1351, "height": 917},
+            viewport={"width": 600, "height": 917},
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
-            device_scale_factor=1,
+            device_scale_factor=2,
         )
         page = context.new_page()
 
@@ -283,7 +284,8 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
             page.wait_for_timeout(1000)
             wait_for_page_settle(page)
 
-        # 7. Screenshot do elemento ou viewport completa
+        # 7. Capture an authored region, or the complete contextual block.
+        # A verified phrase somewhere on a page does not make a viewport a proof.
         target_selector = asset.get("target_selector")
         captured_element = False
 
@@ -300,10 +302,26 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
                 raise RuntimeError(f"target_selector não visível: {target_selector}")
 
         if not captured_element:
-            page.screenshot(path=str(temp_path), full_page=False)
-            print(f"[auto_capture] Screenshot limpo salvo em: {dest_path.name}")
+            selected = evaluate_with_navigation_retry(page, r"""(expected) => {
+                const normalize = text => (text || '').replace(/\s+/g, ' ').trim().toLocaleLowerCase();
+                const needle = normalize(expected);
+                const candidates = [...document.querySelectorAll('p, li, tr, td, h1, h2, h3, blockquote, div, section, span, article, main')]
+                  .filter(el => el.getClientRects().length && normalize(el.innerText).includes(needle));
+                candidates.sort((a, b) => normalize(a.innerText).length - normalize(b.innerText).length);
+                const target = candidates[0];
+                if (!target) return false;
+                target.setAttribute('data-ode-source-proof', 'true');
+                return true;
+            }""", expected_text, operation_name="selecionar o bloco de evidência")
+            if not selected:
+                raise RuntimeError("trecho sem bloco contextual visível; forneça target_selector")
+            # Element screenshots retain the entire block, including text below
+            # the viewport. Never manufacture a document from authored text.
+            page.locator('[data-ode-source-proof="true"]').first.screenshot(path=str(temp_path))
+            print(f"[auto_capture] Bloco contextual completo salvo em: {dest_path.name}")
 
         temp_path.replace(dest_path)
+        asset["captured_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
         return True
 
     except Exception as exc:

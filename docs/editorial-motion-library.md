@@ -13,6 +13,24 @@ A implementação do projeto é própria e usa apenas os conceitos úteis para o
 
 ## Capacidades atuais
 
+### Operações do palco persistente
+
+Para produções novas, a matriz implementada está em `visualCapabilities`, no módulo `src/lib/editorial-layout.ts`. As operações têm dados próprios em `beat.operation`; escolher apenas um nome em `treatment` não constrói uma demonstração.
+
+| Operação | Dados e função |
+|---|---|
+| `equation` | `input_ids`, `operator`, `result_id`: liga valores declarados aos operadores; os números e a conta são conferidos em `editorial.explanation`. |
+| `compare` | `element_ids`: destaca os participantes da comparação, sem escolher automaticamente um vencedor. |
+| `stack` | `element_ids`: conecta itens em ordem vertical; reserve o corredor lateral. |
+| `meter` | `value`, `min`, `max`, `unit`: representa uma escala explícita, sem limitar silenciosamente um valor inválido. |
+| `signal` | `status`, `message`: revela uma condição textual, com seu significado declarado. |
+
+Conexões reservam espaço para suas legendas e acompanham a geometria dos objetos. `semantic: transfer` precisa representar uma transferência real; sem `token_label` explícito, o token é neutro. O motor não infere dinheiro por palavras da narração. Preserve as relações e deixe o conteúdo futuro oculto até o beat correspondente.
+
+A composição compartilhada usa a fonte de produção no Chromium e verifica estados de entrada, movimento, atualização e câmera. Falta de espaço produz diagnóstico antes da voz; aumentar a área, reorganizar blocos ou dividir a explicação é uma decisão editorial. Não reduzir indefinidamente a fonte nem esconder palavras.
+
+O Actions executa uma verificação antes da narração e outra com o relógio do áudio real, salvando quadros e relatórios. Textos em imagens documentais ainda exigem conferência visual: geometria válida não comprova legibilidade raster.
+
 ### word cascade
 
 Aplicado dentro de kinetic_type. Palavras não aparecem como um bloco único: entram em sequência, com deslocamento, blur e mudança de cor. A sequência precisa caber no intervalo real do beat.
