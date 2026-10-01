@@ -8,6 +8,10 @@ const stageCameraSchema = z.object({
   zoom: z.number().min(1).max(1.6),
   motion_seconds: z.number().min(0.2).max(2).optional(),
 });
+const stageEntranceSchema = z.object({
+  style: z.enum(["fade", "slide", "scale", "wipe"]),
+  direction: z.enum(["left", "right", "up", "down"]).optional(),
+});
 
 export const stageElementSchema = z.object({
   id: z.string().min(1),
@@ -25,6 +29,7 @@ export const stageElementSchema = z.object({
   detail: z.string().max(160).optional(),
   value: z.string().max(32).optional(),
   icon: z.enum(["bank", "wallet", "person", "search", "bell", "lock", "check", "refund", "shield", "warning", "clock", "phone", "receipt", "cart", "key", "eye-off", "route", "coins", "chart", "house", "car", "document", "globe"]).optional(),
+  svg_motion: z.enum(["assemble", "trace", "none"]).optional(),
   x: z.number().min(0).max(100),
   y: z.number().min(0).max(100),
   width: z.number().min(8).max(100),
@@ -51,6 +56,10 @@ export type VisualOperation = z.infer<typeof visualOperationSchema>;
 export const editorialStageSchema = z.object({
   show_title: z.boolean().default(true),
   initial_camera: stageCameraSchema.optional(),
+  // Automatic reframing is an author-selected tool, never a mandatory template.
+  // Missing settings preserve the legacy identity/authored camera path.
+  camera_mode: z.enum(["auto", "manual", "static"]).optional(),
+  motion_profile: z.enum(["narrative", "static"]).default("narrative"),
   elements: z.array(stageElementSchema).min(1).max(12),
   connections: z.array(z.object({
     id: z.string().min(1).optional(),
@@ -79,6 +88,7 @@ export const editorialStageSchema = z.object({
       if(!parent || !region || !["photo","object"].includes(parent.kind) || !["label","metric"].includes(element.kind) || element.detail || element.icon || parent.overlay_on || element.x<parent.x+region.x*parent.width/100 || element.y<parent.y+region.y*parent.height/100 || element.x+element.width>parent.x+(region.x+region.width)*parent.width/100 || element.y+element.height>parent.y+(region.y+region.height)*parent.height/100)ctx.addIssue({code:"custom",path:["elements",index],message:"Camada de texto precisa caber na região reservada de uma foto/objeto, sem ícone ou detalhe."});
     }
     if (element.kind === "object" && !element.object_type) ctx.addIssue({code: "custom", path: ["elements", index, "object_type"], message: "Objeto precisa de object_type."});
+    if(element.svg_motion==="assemble"&&element.kind!=="object")ctx.addIssue({code:"custom",path:["elements",index,"svg_motion"],message:"Montagem por partes exige um objeto SVG; ícones usam trace ou none."});
     if (element.x + element.width > 100 || element.y + element.height > 100) {
       ctx.addIssue({code: "custom", path: ["elements", index], message: "Elemento fora da área segura."});
     }
@@ -105,8 +115,10 @@ export const editorialStageSchema = z.object({
 
 export const stageEventFields = {
   operation: visualOperationSchema.optional(),
-  motion_seconds: z.number().min(0.1).max(2).default(0.45),
+  motion_seconds: z.number().min(0.1).max(2).optional(),
   camera: stageCameraSchema.optional(),
+  camera_mode: z.enum(["auto", "hold"]).optional(),
+  entrance: stageEntranceSchema.optional(),
   mark_ids: z.array(z.string()).max(16).optional(),
   view: regionSchema.optional(),
   emphasis: emphasisSchema.nullable().optional(),
@@ -127,6 +139,8 @@ export type StageEvent = {
   treatment?: "kinetic_type" | "giant_number" | "flow_diagram" | "timeline" | "split_compare" | "meter" | "spotlight" | "equation" | "stack" | "signal" | "masked_emphasis" | "depth_photo";
   motion_seconds?: number;
   camera?: StageCamera;
+  camera_mode?: "auto" | "hold";
+  entrance?: z.infer<typeof stageEntranceSchema>;
   mark_ids?: string[];
   view?: Region;
   emphasis?: Emphasis | null;
@@ -145,6 +159,16 @@ export type StageEvent = {
 };
 
 export type StageCamera = z.infer<typeof stageCameraSchema>;
+
+export const stageMotionSeconds = (beat: StageEvent) => beat.motion_seconds ?? 0.45;
+
+// A word sequence stays in the measured lines; only visibility/transforms change.
+// It finishes inside the authored cue so the following interval is a reading hold.
+export function kineticWordProgress(progress: number, index: number, count: number) {
+  const start = count <= 1 ? 0 : 0.42 * index / Math.max(1, count - 1);
+  const p = Math.max(0, Math.min(1, (progress - start) / 0.58));
+  return p * p * (3 - 2 * p);
+}
 
 // Informational elements enter the camera as whole units. Cropping a future
 // metric or label at the edge makes it look like damaged content.
@@ -171,24 +195,60 @@ export function stageCameraVisibility(fitsAtFrame: (frame: number) => boolean, f
   return progress * progress * (3 - 2 * progress);
 }
 
-// Camera cues share the same frame clock as the stage. A cue reaches its
-// destination before the next camera cue, so parallel Remotion workers resolve
-// identical positions regardless of frame order. Without cues, this is identity.
+// Opt-in auto shots consider the complete already-presented group. The layout
+// solver additionally protects routes, operators, raster captions and each
+// intermediate frame. It never hides context just to manufacture a close-up.
+function automaticCamera(stage: EditorialStage, beats: StageEvent[], beat: StageEvent, fps: number): StageCamera {
+  const state = resolveStage(stage, beats, beat.resolved_frame!, fps);
+  const visible = state.elements.filter(e => e.visible);
+  if (!visible.length) return {x: 50, y: 50, zoom: 1};
+  const regions = visible.flatMap(e => {
+    const move = beat.moves?.find(m => m.id === e.id);
+    return move ? [e,{...e, x: move.x, y: move.y}] : [e];
+  });
+  const left = Math.min(...regions.map(e => e.x));
+  const top = Math.min(...regions.map(e => e.y));
+  const right = Math.max(...regions.map(e => e.x + e.width));
+  const bottom = Math.max(...regions.map(e => e.y + e.height));
+  const zoom = Math.max(1, Math.min(beat.operation ? 1.1 : 1.2, 100 / (right - left + 6), 100 / (bottom - top + 6)));
+  const target = regions.find(e => e.id === beat.target_id);
+  const centerX = (left + right) / 2, centerY = (top + bottom) / 2;
+  const desiredX = target && !beat.operation ? centerX * 0.7 + (target.x + target.width / 2) * 0.3 : centerX;
+  const desiredY = target && !beat.operation ? centerY * 0.7 + (target.y + target.height / 2) * 0.3 : centerY;
+  const safe = (desired: number, min: number, max: number) => Math.max(max - 50 / zoom, Math.min(min + 50 / zoom, desired));
+  return {x: safe(desiredX, left, right), y: safe(desiredY, top, bottom), zoom};
+}
+
+// Finite cues, followed by a hold. Pure frame evaluation remains reproducible
+// when Remotion renders frames in parallel or in a different order.
 export function resolveStageCamera(stage: EditorialStage, beats: StageEvent[], frame: number, fps=30): StageCamera {
-  let camera: StageCamera = stage.initial_camera ?? {x: 50, y: 50, zoom: 1};
-  const cues = beats.filter((beat) => beat.camera && Number.isFinite(beat.resolved_frame))
-    .slice().sort((a, b) => a.resolved_frame! - b.resolved_frame!);
-  for (const [index, beat] of cues.entries()) {
-    if (beat.resolved_frame! > frame) break;
-    const nextFrame = cues[index + 1]?.resolved_frame ?? Infinity;
-    const duration = Math.max(1, Math.min((beat.camera!.motion_seconds ?? 0.9) * fps, nextFrame - beat.resolved_frame!));
-    const p = Math.min(1, Math.max(0, (frame - beat.resolved_frame!) / duration));
+  const initial = stage.initial_camera ?? {x: 50, y: 50, zoom: 1};
+  const mode = stage.camera_mode ?? (stage.motion_profile === "static" ? "static" : "manual");
+  if (mode === "static") return {...initial};
+  let camera: StageCamera = {...initial};
+  const ordered = beats.filter(beat => Number.isFinite(beat.resolved_frame)).slice().sort((a,b) => a.resolved_frame! - b.resolved_frame!);
+  let previousEnd = 0;
+  const candidates = ordered.flatMap(beat => {
+    if (beat.camera_mode === "hold") return [];
+    const auto = !beat.camera && (mode === "auto" || beat.camera_mode === "auto");
+    const destination = beat.camera ?? (auto && beat.action !== "retire" && beat.prominence !== "support" ? automaticCamera(stage, ordered, beat, fps) : undefined);
+    if (!destination) return [];
+    let start = beat.resolved_frame!, duration = (destination.motion_seconds ?? 0.9) * fps;
+    // Open room before an opt-in reveal; its future content stays hidden until
+    // the speech anchor. This avoids a camera snap when a distant item enters.
+    if (auto && (beat.action === "reveal" || beat.reveal_ids?.length)) {
+      start = Math.min(beat.resolved_frame!,Math.max(previousEnd, start-duration));
+      duration = Math.max(1, beat.resolved_frame!-start);
+    }
+    previousEnd = start+duration;
+    return [{start, duration, destination}];
+  });
+  const cues=candidates.map((cue,index)=>({...cue,duration:Math.max(1,Math.min(cue.duration,(candidates[index+1]?.start??Infinity)-cue.start))}));
+  for (const cue of cues) {
+    if (cue.start > frame) break;
+    const p = Math.max(0, Math.min(1, (frame - cue.start) / cue.duration));
     const eased = p * p * (3 - 2 * p);
-    camera = {
-      x: camera.x + (beat.camera!.x - camera.x) * eased,
-      y: camera.y + (beat.camera!.y - camera.y) * eased,
-      zoom: camera.zoom + (beat.camera!.zoom - camera.zoom) * eased,
-    };
+    camera = {x: camera.x + (cue.destination.x - camera.x) * eased, y: camera.y + (cue.destination.y - camera.y) * eased, zoom: camera.zoom + (cue.destination.zoom - camera.zoom) * eased};
   }
   return camera;
 }
@@ -199,6 +259,7 @@ export function validateStageEvents(stage: EditorialStage, beats: StageEvent[]):
   const visible = new Set(stage.elements.filter((e) => e.initially_visible).map((e) => e.id));
   const layout = stage.elements.map(e => ({...e}));
   for (const [index, beat] of beats.entries()) {
+    if(beat.camera&&beat.camera_mode==="hold")errors.push(`Beat ${index}: camera e camera_mode hold são instruções contraditórias; escolha mover ou manter o plano.`);
     const target=layout.find(e=>e.id===beat.target_id);
     if(target){
       if(beat.action==="update"){target.label=beat.headline;}
@@ -253,15 +314,15 @@ export function validateStageEvents(stage: EditorialStage, beats: StageEvent[]):
 // Pure frame evaluation works with parallel/out-of-order Remotion rendering.
 // Events preserve element identity and previous values until explicitly changed.
 export function resolveStage(stage: EditorialStage, beats: StageEvent[], frame: number, fps=30) {
-  const elements = stage.elements.map((element) => ({...element, visible: element.initially_visible !== false, wasVisible: element.initially_visible !== false, changedAt: 0, cueFrame:0, cueDuration:fps*0.45, cueAction:undefined as StageEvent["action"], treatment:undefined as StageEvent["treatment"], visibilityDuration:fps*0.35, markIds:[] as string[], markTiming:{} as Record<string,{frame:number;duration:number}>, emphasisTiming:{frame:0,duration:1}, view:{...fullView}, emphasis:null as Emphasis|null, chartFocus:null as {from:number;to:number}|null}));
+  const elements = stage.elements.map((element) => ({...element, motionProfile:stage.motion_profile, entrance:undefined as StageEvent["entrance"], visible: element.initially_visible !== false, wasVisible: element.initially_visible !== false, changedAt: 0, cueFrame:0, cueDuration:fps*0.45, cueAction:undefined as StageEvent["action"], treatment:undefined as StageEvent["treatment"], visibilityDuration:fps*0.35, markIds:[] as string[], markTiming:{} as Record<string,{frame:number;duration:number}>, emphasisTiming:{frame:0,duration:1}, view:{...fullView}, emphasis:null as Emphasis|null, chartFocus:null as {from:number;to:number}|null}));
   let active: StageEvent | undefined;
   const ordered = beats.filter((b) => Number.isFinite(b.resolved_frame)).slice().sort((a, b) => a.resolved_frame! - b.resolved_frame!);
   for (const [index, beat] of ordered.entries()) {
     if (beat.resolved_frame! > frame) break;
     active = beat;
-    const motionFrames = Math.max(1, Math.min((beat.motion_seconds??0.45)*fps, (ordered[index+1]?.resolved_frame ?? Infinity) - beat.resolved_frame!));
+    const motionFrames = Math.max(1, Math.min(stageMotionSeconds(beat)*fps, (ordered[index+1]?.resolved_frame ?? Infinity) - beat.resolved_frame!));
     const p = Math.min(1, Math.max(0, (frame-beat.resolved_frame!)/motionFrames));
-    const eased = p*p*(3-2*p);
+    const eased = stage.motion_profile === "static" ? 1 : p*p*(3-2*p);
     for (const element of elements) {
       const move = beat.moves?.find(m => m.id === element.id);
       if (move) {element.x += (move.x-element.x)*eased; element.y += (move.y-element.y)*eased;}
@@ -271,6 +332,7 @@ export function resolveStage(stage: EditorialStage, beats: StageEvent[], frame: 
       if (element.id === beat.target_id) {
         element.cueFrame=beat.resolved_frame!; element.cueDuration=motionFrames;
         element.cueAction=beat.action; element.treatment=beat.treatment;
+        element.entrance=beat.entrance;
         if(beat.mark_ids!==undefined){element.markTiming=Object.fromEntries(beat.mark_ids.map(id=>[id,element.markTiming[id]??{frame:beat.resolved_frame!,duration:motionFrames}]));element.markIds=beat.mark_ids;}
         if(beat.emphasis!==undefined){element.emphasis=beat.emphasis;element.emphasisTiming={frame:beat.resolved_frame!,duration:motionFrames};}
         if(beat.chart_focus!==undefined)element.chartFocus=beat.chart_focus;
@@ -284,7 +346,7 @@ export function resolveStage(stage: EditorialStage, beats: StageEvent[], frame: 
           if (beat.value !== undefined) element.value = beat.value;
         }
       }
-      if (visible !== element.visible) {element.changedAt = beat.resolved_frame!; element.wasVisible = element.visible; element.visibilityDuration=motionFrames;}
+      if (visible !== element.visible) {element.changedAt = beat.resolved_frame!; element.wasVisible = element.visible; element.visibilityDuration=motionFrames; element.entrance=beat.entrance;}
       element.visible = visible;
     }
   }

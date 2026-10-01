@@ -2,6 +2,8 @@
 
 Regra geral para todos os próximos vídeos: uma cena mantém objetos e relações; cada evento da fala revela, destaca, atualiza, reposiciona ou retira esses objetos. Uma frase nova não exige uma cartela nova.
 
+Cada vídeo tem direção própria. O repertório do motor não define sequência de cenas, ritmo ou caminho de câmera. Decisões de movimento nascem da pauta e precisam existir nos eventos reais do palco. Repetir a mesma montagem mudando somente o conteúdo não cumpre essa direção.
+
 ## Contrato
 
 Cenas com visual.beats precisam de visual.stage. O validador de produção roda antes da síntese paga. Projetos antigos sem beats continuam no renderer legado.
@@ -33,6 +35,7 @@ Takeover exige takeover_reason e não pode ocorrer em eventos consecutivos. No p
 5. Escrever âncoras que acionem cada mudança no momento da fala.
 6. Reduzir texto, preservar tempo de leitura, remover efeitos sem função.
 7. Rever se a composição nasceu da pauta ou foi copiada do último vídeo.
+8. Conferir o diagnóstico de direção do validador e o render: operadores, textos por palavra, partes do SVG, deslocamentos e reenquadramentos precisam acontecer no momento escolhido. Pausas de leitura não são defeitos; animações repetidas sem nova função pedem revisão.
 
 Repetir o tratamento ao desenvolver o mesmo fluxo é permitido e desejável. Variedade deve existir entre necessidades narrativas e pautas, não por sorteio de efeitos a cada frase. Não impor animação de entrada/desenvolvimento/saída em toda frase. Uma pausa legível é válida.
 

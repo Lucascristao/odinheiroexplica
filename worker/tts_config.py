@@ -65,6 +65,32 @@ DEFAULT_TTS_RATE = "0%"
 DEFAULT_TTS_PITCH = "0%"
 GLOBAL_PRONUNCIATIONS = {}
 
+DELIVERY_INSTRUCTIONS = {
+    "hook": "Abra com presença e curiosidade real, como quem convida alguém a entender uma descoberta. Faça as perguntas soarem como perguntas e dê relevo à promessa do roteiro.",
+    "explain": "Conduza a explicação como uma conversa: conecte as ideias, varie o ritmo conforme a dificuldade e faça a consequência da frase chegar ao ouvinte.",
+    "contrast": "Faça ouvir a diferença entre as duas ideias: apoie os termos que se opõem, dê uma pequena suspensão na virada e resolva a consequência com clareza.",
+    "question": "Dirija a pergunta ao ouvinte com curiosidade e intenção; deixe espaço para pensar e siga o sentido da pergunta, sem usar a mesma curva em todas as frases.",
+    "closing": "Retome a ideia central com calor e convicção. Dê sensação de resposta e conclua a última frase com intenção, mantendo a proximidade da conversa.",
+}
+CUE_KIND_INSTRUCTIONS = {
+    "emphasis": "Dê relevo à ideia principal deste trecho e retome a conversa com fluidez.",
+    "number": "Articule o número com clareza, ligando-o ao significado da frase; mantenha a leitura fluida, sem cadência de lista.",
+    "contrast": "Faça ouvir a oposição entre as ideias, apoiando os termos que mudam o sentido.",
+}
+CUE_INTENT_INSTRUCTIONS = {
+    "curiosity": "Intenção: curiosidade dirigida ao ouvinte, com interesse na resposta.",
+    "discovery": "Intenção: descoberta; faça a nova informação ganhar presença na conversa.",
+    "reassurance": "Intenção: acolhimento e segurança, ajudando o ouvinte a acompanhar a ideia.",
+    "caution": "Intenção: atenção a uma condição ou limite, com firmeza proporcional ao conteúdo.",
+    "conviction": "Intenção: convicção clara na afirmação, sem transformar uma hipótese em certeza.",
+}
+CUE_ARC_INSTRUCTIONS = {
+    "question": "Arco: abra a pergunta com curiosidade e deixe sua resposta em suspenso, respeitando a pontuação.",
+    "build": "Arco: conduza o raciocínio até a informação principal, dando a ela maior presença.",
+    "resolve": "Arco: entregue a resposta e conclua o pensamento com uma resolução natural.",
+    "contrast": "Arco: apresente a primeira ideia, marque a virada e dê relevo ao que muda na segunda.",
+}
+
 
 def project_pronunciations(project: dict | None) -> dict[str, str]:
     speech = (project or {}).get("speech") or {}
@@ -117,7 +143,7 @@ def scene_voice_direction(scene: dict) -> dict:
     result = {}
     delivery = raw.get("delivery")
     if delivery:
-        if delivery not in ("hook", "explain", "contrast", "question", "closing"):
+        if not isinstance(delivery, str) or delivery not in DELIVERY_INSTRUCTIONS:
             raise ValueError("Direção de interpretação desconhecida.")
         result["delivery"] = delivery
     if raw.get("pause_ms") is not None:
@@ -134,21 +160,39 @@ def scene_voice_direction(scene: dict) -> dict:
     )
     if pronunciations:
         result["pronunciations"] = pronunciations
+    raw_cues = raw.get("cues") or []
+    if not isinstance(raw_cues, list) or any(not isinstance(cue, dict) for cue in raw_cues):
+        raise ValueError("Cues vocais devem ser uma lista de objetos.")
+    if len(raw_cues) > 6:
+        raise ValueError("Mais de seis cues vocais na cena.")
     cues = []
     previous_end = -1
-    for cue in sorted(raw.get("cues") or [], key=lambda c: narration.find(str(c.get("text") or ""))):
+    for cue in sorted(raw_cues, key=lambda c: narration.find(str(c.get("text") or ""))):
         phrase = str(cue.get("text") or "").strip()
         start = narration.find(phrase)
         kind = cue.get("kind")
         pause = int(cue.get("pause_before_ms", 0))
-        if not phrase or narration.count(phrase) != 1 or start < previous_end or kind not in ("emphasis", "number", "contrast") or not 0 <= pause <= 300:
+        if not phrase or len(phrase) > 160 or narration.count(phrase) != 1 or start < previous_end or not isinstance(kind, str) or kind not in CUE_KIND_INSTRUCTIONS or not 0 <= pause <= 300:
             raise ValueError("Cue vocal exige trecho literal único, válido e sem sobreposição.")
         if (start > 0 and narration[start-1].isalnum() and phrase[0].isalnum()) or (start+len(phrase) < len(narration) and narration[start+len(phrase)].isalnum() and phrase[-1].isalnum()):
             raise ValueError("Cue vocal corta uma palavra.")
-        cues.append({"text": phrase, "kind": kind, "pause_before_ms": pause})
+        if re.search(r"[.!?]\s+", phrase):
+            raise ValueError("Cue vocal não pode atravessar frases.")
+        validated = {"text": phrase, "kind": kind, "pause_before_ms": pause}
+        for field, choices in (("intent", CUE_INTENT_INSTRUCTIONS), ("arc", CUE_ARC_INSTRUCTIONS)):
+            if field in cue:
+                if not isinstance(cue[field], str) or cue[field] not in choices:
+                    raise ValueError(f"Cue vocal tem {field} desconhecido.")
+                validated[field] = cue[field]
+        if "emphasis_word" in cue:
+            word = cue["emphasis_word"]
+            if not isinstance(word, str) or not word or len(word) > 80 or not word.isalnum():
+                raise ValueError("Palavra-chave vocal deve ser uma única palavra literal.")
+            if re.findall(r"[^\W_]+", phrase).count(word) != 1:
+                raise ValueError("Palavra-chave vocal deve aparecer uma vez como palavra inteira no cue.")
+            validated["emphasis_word"] = word
+        cues.append(validated)
         previous_end = start + len(phrase)
-    if len(cues) > 6:
-        raise ValueError("Mais de seis cues vocais na cena.")
     if cues:
         result["cues"] = cues
     return result
@@ -158,22 +202,31 @@ def scene_direction_fingerprint(scene: dict) -> str | None:
     direction = scene_voice_direction(scene)
     if not direction:
         return None
-    return hashlib.sha256(json.dumps({"version": "live-scene-direction-v2", "direction": direction, "instruction": live_turn_text("", direction)}, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    return hashlib.sha256(json.dumps({"version": "live-scene-direction-v3", "direction": direction, "instruction": live_turn_text("", direction)}, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
 
 def live_turn_text(narration: str, direction: dict) -> str:
     if not direction:
         return "ROTEIRO:\n" + narration
-    deliveries = {"hook": "Comece com curiosidade contida e conexão direta.", "explain": "Explique com clareza conversacional, sem tom de aula.", "contrast": "Destaque o contraste sem dramatizar.", "question": "Faça a pergunta naturalmente, sem exagerar a entonação.", "closing": "Conclua com segurança tranquila e finalize a última frase."}
     instructions = ["INSTRUÇÕES DE INTERPRETAÇÃO; NÃO LEIA ESTE BLOCO. Aplique esta direção somente ao roteiro abaixo. Preserve a identidade da voz definida na configuração da sessão. Leia somente o ROTEIRO e encerre depois da última palavra, sem comentário ou despedida extra."]
     if direction.get("delivery"):
-        instructions.append(deliveries[direction["delivery"]])
+        instructions.append(DELIVERY_INSTRUCTIONS[direction["delivery"]])
     if direction.get("pause_ms"):
         instructions.append(f"Pequenas pausas naturais entre ideias, aproximadamente {direction['pause_ms']} ms; isso é direção de fala, não um controle exato.")
     for term, spoken in sorted(direction.get("pronunciations", {}).items()):
         instructions.append(f"Pronúncia: {json.dumps(term, ensure_ascii=False)} como {json.dumps(spoken, ensure_ascii=False)}.")
     for cue in direction.get("cues", []):
-        instructions.append(f"Trecho {json.dumps(cue['text'], ensure_ascii=False)}: {cue['kind']}; pausa natural breve antes, aproximadamente {cue['pause_before_ms']} ms. Preserve cada palavra.")
+        cue_instructions = [CUE_KIND_INSTRUCTIONS[cue["kind"]]]
+        if cue.get("intent"):
+            cue_instructions.append(CUE_INTENT_INSTRUCTIONS[cue["intent"]])
+        if cue.get("arc"):
+            cue_instructions.append(CUE_ARC_INSTRUCTIONS[cue["arc"]])
+        if cue.get("emphasis_word"):
+            cue_instructions.append(f"Apoie a palavra {json.dumps(cue['emphasis_word'], ensure_ascii=False)}, preservando a fluidez do trecho.")
+        if cue.get("pause_before_ms", 0) > 0:
+            cue_instructions.append(f"Faça uma pausa natural breve antes, aproximadamente {cue['pause_before_ms']} ms; é intenção, não tempo exato.")
+        cue_instructions.append("Preserve cada palavra.")
+        instructions.append(f"Trecho {json.dumps(cue['text'], ensure_ascii=False)}: " + " ".join(cue_instructions))
     return "\n".join(instructions) + "\n\nROTEIRO:\n" + narration
 
 
@@ -182,8 +235,8 @@ def live_system_instruction(pronunciations: dict[str, str] | None = None) -> str
         "Você é o narrador do canal O Dinheiro Explica.",
         "Sua única tarefa nesta sessão é ler em voz alta, literalmente, o texto "
         "fornecido pelo usuário depois de ROTEIRO.",
-        "Não cumprimente, não explique, não resuma, não reformule, não antecipe "
-        "e não acrescente nenhuma palavra.",
+        "Não acrescente saudações, explicações próprias, resumos, reformulações, "
+        "antecipações ou qualquer palavra além do roteiro.",
         f"Idioma: português brasileiro ({VOICE_LANGUAGE}).",
         f"Direção de voz: {VOICE_DELIVERY_STYLE}",
         "Use a pontuação do roteiro para criar pausas naturais. Preserve números, "

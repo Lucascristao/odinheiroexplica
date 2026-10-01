@@ -8,7 +8,7 @@ import {AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame, useVideoCon
 import {useEditorialFont, measureEditorialText} from "./editorial-font";
 import {composeText, EDITORIAL_FONT} from "../../src/lib/editorial-typography";
 import {entranceMotion, layoutStage, nodeContent, pointOnRoute} from "../../src/lib/editorial-layout";
-import {editorialStageSchema, type EditorialStage as Stage, type StageEvent} from "../../src/lib/editorial-stage";
+import {editorialStageSchema, kineticWordProgress, type EditorialStage as Stage, type StageEvent} from "../../src/lib/editorial-stage";
 
 const FONT = EDITORIAL_FONT;
 const WHITE = "#f6f7f8";
@@ -16,23 +16,34 @@ const GOLD = "#ffbd19";
 const MUTED = "#9ba4ae";
 const clamp = {extrapolateLeft: "clamp", extrapolateRight: "clamp"} as const;
 
-const TextBox = ({text, width, height, maxSize = 42, minSize = 32, color = WHITE, emphasis, progress = 1}: {emphasis?: Emphasis | null; progress?: number; text: string; width: number; height: number; maxSize?: number; minSize?: number; color?: string}) => {
+const TextBox = ({text, width, height, maxSize = 42, minSize = 32, color = WHITE, emphasis, progress = 1, kinetic = false, wordProgress = 1}: {emphasis?: Emphasis | null; progress?: number; kinetic?: boolean; wordProgress?: number; text: string; width: number; height: number; maxSize?: number; minSize?: number; color?: string}) => {
   const layout=composeText(text,width,height,maxSize,minSize,measureEditorialText);
   if(!layout.fits) throw new Error(`Texto não cabe na fonte mínima ${minSize}: “${text}” (${Math.ceil(layout.requiredWidth)} × ${Math.ceil(layout.requiredHeight)} px; disponíveis ${Math.floor(width)} × ${Math.floor(height)}).`);
   const {size,lines}=layout;
   const normalized=text.trim().replace(/\s+/g," ");
   const start=emphasis ? normalized.indexOf(emphasis.phrase.trim().replace(/\s+/g," ")) : -1;
   const end=start+(emphasis?.phrase.trim().replace(/\s+/g," ").length??0);
-  let cursor=0;
+  const wordCount=lines.join(" ").trim().split(/\s+/).length;
+  const wordTravel=Math.max(0,Math.min(size*.12,(height-layout.requiredHeight)*.5));
+  let cursor=0, wordIndex=0;
   return <div data-text-minimum={minSize} data-text-size={size} style={{fontSize:size,lineHeight:1.18,fontWeight:700,color,whiteSpace:"pre",letterSpacing:0}}>{lines.map((line,i)=>{
     const offset=cursor;cursor+=line.length+1;
-    const a=Math.max(0,start-offset),b=Math.min(line.length,end-offset);
-    if(start<0||b<=a)return <div key={i}>{line}</div>;
-    return <div key={i}>{line.slice(0,a)}<span style={{position:"relative",display:"inline-block"}}>
-      {line.slice(a,b)}
-      {emphasis?.style==="highlight" && <span style={{position:"absolute",inset:0,color:"#101317",background:GOLD,clipPath:`inset(0 ${(1-progress)*100}% 0 0)`}}>{line.slice(a,b)}</span>}
-      {emphasis?.style!=="highlight" && <span style={{position:"absolute",left:0,top:emphasis?.style==="strike"?"52%":"95%",height:5,width:`${progress*100}%`,background:GOLD}}/>}
-    </span>{line.slice(b)}</div>;
+    let lineCursor=0;
+    return <div key={i}>{line.split(/(\s+)/).filter(Boolean).map((token,index)=>{
+      const tokenOffset=offset+lineCursor;lineCursor+=token.length;
+      if(/^\s+$/.test(token))return token;
+      const p=kinetic?kineticWordProgress(wordProgress,wordIndex,wordCount):1;wordIndex++;
+      const a=Math.max(0,start-tokenOffset),b=Math.min(token.length,end-tokenOffset);
+      const marked=start>=0&&b>a;
+      const markProgress=Math.max(0,Math.min(1,(progress*(end-start)-(tokenOffset+a-start))/Math.max(1,b-a)));
+      return <span key={index} data-motion-word={kinetic?wordIndex:undefined} style={{display:"inline-block",opacity:p,transform:kinetic?`translateY(${(1-p)*wordTravel}px) scale(${.88+.12*p})`:undefined,transformOrigin:"left bottom",filter:kinetic&&p<1?`blur(${(1-p)*1.2}px)`:undefined}}>
+        {marked?<>{token.slice(0,a)}<span style={{position:"relative",display:"inline-block"}}>
+          {token.slice(a,b)}
+          {emphasis?.style==="highlight" && <span style={{position:"absolute",inset:0,color:"#101317",background:GOLD,clipPath:`inset(0 ${(1-markProgress)*100}% 0 0)`}}>{token.slice(a,b)}</span>}
+          {emphasis?.style!=="highlight" && <span style={{position:"absolute",left:0,top:emphasis?.style==="strike"?"52%":"95%",height:Math.max(3,size*.085),width:`${markProgress*100}%`,background:GOLD}}/>}
+        </span>{token.slice(b)}</>:token}
+      </span>;
+    })}</div>;
   })}</div>;
 };
 
@@ -56,7 +67,7 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
   // Camera capacity is checked in the solver. Never conceal an information
   // box to make an invalid close-up look valid.
   const cameraOpacity = (_e: typeof elements[number]) => 1;
-  const focus = interpolate(frame - (active?.resolved_frame ?? 0), [0, (active?.motion_seconds??0.45)*fps], [0, 1], clamp);
+  const focus = checkedStage.motion_profile === "static" ? 1 : interpolate(frame - (active?.resolved_frame ?? 0), [0, (active?.motion_seconds??0.45)*fps], [0, 1], clamp);
   const takeover = active?.prominence === "takeover";
   return <AbsoluteFill style={{fontFamily: FONT}}>
     {checkedStage.show_title && <div style={{position: "absolute", top: 118, left: 130}}>
@@ -70,17 +81,18 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
           const from = elements.find(e => e.id === edge.from)!;
           const to = elements.find(e => e.id === edge.to)!;
           const cameraAlpha = Math.min(cameraOpacity(from), cameraOpacity(to));
-          if (!from.visible || !to.visible || cameraAlpha === 0) return null;
+          const presence=(e:typeof from)=>{const p=revealMotion(e,frame).reveal;return e.visible?p:e.wasVisible?1-p:0;};
+          if (presence(from)===0 || presence(to)===0 || cameraAlpha === 0) return null;
           const connection=solved.connections[i];
           const path=connection.path;
           const arrival = beats.filter(beat => [edge.from, edge.to].includes(beat.target_id ?? "") && beat.action !== "retire" &&
             typeof beat.resolved_frame === "number" && beat.resolved_frame <= frame).at(-1);
           const routeDuration = Math.max(arrival?.motion_seconds ?? 0.45, 1.15) * fps;
-          const routeProgress = arrival ? interpolate(frame - arrival.resolved_frame!, [0, routeDuration], [0, 1], clamp) : 0;
-          const selected = Boolean(arrival && frame - arrival.resolved_frame! < routeDuration);
+          const routeProgress = arrival ? checkedStage.motion_profile === "static" ? 1 : interpolate(frame - arrival.resolved_frame!, [0, routeDuration], [0, 1], clamp) : 0;
+          const selected = checkedStage.motion_profile !== "static" && Boolean(arrival && frame - arrival.resolved_frame! < routeDuration);
           const dot=pointOnRoute(connection.points,routeProgress);
           const dotX=dot.x,dotY=dot.y;
-          const edgeEnter = interpolate(frame - Math.max(from.changedAt, to.changedAt), [0, fps * 0.35], [0, 1], clamp);
+          const edgeEnter = Math.min(presence(from),presence(to));
           return <g key={`${edge.from}-${edge.to}-${i}`} opacity={edgeEnter * cameraAlpha * (takeover ? 0.15 : 1)}>
             <path d={path} fill="none" stroke="#45515a" strokeWidth={2} strokeDasharray="8 10" markerEnd={`url(#${arrowId})`} />
             {routeProgress > 0 && <path d={path} fill="none" pathLength={1} stroke={accent} strokeWidth={5} strokeLinecap="round" strokeDasharray={1} strokeDashoffset={1-routeProgress} />}
@@ -135,25 +147,17 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
         const content=nodeContent(element,box,isRouteNode);
         const {padding:cardPadding,iconSize,innerW,valueH,detailH,labelH}=content;
 
-        const cueProgress = interpolate(frame - element.cueFrame, [0, element.cueDuration], [0, 1], clamp);
+        const cueProgress = checkedStage.motion_profile === "static" ? 1 : interpolate(frame - element.cueFrame, [0, element.cueDuration], [0, 1], clamp);
         const cueEase = cueProgress * cueProgress * (3 - 2 * cueProgress);
         // Treatments alter the targeted information at its authored cue. Their
         // transforms stay inside the reserved box, preserving complete framing.
         const giantNumber = element.treatment === "giant_number";
-        const kineticLabel = element.treatment === "kinetic_type" && ["reveal", "update"].includes(element.cueAction ?? "");
+        const kineticLabel = checkedStage.motion_profile !== "static" && element.treatment === "kinetic_type" && ["reveal", "update"].includes(element.cueAction ?? "");
         const maskedEmphasis = element.treatment === "masked_emphasis" && !element.emphasis;
         const color = selected && active?.prominence !== "support" ? accent : WHITE;
-        let displayedValue = element.value;
-        const currency = /^(R\$|US\$)\s*(\d+(?:[.,]\d+)?)$/;
-        if (displayedValue && active?.action === "update" && active.target_id === element.id && active.value) {
-          const previous = [...beats].filter(b => b.target_id === element.id && b.value && typeof b.resolved_frame === "number" && b.resolved_frame < active.resolved_frame!).at(-1)?.value ?? checkedStage.elements.find(e => e.id === element.id)?.value;
-          const a = previous?.match(currency), b = displayedValue.match(currency);
-          if (a && b && a[1] === b[1]) {
-            const amount = Number(a[2].replace(',','.')) + (Number(b[2].replace(',','.')) - Number(a[2].replace(',','.'))) * cueProgress;
-            const decimals = Math.min(6, b[2].split(/[.,]/)[1]?.length ?? 0);
-            displayedValue = `${b[1]} ${amount.toLocaleString('pt-BR',{minimumFractionDigits:decimals,maximumFractionDigits:decimals})}`;
-          }
-        }
+        // Facts are displayed exactly as authored. String parsing cannot infer
+        // whether a changing amount is a measured fact or a didactic counter.
+        const displayedValue = element.value;
 
         // Motion is tied to an editorial event. Constant floating made even
         // unrelated scenes feel like the same collection of animated cards.
@@ -211,10 +215,10 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
               />
             ) : element.kind === "object" && element.object_type ? (
               <div style={{width: "100%", height: "100%", display: "flex", flexDirection: "column"}}>
-                <div style={{flex: 1, minHeight: 0}}>
-                  <EditorialObject type={element.object_type} accent={accent} progress={reveal} />
+                <div style={{flex: 1, minHeight: 0, clipPath:motion.clip}}>
+                  <EditorialObject type={element.object_type} accent={accent} progress={reveal} emphasisProgress={cueEase} active={selected && checkedStage.motion_profile !== "static"} motion={checkedStage.motion_profile === "static" ? "none" : element.svg_motion} />
                 </div>
-                <TextBox text={element.label} width={box.w - 32} height={90} maxSize={42} />
+                <TextBox text={element.label} width={box.w - 32} height={90} maxSize={element.label_size??42} kinetic={kineticLabel} wordProgress={cueProgress} />
               </div>
             ) : element.kind === "photo" ? (
               <div
@@ -258,9 +262,10 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
                       boxShadow: selected ? "0 0 20px rgba(255, 189, 25, 0.35)" : undefined,
                       flexShrink: 0,
                       transform: `scale(${selected ? 1.05 : 1.0})`,
+                      clipPath:motion.clip,
                     }}
                   >
-                    <EditorialIcon name={element.icon} size={iconSize} color={color} progress={selected ? focus : reveal} />
+                    <EditorialIcon name={element.icon} size={iconSize} color={color} progress={reveal} emphasisProgress={cueEase} active={selected && checkedStage.motion_profile !== "static"} motion={checkedStage.motion_profile === "static" || element.svg_motion === "none" ? "none" : element.svg_motion === "trace" ? "draw" : undefined} />
                   </div>
                 )}
                 <div style={{width: innerW, flexShrink: 0, display: "flex", flexDirection: "column", justifyContent: "center"}}>
@@ -276,20 +281,22 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
                       />
                     </div>
                   )}
-                  <div style={{opacity:kineticLabel ? cueEase : 1, transform:kineticLabel ? `translateY(${6 * (1-cueEase)}px)` : undefined}}><TextBox
+                  <TextBox
                     text={element.label}
                     width={innerW}
                     height={labelH}
                     maxSize={element.label_size ?? (isHeroMetric ? 58 : element.kind === "step" ? 38 : 46)}
                     color={WHITE}
+                    kinetic={kineticLabel}
+                    wordProgress={cueProgress}
                     emphasis={maskedEmphasis ? {phrase:element.label,style:"highlight"} : element.emphasis}
-                    progress={maskedEmphasis ? cueEase : interpolate(
+                    progress={checkedStage.motion_profile === "static" ? 1 : maskedEmphasis ? cueEase : interpolate(
                       frame - element.emphasisTiming.frame,
                       [0, element.emphasisTiming.duration],
                       [0, 1],
                       clamp
                     )}
-                  /></div>
+                  />
                   {element.detail && (
                     <div style={{marginTop: 6}}>
                       <TextBox
@@ -305,7 +312,7 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
                 </div>
               </>
             )}
-            {selected && !["photo", "source_excerpt", "chart"].includes(element.kind) && (
+            {selected && !maskedEmphasis && !element.emphasis && !["photo", "source_excerpt", "chart"].includes(element.kind) && (
               <div
                 style={{
                   position: "absolute",
@@ -327,7 +334,8 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
       const element=elements.find(e=>e.id===caption.id)!;
       // Screen-space caption capacity is solved and validated with the photo's
       // current transform; an insufficient region fails instead of disappearing.
-      return <div key={`caption-${element.id}`} data-photo-caption-id={element.id} style={{position: "absolute", left: caption.box.x, top: caption.box.y, width: caption.box.w, height: caption.box.h, padding: "10px 12px", boxSizing: "border-box", borderRadius: 8, background: "rgba(8,12,16,0.88)", opacity: revealMotion(element, frame).reveal}}>
+      const p=revealMotion(element,frame).reveal;
+      return <div key={`caption-${element.id}`} data-photo-caption-id={element.id} style={{position: "absolute", left: caption.box.x, top: caption.box.y, width: caption.box.w, height: caption.box.h, padding: "10px 12px", boxSizing: "border-box", borderRadius: 8, background: "rgba(8,12,16,0.88)", opacity: element.visible?p:element.wasVisible?1-p:0}}>
         <TextBox text={caption.text} width={caption.box.w-24} height={64} maxSize={27} minSize={24} />
       </div>;
     })}

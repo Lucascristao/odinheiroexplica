@@ -154,6 +154,12 @@ A descrição em publication.description deve sair pronta para publicação e ot
 
 ## Direção visual própria para cada pauta
 
+Cada vídeo precisa ser único. O motor oferece capacidades de atuação, câmera, texto, SVGs e operações; ele não escolhe a montagem da história. Crie o percurso a partir da pergunta, participantes, relações e consequências da pauta atual. Não aplique a mesma sequência de zoom, cascata, comparação e fechamento a todos os temas. Identidade de voz, paleta e tipografia permanecem reconhecíveis; composição, ritmo e intenção nascem da história.
+
+Converta cada decisão relevante de `visual_direction.motion_language` em um acontecimento executável no palco: `camera`, `moves`, `entrance`, relações, `operation`, grifo, recorte ou `kinetic_type`. Texto descrevendo movimento não anima a cena. Uma pausa também é uma decisão: manter a câmera e dar tempo de leitura quando a informação pede. Câmera automática só entra quando explicitamente escolhida; não serve como substituto de storyboard.
+
+Consulte o diagnóstico de direção emitido por `validate:editorial`. Ele identifica o que será executado e avisa sobre repetição de spotlight, durações uniformes e ausência de atuação específica. Use esses avisos como perguntas de revisão, sem cotas de efeitos ou obrigação de mudar um movimento que ainda explica bem a mesma relação.
+
 Antes de escolher cenas e microcenas, crie uma direção visual específica para a história atual. A identidade do canal é o DNA, não um template. Consulte `docs/visual-history.md` somente para identificar padrões recentes que NÃO devem ser repetidos; nunca use esse histórico como molde de pauta, roteiro ou estrutura.
 
 Consulte também `docs/editorial-motion-library.md` e `docs/photography-narrative.md`. Eles descrevem capacidades disponíveis, não uma sequência obrigatória. Escolha só o que melhora a explicação daquela pauta.
@@ -269,6 +275,8 @@ Não usar nome do canal, logotipo, ícone ou selo de marca por padrão. A identi
 Seguir `docs/editorial-voice.md`. Escrever para o ouvido: frases curtas com uma ideia, exemplos concretos e alternância natural entre pergunta, explicação e consequência. Evitar listas lidas, introduções burocráticas e suspense sem resposta. Não copiar bordões ou imitar a voz dos vídeos de referência.
 
 Escrever intenção, contraste e pausas na própria narração. A direção comum de `worker/voice-policy.json`, `tts.delivery` e `tts.cues` são enviados ao Gemini Live como instruções que não fazem parte do roteiro falado. `rate` e `pitch` continuam sem processamento direto no áudio bruto. Associar a entrada de número, recorte ou grifo a uma âncora literal única de `visual.beats`. O alinhamento local usa o áudio real quando houver confiança suficiente, mantendo estimativas explícitas nos demais eventos. Revisar a sincronização no MP4. Reservar tempo de leitura durante a explicação e manter a voz do apresentador e o destaque amarelo da marca.
+
+Dirija a atuação das frases essenciais em `tts.cues`, conforme `docs/editorial-voice.md`: `intent` transmite curiosidade, descoberta, acolhimento, cautela ou convicção; `arc` descreve pergunta, construção, resolução ou contraste; `emphasis_word` escolhe uma palavra literal única do próprio trecho. Selecione essas intenções pelas frases reais deste vídeo, sem distribuí-las como uma sequência obrigatória. A pergunta, a explicação, a ressalva e a conclusão podem ter ritmo e energia diferentes. Preserve todas as palavras do roteiro e a identidade do apresentador.
 
 
 ### Direção de motion design por episódio

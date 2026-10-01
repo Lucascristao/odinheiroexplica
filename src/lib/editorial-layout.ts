@@ -2,7 +2,7 @@ import {resolveStage, resolveStageCamera, type EditorialStage, type StageEvent} 
 import {composeText, textMinimums, type MeasureWidth, type TextLayout, type TextRole} from "./editorial-typography";
 import {chartLayout} from "./editorial-chart-layout";
 
-export const LAYOUT_VERSION = "2026-10-01.1";
+export const LAYOUT_VERSION = "2026-10-01.2";
 export type Box = {x: number; y: number; w: number; h: number};
 export type Point = {x: number; y: number};
 export type LayoutIssue = {code: string; element?: string; connection?: string; role?: string; message: string};
@@ -21,8 +21,25 @@ export function elementRect(e: {x:number;y:number;width:number;height:number}, c
 }
 export function entranceMotion(e: ResolvedElement, frame: number) {
   const reveal=Math.max(0,Math.min(1,(frame-e.changedAt)/Math.max(1,e.visibilityDuration)));
+  const pose=entrancePose(e,e.visible?reveal:1-reveal);
+  return {reveal:e.motionProfile==="static"?1:reveal,...pose};
+}
+export function entrancePose(e:Pick<ResolvedElement,"kind"|"width"|"overlay_on"|"x"|"entrance"|"motionProfile">, progress:number) {
+  if(e.motionProfile==="static")return {scale:1,x:0,y:0,clip:undefined as string|undefined};
+  if(e.entrance) {
+    const p=progress*progress*(3-2*progress),remaining=1-p;
+    const direction=e.entrance.direction??"up";
+    if(e.entrance.style==="fade")return {scale:1,x:0,y:0,clip:undefined};
+    if(e.entrance.style==="scale")return {scale:.82+.18*p,x:0,y:0,clip:undefined};
+    if(e.entrance.style==="wipe") {
+      const percent=remaining*100;
+      const clip=direction==="left"?`inset(0 ${percent}% 0 0)`:direction==="right"?`inset(0 0 0 ${percent}%)`:direction==="down"?`inset(0 0 ${percent}% 0)`:`inset(${percent}% 0 0 0)`;
+      return {scale:1,x:0,y:0,clip};
+    }
+    return {scale:.96+.04*p,x:direction==="left"?-48*remaining:direction==="right"?48*remaining:0,y:direction==="up"?-32*remaining:direction==="down"?32*remaining:0,clip:undefined};
+  }
   const hero=e.kind==="metric"&&e.width>=40&&!e.overlay_on;
-  return {reveal,scale:hero?.82+.18*reveal:.96+.04*reveal,x:e.kind==="step"&&!e.overlay_on?(1-reveal)*(e.x>50?42:-42):0,y:(1-reveal)*(hero?8:28)};
+  return {scale:hero?.82+.18*progress:.96+.04*progress,x:e.kind==="step"&&!e.overlay_on?(1-progress)*(e.x>50?42:-42):0,y:(1-progress)*(hero?8:28),clip:undefined};
 }
 export function transformedRect(e: ResolvedElement, frame: number, canvas: {width:number;height:number}): Box {
   const b=elementRect(e,canvas), m=entranceMotion(e,frame);
@@ -98,9 +115,12 @@ export function reservedElementBounds(stage:EditorialStage,beats:StageEvent[],ca
   return stage.elements.map(e=> {
     const poses=[e,...beats.flatMap(b=>(b.moves??[]).filter(m=>m.id===e.id).map(m=>({...e,x:m.x,y:m.y})))];
     const boxes=poses.flatMap(p=> {
-      const b=elementRect(p,canvas),hero=p.kind==="metric"&&p.width>=40&&!p.overlay_on;
-      const scale=hero?.82:.96,tx=p.kind==="step"&&!p.overlay_on?(p.x>50?42:-42):0,ty=hero?8:28;
-      return [b,{x:b.x+b.w*(1-scale)/2+tx,y:b.y+b.h*(1-scale)/2+ty,w:b.w*scale,h:b.h*scale}];
+      const b=elementRect(p,canvas);
+      const entrances=[undefined,...beats.filter(cue=>cue.target_id===e.id||cue.reveal_ids?.includes(e.id)||cue.retire_ids?.includes(e.id)).map(cue=>cue.entrance)];
+      return [b,...entrances.map(entrance=>{
+        const m=entrancePose({...p,entrance,motionProfile:stage.motion_profile},0);
+        return {x:b.x+b.w*(1-m.scale)/2+m.x,y:b.y+b.h*(1-m.scale)/2+m.y,w:b.w*m.scale,h:b.h*m.scale};
+      })];
     });
     return {id:e.id,box:union(boxes)};
   });
@@ -180,34 +200,42 @@ export function solveConnections(stage:EditorialStage, beats:StageEvent[], eleme
 export type OperationLayout = {
   kind:"equation"|"compare"|"stack"|"meter"|"signal";
   ids:string[]; frame:number;
+  duration:number; motionProfile?:"narrative"|"static";
+  opacity?:number;
   glyphs:{id:string;box:Box;text:string;layout:TextLayout}[];
   boxes:Box[]; points?:Point[];
   meter?:{value:number;min:number;max:number;unit:string;fraction:number};
   status?:"positive"|"neutral"|"warning";
 };
 export const visualCapabilities = {
-  equation:{requires:"operation.kind=equation + input_ids/operator/result_id",effect:"Operadores ligados a métricas declaradas; resultado entra no reveal autoral."},
-  split_compare:{requires:"operation.kind=compare + element_ids",effect:"Destaque simultâneo dos cenários declarados, sem inferir vencedor."},
+  equation:{requires:"operation.kind=equation + input_ids/operator/result_id",effect:"Operadores entram em sequência no intervalo autoral; valores exatos e resultado só no reveal declarado."},
+  split_compare:{requires:"operation.kind=compare + element_ids",effect:"Contornos traçados e expandidos dentro das regiões declaradas, com destaque igual e sem inferir vencedor."},
   stack:{requires:"operation.kind=stack + element_ids em ordem vertical",effect:"Espinha e ligações de uma lista declarada."},
   meter:{requires:"operation.kind=meter + value/min/max",effect:"Barra proporcional à escala explícita, com valor e limites."},
   signal:{requires:"operation.kind=signal + status/message",effect:"Condição textual e sinal cromático explícitos."},
   flow_diagram:{requires:"stage.connections",effect:"Traçado e percurso nas relações declaradas."},
   giant_number:{requires:"target.value",effect:"Valor ampliado dentro de sua área reservada."},
-  kinetic_type:{requires:"reveal/update + target.label",effect:"Entrada pontual da informação."},
-  masked_emphasis:{requires:"target.label / emphasis",effect:"Grifo sincronizado do texto existente."},
+  kinetic_type:{requires:"reveal/update + target.label",effect:"Palavras entram em sequência nas linhas medidas, com deslocamento e pausa após a cue; nunca altera números."},
+  masked_emphasis:{requires:"target.label / emphasis",effect:"Varredura do grifo pela frase existente, no intervalo declarado e sem trocar a composição."},
   depth_photo:{requires:"photo.image_motion",effect:"Movimento limitado da imagem dentro de sua região."},
   spotlight:{requires:"target_id",effect:"Destaque do participante ou prova alvo."},
   timeline:{requires:"datas declaradas + stage/moves/connections",effect:"Revelação e foco dos marcos autorais; não inventa cronologia."},
 } as const;
 
-function operationLayout(stage:EditorialStage,beats:StageEvent[],elements:ResolvedElement[],frame:number,canvas:{width:number;height:number},connections:ConnectionLayout[],measure:MeasureWidth,issues:LayoutIssue[]):OperationLayout|undefined {
+function operationLayout(stage:EditorialStage,beats:StageEvent[],elements:ResolvedElement[],frame:number,fps:number,canvas:{width:number;height:number},connections:ConnectionLayout[],measure:MeasureWidth,issues:LayoutIssue[]):OperationLayout|undefined {
   const cue=beats.filter(b=>b.operation&&Number.isFinite(b.resolved_frame)&&b.resolved_frame!<=frame).sort((a,b)=>a.resolved_frame!-b.resolved_frame!).at(-1);
   if(!cue?.operation)return;
   const op=cue.operation;
   const ids=op.kind==="equation"?[...op.input_ids,op.result_id]:op.kind==="compare"||op.kind==="stack"?op.element_ids:[cue.target_id??""];
   const targets=ids.map(id=>elements.find(e=>e.id===id));
-  const result:OperationLayout={kind:op.kind,ids,frame:cue.resolved_frame!,glyphs:[],boxes:[]};
+  const nextCue=beats.filter(b=>Number.isFinite(b.resolved_frame)&&b.resolved_frame!>cue.resolved_frame!).sort((a,b)=>a.resolved_frame!-b.resolved_frame!)[0];
+  const result:OperationLayout={kind:op.kind,ids,frame:cue.resolved_frame!,duration:Math.max(1,Math.min((cue.motion_seconds??.5)*fps, nextCue?nextCue.resolved_frame!-cue.resolved_frame!:Infinity)),motionProfile:stage.motion_profile,glyphs:[],boxes:[]};
   if(new Set(ids).size!==ids.length||targets.some(e=>!e)){issues.push({code:"operation-reference",message:`Operação ${op.kind} precisa de IDs existentes e distintos.`});return result;}
+  // Previously revealed participants may retire gradually. Keep their operation
+  // attached during the fade, then release its camera space when it is gone.
+  const presented=targets.filter(e=>e!.visible||e!.wasVisible);
+  result.opacity=Math.min(1,...presented.map(e=>{const p=entranceMotion(e!,frame).reveal;return e!.visible?p:1-p;}));
+  if(result.opacity<=0)return;
   const reserved=reservedElementBounds(stage,beats,canvas);
   const outer={x:8,y:8,w:canvas.width-16,h:canvas.height-16};
   const rects=targets.map(e=>transformedRect(e!,frame,canvas));
@@ -262,9 +290,12 @@ export function layoutStage(stage:EditorialStage,beats:StageEvent[],frame:number
     if(["photo","source_excerpt"].includes(e.kind)&&!e.asset_file)issues.push({code:"missing-visual-asset",element:e.id,message:"Imagem/recorte precisa do arquivo real preparado; o motor não substitui evidência por texto inventado."});
   }
   connections.filter(c=>c.error).forEach(c=>issues.push({code:"connection-space",connection:c.id,message:c.error!}));
-  const operation=operationLayout(stage,beats,state.elements,frame,canvas,connections,measure,issues);
+  const operation=operationLayout(stage,beats,state.elements,frame,fps,canvas,connections,measure,issues);
   const requested=resolveStageCamera(stage,beats,frame,fps);
-  const visible=state.elements.filter(e=>e.visible&&entranceMotion(e,frame).reveal>.01);
+  const visible=state.elements.filter(e=>{
+    const p=entranceMotion(e,frame).reveal;
+    return e.visible?p>.01:e.wasVisible&&p<.99;
+  });
   for(const [i,e] of visible.entries()) for(const other of visible.slice(0,i)) {
     if(e.overlay_on===other.id||other.overlay_on===e.id)continue;
     if(intersects(transformedRect(e,frame,canvas),transformedRect(other,frame,canvas)))issues.push({code:"animated-node-collision",element:e.id,message:`Entrada/movimento colide com ${other.id}; reserve também o percurso.`});
@@ -276,7 +307,7 @@ export function layoutStage(stage:EditorialStage,beats:StageEvent[],frame:number
   if(important.length) {
     const box=union(important);
     const left=box.x/canvas.width*100,right=(box.x+box.w)/canvas.width*100,top=box.y/canvas.height*100,bottom=(box.y+box.h)/canvas.height*100;
-    const fits=(c:typeof requested)=>50+(left-c.x)*c.zoom>=0&&50+(right-c.x)*c.zoom<=100&&50+(top-c.y)*c.zoom>=0&&50+(bottom-c.y)*c.zoom<=100;
+    const fits=(c:typeof requested)=>50+(left-c.x)*c.zoom>=-.001&&50+(right-c.x)*c.zoom<=100.001&&50+(top-c.y)*c.zoom>=-.001&&50+(bottom-c.y)*c.zoom<=100.001;
     if(!fits(requested)) {
       const zoom=Math.max(1,Math.min(requested.zoom,100/(right-left+2),100/(bottom-top+2)));
       camera={x:Math.max(right-50/zoom,Math.min(left+50/zoom,requested.x)),y:Math.max(bottom-50/zoom,Math.min(top+50/zoom,requested.y)),zoom};
