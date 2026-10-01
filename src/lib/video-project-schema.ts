@@ -330,6 +330,8 @@ const canonicalVideoProjectSchema = z
           description_strategy: z.string().min(1),
         }),
         tags: z.array(z.string()).max(12).default([]),
+        engagement_question: z.string().min(8).max(180).optional(),
+        hashtags: z.array(z.string().regex(/^#[\\p{L}\\p{N}_]+$/u)).max(3).default([]),
         chapters: z.array(z.unknown()).default([]),
         disclosure_ai: z.boolean().default(false),
       })
