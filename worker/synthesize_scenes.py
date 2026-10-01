@@ -366,6 +366,11 @@ async def _receive_live_turn(
     attempt_diagnostics: dict | None = None,
 ) -> tuple[bytes, str]:
     diagnostics = attempt_diagnostics if attempt_diagnostics is not None else {}
+    diagnostics.setdefault("generation_complete_seen", False)
+    diagnostics.setdefault("turn_complete_seen", False)
+    diagnostics.setdefault(
+        "accepted_generation_complete_without_turn_complete", False
+    )
     pcm_chunks: list[bytes] = []
     transcript_chunks: list[str] = []
     pcm_bytes = 0
