@@ -84,13 +84,19 @@ def main() -> None:
     if not seo.get("primary_keyword"):
         raise RuntimeError("SEO sem palavra-chave principal.")
 
-    full_description = description
-    if chapter_text:
-        full_description += f"\n\nCAPÍTULOS\n{chapter_text}"
-    if source_text:
-        full_description += f"\n\nBases do vídeo:\n{source_text}"
-    if visual_credit_text:
-        full_description += f"\n\nCréditos visuais:\n{visual_credit_text}"
+    if not engagement_question or not engagement_question.endswith("?"):
+        raise RuntimeError("Pergunta de engajamento ausente ou inválida.")
+    if len(hashtags) != 3 or any(not re.fullmatch(r"#[^\\s#]+", item) for item in hashtags):
+        raise RuntimeError("A publicação precisa de exatamente 3 hashtags válidas.")
+
+    full_description = compose_description(
+        description,
+        chapter_text,
+        source_text,
+        visual_credit_text,
+        engagement_question,
+        hashtags,
+    )
     # Public descriptions are link-free; research URLs remain in the project.
     if re.search(r"https?://|www\.|\[[^\]]+\]\([^)]+\)", full_description, re.IGNORECASE):
         raise RuntimeError("Descrição não pode conter links. Mantenha URLs somente nos registros internos e escolha imagens com crédito textual compatível.")
