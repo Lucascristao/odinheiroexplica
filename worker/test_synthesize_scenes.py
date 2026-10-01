@@ -65,6 +65,41 @@ class GeminiLiveTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 scene_voice_direction({"narration": scene["narration"], "tts": {field: "+10%"}})
 
+    def test_year_pronunciation_and_reference_bound_transcript_alias(self):
+        scene = {"narration": "Essa escolha chega para 2027."}
+        direction = scene_voice_direction(scene)
+        self.assertEqual(
+            direction["pronunciations"]["2027"],
+            "dois mil e vinte e sete",
+        )
+        request = live_turn_text(scene["narration"], direction)
+        self.assertIn(
+            'Pronúncia: "2027" como "dois mil e vinte e sete".',
+            request,
+        )
+
+        equivalent = synth.evaluate_transcription(
+            "Essa escolha chega para 2027.",
+            "Essa escolha chega para vinte vinte e sete.",
+        )
+        self.assertTrue(equivalent["passed"])
+        self.assertEqual(equivalent["similarity"], 1.0)
+        self.assertTrue(equivalent["numeric_equivalences"])
+
+        wrong_year = synth.evaluate_transcription(
+            "Essa escolha chega para 2027.",
+            "Essa escolha chega para vinte vinte e oito.",
+        )
+        self.assertFalse(wrong_year["passed"])
+        self.assertTrue(wrong_year["numeric_only_mismatch"])
+
+        lexical_change = synth.evaluate_transcription(
+            "A empresa não sai do Simples em 2027.",
+            "A empresa sai do Simples em vinte vinte e sete.",
+        )
+        self.assertFalse(lexical_change["passed"])
+        self.assertFalse(lexical_change["numeric_only_mismatch"])
+
     def test_live_turn_collects_final_audio_and_transcript_before_completion(self):
         def response(data=b"", text=None, complete=False, interrupted=False, usage=None, go_away=None):
             return types.SimpleNamespace(
