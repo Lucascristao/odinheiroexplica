@@ -28,15 +28,15 @@
     {
       "id": "A_deadlines",
       "type": "source_excerpt",
-      "source_id": "S1",
+      "source_id": "S2",
       "captured_at": "2026-09-30T23:58:00Z",
       "capture_file": "research/captures/simples-hibrido-prazos.png",
       "subject": "Trecho oficial com o prazo da opção pelo regime regular de IBS e CBS",
       "narrative_role": "Comprovar a diferença entre o prazo para ingressar no Simples e o prazo para optar pelo regime regular de IBS/CBS.",
       "country_context": "BR",
-      "source_page_url": "https://www.cgibs.gov.br/embora-os-periodos-sejam-parecidos-tratam-de-escolhas-diferentes-por-isso-e-importante-entender-cada-situacao",
+      "source_page_url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/setembro/simples-nacional-2027-entenda-os-novos-prazos-e-faca-sua-escolha-com-consciencia-e-tranquilidade/",
       "license": "Documento público oficial; uso editorial com atribuição",
-      "attribution": "RFB / CGIBS",
+      "attribution": "Receita Federal",
       "needs_cutout": false,
       "expected_text": "Prazo: 1º/09/2026 a 30/10/2026."
     },
