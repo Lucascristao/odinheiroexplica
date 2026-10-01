@@ -8,7 +8,7 @@ import hashlib
 import subprocess
 from pathlib import Path
 
-from tts_config import TTS_MODEL_CASCADE, PRESENTER_VOICES, VOICE_POLICY_VERSION, voice_policy_fingerprint
+from tts_config import TTS_MODEL_CASCADE, PRESENTER_VOICES, VOICE_POLICY_VERSION, project_speech_fingerprint, voice_policy_fingerprint
 
 
 FPS = 30
@@ -142,7 +142,7 @@ def validate_stage_timing(scene: dict, resolved_beats: list[dict], scene_id: str
 
 def require_gemini_manifest(manifest: dict) -> None:
     scenes = manifest.get("scenes") or []
-    engine = "google-gemini-tts"
+    engine = "google-gemini-live"
     if not scenes or manifest.get("engine") != engine:
         raise RuntimeError("Render diário exige manifesto de áudio exclusivamente Gemini.")
 
@@ -165,8 +165,8 @@ def require_gemini_manifest(manifest: dict) -> None:
         or manifest.get("model") != primary_model
         or manifest.get("voice") not in voices
         or not voices.issubset(set(PRESENTER_VOICES.values()))
-        or any(model not in set(TTS_MODEL_CASCADE[1:]) for model in configured_fallbacks)
-        or any(model not in configured_fallbacks for model in models if model != primary_model)
+        or configured_fallbacks
+        or models != {primary_model}
         or any(
             item.get("voice_treatment", "none") != "none"
             for item in scenes
@@ -175,12 +175,14 @@ def require_gemini_manifest(manifest: dict) -> None:
         raise RuntimeError("Manifesto contém outro motor, modelo ou voz em alguma cena.")
 
 
-def validate_audio_integrity(scene: dict, audio: dict, audio_dir: Path) -> None:
+def validate_audio_integrity(scene: dict, audio: dict, audio_dir: Path, project: dict) -> None:
     narration_hash = hashlib.sha256(str(scene["narration"]).strip().encode("utf-8")).hexdigest()
     if audio.get("narration_sha256") != narration_hash:
         raise RuntimeError(f"Áudio não corresponde à narração atual: {audio['id']}")
     if audio.get("voice_policy_version") != VOICE_POLICY_VERSION or audio.get("voice_policy_fingerprint") != voice_policy_fingerprint(audio["model"], audio["voice"]):
         raise RuntimeError(f"Áudio não corresponde à política vocal atual: {audio['id']}")
+    if audio.get("speech_profile_fingerprint") != project_speech_fingerprint(project):
+        raise RuntimeError(f"Áudio não corresponde às pronúncias atuais: {audio['id']}")
     root = audio_dir.resolve()
     path = (root / audio["file"]).resolve()
     if not path.is_relative_to(root) or not path.is_file():
@@ -212,7 +214,7 @@ def main() -> None:
     if args.require_gemini:
         require_gemini_manifest(manifest)
     if args.require_voice_continuity:
-        version = "adaptive-voice-continuity-v3"
+        version = "gemini-live-passthrough-v1"
         if manifest.get("postprocess", {}).get("version") != version or any(
             scene.get("postprocess", {}).get("version") != version
             for scene in manifest.get("scenes", [])
@@ -247,7 +249,7 @@ def main() -> None:
         if audio is None:
             raise RuntimeError(f"Áudio não encontrado para {scene_id}")
         if args.require_voice_continuity:
-            validate_audio_integrity(scene, audio, audio_dir)
+            validate_audio_integrity(scene, audio, audio_dir, project)
 
         tail_seconds = (
             FINAL_SCENE_TAIL_SECONDS
