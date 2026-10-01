@@ -42,6 +42,12 @@ LIVE_FIRST_AUDIO_TIMEOUT_SECONDS = float(
 LIVE_STREAM_IDLE_TIMEOUT_SECONDS = float(
     LIVE_RUNTIME["stream_idle_timeout_seconds"]
 )
+LIVE_POST_GENERATION_GRACE_SECONDS = float(
+    LIVE_RUNTIME["post_generation_grace_seconds"]
+)
+LIVE_ACCEPT_GENERATION_COMPLETE_WITHOUT_TURN_COMPLETE = bool(
+    LIVE_RUNTIME["accept_generation_complete_without_turn_complete"]
+)
 LIVE_EXPECTED_SPEECH_WPM = float(
     LIVE_RUNTIME["expected_speech_words_per_minute"]
 )

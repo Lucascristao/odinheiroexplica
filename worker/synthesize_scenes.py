@@ -25,6 +25,8 @@ from tts_config import (
     LIVE_PATHOLOGICAL_DURATION_EXTRA_SECONDS,
     LIVE_PATHOLOGICAL_DURATION_FLOOR_SECONDS,
     LIVE_PATHOLOGICAL_DURATION_MULTIPLIER,
+    LIVE_POST_GENERATION_GRACE_SECONDS,
+    LIVE_ACCEPT_GENERATION_COMPLETE_WITHOUT_TURN_COMPLETE,
     LIVE_RETRY_BACKOFF_SECONDS,
     LIVE_STREAM_IDLE_TIMEOUT_SECONDS,
     MINIMUM_TRANSCRIPTION_SIMILARITY,
@@ -343,6 +345,7 @@ def _new_attempt_diagnostics(
         "session_resumption_updates": [],
         "generation_complete_seen": False,
         "turn_complete_seen": False,
+        "accepted_generation_complete_without_turn_complete": False,
     }
 
 
@@ -367,6 +370,8 @@ async def _receive_live_turn(
     transcript_chunks: list[str] = []
     pcm_bytes = 0
     turn_complete = False
+    accepted_generation_complete = False
+    generation_complete_at = None
     loop = asyncio.get_running_loop()
     started = loop.time()
     first_audio_at = None
@@ -391,6 +396,32 @@ async def _receive_live_turn(
                     "Gemini Live não iniciou áudio dentro do prazo de primeiro frame."
                 )
             wait_seconds = remaining
+        elif generation_complete_at is not None:
+            remaining = LIVE_POST_GENERATION_GRACE_SECONDS - (
+                loop.time() - generation_complete_at
+            )
+            if remaining <= 0:
+                if (
+                    LIVE_ACCEPT_GENERATION_COMPLETE_WITHOUT_TURN_COMPLETE
+                    and pcm_bytes >= SAMPLE_RATE * SAMPLE_WIDTH
+                    and "".join(transcript_chunks).strip()
+                ):
+                    accepted_generation_complete = True
+                    diagnostics[
+                        "accepted_generation_complete_without_turn_complete"
+                    ] = True
+                    diagnostics["completion_signal"] = (
+                        "generation_complete_after_grace"
+                    )
+                    break
+                raise RetryableLiveError(
+                    "Gemini Live concluiu a geração, mas não finalizou o turno "
+                    "nem entregou áudio/transcrição utilizáveis."
+                )
+            wait_seconds = min(
+                remaining,
+                wall_limit_seconds - elapsed,
+            )
         else:
             wait_seconds = min(
                 LIVE_STREAM_IDLE_TIMEOUT_SECONDS,
@@ -403,12 +434,39 @@ async def _receive_live_turn(
                 timeout=max(0.1, wait_seconds),
             )
         except StopAsyncIteration:
+            if (
+                diagnostics.get("generation_complete_seen")
+                and LIVE_ACCEPT_GENERATION_COMPLETE_WITHOUT_TURN_COMPLETE
+                and pcm_bytes >= SAMPLE_RATE * SAMPLE_WIDTH
+                and "".join(transcript_chunks).strip()
+            ):
+                accepted_generation_complete = True
+                diagnostics[
+                    "accepted_generation_complete_without_turn_complete"
+                ] = True
+                diagnostics["completion_signal"] = (
+                    "generation_complete_stream_closed"
+                )
             break
         except asyncio.TimeoutError as exc:
             if first_audio_at is None:
                 raise RetryableLiveError(
                     "Gemini Live não iniciou áudio dentro do prazo de primeiro frame."
                 ) from exc
+            if (
+                generation_complete_at is not None
+                and LIVE_ACCEPT_GENERATION_COMPLETE_WITHOUT_TURN_COMPLETE
+                and pcm_bytes >= SAMPLE_RATE * SAMPLE_WIDTH
+                and "".join(transcript_chunks).strip()
+            ):
+                accepted_generation_complete = True
+                diagnostics[
+                    "accepted_generation_complete_without_turn_complete"
+                ] = True
+                diagnostics["completion_signal"] = (
+                    "generation_complete_after_grace"
+                )
+                break
             raise RetryableLiveError(
                 "Gemini Live ficou sem novos eventos durante a geração de áudio."
             ) from exc
@@ -445,6 +503,11 @@ async def _receive_live_turn(
 
         if bool(getattr(server, "generation_complete", False)):
             diagnostics["generation_complete_seen"] = True
+            if generation_complete_at is None:
+                generation_complete_at = loop.time()
+                diagnostics["generation_complete_at_seconds"] = round(
+                    generation_complete_at - started, 3
+                )
 
         model_turn = getattr(server, "model_turn", None)
         if model_turn is not None:
@@ -499,13 +562,15 @@ async def _receive_live_turn(
 
         if bool(getattr(server, "turn_complete", False)):
             diagnostics["turn_complete_seen"] = True
+            diagnostics["completion_signal"] = "turn_complete"
             turn_complete = True
             break
 
     diagnostics["session_receive_seconds"] = round(loop.time() - started, 3)
-    if not turn_complete:
+    if not turn_complete and not accepted_generation_complete:
         raise RetryableLiveError(
-            "Gemini Live encerrou a resposta sem turn_complete."
+            "Gemini Live encerrou a resposta sem turn_complete "
+            "nem generation_complete aceitável."
         )
 
     pcm = b"".join(pcm_chunks)
@@ -693,6 +758,9 @@ async def synthesize_missing_jobs(
         "retry_backoff_seconds": list(LIVE_RETRY_BACKOFF_SECONDS),
         "first_audio_timeout_seconds": LIVE_FIRST_AUDIO_TIMEOUT_SECONDS,
         "stream_idle_timeout_seconds": LIVE_STREAM_IDLE_TIMEOUT_SECONDS,
+        "post_generation_grace_seconds": LIVE_POST_GENERATION_GRACE_SECONDS,
+        "accept_generation_complete_without_turn_complete":
+            LIVE_ACCEPT_GENERATION_COMPLETE_WITHOUT_TURN_COMPLETE,
         "requested_scene_ids": [job["scene_id"] for job in jobs],
         "completed_scene_ids": [],
         "attempts": [],

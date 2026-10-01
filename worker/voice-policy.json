@@ -44,6 +44,8 @@
     "pathological_duration_multiplier": 2.5,
     "pathological_duration_extra_seconds": 20,
     "pathological_duration_floor_seconds": 45,
-    "session_resumption": false
+    "session_resumption": false,
+    "post_generation_grace_seconds": 5,
+    "accept_generation_complete_without_turn_complete": true
   }
 }

@@ -106,6 +106,44 @@ class GeminiLiveTests(unittest.TestCase):
             asyncio.run(synth._receive_live_turn(Session([response(b"\x00\x00"*24000, "A conta", True, True)])))
         with self.assertRaisesRegex(RuntimeError, "turn_complete"):
             asyncio.run(synth._receive_live_turn(Session([response(b"\x00\x00"*24000, "A conta")])))
+        
+        class HangingAfterGeneration:
+            def __init__(self, event):
+                self.event = event
+                self.sent = False
+            def __aiter__(self):
+                return self
+            async def __anext__(self):
+                if not self.sent:
+                    self.sent = True
+                    return self.event
+                await asyncio.sleep(3600)
+            def receive(self):
+                return self
+
+        post_generation = response(
+            b"\x03\x00"*24000,
+            "A conta não mudou.",
+            complete=False,
+        )
+        post_generation.server_content.generation_complete = True
+        diagnostics_after_generation = {}
+        with patch.object(synth, "LIVE_POST_GENERATION_GRACE_SECONDS", 0.01):
+            audio2, transcript2 = asyncio.run(synth._receive_live_turn(
+                HangingAfterGeneration(post_generation),
+                narration="A conta não mudou.",
+                attempt_diagnostics=diagnostics_after_generation,
+            ))
+        self.assertEqual(len(audio2), 48000)
+        self.assertEqual(transcript2, "A conta não mudou.")
+        self.assertTrue(
+            diagnostics_after_generation[
+                "accepted_generation_complete_without_turn_complete"
+            ]
+        )
+        self.assertFalse(
+            diagnostics_after_generation["turn_complete_seen"]
+        )
 
     def test_single_model_policy_has_no_fallback(self):
         self.assertEqual(TTS_MODEL_CASCADE, ("gemini-3.8-live",))

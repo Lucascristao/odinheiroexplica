@@ -30,7 +30,7 @@ Falhas transitórias do Live, incluindo fechamento 1011/1012/1013, Resource Exha
 
 O worker registra `daily-live-diagnostics.json` com versão do SDK, tentativa por cena, latência até o primeiro áudio, bytes PCM, duração, `usage_metadata`, `go_away`, updates de retomada recebidos e código/motivo de fechamento quando houver. Session Resumption fica desativado porque cada cena é independente.
 
-Há também dois watchdogs: timeout de primeiro áudio e limite de duração anormal calculado a partir do tamanho do roteiro. Se o Live entrar em geração runaway, a tentativa é descartada e refeita em uma sessão nova.
+Há também watchdogs para primeiro áudio, silêncio durante geração e duração anormal calculada a partir do tamanho do roteiro. Depois que o servidor envia `generationComplete`, o worker muda de estado: espera uma graça curta por `turnComplete`, mas não usa mais o timeout de geração. Para este TTS offline, se já existem PCM e transcrição válidos, `generationComplete` é aceito mesmo que `turnComplete` não chegue; a fidelidade literal continua sendo validada antes de salvar a cena. Isso evita descartar áudio completo só porque o servidor ainda está aguardando o encerramento lógico do turno.
 
 `tts.delivery` aceita hook, explain, contrast, question ou closing. Os cues identificam até seis trechos literais e únicos com intenção de emphasis, number ou contrast; são enviados em instruções separadas da leitura. Pausas são intenções aproximadas, não tempos garantidos. Rate e pitch não alteram o áudio bruto. Não inserir marcações de atuação no texto narrado.
 

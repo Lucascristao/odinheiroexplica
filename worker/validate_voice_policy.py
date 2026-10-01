@@ -90,6 +90,14 @@ def validate() -> None:
         raise RuntimeError("Política Live deve prever uma tentativa inicial e três retries.")
     if list(runtime.get("retry_backoff_seconds") or []) != [5, 15, 30]:
         raise RuntimeError("Backoff Live deve ser 5s, 15s e 30s.")
+    if float(runtime.get("post_generation_grace_seconds", 0)) < 1:
+        raise RuntimeError("Grace após generationComplete é curto demais.")
+    if runtime.get(
+        "accept_generation_complete_without_turn_complete"
+    ) is not True:
+        raise RuntimeError(
+            "TTS offline deve aceitar generationComplete válido sem exigir turnComplete."
+        )
 
     for path in (
         "AGENTS.md",
