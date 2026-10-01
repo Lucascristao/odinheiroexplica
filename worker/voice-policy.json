@@ -1,15 +1,22 @@
 {
-  "version": "2026-09-30.1",
+  "version": "2026-10-01.1",
   "language": "pt-BR",
-  "delivery_style": "Conversational and informative, moderate steady pace, clear articulation, restrained emphasis.",
-  "model_cascade": ["gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts", "gemini-3.1-flash-tts-preview"],
+  "delivery_style": "Conversational and informative Brazilian Portuguese, natural human delivery, moderate steady pace, clear articulation, restrained but varied emphasis, short natural pauses between complete thoughts, never announcer-like or robotic.",
+  "model_cascade": ["gemini-3.8-live"],
   "models": {
-    "gemini-3.8-flash-tts": {"endpoint": "interactions", "style_transport": "speech_metadata"},
-    "gemini-3.8-flash-lite-tts": {"endpoint": "interactions", "style_transport": "speech_metadata"},
-    "gemini-3.1-flash-tts-preview": {"endpoint": "generate-content", "style_transport": "directed_prompt"}
+    "gemini-3.8-live": {
+      "endpoint": "live-websocket",
+      "style_transport": "system_instruction",
+      "output_audio": "pcm-s16le-24000"
+    }
   },
-  "presenters": {"male": {"name": "Roberto", "voice": "Charon"}, "female": {"name": "Luana", "voice": "Autonoe"}},
+  "presenters": {
+    "male": {"name": "Roberto", "voice": "Charon"},
+    "female": {"name": "Luana", "voice": "Autonoe"}
+  },
   "default_presenter": "male",
-  "fallback_failures": ["rpd", "rate-limit-persistent", "server-unavailable", "request-timeout"],
-  "raw_audio_treatment": "none"
+  "fallback_failures": [],
+  "raw_audio_treatment": "none",
+  "output_transcription_required": true,
+  "minimum_transcription_similarity": 0.985
 }
