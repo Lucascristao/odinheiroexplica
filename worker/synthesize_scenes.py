@@ -648,11 +648,18 @@ async def _synthesize_scene_with_retries(
             )
             similarity = fidelity["similarity"]
             if not fidelity["passed"]:
-                raise RuntimeError(
+                message = (
                     f"Gemini Live divergiu do roteiro em {scene_id}: "
                     f"similaridade {similarity:.4f}; alteração literal: "
                     f"{json.dumps(fidelity['differences'][:3], ensure_ascii=False)}."
                 )
+                if fidelity.get("numeric_only_mismatch"):
+                    raise RetryableLiveError(
+                        message
+                        + " Divergência apenas numérica; refazendo a cena "
+                        "na mesma voz/modelo."
+                    )
+                raise RuntimeError(message)
 
             write_pcm_wav(job["output_file"], pcm)
             duration = duration_seconds(job["output_file"])
