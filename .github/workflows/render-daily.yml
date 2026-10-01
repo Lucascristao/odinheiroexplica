@@ -18,7 +18,7 @@ permissions:
   actions: read
 
 concurrency:
-  group: ode-gemini-tts-${{ github.repository }}
+  group: ode-gemini-live-${{ github.repository }}
   cancel-in-progress: false
 
 jobs:
@@ -123,10 +123,10 @@ jobs:
         uses: actions/cache/restore@v4
         with:
           path: public/generated-audio/daily
-          key: gemini-audio-v3-${{ env.ODE_VOICE_POLICY_VERSION }}-${{ env.ODE_VOICE_POLICY_CACHE_KEY }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: gemini-live-audio-v1-${{ env.ODE_VOICE_POLICY_VERSION }}-${{ env.ODE_VOICE_POLICY_CACHE_KEY }}-${{ github.run_id }}-${{ github.run_attempt }}
           restore-keys: |
-            gemini-audio-v3-${{ env.ODE_VOICE_POLICY_VERSION }}-${{ env.ODE_VOICE_POLICY_CACHE_KEY }}-${{ github.run_id }}-
-            gemini-audio-v3-${{ env.ODE_VOICE_POLICY_VERSION }}-${{ env.ODE_VOICE_POLICY_CACHE_KEY }}-
+            gemini-live-audio-v1-${{ env.ODE_VOICE_POLICY_VERSION }}-${{ env.ODE_VOICE_POLICY_CACHE_KEY }}-${{ github.run_id }}-
+            gemini-live-audio-v1-${{ env.ODE_VOICE_POLICY_VERSION }}-${{ env.ODE_VOICE_POLICY_CACHE_KEY }}-
 
       - name: Restore reviewed audio when requested
         if: env.ODE_FORCE_FRESH_AUDIO != 'true'
@@ -165,9 +165,9 @@ jobs:
         uses: actions/cache/save@v4
         with:
           path: public/generated-audio/daily
-          key: gemini-audio-v3-${{ env.ODE_VOICE_POLICY_VERSION }}-${{ env.ODE_VOICE_POLICY_CACHE_KEY }}-${{ github.run_id }}-${{ github.run_attempt }}
+          key: gemini-live-audio-v1-${{ env.ODE_VOICE_POLICY_VERSION }}-${{ env.ODE_VOICE_POLICY_CACHE_KEY }}-${{ github.run_id }}-${{ github.run_attempt }}
 
-      - name: Match voice continuity from this episode
+      - name: Verify raw Gemini Live narration
         run: |
           python worker/progress_callback.py \
             --run-id "${{ github.run_id }}" \
@@ -175,7 +175,7 @@ jobs:
             --status running \
             --stage audio \
             --percent 18 \
-            --detail "Verificando continuidade de voz; áudio homogêneo permanece intocado e apenas fallback real recebe correção."
+            --detail "Verificando o áudio bruto do Gemini Live. Nenhum EQ, limiter, compressor ou normalização é aplicado."
 
           python worker/process_voice_continuity.py \
             --input-manifest video/generated/daily-tts-manifest.json \
@@ -300,7 +300,7 @@ jobs:
             video/generated/daily-aligned-tts-manifest.json
             video/generated/daily-alignment-report.json
             video/generated/daily-render-input.json
-            public/generated-audio/daily/*.mp3
+            public/generated-audio/daily/*.wav
             public/processed-audio/daily/*
           if-no-files-found: error
           retention-days: 7
