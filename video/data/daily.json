@@ -126,7 +126,7 @@
     },
     "render_review": {
       "status": "production_review_pending",
-      "note": "Direção refeita com deslocamentos, câmeras autorais e sequência de segurança. Editorial e pré-voz com Inter real passaram nas oito cenas; quadros intermediários e recortes foram inspecionados com tempos sintéticos. O passe final exige os assets definitivos, os tempos do áudio e a revisão do MP4; escuta Live permanece pendente."
+      "note": "Reexecução após ajustar a primeira frase da scene-01 para evitar code-switch do Gemini Live ('the' no lugar de 'o') logo após NFC. Preservar o áudio válido em cache das cenas sem alteração e conferir fidelidade/naturalidade no MP4 final."
     },
     "explanation": {
       "version": "1.0",
@@ -138,7 +138,7 @@
           ],
           "explanation": {
             "scene_id": "scene-01",
-            "quote": "Pix por aproximação é uma forma de iniciar um Pix usando NFC, a comunicação de curtíssimo alcance entre o celular e uma maquininha compatível."
+            "quote": "Pix por aproximação é uma forma de iniciar um Pix usando NFC. Essa tecnologia permite uma comunicação de curtíssimo alcance entre celular e maquininha compatível."
           },
           "claim_ids": [
             "C7"
@@ -186,7 +186,7 @@
           ],
           "explanation": {
             "scene_id": "scene-01",
-            "quote": "Pix por aproximação é uma forma de iniciar um Pix usando NFC, a comunicação de curtíssimo alcance entre o celular e uma maquininha compatível."
+            "quote": "Pix por aproximação é uma forma de iniciar um Pix usando NFC. Essa tecnologia permite uma comunicação de curtíssimo alcance entre celular e maquininha compatível."
           },
           "claim_ids": [
             "C7"
@@ -520,7 +520,7 @@
         }
       ],
       "review": {
-        "content_sha256": "7c04e9abbdeb79cec596e52d8b4f80ad7e7972d7de8cef4f10dc494034c98dc0",
+        "content_sha256": "4093422e1566a293b7d160608518207a8e49143c9f4f448828c367bf1077fdc2",
         "findings": [
           {
             "question": "A correção principal aparece antes dos detalhes técnicos?",
@@ -997,7 +997,7 @@
       "index": 1,
       "scene_index": 1,
       "title": "A aproximação só inicia o pagamento",
-      "narration": "Pix por aproximação é uma forma de iniciar um Pix usando NFC, a comunicação de curtíssimo alcance entre o celular e uma maquininha compatível. Você aproxima o aparelho, confere os dados da cobrança e confirma a operação. O dinheiro continua saindo da sua conta por Pix. A aproximação muda a porta de entrada do pagamento; ela não cria um sistema separado de dinheiro. E esse detalhe ajuda a entender por que o Banco Central decidiu aproximar também as regras de limite.",
+      "narration": "Pix por aproximação é uma forma de iniciar um Pix usando NFC. Essa tecnologia permite uma comunicação de curtíssimo alcance entre celular e maquininha compatível. Você aproxima o aparelho, confere os dados da cobrança e confirma a operação. O dinheiro continua saindo da sua conta por Pix. A aproximação muda a porta de entrada do pagamento; ela não cria um sistema separado de dinheiro. E esse detalhe ajuda a entender por que o Banco Central decidiu aproximar também as regras de limite.",
       "claim_ids": [
         "C7",
         "C9"
@@ -2304,7 +2304,7 @@
         "index": 1,
         "scene_index": 1,
         "title": "A aproximação só inicia o pagamento",
-        "narration": "Pix por aproximação é uma forma de iniciar um Pix usando NFC, a comunicação de curtíssimo alcance entre o celular e uma maquininha compatível. Você aproxima o aparelho, confere os dados da cobrança e confirma a operação. O dinheiro continua saindo da sua conta por Pix. A aproximação muda a porta de entrada do pagamento; ela não cria um sistema separado de dinheiro. E esse detalhe ajuda a entender por que o Banco Central decidiu aproximar também as regras de limite.",
+        "narration": "Pix por aproximação é uma forma de iniciar um Pix usando NFC. Essa tecnologia permite uma comunicação de curtíssimo alcance entre celular e maquininha compatível. Você aproxima o aparelho, confere os dados da cobrança e confirma a operação. O dinheiro continua saindo da sua conta por Pix. A aproximação muda a porta de entrada do pagamento; ela não cria um sistema separado de dinheiro. E esse detalhe ajuda a entender por que o Banco Central decidiu aproximar também as regras de limite.",
         "claim_ids": [
           "C7",
           "C9"
