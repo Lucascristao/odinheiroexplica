@@ -1,5 +1,6 @@
 Produção autorizada: novo Simples Nacional híbrido, pesquisa revisada em 01/10/2026.
 Motor geral: layout compartilhado, legendas reservadas, operações visuais reais, conceitos e exemplos verificáveis e provas autênticas legíveis.
-Narração: somente gemini-3.8-live/Charon, direção por cena separada do texto, fidelidade literal e WAV bruto preservado.
+Narração: somente gemini-3.8-live/Charon, google-genai 2.26.0, temperatura padrão do provedor, uma sessão WebSocket por cena/tentativa, retry 5s → 15s → 30s para falhas transitórias, fidelidade literal e WAV bruto preservado.
+Diagnóstico Live: usage_metadata, go_away, latência, bytes, duração, tentativas e fechamento registrados no artifact; sem fallback de modelo e sem Session Resumption.
 Verificações antes da voz, após a timeline real e antes da entrega ao Drive; publicação do vídeo permanece manual.
-Trigger: motor-general-live-simples-2026-10-01-v2
+Trigger: live-resilience-2026-10-01-v3
