@@ -32,6 +32,8 @@ jobs:
         run: |
           npm run test:explanation
           npm run test:layout
+          npm run test:direction
+          npm run test:motion
 
       - name: Validate Python pipeline
         run: python -m py_compile worker/editorial_project.py worker/qa_delivery.py worker/render_request.py worker/tts_config.py worker/gemini_live_fidelity.py worker/synthesize_scenes.py worker/process_voice_continuity.py worker/restore_reviewed_audio.py worker/build_render_input.py worker/build_youtube_package.py worker/editorial_source_audit.py worker/prepare_visual_assets.py worker/auto_capture_sources.py
@@ -43,7 +45,9 @@ jobs:
         run: python worker/test_render_request.py
 
       - name: Validate canonical voice policy and documentation
-        run: python worker/validate_voice_policy.py
+        run: |
+          python worker/validate_voice_policy.py
+          python worker/test_tts_direction.py
 
       - name: Install audio regression dependencies
         run: |

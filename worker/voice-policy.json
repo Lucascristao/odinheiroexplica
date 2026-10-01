@@ -1,7 +1,7 @@
 {
-  "version": "2026-10-01.3",
+  "version": "2026-10-01.4",
   "language": "pt-BR",
-  "delivery_style": "Conversational and informative Brazilian Portuguese, natural human delivery, moderate steady pace, clear articulation, restrained but varied emphasis, short natural pauses between complete thoughts, never announcer-like or robotic.",
+  "delivery_style": "Português brasileiro de conversa, voz presente, calorosa e clara, com energia e interesse pelo que está sendo explicado. Interprete o sentido de cada frase: curiosidade nas perguntas, descoberta nas revelações, contraste audível nas oposições e conclusão firme nas respostas. Varie naturalmente ritmo, entonação e ênfase ao longo do raciocínio; dê apoio às palavras que carregam a ideia e espaço para o ouvinte entender. Faça pausas entre pensamentos completos e retome a conversa com fluidez. Preserve a identidade da voz e todas as palavras do roteiro, com emoção proporcional ao conteúdo, sem cadência de locutor publicitário, leitura mecânica ou dramatização alarmista.",
   "model_cascade": [
     "gemini-3.8-live"
   ],

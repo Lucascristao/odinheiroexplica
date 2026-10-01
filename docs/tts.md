@@ -6,7 +6,7 @@
 
 Não existe mais cascata de 3.8 Flash, Flash-Lite e 3.1. O motor não troca de modelo nem de voz no meio do vídeo. A integração usa `google-genai==2.26.0`, temperatura padrão do Gemini 3 e uma sessão WebSocket nova para cada cena e para cada tentativa. Uma queda de conexão não reaproveita a sessão anterior nem muda a voz.
 
-A direção vocal continua centralizada na política: português brasileiro, leitura humana e conversacional, ritmo moderado, articulação clara, ênfase variada sem exagero, pausas curtas entre pensamentos completos e sem cadência de locutor ou leitura robótica.
+A direção vocal continua centralizada na política: português brasileiro de conversa, voz presente e calorosa, articulação clara, ritmo e entonação que variam com o raciocínio e pausas entre pensamentos completos. Cada vídeo recebe interpretação própria pelo significado de suas frases, preservando a identidade do apresentador. A política orienta presença e intenção; não impõe uma sequência de emoções ou uma curva repetida de pergunta, explicação e conclusão.
 
 ## Leitura literal e pronúncia
 
@@ -22,7 +22,7 @@ O Gemini Live devolve PCM mono de 16 bits a 24 kHz. O worker apenas encapsula es
 
 ## Cache e retomada
 
-Cada WAV tem um sidecar `.tts.json` com texto, modelo, voz, duração, hash do áudio, versão da política, fingerprint da direção vocal, fingerprint das pronúncias do projeto e transcrição de saída. A direção por cena em `tts.delivery` e `tts.cues` também integra o cache. Mudança de roteiro, voz, política, pronúncias ou direção invalida apenas as cenas correspondentes.
+Cada WAV tem um sidecar `.tts.json` com texto, modelo, voz, duração, hash do áudio, versão da política, fingerprint da direção vocal, fingerprint das pronúncias do projeto e transcrição de saída. A direção por cena em `tts.delivery` e `tts.cues`, incluindo intenção, arco e palavra-chave, também integra o cache. O fingerprint usa a direção validada e o texto de instrução enviado ao Live: mudar somente um cue invalida a cena correspondente; uma alteração da política global invalida as cenas que usam a política anterior. Mudanças apenas visuais preservam o áudio válido.
 
 Regeneração integral continua exigindo o input manual `force_fresh_audio` no primeiro attempt de um `workflow_dispatch`. Pushes e reruns retomam cache válido.
 
@@ -32,10 +32,44 @@ O worker registra `daily-live-diagnostics.json` com versão do SDK, tentativa po
 
 Há também watchdogs para primeiro áudio, silêncio durante geração e duração anormal calculada a partir do tamanho do roteiro. Depois que o servidor envia `generationComplete`, o worker muda de estado: espera uma graça curta por `turnComplete`, mas não usa mais o timeout de geração. Para este TTS offline, se já existem PCM e transcrição válidos, `generationComplete` é aceito mesmo que `turnComplete` não chegue; a fidelidade literal continua sendo validada antes de salvar a cena. Isso evita descartar áudio completo só porque o servidor ainda está aguardando o encerramento lógico do turno.
 
-`tts.delivery` aceita hook, explain, contrast, question ou closing. Os cues identificam até seis trechos literais e únicos com intenção de emphasis, number ou contrast; são enviados em instruções separadas da leitura. Pausas são intenções aproximadas, não tempos garantidos. Rate e pitch não alteram o áudio bruto. Não inserir marcações de atuação no texto narrado.
+`tts.delivery` aceita hook, explain, contrast, question ou closing como orientações flexíveis, escolhidas para a cena. Os cues identificam até seis trechos literais e únicos, sem sobreposição ou corte de palavra e sem atravessar frases, com `kind` de emphasis, number ou contrast. O motor traduz esses tipos em direção de fala em português, mantendo compatibilidade com cues anteriores. Além de `pause_before_ms` entre 0 e 300, cada cue pode ter:
+
+- `intent`: curiosity, discovery, reassurance, caution ou conviction; define a intenção da fala sem alterar sua certeza factual.
+- `arc`: question, build, resolve ou contrast; orienta o percurso do trecho de forma natural, sem pitch, velocidade ou duração exatos.
+- `emphasis_word`: uma palavra literal formada por letras ou números, presente exatamente uma vez como palavra inteira no próprio cue, respeitando maiúsculas e acentos.
+
+Exemplo de direção autoral para uma frase específica:
+
+```json
+{
+  "narration": "Parece contraditório? A empresa continua no Simples.",
+  "tts": {
+    "delivery": "hook",
+    "cues": [
+      {
+        "text": "Parece contraditório?",
+        "kind": "emphasis",
+        "intent": "curiosity",
+        "arc": "question",
+        "emphasis_word": "contraditório"
+      },
+      {
+        "text": "A empresa continua no Simples.",
+        "kind": "contrast",
+        "intent": "reassurance",
+        "arc": "resolve",
+        "emphasis_word": "continua",
+        "pause_before_ms": 180
+      }
+    ]
+  }
+}
+```
+
+O autor escolhe esses campos pelo sentido do vídeo; não há inferência automática de emoções ou cues, quantidade mínima ou obrigação de repetir o exemplo. Toda a direção é enviada em instruções separadas da leitura. Pausas são intenções aproximadas, não tempos garantidos; uma pausa de zero mantém a fluidez sem pedir uma pausa artificial. Rate e pitch não alteram o áudio bruto. Não inserir marcações de atuação no texto narrado.
 
 ## Alinhamento e entrega
 
 Fluxo: roteiro → auditoria de pronúncia → Gemini 3.8 Live → verificação de fidelidade → passthrough byte-idêntico → alinhamento local das âncoras → timeline → render.
 
-`worker/align_narration.py` continua usando o áudio real para melhorar o sincronismo visual. A transcrição do Live valida o conteúdo falado; o alinhamento local continua responsável por localizar as palavras no tempo. Revise o MP4 final para ritmo, dicção e sincronização visual.
+`worker/align_narration.py` continua usando o áudio real para melhorar o sincronismo visual. A transcrição do Live valida o conteúdo falado; o alinhamento local continua responsável por localizar as palavras no tempo. O gate lexical não aprova presença ou prosódia e não exige ritmo neutro: revise o MP4 final para intenção, naturalidade, ritmo, dicção e sincronização visual. Uma comparação curta de direções pode ajudar quando houver uma dúvida concreta, sem ser uma etapa obrigatória de cada produção.

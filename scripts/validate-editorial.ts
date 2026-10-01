@@ -1,4 +1,5 @@
 import {validateSpeechDirection} from "../src/lib/speech-direction";
+import {summarizeEditorialDirection} from "../src/lib/editorial-direction";
 import {readFileSync} from "node:fs";
 import {createHash} from "node:crypto";
 import {normalizeEditorialProject,explanationReviewContent,stableJson} from "../src/lib/editorial-project";
@@ -11,6 +12,9 @@ const path = process.argv[2] ?? "video/data/daily.json";
 const rawProject = JSON.parse(readFileSync(path, "utf8"));
 const project = normalizeEditorialProject(rawProject);
 const scenes = project.scenes ?? project.script?.scenes ?? [];
+const direction = summarizeEditorialDirection(project);
+console.log(`Direção autoral: ${JSON.stringify(direction.scenes)}`);
+direction.warnings.forEach(message => console.warn(`::warning::${message}`));
 const assets = new Set((project.visual_assets ?? []).map((a: {id: string}) => a.id));
 const stagedAssets = new Set<string>(scenes.flatMap((scene: any) =>
   (scene.visual?.stage?.elements ?? []).map((element: any) => element.asset_id).filter(Boolean)));

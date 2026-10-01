@@ -14,11 +14,16 @@ const Audit=({scene,fps=30,mode="pre-voice"}:AuditProps)=> {
   const duration=scene.duration_frames??Math.max(180,(scene.visual.beats?.length??1)*120+90);
   const beats:StageEvent[]=(scene.visual.beats??[]).map((b:any,i:number)=>({...b,resolved_frame:b.resolved_frame??i*120+30}));
   const frames=new Set([0,1,30,duration-1]);
-  for(let f=0;f<=Math.min(duration-1,Math.ceil(fps*.45)+2);f++)frames.add(f);
+  for(let f=0;f<=Math.min(duration-1,Math.ceil(fps*2)+2);f++)frames.add(f);
   for(const b of beats) {
     const start=b.resolved_frame!;
-    const length=Math.ceil(Math.max(b.motion_seconds??.45,b.camera?.motion_seconds??.9)*fps)+2;
-    for(let f=Math.max(0,start-1);f<=Math.min(duration-1,start+length);f++)frames.add(f);
+    // The repertoire accepts transitions up to two seconds, including opt-in
+    // automatic camera and staggered text/SVG phases. Check intermediate frames
+    // through the whole supported interval rather than only the old short fade.
+    const length=Math.ceil(2*fps)+2;
+    const autoReveal=!b.camera&&b.camera_mode!=="hold"&&(stage.camera_mode==="auto"||b.camera_mode==="auto")&&(b.action==="reveal"||Boolean(b.reveal_ids?.length));
+    const first=autoReveal?start-Math.ceil(.9*fps)-1:start-1;
+    for(let f=Math.max(0,first);f<=Math.min(duration-1,start+length);f++)frames.add(f);
   }
   const issues:any[]=[];
   const seen=new Set<string>();
