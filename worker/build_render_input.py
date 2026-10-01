@@ -175,13 +175,13 @@ def require_gemini_manifest(manifest: dict) -> None:
         raise RuntimeError("Manifesto contém outro motor, modelo ou voz em alguma cena.")
 
 
-def validate_audio_integrity(scene: dict, audio: dict, audio_dir: Path, project: dict) -> None:
+def validate_audio_integrity(scene: dict, audio: dict, audio_dir: Path, project: dict | None = None) -> None:
     narration_hash = hashlib.sha256(str(scene["narration"]).strip().encode("utf-8")).hexdigest()
     if audio.get("narration_sha256") != narration_hash:
         raise RuntimeError(f"Áudio não corresponde à narração atual: {audio['id']}")
     if audio.get("voice_policy_version") != VOICE_POLICY_VERSION or audio.get("voice_policy_fingerprint") != voice_policy_fingerprint(audio["model"], audio["voice"]):
         raise RuntimeError(f"Áudio não corresponde à política vocal atual: {audio['id']}")
-    if audio.get("speech_profile_fingerprint") != project_speech_fingerprint(project):
+    if project is not None and audio.get("speech_profile_fingerprint") != project_speech_fingerprint(project):
         raise RuntimeError(f"Áudio não corresponde às pronúncias atuais: {audio['id']}")
     root = audio_dir.resolve()
     path = (root / audio["file"]).resolve()
