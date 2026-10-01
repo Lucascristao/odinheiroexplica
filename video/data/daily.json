@@ -1,124 +1,114 @@
 {
-  "project_id": "simples-nacional-hibrido-2026-10-01",
-  "title": "Simples em 2027: por que separar impostos muda a conta da empresa",
+  "project_id": "pix-aproximacao-limite-2026-10-01",
+  "title": "Pix por aproximação: acabou o teto de R$ 500, mas não os limites",
   "version": "1.0",
   "presenter": {
-    "gender": "male",
-    "name": "Roberto"
+    "gender": "female",
+    "name": "Luana"
   },
   "speech": {
     "pronunciations": {
-      "IBS": "i bê ésse",
-      "CBS": "cê bê ésse",
-      "DAS": "dás",
-      "MEI": "mêi",
-      "B2B": "bê dois bê",
-      "B2C": "bê dois cê",
-      "CNPJ": "cê ene pê jota",
-      "PIS": "pis",
-      "Cofins": "cofins"
+      "NFC": "ene éfe cê",
+      "Open Finance": "ôupen fáinans"
     },
     "ignore_pronunciation_terms": []
   },
   "story": {
-    "subject": "A escolha do Simples Nacional para 2027: IBS e CBS dentro da guia ou pelo regime regular, com créditos próprios e do cliente distinguidos.",
-    "angle": "Acompanhar uma empresa, explicar a guia e os tributos, demonstrar apenas a CBS com números hipotéticos e ligar clientes, custos e prazos à decisão.",
-    "promise": "Entender o que separar impostos muda e quais números precisam entrar numa comparação, sem promessa de economia.",
-    "why_now": "Pesquisa revalidada em 01/10/2026: os prazos prorrogados pela Resolução CGSN 194 continuam registrados pela Receita em 29/09 e pelo CGIBS em 30/09; não tratar a estatística de 28/09 como balanço de outubro.",
-    "category": "economy"
+    "subject": "A retirada, em 1º de outubro de 2026, do teto específico de R$500 por transação no Pix por aproximação.",
+    "angle": "Começar pela confusão entre teto específico e limite da conta, mostrar a jornada NFC, comparar antes e depois, demonstrar com exemplo hipotético e explicar gestão de limites, Open Finance e segurança.",
+    "promise": "Entender o que realmente deixou de ter limite fixo, quem passa a definir a faixa de pagamento e o que continua protegendo a operação.",
+    "why_now": "A IN BCB 746 entrou em vigor em 01/10/2026; a cobertura do dia pode induzir à leitura simplificada de que o Pix por aproximação ficou sem limites.",
+    "category": "money"
   },
   "visual_assets": [
     {
-      "id": "A_deadlines",
+      "id": "A_rule",
       "type": "source_excerpt",
-      "source_id": "S2",
-      "capture_file": "research/captures/simples-hibrido-prazos.png",
-      "subject": "Linha integral da tabela oficial: cancelamento das opções e período aplicável",
-      "narrative_role": "Comprovar a janela de cancelamento narrada na cena09, preservando o nome do procedimento junto com as datas.",
+      "source_id": "S1",
+      "capture_file": "research/captures/pix-aproximacao-teto-bcb.png",
+      "subject": "Trecho oficial sobre retirada do teto fixo de R$500",
+      "narrative_role": "Comprovar mudança e extensão à jornada sem redirecionamento.",
       "country_context": "BR",
-      "source_page_url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/setembro/simples-nacional-2027-entenda-os-novos-prazos-e-faca-sua-escolha-com-consciencia-e-tranquilidade/",
+      "source_page_url": "https://www.bcb.gov.br/detalhenoticia/21169/noticia",
       "license": "Documento público oficial; uso editorial com atribuição",
-      "attribution": "Receita Federal",
+      "attribution": "Banco Central do Brasil",
       "needs_cutout": false,
-      "expected_text": "Cancelamento das opções 03/11/2026 a 20/12/2026"
+      "expected_text": "deixa de ter teto fixo de R$500"
     },
     {
-      "id": "A_requests",
+      "id": "A_limits",
       "type": "source_excerpt",
       "source_id": "S4",
-      "capture_file": "research/captures/simples-hibrido-solicitacoes.png",
-      "subject": "Trecho oficial com o balanço de solicitações",
-      "narrative_role": "Dar escala à nova opção sem sugerir aprovação ou vantagem do regime regular.",
+      "capture_file": "research/captures/pix-limites-24-48h-bcb.png",
+      "subject": "FAQ oficial de alteração dos limites do Pix",
+      "narrative_role": "Comprovar redução imediata e análise do aumento.",
       "country_context": "BR",
-      "source_page_url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/setembro/receita-federal-atualiza-o-balanco-de-solicitacoes-de-opcao-pelo-simples-nacional-e-pelo-regime-regular-do-ibs-e-da-cbs",
+      "source_page_url": "https://www.bcb.gov.br/meubc/faqs/p/alteracao-dos-limites-de-valor-nas-transacoes-pix",
       "license": "Documento público oficial; uso editorial com atribuição",
-      "attribution": "Receita Federal",
+      "attribution": "Banco Central do Brasil",
       "needs_cutout": false,
-      "expected_text": "586.675 solicitações de opção pelo regime regular do IBS e da CBS."
+      "expected_text": "Se você quiser reduzir seus limites de Pix, inclusive para valor zero, o banco deve fazer a mudança de imediato."
     }
   ],
   "visual_direction": {
-    "concept": "Uma empresa mantém a mesma identidade enquanto a guia DAS se separa. O vídeo distingue sua conta de CBS da conta do cliente; a demonstração 1000 menos 300 igual 700 é hipotética e aparece com operadores reais. Custos e prazos entram pelo que muda em cada situação.",
-    "world": "paper",
+    "concept": "Uma barreira física de R$500 bloqueia a onda de aproximação e depois é retirada; a maquininha persiste e o limite da conta assume o papel de fronteira.",
+    "world": "digital",
     "secondary_color": "#FFBD19",
     "motifs": [
-      "guia DAS",
-      "empresa persistente",
-      "parcelas de tributos",
-      "compra de insumos",
-      "conta CBS",
-      "cliente identificado"
+      "maquininha",
+      "onda NFC",
+      "barreira R$500",
+      "limite da conta",
+      "confirmação"
     ],
     "motion_language": [
-      "dividir uma guia mantendo a empresa no Simples",
-      "mostrar a conta de um tributo com subtração explícita",
-      "separar beneficiários em enquadramentos próprios",
-      "comparar estruturas de custo com objetos",
-      "revelar prazo somente após identificar a situação"
+      "retirar a barreira",
+      "comparar antes e agora no mesmo plano",
+      "aproximar celular e terminal sem simular transferência",
+      "revelar limites no momento da fala",
+      "usar documento real como prova"
     ],
     "avoid": [
-      "misturar crédito de IBS e CBS",
-      "transferir o crédito da empresa como se fosse o mesmo do cliente",
-      "simulação com aparência de alíquota oficial",
-      "texto técnico em corredor estreito",
-      "grade de cartões repetida",
-      "estatística como prova de vantagem"
+      "trilha de contas do MED",
+      "papel rasgado do Simples",
+      "celular isolado à direita",
+      "dinheiro voando",
+      "interface bancária falsa",
+      "verde do Pix como cor dominante"
     ]
   },
   "editorial": {
     "strengths": [
-      "Pauta prática para micro e pequenas empresas com prazo atualizado pela Resolução CGSN nº 194.",
-      "Explica a diferença entre permanecer no Simples e recolher IBS/CBS pelo regime regular sem transformar a explicação em recomendação tributária.",
-      "Distingue crédito limitado no Simples tradicional da sistemática regular de débitos e créditos.",
-      "Mantém datas dos fatos, mas não data o vídeo pela data de publicação."
+      "Regra vigente desde 01/10/2026 com fonte normativa.",
+      "Corrige a leitura de Pix ilimitado.",
+      "Entrega gestão prática de limites.",
+      "Metáfora visual simples."
     ],
     "risk_flags": [
-      "Os nomes Simples puro e Simples híbrido são rótulos de comunicação; juridicamente a opção é pelo regime regular do IBS e da CBS.",
-      "Cliente no regime regular pode ter crédito mesmo quando compra de optante do Simples; não tratar o crédito do modelo puro como zero.",
-      "Não afirmar que B2B deve escolher híbrido nem que B2C deve permanecer puro; são fatores para simulação, não regra universal.",
-      "A matéria da Gazeta do Povo consultada usava o prazo anterior de 30/09; o prazo foi substituído pela Resolução CGSN nº 194 e não é usado como prazo atual.",
-      "Exemplo usa somente CBS; não compensar crédito deIBS com débito deCBS.",
-      "R$1.000,R$300,R$700 são hipóteses didáticas, não alíquotas ou previsão2027.",
-      "Transição deIBS não está completa em2027; custos reais dependem da regra aplicável."
+      "Não chamar a modalidade de ilimitada.",
+      "Banco não é obrigado a aceitar aumento.",
+      "R$1.500 e R$800 são hipotéticos.",
+      "Flexibilidade é objetivo declarado, não efeito comprovado.",
+      "Disponibilidade depende de compatibilidade."
     ],
     "narrative_contract": {
-      "topic_explanation": "A novidade permite separar dois tributos específicos. Os demais continuam no Simples.",
-      "presenter_introduction": "Eu sou o Roberto, do O Dinheiro Explica.",
-      "subscription_request": "Se inscreva no O Dinheiro Explica para entender as próximas mudanças e o efeito delas no seu negócio."
+      "topic_explanation": "O que acabou foi o teto fixo de quinhentos reais, não os limites do Pix.",
+      "presenter_introduction": "Eu sou a Luana, do O Dinheiro Explica.",
+      "subscription_request": "Se inscreva no O Dinheiro Explica pra acompanhar essas mudanças sem confundir manchete com regra."
     },
     "source_balance": {
       "requires_diversity": true,
       "public_policy_or_regulation": true,
-      "official_sources_role": "Confirmar prazos, opção pelo regime regular, permanência no Simples, regras de crédito e balanço de solicitações.",
-      "independent_sources_role": "Gazeta do Povo, InfoMoney e UOL contextualizam clientes, margens e custo de controles. A matéria da Gazeta foi relida em01/10; seus prazos antigos são confrontados com Receita29/09 eCGIBS30/09.",
-      "counterpoint_summary": "O regime tradicional preserva maior simplicidade operacional; o regime regular pode ampliar a lógica de créditos, especialmente em cadeias empresariais, mas acrescenta apuração e controle. Nenhum dos dois é universalmente superior.",
+      "official_sources_role": "BC e normas confirmam vigência, revogação, gestão de limites e JSR.",
+      "independent_sources_role": "InfoMoney, O POVO, Jovem Pan e Folha testam leitura prática e cuidados.",
+      "counterpoint_summary": "Mais flexibilidade não elimina limites nem controles; aumento segue análise e adoção depende da jornada disponível.",
       "official_claims_attributed": true,
       "right_editorial_review": {
         "consulted": [
           {
-            "publisher": "Gazeta do Povo",
-            "url": "https://www.gazetadopovo.com.br/economia/simples-nacional-empresas-escolha-modelo-ibs-cbs/",
-            "summary": "Relida em01/10/2026: informa efeitos sobre preços/margens/competitividade, diferenças no perfil dos clientes e custo de controles. Prazos30/09 e30/11 estão superados e não entram como atuais. Não transformar possibilidade de vantagem em recomendação universal."
+            "publisher": "Jovem Pan",
+            "url": "https://jovempan.com.br/economia/pix-por-aproximacao-deixa-de-ter-teto-de-r-500-a-partir-desta-quinta-entenda-mudanca/",
+            "summary": "Cobertura de 01/10 confirma que valores acima de R$500 dependem dos limites da conta e destaca conferência e autenticação; não contradiz a norma."
           }
         ]
       }
@@ -126,653 +116,467 @@
     "youtube_suitability": {
       "risk_level": "low",
       "sensitive_topics": [
-        "tributação",
-        "reforma tributária",
-        "pequenas empresas"
+        "pagamentos",
+        "Pix",
+        "segurança financeira"
       ],
-      "context_notes": "Conteúdo educacional sobre regra tributária e prazos, sem consultoria individual ou promessa de economia.",
+      "context_notes": "Conteúdo educacional regulatório.",
       "title_thumbnail_safe": true,
-      "monetization_notes": "Tema fiscal tratado de forma informativa, com fontes oficiais e sem linguagem alarmista."
+      "monetization_notes": "Sem promessa de ganho ou medo artificial."
     },
     "render_review": {
       "status": "production_review_pending",
-      "note": "Produção real01/10: conferir operadores, identificação hipotética permanente, beneficiários, legenda das relações e prazos; escutar Live bruto. Não comprovar legibilidade somente por schema."
+      "note": "Conferir retirada da barreira R$500, legibilidade dos recortes, exemplo hipotético e pronúncias."
     },
     "explanation": {
       "version": "1.0",
       "concepts": [
         {
-          "id": "simples",
+          "id": "pix-proximidade",
           "terms": [
-            "Simples Nacional"
+            "Pix por aproximação"
+          ],
+          "explanation": {
+            "scene_id": "scene-01",
+            "quote": "Pix por aproximação é uma forma de iniciar um Pix usando NFC, a comunicação de curtíssimo alcance entre o celular e uma maquininha compatível."
+          },
+          "claim_ids": [
+            "C7"
+          ],
+          "boundary": "A aproximação é forma de iniciação, não saldo ou arranjo separado."
+        },
+        {
+          "id": "teto-especifico",
+          "terms": [
+            "teto fixo",
+            "trava específica"
           ],
           "explanation": {
             "scene_id": "scene-00",
-            "quote": "O Simples reúne tributos de pequenos negócios numa forma simplificada de recolhimento."
+            "quote": "O que acabou foi o teto fixo de quinhentos reais, não os limites do Pix."
           },
           "claim_ids": [
+            "C1",
             "C2",
-            "C3"
-          ]
+            "C4"
+          ],
+          "boundary": "Retirar o teto de R$500 não elimina limites gerais."
         },
         {
-          "id": "das",
+          "id": "limite-pix",
           "terms": [
-            "DAS"
-          ],
-          "explanation": {
-            "scene_id": "scene-00",
-            "quote": "A guia de pagamento se chama DAS, Documento de Arrecadação do Simples Nacional."
-          },
-          "claim_ids": [
-            "C11"
-          ]
-        },
-        {
-          "id": "ibs",
-          "terms": [
-            "IBS"
-          ],
-          "explanation": {
-            "scene_id": "scene-01",
-            "quote": "Um é o IBS, Imposto sobre Bens e Serviços, ligado a estados e municípios."
-          },
-          "claim_ids": [
-            "C11"
-          ],
-          "boundary": "A transição não está completa em2027."
-        },
-        {
-          "id": "cbs",
-          "terms": [
-            "CBS"
-          ],
-          "explanation": {
-            "scene_id": "scene-01",
-            "quote": "O outro é a CBS, Contribuição Social sobre Bens e Serviços, federal."
-          },
-          "claim_ids": [
-            "C11",
-            "C14"
-          ]
-        },
-        {
-          "id": "regular",
-          "terms": [
-            "regime regular"
+            "limites do Pix",
+            "limite aplicável"
           ],
           "explanation": {
             "scene_id": "scene-02",
-            "quote": "Regime regular é esse conjunto de regras próprio de cada tributo, com uma conta separada de vendas e compras."
+            "quote": "A aproximação passa a respeitar a lógica dos limites que já existe no Pix."
           },
           "claim_ids": [
-            "C2",
             "C3",
-            "C5"
-          ]
-        },
-        {
-          "id": "debit",
-          "terms": [
-            "débito"
-          ],
-          "explanation": {
-            "scene_id": "scene-03",
-            "quote": "No regime regular, o débito é o valor do tributo gerado pelas vendas."
-          },
-          "claim_ids": [
-            "C5"
-          ]
-        },
-        {
-          "id": "credit",
-          "terms": [
-            "crédito"
-          ],
-          "explanation": {
-            "scene_id": "scene-03",
-            "quote": "O crédito é um valor permitido pela lei que pode ser usado para abater esse débito."
-          },
-          "claim_ids": [
+            "C4",
             "C5",
-            "C12"
-          ],
-          "boundary": "Elegibilidade, documentação e disponibilidade dependem das regras; contas deIBS/CBS segregadas."
-        },
-        {
-          "id": "cash",
-          "terms": [
-            "caixa"
-          ],
-          "explanation": {
-            "scene_id": "scene-06",
-            "quote": "Caixa é o dinheiro disponível para pagar as contas; o momento em que um crédito pode ser usado também importa."
-          },
-          "claim_ids": [
             "C6"
           ]
         },
         {
-          "id": "mei",
+          "id": "nfc",
           "terms": [
-            "MEI"
+            "NFC"
           ],
           "explanation": {
-            "scene_id": "scene-09",
-            "quote": "E o MEI, Microempreendedor Individual, fica fora da escolha do modelo híbrido."
+            "scene_id": "scene-01",
+            "quote": "Pix por aproximação é uma forma de iniciar um Pix usando NFC, a comunicação de curtíssimo alcance entre o celular e uma maquininha compatível."
           },
           "claim_ids": [
-            "C10"
+            "C7"
+          ]
+        },
+        {
+          "id": "open-finance",
+          "terms": [
+            "Open Finance",
+            "jornada sem redirecionamento"
           ],
-          "boundary": "Não aplicar a escolha híbrida aoMEI."
+          "explanation": {
+            "scene_id": "scene-05",
+            "quote": "A mesma norma alcança a jornada sem redirecionamento do Open Finance, usada em experiências como carteiras digitais compatíveis."
+          },
+          "claim_ids": [
+            "C8"
+          ],
+          "boundary": "Compatibilidade depende dos participantes e implementação."
         }
       ],
       "examples": [
         {
-          "id": "cbs-subtraction",
-          "purpose": "Demonstrar como um crédito permitido reduz o débito do mesmo tributo, separando essa operação de margem, preço ou crédito do cliente.",
+          "id": "purchase-800",
+          "purpose": "Mostrar que valor acima de R$500 pode caber na aproximação quando o limite geral hipotético da conta é maior.",
           "kind": "illustrative",
           "claim_ids": [
-            "C5",
-            "C12"
+            "C1",
+            "C3",
+            "C4"
           ],
           "actors": [
-            "Empresa no regime regular"
+            "Usuário pagador"
           ],
           "assumptions": [
-            "Somente CBS no mesmo período de apuração.",
-            "Débito hipotético1000 e crédito hipotético300 elegível e disponível; sem outros ajustes.",
-            "Nenhuma alíquota ou carga2027 é inferida."
+            "Limite Pix hipotético de R$1.500.",
+            "Compra hipotética de R$800.",
+            "Sem considerar saldo, antifraude ou outras restrições."
           ],
           "inputs": [
             {
-              "id": "debit",
-              "value": 1000,
-              "unit": "BRL:CBS",
+              "id": "limit",
+              "value": 1500,
+              "unit": "BRL:limite_pix",
               "source_ids": []
             },
             {
-              "id": "credit",
-              "value": 300,
-              "unit": "BRL:CBS",
+              "id": "purchase",
+              "value": 800,
+              "unit": "BRL:compra",
               "source_ids": []
             }
           ],
-          "calculation": {
-            "operation": "subtract",
-            "input_ids": [
-              "debit",
-              "credit"
-            ],
-            "result": 700,
-            "unit": "BRL:CBS"
-          },
-          "limitation": "Não é economia prevista ou comparação completa. Depende de crédito válido/disponível e não admite compensação cruzada IBS/CBS.",
+          "limitation": "Não sugere limite ideal nem garante aprovação; mostra apenas a retirada da barreira específica de R$500.",
           "narration_refs": [
             {
-              "scene_id": "scene-04",
-              "quote": "Na conta simplificada, mil menos trezentos deixa setecentos reais a recolher."
+              "scene_id": "scene-03",
+              "quote": "Exemplo hipotético, só pra enxergar a mudança."
             },
             {
-              "scene_id": "scene-04",
-              "quote": "Esses números não são alíquotas oficiais, previsão para 2027 ou comparação completa entre regimes."
+              "scene_id": "scene-03",
+              "quote": "Isso não quer dizer que toda compra de oitocentos será aprovada"
             }
           ],
           "visual_bindings": [
             {
-              "scene_id": "scene-04",
-              "element_id": "debit"
+              "scene_id": "scene-03",
+              "element_id": "limitExample"
             },
             {
-              "scene_id": "scene-04",
-              "element_id": "credit"
-            },
-            {
-              "scene_id": "scene-04",
-              "element_id": "due",
-              "beat_anchor": "mil menos trezentos deixa setecentos"
+              "scene_id": "scene-03",
+              "element_id": "purchase",
+              "beat_anchor": "Uma compra de oitocentos reais"
             }
           ],
           "identification": {
-            "scene_id": "scene-04",
-            "quote": "Este é um exemplo hipotético, só para explicar a CBS."
+            "scene_id": "scene-03",
+            "quote": "Exemplo hipotético, só pra enxergar a mudança."
           },
           "visual_identification": {
-            "scene_id": "scene-04",
-            "element_id": "illustration"
+            "scene_id": "scene-03",
+            "element_id": "illustration",
+            "beat_anchor": "Exemplo hipotético"
           }
         }
       ],
       "learning_units": [
         {
-          "id": "guide",
-          "question": "O que muda sem sair do Simples?",
+          "id": "core",
+          "question": "O fim do teto de R$500 tornou o Pix por aproximação ilimitado?",
           "answer": {
             "scene_id": "scene-00",
-            "quote": "A novidade permite separar dois tributos específicos. Os demais continuam no Simples."
+            "quote": "O que acabou foi o teto fixo de quinhentos reais, não os limites do Pix."
           },
           "concept_ids": [
-            "simples",
-            "das"
+            "teto-especifico"
           ],
           "claim_ids": [
+            "C1",
             "C2",
-            "C3",
-            "C11"
+            "C4"
           ],
           "example_ids": [],
-          "visual_purpose": "A mesma empresa continua enquanto a guia ganha outro caminho.",
+          "visual_purpose": "Contrastar barreira antiga com a conclusão correta.",
           "bindings": [
             {
               "scene_id": "scene-00",
-              "element_id": "company"
+              "element_id": "oldCap"
             },
             {
               "scene_id": "scene-00",
-              "element_id": "guide"
+              "element_id": "answer"
             }
           ]
         },
         {
-          "id": "taxes",
-          "question": "Quais tributos e quais etapas estão em discussão?",
+          "id": "mechanism",
+          "question": "O que é o Pix por aproximação e o que a aproximação faz?",
           "answer": {
             "scene_id": "scene-01",
-            "quote": "Só que a mudança tem etapas."
+            "quote": "A aproximação muda a porta de entrada do pagamento; ela não cria um sistema separado de dinheiro."
           },
           "concept_ids": [
-            "ibs",
-            "cbs"
+            "pix-proximidade",
+            "nfc"
           ],
           "claim_ids": [
-            "C11",
-            "C14"
+            "C7"
           ],
           "example_ids": [],
-          "visual_purpose": "Dar nome e competência aos tributos antes de comparar recolhimento.",
+          "visual_purpose": "Mostrar celular e terminal como pontos da iniciação.",
           "bindings": [
             {
               "scene_id": "scene-01",
-              "element_id": "ibs"
+              "element_id": "phone"
             },
             {
               "scene_id": "scene-01",
-              "element_id": "cbs"
-            },
-            {
-              "scene_id": "scene-01",
-              "element_id": "transition"
+              "element_id": "terminal"
             }
           ]
         },
         {
-          "id": "paths",
-          "question": "Qual a diferença entre dentro da guia e regime regular?",
+          "id": "before-after",
+          "question": "Qual regra mudou em 1º de outubro de 2026?",
           "answer": {
             "scene_id": "scene-02",
-            "quote": "A empresa continua no Simples para os demais tributos."
+            "quote": "A partir de primeiro de outubro, não existe outro número único entrando no lugar dos quinhentos."
           },
           "concept_ids": [
-            "regular",
-            "das"
+            "teto-especifico",
+            "limite-pix"
           ],
           "claim_ids": [
+            "C1",
             "C2",
             "C3"
           ],
           "example_ids": [],
-          "visual_purpose": "Comparar duas formas preservando o enquadramento da empresa.",
+          "visual_purpose": "Comparar trava específica antiga com ausência de novo teto único.",
           "bindings": [
             {
               "scene_id": "scene-02",
-              "element_id": "pure"
+              "element_id": "before"
             },
             {
               "scene_id": "scene-02",
-              "element_id": "hybrid"
-            },
-            {
-              "scene_id": "scene-02",
-              "element_id": "same"
+              "element_id": "after"
             }
           ]
         },
         {
-          "id": "own",
-          "question": "Como o crédito da própria empresa funciona?",
+          "id": "example",
+          "question": "Como um pagamento acima de R$500 pode caber na nova regra?",
           "answer": {
             "scene_id": "scene-03",
-            "quote": "O crédito é um valor permitido pela lei que pode ser usado para abater esse débito."
+            "quote": "Com o teto específico removido, os oitocentos passam a caber dentro desse limite hipotético de mil e quinhentos."
           },
           "concept_ids": [
-            "debit",
-            "credit"
+            "limite-pix"
           ],
           "claim_ids": [
-            "C5",
-            "C12"
+            "C3",
+            "C4"
           ],
-          "example_ids": [],
-          "visual_purpose": "Identificar beneficiário, compra elegível e sua conta.",
+          "example_ids": [
+            "purchase-800"
+          ],
+          "visual_purpose": "Comparar compra e limite hipotéticos com identificação visível.",
           "bindings": [
-            {
-              "scene_id": "scene-03",
-              "element_id": "owner"
-            },
             {
               "scene_id": "scene-03",
               "element_id": "purchase"
             },
             {
               "scene_id": "scene-03",
-              "element_id": "credit"
+              "element_id": "limitExample"
             },
             {
               "scene_id": "scene-03",
-              "element_id": "company"
+              "element_id": "illustration"
             }
           ]
         },
         {
-          "id": "calculation",
-          "question": "O que exatamente o crédito reduz?",
+          "id": "management",
+          "question": "Como o usuário altera limites e quanto tempo leva?",
           "answer": {
             "scene_id": "scene-04",
-            "quote": "Os trezentos não são lucro nem desconto no preço da compra: estão abatendo o tributo na apuração."
+            "quote": "Se você pedir redução, inclusive para zero, a mudança deve ser imediata."
           },
           "concept_ids": [
-            "cbs",
-            "credit",
-            "debit"
+            "limite-pix"
           ],
           "claim_ids": [
             "C5",
-            "C12"
+            "C6"
           ],
-          "example_ids": [
-            "cbs-subtraction"
-          ],
-          "visual_purpose": "Exibir subtração e resultado com identificação hipotética permanente.",
+          "example_ids": [],
+          "visual_purpose": "Separar redução imediata de aumento sujeito a análise.",
           "bindings": [
             {
               "scene_id": "scene-04",
-              "element_id": "illustration"
+              "element_id": "reduce"
             },
             {
               "scene_id": "scene-04",
-              "element_id": "debit"
+              "element_id": "increase"
             },
             {
               "scene_id": "scene-04",
-              "element_id": "credit"
-            },
-            {
-              "scene_id": "scene-04",
-              "element_id": "due"
-            },
-            {
-              "scene_id": "scene-04",
-              "element_id": "limit"
+              "element_id": "proof"
             }
           ]
         },
         {
-          "id": "client",
-          "question": "Qual crédito pertence ao cliente?",
+          "id": "openfinance",
+          "question": "A retirada do teto também vale para jornadas do Open Finance?",
           "answer": {
             "scene_id": "scene-05",
-            "quote": "Esse crédito é do cliente, usado na conta dele."
+            "quote": "A mesma norma alcança a jornada sem redirecionamento do Open Finance, usada em experiências como carteiras digitais compatíveis."
           },
           "concept_ids": [
-            "credit"
+            "open-finance"
           ],
           "claim_ids": [
-            "C4",
-            "C6"
+            "C8",
+            "C9"
           ],
           "example_ids": [],
-          "visual_purpose": "Mudar o ponto de vista sem transferir crédito próprio entre atores.",
+          "visual_purpose": "Ligar documento oficial à carteira compatível sem tratar objetivo como resultado.",
           "bindings": [
             {
               "scene_id": "scene-05",
-              "element_id": "owner"
+              "element_id": "ruleProof"
             },
             {
               "scene_id": "scene-05",
-              "element_id": "seller"
+              "element_id": "wallet"
             },
             {
               "scene_id": "scene-05",
-              "element_id": "buyer"
-            },
-            {
-              "scene_id": "scene-05",
-              "element_id": "notzero"
+              "element_id": "boundary"
             }
           ]
         },
         {
-          "id": "costs",
-          "question": "Por que o mesmo faturamento não determina a melhor escolha?",
+          "id": "safety",
+          "question": "Quais cuidados continuam necessários com valores maiores?",
           "answer": {
             "scene_id": "scene-06",
-            "quote": "Essas duas estruturas podem chegar a resultados diferentes, mesmo com faturamento parecido."
+            "quote": "Antes de confirmar, olhe o valor e o recebedor mostrado na jornada."
           },
           "concept_ids": [
-            "cash",
-            "credit"
-          ],
-          "claim_ids": [
-            "C6",
-            "C13"
-          ],
-          "example_ids": [],
-          "visual_purpose": "Comparar insumos e salários, acrescentando custos de operação.",
-          "bindings": [
-            {
-              "scene_id": "scene-06",
-              "element_id": "factory"
-            },
-            {
-              "scene_id": "scene-06",
-              "element_id": "services"
-            },
-            {
-              "scene_id": "scene-06",
-              "element_id": "cost"
-            }
-          ]
-        },
-        {
-          "id": "scale",
-          "question": "O que a estatística demonstra e o que ela não demonstra?",
-          "answer": {
-            "scene_id": "scene-07",
-            "quote": "Esse número mostra interesse; não prova aprovação de todos os pedidos nem que o híbrido é melhor."
-          },
-          "concept_ids": [],
-          "claim_ids": [
-            "C1",
-            "C6"
-          ],
-          "example_ids": [],
-          "visual_purpose": "Exibir evidência original com data do balanço, sem vender popularidade como vantagem.",
-          "bindings": [
-            {
-              "scene_id": "scene-07",
-              "element_id": "requestsDoc"
-            },
-            {
-              "scene_id": "scene-07",
-              "element_id": "requestsNumber"
-            },
-            {
-              "scene_id": "scene-07",
-              "element_id": "meaning"
-            }
-          ]
-        },
-        {
-          "id": "deadline",
-          "question": "Qual procedimento determina cada prazo?",
-          "answer": {
-            "scene_id": "scene-08",
-            "quote": "Entrar no Simples e escolher como recolher esses dois tributos são procedimentos diferentes."
-          },
-          "concept_ids": [
-            "simples",
-            "regular"
-          ],
-          "claim_ids": [
-            "C7",
-            "C15"
-          ],
-          "example_ids": [],
-          "visual_purpose": "Distinguir situação de ingresso e de opção fiscal antes das datas.",
-          "bindings": [
-            {
-              "scene_id": "scene-08",
-              "element_id": "join"
-            },
-            {
-              "scene_id": "scene-08",
-              "element_id": "regular"
-            },
-            {
-              "scene_id": "scene-08",
-              "element_id": "pending"
-            }
-          ]
-        },
-        {
-          "id": "windows",
-          "question": "Como cancelamento, próxima janela e MEI se distinguem?",
-          "answer": {
-            "scene_id": "scene-09",
-            "quote": "Guarde a ordem: situação da empresa, decisão que está sendo feita e período em que a escolha passa a valer."
-          },
-          "concept_ids": [
-            "mei"
-          ],
-          "claim_ids": [
-            "C7",
-            "C8",
-            "C9",
-            "C10"
-          ],
-          "example_ids": [],
-          "visual_purpose": "Relacionar prazo ao ato e ao período de efeitos com prova documental.",
-          "bindings": [
-            {
-              "scene_id": "scene-09",
-              "element_id": "deadlines"
-            },
-            {
-              "scene_id": "scene-09",
-              "element_id": "cancel"
-            },
-            {
-              "scene_id": "scene-09",
-              "element_id": "march"
-            },
-            {
-              "scene_id": "scene-09",
-              "element_id": "mei"
-            }
-          ]
-        },
-        {
-          "id": "decision",
-          "question": "Separar os tributos garante economia?",
-          "answer": {
-            "scene_id": "scene-10",
-            "quote": "Então, separar os tributos pode mudar a conta, mas não garante economia."
-          },
-          "concept_ids": [
-            "credit",
-            "cash"
+            "pix-proximidade"
           ],
           "claim_ids": [
             "C4",
-            "C5",
-            "C6"
+            "C7"
           ],
           "example_ids": [],
-          "visual_purpose": "Retomar empresa e cliente separados, reunindo os fatores da decisão.",
+          "visual_purpose": "Organizar valor, recebedor e autenticação em sequência.",
           "bindings": [
             {
-              "scene_id": "scene-10",
-              "element_id": "company"
+              "scene_id": "scene-06",
+              "element_id": "amount"
             },
             {
-              "scene_id": "scene-10",
-              "element_id": "client"
+              "scene_id": "scene-06",
+              "element_id": "recipient"
             },
             {
-              "scene_id": "scene-10",
-              "element_id": "decision"
+              "scene_id": "scene-06",
+              "element_id": "auth"
+            }
+          ]
+        },
+        {
+          "id": "closing",
+          "question": "Como resumir a mudança sem dizer que o Pix ficou ilimitado?",
+          "answer": {
+            "scene_id": "scene-07",
+            "quote": "A explicação completa é que quem mudou foi a barreira, não o controle."
+          },
+          "concept_ids": [
+            "teto-especifico",
+            "limite-pix"
+          ],
+          "claim_ids": [
+            "C1",
+            "C2",
+            "C3",
+            "C4"
+          ],
+          "example_ids": [],
+          "visual_purpose": "Retirar barreira R$500 e preservar limite da conta.",
+          "bindings": [
+            {
+              "scene_id": "scene-07",
+              "element_id": "barrier"
+            },
+            {
+              "scene_id": "scene-07",
+              "element_id": "account"
+            },
+            {
+              "scene_id": "scene-07",
+              "element_id": "close"
             }
           ]
         }
       ],
       "review": {
-        "content_sha256": "7bea159606d088ca60e7cd8dd49cf4c092a3b750016f0be295e4940ee0446c6e",
+        "content_sha256": "ad6591cac33614c335bf5c21e86443457bcb4d1d4c1ad703d6cd29193755370d",
         "findings": [
           {
-            "question": "O público entende a mudança antes de receber as siglas?",
+            "question": "A correção principal aparece antes dos detalhes técnicos?",
             "evidence": {
               "scene_id": "scene-00",
-              "quote": "Sua empresa pode continuar no Simples Nacional e pagar parte dos tributos fora da guia."
+              "quote": "O que acabou foi o teto fixo de quinhentos reais, não os limites do Pix."
             },
-            "conclusion": "O gancho apresenta permanência e separação; guia eSimples são definidos antes dos novos tributos."
+            "conclusion": "A abertura resolve a ambiguidade entre teto específico e Pix ilimitado."
           },
           {
-            "question": "A conta hipotética respeita o tributo e distingue mecanismo de previsão?",
+            "question": "A aproximação é separada do movimento do dinheiro?",
+            "evidence": {
+              "scene_id": "scene-01",
+              "quote": "A aproximação muda a porta de entrada do pagamento; ela não cria um sistema separado de dinheiro."
+            },
+            "conclusion": "A cena separa a experiência NFC do funcionamento financeiro."
+          },
+          {
+            "question": "O exemplo numérico está identificado como hipótese?",
+            "evidence": {
+              "scene_id": "scene-03",
+              "quote": "Exemplo hipotético, só pra enxergar a mudança."
+            },
+            "conclusion": "Fala e tela marcam o exemplo sem prometer aprovação."
+          },
+          {
+            "question": "A gestão de limites evita sugerir liberação automática?",
             "evidence": {
               "scene_id": "scene-04",
-              "quote": "Crédito de IBS abate IBS. A lei exige separar as duas contas."
+              "quote": "Para aumentar, o banco pode aceitar ou não; se aceitar, o novo limite entra entre vinte e quatro e quarenta e oito horas depois do pedido."
             },
-            "conclusion": "A operação1000−300=700 usa somenteCBS, hipóteses explícitas eplaca contínua. Não projeta alíquota ou economia."
+            "conclusion": "O roteiro preserva análise da instituição e prazo."
           },
           {
-            "question": "O roteiro distingue quem aproveita cada crédito?",
+            "question": "A flexibilidade do BC é tratada como objetivo declarado?",
             "evidence": {
               "scene_id": "scene-05",
-              "quote": "Esse crédito é do cliente, usado na conta dele."
+              "quote": "Esse é o objetivo declarado pelo órgão; o efeito real depende de bancos, carteiras, maquininhas compatíveis e, principalmente, de quanto as pessoas de fato usam essa jornada."
             },
-            "conclusion": "Uma cena trata a conta da empresa; outra muda para ocliente e preserva crédito possível noDAS."
+            "conclusion": "Objetivo institucional é separado de efeito observado."
           },
           {
-            "question": "As condições que alteram a decisão foram preservadas?",
+            "question": "Os cuidados de segurança são concretos?",
             "evidence": {
               "scene_id": "scene-06",
-              "quote": "Mais crédito pode vir junto com mais custo de operação."
+              "quote": "Antes de confirmar, olhe o valor e o recebedor mostrado na jornada."
             },
-            "conclusion": "Clientes, insumos, folha, tributos, margem, caixa econtroles entram; nenhum perfil decide automaticamente."
+            "conclusion": "A recomendação é específica para a jornada."
           },
           {
-            "question": "As datas estão associadas ao procedimento correto?",
+            "question": "A conclusão responde à pergunta inicial?",
             "evidence": {
-              "scene_id": "scene-08",
-              "quote": "Isso não estende o prazo do pedido de entrada."
+              "scene_id": "scene-07",
+              "quote": "A explicação completa é que quem mudou foi a barreira, não o controle."
             },
-            "conclusion": "15/10 ingresso,30/10 regularização eopção regular são distinguidos; cancelamento eefeitos semestrais ficam na cena seguinte."
-          },
-          {
-            "question": "A conclusão entrega a promessa do início?",
-            "evidence": {
-              "scene_id": "scene-10",
-              "quote": "Então, separar os tributos pode mudar a conta, mas não garante economia."
-            },
-            "conclusion": "Responde à pergunta e orienta comparação de cenários reais; Roberto eCTA estão em momentos naturais."
-          },
-          {
-            "question": "A prova documental corresponde ao procedimento narrado?",
-            "evidence": {
-              "scene_id": "scene-09",
-              "quote": "existe uma janela de cancelamento entre três de novembro e vinte de dezembro de 2026"
-            },
-            "conclusion": "A linha completa da tabela associa Cancelamento das opções a03/11–20/12. O capturador deve manter a linha inteira; data isolada de30OUT não prova esta afirmação."
+            "conclusion": "O encerramento resolve a tensão sem dizer que o Pix ficou ilimitado."
           }
         ]
       }
@@ -781,142 +585,112 @@
   "sources": [
     {
       "id": "S1",
-      "title": "Opção do contribuinte por Simples Nacional ou pelo regime regular de CBS e IBS para 2027 tem novos prazos",
-      "url": "https://www.cgibs.gov.br/embora-os-periodos-sejam-parecidos-tratam-de-escolhas-diferentes-por-isso-e-importante-entender-cada-situacao",
-      "publisher": "RFB / CGIBS",
+      "title": "Pix por aproximação ganha mais flexibilidade e deixa de ter teto fixo de R$500",
+      "url": "https://www.bcb.gov.br/detalhenoticia/21169/noticia",
+      "publisher": "Banco Central do Brasil",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "published_at": "2026-09-30",
-      "notes": "Fonte oficial publicada em 30/09. Confirma: ingresso/retorno no Simples até 15/10; opção pelo regime regular do IBS/CBS até 30/10; cancelamentos entre 03/11 e 20/12.",
+      "published_at": "2026-06-17",
+      "notes": "Comunicado oficial: IN 746 retira teto específico de R$500, mantém gestão de limites e alcança JSR; vigência 01/10/2026.",
       "metadata": {
         "consulted_at": "2026-10-01"
       }
     },
     {
       "id": "S2",
-      "title": "Simples Nacional 2027: Entenda os novos prazos e faça sua escolha com consciência e tranquilidade",
-      "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/setembro/simples-nacional-2027-entenda-os-novos-prazos-e-faca-sua-escolha-com-consciencia-e-tranquilidade/",
-      "publisher": "Receita Federal",
+      "title": "Instrução Normativa BCB nº 746, de 16 de junho de 2026",
+      "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=746&tipo=Instru%C3%A7%C3%A3o+Normativa+BCB",
+      "publisher": "Banco Central do Brasil",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "published_at": "2026-09-29",
-      "notes": "Explica que são duas opções distintas e confirma os prazos ajustados pela Resolução CGSN nº 194.",
+      "published_at": "2026-06-16",
+      "notes": "Revoga a partir de 01/10/2026 o art.16-A da IN 512, que fixava o teto específico do Pix por aproximação.",
       "metadata": {
         "consulted_at": "2026-10-01"
       }
     },
     {
       "id": "S3",
-      "title": "Lei Complementar 214/2025 — texto atualizado",
-      "url": "https://www2.camara.leg.br/legin/fed/leicom/2025/leicomplementar-214-16-janeiro-2025-796905-normaatualizada-pl.html",
-      "publisher": "Câmara dos Deputados",
+      "title": "Instrução Normativa BCB nº 512, de 30 de agosto de 2024 — texto consolidado",
+      "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=512&tipo=Instru%C3%A7%C3%A3o+Normativa+BCB",
+      "publisher": "Banco Central do Brasil",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "published_at": "2025-01-16",
-      "notes": "Texto atualizado consultado em 01/10/2026: arts.1,6,41,45,47,344,347 e544. IBS e CBS têm apuração e créditos segregados; no DAS, a empresa não apropria créditos próprios desses tributos; cliente regular pode ter crédito equivalente ao devido no Simples.",
+      "published_at": "2024-08-30",
+      "notes": "Texto consolidado: antigo art.16-A com R$500 e regras gerais de limites, redução imediata e aumento entre 24h e 48h se aceito.",
       "metadata": {
         "consulted_at": "2026-10-01"
       }
     },
     {
       "id": "S4",
-      "title": "Receita Federal atualiza o balanço de solicitações de opção pelo Simples Nacional e pelo regime regular do IBS e da CBS",
-      "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/setembro/receita-federal-atualiza-o-balanco-de-solicitacoes-de-opcao-pelo-simples-nacional-e-pelo-regime-regular-do-ibs-e-da-cbs",
-      "publisher": "Receita Federal",
+      "title": "Alteração dos limites de valor nas transações Pix",
+      "url": "https://www.bcb.gov.br/meubc/faqs/p/alteracao-dos-limites-de-valor-nas-transacoes-pix",
+      "publisher": "Banco Central do Brasil",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "data_context",
-      "published_at": "2026-09-28",
-      "notes": "Até 28/09 registrava 586.675 solicitações de opção pelo regime regular do IBS/CBS e 370.553 solicitações de opção pelo Simples; são procedimentos diferentes e os números não devem ser comparados como aprovação ou preferência.",
+      "published_at": "2026-01-02",
+      "notes": "FAQ oficial: redução imediata; aumento pode ser aceito ou não e, se aceito, ocorre entre 24h e 48h.",
       "metadata": {
         "consulted_at": "2026-10-01"
       }
     },
     {
       "id": "S5",
-      "title": "Simples Nacional puro ou híbrido? Prazo para escolher regime de 2027 foi prorrogado",
-      "url": "https://www.infomoney.com.br/minhas-financas/simples-nacional-puro-ou-hibrido-prazo-para-escolher-regime-de-2027-termina-hoje/",
+      "title": "Pix por aproximação deixa de ter teto de R$ 500 a partir desta quinta",
+      "url": "https://www.infomoney.com.br/minhas-financas/pix-por-aproximacao-deixa-de-ter-teto-de-r-500-a-partir-desta-quinta/",
       "publisher": "InfoMoney",
       "source_type": "context",
       "publisher_class": "independent_journalism",
       "editorial_role": "independent_reporting",
-      "published_at": "2026-09-30",
-      "notes": "Explica que a decisão depende do perfil dos clientes, da estrutura de custos, dos créditos possíveis e da complexidade operacional; destaca que no Simples tradicional o cliente regular pode aproveitar crédito correspondente ao valor devido pelo fornecedor.",
+      "published_at": "2026-10-01",
+      "notes": "Cobertura independente confirma que fim do teto específico não cria Pix ilimitado e descreve gerenciamento no app.",
       "metadata": {
         "consulted_at": "2026-10-01"
       }
     },
     {
       "id": "S6",
-      "title": "Prazo para optar entre Simples puro ou híbrido é prorrogado até 30/10",
-      "url": "https://economia.uol.com.br/empreendedorismo/noticias/redacao/2026/09/29/reforma-tributaria-simples-puro-hibrido-empreendedor-prazo-prorrogado.ghtm",
-      "publisher": "UOL Economia",
+      "title": "Pix por aproximação deixa de ter teto de R$ 500",
+      "url": "https://www.opovo.com.br/noticias/economia/2026/10/01/pix-por-aproximacao-deixa-de-ter-teto-de-rs-500-a-partir-desta-quinta.html",
+      "publisher": "O POVO",
       "source_type": "context",
       "publisher_class": "independent_journalism",
       "editorial_role": "independent_reporting",
-      "published_at": "2026-09-29",
-      "notes": "Cobertura do adiamento e dos fatores de decisão: fluxo de caixa, fornecedores, clientes e geração de créditos.",
+      "published_at": "2026-10-01",
+      "notes": "Cobertura factual do funcionamento por NFC e cuidados de conferência de valor e recebedor.",
       "metadata": {
-        "consulted_at": "2026-09-30",
-        "access_attempted_at": "2026-10-01",
-        "access_result": "Falha de acesso pela ferramenta em01/10; registro anterior preservado. A análise usa também S5 e S7 relidos."
+        "consulted_at": "2026-10-01"
       }
     },
     {
       "id": "S7",
-      "title": "Empresas do Simples têm até fim do mês para escolher como pagar novos impostos",
-      "url": "https://www.gazetadopovo.com.br/economia/simples-nacional-empresas-escolha-modelo-ibs-cbs/",
-      "publisher": "Gazeta do Povo",
+      "title": "Pix por aproximação deixa de ter teto de R$ 500 a partir desta quinta; entenda mudança",
+      "url": "https://jovempan.com.br/economia/pix-por-aproximacao-deixa-de-ter-teto-de-r-500-a-partir-desta-quinta-entenda-mudanca/",
+      "publisher": "Jovem Pan",
       "source_type": "context",
       "publisher_class": "independent_journalism",
       "editorial_role": "independent_reporting",
-      "published_at": "2026-09-05",
-      "notes": "Consultada em 01/10/2026. Reportagem de 05/09: perfil dos clientes, margem, competitividade e custo de controles. Prazos30/09 e30/11 superados pelas orientações oficiais de29/09; não usados no roteiro.",
+      "published_at": "2026-10-01",
+      "notes": "Veículo de linha editorial distinta; confirma dependência dos limites da conta e destaca conferência e autenticação.",
       "metadata": {
         "consulted_at": "2026-10-01"
       }
     },
     {
       "id": "S8",
-      "title": "Receita Federal alerta: começa o prazo para opção pelo Simples Nacional e escolha do modelo de recolhimento do IBS e da CBS em 2027",
-      "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/setembro/receita-federal-alerta-comeca-hoje-o-prazo-para-opcao-pelo-simples-nacional-e-para-a-escolha-do-modelo-de-recolhimento-do-ibs-e-da-cbs-em-2027/",
-      "publisher": "Receita Federal",
-      "source_type": "primary",
-      "publisher_class": "official",
-      "editorial_role": "data_context",
-      "published_at": "2026-09-01",
-      "notes": "Explica Simples puro/híbrido, efeitos no primeiro semestre de 2027, nova oportunidade em março e tratamento do MEI. Prazos de setembro foram posteriormente atualizados pela Resolução nº 194.",
-      "metadata": {
-        "consulted_at": "2026-10-01"
-      }
-    },
-    {
-      "id": "S9",
-      "title": "CGSN atualiza regras do Simples Nacional para adequação à Reforma Tributária do Consumo",
-      "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/agosto/cgsn-atualiza-regras-do-simples-nacional-para-adequacao-a-reforma-tributaria-do-consumo",
-      "publisher": "Receita Federal",
-      "source_type": "primary",
-      "publisher_class": "official",
-      "editorial_role": "data_context",
-      "published_at": "2026-08-11",
-      "notes": "Detalha a adaptação do Simples ao IBS/CBS, opção pelo regime regular e janelas semestrais. Datas de setembro foram posteriormente atualizadas.",
-      "metadata": {
-        "consulted_at": "2026-10-01"
-      }
-    },
-    {
-      "id": "S10",
-      "title": "Empresas do Simples Nacional já podem optar pelo recolhimento de IBS e CBS fora do regime unificado",
-      "url": "https://www.serpro.gov.br/menu/noticias/noticias-2026/simples-no-regime-regular",
-      "publisher": "Serpro",
-      "source_type": "primary",
-      "publisher_class": "official",
-      "editorial_role": "technical_analysis",
-      "published_at": "2026-09-01",
-      "notes": "Consultada em01/10: mecânica de créditos, decisão individual e janela março2027. Datas de opção setembro superadas; prazo atual vem deS1/S2.",
+      "title": "Pix por aproximação deixa de ter limite de R$ 500 por transação a partir desta quinta",
+      "url": "https://www1.folha.uol.com.br/mercado/2026/10/pix-por-aproximacao-deixa-de-ter-limite-de-r-500-por-transacao-a-partir-de-hoje.shtml",
+      "publisher": "Folha de S.Paulo",
+      "source_type": "context",
+      "publisher_class": "independent_journalism",
+      "editorial_role": "independent_reporting",
+      "published_at": "2026-10-01",
+      "notes": "Cobertura independente adicional da retirada do teto e permanência de limites individuais.",
       "metadata": {
         "consulted_at": "2026-10-01"
       }
@@ -925,21 +699,22 @@
   "claims": [
     {
       "id": "C1",
-      "text": "Até 28/09/2026 a Receita registrava 586.675 solicitações de opção pelo regime regular do IBS e da CBS.",
+      "text": "Até 30/09/2026 o Pix por aproximação tinha teto específico de R$500 por transação para pessoa física.",
       "source_ids": [
-        "S4"
+        "S2",
+        "S3"
       ],
       "confidence": "high",
       "verification_status": "verified",
       "framing": "verified_fact",
       "attribution_required": true,
       "metadata": {
-        "as_of": "2026-09-28"
+        "as_of": "2026-09-30"
       }
     },
     {
       "id": "C2",
-      "text": "Optante do Simples pode permanecer no regime e escolher apurar/recolher IBS e CBS pelo regime regular.",
+      "text": "A IN BCB 746 entra em vigor em 01/10/2026 e revoga o dispositivo que fixava o teto específico de R$500 para iniciação por aproximação.",
       "source_ids": [
         "S1",
         "S2",
@@ -949,41 +724,49 @@
       "verification_status": "verified",
       "framing": "verified_fact",
       "attribution_required": true,
-      "metadata": {}
+      "metadata": {
+        "as_of": "2026-10-01"
+      }
     },
     {
       "id": "C3",
-      "text": "No chamado Simples puro, IBS e CBS permanecem no recolhimento unificado; no híbrido, esses dois tributos são apurados pelo regime regular.",
+      "text": "Sem o teto específico, o Pix por aproximação passa a seguir a lógica de limites por transação e por dia aplicável às demais jornadas do Pix, respeitando limites definidos pelo usuário e pela instituição.",
       "source_ids": [
         "S1",
-        "S2",
-        "S5"
+        "S5",
+        "S7",
+        "S8"
       ],
       "confidence": "high",
       "verification_status": "verified",
       "framing": "verified_fact",
       "attribution_required": true,
-      "metadata": {}
+      "metadata": {
+        "as_of": "2026-10-01"
+      }
     },
     {
       "id": "C4",
-      "text": "Comprador sujeito ao regime regular pode aproveitar créditos de IBS/CBS de compra de optante que os recolhe no DAS em montante equivalente ao devido no Simples; não é automaticamente zero (art.47§9II).",
+      "text": "O fim do teto de R$500 não significa Pix ilimitado nem aumento automático do limite da conta.",
       "source_ids": [
-        "S3",
-        "S5"
+        "S1",
+        "S4",
+        "S5",
+        "S7"
       ],
       "confidence": "high",
       "verification_status": "verified",
       "framing": "verified_fact",
-      "attribution_required": true,
+      "attribution_required": false,
       "metadata": {}
     },
     {
       "id": "C5",
-      "text": "No regime regular há débitos nas vendas e créditos elegíveis das aquisições, observadas condições legais; quem mantém IBS/CBS no DAS não apropria esses créditos próprios (arts.45 e47§9I).",
+      "text": "A gestão de limites permite solicitar aumento ou redução dos limites do Pix no aplicativo da instituição.",
       "source_ids": [
+        "S1",
         "S3",
-        "S5"
+        "S4"
       ],
       "confidence": "high",
       "verification_status": "verified",
@@ -993,24 +776,10 @@
     },
     {
       "id": "C6",
-      "text": "Perfil dos clientes, estrutura de custos, créditos possíveis, margens e custo de conformidade são fatores relevantes; não existe opção universalmente melhor.",
+      "text": "A redução de limite deve ser imediata; aumento pode ser aceito ou não e, quando aceito, deve produzir efeito entre 24 e 48 horas.",
       "source_ids": [
-        "S5",
-        "S6",
-        "S7"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "analysis",
-      "attribution_required": true,
-      "metadata": {}
-    },
-    {
-      "id": "C7",
-      "text": "Prazo para ingressar/retornar no Simples em 2027 vai até 15/10/2026; opção pelo regime regular do IBS/CBS para janeiro-junho vai até 30/10/2026; cancelamento ocorre entre 03/11 e 20/12/2026.",
-      "source_ids": [
-        "S1",
-        "S2"
+        "S3",
+        "S4"
       ],
       "confidence": "high",
       "verification_status": "verified",
@@ -1019,11 +788,26 @@
       "metadata": {}
     },
     {
-      "id": "C8",
-      "text": "Quem já está no Simples e não optar pelo regime regular mantém IBS/CBS no recolhimento unificado no primeiro semestre de 2027.",
+      "id": "C7",
+      "text": "O Pix por aproximação usa NFC para iniciar o pagamento entre dispositivo do pagador e terminal compatível; a jornada continua exigindo conferência e autenticação ou confirmação.",
       "source_ids": [
         "S1",
-        "S8"
+        "S6",
+        "S7"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "verified_fact",
+      "attribution_required": false,
+      "metadata": {}
+    },
+    {
+      "id": "C8",
+      "text": "A IN 746 também alcança transações iniciadas pela Jornada Sem Redirecionamento do Open Finance, incluindo carteiras digitais compatíveis.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S5"
       ],
       "confidence": "high",
       "verification_status": "verified",
@@ -1033,86 +817,15 @@
     },
     {
       "id": "C9",
-      "text": "Há nova janela em março de 2027 para opção com efeitos no segundo semestre.",
+      "text": "O Banco Central declara que a mudança busca tornar a experiência mais flexível sem retirar mecanismos de segurança do Pix.",
       "source_ids": [
-        "S8",
-        "S9"
+        "S1"
       ],
       "confidence": "high",
       "verification_status": "verified",
-      "framing": "verified_fact",
+      "framing": "official_position",
       "attribution_required": true,
       "metadata": {}
-    },
-    {
-      "id": "C10",
-      "text": "MEI não participa da escolha pelo modelo híbrido.",
-      "source_ids": [
-        "S8"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "verified_fact",
-      "attribution_required": true,
-      "metadata": {}
-    },
-    {
-      "id": "C11",
-      "text": "DAS significa Documento de Arrecadação do Simples Nacional; IBS é Imposto sobre Bens e Serviços, de competência compartilhada subnacional; CBS é Contribuição Social sobre Bens e Serviços, federal.",
-      "source_ids": [
-        "S2",
-        "S3"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "verified_fact",
-      "attribution_required": false
-    },
-    {
-      "id": "C12",
-      "text": "Créditos de IBS e CBS são apurados separadamente; é vedada compensação de crédito de um com débito do outro. A apropriação depende de condições legais e documento fiscal idôneo (art.47).",
-      "source_ids": [
-        "S3"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "verified_fact",
-      "attribution_required": false
-    },
-    {
-      "id": "C13",
-      "text": "Serviços decorrentes de relação de emprego não sofrem incidência de IBS/CBS (art.6I); a folha não fornece esses créditos de compras.",
-      "source_ids": [
-        "S3"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "verified_fact",
-      "attribution_required": false
-    },
-    {
-      "id": "C14",
-      "text": "A transição não ocorre toda em2027: CBS substitui PIS/Cofins a partir de2027; IBS tem fase reduzida2027–2028, com transição posterior. Não usar alíquota plena deIBS como regra para2027.",
-      "source_ids": [
-        "S3",
-        "S9"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "verified_fact",
-      "attribution_required": false
-    },
-    {
-      "id": "C15",
-      "text": "A solicitação de ingresso/retorno vai até15/10/2026; pendências impeditivas podem ser regularizadas até30/10/2026, conforme os comunicados atuais.",
-      "source_ids": [
-        "S1",
-        "S2"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "verified_fact",
-      "attribution_required": false
     }
   ],
   "scenes": [
@@ -1120,102 +833,101 @@
       "id": "scene-00",
       "index": 0,
       "scene_index": 0,
-      "title": "A guia muda. A empresa continua no Simples.",
-      "narration": "Sua empresa pode continuar no Simples Nacional e pagar parte dos tributos fora da guia. Parece contraditório? Essa é a escolha que chega para 2027. Mas separar os pagamentos vai melhorar a conta ou só trazer mais trabalho? Eu sou o Roberto, do O Dinheiro Explica. O Simples reúne tributos de pequenos negócios numa forma simplificada de recolhimento. A guia de pagamento se chama DAS, Documento de Arrecadação do Simples Nacional. Pense nela como a guia que junta essas parcelas. A novidade permite separar dois tributos específicos. Os demais continuam no Simples. Para entender se isso faz diferença, precisamos acompanhar a compra, a venda e o crédito de cada participante.",
+      "title": "O R$500 saiu. O limite não.",
+      "narration": "O Pix por aproximação tinha uma trava bem fácil de entender: cada pagamento não podia passar de quinhentos reais. Desde primeiro de outubro de 2026, essa trava específica deixou de existir. Então agora dá pra encostar o celular e pagar qualquer valor? Não. O que acabou foi o teto fixo de quinhentos reais, não os limites do Pix. Eu sou a Luana, do O Dinheiro Explica. A mudança parece pequena, mas altera quem define até onde esse pagamento pode ir.",
       "claim_ids": [
+        "C1",
         "C2",
-        "C3",
-        "C11"
+        "C4"
       ],
       "visual": {
         "type": "EDITORIAL",
         "transition": "cut",
         "stage": {
           "show_title": false,
+          "camera_mode": "static",
           "elements": [
             {
-              "id": "company",
+              "id": "oldCap",
+              "kind": "metric",
+              "label": "Teto antigo",
+              "value": "R$ 500",
+              "x": 5,
+              "y": 12,
+              "width": 36,
+              "height": 48,
+              "initially_visible": true,
+              "value_size": 116,
+              "label_size": 40
+            },
+            {
+              "id": "tap",
               "kind": "step",
-              "label": "Sua empresa",
-              "x": 4,
-              "y": 16,
-              "width": 32,
-              "height": 52,
-              "initially_visible": true,
-              "icon": "house",
-              "detail": "Continua no Simples",
-              "label_size": 44
-            },
-            {
-              "id": "guide",
-              "kind": "object",
-              "label": "DAS · guia de pagamento",
+              "label": "Pix por aproximação",
+              "detail": "Encostar · conferir · confirmar",
               "x": 58,
-              "y": 13,
+              "y": 12,
               "width": 37,
-              "height": 61,
+              "height": 48,
               "initially_visible": true,
-              "object_type": "receipt",
-              "label_size": 38
+              "icon": "phone",
+              "label_size": 42,
+              "svg_motion": "trace"
             },
             {
-              "id": "question",
+              "id": "answer",
               "kind": "note",
-              "label": "Separar muda a conta?",
-              "x": 7,
-              "y": 80,
-              "width": 86,
-              "height": 16,
+              "label": "Sai o teto fixo. Ficam os limites.",
+              "x": 9,
+              "y": 76,
+              "width": 82,
+              "height": 17,
               "initially_visible": false,
-              "label_size": 44
+              "label_size": 42
             }
           ],
-          "connections": [
-            {
-              "id": "company-guide",
-              "from": "company",
-              "to": "guide",
-              "semantic": "relation"
-            }
-          ]
+          "connections": []
         },
         "beats": [
           {
-            "anchor": "Essa é a escolha que chega para 2027",
-            "target_id": "company",
+            "anchor": "cada pagamento não podia passar de quinhentos reais",
+            "target_id": "oldCap",
             "action": "focus",
-            "headline": "A empresa permanece no Simples",
-            "kind": "fact",
+            "headline": "Teto específico até 30/09",
+            "kind": "money",
             "behavior": "transform",
-            "treatment": "spotlight",
+            "treatment": "giant_number",
             "transition": "cut",
-            "placement": "full",
+            "placement": "left",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
             "motion_seconds": 0.55
           },
           {
-            "anchor": "A guia de pagamento se chama DAS",
-            "target_id": "guide",
-            "action": "focus",
-            "headline": "Uma guia reúne tributos",
+            "anchor": "essa trava específica deixou de existir",
+            "target_id": "oldCap",
+            "action": "retire",
+            "headline": "O teto específico saiu",
             "kind": "fact",
             "behavior": "transform",
-            "treatment": "spotlight",
+            "treatment": "masked_emphasis",
             "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
-            "sound": "none",
+            "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.5,
+            "reveal_ids": [
+              "answer"
+            ]
           },
           {
-            "anchor": "A novidade permite separar dois tributos específicos",
-            "target_id": "question",
-            "action": "reveal",
-            "headline": "O que muda na conta?",
-            "kind": "fact",
+            "anchor": "não os limites do Pix",
+            "target_id": "answer",
+            "action": "focus",
+            "headline": "Limites continuam",
+            "kind": "warning",
             "behavior": "transform",
             "treatment": "spotlight",
             "transition": "cut",
@@ -1223,7 +935,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.45
           }
         ]
       },
@@ -1231,14 +943,20 @@
         "delivery": "hook",
         "cues": [
           {
-            "text": "Parece contraditório?",
+            "text": "Então agora dá pra encostar o celular e pagar qualquer valor?",
             "kind": "emphasis",
-            "pause_before_ms": 0
+            "intent": "curiosity",
+            "arc": "question",
+            "emphasis_word": "qualquer",
+            "pause_before_ms": 120
           },
           {
-            "text": "vai melhorar a conta ou só trazer mais trabalho?",
+            "text": "O que acabou foi o teto fixo de quinhentos reais, não os limites do Pix.",
             "kind": "contrast",
-            "pause_before_ms": 120
+            "intent": "discovery",
+            "arc": "resolve",
+            "emphasis_word": "teto",
+            "pause_before_ms": 140
           }
         ]
       }
@@ -1247,103 +965,115 @@
       "id": "scene-01",
       "index": 1,
       "scene_index": 1,
-      "title": "Quais tributos são esses?",
-      "narration": "Um é o IBS, Imposto sobre Bens e Serviços, ligado a estados e municípios. O outro é a CBS, Contribuição Social sobre Bens e Serviços, federal. Os dois fazem parte da reforma dos tributos sobre o consumo. Só que a mudança tem etapas. A CBS substitui PIS e Cofins a partir de 2027; o IBS ainda passa por uma transição, com uma fase reduzida em 2027 e 2028. Portanto, escolher a forma de recolher não significa que toda a reforma já estará valendo por inteiro. Aqui vamos explicar o mecanismo, sem adivinhar a alíquota ou a carga tributária da sua empresa.",
+      "title": "A aproximação só inicia o pagamento",
+      "narration": "Pix por aproximação é uma forma de iniciar um Pix usando NFC, a comunicação de curtíssimo alcance entre o celular e uma maquininha compatível. Você aproxima o aparelho, confere os dados da cobrança e confirma a operação. O dinheiro continua saindo da sua conta por Pix. A aproximação muda a porta de entrada do pagamento; ela não cria um sistema separado de dinheiro. E esse detalhe ajuda a entender por que o Banco Central decidiu aproximar também as regras de limite.",
       "claim_ids": [
-        "C11",
-        "C14"
+        "C7",
+        "C9"
       ],
       "visual": {
         "type": "EDITORIAL",
         "transition": "cut",
         "stage": {
           "show_title": false,
+          "camera_mode": "static",
           "elements": [
             {
-              "id": "ibs",
+              "id": "phone",
               "kind": "step",
-              "label": "IBS",
+              "label": "Seu celular",
+              "detail": "NFC",
               "x": 4,
-              "y": 12,
-              "width": 43,
-              "height": 49,
+              "y": 17,
+              "width": 30,
+              "height": 54,
               "initially_visible": true,
-              "icon": "globe",
-              "detail": "Bens e serviços · estados e municípios",
-              "label_size": 64
+              "icon": "phone",
+              "label_size": 44,
+              "svg_motion": "trace"
             },
             {
-              "id": "cbs",
+              "id": "terminal",
               "kind": "step",
-              "label": "CBS",
-              "x": 53,
-              "y": 12,
-              "width": 43,
-              "height": 49,
-              "initially_visible": false,
-              "icon": "document",
-              "detail": "Bens e serviços · federal",
-              "label_size": 64
+              "label": "Maquininha",
+              "detail": "Cobrança compatível",
+              "x": 66,
+              "y": 17,
+              "width": 30,
+              "height": 54,
+              "initially_visible": true,
+              "icon": "receipt",
+              "label_size": 44,
+              "svg_motion": "trace"
             },
             {
-              "id": "transition",
+              "id": "confirm",
               "kind": "note",
-              "label": "A reforma tem etapas",
-              "x": 8,
-              "y": 73,
-              "width": 84,
-              "height": 20,
+              "label": "Conferir e confirmar",
+              "x": 26,
+              "y": 81,
+              "width": 48,
+              "height": 14,
               "initially_visible": false,
-              "label_size": 42
+              "label_size": 38
             }
           ],
-          "connections": []
+          "connections": [
+            {
+              "id": "nfc",
+              "from": "phone",
+              "to": "terminal",
+              "label": "NFC",
+              "semantic": "relation",
+              "label_position": "above"
+            }
+          ]
         },
         "beats": [
           {
-            "anchor": "Um é o IBS",
-            "target_id": "ibs",
+            "anchor": "usando NFC",
+            "target_id": "phone",
             "action": "focus",
-            "headline": "Imposto sobre Bens e Serviços",
-            "kind": "fact",
+            "headline": "Aproximação física",
+            "kind": "process",
             "behavior": "transform",
-            "treatment": "spotlight",
+            "treatment": "flow_diagram",
             "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.5
           },
           {
-            "anchor": "O outro é a CBS",
-            "target_id": "cbs",
+            "anchor": "confere os dados da cobrança",
+            "target_id": "confirm",
             "action": "reveal",
-            "headline": "Contribuição sobre Bens e Serviços",
+            "headline": "Veja antes de autorizar",
             "kind": "fact",
             "behavior": "transform",
-            "treatment": "spotlight",
+            "treatment": "kinetic_type",
             "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
-            "sound": "none",
+            "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.5
           },
           {
-            "anchor": "Só que a mudança tem etapas",
-            "target_id": "transition",
-            "action": "reveal",
-            "headline": "2027 não encerra a transição",
+            "anchor": "A aproximação muda a porta de entrada do pagamento",
+            "target_id": "terminal",
+            "action": "focus",
+            "headline": "É uma forma de iniciar o Pix",
             "kind": "fact",
-            "behavior": "transform",
+            "behavior": "reframe",
             "treatment": "spotlight",
             "transition": "cut",
-            "placement": "full",
+            "placement": "right",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.5
           }
         ]
       },
@@ -1351,9 +1081,12 @@
         "delivery": "explain",
         "cues": [
           {
-            "text": "Só que a mudança tem etapas.",
+            "text": "A aproximação muda a porta de entrada do pagamento; ela não cria um sistema separado de dinheiro.",
             "kind": "contrast",
-            "pause_before_ms": 120
+            "intent": "discovery",
+            "arc": "resolve",
+            "emphasis_word": "entrada",
+            "pause_before_ms": 100
           }
         ]
       }
@@ -1362,52 +1095,55 @@
       "id": "scene-02",
       "index": 2,
       "scene_index": 2,
-      "title": "Duas formas de recolher",
-      "narration": "Agora a bifurcação fica mais simples. No chamado Simples puro, IBS e CBS seguem dentro do DAS. No chamado híbrido, saem dessa guia e são calculados e recolhidos pelas regras do regime regular. Regime regular é esse conjunto de regras próprio de cada tributo, com uma conta separada de vendas e compras. A empresa continua no Simples para os demais tributos. Não vira Lucro Real ou Lucro Presumido só por essa escolha. Puro e híbrido são nomes usados para explicar a combinação; a opção formal é pelo regime regular do IBS e da CBS. E o ponto que costuma mudar a conta tem nome: crédito.",
+      "title": "Antes e depois do teto específico",
+      "narration": "Até trinta de setembro, mesmo que a sua conta tivesse um limite maior, a iniciação por aproximação esbarrava em quinhentos reais por transação. A Instrução Normativa setecentos e quarenta e seis revogou justamente essa trava. A partir de primeiro de outubro, não existe outro número único entrando no lugar dos quinhentos. A aproximação passa a respeitar a lógica dos limites que já existe no Pix. Em outras palavras: acima de quinhentos pode acontecer, mas só quando o limite aplicável à sua conta permitir.",
       "claim_ids": [
+        "C1",
         "C2",
-        "C3"
+        "C3",
+        "C4"
       ],
       "visual": {
         "type": "EDITORIAL",
         "transition": "cut",
         "stage": {
           "show_title": false,
+          "camera_mode": "static",
           "elements": [
             {
-              "id": "pure",
+              "id": "before",
               "kind": "step",
-              "label": "Dentro do DAS",
+              "label": "ANTES",
+              "detail": "Aproximação: até R$ 500",
               "x": 4,
-              "y": 13,
-              "width": 43,
-              "height": 62,
+              "y": 16,
+              "width": 42,
+              "height": 58,
               "initially_visible": true,
-              "icon": "receipt",
-              "detail": "IBS e CBS na guia do Simples",
-              "label_size": 44
+              "icon": "lock",
+              "label_size": 48
             },
             {
-              "id": "hybrid",
+              "id": "after",
               "kind": "step",
-              "label": "Fora do DAS",
-              "x": 53,
-              "y": 13,
-              "width": 43,
-              "height": 62,
+              "label": "AGORA",
+              "detail": "Sem teto específico de R$ 500",
+              "x": 54,
+              "y": 16,
+              "width": 42,
+              "height": 58,
               "initially_visible": false,
               "icon": "route",
-              "detail": "IBS e CBS no regime regular",
-              "label_size": 44
+              "label_size": 48
             },
             {
-              "id": "same",
+              "id": "rule",
               "kind": "note",
-              "label": "A empresa continua no Simples",
+              "label": "Vale o limite aplicável ao seu Pix",
               "x": 8,
-              "y": 83,
+              "y": 82,
               "width": 84,
-              "height": 12,
+              "height": 13,
               "initially_visible": false,
               "label_size": 36
             }
@@ -1416,56 +1152,56 @@
         },
         "beats": [
           {
-            "anchor": "No chamado Simples puro",
-            "target_id": "pure",
+            "anchor": "esbarrava em quinhentos reais por transação",
+            "target_id": "before",
             "action": "focus",
-            "headline": "Uma guia para o recolhimento",
-            "kind": "fact",
+            "headline": "Havia uma trava própria",
+            "kind": "money",
             "behavior": "transform",
             "treatment": "spotlight",
             "transition": "cut",
-            "placement": "full",
+            "placement": "left",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.5
           },
           {
-            "anchor": "No chamado híbrido",
-            "target_id": "hybrid",
+            "anchor": "não existe outro número único entrando no lugar dos quinhentos",
+            "target_id": "after",
             "action": "reveal",
-            "headline": "Dois tributos seguem outra apuração",
-            "kind": "fact",
+            "headline": "Não surgiu um novo teto único",
+            "kind": "compare",
             "behavior": "transform",
             "treatment": "split_compare",
             "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
-            "sound": "none",
+            "sound": "impact",
             "prominence": "contextual",
             "motion_seconds": 0.55,
             "operation": {
               "kind": "compare",
               "element_ids": [
-                "pure",
-                "hybrid"
+                "before",
+                "after"
               ]
             }
           },
           {
-            "anchor": "A empresa continua no Simples para os demais tributos",
-            "target_id": "same",
+            "anchor": "respeitar a lógica dos limites que já existe no Pix",
+            "target_id": "rule",
             "action": "reveal",
-            "headline": "Os demais tributos permanecem",
+            "headline": "O limite da conta passa a mandar",
             "kind": "fact",
             "behavior": "transform",
-            "treatment": "spotlight",
+            "treatment": "masked_emphasis",
             "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.45
           }
         ]
       },
@@ -1473,14 +1209,20 @@
         "delivery": "contrast",
         "cues": [
           {
-            "text": "dentro do DAS",
+            "text": "não existe outro número único entrando no lugar dos quinhentos.",
             "kind": "contrast",
+            "intent": "discovery",
+            "arc": "contrast",
+            "emphasis_word": "único",
             "pause_before_ms": 120
           },
           {
-            "text": "A empresa continua no Simples para os demais tributos.",
+            "text": "acima de quinhentos pode acontecer, mas só quando o limite aplicável à sua conta permitir.",
             "kind": "emphasis",
-            "pause_before_ms": 0
+            "intent": "caution",
+            "arc": "resolve",
+            "emphasis_word": "permitir",
+            "pause_before_ms": 100
           }
         ]
       }
@@ -1489,248 +1231,55 @@
       "id": "scene-03",
       "index": 3,
       "scene_index": 3,
-      "title": "Primeiro: o crédito da sua empresa",
-      "narration": "Vamos começar pela conta da sua empresa, não pela do cliente. No regime regular, o débito é o valor do tributo gerado pelas vendas. O crédito é um valor permitido pela lei que pode ser usado para abater esse débito. Ele pode vir das compras do negócio, como insumos tributados. Não é qualquer gasto que vira crédito: existem condições legais e documentação fiscal. Já se a empresa mantiver IBS e CBS dentro do DAS, ela não aproveita créditos próprios desses dois tributos nessa sistemática. É aí que a estrutura de compras começa a importar. Para enxergar o mecanismo, vamos fazer uma conta bem simples.",
+      "title": "Um exemplo mostra a diferença",
+      "narration": "Exemplo hipotético, só pra enxergar a mudança. Imagine que o limite Pix permitido na sua conta seja de mil e quinhentos reais. Uma compra de oitocentos reais não cabia na antiga trava de quinhentos do Pix por aproximação. Com o teto específico removido, os oitocentos passam a caber dentro desse limite hipotético de mil e quinhentos. Isso não quer dizer que toda compra de oitocentos será aprovada: saldo, limites efetivos, autenticação e controles de segurança continuam contando. O exemplo mostra apenas qual barreira saiu.",
       "claim_ids": [
-        "C5",
-        "C12"
+        "C1",
+        "C3",
+        "C4"
       ],
       "visual": {
         "type": "EDITORIAL",
         "transition": "cut",
         "stage": {
           "show_title": false,
+          "camera_mode": "static",
           "elements": [
             {
-              "id": "owner",
-              "kind": "label",
-              "label": "Quem usa? Sua empresa",
+              "id": "limitExample",
+              "kind": "metric",
+              "label": "Limite Pix do exemplo",
+              "value": "R$ 1.500",
               "x": 4,
-              "y": 1,
-              "width": 92,
-              "height": 14,
+              "y": 14,
+              "width": 42,
+              "height": 48,
               "initially_visible": true,
-              "label_size": 42
+              "value_size": 82,
+              "label_size": 36
             },
             {
               "id": "purchase",
-              "kind": "object",
-              "label": "Compra de insumos",
-              "x": 4,
-              "y": 26,
-              "width": 27,
-              "height": 43,
-              "initially_visible": true,
-              "object_type": "package",
-              "label_size": 36
-            },
-            {
-              "id": "credit",
               "kind": "metric",
-              "label": "Crédito da compra",
-              "x": 38,
-              "y": 26,
-              "width": 24,
-              "height": 43,
+              "label": "Compra",
+              "value": "R$ 800",
+              "x": 54,
+              "y": 14,
+              "width": 42,
+              "height": 48,
               "initially_visible": false,
-              "value": "ABATE",
-              "value_size": 68,
-              "label_size": 36
-            },
-            {
-              "id": "company",
-              "kind": "step",
-              "label": "Sua empresa",
-              "x": 70,
-              "y": 26,
-              "width": 26,
-              "height": 43,
-              "initially_visible": true,
-              "icon": "house",
-              "detail": "No regime regular",
-              "label_size": 36
-            },
-            {
-              "id": "conditions",
-              "kind": "note",
-              "label": "Crédito depende das regras",
-              "x": 8,
-              "y": 80,
-              "width": 84,
-              "height": 15,
-              "initially_visible": false,
-              "label_size": 38
-            }
-          ],
-          "connections": [
-            {
-              "id": "purchase-credit",
-              "from": "purchase",
-              "to": "credit",
-              "semantic": "relation"
-            },
-            {
-              "id": "credit-owner",
-              "from": "credit",
-              "to": "company",
-              "semantic": "relation"
-            }
-          ]
-        },
-        "beats": [
-          {
-            "anchor": "O crédito é um valor permitido pela lei",
-            "target_id": "credit",
-            "action": "reveal",
-            "headline": "Um valor pode abater o débito",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "Ele pode vir das compras do negócio",
-            "target_id": "purchase",
-            "action": "focus",
-            "headline": "Compras elegíveis do negócio",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "Não é qualquer gasto que vira crédito",
-            "target_id": "conditions",
-            "action": "reveal",
-            "headline": "Condições e documentação",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "dentro do DAS",
-            "target_id": "company",
-            "action": "update",
-            "headline": "No DAS, sem crédito próprio",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55,
-            "detail": "No DAS: sem crédito próprio"
-          }
-        ]
-      },
-      "tts": {
-        "delivery": "explain",
-        "cues": [
-          {
-            "text": "conta da sua empresa",
-            "kind": "emphasis",
-            "pause_before_ms": 0
-          },
-          {
-            "text": "não aproveita créditos próprios",
-            "kind": "contrast",
-            "pause_before_ms": 120
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-04",
-      "index": 4,
-      "scene_index": 4,
-      "title": "Uma conta hipotética, somente de CBS",
-      "narration": "Este é um exemplo hipotético, só para explicar a CBS. Imagine que as vendas gerem mil reais de débito de CBS. E que as compras tenham trezentos reais de crédito de CBS já permitido e disponível pelas regras. Na conta simplificada, mil menos trezentos deixa setecentos reais a recolher. Os trezentos não são lucro nem desconto no preço da compra: estão abatendo o tributo na apuração. Esses números não são alíquotas oficiais, previsão para 2027 ou comparação completa entre regimes. E atenção: crédito de CBS abate CBS. Crédito de IBS abate IBS. A lei exige separar as duas contas. Entender essa subtração ajuda; decidir qual opção custa menos exige os números reais do negócio.",
-      "claim_ids": [
-        "C5",
-        "C12"
-      ],
-      "visual": {
-        "type": "EDITORIAL",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "elements": [
-            {
-              "id": "illustration",
-              "kind": "note",
-              "label": "Exemplo hipotético · só CBS",
-              "x": 4,
-              "y": 1,
-              "width": 92,
-              "height": 14,
-              "initially_visible": true,
+              "value_size": 92,
               "label_size": 40
             },
             {
-              "id": "debit",
-              "kind": "metric",
-              "label": "Débito das vendas",
-              "x": 3,
-              "y": 29,
-              "width": 25,
-              "height": 43,
-              "initially_visible": true,
-              "value": "R$ 1.000",
-              "label_size": 34,
-              "value_size": 78
-            },
-            {
-              "id": "credit",
-              "kind": "metric",
-              "label": "Crédito permitido",
-              "x": 38,
-              "y": 29,
-              "width": 25,
-              "height": 43,
-              "initially_visible": false,
-              "value": "R$ 300",
-              "label_size": 34,
-              "value_size": 78
-            },
-            {
-              "id": "due",
-              "kind": "metric",
-              "label": "A recolher · CBS",
-              "x": 73,
-              "y": 29,
-              "width": 25,
-              "height": 43,
-              "initially_visible": false,
-              "value": "R$ 700",
-              "label_size": 34,
-              "value_size": 78
-            },
-            {
-              "id": "limit",
+              "id": "illustration",
               "kind": "note",
-              "label": "CBS abate CBS · IBS abate IBS",
-              "x": 5,
-              "y": 81,
-              "width": 90,
-              "height": 14,
+              "label": "EXEMPLO HIPOTÉTICO",
+              "detail": "Não é limite sugerido nem garantia de aprovação",
+              "x": 8,
+              "y": 78,
+              "width": 84,
+              "height": 16,
               "initially_visible": false,
               "label_size": 36
             }
@@ -1739,73 +1288,56 @@
         },
         "beats": [
           {
-            "anchor": "mil reais de débito de CBS",
-            "target_id": "debit",
+            "anchor": "Exemplo hipotético",
+            "target_id": "illustration",
+            "action": "reveal",
+            "headline": "Exemplo hipotético",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "support",
+            "motion_seconds": 0.4
+          },
+          {
+            "anchor": "Uma compra de oitocentos reais",
+            "target_id": "purchase",
+            "action": "reveal",
+            "headline": "R$ 800",
+            "kind": "money",
+            "behavior": "transform",
+            "treatment": "giant_number",
+            "transition": "cut",
+            "placement": "right",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.5
+          },
+          {
+            "anchor": "passam a caber dentro desse limite hipotético de mil e quinhentos",
+            "target_id": "purchase",
             "action": "focus",
-            "headline": "Débito de CBS nas vendas",
-            "kind": "fact",
+            "headline": "A antiga barreira de R$ 500 saiu",
+            "kind": "compare",
             "behavior": "transform",
-            "treatment": "spotlight",
+            "treatment": "split_compare",
             "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "trezentos reais de crédito de CBS",
-            "target_id": "credit",
-            "action": "reveal",
-            "headline": "Crédito de CBS disponível",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "mil menos trezentos deixa setecentos",
-            "target_id": "due",
-            "action": "reveal",
-            "headline": "Débito menos crédito",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "equation",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55,
+            "motion_seconds": 0.5,
             "operation": {
-              "kind": "equation",
-              "input_ids": [
-                "debit",
-                "credit"
-              ],
-              "operator": "-",
-              "result_id": "due"
+              "kind": "compare",
+              "element_ids": [
+                "limitExample",
+                "purchase"
+              ]
             }
-          },
-          {
-            "anchor": "crédito de CBS abate CBS",
-            "target_id": "limit",
-            "action": "reveal",
-            "headline": "As contas não se misturam",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
           }
         ]
       },
@@ -1813,18 +1345,166 @@
         "delivery": "explain",
         "cues": [
           {
-            "text": "exemplo hipotético, só para explicar a CBS",
+            "text": "Exemplo hipotético, só pra enxergar a mudança.",
             "kind": "emphasis",
+            "intent": "reassurance",
+            "arc": "build",
+            "emphasis_word": "hipotético",
             "pause_before_ms": 0
           },
           {
-            "text": "mil menos trezentos deixa setecentos reais a recolher",
-            "kind": "number",
-            "pause_before_ms": 0
-          },
-          {
-            "text": "crédito de CBS abate CBS",
+            "text": "Isso não quer dizer que toda compra de oitocentos será aprovada",
             "kind": "contrast",
+            "intent": "caution",
+            "arc": "contrast",
+            "emphasis_word": "não",
+            "pause_before_ms": 140
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-04",
+      "index": 4,
+      "scene_index": 4,
+      "title": "Quem controla o limite",
+      "narration": "Então quem define o limite agora? Você continua tendo a ferramenta de limites no aplicativo da instituição, e o banco também aplica suas regras de risco. Se você pedir redução, inclusive para zero, a mudança deve ser imediata. Para aumentar, o banco pode aceitar ou não; se aceitar, o novo limite entra entre vinte e quatro e quarenta e oito horas depois do pedido. Ou seja, tirar o teto fixo não aumenta automaticamente a sua margem de pagamento. Se inscreva no O Dinheiro Explica pra acompanhar essas mudanças sem confundir manchete com regra.",
+      "claim_ids": [
+        "C3",
+        "C5",
+        "C6"
+      ],
+      "visual": {
+        "type": "EDITORIAL",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "camera_mode": "static",
+          "elements": [
+            {
+              "id": "reduce",
+              "kind": "step",
+              "label": "REDUZIR",
+              "detail": "Mudança imediata",
+              "x": 3,
+              "y": 13,
+              "width": 30,
+              "height": 50,
+              "initially_visible": true,
+              "icon": "shield",
+              "label_size": 44
+            },
+            {
+              "id": "increase",
+              "kind": "step",
+              "label": "AUMENTAR",
+              "detail": "Banco analisa · 24 a 48 h se aceitar",
+              "x": 36,
+              "y": 13,
+              "width": 30,
+              "height": 50,
+              "initially_visible": false,
+              "icon": "clock",
+              "label_size": 42
+            },
+            {
+              "id": "proof",
+              "kind": "source_excerpt",
+              "label": "Regra de gestão de limites",
+              "x": 69,
+              "y": 8,
+              "width": 28,
+              "height": 64,
+              "initially_visible": false,
+              "asset_id": "A_limits"
+            },
+            {
+              "id": "auto",
+              "kind": "note",
+              "label": "Não aumenta sozinho",
+              "x": 15,
+              "y": 82,
+              "width": 70,
+              "height": 13,
+              "initially_visible": false,
+              "label_size": 38
+            }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "Se você pedir redução",
+            "target_id": "reduce",
+            "action": "focus",
+            "headline": "Redução é imediata",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "spotlight",
+            "transition": "cut",
+            "placement": "left",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Para aumentar",
+            "target_id": "increase",
+            "action": "reveal",
+            "headline": "Aumento passa por análise",
+            "kind": "process",
+            "behavior": "transform",
+            "treatment": "kinetic_type",
+            "transition": "cut",
+            "placement": "center",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.5,
+            "reveal_ids": [
+              "proof"
+            ]
+          },
+          {
+            "anchor": "não aumenta automaticamente",
+            "target_id": "auto",
+            "action": "reveal",
+            "headline": "Sem aumento automático",
+            "kind": "warning",
+            "behavior": "transform",
+            "treatment": "signal",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.45,
+            "operation": {
+              "kind": "signal",
+              "status": "neutral",
+              "message": "O teto saiu; seu limite não sobe sozinho"
+            }
+          }
+        ]
+      },
+      "tts": {
+        "delivery": "explain",
+        "cues": [
+          {
+            "text": "Então quem define o limite agora?",
+            "kind": "emphasis",
+            "intent": "curiosity",
+            "arc": "question",
+            "emphasis_word": "quem",
+            "pause_before_ms": 80
+          },
+          {
+            "text": "não aumenta automaticamente a sua margem de pagamento.",
+            "kind": "contrast",
+            "intent": "caution",
+            "arc": "resolve",
+            "emphasis_word": "automaticamente",
             "pause_before_ms": 120
           }
         ]
@@ -1834,124 +1514,103 @@
       "id": "scene-05",
       "index": 5,
       "scene_index": 5,
-      "title": "Depois: o crédito do seu cliente",
-      "narration": "Agora troque o ponto de vista. Sua empresa vende para outra empresa. Se o comprador está no regime regular, ele também pode ter crédito sobre a compra, conforme as regras aplicáveis. Esse crédito é do cliente, usado na conta dele. Não é o mesmo crédito que a sua empresa aproveitou ao comprar insumos. E existe um detalhe importante: mesmo quando você mantém IBS e CBS no DAS, o comprador no regime regular não fica automaticamente sem crédito. A lei permite um valor equivalente ao devido desses tributos no Simples naquela compra. Então, para comparar fornecedores, o cliente pode olhar o preço e o crédito que poderá usar. Quem compra como consumidor final não faz essa mesma conta tributária.",
+      "title": "A mudança também alcança o Open Finance",
+      "narration": "Tem mais uma peça nessa mudança. A mesma norma alcança a jornada sem redirecionamento do Open Finance, usada em experiências como carteiras digitais compatíveis. Na prática, a regra tenta evitar que formas diferentes de iniciar o mesmo Pix tenham travas completamente diferentes. O Banco Central apresenta isso como uma forma de dar mais flexibilidade à experiência. Esse é o objetivo declarado pelo órgão; o efeito real depende de bancos, carteiras, maquininhas compatíveis e, principalmente, de quanto as pessoas de fato usam essa jornada.",
       "claim_ids": [
-        "C4",
-        "C6"
+        "C8",
+        "C9"
       ],
       "visual": {
         "type": "EDITORIAL",
         "transition": "cut",
         "stage": {
           "show_title": false,
+          "camera_mode": "static",
           "elements": [
             {
-              "id": "owner",
-              "kind": "label",
-              "label": "Quem usa? Seu cliente",
-              "x": 4,
-              "y": 1,
-              "width": 92,
-              "height": 14,
+              "id": "ruleProof",
+              "kind": "source_excerpt",
+              "label": "Mudança oficial",
+              "x": 3,
+              "y": 10,
+              "width": 55,
+              "height": 70,
               "initially_visible": true,
-              "label_size": 42
+              "asset_id": "A_rule"
             },
             {
-              "id": "seller",
+              "id": "wallet",
               "kind": "step",
-              "label": "Sua empresa",
-              "x": 4,
-              "y": 27,
-              "width": 30,
-              "height": 43,
-              "initially_visible": true,
-              "icon": "house",
-              "detail": "Vende o produto",
-              "label_size": 40
-            },
-            {
-              "id": "buyer",
-              "kind": "step",
-              "label": "Cliente empresa",
-              "x": 66,
-              "y": 27,
-              "width": 30,
-              "height": 43,
-              "initially_visible": true,
-              "icon": "bank",
-              "detail": "Crédito na conta dele",
-              "label_size": 40
-            },
-            {
-              "id": "notzero",
-              "kind": "note",
-              "label": "No DAS, crédito do cliente pode existir",
-              "x": 7,
-              "y": 81,
-              "width": 86,
-              "height": 14,
+              "label": "Carteira compatível",
+              "detail": "Open Finance sem redirecionamento",
+              "x": 65,
+              "y": 12,
+              "width": 31,
+              "height": 42,
               "initially_visible": false,
-              "label_size": 34
+              "icon": "wallet",
+              "label_size": 38,
+              "svg_motion": "trace"
+            },
+            {
+              "id": "boundary",
+              "kind": "note",
+              "label": "Objetivo declarado ≠ resultado garantido",
+              "x": 63,
+              "y": 67,
+              "width": 34,
+              "height": 24,
+              "initially_visible": false,
+              "label_size": 32
             }
           ],
-          "connections": [
-            {
-              "id": "sale",
-              "from": "seller",
-              "to": "buyer",
-              "semantic": "relation",
-              "label": "Compra do cliente",
-              "label_position": "above"
-            }
-          ]
+          "connections": []
         },
         "beats": [
           {
-            "anchor": "Esse crédito é do cliente",
-            "target_id": "buyer",
-            "action": "focus",
-            "headline": "É o comprador que aproveita",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "não fica automaticamente sem crédito",
-            "target_id": "notzero",
+            "anchor": "jornada sem redirecionamento do Open Finance",
+            "target_id": "wallet",
             "action": "reveal",
-            "headline": "Crédito do cliente não é sempre zero",
-            "kind": "fact",
+            "headline": "A regra também alcança essa jornada",
+            "kind": "process",
             "behavior": "transform",
-            "treatment": "spotlight",
+            "treatment": "flow_diagram",
             "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
+            "placement": "right",
+            "medium": "mixed",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.5
           },
           {
-            "anchor": "olhar o preço e o crédito",
-            "target_id": "buyer",
-            "action": "update",
-            "headline": "Preço e crédito na comparação",
+            "anchor": "O Banco Central apresenta isso como uma forma de dar mais flexibilidade",
+            "target_id": "ruleProof",
+            "action": "focus",
+            "headline": "É o objetivo declarado pelo BC",
             "kind": "fact",
+            "behavior": "reframe",
+            "treatment": "depth_photo",
+            "transition": "cut",
+            "placement": "left",
+            "medium": "mixed",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.5
+          },
+          {
+            "anchor": "o efeito real depende",
+            "target_id": "boundary",
+            "action": "reveal",
+            "headline": "Resultado depende da adoção",
+            "kind": "warning",
             "behavior": "transform",
-            "treatment": "spotlight",
+            "treatment": "masked_emphasis",
             "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55,
-            "detail": "Compara preço e crédito"
+            "motion_seconds": 0.45
           }
         ]
       },
@@ -1959,13 +1618,11 @@
         "delivery": "contrast",
         "cues": [
           {
-            "text": "Esse crédito é do cliente",
-            "kind": "emphasis",
-            "pause_before_ms": 0
-          },
-          {
-            "text": "não fica automaticamente sem crédito",
+            "text": "Esse é o objetivo declarado pelo órgão; o efeito real depende de bancos, carteiras, maquininhas compatíveis e, principalmente, de quanto as pessoas de fato usam essa jornada.",
             "kind": "contrast",
+            "intent": "caution",
+            "arc": "contrast",
+            "emphasis_word": "depende",
             "pause_before_ms": 120
           }
         ]
@@ -1975,139 +1632,148 @@
       "id": "scene-06",
       "index": 6,
       "scene_index": 6,
-      "title": "Por que duas empresas chegam a respostas diferentes?",
-      "narration": "Pense numa pequena fábrica que compra bastante matéria-prima e vende para outras empresas. As compras podem trazer créditos elegíveis; os clientes podem considerar o crédito na escolha do fornecedor. Agora pense num negócio de serviços que vende principalmente para pessoas e concentra seus custos em salários. A folha de empregados não traz IBS e CBS para recuperar como numa compra tributada. Essas duas estruturas podem chegar a resultados diferentes, mesmo com faturamento parecido. Só que essa pista não escolhe o regime por você. É preciso comparar tributos, preço, margem e caixa. Caixa é o dinheiro disponível para pagar as contas; o momento em que um crédito pode ser usado também importa. E há o trabalho dos controles fiscais, do sistema e da contabilidade. Mais crédito pode vir junto com mais custo de operação.",
+      "title": "Mais valor exige a mesma conferência",
+      "narration": "E segurança? O fim do teto de quinhentos não elimina a etapa de conferir o que você está pagando. Antes de confirmar, olhe o valor e o recebedor mostrado na jornada. Mantenha bloqueio de tela e autenticação ativos e não trate a aproximação como se fosse um pagamento automático sem conferência. Reportagens consultadas destacam justamente esse cuidado agora que valores maiores podem caber nessa forma de iniciação. A conveniência aumentou; a responsabilidade de confirmar a cobrança continua igual.",
       "claim_ids": [
-        "C6",
-        "C13"
+        "C4",
+        "C7"
       ],
       "visual": {
         "type": "EDITORIAL",
         "transition": "cut",
         "stage": {
           "show_title": false,
+          "camera_mode": "static",
           "elements": [
             {
-              "id": "factory",
-              "kind": "object",
-              "label": "Mais compras de insumos",
+              "id": "amount",
+              "kind": "step",
+              "label": "1 · VALOR",
+              "detail": "Confira a cobrança",
               "x": 3,
-              "y": 17,
-              "width": 40,
-              "height": 48,
+              "y": 20,
+              "width": 29,
+              "height": 55,
               "initially_visible": true,
-              "object_type": "factory",
-              "label_size": 38
+              "icon": "receipt",
+              "label_size": 40
             },
             {
-              "id": "services",
+              "id": "recipient",
               "kind": "step",
-              "label": "Mais custo em salários",
-              "x": 57,
-              "y": 17,
-              "width": 40,
-              "height": 48,
+              "label": "2 · RECEBEDOR",
+              "detail": "Veja para quem vai",
+              "x": 35,
+              "y": 20,
+              "width": 29,
+              "height": 55,
               "initially_visible": false,
               "icon": "person",
-              "detail": "Cliente: consumidor final",
               "label_size": 38
             },
             {
-              "id": "cost",
-              "kind": "note",
-              "label": "Créditos · tributos · margem · caixa · controles",
-              "x": 4,
-              "y": 78,
-              "width": 92,
-              "height": 18,
+              "id": "auth",
+              "kind": "step",
+              "label": "3 · CONFIRMAR",
+              "detail": "Senha ou biometria quando exigida",
+              "x": 67,
+              "y": 20,
+              "width": 30,
+              "height": 55,
               "initially_visible": false,
-              "label_size": 32
+              "icon": "lock",
+              "label_size": 38
             }
           ],
-          "connections": []
+          "connections": [
+            {
+              "id": "s1",
+              "from": "amount",
+              "to": "recipient",
+              "semantic": "sequence"
+            },
+            {
+              "id": "s2",
+              "from": "recipient",
+              "to": "auth",
+              "semantic": "sequence"
+            }
+          ]
         },
         "beats": [
           {
-            "anchor": "pequena fábrica",
-            "target_id": "factory",
+            "anchor": "olhe o valor",
+            "target_id": "amount",
             "action": "focus",
-            "headline": "Compras e clientes empresariais",
-            "kind": "fact",
+            "headline": "Confira o valor",
+            "kind": "warning",
             "behavior": "transform",
             "treatment": "spotlight",
             "transition": "cut",
-            "placement": "full",
+            "placement": "left",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.4
           },
           {
-            "anchor": "negócio de serviços",
-            "target_id": "services",
+            "anchor": "o recebedor mostrado na jornada",
+            "target_id": "recipient",
             "action": "reveal",
-            "headline": "Outra estrutura de custos",
-            "kind": "fact",
+            "headline": "Confira o recebedor",
+            "kind": "warning",
             "behavior": "transform",
-            "treatment": "split_compare",
+            "treatment": "kinetic_type",
+            "transition": "cut",
+            "placement": "center",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "autenticação ativos",
+            "target_id": "auth",
+            "action": "reveal",
+            "headline": "Proteja a confirmação",
+            "kind": "warning",
+            "behavior": "transform",
+            "treatment": "stack",
             "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55,
+            "motion_seconds": 0.45,
             "operation": {
-              "kind": "compare",
+              "kind": "stack",
               "element_ids": [
-                "factory",
-                "services"
+                "amount",
+                "recipient",
+                "auth"
               ]
             }
-          },
-          {
-            "anchor": "É preciso comparar tributos",
-            "target_id": "cost",
-            "action": "reveal",
-            "headline": "Compare a conta completa",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "Mais crédito pode vir junto",
-            "target_id": "cost",
-            "action": "update",
-            "headline": "Operação também tem custo",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
           }
         ]
       },
       "tts": {
-        "delivery": "contrast",
+        "delivery": "explain",
         "cues": [
           {
-            "text": "mesmo com faturamento parecido",
-            "kind": "contrast",
-            "pause_before_ms": 120
+            "text": "E segurança?",
+            "kind": "emphasis",
+            "intent": "curiosity",
+            "arc": "question",
+            "emphasis_word": "segurança",
+            "pause_before_ms": 80
           },
           {
-            "text": "Mais crédito pode vir junto com mais custo de operação.",
-            "kind": "emphasis",
-            "pause_before_ms": 0
+            "text": "A conveniência aumentou; a responsabilidade de confirmar a cobrança continua igual.",
+            "kind": "contrast",
+            "intent": "conviction",
+            "arc": "resolve",
+            "emphasis_word": "confirmar",
+            "pause_before_ms": 120
           }
         ]
       }
@@ -2116,421 +1782,55 @@
       "id": "scene-07",
       "index": 7,
       "scene_index": 7,
-      "title": "Muitas solicitações. Nenhuma resposta universal.",
-      "narration": "Essa escolha já movimenta muitos negócios. No balanço divulgado pela Receita Federal em vinte e oito de setembro, havia quinhentas e oitenta e seis mil seiscentas e setenta e cinco solicitações pelo regime regular. São solicitações registradas naquela data. Esse número mostra interesse; não prova aprovação de todos os pedidos nem que o híbrido é melhor. O que orienta sua decisão é a simulação da própria empresa. E, antes de fazer o pedido, separe duas situações que têm prazos diferentes.",
+      "title": "O que realmente mudou",
+      "narration": "Então guarde a diferença. Antes havia uma barreira própria de quinhentos reais em cada Pix por aproximação. Desde primeiro de outubro, essa barreira específica saiu. No lugar dela não apareceu um Pix sem limite: passam a valer os limites aplicáveis à sua conta e as regras gerais de segurança. Isso abre espaço para pagar valores maiores por aproximação, mas somente dentro do que estiver autorizado. A manchete é que os quinhentos acabaram. A explicação completa é que quem mudou foi a barreira, não o controle.",
       "claim_ids": [
         "C1",
-        "C6"
+        "C2",
+        "C3",
+        "C4"
       ],
       "visual": {
         "type": "EDITORIAL",
         "transition": "cut",
         "stage": {
           "show_title": false,
+          "camera_mode": "static",
           "elements": [
             {
-              "id": "requestsDoc",
-              "kind": "source_excerpt",
-              "label": "Balanço de solicitações",
-              "x": 3,
-              "y": 10,
-              "width": 55,
-              "height": 71,
-              "initially_visible": true,
-              "asset_id": "A_requests"
-            },
-            {
-              "id": "requestsNumber",
+              "id": "barrier",
               "kind": "metric",
-              "label": "Até 28/09/2026",
-              "x": 65,
-              "y": 14,
-              "width": 32,
-              "height": 45,
-              "initially_visible": true,
-              "value": "586.675",
-              "value_size": 84,
-              "label_size": 34
-            },
-            {
-              "id": "meaning",
-              "kind": "note",
-              "label": "Solicitações ≠ vantagem comprovada",
-              "x": 8,
-              "y": 86,
-              "width": 84,
-              "height": 11,
-              "initially_visible": false,
-              "label_size": 32
-            }
-          ],
-          "connections": []
-        },
-        "beats": [
-          {
-            "anchor": "quinhentas e oitenta e seis mil seiscentas e setenta e cinco",
-            "target_id": "requestsNumber",
-            "action": "focus",
-            "headline": "Solicitações registradas",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "não prova aprovação",
-            "target_id": "meaning",
-            "action": "reveal",
-            "headline": "A estatística não escolhe por você",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          }
-        ]
-      },
-      "tts": {
-        "delivery": "explain",
-        "cues": [
-          {
-            "text": "quinhentas e oitenta e seis mil seiscentas e setenta e cinco",
-            "kind": "number",
-            "pause_before_ms": 0
-          },
-          {
-            "text": "não prova aprovação de todos os pedidos",
-            "kind": "contrast",
-            "pause_before_ms": 120
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-08",
-      "index": 8,
-      "scene_index": 8,
-      "title": "Primeiro identifique a situação, depois o prazo",
-      "narration": "Primeira situação: a empresa quer entrar ou voltar para o Simples em 2027. Segundo os prazos atualizados pela Receita e pelo Comitê Gestor do IBS, o pedido vai até quinze de outubro de 2026. Se houver pendências que impeçam o ingresso, a regularização vai até trinta de outubro. Isso não estende o prazo do pedido de entrada. Segunda situação: a empresa estará no Simples e quer recolher IBS e CBS pelo regime regular. Para essa opção, o prazo é trinta de outubro de 2026, com efeitos de janeiro a junho de 2027. Entrar no Simples e escolher como recolher esses dois tributos são procedimentos diferentes. A mesma data de trinta de outubro aparece em situações diferentes; confira qual delas se aplica à empresa.",
-      "claim_ids": [
-        "C7",
-        "C15"
-      ],
-      "visual": {
-        "type": "EDITORIAL",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "elements": [
-            {
-              "id": "join",
-              "kind": "step",
-              "label": "Entrar ou voltar",
-              "x": 3,
-              "y": 9,
-              "width": 43,
-              "height": 62,
-              "initially_visible": true,
-              "icon": "house",
-              "detail": "Pedido: até 15 OUT 2026",
-              "label_size": 40
-            },
-            {
-              "id": "regular",
-              "kind": "step",
-              "label": "IBS/CBS por fora",
-              "x": 54,
-              "y": 9,
-              "width": 43,
-              "height": 62,
-              "initially_visible": false,
-              "icon": "route",
-              "detail": "Opção: até 30 OUT 2026",
-              "label_size": 40
-            },
-            {
-              "id": "pending",
-              "kind": "note",
-              "label": "Pendências de ingresso: regularizar até 30 OUT",
+              "label": "Barreira antiga",
+              "value": "R$ 500",
               "x": 5,
-              "y": 80,
-              "width": 90,
-              "height": 16,
-              "initially_visible": false,
-              "label_size": 32
-            }
-          ],
-          "connections": []
-        },
-        "beats": [
-          {
-            "anchor": "quinze de outubro de 2026",
-            "target_id": "join",
-            "action": "focus",
-            "headline": "Ingresso: pedido até 15 OUT",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "Se houver pendências",
-            "target_id": "pending",
-            "action": "reveal",
-            "headline": "Regularização tem outro prazo",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "Segunda situação",
-            "target_id": "regular",
-            "action": "reveal",
-            "headline": "Regime regular: opção até 30 OUT",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "split_compare",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55,
-            "operation": {
-              "kind": "compare",
-              "element_ids": [
-                "join",
-                "regular"
-              ]
-            }
-          }
-        ]
-      },
-      "tts": {
-        "delivery": "explain",
-        "cues": [
-          {
-            "text": "quinze de outubro de 2026",
-            "kind": "number",
-            "pause_before_ms": 0
-          },
-          {
-            "text": "Isso não estende o prazo do pedido de entrada.",
-            "kind": "emphasis",
-            "pause_before_ms": 0
-          },
-          {
-            "text": "Para essa opção, o prazo é trinta de outubro de 2026",
-            "kind": "number",
-            "pause_before_ms": 0
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-09",
-      "index": 9,
-      "scene_index": 9,
-      "title": "Cancelamento, próxima janela e MEI",
-      "narration": "Depois de formalizar uma dessas opções, existe uma janela de cancelamento entre três de novembro e vinte de dezembro de 2026. Se a empresa já está no Simples e não optar pelo regime regular, IBS e CBS ficam no recolhimento unificado no primeiro semestre de 2027. Há outra oportunidade em março de 2027, com efeitos no segundo semestre. E o MEI, Microempreendedor Individual, fica fora da escolha do modelo híbrido. Ele tem regras próprias; não aplique essa bifurcação automaticamente ao MEI. Guarde a ordem: situação da empresa, decisão que está sendo feita e período em que a escolha passa a valer.",
-      "claim_ids": [
-        "C7",
-        "C8",
-        "C9",
-        "C10"
-      ],
-      "visual": {
-        "type": "EDITORIAL",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "elements": [
-            {
-              "id": "deadlines",
-              "kind": "source_excerpt",
-              "label": "Prazos oficiais",
-              "x": 3,
-              "y": 9,
-              "width": 54,
-              "height": 72,
-              "initially_visible": true,
-              "asset_id": "A_deadlines"
-            },
-            {
-              "id": "cancel",
-              "kind": "metric",
-              "label": "Cancelar opções",
-              "x": 64,
-              "y": 8,
-              "width": 33,
-              "height": 25,
-              "initially_visible": true,
-              "value": "3 NOV–20 DEZ",
-              "value_size": 48,
-              "label_size": 32
-            },
-            {
-              "id": "march",
-              "kind": "step",
-              "label": "Nova janela",
-              "x": 64,
-              "y": 42,
-              "width": 33,
-              "height": 31,
-              "initially_visible": false,
-              "icon": "clock",
-              "detail": "Março 2027 → 2º semestre",
-              "label_size": 34
-            },
-            {
-              "id": "mei",
-              "kind": "note",
-              "label": "MEI tem regras próprias",
-              "x": 6,
-              "y": 86,
-              "width": 88,
-              "height": 11,
-              "initially_visible": false,
-              "label_size": 34
-            }
-          ],
-          "connections": []
-        },
-        "beats": [
-          {
-            "anchor": "três de novembro e vinte de dezembro",
-            "target_id": "cancel",
-            "action": "focus",
-            "headline": "Cancelamento das opções",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "Há outra oportunidade em março de 2027",
-            "target_id": "march",
-            "action": "reveal",
-            "headline": "Efeitos no segundo semestre",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "o MEI, Microempreendedor Individual",
-            "target_id": "mei",
-            "action": "reveal",
-            "headline": "MEI fica fora dessa escolha",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          }
-        ]
-      },
-      "tts": {
-        "delivery": "explain",
-        "cues": [
-          {
-            "text": "três de novembro e vinte de dezembro de 2026",
-            "kind": "number",
-            "pause_before_ms": 0
-          },
-          {
-            "text": "o MEI, Microempreendedor Individual",
-            "kind": "emphasis",
-            "pause_before_ms": 0
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-10",
-      "index": 10,
-      "scene_index": 10,
-      "title": "A decisão depende da conta completa",
-      "narration": "Então, separar os tributos pode mudar a conta, mas não garante economia. Comece por duas perguntas: quais compras da sua empresa podem gerar crédito e quem são os seus clientes? Depois compare quanto sobra de margem, o que acontece com o caixa e quanto custa manter os controles. Faça essa simulação nos dois cenários com números reais e orientação contábil. O crédito da sua empresa e o crédito do cliente são contas diferentes; não misture um benefício com o outro. Se inscreva no O Dinheiro Explica para entender as próximas mudanças e o efeito delas no seu negócio. A guia pode se dividir. A decisão precisa juntar a conta inteira.",
-      "claim_ids": [
-        "C4",
-        "C5",
-        "C6"
-      ],
-      "visual": {
-        "type": "EDITORIAL",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "elements": [
-            {
-              "id": "company",
-              "kind": "step",
-              "label": "Sua empresa",
-              "x": 4,
-              "y": 17,
+              "y": 18,
               "width": 34,
-              "height": 51,
+              "height": 50,
               "initially_visible": true,
-              "icon": "house",
-              "detail": "Compras e crédito próprio",
-              "label_size": 40
+              "value_size": 108,
+              "label_size": 38
             },
             {
-              "id": "client",
+              "id": "account",
               "kind": "step",
-              "label": "Seu cliente",
-              "x": 62,
-              "y": 17,
+              "label": "SEU LIMITE PIX",
+              "detail": "Conta + regras da instituição",
+              "x": 61,
+              "y": 18,
               "width": 34,
-              "height": 51,
+              "height": 50,
               "initially_visible": false,
-              "icon": "person",
-              "detail": "Preço e crédito do comprador",
-              "label_size": 40
+              "icon": "shield",
+              "label_size": 42
             },
             {
-              "id": "decision",
+              "id": "close",
               "kind": "note",
-              "label": "A guia divide. A decisão reúne a conta.",
-              "x": 6,
-              "y": 80,
-              "width": 88,
-              "height": 15,
+              "label": "MUDOU A BARREIRA · NÃO O CONTROLE",
+              "x": 8,
+              "y": 82,
+              "width": 84,
+              "height": 13,
               "initially_visible": false,
               "label_size": 36
             }
@@ -2539,43 +1839,46 @@
         },
         "beats": [
           {
-            "anchor": "quais compras da sua empresa",
-            "target_id": "company",
+            "anchor": "essa barreira específica saiu",
+            "target_id": "barrier",
+            "action": "retire",
+            "headline": "Sai o teto específico",
+            "kind": "money",
+            "behavior": "transform",
+            "treatment": "masked_emphasis",
+            "transition": "cut",
+            "placement": "left",
+            "medium": "motion_graphic",
+            "sound": "impact",
+            "prominence": "contextual",
+            "motion_seconds": 0.5,
+            "reveal_ids": [
+              "account"
+            ]
+          },
+          {
+            "anchor": "passam a valer os limites aplicáveis à sua conta",
+            "target_id": "account",
             "action": "focus",
-            "headline": "Primeiro, a conta da empresa",
+            "headline": "Seu limite passa a ser a referência",
             "kind": "fact",
             "behavior": "transform",
             "treatment": "spotlight",
             "transition": "cut",
-            "placement": "full",
+            "placement": "right",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.45
           },
           {
-            "anchor": "quem são os seus clientes",
-            "target_id": "client",
+            "anchor": "quem mudou foi a barreira, não o controle",
+            "target_id": "close",
             "action": "reveal",
-            "headline": "Depois, a conta do comprador",
+            "headline": "Mudou a barreira, não o controle",
             "kind": "fact",
             "behavior": "transform",
-            "treatment": "spotlight",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "A guia pode se dividir",
-            "target_id": "decision",
-            "action": "reveal",
-            "headline": "Compare os dois cenários",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "spotlight",
+            "treatment": "kinetic_type",
             "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
@@ -2589,69 +1892,1162 @@
         "delivery": "closing",
         "cues": [
           {
-            "text": "não garante economia",
+            "text": "No lugar dela não apareceu um Pix sem limite",
             "kind": "contrast",
+            "intent": "caution",
+            "arc": "contrast",
+            "emphasis_word": "não",
             "pause_before_ms": 120
           },
           {
-            "text": "A decisão precisa juntar a conta inteira.",
+            "text": "quem mudou foi a barreira, não o controle.",
             "kind": "emphasis",
-            "pause_before_ms": 0
+            "intent": "conviction",
+            "arc": "resolve",
+            "emphasis_word": "barreira",
+            "pause_before_ms": 140
           }
         ]
       }
     }
   ],
+  "script": {
+    "hook": "O Pix por aproximação tinha uma trava bem fácil de entender: cada pagamento não podia passar de quinhentos reais. Desde primeiro de outubro de 2026, essa trava específica deixou de existir. Então agora dá pra encostar o celular e pagar qualquer valor? Não. O que acabou foi o teto fixo de quinhentos reais, não os limites do Pix. Eu sou a Luana, do O Dinheiro Explica. A mudança parece pequena, mas altera quem define até onde esse pagamento pode ir.",
+    "beats": [],
+    "scenes": [
+      {
+        "id": "scene-00",
+        "index": 0,
+        "scene_index": 0,
+        "title": "O R$500 saiu. O limite não.",
+        "narration": "O Pix por aproximação tinha uma trava bem fácil de entender: cada pagamento não podia passar de quinhentos reais. Desde primeiro de outubro de 2026, essa trava específica deixou de existir. Então agora dá pra encostar o celular e pagar qualquer valor? Não. O que acabou foi o teto fixo de quinhentos reais, não os limites do Pix. Eu sou a Luana, do O Dinheiro Explica. A mudança parece pequena, mas altera quem define até onde esse pagamento pode ir.",
+        "claim_ids": [
+          "C1",
+          "C2",
+          "C4"
+        ],
+        "visual": {
+          "type": "EDITORIAL",
+          "transition": "cut",
+          "stage": {
+            "show_title": false,
+            "camera_mode": "static",
+            "elements": [
+              {
+                "id": "oldCap",
+                "kind": "metric",
+                "label": "Teto antigo",
+                "value": "R$ 500",
+                "x": 5,
+                "y": 12,
+                "width": 36,
+                "height": 48,
+                "initially_visible": true,
+                "value_size": 116,
+                "label_size": 40
+              },
+              {
+                "id": "tap",
+                "kind": "step",
+                "label": "Pix por aproximação",
+                "detail": "Encostar · conferir · confirmar",
+                "x": 58,
+                "y": 12,
+                "width": 37,
+                "height": 48,
+                "initially_visible": true,
+                "icon": "phone",
+                "label_size": 42,
+                "svg_motion": "trace"
+              },
+              {
+                "id": "answer",
+                "kind": "note",
+                "label": "Sai o teto fixo. Ficam os limites.",
+                "x": 9,
+                "y": 76,
+                "width": 82,
+                "height": 17,
+                "initially_visible": false,
+                "label_size": 42
+              }
+            ],
+            "connections": []
+          },
+          "beats": [
+            {
+              "anchor": "cada pagamento não podia passar de quinhentos reais",
+              "target_id": "oldCap",
+              "action": "focus",
+              "headline": "Teto específico até 30/09",
+              "kind": "money",
+              "behavior": "transform",
+              "treatment": "giant_number",
+              "transition": "cut",
+              "placement": "left",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.55
+            },
+            {
+              "anchor": "essa trava específica deixou de existir",
+              "target_id": "oldCap",
+              "action": "retire",
+              "headline": "O teto específico saiu",
+              "kind": "fact",
+              "behavior": "transform",
+              "treatment": "masked_emphasis",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "tick",
+              "prominence": "contextual",
+              "motion_seconds": 0.5,
+              "reveal_ids": [
+                "answer"
+              ]
+            },
+            {
+              "anchor": "não os limites do Pix",
+              "target_id": "answer",
+              "action": "focus",
+              "headline": "Limites continuam",
+              "kind": "warning",
+              "behavior": "transform",
+              "treatment": "spotlight",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.45
+            }
+          ]
+        },
+        "tts": {
+          "delivery": "hook",
+          "cues": [
+            {
+              "text": "Então agora dá pra encostar o celular e pagar qualquer valor?",
+              "kind": "emphasis",
+              "intent": "curiosity",
+              "arc": "question",
+              "emphasis_word": "qualquer",
+              "pause_before_ms": 120
+            },
+            {
+              "text": "O que acabou foi o teto fixo de quinhentos reais, não os limites do Pix.",
+              "kind": "contrast",
+              "intent": "discovery",
+              "arc": "resolve",
+              "emphasis_word": "teto",
+              "pause_before_ms": 140
+            }
+          ]
+        }
+      },
+      {
+        "id": "scene-01",
+        "index": 1,
+        "scene_index": 1,
+        "title": "A aproximação só inicia o pagamento",
+        "narration": "Pix por aproximação é uma forma de iniciar um Pix usando NFC, a comunicação de curtíssimo alcance entre o celular e uma maquininha compatível. Você aproxima o aparelho, confere os dados da cobrança e confirma a operação. O dinheiro continua saindo da sua conta por Pix. A aproximação muda a porta de entrada do pagamento; ela não cria um sistema separado de dinheiro. E esse detalhe ajuda a entender por que o Banco Central decidiu aproximar também as regras de limite.",
+        "claim_ids": [
+          "C7",
+          "C9"
+        ],
+        "visual": {
+          "type": "EDITORIAL",
+          "transition": "cut",
+          "stage": {
+            "show_title": false,
+            "camera_mode": "static",
+            "elements": [
+              {
+                "id": "phone",
+                "kind": "step",
+                "label": "Seu celular",
+                "detail": "NFC",
+                "x": 4,
+                "y": 17,
+                "width": 30,
+                "height": 54,
+                "initially_visible": true,
+                "icon": "phone",
+                "label_size": 44,
+                "svg_motion": "trace"
+              },
+              {
+                "id": "terminal",
+                "kind": "step",
+                "label": "Maquininha",
+                "detail": "Cobrança compatível",
+                "x": 66,
+                "y": 17,
+                "width": 30,
+                "height": 54,
+                "initially_visible": true,
+                "icon": "receipt",
+                "label_size": 44,
+                "svg_motion": "trace"
+              },
+              {
+                "id": "confirm",
+                "kind": "note",
+                "label": "Conferir e confirmar",
+                "x": 26,
+                "y": 81,
+                "width": 48,
+                "height": 14,
+                "initially_visible": false,
+                "label_size": 38
+              }
+            ],
+            "connections": [
+              {
+                "id": "nfc",
+                "from": "phone",
+                "to": "terminal",
+                "label": "NFC",
+                "semantic": "relation",
+                "label_position": "above"
+              }
+            ]
+          },
+          "beats": [
+            {
+              "anchor": "usando NFC",
+              "target_id": "phone",
+              "action": "focus",
+              "headline": "Aproximação física",
+              "kind": "process",
+              "behavior": "transform",
+              "treatment": "flow_diagram",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.5
+            },
+            {
+              "anchor": "confere os dados da cobrança",
+              "target_id": "confirm",
+              "action": "reveal",
+              "headline": "Veja antes de autorizar",
+              "kind": "fact",
+              "behavior": "transform",
+              "treatment": "kinetic_type",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "tick",
+              "prominence": "contextual",
+              "motion_seconds": 0.5
+            },
+            {
+              "anchor": "A aproximação muda a porta de entrada do pagamento",
+              "target_id": "terminal",
+              "action": "focus",
+              "headline": "É uma forma de iniciar o Pix",
+              "kind": "fact",
+              "behavior": "reframe",
+              "treatment": "spotlight",
+              "transition": "cut",
+              "placement": "right",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.5
+            }
+          ]
+        },
+        "tts": {
+          "delivery": "explain",
+          "cues": [
+            {
+              "text": "A aproximação muda a porta de entrada do pagamento; ela não cria um sistema separado de dinheiro.",
+              "kind": "contrast",
+              "intent": "discovery",
+              "arc": "resolve",
+              "emphasis_word": "entrada",
+              "pause_before_ms": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": "scene-02",
+        "index": 2,
+        "scene_index": 2,
+        "title": "Antes e depois do teto específico",
+        "narration": "Até trinta de setembro, mesmo que a sua conta tivesse um limite maior, a iniciação por aproximação esbarrava em quinhentos reais por transação. A Instrução Normativa setecentos e quarenta e seis revogou justamente essa trava. A partir de primeiro de outubro, não existe outro número único entrando no lugar dos quinhentos. A aproximação passa a respeitar a lógica dos limites que já existe no Pix. Em outras palavras: acima de quinhentos pode acontecer, mas só quando o limite aplicável à sua conta permitir.",
+        "claim_ids": [
+          "C1",
+          "C2",
+          "C3",
+          "C4"
+        ],
+        "visual": {
+          "type": "EDITORIAL",
+          "transition": "cut",
+          "stage": {
+            "show_title": false,
+            "camera_mode": "static",
+            "elements": [
+              {
+                "id": "before",
+                "kind": "step",
+                "label": "ANTES",
+                "detail": "Aproximação: até R$ 500",
+                "x": 4,
+                "y": 16,
+                "width": 42,
+                "height": 58,
+                "initially_visible": true,
+                "icon": "lock",
+                "label_size": 48
+              },
+              {
+                "id": "after",
+                "kind": "step",
+                "label": "AGORA",
+                "detail": "Sem teto específico de R$ 500",
+                "x": 54,
+                "y": 16,
+                "width": 42,
+                "height": 58,
+                "initially_visible": false,
+                "icon": "route",
+                "label_size": 48
+              },
+              {
+                "id": "rule",
+                "kind": "note",
+                "label": "Vale o limite aplicável ao seu Pix",
+                "x": 8,
+                "y": 82,
+                "width": 84,
+                "height": 13,
+                "initially_visible": false,
+                "label_size": 36
+              }
+            ],
+            "connections": []
+          },
+          "beats": [
+            {
+              "anchor": "esbarrava em quinhentos reais por transação",
+              "target_id": "before",
+              "action": "focus",
+              "headline": "Havia uma trava própria",
+              "kind": "money",
+              "behavior": "transform",
+              "treatment": "spotlight",
+              "transition": "cut",
+              "placement": "left",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.5
+            },
+            {
+              "anchor": "não existe outro número único entrando no lugar dos quinhentos",
+              "target_id": "after",
+              "action": "reveal",
+              "headline": "Não surgiu um novo teto único",
+              "kind": "compare",
+              "behavior": "transform",
+              "treatment": "split_compare",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "impact",
+              "prominence": "contextual",
+              "motion_seconds": 0.55,
+              "operation": {
+                "kind": "compare",
+                "element_ids": [
+                  "before",
+                  "after"
+                ]
+              }
+            },
+            {
+              "anchor": "respeitar a lógica dos limites que já existe no Pix",
+              "target_id": "rule",
+              "action": "reveal",
+              "headline": "O limite da conta passa a mandar",
+              "kind": "fact",
+              "behavior": "transform",
+              "treatment": "masked_emphasis",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.45
+            }
+          ]
+        },
+        "tts": {
+          "delivery": "contrast",
+          "cues": [
+            {
+              "text": "não existe outro número único entrando no lugar dos quinhentos.",
+              "kind": "contrast",
+              "intent": "discovery",
+              "arc": "contrast",
+              "emphasis_word": "único",
+              "pause_before_ms": 120
+            },
+            {
+              "text": "acima de quinhentos pode acontecer, mas só quando o limite aplicável à sua conta permitir.",
+              "kind": "emphasis",
+              "intent": "caution",
+              "arc": "resolve",
+              "emphasis_word": "permitir",
+              "pause_before_ms": 100
+            }
+          ]
+        }
+      },
+      {
+        "id": "scene-03",
+        "index": 3,
+        "scene_index": 3,
+        "title": "Um exemplo mostra a diferença",
+        "narration": "Exemplo hipotético, só pra enxergar a mudança. Imagine que o limite Pix permitido na sua conta seja de mil e quinhentos reais. Uma compra de oitocentos reais não cabia na antiga trava de quinhentos do Pix por aproximação. Com o teto específico removido, os oitocentos passam a caber dentro desse limite hipotético de mil e quinhentos. Isso não quer dizer que toda compra de oitocentos será aprovada: saldo, limites efetivos, autenticação e controles de segurança continuam contando. O exemplo mostra apenas qual barreira saiu.",
+        "claim_ids": [
+          "C1",
+          "C3",
+          "C4"
+        ],
+        "visual": {
+          "type": "EDITORIAL",
+          "transition": "cut",
+          "stage": {
+            "show_title": false,
+            "camera_mode": "static",
+            "elements": [
+              {
+                "id": "limitExample",
+                "kind": "metric",
+                "label": "Limite Pix do exemplo",
+                "value": "R$ 1.500",
+                "x": 4,
+                "y": 14,
+                "width": 42,
+                "height": 48,
+                "initially_visible": true,
+                "value_size": 82,
+                "label_size": 36
+              },
+              {
+                "id": "purchase",
+                "kind": "metric",
+                "label": "Compra",
+                "value": "R$ 800",
+                "x": 54,
+                "y": 14,
+                "width": 42,
+                "height": 48,
+                "initially_visible": false,
+                "value_size": 92,
+                "label_size": 40
+              },
+              {
+                "id": "illustration",
+                "kind": "note",
+                "label": "EXEMPLO HIPOTÉTICO",
+                "detail": "Não é limite sugerido nem garantia de aprovação",
+                "x": 8,
+                "y": 78,
+                "width": 84,
+                "height": 16,
+                "initially_visible": false,
+                "label_size": 36
+              }
+            ],
+            "connections": []
+          },
+          "beats": [
+            {
+              "anchor": "Exemplo hipotético",
+              "target_id": "illustration",
+              "action": "reveal",
+              "headline": "Exemplo hipotético",
+              "kind": "fact",
+              "behavior": "transform",
+              "treatment": "kinetic_type",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "support",
+              "motion_seconds": 0.4
+            },
+            {
+              "anchor": "Uma compra de oitocentos reais",
+              "target_id": "purchase",
+              "action": "reveal",
+              "headline": "R$ 800",
+              "kind": "money",
+              "behavior": "transform",
+              "treatment": "giant_number",
+              "transition": "cut",
+              "placement": "right",
+              "medium": "motion_graphic",
+              "sound": "tick",
+              "prominence": "contextual",
+              "motion_seconds": 0.5
+            },
+            {
+              "anchor": "passam a caber dentro desse limite hipotético de mil e quinhentos",
+              "target_id": "purchase",
+              "action": "focus",
+              "headline": "A antiga barreira de R$ 500 saiu",
+              "kind": "compare",
+              "behavior": "transform",
+              "treatment": "split_compare",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.5,
+              "operation": {
+                "kind": "compare",
+                "element_ids": [
+                  "limitExample",
+                  "purchase"
+                ]
+              }
+            }
+          ]
+        },
+        "tts": {
+          "delivery": "explain",
+          "cues": [
+            {
+              "text": "Exemplo hipotético, só pra enxergar a mudança.",
+              "kind": "emphasis",
+              "intent": "reassurance",
+              "arc": "build",
+              "emphasis_word": "hipotético",
+              "pause_before_ms": 0
+            },
+            {
+              "text": "Isso não quer dizer que toda compra de oitocentos será aprovada",
+              "kind": "contrast",
+              "intent": "caution",
+              "arc": "contrast",
+              "emphasis_word": "não",
+              "pause_before_ms": 140
+            }
+          ]
+        }
+      },
+      {
+        "id": "scene-04",
+        "index": 4,
+        "scene_index": 4,
+        "title": "Quem controla o limite",
+        "narration": "Então quem define o limite agora? Você continua tendo a ferramenta de limites no aplicativo da instituição, e o banco também aplica suas regras de risco. Se você pedir redução, inclusive para zero, a mudança deve ser imediata. Para aumentar, o banco pode aceitar ou não; se aceitar, o novo limite entra entre vinte e quatro e quarenta e oito horas depois do pedido. Ou seja, tirar o teto fixo não aumenta automaticamente a sua margem de pagamento. Se inscreva no O Dinheiro Explica pra acompanhar essas mudanças sem confundir manchete com regra.",
+        "claim_ids": [
+          "C3",
+          "C5",
+          "C6"
+        ],
+        "visual": {
+          "type": "EDITORIAL",
+          "transition": "cut",
+          "stage": {
+            "show_title": false,
+            "camera_mode": "static",
+            "elements": [
+              {
+                "id": "reduce",
+                "kind": "step",
+                "label": "REDUZIR",
+                "detail": "Mudança imediata",
+                "x": 3,
+                "y": 13,
+                "width": 30,
+                "height": 50,
+                "initially_visible": true,
+                "icon": "shield",
+                "label_size": 44
+              },
+              {
+                "id": "increase",
+                "kind": "step",
+                "label": "AUMENTAR",
+                "detail": "Banco analisa · 24 a 48 h se aceitar",
+                "x": 36,
+                "y": 13,
+                "width": 30,
+                "height": 50,
+                "initially_visible": false,
+                "icon": "clock",
+                "label_size": 42
+              },
+              {
+                "id": "proof",
+                "kind": "source_excerpt",
+                "label": "Regra de gestão de limites",
+                "x": 69,
+                "y": 8,
+                "width": 28,
+                "height": 64,
+                "initially_visible": false,
+                "asset_id": "A_limits"
+              },
+              {
+                "id": "auto",
+                "kind": "note",
+                "label": "Não aumenta sozinho",
+                "x": 15,
+                "y": 82,
+                "width": 70,
+                "height": 13,
+                "initially_visible": false,
+                "label_size": 38
+              }
+            ],
+            "connections": []
+          },
+          "beats": [
+            {
+              "anchor": "Se você pedir redução",
+              "target_id": "reduce",
+              "action": "focus",
+              "headline": "Redução é imediata",
+              "kind": "fact",
+              "behavior": "transform",
+              "treatment": "spotlight",
+              "transition": "cut",
+              "placement": "left",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.45
+            },
+            {
+              "anchor": "Para aumentar",
+              "target_id": "increase",
+              "action": "reveal",
+              "headline": "Aumento passa por análise",
+              "kind": "process",
+              "behavior": "transform",
+              "treatment": "kinetic_type",
+              "transition": "cut",
+              "placement": "center",
+              "medium": "motion_graphic",
+              "sound": "tick",
+              "prominence": "contextual",
+              "motion_seconds": 0.5,
+              "reveal_ids": [
+                "proof"
+              ]
+            },
+            {
+              "anchor": "não aumenta automaticamente",
+              "target_id": "auto",
+              "action": "reveal",
+              "headline": "Sem aumento automático",
+              "kind": "warning",
+              "behavior": "transform",
+              "treatment": "signal",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.45,
+              "operation": {
+                "kind": "signal",
+                "status": "neutral",
+                "message": "O teto saiu; seu limite não sobe sozinho"
+              }
+            }
+          ]
+        },
+        "tts": {
+          "delivery": "explain",
+          "cues": [
+            {
+              "text": "Então quem define o limite agora?",
+              "kind": "emphasis",
+              "intent": "curiosity",
+              "arc": "question",
+              "emphasis_word": "quem",
+              "pause_before_ms": 80
+            },
+            {
+              "text": "não aumenta automaticamente a sua margem de pagamento.",
+              "kind": "contrast",
+              "intent": "caution",
+              "arc": "resolve",
+              "emphasis_word": "automaticamente",
+              "pause_before_ms": 120
+            }
+          ]
+        }
+      },
+      {
+        "id": "scene-05",
+        "index": 5,
+        "scene_index": 5,
+        "title": "A mudança também alcança o Open Finance",
+        "narration": "Tem mais uma peça nessa mudança. A mesma norma alcança a jornada sem redirecionamento do Open Finance, usada em experiências como carteiras digitais compatíveis. Na prática, a regra tenta evitar que formas diferentes de iniciar o mesmo Pix tenham travas completamente diferentes. O Banco Central apresenta isso como uma forma de dar mais flexibilidade à experiência. Esse é o objetivo declarado pelo órgão; o efeito real depende de bancos, carteiras, maquininhas compatíveis e, principalmente, de quanto as pessoas de fato usam essa jornada.",
+        "claim_ids": [
+          "C8",
+          "C9"
+        ],
+        "visual": {
+          "type": "EDITORIAL",
+          "transition": "cut",
+          "stage": {
+            "show_title": false,
+            "camera_mode": "static",
+            "elements": [
+              {
+                "id": "ruleProof",
+                "kind": "source_excerpt",
+                "label": "Mudança oficial",
+                "x": 3,
+                "y": 10,
+                "width": 55,
+                "height": 70,
+                "initially_visible": true,
+                "asset_id": "A_rule"
+              },
+              {
+                "id": "wallet",
+                "kind": "step",
+                "label": "Carteira compatível",
+                "detail": "Open Finance sem redirecionamento",
+                "x": 65,
+                "y": 12,
+                "width": 31,
+                "height": 42,
+                "initially_visible": false,
+                "icon": "wallet",
+                "label_size": 38,
+                "svg_motion": "trace"
+              },
+              {
+                "id": "boundary",
+                "kind": "note",
+                "label": "Objetivo declarado ≠ resultado garantido",
+                "x": 63,
+                "y": 67,
+                "width": 34,
+                "height": 24,
+                "initially_visible": false,
+                "label_size": 32
+              }
+            ],
+            "connections": []
+          },
+          "beats": [
+            {
+              "anchor": "jornada sem redirecionamento do Open Finance",
+              "target_id": "wallet",
+              "action": "reveal",
+              "headline": "A regra também alcança essa jornada",
+              "kind": "process",
+              "behavior": "transform",
+              "treatment": "flow_diagram",
+              "transition": "cut",
+              "placement": "right",
+              "medium": "mixed",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.5
+            },
+            {
+              "anchor": "O Banco Central apresenta isso como uma forma de dar mais flexibilidade",
+              "target_id": "ruleProof",
+              "action": "focus",
+              "headline": "É o objetivo declarado pelo BC",
+              "kind": "fact",
+              "behavior": "reframe",
+              "treatment": "depth_photo",
+              "transition": "cut",
+              "placement": "left",
+              "medium": "mixed",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.5
+            },
+            {
+              "anchor": "o efeito real depende",
+              "target_id": "boundary",
+              "action": "reveal",
+              "headline": "Resultado depende da adoção",
+              "kind": "warning",
+              "behavior": "transform",
+              "treatment": "masked_emphasis",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.45
+            }
+          ]
+        },
+        "tts": {
+          "delivery": "contrast",
+          "cues": [
+            {
+              "text": "Esse é o objetivo declarado pelo órgão; o efeito real depende de bancos, carteiras, maquininhas compatíveis e, principalmente, de quanto as pessoas de fato usam essa jornada.",
+              "kind": "contrast",
+              "intent": "caution",
+              "arc": "contrast",
+              "emphasis_word": "depende",
+              "pause_before_ms": 120
+            }
+          ]
+        }
+      },
+      {
+        "id": "scene-06",
+        "index": 6,
+        "scene_index": 6,
+        "title": "Mais valor exige a mesma conferência",
+        "narration": "E segurança? O fim do teto de quinhentos não elimina a etapa de conferir o que você está pagando. Antes de confirmar, olhe o valor e o recebedor mostrado na jornada. Mantenha bloqueio de tela e autenticação ativos e não trate a aproximação como se fosse um pagamento automático sem conferência. Reportagens consultadas destacam justamente esse cuidado agora que valores maiores podem caber nessa forma de iniciação. A conveniência aumentou; a responsabilidade de confirmar a cobrança continua igual.",
+        "claim_ids": [
+          "C4",
+          "C7"
+        ],
+        "visual": {
+          "type": "EDITORIAL",
+          "transition": "cut",
+          "stage": {
+            "show_title": false,
+            "camera_mode": "static",
+            "elements": [
+              {
+                "id": "amount",
+                "kind": "step",
+                "label": "1 · VALOR",
+                "detail": "Confira a cobrança",
+                "x": 3,
+                "y": 20,
+                "width": 29,
+                "height": 55,
+                "initially_visible": true,
+                "icon": "receipt",
+                "label_size": 40
+              },
+              {
+                "id": "recipient",
+                "kind": "step",
+                "label": "2 · RECEBEDOR",
+                "detail": "Veja para quem vai",
+                "x": 35,
+                "y": 20,
+                "width": 29,
+                "height": 55,
+                "initially_visible": false,
+                "icon": "person",
+                "label_size": 38
+              },
+              {
+                "id": "auth",
+                "kind": "step",
+                "label": "3 · CONFIRMAR",
+                "detail": "Senha ou biometria quando exigida",
+                "x": 67,
+                "y": 20,
+                "width": 30,
+                "height": 55,
+                "initially_visible": false,
+                "icon": "lock",
+                "label_size": 38
+              }
+            ],
+            "connections": [
+              {
+                "id": "s1",
+                "from": "amount",
+                "to": "recipient",
+                "semantic": "sequence"
+              },
+              {
+                "id": "s2",
+                "from": "recipient",
+                "to": "auth",
+                "semantic": "sequence"
+              }
+            ]
+          },
+          "beats": [
+            {
+              "anchor": "olhe o valor",
+              "target_id": "amount",
+              "action": "focus",
+              "headline": "Confira o valor",
+              "kind": "warning",
+              "behavior": "transform",
+              "treatment": "spotlight",
+              "transition": "cut",
+              "placement": "left",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.4
+            },
+            {
+              "anchor": "o recebedor mostrado na jornada",
+              "target_id": "recipient",
+              "action": "reveal",
+              "headline": "Confira o recebedor",
+              "kind": "warning",
+              "behavior": "transform",
+              "treatment": "kinetic_type",
+              "transition": "cut",
+              "placement": "center",
+              "medium": "motion_graphic",
+              "sound": "tick",
+              "prominence": "contextual",
+              "motion_seconds": 0.45
+            },
+            {
+              "anchor": "autenticação ativos",
+              "target_id": "auth",
+              "action": "reveal",
+              "headline": "Proteja a confirmação",
+              "kind": "warning",
+              "behavior": "transform",
+              "treatment": "stack",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.45,
+              "operation": {
+                "kind": "stack",
+                "element_ids": [
+                  "amount",
+                  "recipient",
+                  "auth"
+                ]
+              }
+            }
+          ]
+        },
+        "tts": {
+          "delivery": "explain",
+          "cues": [
+            {
+              "text": "E segurança?",
+              "kind": "emphasis",
+              "intent": "curiosity",
+              "arc": "question",
+              "emphasis_word": "segurança",
+              "pause_before_ms": 80
+            },
+            {
+              "text": "A conveniência aumentou; a responsabilidade de confirmar a cobrança continua igual.",
+              "kind": "contrast",
+              "intent": "conviction",
+              "arc": "resolve",
+              "emphasis_word": "confirmar",
+              "pause_before_ms": 120
+            }
+          ]
+        }
+      },
+      {
+        "id": "scene-07",
+        "index": 7,
+        "scene_index": 7,
+        "title": "O que realmente mudou",
+        "narration": "Então guarde a diferença. Antes havia uma barreira própria de quinhentos reais em cada Pix por aproximação. Desde primeiro de outubro, essa barreira específica saiu. No lugar dela não apareceu um Pix sem limite: passam a valer os limites aplicáveis à sua conta e as regras gerais de segurança. Isso abre espaço para pagar valores maiores por aproximação, mas somente dentro do que estiver autorizado. A manchete é que os quinhentos acabaram. A explicação completa é que quem mudou foi a barreira, não o controle.",
+        "claim_ids": [
+          "C1",
+          "C2",
+          "C3",
+          "C4"
+        ],
+        "visual": {
+          "type": "EDITORIAL",
+          "transition": "cut",
+          "stage": {
+            "show_title": false,
+            "camera_mode": "static",
+            "elements": [
+              {
+                "id": "barrier",
+                "kind": "metric",
+                "label": "Barreira antiga",
+                "value": "R$ 500",
+                "x": 5,
+                "y": 18,
+                "width": 34,
+                "height": 50,
+                "initially_visible": true,
+                "value_size": 108,
+                "label_size": 38
+              },
+              {
+                "id": "account",
+                "kind": "step",
+                "label": "SEU LIMITE PIX",
+                "detail": "Conta + regras da instituição",
+                "x": 61,
+                "y": 18,
+                "width": 34,
+                "height": 50,
+                "initially_visible": false,
+                "icon": "shield",
+                "label_size": 42
+              },
+              {
+                "id": "close",
+                "kind": "note",
+                "label": "MUDOU A BARREIRA · NÃO O CONTROLE",
+                "x": 8,
+                "y": 82,
+                "width": 84,
+                "height": 13,
+                "initially_visible": false,
+                "label_size": 36
+              }
+            ],
+            "connections": []
+          },
+          "beats": [
+            {
+              "anchor": "essa barreira específica saiu",
+              "target_id": "barrier",
+              "action": "retire",
+              "headline": "Sai o teto específico",
+              "kind": "money",
+              "behavior": "transform",
+              "treatment": "masked_emphasis",
+              "transition": "cut",
+              "placement": "left",
+              "medium": "motion_graphic",
+              "sound": "impact",
+              "prominence": "contextual",
+              "motion_seconds": 0.5,
+              "reveal_ids": [
+                "account"
+              ]
+            },
+            {
+              "anchor": "passam a valer os limites aplicáveis à sua conta",
+              "target_id": "account",
+              "action": "focus",
+              "headline": "Seu limite passa a ser a referência",
+              "kind": "fact",
+              "behavior": "transform",
+              "treatment": "spotlight",
+              "transition": "cut",
+              "placement": "right",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.45
+            },
+            {
+              "anchor": "quem mudou foi a barreira, não o controle",
+              "target_id": "close",
+              "action": "reveal",
+              "headline": "Mudou a barreira, não o controle",
+              "kind": "fact",
+              "behavior": "transform",
+              "treatment": "kinetic_type",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.55
+            }
+          ]
+        },
+        "tts": {
+          "delivery": "closing",
+          "cues": [
+            {
+              "text": "No lugar dela não apareceu um Pix sem limite",
+              "kind": "contrast",
+              "intent": "caution",
+              "arc": "contrast",
+              "emphasis_word": "não",
+              "pause_before_ms": 120
+            },
+            {
+              "text": "quem mudou foi a barreira, não o controle.",
+              "kind": "emphasis",
+              "intent": "conviction",
+              "arc": "resolve",
+              "emphasis_word": "barreira",
+              "pause_before_ms": 140
+            }
+          ]
+        }
+      }
+    ],
+    "closing": "Então guarde a diferença. Antes havia uma barreira própria de quinhentos reais em cada Pix por aproximação. Desde primeiro de outubro, essa barreira específica saiu. No lugar dela não apareceu um Pix sem limite: passam a valer os limites aplicáveis à sua conta e as regras gerais de segurança. Isso abre espaço para pagar valores maiores por aproximação, mas somente dentro do que estiver autorizado. A manchete é que os quinhentos acabaram. A explicação completa é que quem mudou foi a barreira, não o controle."
+  },
   "packaging": {
     "strategy": {
-      "click_reason": "A ideia de continuar no Simples e tirar dois tributos do DAS cria uma contradição aparente que pede explicação.",
-      "visual_focus": "Uma guia DAS grande no centro se divide fisicamente em dois caminhos; IBS e CBS se destacam da guia em um dos lados.",
-      "curiosity_gap": "Como a empresa pode continuar no Simples se dois impostos saem do DAS, e por que alguém faria isso?",
-      "mobile_readability": "Um único documento dominante, dois blocos grandes IBS/CBS e headline de três palavras.",
-      "anti_clickbait_check": "O vídeo explica exatamente a bifurcação, os créditos, os prazos e as limitações; não promete redução de imposto.",
-      "repetition_check": "Usa metáfora de papel dividido e selos tributários, diferente de carteira, câmbio, smartphone ou fluxo bancário dos episódios recentes.",
-      "youtube_safety_check": "Tema fiscal informativo, sem promessa de economia, evasão, fraude ou recomendação tributária individual."
+      "click_reason": "A manchete parece dizer que o Pix ficou sem limite; a capa transforma a dúvida em pergunta concreta.",
+      "visual_focus": "Maquininha central e barreira R$500 se levantando; limite da conta permanece ao fundo.",
+      "curiosity_gap": "Se R$500 saiu, qual limite passa a valer?",
+      "mobile_readability": "Maquininha dominante, R$500 grande e headline curta.",
+      "anti_clickbait_check": "O vídeo confirma o fim do teto específico e explica que limites gerais permanecem.",
+      "repetition_check": "Evita papel rasgado, trilha de contas, dinheiro em fluxo e celular lateral.",
+      "youtube_safety_check": "Sem prometer que qualquer valor será aprovado."
     },
     "titles": [
       {
         "id": "title_main",
-        "text": "Simples em 2027: por que separar impostos muda a conta da empresa",
-        "rationale": "Nomeia a decisão e sua consequência; o roteiro demonstra créditos ecompara fatores sem prometer economia."
+        "text": "Pix por aproximação: acabou o teto de R$ 500, mas não os limites",
+        "rationale": "Nomeia a mudança e corrige a interpretação de Pix ilimitado."
       }
     ],
     "thumbnails": [
       {
         "id": "thumb_main",
-        "headline": "SEPARAR COMPENSA?",
-        "concept": "A mesma pequena empresa acima de uma guiaDAS que se divide; CBS eIBS se destacam como parcelas, sem percentual. Uma comparação real de caminhos, legível no celular.",
-        "visual_prompt": "Capa final YouTube do O Dinheiro Explica. Fundo carvão, amarelo #FFBD19 e branco. Uma pequena empresa estilizada permanece inteira. Abaixo, uma guia DAS se abre em dois caminhos, com duas parcelas CBS e IBS saindo da guia à direita. Texto grande: SEPARAR COMPENSA? Sem valores ou alíquotas. Foco único, legibilidade no celular e contraste; evitar grade de cartões."
+        "headline": "PASSOU DE R$ 500?",
+        "concept": "Maquininha central; uma cancela amarela marcada R$500 se levanta e a onda NFC atravessa. Ao fundo permanece a referência ao limite da conta.",
+        "visual_prompt": "Capa final 16:9 do O Dinheiro Explica. Fundo carvão, amarelo #FFBD19 e branco quente. Maquininha realista e cinematográfica no centro. Uma cancela/barreira amarela marcada R$ 500 está se levantando diante dela, deixando passar uma onda NFC limpa. Ao fundo, marcador simples LIMITE DA CONTA. Headline enorme: PASSOU DE R$ 500? Alto contraste, respiro, canto inferior direito livre. Sem rosto, dinheiro voando, gráfico, logo, subtítulo, verde dominante ou celular lateral."
       }
     ]
   },
   "publication": {
-    "description": "Simples Nacional em 2027: o que muda ao recolher IBS e CBS fora da guia DAS?\nEntenda o crédito da sua empresa, o crédito do cliente e quais custos e prazos precisam entrar na comparação.\n\nDAS é o Documento de Arrecadação do Simples Nacional. IBS e CBS são tributos sobre bens e serviços; a transição ocorre em etapas. O exemplo de CBS usa R$ 1.000 − R$ 300 = R$ 700 como hipótese didática, sem alíquota oficial ou previsão de economia.\n\nPrazos consultados em 01/10/2026: pedido de ingresso/retorno até 15/10/2026; regularização de pendências e opção pelo regime regular até 30/10/2026 em procedimentos diferentes; cancelamento de 03/11 a 20/12/2026. A opção de IBS/CBS discutida produz efeitos de janeiro a junho de 2027. Há janela em março para o segundo semestre. MEI tem regras próprias.\n\nFontes\nReceita Federal — Simples Nacional 2027: novos prazos.\nCGIBS — Opção pelo Simples ou regime regular tem novos prazos.\nCâmara dos Deputados — Lei Complementar 214/2025, texto atualizado.\nReceita Federal — Balanço de solicitações divulgado em 28/09.\nSerpro — Empresas do Simples e recolhimento fora do regime unificado.\nGazeta do Povo — Empresas do Simples e escolha dos novos impostos, 05/09; prazos antigos confrontados com atos posteriores.\nInfoMoney — Simples puro ou híbrido: prazo prorrogado.\n\nCréditos visuais: recortes autênticos da Receita Federal; objetos e diagramas originais do canal. A escolha exige simulação e orientação contábil com os dados reais da empresa.",
+    "description": "Pix por aproximação mudou em 1º de outubro de 2026: o teto específico de R$ 500 por transação deixou de existir.\nMas isso não significa Pix ilimitado. Neste vídeo, você entende qual limite passa a valer, como funciona a gestão no aplicativo, o prazo para aumento e por que a mudança também alcança jornadas do Open Finance.\n\nPix por aproximação usa NFC para iniciar o pagamento ao aproximar o celular de um terminal compatível. A retirada do teto específico permite valores acima de R$ 500 quando eles cabem nos limites aplicáveis à conta e passam pelos controles da instituição.\n\nNo gerenciamento de limites, reduções devem ser imediatas. Pedidos de aumento podem ser aceitos ou não pela instituição e, quando aceitos, entram em vigor entre 24 e 48 horas.\n\nO exemplo de R$ 800 com limite hipotético de R$ 1.500 é apenas didático; não representa limite recomendado, saldo disponível ou garantia de aprovação.\n\nFontes\nBanco Central do Brasil — Pix por aproximação ganha mais flexibilidade e deixa de ter teto fixo de R$500.\nBanco Central do Brasil — Instrução Normativa BCB nº 746/2026.\nBanco Central do Brasil — Instrução Normativa BCB nº 512/2024, texto consolidado.\nBanco Central do Brasil — FAQ Alteração dos limites de valor nas transações Pix.\nInfoMoney — Pix por aproximação deixa de ter teto de R$ 500 a partir desta quinta.\nO POVO — Pix por aproximação deixa de ter teto de R$ 500.\nJovem Pan — Pix por aproximação deixa de ter teto de R$ 500; entenda mudança.\nFolha de S.Paulo — Pix por aproximação deixa de ter limite de R$ 500 por transação.\n\nCréditos visuais: recortes autênticos do Banco Central e elementos gráficos originais do canal.",
     "seo": {
-      "primary_keyword": "Simples Nacional 2027",
+      "primary_keyword": "Pix por aproximação",
       "secondary_keywords": [
-        "Simples híbrido",
-        "IBS",
-        "CBS",
-        "DAS",
-        "créditos tributários",
-        "prazos Simples"
+        "limite Pix por aproximação",
+        "teto R$ 500 Pix",
+        "Pix NFC",
+        "limites do Pix",
+        "Open Finance",
+        "Pix 2026"
       ],
-      "search_intent": "Entender o recolhimento separado, os créditos e os prazos antes de comparar cenários.",
-      "description_strategy": "Explicar a decisão e os conceitos nas primeiras linhas, distinguir hipótese de regra e registrar fontes sem links."
+      "search_intent": "Entender o fim do teto específico de R$500 e qual limite passa a valer.",
+      "description_strategy": "Abrir com a mudança e a principal correção; depois explicar limite, NFC e Open Finance."
     },
     "tags": [
-      "Simples Nacional",
-      "Simples híbrido",
-      "Simples puro",
-      "IBS",
-      "CBS",
-      "DAS",
-      "reforma tributária",
-      "pequenas empresas",
+      "Pix por aproximação",
+      "Pix",
+      "limite Pix",
+      "NFC",
+      "Open Finance",
+      "Banco Central",
+      "pagamentos",
       "O Dinheiro Explica"
     ],
     "chapters": [],
