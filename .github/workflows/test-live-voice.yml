@@ -1,0 +1,56 @@
+name: Teste voz Gemini 3.8 Live
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "voice-tests/live-test.txt"
+
+permissions:
+  contents: read
+
+jobs:
+  live-voice-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install minimal dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          python -m pip install --no-cache-dir --upgrade google-genai google-auth google-api-python-client
+
+      - name: Generate Gemini Live Charon sample
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          rm -rf render-output/live-voice-test
+          mkdir -p render-output/live-voice-test
+          python worker/test_gemini_live_voice.py             --output-dir render-output/live-voice-test
+
+          ffmpeg -hide_banner -loglevel error -y             -i render-output/live-voice-test/gemini-3.8-live-charon-raw.wav             -codec:a libmp3lame -b:a 192k             render-output/live-voice-test/gemini-3.8-live-charon.mp3
+
+      - name: Upload test artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: gemini-3.8-live-charon-test
+          path: render-output/live-voice-test/*
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload test to Google Drive
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
+        run: |
+          python worker/upload_live_voice_test.py             --input-dir render-output/live-voice-test             --output render-output/live-voice-test-drive.json

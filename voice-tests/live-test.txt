@@ -1,0 +1,4 @@
+Teste isolado de qualidade de voz.
+Modelo: gemini-3.8-live
+Voz: Charon
+Objetivo: comparar naturalidade com o Roberto atual sem alterar o motor de produção.
