@@ -1,6 +1,6 @@
 {
-  "project_id": "dolar-politica-bolso-2026-09-30",
-  "title": "Dólar e eleições: como a política pode chegar ao seu bolso",
+  "project_id": "simples-nacional-hibrido-2026-09-30",
+  "title": "Simples Nacional híbrido: IBS e CBS podem sair do DAS em 2027",
   "version": "1.0",
   "presenter": {
     "gender": "male",
@@ -8,115 +8,113 @@
   },
   "speech": {
     "pronunciations": {
-      "PTAX": "pêtax",
-      "TSE": "tê ésse ê",
-      "PIB": "pib",
-      "EUA": "Estados Unidos",
-      "Insper": "ínsper"
+      "IBS": "i bê ésse",
+      "CBS": "cê bê ésse",
+      "DAS": "dás",
+      "MEI": "mêi",
+      "B2B": "bê dois bê",
+      "B2C": "bê dois cê"
     },
     "ignore_pronunciation_terms": []
   },
   "story": {
-    "subject": "Dólar e política na reta final da eleição de2026, atualizado com PTAX e estatísticas fiscais divulgados em30/09.",
-    "angle": "Seguir o caminho entre decisões fiscais, percepção de risco, câmbio e custos, separando dado verificado de interpretação e de torcida.",
-    "promise": "Entender como a política pode mexer no dólar, por que o mundo também importa e quando isso chega a uma compra.",
-    "why_now": "O primeiro turno está marcado para 04/10/2026. A PTAX de 30/09 e as estatísticas fiscais de agosto atualizam a pauta sem transformar a data de produção em parte da narração.",
+    "subject": "A nova escolha das empresas do Simples Nacional para 2027: manter IBS e CBS dentro do DAS ou apurá-los pelo regime regular.",
+    "angle": "Explicar sem recomendar qual modelo escolher: mostrar a mecânica dos créditos, o perfil dos clientes, a estrutura de custos e os prazos objetivos.",
+    "promise": "Entender o que muda entre o chamado Simples puro e o híbrido e quais perguntas uma empresa precisa responder antes da opção.",
+    "why_now": "A Resolução CGSN nº 194 prorrogou a opção pelo regime regular do IBS e da CBS para 30/10/2026, com efeitos no primeiro semestre de 2027.",
     "category": "economy"
   },
   "visual_assets": [
     {
-      "id": "A_wheat_field",
-      "type": "photo_cutout",
-      "subject": "Campo de trigo (imagem ilustrativa)",
-      "narrative_role": "Dar textura real ao trecho sobre a cadeia do trigo, sem representar a safra brasileira ou provar a projeção da Conab.",
-      "country_context": "global",
-      "source_page_url": "https://commons.wikimedia.org/wiki/File:Wheat_Field_in_Walla_Walla,_Washington,_2018.jpg",
-      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/bc/Wheat_Field_in_Walla_Walla%2C_Washington%2C_2018.jpg/1280px-Wheat_Field_in_Walla_Walla%2C_Washington%2C_2018.jpg",
-      "image_fallback_urls": [
-        "https://upload.wikimedia.org/wikipedia/commons/b/bc/Wheat_Field_in_Walla_Walla%2C_Washington%2C_2018.jpg"
-      ],
-      "license": "CC0 1.0",
-      "attribution": "Jason W Lacey / Wikimedia Commons",
-      "needs_cutout": false
+      "id": "A_deadlines",
+      "type": "source_excerpt",
+      "source_id": "S1",
+      "captured_at": "2026-09-30T23:58:00Z",
+      "capture_file": "research/captures/simples-hibrido-prazos.png",
+      "subject": "Trecho oficial com o prazo da opção pelo regime regular de IBS e CBS",
+      "narrative_role": "Comprovar a diferença entre o prazo para ingressar no Simples e o prazo para optar pelo regime regular de IBS/CBS.",
+      "country_context": "BR",
+      "source_page_url": "https://www.cgibs.gov.br/embora-os-periodos-sejam-parecidos-tratam-de-escolhas-diferentes-por-isso-e-importante-entender-cada-situacao",
+      "license": "Documento público oficial; uso editorial com atribuição",
+      "attribution": "RFB / CGIBS",
+      "needs_cutout": false,
+      "expected_text": "Prazo: 1º/09/2026 a 30/10/2026."
     },
     {
-      "id": "A_shopping_cart",
-      "type": "photo_cutout",
-      "subject": "Carrinho no supermercado (imagem ilustrativa)",
-      "narrative_role": "Aproximar as perguntas finais da compra real; imagem ilustrativa feita fora do Brasil, não evidência de preços.",
-      "country_context": "global",
-      "source_page_url": "https://commons.wikimedia.org/wiki/File:Shopping_Cart_Supermarket.jpg",
-      "image_url": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f7/Shopping_Cart_Supermarket.jpg/1280px-Shopping_Cart_Supermarket.jpg",
-      "image_fallback_urls": [
-        "https://upload.wikimedia.org/wikipedia/commons/f/f7/Shopping_Cart_Supermarket.jpg"
-      ],
-      "license": "CC0 1.0",
-      "attribution": "Safaritravelplus / Wikimedia Commons",
-      "needs_cutout": false
+      "id": "A_requests",
+      "type": "source_excerpt",
+      "source_id": "S4",
+      "captured_at": "2026-09-30T23:58:00Z",
+      "capture_file": "research/captures/simples-hibrido-solicitacoes.png",
+      "subject": "Trecho oficial com o balanço de solicitações",
+      "narrative_role": "Dar escala à nova opção sem sugerir aprovação ou vantagem do regime regular.",
+      "country_context": "BR",
+      "source_page_url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/setembro/receita-federal-atualiza-o-balanco-de-solicitacoes-de-opcao-pelo-simples-nacional-e-pelo-regime-regular-do-ibs-e-da-cbs",
+      "license": "Documento público oficial; uso editorial com atribuição",
+      "attribution": "Receita Federal",
+      "needs_cutout": false,
+      "expected_text": "586.675 solicitações de opção pelo regime regular do IBS e da CBS."
     }
   ],
   "visual_direction": {
-    "concept": "Uma decisão eleitoral percorre três escalas: expectativas em Brasília, troca entre moedas, e uma compra concreta. A carteira reaparece como destino; números recentes são provas, não eixo de uma apresentação.",
-    "world": "market",
+    "concept": "Uma guia única de papel se divide em dois caminhos. Em um, IBS e CBS continuam dentro do DAS; no outro, esses dois tributos saem para uma trilha separada de débitos e créditos. O vídeo acompanha essa bifurcação até clientes, custos e calendário.",
+    "world": "paper",
     "secondary_color": "#FFBD19",
     "motifs": [
-      "calendário eleitoral",
-      "carteira",
-      "troca de moedas",
-      "contas públicas",
-      "nota de compra",
-      "cadeia de custos"
+      "guia DAS",
+      "folha dividida em dois caminhos",
+      "selos IBS e CBS",
+      "corrente de créditos",
+      "calendário de opção",
+      "cliente empresa e consumidor"
     ],
     "motion_language": [
-      "abrir com data eleitoral e revelar carteira só quando a fala chega ao bolso",
-      "comparar PTAX e spot com identificação e horários explícitos",
-      "seguir a ligação risco → decisão → moeda",
-      "transformar uma nota decompra hipotética conservandoUS$100",
-      "percorrer estoque → produção → loja",
-      "encerrar no mesmo objeto carteira com uma conclusão"
+      "abrir com documento real e transformar a guia em uma bifurcação",
+      "manter os dois caminhos lado a lado quando a comparação continuar",
+      "fazer o crédito percorrer fornecedor, empresa e cliente como um selo amarelo",
+      "usar calendário somente no trecho de prazos, com datas objetivas",
+      "encerrar com quatro perguntas ocupando o quadro em sequência"
     ],
     "avoid": [
-      "cartelas deparágrafos",
-      "informação futura cortada na borda",
-      "gráfico com pontos futuros",
-      "atribuição eleitoral sem evidência",
-      "palco doIPP",
-      "copiar composição do vídeo anterior"
-    ],
-    "implementation_note": "Objetos persistem e o custo se transforma no mesmo elemento. As relações ficam juntas na tela, as fotografias têm movimento interno e legenda segura. O fundo não simula série de dados."
+      "repetir carteira e percurso cambial do vídeo anterior",
+      "grade fixa de cartões em todas as cenas",
+      "calculadora genérica como protagonista",
+      "alíquota inventada ou simulação que pareça recomendação",
+      "texto jurídico pequeno demais",
+      "dizer que o Simples puro não gera nenhum crédito ao cliente"
+    ]
   },
   "editorial": {
     "strengths": [
-      "Preserva dólar e política com atualização real de30/09.",
-      "Explica tema e mecanismo antes de desenvolver exemplos.",
-      "Roberto seapresenta após gancho eCTA surge depois deentregar valor.",
-      "Detalha efeitos e limites sem reduzir conteúdo porquotaTTS."
+      "Pauta prática para micro e pequenas empresas com prazo atualizado pela Resolução CGSN nº 194.",
+      "Explica a diferença entre permanecer no Simples e recolher IBS/CBS pelo regime regular sem transformar a explicação em recomendação tributária.",
+      "Distingue crédito limitado no Simples tradicional da sistemática regular de débitos e créditos.",
+      "Mantém datas dos fatos, mas não data o vídeo pela data de publicação."
     ],
     "risk_flags": [
-      "PTAX nãoé fechamento comercial; spot é snapshot10h42, não cotação atual depublicação.",
-      "Nenhuma causalidade de pesquisaeleitoral foi demonstrada para a queda do dia.",
-      "Foto detrigo nosEUA e supermercado noQuênia são ilustrações globais, não evidência brasileira.",
-      "Debt82,9% refere-se a agosto, divulgada30/09; a comparação de déficit é agosto2026/2025.",
-      "A hipótese aritméticaR$5/R$5,50 nãoé previsão e é identificada antes dos valores."
+      "Os nomes Simples puro e Simples híbrido são rótulos de comunicação; juridicamente a opção é pelo regime regular do IBS e da CBS.",
+      "Cliente no regime regular pode ter crédito mesmo quando compra de optante do Simples; não tratar o crédito do modelo puro como zero.",
+      "Não afirmar que B2B deve escolher híbrido nem que B2C deve permanecer puro; são fatores para simulação, não regra universal.",
+      "A matéria da Gazeta do Povo consultada usava o prazo anterior de 30/09; o prazo foi substituído pela Resolução CGSN nº 194 e não é usado como prazo atual."
     ],
     "narrative_contract": {
-      "topic_explanation": "vamos seguir o caminho das decisões sobre as contas do governo, passando pelo câmbio, até o custo que aparece no seu bolso",
+      "topic_explanation": "a partir de 2027, existem duas formas de tratar IBS e CBS para quem está no Simples Nacional",
       "presenter_introduction": "Eu sou o Roberto, do O Dinheiro Explica.",
-      "subscription_request": "se inscreva no O Dinheiro Explica para acompanhar as próximas histórias"
+      "subscription_request": "se inscreva no O Dinheiro Explica para acompanhar as próximas mudanças sem precisar decifrar a legislação sozinho"
     },
     "source_balance": {
       "requires_diversity": true,
       "public_policy_or_regulation": true,
-      "official_sources_role": "Confirmar metodologiaPTAX, dataeleitoral, dívida/resultadofiscal e estudo derepasse; posições são atribuídas, não selo deinfalibilidade.",
-      "independent_sources_role": "Exame situa o pregão e os fatores simultâneos; Reuters confere melhora mensal; Oeste coloca o endividamento em pauta e foi confrontada comPDFprimário.",
-      "counterpoint_summary": "Câmbio tem forças domésticas eglobais. Dívida alta merece escrutínio; déficit mensal melhor não elimina estoque. Identidade partidária não demonstra causalidade cambial.",
+      "official_sources_role": "Confirmar prazos, opção pelo regime regular, permanência no Simples, regras de crédito e balanço de solicitações.",
+      "independent_sources_role": "InfoMoney e UOL ajudam a testar os efeitos práticos sobre clientes, custos, créditos, margem e complexidade operacional; Gazeta do Povo foi consultada como leitura editorial à direita e teve o prazo antigo confrontado com a Resolução CGSN nº 194.",
+      "counterpoint_summary": "O regime tradicional preserva maior simplicidade operacional; o regime regular pode ampliar a lógica de créditos, especialmente em cadeias empresariais, mas acrescenta apuração e controle. Nenhum dos dois é universalmente superior.",
       "official_claims_attributed": true,
       "right_editorial_review": {
         "consulted": [
           {
-            "publisher": "Revista Oeste",
-            "url": "https://revistaoeste.com/economia/divida-publica-avanca-a-829-do-pib-e-bate-r-11-trilhoes-sob-lula/",
-            "summary": "Cobertura crítica publicada30/09 às11h49 destacou estoque/RelaçãoPIB sob ogovernoLula. Conferi82,9% eR$11,1tri noPDFprimário; acrescentei déficit mensalmenor e limites decausalidade. O roteiro não reproduz os demais comparativos históricos da matéria nem seu tom partidário."
+            "publisher": "Gazeta do Povo",
+            "url": "https://www.gazetadopovo.com.br/economia/simples-nacional-empresas-escolha-modelo-ibs-cbs/",
+            "summary": "A matéria de 05/09 destacou impactos sobre preços, margens e competitividade. O prazo de 30/09 citado nela foi posteriormente prorrogado e foi substituído, no roteiro, pelos prazos oficiais da Resolução CGSN nº 194."
           }
         ]
       }
@@ -124,143 +122,141 @@
     "youtube_suitability": {
       "risk_level": "low",
       "sensitive_topics": [
-        "eleições",
-        "políticafiscal",
-        "câmbio"
+        "tributação",
+        "reforma tributária",
+        "pequenas empresas"
       ],
-      "context_notes": "Conteúdo econômico explicativo, sem orientação devoto, promoção decandidato ou recomendação individual de investimento.",
+      "context_notes": "Conteúdo educacional sobre regra tributária e prazos, sem consultoria individual ou promessa de economia.",
       "title_thumbnail_safe": true,
-      "monetization_notes": "Título usa possibilidade; aexplicação entrega mecanismo e seus limites."
+      "monetization_notes": "Tema fiscal tratado de forma informativa, com fontes oficiais e sem linguagem alarmista."
     },
     "render_review": {
       "status": "visual_evidence_pending",
-      "note": "VerificarLegibilidade, sincronismo e continuidadevocal no render; nenhuma quota devoz altera roteiro/cenas."
+      "note": "Revisar legibilidade dos dois caminhos, recortes oficiais, pronúncia de IBS/CBS/DAS e continuidade vocal."
     }
   },
   "sources": [
     {
       "id": "S1",
-      "title": "Banco Central — API PTAX, cotação de 30/09/2026",
-      "url": "https://olinda.bcb.gov.br/olinda/servico/PTAX/versao/v1/odata/CotacaoDolarDia(dataCotacao=@dataCotacao)?%40dataCotacao=%2709-30-2026%27&%24format=json",
-      "publisher": "Banco Central do Brasil",
+      "title": "Opção do contribuinte por Simples Nacional ou pelo regime regular de CBS e IBS para 2027 tem novos prazos",
+      "url": "https://www.cgibs.gov.br/embora-os-periodos-sejam-parecidos-tratam-de-escolhas-diferentes-por-isso-e-importante-entender-cada-situacao",
+      "publisher": "RFB / CGIBS",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "notes": "Consultado diretamente em 30/09/2026: compra 5,18030; venda 5,18090; dataHoraCotacao 2026-09-30 13:11:44.783262. Taxa de referência PTAX, não fechamento comercial nem preço turismo.",
-      "published_at": "2026-09-30"
+      "published_at": "2026-09-30",
+      "notes": "Fonte oficial publicada em 30/09. Confirma: ingresso/retorno no Simples até 15/10; opção pelo regime regular do IBS/CBS até 30/10; cancelamentos entre 03/11 e 20/12."
     },
     {
       "id": "S2",
-      "title": "Banco Central — metodologia das cotações diárias do dólar",
-      "url": "https://dadosabertos.bcb.gov.br/dataset/dolar-americano-usd-todos-os-boletins-diarios",
-      "publisher": "Banco Central do Brasil",
+      "title": "Simples Nacional 2027: Entenda os novos prazos e faça sua escolha com consciência e tranquilidade",
+      "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/setembro/simples-nacional-2027-entenda-os-novos-prazos-e-faca-sua-escolha-com-consciencia-e-tranquilidade/",
+      "publisher": "Receita Federal",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "notes": "PTAX é média aritmética de quatro consultas aos dealers; boletim de fechamento PTAX é média dos boletins do dia."
+      "published_at": "2026-09-29",
+      "notes": "Explica que são duas opções distintas e confirma os prazos ajustados pela Resolução CGSN nº 194."
     },
     {
       "id": "S3",
-      "title": "TSE — Centro de Divulgação das Eleições 2026",
-      "url": "https://www.tse.jus.br/eleicoes/cde-2026",
-      "publisher": "Tribunal Superior Eleitoral",
+      "title": "Lei Complementar nº 214, de 16 de janeiro de 2025",
+      "url": "https://www.planalto.gov.br/ccivil_03/leis/lcp/lcp214.htm",
+      "publisher": "Presidência da República / Planalto",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "notes": "FAQ confirma primeiro turno em 04/10/2026. Não sustenta causalidade cambial."
+      "published_at": "2025-01-16",
+      "notes": "Base legal do IBS e da CBS. O art. 41 permite ao optante do Simples escolher o regime regular para IBS/CBS; a lei também disciplina o crédito do adquirente do regime regular em compras de optante do Simples."
     },
     {
       "id": "S4",
-      "title": "Banco Central — Estatísticas fiscais, nota de 30/09/2026",
-      "url": "https://www.bcb.gov.br/content/estatisticas/hist_estatisticasfiscais/202609_Texto_de_estatisticas_fiscais.pdf",
-      "publisher": "Banco Central do Brasil",
-      "source_type": "primary",
-      "publisher_class": "official",
-      "editorial_role": "primary_document",
-      "notes": "PDF primário lido em 30/09: página 2, DBGG agosto 82,9% do PIB/R$11,1tri, alta mensal0,3pp; página1 déficit primário agosto R$10,0bi contra R$17,3bi agosto2025. Não confundir estoque/déficit ou primário/nominal.",
-      "published_at": "2026-09-30"
-    },
-    {
-      "id": "S5",
-      "title": "Exame — Ibovespa ganha força com bancos, Petrobras e eleições; dólar recua para R$5,18",
-      "url": "https://exame.com/invest/mercados/ibovespa-ganha-forca-com-bancos-petrobras-e-eleicoes-dolar-recua-para-r-518/",
-      "publisher": "Exame",
-      "source_type": "context",
-      "publisher_class": "independent_journalism",
-      "editorial_role": "independent_reporting",
-      "notes": "Matéria de 30/09 às11h02: spot comercial R$5,1870, queda0,57%, recorte10h42 Brasília. Relaciona movimentos a ambiente externo/dados americanos e registra eleição no radar. Não é fechamento, nem prova de causa eleitoral única.",
-      "published_at": "2026-09-30T11:02:00-03:00"
-    },
-    {
-      "id": "S6",
-      "title": "Revista Oeste — Dívida pública avança a82,9% do PIB e bate R$11 trilhões sob Lula",
-      "url": "https://revistaoeste.com/economia/divida-publica-avanca-a-829-do-pib-e-bate-r-11-trilhoes-sob-lula/",
-      "publisher": "Revista Oeste",
-      "source_type": "context",
-      "publisher_class": "independent_journalism",
-      "editorial_role": "independent_reporting",
-      "notes": "Consultada em 30/09, publicada11h49. Cobertura crítica do endividamento. O roteiro usa82,9%/11,1tri conferidos noPDF primário, e não copia as comparações históricas ou conclusões políticas da manchete.",
-      "published_at": "2026-09-30T11:49:00-03:00"
-    },
-    {
-      "id": "S7",
-      "title": "Reuters — Dívida bruta do Brasil sobe a82,9% do PIB em agosto",
-      "url": "https://www.infomoney.com.br/economia/divida-bruta-do-brasil-sobe-a-829-do-pib-em-agosto/",
-      "publisher": "Reuters / InfoMoney",
-      "source_type": "context",
-      "publisher_class": "independent_journalism",
-      "editorial_role": "independent_reporting",
-      "notes": "Cobertura de30/09 às09h02 confirma dívida82,9% e déficit menor do que expectativaReuters. Contextualiza melhoria mensal sem eliminar crescimento do estoque.",
-      "published_at": "2026-09-30T09:02:00-03:00"
-    },
-    {
-      "id": "S8",
-      "title": "Banco Central — Repasse cambial: estimativas por projeções locais",
-      "url": "https://www.bcb.gov.br/content/ri/relatorioinflacao/202603/rpm202603b8p.pdf",
-      "publisher": "Banco Central do Brasil",
-      "source_type": "primary",
-      "publisher_class": "official",
-      "editorial_role": "technical_analysis",
-      "notes": "Relatório março2026 páginas65–69: efeitos heterogêneos sobre IPCA, mais altos em alimentos/bens industriais e próximo dezero serviços; ampla incerteza. Nenhuma projeção de preço individual amanhã.",
-      "published_at": "2026-03-27"
-    },
-    {
-      "id": "S9",
-      "title": "Insper — TCC de Alejandro Ortiz Cruceño (2020): A alta do dólar deveria ser uma preocupação para o Banco Central do Brasil?",
-      "url": "https://repositorio.insper.edu.br/entities/publication/977a0125-d438-4563-8a82-23cadb236df5",
-      "publisher": "Insper",
-      "source_type": "context",
-      "publisher_class": "academic",
-      "editorial_role": "technical_analysis",
-      "notes": "TCC2020 deAlejandro Ortiz Cruceño. Página descreve objetivo de analisar repasse cambial, determinantes/características/canais. Contexto metodológico apenas, sem usar aSelic2020 como atual.",
-      "published_at": "2020"
-    },
-    {
-      "id": "S10",
-      "title": "Banco Central — Cenários alternativos de projeção de inflação: riscos fiscais",
-      "url": "https://cdn-www.bcb.gov.br/content/ri/relatorioinflacao/202103/ri202103b6p.pdf",
-      "publisher": "Banco Central do Brasil",
-      "source_type": "primary",
-      "publisher_class": "official",
-      "editorial_role": "technical_analysis",
-      "notes": "Estudo de2021 usado somente para mecanismo de risco fiscal, câmbio e inflação; cenários condicionais, sem aplicar resultados numéricos ao pregão de2026."
-    },
-    {
-      "id": "S11",
-      "title": "Banco Central — O que é câmbio e quais fatores afetam a taxa?",
-      "url": "https://www.bcb.gov.br/estabilidadefinanceira/taxacambio",
-      "publisher": "Banco Central do Brasil",
+      "title": "Receita Federal atualiza o balanço de solicitações de opção pelo Simples Nacional e pelo regime regular do IBS e da CBS",
+      "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/setembro/receita-federal-atualiza-o-balanco-de-solicitacoes-de-opcao-pelo-simples-nacional-e-pelo-regime-regular-do-ibs-e-da-cbs",
+      "publisher": "Receita Federal",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "data_context",
-      "notes": "Referência conceitual de câmbio: preço da moeda e condições de oferta/procura. A simulaçãoUS$100 comR$5/R$5,50 é aritmética declarada, não dado observado."
+      "published_at": "2026-09-28",
+      "notes": "Até 28/09 registrava 586.675 solicitações de opção pelo regime regular do IBS/CBS e 370.553 solicitações de opção pelo Simples; são procedimentos diferentes e os números não devem ser comparados como aprovação ou preferência."
+    },
+    {
+      "id": "S5",
+      "title": "Simples Nacional puro ou híbrido? Prazo para escolher regime de 2027 foi prorrogado",
+      "url": "https://www.infomoney.com.br/minhas-financas/simples-nacional-puro-ou-hibrido-prazo-para-escolher-regime-de-2027-termina-hoje/",
+      "publisher": "InfoMoney",
+      "source_type": "context",
+      "publisher_class": "independent_journalism",
+      "editorial_role": "independent_reporting",
+      "published_at": "2026-09-30",
+      "notes": "Explica que a decisão depende do perfil dos clientes, da estrutura de custos, dos créditos possíveis e da complexidade operacional; destaca que no Simples tradicional o cliente regular pode aproveitar crédito correspondente ao valor devido pelo fornecedor."
+    },
+    {
+      "id": "S6",
+      "title": "Prazo para optar entre Simples puro ou híbrido é prorrogado até 30/10",
+      "url": "https://economia.uol.com.br/empreendedorismo/noticias/redacao/2026/09/29/reforma-tributaria-simples-puro-hibrido-empreendedor-prazo-prorrogado.ghtm",
+      "publisher": "UOL Economia",
+      "source_type": "context",
+      "publisher_class": "independent_journalism",
+      "editorial_role": "independent_reporting",
+      "published_at": "2026-09-29",
+      "notes": "Cobertura do adiamento e dos fatores de decisão: fluxo de caixa, fornecedores, clientes e geração de créditos."
+    },
+    {
+      "id": "S7",
+      "title": "Empresas do Simples têm até fim do mês para escolher como pagar novos impostos",
+      "url": "https://www.gazetadopovo.com.br/economia/simples-nacional-empresas-escolha-modelo-ibs-cbs/",
+      "publisher": "Gazeta do Povo",
+      "source_type": "context",
+      "publisher_class": "independent_journalism",
+      "editorial_role": "independent_reporting",
+      "published_at": "2026-09-05",
+      "notes": "Usada para testar impactos sobre preços, margens e competitividade. O prazo mencionado na matéria foi superado pela Resolução CGSN nº 194."
+    },
+    {
+      "id": "S8",
+      "title": "Receita Federal alerta: começa o prazo para opção pelo Simples Nacional e escolha do modelo de recolhimento do IBS e da CBS em 2027",
+      "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/setembro/receita-federal-alerta-comeca-hoje-o-prazo-para-opcao-pelo-simples-nacional-e-para-a-escolha-do-modelo-de-recolhimento-do-ibs-e-da-cbs-em-2027/",
+      "publisher": "Receita Federal",
+      "source_type": "primary",
+      "publisher_class": "official",
+      "editorial_role": "data_context",
+      "published_at": "2026-09-01",
+      "notes": "Explica Simples puro/híbrido, efeitos no primeiro semestre de 2027, nova oportunidade em março e tratamento do MEI. Prazos de setembro foram posteriormente atualizados pela Resolução nº 194."
+    },
+    {
+      "id": "S9",
+      "title": "CGSN atualiza regras do Simples Nacional para adequação à Reforma Tributária do Consumo",
+      "url": "https://www.gov.br/receitafederal/pt-br/assuntos/noticias/2026/agosto/cgsn-atualiza-regras-do-simples-nacional-para-adequacao-a-reforma-tributaria-do-consumo",
+      "publisher": "Receita Federal",
+      "source_type": "primary",
+      "publisher_class": "official",
+      "editorial_role": "data_context",
+      "published_at": "2026-08-11",
+      "notes": "Detalha a adaptação do Simples ao IBS/CBS, opção pelo regime regular e janelas semestrais. Datas de setembro foram posteriormente atualizadas."
     }
   ],
   "claims": [
     {
       "id": "C1",
-      "text": "Primeiro turno em04/10/2026, quatro dias depois do episódio de30/09.",
+      "text": "Até 28/09/2026 a Receita registrava 586.675 solicitações de opção pelo regime regular do IBS e da CBS.",
       "source_ids": [
+        "S4"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "verified_fact",
+      "attribution_required": true,
+      "metadata": {
+        "as_of": "2026-09-28"
+      }
+    },
+    {
+      "id": "C2",
+      "text": "Optante do Simples pode permanecer no regime e escolher apurar/recolher IBS e CBS pelo regime regular.",
+      "source_ids": [
+        "S1",
+        "S2",
         "S3"
       ],
       "confidence": "high",
@@ -270,22 +266,12 @@
       "metadata": {}
     },
     {
-      "id": "C2",
-      "text": "PTAX venda30/09/2026 foiR$5,1809; valor falado arredondadoR$5,18.",
-      "source_ids": [
-        "S1"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "verified_fact",
-      "attribution_required": true,
-      "metadata": {}
-    },
-    {
       "id": "C3",
-      "text": "PTAX é referência baseada em consultas ao mercado; não preço ao consumidor em casa de câmbio.",
+      "text": "No chamado Simples puro, IBS e CBS permanecem no recolhimento unificado; no híbrido, esses dois tributos são apurados pelo regime regular.",
       "source_ids": [
-        "S2"
+        "S1",
+        "S2",
+        "S5"
       ],
       "confidence": "high",
       "verification_status": "verified",
@@ -295,37 +281,37 @@
     },
     {
       "id": "C4",
-      "text": "Exame registrou spot comercialR$5,1870 às10h42 em30/09, em matéria11h02.",
+      "text": "Cliente no regime regular que compra de optante do Simples pode se creditar do IBS/CBS correspondente ao valor devido pelo fornecedor no Simples; o crédito não é automaticamente zero.",
       "source_ids": [
+        "S3",
         "S5"
       ],
       "confidence": "high",
       "verification_status": "verified",
-      "framing": "reported_claim",
+      "framing": "verified_fact",
       "attribution_required": true,
       "metadata": {}
     },
     {
       "id": "C5",
-      "text": "Compras/vendas e expectativas podem pressionar câmbio conforme oferta e procura.",
+      "text": "No regime regular, a empresa entra na sistemática de débitos nas vendas e créditos permitidos nas aquisições, conforme as regras do IBS/CBS.",
       "source_ids": [
-        "S2",
-        "S11",
+        "S3",
         "S5"
       ],
       "confidence": "high",
       "verification_status": "verified",
-      "framing": "analysis",
+      "framing": "verified_fact",
       "attribution_required": true,
       "metadata": {}
     },
     {
       "id": "C6",
-      "text": "Percepção de risco fiscal e de execução de propostas pode alterar exposição aoBrasil e demanda por moeda; direção é condicional.",
+      "text": "Perfil dos clientes, estrutura de custos, créditos possíveis, margens e custo de conformidade são fatores relevantes; não existe opção universalmente melhor.",
       "source_ids": [
-        "S10",
         "S5",
-        "S6"
+        "S6",
+        "S7"
       ],
       "confidence": "high",
       "verification_status": "verified",
@@ -335,11 +321,10 @@
     },
     {
       "id": "C7",
-      "text": "Dívida bruta do governo geral foi82,9%PIB/R$11,1tri agosto2026 segundo notaBCB30/09.",
+      "text": "Prazo para ingressar/retornar no Simples em 2027 vai até 15/10/2026; opção pelo regime regular do IBS/CBS para janeiro-junho vai até 30/10/2026; cancelamento ocorre entre 03/11 e 20/12/2026.",
       "source_ids": [
-        "S4",
-        "S6",
-        "S7"
+        "S1",
+        "S2"
       ],
       "confidence": "high",
       "verification_status": "verified",
@@ -349,80 +334,39 @@
     },
     {
       "id": "C8",
-      "text": "Déficit primário consolidado agosto2026R$10bi é menor que agosto2025R$17,3bi; isso não apaga estoque nem prova efeito único no câmbio.",
+      "text": "Quem já está no Simples e não optar pelo regime regular mantém IBS/CBS no recolhimento unificado no primeiro semestre de 2027.",
       "source_ids": [
-        "S4",
-        "S7"
+        "S1",
+        "S8"
       ],
       "confidence": "high",
       "verification_status": "verified",
-      "framing": "analysis",
+      "framing": "verified_fact",
       "attribution_required": true,
       "metadata": {}
     },
     {
       "id": "C9",
-      "text": "Exame reportou queda do dólar com dadosamericanos/apetiteporrisco e eleição no radar; proximidade não prova causa de pesquisa específica.",
+      "text": "Há nova janela em março de 2027 para opção com efeitos no segundo semestre.",
       "source_ids": [
-        "S5"
+        "S8",
+        "S9"
       ],
       "confidence": "high",
       "verification_status": "verified",
-      "framing": "reported_claim",
+      "framing": "verified_fact",
       "attribution_required": true,
       "metadata": {}
     },
     {
       "id": "C10",
-      "text": "Exemplo hipotéticoUS$100×R$5=R$500 e×R$5,50=R$550, antes impostos/frete; não cotação observada nem previsão.",
+      "text": "MEI não participa da escolha pelo modelo híbrido.",
       "source_ids": [
-        "S11"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "context",
-      "attribution_required": true,
-      "metadata": {
-        "illustrative": true
-      }
-    },
-    {
-      "id": "C11",
-      "text": "Estoques, proteção cambial, margem e concorrência podem modificar tempo/intensidade de repasse.",
-      "source_ids": [
-        "S8",
-        "S9"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "analysis",
-      "attribution_required": true,
-      "metadata": {}
-    },
-    {
-      "id": "C12",
-      "text": "BCBmarço2026 estima repasse heterogêneo com incerteza; TCC2020 de Alejandro Ortiz Cruceño, disponível no Insper, investiga os canais, sem previsão de itemindividual.",
-      "source_ids": [
-        "S8",
-        "S9"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "analysis",
-      "attribution_required": true,
-      "metadata": {}
-    },
-    {
-      "id": "C13",
-      "text": "Avaliar cotação/horário, mudanças fiscais e persistência é uma leitura prudente; nenhum investimento ou candidato é recomendado.",
-      "source_ids": [
-        "S2",
-        "S4",
         "S8"
       ],
       "confidence": "high",
       "verification_status": "verified",
-      "framing": "context",
+      "framing": "verified_fact",
       "attribution_required": true,
       "metadata": {}
     }
@@ -430,10 +374,12 @@
   "scenes": [
     {
       "index": 0,
-      "title": "A eleição pode mexer no seu dinheiro",
-      "narration": "O primeiro turno está marcado para quatro de outubro de dois mil e vinte e seis, e uma mudança no dólar pode chegar à sua compra mesmo que você nunca tenha comprado um dólar. Mas como uma promessa de campanha vira preço? Eu sou o Roberto, do O Dinheiro Explica. Pra entender isso, vamos seguir o caminho das decisões sobre as contas do governo, passando pelo câmbio, até o custo que aparece no seu bolso.",
+      "title": "O Simples ganhou uma bifurcação",
+      "narration": "Até vinte e oito de setembro, a Receita Federal tinha registrado quinhentas e oitenta e seis mil seiscentas e setenta e cinco solicitações para recolher IBS e CBS pelo regime regular. E aqui está a parte que confunde muita gente: isso não significa sair do Simples Nacional. A empresa pode continuar no Simples e, ao mesmo tempo, tirar esses dois tributos do DAS. Eu sou o Roberto, do O Dinheiro Explica. A partir de 2027, existem duas formas de tratar IBS e CBS para quem está no Simples Nacional. Vamos entender o que muda, onde entram os créditos e por que duas empresas parecidas podem chegar a decisões diferentes.",
       "claim_ids": [
-        "C1"
+        "C1",
+        "C2",
+        "C3"
       ],
       "visual": {
         "type": "DOCUMENT",
@@ -442,93 +388,84 @@
           "show_title": false,
           "elements": [
             {
-              "id": "vote",
-              "kind": "metric",
-              "label": "Primeiro turno · 2026",
-              "x": 5,
-              "y": 2,
-              "width": 42,
-              "height": 22,
+              "id": "requestsDoc",
+              "kind": "source_excerpt",
+              "label": "Balanço oficial",
+              "x": 4,
+              "y": 8,
+              "width": 50,
+              "height": 68,
               "initially_visible": true,
-              "value": "04 OUT",
-              "value_size": 80,
-              "label_size": 35
+              "asset_id": "A_requests"
             },
             {
-              "id": "wallet",
+              "id": "requestsNumber",
+              "kind": "metric",
+              "label": "Solicitações pelo regime regular até 28/09",
+              "value": "586.675",
+              "x": 59,
+              "y": 8,
+              "width": 36,
+              "height": 27,
+              "initially_visible": true,
+              "value_size": 94,
+              "label_size": 34
+            },
+            {
+              "id": "dasSplit",
               "kind": "object",
-              "label": "A compra chega ao seu bolso",
-              "x": 55,
-              "y": 30,
-              "width": 39,
-              "height": 49,
-              "initially_visible": false,
-              "object_type": "wallet"
+              "object_type": "receipt",
+              "label": "DAS com dois caminhos",
+              "x": 59,
+              "y": 44,
+              "width": 36,
+              "height": 31,
+              "initially_visible": false
             },
             {
               "id": "presenter",
               "kind": "label",
               "label": "Roberto · O Dinheiro Explica",
-              "x": 5,
-              "y": 85,
-              "width": 90,
-              "height": 12,
+              "x": 8,
+              "y": 84,
+              "width": 84,
+              "height": 10,
               "initially_visible": false,
-              "label_size": 40
-            },
-            {
-              "id": "component",
-              "kind": "object",
-              "object_type": "component",
-              "label": "Uma peça importada",
-              "x": 5,
-              "y": 30,
-              "width": 39,
-              "height": 49,
-              "initially_visible": false
+              "label_size": 38
             }
           ],
-          "connections": [
-            {
-              "from": "component",
-              "to": "wallet",
-              "label": "Custo"
-            }
-          ]
+          "connections": []
         },
         "beats": [
           {
-            "anchor": "quatro de outubro",
-            "target_id": "vote",
+            "anchor": "quinhentas e oitenta e seis mil seiscentas e setenta e cinco",
+            "target_id": "requestsNumber",
             "action": "focus",
-            "headline": "Primeiro turno · 2026",
-            "kind": "fact",
+            "headline": "586.675 solicitações",
+            "kind": "number",
             "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
+            "treatment": "giant_number",
+            "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.5
           },
           {
-            "anchor": "sua compra",
-            "target_id": "wallet",
+            "anchor": "tirar esses dois tributos do DAS",
+            "target_id": "dasSplit",
             "action": "reveal",
-            "headline": "Seu bolso",
-            "kind": "fact",
+            "headline": "O DAS pode se dividir",
+            "kind": "flow",
             "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
+            "treatment": "flow_diagram",
+            "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
-            "sound": "none",
+            "sound": "whoosh",
             "prominence": "contextual",
-            "motion_seconds": 0.55,
-            "reveal_ids": [
-              "component"
-            ]
+            "motion_seconds": 0.5
           },
           {
             "anchor": "Eu sou o Roberto",
@@ -538,1025 +475,455 @@
             "kind": "fact",
             "behavior": "transform",
             "treatment": "kinetic_type",
-            "transition": "wipe",
+            "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.5
           }
         ]
       }
     },
     {
       "index": 1,
-      "title": "Qual dólar está na tela?",
-      "narration": "Primeiro, saiba qual número está olhando. A PTAX de venda referente a trinta de setembro ficou em cinco reais e dezoito centavos, arredondando. Ela é uma taxa de referência calculada pelo Banco Central a partir de consultas ao mercado. Já o dólar comercial muda durante o pregão: uma reportagem registrou cinco reais e dezenove centavos, arredondando a cotação das dez e quarenta e dois. Os números são próximos, mas têm horários e métodos diferentes. Nenhum deles é o preço final de uma casa de câmbio.",
+      "title": "Simples puro e híbrido",
+      "narration": "No chamado Simples puro, a lógica continua mais próxima do que o pequeno negócio já conhece: IBS e CBS ficam dentro do DAS junto com os demais tributos abrangidos pelo regime. No chamado híbrido, a empresa continua no Simples para os outros tributos, mas IBS e CBS saem da guia única e passam a ser apurados pelas regras do regime regular. Então não são dois Simples diferentes e a empresa não vira Lucro Presumido nem Lucro Real só por fazer essa escolha. Híbrido é um nome prático para essa combinação.",
       "claim_ids": [
         "C2",
-        "C3",
-        "C4"
+        "C3"
       ],
       "visual": {
-        "type": "DOCUMENT",
-        "transition": "cut",
+        "type": "COMPARE",
+        "transition": "wipe",
         "stage": {
           "show_title": false,
           "elements": [
             {
-              "id": "ptax",
-              "kind": "metric",
-              "label": "PTAX venda · 30/09",
+              "id": "pure",
+              "kind": "step",
+              "label": "Simples puro",
+              "detail": "IBS + CBS dentro do DAS",
+              "icon": "receipt",
               "x": 5,
-              "y": 12,
-              "width": 43,
-              "height": 56,
-              "initially_visible": true,
-              "value": "R$ 5,1809",
-              "value_size": 154
-            },
-            {
-              "id": "spot",
-              "kind": "metric",
-              "label": "Comercial · 10h42",
-              "x": 53,
-              "y": 12,
+              "y": 15,
               "width": 42,
-              "height": 56,
-              "initially_visible": false,
-              "value": "R$ 5,1870",
-              "value_size": 154
+              "height": 62,
+              "initially_visible": true
             },
             {
-              "id": "method",
-              "kind": "label",
-              "label": "Referência ≠ cotação ao vivo",
-              "x": 5,
-              "y": 78,
-              "width": 90,
-              "height": 18,
+              "id": "hybrid",
+              "kind": "step",
+              "label": "Simples híbrido",
+              "detail": "IBS + CBS no regime regular",
+              "icon": "route",
+              "x": 53,
+              "y": 15,
+              "width": 42,
+              "height": 62,
+              "initially_visible": false
+            },
+            {
+              "id": "sameSimples",
+              "kind": "note",
+              "label": "A empresa continua no Simples Nacional",
+              "x": 20,
+              "y": 84,
+              "width": 60,
+              "height": 10,
               "initially_visible": false,
-              "label_size": 54
+              "label_size": 36
             }
           ],
           "connections": []
         },
         "beats": [
           {
-            "anchor": "A PTAX de venda",
-            "target_id": "ptax",
+            "anchor": "No chamado Simples puro",
+            "target_id": "pure",
             "action": "focus",
-            "headline": "PTAX venda · 30/09",
-            "kind": "fact",
+            "headline": "IBS e CBS dentro do DAS",
+            "kind": "compare",
             "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
+            "treatment": "split_compare",
+            "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.5
           },
           {
-            "anchor": "Já o dólar comercial",
-            "target_id": "spot",
+            "anchor": "No chamado híbrido",
+            "target_id": "hybrid",
             "action": "reveal",
-            "headline": "Comercial · 10h42",
+            "headline": "IBS e CBS fora do DAS",
+            "kind": "compare",
+            "behavior": "transform",
+            "treatment": "split_compare",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "whoosh",
+            "prominence": "contextual",
+            "motion_seconds": 0.5
+          },
+          {
+            "anchor": "continua no Simples",
+            "target_id": "sameSimples",
+            "action": "reveal",
+            "headline": "Continua no Simples Nacional",
             "kind": "fact",
             "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
+            "treatment": "masked_emphasis",
+            "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "horários e métodos diferentes",
-            "target_id": "method",
-            "action": "reveal",
-            "headline": "Referência ≠ cotação ao vivo",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.5
           }
         ]
       }
     },
     {
       "index": 2,
-      "title": "A cotação tem compradores e vendedores",
-      "narration": "O câmbio é o preço de uma moeda em outra: quantos reais você precisa para comprar um dólar. Esse preço nasce de compradores e vendedores. Uma empresa importa uma máquina e precisa de dólares. Outra exporta e recebe dólares, que pode trocar por reais. Investidores também entram e saem. Quando cresce a procura por dólares em relação à oferta, há pressão de alta. Quando a oferta ganha força, a pressão pode ser de queda. É por isso que uma expectativa já pode mexer no preço antes de virar uma lei.",
+      "title": "O ponto central são os créditos",
+      "narration": "A diferença fica mais importante quando entra o crédito tributário. No regime regular, IBS e CBS funcionam com débitos nas vendas e créditos permitidos nas compras. Isso evita cobrar imposto cheio de novo em cada etapa da cadeia. Se a sua empresa fica no Simples puro e vende para um cliente que está no regime regular, esse cliente não fica necessariamente sem crédito: ele pode aproveitar o valor correspondente ao IBS e à CBS efetivamente devidos pelo fornecedor dentro do Simples. No híbrido, a sua empresa passa a apurar esses dois tributos pela lógica regular e também pode aproveitar créditos permitidos das próprias aquisições. Essa diferença é uma das chaves da decisão.",
       "claim_ids": [
+        "C4",
         "C5"
       ],
       "visual": {
-        "type": "DOCUMENT",
+        "type": "FLOW",
         "transition": "cut",
         "stage": {
           "show_title": false,
           "elements": [
             {
-              "id": "buy",
-              "kind": "step",
-              "label": "Importação · compra dólares",
-              "x": 5,
-              "y": 5,
-              "width": 37,
-              "height": 37,
-              "initially_visible": true,
-              "icon": "globe",
-              "label_size": 43
-            },
-            {
-              "id": "sell",
-              "kind": "step",
-              "label": "Exportação · vende dólares",
-              "x": 58,
-              "y": 5,
-              "width": 37,
-              "height": 37,
-              "initially_visible": false,
-              "icon": "route",
-              "label_size": 43
-            },
-            {
-              "id": "market",
+              "id": "purchase",
               "kind": "object",
-              "label": "Troca entre reais e dólares",
-              "x": 30,
-              "y": 50,
-              "width": 40,
-              "height": 46,
+              "object_type": "package",
+              "label": "Compras e insumos",
+              "x": 4,
+              "y": 30,
+              "width": 24,
+              "height": 36,
+              "initially_visible": true
+            },
+            {
+              "id": "company",
+              "kind": "step",
+              "label": "Sua empresa",
+              "detail": "Débito nas vendas",
+              "icon": "document",
+              "x": 38,
+              "y": 26,
+              "width": 24,
+              "height": 44,
+              "initially_visible": true
+            },
+            {
+              "id": "client",
+              "kind": "step",
+              "label": "Cliente no regime regular",
+              "detail": "Crédito conforme a regra aplicável",
+              "icon": "bank",
+              "x": 72,
+              "y": 26,
+              "width": 24,
+              "height": 44,
+              "initially_visible": true
+            },
+            {
+              "id": "creditNote",
+              "kind": "note",
+              "label": "Crédito não é automaticamente zero no Simples puro",
+              "x": 18,
+              "y": 80,
+              "width": 64,
+              "height": 12,
               "initially_visible": false,
-              "object_type": "bank"
+              "label_size": 34
             }
           ],
           "connections": [
             {
-              "from": "buy",
-              "to": "market",
-              "label": "Procura por US$"
+              "from": "purchase",
+              "to": "company",
+              "label": "créditos permitidos"
             },
             {
-              "from": "sell",
-              "to": "market",
-              "label": "Oferta de US$"
+              "from": "company",
+              "to": "client",
+              "label": "crédito do adquirente"
             }
           ]
         },
         "beats": [
           {
-            "anchor": "compradores e vendedores",
-            "target_id": "buy",
+            "anchor": "crédito tributário",
+            "target_id": "company",
             "action": "focus",
-            "headline": "Importação · compra dólares",
-            "kind": "fact",
+            "headline": "Débito menos créditos",
+            "kind": "flow",
             "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
+            "treatment": "equation",
+            "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
-            "sound": "none",
+            "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.5
           },
           {
-            "anchor": "Outra exporta",
-            "target_id": "sell",
+            "anchor": "não fica necessariamente sem crédito",
+            "target_id": "creditNote",
             "action": "reveal",
-            "headline": "Exportação · vende dólares",
+            "headline": "No puro, o crédito do cliente pode existir",
             "kind": "fact",
             "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
+            "treatment": "masked_emphasis",
+            "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.5
           },
           {
-            "anchor": "Investidores também",
-            "target_id": "market",
-            "action": "reveal",
-            "headline": "Troca entre reais e dólares",
-            "kind": "fact",
+            "anchor": "No híbrido",
+            "target_id": "purchase",
+            "action": "focus",
+            "headline": "A empresa entra na lógica regular",
+            "kind": "flow",
             "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
+            "treatment": "flow_diagram",
+            "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
-            "sound": "none",
+            "sound": "whoosh",
             "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "antes de virar uma lei",
-            "target_id": "market",
-            "action": "update",
-            "headline": "Expectativas também mudam decisões",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.7
+            "motion_seconds": 0.5
           }
         ]
       }
     },
     {
       "index": 3,
-      "title": "Onde a política entra",
-      "narration": "A eleição entra pela expectativa sobre o que o próximo governo vai fazer. Quanto pretende gastar? De onde virá o dinheiro? As regras serão previsíveis? Se investidores enxergarem mais risco, podem exigir retorno maior ou reduzir a exposição ao Brasil. Quem decide sair e trocar reais por dólares ajuda a pressionar o câmbio. Um plano crível pode agir no sentido contrário. Isso depende da proposta, da execução e do resto da economia. Um candidato ser de direita ou de esquerda, sozinho, não resolve essa conta.",
+      "title": "Para quem você vende pesa na conta",
+      "narration": "Agora pense em quem compra de você. Se a maior parte das vendas vai para consumidor final, essa pessoa não usa crédito de IBS e CBS para reduzir imposto. Já numa cadeia entre empresas, o crédito pode entrar na comparação entre fornecedores e no custo líquido da compra. Isso não quer dizer que toda empresa que vende para outra empresa deva escolher o híbrido. O cliente pode estar em outro regime, a margem pode ser diferente e o seu próprio custo tributário também muda. O perfil dos clientes é uma pista importante, não uma resposta pronta.",
       "claim_ids": [
         "C6"
       ],
       "visual": {
-        "type": "DOCUMENT",
+        "type": "COMPARE",
         "transition": "cut",
         "stage": {
           "show_title": false,
           "elements": [
             {
-              "id": "plan",
-              "kind": "label",
-              "label": "Quanto gasta? Como financia?",
+              "id": "consumer",
+              "kind": "step",
+              "label": "Consumidor final",
+              "detail": "Não usa crédito de IBS/CBS",
+              "icon": "person",
               "x": 5,
-              "y": 3,
-              "width": 90,
-              "height": 24,
-              "initially_visible": true,
-              "label_size": 58
+              "y": 20,
+              "width": 42,
+              "height": 52,
+              "initially_visible": true
             },
             {
-              "id": "risk",
+              "id": "business",
               "kind": "step",
-              "label": "Risco percebido",
-              "x": 5,
-              "y": 40,
-              "width": 27,
-              "height": 48,
-              "initially_visible": false,
-              "icon": "warning",
-              "label_size": 44
+              "label": "Cliente empresa",
+              "detail": "Crédito pode afetar o custo líquido",
+              "icon": "document",
+              "x": 53,
+              "y": 20,
+              "width": 42,
+              "height": 52,
+              "initially_visible": false
             },
             {
-              "id": "flow",
-              "kind": "step",
-              "label": "Decisão de investir ou sair",
-              "x": 37,
-              "y": 40,
-              "width": 28,
-              "height": 48,
+              "id": "warning",
+              "kind": "note",
+              "label": "Perfil do cliente é um fator, não uma regra automática",
+              "x": 13,
+              "y": 82,
+              "width": 74,
+              "height": 11,
               "initially_visible": false,
-              "icon": "route",
-              "label_size": 44
-            },
-            {
-              "id": "fx",
-              "kind": "step",
-              "label": "Compra ou venda de dólares",
-              "x": 70,
-              "y": 40,
-              "width": 27,
-              "height": 48,
-              "initially_visible": false,
-              "icon": "coins",
-              "label_size": 44
+              "label_size": 34
             }
           ],
-          "connections": [
-            {
-              "from": "risk",
-              "to": "flow"
-            },
-            {
-              "from": "flow",
-              "to": "fx"
-            }
-          ]
+          "connections": []
         },
         "beats": [
           {
-            "anchor": "Quanto pretende gastar",
-            "target_id": "plan",
+            "anchor": "consumidor final",
+            "target_id": "consumer",
             "action": "focus",
-            "headline": "Quanto gasta? Como financia?",
-            "kind": "fact",
+            "headline": "Venda ao consumidor",
+            "kind": "compare",
             "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
+            "treatment": "split_compare",
+            "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
-            "sound": "none",
+            "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.8,
-            "emphasis": {
-              "phrase": "Como financia?",
-              "style": "underline"
-            }
+            "motion_seconds": 0.5
           },
           {
-            "anchor": "mais risco",
-            "target_id": "risk",
+            "anchor": "numa cadeia entre empresas",
+            "target_id": "business",
             "action": "reveal",
-            "headline": "Risco percebido",
-            "kind": "fact",
+            "headline": "Venda entre empresas",
+            "kind": "compare",
             "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
+            "treatment": "split_compare",
+            "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
-            "sound": "none",
+            "sound": "whoosh",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.5
           },
           {
-            "anchor": "reduzir a exposição",
-            "target_id": "flow",
+            "anchor": "não uma resposta pronta",
+            "target_id": "warning",
             "action": "reveal",
-            "headline": "Decisão de investir ou sair",
-            "kind": "fact",
+            "headline": "Não existe regra automática",
+            "kind": "warning",
             "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
+            "treatment": "masked_emphasis",
+            "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "trocar reais por dólares",
-            "target_id": "fx",
-            "action": "reveal",
-            "headline": "Compra ou venda de dólares",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "Isso depende da proposta",
-            "target_id": "plan",
-            "action": "focus",
-            "headline": "Quanto gasta? Como financia?",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.5
           }
         ]
       }
     },
     {
       "index": 4,
-      "title": "O dado fiscal de agosto",
-      "narration": "Nos dados divulgados pelo Banco Central em trinta de setembro, a dívida bruta chegou a oitenta e dois vírgula nove por cento do PIB em agosto, somando onze vírgula um trilhões de reais. PIB é o valor dos bens e serviços produzidos no país. Essa comparação ajuda a dimensionar a dívida. A cobertura jornalística destacou a pressão desse endividamento sobre o governo. No mesmo documento, porém, o déficit primário de agosto foi menor que o de agosto do ano passado. Primário é o resultado das receitas e despesas sem contar os juros da dívida. Essa melhora mensal não apaga o estoque acumulado. E o estoque, sozinho, não prova calote nem explica toda a cotação daquele pregão.",
+      "title": "O que você compra também pesa",
+      "narration": "Só olhar para os clientes ainda é pouco. A empresa também precisa olhar para o que compra. Mercadorias, matérias-primas e determinados serviços podem carregar IBS e CBS que, no regime regular, entram na conta dos créditos quando a legislação permite. Já a folha de salários não vem com IBS e CBS para recuperar. Por isso, dois negócios com o mesmo faturamento podem ter resultados muito diferentes: um compra bastante insumo tributado; o outro concentra custo em mão de obra. A conta final ainda passa por margem, preço, fluxo de caixa, sistema fiscal e custo de conformidade. É por isso que comparar apenas alíquotas pode enganar.",
       "claim_ids": [
-        "C7",
-        "C8"
+        "C5",
+        "C6"
       ],
       "visual": {
-        "type": "DOCUMENT",
-        "transition": "cut",
+        "type": "COMPARE",
+        "transition": "slide_left",
         "stage": {
           "show_title": false,
           "elements": [
             {
-              "id": "debt",
-              "kind": "metric",
-              "label": "Dívida bruta · agosto/2026",
-              "x": 5,
-              "y": 4,
-              "width": 90,
-              "height": 37,
-              "initially_visible": true,
-              "value": "82,9% do PIB",
-              "value_size": 168,
-              "label_size": 46
-            },
-            {
-              "id": "stock",
-              "kind": "metric",
-              "label": "Estoque da dívida",
-              "x": 5,
-              "y": 54,
-              "width": 43,
-              "height": 40,
-              "initially_visible": false,
-              "value": "R$ 11,1 tri",
-              "value_size": 128,
-              "label_size": 42
-            },
-            {
-              "id": "monthly",
-              "kind": "label",
-              "label": "Menos déficit no mês",
-              "x": 53,
-              "y": 54,
-              "width": 42,
-              "height": 40,
-              "initially_visible": false,
-              "label_size": 48,
-              "detail": "Não apaga a dívida acumulada"
-            }
-          ],
-          "connections": []
-        },
-        "beats": [
-          {
-            "anchor": "oitenta e dois vírgula nove",
-            "target_id": "debt",
-            "action": "focus",
-            "headline": "Dívida bruta · agosto/2026",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "onze vírgula um trilhões",
-            "target_id": "stock",
-            "action": "reveal",
-            "headline": "Estoque da dívida",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "déficit primário de agosto",
-            "target_id": "monthly",
-            "action": "reveal",
-            "headline": "Menos déficit no mês",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "nem explica toda a cotação",
-            "target_id": "debt",
-            "action": "focus",
-            "headline": "Dívida bruta · agosto/2026",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          }
-        ]
-      }
-    },
-    {
-      "index": 5,
-      "title": "O mundo também entra nessa conta",
-      "narration": "Só que Brasília não controla o mundo. Juros e inflação nos Estados Unidos mudam a atratividade de manter dinheiro em dólar. O humor global e o comércio também alteram os fluxos. Na manhã de trinta de setembro, uma reportagem relacionou o recuo do dólar a dados americanos e à melhora do apetite por risco, enquanto a eleição seguia no radar. São fatores ao mesmo tempo. Então, dizer que o dólar caiu por causa de uma pesquisa exige identificar a pesquisa, o horário e uma reação compatível. A proximidade da eleição não demonstra essa causa.",
-      "claim_ids": [
-        "C9"
-      ],
-      "visual": {
-        "type": "DOCUMENT",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "elements": [
-            {
-              "id": "world",
-              "kind": "step",
-              "label": "Juros e inflação nos EUA",
-              "x": 4,
-              "y": 6,
-              "width": 41,
-              "height": 38,
-              "initially_visible": true,
-              "icon": "globe",
-              "label_size": 46
-            },
-            {
-              "id": "brasil",
-              "kind": "step",
-              "label": "Contas públicas e eleição",
-              "x": 55,
-              "y": 6,
-              "width": 41,
-              "height": 38,
-              "initially_visible": false,
-              "icon": "house",
-              "label_size": 46
-            },
-            {
-              "id": "fx",
-              "kind": "metric",
-              "label": "Câmbio · vários fatores",
-              "x": 18,
-              "y": 61,
-              "width": 64,
-              "height": 34,
-              "initially_visible": false,
-              "value": "R$ / US$",
-              "value_size": 112,
-              "label_size": 46
-            }
-          ],
-          "connections": [
-            {
-              "from": "world",
-              "to": "fx",
-              "label": "Fluxo de dólares"
-            },
-            {
-              "from": "brasil",
-              "to": "fx",
-              "label": "Fluxo de dólares"
-            }
-          ]
-        },
-        "beats": [
-          {
-            "anchor": "Juros e inflação",
-            "target_id": "world",
-            "action": "focus",
-            "headline": "Juros e inflação nos EUA",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "eleição seguia no radar",
-            "target_id": "brasil",
-            "action": "reveal",
-            "headline": "Contas públicas e eleição",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "São fatores ao mesmo tempo",
-            "target_id": "fx",
-            "action": "reveal",
-            "headline": "Câmbio · vários fatores",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "não demonstra essa causa",
-            "target_id": "fx",
-            "action": "update",
-            "headline": "Eleição próxima não prova a causa",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.7
-          }
-        ]
-      }
-    },
-    {
-      "index": 6,
-      "title": "Como isso chega a uma compra",
-      "narration": "Agora vamos trazer essa história para uma conta simples. Imagine uma peça importada que custa cem dólares. É um exemplo, não uma cotação observada. Com dólar a cinco reais, ela custa quinhentos reais antes de impostos e frete. Se o dólar for para cinco e cinquenta, vira quinhentos e cinquenta reais. A peça não mudou de preço lá fora. O real é que compra menos dólares. Essa pressão pode entrar no custo de um produto fabricado aqui, quando ele usa componentes ou matérias-primas comprados em moeda estrangeira.",
-      "claim_ids": [
-        "C10"
-      ],
-      "visual": {
-        "type": "DOCUMENT",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "elements": [
-            {
-              "id": "invoice",
+              "id": "inputs",
               "kind": "object",
-              "label": "A mesma peça · US$ 100",
+              "object_type": "package",
+              "label": "Insumos tributados",
               "x": 5,
-              "y": 13,
-              "width": 37,
-              "height": 66,
-              "initially_visible": true,
-              "object_type": "component"
+              "y": 20,
+              "width": 30,
+              "height": 45,
+              "initially_visible": true
             },
             {
-              "id": "base",
+              "id": "credits",
               "kind": "metric",
-              "label": "Custo com dólar a R$ 5,00",
-              "x": 51,
-              "y": 10,
-              "width": 44,
-              "height": 53,
+              "label": "Créditos possíveis",
+              "value": "ENTRAM NA CONTA",
+              "x": 39,
+              "y": 24,
+              "width": 22,
+              "height": 36,
               "initially_visible": false,
-              "value": "R$ 500",
-              "value_size": 170,
-              "label_size": 46
+              "value_size": 54,
+              "label_size": 32
             },
             {
-              "id": "changed",
-              "kind": "metric",
-              "label": "Só o câmbio mudou",
-              "x": 51,
-              "y": 75,
-              "width": 44,
-              "height": 20,
-              "initially_visible": false,
-              "value": "US$ 100",
-              "value_size": 62,
-              "label_size": 35
-            }
-          ],
-          "connections": [
-            {
-              "from": "invoice",
-              "to": "base",
-              "label": "US$ 100"
-            }
-          ]
-        },
-        "beats": [
-          {
-            "anchor": "cem dólares",
-            "target_id": "invoice",
-            "action": "focus",
-            "headline": "A mesma peça · US$ 100",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "quinhentos reais",
-            "target_id": "base",
-            "action": "reveal",
-            "headline": "Custo com dólar a R$ 5,00",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "quinhentos e cinquenta reais",
-            "target_id": "base",
-            "action": "update",
-            "headline": "Custo com dólar a R$ 5,50",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.55,
-            "value": "R$ 550",
-            "reveal_ids": [
-              "changed"
-            ]
-          },
-          {
-            "anchor": "O real é que compra menos",
-            "target_id": "changed",
-            "action": "focus",
-            "headline": "Só o câmbio mudou",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          }
-        ]
-      }
-    },
-    {
-      "index": 7,
-      "title": "Do custo até o preço da loja",
-      "narration": "Mas o custo não atravessa a cadeia num passe de mágica. Um importador pode ter estoque comprado antes da mudança. Pode ter protegido o câmbio por contrato. E uma loja pode reduzir sua margem para não perder cliente. No caminho de um alimento feito com insumo importado, entram também produção, transporte e concorrência. Por isso, uma alta ou queda do dólar não produz o mesmo reajuste em tudo. O tempo, a duração do movimento e as condições de cada mercado fazem diferença.",
-      "claim_ids": [
-        "C11"
-      ],
-      "visual": {
-        "type": "DOCUMENT",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "elements": [
-            {
-              "id": "wheat",
-              "kind": "photo",
-              "label": "Insumo importado · ilustração",
-              "x": 3,
-              "y": 6,
-              "width": 37,
-              "height": 86,
-              "initially_visible": true,
-              "asset_id": "A_wheat_field",
-              "image_fit": "cover",
-              "image_motion": "pan"
-            },
-            {
-              "id": "inventory",
+              "id": "payroll",
               "kind": "step",
-              "label": "Estoque e contrato",
-              "x": 48,
-              "y": 7,
-              "width": 48,
-              "height": 23,
-              "initially_visible": false,
-              "icon": "lock",
-              "label_size": 43
+              "label": "Folha de salários",
+              "detail": "Não traz IBS/CBS para recuperar",
+              "icon": "person",
+              "x": 65,
+              "y": 20,
+              "width": 30,
+              "height": 45,
+              "initially_visible": true
             },
             {
-              "id": "production",
-              "kind": "step",
-              "label": "Produção e transporte",
-              "x": 48,
-              "y": 40,
-              "width": 48,
-              "height": 23,
-              "initially_visible": false,
-              "icon": "route",
-              "label_size": 43
-            },
-            {
-              "id": "shop",
-              "kind": "step",
-              "label": "Margem e concorrência",
-              "x": 48,
-              "y": 73,
-              "width": 48,
-              "height": 23,
-              "initially_visible": false,
-              "icon": "cart",
-              "label_size": 43
-            }
-          ],
-          "connections": [
-            {
-              "from": "inventory",
-              "to": "production"
-            },
-            {
-              "from": "production",
-              "to": "shop"
-            }
-          ]
-        },
-        "beats": [
-          {
-            "anchor": "estoque comprado antes",
-            "target_id": "inventory",
-            "action": "reveal",
-            "headline": "Estoque e contrato",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "produção, transporte",
-            "target_id": "production",
-            "action": "reveal",
-            "headline": "Produção e transporte",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "não produz o mesmo reajuste",
-            "target_id": "shop",
-            "action": "reveal",
-            "headline": "Margem e concorrência",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "fazem diferença",
-            "target_id": "wheat",
-            "action": "focus",
-            "headline": "Insumo importado · ilustração",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          }
-        ]
-      }
-    },
-    {
-      "index": 8,
-      "title": "O que a pesquisa permite dizer",
-      "narration": "Isso também aparece nas pesquisas. Um estudo do Banco Central publicado em março encontrou efeitos diferentes do câmbio sobre os preços: maiores em alimentos em casa e bens industriais, e próximos de zero em serviços. Mas os autores alertam que a incerteza é ampla. O estudo do Insper sobre repasse cambial também trata esse caminho como uma relação que precisa ser investigada. Esses trabalhos ajudam a entender o mecanismo. Não são uma tabela de quanto cada item do supermercado vai subir amanhã.",
-      "claim_ids": [
-        "C12"
-      ],
-      "visual": {
-        "type": "DOCUMENT",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "elements": [
-            {
-              "id": "cart",
-              "kind": "photo",
-              "label": "Compra real · imagem ilustrativa",
-              "x": 53,
-              "y": 6,
-              "width": 44,
-              "height": 88,
-              "initially_visible": true,
-              "asset_id": "A_shopping_cart",
-              "image_fit": "cover",
-              "image_motion": "pan"
-            },
-            {
-              "id": "food",
-              "kind": "label",
-              "label": "Alimentos e bens: mais sensíveis",
-              "x": 3,
-              "y": 6,
-              "width": 44,
-              "height": 32,
-              "initially_visible": false,
-              "label_size": 58
-            },
-            {
-              "id": "services",
-              "kind": "label",
-              "label": "Serviços: efeito estimado menor",
-              "x": 3,
-              "y": 45,
-              "width": 44,
-              "height": 28,
-              "initially_visible": false,
-              "label_size": 54
-            },
-            {
-              "id": "limit",
-              "kind": "label",
-              "label": "Estimativa tem incerteza",
-              "x": 3,
-              "y": 81,
-              "width": 44,
+              "id": "costs",
+              "kind": "note",
+              "label": "Margem · preço · caixa · sistema · conformidade",
+              "x": 10,
+              "y": 78,
+              "width": 80,
               "height": 14,
               "initially_visible": false,
-              "label_size": 38
+              "label_size": 34
             }
           ],
           "connections": []
         },
         "beats": [
           {
-            "anchor": "alimentos em casa",
-            "target_id": "food",
-            "action": "reveal",
-            "headline": "Alimentos e bens: mais sensíveis",
+            "anchor": "Mercadorias, matérias-primas",
+            "target_id": "inputs",
+            "action": "focus",
+            "headline": "Compras podem gerar créditos",
+            "kind": "flow",
+            "behavior": "transform",
+            "treatment": "spotlight",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.5
+          },
+          {
+            "anchor": "folha de salários",
+            "target_id": "payroll",
+            "action": "focus",
+            "headline": "Folha não vem com IBS/CBS",
             "kind": "fact",
             "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
+            "treatment": "masked_emphasis",
+            "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.5
           },
           {
-            "anchor": "em serviços",
-            "target_id": "services",
+            "anchor": "resultados muito diferentes",
+            "target_id": "credits",
             "action": "reveal",
-            "headline": "Serviços: efeito estimado menor",
-            "kind": "fact",
+            "headline": "Estrutura de custos muda a conta",
+            "kind": "compare",
             "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
+            "treatment": "equation",
+            "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
-            "sound": "none",
+            "sound": "whoosh",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.5
           },
           {
-            "anchor": "incerteza é ampla",
-            "target_id": "limit",
+            "anchor": "margem, preço, fluxo de caixa",
+            "target_id": "costs",
             "action": "reveal",
-            "headline": "Estimativa tem incerteza",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "O estudo do Insper",
-            "target_id": "services",
-            "action": "update",
-            "headline": "Repasse cambial · TCC de 2020",
-            "detail": "Alejandro Ortiz Cruceño · repositório do Insper",
+            "headline": "A decisão vai além da alíquota",
             "kind": "fact",
             "behavior": "transform",
             "treatment": "kinetic_type",
@@ -1565,154 +932,352 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
-          },
-          {
-            "anchor": "quanto cada item",
-            "target_id": "cart",
-            "action": "focus",
-            "headline": "Compra real · imagem ilustrativa",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.5
           }
         ]
       }
     },
     {
-      "index": 9,
-      "title": "O que olhar depois da manchete",
-      "narration": "Se essa ligação entre política e seu bolso ficou mais clara, se inscreva no O Dinheiro Explica para acompanhar as próximas histórias. E guarde três perguntas para a próxima manchete: qual cotação está sendo usada, e de que horário? O que mudou nas propostas e nas contas públicas? E o movimento continua depois que o ruído passa? A eleição pode mudar expectativas, o câmbio pode mudar custos, e os custos podem chegar aos preços. Entre uma ponta e a outra, procure evidência. É assim que a gente entende a notícia sem transformar torcida política em previsão para o seu dinheiro.",
+      "index": 5,
+      "title": "Os prazos são duas decisões diferentes",
+      "narration": "E aqui tem um detalhe que pode evitar erro de prazo. Entrar ou retornar no Simples Nacional em 2027 é uma decisão. Para isso, a solicitação vai até quinze de outubro de dois mil e vinte e seis. Outra decisão é a empresa que já está no Simples escolher recolher IBS e CBS pelo regime regular no primeiro semestre de 2027. Esse prazo vai até trinta de outubro. E quem formalizar uma dessas opções ainda tem uma janela de cancelamento entre três de novembro e vinte de dezembro. São calendários diferentes para escolhas diferentes.",
       "claim_ids": [
-        "C13"
+        "C7"
       ],
       "visual": {
         "type": "DOCUMENT",
-        "transition": "cut",
+        "transition": "wipe",
         "stage": {
           "show_title": false,
           "elements": [
             {
-              "id": "subscribe",
-              "kind": "label",
-              "label": "Inscreva-se · O Dinheiro Explica",
-              "x": 5,
-              "y": 2,
-              "width": 90,
-              "height": 16,
+              "id": "deadlineDoc",
+              "kind": "source_excerpt",
+              "label": "Prazos oficiais",
+              "x": 4,
+              "y": 10,
+              "width": 55,
+              "height": 70,
               "initially_visible": true,
-              "label_size": 46
+              "asset_id": "A_deadlines"
             },
             {
-              "id": "question",
-              "kind": "label",
-              "label": "Qual cotação? Qual horário?",
-              "x": 5,
-              "y": 26,
-              "width": 90,
-              "height": 26,
-              "initially_visible": false,
-              "label_size": 66
+              "id": "joinDate",
+              "kind": "metric",
+              "label": "Entrar no Simples",
+              "value": "15 OUT",
+              "x": 64,
+              "y": 10,
+              "width": 31,
+              "height": 20,
+              "initially_visible": true,
+              "value_size": 70,
+              "label_size": 32
             },
             {
-              "id": "wallet",
-              "kind": "object",
-              "label": "Seu dinheiro merece evidência",
-              "x": 24,
-              "y": 56,
-              "width": 52,
-              "height": 43,
+              "id": "hybridDate",
+              "kind": "metric",
+              "label": "IBS/CBS no regime regular",
+              "value": "30 OUT",
+              "x": 64,
+              "y": 37,
+              "width": 31,
+              "height": 20,
               "initially_visible": false,
-              "object_type": "wallet"
+              "value_size": 70,
+              "label_size": 32
+            },
+            {
+              "id": "cancelDate",
+              "kind": "metric",
+              "label": "Cancelar opções",
+              "value": "3 NOV → 20 DEZ",
+              "x": 64,
+              "y": 64,
+              "width": 31,
+              "height": 20,
+              "initially_visible": false,
+              "value_size": 48,
+              "label_size": 32
             }
           ],
           "connections": []
         },
         "beats": [
           {
-            "anchor": "se inscreva",
-            "target_id": "subscribe",
+            "anchor": "quinze de outubro",
+            "target_id": "joinDate",
             "action": "focus",
-            "headline": "Inscreva-se · O Dinheiro Explica",
-            "kind": "fact",
+            "headline": "Ingresso no Simples: 15 OUT",
+            "kind": "date",
             "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
+            "treatment": "timeline",
+            "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.5
           },
           {
-            "anchor": "qual cotação está sendo usada",
-            "target_id": "question",
+            "anchor": "trinta de outubro",
+            "target_id": "hybridDate",
             "action": "reveal",
-            "headline": "Qual cotação? Qual horário?",
-            "kind": "fact",
+            "headline": "Regime regular IBS/CBS: 30 OUT",
+            "kind": "date",
             "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
+            "treatment": "timeline",
+            "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
-            "sound": "none",
+            "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.5
           },
           {
-            "anchor": "O que mudou nas propostas",
-            "target_id": "question",
-            "action": "update",
-            "headline": "Proposta e contas: o que mudou?",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.7
-          },
-          {
-            "anchor": "o ruído passa",
-            "target_id": "question",
-            "action": "update",
-            "headline": "O movimento persistiu?",
-            "kind": "fact",
-            "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.7
-          },
-          {
-            "anchor": "procure evidência",
-            "target_id": "wallet",
+            "anchor": "três de novembro",
+            "target_id": "cancelDate",
             "action": "reveal",
-            "headline": "Seu dinheiro merece evidência",
+            "headline": "Cancelamento: 3 NOV → 20 DEZ",
+            "kind": "date",
+            "behavior": "transform",
+            "treatment": "timeline",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.5
+          }
+        ]
+      }
+    },
+    {
+      "index": 6,
+      "title": "E se a empresa não fizer a opção?",
+      "narration": "Se a empresa já está no Simples Nacional e não escolher o regime regular para IBS e CBS, esses dois tributos permanecem no recolhimento unificado no primeiro semestre de 2027. Isso é diferente de uma empresa que ainda precisa pedir ingresso no Simples. A regulamentação prevê uma nova janela em março de 2027 para quem quiser mudar o tratamento de IBS e CBS no segundo semestre. E o MEI fica fora dessa escolha do modelo híbrido. Então, antes de clicar em qualquer opção, confirme primeiro qual decisão realmente se aplica ao seu CNPJ.",
+      "claim_ids": [
+        "C8",
+        "C9",
+        "C10"
+      ],
+      "visual": {
+        "type": "FLOW",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "already",
+              "kind": "step",
+              "label": "Já está no Simples",
+              "detail": "Sem opção: IBS/CBS ficam no DAS no 1º semestre",
+              "icon": "check",
+              "x": 5,
+              "y": 20,
+              "width": 42,
+              "height": 50,
+              "initially_visible": true
+            },
+            {
+              "id": "march",
+              "kind": "step",
+              "label": "Nova janela",
+              "detail": "Março de 2027 para o 2º semestre",
+              "icon": "clock",
+              "x": 53,
+              "y": 20,
+              "width": 42,
+              "height": 50,
+              "initially_visible": false
+            },
+            {
+              "id": "mei",
+              "kind": "note",
+              "label": "MEI não faz essa escolha",
+              "x": 25,
+              "y": 80,
+              "width": 50,
+              "height": 12,
+              "initially_visible": false,
+              "label_size": 36
+            }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "permanecem no recolhimento unificado",
+            "target_id": "already",
+            "action": "focus",
+            "headline": "Sem opção, IBS/CBS ficam no DAS",
             "kind": "fact",
             "behavior": "transform",
-            "treatment": "kinetic_type",
-            "transition": "wipe",
+            "treatment": "spotlight",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.5
+          },
+          {
+            "anchor": "nova janela em março de 2027",
+            "target_id": "march",
+            "action": "reveal",
+            "headline": "Nova janela em março",
+            "kind": "date",
+            "behavior": "transform",
+            "treatment": "timeline",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "whoosh",
+            "prominence": "contextual",
+            "motion_seconds": 0.5
+          },
+          {
+            "anchor": "MEI fica fora",
+            "target_id": "mei",
+            "action": "reveal",
+            "headline": "MEI não entra nessa escolha",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "masked_emphasis",
+            "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55,
-            "retire_ids": [
-              "subscribe",
-              "question"
-            ]
+            "motion_seconds": 0.5
+          }
+        ]
+      }
+    },
+    {
+      "index": 7,
+      "title": "Quatro perguntas antes de escolher",
+      "narration": "Então, em vez de procurar uma resposta pronta, leve quatro perguntas para a simulação da sua empresa. Quem compra de você: consumidor final ou outras empresas? Quanto do seu custo vem de compras que podem gerar crédito? Quanto a mudança altera preço, margem e fluxo de caixa? E sua operação está preparada para a apuração e os controles do regime regular? A mesma escolha pode funcionar de um jeito para uma empresa e de outro para outra. Compare os dois cenários com os números reais do negócio e com orientação contábil. Se essa explicação ajudou, se inscreva no O Dinheiro Explica para acompanhar as próximas mudanças sem precisar decifrar a legislação sozinho.",
+      "claim_ids": [
+        "C6"
+      ],
+      "visual": {
+        "type": "CHECKLIST",
+        "transition": "slide_up",
+        "stage": {
+          "show_title": false,
+          "elements": [
+            {
+              "id": "q1",
+              "kind": "step",
+              "label": "1 · Quem compra?",
+              "detail": "Consumidor ou empresa",
+              "icon": "person",
+              "x": 5,
+              "y": 10,
+              "width": 43,
+              "height": 31,
+              "initially_visible": true
+            },
+            {
+              "id": "q2",
+              "kind": "step",
+              "label": "2 · O que você compra?",
+              "detail": "Quanto pode gerar crédito",
+              "icon": "package",
+              "x": 52,
+              "y": 10,
+              "width": 43,
+              "height": 31,
+              "initially_visible": false
+            },
+            {
+              "id": "q3",
+              "kind": "step",
+              "label": "3 · O que muda no preço?",
+              "detail": "Margem e fluxo de caixa",
+              "icon": "coins",
+              "x": 5,
+              "y": 51,
+              "width": 43,
+              "height": 31,
+              "initially_visible": false
+            },
+            {
+              "id": "q4",
+              "kind": "step",
+              "label": "4 · A operação está pronta?",
+              "detail": "Apuração e controles",
+              "icon": "document",
+              "x": 52,
+              "y": 51,
+              "width": 43,
+              "height": 31,
+              "initially_visible": false
+            }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "Quem compra de você",
+            "target_id": "q1",
+            "action": "focus",
+            "headline": "Quem é seu cliente?",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "spotlight",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.5
+          },
+          {
+            "anchor": "Quanto do seu custo",
+            "target_id": "q2",
+            "action": "reveal",
+            "headline": "Quanto pode virar crédito?",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "spotlight",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.5
+          },
+          {
+            "anchor": "Quanto a mudança altera preço",
+            "target_id": "q3",
+            "action": "reveal",
+            "headline": "Preço, margem e caixa",
+            "kind": "money",
+            "behavior": "transform",
+            "treatment": "equation",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.5
+          },
+          {
+            "anchor": "sua operação está preparada",
+            "target_id": "q4",
+            "action": "reveal",
+            "headline": "Complexidade também custa",
+            "kind": "warning",
+            "behavior": "transform",
+            "treatment": "masked_emphasis",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "whoosh",
+            "prominence": "contextual",
+            "motion_seconds": 0.5
           }
         ]
       }
@@ -1720,53 +1285,55 @@
   ],
   "packaging": {
     "strategy": {
-      "click_reason": "Ligar uma preocupação concreta com seu dinheiro à eleição sem promessa de cotação.",
-      "visual_focus": "Uma carteira grande recebe um percurso iniciado em símbolo eleitoral e atravessado porR$/US$.",
-      "curiosity_gap": "Como uma proposta que ainda não virou lei pode chegar ao preço de uma compra?",
-      "mobile_readability": "Objeto dominante e texto curto, sem pequeno gráfico eleitoral ou números voláteis.",
-      "anti_clickbait_check": "O roteiro explica canais e limites; não afirma que determinado candidato controla dólar ou supermercado.",
-      "repetition_check": "Percurso de expectativa até carteira com documentos/dados e comparação aritmética; não repetirgrade de cards doIPP.",
-      "youtube_safety_check": "Análise econômica atribuída, sem orientação devoto ou previsão de ganho."
+      "click_reason": "A ideia de continuar no Simples e tirar dois tributos do DAS cria uma contradição aparente que pede explicação.",
+      "visual_focus": "Uma guia DAS grande no centro se divide fisicamente em dois caminhos; IBS e CBS se destacam da guia em um dos lados.",
+      "curiosity_gap": "Como a empresa pode continuar no Simples se dois impostos saem do DAS, e por que alguém faria isso?",
+      "mobile_readability": "Um único documento dominante, dois blocos grandes IBS/CBS e headline de três palavras.",
+      "anti_clickbait_check": "O vídeo explica exatamente a bifurcação, os créditos, os prazos e as limitações; não promete redução de imposto.",
+      "repetition_check": "Usa metáfora de papel dividido e selos tributários, diferente de carteira, câmbio, smartphone ou fluxo bancário dos episódios recentes.",
+      "youtube_safety_check": "Tema fiscal informativo, sem promessa de economia, evasão, fraude ou recomendação tributária individual."
     },
     "titles": [
       {
         "id": "title_main",
-        "text": "Dólar e eleições: como a política pode chegar ao seu bolso",
-        "rationale": "Nomeia dólar/eleições e oferece relação concreta entregue no roteiro."
+        "text": "Simples Nacional híbrido: IBS e CBS podem sair do DAS em 2027",
+        "rationale": "Combina a expressão buscada 'Simples Nacional híbrido' com a consequência prática que o vídeo explica."
       }
     ],
     "thumbnails": [
       {
         "id": "thumb_main",
-        "headline": "ELEIÇÃO NO BOLSO?",
-        "concept": "Carteira àdireita e um símbolo deurna àesquerda conectados por uma faixaR$/US$, sem rosto decandidato.",
-        "visual_prompt": "Capa completa16:9 doODinheiroExplica: fundo carvão, amarelo#FFBD19 ebranco. Carteira brasileira reconhecível grande no lado direito, símbolo deurna eletrônica no lado esquerdo, faixa visual de conversãoR$/US$ liga osdois. Texto principalELEIÇÃO NO BOLSO? em tipografia forte. Composição editorial limpa, profundidade e luz pontual. Sem logotipo, rosto de candidato, promessa de cotação, gráfico inventado ou dados minúsculos."
+        "headline": "DENTRO OU FORA?",
+        "concept": "Uma guia DAS física se rasga em dois caminhos; de um lado permanece inteira, do outro os blocos IBS e CBS se soltam da guia.",
+        "visual_prompt": "Thumbnail completa 16:9 para O Dinheiro Explica. Fundo preto/carvão profundo, luz editorial cinematográfica, amarelo #FFBD19 e branco quente. No centro, uma guia/documento DAS grande e realista, sem dados pessoais, dividindo-se visualmente em dois caminhos. À esquerda a guia permanece inteira; à direita dois blocos sólidos e legíveis com as letras IBS e CBS se destacam e saem do documento, como peças separadas. Headline enorme DENTRO OU FORA? em tipografia pesada branca com detalhe amarelo, posicionada com respiro e legível em celular. Composição limpa, um foco dominante, sem logotipo, sem brasão oficial, sem porcentagens, sem dinheiro voando, sem calculadora, sem interface falsa e sem subtítulo pequeno."
       }
     ]
   },
   "publication": {
-    "description": "Como a eleição pode mexer no dólar e chegar ao seu bolso? Roberto explica o caminho entre decisões fiscais, expectativas, câmbio e custos, com dados atualizados em 30 de setembro de 2026.\n\nA PTAX de venda de 30/09 foi R$ 5,1809. Ela é uma taxa de referência e não deve ser confundida com o dólar comercial ao vivo ou o preço de uma casa de câmbio. O vídeo também apresenta a dívida bruta de agosto divulgada em 30 de setembro pelo Banco Central, confronta a cobertura sobre as contas públicas e mostra por que o contexto internacional continua importante.\n\nUma conta hipotética com uma peça de cem dólares ajuda a enxergar o mecanismo. Depois, seguimos os limites do repasse: estoque, contratos, margem, concorrência e a incerteza das pesquisas. Nenhum exemplo é previsão de preço ou recomendação de investimento.\n\n#Dolar #Eleicoes2026 #Economia #ODinheiroExplica",
+    "description": "O Simples Nacional passa a ter uma escolha nova em 2027: manter IBS e CBS dentro do DAS ou recolher esses dois tributos pelo regime regular, no modelo conhecido como Simples híbrido.\n\nNeste vídeo, Roberto explica a diferença entre os dois caminhos, como entram os créditos de IBS e CBS, por que o perfil dos clientes e a estrutura de custos mudam a análise e quais são os prazos oficiais para a opção. Também mostramos por que vender para empresas não torna o híbrido automaticamente melhor e por que permanecer no modelo tradicional não significa crédito zero para todo cliente.\n\nA escolha precisa ser simulada com os números reais de cada negócio e orientação contábil. O conteúdo é educacional e não substitui análise tributária individual.\n\n#SimplesNacional #SimplesHibrido #ReformaTributaria #IBS #CBS",
     "seo": {
-      "primary_keyword": "dólar e eleições",
+      "primary_keyword": "Simples Nacional híbrido",
       "secondary_keywords": [
-        "dólar e política",
-        "câmbio",
-        "contas públicas",
-        "dívida pública",
-        "repasse cambial",
-        "preços"
+        "Simples puro",
+        "IBS e CBS",
+        "DAS",
+        "reforma tributária 2027",
+        "Simples Nacional 2027",
+        "crédito tributário",
+        "pequenas empresas"
       ],
-      "search_intent": "Entender como decisões políticas podem influenciar o dólar e as compras noBrasil.",
-      "description_strategy": "Explicar a promessa nasduasprimeiraslinhas e identificar data/tipo das cotações, fontes e limites dos exemplos."
+      "search_intent": "Entender a diferença entre Simples puro e híbrido e como funciona a opção de IBS/CBS fora do DAS em 2027.",
+      "description_strategy": "Abrir com a consequência prática, explicar créditos e prazos, e deixar claro que a decisão depende da operação de cada empresa."
     },
     "tags": [
-      "dólar",
-      "eleições2026",
-      "dólar e política",
-      "câmbio",
-      "contas públicas",
-      "dívida pública",
-      "repasse cambial",
+      "Simples Nacional",
+      "Simples híbrido",
+      "Simples puro",
+      "IBS",
+      "CBS",
+      "DAS",
+      "reforma tributária",
+      "pequenas empresas",
       "O Dinheiro Explica"
     ],
     "chapters": [],
