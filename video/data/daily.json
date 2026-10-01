@@ -608,12 +608,13 @@
           "bindings": [
             {
               "scene_id": "scene-08",
-              "element_id": "cash"
+              "element_id": "cash",
+              "beat_anchor": "entregar uma nota sem sinal no seu celular"
             },
             {
               "scene_id": "scene-08",
               "element_id": "phone",
-              "beat_anchor": "entregar uma nota sem sinal no seu celular"
+              "beat_anchor": "sacar essa nota num caixa eletrônico continua dependendo"
             }
           ]
         },
@@ -645,7 +646,7 @@
         }
       ],
       "review": {
-        "content_sha256": "3d424dbc4d6baea1667e16c6ac328e761cb2e942b80079ea3b9a0e631f9d6391",
+        "content_sha256": "7f18d7cdc8a52c47ac8b98937f52d5488d6019209cc6e57010e2a2737484d064",
         "findings": [
           {
             "question": "O vídeo responde sem prever uma extinção que as fontes não comprovam?",
@@ -693,7 +694,7 @@
               "scene_id": "scene-08",
               "quote": "Portanto, dinheiro na mão e acesso ao dinheiro são coisas diferentes."
             },
-            "conclusion": "O roteiro limita a independência do celular ao ato de entregar uma nota; o acesso ao caixa mantém dependências."
+            "conclusion": "O roteiro limita a independência do celular ao ato de entregar uma nota; o acesso ao caixa mantém dependências. A comparação atua nas cédulas e o beat de bloqueio atua no telefone, correspondendo aos elementos declarados em U9."
           }
         ]
       }
@@ -2129,12 +2130,12 @@
               "id": "mini",
               "kind": "object",
               "label": "Mini no comércio",
-              "x": 34,
-              "y": 12,
-              "width": 32,
-              "height": 60,
+              "x": 4,
+              "y": 13,
+              "width": 21,
+              "height": 62,
               "initially_visible": true,
-              "label_size": 48,
+              "label_size": 44,
               "surface": "spotlight",
               "object_type": "terminal",
               "svg_motion": "assemble",
@@ -2148,9 +2149,9 @@
               "id": "proof",
               "kind": "source_excerpt",
               "label": "Tecban • janeiro 2026",
-              "x": 5,
+              "x": 30,
               "y": 3,
-              "width": 90,
+              "width": 65,
               "height": 35,
               "initially_visible": false,
               "label_size": 48,
@@ -2168,9 +2169,9 @@
               "id": "observed",
               "kind": "metric",
               "label": "Fim de 2025 informado",
-              "x": 7,
+              "x": 31,
               "y": 46,
-              "width": 38,
+              "width": 29,
               "height": 31,
               "initially_visible": false,
               "label_size": 40,
@@ -2182,9 +2183,9 @@
               "id": "goal",
               "kind": "metric",
               "label": "Meta anunciada para 2026",
-              "x": 55,
+              "x": 65,
               "y": 46,
-              "width": 38,
+              "width": 30,
               "height": 31,
               "initially_visible": false,
               "label_size": 38,
@@ -4009,12 +4010,12 @@
                 "id": "mini",
                 "kind": "object",
                 "label": "Mini no comércio",
-                "x": 34,
-                "y": 12,
-                "width": 32,
-                "height": 60,
+                "x": 4,
+                "y": 13,
+                "width": 21,
+                "height": 62,
                 "initially_visible": true,
-                "label_size": 48,
+                "label_size": 44,
                 "surface": "spotlight",
                 "object_type": "terminal",
                 "svg_motion": "assemble",
@@ -4028,9 +4029,9 @@
                 "id": "proof",
                 "kind": "source_excerpt",
                 "label": "Tecban • janeiro 2026",
-                "x": 5,
+                "x": 30,
                 "y": 3,
-                "width": 90,
+                "width": 65,
                 "height": 35,
                 "initially_visible": false,
                 "label_size": 48,
@@ -4048,9 +4049,9 @@
                 "id": "observed",
                 "kind": "metric",
                 "label": "Fim de 2025 informado",
-                "x": 7,
+                "x": 31,
                 "y": 46,
-                "width": 38,
+                "width": 29,
                 "height": 31,
                 "initially_visible": false,
                 "label_size": 40,
@@ -4062,9 +4063,9 @@
                 "id": "goal",
                 "kind": "metric",
                 "label": "Meta anunciada para 2026",
-                "x": 55,
+                "x": 65,
                 "y": 46,
-                "width": 38,
+                "width": 30,
                 "height": 31,
                 "initially_visible": false,
                 "label_size": 38,
