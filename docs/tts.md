@@ -12,7 +12,7 @@ A direção vocal continua centralizada na política: português brasileiro, lei
 
 A narração é enviada ao Live como texto literal. A instrução de sistema proíbe introduções, comentários, resumos, reformulações ou qualquer palavra extra. `speech.pronunciations` continua sendo respeitado como instrução de fala, preservando a grafia correta no roteiro e na tela.
 
-A Live API devolve também a transcrição da própria saída. Cada cena só é aceita quando essa transcrição alcança a similaridade mínima definida em `worker/voice-policy.json` com o roteiro original. O manifesto registra a transcrição e a pontuação de fidelidade. Isso reduz o risco de um modelo conversacional improvisar ou alterar a narração.
+A Live API devolve também a transcrição da própria saída. Cada cena só é aceita quando essa transcrição corresponde lexicalmente ao roteiro depois de normalizações seguras. Anos de quatro dígitos entre 1900 e 2099 recebem automaticamente orientação de pronúncia em português brasileiro sem alterar o texto do roteiro. O validador aceita representações equivalentes do mesmo ano que apareça no roteiro, como `2027`, `dois mil e vinte e sete` ou a forma de ASR `vinte vinte e sete`; um ano diferente continua sendo erro. Divergências apenas numéricas são refeitas na mesma voz/modelo, enquanto mudanças lexicais comuns continuam fatais. O manifesto registra a transcrição, as equivalências e a pontuação de fidelidade.
 
 ## Áudio bruto
 
