@@ -98,7 +98,7 @@
       "A matéria da Gazeta do Povo consultada usava o prazo anterior de 30/09; o prazo foi substituído pela Resolução CGSN nº 194 e não é usado como prazo atual."
     ],
     "narrative_contract": {
-      "topic_explanation": "a partir de 2027, existem duas formas de tratar IBS e CBS para quem está no Simples Nacional",
+      "topic_explanation": "A partir de 2027, existem duas formas de tratar IBS e CBS para quem está no Simples Nacional",
       "presenter_introduction": "Eu sou o Roberto, do O Dinheiro Explica.",
       "subscription_request": "se inscreva no O Dinheiro Explica para acompanhar as próximas mudanças sem precisar decifrar a legislação sozinho"
     },
@@ -1184,7 +1184,7 @@
               "kind": "step",
               "label": "2 · O que você compra?",
               "detail": "Quanto pode gerar crédito",
-              "icon": "package",
+              "icon": "cart",
               "x": 52,
               "y": 10,
               "width": 43,
