@@ -46,7 +46,7 @@ jobs:
           sudo apt-get install -y ffmpeg
           python -m pip install --no-cache-dir "numpy>=1.26" "num2words>=0.5.13,<1"
 
-      - name: Test TTS quota and resume (offline)
+      - name: Test Gemini Live cache, fidelity and timing (offline)
         run: python worker/test_synthesize_scenes.py
 
       - name: Test reviewed audio provenance and legacy cache (offline)
@@ -55,7 +55,7 @@ jobs:
       - name: Test narration anchor alignment (offline)
         run: python worker/test_align_narration.py
 
-      - name: Test voice continuity WAV processing
+      - name: Test Gemini Live byte-identical passthrough
         run: python worker/test_process_voice_continuity.py
 
       - name: Audit daily source balance
