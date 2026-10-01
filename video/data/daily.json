@@ -520,7 +520,7 @@
         }
       ],
       "review": {
-        "content_sha256": "ad6591cac33614c335bf5c21e86443457bcb4d1d4c1ad703d6cd29193755370d",
+        "content_sha256": "0e2fd0e2412441dfd5c02a3f9ecb47257842121480a0663705a1c5f1493ff75e",
         "findings": [
           {
             "question": "A correção principal aparece antes dos detalhes técnicos?",
@@ -1618,7 +1618,7 @@
         "delivery": "contrast",
         "cues": [
           {
-            "text": "Esse é o objetivo declarado pelo órgão; o efeito real depende de bancos, carteiras, maquininhas compatíveis e, principalmente, de quanto as pessoas de fato usam essa jornada.",
+            "text": "Esse é o objetivo declarado pelo órgão; o efeito real depende de bancos, carteiras, maquininhas compatíveis",
             "kind": "contrast",
             "intent": "caution",
             "arc": "contrast",
@@ -2704,7 +2704,7 @@
           "delivery": "contrast",
           "cues": [
             {
-              "text": "Esse é o objetivo declarado pelo órgão; o efeito real depende de bancos, carteiras, maquininhas compatíveis e, principalmente, de quanto as pessoas de fato usam essa jornada.",
+              "text": "Esse é o objetivo declarado pelo órgão; o efeito real depende de bancos, carteiras, maquininhas compatíveis",
               "kind": "contrast",
               "intent": "caution",
               "arc": "contrast",
