@@ -5,6 +5,87 @@ from pathlib import Path
 from urllib.parse import parse_qs, urlparse
 
 
+NAVIGATION_RETRY_ATTEMPTS = 3
+_EVALUATE_WITHOUT_ARG = object()
+
+
+def is_transient_navigation_error(exc: Exception) -> bool:
+    message = str(exc).casefold()
+    return any(
+        marker in message
+        for marker in (
+            "execution context was destroyed",
+            "most likely because of a navigation",
+            "cannot find context with specified id",
+            "frame was detached",
+            "page is navigating",
+        )
+    )
+
+
+def wait_for_page_settle(page) -> None:
+    """Espera a navegação terminar sem transformar network-idle em requisito."""
+    for state in ("domcontentloaded", "load"):
+        try:
+            page.wait_for_load_state(state, timeout=10000)
+        except Exception:
+            pass
+    try:
+        page.wait_for_timeout(750)
+    except Exception:
+        pass
+
+
+def evaluate_with_navigation_retry(
+    page,
+    script: str,
+    arg=_EVALUATE_WITHOUT_ARG,
+    *,
+    operation_name: str = "avaliar a página",
+):
+    last_error = None
+    for attempt in range(1, NAVIGATION_RETRY_ATTEMPTS + 1):
+        try:
+            if arg is _EVALUATE_WITHOUT_ARG:
+                return page.evaluate(script)
+            return page.evaluate(script, arg)
+        except Exception as exc:
+            last_error = exc
+            if (
+                not is_transient_navigation_error(exc)
+                or attempt == NAVIGATION_RETRY_ATTEMPTS
+            ):
+                raise
+            print(
+                f"[auto_capture] Navegação transitória ao {operation_name}; "
+                f"aguardando e tentando novamente ({attempt}/"
+                f"{NAVIGATION_RETRY_ATTEMPTS})."
+            )
+            wait_for_page_settle(page)
+    raise last_error  # pragma: no cover
+
+
+def title_with_navigation_retry(page) -> str:
+    last_error = None
+    for attempt in range(1, NAVIGATION_RETRY_ATTEMPTS + 1):
+        try:
+            return page.title()
+        except Exception as exc:
+            last_error = exc
+            if (
+                not is_transient_navigation_error(exc)
+                or attempt == NAVIGATION_RETRY_ATTEMPTS
+            ):
+                raise
+            print(
+                "[auto_capture] Navegação transitória ao ler o título; "
+                f"aguardando e tentando novamente ({attempt}/"
+                f"{NAVIGATION_RETRY_ATTEMPTS})."
+            )
+            wait_for_page_settle(page)
+    raise last_error  # pragma: no cover
+
+
 def sanitize_page_thoroughly(page) -> None:
     """Aplica a sanitização completa testada: clica para aceitar/fechar, remove overlays e reseta opacidade."""
     script = """() => {
@@ -70,7 +151,11 @@ def sanitize_page_thoroughly(page) -> None:
         });
     }"""
     try:
-        page.evaluate(script)
+        evaluate_with_navigation_retry(
+            page,
+            script,
+            operation_name="sanitizar a página",
+        )
     except Exception as exc:
         print(f"[auto_capture] Aviso na sanitizacao: {exc}")
 
@@ -134,8 +219,9 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
             status = response.status if response else "sem resposta HTTP"
             raise RuntimeError(f"página retornou {status}")
 
-        # 2. Aguardar scripts assíncronos
+        # 2. Aguardar scripts assíncronos e qualquer redirecionamento tardio
         page.wait_for_timeout(5000)
+        wait_for_page_settle(page)
 
         # 3. Pressionar Escape para dispensar popovers
         try:
@@ -143,12 +229,19 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
         except Exception:
             pass
 
-        # 4. Sanitizar completamente (remover modais, restaurar fundo branco)
+        # 4. Sanitizar completamente (remover modais, restaurar fundo branco).
+        # Alguns portais recarregam a página ao aceitar/rejeitar cookies, então
+        # esperamos novamente antes de ler o DOM.
         sanitize_page_thoroughly(page)
+        wait_for_page_settle(page)
 
         # 5. Auditoria de conteúdo: detectar páginas de erro (ex: 404, não encontrada)
-        content_text = page.evaluate("() => document.body ? document.body.innerText : ''")
-        page_title = page.title()
+        content_text = evaluate_with_navigation_retry(
+            page,
+            "() => document.body ? document.body.innerText : ''",
+            operation_name="ler o conteúdo",
+        )
+        page_title = title_with_navigation_retry(page)
         error_indicators = [
             "página não encontrada",
             "pagina nao encontrada",
@@ -169,7 +262,7 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
         # 6. Rolar para o trecho ou elemento específico se solicitado (ex: Art. 31 da lei)
         scroll_to_text = asset.get("scroll_to_text") or expected_text
         if scroll_to_text:
-            scrolled = page.evaluate(r"""(textToFind) => {
+            scrolled = evaluate_with_navigation_retry(page, r"""(textToFind) => {
                 const normalize = text => (text || '').replace(/\s+/g, ' ').trim().toLocaleLowerCase();
                 const needle = normalize(textToFind);
                 let best = null;
@@ -183,11 +276,12 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
                 if (!best) return false;
                 best.element.scrollIntoView({ block: 'center', inline: 'center' });
                 return true;
-            }""", scroll_to_text)
+            }""", scroll_to_text, operation_name="localizar o trecho")
             if not scrolled:
                 raise RuntimeError(f"trecho esperado não foi localizado para a captura: {scroll_to_text!r}")
             print(f"[auto_capture] Rolagem até '{scroll_to_text}' realizada com sucesso.")
             page.wait_for_timeout(1000)
+            wait_for_page_settle(page)
 
         # 7. Screenshot do elemento ou viewport completa
         target_selector = asset.get("target_selector")

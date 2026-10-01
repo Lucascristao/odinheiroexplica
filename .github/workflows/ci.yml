@@ -29,7 +29,10 @@ jobs:
         run: npm run validate:editorial -- video/data/daily.json
 
       - name: Validate Python pipeline
-        run: python -m py_compile worker/render_request.py worker/tts_config.py worker/synthesize_scenes.py worker/process_voice_continuity.py worker/restore_reviewed_audio.py worker/build_render_input.py worker/build_youtube_package.py worker/editorial_source_audit.py worker/prepare_visual_assets.py
+        run: python -m py_compile worker/render_request.py worker/tts_config.py worker/synthesize_scenes.py worker/process_voice_continuity.py worker/restore_reviewed_audio.py worker/build_render_input.py worker/build_youtube_package.py worker/editorial_source_audit.py worker/prepare_visual_assets.py worker/auto_capture_sources.py
+
+      - name: Test source-capture navigation retry (offline)
+        run: python worker/test_auto_capture_sources.py
 
       - name: Validate render request and retry policy (offline)
         run: python worker/test_render_request.py
