@@ -1,5 +1,4 @@
-Produção autorizada: Simples Nacional híbrido — IBS e CBS dentro ou fora do DAS em 2027.
-Relançamento após correção da captura de fontes: retry automático em navegação/reload transitório do gov.br.
-Roteiro, fontes, voz e política de áudio mantidos.
-Trocas de modelo ficam somente nos metadados, sem pigarro ou outro marcador audível.
-Trigger: retry-source-capture-2026-09-30
+Produção autorizada: Simples Nacional híbrido — validação final com Gemini 3.8 Live.
+Narração: modelo único gemini-3.8-live, voz Charon, leitura literal com direção natural e pronúncias do projeto.
+Sem fallback de modelo e sem DSP; WAV bruto 24 kHz preservado byte a byte.
+Trigger: gemini-live-production-2026-10-01
