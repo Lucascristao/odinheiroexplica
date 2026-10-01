@@ -1,6 +1,14 @@
-# Direção de voz editorial
+# Voz editorial
 
-O render diário usa apenas Gemini TTS, seguindo `worker/voice-policy.json`. Roberto solicita `Charon` e Luana solicita `Autonoe` em toda a cascata 3.8 Flash → 3.8 Flash Lite → 3.1 Flash preview. Fallback só entra após falha elegível confirmada, preservando as cenas principais já geradas. A voz predefinida é a mesma, mas o modelo pode mudar timbre e interpretação. O manifesto identifica modelo, política, direção e tratamento; escute o vídeo final para aprovar a continuidade.
+O render diário usa apenas Gemini 3.8 Live, seguindo `worker/voice-policy.json`. Roberto usa `Charon`; Luana usa `Autonoe`. O modelo não muda no meio do vídeo e não existe cascata de fallback para outro modelo.
+
+O Live recebe uma instrução de leitura literal, português brasileiro e a direção vocal comum do canal: natural, conversacional, ritmo moderado, articulação clara, ênfase variada sem exagero e pausas curtas entre ideias completas. `speech.pronunciations` continua orientando termos de risco somente na fala, preservando a grafia do roteiro e da tela.
+
+A transcrição de saída do próprio Live é obrigatória e funciona como gate de fidelidade ao roteiro. Se a leitura divergir além do limite da política, a cena é rejeitada em vez de ser aceita com improvisação.
+
+O áudio sai como PCM 24 kHz/16-bit mono e é encapsulado em WAV sem DSP. Não há EQ, limiter, compressor, loudness matching, pitch, velocidade, resample ou efeito de transição. O worker de continuidade agora apenas comprova que o modelo e a voz são homogêneos e copia os bytes sem alteração.
+
+Escreva a intenção na própria narração: uma ideia por frase quando possível, pontuação que ajude a leitura, perguntas naturais e contraste claro. A direção da API melhora a interpretação, mas não substitui um roteiro falável. Ouça o áudio final antes da aprovação.
 
 ## O que o motor aplica de fato
 
