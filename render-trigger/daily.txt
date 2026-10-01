@@ -1,6 +1,5 @@
-Produção autorizada: novo Simples Nacional híbrido, pesquisa revisada em 01/10/2026.
-Motor geral: layout compartilhado, legendas reservadas, operações visuais reais, conceitos e exemplos verificáveis e provas autênticas legíveis.
-Narração: somente gemini-3.8-live/Charon, google-genai 2.26.0, temperatura padrão do provedor, uma sessão WebSocket por cena/tentativa, retry 5s → 15s → 30s para falhas transitórias, fidelidade literal e WAV bruto preservado.
-Diagnóstico Live: usage_metadata, go_away, latência, bytes, duração, tentativas e fechamento registrados no artifact; sem fallback de modelo e sem Session Resumption.
-Verificações antes da voz, após a timeline real e antes da entrega ao Drive; publicação do vídeo permanece manual.
-Trigger: live-resilience-2026-10-01-v3
+Produção autorizada: Simples Nacional híbrido — relançamento após correção de generationComplete/turnComplete.
+Narração: somente gemini-3.8-live/Charon, google-genai 2.26.0, temperatura padrão do provedor, uma sessão WebSocket por cena/tentativa, retries transitórios e fidelidade literal.
+Após generationComplete: aguardar graça curta por turnComplete; se PCM e transcrição estiverem completos e válidos, aceitar a cena sem descartá-la por atraso no fechamento lógico do turno.
+Sem fallback de modelo, sem DSP, com diagnósticos Live completos no artifact.
+Trigger: live-generation-complete-fix-2026-10-01
