@@ -3476,7 +3476,7 @@
     ]
   },
   "publication": {
-    "description": "Pix por aproximação mudou em 1º de outubro de 2026: o teto específico de R$ 500 por transação deixou de existir.\nMas isso não significa Pix ilimitado. Neste vídeo, você entende qual limite passa a valer, como funciona a gestão no aplicativo, o prazo para aumento e por que a mudança também alcança jornadas do Open Finance.\n\nPix por aproximação usa NFC para iniciar o pagamento ao aproximar o celular de um terminal compatível. A retirada do teto específico permite valores acima de R$ 500 quando eles cabem nos limites aplicáveis à conta e passam pelos controles da instituição.\n\nNo gerenciamento de limites, reduções devem ser imediatas. Pedidos de aumento podem ser aceitos ou não pela instituição e, quando aceitos, entram em vigor entre 24 e 48 horas.\n\nO exemplo de R$ 800 com limite hipotético de R$ 1.500 é apenas didático; não representa limite recomendado, saldo disponível ou garantia de aprovação.\n\nFontes\nBanco Central do Brasil — Pix por aproximação ganha mais flexibilidade e deixa de ter teto fixo de R$500.\nBanco Central do Brasil — Instrução Normativa BCB nº 746/2026.\nBanco Central do Brasil — Instrução Normativa BCB nº 512/2024, texto consolidado.\nBanco Central do Brasil — FAQ Alteração dos limites de valor nas transações Pix.\nInfoMoney — Pix por aproximação deixa de ter teto de R$ 500 a partir desta quinta.\nO POVO — Pix por aproximação deixa de ter teto de R$ 500.\nJovem Pan — Pix por aproximação deixa de ter teto de R$ 500; entenda mudança.\nFolha de S.Paulo — Pix por aproximação deixa de ter limite de R$ 500 por transação.\n\nCréditos visuais: recortes autênticos do Banco Central e elementos gráficos originais do canal.",
+    "description": "Pix por aproximação mudou: o teto específico de R$ 500 por transação deixou de existir, mas os limites do Pix continuam valendo.\nNeste vídeo, você entende o que realmente mudou, qual limite passa a valer e quando um pagamento maior pode passar por aproximação.\n\n- O que acabou no teto de R$ 500\n- Qual limite passa a valer na conta\n- Como funcionam redução e aumento de limite\n- Onde entram NFC, Open Finance e segurança",
     "seo": {
       "primary_keyword": "Pix por aproximação",
       "secondary_keywords": [
@@ -3501,6 +3501,12 @@
       "O Dinheiro Explica"
     ],
     "chapters": [],
-    "disclosure_ai": false
+    "disclosure_ai": false,
+    "engagement_question": "Você pretende usar o Pix por aproximação para valores acima de R$ 500?",
+    "hashtags": [
+      "#Pix",
+      "#ODinheiroExplica",
+      "#EducacaoFinanceira"
+    ]
   }
 }
