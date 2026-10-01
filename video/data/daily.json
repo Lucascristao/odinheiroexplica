@@ -520,7 +520,7 @@
         }
       ],
       "review": {
-        "content_sha256": "0e2fd0e2412441dfd5c02a3f9ecb47257842121480a0663705a1c5f1493ff75e",
+        "content_sha256": "a7cc1283cb31b5be1457a444936eb08176b3be118957d9f713f39223d73b48ec",
         "findings": [
           {
             "question": "A correção principal aparece antes dos detalhes técnicos?",
@@ -1542,7 +1542,7 @@
               "id": "wallet",
               "kind": "step",
               "label": "Carteira compatível",
-              "detail": "Open Finance sem redirecionamento",
+              "detail": "Open Finance",
               "x": 65,
               "y": 12,
               "width": 31,
@@ -1685,20 +1685,7 @@
               "label_size": 38
             }
           ],
-          "connections": [
-            {
-              "id": "s1",
-              "from": "amount",
-              "to": "recipient",
-              "semantic": "sequence"
-            },
-            {
-              "id": "s2",
-              "from": "recipient",
-              "to": "auth",
-              "semantic": "sequence"
-            }
-          ]
+          "connections": []
         },
         "beats": [
           {
@@ -1738,21 +1725,13 @@
             "headline": "Proteja a confirmação",
             "kind": "warning",
             "behavior": "transform",
-            "treatment": "stack",
+            "treatment": "spotlight",
             "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.45,
-            "operation": {
-              "kind": "stack",
-              "element_ids": [
-                "amount",
-                "recipient",
-                "auth"
-              ]
-            }
+            "motion_seconds": 0.45
           }
         ]
       },
@@ -2628,7 +2607,7 @@
                 "id": "wallet",
                 "kind": "step",
                 "label": "Carteira compatível",
-                "detail": "Open Finance sem redirecionamento",
+                "detail": "Open Finance",
                 "x": 65,
                 "y": 12,
                 "width": 31,
@@ -2771,20 +2750,7 @@
                 "label_size": 38
               }
             ],
-            "connections": [
-              {
-                "id": "s1",
-                "from": "amount",
-                "to": "recipient",
-                "semantic": "sequence"
-              },
-              {
-                "id": "s2",
-                "from": "recipient",
-                "to": "auth",
-                "semantic": "sequence"
-              }
-            ]
+            "connections": []
           },
           "beats": [
             {
@@ -2824,21 +2790,13 @@
               "headline": "Proteja a confirmação",
               "kind": "warning",
               "behavior": "transform",
-              "treatment": "stack",
+              "treatment": "spotlight",
               "transition": "cut",
               "placement": "full",
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.45,
-              "operation": {
-                "kind": "stack",
-                "element_ids": [
-                  "amount",
-                  "recipient",
-                  "auth"
-                ]
-              }
+              "motion_seconds": 0.45
             }
           ]
         },
