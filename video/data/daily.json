@@ -646,7 +646,7 @@
         }
       ],
       "review": {
-        "content_sha256": "7f18d7cdc8a52c47ac8b98937f52d5488d6019209cc6e57010e2a2737484d064",
+        "content_sha256": "d58124045e3d9fa2fdf8a2706a87e11c737c1dc5e482a189b4a2ad3933cdd35b",
         "findings": [
           {
             "question": "O vídeo responde sem prever uma extinção que as fontes não comprovam?",
@@ -662,7 +662,7 @@
               "scene_id": "scene-01",
               "quote": "Não são a fatia do dinheiro no valor de todas as compras."
             },
-            "conclusion": "Pessoas na pesquisa 2024 são separadas de volume monetário; o mini separa resultado 2025 de plano 2026."
+            "conclusion": "Pessoas na pesquisa 2024 são separadas de volume monetário; o mini separa resultado 2025 de plano 2026. Os dois indicadores conservam o detalhe Entrevistados • pesquisa 2024, com áreas mais altas e sem alterar as fontes ou a narração."
           },
           {
             "question": "O exemplo deixa clara sua natureza e a diferença entre custo e tarifa?",
@@ -1162,7 +1162,7 @@
               "x": 6,
               "y": 12,
               "width": 40,
-              "height": 31,
+              "height": 34,
               "initially_visible": true,
               "label_size": 44,
               "surface": "glow",
@@ -1177,7 +1177,7 @@
               "x": 6,
               "y": 51,
               "width": 40,
-              "height": 31,
+              "height": 34,
               "initially_visible": false,
               "label_size": 44,
               "surface": "none",
@@ -3042,7 +3042,7 @@
                 "x": 6,
                 "y": 12,
                 "width": 40,
-                "height": 31,
+                "height": 34,
                 "initially_visible": true,
                 "label_size": 44,
                 "surface": "glow",
@@ -3057,7 +3057,7 @@
                 "x": 6,
                 "y": 51,
                 "width": 40,
-                "height": 31,
+                "height": 34,
                 "initially_visible": false,
                 "label_size": 44,
                 "surface": "none",
