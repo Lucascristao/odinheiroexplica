@@ -90,7 +90,7 @@ def project_speech_fingerprint(project: dict | None) -> str:
 def automatic_year_pronunciations(narration: str) -> dict[str, str]:
     """Keep numeric years in the script while directing pt-BR pronunciation."""
     years = sorted(
-        set(re.findall(r"(?<!\\d)(?:19|20)\\d{2}(?!\\d)", str(narration)))
+        set(re.findall(r"(?<!\d)(?:19|20)\d{2}(?!\d)", str(narration)))
     )
     if not years:
         return {}
