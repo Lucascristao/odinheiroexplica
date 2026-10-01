@@ -1,5 +1,5 @@
-Produção autorizada: dólar e política — nova geração com áudio bruto quando homogêneo.
-Narração sem carimbo da data de publicação; datas aparecem apenas quando pertencem ao fato.
-Se houver troca real de modelo, inserir marcador vocal curto com a própria voz/modelo novo.
-force_fresh_audio=true
-Trigger: 2026-09-30T23:31Z
+Produção autorizada: Simples Nacional híbrido — IBS e CBS dentro ou fora do DAS em 2027.
+Roteiro novo, com prazos atualizados pela Resolução CGSN nº 194, fontes oficiais e contrapontos independentes.
+Narração sem marcação relativa da data de publicação.
+Trocas de modelo ficam somente nos metadados, sem pigarro ou outro marcador audível.
+Trigger: 2026-09-30T21:20-03:00
