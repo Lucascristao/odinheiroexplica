@@ -46,9 +46,15 @@ Não exibir rodapé com nomes de fontes no vídeo. A descrição não contém li
 
 ## Título, descrição e descoberta
 
-Escolher internamente uma formulação centrada em busca e outra em curiosidade; entregar apenas a opção final, como exige o contrato atual. Identificar situação/assunto cedo, criar uma pergunta ou consequência específica e assegurar que o roteiro entrega a promessa. Até 100 caracteres, preferencialmente conciso; sem gritaria, urgência falsa ou resultado garantido. Não afirmar que uma formulação possui maior volume de busca sem dados.
+A regra canônica de embalagem está em `docs/youtube-packaging.md` e deve ser aplicada em toda nova produção.
 
-Descrição única: primeiras duas linhas dizem para quem é, qual pergunta responde e qual aprendizado entrega. Usar a expressão principal e sinônimos naturalmente, sem lista repetitiva de keywords. Explicar siglas. Depois entram contexto, capítulos, nomes das fontes e créditos textuais, sem links. Reservar espaço dentro dos 5.000 caracteres para tudo isso. O pipeline usa os tempos reais e só publica capítulos que atendem aos limites do YouTube. Tags são apoio; não substituem assunto, título, conteúdo e descrição coerentes.
+Escolher internamente uma formulação centrada em busca e outra em curiosidade; entregar apenas a opção final. Front-load do assunto: sempre que soar natural, a palavra-chave principal ou o tema reconhecível entra nas primeiras 3 a 5 palavras. Depois vem a consequência ou dúvida concreta que justifica o clique. Usar como referência editorial cerca de 45 a 65 caracteres, preservando o limite técnico de 100. Evitar abrir com jargão burocrático, número de norma ou "Entenda/Saiba/Veja" quando o assunto puder aparecer primeiro. Não afirmar volume de busca sem dados e não prometer resultado que o roteiro não entrega.
+
+Título e thumbnail formam uma única promessa e precisam se complementar. Se a thumbnail apenas repete o título, a embalagem ainda não está resolvida.
+
+`publication.description` contém somente o corpo editorial: 2 a 3 frases curtas de gancho e 3 ou 4 bullets de respostas concretas. A palavra-chave principal aparece naturalmente logo no começo. Capítulos, fontes, créditos, pergunta de comentários e hashtags são acrescentados pelo pipeline e não podem ser duplicados no corpo. Toda produção preenche também `publication.engagement_question` e exatamente 3 itens em `publication.hashtags`.
+
+O pacote final usa os tempos reais e só publica capítulos tecnicamente válidos, consolida as fontes uma única vez e mantém URLs apenas nos metadados internos. Tags continuam sendo apoio e não substituem assunto, título, conteúdo e descrição coerentes.
 
 Para buscas fora do YouTube, a descrição pública deve ser compreensível isoladamente e nomear o assunto com clareza. Não há garantia de indexação ou posição. O painel privado não vira uma página pública de SEO, nem publica projetos sem autorização.
 
