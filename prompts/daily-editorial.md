@@ -152,6 +152,29 @@ Preencha publication.seo com:
 
 A descrição em publication.description deve sair pronta para publicação e otimizada para busca, mantendo linguagem natural.
 
+## Embalagem de descoberta: título e descrição
+
+Leia e siga obrigatoriamente `docs/youtube-packaging.md` antes de fechar `packaging` e `publication`.
+
+Para o título:
+- front-load: coloque a palavra-chave principal ou o assunto reconhecível nas primeiras 3 a 5 palavras sempre que soar natural;
+- mire em cerca de 45 a 65 caracteres, preservando o limite técnico de 100;
+- traduza jargão para impacto real: custo, prazo, limite, segurança, imposto, bloqueio, risco ou consequência quando houver suporte factual;
+- use a lógica `Fato/tema: consequência ou dúvida` quando ela deixar o título mais claro, sem transformar a fórmula em template;
+- evite começar com "Entenda", "Saiba", "Veja", número de norma ou nome burocrático quando o assunto puder abrir o título diretamente;
+- título e thumbnail devem se complementar. A thumbnail não repete a frase do título.
+
+Para a descrição:
+- `publication.description` contém somente 2 a 3 frases curtas de gancho + 3 ou 4 bullets didáticos;
+- a palavra-chave principal aparece naturalmente logo no começo;
+- não escreva capítulos, fontes, créditos, pergunta de comentários ou hashtags dentro de `publication.description`;
+- preencha `publication.engagement_question` com uma pergunta simples ligada ao conteúdo;
+- preencha `publication.hashtags` com exatamente 3 hashtags;
+- capítulos são calculados pelo tempo real do render;
+- o pacote final consolida as fontes uma única vez, sem links.
+
+O validador bloqueia descrições duplicadas ou sem essa estrutura. O pacote final do YouTube monta corpo, capítulos, fontes, créditos, pergunta e hashtags nessa ordem.
+
 ## Direção visual própria para cada pauta
 
 Cada vídeo precisa ser único. O motor oferece capacidades de atuação, câmera, texto, SVGs e operações; ele não escolhe a montagem da história. Crie o percurso a partir da pergunta, participantes, relações e consequências da pauta atual. Não aplique a mesma sequência de zoom, cascata, comparação e fechamento a todos os temas. Identidade de voz, paleta e tipografia permanecem reconhecíveis; composição, ritmo e intenção nascem da história.
