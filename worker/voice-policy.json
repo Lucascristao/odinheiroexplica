@@ -1,0 +1,15 @@
+{
+  "version": "2026-09-30.1",
+  "language": "pt-BR",
+  "delivery_style": "Conversational and informative, moderate steady pace, clear articulation, restrained emphasis.",
+  "model_cascade": ["gemini-3.8-flash-tts", "gemini-3.8-flash-lite-tts", "gemini-3.1-flash-tts-preview"],
+  "models": {
+    "gemini-3.8-flash-tts": {"endpoint": "interactions", "style_transport": "speech_metadata"},
+    "gemini-3.8-flash-lite-tts": {"endpoint": "interactions", "style_transport": "speech_metadata"},
+    "gemini-3.1-flash-tts-preview": {"endpoint": "generate-content", "style_transport": "directed_prompt"}
+  },
+  "presenters": {"male": {"name": "Roberto", "voice": "Charon"}, "female": {"name": "Luana", "voice": "Autonoe"}},
+  "default_presenter": "male",
+  "fallback_failures": ["rpd", "rate-limit-persistent", "server-unavailable", "request-timeout"],
+  "raw_audio_treatment": "none"
+}

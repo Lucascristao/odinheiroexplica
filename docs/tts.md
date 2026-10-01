@@ -1,46 +1,37 @@
 # Narração
 
-## Fluxo atual
+## Política e fallback
 
-O render diário usa somente Gemini TTS e preserva a mesma voz do apresentador em toda a cascata. Para o apresentador masculino, solicita `Charon`; para o feminino, `Autonoe`. A ordem padrão é `gemini-3.8-flash-tts` → `gemini-3.8-flash-lite-tts` → `gemini-3.1-flash-tts-preview`. O próximo modelo só é acionado quando o anterior devolve RPD esgotado, 429 persistente após três tentativas espaçadas, 5xx persistente ou timeout persistente após as tentativas. Cada pedido pode aguardar até 180 segundos pela resposta. Erro de autenticação, configuração, modelo inexistente, resposta sem áudio ou erro de conexão não avança silenciosamente a cascata.
+`worker/voice-policy.json` é a política canônica de modelos, vozes, idioma e direção vocal. O worker, DSP, gates e chave de cache consultam esse arquivo. Roberto usa `Charon`; Luana usa `Autonoe`. A cascata padrão é `gemini-3.8-flash-tts` → `gemini-3.8-flash-lite-tts` → `gemini-3.1-flash-tts-preview`. O modelo seguinte só entra após RPD esgotado, 429 persistente, 5xx persistente ou timeout persistente, conforme as tentativas do worker. Erros de autenticação, configuração, conexão e resposta sem áudio interrompem a geração. Um trecho restaurado do fallback não prova indisponibilidade atual do principal.
 
-O worker espaça o início das chamadas por pelo menos 22 segundos para respeitar a cota Free de 3 RPM mostrada no AI Studio. Em 429, registra os detalhes estruturados de cota sem expor a chave; RPM transitório espera e tenta novamente no 3.8. Ao entrar em um nível de fallback, as cenas novas dessa execução continuam no nível ativo; se ele também ficar indisponível, o motor desce para o próximo mantendo a mesma voz. Um fallback restaurado do cache não prova indisponibilidade atual do principal e, por isso, não força cenas novas a permanecerem nele. Se os três modelos falharem, o render para e preserva o que já foi gerado. Não existe Azure nem troca automática para outra voz.
+As chamadas começam com pelo menos 22 segundos de intervalo. Produções deste workflow entram em fila por repositório; isso evita que dois renders disputem a mesma cota. Essa fila não controla chamadas feitas por outros aplicativos. RPM, RPD e TPM são limites de requisições por minuto, por dia e tokens por minuto, respectivamente; confira os valores atuais do projeto no AI Studio.
 
-O manifesto de TTS registra `engine`, `voice`, `model`, `voice_treatment` e `fallback_reason` por cena, além de `models_used` e `fallback_scene_ids` no resumo. `requested_voice` guarda a voz solicitada. A credencial `GEMINI_API_KEY` pertence apenas ao worker e não deve aparecer no frontend, no repositório ou em logs.
+3.8 Flash e Lite recebem transcrição literal e `speech_metadata.style` pela API Interactions, com idioma `pt-BR` e voz em `speech_config`. 3.1 preview recebe instruções de leitura separadas da transcrição delimitada pela API GenerateContent. `worker/tts_config.py` adapta cada requisição e calcula o fingerprint dos controles efetivamente enviados. Instruções não entram na narração, no hash do roteiro ou nas âncoras visuais. Campos antigos por cena como `tts.delivery`, `tts.cues`, `rate` e `pitch` continuam sem aplicação. A credencial `GEMINI_API_KEY` fica somente no runner.
 
-Cada arquivo de áudio tem um sidecar `.tts.json` com hash da narração, modelo, voz, tratamento, hash do áudio e duração medida. Ao reexecutar, o worker só reutiliza o MP3 se esses dados e a duração conferirem. Assim, uma execução que parou por quota retoma das cenas faltantes sem repetir chamadas já concluídas. Uma mudança de texto, modelo, voz, tratamento ou áudio invalida o cache daquela cena. Um trecho já gravado pelo 3.1 continua como 3.1 na retomada, sem ser confundido com o 3.8.
+## Cache e retomada
 
-## Semelhança de voz no fallback
+Cada MP3 original permanece sem EQ e tem sidecar `.tts.json` com narração, voz, modelo, duração, hash do áudio, versão e fingerprint da política. O cache só é válido se todos conferirem. Alterar voz, endpoint, idioma, direção, formato da requisição ou texto invalida a gravação correspondente. Áudios legados sem fingerprint não são reclassificados como atuais.
 
-O cache guarda o áudio bruto devolvido pelo Gemini. Nenhuma EQ fixa é aplicada durante a síntese. Qualquer correção existe somente no pós-processamento e apenas quando o manifesto comprova que houve mais de um modelo no mesmo episódio.
+Reexecuções aproveitam gravações válidas, inclusive cenas de fallback, mantendo sua proveniência. Ajustes apenas visuais ou de DSP não exigem novas chamadas. Quando solicitado, o workflow restaura um artifact revisado, mas só aceita trechos com a narração e política atuais. A cache v3 prioriza tentativas anteriores do mesmo run. Se a síntese parar, os áudios já concluídos ficam salvos para a retomada.
 
-Quando o modelo muda entre duas cenas, o worker registra a fronteira exata no manifesto, mas **não insere nenhum marcador audível**. A troca fica auditável tecnicamente sem acrescentar pigarro, fala extra ou efeito sonoro.
+Regeneração integral exige o input manual `force_fresh_audio` no workflow_dispatch e vale somente no primeiro attempt. Pushes e reruns retomam cache. Um texto antigo `force_fresh_audio=true` em `render-trigger/daily.txt` não ativa regeneração. Não reduza roteiro, quantidade de cenas ou duração por quota.
 
-## Continuidade de voz por episódio
+## Continuidade adaptativa v3
 
-A versão `adaptive-voice-continuity-v3` usa uma regra rígida: **mesmo modelo + mesma voz do começo ao fim = áudio intocado**. Nesse caso, cada MP3 é copiado byte por byte para a pasta usada no render. Não há EQ, ganho, limiter, compressor, normalização, resample nem re-encode.
+`worker/process_voice_continuity.py` analisa os originais e gera WAVs separados no runner, sem outra API. Prefere a mediana das cenas 3.8 do episódio quando houver pelo menos duas cenas e doze segundos ativos. Se faltar essa referência para Roberto, usa `worker/voice-references/roberto-charon-3.8.json`, derivado da amostra 3.8/Charon aprovada pelo usuário, com origem, hash e método registrados. Esse perfil não é usado para Autonoe; sem referência compatível, a correção espectral é omitida e o motivo é registrado.
 
-Se o episódio mistura modelos, o modelo de referência, normalmente `gemini-3.8-flash-tts`, permanece intocado. Somente as cenas de outro modelo recebem aproximação espectral lenta em janelas de 5 segundos com sobreposição de 2,5 segundos. O volume do fallback usa apenas ganho estático, limitado pela folga de pico. Não há compressor, limiter nem normalização dinâmica.
+Somente o fallback recebe EQ adaptativa: janelas de 5 segundos, passo de 2,5 segundos, limite de ±2,5 dB por faixa e suavização temporal. Atividade vocal, semelhança do perfil e consistência com a cena reduzem a intensidade da correção quando a referência for fraca. Os coeficientes de confiança indicam quanto aplicar, não uma probabilidade de identidade da voz. A síntese não recebe uma EQ fixa prévia.
 
-A troca de modelo não altera a duração da cena nem desloca os beats visuais. O registro fica apenas nos metadados.
+Episódios inteiros com o mesmo modelo e voz mantêm os MP3s byte por byte, sem efeitos. Em episódios mistos, as cenas do modelo de referência continuam intocadas; apenas o fallback recebe EQ adaptativa e ganho estático para aproximar seu loudness. O ganho respeita a folga de pico sem limiter, compressor ou normalização dinâmica. Diferença acima de 0,8 LU gera aviso explícito no log e manifesto; acima de 1,5 LU interrompe a produção. Não há alteração de pitch ou velocidade, nem sobreposição de falas. Prosódia e interpretação podem continuar diferentes; o tratamento não garante timbre idêntico.
 
-Se o vídeo inteiro sair em Flash-Lite ou 3.1 desde a primeira cena, também não há tentativa de transformar aquela voz em outro modelo, porque não existe transição interna. A correção existe apenas para episódios mistos.
+Originais e sidecars ficam preservados. `public/processed-audio/daily` contém MP3s intocados e WAVs do fallback tratado; FFmpeg/ffprobe validam duração e formatos. O manifesto registra modo de entrega, identidade dos bytes, referência, confiança, ganhos por janela, loudness, picos e hashes. Trocas de modelo ficam apenas nos metadados, sem gerar ou inserir pigarro, fala extra ou efeito audível. A troca não aumenta duração ou desloca beats.
 
-O manifesto registra `model_transition_count`, as cenas onde a troca aconteceu, o modelo anterior, o novo modelo e o modo de pós-processamento. Em modo homogêneo, `effects_applied` fica falso e cada cena registra `byte_identical: true`.
+## Alinhamento e entrega
 
-## Timeline
+Fluxo: roteiro → cache ou Gemini por cena → continuidade v3 → reconhecimento local do WAV processado → âncoras com confiança → timeline → render.
 
-A divisão em cenas e a extensão do roteiro são decisões editoriais: use o necessário para explicar a história inteira. Os limites da API controlam o agendamento da síntese, não a quantidade de cenas nem o conteúdo. Em caso de quota, use cache, espera, retomada e o fallback autorizado; preserve o roteiro completo se a síntese precisar continuar depois.
+Gemini não fornece bookmarks de palavras neste fluxo. `worker/align_narration.py` usa faster-whisper em CPU para localizar palavras no áudio real, com idioma português, atividade vocal e limiares de cobertura/confiança. Usa os aliases de pronúncia também na comparação. A transcrição reconhecida nunca altera roteiro, fontes ou fatos. Apenas âncoras únicas, confiáveis e compatíveis com a ordem/intervalos são aceitas como `audio-word-alignment`.
 
-roteiro por cena → cache válido ou TTS por cena → continuidade de voz offline → duração medida do WAV → estimativa de posição das âncoras → timeline → render.
+Âncoras incertas mantêm estimativas explícitas; entre âncoras localizadas, são interpoladas sem deslocar os pontos confiáveis. Se o reconhecimento ou download do modelo estiver indisponível, o relatório registra o motivo e preserva estimativas. Isso não é alinhamento garantido palavra por palavra: revise o sincronismo no MP4.
 
-O Gemini usado aqui entrega áudio, sem offsets de palavras ou bookmarks. `compute_beat_timings` distribui cada âncora pela duração real do áudio segundo os caracteres e a pontuação da narração. Esses tempos têm `timing_source: estimated-text-alignment`; uma âncora não encontrada recebe `estimated-distributed` e não serve para um palco persistente. O render verifica que as âncoras de palcos persistentes existem uma única vez e aparecem na ordem da fala. Manifestos antigos com `gemini-bookmark` são lidos como estimativas textuais. Ajuste fino de sincronismo precisa de alinhamento forçado ou eventos de TTS realmente medidos.
-
-Cada cena tem arquivo próprio para permitir regeneração isolada. A entrega completa usa um único motor e uma única voz; o modelo pode descer pela cascata 3.8 Flash → 3.8 Flash-Lite → 3.1 quando houver fallback documentado no manifesto.
-
-Na captura da conta Free em 30/09/2026, cada um dos modelos TTS testados tinha 10 RPD e 10 mil TPM. Com sete cenas separadas, um vídeo usa ao menos sete chamadas; tentativas que recebam 429 podem aumentar esse número. Os valores `4/3` e `24/10` do painel representam máximos históricos de uso frente às cotas, não a capacidade restante no momento. As cotas por modelo podem variar; confirme os limites atuais no AI Studio. O fallback pode completar um vídeo mesmo quando a cota do 3.8 acabar, desde que haja cota e disponibilidade no 3.1.
-
-
-## Execução sem cache
-
-Para validar uma chave/API nova, o trigger pode conter `force_fresh_audio=true`. Nessa execução o workflow não restaura o cache do GitHub nem o artifact revisado, limpa o diretório de áudio antes da síntese e força chamadas novas ao Gemini. O áudio recém-gerado volta a ser salvo no cache para as próximas execuções.
+Antes do render, o motor confere a narração, o fingerprint da política, o hash do WAV e sua duração medida. Artifacts incluem manifesto bruto, processado, alinhado e relatório de alinhamento. A revisão manual continua necessária para ouvir as trocas e avaliar a execução visual. A publicação no YouTube permanece manual.

@@ -232,6 +232,12 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
         const labelH = Math.max(20, innerH - valueH - detailH);
 
         const cueProgress = interpolate(frame - element.cueFrame, [0, element.cueDuration], [0, 1], clamp);
+        const cueEase = cueProgress * cueProgress * (3 - 2 * cueProgress);
+        // Treatments alter the targeted information at its authored cue. Their
+        // transforms stay inside the reserved box, preserving complete framing.
+        const giantNumber = element.treatment === "giant_number";
+        const kineticLabel = element.treatment === "kinetic_type" && ["reveal", "update"].includes(element.cueAction ?? "");
+        const maskedEmphasis = element.treatment === "masked_emphasis" && !element.emphasis;
         const color = selected && active?.prominence !== "support" ? accent : WHITE;
         let displayedValue = element.value;
         const currency = /^(R\$|US\$)\s*(\d+(?:[.,]\d+)?)$/;
@@ -356,30 +362,30 @@ export const EditorialStage = ({stage, beats, title}: {stage: Stage; beats: Stag
                 )}
                 <div style={{width: innerW, flexShrink: 0, display: "flex", flexDirection: "column", justifyContent: "center"}}>
                   {element.value && (
-                    <div style={{marginBottom: 4}}>
+                    <div style={{marginBottom: 4, transformOrigin:"left center", transform: giantNumber ? `scale(${0.9 + 0.1 * cueEase})` : undefined}}>
                       <TextBox
                         text={displayedValue ?? element.value}
                         width={innerW}
                         height={valueH}
-                        maxSize={isHeroMetric ? Math.max(108, element.value_size ?? 72) : element.value_size ?? 52}
+                        maxSize={isHeroMetric || giantNumber ? Math.max(108, element.value_size ?? 72) : element.value_size ?? 52}
                         color={GOLD}
                       />
                     </div>
                   )}
-                  <TextBox
+                  <div style={{opacity:kineticLabel ? cueEase : 1, transform:kineticLabel ? `translateY(${6 * (1-cueEase)}px)` : undefined}}><TextBox
                     text={element.label}
                     width={innerW}
                     height={labelH}
                     maxSize={element.label_size ?? (isHeroMetric ? 58 : element.kind === "step" ? 38 : 46)}
                     color={WHITE}
-                    emphasis={element.emphasis}
-                    progress={interpolate(
+                    emphasis={maskedEmphasis ? {phrase:element.label,style:"highlight"} : element.emphasis}
+                    progress={maskedEmphasis ? cueEase : interpolate(
                       frame - element.emphasisTiming.frame,
                       [0, element.emphasisTiming.duration],
                       [0, 1],
                       clamp
                     )}
-                  />
+                  /></div>
                   {element.detail && (
                     <div style={{marginTop: 6}}>
                       <TextBox

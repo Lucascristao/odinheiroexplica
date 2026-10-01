@@ -86,7 +86,7 @@ O canal trabalha com dois apresentadores fixos:
 - Roberto: voz predefinida Gemini `Charon`;
 - Luana: voz predefinida Gemini `Autonoe`.
 
-O render diário usa somente Gemini TTS. Escolha o apresentador antes da síntese e mantenha a mesma voz predefinida em todas as cenas. O modelo principal é `gemini-3.8-flash-tts`, configurável por `GEMINI_TTS_MODEL` antes do início do vídeo. Primeiro aguarde e tente novamente quando a falha for temporária. Se o principal continuar indisponível, o worker pode completar as cenas pendentes com `gemini-3.1-flash-tts-preview` como fallback, aplicando o tratamento leve e registrando modelo e tratamento por cena. O mesmo nome de voz em modelos diferentes não garante timbre idêntico: escute o vídeo completo e ajuste a continuidade vocal antes de aprová-lo.
+O render diário usa somente Gemini TTS, conforme `worker/voice-policy.json`, a política canônica consultada pelo worker. Escolha o apresentador antes da síntese e mantenha a mesma voz em todas as cenas. A cascata padrão é 3.8 Flash → 3.8 Flash Lite → 3.1 Flash preview, avançando somente após falha elegível confirmada. A direção vocal comum é enviada por adapter compatível com cada modelo. Originais ficam sem EQ no cache; o runner aplica correção adaptativa v3, preferindo as cenas principais do episódio e usando a referência aprovada de Roberto/Charon quando elas forem insuficientes. O mesmo preset não garante timbre ou prosódia idênticos: escute o vídeo completo antes de aprová-lo. Mudanças visuais e de DSP aproveitam gravações válidas; regeneração integral exige o input manual do workflow.
 
 Roberto e Luana são personagens editoriais fixos do canal. Todo vídeo deve ter uma apresentação falada breve do apresentador escolhido. A escolha do apresentador deve considerar o assunto, o enquadramento e o público provável do vídeo, sem usar estereótipos simplistas de gênero.
 
@@ -199,7 +199,7 @@ Headline é intenção editorial; só action:update substitui o label. Evitar du
 
 Não usar treatment como catálogo a alternar. Repetir operações sobre o mesmo objeto é continuidade, não repetição de template. Usar takeover somente com takeover_reason e nunca em sequência. Não criar medidor sem dado real nem comparações ANTES/AGORA quando a relação for outra.
 
-A síntese Gemini não devolve bookmarks de palavras. O pipeline estima os instantes pelas âncoras do texto; revisar o sincronismo depois do render e não prometer alinhamento exato. Nenhuma âncora pode estar ausente, repetida ou fora da ordem da narração.
+A síntese Gemini não devolve bookmarks de palavras. O runner localiza âncoras no áudio processado com reconhecimento local e critérios de confiança. Cada evento registra `audio-word-alignment` ou uma estimativa explícita quando o reconhecimento não for suficiente. Revise o sincronismo depois do render; nenhuma âncora pode estar ausente, repetida ou fora da ordem da narração.
 
 Palcos não podem ter colisão, nem mesmo nas posições de anotações que ainda vão surgir. O renderer mede texto com fonte fixa; ampliar a região ou reduzir o texto quando não houver espaço. Letras espremidas não são uma solução.
 
@@ -207,7 +207,7 @@ Som é none por padrão. Escolher poucos eventos com função audível. A foto c
 
 ## Ritmo durante a fala
 
-Use âncoras literais para as mudanças de significado e janelas curtas de animação. Não alongar uma entrada até ocupar quase toda a fala. Não animar cada palavra por obrigação nem exigir uma mudança a cada número fixo de segundos. Conferir manualmente o alinhamento estimado da voz Gemini.
+Use âncoras literais para as mudanças de significado e janelas curtas de animação. Não alongar uma entrada até ocupar quase toda a fala. Não animar cada palavra por obrigação nem exigir uma mudança a cada número fixo de segundos. Conferir o relatório de alinhamento e o sincronismo no vídeo.
 
 O fluxo deve avançar junto com a explicação, o mesmo objeto pode mudar de posição e as anotações devem aparecer junto do elemento relevante. Estados anteriores continuam presentes enquanto ajudam a compreensão. Retire informação quando deixar de ser útil.
 
@@ -268,7 +268,7 @@ Não usar nome do canal, logotipo, ícone ou selo de marca por padrão. A identi
 
 Seguir `docs/editorial-voice.md`. Escrever para o ouvido: frases curtas com uma ideia, exemplos concretos e alternância natural entre pergunta, explicação e consequência. Evitar listas lidas, introduções burocráticas e suspense sem resposta. Não copiar bordões ou imitar a voz dos vídeos de referência.
 
-Escrever intenção, contraste e pausas na própria narração. O worker Gemini não aplica `tts.delivery`, `tts.cues`, `rate` ou `pitch`; esses campos antigos não comprovam direção de atuação. Associar a entrada de número, recorte ou grifo a uma âncora literal única de `visual.beats`. Os tempos são estimados a partir do texto e da duração real, sem bookmarks medidos por palavra; revisar a sincronização no MP4. Reservar tempo de leitura durante a explicação e manter a voz do apresentador e o destaque amarelo da marca.
+Escrever intenção, contraste e pausas na própria narração. A direção comum de `worker/voice-policy.json` é enviada à API; `tts.delivery`, `tts.cues`, `rate` e `pitch` por cena continuam sem aplicação e não comprovam direção de atuação. Associar a entrada de número, recorte ou grifo a uma âncora literal única de `visual.beats`. O alinhamento local usa o áudio real quando houver confiança suficiente, mantendo estimativas explícitas nos demais eventos. Revisar a sincronização no MP4. Reservar tempo de leitura durante a explicação e manter a voz do apresentador e o destaque amarelo da marca.
 
 
 ### Direção de motion design por episódio

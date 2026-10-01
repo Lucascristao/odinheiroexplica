@@ -1,5 +1,7 @@
 requests>=2.32.0
 numpy>=1.26.0
+faster-whisper>=1.1,<2
+num2words>=0.5.13,<1
 google-auth>=2.35.0
 google-api-python-client>=2.149.0
 azure-cognitiveservices-speech>=1.47.0

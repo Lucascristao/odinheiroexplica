@@ -17,27 +17,23 @@ import requests
 
 from tts_config import (
     DEFAULT_PRESENTER,
-    DEFAULT_TTS_PITCH,
-    DEFAULT_TTS_RATE,
     DEFAULT_TTS_VOICE,
     PRESENTER_NAMES,
     PRESENTER_VOICES,
+    PRIMARY_TTS_MODEL, SECONDARY_TTS_MODEL, FALLBACK_TTS_MODEL,
+    TTS_MODEL_CASCADE, ELIGIBLE_FALLBACK_FAILURES,
+    NO_VOICE_TREATMENT,
+    VOICE_POLICY, VOICE_POLICY_VERSION, VOICE_LANGUAGE, VOICE_DELIVERY_STYLE,
+    gemini_speech_request, voice_policy_fingerprint,
 )
 
 
-PRIMARY_TTS_MODEL = "gemini-3.8-flash-tts"
-SECONDARY_TTS_MODEL = "gemini-3.8-flash-lite-tts"
-FALLBACK_TTS_MODEL = "gemini-3.1-flash-tts-preview"
-TTS_MODEL_CASCADE = (PRIMARY_TTS_MODEL, SECONDARY_TTS_MODEL, FALLBACK_TTS_MODEL)
-ELIGIBLE_FALLBACK_FAILURES = {
-    "rpd", "rate-limit-persistent", "server-unavailable", "request-timeout",
-}
-
-# Provider audio is cached untouched. Fallback matching happens only after
-# synthesis and only when an episode actually mixes TTS models.
+# Provider audio is cached untouched. This historical identifier remains only
+# for importers that recognize old artifacts; new audio never receives this EQ.
 FALLBACK_VOICE_TREATMENT = "legacy-charon-3.1-to-3.8-eq-v1"
 FALLBACK_AUDIO_FILTER = ""
-NO_VOICE_TREATMENT = "none"
+
+
 def voice_treatment_for_model(model: str, voice: str) -> str:
     return NO_VOICE_TREATMENT
 
@@ -58,9 +54,9 @@ def configured_fallback_models(primary_model: str) -> list[str]:
             legacy = legacy.strip()
             requested = [legacy] if legacy else []
         else:
-            requested = [SECONDARY_TTS_MODEL, FALLBACK_TTS_MODEL]
+            requested = list(TTS_MODEL_CASCADE[1:])
 
-    allowed_order = [SECONDARY_TTS_MODEL, FALLBACK_TTS_MODEL]
+    allowed_order = list(TTS_MODEL_CASCADE[1:])
     if len(requested) != len(set(requested)) or any(model not in allowed_order for model in requested):
         raise RuntimeError(
             "Fallback Gemini inválido. Use somente gemini-3.8-flash-lite-tts "
@@ -121,6 +117,7 @@ def cached_duration(
             metadata.get("model") != model,
             metadata.get("voice") != voice,
             metadata.get("voice_treatment", NO_VOICE_TREATMENT) != voice_treatment,
+            metadata.get("voice_policy_fingerprint") != voice_policy_fingerprint(model, voice),
             output_file.stat().st_size <= 1000,
             metadata.get("audio_sha256") != audio_sha256(output_file),
         )):
@@ -148,6 +145,9 @@ def save_audio_sidecar(
         "voice": voice,
         "voice_treatment": voice_treatment,
         "fallback_reason": fallback_reason,
+        "voice_policy_version": VOICE_POLICY_VERSION,
+        "voice_policy_fingerprint": voice_policy_fingerprint(model, voice),
+        "speech_endpoint": VOICE_POLICY["models"][model]["endpoint"],
         "narration_sha256": narration_hash,
         "audio_sha256": audio_sha256(output_file),
         "duration_seconds": duration,
@@ -272,6 +272,25 @@ def gemini_429_diagnostic(response: object, gemini_key: str) -> tuple[str, float
     return ("; ".join(fragments) or "detalhes de cota indisponíveis", retry_delay, daily_quota_exceeded)
 
 
+def gemini_audio_block(data: dict, model: str) -> tuple[str, str] | None:
+    """Read the raw REST response for the configured model-specific endpoint."""
+    if VOICE_POLICY["models"][model]["endpoint"] == "interactions":
+        blocks = [
+            content for step in data.get("steps", []) if isinstance(step, dict) and step.get("type") == "model_output"
+            for content in step.get("content", []) if isinstance(content, dict) and content.get("type") == "audio" and isinstance(content.get("data"), str)
+        ]
+        if blocks:
+            block = blocks[-1]
+            return block["data"], block.get("mime_type", "audio/wav")
+    else:
+        candidates = data.get("candidates") or []
+        parts = candidates[0].get("content", {}).get("parts", []) if candidates else []
+        block = next((part.get("inlineData") for part in parts if isinstance(part, dict) and isinstance(part.get("inlineData"), dict) and isinstance(part["inlineData"].get("data"), str)), None)
+        if block:
+            return block["data"], block.get("mimeType", "audio/l16;rate=24000")
+    return None
+
+
 def synthesize_gemini_audio(
     narration: str,
     voice_name: str,
@@ -284,24 +303,7 @@ def synthesize_gemini_audio(
         raise ValueError("Identificador do modelo Gemini inválido.")
     pacer = pacer or GeminiRequestPacer()
     for model in [model]:
-        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent"
-        payload = {
-            "contents": [
-                {
-                    "parts": [{"text": narration}]
-                }
-            ],
-            "generationConfig": {
-                "responseModalities": ["AUDIO"],
-                "speechConfig": {
-                    "voiceConfig": {
-                        "prebuiltVoiceConfig": {
-                            "voiceName": voice_name
-                        }
-                    }
-                }
-            }
-        }
+        url, payload = gemini_speech_request(narration, voice_name, model)
 
         max_attempts = 3
         retry_budget_seconds = 180.0
@@ -314,20 +316,18 @@ def synthesize_gemini_audio(
                 )
                 if response.status_code == 200:
                     data = response.json()
-                    parts = data.get("candidates", [{}])[0].get("content", {}).get("parts", [])
-                    audio_part = next((p for p in parts if "inlineData" in p and "data" in p["inlineData"]), None)
-                    if not audio_part:
-                        print(f"    [Gemini TTS Aviso] Resposta sem inlineData em {model}.", flush=True)
+                    audio_block = gemini_audio_block(data, model)
+                    if not audio_block:
+                        print(f"    [Gemini TTS Aviso] Resposta sem bloco de áudio em {model}.", flush=True)
                         break
 
-                    b64_audio = audio_part["inlineData"]["data"]
-                    mime_type = audio_part["inlineData"].get("mimeType", "")
-                    raw_bytes = base64.b64decode(b64_audio)
+                    b64_audio, mime_type = audio_block
+                    raw_bytes = base64.b64decode(b64_audio, validate=True)
 
                     temp_wav = output_path.with_suffix(".temp.wav")
                     if raw_bytes.startswith(b"RIFF") or "wav" in mime_type:
                         temp_wav.write_bytes(raw_bytes)
-                    elif raw_bytes.startswith(b"ID3") or raw_bytes[:2] == b"\xff\xfb" or "mp3" in mime_type:
+                    elif raw_bytes.startswith(b"ID3") or raw_bytes[:2] == b"\xff\xfb" or "mp3" in mime_type or "mpeg" in mime_type:
                         output_path.write_bytes(raw_bytes)
                         print(f"    [Gemini TTS Sucesso] Áudio direto via {model} (voz '{voice_name}')!", flush=True)
                         return SynthesisOutcome(model)
@@ -511,16 +511,18 @@ def main() -> None:
         "requested_voice": project_voice,
         "presenter": presenter_key,
         "presenter_name": presenter_name,
-        "rate": DEFAULT_TTS_RATE,
-        "pitch": DEFAULT_TTS_PITCH,
+        "voice_policy_version": VOICE_POLICY_VERSION,
+        "voice_language": VOICE_LANGUAGE,
+        "voice_delivery_style": VOICE_DELIVERY_STYLE,
         "output_format": "audio-48khz-192kbitrate-mono-mp3",
         "timing_mode": "estimated-character-alignment",
-        "delivery_version": "tts-per-scene-v3",
+        "delivery_version": "tts-per-scene-v4-directed-policy",
         "scenes": [],
         "total_duration_seconds": 0.0,
     }
 
     print(f"[Audio Engine] Sintetizando {len(scenes)} cenas com voz solicitada '{project_voice}' ({presenter_name})...", flush=True)
+    print(f"[Audio Engine] Política {VOICE_POLICY_VERSION}; idioma {VOICE_LANGUAGE}; direção vocal constante aplicada pela API de cada modelo.", flush=True)
     scene_jobs = []
     for position, scene in enumerate(scenes):
         scene_index = scene.get("scene_index", scene.get("index", position))
@@ -570,6 +572,9 @@ def main() -> None:
                 "voice": project_voice,
                 "voice_treatment": treatment,
                 "fallback_reason": sidecar.get("fallback_reason"),
+                "voice_policy_version": sidecar["voice_policy_version"],
+                "voice_policy_fingerprint": sidecar["voice_policy_fingerprint"],
+                "speech_endpoint": sidecar["speech_endpoint"],
             }
             cached = True
             break
@@ -629,6 +634,9 @@ def main() -> None:
             "voice": project_voice,
             "voice_treatment": voice_treatment,
             "fallback_reason": fallback_reason,
+            "voice_policy_version": VOICE_POLICY_VERSION,
+            "voice_policy_fingerprint": voice_policy_fingerprint(model, project_voice),
+            "speech_endpoint": VOICE_POLICY["models"][model]["endpoint"],
         }
 
     transition_scene_ids = []

@@ -11,6 +11,7 @@ import sys
 import tempfile
 import types
 import unittest
+import wave
 from unittest.mock import patch
 
 
@@ -22,19 +23,24 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 import build_render_input as render  # noqa: E402
 import synthesize_scenes as synth  # noqa: E402
+import tts_config as policy  # noqa: E402
 
 
 class FakeResponse:
-    def __init__(self, status_code: int, *, retry_after: str = "", error: dict | None = None) -> None:
+    def __init__(self, status_code: int, *, retry_after: str = "", error: dict | None = None, payload: dict | None = None) -> None:
         self.status_code = status_code
         self.headers = {"Retry-After": retry_after}
         self.text = "quota exhausted" if status_code == 429 else ""
         self.error = error
+        self.payload = payload
 
     def json(self) -> dict:
+        if self.payload is not None:
+            return self.payload
         if self.status_code == 429:
             return {"error": self.error} if self.error is not None else {}
         return {
+            "steps": [{"type": "model_output", "content": [{"type": "audio", "mime_type": "audio/mpeg", "data": base64.b64encode(b"ID3" + b"a" * 2048).decode("ascii")}]}],
             "candidates": [{
                 "content": {
                     "parts": [{
@@ -63,6 +69,13 @@ class FakeClock:
 
 
 class SynthesizeScenesTests(unittest.TestCase):
+    def assert_requested_model(self, url, payload, model):
+        if model in (synth.PRIMARY_TTS_MODEL, synth.SECONDARY_TTS_MODEL):
+            self.assertTrue(url.endswith("/interactions"))
+            self.assertEqual(payload["model"], model)
+        else:
+            self.assertIn(f"/{model}:generateContent", url)
+
     def setUp(self) -> None:
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
@@ -82,6 +95,63 @@ class SynthesizeScenesTests(unittest.TestCase):
             "--output-dir", str(self.output_dir),
             "--manifest", str(self.manifest_path),
         ]
+
+    def test_actual_request_direction_is_separate_from_verbatim_3_8_text(self) -> None:
+        narration = "Eu sou o Roberto. O dólar mudou, mas o produto não."
+        for model in (synth.PRIMARY_TTS_MODEL, synth.SECONDARY_TTS_MODEL):
+            for voice in ("Charon", "Autonoe"):
+                url, request = policy.gemini_speech_request(narration, voice, model)
+                self.assertTrue(url.endswith("/interactions"))
+                content = request["input"][0]["content"][0]
+                self.assertEqual(content["text"], narration)
+                self.assertEqual(content["annotations"], [{"type":"speech_metadata", "style":policy.VOICE_DELIVERY_STYLE}])
+                self.assertEqual(request["generation_config"]["speech_config"], [{"voice":voice, "language":"pt-BR"}])
+        _, legacy = policy.gemini_speech_request(narration, "Charon", synth.FALLBACK_TTS_MODEL)
+        prompt = legacy["contents"][0]["parts"][0]["text"]
+        self.assertEqual(prompt.split("<transcript>\n",1)[1].rsplit("\n</transcript>",1)[0], narration)
+        self.assertIn(policy.VOICE_DELIVERY_STYLE, prompt)
+        self.assertNotIn("speech_metadata", json.dumps(legacy))
+
+    def test_raw_interactions_steps_and_legacy_pcm_are_parsed_and_wrapped_once(self) -> None:
+        pcm = b"\x01\x00" * 64
+        buffer = io.BytesIO()
+        with wave.open(buffer, "wb") as audio:
+            audio.setnchannels(1); audio.setsampwidth(2); audio.setframerate(24000); audio.writeframes(pcm)
+        cases = [
+            (synth.PRIMARY_TTS_MODEL, {"steps":[{"type":"user_input","content":[{"type":"text","text":"not audio"}]},{"type":"model_output","content":[{"type":"audio","mime_type":"audio/wav","data":base64.b64encode(buffer.getvalue()).decode()}]}]}),
+            (synth.FALLBACK_TTS_MODEL, {"candidates":[{"content":{"parts":[{"inlineData":{"mimeType":"audio/L16;rate=24000","data":base64.b64encode(pcm).decode()}}]}}]}),
+        ]
+        for model, payload in cases:
+            output = self.folder / (model + ".mp3")
+            def fake_convert(command, **_kwargs):
+                self.assertEqual(command[0], "ffmpeg")
+                with wave.open(command[command.index("-i")+1], "rb") as audio:
+                    self.assertEqual(audio.getnframes(),64)
+                    self.assertEqual(audio.getframerate(),24000)
+                    self.assertEqual(audio.readframes(64),pcm)
+                Path(command[-1]).write_bytes(b"ID3" + b"a"*2048)
+            with patch.object(synth.requests,"post",lambda *_a,**_kw:FakeResponse(200,payload=payload),create=True), patch.object(synth.subprocess,"run",fake_convert):
+                self.assertEqual(synth.synthesize_gemini_audio("Texto.","Charon",output,"test-key",model).model,model)
+
+    def test_cache_requires_current_style_endpoint_and_voice_fingerprint(self) -> None:
+        output = self.folder / "cached.mp3"
+        output.write_bytes(b"ID3" + b"a"*2048)
+        model, voice = synth.PRIMARY_TTS_MODEL, "Charon"
+        digest = hashlib.sha256("Texto original.".encode()).hexdigest()
+        synth.save_audio_sidecar(output,digest,model,voice,3.0)
+        sidecar_path = output.with_suffix(".tts.json")
+        metadata = json.loads(sidecar_path.read_text())
+        self.assertEqual(metadata["voice_policy_fingerprint"],policy.voice_policy_fingerprint(model,voice))
+        self.assertEqual(metadata["narration_sha256"],digest)
+        with patch.object(synth,"duration_seconds",return_value=3.0):
+            self.assertEqual(synth.cached_duration(output,digest,model,voice),3.0)
+            with patch.dict(policy.VOICE_POLICY,{"delivery_style":"Whispered urgently"}):
+                self.assertIsNone(synth.cached_duration(output,digest,model,voice))
+            with patch.dict(policy.VOICE_POLICY["models"][model],{"endpoint":"generate-content","style_transport":"directed_prompt"}):
+                self.assertIsNone(synth.cached_duration(output,digest,model,voice))
+            metadata.pop("voice_policy_fingerprint")
+            sidecar_path.write_text(json.dumps(metadata))
+            self.assertIsNone(synth.cached_duration(output,digest,model,voice),"Legacy audio cannot acquire a modern policy fingerprint")
 
     def test_429_fails_without_azure_and_resume_reuses_completed_scene(self) -> None:
         requests_made = []
@@ -209,7 +279,7 @@ class SynthesizeScenesTests(unittest.TestCase):
 
         def fake_post(url, **_kwargs):
             expected_model, response = schedule.pop(0)
-            self.assertIn(f"/{expected_model}:generateContent", url)
+            self.assert_requested_model(url, _kwargs["json"], expected_model)
             calls.append(expected_model)
             return response
 
@@ -231,20 +301,28 @@ class SynthesizeScenesTests(unittest.TestCase):
             os.environ.pop("GEMINI_TTS_FALLBACK_MODELS", None)
             synth.main()
             self.assertEqual(schedule, [])
+            self.assertEqual((self.output_dir / "scene-01.mp3").read_bytes(),b"ID3"+b"a"*2048)
             manifest = json.loads(self.manifest_path.read_text(encoding="utf-8"))
             self.assertEqual(manifest["fallback_models"], [
                 synth.SECONDARY_TTS_MODEL, synth.FALLBACK_TTS_MODEL,
             ])
             self.assertEqual(manifest["fallback_scene_ids"], ["scene-01", "scene-02"])
-            self.assertEqual(manifest["model_transition_count"], 1)
+            self.assertEqual(manifest["model_transition_count"],1)
             transition = manifest["scenes"][1]["model_transition"]
-            self.assertEqual(transition["from_model"], synth.PRIMARY_TTS_MODEL)
-            self.assertEqual(transition["to_model"], synth.SECONDARY_TTS_MODEL)
-            self.assertEqual(transition["marker_status"], "disabled")
+            self.assertEqual(transition["from_model"],synth.PRIMARY_TTS_MODEL)
+            self.assertEqual(transition["to_model"],synth.SECONDARY_TTS_MODEL)
+            self.assertEqual(transition["marker_status"],"disabled")
+            self.assertFalse((self.output_dir / "scene-01.transition.mp3").exists())
+            self.assertEqual(
+                manifest["fallback_scene_ids_by_model"][synth.SECONDARY_TTS_MODEL],
+                ["scene-01", "scene-02"],
+            )
             self.assertEqual(manifest["scenes"][1]["voice_treatment"], "none")
             self.assertEqual({scene["voice"] for scene in manifest["scenes"]}, {"Charon"})
             render.require_gemini_manifest(manifest)
-            self.assertFalse((self.output_dir / "scene-01.transition.mp3").exists())
+            sidecar = json.loads((self.output_dir / "scene-01.tts.json").read_text(encoding="utf-8"))
+            self.assertEqual(sidecar["model"], synth.SECONDARY_TTS_MODEL)
+            self.assertEqual(sidecar["voice_treatment"], "none")
             synth.main()
             self.assertEqual(len(calls), 4, "Reexecução com cache não deve chamar a API")
 
@@ -264,7 +342,7 @@ class SynthesizeScenesTests(unittest.TestCase):
 
         def fake_post(url, **_kwargs):
             expected_model, response = schedule.pop(0)
-            self.assertIn(f"/{expected_model}:generateContent", url)
+            self.assert_requested_model(url, _kwargs["json"], expected_model)
             return response
 
         def fake_run(command, **_kwargs):
@@ -286,14 +364,15 @@ class SynthesizeScenesTests(unittest.TestCase):
             synth.main()
 
         self.assertEqual(schedule, [])
+        self.assertEqual((self.output_dir / "scene-00.mp3").read_bytes(),b"ID3"+b"a"*2048)
         manifest = json.loads(self.manifest_path.read_text(encoding="utf-8"))
         self.assertEqual({scene["model"] for scene in manifest["scenes"]}, {synth.FALLBACK_TTS_MODEL})
+        self.assertEqual(manifest["model_transition_count"],0)
+        self.assertFalse((self.output_dir / "scene-00.transition.mp3").exists())
         self.assertTrue(all(
             scene["voice_treatment"] == synth.NO_VOICE_TREATMENT
             for scene in manifest["scenes"]
         ))
-        self.assertEqual(manifest["model_transition_count"], 0)
-        self.assertFalse((self.output_dir / "scene-00.transition.mp3").exists())
         self.assertIn(synth.PRIMARY_TTS_MODEL + ":rpd", manifest["scenes"][0]["fallback_reason"])
         self.assertIn(synth.SECONDARY_TTS_MODEL + ":rpd", manifest["scenes"][0]["fallback_reason"])
         render.require_gemini_manifest(manifest)
@@ -383,11 +462,11 @@ class SynthesizeScenesTests(unittest.TestCase):
             patch.object(synth.time, "monotonic", clock.monotonic),
         ):
             self.assertEqual(synth.synthesize_gemini_audio(
-                "First", "Charon", self.folder / "first.mp3", "test-key", "gemini-test-model", pacer
-            ).model, "gemini-test-model")
+                "First", "Charon", self.folder / "first.mp3", "test-key", synth.PRIMARY_TTS_MODEL, pacer
+            ).model, synth.PRIMARY_TTS_MODEL)
             self.assertEqual(synth.synthesize_gemini_audio(
-                "Second", "Charon", self.folder / "second.mp3", "test-key", "gemini-test-model", pacer
-            ).model, "gemini-test-model")
+                "Second", "Charon", self.folder / "second.mp3", "test-key", synth.PRIMARY_TTS_MODEL, pacer
+            ).model, synth.PRIMARY_TTS_MODEL)
         self.assertEqual(starts, [0.0, 22.0, 44.0])
         self.assertEqual(clock.waits, [15, 7, 22])
 

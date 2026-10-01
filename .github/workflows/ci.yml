@@ -17,6 +17,11 @@ jobs:
         with:
           node-version: 22
 
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
       - name: Install
         run: npm install --no-audit --no-fund
 
@@ -24,16 +29,28 @@ jobs:
         run: npm run validate:editorial -- video/data/daily.json
 
       - name: Validate Python pipeline
-        run: python -m py_compile worker/synthesize_scenes.py worker/process_voice_continuity.py worker/restore_reviewed_audio.py worker/build_render_input.py worker/build_youtube_package.py worker/editorial_source_audit.py worker/prepare_visual_assets.py
+        run: python -m py_compile worker/render_request.py worker/tts_config.py worker/synthesize_scenes.py worker/process_voice_continuity.py worker/restore_reviewed_audio.py worker/build_render_input.py worker/build_youtube_package.py worker/editorial_source_audit.py worker/prepare_visual_assets.py
+
+      - name: Validate render request and retry policy (offline)
+        run: python worker/test_render_request.py
+
+      - name: Validate canonical voice policy and documentation
+        run: python worker/validate_voice_policy.py
 
       - name: Install audio regression dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg
-          python -m pip install --no-cache-dir "numpy>=1.26"
+          python -m pip install --no-cache-dir "numpy>=1.26" "num2words>=0.5.13,<1"
 
       - name: Test TTS quota and resume (offline)
         run: python worker/test_synthesize_scenes.py
+
+      - name: Test reviewed audio provenance and legacy cache (offline)
+        run: python worker/test_restore_reviewed_audio.py
+
+      - name: Test narration anchor alignment (offline)
+        run: python worker/test_align_narration.py
 
       - name: Test voice continuity WAV processing
         run: python worker/test_process_voice_continuity.py

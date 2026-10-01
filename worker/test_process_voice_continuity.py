@@ -10,8 +10,72 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
+import numpy as np
+
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import process_voice_continuity as continuity  # noqa: E402
+
+
+class VoiceContinuitySafetyTests(unittest.TestCase):
+    def reference_asset(self):
+        profile = [-5.0, -4.0, -12.0, -25.0, -30.0]
+        return {
+            "schema_version": continuity.REFERENCE_SCHEMA, "reference_id": "test-primary-reference",
+            "model": continuity.PRIMARY_MODEL, "voice": "Charon",
+            "provenance_kind": "user-selected-primary-voice-sample",
+            "profile_method": continuity.REFERENCE_PROFILE_METHOD,
+            "bands_hz": [list(band) for band in continuity.BANDS], "profile_db": profile,
+            "profile_sha256": continuity.profile_sha256(profile), "correction_confidence": .75,
+            "sources": [{"filename": "unit-fixture.wav", "sha256": "a" * 64, "active_seconds": 8.0, "duration_seconds": 10.0}],
+        }
+
+    def test_primary_reference_is_reusable_without_extra_tts_and_never_for_another_voice(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "reference.json"
+            asset = self.reference_asset()
+            path.write_text(json.dumps(asset), encoding="utf-8")
+            profile, metadata = continuity.select_reference([], "Charon", path)
+            self.assertEqual(metadata["reason"], "reusable-primary-reference")
+            self.assertEqual(metadata["scene_ids"], [])
+            self.assertEqual(metadata["sources"][0]["sha256"], "a" * 64)
+            self.assertTrue(np.array_equal(profile, asset["profile_db"]))
+            wrong_voice, rejected = continuity.select_reference([], "Autonoe", path)
+            self.assertIsNone(wrong_voice)
+            self.assertIn("voice-mismatch", rejected["reason"])
+            current = [("a", np.ones(5) * -10, 6), ("b", np.ones(5) * -12, 6)]
+            episode_profile, episode = continuity.select_reference(current, "Charon", path)
+            self.assertEqual(episode["reason"], "episode-primary-profile")
+            self.assertEqual(episode["scene_ids"], ["a", "b"])
+            self.assertTrue(np.allclose(episode_profile, -11))
+            asset["profile_db"][0] -= 1
+            path.write_text(json.dumps(asset), encoding="utf-8")
+            with self.assertRaisesRegex(RuntimeError, "hash"):
+                continuity.load_reusable_reference(path, "Charon")
+
+    def test_weak_and_phonetic_outlier_windows_reduce_correction_confidence(self):
+        reference = np.array([-5., -4., -12., -25., -30.])
+        scene = reference + np.array([2., -1., 0., .5, -.5])
+        confident, _ = continuity._window_confidence(reference, scene, scene, {"active_seconds": 4., "activity_fraction": .9}, .75)
+        weak, _ = continuity._window_confidence(reference, scene, scene, {"active_seconds": 1.3, "activity_fraction": .25}, .75)
+        outlier = scene + np.array([10., -5., 2., 9., -9.])
+        atypical, _ = continuity._window_confidence(reference, outlier, scene, {"active_seconds": 4., "activity_fraction": .9}, .75)
+        self.assertGreater(confident, weak * 5)
+        self.assertGreater(confident, atypical * 5)
+        self.assertGreaterEqual(weak, 0)
+        self.assertLessEqual(confident, .75)
+
+    def test_warning_failure_thresholds_and_peak_metadata_are_consistent(self):
+        self.assertFalse(continuity.loudness_assessment(.8)["loudness_warning"])
+        self.assertTrue(continuity.loudness_assessment(.9)["loudness_warning"])
+        self.assertTrue(continuity.loudness_assessment(1.5)["loudness_warning"])
+        with self.assertRaisesRegex(RuntimeError, "failure tolerance"):
+            continuity.loudness_assessment(1.51)
+        gain, predicted = continuity.static_gain_with_peak_guard(4, -.2)
+        self.assertAlmostEqual(gain, -1.02)
+        self.assertAlmostEqual(predicted, -1.22)
+        self.assertAlmostEqual(predicted, -.2 + gain)
+
+
 
 
 @unittest.skipUnless(

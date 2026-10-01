@@ -20,7 +20,7 @@ export const stageElementSchema = z.object({
   text_region: regionSchema.optional(),
   label_size: z.number().min(32).max(120).optional(),
   value_size: z.number().min(48).max(260).default(72),
-  object_type: z.enum(["wallet", "bank", "receipt", "component"]).optional(),
+  object_type: z.enum(["wallet", "bank", "receipt", "component", "factory", "truck", "package"]).optional(),
   label: z.string().min(1).max(80),
   detail: z.string().max(160).optional(),
   value: z.string().max(32).optional(),
@@ -104,6 +104,7 @@ export const stageEventFields = {
 export type EditorialStage = z.infer<typeof editorialStageSchema>;
 export type StageElement = z.infer<typeof stageElementSchema>;
 export type StageEvent = {
+  treatment?: "kinetic_type" | "giant_number" | "flow_diagram" | "timeline" | "split_compare" | "meter" | "spotlight" | "equation" | "stack" | "signal" | "masked_emphasis" | "depth_photo";
   motion_seconds?: number;
   camera?: StageCamera;
   mark_ids?: string[];
@@ -232,7 +233,7 @@ export function validateStageEvents(stage: EditorialStage, beats: StageEvent[]):
 // Pure frame evaluation works with parallel/out-of-order Remotion rendering.
 // Events preserve element identity and previous values until explicitly changed.
 export function resolveStage(stage: EditorialStage, beats: StageEvent[], frame: number, fps=30) {
-  const elements = stage.elements.map((element) => ({...element, visible: element.initially_visible !== false, wasVisible: element.initially_visible !== false, changedAt: 0, cueFrame:0, cueDuration:fps*0.45, visibilityDuration:fps*0.35, markIds:[] as string[], markTiming:{} as Record<string,{frame:number;duration:number}>, emphasisTiming:{frame:0,duration:1}, view:{...fullView}, emphasis:null as Emphasis|null, chartFocus:null as {from:number;to:number}|null}));
+  const elements = stage.elements.map((element) => ({...element, visible: element.initially_visible !== false, wasVisible: element.initially_visible !== false, changedAt: 0, cueFrame:0, cueDuration:fps*0.45, cueAction:undefined as StageEvent["action"], treatment:undefined as StageEvent["treatment"], visibilityDuration:fps*0.35, markIds:[] as string[], markTiming:{} as Record<string,{frame:number;duration:number}>, emphasisTiming:{frame:0,duration:1}, view:{...fullView}, emphasis:null as Emphasis|null, chartFocus:null as {from:number;to:number}|null}));
   let active: StageEvent | undefined;
   const ordered = beats.filter((b) => Number.isFinite(b.resolved_frame)).slice().sort((a, b) => a.resolved_frame! - b.resolved_frame!);
   for (const [index, beat] of ordered.entries()) {
@@ -249,6 +250,7 @@ export function resolveStage(stage: EditorialStage, beats: StageEvent[], frame: 
       if (beat.retire_ids?.includes(element.id)) visible = false;
       if (element.id === beat.target_id) {
         element.cueFrame=beat.resolved_frame!; element.cueDuration=motionFrames;
+        element.cueAction=beat.action; element.treatment=beat.treatment;
         if(beat.mark_ids!==undefined){element.markTiming=Object.fromEntries(beat.mark_ids.map(id=>[id,element.markTiming[id]??{frame:beat.resolved_frame!,duration:motionFrames}]));element.markIds=beat.mark_ids;}
         if(beat.emphasis!==undefined){element.emphasis=beat.emphasis;element.emphasisTiming={frame:beat.resolved_frame!,duration:motionFrames};}
         if(beat.chart_focus!==undefined)element.chartFocus=beat.chart_focus;

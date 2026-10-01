@@ -4,15 +4,19 @@ import math
 import re
 import unicodedata
 import copy
+import hashlib
+import subprocess
 from pathlib import Path
+
+from tts_config import TTS_MODEL_CASCADE, PRESENTER_VOICES, VOICE_POLICY_VERSION, voice_policy_fingerprint
 
 
 FPS = 30
 SCENE_TAIL_SECONDS = 0.28
 FINAL_SCENE_TAIL_SECONDS = 1.9
 
-REAL_BOOKMARK_SOURCES = {"azure-bookmark", "tts-bookmark"}
-ESTIMATED_ANCHOR_SOURCES = {"estimated-text-alignment", "text-fallback"}
+REAL_BOOKMARK_SOURCES = {"azure-bookmark", "tts-bookmark", "audio-word-alignment"}
+ESTIMATED_ANCHOR_SOURCES = {"estimated-text-alignment", "text-fallback", "estimated-between-audio-anchors"}
 
 
 
@@ -142,11 +146,8 @@ def require_gemini_manifest(manifest: dict) -> None:
     if not scenes or manifest.get("engine") != engine:
         raise RuntimeError("Render diário exige manifesto de áudio exclusivamente Gemini.")
 
-    primary_model = "gemini-3.8-flash-tts"
-    secondary_model = "gemini-3.8-flash-lite-tts"
-    legacy_fallback_model = "gemini-3.1-flash-tts-preview"
-    allowed_models = {primary_model, secondary_model, legacy_fallback_model}
-    legacy_charon_treatment = "none"
+    primary_model = TTS_MODEL_CASCADE[0]
+    allowed_models = set(TTS_MODEL_CASCADE)
 
     models = {item.get("model") for item in scenes}
     voices = {item.get("voice") for item in scenes}
@@ -156,11 +157,6 @@ def require_gemini_manifest(manifest: dict) -> None:
         configured_fallbacks = [single] if single else []
     configured_fallbacks = [model for model in configured_fallbacks if model]
 
-    def expected_treatment(item: dict) -> str:
-        if item.get("model") == legacy_fallback_model and item.get("voice") == "Charon":
-            return legacy_charon_treatment
-        return "none"
-
     if (
         any(item.get("engine") != engine for item in scenes)
         or not models.issubset(allowed_models)
@@ -168,14 +164,35 @@ def require_gemini_manifest(manifest: dict) -> None:
         or None in voices
         or manifest.get("model") != primary_model
         or manifest.get("voice") not in voices
-        or any(model not in {secondary_model, legacy_fallback_model} for model in configured_fallbacks)
+        or not voices.issubset(set(PRESENTER_VOICES.values()))
+        or any(model not in set(TTS_MODEL_CASCADE[1:]) for model in configured_fallbacks)
         or any(model not in configured_fallbacks for model in models if model != primary_model)
         or any(
-            item.get("voice_treatment", "none") != expected_treatment(item)
+            item.get("voice_treatment", "none") != "none"
             for item in scenes
         )
     ):
         raise RuntimeError("Manifesto contém outro motor, modelo ou voz em alguma cena.")
+
+
+def validate_audio_integrity(scene: dict, audio: dict, audio_dir: Path) -> None:
+    narration_hash = hashlib.sha256(str(scene["narration"]).strip().encode("utf-8")).hexdigest()
+    if audio.get("narration_sha256") != narration_hash:
+        raise RuntimeError(f"Áudio não corresponde à narração atual: {audio['id']}")
+    if audio.get("voice_policy_version") != VOICE_POLICY_VERSION or audio.get("voice_policy_fingerprint") != voice_policy_fingerprint(audio["model"], audio["voice"]):
+        raise RuntimeError(f"Áudio não corresponde à política vocal atual: {audio['id']}")
+    root = audio_dir.resolve()
+    path = (root / audio["file"]).resolve()
+    if not path.is_relative_to(root) or not path.is_file():
+        raise RuntimeError(f"Áudio ausente ou caminho inválido: {audio['id']}")
+    expected = (audio.get("postprocess") or {}).get("output_sha256")
+    if not expected or hashlib.sha256(path.read_bytes()).hexdigest() != expected:
+        raise RuntimeError(f"Hash do áudio processado diverge: {audio['id']}")
+    probe = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "default=noprint_wrappers=1:nokey=1", str(path)], check=True, capture_output=True, text=True)
+    duration = float(probe.stdout.strip())
+    registered = float(audio["duration_seconds"])
+    if not math.isfinite(duration) or not math.isfinite(registered) or duration <= 0 or registered <= 0 or abs(duration - registered) > .01:
+        raise RuntimeError(f"Duração do áudio processado diverge: {audio['id']}")
 
 
 def main() -> None:
@@ -183,6 +200,7 @@ def main() -> None:
     parser.add_argument("--project", required=True)
     parser.add_argument("--tts-manifest", required=True)
     parser.add_argument("--audio-public-prefix", required=True)
+    parser.add_argument("--audio-dir")
     parser.add_argument("--visual-assets-manifest")
     parser.add_argument("--require-gemini", action="store_true")
     parser.add_argument("--require-voice-continuity", action="store_true")
@@ -202,6 +220,9 @@ def main() -> None:
             raise RuntimeError("Render diário exige continuidade de voz processada em todas as cenas.")
 
     audio_by_id = {item["id"]: item for item in manifest["scenes"]}
+    if len(audio_by_id) != len(manifest["scenes"]):
+        raise RuntimeError("Manifesto contém IDs de áudio duplicados.")
+    audio_dir = Path(args.audio_dir or (Path("public") / args.audio_public_prefix))
 
     visual_assets_by_id = {}
     if args.visual_assets_manifest:
@@ -225,6 +246,8 @@ def main() -> None:
         audio = audio_by_id.get(scene_id)
         if audio is None:
             raise RuntimeError(f"Áudio não encontrado para {scene_id}")
+        if args.require_voice_continuity:
+            validate_audio_integrity(scene, audio, audio_dir)
 
         tail_seconds = (
             FINAL_SCENE_TAIL_SECONDS
@@ -289,6 +312,8 @@ def main() -> None:
                 "audio_voice_treatment": audio.get("voice_treatment", "none"),
                 "audio_fallback_reason": audio.get("fallback_reason"),
                 "audio_postprocess": audio.get("postprocess"),
+                "audio_alignment": audio.get("alignment"),
+                "audio_voice_policy_fingerprint": audio.get("voice_policy_fingerprint"),
                 "audio_file": (
                     f"{args.audio_public_prefix.rstrip('/')}/{audio['file']}"
                 ),
@@ -304,6 +329,8 @@ def main() -> None:
         "duration_in_frames": cursor,
         "voice": manifest["voice"],
         "voice_postprocess": manifest.get("postprocess"),
+        "voice_alignment": manifest.get("alignment"),
+        "voice_policy_version": manifest.get("voice_policy_version"),
         "scenes": output_scenes,
     }
 

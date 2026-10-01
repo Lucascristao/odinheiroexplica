@@ -1,0 +1,67 @@
+{
+  "schema_version": "gemini-voice-reference-v1",
+  "reference_id": "roberto-charon-gemini-3.8-user-sample-2026-09-30",
+  "model": "gemini-3.8-flash-tts",
+  "voice": "Charon",
+  "provenance_kind": "user-selected-primary-voice-sample",
+  "provenance_note": "Derived offline from the user-supplied main Charon comparison WAV. This is the selected principal model, not a synthesized substitute.",
+  "profile_method": "normalized-broadband-power-median-energy-active-frames-v1",
+  "bands_hz": [
+    [
+      80,
+      300
+    ],
+    [
+      300,
+      900
+    ],
+    [
+      900,
+      2500
+    ],
+    [
+      2500,
+      6000
+    ],
+    [
+      6000,
+      10000
+    ]
+  ],
+  "profile_db": [
+    -4.533521,
+    -4.268226,
+    -14.77056,
+    -26.494681,
+    -32.733818
+  ],
+  "profile_sha256": "59d76917825ab40b7a629ce46ce5e64d82ccd02a755b9648d9fde4552bc05eaf",
+  "correction_confidence": 0.75,
+  "confidence_scope": "conservative signal-correction heuristic; not a voice identity probability",
+  "sources": [
+    {
+      "filename": "gemini-3.8-flash-tts-Charon.wav",
+      "sha256": "3276a6632e37c9753bb0793f17cdbc98c220f81c54e7758ec9a475e4caa37ce4",
+      "duration_seconds": 10.56,
+      "active_seconds": 9.003,
+      "activity_fraction": 0.8577,
+      "original_sample_rate": 24000,
+      "original_channels": 1,
+      "original_codec": "pcm_s16le",
+      "profile_details": {
+        "activity_gate_dbfs": -41.793,
+        "active_frames": 211,
+        "active_seconds": 9.003,
+        "activity_fraction": 0.8577,
+        "reason": "accepted",
+        "profile_db": [
+          -4.5335,
+          -4.2682,
+          -14.7706,
+          -26.4947,
+          -32.7338
+        ]
+      }
+    }
+  ]
+}
