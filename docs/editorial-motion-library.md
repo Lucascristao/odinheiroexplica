@@ -33,6 +33,20 @@ A composição compartilhada usa a fonte de produção no Chromium e verifica es
 
 O Actions executa uma verificação antes da narração e outra com o relógio do áudio real, salvando quadros e relatórios. Textos em imagens documentais ainda exigem conferência visual: geometria válida não comprova legibilidade raster.
 
+### Conferir o que será executado
+
+O diagnóstico de direção separa erros de execução de alertas editoriais. Uma escolha explícita sem os dados exigidos interrompe o plano antes da voz: `flow_diagram` precisa de uma conexão do alvo, `equation`/`split_compare`/`stack`/`meter`/`signal` precisam de uma operação correspondente, `kinetic_type` precisa de `reveal`/`update` de texto, `giant_number` precisa de `value`, e `masked_emphasis` precisa de um rótulo de texto. Uma operação já declarada pode continuar visível nos beats seguintes; não duplicar dados para simular continuidade.
+
+No palco persistente, `behavior: reframe` sozinho não move câmera. Declare `camera` ou selecione `camera_mode: auto` conscientemente; em uma prova documental, `view` ou `mark_ids` executam a aproximação ou o destaque regional. Um nome de tratamento, `transition` ou uma frase em `visual_direction` não substitui esses dados.
+
+O relatório compara câmeras e posições declaradas com as mudanças planejadas pelo mesmo resolver do renderer. Uma câmera idêntica, `hold`, movimento para a mesma posição, entrada sem mudança de visibilidade ou efeito suprimido por `motion_profile: static` recebe um alerta específico. Todas as cenas com câmera e objetos parados também pedem revisão do storyboard. Esses alertas não exigem uma cota de efeitos: explique por que o quadro estável ajuda a ler a prova e verifique onde uma relação precisa de percurso, transformação ou contraste. A revisão final usa o relógio do áudio e os quadros reais.
+
+### Corrigir layout preservando a explicação
+
+Use a mensagem da auditoria para identificar o elemento, conexão, operação e frame que falharam. Reserve mais área para o texto, reorganize participantes, crie o corredor da relação ou separe um momento de leitura quando necessário. Uma pilha usa `element_ids` em ordem vertical e espaço lateral para sua espinha; uma comparação preserva os dois lados reais; uma conexão mantém origem, destino e significado.
+
+Não troque uma demonstração por `spotlight` nem apague setas, câmera ou operações apenas para obter validação verde. Se a composição precisar mudar, confira que o espectador continua vendo a relação que a fala explica e que cada intenção do storyboard virou uma ação executável. Refaça a auditoria completa dos estados de entrada, movimento e leitura antes da síntese. Depois do áudio, confira novamente as mesmas relações com os tempos finais.
+
 ### Câmera e entradas autorais no palco
 
 `stage.camera_mode: manual` (também usado quando omitido) preserva câmeras explícitas; `static` mantém o quadro estável. `auto` é uma opção autoral que acompanha alvos e operações, limitada pelo enquadramento completo da informação visível. Não é ativada automaticamente para todos os vídeos. `beat.camera_mode: hold` mantém o enquadramento; uma câmera explícita continua tendo prioridade. Use `initial_camera`, câmeras nos beats e `moves` para percursos próprios da história.
@@ -47,11 +61,9 @@ Aplicado dentro de kinetic_type. Palavras não aparecem como um bloco único: en
 
 No palco persistente, o label mantém suas linhas e sua região medida; os dados numéricos permanecem exatos. Use o tratamento nos reveals/updates pertinentes, sem aplicá-lo a toda frase.
 
-### animated number — renderer legado
+### Números no palco e renderer legado
 
-Aplicado em valores numéricos. O número progride durante a explicação e preserva prefixo, sufixo e separador decimal quando possível.
-
-Use quando o número for informação real. Não anime números apenas por decoração.
+No palco persistente, os valores são exibidos exatamente como declarados. `giant_number` amplia a presença do valor dentro da região reservada; não cria um contador nem interpola quantias. Atualizações de valores precisam de `action: update` e dados verificados. O contador progressivo existe somente no renderer legado e não deve ser prometido por um `treatment` do palco.
 
 ### masked emphasis
 
@@ -59,13 +71,11 @@ Treatment: masked_emphasis.
 
 Uma faixa de destaque percorre a frase sem trocar a composição inteira. Use para uma conclusão, ressalva ou contraste curto. Não repetir várias vezes na mesma cena e não usar em texto longo.
 
-### depth photo — montagem legada
+### Foto em movimento e montagem legada
 
-Treatment: depth_photo com medium: photo_cutout.
+No palco persistente, `depth_photo` exige um alvo `kind: photo` com `image_motion: push | pan`; o movimento fica dentro da região da imagem. Um `source_excerpt` preserva a evidência documental e usa `view`/`mark_ids`, sem receber essa animação fotográfica.
 
-A fotografia recortada ocupa uma camada entre texto de fundo e informação de primeiro plano. O objeto precisa ocultar parte do texto ou interagir espacialmente com a composição; caso contrário, use a composição fotográfica comum.
-
-É a forma preferencial quando uma foto tem papel narrativo forte.
+A montagem com uma fotografia recortada entre texto de fundo e primeiro plano (`depth_photo` com `medium: photo_cutout`) pertence ao renderer legado. O palco não cria essa profundidade apenas pelo nome do tratamento. Quando a história exigir essa interação espacial, crie e valide uma composição autoral que a execute.
 
 ### bloom — transição legada
 

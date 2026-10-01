@@ -16,11 +16,14 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
       - name: Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: pip
+          cache-dependency-path: .github/workflows/ci.yml
 
       - name: Install
         run: npm ci --no-audit --no-fund
@@ -28,12 +31,39 @@ jobs:
       - name: Validate daily editorial contract
         run: npm run validate:editorial -- video/data/daily.json --require-explanation
 
+      - name: Normalize current episode for layout audit
+        run: python worker/editorial_project.py --input video/data/daily.json --output video/generated/daily-project.json
+
+      - name: Check current episode with production font
+        id: layout_geometry
+        timeout-minutes: 10
+        run: |
+          npm run validate:layout -- \
+            --project video/generated/daily-project.json \
+            --mode geometry-only \
+            --output video/generated/daily-layout-geometry.json \
+            --frames-dir render-output/layout-geometry
+
+      - name: Upload current episode layout diagnostics
+        if: always() && hashFiles('video/generated/daily-layout-geometry.json') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-layout-ci
+          path: |
+            video/data/daily.json
+            video/generated/daily-project.json
+            video/generated/daily-layout-geometry.json
+            render-output/layout-geometry/
+          if-no-files-found: error
+          retention-days: 7
+
       - name: Test explanatory contract and shared layout
         run: |
           npm run test:explanation
           npm run test:layout
           npm run test:direction
           npm run test:motion
+          npm run test:preflight
 
       - name: Validate Python pipeline
         run: python -m py_compile worker/editorial_project.py worker/qa_delivery.py worker/render_request.py worker/tts_config.py worker/gemini_live_fidelity.py worker/synthesize_scenes.py worker/process_voice_continuity.py worker/restore_reviewed_audio.py worker/build_render_input.py worker/build_youtube_package.py worker/editorial_source_audit.py worker/prepare_visual_assets.py worker/auto_capture_sources.py
@@ -42,7 +72,9 @@ jobs:
         run: python worker/test_auto_capture_sources.py
 
       - name: Validate render request and retry policy (offline)
-        run: python worker/test_render_request.py
+        run: |
+          python worker/test_render_request.py
+          python worker/test_production_workflow.py
 
       - name: Validate canonical voice policy and documentation
         run: |
@@ -51,9 +83,17 @@ jobs:
 
       - name: Install audio regression dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
-          python -m pip install --no-cache-dir "numpy>=1.26" "num2words>=0.5.13,<1" "google-genai==2.26.0"
+          MEDIA_BIN="$GITHUB_WORKSPACE/node_modules/@remotion/compositor-linux-x64-gnu"
+          if command -v ffmpeg >/dev/null 2>&1 && command -v ffprobe >/dev/null 2>&1; then
+            echo "Usando FFmpeg e FFprobe já instalados no runner."
+          elif [ -x "$MEDIA_BIN/ffmpeg" ] && [ -x "$MEDIA_BIN/ffprobe" ]; then
+            echo "$MEDIA_BIN" >> "$GITHUB_PATH"
+            echo "Usando FFmpeg e FFprobe da versão fixada do Remotion."
+          else
+            sudo apt-get update -o Acquire::Retries=2 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30
+            sudo apt-get install -y --no-install-recommends ffmpeg
+          fi
+          python -m pip install --disable-pip-version-check "numpy>=1.26" "num2words>=0.5.13,<1" "google-genai==2.26.0"
 
       - name: Test Gemini Live cache, fidelity and timing (offline)
         run: python worker/test_synthesize_scenes.py

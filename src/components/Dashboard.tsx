@@ -14,6 +14,7 @@ import { supabase } from "../lib/supabase";
 import type { VideoProjectRow } from "../lib/database.types";
 import { ProjectDetail } from "./ProjectDetail";
 import { RenderStatusPanel } from "./RenderStatusPanel";
+import { productionChatRequest } from "../lib/production-chat-request";
 
 function formatDate(value: string) {
   return new Intl.DateTimeFormat("pt-BR", {
@@ -62,7 +63,7 @@ export function Dashboard() {
   const [loadError, setLoadError] = useState<string | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
   async function copyRequest(text: string) {
-    try {await navigator.clipboard.writeText(text); setCopied(text);}
+    try {await navigator.clipboard.writeText(productionChatRequest(text)); setCopied(text);}
     catch {setCopied("Não foi possível copiar. Selecione o pedido abaixo.");}
   }
 

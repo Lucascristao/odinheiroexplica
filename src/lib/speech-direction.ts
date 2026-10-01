@@ -18,7 +18,14 @@ export const speechDirectionSchema = z.object({
 
 export function validateSpeechDirection(narration: string, raw: unknown): string[] {
   const parsed = speechDirectionSchema.safeParse(raw ?? {});
-  if (!parsed.success) return [parsed.error.message];
+  if (!parsed.success) return parsed.error.issues.map(issue => {
+    const path=issue.path.map(String).join(".")||"tts";
+    if(issue.code==="too_big"&&issue.path[0]==="cues"&&issue.path[2]==="text") {
+      const text=String((raw as any)?.cues?.[Number(issue.path[1])]?.text??"").trim();
+      return `${path}: trecho tem ${text.length} caracteres; máximo 160. Escolha um trecho literal mais curto dentro da frase, preservando a palavra de ênfase; não altere a narração para caber no cue.`;
+    }
+    return `${path}: ${issue.message}`;
+  });
   const errors: string[] = [];
   const ranges: {start: number; end: number}[] = [];
   for (const cue of parsed.data.cues) {

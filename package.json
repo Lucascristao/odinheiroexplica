@@ -22,6 +22,7 @@
     "validate:layout": "tsx scripts/validate-editorial-layout.ts",
     "test:explanation": "tsx scripts/test-editorial-explanation.ts",
     "test:direction": "tsx scripts/test-editorial-direction.ts",
+    "test:preflight": "tsx scripts/test-editorial-preflight.ts",
     "review:motion": "tsx scripts/review-editorial-motion.ts",
     "test:layout": "tsx scripts/test-editorial-layout.ts",
     "test:motion": "tsx scripts/test-editorial-motion.ts"

@@ -51,7 +51,7 @@
     }
   ],
   "visual_direction": {
-    "concept": "Uma barreira física de R$500 bloqueia a onda de aproximação e depois é retirada; a maquininha persiste e o limite da conta assume o papel de fronteira.",
+    "concept": "O valor R$500 representa a antiga barreira: sobe e sai enquanto o limite da conta permanece. O celular aproxima-se da cobrança compatível para explicar NFC; o exemplo aproxima compra e limite sem inventar aprovação. A segurança avança verticalmente por valor, recebedor e confirmação; documentos reais ocupam regiões de prova, sem efeitos fotográficos fictícios.",
     "world": "digital",
     "secondary_color": "#FFBD19",
     "motifs": [
@@ -62,11 +62,11 @@
       "confirmação"
     ],
     "motion_language": [
-      "retirar a barreira",
-      "comparar antes e agora no mesmo plano",
-      "aproximar celular e terminal sem simular transferência",
-      "revelar limites no momento da fala",
-      "usar documento real como prova"
+      "levantar e retirar o teto específico sem retirar os limites da conta",
+      "aproximar celular e cobrança ligada por NFC, sem representar transferência",
+      "aproximar os valores hipotéticos e compará-los com a identificação permanente",
+      "seguir a sequência vertical de conferência e abrir o quadro antes da confirmação",
+      "manter documentos inteiros e separar objetivo declarado de resultado observado"
     ],
     "avoid": [
       "trilha de contas do MED",
@@ -126,7 +126,7 @@
     },
     "render_review": {
       "status": "production_review_pending",
-      "note": "Conferir retirada da barreira R$500, legibilidade dos recortes, exemplo hipotético e pronúncias."
+      "note": "Direção refeita com deslocamentos, câmeras autorais e sequência de segurança. Editorial e pré-voz com Inter real passaram nas oito cenas; quadros intermediários e recortes foram inspecionados com tempos sintéticos. O passe final exige os assets definitivos, os tempos do áudio e a revisão do MP4; escuta Live permanece pendente."
     },
     "explanation": {
       "version": "1.0",
@@ -290,7 +290,7 @@
             "C4"
           ],
           "example_ids": [],
-          "visual_purpose": "Contrastar barreira antiga com a conclusão correta.",
+          "visual_purpose": "O número da antiga barreira sobe e sai enquanto a correção sobre os limites permanece.",
           "bindings": [
             {
               "scene_id": "scene-00",
@@ -317,7 +317,7 @@
             "C7"
           ],
           "example_ids": [],
-          "visual_purpose": "Mostrar celular e terminal como pontos da iniciação.",
+          "visual_purpose": "O mesmo celular se desloca em direção à cobrança compatível ligada por NFC; conferir e confirmar entra depois.",
           "bindings": [
             {
               "scene_id": "scene-01",
@@ -375,7 +375,7 @@
           "example_ids": [
             "purchase-800"
           ],
-          "visual_purpose": "Comparar compra e limite hipotéticos com identificação visível.",
+          "visual_purpose": "A identificação hipotética precede os números; a compra se aproxima do limite e ambos recebem comparação sem garantia de aprovação.",
           "bindings": [
             {
               "scene_id": "scene-03",
@@ -406,7 +406,7 @@
             "C6"
           ],
           "example_ids": [],
-          "visual_purpose": "Separar redução imediata de aumento sujeito a análise.",
+          "visual_purpose": "A FAQ real recebe faixa larga; redução imediata e aumento condicionado à aprovação ocupam regiões próprias.",
           "bindings": [
             {
               "scene_id": "scene-04",
@@ -468,7 +468,7 @@
             "C7"
           ],
           "example_ids": [],
-          "visual_purpose": "Organizar valor, recebedor e autenticação em sequência.",
+          "visual_purpose": "Valor, recebedor e confirmação entram na ordem vertical ligada por uma sequência, com abertura do quadro antes do último passo.",
           "bindings": [
             {
               "scene_id": "scene-06",
@@ -502,7 +502,7 @@
             "C4"
           ],
           "example_ids": [],
-          "visual_purpose": "Retirar barreira R$500 e preservar limite da conta.",
+          "visual_purpose": "A antiga barreira sai por movimento; o limite da conta fica em foco e o quadro volta ao conjunto antes da conclusão.",
           "bindings": [
             {
               "scene_id": "scene-07",
@@ -520,7 +520,7 @@
         }
       ],
       "review": {
-        "content_sha256": "a7cc1283cb31b5be1457a444936eb08176b3be118957d9f713f39223d73b48ec",
+        "content_sha256": "7c04e9abbdeb79cec596e52d8b4f80ad7e7972d7de8cef4f10dc494034c98dc0",
         "findings": [
           {
             "question": "A correção principal aparece antes dos detalhes técnicos?",
@@ -577,6 +577,14 @@
               "quote": "A explicação completa é que quem mudou foi a barreira, não o controle."
             },
             "conclusion": "O encerramento resolve a tensão sem dizer que o Pix ficou ilimitado."
+          },
+          {
+            "question": "O storyboard executa os mecanismos sem sugerir Pix ilimitado ou aprovação do exemplo?",
+            "evidence": {
+              "scene_id": "scene-03",
+              "quote": "Isso não quer dizer que toda compra de oitocentos será aprovada"
+            },
+            "conclusion": "Os valores continuam identificados como hipóteses, sem contagem ou cálculo inventado; a compra aproxima-se do limite apenas para comparação. A retirada visual de R$500 preserva a ressalva sobre limite da conta. A sequência de segurança segue valor, recebedor e confirmação, com relações e corredores próprios."
           }
         ]
       }
@@ -845,17 +853,17 @@
         "transition": "cut",
         "stage": {
           "show_title": false,
-          "camera_mode": "static",
+          "camera_mode": "manual",
           "elements": [
             {
               "id": "oldCap",
               "kind": "metric",
-              "label": "Teto antigo",
+              "label": "Teto específico",
               "value": "R$ 500",
-              "x": 5,
-              "y": 12,
-              "width": 36,
-              "height": 48,
+              "x": 6,
+              "y": 16,
+              "width": 42,
+              "height": 50,
               "initially_visible": true,
               "value_size": 116,
               "label_size": 40
@@ -865,10 +873,10 @@
               "kind": "step",
               "label": "Pix por aproximação",
               "detail": "Encostar · conferir · confirmar",
-              "x": 58,
-              "y": 12,
-              "width": 37,
-              "height": 48,
+              "x": 62,
+              "y": 16,
+              "width": 31,
+              "height": 50,
               "initially_visible": true,
               "icon": "phone",
               "label_size": 42,
@@ -902,7 +910,13 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.55,
+            "camera": {
+              "x": 49,
+              "y": 47,
+              "zoom": 1.04,
+              "motion_seconds": 0.85
+            }
           },
           {
             "anchor": "essa trava específica deixou de existir",
@@ -911,16 +925,32 @@
             "headline": "O teto específico saiu",
             "kind": "fact",
             "behavior": "transform",
-            "treatment": "masked_emphasis",
+            "treatment": "spotlight",
             "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.5,
+            "motion_seconds": 0.85,
             "reveal_ids": [
               "answer"
-            ]
+            ],
+            "entrance": {
+              "style": "fade"
+            },
+            "moves": [
+              {
+                "id": "oldCap",
+                "x": 6,
+                "y": 3
+              }
+            ],
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.85
+            }
           },
           {
             "anchor": "não os limites do Pix",
@@ -935,7 +965,8 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.45,
+            "camera_mode": "hold"
           }
         ]
       },
@@ -976,17 +1007,17 @@
         "transition": "cut",
         "stage": {
           "show_title": false,
-          "camera_mode": "static",
+          "camera_mode": "manual",
           "elements": [
             {
               "id": "phone",
               "kind": "step",
               "label": "Seu celular",
               "detail": "NFC",
-              "x": 4,
-              "y": 17,
-              "width": 30,
-              "height": 54,
+              "x": 8,
+              "y": 24,
+              "width": 28,
+              "height": 45,
               "initially_visible": true,
               "icon": "phone",
               "label_size": 44,
@@ -995,12 +1026,12 @@
             {
               "id": "terminal",
               "kind": "step",
-              "label": "Maquininha",
-              "detail": "Cobrança compatível",
-              "x": 66,
-              "y": 17,
+              "label": "Maquininha compatível",
+              "detail": "Dados da cobrança",
+              "x": 60,
+              "y": 24,
               "width": 30,
-              "height": 54,
+              "height": 45,
               "initially_visible": true,
               "icon": "receipt",
               "label_size": 44,
@@ -1010,10 +1041,10 @@
               "id": "confirm",
               "kind": "note",
               "label": "Conferir e confirmar",
-              "x": 26,
-              "y": 81,
-              "width": 48,
-              "height": 14,
+              "x": 24,
+              "y": 83,
+              "width": 52,
+              "height": 12,
               "initially_visible": false,
               "label_size": 38
             }
@@ -1027,7 +1058,13 @@
               "semantic": "relation",
               "label_position": "above"
             }
-          ]
+          ],
+          "initial_camera": {
+            "x": 48,
+            "y": 45,
+            "zoom": 1.05,
+            "motion_seconds": 0.8
+          }
         },
         "beats": [
           {
@@ -1043,7 +1080,41 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.5,
+            "camera": {
+              "x": 49,
+              "y": 45,
+              "zoom": 1.06,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "Você aproxima o aparelho",
+            "target_id": "phone",
+            "action": "focus",
+            "headline": "Aproximação de curtíssimo alcance",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "flow_diagram",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.9,
+            "moves": [
+              {
+                "id": "phone",
+                "x": 24,
+                "y": 24
+              }
+            ],
+            "camera": {
+              "x": 53,
+              "y": 47,
+              "zoom": 1.03,
+              "motion_seconds": 0.9
+            }
           },
           {
             "anchor": "confere os dados da cobrança",
@@ -1058,7 +1129,10 @@
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.65,
+            "entrance": {
+              "style": "fade"
+            }
           },
           {
             "anchor": "A aproximação muda a porta de entrada do pagamento",
@@ -1073,7 +1147,13 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.5,
+            "camera": {
+              "x": 53,
+              "y": 49,
+              "zoom": 1.02,
+              "motion_seconds": 0.8
+            }
           }
         ]
       },
@@ -1179,13 +1259,17 @@
             "medium": "motion_graphic",
             "sound": "impact",
             "prominence": "contextual",
-            "motion_seconds": 0.55,
+            "motion_seconds": 0.8,
             "operation": {
               "kind": "compare",
               "element_ids": [
                 "before",
                 "after"
               ]
+            },
+            "entrance": {
+              "style": "slide",
+              "direction": "right"
             }
           },
           {
@@ -1201,7 +1285,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.7
           }
         ]
       },
@@ -1243,19 +1327,19 @@
         "transition": "cut",
         "stage": {
           "show_title": false,
-          "camera_mode": "static",
+          "camera_mode": "manual",
           "elements": [
             {
               "id": "limitExample",
               "kind": "metric",
               "label": "Limite Pix do exemplo",
               "value": "R$ 1.500",
-              "x": 4,
-              "y": 14,
-              "width": 42,
-              "height": 48,
-              "initially_visible": true,
-              "value_size": 82,
+              "x": 64,
+              "y": 20,
+              "width": 31,
+              "height": 42,
+              "initially_visible": false,
+              "value_size": 100,
               "label_size": 36
             },
             {
@@ -1263,13 +1347,13 @@
               "kind": "metric",
               "label": "Compra",
               "value": "R$ 800",
-              "x": 54,
-              "y": 14,
-              "width": 42,
-              "height": 48,
+              "x": 8,
+              "y": 20,
+              "width": 31,
+              "height": 42,
               "initially_visible": false,
-              "value_size": 92,
-              "label_size": 40
+              "value_size": 100,
+              "label_size": 36
             },
             {
               "id": "illustration",
@@ -1277,7 +1361,7 @@
               "label": "EXEMPLO HIPOTÉTICO",
               "detail": "Não é limite sugerido nem garantia de aprovação",
               "x": 8,
-              "y": 78,
+              "y": 80,
               "width": 84,
               "height": 16,
               "initially_visible": false,
@@ -1300,7 +1384,25 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "support",
-            "motion_seconds": 0.4
+            "motion_seconds": 0.65
+          },
+          {
+            "anchor": "mil e quinhentos reais",
+            "target_id": "limitExample",
+            "action": "reveal",
+            "headline": "Limite do exemplo",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "giant_number",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.7,
+            "entrance": {
+              "style": "scale"
+            }
           },
           {
             "anchor": "Uma compra de oitocentos reais",
@@ -1315,7 +1417,10 @@
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7,
+            "entrance": {
+              "style": "scale"
+            }
           },
           {
             "anchor": "passam a caber dentro desse limite hipotético de mil e quinhentos",
@@ -1330,13 +1435,26 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.5,
+            "motion_seconds": 0.9,
             "operation": {
               "kind": "compare",
               "element_ids": [
                 "limitExample",
                 "purchase"
               ]
+            },
+            "moves": [
+              {
+                "id": "purchase",
+                "x": 26,
+                "y": 20
+              }
+            ],
+            "camera": {
+              "x": 52,
+              "y": 51,
+              "zoom": 1.025,
+              "motion_seconds": 0.9
             }
           }
         ]
@@ -1383,38 +1501,36 @@
           "elements": [
             {
               "id": "reduce",
-              "kind": "step",
+              "kind": "label",
               "label": "REDUZIR",
               "detail": "Mudança imediata",
-              "x": 3,
-              "y": 13,
-              "width": 30,
-              "height": 50,
-              "initially_visible": true,
-              "icon": "shield",
+              "x": 8,
+              "y": 57,
+              "width": 37,
+              "height": 24,
+              "initially_visible": false,
               "label_size": 44
             },
             {
               "id": "increase",
-              "kind": "step",
+              "kind": "label",
               "label": "AUMENTAR",
-              "detail": "Banco analisa · 24 a 48 h se aceitar",
-              "x": 36,
-              "y": 13,
-              "width": 30,
-              "height": 50,
+              "detail": "24–48 h se aprovado",
+              "x": 55,
+              "y": 57,
+              "width": 37,
+              "height": 24,
               "initially_visible": false,
-              "icon": "clock",
               "label_size": 42
             },
             {
               "id": "proof",
               "kind": "source_excerpt",
               "label": "Regra de gestão de limites",
-              "x": 69,
-              "y": 8,
-              "width": 28,
-              "height": 64,
+              "x": 6,
+              "y": 19,
+              "width": 88,
+              "height": 31,
               "initially_visible": false,
               "asset_id": "A_limits"
             },
@@ -1422,12 +1538,23 @@
               "id": "auto",
               "kind": "note",
               "label": "Não aumenta sozinho",
-              "x": 15,
-              "y": 82,
-              "width": 70,
-              "height": 13,
+              "x": 8,
+              "y": 86,
+              "width": 84,
+              "height": 12,
               "initially_visible": false,
               "label_size": 38
+            },
+            {
+              "id": "limitQuestion",
+              "kind": "label",
+              "label": "Quem define o limite?",
+              "x": 6,
+              "y": 2,
+              "width": 88,
+              "height": 13,
+              "initially_visible": true,
+              "label_size": 52
             }
           ],
           "connections": []
@@ -1436,7 +1563,7 @@
           {
             "anchor": "Se você pedir redução",
             "target_id": "reduce",
-            "action": "focus",
+            "action": "reveal",
             "headline": "Redução é imediata",
             "kind": "fact",
             "behavior": "transform",
@@ -1446,7 +1573,13 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.6,
+            "reveal_ids": [
+              "proof"
+            ],
+            "entrance": {
+              "style": "fade"
+            }
           },
           {
             "anchor": "Para aumentar",
@@ -1461,10 +1594,10 @@
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.5,
-            "reveal_ids": [
-              "proof"
-            ]
+            "motion_seconds": 0.7,
+            "entrance": {
+              "style": "fade"
+            }
           },
           {
             "anchor": "não aumenta automaticamente",
@@ -1473,18 +1606,13 @@
             "headline": "Sem aumento automático",
             "kind": "warning",
             "behavior": "transform",
-            "treatment": "signal",
+            "treatment": "masked_emphasis",
             "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.45,
-            "operation": {
-              "kind": "signal",
-              "status": "neutral",
-              "message": "O teto saiu; seu limite não sobe sozinho"
-            }
+            "motion_seconds": 0.65
           }
         ]
       },
@@ -1546,7 +1674,7 @@
               "x": 65,
               "y": 12,
               "width": 31,
-              "height": 42,
+              "height": 44,
               "initially_visible": false,
               "icon": "wallet",
               "label_size": 38,
@@ -1564,7 +1692,14 @@
               "label_size": 32
             }
           ],
-          "connections": []
+          "connections": [
+            {
+              "id": "same-rule",
+              "from": "ruleProof",
+              "to": "wallet",
+              "semantic": "relation"
+            }
+          ]
         },
         "beats": [
           {
@@ -1580,7 +1715,11 @@
             "medium": "mixed",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.8,
+            "entrance": {
+              "style": "wipe",
+              "direction": "left"
+            }
           },
           {
             "anchor": "O Banco Central apresenta isso como uma forma de dar mais flexibilidade",
@@ -1588,14 +1727,14 @@
             "action": "focus",
             "headline": "É o objetivo declarado pelo BC",
             "kind": "fact",
-            "behavior": "reframe",
-            "treatment": "depth_photo",
+            "behavior": "transform",
+            "treatment": "spotlight",
             "transition": "cut",
             "placement": "left",
             "medium": "mixed",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.6
           },
           {
             "anchor": "o efeito real depende",
@@ -1610,7 +1749,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.7
           }
         ]
       },
@@ -1643,49 +1782,71 @@
         "transition": "cut",
         "stage": {
           "show_title": false,
-          "camera_mode": "static",
+          "camera_mode": "manual",
           "elements": [
             {
               "id": "amount",
               "kind": "step",
               "label": "1 · VALOR",
               "detail": "Confira a cobrança",
-              "x": 3,
-              "y": 20,
-              "width": 29,
-              "height": 55,
+              "x": 22,
+              "y": 6,
+              "width": 64,
+              "height": 22,
               "initially_visible": true,
               "icon": "receipt",
-              "label_size": 40
+              "label_size": 40,
+              "svg_motion": "trace"
             },
             {
               "id": "recipient",
               "kind": "step",
               "label": "2 · RECEBEDOR",
               "detail": "Veja para quem vai",
-              "x": 35,
-              "y": 20,
-              "width": 29,
-              "height": 55,
+              "x": 22,
+              "y": 39,
+              "width": 64,
+              "height": 22,
               "initially_visible": false,
               "icon": "person",
-              "label_size": 38
+              "label_size": 38,
+              "svg_motion": "trace"
             },
             {
               "id": "auth",
               "kind": "step",
               "label": "3 · CONFIRMAR",
               "detail": "Senha ou biometria quando exigida",
-              "x": 67,
-              "y": 20,
-              "width": 30,
-              "height": 55,
+              "x": 22,
+              "y": 72,
+              "width": 64,
+              "height": 22,
               "initially_visible": false,
               "icon": "lock",
-              "label_size": 38
+              "label_size": 38,
+              "svg_motion": "trace"
             }
           ],
-          "connections": []
+          "connections": [
+            {
+              "id": "check-value-recipient",
+              "from": "amount",
+              "to": "recipient",
+              "semantic": "sequence"
+            },
+            {
+              "id": "check-recipient-confirm",
+              "from": "recipient",
+              "to": "auth",
+              "semantic": "sequence"
+            }
+          ],
+          "initial_camera": {
+            "x": 54,
+            "y": 28,
+            "zoom": 1.1,
+            "motion_seconds": 0.8
+          }
         },
         "beats": [
           {
@@ -1701,7 +1862,8 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.4
+            "motion_seconds": 0.4,
+            "camera_mode": "hold"
           },
           {
             "anchor": "o recebedor mostrado na jornada",
@@ -1710,13 +1872,44 @@
             "headline": "Confira o recebedor",
             "kind": "warning",
             "behavior": "transform",
-            "treatment": "kinetic_type",
+            "treatment": "flow_diagram",
             "transition": "cut",
             "placement": "center",
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.8,
+            "entrance": {
+              "style": "slide",
+              "direction": "down"
+            },
+            "camera": {
+              "x": 54,
+              "y": 38,
+              "zoom": 1.07,
+              "motion_seconds": 0.8
+            }
+          },
+          {
+            "anchor": "Mantenha bloqueio de tela",
+            "target_id": "recipient",
+            "action": "focus",
+            "headline": "Prepare a confirmação",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "spotlight",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.75,
+            "camera": {
+              "x": 54,
+              "y": 50,
+              "zoom": 1.03,
+              "motion_seconds": 0.75
+            }
           },
           {
             "anchor": "autenticação ativos",
@@ -1725,13 +1918,18 @@
             "headline": "Proteja a confirmação",
             "kind": "warning",
             "behavior": "transform",
-            "treatment": "spotlight",
+            "treatment": "flow_diagram",
             "transition": "cut",
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.8,
+            "entrance": {
+              "style": "wipe",
+              "direction": "down"
+            },
+            "camera_mode": "hold"
           }
         ]
       },
@@ -1774,7 +1972,7 @@
         "transition": "cut",
         "stage": {
           "show_title": false,
-          "camera_mode": "static",
+          "camera_mode": "manual",
           "elements": [
             {
               "id": "barrier",
@@ -1814,7 +2012,13 @@
               "label_size": 36
             }
           ],
-          "connections": []
+          "connections": [],
+          "initial_camera": {
+            "x": 48,
+            "y": 48,
+            "zoom": 1.08,
+            "motion_seconds": 0.8
+          }
         },
         "beats": [
           {
@@ -1824,16 +2028,32 @@
             "headline": "Sai o teto específico",
             "kind": "money",
             "behavior": "transform",
-            "treatment": "masked_emphasis",
+            "treatment": "spotlight",
             "transition": "cut",
             "placement": "left",
             "medium": "motion_graphic",
             "sound": "impact",
             "prominence": "contextual",
-            "motion_seconds": 0.5,
+            "motion_seconds": 0.85,
             "reveal_ids": [
               "account"
-            ]
+            ],
+            "entrance": {
+              "style": "fade"
+            },
+            "moves": [
+              {
+                "id": "barrier",
+                "x": 5,
+                "y": 4
+              }
+            ],
+            "camera": {
+              "x": 49,
+              "y": 46,
+              "zoom": 1.03,
+              "motion_seconds": 0.85
+            }
           },
           {
             "anchor": "passam a valer os limites aplicáveis à sua conta",
@@ -1848,7 +2068,34 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.45,
+            "camera": {
+              "x": 68,
+              "y": 44,
+              "zoom": 1.14,
+              "motion_seconds": 1
+            }
+          },
+          {
+            "anchor": "mas somente dentro do que estiver autorizado",
+            "target_id": "account",
+            "action": "focus",
+            "headline": "Dentro do limite autorizado",
+            "kind": "fact",
+            "behavior": "transform",
+            "treatment": "spotlight",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.9,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.9
+            }
           },
           {
             "anchor": "quem mudou foi a barreira, não o controle",
@@ -1863,7 +2110,10 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 0.75,
+            "entrance": {
+              "style": "fade"
+            }
           }
         ]
       },
@@ -1910,17 +2160,17 @@
           "transition": "cut",
           "stage": {
             "show_title": false,
-            "camera_mode": "static",
+            "camera_mode": "manual",
             "elements": [
               {
                 "id": "oldCap",
                 "kind": "metric",
-                "label": "Teto antigo",
+                "label": "Teto específico",
                 "value": "R$ 500",
-                "x": 5,
-                "y": 12,
-                "width": 36,
-                "height": 48,
+                "x": 6,
+                "y": 16,
+                "width": 42,
+                "height": 50,
                 "initially_visible": true,
                 "value_size": 116,
                 "label_size": 40
@@ -1930,10 +2180,10 @@
                 "kind": "step",
                 "label": "Pix por aproximação",
                 "detail": "Encostar · conferir · confirmar",
-                "x": 58,
-                "y": 12,
-                "width": 37,
-                "height": 48,
+                "x": 62,
+                "y": 16,
+                "width": 31,
+                "height": 50,
                 "initially_visible": true,
                 "icon": "phone",
                 "label_size": 42,
@@ -1967,7 +2217,13 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.55
+              "motion_seconds": 0.55,
+              "camera": {
+                "x": 49,
+                "y": 47,
+                "zoom": 1.04,
+                "motion_seconds": 0.85
+              }
             },
             {
               "anchor": "essa trava específica deixou de existir",
@@ -1976,16 +2232,32 @@
               "headline": "O teto específico saiu",
               "kind": "fact",
               "behavior": "transform",
-              "treatment": "masked_emphasis",
+              "treatment": "spotlight",
               "transition": "cut",
               "placement": "full",
               "medium": "motion_graphic",
               "sound": "tick",
               "prominence": "contextual",
-              "motion_seconds": 0.5,
+              "motion_seconds": 0.85,
               "reveal_ids": [
                 "answer"
-              ]
+              ],
+              "entrance": {
+                "style": "fade"
+              },
+              "moves": [
+                {
+                  "id": "oldCap",
+                  "x": 6,
+                  "y": 3
+                }
+              ],
+              "camera": {
+                "x": 50,
+                "y": 50,
+                "zoom": 1,
+                "motion_seconds": 0.85
+              }
             },
             {
               "anchor": "não os limites do Pix",
@@ -2000,7 +2272,8 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.45
+              "motion_seconds": 0.45,
+              "camera_mode": "hold"
             }
           ]
         },
@@ -2041,17 +2314,17 @@
           "transition": "cut",
           "stage": {
             "show_title": false,
-            "camera_mode": "static",
+            "camera_mode": "manual",
             "elements": [
               {
                 "id": "phone",
                 "kind": "step",
                 "label": "Seu celular",
                 "detail": "NFC",
-                "x": 4,
-                "y": 17,
-                "width": 30,
-                "height": 54,
+                "x": 8,
+                "y": 24,
+                "width": 28,
+                "height": 45,
                 "initially_visible": true,
                 "icon": "phone",
                 "label_size": 44,
@@ -2060,12 +2333,12 @@
               {
                 "id": "terminal",
                 "kind": "step",
-                "label": "Maquininha",
-                "detail": "Cobrança compatível",
-                "x": 66,
-                "y": 17,
+                "label": "Maquininha compatível",
+                "detail": "Dados da cobrança",
+                "x": 60,
+                "y": 24,
                 "width": 30,
-                "height": 54,
+                "height": 45,
                 "initially_visible": true,
                 "icon": "receipt",
                 "label_size": 44,
@@ -2075,10 +2348,10 @@
                 "id": "confirm",
                 "kind": "note",
                 "label": "Conferir e confirmar",
-                "x": 26,
-                "y": 81,
-                "width": 48,
-                "height": 14,
+                "x": 24,
+                "y": 83,
+                "width": 52,
+                "height": 12,
                 "initially_visible": false,
                 "label_size": 38
               }
@@ -2092,7 +2365,13 @@
                 "semantic": "relation",
                 "label_position": "above"
               }
-            ]
+            ],
+            "initial_camera": {
+              "x": 48,
+              "y": 45,
+              "zoom": 1.05,
+              "motion_seconds": 0.8
+            }
           },
           "beats": [
             {
@@ -2108,7 +2387,41 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.5
+              "motion_seconds": 0.5,
+              "camera": {
+                "x": 49,
+                "y": 45,
+                "zoom": 1.06,
+                "motion_seconds": 0.8
+              }
+            },
+            {
+              "anchor": "Você aproxima o aparelho",
+              "target_id": "phone",
+              "action": "focus",
+              "headline": "Aproximação de curtíssimo alcance",
+              "kind": "fact",
+              "behavior": "transform",
+              "treatment": "flow_diagram",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.9,
+              "moves": [
+                {
+                  "id": "phone",
+                  "x": 24,
+                  "y": 24
+                }
+              ],
+              "camera": {
+                "x": 53,
+                "y": 47,
+                "zoom": 1.03,
+                "motion_seconds": 0.9
+              }
             },
             {
               "anchor": "confere os dados da cobrança",
@@ -2123,7 +2436,10 @@
               "medium": "motion_graphic",
               "sound": "tick",
               "prominence": "contextual",
-              "motion_seconds": 0.5
+              "motion_seconds": 0.65,
+              "entrance": {
+                "style": "fade"
+              }
             },
             {
               "anchor": "A aproximação muda a porta de entrada do pagamento",
@@ -2138,7 +2454,13 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.5
+              "motion_seconds": 0.5,
+              "camera": {
+                "x": 53,
+                "y": 49,
+                "zoom": 1.02,
+                "motion_seconds": 0.8
+              }
             }
           ]
         },
@@ -2244,13 +2566,17 @@
               "medium": "motion_graphic",
               "sound": "impact",
               "prominence": "contextual",
-              "motion_seconds": 0.55,
+              "motion_seconds": 0.8,
               "operation": {
                 "kind": "compare",
                 "element_ids": [
                   "before",
                   "after"
                 ]
+              },
+              "entrance": {
+                "style": "slide",
+                "direction": "right"
               }
             },
             {
@@ -2266,7 +2592,7 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.45
+              "motion_seconds": 0.7
             }
           ]
         },
@@ -2308,19 +2634,19 @@
           "transition": "cut",
           "stage": {
             "show_title": false,
-            "camera_mode": "static",
+            "camera_mode": "manual",
             "elements": [
               {
                 "id": "limitExample",
                 "kind": "metric",
                 "label": "Limite Pix do exemplo",
                 "value": "R$ 1.500",
-                "x": 4,
-                "y": 14,
-                "width": 42,
-                "height": 48,
-                "initially_visible": true,
-                "value_size": 82,
+                "x": 64,
+                "y": 20,
+                "width": 31,
+                "height": 42,
+                "initially_visible": false,
+                "value_size": 100,
                 "label_size": 36
               },
               {
@@ -2328,13 +2654,13 @@
                 "kind": "metric",
                 "label": "Compra",
                 "value": "R$ 800",
-                "x": 54,
-                "y": 14,
-                "width": 42,
-                "height": 48,
+                "x": 8,
+                "y": 20,
+                "width": 31,
+                "height": 42,
                 "initially_visible": false,
-                "value_size": 92,
-                "label_size": 40
+                "value_size": 100,
+                "label_size": 36
               },
               {
                 "id": "illustration",
@@ -2342,7 +2668,7 @@
                 "label": "EXEMPLO HIPOTÉTICO",
                 "detail": "Não é limite sugerido nem garantia de aprovação",
                 "x": 8,
-                "y": 78,
+                "y": 80,
                 "width": 84,
                 "height": 16,
                 "initially_visible": false,
@@ -2365,7 +2691,25 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "support",
-              "motion_seconds": 0.4
+              "motion_seconds": 0.65
+            },
+            {
+              "anchor": "mil e quinhentos reais",
+              "target_id": "limitExample",
+              "action": "reveal",
+              "headline": "Limite do exemplo",
+              "kind": "fact",
+              "behavior": "transform",
+              "treatment": "giant_number",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.7,
+              "entrance": {
+                "style": "scale"
+              }
             },
             {
               "anchor": "Uma compra de oitocentos reais",
@@ -2380,7 +2724,10 @@
               "medium": "motion_graphic",
               "sound": "tick",
               "prominence": "contextual",
-              "motion_seconds": 0.5
+              "motion_seconds": 0.7,
+              "entrance": {
+                "style": "scale"
+              }
             },
             {
               "anchor": "passam a caber dentro desse limite hipotético de mil e quinhentos",
@@ -2395,13 +2742,26 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.5,
+              "motion_seconds": 0.9,
               "operation": {
                 "kind": "compare",
                 "element_ids": [
                   "limitExample",
                   "purchase"
                 ]
+              },
+              "moves": [
+                {
+                  "id": "purchase",
+                  "x": 26,
+                  "y": 20
+                }
+              ],
+              "camera": {
+                "x": 52,
+                "y": 51,
+                "zoom": 1.025,
+                "motion_seconds": 0.9
               }
             }
           ]
@@ -2448,38 +2808,36 @@
             "elements": [
               {
                 "id": "reduce",
-                "kind": "step",
+                "kind": "label",
                 "label": "REDUZIR",
                 "detail": "Mudança imediata",
-                "x": 3,
-                "y": 13,
-                "width": 30,
-                "height": 50,
-                "initially_visible": true,
-                "icon": "shield",
+                "x": 8,
+                "y": 57,
+                "width": 37,
+                "height": 24,
+                "initially_visible": false,
                 "label_size": 44
               },
               {
                 "id": "increase",
-                "kind": "step",
+                "kind": "label",
                 "label": "AUMENTAR",
-                "detail": "Banco analisa · 24 a 48 h se aceitar",
-                "x": 36,
-                "y": 13,
-                "width": 30,
-                "height": 50,
+                "detail": "24–48 h se aprovado",
+                "x": 55,
+                "y": 57,
+                "width": 37,
+                "height": 24,
                 "initially_visible": false,
-                "icon": "clock",
                 "label_size": 42
               },
               {
                 "id": "proof",
                 "kind": "source_excerpt",
                 "label": "Regra de gestão de limites",
-                "x": 69,
-                "y": 8,
-                "width": 28,
-                "height": 64,
+                "x": 6,
+                "y": 19,
+                "width": 88,
+                "height": 31,
                 "initially_visible": false,
                 "asset_id": "A_limits"
               },
@@ -2487,12 +2845,23 @@
                 "id": "auto",
                 "kind": "note",
                 "label": "Não aumenta sozinho",
-                "x": 15,
-                "y": 82,
-                "width": 70,
-                "height": 13,
+                "x": 8,
+                "y": 86,
+                "width": 84,
+                "height": 12,
                 "initially_visible": false,
                 "label_size": 38
+              },
+              {
+                "id": "limitQuestion",
+                "kind": "label",
+                "label": "Quem define o limite?",
+                "x": 6,
+                "y": 2,
+                "width": 88,
+                "height": 13,
+                "initially_visible": true,
+                "label_size": 52
               }
             ],
             "connections": []
@@ -2501,7 +2870,7 @@
             {
               "anchor": "Se você pedir redução",
               "target_id": "reduce",
-              "action": "focus",
+              "action": "reveal",
               "headline": "Redução é imediata",
               "kind": "fact",
               "behavior": "transform",
@@ -2511,7 +2880,13 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.45
+              "motion_seconds": 0.6,
+              "reveal_ids": [
+                "proof"
+              ],
+              "entrance": {
+                "style": "fade"
+              }
             },
             {
               "anchor": "Para aumentar",
@@ -2526,10 +2901,10 @@
               "medium": "motion_graphic",
               "sound": "tick",
               "prominence": "contextual",
-              "motion_seconds": 0.5,
-              "reveal_ids": [
-                "proof"
-              ]
+              "motion_seconds": 0.7,
+              "entrance": {
+                "style": "fade"
+              }
             },
             {
               "anchor": "não aumenta automaticamente",
@@ -2538,18 +2913,13 @@
               "headline": "Sem aumento automático",
               "kind": "warning",
               "behavior": "transform",
-              "treatment": "signal",
+              "treatment": "masked_emphasis",
               "transition": "cut",
               "placement": "full",
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.45,
-              "operation": {
-                "kind": "signal",
-                "status": "neutral",
-                "message": "O teto saiu; seu limite não sobe sozinho"
-              }
+              "motion_seconds": 0.65
             }
           ]
         },
@@ -2611,7 +2981,7 @@
                 "x": 65,
                 "y": 12,
                 "width": 31,
-                "height": 42,
+                "height": 44,
                 "initially_visible": false,
                 "icon": "wallet",
                 "label_size": 38,
@@ -2629,7 +2999,14 @@
                 "label_size": 32
               }
             ],
-            "connections": []
+            "connections": [
+              {
+                "id": "same-rule",
+                "from": "ruleProof",
+                "to": "wallet",
+                "semantic": "relation"
+              }
+            ]
           },
           "beats": [
             {
@@ -2645,7 +3022,11 @@
               "medium": "mixed",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.5
+              "motion_seconds": 0.8,
+              "entrance": {
+                "style": "wipe",
+                "direction": "left"
+              }
             },
             {
               "anchor": "O Banco Central apresenta isso como uma forma de dar mais flexibilidade",
@@ -2653,14 +3034,14 @@
               "action": "focus",
               "headline": "É o objetivo declarado pelo BC",
               "kind": "fact",
-              "behavior": "reframe",
-              "treatment": "depth_photo",
+              "behavior": "transform",
+              "treatment": "spotlight",
               "transition": "cut",
               "placement": "left",
               "medium": "mixed",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.5
+              "motion_seconds": 0.6
             },
             {
               "anchor": "o efeito real depende",
@@ -2675,7 +3056,7 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.45
+              "motion_seconds": 0.7
             }
           ]
         },
@@ -2708,49 +3089,71 @@
           "transition": "cut",
           "stage": {
             "show_title": false,
-            "camera_mode": "static",
+            "camera_mode": "manual",
             "elements": [
               {
                 "id": "amount",
                 "kind": "step",
                 "label": "1 · VALOR",
                 "detail": "Confira a cobrança",
-                "x": 3,
-                "y": 20,
-                "width": 29,
-                "height": 55,
+                "x": 22,
+                "y": 6,
+                "width": 64,
+                "height": 22,
                 "initially_visible": true,
                 "icon": "receipt",
-                "label_size": 40
+                "label_size": 40,
+                "svg_motion": "trace"
               },
               {
                 "id": "recipient",
                 "kind": "step",
                 "label": "2 · RECEBEDOR",
                 "detail": "Veja para quem vai",
-                "x": 35,
-                "y": 20,
-                "width": 29,
-                "height": 55,
+                "x": 22,
+                "y": 39,
+                "width": 64,
+                "height": 22,
                 "initially_visible": false,
                 "icon": "person",
-                "label_size": 38
+                "label_size": 38,
+                "svg_motion": "trace"
               },
               {
                 "id": "auth",
                 "kind": "step",
                 "label": "3 · CONFIRMAR",
                 "detail": "Senha ou biometria quando exigida",
-                "x": 67,
-                "y": 20,
-                "width": 30,
-                "height": 55,
+                "x": 22,
+                "y": 72,
+                "width": 64,
+                "height": 22,
                 "initially_visible": false,
                 "icon": "lock",
-                "label_size": 38
+                "label_size": 38,
+                "svg_motion": "trace"
               }
             ],
-            "connections": []
+            "connections": [
+              {
+                "id": "check-value-recipient",
+                "from": "amount",
+                "to": "recipient",
+                "semantic": "sequence"
+              },
+              {
+                "id": "check-recipient-confirm",
+                "from": "recipient",
+                "to": "auth",
+                "semantic": "sequence"
+              }
+            ],
+            "initial_camera": {
+              "x": 54,
+              "y": 28,
+              "zoom": 1.1,
+              "motion_seconds": 0.8
+            }
           },
           "beats": [
             {
@@ -2766,7 +3169,8 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.4
+              "motion_seconds": 0.4,
+              "camera_mode": "hold"
             },
             {
               "anchor": "o recebedor mostrado na jornada",
@@ -2775,13 +3179,44 @@
               "headline": "Confira o recebedor",
               "kind": "warning",
               "behavior": "transform",
-              "treatment": "kinetic_type",
+              "treatment": "flow_diagram",
               "transition": "cut",
               "placement": "center",
               "medium": "motion_graphic",
               "sound": "tick",
               "prominence": "contextual",
-              "motion_seconds": 0.45
+              "motion_seconds": 0.8,
+              "entrance": {
+                "style": "slide",
+                "direction": "down"
+              },
+              "camera": {
+                "x": 54,
+                "y": 38,
+                "zoom": 1.07,
+                "motion_seconds": 0.8
+              }
+            },
+            {
+              "anchor": "Mantenha bloqueio de tela",
+              "target_id": "recipient",
+              "action": "focus",
+              "headline": "Prepare a confirmação",
+              "kind": "fact",
+              "behavior": "transform",
+              "treatment": "spotlight",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.75,
+              "camera": {
+                "x": 54,
+                "y": 50,
+                "zoom": 1.03,
+                "motion_seconds": 0.75
+              }
             },
             {
               "anchor": "autenticação ativos",
@@ -2790,13 +3225,18 @@
               "headline": "Proteja a confirmação",
               "kind": "warning",
               "behavior": "transform",
-              "treatment": "spotlight",
+              "treatment": "flow_diagram",
               "transition": "cut",
               "placement": "full",
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.45
+              "motion_seconds": 0.8,
+              "entrance": {
+                "style": "wipe",
+                "direction": "down"
+              },
+              "camera_mode": "hold"
             }
           ]
         },
@@ -2839,7 +3279,7 @@
           "transition": "cut",
           "stage": {
             "show_title": false,
-            "camera_mode": "static",
+            "camera_mode": "manual",
             "elements": [
               {
                 "id": "barrier",
@@ -2879,7 +3319,13 @@
                 "label_size": 36
               }
             ],
-            "connections": []
+            "connections": [],
+            "initial_camera": {
+              "x": 48,
+              "y": 48,
+              "zoom": 1.08,
+              "motion_seconds": 0.8
+            }
           },
           "beats": [
             {
@@ -2889,16 +3335,32 @@
               "headline": "Sai o teto específico",
               "kind": "money",
               "behavior": "transform",
-              "treatment": "masked_emphasis",
+              "treatment": "spotlight",
               "transition": "cut",
               "placement": "left",
               "medium": "motion_graphic",
               "sound": "impact",
               "prominence": "contextual",
-              "motion_seconds": 0.5,
+              "motion_seconds": 0.85,
               "reveal_ids": [
                 "account"
-              ]
+              ],
+              "entrance": {
+                "style": "fade"
+              },
+              "moves": [
+                {
+                  "id": "barrier",
+                  "x": 5,
+                  "y": 4
+                }
+              ],
+              "camera": {
+                "x": 49,
+                "y": 46,
+                "zoom": 1.03,
+                "motion_seconds": 0.85
+              }
             },
             {
               "anchor": "passam a valer os limites aplicáveis à sua conta",
@@ -2913,7 +3375,34 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.45
+              "motion_seconds": 0.45,
+              "camera": {
+                "x": 68,
+                "y": 44,
+                "zoom": 1.14,
+                "motion_seconds": 1
+              }
+            },
+            {
+              "anchor": "mas somente dentro do que estiver autorizado",
+              "target_id": "account",
+              "action": "focus",
+              "headline": "Dentro do limite autorizado",
+              "kind": "fact",
+              "behavior": "transform",
+              "treatment": "spotlight",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.9,
+              "camera": {
+                "x": 50,
+                "y": 50,
+                "zoom": 1,
+                "motion_seconds": 0.9
+              }
             },
             {
               "anchor": "quem mudou foi a barreira, não o controle",
@@ -2928,7 +3417,10 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.55
+              "motion_seconds": 0.75,
+              "entrance": {
+                "style": "fade"
+              }
             }
           ]
         },

@@ -146,6 +146,12 @@ def sanitize_page_thoroughly(page) -> None:
         document.querySelectorAll('*').forEach(el => {
             try {
                 const s = window.getComputedStyle(el);
+                // Floating navigation can cover the verified heading even
+                // when its bounding box is fully captured. Keep its content
+                // in document flow so it cannot obscure the excerpt.
+                if (s.position === 'sticky' || s.position === 'fixed') {
+                    el.style.position = 'static';
+                }
                 if (s.filter && s.filter !== 'none') el.style.filter = 'none';
                 if (s.opacity && parseFloat(s.opacity) < 0.95 && el.tagName !== 'svg') el.style.opacity = '1';
             } catch (e) {}
@@ -188,6 +194,43 @@ def validate_source_asset(asset: dict) -> tuple[str, str]:
             f"Asset {asset_id}: source_excerpt exige expected_text com uma frase do documento (mínimo 8 caracteres)."
         )
     return url, expected_text.strip()
+
+
+def unobscure_excerpt(locator) -> None:
+    """Hide floating UI outside the proof block, retaining its original text."""
+    locator.scroll_into_view_if_needed()
+    locator.evaluate(r"""async target => {
+        const originalText = target.textContent;
+        const paint = () => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        const overlaps = (el, box) => {
+            if (target.contains(el) || el.contains(target)) return false;
+            const r = el.getBoundingClientRect();
+            return r.width > 0 && r.height > 0 && r.right > box.left && r.left < box.right && r.bottom > box.top && r.top < box.bottom;
+        };
+        // visibility is inherited, but a descendant may explicitly set it back
+        // to visible. Hide each outside subtree completely and allow its paint
+        // to settle before Chromium captures the proof. Repeat after responsive
+        // UI updates caused by scrolling, without rewriting source content.
+        for (let pass = 0; pass < 3; pass++) {
+            const box = target.getBoundingClientRect();
+            for (const el of document.querySelectorAll('*')) {
+                if (!overlaps(el, box)) continue;
+                el.style.setProperty('transition', 'none', 'important');
+                el.style.setProperty('animation', 'none', 'important');
+                el.style.setProperty('visibility', 'hidden', 'important');
+                for (const child of el.querySelectorAll('*')) {
+                    child.style.setProperty('transition', 'none', 'important');
+                    child.style.setProperty('animation', 'none', 'important');
+                    child.style.setProperty('visibility', 'hidden', 'important');
+                }
+            }
+            await paint();
+        }
+        const box = target.getBoundingClientRect();
+        const remaining = [...document.querySelectorAll('*')].filter(el => overlaps(el, box) && getComputedStyle(el).visibility === 'visible');
+        if (remaining.length) throw new Error('UI ainda cobre o bloco de evidência: ' + remaining.slice(0, 3).map(el => el.tagName + '.' + el.className).join(', '));
+        if (target.textContent !== originalText) throw new Error('O texto da fonte mudou durante a captura; revise o documento.');
+    }""")
 
 
 def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> bool:
@@ -293,6 +336,7 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
             try:
                 locator = page.locator(target_selector).first
                 if locator.is_visible(timeout=3000):
+                    unobscure_excerpt(locator)
                     locator.screenshot(path=str(temp_path))
                     captured_element = True
                     print(f"[auto_capture] Screenshot do elemento ({target_selector}) salvo com sucesso.")
@@ -317,7 +361,9 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
                 raise RuntimeError("trecho sem bloco contextual visível; forneça target_selector")
             # Element screenshots retain the entire block, including text below
             # the viewport. Never manufacture a document from authored text.
-            page.locator('[data-ode-source-proof="true"]').first.screenshot(path=str(temp_path))
+            locator = page.locator('[data-ode-source-proof="true"]').first
+            unobscure_excerpt(locator)
+            locator.screenshot(path=str(temp_path))
             print(f"[auto_capture] Bloco contextual completo salvo em: {dest_path.name}")
 
         temp_path.replace(dest_path)

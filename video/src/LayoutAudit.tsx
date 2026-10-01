@@ -5,6 +5,7 @@ import {layoutStage, LAYOUT_VERSION, transformedRect, contains, type Box} from "
 import {EDITORIAL_FONT, TYPOGRAPHY_VERSION} from "../../src/lib/editorial-typography";
 import {EditorialStage} from "./EditorialStage";
 import {useEditorialFont, measureEditorialText} from "./editorial-font";
+import {partitionLayoutIssues, type LayoutAuditMode} from "../../src/lib/editorial-layout-audit";
 
 type AuditProps={scene:any;fps:number;mode:string};
 const Audit=({scene,fps=30,mode="pre-voice"}:AuditProps)=> {
@@ -26,10 +27,13 @@ const Audit=({scene,fps=30,mode="pre-voice"}:AuditProps)=> {
     for(let f=Math.max(0,first);f<=Math.min(duration-1,start+length);f++)frames.add(f);
   }
   const issues:any[]=[];
+  const deferred:any[]=[];
   const seen=new Set<string>();
   if(ready)for(const frame of [...frames].sort((a,b)=>a-b)) {
     const result=layoutStage(stage,beats,frame,fps,1920,1080,measureEditorialText,scene.title);
-    for(const issue of result.issues) {
+    const audit=partitionLayoutIssues(result.issues,mode as LayoutAuditMode);
+    for(const issue of audit.deferred)if(!deferred.some(item=>item.element===issue.element))deferred.push(issue);
+    for(const issue of audit.issues) {
       const key=JSON.stringify(issue);
       if(!seen.has(key)){seen.add(key);issues.push({...issue,frame});}
     }
@@ -38,6 +42,11 @@ const Audit=({scene,fps=30,mode="pre-voice"}:AuditProps)=> {
   const representative=ready?layoutStage(stage,beats,duration-1,fps,1920,1080,measureEditorialText,scene.title):null;
   useEffect(()=> {
     if(!ready||!representative)return;
+    if(mode==="geometry-only") {
+      console.info("ODE_LAYOUT_REPORT:"+JSON.stringify({version:LAYOUT_VERSION,typography_version:TYPOGRAPHY_VERSION,font:EDITORIAL_FONT,font_loaded:document.fonts.check(`700 32px "${EDITORIAL_FONT}"`),resolution:{width:1920,height:1080},mode,scene_id:scene.id??scene.scene_index,checked_frames:frames.size,issues,deferred_assets:deferred,dom:[],dom_connections:[],dom_photo_captions:[],typography:[],scope:"Geometria e texto com fonte real. Assets, DOM final e sincronização aguardam os passes de produção."}));
+      continueRender(handle);
+      return;
+    }
     const frameHandle=requestAnimationFrame(()=>requestAnimationFrame(()=>{
     const dom=[...document.querySelectorAll<HTMLElement>("[data-element-id]")].map(el=> {
       const actual=el.getBoundingClientRect();
@@ -81,6 +90,7 @@ const Audit=({scene,fps=30,mode="pre-voice"}:AuditProps)=> {
   },[ready]);
   if(!ready)return null;
   if(issues.length)return <AbsoluteFill style={{background:"#101317",color:"#ffbd19",padding:80,fontFamily:EDITORIAL_FONT,fontSize:32}}><h1>Composição precisa de ajuste</h1>{issues.slice(0,8).map((i,index)=><p key={index}>{i.element??i.connection}: {i.message}</p>)}</AbsoluteFill>;
+  if(mode==="geometry-only")return <AbsoluteFill style={{background:"#101317",color:"#ffbd19",fontFamily:EDITORIAL_FONT}}><div style={{padding:32,fontSize:24}}>Auditoria de geometria · fonte real · assets e sincronização ainda não verificados</div>{representative?.elements.map(element=>{const box=transformedRect(element,duration-1,representative.canvas);return <div key={element.id} style={{position:"absolute",left:representative.canvas.x+box.x,top:representative.canvas.y+box.y,width:box.w,height:box.h,border:"2px dashed #56616b",boxSizing:"border-box",padding:8,fontSize:22}}>{element.id}</div>;})}</AbsoluteFill>;
   // The renderer uses the same geometry; this frame also checks real DOM boxes.
   return <EditorialStage stage={stage} beats={beats} title={scene.title} frameOverride={duration-1}/>;
 };

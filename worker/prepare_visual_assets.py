@@ -10,7 +10,6 @@ from urllib.parse import urlparse
 
 import requests
 from PIL import Image, ImageOps, ImageStat, UnidentifiedImageError
-from rembg import new_session, remove
 
 
 MAX_BYTES = 20 * 1024 * 1024
@@ -126,6 +125,7 @@ def save_photo(
     image = Image.open(io.BytesIO(raw)).convert("RGBA")
 
     if needs_cutout:
+        from rembg import remove
         image = remove(image, session=session)
 
     path = output_dir / f"{safe_name(asset_id)}.png"
@@ -178,6 +178,7 @@ def main() -> None:
         else:
             needs_cutout = bool(asset.get("needs_cutout", asset_type == "photo_cutout"))
             if needs_cutout and session is None:
+                from rembg import new_session
                 session = new_session("u2netp")
             filename = save_photo(
                 raw,

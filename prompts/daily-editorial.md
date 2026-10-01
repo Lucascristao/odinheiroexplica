@@ -189,6 +189,10 @@ Regras:
 
 Antes de fechar o VideoProject, faça uma auditoria de repetição: se o vídeo puder ser descrito como “o anterior com outro texto”, a direção visual ainda não está pronta.
 
+Confira a execução, além dos nomes: no palco, `behavior: reframe` exige `camera`/`camera_mode: auto` ou `view`/`mark_ids` em uma prova documental; `flow_diagram` exige conexão do alvo; operações exigem dados próprios; `kinetic_type` executa cascata somente em `reveal`/`update` de texto; `depth_photo` exige foto com movimento interno, não um recorte de fonte. A operação pode persistir entre beats. O diagnóstico mostra câmeras/posições declaradas e mudanças planejadas; `hold` e repetir a mesma posição não contam como movimento.
+
+Leia todos os erros e alertas do diagnóstico. Um plano totalmente estático pode servir à leitura documental, mas precisa ser uma escolha consciente do storyboard: confira onde a estabilidade ajuda e onde a relação pede movimento. Não distribua efeitos para cumprir uma cota e não preencha tratamentos diferentes para aparentar variedade. A revisão se apoia no que é renderizado, com tempo de leitura.
+
 ### Plano visual persistente — obrigatório para cenas com beats
 
 Aplicar `docs/editorial-evidence.md`: durante a pesquisa, selecionar e salvar recortes reais que demonstrem as afirmações. Planejar quando apresentar, destacar, aproximar e retirar cada trecho durante a fala. Usar `source_excerpt`, marcações por região, `emphasis` por frase, gráficos com dados verificados e números dominantes conforme a necessidade da pauta. Capturas precisam estar disponíveis no repositório antes do render. Não basta informar a URL de uma notícia esperando que o motor encontre e capture o trecho sozinho. Não copiar a estrutura dos vídeos de referência.
@@ -208,6 +212,8 @@ Não usar treatment como catálogo a alternar. Repetir operações sobre o mesmo
 A síntese Gemini não devolve bookmarks de palavras. O runner localiza âncoras no áudio processado com reconhecimento local e critérios de confiança. Cada evento registra `audio-word-alignment` ou uma estimativa explícita quando o reconhecimento não for suficiente. Revise o sincronismo depois do render; nenhuma âncora pode estar ausente, repetida ou fora da ordem da narração.
 
 Palcos não podem ter colisão, nem mesmo nas posições de anotações que ainda vão surgir. O renderer mede texto com fonte fixa; ampliar a região ou reduzir o texto quando não houver espaço. Letras espremidas não são uma solução.
+
+Corrija cada falha de layout preservando a relação explicada. Reorganize os participantes, amplie a região de texto, reserve corredores para setas/operadores e replaneje o intervalo quando necessário. Não apague conexões, câmera ou operações nem substitua uma demonstração por destaque genérico apenas para passar o gate. Verifique que a nova composição ainda mostra origem, destino, condição, comparação ou conta prevista na fala; execute a auditoria completa antes da voz e novamente com o tempo final do áudio.
 
 Som é none por padrão. Escolher poucos eventos com função audível. A foto com papel rasgado é uma variação opcional; recorte limpo continua disponível.
 
@@ -277,6 +283,8 @@ Seguir `docs/editorial-voice.md`. Escrever para o ouvido: frases curtas com uma 
 Escrever intenção, contraste e pausas na própria narração. A direção comum de `worker/voice-policy.json`, `tts.delivery` e `tts.cues` são enviados ao Gemini Live como instruções que não fazem parte do roteiro falado. `rate` e `pitch` continuam sem processamento direto no áudio bruto. Associar a entrada de número, recorte ou grifo a uma âncora literal única de `visual.beats`. O alinhamento local usa o áudio real quando houver confiança suficiente, mantendo estimativas explícitas nos demais eventos. Revisar a sincronização no MP4. Reservar tempo de leitura durante a explicação e manter a voz do apresentador e o destaque amarelo da marca.
 
 Dirija a atuação das frases essenciais em `tts.cues`, conforme `docs/editorial-voice.md`: `intent` transmite curiosidade, descoberta, acolhimento, cautela ou convicção; `arc` descreve pergunta, construção, resolução ou contraste; `emphasis_word` escolhe uma palavra literal única do próprio trecho. Selecione essas intenções pelas frases reais deste vídeo, sem distribuí-las como uma sequência obrigatória. A pergunta, a explicação, a ressalva e a conclusão podem ter ritmo e energia diferentes. Preserve todas as palavras do roteiro e a identidade do apresentador.
+
+Cada `tts.cues[].text` é um trecho literal único da narração, com no máximo 160 caracteres e sem atravessar duas frases. Selecione a oração essencial para dirigir a atuação; não copie um parágrafo inteiro. `emphasis_word` deve ser uma única palavra literal do trecho, com grafia e maiúsculas iguais. Corrija uma cue longa mantendo o roteiro completo: encurte apenas o trecho selecionado para a direção, sem truncar a narração.
 
 
 ### Direção de motion design por episódio

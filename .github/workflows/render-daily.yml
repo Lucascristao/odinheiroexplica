@@ -49,16 +49,20 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: pip
+          cache-dependency-path: worker/requirements.txt
 
       - name: Node for editorial preparation
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
       - name: Prepare editorial engine
         run: npm ci --no-audit --no-fund
 
       - name: Compile editorial contract before paid synthesis
+        id: editorial_contract
         run: npm run validate:editorial -- video/data/daily.json --require-explanation
 
       - name: Typecheck before narration
@@ -66,6 +70,44 @@ jobs:
 
       - name: Validate canonical voice policy before narration
         run: python worker/validate_voice_policy.py
+
+      - name: Audit source balance before dependencies and TTS
+        run: |
+          mkdir -p video/generated
+          python worker/editorial_source_audit.py \
+            --input video/generated/daily-project.json \
+            --output video/generated/daily-source-audit.json \
+            --strict
+
+      - name: Audit pronunciation before dependencies and TTS
+        run: |
+          python worker/pronunciation_audit.py \
+            --input video/generated/daily-project.json \
+            --output video/generated/daily-pronunciation-audit.json \
+            --strict
+
+      - name: Check geometry with production font before asset dependencies
+        id: layout_geometry
+        timeout-minutes: 10
+        run: |
+          npm run validate:layout -- \
+            --project video/generated/daily-project.json \
+            --mode geometry-only \
+            --output video/generated/daily-layout-geometry.json \
+            --frames-dir render-output/layout-geometry
+
+      - name: Upload early layout diagnostics
+        if: always() && hashFiles('video/generated/daily-layout-geometry.json') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-layout-preparation
+          path: |
+            video/data/daily.json
+            video/generated/daily-project.json
+            video/generated/daily-layout-geometry.json
+            render-output/layout-geometry/
+          if-no-files-found: error
+          retention-days: 7
 
       - name: Report start
         run: |
@@ -79,28 +121,52 @@ jobs:
 
       - name: Install system dependencies
         run: |
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
+          MEDIA_BIN="$GITHUB_WORKSPACE/node_modules/@remotion/compositor-linux-x64-gnu"
+          if command -v ffmpeg >/dev/null 2>&1 && command -v ffprobe >/dev/null 2>&1; then
+            echo "Usando FFmpeg e FFprobe já instalados no runner."
+          elif [ -x "$MEDIA_BIN/ffmpeg" ] && [ -x "$MEDIA_BIN/ffprobe" ]; then
+            echo "$MEDIA_BIN" >> "$GITHUB_PATH"
+            echo "Usando FFmpeg e FFprobe da versão fixada do Remotion."
+          else
+            sudo apt-get update -o Acquire::Retries=2 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30
+            sudo apt-get install -y --no-install-recommends ffmpeg
+          fi
 
       - name: Install Python dependencies
         run: |
-          pip install --no-cache-dir -r worker/requirements.txt
-          playwright install --with-deps chromium
+          python -m pip install --disable-pip-version-check -r worker/requirements.txt
+
+      - name: Detect documentary capture requirements
+        id: capture
+        run: |
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from importlib.metadata import version
+          with open("video/generated/daily-project.json", encoding="utf-8") as source:
+              project = json.load(source)
+          required = any(asset.get("type") == "source_excerpt" for asset in project.get("visual_assets", []))
+          print(f"required={'true' if required else 'false'}")
+          print(f"playwright_version={version('playwright')}")
+          PY
+
+      - name: Restore document capture browser
+        if: steps.capture.outputs.required == 'true'
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-${{ runner.os }}-${{ steps.capture.outputs.playwright_version }}
+
+      - name: Install document capture browser
+        if: steps.capture.outputs.required == 'true'
+        run: python -m playwright install chromium
 
       - name: Generate editorial sound design
         run: |
           rm -rf public/generated-sfx
           python worker/generate_sound_design.py --output-dir public/generated-sfx
 
-      - name: Audit source balance before TTS
-        run: |
-          mkdir -p video/generated
-          python worker/editorial_source_audit.py \
-            --input video/generated/daily-project.json \
-            --output video/generated/daily-source-audit.json \
-            --strict
-
       - name: Auto-capture editorial source excerpts
+        if: steps.capture.outputs.required == 'true'
         run: |
           mkdir -p research/captures
           python worker/auto_capture_sources.py \
@@ -116,15 +182,8 @@ jobs:
             --output-dir public/generated-assets \
             --manifest video/generated/daily-visual-assets.json
 
-      - name: Audit pronunciation before TTS
-        run: |
-          mkdir -p video/generated
-          python worker/pronunciation_audit.py \
-            --input video/generated/daily-project.json \
-            --output video/generated/daily-pronunciation-audit.json \
-            --strict
-
       - name: Check composition with production font before narration
+        id: layout_assets
         run: |
           npm run validate:layout -- \
             --project video/generated/daily-project.json \
@@ -228,6 +287,7 @@ jobs:
             --output video/generated/daily-render-input.json
 
       - name: Check layout with the actual narration clock
+        id: layout_final
         run: |
           npm run validate:layout -- \
             --project video/generated/daily-project.json \
@@ -325,12 +385,14 @@ jobs:
           path: |
             video/data/daily.json
             video/generated/daily-project.json
+            video/generated/daily-layout-geometry.json
             video/generated/daily-layout-preflight.json
             video/generated/daily-layout-final.json
             video/generated/daily-delivery-qa.json
             video/generated/daily-source-audit.json
             video/generated/daily-pronunciation-audit.json
             video/generated/daily-visual-assets.json
+            render-output/layout-geometry/
             render-output/layout-preflight/
             render-output/layout-final/
             render-output/daily-video.mp4
@@ -390,10 +452,20 @@ jobs:
       - name: Report failure
         if: failure()
         run: |
+          DETAIL="A produção falhou antes da conclusão. Consulte a etapa com erro e o pacote de revisão no GitHub Actions."
+          if [ "${{ steps.editorial_contract.outcome }}" = "failure" ]; then
+            DETAIL="O roteiro ou a direção declarada não passaram no contrato editorial. A narração não começou. Consulte os erros no GitHub Actions."
+          elif [ "${{ steps.layout_geometry.outcome }}" = "failure" ]; then
+            DETAIL="A composição foi bloqueada antes de preparar assets ou gerar voz. Consulte as cenas e os quadros no artifact daily-layout-preparation."
+          elif [ "${{ steps.layout_assets.outcome }}" = "failure" ]; then
+            DETAIL="O layout com os assets reais precisa de ajuste. A narração não começou. Consulte daily-layout-preflight.json e os quadros no pacote de revisão."
+          elif [ "${{ steps.layout_final.outcome }}" = "failure" ]; then
+            DETAIL="O layout com o tempo real da narração precisa de ajuste. O áudio válido foi preservado no cache. Consulte daily-layout-final.json e os quadros no pacote de revisão."
+          fi
           python worker/progress_callback.py \
             --run-id "${{ github.run_id }}" \
             --title "$ODE_VIDEO_TITLE" \
             --status error \
             --stage erro \
             --percent 100 \
-            --detail "A produção falhou antes da conclusão."
+            --detail "$DETAIL"

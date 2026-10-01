@@ -7,6 +7,7 @@ import {validateExplanation} from "../src/lib/editorial-explanation";
 import {editorialStageSchema, stageEventFields, validateStageEvents} from "../src/lib/editorial-stage";
 import {z} from "zod";
 import {visualAssetSchema} from "../src/lib/video-project-schema";
+import {githubAnnotation} from "../src/lib/editorial-layout-audit";
 
 const path = process.argv[2] ?? "video/data/daily.json";
 const rawProject = JSON.parse(readFileSync(path, "utf8"));
@@ -29,6 +30,10 @@ const imageScenes = scenes.filter((scene: any) => {
 }).length;
 console.log(`Cobertura visual: ${imageScenes}/${scenes.length} cenas com foto ou recorte utilizável.`);
 let failures = 0;
+for(const message of direction.errors??[]) {
+  console.error(process.env.GITHUB_ACTIONS?`::error::${githubAnnotation(message)}`:`Direção: ${message}`);
+  failures++;
+}
 for(const error of validateExplanation(project)){console.error(`Explicação: ${error}`);failures++;}
 if(process.argv.includes("--require-explanation")&&!project.editorial?.explanation){console.error("Produção exige contrato editorial.explanation; migre conceitos, exemplos e unidades.");failures++;}
 if(project.editorial?.explanation) {
@@ -87,7 +92,7 @@ for(const raw of project.visual_assets??[]){
   if(raw.type==="source_excerpt"&&!String(raw.expected_text??"").trim()){console.error(`Recorte sem expected_text verificável: ${raw.id}`);failures++;}
 }
 for (const [index, scene] of scenes.entries()) {
-  const error = (message: string) => {console.error(`Cena ${index}: ${message}`); failures++;};
+  const error = (message: string) => {const detail=`Cena ${scene.id??index}: ${message}`;console.error(process.env.GITHUB_ACTIONS?`::error::${githubAnnotation(detail)}`:detail); failures++;};
   validateSpeechDirection(String(scene.narration ?? ""), scene.tts).forEach(error);
   const raw = scene.visual?.beats ?? [];
   if (!raw.length && !scene.visual?.stage) continue; // Legacy scenes without events.
