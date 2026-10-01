@@ -25,6 +25,15 @@ NUMBER_WORDS = {
 }
 
 
+def _expand_numeric_dates(text: str) -> str:
+    def date(match):
+        day, month, year = map(int, match.groups())
+        if 1 <= day <= 31 and 1 <= month <= 12:
+            return f"{day} de {MONTHS[month-1]} de {year}"
+        return match.group()
+    return re.sub(r"\b(\d{1,2})/(\d{1,2})/(\d{4})\b", date, str(text))
+
+
 def _num2words(value, *, to=None):
     try:
         from num2words import num2words
@@ -89,13 +98,7 @@ def canonical_tokens(text, pronunciations=None):
     if re.search(r"\d", text):
         _num2words(0)
 
-    def date(match):
-        day, month, year = map(int, match.groups())
-        if 1 <= day <= 31 and 1 <= month <= 12:
-            return f"{day} de {MONTHS[month-1]} de {year}"
-        return match.group()
-
-    text = re.sub(r"\b(\d{1,2})/(\d{1,2})/(\d{4})\b", date, text)
+    text = _expand_numeric_dates(text)
 
     def currency(match):
         number = match.group(1)
@@ -152,7 +155,8 @@ def _numeric_only_mismatch(differences: list[dict]) -> bool:
 
 def evaluate_transcription(reference, transcript, pronunciations=None, minimum=.985):
     reference_text, transcript_text, equivalences = normalize_reference_year_equivalents(
-        reference, transcript
+        _expand_numeric_dates(reference),
+        _expand_numeric_dates(transcript),
     )
     expected = canonical_tokens(reference_text, pronunciations)
     actual = canonical_tokens(transcript_text, pronunciations)
