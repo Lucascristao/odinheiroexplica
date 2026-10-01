@@ -80,6 +80,60 @@ if (subscription && !/inscrev|inscri[cç][aã]o/i.test(subscription)) {
 if (subscription && introduction && spokenScript.indexOf(subscription) <= spokenScript.indexOf(introduction)) {
   contractError("o pedido de inscrição deve vir após a apresentação e a entrega de valor.");
 }
+
+// Packaging is part of the editorial contract, not a post-render afterthought.
+const packagingError = (message: string) => {console.error(`Embalagem: ${message}`); failures++;};
+const normalizePackagingText = (value: string) => value.normalize("NFD").replace(/[\\u0300-\\u036f]/g, "").toLowerCase().replace(/[^a-z0-9\\s]/g, " ").replace(/\\s+/g, " ").trim();
+const findPhraseStart = (haystack: string[], needle: string[]) => {
+  if (!needle.length) return -1;
+  for (let i = 0; i <= haystack.length - needle.length; i++) {
+    if (needle.every((word, offset) => haystack[i + offset] === word)) return i;
+  }
+  return -1;
+};
+const packaging = project.packaging ?? {};
+const title = String(packaging.titles?.[0]?.text ?? "").trim();
+const thumbnailHeadline = String(packaging.thumbnails?.[0]?.headline ?? "").trim();
+const publication = project.publication ?? {};
+const description = String(publication.description ?? "").trim();
+const primaryKeyword = String(publication.seo?.primary_keyword ?? "").trim();
+if (!title || title.length > 100) packagingError("título deve ter entre 1 e 100 caracteres.");
+if (title.length > 65) console.warn("::warning::Título passou de 65 caracteres; confirme se o assunto e a consequência sobrevivem ao corte no celular.");
+if (/^(entenda|saiba|veja|instru[cç][aã]o normativa|regulamenta[cç][aã]o|resolu[cç][aã]o|norma)\\b/i.test(title)) {
+  console.warn("::warning::Título começa de forma genérica ou burocrática; prefira abrir pelo assunto/impacto quando isso for natural.");
+}
+if (primaryKeyword) {
+  const titleWords = normalizePackagingText(title).split(" ").filter(Boolean);
+  const keywordWords = normalizePackagingText(primaryKeyword).split(" ").filter(Boolean);
+  const keywordStart = findPhraseStart(titleWords, keywordWords);
+  if (keywordStart < 0 || keywordStart > 4) {
+    console.warn(`::warning::A palavra-chave principal "${primaryKeyword}" não aparece nas primeiras 5 palavras do título; confirme se o front-loading pode melhorar.`);
+  }
+}
+if (title && thumbnailHeadline) {
+  const titleTokens = new Set(normalizePackagingText(title).split(" ").filter(Boolean));
+  const thumbTokens = [...new Set(normalizePackagingText(thumbnailHeadline).split(" ").filter(Boolean))];
+  const overlap = thumbTokens.length ? thumbTokens.filter(token => titleTokens.has(token)).length / thumbTokens.length : 0;
+  if (normalizePackagingText(title) === normalizePackagingText(thumbnailHeadline) || overlap >= 0.8) {
+    console.warn("::warning::Título e thumbnail repetem quase a mesma mensagem; faça a capa complementar o título.");
+  }
+}
+if (!description) packagingError("publication.description está vazia.");
+if (/^(?:\\s*)(fontes|bases do v[ií]deo|cap[ií]tulos|cr[eé]ditos visuais)\\s*:?.*$/gim.test(description)) {
+  packagingError("publication.description não deve conter fontes, capítulos ou créditos; o pipeline acrescenta essas seções uma única vez.");
+}
+if (/https?:\\/\\/|www\\./i.test(description)) packagingError("publication.description não pode conter links.");
+const bulletLines = description.split(/\\r?\\n/).filter((line: string) => /^\\s*[-•*]\\s+\\S/.test(line));
+if (bulletLines.length < 3 || bulletLines.length > 4) packagingError("publication.description deve ter 3 ou 4 bullets didáticos.");
+if (primaryKeyword && !normalizePackagingText(description.slice(0, 360)).includes(normalizePackagingText(primaryKeyword))) {
+  packagingError("a palavra-chave principal deve aparecer naturalmente no gancho inicial da descrição.");
+}
+if (description.length > 3200) console.warn("::warning::Corpo da descrição está longo; reserve espaço para capítulos, fontes, créditos, pergunta e hashtags.");
+const engagementQuestion = String(publication.engagement_question ?? "").trim();
+if (!engagementQuestion || !engagementQuestion.endsWith("?")) packagingError("publication.engagement_question deve conter uma pergunta simples terminada em ?.");
+const hashtags = Array.isArray(publication.hashtags) ? publication.hashtags.map((value: unknown) => String(value).trim()) : [];
+if (hashtags.length !== 3) packagingError("publication.hashtags deve conter exatamente 3 hashtags.");
+for (const hashtag of hashtags) if (!/^#[\\p{L}\\p{N}_]+$/u.test(hashtag)) packagingError(`hashtag inválida: ${hashtag}`);
 if (scenes.length >= 4 && imageScenes === 0) {
   console.warn("::warning::Nenhuma foto/recorte aparece no palco. Confirme que o episódio usa motion graphics por decisão editorial, e não por omissão de assets.");
 }
