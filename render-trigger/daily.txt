@@ -1,5 +1,5 @@
-Produção autorizada: Simples Nacional híbrido — relançamento após correção de fidelidade numérica do Gemini Live.
-Narração: somente gemini-3.8-live/Charon, google-genai 2.26.0, temperatura padrão, uma sessão WebSocket por cena/tentativa, retries transitórios e WAV bruto sem DSP.
-Anos entre 1900 e 2099 recebem orientação automática de pronúncia pt-BR sem alterar o roteiro. O gate aceita representações equivalentes do mesmo ano na transcrição e continua bloqueando ano diferente ou mudança lexical.
-Após generationComplete: graça curta por turnComplete; PCM e transcrição completos podem encerrar a cena sem esperar o fechamento lógico indefinidamente.
-Trigger: live-numeric-fidelity-fix-2026-10-01
+Produção autorizada: Pix por aproximação — fim do teto específico de R$500.
+Projeto: pix-aproximacao-limite-2026-10-01
+Narração: Luana / Autonoe, somente gemini-3.8-live conforme worker/voice-policy.json.
+Usar video/data/daily.json atual, validações e cache oficial do motor. Não trocar a pauta.
+Trigger: pix-aproximacao-limite-2026-10-01-v1
