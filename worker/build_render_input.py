@@ -10,6 +10,7 @@ from pathlib import Path
 
 from tts_config import TTS_MODEL_CASCADE, PRESENTER_VOICES, VOICE_POLICY_VERSION, project_speech_fingerprint, voice_policy_fingerprint, scene_direction_fingerprint
 from editorial_project import normalize_project
+from editorial_caption_timing import build_caption_timing
 
 
 FPS = 30
@@ -323,6 +324,14 @@ def main() -> None:
                         element["asset_height"] = prepared["height"]
             scene_with_resolved_visual["visual"]["stage"] = stage
 
+        caption_words, caption_timing = ([], None)
+        caption_settings = (stage or {}).get("captions")
+        if isinstance(caption_settings, dict) and caption_settings.get("enabled", True):
+            caption_words, caption_timing = build_caption_timing(
+                scene, audio, FPS,
+                {**((project.get("speech") or {}).get("pronunciations") or {}),
+                 **((scene.get("tts") or {}).get("pronunciations") or {})},
+            )
         output_scenes.append(
             {
                 **scene_with_resolved_visual,
@@ -337,6 +346,8 @@ def main() -> None:
                 "audio_fallback_reason": audio.get("fallback_reason"),
                 "audio_postprocess": audio.get("postprocess"),
                 "audio_alignment": audio.get("alignment"),
+                "audio_captions": caption_words,
+                "caption_timing": caption_timing,
                 "audio_activity": audio.get("audio_activity"),
                 "audio_boundary": gap,
                 "audio_scene_direction_fingerprint": audio.get("scene_direction_fingerprint"),

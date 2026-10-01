@@ -35,6 +35,7 @@ import {
 } from "./EditorialMicroScene";
 import renderInput from "../generated/daily-render-input.json";
 import {EditorialStage} from "./EditorialStage";
+import {EditorialCaptions, type CaptionWord} from "./EditorialCaptions";
 import type {EditorialStage as Stage} from "../../src/lib/editorial-stage";
 
 type GenericRecord = Record<string, unknown>;
@@ -49,6 +50,7 @@ type Scene = {
   duration_frames: number;
   audio_duration_seconds?: number;
   audio_file: string;
+  audio_captions?: CaptionWord[];
   visual: {
     type: string;
     payload?: GenericRecord;
@@ -1805,6 +1807,8 @@ const SceneComposition = ({
   if (scene.visual.stage) {
     return <AbsoluteFill>
       <EditorialStage stage={scene.visual.stage} beats={beats} title={scene.title} />
+      <EditorialCaptions stage={scene.visual.stage} beats={beats} words={scene.audio_captions ?? []} title={scene.title} />
+      <SceneTransitionAccent type={scene.visual?.transition} sceneIndex={scene.scene_index} secondaryColor={direction.secondary_color} />
       <SoundDesign scene={scene} isLast={isLast} />
       <Audio src={staticFile(scene.audio_file)} />
     </AbsoluteFill>;

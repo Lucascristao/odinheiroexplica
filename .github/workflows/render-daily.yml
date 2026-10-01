@@ -286,6 +286,10 @@ jobs:
             --visual-assets-manifest video/generated/daily-visual-assets.json \
             --output video/generated/daily-render-input.json
 
+          npx tsx scripts/report-editorial-rhythm.ts \
+            --input video/generated/daily-render-input.json \
+            --output video/generated/daily-rhythm-report.json
+
       - name: Check layout with the actual narration clock
         id: layout_final
         run: |
@@ -403,6 +407,7 @@ jobs:
             video/generated/daily-processed-tts-manifest.json
             video/generated/daily-aligned-tts-manifest.json
             video/generated/daily-alignment-report.json
+            video/generated/daily-rhythm-report.json
             video/generated/daily-render-input.json
             public/generated-audio/daily/*.wav
             public/processed-audio/daily/*

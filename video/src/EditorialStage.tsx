@@ -9,6 +9,7 @@ import {useEditorialFont, measureEditorialText} from "./editorial-font";
 import {composeText, EDITORIAL_FONT} from "../../src/lib/editorial-typography";
 import {entranceMotion, layoutStage, nodeContent, pointOnRoute} from "../../src/lib/editorial-layout";
 import {editorialStageSchema, kineticWordProgress, type EditorialStage as Stage, type StageEvent} from "../../src/lib/editorial-stage";
+import {connectionCycle, surfaceBackground, sustainedTransform} from "./editorial-sustained-motion";
 
 const FONT = EDITORIAL_FONT;
 const WHITE = "#f6f7f8";
@@ -88,17 +89,22 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
           const arrival = beats.filter(beat => [edge.from, edge.to].includes(beat.target_id ?? "") && beat.action !== "retire" &&
             typeof beat.resolved_frame === "number" && beat.resolved_frame <= frame).at(-1);
           const routeDuration = Math.max(arrival?.motion_seconds ?? 0.45, 1.15) * fps;
-          const routeProgress = arrival ? checkedStage.motion_profile === "static" ? 1 : interpolate(frame - arrival.resolved_frame!, [0, routeDuration], [0, 1], clamp) : 0;
-          const selected = checkedStage.motion_profile !== "static" && Boolean(arrival && frame - arrival.resolved_frame! < routeDuration);
-          const dot=pointOnRoute(connection.points,routeProgress);
+          const sustainedEdge = checkedStage.motion_profile !== "static" && edge.motion !== "once";
+          const routeProgress = arrival ? checkedStage.motion_profile === "static" ? 1 : interpolate(frame - arrival.resolved_frame!, [0, routeDuration], [0, 1], clamp) : sustainedEdge ? 1 : 0;
+          const cycle = connectionCycle(frame, fps, arrival?.resolved_frame ?? Math.max(from.changedAt, to.changedAt), edge.period_seconds);
+          const flow = sustainedEdge && edge.motion === "flow";
+          const pulse = sustainedEdge && edge.motion === "pulse" ? 0.38 + 0.62 * Math.pow(Math.sin(cycle * Math.PI), 2) : 1;
+          const selected = flow || (checkedStage.motion_profile !== "static" && Boolean(arrival && frame - arrival.resolved_frame! < routeDuration));
+          const dot=pointOnRoute(connection.points,flow ? cycle : routeProgress);
           const dotX=dot.x,dotY=dot.y;
           const edgeEnter = Math.min(presence(from),presence(to));
           return <g key={`${edge.from}-${edge.to}-${i}`} opacity={edgeEnter * cameraAlpha * (takeover ? 0.15 : 1)}>
             <path d={path} fill="none" stroke="#45515a" strokeWidth={2} strokeDasharray="8 10" markerEnd={`url(#${arrowId})`} />
-            {routeProgress > 0 && <path d={path} fill="none" pathLength={1} stroke={accent} strokeWidth={5} strokeLinecap="round" strokeDasharray={1} strokeDashoffset={1-routeProgress} />}
-            {selected && routeProgress > 0 && <circle cx={dotX} cy={dotY} r={8} fill={accent} stroke="#101317" strokeWidth={3} />}
+            {routeProgress > 0 && <path d={path} fill="none" pathLength={1} stroke={accent} strokeWidth={5} strokeLinecap="round" strokeDasharray={1} strokeDashoffset={1-routeProgress} opacity={pulse * (flow ? 0.45 : 1)} />}
+            {flow && <path d={path} fill="none" stroke={accent} strokeWidth={3} strokeLinecap="round" strokeDasharray="10 22" strokeDashoffset={-cycle * 32} opacity={0.8} />}
+            {selected && routeProgress > 0 && edge.semantic !== "transfer" && <circle cx={dotX} cy={dotY} r={8} fill={accent} stroke="#101317" strokeWidth={3} />}
             {selected && edge.semantic === "transfer" && [0, 0.22, 0.44].map((delay, coin) => {
-              const p = (routeProgress - delay) / (1 - delay);
+              const p = flow ? (cycle + coin / 3) % 1 : (routeProgress - delay) / (1 - delay);
               if (p < 0 || p > 1) return null;
               const {x,y}=pointOnRoute(connection.points,p);
               return <g key={coin} transform={`translate(${x},${y})`}><circle r={edge.token_label?17:9} fill={GOLD} stroke="#101317" strokeWidth={3}/>{edge.token_label&&<text textAnchor="middle" dominantBaseline="central" fontSize={20} fontWeight={700} fill="#101317">{edge.token_label}</text>}</g>;
@@ -149,6 +155,14 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
 
         const cueProgress = checkedStage.motion_profile === "static" ? 1 : interpolate(frame - element.cueFrame, [0, element.cueDuration], [0, 1], clamp);
         const cueEase = cueProgress * cueProgress * (3 - 2 * cueProgress);
+        const actuationProgress = checkedStage.motion_profile === "static" ? 1 : interpolate(frame - element.actuationFrame, [0, element.actuationDuration], [0, 1], clamp);
+        const lockProgress = checkedStage.motion_profile === "static" ? 1 : interpolate(frame - element.lockFrame, [0, element.lockDuration], [0, 1], clamp);
+        const sustain = checkedStage.motion_profile === "static" ? undefined : element.sustain;
+        const mediaSustain = checkedStage.elements.some(child=>child.overlay_on===element.id) ? undefined : sustain;
+        const surface = surfaceBackground(element.surface, selected ? cueEase : 0, frame, fps, sustain, element.changedAt);
+        // An authored surface also opts out of the legacy panel/rule styling.
+        // `none` means clean typography/art; glow remains light, not a card.
+        const authoredSurface = element.surface !== undefined;
         // Treatments alter the targeted information at its authored cue. Their
         // transforms stay inside the reserved box, preserving complete framing.
         const giantNumber = element.treatment === "giant_number";
@@ -159,8 +173,8 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
         // whether a changing amount is a measured fact or a didactic counter.
         const displayedValue = element.value;
 
-        // Motion is tied to an editorial event. Constant floating made even
-        // unrelated scenes feel like the same collection of animated cards.
+        // Entrances follow speech cues; continued motion requires the author's
+        // explicit sustain/connection direction and stays inside media boxes.
         const scalePop = motion.scale;
         const translateY = motion.y;
         const translateX = motion.x;
@@ -178,10 +192,10 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
               padding: cardPadding,
               opacity,
               zIndex: element.overlay_on ? 2 : 1,
-              background: cardBg,
-              border: cardBorder,
-              borderLeft: isDiagramStep && !isRouteNode ? `5px solid ${selected ? GOLD : "#45515a"}` : undefined,
-              boxShadow: cardShadow,
+              background: authoredSurface ? (!["photo","object"].includes(element.kind) ? surface : undefined) : cardBg,
+              border: authoredSurface ? undefined : cardBorder,
+              borderLeft: !authoredSurface && isDiagramStep && !isRouteNode ? `5px solid ${selected ? GOLD : "#45515a"}` : undefined,
+              boxShadow: authoredSurface ? undefined : cardShadow,
               borderRadius: isCard && !isRouteNode ? 18 : (element.overlay_on ? 12 : undefined),
               transform: `translate(${translateX}px, ${translateY}px) scale(${scalePop})`,
               boxSizing: "border-box",
@@ -215,10 +229,13 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
               />
             ) : element.kind === "object" && element.object_type ? (
               <div style={{width: "100%", height: "100%", display: "flex", flexDirection: "column"}}>
-                <div style={{flex: 1, minHeight: 0, clipPath:motion.clip}}>
-                  <EditorialObject type={element.object_type} accent={accent} progress={reveal} emphasisProgress={cueEase} active={selected && checkedStage.motion_profile !== "static"} motion={checkedStage.motion_profile === "static" ? "none" : element.svg_motion} />
+                <div style={{flex: 1, minHeight: 0, position:"relative", clipPath:motion.clip}}>
+                  {surface && <div data-editorial-surface={element.surface} aria-hidden style={{position:"absolute",inset:0,background:surface,borderRadius:element.surface==="paper"?6:0}} />}
+                  <div style={{width:"100%",height:"100%",position:"relative",transform:sustainedTransform(mediaSustain,frame,fps,Math.max(1,box.w-cardPadding*2),Math.max(1,box.h-cardPadding*2-90),element.changedAt),transformOrigin:"center"}}>
+                    <EditorialObject type={element.object_type} accent={accent} progress={reveal} emphasisProgress={cueEase} active={selected && checkedStage.motion_profile !== "static"} actuation={element.actuation} actuationProgress={actuationProgress} locked={element.locked} lockFrom={element.lockFrom} lockProgress={lockProgress} motion={checkedStage.motion_profile === "static" ? "none" : element.svg_motion} />
+                  </div>
                 </div>
-                <TextBox text={element.label} width={box.w - 32} height={90} maxSize={element.label_size??42} kinetic={kineticLabel} wordProgress={cueProgress} />
+                <div style={{height:90,flexShrink:0}}><TextBox text={element.label} width={box.w - 32} height={90} maxSize={element.label_size??42} kinetic={kineticLabel} wordProgress={cueProgress} /></div>
               </div>
             ) : element.kind === "photo" ? (
               <div
@@ -227,12 +244,13 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
                   width: "100%",
                   height: "100%",
                   padding: element.photo_style === "paper" ? 14 : 0,
+                  boxSizing:"border-box",
                   overflow: "hidden",
-                  background: element.photo_style === "paper" ? "#eee8dc" : "transparent",
+                  background: surface ?? (element.photo_style === "paper" ? "#eee8dc" : "transparent"),
                   clipPath: element.photo_style === "paper" ? "polygon(1% 2%, 18% 0, 35% 2%, 51% 0, 72% 2%, 99% 0, 98% 23%, 100% 47%, 98% 71%, 100% 99%, 77% 97%, 52% 100%, 29% 98%, 0 100%, 2% 73%, 0 48%)" : undefined,
                 }}
               >
-                {element.asset_file ? (
+                <div style={{width:"100%",height:"100%",transform:sustainedTransform(mediaSustain,frame,fps,Math.max(1,box.w-cardPadding*2-(element.photo_style==="paper"?28:0)),Math.max(1,box.h-cardPadding*2-(element.photo_style==="paper"?28:0)),element.changedAt),transformOrigin:"center",overflow:"hidden"}}>{element.asset_file ? (
                   <Img
                     src={staticFile(element.asset_file)}
                     style={{
@@ -240,12 +258,12 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
                       width: "100%",
                       objectFit: element.image_fit,
                       objectPosition: `${element.focal_x}% ${element.focal_y}%`,
-                      transform: element.image_motion === "push" ? `scale(${1 + Math.min(1, Math.max(0, frame - element.changedAt) / (fps * 8)) * 0.06})` : element.image_motion === "pan" ? `translateX(${-3 + 6 * Math.min(1, Math.max(0, frame - element.changedAt) / (fps * 12))}%) scale(1.12)` : undefined,
+                      transform: checkedStage.motion_profile === "static" ? undefined : element.image_motion === "push" ? `scale(${1 + Math.min(1, Math.max(0, frame - element.changedAt) / (fps * 8)) * 0.06})` : element.image_motion === "pan" ? `translateX(${-3 + 6 * Math.min(1, Math.max(0, frame - element.changedAt) / (fps * 12))}%) scale(1.12)` : undefined,
                     }}
                   />
                 ) : (
                   <div style={{color: "#252a30", fontSize: 32}}>Foto: {element.label}</div>
-                )}
+                )}</div>
               </div>
             ) : (
               <>
@@ -261,11 +279,12 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
                       background: selected ? "rgba(255, 189, 25, 0.16)" : "rgba(255, 255, 255, 0.05)",
                       boxShadow: selected ? "0 0 20px rgba(255, 189, 25, 0.35)" : undefined,
                       flexShrink: 0,
-                      transform: `scale(${selected ? 1.05 : 1.0})`,
                       clipPath:motion.clip,
                     }}
                   >
-                    <EditorialIcon name={element.icon} size={iconSize} color={color} progress={reveal} emphasisProgress={cueEase} active={selected && checkedStage.motion_profile !== "static"} motion={checkedStage.motion_profile === "static" || element.svg_motion === "none" ? "none" : element.svg_motion === "trace" ? "draw" : undefined} />
+                    <div style={{width:iconSize,height:iconSize,transform:sustainedTransform(sustain,frame,fps,iconSize,iconSize,element.changedAt),transformOrigin:"center"}}>
+                      <EditorialIcon name={element.icon} size={iconSize} color={color} progress={reveal} emphasisProgress={cueEase} active={selected && checkedStage.motion_profile !== "static"} actuation={element.actuation} actuationProgress={actuationProgress} locked={element.locked} lockFrom={element.lockFrom} lockProgress={lockProgress} motion={checkedStage.motion_profile === "static" || element.svg_motion === "none" ? "none" : element.svg_motion === "trace" ? "draw" : undefined} />
+                    </div>
                   </div>
                 )}
                 <div style={{width: innerW, flexShrink: 0, display: "flex", flexDirection: "column", justifyContent: "center"}}>

@@ -21,10 +21,13 @@ Recortes autênticos, gráficos com dados, marcações de frases/regiões e cama
 `visual.stage.elements` aceita `step`, `label`, `metric`, `note`, `photo`, `object`, `source_excerpt` e `chart`. Cada elemento ocupa uma região segura; sobreposição de texto só é permitida na região explicitamente reservada de uma foto/objeto.
 
 - `icon`: bank, wallet, person, search, bell, lock, check, refund, shield, warning, clock, phone, receipt, cart, key, eye-off, route, coins, chart, house, car, document, globe. SVG local, sem serviço pago. Escolher pelo significado; não colocar um ícone em toda frase por obrigação.
-- `kind: object` com `object_type: receipt | wallet | bank`: ilustrações vetoriais originais em camadas, para objetos dominantes. `label` é a legenda curta. São esquemas, não documentos ou comprovantes reais.
+- `kind: object` com `object_type: receipt | wallet | bank | component | factory | truck | package | atm | cash | branch | hub | data | store | phone | terminal`: ilustrações vetoriais originais em camadas, para participantes dominantes. `label` é o rótulo curto; legendas da fala têm outro contrato. São esquemas, não documentos, instalações ou comprovantes reais de uma instituição.
 - `kind: photo` com `asset_id`: fotos e gráficos do manifesto visual. `image_fit: contain | cover`, `focal_x/focal_y: 0..100`, `image_motion: none | push | pan`, `photo_style: clean | paper`. Push/pan são discretos, limitados e calculados pelo frame; usar none para documento que precisa ser lido e contain para preservar recorte.
-- Conexões: traço de foco e ponto percorrendo o caminho quando a fala chega ao destino. Não representam valores ou velocidades financeiras reais.
+- Conexões: `motion:once` desenha o percurso e repousa; `flow` ou `pulse` com `period_seconds` sustentam a relação em curso. Não representam valores, frequências ou velocidades financeiras reais.
 - `reveal_ids`, `retire_ids`, `moves` e `action:update` mudam a explicação sem desmontar o palco. Retirar anotações que perderam função; preservar as relações que ainda ajudam.
+- `beat.actuation:tap|lock|unlock|confirm|signal` faz um alvo SVG compatível atuar conforme a fala. `element.sustain` permite breathe/drift/float/tilt discretos, autorais e determinísticos; não movimentar toda cena com a mesma oscilação.
+- `element.surface:none|glow|paper|spotlight` escolhe o acabamento. Objeto, número ou texto pode viver diretamente no palco; um painel não é a unidade obrigatória de toda explicação.
+- `stage.captions` seleciona palavras grandes da narração em grupos de uma ou duas, com tempo de áudio e posição adaptada às áreas livres. Ausência conserva o projeto anterior sem legendas adicionadas automaticamente.
 
 Não há suporte novo a B-roll de vídeo, câmera 3D ou J/L cuts nesta revisão. Não inventar campos para essas capacidades. Compor dinamismo com o repertório implementado.
 
@@ -34,11 +37,19 @@ Destaques editoriais, ícones de foco, conexões, objetos e transições usam am
 
 ## Texto, imagens e movimento
 
-Uma ideia dominante por momento, com poucos apoios. Preferir rótulos de 2–6 palavras. Texto de apoio é opcional e deve acrescentar algo que a imagem não explica. Fonte mínima do palco: 32 px em 1080p; rótulos normalmente 38–46, métricas até 72. Se não couber, reduzir a redação ou ampliar a região. Não reduzir fonte indefinidamente. Reservar largura para ícones e altura para números antes de escrever.
+Uma ideia dominante por momento, com poucos apoios. Preferir rótulos de 2–6 palavras. Texto de apoio é opcional e deve acrescentar algo que a imagem não explica. Fonte mínima do palco: 32 px em 1080p; rótulos normalmente 38–46 e métricas com escala adequada à sua área. Legendas editoriais usam uma ou duas palavras com fonte de 72–140, conforme região e foco. Se não couber, reduzir a redação ou ampliar a região. Não reduzir fonte indefinidamente. Reservar largura para ícones e altura para números antes de escrever.
 
 Textos, números e unidades da informação em foco devem aparecer inteiros. Informações futuras começam ocultas e são reveladas quando a fala chega a elas; não antecipar o próximo conteúdo parcialmente cortado na borda. Durante movimentos de câmera, verificar também os quadros intermediários e manter legível o conteúdo que está sendo explicado. Objetos de contexto podem permanecer quando contribuem para a compreensão, sem concorrer com o foco ou sugerir dados incompletos.
 
 Alternar escala e recurso quando muda a pergunta: objeto real para reconhecimento, diagrama para mecanismo, número grande para dimensão, contraste para limite. Isso é um repertório, não uma sequência fixa nem uma cota de efeitos por segundo. Preservar momentos de leitura e repouso. Não usar tremor, flash, zoom pulsante ou efeito sonoro em cada palavra. Um foco em movimento por vez.
+
+Planejar também os intervalos entre as entradas: um participante pode atuar, o fluxo pode continuar, a relação pode se transformar ou a câmera repousar para ler. Um desenho de contorno e um brilho inicial não satisfazem uma demonstração de abrir, confirmar, sacar ou aproximar. Sustentação discreta preserva presença; a atuação e as transformações precisam entregar o significado da fala. Não preencher todo o vídeo com listas reveladas item a item.
+
+As legendas editoriais acompanham palavras literais da narração em grupos curtos, com entrada legível e espaço adaptativo. Aproveitar regiões disponíveis sem ocupar dados, trajetórias, objetos em atuação ou prova documental. Reservar uma região autoral quando a composição pedir; evitar posição fixa no rodapé de todas as cenas e duplicação do rótulo que já está em foco. Tempos estimados precisam continuar identificados no pacote técnico; conferir sincronismo no MP4.
+
+Ao retirar um elemento, decidir o papel do vazio durante a fala restante: pausa, foco no objeto presente, palavra sincronizada ou nova relação. A decisão nasce da história. No renderer persistente, manter objetos não preserva automaticamente as composições expressivas antigas; escolher recursos executáveis e uma interação autoral quando necessária.
+
+A revisão de produção assiste ao MP4 com áudio, inclusive depois do último reveal. Avaliar movimento percebido, progressão da explicação, legibilidade, sincronismo e uso do espaço. Diagnósticos de segundos sem eventos e número de transformações ajudam a localizar trechos; não são cotas, aprovação de originalidade ou medição de atenção do público. Uma pausa pode ser correta, e muitos efeitos podem continuar contando pouco.
 
 Pesquisar imagem pelo que ela explica: local, produto, documento ou objeto relacionado à afirmação. Não preencher todas as pautas com o mesmo celular, cédulas e gráfico genérico. Conferir resolução, origem e licença; preferir domínio público, CC0, licença compatível ou material original. Usar recorte só quando o objeto precisa se integrar ao diagrama. Não remover fundo de documentos, ambientes ou fotos em que o contexto é evidência. Evitar texto gerado dentro de imagem para informações factuais.
 

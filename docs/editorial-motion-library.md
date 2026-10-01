@@ -49,11 +49,38 @@ Não troque uma demonstração por `spotlight` nem apague setas, câmera ou oper
 
 ### Câmera e entradas autorais no palco
 
-`stage.camera_mode: manual` (também usado quando omitido) preserva câmeras explícitas; `static` mantém o quadro estável. `auto` é uma opção autoral que acompanha alvos e operações, limitada pelo enquadramento completo da informação visível. Não é ativada automaticamente para todos os vídeos. `beat.camera_mode: hold` mantém o enquadramento; uma câmera explícita continua tendo prioridade. Use `initial_camera`, câmeras nos beats e `moves` para percursos próprios da história.
+`stage.camera_mode: manual` (também usado quando omitido) preserva câmeras explícitas; `static` mantém o quadro estável. `auto` é uma opção autoral que acompanha alvos e operações, limitada pelo enquadramento completo da informação visível. Não é ativada automaticamente para todos os vídeos. `beat.camera_mode: hold` mantém o enquadramento; não combine `hold` e uma câmera explícita no mesmo beat, pois são instruções contraditórias. Use `initial_camera`, câmeras nos beats e `moves` para percursos próprios da história.
 
 `beat.entrance` escolhe `fade`, `slide`, `scale` ou `wipe`, com `direction: left | right | up | down` quando aplicável. Wipe mascara somente a arte de objetos/ícones; rótulos, números e documentos entram inteiros, sem cortar letras ou dados. A entrada deve ter relação com a ideia, respeitar a região reservada e terminar antes da leitura. `stage.motion_profile: static` permite um trecho sem efeitos; não elimina alterações informativas declaradas.
 
-SVGs locais têm desenho de traços, entrada de camadas e destaque interno finito. O foco não desmonta um objeto que já foi apresentado. `element.svg_motion` escolhe `assemble`, `trace` ou `none`; montagem por partes pertence aos objetos e ícones usam traçado ou nenhum efeito. Escolha o movimento das partes quando ele ajuda a reconhecer ou explicar o objeto; não use pulsação contínua.
+SVGs locais têm desenho de traços, entrada de camadas e destaque interno. O foco não desmonta um objeto que já foi apresentado. `element.svg_motion` escolhe `assemble`, `trace` ou `none`; montagem por partes pertence aos objetos e ícones usam traçado ou nenhum efeito. Traçar o contorno não equivale a fazer o objeto atuar. Escolha uma atuação semântica ou sustentação quando a explicação continua depois da entrada; reserve repouso para leitura e não aplique o mesmo pulso a todo elemento.
+
+### Movimento durante a fala e atuação dos objetos
+
+A entrada apresenta o assunto; o desenvolvimento precisa continuar mostrando o processo, contraste ou consequência. Planeje o que acontece entre as âncoras e depois do último reveal. Uma lista com três entradas e nenhum desenvolvimento pode ocupar quase toda a fala com o mesmo quadro. A estabilidade é adequada quando dá tempo de ler uma prova; não deve resultar apenas do esgotamento dos eventos.
+
+| Contrato autoral | Uso |
+|---|---|
+| `element.sustain` | `{kind: breathe | drift | float | tilt, amplitude: 0..12, period_seconds: 2..12, phase?: number}`: movimento pequeno, determinístico, reservado com o objeto. A amplitude é limitada pelo contrato; não deslocar dados para fora da região nem fazê-los oscilar para sugerir valores. |
+| `connection.motion` | `once` desenha o percurso e repousa; `flow` mantém o percurso ativo; `pulse` destaca a ligação periodicamente. `period_seconds` controla o ciclo. Escolher continuidade só quando há relação/processo em curso, sem inferir velocidade, frequência ou volume financeiro. |
+| `beat.actuation` | `tap`, `lock`, `unlock`, `confirm` ou `signal`: ação das partes do SVG ligada à âncora da fala. Usar com um alvo compatível; desenhar um cadeado não demonstra abrir/fechar, e aproximar o bloco inteiro não demonstra tocar a tela. |
+| `element.surface` | `none`, `glow`, `paper` ou `spotlight`: acabamento escolhido pela função. Uma escolha explícita retira painel, borda e regra lateral legados; `none` mostra arte/tipografia limpa, `glow` e `spotlight` são luz, sem cartão obrigatório. `paper` fica no suporte de photo/object, separado do rótulo branco; documentos preservam os pixels e podem usar iluminação no fundo. |
+
+Esses campos são opcionais e autorais. Projetos anteriores conservam o caminho existente quando omitidos; não ativar sustentação, câmera ou ciclos genericamente em todas as cenas. `motion_profile: static` desativa a atuação e os movimentos do palco para uma leitura estável. Legendas seguem seu contrato próprio e podem ser desabilitadas quando interferirem na prova.
+
+Os objetos esquemáticos incluem `receipt`, `wallet`, `bank`, `component`, `factory`, `truck`, `package`, `atm`, `cash`, `branch`, `hub`, `data`, `store`, `phone` e `terminal`. Escolha o participante que a história realmente usa; esquema de terminal ou banco não é foto/documento de uma empresa real. Combinar objeto dominante, informação espacial, documento ou comparação conforme a ideia, sem impor entrada/meio/saída iguais.
+
+Um foco dominante pode atuar enquanto apoios permanecem legíveis. Fluxo e movimento secundário sustentam contexto, mas não devem disputar atenção com uma palavra, número ou ação principal. Repetir o ciclo enquanto a fala explica uma relação é diferente de movimentar todo cartão como decoração.
+
+### Legendas editoriais curtas em espaços adaptativos
+
+`stage.captions` é uma escolha explícita para aquela cena: `{enabled, max_words: 1 | 2, font_size: 72..140, preferred_side: auto | left | right | center, region?: {x, y, width, height}}`. A região usa percentuais do palco. Ausência não adiciona legenda automaticamente aos projetos anteriores.
+
+As palavras acompanham a narração em grupos curtos, com presença tipográfica grande e legível. A posição considera os objetos e a câmera apresentados naquele momento; `auto` procura espaço disponível, e uma região autoral pode reservar lugar para o texto. Quando um objeto sai, o vazio pode receber a próxima palavra ou uma nova função visual; quando a prova ocupa a região, preservar seu texto, valor e unidade. Não fixar toda legenda no rodapé nem cobrir elementos essenciais para cumprir uma escolha de lado.
+
+O worker prepara `scene.audio_captions` no input gerado: `text`, `start_frame`, `end_frame` e `timing_source`. `scene.caption_timing` registra origem, palavras correspondidas e hashes de áudio/narração. Palavras reconhecidas usam `audio-word-alignment`; interpolação entre âncoras ou atividade do áudio permanece identificada como estimativa. Nunca apresentar uma estimativa como sincronismo confirmado. Não escrever tokens ou tempos finais manualmente em `daily.json`.
+
+Legendas seguem palavras literais da fala, sem inventar termos, quantias ou condições. Elas ajudam a ocupar e conduzir o olhar; não substituem a demonstração de uma transferência, comparação ou condição. Rótulos persistentes e legendas da fala têm papéis diferentes: evitar duplicá-los no mesmo foco. Desabilitar legendas quando leitura documental ou uma conta completa exigir o quadro.
 
 ### word cascade no palco
 
@@ -77,6 +104,18 @@ No palco persistente, `depth_photo` exige um alvo `kind: photo` com `image_motio
 
 A montagem com uma fotografia recortada entre texto de fundo e primeiro plano (`depth_photo` com `medium: photo_cutout`) pertence ao renderer legado. O palco não cria essa profundidade apenas pelo nome do tratamento. Quando a história exigir essa interação espacial, crie e valide uma composição autoral que a execute.
 
+### Compatibilidade com o repertório expressivo
+
+Ao existir `visual.stage`, a produção usa o renderer persistente em lugar de `Visual` e `EditorialMicroScene`. Portanto, preservar identidade de objetos não conserva automaticamente títulos gigantes, cascatas extensas ou montagens fotográficas do caminho antigo. `beat.headline` descreve a intenção; no palco só `action: update` o transforma em rótulo. A legenda da fala é outro recurso, com relógio próprio. As transições implementadas em `SceneTransitionAccent` também acompanham o caminho Stage; escolha-as pela mudança de ideia.
+
+Planeje a expressividade no caminho realmente executado: atuação, sustentação, superfície, legenda sincronizada, escala e mudanças de relação. Se a cena precisar de uma composição que o palco não representa, implemente a interação autoral mantendo o contrato de dados/voz; não reduza o pedido a vários blocos e não prometa um efeito apenas pelo nome legado. A compatibilidade é preservar a função narrativa, não copiar um template do vídeo anterior.
+
+### Diagnóstico de pausas e revisão percebida
+
+O diagnóstico informa transformações, escolhas de sustentação/atuação/superfície, legendas pedidas e intervalos sem eventos visuais. Segundos só são calculados com `duration_frames` e `resolved_frame`; antes disso o ritmo fica `pending-audio`, sem simular o relógio da fala. Uma sustentação, fluxo ou legenda pode preencher atividade sem produzir nova explicação, por isso os intervalos entre transformações aparecem separadamente.
+
+Esses números descrevem o contrato declarado, não medem movimento dos pixels nem retenção do público. Um intervalo longo gera pergunta editorial, não cota ou reprovação automática. Assista ao MP4 com áudio para julgar se a pausa está ajudando a ler, se o movimento é perceptível e se a explicação ainda progride. Aprovar geometria, contar câmeras ou examinar screenshots não aprova o ritmo.
+
 ### bloom — transição legada
 
 Transition: bloom.
@@ -87,7 +126,7 @@ Expansão curta de luz/cor usada como revelação ou mudança de estado. É pont
 
 - toda animação é determinística por frame;
 - a âncora alinhada ao áudio real define a entrada do beat; tempos sem confiança continuam explicitamente estimados;
-- cada mudança termina e deixa tempo de leitura; não impor entrada, desenvolvimento e saída a toda frase;
+- a entrada termina e deixa tempo de leitura; atuação e relações podem continuar durante a fala quando têm função, sem impor entrada, desenvolvimento e saída a toda frase;
 - movimento estrutural vale mais que movimento decorativo;
 - fotografia, texto, número e diagrama podem ocupar camadas diferentes;
 - profundidade não significa 3D: z-index, recorte, escala, máscara e parallax 2D são suficientes;

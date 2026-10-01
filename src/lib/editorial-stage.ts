@@ -12,6 +12,13 @@ const stageEntranceSchema = z.object({
   style: z.enum(["fade", "slide", "scale", "wipe"]),
   direction: z.enum(["left", "right", "up", "down"]).optional(),
 });
+const stageSustainSchema = z.object({
+  kind: z.enum(["breathe", "drift", "float", "tilt"]),
+  amplitude: z.number().min(0).max(12),
+  period_seconds: z.number().min(2).max(12),
+  phase: z.number().min(0).max(1).optional(),
+});
+const stageActuationSchema = z.enum(["tap", "lock", "unlock", "confirm", "signal", "dispense", "count"]);
 
 export const stageElementSchema = z.object({
   id: z.string().min(1),
@@ -24,12 +31,14 @@ export const stageElementSchema = z.object({
   text_region: regionSchema.optional(),
   label_size: z.number().min(32).max(120).optional(),
   value_size: z.number().min(48).max(260).default(72),
-  object_type: z.enum(["wallet", "bank", "receipt", "component", "factory", "truck", "package"]).optional(),
+  object_type: z.enum(["wallet", "bank", "receipt", "component", "factory", "truck", "package", "atm", "cash", "branch", "hub", "data", "store", "phone", "terminal"]).optional(),
   label: z.string().min(1).max(80),
   detail: z.string().max(160).optional(),
   value: z.string().max(32).optional(),
   icon: z.enum(["bank", "wallet", "person", "search", "bell", "lock", "check", "refund", "shield", "warning", "clock", "phone", "receipt", "cart", "key", "eye-off", "route", "coins", "chart", "house", "car", "document", "globe"]).optional(),
   svg_motion: z.enum(["assemble", "trace", "none"]).optional(),
+  sustain: stageSustainSchema.optional(),
+  surface: z.enum(["none", "glow", "paper", "spotlight"]).optional(),
   x: z.number().min(0).max(100),
   y: z.number().min(0).max(100),
   width: z.number().min(8).max(100),
@@ -60,6 +69,13 @@ export const editorialStageSchema = z.object({
   // Missing settings preserve the legacy identity/authored camera path.
   camera_mode: z.enum(["auto", "manual", "static"]).optional(),
   motion_profile: z.enum(["narrative", "static"]).default("narrative"),
+  captions: z.object({
+    enabled: z.boolean().default(true),
+    max_words: z.union([z.literal(1), z.literal(2)]).default(2),
+    font_size: z.number().min(72).max(140).default(104),
+    preferred_side: z.enum(["auto", "left", "right", "center"]).default("auto"),
+    region: regionSchema.optional(),
+  }).optional(),
   elements: z.array(stageElementSchema).min(1).max(12),
   connections: z.array(z.object({
     id: z.string().min(1).optional(),
@@ -73,6 +89,8 @@ export const editorialStageSchema = z.object({
     label_position: z.enum(["auto", "above", "below", "left", "right", "between"]).default("auto"),
     label_size: z.number().min(30).max(42).default(32),
     semantic: z.enum(["relation", "transfer", "comparison", "cause", "sequence"]).default("relation"),
+    motion: z.enum(["once", "flow", "pulse"]).default("once"),
+    period_seconds: z.number().min(2).max(12).optional(),
   })).max(16).default([]),
 }).superRefine((stage, ctx) => {
   const ids = new Set<string>();
@@ -89,6 +107,8 @@ export const editorialStageSchema = z.object({
     }
     if (element.kind === "object" && !element.object_type) ctx.addIssue({code: "custom", path: ["elements", index, "object_type"], message: "Objeto precisa de object_type."});
     if(element.svg_motion==="assemble"&&element.kind!=="object")ctx.addIssue({code:"custom",path:["elements",index,"svg_motion"],message:"Montagem por partes exige um objeto SVG; ícones usam trace ou none."});
+    if(element.surface==="paper" && !["photo","object"].includes(element.kind))ctx.addIssue({code:"custom",path:["elements",index,"surface"],message:"Papel claro é suporte da mídia/objeto, sem colocar texto branco sobre papel."});
+    if(element.sustain && !["photo","object"].includes(element.kind) && !element.icon && !["glow","spotlight"].includes(element.surface??""))ctx.addIssue({code:"custom",path:["elements",index,"sustain"],message:"Sustentação move mídia/ícone ou iluminação autoral; rótulos, números e documentos permanecem estáveis para leitura."});
     if (element.x + element.width > 100 || element.y + element.height > 100) {
       ctx.addIssue({code: "custom", path: ["elements", index], message: "Elemento fora da área segura."});
     }
@@ -119,6 +139,7 @@ export const stageEventFields = {
   camera: stageCameraSchema.optional(),
   camera_mode: z.enum(["auto", "hold"]).optional(),
   entrance: stageEntranceSchema.optional(),
+  actuation: stageActuationSchema.optional(),
   mark_ids: z.array(z.string()).max(16).optional(),
   view: regionSchema.optional(),
   emphasis: emphasisSchema.nullable().optional(),
@@ -141,6 +162,7 @@ export type StageEvent = {
   camera?: StageCamera;
   camera_mode?: "auto" | "hold";
   entrance?: z.infer<typeof stageEntranceSchema>;
+  actuation?: z.infer<typeof stageActuationSchema>;
   mark_ids?: string[];
   view?: Region;
   emphasis?: Emphasis | null;
@@ -267,6 +289,10 @@ export function validateStageEvents(stage: EditorialStage, beats: StageEvent[]):
       if(beat.view && target.kind!=="source_excerpt")errors.push(`Beat ${index}: enquadramento regional exige recorte.`);
       if(beat.mark_ids && (target.kind!=="source_excerpt" || beat.mark_ids.some(id=>!target.annotations.some(a=>a.id===id))))errors.push(`Beat ${index}: marcação inexistente ou alvo incompatível.`);
       if(beat.chart_focus && (target.kind!=="chart" || !target.chart || beat.chart_focus.from>beat.chart_focus.to || beat.chart_focus.to>=target.chart.points.length))errors.push(`Beat ${index}: intervalo de gráfico inválido.`);
+      if(beat.actuation && !target.icon && target.kind!=="object")errors.push(`Beat ${index}: atuação exige ícone ou objeto SVG; não modifica texto, números nem provas.`);
+      if(beat.actuation==="dispense" && target.object_type!=="atm")errors.push(`Beat ${index}: saída de cédulas exige objeto ATM.`);
+      if(beat.actuation==="count" && target.object_type!=="cash" && target.icon!=="coins")errors.push(`Beat ${index}: contagem visual exige dinheiro esquemático, sem inventar valores.`);
+      if((beat.actuation==="lock"||beat.actuation==="unlock") && target.kind!=="object" && !["lock","key"].includes(target.icon??""))errors.push(`Beat ${index}: abrir/fechar exige objeto SVG, cadeado ou chave.`);
     }
     if (!beat.target_id || !ids.has(beat.target_id)) errors.push(`Beat ${index}: target_id inexistente.`);
     for (const id of [...(beat.reveal_ids ?? []), ...(beat.retire_ids ?? [])]) {
@@ -314,7 +340,7 @@ export function validateStageEvents(stage: EditorialStage, beats: StageEvent[]):
 // Pure frame evaluation works with parallel/out-of-order Remotion rendering.
 // Events preserve element identity and previous values until explicitly changed.
 export function resolveStage(stage: EditorialStage, beats: StageEvent[], frame: number, fps=30) {
-  const elements = stage.elements.map((element) => ({...element, motionProfile:stage.motion_profile, entrance:undefined as StageEvent["entrance"], visible: element.initially_visible !== false, wasVisible: element.initially_visible !== false, changedAt: 0, cueFrame:0, cueDuration:fps*0.45, cueAction:undefined as StageEvent["action"], treatment:undefined as StageEvent["treatment"], visibilityDuration:fps*0.35, markIds:[] as string[], markTiming:{} as Record<string,{frame:number;duration:number}>, emphasisTiming:{frame:0,duration:1}, view:{...fullView}, emphasis:null as Emphasis|null, chartFocus:null as {from:number;to:number}|null}));
+  const elements = stage.elements.map((element) => ({...element, motionProfile:stage.motion_profile, entrance:undefined as StageEvent["entrance"], actuation:undefined as StageEvent["actuation"], actuationFrame:0, actuationDuration:fps*0.9, locked:undefined as boolean|undefined, lockFrom:true, lockFrame:0, lockDuration:fps*0.75, visible: element.initially_visible !== false, wasVisible: element.initially_visible !== false, changedAt: 0, cueFrame:0, cueDuration:fps*0.45, cueAction:undefined as StageEvent["action"], treatment:undefined as StageEvent["treatment"], visibilityDuration:fps*0.35, markIds:[] as string[], markTiming:{} as Record<string,{frame:number;duration:number}>, emphasisTiming:{frame:0,duration:1}, view:{...fullView}, emphasis:null as Emphasis|null, chartFocus:null as {from:number;to:number}|null}));
   let active: StageEvent | undefined;
   const ordered = beats.filter((b) => Number.isFinite(b.resolved_frame)).slice().sort((a, b) => a.resolved_frame! - b.resolved_frame!);
   for (const [index, beat] of ordered.entries()) {
@@ -333,6 +359,8 @@ export function resolveStage(stage: EditorialStage, beats: StageEvent[], frame: 
         element.cueFrame=beat.resolved_frame!; element.cueDuration=motionFrames;
         element.cueAction=beat.action; element.treatment=beat.treatment;
         element.entrance=beat.entrance;
+        if(beat.actuation){element.actuation=beat.actuation;element.actuationFrame=beat.resolved_frame!;element.actuationDuration=Math.max(motionFrames,fps*0.75);}
+        if(beat.actuation==="lock"||beat.actuation==="unlock"){element.lockFrom=element.locked??true;element.locked=beat.actuation==="lock";element.lockFrame=beat.resolved_frame!;element.lockDuration=Math.max(motionFrames,fps*0.75);}
         if(beat.mark_ids!==undefined){element.markTiming=Object.fromEntries(beat.mark_ids.map(id=>[id,element.markTiming[id]??{frame:beat.resolved_frame!,duration:motionFrames}]));element.markIds=beat.mark_ids;}
         if(beat.emphasis!==undefined){element.emphasis=beat.emphasis;element.emphasisTiming={frame:beat.resolved_frame!,duration:motionFrames};}
         if(beat.chart_focus!==undefined)element.chartFocus=beat.chart_focus;
