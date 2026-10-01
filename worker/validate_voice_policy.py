@@ -55,6 +55,10 @@ def validate() -> None:
             raise RuntimeError("Preset Live diverge da voz aprovada.")
         if "output_audio_transcription" not in config:
             raise RuntimeError("Transcrição de saída deve estar ativada.")
+        if "temperature" in config:
+            raise RuntimeError(
+                "Gemini 3.8 Live deve usar a temperatura padrão do provedor."
+            )
         instruction = live_system_instruction({"IBS": "i bê ésse"})
         if (
             VOICE_DELIVERY_STYLE not in instruction
@@ -69,6 +73,24 @@ def validate() -> None:
         raise RuntimeError("Fingerprint não distingue as vozes.")
 
     root = Path(__file__).resolve().parent.parent
+    runtime = VOICE_POLICY.get("live_runtime") or {}
+    required_sdk = str(runtime.get("sdk_version") or "")
+    requirements = (root / "worker/requirements.txt").read_text(encoding="utf-8")
+    if not required_sdk or f"google-genai=={required_sdk}" not in requirements:
+        raise RuntimeError(
+            "requirements.txt deve fixar a versão google-genai da política Live."
+        )
+    if runtime.get("session_strategy") != "one-websocket-per-scene-attempt":
+        raise RuntimeError("Cada cena deve usar uma sessão Live isolada.")
+    if runtime.get("temperature_mode") != "provider-default":
+        raise RuntimeError("Temperatura Live deve permanecer no padrão do provedor.")
+    if runtime.get("session_resumption") is not False:
+        raise RuntimeError("Session resumption não deve ser usado no TTS por cena.")
+    if int(runtime.get("max_attempts", 0)) != 4:
+        raise RuntimeError("Política Live deve prever uma tentativa inicial e três retries.")
+    if list(runtime.get("retry_backoff_seconds") or []) != [5, 15, 30]:
+        raise RuntimeError("Backoff Live deve ser 5s, 15s e 30s.")
+
     for path in (
         "AGENTS.md",
         "prompts/daily-editorial.md",

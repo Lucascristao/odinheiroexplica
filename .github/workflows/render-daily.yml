@@ -172,7 +172,8 @@ jobs:
           python worker/synthesize_scenes.py \
             --input video/generated/daily-project.json \
             --output-dir public/generated-audio/daily \
-            --manifest video/generated/daily-tts-manifest.json
+            --manifest video/generated/daily-tts-manifest.json \
+            --diagnostics video/generated/daily-live-diagnostics.json
 
       - name: Save partial Gemini audio for a safe retry
         if: always() && hashFiles('public/generated-audio/daily/*.tts.json') != ''
@@ -336,6 +337,7 @@ jobs:
             render-output/daily-youtube.json
             render-output/daily-youtube.txt
             video/generated/daily-tts-manifest.json
+            video/generated/daily-live-diagnostics.json
             video/generated/daily-processed-tts-manifest.json
             video/generated/daily-aligned-tts-manifest.json
             video/generated/daily-alignment-report.json

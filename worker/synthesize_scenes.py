@@ -4,6 +4,7 @@ import argparse
 import asyncio
 from difflib import SequenceMatcher
 import hashlib
+import importlib.metadata
 import json
 import math
 import os
@@ -17,6 +18,15 @@ from tts_config import (
     DEFAULT_PRESENTER,
     DEFAULT_TTS_VOICE,
     FALLBACK_TTS_MODEL,
+    GOOGLE_GENAI_REQUIRED_VERSION,
+    LIVE_EXPECTED_SPEECH_WPM,
+    LIVE_FIRST_AUDIO_TIMEOUT_SECONDS,
+    LIVE_MAX_ATTEMPTS,
+    LIVE_PATHOLOGICAL_DURATION_EXTRA_SECONDS,
+    LIVE_PATHOLOGICAL_DURATION_FLOOR_SECONDS,
+    LIVE_PATHOLOGICAL_DURATION_MULTIPLIER,
+    LIVE_RETRY_BACKOFF_SECONDS,
+    LIVE_STREAM_IDLE_TIMEOUT_SECONDS,
     MINIMUM_TRANSCRIPTION_SIMILARITY,
     NO_VOICE_TREATMENT,
     PRESENTER_NAMES,
@@ -190,17 +200,251 @@ def save_audio_sidecar(
     temporary.replace(sidecar)
 
 
-async def _receive_live_turn(session) -> tuple[bytes, str]:
+class RetryableLiveError(RuntimeError):
+    """Transient Live failure that is safe to retry in a fresh session."""
+
+
+def installed_google_genai_version() -> str:
+    try:
+        return importlib.metadata.version("google-genai")
+    except importlib.metadata.PackageNotFoundError:
+        return "not-installed"
+
+
+def _jsonable(value):
+    if value is None or isinstance(value, (str, int, float, bool)):
+        return value
+    if isinstance(value, dict):
+        return {str(key): _jsonable(item) for key, item in value.items()}
+    if isinstance(value, (list, tuple)):
+        return [_jsonable(item) for item in value]
+    model_dump = getattr(value, "model_dump", None)
+    if callable(model_dump):
+        try:
+            return _jsonable(model_dump(mode="json", exclude_none=True))
+        except TypeError:
+            return _jsonable(model_dump(exclude_none=True))
+    result = {}
+    for name in (
+        "prompt_token_count",
+        "response_token_count",
+        "candidates_token_count",
+        "total_token_count",
+        "time_left",
+        "new_handle",
+        "resumable",
+    ):
+        item = getattr(value, name, None)
+        if item is not None:
+            result[name] = _jsonable(item)
+    return result or str(value)
+
+
+def estimated_audio_seconds(narration: str) -> float:
+    words = max(1, len(re.findall(r"\S+", narration)))
+    return words * 60.0 / LIVE_EXPECTED_SPEECH_WPM
+
+
+def max_allowed_audio_seconds(narration: str) -> float:
+    expected = estimated_audio_seconds(narration)
+    return max(
+        LIVE_PATHOLOGICAL_DURATION_FLOOR_SECONDS,
+        expected * LIVE_PATHOLOGICAL_DURATION_MULTIPLIER
+        + LIVE_PATHOLOGICAL_DURATION_EXTRA_SECONDS,
+    )
+
+
+def _exception_close_details(exc: Exception) -> dict:
+    details = {
+        "type": type(exc).__name__,
+        "message": str(exc),
+    }
+    code = getattr(exc, "code", None)
+    reason = getattr(exc, "reason", None)
+    received = getattr(exc, "rcvd", None)
+    if code is None and received is not None:
+        code = getattr(received, "code", None)
+    if reason is None and received is not None:
+        reason = getattr(received, "reason", None)
+    if code is not None:
+        details["close_code"] = _jsonable(code)
+    if reason is not None:
+        details["close_reason"] = str(reason)
+    return details
+
+
+def is_retryable_live_error(exc: Exception) -> bool:
+    if isinstance(exc, RetryableLiveError):
+        return True
+    if isinstance(exc, (asyncio.TimeoutError, TimeoutError, ConnectionError)):
+        return True
+
+    details = _exception_close_details(exc)
+    code = details.get("close_code")
+    try:
+        numeric_code = int(code) if code is not None else None
+    except (TypeError, ValueError):
+        numeric_code = None
+    if numeric_code in {1006, 1011, 1012, 1013}:
+        return True
+
+    message = str(exc).casefold()
+    markers = (
+        "resource has been exhausted",
+        "resource_exhausted",
+        "temporarily unavailable",
+        "service unavailable",
+        "internal error",
+        "connection closed",
+        "closed with error",
+        "no close frame",
+        "keepalive ping timeout",
+        "aborted",
+        "unavailable",
+        "timed out",
+        "timeout",
+        "1011",
+        "1012",
+        "1013",
+        "status 429",
+        "status 500",
+        "status 502",
+        "status 503",
+        "status 504",
+    )
+    return any(marker in message for marker in markers)
+
+
+def _utc_now() -> str:
+    from datetime import datetime, timezone
+    return datetime.now(timezone.utc).isoformat()
+
+
+def _new_attempt_diagnostics(
+    scene_id: str,
+    attempt: int,
+    narration: str,
+) -> dict:
+    return {
+        "scene_id": scene_id,
+        "attempt": attempt,
+        "status": "running",
+        "started_at_utc": _utc_now(),
+        "expected_audio_seconds": round(estimated_audio_seconds(narration), 3),
+        "max_allowed_audio_seconds": round(
+            max_allowed_audio_seconds(narration), 3
+        ),
+        "received_messages": 0,
+        "pcm_bytes": 0,
+        "audio_seconds_streamed": 0.0,
+        "first_audio_latency_seconds": None,
+        "usage_metadata": [],
+        "go_away": [],
+        "session_resumption_updates": [],
+        "generation_complete_seen": False,
+        "turn_complete_seen": False,
+    }
+
+
+def write_live_diagnostics(path: Path, diagnostics: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(path.suffix + ".tmp")
+    temporary.write_text(
+        json.dumps(diagnostics, ensure_ascii=False, indent=2, default=str) + "\n",
+        encoding="utf-8",
+    )
+    temporary.replace(path)
+
+
+async def _receive_live_turn(
+    session,
+    *,
+    narration: str = "",
+    attempt_diagnostics: dict | None = None,
+) -> tuple[bytes, str]:
+    diagnostics = attempt_diagnostics if attempt_diagnostics is not None else {}
     pcm_chunks: list[bytes] = []
     transcript_chunks: list[str] = []
+    pcm_bytes = 0
     turn_complete = False
+    loop = asyncio.get_running_loop()
+    started = loop.time()
+    first_audio_at = None
+    max_audio_seconds = max_allowed_audio_seconds(narration)
+    wall_limit_seconds = max(
+        120.0,
+        max_audio_seconds + LIVE_STREAM_IDLE_TIMEOUT_SECONDS + 20.0,
+    )
+    iterator = session.receive().__aiter__()
 
-    async for response in session.receive():
+    while True:
+        elapsed = loop.time() - started
+        if elapsed >= wall_limit_seconds:
+            raise RetryableLiveError(
+                f"Gemini Live excedeu {wall_limit_seconds:.1f}s sem concluir o turno."
+            )
+
+        if first_audio_at is None:
+            remaining = LIVE_FIRST_AUDIO_TIMEOUT_SECONDS - elapsed
+            if remaining <= 0:
+                raise RetryableLiveError(
+                    "Gemini Live não iniciou áudio dentro do prazo de primeiro frame."
+                )
+            wait_seconds = remaining
+        else:
+            wait_seconds = min(
+                LIVE_STREAM_IDLE_TIMEOUT_SECONDS,
+                wall_limit_seconds - elapsed,
+            )
+
+        try:
+            response = await asyncio.wait_for(
+                iterator.__anext__(),
+                timeout=max(0.1, wait_seconds),
+            )
+        except StopAsyncIteration:
+            break
+        except asyncio.TimeoutError as exc:
+            if first_audio_at is None:
+                raise RetryableLiveError(
+                    "Gemini Live não iniciou áudio dentro do prazo de primeiro frame."
+                ) from exc
+            raise RetryableLiveError(
+                "Gemini Live ficou sem novos eventos durante a geração de áudio."
+            ) from exc
+
+        diagnostics["received_messages"] = (
+            int(diagnostics.get("received_messages", 0)) + 1
+        )
+
+        usage = getattr(response, "usage_metadata", None)
+        if usage is not None:
+            diagnostics.setdefault("usage_metadata", []).append(
+                _jsonable(usage)
+            )
+
+        go_away = getattr(response, "go_away", None)
+        if go_away is not None:
+            diagnostics.setdefault("go_away", []).append(
+                _jsonable(go_away)
+            )
+
+        resumption = getattr(response, "session_resumption_update", None)
+        if resumption is not None:
+            diagnostics.setdefault(
+                "session_resumption_updates", []
+            ).append(_jsonable(resumption))
+
         server = getattr(response, "server_content", None)
         if server is None:
             continue
         if bool(getattr(server, "interrupted", False)):
-            raise RuntimeError("Gemini Live interrompeu a fala; o áudio parcial não será aceito.")
+            raise RetryableLiveError(
+                "Gemini Live interrompeu a fala; o áudio parcial não será aceito."
+            )
+
+        if bool(getattr(server, "generation_complete", False)):
+            diagnostics["generation_complete_seen"] = True
 
         model_turn = getattr(server, "model_turn", None)
         if model_turn is not None:
@@ -210,11 +454,40 @@ async def _receive_live_turn(session) -> tuple[bytes, str]:
                     getattr(inline, "data", None)
                     if inline is not None else None
                 )
-                if data:
-                    mime = str(getattr(inline, "mime_type", "") or "")
-                    if mime and (not mime.startswith("audio/pcm") or ("rate=" in mime and not re.search(r"rate=24000(?:;|$)", mime))):
-                        raise RuntimeError("Gemini Live retornou formato PCM diferente de 24 kHz bruto.")
-                    pcm_chunks.append(bytes(data))
+                if not data:
+                    continue
+                mime = str(getattr(inline, "mime_type", "") or "")
+                if mime and (
+                    not mime.startswith("audio/pcm")
+                    or (
+                        "rate=" in mime
+                        and not re.search(r"rate=24000(?:;|$)", mime)
+                    )
+                ):
+                    raise RuntimeError(
+                        "Gemini Live retornou formato PCM diferente de 24 kHz bruto."
+                    )
+                if first_audio_at is None:
+                    first_audio_at = loop.time()
+                    diagnostics["first_audio_latency_seconds"] = round(
+                        first_audio_at - started, 3
+                    )
+                chunk = bytes(data)
+                pcm_chunks.append(chunk)
+                pcm_bytes += len(chunk)
+                audio_seconds = (
+                    pcm_bytes / (SAMPLE_RATE * CHANNELS * SAMPLE_WIDTH)
+                )
+                diagnostics["pcm_bytes"] = pcm_bytes
+                diagnostics["audio_seconds_streamed"] = round(
+                    audio_seconds, 3
+                )
+                if audio_seconds > max_audio_seconds:
+                    raise RetryableLiveError(
+                        "Gemini Live entrou em geração de áudio anormalmente longa: "
+                        f"{audio_seconds:.1f}s para um roteiro estimado em "
+                        f"{estimated_audio_seconds(narration):.1f}s."
+                    )
 
         transcription = getattr(server, "output_transcription", None)
         transcript_text = (
@@ -225,59 +498,84 @@ async def _receive_live_turn(session) -> tuple[bytes, str]:
             transcript_chunks.append(str(transcript_text))
 
         if bool(getattr(server, "turn_complete", False)):
+            diagnostics["turn_complete_seen"] = True
             turn_complete = True
             break
 
+    diagnostics["session_receive_seconds"] = round(loop.time() - started, 3)
     if not turn_complete:
-        raise RuntimeError("Gemini Live encerrou a resposta sem turn_complete.")
+        raise RetryableLiveError(
+            "Gemini Live encerrou a resposta sem turn_complete."
+        )
 
     pcm = b"".join(pcm_chunks)
     transcript = "".join(transcript_chunks).strip()
     if len(pcm) % SAMPLE_WIDTH or len(pcm) < SAMPLE_RATE * SAMPLE_WIDTH:
-        raise RuntimeError("Gemini Live retornou menos de um segundo de áudio.")
+        raise RetryableLiveError(
+            "Gemini Live concluiu o turno sem áudio utilizável."
+        )
     if not transcript:
-        raise RuntimeError("Gemini Live não retornou a transcrição da própria saída.")
+        raise RetryableLiveError(
+            "Gemini Live não retornou a transcrição da própria saída."
+        )
     return pcm, transcript
 
 
-async def synthesize_missing_jobs(
-    jobs: list[dict],
+async def _synthesize_scene_with_retries(
     *,
-    gemini_key: str,
+    client,
+    job: dict,
+    config: dict,
     voice: str,
     pronunciations: dict[str, str],
     speech_fingerprint: str,
-) -> dict[str, dict]:
-    if not jobs:
-        return {}
+    diagnostics: dict,
+    diagnostics_path: Path,
+) -> dict:
+    scene_id = job["scene_id"]
+    for attempt in range(1, LIVE_MAX_ATTEMPTS + 1):
+        attempt_diag = _new_attempt_diagnostics(
+            scene_id, attempt, job["narration"]
+        )
+        diagnostics["attempts"].append(attempt_diag)
+        write_live_diagnostics(diagnostics_path, diagnostics)
+        started = asyncio.get_running_loop().time()
 
-    from google import genai
+        try:
+            async with client.aio.live.connect(
+                model=PRIMARY_TTS_MODEL,
+                config=config,
+            ) as session:
+                attempt_diag["session_opened"] = True
+                await session.send_client_content(
+                    turns={
+                        "role": "user",
+                        "parts": [{
+                            "text": live_turn_text(
+                                job["narration"],
+                                job.get("direction") or {},
+                            )
+                        }],
+                    },
+                    turn_complete=True,
+                )
+                pcm, transcript = await _receive_live_turn(
+                    session,
+                    narration=job["narration"],
+                    attempt_diagnostics=attempt_diag,
+                )
 
-    client = genai.Client(api_key=gemini_key)
-    config = live_session_config(voice, pronunciations)
-    completed: dict[str, dict] = {}
-
-    async with client.aio.live.connect(
-        model=PRIMARY_TTS_MODEL,
-        config=config,
-    ) as session:
-        for position, job in enumerate(jobs):
-            scene_id = job["scene_id"]
-            print(
-                f"  [Gemini Live {position + 1}/{len(jobs)}] {scene_id}...",
-                flush=True,
-            )
-            await session.send_client_content(
-                turns={
-                    "role": "user",
-                    "parts": [{
-                        "text": live_turn_text(job["narration"], job.get("direction") or {})
-                    }],
+            fidelity = evaluate_transcription(
+                job["narration"],
+                transcript,
+                {
+                    **pronunciations,
+                    **(job.get("direction") or {}).get(
+                        "pronunciations", {}
+                    ),
                 },
-                turn_complete=True,
+                MINIMUM_TRANSCRIPTION_SIMILARITY,
             )
-            pcm, transcript = await asyncio.wait_for(_receive_live_turn(session), timeout=max(120, len(job["narration"]) * .2))
-            fidelity = evaluate_transcription(job["narration"], transcript, {**pronunciations, **(job.get("direction") or {}).get("pronunciations", {})}, MINIMUM_TRANSCRIPTION_SIMILARITY)
             similarity = fidelity["similarity"]
             if not fidelity["passed"]:
                 raise RuntimeError(
@@ -304,21 +602,132 @@ async def synthesize_missing_jobs(
                 speech_fingerprint,
                 transcript,
                 similarity,
-                direction_fingerprint=job.get("direction_fingerprint"),
+                direction_fingerprint=job.get(
+                    "direction_fingerprint"
+                ),
                 fidelity=fidelity,
             )
-            completed[scene_id] = {
+            attempt_diag["status"] = "success"
+            attempt_diag["audio_duration_seconds"] = duration
+            attempt_diag["transcription_similarity"] = similarity
+            attempt_diag["completed_at_utc"] = _utc_now()
+            attempt_diag["attempt_wall_seconds"] = round(
+                asyncio.get_running_loop().time() - started, 3
+            )
+            diagnostics["completed_scene_ids"].append(scene_id)
+            write_live_diagnostics(diagnostics_path, diagnostics)
+            print(
+                f"    [Gemini Live] {duration:.2f}s; "
+                f"fidelidade do texto={similarity:.4f}; áudio PCM bruto; "
+                f"sessão {attempt}/{LIVE_MAX_ATTEMPTS}.",
+                flush=True,
+            )
+            return {
                 "duration": duration,
                 "transcript": transcript,
                 "similarity": similarity,
                 "fidelity": fidelity,
             }
+
+        except Exception as exc:
+            attempt_diag["status"] = "error"
+            attempt_diag["error"] = _exception_close_details(exc)
+            attempt_diag["retryable"] = is_retryable_live_error(exc)
+            attempt_diag["attempt_wall_seconds"] = round(
+                asyncio.get_running_loop().time() - started, 3
+            )
+            attempt_diag["completed_at_utc"] = _utc_now()
+            write_live_diagnostics(diagnostics_path, diagnostics)
+
+            if (
+                not attempt_diag["retryable"]
+                or attempt >= LIVE_MAX_ATTEMPTS
+            ):
+                diagnostics["failed_scene_id"] = scene_id
+                diagnostics["status"] = "failed"
+                write_live_diagnostics(diagnostics_path, diagnostics)
+                raise
+
+            delay = LIVE_RETRY_BACKOFF_SECONDS[
+                min(attempt - 1, len(LIVE_RETRY_BACKOFF_SECONDS) - 1)
+            ]
+            attempt_diag["retry_delay_seconds"] = delay
+            write_live_diagnostics(diagnostics_path, diagnostics)
             print(
-                f"    [Gemini Live] {duration:.2f}s; "
-                f"fidelidade do texto={similarity:.4f}; áudio PCM bruto.",
+                f"    [Gemini Live] {scene_id}: falha transitória "
+                f"({attempt_diag['error']['message']}); nova sessão em "
+                f"{delay}s.",
                 flush=True,
             )
+            await asyncio.sleep(delay)
 
+    raise RuntimeError(f"Retries esgotados para {scene_id}.")  # pragma: no cover
+
+
+async def synthesize_missing_jobs(
+    jobs: list[dict],
+    *,
+    gemini_key: str,
+    voice: str,
+    pronunciations: dict[str, str],
+    speech_fingerprint: str,
+    diagnostics_path: Path,
+) -> dict[str, dict]:
+    sdk_version = installed_google_genai_version()
+    if sdk_version != GOOGLE_GENAI_REQUIRED_VERSION:
+        raise RuntimeError(
+            "Versão google-genai incompatível com Gemini 3.8 Live: "
+            f"instalada={sdk_version}, exigida={GOOGLE_GENAI_REQUIRED_VERSION}."
+        )
+
+    diagnostics = {
+        "version": "gemini-live-diagnostics-v1",
+        "model": PRIMARY_TTS_MODEL,
+        "voice": voice,
+        "sdk_package": "google-genai",
+        "sdk_version": sdk_version,
+        "session_strategy": "one-websocket-per-scene-attempt",
+        "temperature_mode": "provider-default",
+        "session_resumption_enabled": False,
+        "max_attempts_per_scene": LIVE_MAX_ATTEMPTS,
+        "retry_backoff_seconds": list(LIVE_RETRY_BACKOFF_SECONDS),
+        "first_audio_timeout_seconds": LIVE_FIRST_AUDIO_TIMEOUT_SECONDS,
+        "stream_idle_timeout_seconds": LIVE_STREAM_IDLE_TIMEOUT_SECONDS,
+        "requested_scene_ids": [job["scene_id"] for job in jobs],
+        "completed_scene_ids": [],
+        "attempts": [],
+        "status": "running" if jobs else "no-requests",
+    }
+    write_live_diagnostics(diagnostics_path, diagnostics)
+    if not jobs:
+        return {}
+
+    from google import genai
+
+    client = genai.Client(api_key=gemini_key)
+    config = live_session_config(voice, pronunciations)
+    completed: dict[str, dict] = {}
+
+    for position, job in enumerate(jobs):
+        scene_id = job["scene_id"]
+        print(
+            f"  [Gemini Live {position + 1}/{len(jobs)}] {scene_id}: "
+            "abrindo sessão isolada...",
+            flush=True,
+        )
+        completed[scene_id] = await _synthesize_scene_with_retries(
+            client=client,
+            job=job,
+            config=config,
+            voice=voice,
+            pronunciations=pronunciations,
+            speech_fingerprint=speech_fingerprint,
+            diagnostics=diagnostics,
+            diagnostics_path=diagnostics_path,
+        )
+
+    diagnostics["status"] = "success"
+    write_live_diagnostics(diagnostics_path, diagnostics)
     return completed
 
 
@@ -387,6 +796,7 @@ def main() -> None:
     parser.add_argument("--input", required=True)
     parser.add_argument("--output-dir", required=True)
     parser.add_argument("--manifest", required=True)
+    parser.add_argument("--diagnostics")
     args = parser.parse_args()
 
     gemini_key = os.environ.get("GEMINI_API_KEY", "").strip()
@@ -492,6 +902,11 @@ def main() -> None:
             flush=True,
         )
 
+    diagnostics_path = (
+        Path(args.diagnostics)
+        if args.diagnostics
+        else Path(args.manifest).with_name("daily-live-diagnostics.json")
+    )
     generated = asyncio.run(
         synthesize_missing_jobs(
             missing,
@@ -499,6 +914,7 @@ def main() -> None:
             voice=project_voice,
             pronunciations=pronunciations,
             speech_fingerprint=speech_fingerprint,
+            diagnostics_path=diagnostics_path,
         )
     )
     for job in missing:
@@ -527,7 +943,10 @@ def main() -> None:
         "speech_profile_fingerprint": speech_fingerprint,
         "output_format": "pcm-s16le-24000-mono-wav",
         "timing_mode": "estimated-character-alignment",
-        "delivery_version": "gemini-live-v2-literal-tokens-directed-scenes",
+        "delivery_version": "gemini-live-v3-isolated-session-retry-diagnostics",
+        "live_sdk_version": installed_google_genai_version(),
+        "live_session_strategy": "one-websocket-per-scene-attempt",
+        "live_temperature_mode": "provider-default",
         "fallback_scene_ids": [],
         "fallback_scene_ids_by_model": {},
         "model_transition_scene_ids": [],

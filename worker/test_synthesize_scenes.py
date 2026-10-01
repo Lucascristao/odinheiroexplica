@@ -16,12 +16,43 @@ import synthesize_scenes as synth  # noqa: E402
 from tts_config import (  # noqa: E402
     PRIMARY_TTS_MODEL,
     TTS_MODEL_CASCADE,
+    live_session_config,
     project_speech_fingerprint,
     scene_voice_direction, scene_direction_fingerprint, live_turn_text,
 )
 
 
 class GeminiLiveTests(unittest.TestCase):
+    def test_live_config_uses_provider_default_temperature(self):
+        config = live_session_config("Charon")
+        self.assertNotIn("temperature", config)
+
+    def test_retry_classifier_handles_1011_but_not_bad_script(self):
+        self.assertTrue(
+            synth.is_retryable_live_error(
+                RuntimeError(
+                    "received 1011 (internal error) Resource has been exhausted"
+                )
+            )
+        )
+        self.assertTrue(
+            synth.is_retryable_live_error(
+                synth.RetryableLiveError("primeiro áudio expirou")
+            )
+        )
+        self.assertFalse(
+            synth.is_retryable_live_error(
+                RuntimeError("Gemini Live divergiu do roteiro")
+            )
+        )
+
+    def test_pathological_audio_guard_is_generous_but_bounded(self):
+        short = synth.max_allowed_audio_seconds("texto curto")
+        long = synth.max_allowed_audio_seconds("palavra " * 200)
+        self.assertGreaterEqual(short, 45)
+        self.assertGreater(long, short)
+        self.assertLess(long, 300)
+
     def test_scene_direction_is_separate_literal_and_cache_scoped(self):
         scene = {"narration": "A empresa não sai do Simples.", "tts": {"delivery": "contrast", "cues": [{"text": "não sai", "kind": "emphasis"}]}}
         direction = scene_voice_direction(scene)
@@ -35,17 +66,42 @@ class GeminiLiveTests(unittest.TestCase):
                 scene_voice_direction({"narration": scene["narration"], "tts": {field: "+10%"}})
 
     def test_live_turn_collects_final_audio_and_transcript_before_completion(self):
-        def response(data=b"", text=None, complete=False, interrupted=False):
-            return types.SimpleNamespace(server_content=types.SimpleNamespace(
-                model_turn=types.SimpleNamespace(parts=[types.SimpleNamespace(inline_data=types.SimpleNamespace(data=data, mime_type="audio/pcm;rate=24000"))]),
-                output_transcription=types.SimpleNamespace(text=text), turn_complete=complete, interrupted=interrupted))
+        def response(data=b"", text=None, complete=False, interrupted=False, usage=None, go_away=None):
+            return types.SimpleNamespace(
+                usage_metadata=usage,
+                go_away=go_away,
+                session_resumption_update=None,
+                server_content=types.SimpleNamespace(
+                    model_turn=types.SimpleNamespace(parts=[types.SimpleNamespace(inline_data=types.SimpleNamespace(data=data, mime_type="audio/pcm;rate=24000"))]),
+                    output_transcription=types.SimpleNamespace(text=text),
+                    turn_complete=complete,
+                    generation_complete=complete,
+                    interrupted=interrupted,
+                ),
+            )
         class Session:
             def __init__(self, events): self.events = events
             async def receive(self):
                 for event in self.events: yield event
-        audio, transcript = asyncio.run(synth._receive_live_turn(Session([response(b"\x01\x00"*24000, "A conta "), response(b"\x02\x00"*24000, "não mudou.", True)])))
+        diagnostics = {}
+        audio, transcript = asyncio.run(synth._receive_live_turn(
+            Session([
+                response(
+                    b"\x01\x00"*24000,
+                    "A conta ",
+                    usage=types.SimpleNamespace(prompt_token_count=8, total_token_count=20),
+                    go_away=types.SimpleNamespace(time_left="30s"),
+                ),
+                response(b"\x02\x00"*24000, "não mudou.", True),
+            ]),
+            narration="A conta não mudou.",
+            attempt_diagnostics=diagnostics,
+        ))
         self.assertEqual(len(audio), 96000)
         self.assertEqual(transcript, "A conta não mudou.")
+        self.assertTrue(diagnostics["usage_metadata"])
+        self.assertTrue(diagnostics["go_away"])
+        self.assertTrue(diagnostics["turn_complete_seen"])
         with self.assertRaisesRegex(RuntimeError, "interrompeu"):
             asyncio.run(synth._receive_live_turn(Session([response(b"\x00\x00"*24000, "A conta", True, True)])))
         with self.assertRaisesRegex(RuntimeError, "turn_complete"):

@@ -1,8 +1,10 @@
 {
-  "version": "2026-10-01.1",
+  "version": "2026-10-01.2",
   "language": "pt-BR",
   "delivery_style": "Conversational and informative Brazilian Portuguese, natural human delivery, moderate steady pace, clear articulation, restrained but varied emphasis, short natural pauses between complete thoughts, never announcer-like or robotic.",
-  "model_cascade": ["gemini-3.8-live"],
+  "model_cascade": [
+    "gemini-3.8-live"
+  ],
   "models": {
     "gemini-3.8-live": {
       "endpoint": "live-websocket",
@@ -11,12 +13,37 @@
     }
   },
   "presenters": {
-    "male": {"name": "Roberto", "voice": "Charon"},
-    "female": {"name": "Luana", "voice": "Autonoe"}
+    "male": {
+      "name": "Roberto",
+      "voice": "Charon"
+    },
+    "female": {
+      "name": "Luana",
+      "voice": "Autonoe"
+    }
   },
   "default_presenter": "male",
   "fallback_failures": [],
   "raw_audio_treatment": "none",
   "output_transcription_required": true,
-  "minimum_transcription_similarity": 0.985
+  "minimum_transcription_similarity": 0.985,
+  "live_runtime": {
+    "sdk_package": "google-genai",
+    "sdk_version": "2.26.0",
+    "session_strategy": "one-websocket-per-scene-attempt",
+    "temperature_mode": "provider-default",
+    "max_attempts": 4,
+    "retry_backoff_seconds": [
+      5,
+      15,
+      30
+    ],
+    "first_audio_timeout_seconds": 25,
+    "stream_idle_timeout_seconds": 35,
+    "expected_speech_words_per_minute": 155,
+    "pathological_duration_multiplier": 2.5,
+    "pathological_duration_extra_seconds": 20,
+    "pathological_duration_floor_seconds": 45,
+    "session_resumption": false
+  }
 }

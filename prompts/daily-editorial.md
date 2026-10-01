@@ -86,7 +86,7 @@ O canal trabalha com dois apresentadores fixos:
 - Roberto: voz predefinida Gemini `Charon`;
 - Luana: voz predefinida Gemini `Autonoe`.
 
-O render diário usa somente Gemini 3.8 Live, conforme `worker/voice-policy.json`. Escolha o apresentador antes da síntese e mantenha a mesma voz em todas as cenas: Charon para Roberto ou Autonoe para Luana. Não existe fallback para outro modelo. A direção vocal comum e as pronúncias ficam em instruções separadas do roteiro; a saída só é aceita após conferir a transcrição devolvida pelo próprio Live. O WAV bruto é preservado sem EQ, limiter, compressor, normalização ou alteração de pitch/velocidade. Escute o vídeo completo antes de aprová-lo. Regeneração integral exige o input manual do workflow.
+O render diário usa somente Gemini 3.8 Live, conforme `worker/voice-policy.json`. Escolha o apresentador antes da síntese e mantenha a mesma voz em todas as cenas: Charon para Roberto ou Autonoe para Luana. Não existe fallback para outro modelo. Cada cena usa uma sessão Live isolada e falhas transitórias podem ser repetidas na mesma cena sem mudar a voz. A direção vocal comum, `tts.delivery`, `tts.cues` e as pronúncias ficam em instruções separadas do roteiro; a saída só é aceita após conferir a transcrição devolvida pelo próprio Live. O WAV bruto é preservado sem EQ, limiter, compressor, normalização ou alteração de pitch/velocidade. Escute o vídeo completo antes de aprová-lo. Regeneração integral exige o input manual do workflow.
 
 Roberto e Luana são personagens editoriais fixos do canal. Todo vídeo deve ter uma apresentação falada breve do apresentador escolhido. A escolha do apresentador deve considerar o assunto, o enquadramento e o público provável do vídeo, sem usar estereótipos simplistas de gênero.
 
@@ -268,7 +268,7 @@ Não usar nome do canal, logotipo, ícone ou selo de marca por padrão. A identi
 
 Seguir `docs/editorial-voice.md`. Escrever para o ouvido: frases curtas com uma ideia, exemplos concretos e alternância natural entre pergunta, explicação e consequência. Evitar listas lidas, introduções burocráticas e suspense sem resposta. Não copiar bordões ou imitar a voz dos vídeos de referência.
 
-Escrever intenção, contraste e pausas na própria narração. A direção comum de `worker/voice-policy.json` é enviada ao Gemini Live; `tts.delivery`, `tts.cues`, `rate` e `pitch` por cena continuam sem aplicação e não comprovam direção de atuação. Associar a entrada de número, recorte ou grifo a uma âncora literal única de `visual.beats`. O alinhamento local usa o áudio real quando houver confiança suficiente, mantendo estimativas explícitas nos demais eventos. Revisar a sincronização no MP4. Reservar tempo de leitura durante a explicação e manter a voz do apresentador e o destaque amarelo da marca.
+Escrever intenção, contraste e pausas na própria narração. A direção comum de `worker/voice-policy.json`, `tts.delivery` e `tts.cues` são enviados ao Gemini Live como instruções que não fazem parte do roteiro falado. `rate` e `pitch` continuam sem processamento direto no áudio bruto. Associar a entrada de número, recorte ou grifo a uma âncora literal única de `visual.beats`. O alinhamento local usa o áudio real quando houver confiança suficiente, mantendo estimativas explícitas nos demais eventos. Revisar a sincronização no MP4. Reservar tempo de leitura durante a explicação e manter a voz do apresentador e o destaque amarelo da marca.
 
 
 ### Direção de motion design por episódio

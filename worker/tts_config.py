@@ -30,6 +30,30 @@ NO_VOICE_TREATMENT = VOICE_POLICY["raw_audio_treatment"]
 MINIMUM_TRANSCRIPTION_SIMILARITY = float(
     VOICE_POLICY["minimum_transcription_similarity"]
 )
+LIVE_RUNTIME = VOICE_POLICY["live_runtime"]
+GOOGLE_GENAI_REQUIRED_VERSION = str(LIVE_RUNTIME["sdk_version"])
+LIVE_MAX_ATTEMPTS = int(LIVE_RUNTIME["max_attempts"])
+LIVE_RETRY_BACKOFF_SECONDS = tuple(
+    int(value) for value in LIVE_RUNTIME["retry_backoff_seconds"]
+)
+LIVE_FIRST_AUDIO_TIMEOUT_SECONDS = float(
+    LIVE_RUNTIME["first_audio_timeout_seconds"]
+)
+LIVE_STREAM_IDLE_TIMEOUT_SECONDS = float(
+    LIVE_RUNTIME["stream_idle_timeout_seconds"]
+)
+LIVE_EXPECTED_SPEECH_WPM = float(
+    LIVE_RUNTIME["expected_speech_words_per_minute"]
+)
+LIVE_PATHOLOGICAL_DURATION_MULTIPLIER = float(
+    LIVE_RUNTIME["pathological_duration_multiplier"]
+)
+LIVE_PATHOLOGICAL_DURATION_EXTRA_SECONDS = float(
+    LIVE_RUNTIME["pathological_duration_extra_seconds"]
+)
+LIVE_PATHOLOGICAL_DURATION_FLOOR_SECONDS = float(
+    LIVE_RUNTIME["pathological_duration_floor_seconds"]
+)
 DEFAULT_TTS_RATE = "0%"
 DEFAULT_TTS_PITCH = "0%"
 GLOBAL_PRONUNCIATIONS = {}
@@ -110,7 +134,7 @@ def live_turn_text(narration: str, direction: dict) -> str:
     if not direction:
         return "ROTEIRO:\n" + narration
     deliveries = {"hook": "Comece com curiosidade contida e conexão direta.", "explain": "Explique com clareza conversacional, sem tom de aula.", "contrast": "Destaque o contraste sem dramatizar.", "question": "Faça a pergunta naturalmente, sem exagerar a entonação.", "closing": "Conclua com segurança tranquila e finalize a última frase."}
-    instructions = ["INSTRUÇÕES DE INTERPRETAÇÃO; NÃO LEIA ESTE BLOCO. Mantenha a voz e a postura da sessão. Esta direção vale somente para este turno; nas cenas seguintes volte à direção base se não houver instrução nova. Leia somente o ROTEIRO, sem retomar cenas anteriores. Encerre depois da última palavra, sem comentário ou despedida extra."]
+    instructions = ["INSTRUÇÕES DE INTERPRETAÇÃO; NÃO LEIA ESTE BLOCO. Aplique esta direção somente ao roteiro abaixo. Preserve a identidade da voz definida na configuração da sessão. Leia somente o ROTEIRO e encerre depois da última palavra, sem comentário ou despedida extra."]
     if direction.get("delivery"):
         instructions.append(deliveries[direction["delivery"]])
     if direction.get("pause_ms"):
@@ -161,7 +185,6 @@ def live_session_config(
         },
         "output_audio_transcription": {},
         "system_instruction": live_system_instruction(pronunciations),
-        "temperature": 0.1,
     }
 
 
