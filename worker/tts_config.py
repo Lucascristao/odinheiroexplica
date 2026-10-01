@@ -3,6 +3,7 @@
 import hashlib
 import json
 from pathlib import Path
+import re
 
 VOICE_POLICY_PATH = Path(__file__).with_name("voice-policy.json")
 VOICE_POLICY = json.loads(VOICE_POLICY_PATH.read_text(encoding="utf-8"))
@@ -86,6 +87,25 @@ def project_speech_fingerprint(project: dict | None) -> str:
     return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
 
 
+def automatic_year_pronunciations(narration: str) -> dict[str, str]:
+    """Keep numeric years in the script while directing pt-BR pronunciation."""
+    years = sorted(
+        set(re.findall(r"(?<!\\d)(?:19|20)\\d{2}(?!\\d)", str(narration)))
+    )
+    if not years:
+        return {}
+    try:
+        from num2words import num2words
+    except ImportError as exc:
+        raise ValueError(
+            "num2words indisponível; não orientar anos sem normalizador."
+        ) from exc
+    return {
+        year: str(num2words(int(year), lang="pt_BR")).strip()
+        for year in years
+    }
+
+
 def scene_voice_direction(scene: dict) -> dict:
     """Validated acting instructions; never turn old rate/pitch into processing."""
     raw = scene.get("tts") or {}
@@ -105,11 +125,16 @@ def scene_voice_direction(scene: dict) -> dict:
         if not 90 <= pause <= 300:
             raise ValueError("Pausa de direção fora do intervalo editorial.")
         result["pause_ms"] = pause
-    pronunciations = project_pronunciations({"speech": {"pronunciations": raw.get("pronunciations") or {}}})
+    narration = str(scene.get("narration") or "")
+    pronunciations = automatic_year_pronunciations(narration)
+    pronunciations.update(
+        project_pronunciations({
+            "speech": {"pronunciations": raw.get("pronunciations") or {}}
+        })
+    )
     if pronunciations:
         result["pronunciations"] = pronunciations
     cues = []
-    narration = str(scene.get("narration") or "")
     previous_end = -1
     for cue in sorted(raw.get("cues") or [], key=lambda c: narration.find(str(c.get("text") or ""))):
         phrase = str(cue.get("text") or "").strip()
@@ -133,7 +158,7 @@ def scene_direction_fingerprint(scene: dict) -> str | None:
     direction = scene_voice_direction(scene)
     if not direction:
         return None
-    return hashlib.sha256(json.dumps({"version": "live-scene-direction-v1", "direction": direction, "instruction": live_turn_text("", direction)}, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+    return hashlib.sha256(json.dumps({"version": "live-scene-direction-v2", "direction": direction, "instruction": live_turn_text("", direction)}, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
 
 def live_turn_text(narration: str, direction: dict) -> str:
