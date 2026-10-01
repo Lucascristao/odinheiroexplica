@@ -283,7 +283,12 @@ def restore(project: dict, archive_path: Path, output_dir: Path, provenance: dic
             model = source.get("model")
             treatment = source.get("voice_treatment", NO_VOICE_TREATMENT)
             if source.get("engine") != "google-gemini-live" or source.get("voice") != project_voice or model not in TTS_MODEL_CASCADE:
-                raise RuntimeError(f"Modelo, voz ou tratamento não permitido na origem de {scene_id}.")
+                print(
+                    f"[Audio Restore] {scene_id}: artifact usa motor/modelo antigo; "
+                    "mantida para o Gemini Live atual.",
+                    flush=True,
+                )
+                continue
             if source.get("voice_policy_fingerprint") != voice_policy_fingerprint(model, project_voice) or source.get("speech_profile_fingerprint") != project_speech_fingerprint(project):
                 print(
                     f"[Audio Restore] {scene_id}: política de voz de origem ausente/diferente; "
@@ -309,12 +314,11 @@ def restore(project: dict, archive_path: Path, output_dir: Path, provenance: dic
                     or not math.isfinite(recorded_duration)
                     or abs(actual_duration - recorded_duration) > 0.05
                 ):
-                    raise RuntimeError(f"Duração do MP3 diverge do manifest em {scene_id}.")
+                    raise RuntimeError(f"Duração do WAV diverge do manifest em {scene_id}.")
                 source_hash = source.get("audio_sha256")
                 if source_hash and source_hash != audio_sha256(temporary):
-                    raise RuntimeError(f"Hash do MP3 diverge do manifest em {scene_id}.")
-                # Older production artifacts omit sidecars/audio hashes. The
-                # authenticated GitHub ZIP digest binds their original MP3 bytes.
+                    raise RuntimeError(f"Hash do WAV diverge do manifest em {scene_id}.")
+                # The authenticated GitHub ZIP digest binds the reviewed WAV bytes.
                 temporary.replace(output)
                 save_audio_sidecar(
                     output, target["hash"], model, project_voice, actual_duration,
@@ -329,7 +333,10 @@ def restore(project: dict, archive_path: Path, output_dir: Path, provenance: dic
                 sidecar_tmp = sidecar.with_name(sidecar.name + ".tmp")
                 sidecar_tmp.write_text(json.dumps(metadata, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
                 sidecar_tmp.replace(sidecar)
-                if cached_duration(output, target["hash"], model, project_voice, treatment) is None:
+                if cached_duration(
+                    output, target["hash"], model, project_voice, treatment,
+                    project_speech_fingerprint(project),
+                ) is None:
                     raise RuntimeError(f"Cache restaurado não passou pela validação do worker em {scene_id}.")
                 restored += 1
             finally:
