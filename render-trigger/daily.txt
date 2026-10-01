@@ -2,4 +2,5 @@ Produção autorizada: Pix por aproximação — fim do teto específico de R$50
 Projeto: pix-aproximacao-limite-2026-10-01
 Narração: Luana / Autonoe, somente gemini-3.8-live conforme worker/voice-policy.json.
 Usar video/data/daily.json atual, validações e cache oficial do motor. Não trocar a pauta.
-Trigger: pix-aproximacao-limite-2026-10-01-v1
+Validações: CI 45e25f9 aprovado; direção executável e layout com assets reais revisados.
+Trigger: pix-aproximacao-limite-2026-10-01-v2
