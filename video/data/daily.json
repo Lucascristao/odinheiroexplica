@@ -50,67 +50,116 @@
   "sources": [
     {
       "id": "S1",
-      "name": "Lei nº 14.690/2023",
+      "title": "Lei nº 14.690/2023 — Programa Desenrola Brasil e limite aos juros do rotativo",
       "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14690.htm",
-      "type": "official",
       "publisher": "Presidência da República",
-      "description": "Institui o Programa Desenrola Brasil e fixa limites para encargos financeiros no cartão de crédito."
+      "publisher_class": "official",
+      "editorial_role": "legal_framework",
+      "source_type": "primary",
+      "notes": "Institui o limite máximo legal de 100% para juros e encargos no crédito rotativo e parcelado de fatura."
     },
     {
       "id": "S2",
-      "name": "Resolução CMN nº 5.112/2023",
+      "title": "Resolução CMN nº 5.112/2023 — Disciplina limites de juros no rotativo",
       "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?tipo=Resolu%C3%A7%C3%A3o%20CMN&numero=5112",
-      "type": "official",
-      "publisher": "Banco Central do Brasil / Conselho Monetário Nacional",
-      "description": "Disciplina o limite aos juros e encargos financeiros cobrados no crédito rotativo e no parcelamento de fatura."
+      "publisher": "Banco Central do Brasil",
+      "publisher_class": "official",
+      "editorial_role": "regulatory_standard",
+      "source_type": "primary",
+      "notes": "Regulamentação infralegal vinculante aplicável às instituições financeiras operantes no país."
     },
     {
       "id": "S3",
-      "name": "Banco Central do Brasil - Estatísticas de Crédito",
+      "title": "Banco Central do Brasil — Relatório de Estatísticas Monetárias e de Crédito",
       "url": "https://www.bcb.gov.br/estatisticas/estatisticasmonetariascredito",
-      "type": "official",
       "publisher": "Banco Central do Brasil",
-      "description": "Séries históricas das taxas médias de juros cobradas no crédito rotativo no Brasil."
+      "publisher_class": "official",
+      "editorial_role": "data_context",
+      "source_type": "primary",
+      "notes": "Séries históricas das taxas médias anuais de juros praticadas no crédito rotativo no Brasil."
+    },
+    {
+      "id": "S4",
+      "title": "Febraban — Posicionamento setorial sobre o limite de juros do rotativo",
+      "url": "https://portal.febraban.org.br/noticia/3998/pt-br/",
+      "publisher": "Febraban",
+      "publisher_class": "industry",
+      "editorial_role": "market_counterpoint",
+      "source_type": "secondary",
+      "notes": "Análise dos bancos comerciais sobre impacto nas concessões de crédito e gestão de risco da carteira."
+    },
+    {
+      "id": "S5",
+      "title": "Governo promulga lei do Desenrola com teto de juros para rotativo do cartão",
+      "url": "https://www.gazetadopovo.com.br/economia/governo-promulga-lei-do-desenrola-com-teto-de-juros-para-rotativo-do-cartao/",
+      "publisher": "Gazeta do Povo",
+      "publisher_class": "independent_journalism",
+      "editorial_role": "journalistic_coverage",
+      "source_type": "secondary",
+      "notes": "Acompanhamento da sanção presidencial e debates sobre corte de linhas de crédito pelas instituições financeiras."
     }
   ],
   "claims": [
     {
       "id": "C1",
-      "statement": "A soma dos juros e encargos no crédito rotativo e parcelado do cartão não pode exceder o valor principal da dívida.",
+      "statement": "A soma dos juros e encargos cobrados no rotativo e parcelado não pode ultrapassar o valor principal da dívida.",
       "source_ids": [
         "S1",
         "S2"
-      ]
+      ],
+      "framing": "verified_fact",
+      "confidence": "high",
+      "verification_status": "verified",
+      "attribution_required": false
     },
     {
       "id": "C2",
-      "statement": "As taxas médias históricas do crédito rotativo no Brasil frequentemente superavam 430% ao ano.",
+      "statement": "As taxas médias históricas do crédito rotativo frequentemente ultrapassavam 430% ao ano.",
       "source_ids": [
-        "S3"
-      ]
+        "S3",
+        "S5"
+      ],
+      "framing": "verified_fact",
+      "confidence": "high",
+      "verification_status": "verified",
+      "attribution_required": false
     },
     {
       "id": "C3",
-      "statement": "Em um exemplo de dívida original de R$ 1.000, o teto de juros acumulados é de R$ 1.000, somando no máximo R$ 2.000.",
+      "statement": "Em uma dívida hipotética de R$ 1.000, o teto de juros acumulados é de R$ 1.000, somando no máximo R$ 2.000.",
       "source_ids": [
         "S1",
         "S2"
-      ]
+      ],
+      "framing": "verified_fact",
+      "confidence": "high",
+      "verification_status": "verified",
+      "attribution_required": false
     },
     {
       "id": "C4",
-      "statement": "O teto de 100% não perdoa a dívida, não impede negativação e não cobre novos empréstimos de renegociação avulsa.",
+      "statement": "O teto de 100% não cancela a dívida original, não impede negativação e não abrange novas operações de renegociação avulsa.",
       "source_ids": [
         "S1",
-        "S2"
-      ]
+        "S2",
+        "S4"
+      ],
+      "framing": "verified_fact",
+      "confidence": "high",
+      "verification_status": "verified",
+      "attribution_required": false
     },
     {
       "id": "C5",
-      "statement": "As instituições financeiras responderam ao teto reduzindo limites e endurecendo a concessão de crédito.",
+      "statement": "Instituições financeiras reagiram ao teto limitando a oferta de crédito e endurecendo os critérios de aprovação de cartões.",
       "source_ids": [
-        "S3"
-      ]
+        "S4",
+        "S5"
+      ],
+      "framing": "analysis",
+      "confidence": "high",
+      "verification_status": "verified",
+      "attribution_required": false
     }
   ],
   "visual_assets": [],
@@ -157,7 +206,16 @@
       "official_sources_role": "Lei Federal 14.690 e Resolução CMN 5.112 estabelecem os critérios jurídicos objetivos do teto; Banco Central fornece as séries estatísticas de juros médios.",
       "independent_sources_role": "Análise econômica independente contextualiza o comportamento dos bancos na gestão de risco e corte de limites.",
       "counterpoint_summary": "O teto trava a escalada dos juros, mas não cancela débitos e levou instituições a restringirem limites para clientes de maior risco.",
-      "official_claims_attributed": true
+      "official_claims_attributed": true,
+      "right_editorial_review": {
+        "consulted": [
+          {
+            "publisher": "Gazeta do Povo",
+            "url": "https://www.gazetadopovo.com.br/economia/governo-promulga-lei-do-desenrola-com-teto-de-juros-para-rotativo-do-cartao/",
+            "summary": "Reportagem de acompanhamento da promulgação da Lei 14.690 com foco na reação das instituições e restrições nas linhas de crédito."
+          }
+        ]
+      }
     },
     "youtube_suitability": {
       "risk_level": "low",
@@ -280,7 +338,7 @@
         }
       ],
       "review": {
-        "content_sha256": "aeca80ba8d297bb2855a9b2fb47afa5d94199d39603f39b9101c9053929d997e",
+        "content_sha256": "6b3ce97c128a6e222fd29d3c004fb1283d00baca24bafbae9f4e899ad7832e98",
         "findings": [
           {
             "question": "O cálculo está devidamente identificado como simulação ilustrativa?",
