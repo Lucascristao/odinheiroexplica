@@ -30,7 +30,7 @@ assert.deepEqual(authored.scenes[0].vocal_intentions, ["curiosity"]);
 const nominal = summarizeEditorialDirection({scenes: [{id: "nominal", tts: {cues: [cue]}, visual: {stage, beats: [
   {target_id: "a", treatment: "flow_diagram"},
   {target_id: "b", treatment: "stack"},
-  {target_id: "a", treatment: "kinetic_type", action: "focus"},
+  {target_id: "a", treatment: "kinetic_type", action: "hold"},
   {target_id: "b", treatment: "spotlight", behavior: "reframe"},
 ]}}]});
 assert.deepEqual(nominal.issues.filter(i => i.severity === "error").map(i => i.code), ["missing-flow", "missing-operation", "missing-kinetic-text", "missing-reframe"]);
