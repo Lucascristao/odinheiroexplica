@@ -1,6 +1,6 @@
 {
-  "project_id": "cartao-rotativo-teto-100-2026-10-02",
-  "title": "O teto de juros do cartão de crédito: a regra dos 100%",
+  "project_id": "quanto-rende-82-milhoes-poupanca-2026-10-02",
+  "title": "Quanto rende R$ 82 milhões na poupança?",
   "version": "1.0",
   "presenter": {
     "gender": "male",
@@ -8,101 +8,115 @@
   },
   "speech": {
     "pronunciations": {
-      "CMN": "cê eme ene",
-      "Desenrola": "desenrola",
-      "rotativo": "rotativo"
+      "Selic": "selic",
+      "Copom": "cópom",
+      "CDB": "cê dê bê",
+      "CDBs": "cê dê bês",
+      "LCI": "éle cê i",
+      "LCA": "éle cê a",
+      "FGC": "éfe gê cê"
     },
     "ignore_pronunciation_terms": []
   },
   "story": {
-    "subject": "A regra que limita o acúmulo de juros do crédito rotativo e parcelado do cartão de crédito a 100% da dívida original, estabelecida pela Lei 14.690 e Resolução CMN 5.112.",
-    "angle": "Explicar como funcionava a multiplicação antiga da dívida, como o teto de 100% trava o saldo e por que os bancos reagiram cortando limites.",
-    "promise": "Mostrar na ponta do lápis por que uma dívida de mil reais não pode mais virar cinco mil reais no cartão de crédito.",
-    "why_now": "A regra do teto de juros completou seu ciclo de implementação e afeta diretamente a gestão de crédito e endividamento das famílias.",
-    "category": "policy"
+    "subject": "O rendimento mensal e anual de R$ 82 milhões na caderneta de poupança com a taxa Selic em 13,75% ao ano e a comparação com alternativas de renda fixa como o Tesouro Selic e o CDI.",
+    "angle": "Responder imediatamente à dúvida popular sobre a renda gerada por R$ 82 milhões na poupança, explicar a regra de 0,5% mais TR e mostrar como alternativas seguras rendem centenas de milhares de reais a mais todo mês.",
+    "promise": "Mostrar na ponta do lápis quanto R$ 82 milhões rendem na poupança e a diferença real de rentabilidade e segurança em relação a outros investimentos.",
+    "why_now": "O patamar elevado da taxa básica de juros evidencia o custo de oportunidade de manter grandes fortunas na poupança.",
+    "category": "personal_finance"
   },
   "packaging": {
     "titles": [
       {
-        "text": "O teto de juros do cartão de crédito: a regra dos 100% explicada",
+        "text": "Quanto rende R$ 82 milhões na poupança? A conta exata",
         "platform": "youtube"
       }
     ],
     "thumbnails": [
       {
-        "headline": "Dívida travada em 100%: o que os bancos não contam",
+        "headline": "R$ 82 MILHÕES: O ERRO DA POUPANÇA",
         "style": "editorial_bold"
       }
     ]
   },
   "publication": {
-    "description": "Entenda como funciona o teto de juros do cartão de crédito no Brasil e como essa regra impede que dívidas virem bolas de neve descontroladas.\n\n- O rotativo do cartão de crédito costumava acumular juros médios superiores a 430% ao ano.\n- Pela regra do Conselho Monetário Nacional, os juros e encargos acumulados não podem ultrapassar 100% da dívida principal.\n- Uma dívida original de mil reais só pode acumular no máximo mais mil reais de encargos, totalizando dois mil reais no teto.\n- Os bancos reagiram à medida reduzindo limites de crédito e endurecendo os critérios de concessão.",
-    "engagement_question": "Você já sabia que os juros do rotativo têm um teto máximo de 100%?",
+    "description": "Descubra quanto rende R$ 82 milhões na poupança com a taxa Selic atual e veja por que deixar uma grande fortuna na caderneta custa caro.\n\n- Com a taxa Selic em 13,75% ao ano, a poupança rende 0,5% fixo ao mês mais a Taxa Referencial.\n- Uma quantia de R$ 82 milhões gera cerca de R$ 490 mil mensais na poupança, totalizando R$ 6,2 milhões ao ano.\n- Em investimentos a 100% do CDI, o mesmo valor rende mais de R$ 680 mil líquidos logo no primeiro mês.\n- Manter valores multimilionários em um único banco ultrapassa o limite de proteção do FGC de R$ 250 mil.",
+    "engagement_question": "Se você ganhasse R$ 82 milhões, deixaria alguma quantia na poupança?",
     "hashtags": [
-      "#CartaodeCredito",
-      "#EducacaoFinanceira",
+      "#Poupanca",
+      "#Investimentos",
       "#ODinheiroExplica"
     ],
     "seo": {
-      "primary_keyword": "teto de juros do cartão de crédito"
+      "primary_keyword": "quanto rende R$ 82 milhões na poupança"
     }
   },
   "sources": [
     {
       "id": "S1",
-      "title": "Lei nº 14.690/2023 — Programa Desenrola Brasil e limite aos juros do rotativo",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2023-2026/2023/lei/l14690.htm",
+      "title": "Lei nº 12.703/2012 — Remuneração dos depósitos de poupança",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12703.htm",
       "publisher": "Presidência da República",
       "publisher_class": "official",
       "editorial_role": "legal_framework",
       "source_type": "primary",
-      "notes": "Institui o limite máximo legal de 100% para juros e encargos no crédito rotativo e parcelado de fatura."
+      "notes": "Define a regra de rendimento da poupança de 0,5% ao mês mais TR quando a Selic for superior a 8,5% ao ano."
     },
     {
       "id": "S2",
-      "title": "Resolução CMN nº 5.112/2023 — Disciplina limites de juros no rotativo",
-      "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?tipo=Resolu%C3%A7%C3%A3o%20CMN&numero=5112",
+      "title": "Banco Central do Brasil — Decisão da Taxa Selic e Séries Históricas do Copom",
+      "url": "https://www.bcb.gov.br/controleinflacao/historicotaxasjuros",
       "publisher": "Banco Central do Brasil",
       "publisher_class": "official",
       "editorial_role": "regulatory_standard",
       "source_type": "primary",
-      "notes": "Regulamentação infralegal vinculante aplicável às instituições financeiras operantes no país."
+      "notes": "Taxa básica de juros Selic Meta definida em 13,75% ao ano pelo Comitê de Política Monetária."
     },
     {
       "id": "S3",
-      "title": "Banco Central do Brasil — Relatório de Estatísticas Monetárias e de Crédito",
-      "url": "https://www.bcb.gov.br/estatisticas/estatisticasmonetariascredito",
-      "publisher": "Banco Central do Brasil",
+      "title": "Tesouro Nacional — Rentabilidade e Regras do Tesouro Direto",
+      "url": "https://www.tesourodireto.com.br/titulos/precos-e-taxas.htm",
+      "publisher": "Tesouro Nacional",
       "publisher_class": "official",
       "editorial_role": "data_context",
       "source_type": "primary",
-      "notes": "Séries históricas das taxas médias anuais de juros praticadas no crédito rotativo no Brasil."
+      "notes": "Rentabilidade dos títulos pós-fixados indexados à taxa Selic e tabela regressiva de imposto de renda."
     },
     {
       "id": "S4",
-      "title": "Febraban — Posicionamento setorial sobre o limite de juros do rotativo",
-      "url": "https://portal.febraban.org.br/noticia/3998/pt-br/",
-      "publisher": "Febraban",
+      "title": "B3 — Indicadores Financeiros e Taxa DI Acumulada",
+      "url": "https://www.b3.com.br/pt_br/market-data-e-indices/indices/indices-de-estrutura-temporal-das-taxas-de-juros/indice-di/",
+      "publisher": "B3",
       "publisher_class": "industry",
       "editorial_role": "market_counterpoint",
       "source_type": "secondary",
-      "notes": "Análise dos bancos comerciais sobre impacto nas concessões de crédito e gestão de risco da carteira."
+      "notes": "Taxa média interbancária DI de referência para remuneração de títulos de renda fixa."
     },
     {
       "id": "S5",
-      "title": "Governo promulga lei do Desenrola com teto de juros para rotativo do cartão",
-      "url": "https://www.gazetadopovo.com.br/economia/governo-promulga-lei-do-desenrola-com-teto-de-juros-para-rotativo-do-cartao/",
-      "publisher": "Gazeta do Povo",
+      "title": "Quanto rende a poupança com juros de dois dígitos: comparativo com renda fixa",
+      "url": "https://www.infomoney.com.br/onde-investir/quanto-rende-a-poupanca/",
+      "publisher": "InfoMoney",
       "publisher_class": "independent_journalism",
       "editorial_role": "journalistic_coverage",
       "source_type": "secondary",
-      "notes": "Acompanhamento da sanção presidencial e debates sobre corte de linhas de crédito pelas instituições financeiras."
+      "notes": "Simulação comparativa do rendimento de grandes quantias na poupança versus CDI e títulos públicos."
+    },
+    {
+      "id": "S6",
+      "title": "Fundo Garantidor de Créditos — Limites e Regras de Cobertura Ordinária",
+      "url": "https://www.fgc.org.br/garantia-fgc/sobre-a-garantia-fgc",
+      "publisher": "FGC",
+      "publisher_class": "industry",
+      "editorial_role": "data_context",
+      "source_type": "primary",
+      "notes": "Teto de proteção de R$ 250 mil por CPF e por instituição financeira associada."
     }
   ],
   "claims": [
     {
       "id": "C1",
-      "statement": "A soma dos juros e encargos cobrados no rotativo e parcelado não pode ultrapassar o valor principal da dívida.",
+      "statement": "Quando a taxa Selic está acima de 8,5% ao ano, a poupança rende 0,5% ao mês somado à Taxa Referencial.",
       "source_ids": [
         "S1",
         "S2"
@@ -114,21 +128,8 @@
     },
     {
       "id": "C2",
-      "statement": "As taxas médias históricas do crédito rotativo frequentemente ultrapassavam 430% ao ano.",
+      "statement": "A taxa básica de juros Selic Meta está fixada em 13,75% ao ano pelo Banco Central.",
       "source_ids": [
-        "S3",
-        "S5"
-      ],
-      "framing": "verified_fact",
-      "confidence": "high",
-      "verification_status": "verified",
-      "attribution_required": false
-    },
-    {
-      "id": "C3",
-      "statement": "Em uma dívida hipotética de R$ 1.000, o teto de juros acumulados é de R$ 1.000, somando no máximo R$ 2.000.",
-      "source_ids": [
-        "S1",
         "S2"
       ],
       "framing": "verified_fact",
@@ -137,12 +138,11 @@
       "attribution_required": false
     },
     {
-      "id": "C4",
-      "statement": "O teto de 100% não cancela a dívida original, não impede negativação e não abrange novas operações de renegociação avulsa.",
+      "id": "C3",
+      "statement": "Em uma aplicação de R$ 82 milhões, a taxa fixa de 0,5% ao mês gera R$ 410 mil mensais na poupança, chegando a cerca de R$ 490 mil com a TR média.",
       "source_ids": [
         "S1",
-        "S2",
-        "S4"
+        "S5"
       ],
       "framing": "verified_fact",
       "confidence": "high",
@@ -150,9 +150,10 @@
       "attribution_required": false
     },
     {
-      "id": "C5",
-      "statement": "Instituições financeiras reagiram ao teto limitando a oferta de crédito e endurecendo os critérios de aprovação de cartões.",
+      "id": "C4",
+      "statement": "Investimentos a 100% do CDI geram rendimento líquido superior à poupança em mais de R$ 190 mil mensais para R$ 82 milhões, mesmo na alíquota inicial de imposto de renda.",
       "source_ids": [
+        "S3",
         "S4",
         "S5"
       ],
@@ -160,59 +161,71 @@
       "confidence": "high",
       "verification_status": "verified",
       "attribution_required": false
+    },
+    {
+      "id": "C5",
+      "statement": "O FGC garante até R$ 250 mil por CPF e instituição, enquanto títulos do Tesouro Nacional possuem garantia soberana da União sem esse limite.",
+      "source_ids": [
+        "S3",
+        "S6"
+      ],
+      "framing": "verified_fact",
+      "confidence": "high",
+      "verification_status": "verified",
+      "attribution_required": false
     }
   ],
   "visual_assets": [],
   "visual_direction": {
-    "concept": "Cenário editorial moderno com elementos geométricos, contadores métricos e equações matemáticas precisas. O tom é informativo e transparente.",
+    "concept": "Cenário editorial moderno com elementos geométricos, contadores métricos e comparativos de rentabilidade claros e equilibrados.",
     "world": "finance",
     "secondary_color": "#FFBD19",
     "motifs": [
-      "cartão de crédito",
-      "fatura",
+      "poupança",
+      "renda fixa",
       "porcentagem",
-      "teto limite",
-      "equação aritmética"
+      "patrimônio",
+      "tesouro nacional"
     ],
     "motion_language": [
-      "Transições limpas com foco em números e relações de causa e efeito.",
-      "Cálculo matemático claro e pausado para o espectador acompanhar cada termo.",
-      "Destaque pontual para alertas legais e contratuais."
+      "Transições limpas com foco em números e contas precisas.",
+      "Comparação lado a lado pausada para facilitar a absorção dos valores.",
+      "Destaque pontual para limites de garantia e segurança institucional."
     ],
     "avoid": [
-      "sensacionalismo de desespero financeiro",
-      "imagens genéricas de cofres ou notas voando",
-      "afirmações de que a dívida deixa de existir"
+      "sensacionalismo de enriquecimento fácil",
+      "promessas de retornos irreais ou especulação",
+      "gráficos confusos com escalas distorcidas"
     ]
   },
   "editorial": {
     "strengths": [
-      "Regra prática com impacto direto na vida de milhões de brasileiros.",
-      "Conta aritmética cristalina sem jargões confusos.",
-      "Equilíbrio entre a proteção legal e os efeitos colaterais nos limites de crédito."
+      "Resposta imediata e transparente à curiosidade popular sobre grandes patrimônios.",
+      "Demonstração didática da regra legal de rentabilidade da poupança.",
+      "Comparativo financeiro realista considerando o impacto do Imposto de Renda e do FGC."
     ],
     "risk_flags": [
-      "Esclarecer que a dívida original continua exigível e sujeita a negativação.",
-      "Destacar que o exemplo de mil reais é ilustrativo para facilitar a compreensão."
+      "Deixar claro que a simulação utiliza valores ilustrativos e estimativa de TR média.",
+      "Ressaltar que a rentabilidade do CDI e da Selic oscila conforme as reuniões do Copom."
     ],
     "narrative_contract": {
-      "topic_explanation": "Desde o início de 2024, o total cobrado de juros no rotativo não pode ultrapassar cem por cento da dívida original.",
+      "topic_explanation": "Com a Selic em treze vírgula setenta e cinco por cento ao ano, a poupança rende meio por cento ao mês mais a Taxa Referencial.",
       "presenter_introduction": "Eu sou o Roberto, do O Dinheiro Explica.",
-      "subscription_request": "se inscreva no canal O Dinheiro Explica e compartilhe esta explicação"
+      "subscription_request": "se inscreva no canal O Dinheiro Explica e compartilhe esta comparação"
     },
     "source_balance": {
       "requires_diversity": true,
       "public_policy_or_regulation": true,
-      "official_sources_role": "Lei Federal 14.690 e Resolução CMN 5.112 estabelecem os critérios jurídicos objetivos do teto; Banco Central fornece as séries estatísticas de juros médios.",
-      "independent_sources_role": "Análise econômica independente contextualiza o comportamento dos bancos na gestão de risco e corte de limites.",
-      "counterpoint_summary": "O teto trava a escalada dos juros, mas não cancela débitos e levou instituições a restringirem limites para clientes de maior risco.",
+      "official_sources_role": "Lei Federal 12.703 e comunicados do Banco Central fixam a regra objetiva da poupança e a Selic Meta; Tesouro Nacional baliza as taxas dos títulos públicos.",
+      "independent_sources_role": "Jornalismo financeiro independente e dados da B3 trazem simulações práticas de mercado e a taxa DI consolidada.",
+      "counterpoint_summary": "A poupança oferece liquidez imediata e isenção de imposto de renda, mas com juros elevados seu retorno perde substancialmente para alternativas pós-fixadas, além do risco de concentração acima do teto do FGC.",
       "official_claims_attributed": true,
       "right_editorial_review": {
         "consulted": [
           {
             "publisher": "Gazeta do Povo",
-            "url": "https://www.gazetadopovo.com.br/economia/governo-promulga-lei-do-desenrola-com-teto-de-juros-para-rotativo-do-cartao/",
-            "summary": "Reportagem de acompanhamento da promulgação da Lei 14.690 com foco na reação das instituições e restrições nas linhas de crédito."
+            "url": "https://www.gazetadopovo.com.br/economia/copom-define-selic-e-impacto-na-renda-fixa/",
+            "summary": "Análise editorial sobre o impacto da taxa Selic em patamar restritivo e a rentabilidade real dos investimentos de renda fixa frente à inflação."
           }
         ]
       }
@@ -220,90 +233,91 @@
     "youtube_suitability": {
       "risk_level": "low",
       "sensitive_topics": [
-        "crédito",
-        "juros",
-        "dívidas bancárias"
+        "investimentos",
+        "poupança",
+        "juros"
       ],
-      "context_notes": "Educação financeira explicativa sem consultoria de investimento ou promessas de quitação mágica.",
+      "context_notes": "Conteúdo puramente educativo de matemática financeira e educação patrimonial sem recomendação personalizada de investimentos.",
       "title_thumbnail_safe": true,
-      "monetization_notes": "Tema puramente didático e regulatório."
+      "monetization_notes": "Tema educativo financeiro totalmente seguro."
     },
     "render_review": {
       "status": "production_review_pending",
-      "note": "Episódio focado na regra de 100% dos juros do cartão de crédito com voz contínua do Roberto."
+      "note": "Episódio focado na rentabilidade de R$ 82 milhões na poupança com voz contínua do Roberto."
     },
     "explanation": {
       "version": "1.0",
       "concepts": [
         {
-          "id": "teto-rotativo",
+          "id": "regra-poupanca",
           "terms": [
-            "teto de juros",
-            "cem por cento"
+            "poupança",
+            "meio por cento"
           ],
           "explanation": {
             "scene_id": "scene-01",
-            "quote": "O teto legal de juros determina que a soma de todos os juros e encargos financeiros acumulados não pode ser maior do que o valor principal financiado."
+            "quote": "Sempre que a Selic estiver acima de oito vírgula cinco por cento ao ano, como acontece no cenário atual, a poupança tem retorno fixo de meio por cento ao mês somado à Taxa Referencial."
           },
           "claim_ids": [
             "C1"
           ],
-          "boundary": "Válido para operações de rotativo e parcelamento de fatura originadas a partir de janeiro de 2024."
+          "boundary": "Regra aplicável a depósitos da poupança realizados a partir de maio de 2012 nos termos da Lei 12.703."
         }
       ],
       "examples": [
         {
-          "id": "calculo-teto",
-          "purpose": "Demonstrar a limitação de juros acumulados sobre uma dívida de mil reais.",
+          "id": "calculo-82m-poupanca",
+          "purpose": "Calcular o rendimento mensal aproximado de oitenta e dois milhões de reais na caderneta de poupança.",
           "kind": "illustrative",
           "actors": [
-            "consumidor",
-            "emissor do cartão"
+            "poupador",
+            "instituição financeira"
           ],
           "assumptions": [
-            "Valor hipotético de mil reais deixado no rotativo"
+            "Patrimônio hipotético de oitenta e dois milhões de reais",
+            "Taxa mensal fixa de meio por cento"
           ],
           "claim_ids": [
             "C3"
           ],
           "inputs": [
             {
-              "id": "principal",
-              "value": 1000,
+              "id": "capital_inicial",
+              "value": 82000000,
               "unit": "BRL"
             },
             {
-              "id": "juros_teto",
-              "value": 1000,
-              "unit": "BRL"
+              "id": "fator_taxa",
+              "value": 0.005,
+              "unit": "ratio"
             }
           ],
           "calculation": {
-            "operation": "add",
+            "operation": "multiply",
             "input_ids": [
-              "principal",
-              "juros_teto"
+              "capital_inicial",
+              "fator_taxa"
             ],
-            "result": 2000,
+            "result": 410000,
             "unit": "BRL"
           },
-          "limitation": "Não considera amortizações parciais ou cobrança judicial externa.",
+          "limitation": "Não considera a variação diária da Taxa Referencial nem o efeito dos juros compostos em prazos maiores.",
           "narration_refs": [
             {
               "scene_id": "scene-02",
-              "quote": "mil reais de dívida original somados a no máximo mil reais de juros resultam em dois mil reais no teto"
+              "quote": "quatrocentos e dez mil reais"
             }
           ],
           "visual_bindings": [
             {
               "scene_id": "scene-02",
-              "element_id": "calc_result",
-              "beat_anchor": "dois mil reais no teto"
+              "element_id": "calc_mensal",
+              "beat_anchor": "quatrocentos e dez mil reais"
             }
           ],
           "identification": {
             "scene_id": "scene-02",
-            "quote": "exemplo hipotético simples"
+            "quote": "simulação ilustrativa"
           },
           "visual_identification": {
             "scene_id": "scene-02",
@@ -313,40 +327,40 @@
       ],
       "learning_units": [
         {
-          "id": "unit-regra-teto",
-          "question": "Qual é o valor máximo que os juros do rotativo podem atingir?",
+          "id": "unit-rendimento-82m",
+          "question": "Quanto rendem oitenta e dois milhões de reais na poupança atualmente?",
           "answer": {
-            "scene_id": "scene-01",
-            "quote": "a soma de todos os juros e encargos financeiros acumulados não pode ser maior do que o valor principal financiado"
+            "scene_id": "scene-02",
+            "quote": "o rendimento mensal garantido é de quatrocentos e dez mil reais"
           },
           "concept_ids": [
-            "teto-rotativo"
+            "regra-poupanca"
           ],
           "claim_ids": [
-            "C1"
+            "C3"
           ],
           "example_ids": [
-            "calculo-teto"
+            "calculo-82m-poupanca"
           ],
-          "visual_purpose": "Mostrar a fórmula de travamento da dívida na tela.",
+          "visual_purpose": "Demonstrar na tela os valores do rendimento mensal e acumulado anual na poupança.",
           "bindings": [
             {
               "scene_id": "scene-02",
-              "element_id": "calc_result"
+              "element_id": "calc_mensal"
             }
           ]
         }
       ],
       "review": {
-        "content_sha256": "56ed330be357b3e397285ae73172644a4a5c50da6297e271e57ee5e66979522c",
+        "content_sha256": "d56fb287a9e5ce43fc575d5bc049d8082962a05d380310c461cb664543628f5a",
         "findings": [
           {
-            "question": "O cálculo está devidamente identificado como simulação ilustrativa?",
+            "question": "A simulação dos valores de rendimento está claramente identificada como ilustrativa?",
             "evidence": {
               "scene_id": "scene-02",
-              "quote": "exemplo hipotético simples"
+              "quote": "simulação ilustrativa"
             },
-            "conclusion": "Sim, a locução e o card identificam a conta como hipotética antes dos valores."
+            "conclusion": "Sim, a locução e o cabeçalho gráfico identificam expressamente a conta como ilustrativa antes da exibição dos valores."
           }
         ]
       }
@@ -357,117 +371,8 @@
       "id": "scene-00",
       "index": 0,
       "scene_index": 0,
-      "title": "A dívida que parou de multiplicar",
-      "narration": "Uma dívida de mil reais no cartão de crédito podia passar facilmente de quatro mil reais em apenas um ano. Só que essa multiplicação infinita agora tem um limite legal. Desde o início de 2024, o total cobrado de juros no rotativo não pode ultrapassar cem por cento da dívida original. Eu sou o Roberto, do O Dinheiro Explica. Muitas pessoas ainda não sabem que essa trava existe e continuam com receio de ver o saldo devedor explodir sem controle. Vamos entender como essa trava funciona no bolso e qual foi a resposta dos bancos.",
-      "claim_ids": [
-        "C1"
-      ],
-      "visual": {
-        "type": "EDITORIAL",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "camera_mode": "manual",
-          "motion_profile": "narrative",
-          "elements": [
-            {
-              "id": "card_debt",
-              "kind": "metric",
-              "label": "Multiplicação anterior",
-              "x": 6,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "initially_visible": true,
-              "label_size": 46,
-              "surface": "none",
-              "value": "4x+",
-              "value_size": 150,
-              "detail": "Juros acumulados em 1 ano"
-            },
-            {
-              "id": "card_limit",
-              "kind": "metric",
-              "label": "Trava legal atual",
-              "x": 52,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "initially_visible": false,
-              "label_size": 46,
-              "surface": "spotlight",
-              "value": "100%",
-              "value_size": 150,
-              "detail": "Limite máximo de juros"
-            }
-          ],
-          "connections": [],
-          "captions": {
-            "enabled": true,
-            "max_words": 6,
-            "words_per_line": 3,
-            "max_lines": 2,
-            "font_size": 64,
-            "min_free_area_ratio": 0.3
-          }
-        },
-        "beats": [
-          {
-            "anchor": "multiplicação infinita agora tem um limite legal",
-            "target_id": "card_debt",
-            "action": "focus",
-            "headline": "A multiplicação agora tem teto legal",
-            "treatment": "spotlight",
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "não pode ultrapassar cem por cento",
-            "target_id": "card_limit",
-            "action": "reveal",
-            "headline": "O teto máximo é de 100%",
-            "treatment": "spotlight",
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.9,
-            "entrance": {
-              "style": "slide",
-              "direction": "up"
-            }
-          }
-        ]
-      },
-      "tts": {
-        "delivery": "explain",
-        "cues": [
-          {
-            "text": "Uma dívida de mil reais no cartão de crédito podia passar facilmente de quatro mil reais em apenas um ano.",
-            "kind": "emphasis",
-            "intent": "discovery",
-            "arc": "contrast",
-            "emphasis_word": "quatro",
-            "pause_before_ms": 0
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-01",
-      "index": 1,
-      "scene_index": 1,
-      "title": "O fim da bola de neve descontrolada",
-      "narration": "Para entender o impacto, olha como o crédito rotativo funcionava. Historicamente, as taxas médias do rotativo no Brasil superavam quatrocentos e trinta por cento ao ano. Bastavam alguns meses sem pagar a fatura para os juros superarem com folga o valor das compras. Com a Lei quatorze mil seiscentos e noventa e a Resolução cinco mil cento e doze do Conselho Monetário Nacional, essa dinâmica mudou. O teto legal de juros determina que a soma de todos os juros e encargos financeiros acumulados não pode ser maior do que o valor principal financiado. Na prática, a bola de neve agora encontra uma parede.",
+      "title": "O fascínio dos R$ 82 milhões na poupança",
+      "narration": "Se você ganhasse oitenta e dois milhões de reais em um sorteio, qual seria o seu primeiro pensamento? Para muitas pessoas, a resposta imediata é colocar tudo na poupança e viver de renda. Mas quanto esse valor rende na prática? Eu sou o Roberto, do O Dinheiro Explica. Com a Selic em treze vírgula setenta e cinco por cento ao ano, a poupança rende meio por cento ao mês mais a Taxa Referencial. Isso parece muito dinheiro, mas você vai ver que deixar essa fortuna na caderneta significa abrir mão de milhões de reais todos os anos.",
       "claim_ids": [
         "C1",
         "C2"
@@ -477,41 +382,63 @@
         "transition": "cut",
         "stage": {
           "show_title": false,
-          "camera_mode": "manual",
+          "camera_mode": "auto",
           "motion_profile": "narrative",
           "elements": [
             {
-              "id": "rate_old",
+              "id": "card_poupanca",
               "kind": "metric",
-              "label": "Taxa média histórica",
+              "label": "Rendimento mensal",
               "x": 6,
               "y": 18,
               "width": 42,
               "height": 58,
               "initially_visible": true,
-              "label_size": 46,
+              "icon": "coins",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "float",
+                "amplitude": 5,
+                "period_seconds": 4
+              },
+              "label_size": 44,
               "surface": "none",
-              "value": "430%",
-              "value_size": 150,
-              "detail": "Crédito rotativo ao ano • BCB"
+              "value": "R$ 410 mil+",
+              "value_size": 96,
+              "detail": "Poupança a 0,5% a.m. + TR"
             },
             {
-              "id": "law_card",
-              "kind": "step",
-              "label": "Lei 14.690 / CMN 5.112",
+              "id": "card_alternativas",
+              "kind": "metric",
+              "label": "Renda fixa com Selic",
               "x": 52,
               "y": 18,
               "width": 42,
               "height": 58,
               "initially_visible": false,
+              "icon": "chart",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 5,
+                "period_seconds": 4
+              },
               "label_size": 44,
               "surface": "spotlight",
-              "value": "Teto 100%",
-              "value_size": 110,
-              "detail": "Juros limitados ao principal"
+              "value": "R$ 680 mil+",
+              "value_size": 96,
+              "detail": "Tesouro Selic / CDI líquido"
             }
           ],
-          "connections": [],
+          "connections": [
+            {
+              "id": "conn_poupanca_selic",
+              "from": "card_poupanca",
+              "to": "card_alternativas",
+              "semantic": "comparison",
+              "motion": "flow"
+            }
+          ],
           "captions": {
             "enabled": true,
             "max_words": 6,
@@ -523,10 +450,11 @@
         },
         "beats": [
           {
-            "anchor": "superavam quatrocentos e trinta por cento",
-            "target_id": "rate_old",
+            "anchor": "colocar tudo na poupança e viver de renda",
+            "target_id": "card_poupanca",
             "action": "focus",
-            "headline": "Juros passavam de 430% ao ano",
+            "actuation": "count",
+            "headline": "O plano clássico da poupança",
             "treatment": "spotlight",
             "kind": "fact",
             "behavior": "transform",
@@ -538,10 +466,10 @@
             "motion_seconds": 0.8
           },
           {
-            "anchor": "essa dinâmica mudou",
-            "target_id": "law_card",
+            "anchor": "abrir mão de milhões de reais todos os anos",
+            "target_id": "card_alternativas",
             "action": "reveal",
-            "headline": "Regulamentação cria teto vinculante",
+            "headline": "Alternativas rendem muito mais",
             "treatment": "spotlight",
             "kind": "fact",
             "behavior": "transform",
@@ -553,102 +481,97 @@
             "motion_seconds": 0.9,
             "entrance": {
               "style": "slide",
-              "direction": "up"
+              "direction": "right"
             }
           }
         ]
       },
       "tts": {
-        "delivery": "explain",
+        "delivery": "hook",
         "cues": [
           {
-            "text": "O teto legal de juros determina que a soma de todos os juros e encargos financeiros acumulados não pode ser maior do que o valor principal financiado.",
+            "text": "qual seria o seu primeiro pensamento?",
             "kind": "emphasis",
-            "intent": "conviction",
-            "arc": "resolve",
-            "emphasis_word": "maior",
-            "pause_before_ms": 80
+            "intent": "curiosity",
+            "arc": "question",
+            "emphasis_word": "primeiro",
+            "pause_before_ms": 0
           }
         ]
       }
     },
     {
-      "id": "scene-02",
-      "index": 2,
-      "scene_index": 2,
-      "title": "A conta exata de uma fatura de mil reais",
-      "narration": "Vamos colocar isso em números com um exemplo hipotético simples. Imagine que uma pessoa deixou de pagar mil reais da fatura e entrou no rotativo. Pela regra anterior, a dívida acumulada podia subir indefinidamente com o passar do tempo. Pela regra atual, o teto máximo de juros e encargos cobrados é de exatamente mil reais. Portanto, mil reais de dívida original somados a no máximo mil reais de juros resultam em dois mil reais no teto. Mesmo que passem anos, o banco não pode exigir três ou quatro mil reais por aquela operação inicial.",
+      "id": "scene-01",
+      "index": 1,
+      "scene_index": 1,
+      "title": "A regra legal da poupança",
+      "narration": "Para entender a conta, precisamos olhar a regra oficial estabelecida em lei para a caderneta de poupança. Desde a mudança legislativa de dois mil e doze, o rendimento depende do patamar da taxa básica de juros, a Selic. Sempre que a Selic estiver acima de oito vírgula cinco por cento ao ano, como acontece no cenário atual, a poupança tem retorno fixo de meio por cento ao mês somado à Taxa Referencial. Esse rendimento é totalmente isento de imposto de renda para pessoas físicas e cai na conta a cada trinta dias, na data de aniversário do depósito.",
       "claim_ids": [
-        "C3"
+        "C1",
+        "C2"
       ],
       "visual": {
         "type": "EDITORIAL",
         "transition": "cut",
         "stage": {
           "show_title": false,
-          "camera_mode": "manual",
+          "camera_mode": "auto",
           "motion_profile": "narrative",
           "elements": [
             {
-              "id": "calc_label",
-              "kind": "label",
-              "label": "Exemplo hipotético",
-              "x": 8,
-              "y": 4,
-              "width": 84,
-              "height": 18,
-              "initially_visible": true,
-              "label_size": 46,
-              "surface": "none",
-              "detail": "Valores ilustrativos"
-            },
-            {
-              "id": "calc_principal",
-              "kind": "step",
-              "label": "Dívida original",
-              "x": 6,
-              "y": 24,
-              "width": 26,
-              "height": 52,
-              "initially_visible": true,
-              "label_size": 40,
-              "surface": "none",
-              "value": "R$ 1.000",
-              "value_size": 80,
-              "detail": "Valor inicial financiado"
-            },
-            {
-              "id": "calc_interest",
-              "kind": "step",
-              "label": "Juros máximos (100%)",
-              "x": 37,
-              "y": 24,
-              "width": 26,
-              "height": 52,
-              "initially_visible": true,
-              "label_size": 40,
-              "surface": "none",
-              "value": "+ R$ 1.000",
-              "value_size": 80,
-              "detail": "Teto de encargos"
-            },
-            {
-              "id": "calc_result",
+              "id": "rule_selic",
               "kind": "metric",
-              "label": "Total no teto legal",
-              "x": 68,
-              "y": 24,
-              "width": 26,
-              "height": 52,
+              "label": "Selic Meta atual",
+              "x": 6,
+              "y": 18,
+              "width": 42,
+              "height": 58,
+              "initially_visible": true,
+              "icon": "bank",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 4,
+                "period_seconds": 5
+              },
+              "label_size": 44,
+              "surface": "none",
+              "value": "13,75%",
+              "value_size": 130,
+              "detail": "Copom • Banco Central"
+            },
+            {
+              "id": "rule_yield",
+              "kind": "step",
+              "label": "Regra da poupança",
+              "x": 52,
+              "y": 18,
+              "width": 42,
+              "height": 58,
               "initially_visible": false,
-              "label_size": 40,
+              "icon": "document",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "float",
+                "amplitude": 4,
+                "period_seconds": 4
+              },
+              "label_size": 44,
               "surface": "spotlight",
-              "value": "R$ 2.000",
-              "value_size": 80,
-              "detail": "Dívida total máxima"
+              "value": "0,5% + TR",
+              "value_size": 110,
+              "detail": "Ao mês • Isento de IR"
             }
           ],
-          "connections": [],
+          "connections": [
+            {
+              "id": "conn_selic_yield",
+              "from": "rule_selic",
+              "to": "rule_yield",
+              "semantic": "cause",
+              "motion": "flow"
+            }
+          ],
           "captions": {
             "enabled": true,
             "max_words": 6,
@@ -660,10 +583,11 @@
         },
         "beats": [
           {
-            "anchor": "deixou de pagar mil reais da fatura",
-            "target_id": "calc_principal",
+            "anchor": "o rendimento depende do patamar da taxa básica de juros",
+            "target_id": "rule_selic",
             "action": "focus",
-            "headline": "Dívida inicial de mil reais",
+            "actuation": "signal",
+            "headline": "Selic baliza o retorno da poupança",
             "treatment": "spotlight",
             "kind": "fact",
             "behavior": "transform",
@@ -675,25 +599,10 @@
             "motion_seconds": 0.8
           },
           {
-            "anchor": "exatamente mil reais",
-            "target_id": "calc_interest",
-            "action": "focus",
-            "headline": "Juros limitados a outros mil reais",
-            "treatment": "spotlight",
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "dois mil reais no teto",
-            "target_id": "calc_result",
+            "anchor": "retorno fixo de meio por cento ao mês",
+            "target_id": "rule_yield",
             "action": "reveal",
-            "headline": "Total máximo limitado a dois mil reais",
+            "headline": "Regra: 0,5% ao mês mais TR",
             "treatment": "spotlight",
             "kind": "fact",
             "behavior": "transform",
@@ -714,11 +623,185 @@
         "delivery": "explain",
         "cues": [
           {
-            "text": "Portanto, mil reais de dívida original somados a no máximo mil reais de juros resultam em dois mil reais no teto.",
+            "text": "a poupança tem retorno fixo de meio por cento ao mês somado à Taxa Referencial.",
             "kind": "emphasis",
             "intent": "conviction",
             "arc": "resolve",
-            "emphasis_word": "dois",
+            "emphasis_word": "fixo",
+            "pause_before_ms": 80
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-02",
+      "index": 2,
+      "scene_index": 2,
+      "title": "A conta exata de R$ 82 milhões",
+      "narration": "Vamos agora para uma simulação ilustrativa com os oitenta e dois milhões de reais. Considerando apenas a taxa fixa de meio por cento ao mês, o rendimento mensal garantido é de quatrocentos e dez mil reais. Quando adicionamos a Taxa Referencial média recente, o ganho mensal total se aproxima de quatrocentos e noventa mil reais. Em um período de doze meses, essa aplicação acumula cerca de seis milhões e duzentos mil reais de rendimento líquido. É uma quantia impressionante, mas a comparação com a renda fixa tradicional mostra onde mora o problema.",
+      "claim_ids": [
+        "C3"
+      ],
+      "visual": {
+        "type": "EDITORIAL",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "camera_mode": "auto",
+          "motion_profile": "narrative",
+          "elements": [
+            {
+              "id": "calc_label",
+              "kind": "label",
+              "label": "Simulação de rendimento",
+              "x": 8,
+              "y": 4,
+              "width": 84,
+              "height": 18,
+              "initially_visible": true,
+              "label_size": 46,
+              "surface": "none",
+              "detail": "Valores ilustrativos"
+            },
+            {
+              "id": "calc_patrimonio",
+              "kind": "step",
+              "label": "Capital investido",
+              "x": 6,
+              "y": 24,
+              "width": 26,
+              "height": 52,
+              "initially_visible": true,
+              "icon": "wallet",
+              "svg_motion": "trace",
+              "label_size": 40,
+              "surface": "none",
+              "value": "R$ 82 mi",
+              "value_size": 76,
+              "detail": "Patrimônio inicial"
+            },
+            {
+              "id": "calc_mensal",
+              "kind": "step",
+              "label": "Ganho mensal estimado",
+              "x": 37,
+              "y": 24,
+              "width": 26,
+              "height": 52,
+              "initially_visible": false,
+              "icon": "coins",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "float",
+                "amplitude": 5,
+                "period_seconds": 3
+              },
+              "label_size": 40,
+              "surface": "spotlight",
+              "value": "R$ 490 mil",
+              "value_size": 76,
+              "detail": "Com 0,5% + TR média"
+            },
+            {
+              "id": "calc_anual",
+              "kind": "metric",
+              "label": "Total em um ano",
+              "x": 68,
+              "y": 24,
+              "width": 26,
+              "height": 52,
+              "initially_visible": false,
+              "icon": "chart",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 5,
+                "period_seconds": 4
+              },
+              "label_size": 40,
+              "surface": "spotlight",
+              "value": "R$ 6,2 mi",
+              "value_size": 76,
+              "detail": "Rendimento anual isento"
+            }
+          ],
+          "connections": [
+            {
+              "id": "conn_fluxo_rendimento",
+              "from": "calc_patrimonio",
+              "to": "calc_mensal",
+              "semantic": "transfer",
+              "motion": "flow",
+              "token_label": "R$"
+            },
+            {
+              "id": "conn_fluxo_anual",
+              "from": "calc_mensal",
+              "to": "calc_anual",
+              "semantic": "sequence",
+              "motion": "flow"
+            }
+          ],
+          "captions": {
+            "enabled": true,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          }
+        },
+        "beats": [
+          {
+            "anchor": "quatrocentos e dez mil reais",
+            "target_id": "calc_mensal",
+            "action": "reveal",
+            "actuation": "count",
+            "headline": "Quase meio milhão por mês",
+            "treatment": "spotlight",
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.9,
+            "entrance": {
+              "style": "slide",
+              "direction": "right"
+            }
+          },
+          {
+            "anchor": "seis milhões e duzentos mil reais",
+            "target_id": "calc_anual",
+            "action": "reveal",
+            "headline": "Mais de R$ 6 milhões ao ano",
+            "treatment": "spotlight",
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.9,
+            "entrance": {
+              "style": "slide",
+              "direction": "right"
+            }
+          }
+        ]
+      },
+      "tts": {
+        "delivery": "explain",
+        "cues": [
+          {
+            "text": "o rendimento mensal garantido é de quatrocentos e dez mil reais.",
+            "kind": "number",
+            "intent": "discovery",
+            "arc": "resolve",
+            "emphasis_word": "garantido",
             "pause_before_ms": 100
           }
         ]
@@ -728,8 +811,8 @@
       "id": "scene-03",
       "index": 3,
       "scene_index": 3,
-      "title": "O que a regra não resolve",
-      "narration": "Mas atenção: o teto protege contra a multiplicação descontrolada, só que ele não perdoa a dívida. O saldo devedor continua ativo, o nome do cliente pode ser negativado nos órgãos de proteção ao crédito e o cartão é bloqueado. Além disso, se o consumidor renegociar essa dívida em um novo contrato de empréstimo ou refinanciamento, essa nova operação passa a ter suas próprias condições e encargos. O teto de cem por cento vale para o rotativo e o parcelamento daquela fatura original, não para uma nova renegociação que você assinar por fora.",
+      "title": "A comparação com o CDI e Tesouro Selic",
+      "narration": "Se esse mesmo montante for aplicado em títulos de renda fixa que rendem cem por cento do CDI, como o Tesouro Selic ou CDBs de liquidez diária, o cenário muda completamente. Com a taxa básica atual, o rendimento bruto mensal fica em torno de oitocentos e oitenta mil reais. Mesmo descontando a alíquota máxima de imposto de renda no primeiro mês, o valor líquido no bolso passa de seiscentos e oitenta mil reais. São cerca de cento e noventa mil reais a mais por mês em comparação com a poupança, superando dois milhões de reais de vantagem em um único ano.",
       "claim_ids": [
         "C4"
       ],
@@ -738,41 +821,63 @@
         "transition": "cut",
         "stage": {
           "show_title": false,
-          "camera_mode": "manual",
+          "camera_mode": "auto",
           "motion_profile": "narrative",
           "elements": [
             {
-              "id": "warn_negativado",
-              "kind": "step",
-              "label": "Restrição de crédito",
+              "id": "alt_cdi",
+              "kind": "metric",
+              "label": "100% do CDI líquido",
               "x": 8,
               "y": 20,
               "width": 40,
               "height": 56,
               "initially_visible": true,
+              "icon": "chart",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "float",
+                "amplitude": 5,
+                "period_seconds": 4
+              },
               "label_size": 42,
               "surface": "none",
-              "value": "Negativação",
+              "value": "R$ 680 mil+",
               "value_size": 90,
-              "detail": "Nome inscrito em birôs"
+              "detail": "Primeiro mês com IR 22,5%"
             },
             {
-              "id": "warn_renegociacao",
+              "id": "alt_gap",
               "kind": "step",
-              "label": "Novo contrato",
+              "label": "Diferença mensal",
               "x": 52,
               "y": 20,
               "width": 40,
               "height": 56,
               "initially_visible": false,
+              "icon": "coins",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 5,
+                "period_seconds": 3
+              },
               "label_size": 42,
               "surface": "spotlight",
-              "value": "Renegociação",
-              "value_size": 90,
-              "detail": "Novos encargos e prazos"
+              "value": "+ R$ 190 mil",
+              "value_size": 86,
+              "detail": "Vantagem sobre a poupança"
             }
           ],
-          "connections": [],
+          "connections": [
+            {
+              "id": "conn_alt_diff",
+              "from": "alt_cdi",
+              "to": "alt_gap",
+              "semantic": "comparison",
+              "motion": "flow"
+            }
+          ],
           "captions": {
             "enabled": true,
             "max_words": 6,
@@ -784,10 +889,10 @@
         },
         "beats": [
           {
-            "anchor": "nome do cliente pode ser negativado",
-            "target_id": "warn_negativado",
+            "anchor": "o valor líquido no bolso passa de seiscentos e oitenta mil reais",
+            "target_id": "alt_cdi",
             "action": "focus",
-            "headline": "Dívida continua negativando o nome",
+            "headline": "Mais de R$ 680 mil líquidos ao mês",
             "treatment": "spotlight",
             "kind": "fact",
             "behavior": "transform",
@@ -799,10 +904,11 @@
             "motion_seconds": 0.8
           },
           {
-            "anchor": "passa a ter suas próprias condições",
-            "target_id": "warn_renegociacao",
+            "anchor": "cento e noventa mil reais a mais por mês",
+            "target_id": "alt_gap",
             "action": "reveal",
-            "headline": "Renegociação segue regras do novo contrato",
+            "actuation": "count",
+            "headline": "R$ 190 mil a mais todo mês",
             "treatment": "spotlight",
             "kind": "fact",
             "behavior": "transform",
@@ -814,20 +920,20 @@
             "motion_seconds": 0.9,
             "entrance": {
               "style": "slide",
-              "direction": "up"
+              "direction": "right"
             }
           }
         ]
       },
       "tts": {
-        "delivery": "explain",
+        "delivery": "contrast",
         "cues": [
           {
-            "text": "O teto de cem por cento vale para o rotativo e o parcelamento daquela fatura original, não para uma nova renegociação que você assinar por fora.",
+            "text": "São cerca de cento e noventa mil reais a mais por mês em comparação com a poupança, superando dois milhões de reais de vantagem em um único ano.",
             "kind": "contrast",
-            "intent": "caution",
+            "intent": "conviction",
             "arc": "contrast",
-            "emphasis_word": "original",
+            "emphasis_word": "vantagem",
             "pause_before_ms": 100
           }
         ]
@@ -837,8 +943,8 @@
       "id": "scene-04",
       "index": 4,
       "scene_index": 4,
-      "title": "A reação dos bancos e o que vigiar",
-      "narration": "E como os bancos reagiram a essa perda de receita com juros exorbitantes? As instituições financeiras responderam fechando a torneira: cortaram limites de crédito, tornaram a aprovação de novos cartões mais rígida e aumentaram tarifas em outras frentes. O teto de juros do rotativo trouxe uma proteção fundamental para evitar o superendividamento, mas exige que você acompanhe atentamente o limite concedido pelo seu banco. Se você gosta de entender como o dinheiro e as regras financeiras funcionam na prática, se inscreva no canal O Dinheiro Explica e compartilhe esta explicação com quem tem cartão.",
+      "title": "A segurança do patrimônio e o limite do FGC",
+      "narration": "Existe ainda outro ponto fundamental que poucos consideram: a segurança do patrimônio. O Fundo Garantidor de Créditos cobre apenas até duzentos e cinquenta mil reais por instituição financeira. Deixar oitenta e dois milhões de reais em uma única conta de poupança é concentrar risco sem qualquer motivo, enquanto títulos públicos do Tesouro Nacional oferecem a garantia soberana do governo federal. Se você quer aprender a proteger seu patrimônio e tomar decisões inteligentes, se inscreva no canal O Dinheiro Explica e compartilhe esta comparação.",
       "claim_ids": [
         "C5"
       ],
@@ -847,41 +953,63 @@
         "transition": "cut",
         "stage": {
           "show_title": false,
-          "camera_mode": "manual",
+          "camera_mode": "auto",
           "motion_profile": "narrative",
           "elements": [
             {
-              "id": "bank_reaction_1",
+              "id": "warn_fgc",
               "kind": "metric",
-              "label": "Concessão de crédito",
+              "label": "Limite do FGC",
               "x": 8,
               "y": 20,
               "width": 40,
               "height": 56,
               "initially_visible": true,
+              "icon": "warning",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 4,
+                "period_seconds": 4
+              },
               "label_size": 42,
               "surface": "none",
-              "value": "Limites",
-              "value_size": 110,
-              "detail": "Corte e redução preventiva"
+              "value": "R$ 250 mil",
+              "value_size": 90,
+              "detail": "Teto por CPF e instituição"
             },
             {
-              "id": "bank_reaction_2",
+              "id": "safe_treasury",
               "kind": "step",
-              "label": "Critério de aprovação",
+              "label": "Tesouro Nacional",
               "x": 52,
               "y": 20,
               "width": 40,
               "height": 56,
               "initially_visible": false,
+              "icon": "shield",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "float",
+                "amplitude": 5,
+                "period_seconds": 4
+              },
               "label_size": 42,
               "surface": "spotlight",
-              "value": "Mais rigor",
-              "value_size": 100,
-              "detail": "Análise restritiva de perfil"
+              "value": "Soberano",
+              "value_size": 90,
+              "detail": "Garantia federal sem teto"
             }
           ],
-          "connections": [],
+          "connections": [
+            {
+              "id": "conn_fgc_treasury",
+              "from": "warn_fgc",
+              "to": "safe_treasury",
+              "semantic": "comparison",
+              "motion": "flow"
+            }
+          ],
           "captions": {
             "enabled": true,
             "max_words": 6,
@@ -893,10 +1021,10 @@
         },
         "beats": [
           {
-            "anchor": "cortaram limites de crédito",
-            "target_id": "bank_reaction_1",
+            "anchor": "apenas até duzentos e cinquenta mil reais",
+            "target_id": "warn_fgc",
             "action": "focus",
-            "headline": "Bancos reduziram limites de crédito",
+            "headline": "FGC cobre apenas R$ 250 mil",
             "treatment": "spotlight",
             "kind": "fact",
             "behavior": "transform",
@@ -908,10 +1036,11 @@
             "motion_seconds": 0.8
           },
           {
-            "anchor": "tornaram a aprovação de novos cartões mais rígida",
-            "target_id": "bank_reaction_2",
+            "anchor": "oferecem a garantia soberana do governo federal",
+            "target_id": "safe_treasury",
             "action": "reveal",
-            "headline": "Critérios de aprovação mais rigorosos",
+            "actuation": "confirm",
+            "headline": "Tesouro tem garantia soberana",
             "treatment": "spotlight",
             "kind": "fact",
             "behavior": "transform",
@@ -923,16 +1052,16 @@
             "motion_seconds": 0.9,
             "entrance": {
               "style": "slide",
-              "direction": "up"
+              "direction": "right"
             }
           }
         ]
       },
       "tts": {
-        "delivery": "explain",
+        "delivery": "closing",
         "cues": [
           {
-            "text": "se inscreva no canal O Dinheiro Explica e compartilhe esta explicação com quem tem cartão.",
+            "text": "se inscreva no canal O Dinheiro Explica e compartilhe esta comparação.",
             "kind": "emphasis",
             "intent": "reassurance",
             "arc": "resolve",
@@ -949,117 +1078,8 @@
         "id": "scene-00",
         "index": 0,
         "scene_index": 0,
-        "title": "A dívida que parou de multiplicar",
-        "narration": "Uma dívida de mil reais no cartão de crédito podia passar facilmente de quatro mil reais em apenas um ano. Só que essa multiplicação infinita agora tem um limite legal. Desde o início de 2024, o total cobrado de juros no rotativo não pode ultrapassar cem por cento da dívida original. Eu sou o Roberto, do O Dinheiro Explica. Muitas pessoas ainda não sabem que essa trava existe e continuam com receio de ver o saldo devedor explodir sem controle. Vamos entender como essa trava funciona no bolso e qual foi a resposta dos bancos.",
-        "claim_ids": [
-          "C1"
-        ],
-        "visual": {
-          "type": "EDITORIAL",
-          "transition": "cut",
-          "stage": {
-            "show_title": false,
-            "camera_mode": "manual",
-            "motion_profile": "narrative",
-            "elements": [
-              {
-                "id": "card_debt",
-                "kind": "metric",
-                "label": "Multiplicação anterior",
-                "x": 6,
-                "y": 18,
-                "width": 42,
-                "height": 58,
-                "initially_visible": true,
-                "label_size": 46,
-                "surface": "none",
-                "value": "4x+",
-                "value_size": 150,
-                "detail": "Juros acumulados em 1 ano"
-              },
-              {
-                "id": "card_limit",
-                "kind": "metric",
-                "label": "Trava legal atual",
-                "x": 52,
-                "y": 18,
-                "width": 42,
-                "height": 58,
-                "initially_visible": false,
-                "label_size": 46,
-                "surface": "spotlight",
-                "value": "100%",
-                "value_size": 150,
-                "detail": "Limite máximo de juros"
-              }
-            ],
-            "connections": [],
-            "captions": {
-              "enabled": true,
-              "max_words": 6,
-              "words_per_line": 3,
-              "max_lines": 2,
-              "font_size": 64,
-              "min_free_area_ratio": 0.3
-            }
-          },
-          "beats": [
-            {
-              "anchor": "multiplicação infinita agora tem um limite legal",
-              "target_id": "card_debt",
-              "action": "focus",
-              "headline": "A multiplicação agora tem teto legal",
-              "treatment": "spotlight",
-              "kind": "fact",
-              "behavior": "transform",
-              "transition": "cut",
-              "placement": "full",
-              "medium": "motion_graphic",
-              "sound": "none",
-              "prominence": "contextual",
-              "motion_seconds": 0.8
-            },
-            {
-              "anchor": "não pode ultrapassar cem por cento",
-              "target_id": "card_limit",
-              "action": "reveal",
-              "headline": "O teto máximo é de 100%",
-              "treatment": "spotlight",
-              "kind": "fact",
-              "behavior": "transform",
-              "transition": "cut",
-              "placement": "full",
-              "medium": "motion_graphic",
-              "sound": "tick",
-              "prominence": "contextual",
-              "motion_seconds": 0.9,
-              "entrance": {
-                "style": "slide",
-                "direction": "up"
-              }
-            }
-          ]
-        },
-        "tts": {
-          "delivery": "explain",
-          "cues": [
-            {
-              "text": "Uma dívida de mil reais no cartão de crédito podia passar facilmente de quatro mil reais em apenas um ano.",
-              "kind": "emphasis",
-              "intent": "discovery",
-              "arc": "contrast",
-              "emphasis_word": "quatro",
-              "pause_before_ms": 0
-            }
-          ]
-        }
-      },
-      {
-        "id": "scene-01",
-        "index": 1,
-        "scene_index": 1,
-        "title": "O fim da bola de neve descontrolada",
-        "narration": "Para entender o impacto, olha como o crédito rotativo funcionava. Historicamente, as taxas médias do rotativo no Brasil superavam quatrocentos e trinta por cento ao ano. Bastavam alguns meses sem pagar a fatura para os juros superarem com folga o valor das compras. Com a Lei quatorze mil seiscentos e noventa e a Resolução cinco mil cento e doze do Conselho Monetário Nacional, essa dinâmica mudou. O teto legal de juros determina que a soma de todos os juros e encargos financeiros acumulados não pode ser maior do que o valor principal financiado. Na prática, a bola de neve agora encontra uma parede.",
+        "title": "O fascínio dos R$ 82 milhões na poupança",
+        "narration": "Se você ganhasse oitenta e dois milhões de reais em um sorteio, qual seria o seu primeiro pensamento? Para muitas pessoas, a resposta imediata é colocar tudo na poupança e viver de renda. Mas quanto esse valor rende na prática? Eu sou o Roberto, do O Dinheiro Explica. Com a Selic em treze vírgula setenta e cinco por cento ao ano, a poupança rende meio por cento ao mês mais a Taxa Referencial. Isso parece muito dinheiro, mas você vai ver que deixar essa fortuna na caderneta significa abrir mão de milhões de reais todos os anos.",
         "claim_ids": [
           "C1",
           "C2"
@@ -1069,41 +1089,63 @@
           "transition": "cut",
           "stage": {
             "show_title": false,
-            "camera_mode": "manual",
+            "camera_mode": "auto",
             "motion_profile": "narrative",
             "elements": [
               {
-                "id": "rate_old",
+                "id": "card_poupanca",
                 "kind": "metric",
-                "label": "Taxa média histórica",
+                "label": "Rendimento mensal",
                 "x": 6,
                 "y": 18,
                 "width": 42,
                 "height": 58,
                 "initially_visible": true,
-                "label_size": 46,
+                "icon": "coins",
+                "svg_motion": "trace",
+                "sustain": {
+                  "kind": "float",
+                  "amplitude": 5,
+                  "period_seconds": 4
+                },
+                "label_size": 44,
                 "surface": "none",
-                "value": "430%",
-                "value_size": 150,
-                "detail": "Crédito rotativo ao ano • BCB"
+                "value": "R$ 410 mil+",
+                "value_size": 96,
+                "detail": "Poupança a 0,5% a.m. + TR"
               },
               {
-                "id": "law_card",
-                "kind": "step",
-                "label": "Lei 14.690 / CMN 5.112",
+                "id": "card_alternativas",
+                "kind": "metric",
+                "label": "Renda fixa com Selic",
                 "x": 52,
                 "y": 18,
                 "width": 42,
                 "height": 58,
                 "initially_visible": false,
+                "icon": "chart",
+                "svg_motion": "trace",
+                "sustain": {
+                  "kind": "breathe",
+                  "amplitude": 5,
+                  "period_seconds": 4
+                },
                 "label_size": 44,
                 "surface": "spotlight",
-                "value": "Teto 100%",
-                "value_size": 110,
-                "detail": "Juros limitados ao principal"
+                "value": "R$ 680 mil+",
+                "value_size": 96,
+                "detail": "Tesouro Selic / CDI líquido"
               }
             ],
-            "connections": [],
+            "connections": [
+              {
+                "id": "conn_poupanca_selic",
+                "from": "card_poupanca",
+                "to": "card_alternativas",
+                "semantic": "comparison",
+                "motion": "flow"
+              }
+            ],
             "captions": {
               "enabled": true,
               "max_words": 6,
@@ -1115,10 +1157,11 @@
           },
           "beats": [
             {
-              "anchor": "superavam quatrocentos e trinta por cento",
-              "target_id": "rate_old",
+              "anchor": "colocar tudo na poupança e viver de renda",
+              "target_id": "card_poupanca",
               "action": "focus",
-              "headline": "Juros passavam de 430% ao ano",
+              "actuation": "count",
+              "headline": "O plano clássico da poupança",
               "treatment": "spotlight",
               "kind": "fact",
               "behavior": "transform",
@@ -1130,10 +1173,10 @@
               "motion_seconds": 0.8
             },
             {
-              "anchor": "essa dinâmica mudou",
-              "target_id": "law_card",
+              "anchor": "abrir mão de milhões de reais todos os anos",
+              "target_id": "card_alternativas",
               "action": "reveal",
-              "headline": "Regulamentação cria teto vinculante",
+              "headline": "Alternativas rendem muito mais",
               "treatment": "spotlight",
               "kind": "fact",
               "behavior": "transform",
@@ -1145,102 +1188,97 @@
               "motion_seconds": 0.9,
               "entrance": {
                 "style": "slide",
-                "direction": "up"
+                "direction": "right"
               }
             }
           ]
         },
         "tts": {
-          "delivery": "explain",
+          "delivery": "hook",
           "cues": [
             {
-              "text": "O teto legal de juros determina que a soma de todos os juros e encargos financeiros acumulados não pode ser maior do que o valor principal financiado.",
+              "text": "qual seria o seu primeiro pensamento?",
               "kind": "emphasis",
-              "intent": "conviction",
-              "arc": "resolve",
-              "emphasis_word": "maior",
-              "pause_before_ms": 80
+              "intent": "curiosity",
+              "arc": "question",
+              "emphasis_word": "primeiro",
+              "pause_before_ms": 0
             }
           ]
         }
       },
       {
-        "id": "scene-02",
-        "index": 2,
-        "scene_index": 2,
-        "title": "A conta exata de uma fatura de mil reais",
-        "narration": "Vamos colocar isso em números com um exemplo hipotético simples. Imagine que uma pessoa deixou de pagar mil reais da fatura e entrou no rotativo. Pela regra anterior, a dívida acumulada podia subir indefinidamente com o passar do tempo. Pela regra atual, o teto máximo de juros e encargos cobrados é de exatamente mil reais. Portanto, mil reais de dívida original somados a no máximo mil reais de juros resultam em dois mil reais no teto. Mesmo que passem anos, o banco não pode exigir três ou quatro mil reais por aquela operação inicial.",
+        "id": "scene-01",
+        "index": 1,
+        "scene_index": 1,
+        "title": "A regra legal da poupança",
+        "narration": "Para entender a conta, precisamos olhar a regra oficial estabelecida em lei para a caderneta de poupança. Desde a mudança legislativa de dois mil e doze, o rendimento depende do patamar da taxa básica de juros, a Selic. Sempre que a Selic estiver acima de oito vírgula cinco por cento ao ano, como acontece no cenário atual, a poupança tem retorno fixo de meio por cento ao mês somado à Taxa Referencial. Esse rendimento é totalmente isento de imposto de renda para pessoas físicas e cai na conta a cada trinta dias, na data de aniversário do depósito.",
         "claim_ids": [
-          "C3"
+          "C1",
+          "C2"
         ],
         "visual": {
           "type": "EDITORIAL",
           "transition": "cut",
           "stage": {
             "show_title": false,
-            "camera_mode": "manual",
+            "camera_mode": "auto",
             "motion_profile": "narrative",
             "elements": [
               {
-                "id": "calc_label",
-                "kind": "label",
-                "label": "Exemplo hipotético",
-                "x": 8,
-                "y": 4,
-                "width": 84,
-                "height": 18,
-                "initially_visible": true,
-                "label_size": 46,
-                "surface": "none",
-                "detail": "Valores ilustrativos"
-              },
-              {
-                "id": "calc_principal",
-                "kind": "step",
-                "label": "Dívida original",
-                "x": 6,
-                "y": 24,
-                "width": 26,
-                "height": 52,
-                "initially_visible": true,
-                "label_size": 40,
-                "surface": "none",
-                "value": "R$ 1.000",
-                "value_size": 80,
-                "detail": "Valor inicial financiado"
-              },
-              {
-                "id": "calc_interest",
-                "kind": "step",
-                "label": "Juros máximos (100%)",
-                "x": 37,
-                "y": 24,
-                "width": 26,
-                "height": 52,
-                "initially_visible": true,
-                "label_size": 40,
-                "surface": "none",
-                "value": "+ R$ 1.000",
-                "value_size": 80,
-                "detail": "Teto de encargos"
-              },
-              {
-                "id": "calc_result",
+                "id": "rule_selic",
                 "kind": "metric",
-                "label": "Total no teto legal",
-                "x": 68,
-                "y": 24,
-                "width": 26,
-                "height": 52,
+                "label": "Selic Meta atual",
+                "x": 6,
+                "y": 18,
+                "width": 42,
+                "height": 58,
+                "initially_visible": true,
+                "icon": "bank",
+                "svg_motion": "trace",
+                "sustain": {
+                  "kind": "breathe",
+                  "amplitude": 4,
+                  "period_seconds": 5
+                },
+                "label_size": 44,
+                "surface": "none",
+                "value": "13,75%",
+                "value_size": 130,
+                "detail": "Copom • Banco Central"
+              },
+              {
+                "id": "rule_yield",
+                "kind": "step",
+                "label": "Regra da poupança",
+                "x": 52,
+                "y": 18,
+                "width": 42,
+                "height": 58,
                 "initially_visible": false,
-                "label_size": 40,
+                "icon": "document",
+                "svg_motion": "trace",
+                "sustain": {
+                  "kind": "float",
+                  "amplitude": 4,
+                  "period_seconds": 4
+                },
+                "label_size": 44,
                 "surface": "spotlight",
-                "value": "R$ 2.000",
-                "value_size": 80,
-                "detail": "Dívida total máxima"
+                "value": "0,5% + TR",
+                "value_size": 110,
+                "detail": "Ao mês • Isento de IR"
               }
             ],
-            "connections": [],
+            "connections": [
+              {
+                "id": "conn_selic_yield",
+                "from": "rule_selic",
+                "to": "rule_yield",
+                "semantic": "cause",
+                "motion": "flow"
+              }
+            ],
             "captions": {
               "enabled": true,
               "max_words": 6,
@@ -1252,10 +1290,11 @@
           },
           "beats": [
             {
-              "anchor": "deixou de pagar mil reais da fatura",
-              "target_id": "calc_principal",
+              "anchor": "o rendimento depende do patamar da taxa básica de juros",
+              "target_id": "rule_selic",
               "action": "focus",
-              "headline": "Dívida inicial de mil reais",
+              "actuation": "signal",
+              "headline": "Selic baliza o retorno da poupança",
               "treatment": "spotlight",
               "kind": "fact",
               "behavior": "transform",
@@ -1267,25 +1306,10 @@
               "motion_seconds": 0.8
             },
             {
-              "anchor": "exatamente mil reais",
-              "target_id": "calc_interest",
-              "action": "focus",
-              "headline": "Juros limitados a outros mil reais",
-              "treatment": "spotlight",
-              "kind": "fact",
-              "behavior": "transform",
-              "transition": "cut",
-              "placement": "full",
-              "medium": "motion_graphic",
-              "sound": "none",
-              "prominence": "contextual",
-              "motion_seconds": 0.8
-            },
-            {
-              "anchor": "dois mil reais no teto",
-              "target_id": "calc_result",
+              "anchor": "retorno fixo de meio por cento ao mês",
+              "target_id": "rule_yield",
               "action": "reveal",
-              "headline": "Total máximo limitado a dois mil reais",
+              "headline": "Regra: 0,5% ao mês mais TR",
               "treatment": "spotlight",
               "kind": "fact",
               "behavior": "transform",
@@ -1306,11 +1330,185 @@
           "delivery": "explain",
           "cues": [
             {
-              "text": "Portanto, mil reais de dívida original somados a no máximo mil reais de juros resultam em dois mil reais no teto.",
+              "text": "a poupança tem retorno fixo de meio por cento ao mês somado à Taxa Referencial.",
               "kind": "emphasis",
               "intent": "conviction",
               "arc": "resolve",
-              "emphasis_word": "dois",
+              "emphasis_word": "fixo",
+              "pause_before_ms": 80
+            }
+          ]
+        }
+      },
+      {
+        "id": "scene-02",
+        "index": 2,
+        "scene_index": 2,
+        "title": "A conta exata de R$ 82 milhões",
+        "narration": "Vamos agora para uma simulação ilustrativa com os oitenta e dois milhões de reais. Considerando apenas a taxa fixa de meio por cento ao mês, o rendimento mensal garantido é de quatrocentos e dez mil reais. Quando adicionamos a Taxa Referencial média recente, o ganho mensal total se aproxima de quatrocentos e noventa mil reais. Em um período de doze meses, essa aplicação acumula cerca de seis milhões e duzentos mil reais de rendimento líquido. É uma quantia impressionante, mas a comparação com a renda fixa tradicional mostra onde mora o problema.",
+        "claim_ids": [
+          "C3"
+        ],
+        "visual": {
+          "type": "EDITORIAL",
+          "transition": "cut",
+          "stage": {
+            "show_title": false,
+            "camera_mode": "auto",
+            "motion_profile": "narrative",
+            "elements": [
+              {
+                "id": "calc_label",
+                "kind": "label",
+                "label": "Simulação de rendimento",
+                "x": 8,
+                "y": 4,
+                "width": 84,
+                "height": 18,
+                "initially_visible": true,
+                "label_size": 46,
+                "surface": "none",
+                "detail": "Valores ilustrativos"
+              },
+              {
+                "id": "calc_patrimonio",
+                "kind": "step",
+                "label": "Capital investido",
+                "x": 6,
+                "y": 24,
+                "width": 26,
+                "height": 52,
+                "initially_visible": true,
+                "icon": "wallet",
+                "svg_motion": "trace",
+                "label_size": 40,
+                "surface": "none",
+                "value": "R$ 82 mi",
+                "value_size": 76,
+                "detail": "Patrimônio inicial"
+              },
+              {
+                "id": "calc_mensal",
+                "kind": "step",
+                "label": "Ganho mensal estimado",
+                "x": 37,
+                "y": 24,
+                "width": 26,
+                "height": 52,
+                "initially_visible": false,
+                "icon": "coins",
+                "svg_motion": "trace",
+                "sustain": {
+                  "kind": "float",
+                  "amplitude": 5,
+                  "period_seconds": 3
+                },
+                "label_size": 40,
+                "surface": "spotlight",
+                "value": "R$ 490 mil",
+                "value_size": 76,
+                "detail": "Com 0,5% + TR média"
+              },
+              {
+                "id": "calc_anual",
+                "kind": "metric",
+                "label": "Total em um ano",
+                "x": 68,
+                "y": 24,
+                "width": 26,
+                "height": 52,
+                "initially_visible": false,
+                "icon": "chart",
+                "svg_motion": "trace",
+                "sustain": {
+                  "kind": "breathe",
+                  "amplitude": 5,
+                  "period_seconds": 4
+                },
+                "label_size": 40,
+                "surface": "spotlight",
+                "value": "R$ 6,2 mi",
+                "value_size": 76,
+                "detail": "Rendimento anual isento"
+              }
+            ],
+            "connections": [
+              {
+                "id": "conn_fluxo_rendimento",
+                "from": "calc_patrimonio",
+                "to": "calc_mensal",
+                "semantic": "transfer",
+                "motion": "flow",
+                "token_label": "R$"
+              },
+              {
+                "id": "conn_fluxo_anual",
+                "from": "calc_mensal",
+                "to": "calc_anual",
+                "semantic": "sequence",
+                "motion": "flow"
+              }
+            ],
+            "captions": {
+              "enabled": true,
+              "max_words": 6,
+              "words_per_line": 3,
+              "max_lines": 2,
+              "font_size": 64,
+              "min_free_area_ratio": 0.3
+            }
+          },
+          "beats": [
+            {
+              "anchor": "quatrocentos e dez mil reais",
+              "target_id": "calc_mensal",
+              "action": "reveal",
+              "actuation": "count",
+              "headline": "Quase meio milhão por mês",
+              "treatment": "spotlight",
+              "kind": "fact",
+              "behavior": "transform",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "tick",
+              "prominence": "contextual",
+              "motion_seconds": 0.9,
+              "entrance": {
+                "style": "slide",
+                "direction": "right"
+              }
+            },
+            {
+              "anchor": "seis milhões e duzentos mil reais",
+              "target_id": "calc_anual",
+              "action": "reveal",
+              "headline": "Mais de R$ 6 milhões ao ano",
+              "treatment": "spotlight",
+              "kind": "fact",
+              "behavior": "transform",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "tick",
+              "prominence": "contextual",
+              "motion_seconds": 0.9,
+              "entrance": {
+                "style": "slide",
+                "direction": "right"
+              }
+            }
+          ]
+        },
+        "tts": {
+          "delivery": "explain",
+          "cues": [
+            {
+              "text": "o rendimento mensal garantido é de quatrocentos e dez mil reais.",
+              "kind": "number",
+              "intent": "discovery",
+              "arc": "resolve",
+              "emphasis_word": "garantido",
               "pause_before_ms": 100
             }
           ]
@@ -1320,8 +1518,8 @@
         "id": "scene-03",
         "index": 3,
         "scene_index": 3,
-        "title": "O que a regra não resolve",
-        "narration": "Mas atenção: o teto protege contra a multiplicação descontrolada, só que ele não perdoa a dívida. O saldo devedor continua ativo, o nome do cliente pode ser negativado nos órgãos de proteção ao crédito e o cartão é bloqueado. Além disso, se o consumidor renegociar essa dívida em um novo contrato de empréstimo ou refinanciamento, essa nova operação passa a ter suas próprias condições e encargos. O teto de cem por cento vale para o rotativo e o parcelamento daquela fatura original, não para uma nova renegociação que você assinar por fora.",
+        "title": "A comparação com o CDI e Tesouro Selic",
+        "narration": "Se esse mesmo montante for aplicado em títulos de renda fixa que rendem cem por cento do CDI, como o Tesouro Selic ou CDBs de liquidez diária, o cenário muda completamente. Com a taxa básica atual, o rendimento bruto mensal fica em torno de oitocentos e oitenta mil reais. Mesmo descontando a alíquota máxima de imposto de renda no primeiro mês, o valor líquido no bolso passa de seiscentos e oitenta mil reais. São cerca de cento e noventa mil reais a mais por mês em comparação com a poupança, superando dois milhões de reais de vantagem em um único ano.",
         "claim_ids": [
           "C4"
         ],
@@ -1330,41 +1528,63 @@
           "transition": "cut",
           "stage": {
             "show_title": false,
-            "camera_mode": "manual",
+            "camera_mode": "auto",
             "motion_profile": "narrative",
             "elements": [
               {
-                "id": "warn_negativado",
-                "kind": "step",
-                "label": "Restrição de crédito",
+                "id": "alt_cdi",
+                "kind": "metric",
+                "label": "100% do CDI líquido",
                 "x": 8,
                 "y": 20,
                 "width": 40,
                 "height": 56,
                 "initially_visible": true,
+                "icon": "chart",
+                "svg_motion": "trace",
+                "sustain": {
+                  "kind": "float",
+                  "amplitude": 5,
+                  "period_seconds": 4
+                },
                 "label_size": 42,
                 "surface": "none",
-                "value": "Negativação",
+                "value": "R$ 680 mil+",
                 "value_size": 90,
-                "detail": "Nome inscrito em birôs"
+                "detail": "Primeiro mês com IR 22,5%"
               },
               {
-                "id": "warn_renegociacao",
+                "id": "alt_gap",
                 "kind": "step",
-                "label": "Novo contrato",
+                "label": "Diferença mensal",
                 "x": 52,
                 "y": 20,
                 "width": 40,
                 "height": 56,
                 "initially_visible": false,
+                "icon": "coins",
+                "svg_motion": "trace",
+                "sustain": {
+                  "kind": "breathe",
+                  "amplitude": 5,
+                  "period_seconds": 3
+                },
                 "label_size": 42,
                 "surface": "spotlight",
-                "value": "Renegociação",
-                "value_size": 90,
-                "detail": "Novos encargos e prazos"
+                "value": "+ R$ 190 mil",
+                "value_size": 86,
+                "detail": "Vantagem sobre a poupança"
               }
             ],
-            "connections": [],
+            "connections": [
+              {
+                "id": "conn_alt_diff",
+                "from": "alt_cdi",
+                "to": "alt_gap",
+                "semantic": "comparison",
+                "motion": "flow"
+              }
+            ],
             "captions": {
               "enabled": true,
               "max_words": 6,
@@ -1376,10 +1596,10 @@
           },
           "beats": [
             {
-              "anchor": "nome do cliente pode ser negativado",
-              "target_id": "warn_negativado",
+              "anchor": "o valor líquido no bolso passa de seiscentos e oitenta mil reais",
+              "target_id": "alt_cdi",
               "action": "focus",
-              "headline": "Dívida continua negativando o nome",
+              "headline": "Mais de R$ 680 mil líquidos ao mês",
               "treatment": "spotlight",
               "kind": "fact",
               "behavior": "transform",
@@ -1391,10 +1611,11 @@
               "motion_seconds": 0.8
             },
             {
-              "anchor": "passa a ter suas próprias condições",
-              "target_id": "warn_renegociacao",
+              "anchor": "cento e noventa mil reais a mais por mês",
+              "target_id": "alt_gap",
               "action": "reveal",
-              "headline": "Renegociação segue regras do novo contrato",
+              "actuation": "count",
+              "headline": "R$ 190 mil a mais todo mês",
               "treatment": "spotlight",
               "kind": "fact",
               "behavior": "transform",
@@ -1406,20 +1627,20 @@
               "motion_seconds": 0.9,
               "entrance": {
                 "style": "slide",
-                "direction": "up"
+                "direction": "right"
               }
             }
           ]
         },
         "tts": {
-          "delivery": "explain",
+          "delivery": "contrast",
           "cues": [
             {
-              "text": "O teto de cem por cento vale para o rotativo e o parcelamento daquela fatura original, não para uma nova renegociação que você assinar por fora.",
+              "text": "São cerca de cento e noventa mil reais a mais por mês em comparação com a poupança, superando dois milhões de reais de vantagem em um único ano.",
               "kind": "contrast",
-              "intent": "caution",
+              "intent": "conviction",
               "arc": "contrast",
-              "emphasis_word": "original",
+              "emphasis_word": "vantagem",
               "pause_before_ms": 100
             }
           ]
@@ -1429,8 +1650,8 @@
         "id": "scene-04",
         "index": 4,
         "scene_index": 4,
-        "title": "A reação dos bancos e o que vigiar",
-        "narration": "E como os bancos reagiram a essa perda de receita com juros exorbitantes? As instituições financeiras responderam fechando a torneira: cortaram limites de crédito, tornaram a aprovação de novos cartões mais rígida e aumentaram tarifas em outras frentes. O teto de juros do rotativo trouxe uma proteção fundamental para evitar o superendividamento, mas exige que você acompanhe atentamente o limite concedido pelo seu banco. Se você gosta de entender como o dinheiro e as regras financeiras funcionam na prática, se inscreva no canal O Dinheiro Explica e compartilhe esta explicação com quem tem cartão.",
+        "title": "A segurança do patrimônio e o limite do FGC",
+        "narration": "Existe ainda outro ponto fundamental que poucos consideram: a segurança do patrimônio. O Fundo Garantidor de Créditos cobre apenas até duzentos e cinquenta mil reais por instituição financeira. Deixar oitenta e dois milhões de reais em uma única conta de poupança é concentrar risco sem qualquer motivo, enquanto títulos públicos do Tesouro Nacional oferecem a garantia soberana do governo federal. Se você quer aprender a proteger seu patrimônio e tomar decisões inteligentes, se inscreva no canal O Dinheiro Explica e compartilhe esta comparação.",
         "claim_ids": [
           "C5"
         ],
@@ -1439,41 +1660,63 @@
           "transition": "cut",
           "stage": {
             "show_title": false,
-            "camera_mode": "manual",
+            "camera_mode": "auto",
             "motion_profile": "narrative",
             "elements": [
               {
-                "id": "bank_reaction_1",
+                "id": "warn_fgc",
                 "kind": "metric",
-                "label": "Concessão de crédito",
+                "label": "Limite do FGC",
                 "x": 8,
                 "y": 20,
                 "width": 40,
                 "height": 56,
                 "initially_visible": true,
+                "icon": "warning",
+                "svg_motion": "trace",
+                "sustain": {
+                  "kind": "breathe",
+                  "amplitude": 4,
+                  "period_seconds": 4
+                },
                 "label_size": 42,
                 "surface": "none",
-                "value": "Limites",
-                "value_size": 110,
-                "detail": "Corte e redução preventiva"
+                "value": "R$ 250 mil",
+                "value_size": 90,
+                "detail": "Teto por CPF e instituição"
               },
               {
-                "id": "bank_reaction_2",
+                "id": "safe_treasury",
                 "kind": "step",
-                "label": "Critério de aprovação",
+                "label": "Tesouro Nacional",
                 "x": 52,
                 "y": 20,
                 "width": 40,
                 "height": 56,
                 "initially_visible": false,
+                "icon": "shield",
+                "svg_motion": "trace",
+                "sustain": {
+                  "kind": "float",
+                  "amplitude": 5,
+                  "period_seconds": 4
+                },
                 "label_size": 42,
                 "surface": "spotlight",
-                "value": "Mais rigor",
-                "value_size": 100,
-                "detail": "Análise restritiva de perfil"
+                "value": "Soberano",
+                "value_size": 90,
+                "detail": "Garantia federal sem teto"
               }
             ],
-            "connections": [],
+            "connections": [
+              {
+                "id": "conn_fgc_treasury",
+                "from": "warn_fgc",
+                "to": "safe_treasury",
+                "semantic": "comparison",
+                "motion": "flow"
+              }
+            ],
             "captions": {
               "enabled": true,
               "max_words": 6,
@@ -1485,10 +1728,10 @@
           },
           "beats": [
             {
-              "anchor": "cortaram limites de crédito",
-              "target_id": "bank_reaction_1",
+              "anchor": "apenas até duzentos e cinquenta mil reais",
+              "target_id": "warn_fgc",
               "action": "focus",
-              "headline": "Bancos reduziram limites de crédito",
+              "headline": "FGC cobre apenas R$ 250 mil",
               "treatment": "spotlight",
               "kind": "fact",
               "behavior": "transform",
@@ -1500,10 +1743,11 @@
               "motion_seconds": 0.8
             },
             {
-              "anchor": "tornaram a aprovação de novos cartões mais rígida",
-              "target_id": "bank_reaction_2",
+              "anchor": "oferecem a garantia soberana do governo federal",
+              "target_id": "safe_treasury",
               "action": "reveal",
-              "headline": "Critérios de aprovação mais rigorosos",
+              "actuation": "confirm",
+              "headline": "Tesouro tem garantia soberana",
               "treatment": "spotlight",
               "kind": "fact",
               "behavior": "transform",
@@ -1515,16 +1759,16 @@
               "motion_seconds": 0.9,
               "entrance": {
                 "style": "slide",
-                "direction": "up"
+                "direction": "right"
               }
             }
           ]
         },
         "tts": {
-          "delivery": "explain",
+          "delivery": "closing",
           "cues": [
             {
-              "text": "se inscreva no canal O Dinheiro Explica e compartilhe esta explicação com quem tem cartão.",
+              "text": "se inscreva no canal O Dinheiro Explica e compartilhe esta comparação.",
               "kind": "emphasis",
               "intent": "reassurance",
               "arc": "resolve",
@@ -1534,6 +1778,7 @@
           ]
         }
       }
-    ]
+    ],
+    "hook": "Se você ganhasse oitenta e dois milhões de reais em um sorteio, qual seria o seu primeiro pensamento? Para muitas pessoas, a resposta imediata é colocar tudo na poupança e viver de renda. Mas quanto esse valor rende na prática? Eu sou o Roberto, do O Dinheiro Explica. Com a Selic em treze vírgula setenta e cinco por cento ao ano, a poupança rende meio por cento ao mês mais a Taxa Referencial. Isso parece muito dinheiro, mas você vai ver que deixar essa fortuna na caderneta significa abrir mão de milhões de reais todos os anos."
   }
 }
