@@ -338,7 +338,7 @@
         }
       ],
       "review": {
-        "content_sha256": "6b3ce97c128a6e222fd29d3c004fb1283d00baca24bafbae9f4e899ad7832e98",
+        "content_sha256": "56ed330be357b3e397285ae73172644a4a5c50da6297e271e57ee5e66979522c",
         "findings": [
           {
             "question": "O cálculo está devidamente identificado como simulação ilustrativa?",
