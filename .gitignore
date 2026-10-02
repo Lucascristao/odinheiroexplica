@@ -17,3 +17,4 @@ work/
 *.tsbuildinfo
 __pycache__/
 *.pyc
+run_artifacts/

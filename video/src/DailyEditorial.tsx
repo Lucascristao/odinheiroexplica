@@ -51,6 +51,7 @@ type Scene = {
   audio_duration_seconds?: number;
   audio_file: string;
   audio_captions?: CaptionWord[];
+  audio_volume_multiplier?: number;
   visual: {
     type: string;
     payload?: GenericRecord;
@@ -1810,7 +1811,16 @@ const SceneComposition = ({
       <EditorialCaptions stage={scene.visual.stage} beats={beats} words={scene.audio_captions ?? []} title={scene.title} />
       <SceneTransitionAccent type={scene.visual?.transition} sceneIndex={scene.scene_index} secondaryColor={direction.secondary_color} />
       <SoundDesign scene={scene} isLast={isLast} />
-      <Audio src={staticFile(scene.audio_file)} />
+      <Audio
+        src={staticFile(scene.audio_file)}
+        volume={(f) => {
+          const mult = scene.audio_volume_multiplier ?? 1;
+          const total = scene.duration_frames || 30;
+          const fadeIn = Math.min(1, Math.max(0, f / 3));
+          const fadeOut = Math.min(1, Math.max(0, (total - f) / 3));
+          return mult * Math.min(fadeIn, fadeOut);
+        }}
+      />
     </AbsoluteFill>;
   }
 
@@ -1839,7 +1849,16 @@ const SceneComposition = ({
       />
 
       <SoundDesign scene={scene} isLast={isLast} />
-      <Audio src={staticFile(scene.audio_file)} />
+      <Audio
+        src={staticFile(scene.audio_file)}
+        volume={(f) => {
+          const mult = scene.audio_volume_multiplier ?? 1;
+          const total = scene.duration_frames || 30;
+          const fadeIn = Math.min(1, Math.max(0, f / 3));
+          const fadeOut = Math.min(1, Math.max(0, (total - f) / 3));
+          return mult * Math.min(fadeIn, fadeOut);
+        }}
+      />
     </AbsoluteFill>
   );
 };

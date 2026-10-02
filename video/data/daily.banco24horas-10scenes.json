@@ -647,7 +647,7 @@
         }
       ],
       "review": {
-        "content_sha256": "43a92469545072b919257572fa01952db68b4cb56466039bcf3343d73c8a9482",
+        "content_sha256": "1801c2b0dd8341ad8e62c1eda6d1c38df9c6897130535d1d3a8d032e3330ace0",
         "findings": [
           {
             "question": "O vídeo responde sem prever uma extinção que as fontes não comprovam?",
@@ -1154,7 +1154,7 @@
         ]
       },
       "tts": {
-        "delivery": "explain",
+        "delivery": "hook",
         "cues": [
           {
             "text": "O dinheiro físico está acabando?",
@@ -1831,7 +1831,7 @@
         ]
       },
       "tts": {
-        "delivery": "explain",
+        "delivery": "contrast",
         "cues": [
           {
             "text": "É a lógica de terceirizar:",
@@ -2558,7 +2558,7 @@
         ]
       },
       "tts": {
-        "delivery": "explain",
+        "delivery": "question",
         "cues": [
           {
             "text": "E isso já tem escala, ou é só uma ideia?",
@@ -2762,7 +2762,7 @@
         ]
       },
       "tts": {
-        "delivery": "explain",
+        "delivery": "contrast",
         "cues": [
           {
             "text": "O terceiro caminho aparece onde quase ninguém olha: na informação.",
@@ -3014,7 +3014,7 @@
         ]
       },
       "tts": {
-        "delivery": "explain",
+        "delivery": "contrast",
         "cues": [
           {
             "text": "É se existe uma opção que funcione quando você precisa.",
@@ -3165,7 +3165,7 @@
         ]
       },
       "tts": {
-        "delivery": "explain",
+        "delivery": "closing",
         "cues": [
           {
             "text": "Então, o dinheiro físico está acabando?",
@@ -3370,7 +3370,7 @@
           ]
         },
         "tts": {
-          "delivery": "explain",
+          "delivery": "hook",
           "cues": [
             {
               "text": "O dinheiro físico está acabando?",
@@ -4047,7 +4047,7 @@
           ]
         },
         "tts": {
-          "delivery": "explain",
+          "delivery": "contrast",
           "cues": [
             {
               "text": "É a lógica de terceirizar:",
@@ -4774,7 +4774,7 @@
           ]
         },
         "tts": {
-          "delivery": "explain",
+          "delivery": "question",
           "cues": [
             {
               "text": "E isso já tem escala, ou é só uma ideia?",
@@ -4978,7 +4978,7 @@
           ]
         },
         "tts": {
-          "delivery": "explain",
+          "delivery": "contrast",
           "cues": [
             {
               "text": "O terceiro caminho aparece onde quase ninguém olha: na informação.",
@@ -5230,7 +5230,7 @@
           ]
         },
         "tts": {
-          "delivery": "explain",
+          "delivery": "contrast",
           "cues": [
             {
               "text": "É se existe uma opção que funcione quando você precisa.",
@@ -5381,7 +5381,7 @@
           ]
         },
         "tts": {
-          "delivery": "explain",
+          "delivery": "closing",
           "cues": [
             {
               "text": "Então, o dinheiro físico está acabando?",

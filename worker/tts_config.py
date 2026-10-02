@@ -66,11 +66,11 @@ DEFAULT_TTS_PITCH = "0%"
 GLOBAL_PRONUNCIATIONS = {}
 
 DELIVERY_INSTRUCTIONS = {
-    "hook": "Abra com presença e curiosidade real, como quem convida alguém a entender uma descoberta. Faça as perguntas soarem como perguntas e dê relevo à promessa do roteiro.",
-    "explain": "Conduza a explicação como uma conversa: conecte as ideias, varie o ritmo conforme a dificuldade e faça a consequência da frase chegar ao ouvinte.",
-    "contrast": "Faça ouvir a diferença entre as duas ideias: apoie os termos que se opõem, dê uma pequena suspensão na virada e resolva a consequência com clareza.",
-    "question": "Dirija a pergunta ao ouvinte com curiosidade e intenção; deixe espaço para pensar e siga o sentido da pergunta, sem usar a mesma curva em todas as frases.",
-    "closing": "Retome a ideia central com calor e convicção. Dê sensação de resposta e conclua a última frase com intenção, mantendo a proximidade da conversa.",
+    "hook": "Abra com presença e curiosidade real, como quem convida alguém a entender uma descoberta. Mantenha estabilidade vocal constante de afinação (pitch), mesmo volume e cadência conversada.",
+    "explain": "Conduza a explicação como uma conversa: conecte as ideias com fluidez, clareza e ritmo natural. Mantenha estabilidade vocal constante de afinação (pitch), mesmo volume e cadência conversada.",
+    "contrast": "Faça ouvir a diferença entre as duas ideias com naturalidade e clareza. Mantenha estabilidade vocal constante de afinação (pitch), mesmo volume e cadência conversada.",
+    "question": "Dirija a pergunta ao ouvinte com curiosidade natural e tom próximo. Mantenha estabilidade vocal constante de afinação (pitch), mesmo volume e cadência conversada.",
+    "closing": "Retome a ideia central com calor e convicção, mantendo proximidade e estabilidade vocal constante de afinação (pitch), mesmo volume e cadência conversada.",
 }
 CUE_KIND_INSTRUCTIONS = {
     "emphasis": "Dê relevo à ideia principal deste trecho e retome a conversa com fluidez.",
@@ -205,16 +205,30 @@ def scene_direction_fingerprint(scene: dict) -> str | None:
     return hashlib.sha256(json.dumps({"version": "live-scene-direction-v3", "direction": direction, "instruction": live_turn_text("", direction)}, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
 
 
-def live_turn_text(narration: str, direction: dict) -> str:
-    if not direction:
+def live_turn_text(
+    narration: str,
+    direction: dict,
+    previous_context: str | None = None,
+) -> str:
+    if not direction and not previous_context:
         return "ROTEIRO:\n" + narration
-    instructions = ["INSTRUÇÕES DE INTERPRETAÇÃO; NÃO LEIA ESTE BLOCO. Aplique esta direção somente ao roteiro abaixo. Preserve a identidade da voz definida na configuração da sessão. Leia somente o ROTEIRO e encerre depois da última palavra, sem comentário ou despedida extra."]
+    instructions = [
+        "INSTRUÇÕES DE INTERPRETAÇÃO; NÃO LEIA ESTE BLOCO. Aplique esta direção somente ao roteiro abaixo. Preserve a identidade e a estabilidade de afinação e volume da voz definida na configuração da sessão. Leia somente o ROTEIRO e encerre depois da última palavra, sem comentário ou despedida extra."
+    ]
+    if previous_context:
+        instructions.append(
+            f"CONTINUIDADE VOCAL: Esta cena dá sequência à frase anterior: {json.dumps(previous_context[-120:], ensure_ascii=False)}. Mantenha rigorosamente a mesma afinação (pitch), mesmo volume de locução e mesma cadência ao iniciar o ROTEIRO."
+        )
     if direction.get("delivery"):
         instructions.append(DELIVERY_INSTRUCTIONS[direction["delivery"]])
     if direction.get("pause_ms"):
-        instructions.append(f"Pequenas pausas naturais entre ideias, aproximadamente {direction['pause_ms']} ms; isso é direção de fala, não um controle exato.")
+        instructions.append(
+            f"Pequenas pausas naturais entre ideias, aproximadamente {direction['pause_ms']} ms; isso é direção de fala, não um controle exato."
+        )
     for term, spoken in sorted(direction.get("pronunciations", {}).items()):
-        instructions.append(f"Pronúncia: {json.dumps(term, ensure_ascii=False)} como {json.dumps(spoken, ensure_ascii=False)}.")
+        instructions.append(
+            f"Pronúncia: {json.dumps(term, ensure_ascii=False)} como {json.dumps(spoken, ensure_ascii=False)}."
+        )
     for cue in direction.get("cues", []):
         cue_instructions = [CUE_KIND_INSTRUCTIONS[cue["kind"]]]
         if cue.get("intent"):
@@ -222,11 +236,18 @@ def live_turn_text(narration: str, direction: dict) -> str:
         if cue.get("arc"):
             cue_instructions.append(CUE_ARC_INSTRUCTIONS[cue["arc"]])
         if cue.get("emphasis_word"):
-            cue_instructions.append(f"Apoie a palavra {json.dumps(cue['emphasis_word'], ensure_ascii=False)}, preservando a fluidez do trecho.")
+            cue_instructions.append(
+                f"Apoie a palavra {json.dumps(cue['emphasis_word'], ensure_ascii=False)}, preservando a fluidez do trecho."
+            )
         if cue.get("pause_before_ms", 0) > 0:
-            cue_instructions.append(f"Faça uma pausa natural breve antes, aproximadamente {cue['pause_before_ms']} ms; é intenção, não tempo exato.")
+            cue_instructions.append(
+                f"Faça uma pausa natural breve antes, aproximadamente {cue['pause_before_ms']} ms; é intenção, não tempo exato."
+            )
         cue_instructions.append("Preserve cada palavra.")
-        instructions.append(f"Trecho {json.dumps(cue['text'], ensure_ascii=False)}: " + " ".join(cue_instructions))
+        instructions.append(
+            f"Trecho {json.dumps(cue['text'], ensure_ascii=False)}: "
+            + " ".join(cue_instructions)
+        )
     return "\n".join(instructions) + "\n\nROTEIRO:\n" + narration
 
 
@@ -239,6 +260,7 @@ def live_system_instruction(pronunciations: dict[str, str] | None = None) -> str
         "antecipações ou qualquer palavra além do roteiro.",
         f"Idioma: português brasileiro ({VOICE_LANGUAGE}).",
         f"Direção de voz: {VOICE_DELIVERY_STYLE}",
+        "Mantenha rigorosa estabilidade vocal: mesma afinação base (pitch), mesmo volume de locução e mesmo timbre conversado natural em todas as falas.",
         "Use a pontuação do roteiro para criar pausas naturais. Preserve números, "
         "nomes e sentido. Não leia instruções, rótulos ou delimitadores.",
     ]

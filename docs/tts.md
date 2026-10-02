@@ -4,7 +4,7 @@
 
 `worker/voice-policy.json` é a política canônica da narração. Roberto usa a voz Gemini `Charon`; Luana usa `Autonoe`. O único modelo de produção é `gemini-3.8-live`.
 
-Não existe mais cascata de 3.8 Flash, Flash-Lite e 3.1. O motor não troca de modelo nem de voz no meio do vídeo. A integração usa `google-genai==2.26.0`, temperatura padrão do Gemini 3 e uma sessão WebSocket nova para cada cena e para cada tentativa. Uma queda de conexão não reaproveita a sessão anterior nem muda a voz.
+Não existe mais cascata de 3.8 Flash, Flash-Lite e 3.1. O motor não troca de modelo nem de voz no meio do vídeo. A integração usa `google-genai==2.26.0`, temperatura padrão do Gemini 3 e uma sessão contínua multi-turn com checkpoint por cena para preservar estabilidade de pitch e volume. Em caso de queda ou rejeição, a sessão é restabelecida com ancoragem contextual da frase anterior sem perder o cache já gravado.
 
 A direção vocal continua centralizada na política: português brasileiro de conversa, voz presente e calorosa, articulação clara, ritmo e entonação que variam com o raciocínio e pausas entre pensamentos completos. Cada vídeo recebe interpretação própria pelo significado de suas frases, preservando a identidade do apresentador. A política orienta presença e intenção; não impõe uma sequência de emoções ou uma curva repetida de pergunta, explicação e conclusão.
 

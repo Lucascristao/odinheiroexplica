@@ -1,4 +1,5 @@
-Teste isolado de qualidade de voz.
+Teste de continuidade vocal contínua multi-turn (3 cenas do Banco24Horas).
 Modelo: gemini-3.8-live
 Voz: Charon
-Objetivo: comparar naturalidade com o Roberto atual sem alterar o motor de produção.
+Objetivo: validar estabilidade de afinação (pitch) e volume entre cenas encadeadas.
+Data: 2026-10-02

@@ -601,6 +601,8 @@ async def _synthesize_scene_with_retries(
     speech_fingerprint: str,
     diagnostics: dict,
     diagnostics_path: Path,
+    session_holder: list | None = None,
+    previous_context: str | None = None,
 ) -> dict:
     scene_id = job["scene_id"]
     for attempt in range(1, LIVE_MAX_ATTEMPTS + 1):
@@ -611,29 +613,46 @@ async def _synthesize_scene_with_retries(
         write_live_diagnostics(diagnostics_path, diagnostics)
         started = asyncio.get_running_loop().time()
 
+        session_ctx = None
+        session = None
+        session_reused = False
+
+        if session_holder and session_holder[0] is not None and attempt == 1:
+            session_ctx, session = session_holder[0], session_holder[1]
+            session_reused = True
+            attempt_diag["session_reused"] = True
+            attempt_diag["session_opened"] = True
+
         try:
-            async with client.aio.live.connect(
-                model=PRIMARY_TTS_MODEL,
-                config=config,
-            ) as session:
+            if session is None:
+                session_ctx = client.aio.live.connect(
+                    model=PRIMARY_TTS_MODEL,
+                    config=config,
+                )
+                session = await session_ctx.__aenter__()
                 attempt_diag["session_opened"] = True
-                await session.send_client_content(
-                    turns={
-                        "role": "user",
-                        "parts": [{
-                            "text": live_turn_text(
-                                job["narration"],
-                                job.get("direction") or {},
-                            )
-                        }],
-                    },
-                    turn_complete=True,
-                )
-                pcm, transcript = await _receive_live_turn(
-                    session,
-                    narration=job["narration"],
-                    attempt_diagnostics=attempt_diag,
-                )
+                attempt_diag["session_reused"] = False
+                if session_holder is not None:
+                    session_holder[0] = session_ctx
+                    session_holder[1] = session
+
+            turn_prompt = live_turn_text(
+                job["narration"],
+                job.get("direction") or {},
+                previous_context=previous_context if not session_reused else None,
+            )
+            await session.send_client_content(
+                turns={
+                    "role": "user",
+                    "parts": [{"text": turn_prompt}],
+                },
+                turn_complete=True,
+            )
+            pcm, transcript = await _receive_live_turn(
+                session,
+                narration=job["narration"],
+                attempt_diagnostics=attempt_diag,
+            )
 
             fidelity = evaluate_transcription(
                 job["narration"],
@@ -696,10 +715,11 @@ async def _synthesize_scene_with_retries(
             )
             diagnostics["completed_scene_ids"].append(scene_id)
             write_live_diagnostics(diagnostics_path, diagnostics)
+            strategy_info = "sessão contínua" if session_reused else f"sessão {attempt}/{LIVE_MAX_ATTEMPTS}"
             print(
                 f"    [Gemini Live] {duration:.2f}s; "
                 f"fidelidade do texto={similarity:.4f}; áudio PCM bruto; "
-                f"sessão {attempt}/{LIVE_MAX_ATTEMPTS}.",
+                f"{strategy_info}.",
                 flush=True,
             )
             return {
@@ -710,6 +730,15 @@ async def _synthesize_scene_with_retries(
             }
 
         except Exception as exc:
+            if session_holder is not None:
+                if session_holder[0] is not None:
+                    try:
+                        await session_holder[0].__aexit__(None, None, None)
+                    except Exception:
+                        pass
+                session_holder[0] = None
+                session_holder[1] = None
+
             attempt_diag["status"] = "error"
             attempt_diag["error"] = _exception_close_details(exc)
             attempt_diag["retryable"] = is_retryable_live_error(exc)
@@ -766,7 +795,7 @@ async def synthesize_missing_jobs(
         "voice": voice,
         "sdk_package": "google-genai",
         "sdk_version": sdk_version,
-        "session_strategy": "one-websocket-per-scene-attempt",
+        "session_strategy": "continuous-multi-turn-with-scene-checkpoints",
         "temperature_mode": "provider-default",
         "session_resumption_enabled": False,
         "max_attempts_per_scene": LIVE_MAX_ATTEMPTS,
@@ -790,24 +819,37 @@ async def synthesize_missing_jobs(
     client = genai.Client(api_key=gemini_key)
     config = live_session_config(voice, pronunciations)
     completed: dict[str, dict] = {}
+    session_holder = [None, None]
+    previous_context = None
 
-    for position, job in enumerate(jobs):
-        scene_id = job["scene_id"]
-        print(
-            f"  [Gemini Live {position + 1}/{len(jobs)}] {scene_id}: "
-            "abrindo sessão isolada...",
-            flush=True,
-        )
-        completed[scene_id] = await _synthesize_scene_with_retries(
-            client=client,
-            job=job,
-            config=config,
-            voice=voice,
-            pronunciations=pronunciations,
-            speech_fingerprint=speech_fingerprint,
-            diagnostics=diagnostics,
-            diagnostics_path=diagnostics_path,
-        )
+    try:
+        for position, job in enumerate(jobs):
+            scene_id = job["scene_id"]
+            reusing = session_holder[1] is not None
+            print(
+                f"  [Gemini Live {position + 1}/{len(jobs)}] {scene_id}: "
+                f"{'reaproveitando sessão contínua...' if reusing else 'abrindo sessão...'}",
+                flush=True,
+            )
+            completed[scene_id] = await _synthesize_scene_with_retries(
+                client=client,
+                job=job,
+                config=config,
+                voice=voice,
+                pronunciations=pronunciations,
+                speech_fingerprint=speech_fingerprint,
+                diagnostics=diagnostics,
+                diagnostics_path=diagnostics_path,
+                session_holder=session_holder,
+                previous_context=previous_context,
+            )
+            previous_context = job["narration"]
+    finally:
+        if session_holder[0] is not None:
+            try:
+                await session_holder[0].__aexit__(None, None, None)
+            except Exception:
+                pass
 
     diagnostics["status"] = "success"
     write_live_diagnostics(diagnostics_path, diagnostics)
@@ -1026,9 +1068,9 @@ def main() -> None:
         "speech_profile_fingerprint": speech_fingerprint,
         "output_format": "pcm-s16le-24000-mono-wav",
         "timing_mode": "estimated-character-alignment",
-        "delivery_version": "gemini-live-v3-isolated-session-retry-diagnostics",
+        "delivery_version": "gemini-live-v4-continuous-session-diagnostics",
         "live_sdk_version": installed_google_genai_version(),
-        "live_session_strategy": "one-websocket-per-scene-attempt",
+        "live_session_strategy": "continuous-multi-turn-with-scene-checkpoints",
         "live_temperature_mode": "provider-default",
         "fallback_scene_ids": [],
         "fallback_scene_ids_by_model": {},

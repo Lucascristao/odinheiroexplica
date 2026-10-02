@@ -332,6 +332,15 @@ def main() -> None:
                 {**((project.get("speech") or {}).get("pronunciations") or {}),
                  **((scene.get("tts") or {}).get("pronunciations") or {})},
             )
+        activity = audio.get("audio_activity") or {}
+        scene_rms = activity.get("rms_dbfs")
+        if isinstance(scene_rms, (int, float)) and math.isfinite(scene_rms) and scene_rms > -60:
+            target_rms = -17.5
+            diff_db = target_rms - float(scene_rms)
+            vol_mult = round(float(min(1.8, max(0.6, 10.0 ** (diff_db / 20.0)))), 4)
+        else:
+            vol_mult = 1.0
+
         output_scenes.append(
             {
                 **scene_with_resolved_visual,
@@ -340,6 +349,7 @@ def main() -> None:
                 "start_frame": cursor,
                 "duration_frames": duration_frames,
                 "audio_duration_seconds": audio["duration_seconds"],
+                "audio_volume_multiplier": vol_mult,
                 "audio_model": audio.get("model"),
                 "audio_voice": audio.get("voice"),
                 "audio_voice_treatment": audio.get("voice_treatment", "none"),
