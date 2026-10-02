@@ -290,6 +290,14 @@ jobs:
             --input video/generated/daily-render-input.json \
             --output video/generated/daily-rhythm-report.json
 
+      - name: Generate editorial background music
+        run: |
+          rm -rf public/generated-music
+          python worker/generate_music.py \
+            --project video/generated/daily-project.json \
+            --render-input video/generated/daily-render-input.json \
+            --output-dir public/generated-music
+
       - name: Check layout with the actual narration clock
         id: layout_final
         run: |
@@ -411,6 +419,7 @@ jobs:
             video/generated/daily-render-input.json
             public/generated-audio/daily/*.wav
             public/processed-audio/daily/*
+            public/generated-music/*
           if-no-files-found: warn
           retention-days: 7
 

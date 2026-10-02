@@ -393,7 +393,17 @@ def main() -> None:
             scene_total_samples = scene["duration_frames"] * samples_per_frame
             actual_samples = len(raw_pcm) // 2
             padding_samples = max(0, scene_total_samples - actual_samples)
-            continuous_samples.extend(b"\x00\x00" * padding_samples)
+            if padding_samples > 0:
+                import random
+                import struct
+                rng = random.Random(42 + len(continuous_samples))
+                dither_bytes = bytearray(padding_samples * 2)
+                last_val = 0.0
+                for i in range(padding_samples):
+                    last_val = 0.94 * last_val + 0.06 * (rng.random() * 2.0 - 1.0)
+                    val = int(last_val * 45)  # micro room tone (~ -55 dBFS)
+                    struct.pack_into("<h", dither_bytes, i * 2, val)
+                continuous_samples.extend(dither_bytes)
 
         if valid and continuous_samples:
             master_audio_path.parent.mkdir(parents=True, exist_ok=True)
@@ -421,6 +431,7 @@ def main() -> None:
             f"{args.audio_public_prefix.rstrip('/')}/{continuous_filename}"
             if master_created else None
         ),
+        "music_track": "generated-music/daily-bed.wav",
         "scenes": output_scenes,
     }
 

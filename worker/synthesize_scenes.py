@@ -502,9 +502,13 @@ async def _receive_live_turn(
         if server is None:
             continue
         if bool(getattr(server, "interrupted", False)):
-            raise RetryableLiveError(
-                "Gemini Live interrompeu a fala; o áudio parcial não será aceito."
-            )
+            has_parts = bool(getattr(getattr(server, "model_turn", None), "parts", None))
+            if pcm_bytes > 0 or has_parts:
+                raise RetryableLiveError(
+                    "Gemini Live interrompeu a fala; o áudio parcial não será aceito."
+                )
+            diagnostics["early_turn_interrupted_cleared"] = True
+            continue
 
         if bool(getattr(server, "generation_complete", False)):
             diagnostics["generation_complete_seen"] = True
@@ -639,7 +643,7 @@ async def _synthesize_scene_with_retries(
             turn_prompt = live_turn_text(
                 job["narration"],
                 job.get("direction") or {},
-                previous_context=previous_context if not session_reused else None,
+                previous_context=previous_context,
             )
             await session.send_client_content(
                 turns={

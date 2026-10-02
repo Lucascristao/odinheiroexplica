@@ -1881,6 +1881,16 @@ export const DailyEditorial = () => {
     <AbsoluteFill style={{backgroundColor: BG}}>
       {direction.world === "market" ? <AbsoluteFill style={{background: "radial-gradient(ellipse at 60% 35%, rgba(255,189,25,0.035), transparent 65%), linear-gradient(145deg,#10161b,#080c10)"}} /> : <StoryWorldBackground direction={direction} />}
       <Brand />
+      {/* Trilha Sonora Editorial Contínua */}
+      <Audio
+        src={staticFile("generated-music/daily-bed.wav")}
+        volume={(f) => {
+          const total = (renderInput as unknown as {duration_in_frames?: number}).duration_in_frames || 30;
+          const fadeIn = Math.min(1, Math.max(0, f / 30));
+          const fadeOut = Math.min(1, Math.max(0, (total - f) / 60));
+          return 0.72 * fadeIn * fadeOut;
+        }}
+      />
       {masterAudio && (
         <Audio
           src={staticFile(masterAudio)}
