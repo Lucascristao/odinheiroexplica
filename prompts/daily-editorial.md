@@ -90,6 +90,13 @@ O render diário usa somente Gemini 3.8 Live, conforme `worker/voice-policy.json
 
 Roberto e Luana são personagens editoriais fixos do canal. Priorize sempre Roberto/Charon; Luana/Autonoe só entra quando o assunto for dirigido ao público feminino. Escolher pelo público da pauta, sem alternância estética/automática nem estereótipos simplistas de gênero. Todo vídeo deve ter uma apresentação falada breve do apresentador escolhido. Uma troca de apresentador exige apresentação e contrato coerentes, nova narração com a voz correta e cache compatível; nunca reutilizar o áudio de Luana em um episódio apresentado por Roberto.
 
+### Estabilidade e Coerência Vocal Entre Cenas
+Mantenha estilo vocal conversacional consistente (`explain` prioritário) entre todas as cenas. Evite mudanças drásticas de entonação entre cenas consecutivas (ex.: alternar entre `contrast` agressivo e sussurrado), garantindo estabilidade de afinação fundamental (pitch), presença e calor conversacional contínuos. O pipeline equaliza ativamente o loudness em -18.0 dBFS RMS na faixa contínua master, mas a consistência de delivery no roteiro é indispensável para evitar quebras perceptíveis.
+
+### Ritmo Visual e Latência de Abertura das Cenas
+- **Beat 0 nos primeiros 2 a 3 segundos**: O primeiro evento visual de cada cena DEVE ser ancorado nas primeiras 5 a 10 palavras do texto (dentro dos primeiros 2 a 3 segundos). Nenhuma tela ou título deve ficar parado por 7 a 16 segundos antes do primeiro acontecimento no palco.
+- **Cadência Contínua de Micro-beats (Máximo 4 a 5 segundos)**: Nenhum gráfico, texto ou ilustração pode ficar estático por mais de 4 a 5 segundos enquanto o narrador fala. Divida trechos longos de raciocínio em micro-beats (`focus`, `reveal`, `update`, `reframe` ou `push-in`), mantendo o espectador visualmente engajado a cada nova frase.
+
 A abertura deve nomear o assunto e deixar clara a pergunta que o vídeo vai responder. Explique siglas e conceitos no primeiro uso, com linguagem comum e um exemplo quando necessário. Logo após o gancho, apresente Roberto ou Luana em uma frase natural integrada à explicação. Varie a formulação; não reserve uma cena ou vinheta longa para a apresentação.
 
 Todo vídeo deve incluir um pedido falado breve de inscrição depois de uma primeira entrega de valor, em um respiro natural ou no encerramento. Faça apenas um pedido, ligado ao benefício de acompanhar o canal. Varie a formulação e a posição conforme a narrativa, sem determinar um minuto fixo e sem interromper uma explicação pela metade.

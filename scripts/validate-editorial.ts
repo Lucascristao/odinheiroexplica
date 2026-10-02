@@ -164,12 +164,32 @@ for (const [index, scene] of scenes.entries()) {
   if (!beats.success) {error(beats.error.message); continue;}
   validateStageEvents(stage.data, beats.data).forEach(error);
   let previous = -1;
-  for (const beat of beats.data) {
-    const narration = String(scene.narration ?? "");
+  const narration = String(scene.narration ?? "");
+  if (beats.data.length > 0) {
+    const firstAt = narration.indexOf(beats.data[0].anchor);
+    if (firstAt > 75) {
+      console.warn(`::warning::Cena ${scene.id ?? index}: Beat 0 começa tarde na fala (caractere ${firstAt} de ${narration.length}). Ancore o primeiro evento visual nos primeiros 2 a 3 segundos (primeiras 5 a 10 palavras) para evitar tela estática na abertura da cena.`);
+    }
+  }
+  for (let bIdx = 0; bIdx < beats.data.length; bIdx++) {
+    const beat = beats.data[bIdx];
     const at = narration.indexOf(beat.anchor);
     if (at < 0 || narration.split(beat.anchor).length !== 2) error(`Âncora não é literal e única: ${beat.anchor}`);
     if (at <= previous) error("Eventos precisam estar em ordem da fala, sem âncoras simultâneas.");
+    if (bIdx > 0 && at - previous > 115) {
+      console.warn(`::warning::Cena ${scene.id ?? index}, entre beat ${bIdx - 1} e beat ${bIdx}: intervalo de ${at - previous} caracteres de fala sem eventos visuais intermediários (~${Math.round((at - previous) / 16)}s). Adicione micro-beats intermediários (foco, destaque, atualização ou reframe) para respeitar o limite de 4 a 5 segundos.`);
+    }
     previous = at;
+  }
+  if (beats.data.length > 0) {
+    const lastBeat = beats.data[beats.data.length - 1];
+    const lastAt = narration.indexOf(lastBeat.anchor);
+    if (lastAt >= 0) {
+      const trailingChars = narration.length - (lastAt + lastBeat.anchor.length);
+      if (trailingChars > 120) {
+        console.warn(`::warning::Cena ${scene.id ?? index}: cauda final de ${trailingChars} caracteres sem eventos visuais (~${Math.round(trailingChars / 16)}s) até o encerramento da cena.`);
+      }
+    }
   }
   for (const element of stage.data.elements) {
     if(element.chart&&!sourceIds.has(element.chart.source_id))error(`Fonte inexistente para gráfico ${element.id}`);

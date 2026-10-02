@@ -1819,7 +1819,7 @@ const SceneComposition = ({
           volume={(f) => {
             const mult = scene.audio_volume_multiplier ?? 1;
             const total = scene.duration_frames || 30;
-            const fadeIn = scene.scene_index === 0 ? Math.min(1, Math.max(0, f / 2)) : 1;
+            const fadeIn = Math.min(1, Math.max(0, f / 2));
             const fadeOut = isLast ? Math.min(1, Math.max(0, (total - f) / 10)) : 1;
             return mult * Math.min(fadeIn, fadeOut);
           }}
@@ -1859,7 +1859,7 @@ const SceneComposition = ({
           volume={(f) => {
             const mult = scene.audio_volume_multiplier ?? 1;
             const total = scene.duration_frames || 30;
-            const fadeIn = scene.scene_index === 0 ? Math.min(1, Math.max(0, f / 2)) : 1;
+            const fadeIn = Math.min(1, Math.max(0, f / 2));
             const fadeOut = isLast ? Math.min(1, Math.max(0, (total - f) / 10)) : 1;
             return mult * Math.min(fadeIn, fadeOut);
           }}

@@ -334,10 +334,16 @@ def main() -> None:
             )
         activity = audio.get("audio_activity") or {}
         scene_rms = activity.get("rms_dbfs")
+        peak_dbfs = activity.get("sample_peak_dbfs")
         if isinstance(scene_rms, (int, float)) and math.isfinite(scene_rms) and scene_rms > -60:
-            target_rms = -17.5
+            target_rms = -18.0
             diff_db = target_rms - float(scene_rms)
-            vol_mult = round(float(min(1.8, max(0.6, 10.0 ** (diff_db / 20.0)))), 4)
+            gain = 10.0 ** (diff_db / 20.0)
+            if isinstance(peak_dbfs, (int, float)) and math.isfinite(peak_dbfs):
+                peak_linear = 10.0 ** (peak_dbfs / 20.0)
+                if peak_linear * gain > 0.975:
+                    gain = 0.975 / max(1e-6, peak_linear)
+            vol_mult = round(float(min(1.5, max(0.5, gain))), 4)
         else:
             vol_mult = 1.0
 
@@ -389,9 +395,40 @@ def main() -> None:
                     valid = False
                     break
                 raw_pcm = w.readframes(w.getnframes())
-            continuous_samples.extend(raw_pcm)
+
+            vol_mult = float(scene.get("audio_volume_multiplier") or 1.0)
+            n_samples = len(raw_pcm) // 2
+            edge_samples = min(120, max(1, n_samples // 10))  # micro fade de 5ms a 24kHz
+
+            try:
+                import numpy as np
+                pcm_arr = np.frombuffer(raw_pcm, dtype=np.int16).astype(np.float64)
+                if abs(vol_mult - 1.0) > 0.001 or edge_samples > 0:
+                    pcm_arr *= vol_mult
+                    if edge_samples > 0 and len(pcm_arr) >= edge_samples * 2:
+                        ramp_in = np.linspace(0.0, 1.0, edge_samples, endpoint=False)
+                        ramp_out = np.linspace(1.0, 0.0, edge_samples, endpoint=False)
+                        pcm_arr[:edge_samples] *= ramp_in
+                        pcm_arr[-edge_samples:] *= ramp_out
+                    pcm_arr = np.clip(pcm_arr, -32767, 32767).astype(np.int16)
+                scene_pcm_bytes = pcm_arr.tobytes()
+            except ImportError:
+                import struct
+                scene_pcm_bytes = bytearray(n_samples * 2)
+                for i in range(n_samples):
+                    val = struct.unpack_from("<h", raw_pcm, i * 2)[0]
+                    sample_gain = vol_mult
+                    if i < edge_samples:
+                        sample_gain *= (i / edge_samples)
+                    elif i >= (n_samples - edge_samples):
+                        sample_gain *= ((n_samples - 1 - i) / edge_samples)
+                    scaled = int(round(val * sample_gain))
+                    clamped = max(-32767, min(32767, scaled))
+                    struct.pack_into("<h", scene_pcm_bytes, i * 2, clamped)
+
+            continuous_samples.extend(scene_pcm_bytes)
             scene_total_samples = scene["duration_frames"] * samples_per_frame
-            actual_samples = len(raw_pcm) // 2
+            actual_samples = len(scene_pcm_bytes) // 2
             padding_samples = max(0, scene_total_samples - actual_samples)
             if padding_samples > 0:
                 import random
@@ -413,7 +450,7 @@ def main() -> None:
                 w.setframerate(sample_rate)
                 w.writeframes(continuous_samples)
             master_created = True
-            print(f"Trilha contínua gerada sem cortes: {master_audio_path} ({len(continuous_samples)/2/sample_rate:.2f}s)")
+            print(f"Trilha contínua equalizada sem cortes: {master_audio_path} ({len(continuous_samples)/2/sample_rate:.2f}s)")
     except Exception as exc:
         print(f"Aviso: Não foi possível gerar trilha contínua: {exc}")
 

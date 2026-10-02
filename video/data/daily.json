@@ -463,7 +463,7 @@
         }
       ],
       "review": {
-        "content_sha256": "df089827db75ebea512d14d0e235604004490d1e86c8378442222688a6d43480",
+        "content_sha256": "9deb72acd49e4b8cdfa24d2806dd0ce5d6fb8902ed8c96dd2f33e11550955bf7",
         "findings": [
           {
             "question": "A divisão orçamentária e a simulação de valores estão identificadas como ilustrativas?",
@@ -570,6 +570,26 @@
         },
         "beats": [
           {
+            "anchor": "guardando o que sobra no final do mês",
+            "target_id": "card_armadilha",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "A ilusão de guardar o que sobra",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Famílias no aperto",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
             "anchor": "o resultado no final dos trinta dias é quase sempre zero",
             "target_id": "card_armadilha",
             "action": "focus",
@@ -590,11 +610,11 @@
             "motion_seconds": 0.8
           },
           {
-            "anchor": "mais de oitenta por cento das famílias terminam o mês no aperto ou no endividamento",
+            "anchor": "mais de oitenta por cento das famílias terminam o mês no aperto",
             "target_id": "card_armadilha",
             "action": "focus",
             "actuation": "signal",
-            "headline": "Endividamento atinge patamar recorde",
+            "headline": "82% das famílias no aperto",
             "treatment": "giant_number",
             "emphasis": {
               "phrase": "Famílias no aperto",
@@ -606,6 +626,46 @@
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "justamente por caírem nessa armadilha mental",
+            "target_id": "card_armadilha",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "A armadilha mental das finanças",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Famílias no aperto",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Eu sou o Roberto, do O Dinheiro Explica",
+            "target_id": "card_armadilha",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "O Dinheiro Explica: a virada prática",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Famílias no aperto",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
             "prominence": "contextual",
             "motion_seconds": 0.8
           },
@@ -747,11 +807,51 @@
         },
         "beats": [
           {
-            "anchor": "os juros do cartão de crédito rotativo ultrapassam quatrocentos e quarenta por cento ao ano",
+            "anchor": "estancar o ralo invisível por onde o seu dinheiro escorre",
+            "target_id": "card_rotativo",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "Estancar o ralo invisível",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Juros do rotativo",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "juros do cartão de crédito rotativo ultrapassam quatrocentos e quarenta por cento ao ano",
             "target_id": "card_rotativo",
             "action": "focus",
             "actuation": "signal",
             "headline": "A taxa que corrói o patrimônio",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Juros do rotativo",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "se uma dívida de mil reais ficar rolando",
+            "target_id": "card_rotativo",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "Dívida de R$ 1.000 rolando",
             "treatment": "giant_number",
             "emphasis": {
               "phrase": "Juros do rotativo",
@@ -787,11 +887,11 @@
             "motion_seconds": 0.8
           },
           {
-            "anchor": "eliminar primeiro as dívidas de juros mais altos",
+            "anchor": "Nenhum investimento no planeta rende mais do que o custo dessa bola de neve",
             "target_id": "card_prioridade",
             "action": "reveal",
             "actuation": "confirm",
-            "headline": "Foco prioritário: zerar juros caros",
+            "headline": "Custo maior que qualquer rendimento",
             "treatment": "giant_number",
             "emphasis": {
               "phrase": "Eliminar dívidas",
@@ -809,6 +909,66 @@
               "style": "slide",
               "direction": "right"
             }
+          },
+          {
+            "anchor": "a prioridade absoluta de qualquer organização financeira",
+            "target_id": "card_prioridade",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "A prioridade absoluta do método",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Eliminar dívidas",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "listar todas as contas atrasadas",
+            "target_id": "card_prioridade",
+            "action": "focus",
+            "actuation": "confirm",
+            "headline": "Listar contas atrasadas",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Eliminar dívidas",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "eliminar primeiro as dívidas de juros mais altos",
+            "target_id": "card_prioridade",
+            "action": "focus",
+            "actuation": "confirm",
+            "headline": "Foco prioritário: zerar juros caros",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Eliminar dívidas",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
           }
         ]
       },
@@ -954,6 +1114,46 @@
         },
         "beats": [
           {
+            "anchor": "o sistema que coloca ordem no seu orçamento",
+            "target_id": "bloco_essencial",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "A regra dos três blocos",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Gastos essenciais",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "simulação ilustrativa com uma renda líquida de três mil reais",
+            "target_id": "bloco_essencial",
+            "action": "focus",
+            "actuation": "confirm",
+            "headline": "Renda base: R$ 3.000 líquidos",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Gastos essenciais",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
             "anchor": "cinquenta por cento, ou mil e quinhentos reais, para necessidades essenciais",
             "target_id": "bloco_essencial",
             "action": "focus",
@@ -970,6 +1170,26 @@
             "placement": "full",
             "medium": "motion_graphic",
             "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "moradia, alimentação e contas básicas",
+            "target_id": "bloco_essencial",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "Moradia, alimentação e contas",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Gastos essenciais",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
             "prominence": "contextual",
             "motion_seconds": 0.8
           },
@@ -996,6 +1216,26 @@
               "style": "slide",
               "direction": "right"
             }
+          },
+          {
+            "anchor": "compras e momentos de lazer",
+            "target_id": "bloco_estilo",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "Compras e momentos de lazer",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Estilo de vida",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
           },
           {
             "anchor": "seiscentos reais para a reserva",
@@ -1136,6 +1376,46 @@
         },
         "beats": [
           {
+            "anchor": "o segredo prático que faz o método funcionar no mundo real",
+            "target_id": "card_conta_salario",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "O segredo prático: automação",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Conta do salário",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "esses seiscentos reais parados na conta do dia a dia",
+            "target_id": "card_conta_salario",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "O risco do dinheiro parado na conta",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Conta do salário",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
             "anchor": "mente humana sempre encontra um motivo urgente para gastar",
             "target_id": "card_conta_salario",
             "action": "focus",
@@ -1180,6 +1460,46 @@
             }
           },
           {
+            "anchor": "O dinheiro do seu futuro sai antes mesmo de você ver o saldo total",
+            "target_id": "card_transferencia",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "Sai antes de ver o saldo",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Envio automático",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "dominar seu dinheiro e construir patrimônio com clareza",
+            "target_id": "card_transferencia",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "Construir patrimônio com clareza",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Envio automático",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
             "anchor": "se inscreva no canal O Dinheiro Explica e ative as notificações",
             "target_id": "card_transferencia",
             "action": "focus",
@@ -1212,7 +1532,7 @@
         ]
       },
       "tts": {
-        "delivery": "contrast",
+        "delivery": "explain",
         "cues": [
           {
             "text": "programar uma transferência automática no mesmo dia em que o pagamento entra na conta.",
@@ -1308,6 +1628,26 @@
         },
         "beats": [
           {
+            "anchor": "Jamais deixe a quantia na conta corrente e evite a caderneta de poupança",
+            "target_id": "card_poupanca_trava",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "Fuja da conta corrente e poupança",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Poupança tradicional",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
             "anchor": "trava o rendimento por trinta dias na data de aniversário",
             "target_id": "card_poupanca_trava",
             "action": "focus",
@@ -1348,7 +1688,7 @@
             "motion_seconds": 0.8
           },
           {
-            "anchor": "Tesouro Selic ou um CDB com garantia do Fundo Garantidor de Créditos",
+            "anchor": "ativos com liquidez diária e proteção de baixo risco",
             "target_id": "card_cdb",
             "action": "reveal",
             "actuation": "confirm",
@@ -1377,6 +1717,46 @@
               "style": "slide",
               "direction": "right"
             }
+          },
+          {
+            "anchor": "Tesouro Selic ou um CDB com garantia do Fundo Garantidor de Créditos",
+            "target_id": "card_cdb",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "Tesouro Selic ou CDB com FGC",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Liquidez diária",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "rende todos os dias úteis, acompanha os juros básicos",
+            "target_id": "card_cdb",
+            "action": "focus",
+            "actuation": "confirm",
+            "headline": "Rentabilidade em dias úteis",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Liquidez diária",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
           },
           {
             "anchor": "disponível no momento em que você precisar resgatar",
@@ -1494,11 +1874,91 @@
         },
         "beats": [
           {
+            "anchor": "não depende de mágica nem de privação extrema",
+            "target_id": "card_plano_passos",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "Sem mágica e sem privação extrema",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Plano de consistência",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
             "anchor": "estancar juros caros, dividir a renda nos três blocos",
             "target_id": "card_plano_passos",
             "action": "focus",
             "actuation": "signal",
             "headline": "O método comprovado em 4 etapas",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Plano de consistência",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "programar a transferência no dia do salário",
+            "target_id": "card_plano_passos",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "Automação no dia do pagamento",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Plano de consistência",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "construir a sua reserva em aplicações seguras de liquidez diária",
+            "target_id": "card_plano_passos",
+            "action": "focus",
+            "actuation": "confirm",
+            "headline": "Reserva com proteção e liquidez",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Plano de consistência",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Se você não conseguir começar com vinte por cento",
+            "target_id": "card_plano_passos",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "Não consegue 20%? Comece menor",
             "treatment": "giant_number",
             "emphasis": {
               "phrase": "Plano de consistência",
@@ -1534,11 +1994,11 @@
             "motion_seconds": 0.8
           },
           {
-            "anchor": "Escreva a sua experiência nos comentários",
+            "anchor": "Você já aplica alguma regra para guardar dinheiro todo mês",
             "target_id": "card_resultado_final",
             "action": "reveal",
             "actuation": "confirm",
-            "headline": "Compartilhe sua experiência no canal",
+            "headline": "Qual é a sua estratégia hoje?",
             "treatment": "giant_number",
             "emphasis": {
               "phrase": "Controle financeiro",
@@ -1556,6 +2016,26 @@
               "style": "slide",
               "direction": "right"
             }
+          },
+          {
+            "anchor": "Escreva a sua experiência nos comentários",
+            "target_id": "card_resultado_final",
+            "action": "focus",
+            "actuation": "confirm",
+            "headline": "Compartilhe sua experiência no canal",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Controle financeiro",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
           },
           {
             "anchor": "Até o próximo episódio!",
