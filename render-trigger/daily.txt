@@ -1,6 +1,6 @@
-Produção autorizada: Quanto rende R$ 82 milhões na poupança? A conta exata.
-Projeto: quanto-rende-82-milhoes-poupanca-2026-10-02
-Motor de Áudio: Trilha sonora editorial contínua (bed music Dm9) + narração multi-turn contínua com piso acústico e zero cortes.
-Motion Graphics: Dynamic motion v2, kinetic numbers, SVG trace/sustain 8px, golden frame compare e token flow.
-Trigger: quanto-rende-82-milhoes-poupanca-v3-sound-engine
+Produção autorizada: Como organizar suas finanças e guardar dinheiro: o método que funciona.
+Projeto: como-organizar-financas-guardar-dinheiro-2026-10-02
+Motor de Áudio: Gemini 3.8 Live com voz Charon (Roberto) + trilha sonora editorial contínua.
+Motion Graphics: Padrão de dinamismo (beats a cada 4 segundos, SVGs grandes 250-500px, kinetic type, números gigantes #FFBD19, câmera auto ativa).
+Trigger: como-organizar-financas-guardar-dinheiro-v1
 Data: 2026-10-02

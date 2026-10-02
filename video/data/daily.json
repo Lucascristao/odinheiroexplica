@@ -1,6 +1,6 @@
 {
-  "project_id": "quanto-rende-82-milhoes-poupanca-2026-10-02",
-  "title": "Quanto rende R$ 82 milhões na poupança?",
+  "project_id": "como-organizar-financas-guardar-dinheiro-2026-10-02",
+  "title": "Como organizar suas finanças e guardar dinheiro: o método que funciona",
   "version": "1.0",
   "presenter": {
     "gender": "male",
@@ -12,111 +12,121 @@
       "Copom": "cópom",
       "CDB": "cê dê bê",
       "CDBs": "cê dê bês",
-      "LCI": "éle cê i",
-      "LCA": "éle cê a",
-      "FGC": "éfe gê cê"
+      "CDI": "cê dê i",
+      "FGC": "éfe gê cê",
+      "Peic": "pê ic",
+      "CNC": "cê ene cê"
     },
     "ignore_pronunciation_terms": []
   },
   "story": {
-    "subject": "O rendimento mensal e anual de R$ 82 milhões na caderneta de poupança com a taxa Selic em 13,75% ao ano e a comparação com alternativas de renda fixa como o Tesouro Selic e o CDI.",
-    "angle": "Responder imediatamente à dúvida popular sobre a renda gerada por R$ 82 milhões na poupança, explicar a regra de 0,5% mais TR e mostrar como alternativas seguras rendem centenas de milhares de reais a mais todo mês.",
-    "promise": "Mostrar na ponta do lápis quanto R$ 82 milhões rendem na poupança e a diferença real de rentabilidade e segurança em relação a outros investimentos.",
-    "why_now": "O patamar elevado da taxa básica de juros evidencia o custo de oportunidade de manter grandes fortunas na poupança.",
+    "subject": "O método prático para organizar o orçamento pessoal, eliminar a armadilha do endividamento no cartão de crédito rotativo e guardar dinheiro com consistência através do princípio pague-se primeiro e da reserva de emergência.",
+    "angle": "Explicar por que tentar guardar apenas o que sobra no fim do mês falha para 82% das famílias brasileiras, demonstrar a divisão orçamentária dos três blocos e ensinar onde colocar a reserva para render com liquidez diária e segurança.",
+    "promise": "Entregar um plano acionável de organização financeira que qualquer pessoa pode aplicar no próximo pagamento para sair do zero e construir reserva de emergência.",
+    "why_now": "Com o endividamento das famílias atingindo 82% em 2026 e os juros do rotativo em 444,9% ao ano, organizar o fluxo de caixa é a única proteção real contra a perda de poder de compra.",
     "category": "personal_finance"
   },
   "packaging": {
     "titles": [
       {
-        "text": "Quanto rende R$ 82 milhões na poupança? A conta exata",
+        "text": "Como organizar suas finanças e guardar dinheiro de verdade",
         "platform": "youtube"
       }
     ],
     "thumbnails": [
       {
-        "headline": "R$ 82 MILHÕES: O ERRO DA POUPANÇA",
+        "headline": "PARE DE GUARDAR A SOBRA",
         "style": "editorial_bold"
       }
-    ]
+    ],
+    "strategy": {
+      "click_reason": "Quebra a premissa errada de que economizar é guardar a sobra do mês, oferecendo um método prático e numérico.",
+      "visual_focus": "Destaque visual limpo em alto contraste com números da regra dos blocos e carteira em destaque.",
+      "curiosity_gap": "Por que quem ganha mais muitas vezes continua sem guardar nada e como inverter essa dinâmica.",
+      "mobile_readability": "Texto curto de 4 palavras legível em telas pequenas de celular.",
+      "anti_clickbait_check": "O vídeo realmente ensina o método dos blocos, o pague-se primeiro e a matemática da reserva.",
+      "repetition_check": "Não repete a embalagem nem os dados do episódio anterior.",
+      "youtube_safety_check": "Conteúdo 100% de educação financeira sem promessas irrealistas de enriquecimento ou especulação."
+    }
   },
   "publication": {
-    "description": "Descubra quanto rende R$ 82 milhões na poupança com a taxa Selic atual e veja por que deixar uma grande fortuna na caderneta custa caro.\n\n- Com a taxa Selic em 13,75% ao ano, a poupança rende 0,5% fixo ao mês mais a Taxa Referencial.\n- Uma quantia de R$ 82 milhões gera cerca de R$ 490 mil mensais na poupança, totalizando R$ 6,2 milhões ao ano.\n- Em investimentos a 100% do CDI, o mesmo valor rende mais de R$ 680 mil líquidos logo no primeiro mês.\n- Manter valores multimilionários em um único banco ultrapassa o limite de proteção do FGC de R$ 250 mil.",
-    "engagement_question": "Se você ganhasse R$ 82 milhões, deixaria alguma quantia na poupança?",
+    "description": "Aprenda como organizar suas finanças e guardar dinheiro com consistência usando o método dos três blocos e o princípio de pagar a si mesmo primeiro.\n\n- Com o endividamento das famílias brasileiras atingindo 82% na Peic da CNC e juros do rotativo a 444,9% ao ano, tentar guardar o que sobra quase sempre resulta em frustração.\n- A regra dos blocos divide a renda líquida em 50% para despesas essenciais, 30% para estilo de vida e 20% para reserva e futuro.\n- Em um salário ilustrativo de R$ 3.000, isso significa separar R$ 600 logo no primeiro dia do pagamento.\n- O primeiro destino do dinheiro guardado deve ser uma reserva de emergência de 3 a 6 meses em ativos com liquidez diária, como Tesouro Selic ou CDB a 100% do CDI garantido pelo FGC.",
+    "engagement_question": "Você costuma separar o dinheiro para guardar no início do mês ou espera ver o que sobra no final?",
     "hashtags": [
-      "#Poupanca",
-      "#Investimentos",
+      "#FinancasPessoais",
+      "#GuardarDinheiro",
       "#ODinheiroExplica"
     ],
     "seo": {
-      "primary_keyword": "quanto rende R$ 82 milhões na poupança"
+      "primary_keyword": "como organizar suas finanças e guardar dinheiro"
     }
   },
   "sources": [
     {
       "id": "S1",
-      "title": "Lei nº 12.703/2012 — Remuneração dos depósitos de poupança",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2011-2014/2012/lei/l12703.htm",
-      "publisher": "Presidência da República",
-      "publisher_class": "official",
-      "editorial_role": "legal_framework",
-      "source_type": "primary",
-      "notes": "Define a regra de rendimento da poupança de 0,5% ao mês mais TR quando a Selic for superior a 8,5% ao ano."
-    },
-    {
-      "id": "S2",
-      "title": "Banco Central do Brasil — Decisão da Taxa Selic e Séries Históricas do Copom",
-      "url": "https://www.bcb.gov.br/controleinflacao/historicotaxasjuros",
+      "title": "Banco Central do Brasil — Relatório de Estatísticas Monetárias e de Crédito",
+      "url": "https://www.bcb.gov.br/estatisticas/estatisticasmonetariascredito",
       "publisher": "Banco Central do Brasil",
       "publisher_class": "official",
       "editorial_role": "regulatory_standard",
       "source_type": "primary",
-      "notes": "Taxa básica de juros Selic Meta definida em 13,75% ao ano pelo Comitê de Política Monetária."
+      "notes": "Registra a taxa média de juros do rotativo do cartão de crédito em 444,9% ao ano e as diretrizes do crédito bancário."
+    },
+    {
+      "id": "S2",
+      "title": "Confederação Nacional do Comércio — Pesquisa de Endividamento e Inadimplência do Consumidor (Peic)",
+      "url": "https://www.portaldocomercio.org.br/pesquisas-e-analises/peic",
+      "publisher": "CNC",
+      "publisher_class": "industry",
+      "editorial_role": "data_context",
+      "source_type": "primary",
+      "notes": "Apresenta o percentual de famílias brasileiras endividadas em 82% e a inadimplência próxima a 30% em 2026."
     },
     {
       "id": "S3",
-      "title": "Tesouro Nacional — Rentabilidade e Regras do Tesouro Direto",
+      "title": "Tesouro Nacional — Regras e Liquidez do Tesouro Selic no Tesouro Direto",
       "url": "https://www.tesourodireto.com.br/titulos/precos-e-taxas.htm",
       "publisher": "Tesouro Nacional",
       "publisher_class": "official",
-      "editorial_role": "data_context",
+      "editorial_role": "regulatory_standard",
       "source_type": "primary",
-      "notes": "Rentabilidade dos títulos pós-fixados indexados à taxa Selic e tabela regressiva de imposto de renda."
+      "notes": "Ativo de baixo risco com garantia soberana da União e liquidez diária indicado para reservas financeiras."
     },
     {
       "id": "S4",
-      "title": "B3 — Indicadores Financeiros e Taxa DI Acumulada",
-      "url": "https://www.b3.com.br/pt_br/market-data-e-indices/indices/indices-de-estrutura-temporal-das-taxas-de-juros/indice-di/",
-      "publisher": "B3",
-      "publisher_class": "industry",
-      "editorial_role": "market_counterpoint",
-      "source_type": "secondary",
-      "notes": "Taxa média interbancária DI de referência para remuneração de títulos de renda fixa."
-    },
-    {
-      "id": "S5",
-      "title": "Quanto rende a poupança com juros de dois dígitos: comparativo com renda fixa",
-      "url": "https://www.infomoney.com.br/onde-investir/quanto-rende-a-poupanca/",
-      "publisher": "InfoMoney",
-      "publisher_class": "independent_journalism",
-      "editorial_role": "journalistic_coverage",
-      "source_type": "secondary",
-      "notes": "Simulação comparativa do rendimento de grandes quantias na poupança versus CDI e títulos públicos."
-    },
-    {
-      "id": "S6",
       "title": "Fundo Garantidor de Créditos — Limites e Regras de Cobertura Ordinária",
       "url": "https://www.fgc.org.br/garantia-fgc/sobre-a-garantia-fgc",
       "publisher": "FGC",
       "publisher_class": "industry",
       "editorial_role": "data_context",
       "source_type": "primary",
-      "notes": "Teto de proteção de R$ 250 mil por CPF e por instituição financeira associada."
+      "notes": "Garantia de até R$ 250 mil por CPF e por instituição associada em depósitos e títulos de renda fixa como CDBs."
+    },
+    {
+      "id": "S5",
+      "title": "Como organizar o orçamento e cortar gastos invisíveis diante da inflação e dos juros",
+      "url": "https://www.gazetadopovo.com.br/economia/financas-pessoais-orcamento-inflacao-juros/",
+      "publisher": "Gazeta do Povo",
+      "publisher_class": "independent_journalism",
+      "editorial_role": "market_counterpoint",
+      "source_type": "secondary",
+      "notes": "Enfatiza a prioridade de quitar dívidas caras e programar transferências automáticas antes dos gastos discricionários."
+    },
+    {
+      "id": "S6",
+      "title": "A regra 50-30-20 e o método pague-se primeiro: o passo a passo para sair do zero",
+      "url": "https://www.infomoney.com.br/guias/como-organizar-suas-financas/",
+      "publisher": "InfoMoney",
+      "publisher_class": "independent_journalism",
+      "editorial_role": "journalistic_coverage",
+      "source_type": "secondary",
+      "notes": "Metodologia prática de divisão da renda líquida mensal e a importância comportamental de poupar no primeiro dia."
     }
   ],
   "claims": [
     {
       "id": "C1",
-      "statement": "Quando a taxa Selic está acima de 8,5% ao ano, a poupança rende 0,5% ao mês somado à Taxa Referencial.",
+      "statement": "Segundo levantamentos da CNC e do Banco Central, o endividamento atinge cerca de oitenta e dois por cento das famílias brasileiras, com as taxas do cartão rotativo ultrapassando quatrocentos por cento ao ano.",
       "source_ids": [
         "S1",
         "S2"
@@ -128,9 +138,10 @@
     },
     {
       "id": "C2",
-      "statement": "A taxa básica de juros Selic Meta está fixada em 13,75% ao ano pelo Banco Central.",
+      "statement": "A regra orçamentária dos blocos divide a renda líquida mensal em cinquenta por cento para despesas essenciais, trinta por cento para estilo de vida e vinte por cento para a reserva e futuro.",
       "source_ids": [
-        "S2"
+        "S5",
+        "S6"
       ],
       "framing": "verified_fact",
       "confidence": "high",
@@ -139,23 +150,9 @@
     },
     {
       "id": "C3",
-      "statement": "Em uma aplicação de R$ 82 milhões, a taxa fixa de 0,5% ao mês gera R$ 410 mil mensais na poupança, chegando a cerca de R$ 490 mil com a TR média.",
+      "statement": "Em uma renda líquida mensal ilustrativa de três mil reais, a separação de vinte por cento destina exatamente seiscentos reais para a reserva e investimentos.",
       "source_ids": [
-        "S1",
-        "S5"
-      ],
-      "framing": "verified_fact",
-      "confidence": "high",
-      "verification_status": "verified",
-      "attribution_required": false
-    },
-    {
-      "id": "C4",
-      "statement": "Investimentos a 100% do CDI geram rendimento líquido superior à poupança em mais de R$ 190 mil mensais para R$ 82 milhões, mesmo na alíquota inicial de imposto de renda.",
-      "source_ids": [
-        "S3",
-        "S4",
-        "S5"
+        "S6"
       ],
       "framing": "analysis",
       "confidence": "high",
@@ -163,11 +160,23 @@
       "attribution_required": false
     },
     {
+      "id": "C4",
+      "statement": "O método de pagar a si mesmo primeiro determina que a quantia da reserva seja transferida no dia do recebimento do salário, antes de iniciar os gastos do mês.",
+      "source_ids": [
+        "S5",
+        "S6"
+      ],
+      "framing": "verified_fact",
+      "confidence": "high",
+      "verification_status": "verified",
+      "attribution_required": false
+    },
+    {
       "id": "C5",
-      "statement": "O FGC garante até R$ 250 mil por CPF e instituição, enquanto títulos do Tesouro Nacional possuem garantia soberana da União sem esse limite.",
+      "statement": "A reserva de emergência deve cobrir de três a seis meses de despesas básicas e ficar aplicada em opções de liquidez diária e baixo risco, como Tesouro Selic ou CDB coberto pelo FGC.",
       "source_ids": [
         "S3",
-        "S6"
+        "S4"
       ],
       "framing": "verified_fact",
       "confidence": "high",
@@ -177,55 +186,55 @@
   ],
   "visual_assets": [],
   "visual_direction": {
-    "concept": "Cenário editorial moderno com elementos geométricos, contadores métricos e comparativos de rentabilidade claros e equilibrados.",
+    "concept": "Cenário editorial moderno com tipografia cinética, números amarelos gigantes, objetos esquemáticos protagonistas e comparações fluidas.",
     "world": "finance",
     "secondary_color": "#FFBD19",
     "motifs": [
-      "poupança",
-      "renda fixa",
-      "porcentagem",
-      "patrimônio",
-      "tesouro nacional"
+      "carteira",
+      "orçamento",
+      "reserva de emergência",
+      "taxa de juros",
+      "renda fixa"
     ],
     "motion_language": [
-      "Transições limpas com foco em números e contas precisas.",
-      "Comparação lado a lado pausada para facilitar a absorção dos valores.",
-      "Destaque pontual para limites de garantia e segurança institucional."
+      "Transições limpas e ilustrações ativas contínuas sem telas estáticas.",
+      "Números gigantes com tipografia cinética para fixação de dados e valores monetários.",
+      "SVGs esquemáticos com traço e sustentação viva guiando a compreensão de cada virada de fala."
     ],
     "avoid": [
-      "sensacionalismo de enriquecimento fácil",
-      "promessas de retornos irreais ou especulação",
-      "gráficos confusos com escalas distorcidas"
+      "promessas de enriquecimento fácil ou especulação",
+      "telas paradas por mais de quatro segundos",
+      "ícones pequenos perdidos no espaço visual"
     ]
   },
   "editorial": {
     "strengths": [
-      "Resposta imediata e transparente à curiosidade popular sobre grandes patrimônios.",
-      "Demonstração didática da regra legal de rentabilidade da poupança.",
-      "Comparativo financeiro realista considerando o impacto do Imposto de Renda e do FGC."
+      "Resolução imediata para uma dor financeira que afeta a maioria da população brasileira.",
+      "Abordagem prática, com método visual passo a passo e contas transparentes.",
+      "Equilíbrio entre a eliminação de dívidas caras e a construção da reserva de emergência."
     ],
     "risk_flags": [
-      "Deixar claro que a simulação utiliza valores ilustrativos e estimativa de TR média.",
-      "Ressaltar que a rentabilidade do CDI e da Selic oscila conforme as reuniões do Copom."
+      "Deixar explícito que os exemplos de valores em reais são simulações ilustrativas e os percentuais devem ser adaptados a cada realidade familiar.",
+      "Destacar que investimentos não substituem o controle de gastos e a quitação de dívidas com juros altos."
     ],
     "narrative_contract": {
-      "topic_explanation": "Com a Selic em treze vírgula setenta e cinco por cento ao ano, a poupança rende meio por cento ao mês mais a Taxa Referencial.",
+      "topic_explanation": "Organizar as finanças não é sobre cortar todo o cafezinho, mas sobre aplicar o método de pagar a si mesmo primeiro e separar a renda em blocos antes de começar a gastar.",
       "presenter_introduction": "Eu sou o Roberto, do O Dinheiro Explica.",
-      "subscription_request": "se inscreva no canal O Dinheiro Explica e compartilhe esta comparação"
+      "subscription_request": "se inscreva no canal O Dinheiro Explica e ative as notificações"
     },
     "source_balance": {
       "requires_diversity": true,
       "public_policy_or_regulation": true,
-      "official_sources_role": "Lei Federal 12.703 e comunicados do Banco Central fixam a regra objetiva da poupança e a Selic Meta; Tesouro Nacional baliza as taxas dos títulos públicos.",
-      "independent_sources_role": "Jornalismo financeiro independente e dados da B3 trazem simulações práticas de mercado e a taxa DI consolidada.",
-      "counterpoint_summary": "A poupança oferece liquidez imediata e isenção de imposto de renda, mas com juros elevados seu retorno perde substancialmente para alternativas pós-fixadas, além do risco de concentração acima do teto do FGC.",
+      "official_sources_role": "Banco Central e Tesouro Nacional fornecem as taxas oficiais de juros, métricas do crédito rotativo e regras de títulos públicos.",
+      "independent_sources_role": "Pesquisas da CNC e jornalismo financeiro fornecem a realidade do endividamento das famílias e metodologias práticas de orçamento pessoal.",
+      "counterpoint_summary": "Cortar gastos pequenos de conveniência traz pouco efeito se o orçamento estiver sangrando juros de mais de 400% ao ano no rotativo ou se o consumidor não tiver automação de aportes.",
       "official_claims_attributed": true,
       "right_editorial_review": {
         "consulted": [
           {
             "publisher": "Gazeta do Povo",
-            "url": "https://www.gazetadopovo.com.br/economia/copom-define-selic-e-impacto-na-renda-fixa/",
-            "summary": "Análise editorial sobre o impacto da taxa Selic em patamar restritivo e a rentabilidade real dos investimentos de renda fixa frente à inflação."
+            "url": "https://www.gazetadopovo.com.br/economia/financas-pessoais-orcamento-inflacao-juros/",
+            "summary": "Análise sobre a necessidade de disciplina orçamentária, eliminação prioritária de passivos com juros exorbitantes e a importância de poupar no primeiro dia do mês contra a inflação."
           }
         ]
       }
@@ -233,86 +242,103 @@
     "youtube_suitability": {
       "risk_level": "low",
       "sensitive_topics": [
-        "investimentos",
-        "poupança",
-        "juros"
+        "finanças pessoais",
+        "dívidas",
+        "orçamento",
+        "poupança"
       ],
-      "context_notes": "Conteúdo puramente educativo de matemática financeira e educação patrimonial sem recomendação personalizada de investimentos.",
+      "context_notes": "Conteúdo estritamente educacional de planejamento orçamentário e educação financeira sem indicação individual de ativos.",
       "title_thumbnail_safe": true,
-      "monetization_notes": "Tema educativo financeiro totalmente seguro."
+      "monetization_notes": "Tema educativo e seguro para todas as idades e anunciantes."
     },
     "render_review": {
       "status": "production_review_pending",
-      "note": "Episódio focado na rentabilidade de R$ 82 milhões na poupança com voz contínua do Roberto."
+      "note": "Episódio dinâmico focado em como organizar finanças e guardar dinheiro com voz contínua do Roberto."
     },
     "explanation": {
       "version": "1.0",
       "concepts": [
         {
-          "id": "regra-poupanca",
+          "id": "pague-se-primeiro",
           "terms": [
-            "poupança",
-            "meio por cento"
+            "pagar a si mesmo primeiro",
+            "pague-se primeiro"
           ],
           "explanation": {
-            "scene_id": "scene-01",
-            "quote": "Sempre que a Selic estiver acima de oito vírgula cinco por cento ao ano, como acontece no cenário atual, a poupança tem retorno fixo de meio por cento ao mês somado à Taxa Referencial."
+            "scene_id": "scene-00",
+            "quote": "aplicar o método de pagar a si mesmo primeiro e separar a renda em blocos antes de começar a gastar"
           },
           "claim_ids": [
-            "C1"
+            "C4"
           ],
-          "boundary": "Regra aplicável a depósitos da poupança realizados a partir de maio de 2012 nos termos da Lei 12.703."
+          "boundary": "Consiste em priorizar a transferência do valor da reserva antes de pagar as contas do mês e gastos discricionários."
+        },
+        {
+          "id": "reserva-emergencia",
+          "terms": [
+            "reserva de emergência",
+            "reserva"
+          ],
+          "explanation": {
+            "scene_id": "scene-04",
+            "quote": "A reserva de emergência é um montante equivalente a três a seis meses das suas despesas básicas para imprevistos."
+          },
+          "claim_ids": [
+            "C5"
+          ],
+          "boundary": "Deve ficar alocada em ativos de liquidez imediata com proteção soberana ou garantia do FGC, e não em renda variável ou prazos longos."
         }
       ],
       "examples": [
         {
-          "id": "calculo-82m-poupanca",
-          "purpose": "Calcular o rendimento mensal aproximado de oitenta e dois milhões de reais na caderneta de poupança.",
+          "id": "exemplo-50-30-20",
+          "purpose": "Demonstrar a aplicação prática da divisão orçamentária dos blocos em uma renda familiar ilustrativa.",
           "kind": "illustrative",
           "actors": [
             "poupador",
             "instituição financeira"
           ],
           "assumptions": [
-            "Patrimônio hipotético de oitenta e dois milhões de reais",
-            "Taxa mensal fixa de meio por cento"
+            "Salário líquido mensal ilustrativo de três mil reais",
+            "Destinação de vinte por cento para reserva e futuro"
           ],
           "claim_ids": [
+            "C2",
             "C3"
           ],
           "inputs": [
             {
-              "id": "capital_inicial",
-              "value": 82000000,
+              "id": "renda_liquida",
+              "value": 3000,
               "unit": "BRL"
             },
             {
-              "id": "fator_taxa",
-              "value": 0.005,
+              "id": "fator_reserva",
+              "value": 0.2,
               "unit": "ratio"
             }
           ],
           "calculation": {
             "operation": "multiply",
             "input_ids": [
-              "capital_inicial",
-              "fator_taxa"
+              "renda_liquida",
+              "fator_reserva"
             ],
-            "result": 410000,
+            "result": 600,
             "unit": "BRL"
           },
-          "limitation": "Não considera a variação diária da Taxa Referencial nem o efeito dos juros compostos em prazos maiores.",
+          "limitation": "Não reflete variações tributárias individuais ou rendas com alta volatilidade mensal.",
           "narration_refs": [
             {
               "scene_id": "scene-02",
-              "quote": "quatrocentos e dez mil reais"
+              "quote": "seiscentos reais para a reserva"
             }
           ],
           "visual_bindings": [
             {
               "scene_id": "scene-02",
-              "element_id": "calc_mensal",
-              "beat_anchor": "quatrocentos e dez mil reais"
+              "element_id": "bloco_reserva",
+              "beat_anchor": "seiscentos reais para a reserva"
             }
           ],
           "identification": {
@@ -321,46 +347,139 @@
           },
           "visual_identification": {
             "scene_id": "scene-02",
-            "element_id": "calc_label"
+            "element_id": "label_simulacao"
           }
         }
       ],
       "learning_units": [
         {
-          "id": "unit-rendimento-82m",
-          "question": "Quanto rendem oitenta e dois milhões de reais na poupança atualmente?",
+          "id": "unit-diagnostico",
+          "question": "Por que a estratégia de guardar o que sobra no fim do mês falha?",
           "answer": {
-            "scene_id": "scene-02",
-            "quote": "o rendimento mensal garantido é de quatrocentos e dez mil reais"
+            "scene_id": "scene-00",
+            "quote": "mais de oitenta por cento das famílias terminam o mês no aperto ou no endividamento"
           },
           "concept_ids": [
-            "regra-poupanca"
+            "pague-se-primeiro"
           ],
           "claim_ids": [
+            "C1"
+          ],
+          "example_ids": [],
+          "visual_purpose": "Mostrar a carteira e o contraste entre renda e endividamento recorde.",
+          "bindings": [
+            {
+              "scene_id": "scene-00",
+              "element_id": "card_armadilha"
+            }
+          ]
+        },
+        {
+          "id": "unit-dividas-caras",
+          "question": "Qual é a primeira barreira que deve ser eliminada antes de investir?",
+          "answer": {
+            "scene_id": "scene-01",
+            "quote": "os juros do cartão de crédito rotativo ultrapassam quatrocentos e quarenta por cento ao ano"
+          },
+          "concept_ids": [],
+          "claim_ids": [
+            "C1"
+          ],
+          "example_ids": [],
+          "visual_purpose": "Destacar os juros exorbitantes do rotativo e a prioridade de estancar o ralo financeiro.",
+          "bindings": [
+            {
+              "scene_id": "scene-01",
+              "element_id": "card_rotativo"
+            }
+          ]
+        },
+        {
+          "id": "unit-regra-blocos",
+          "question": "Como funciona na prática a divisão da renda líquida em três blocos?",
+          "answer": {
+            "scene_id": "scene-02",
+            "quote": "cinquenta por cento, ou mil e quinhentos reais, para necessidades essenciais"
+          },
+          "concept_ids": [],
+          "claim_ids": [
+            "C2",
             "C3"
           ],
           "example_ids": [
-            "calculo-82m-poupanca"
+            "exemplo-50-30-20"
           ],
-          "visual_purpose": "Demonstrar na tela os valores do rendimento mensal e acumulado anual na poupança.",
+          "visual_purpose": "Apresentar a divisão visual dos blocos orçamentários com números gigantes e setas de transferência.",
           "bindings": [
             {
               "scene_id": "scene-02",
-              "element_id": "calc_mensal"
+              "element_id": "bloco_reserva"
+            }
+          ]
+        },
+        {
+          "id": "unit-automacao",
+          "question": "Como garantir que o valor da reserva não seja gasto ao longo do mês?",
+          "answer": {
+            "scene_id": "scene-03",
+            "quote": "programar uma transferência automática no mesmo dia em que o pagamento entra na conta"
+          },
+          "concept_ids": [
+            "pague-se-primeiro"
+          ],
+          "claim_ids": [
+            "C4"
+          ],
+          "example_ids": [],
+          "visual_purpose": "Demonstrar o fluxo automatizado do dinheiro saindo da conta corrente para a conta de segurança.",
+          "bindings": [
+            {
+              "scene_id": "scene-03",
+              "element_id": "card_transferencia"
+            }
+          ]
+        },
+        {
+          "id": "unit-reserva-segura",
+          "question": "Onde deve ficar guardado o dinheiro da reserva de emergência?",
+          "answer": {
+            "scene_id": "scene-04",
+            "quote": "ativos com liquidez diária e proteção de baixo risco, como o Tesouro Selic ou um CDB com garantia do Fundo Garantidor de Créditos"
+          },
+          "concept_ids": [
+            "reserva-emergencia"
+          ],
+          "claim_ids": [
+            "C5"
+          ],
+          "example_ids": [],
+          "visual_purpose": "Comparar a poupança tradicional com opções pós-fixadas de liquidez diária e cobertura do FGC.",
+          "bindings": [
+            {
+              "scene_id": "scene-04",
+              "element_id": "card_cdb"
             }
           ]
         }
       ],
       "review": {
-        "content_sha256": "46d51d2d1b04725ba3a7ec00ac95b77f881f6e548acc6adb3b05597918dd5820",
+        "content_sha256": "df089827db75ebea512d14d0e235604004490d1e86c8378442222688a6d43480",
         "findings": [
           {
-            "question": "A simulação dos valores de rendimento está claramente identificada como ilustrativa?",
+            "question": "A divisão orçamentária e a simulação de valores estão identificadas como ilustrativas?",
             "evidence": {
               "scene_id": "scene-02",
               "quote": "simulação ilustrativa"
             },
-            "conclusion": "Sim, a locução e o cabeçalho gráfico identificam expressamente a conta como ilustrativa antes da exibição dos valores."
+            "conclusion": "Sim, a locução e o cabeçalho visual declaram a hipótese antes dos números."
+          },
+          {
+            "question": "O conceito de pagar a si mesmo primeiro foi explicado antes de ser aplicado como regra?",
+            "evidence": {
+              "scene_id": "scene-00",
+              "quote": "aplicar o método de pagar a si mesmo primeiro e separar a renda em blocos antes de começar a gastar"
+            },
+            "conclusion": "Sim, a abertura define o conceito na abertura e fundamenta a automação nas cenas seguintes."
           }
         ]
       }
@@ -371,11 +490,11 @@
       "id": "scene-00",
       "index": 0,
       "scene_index": 0,
-      "title": "O fascínio dos R$ 82 milhões na poupança",
-      "narration": "Se você ganhasse oitenta e dois milhões de reais em um sorteio, qual seria o seu primeiro pensamento? Para muitas pessoas, a resposta imediata é colocar tudo na poupança e viver de renda. Mas quanto esse valor rende na prática? Eu sou o Roberto, do O Dinheiro Explica. Com a Selic em treze vírgula setenta e cinco por cento ao ano, a poupança rende meio por cento ao mês mais a Taxa Referencial. Isso parece muito dinheiro, mas você vai ver que deixar essa fortuna na caderneta significa abrir mão de milhões de reais todos os anos.",
+      "title": "O erro clássico de tentar guardar a sobra",
+      "narration": "Você já tentou economizar dinheiro guardando o que sobra no final do mês? Se você é como a maioria das pessoas, o resultado no final dos trinta dias é quase sempre zero. Segundo levantamentos recentes do comércio, mais de oitenta por cento das famílias terminam o mês no aperto ou no endividamento justamente por caírem nessa armadilha mental. Eu sou o Roberto, do O Dinheiro Explica. Organizar as finanças não é sobre cortar todo o cafezinho, mas sobre aplicar o método de pagar a si mesmo primeiro e separar a renda em blocos antes de começar a gastar. E a primeira atitude prática começa no diagnóstico do seu dinheiro.",
       "claim_ids": [
         "C1",
-        "C2"
+        "C4"
       ],
       "visual": {
         "type": "EDITORIAL",
@@ -386,15 +505,15 @@
           "motion_profile": "narrative",
           "elements": [
             {
-              "id": "card_poupanca",
+              "id": "card_armadilha",
               "kind": "metric",
-              "label": "Rendimento mensal",
+              "label": "Famílias no aperto",
               "x": 6,
               "y": 18,
               "width": 42,
               "height": 58,
               "initially_visible": true,
-              "icon": "coins",
+              "icon": "warning",
               "svg_motion": "trace",
               "sustain": {
                 "kind": "float",
@@ -403,20 +522,20 @@
               },
               "label_size": 44,
               "surface": "spotlight",
-              "value": "R$ 410 mil+",
-              "value_size": 96,
-              "detail": "Poupança a 0,5% a.m. + TR"
+              "value": "82%",
+              "value_size": 130,
+              "detail": "Endividamento Peic • CNC"
             },
             {
-              "id": "card_alternativas",
-              "kind": "metric",
-              "label": "Renda fixa com Selic",
+              "id": "card_metodo",
+              "kind": "step",
+              "label": "Orçamento em blocos",
               "x": 52,
               "y": 18,
               "width": 42,
               "height": 58,
               "initially_visible": false,
-              "icon": "chart",
+              "icon": "wallet",
               "svg_motion": "trace",
               "sustain": {
                 "kind": "breathe",
@@ -425,16 +544,16 @@
               },
               "label_size": 44,
               "surface": "spotlight",
-              "value": "R$ 680 mil+",
-              "value_size": 96,
-              "detail": "Tesouro Selic / CDI líquido"
+              "value": "Pague-se 1º",
+              "value_size": 86,
+              "detail": "Método de controle financeiro"
             }
           ],
           "connections": [
             {
-              "id": "conn_poupanca_selic",
-              "from": "card_poupanca",
-              "to": "card_alternativas",
+              "id": "conn_armadilha_metodo",
+              "from": "card_armadilha",
+              "to": "card_metodo",
               "semantic": "comparison",
               "motion": "flow",
               "period_seconds": 2.5
@@ -451,14 +570,14 @@
         },
         "beats": [
           {
-            "anchor": "colocar tudo na poupança e viver de renda",
-            "target_id": "card_poupanca",
+            "anchor": "o resultado no final dos trinta dias é quase sempre zero",
+            "target_id": "card_armadilha",
             "action": "focus",
-            "actuation": "count",
-            "headline": "O plano clássico da poupança",
+            "actuation": "signal",
+            "headline": "O ciclo da frustração financeira",
             "treatment": "giant_number",
             "emphasis": {
-              "phrase": "Rendimento mensal",
+              "phrase": "Famílias no aperto",
               "style": "highlight"
             },
             "kind": "fact",
@@ -471,21 +590,34 @@
             "motion_seconds": 0.8
           },
           {
-            "anchor": "abrir mão de milhões de reais todos os anos",
-            "target_id": "card_alternativas",
-            "action": "reveal",
-            "headline": "Alternativas rendem muito mais",
-            "treatment": "split_compare",
-            "operation": {
-              "kind": "compare",
-              "element_ids": [
-                "card_poupanca",
-                "card_alternativas"
-              ]
-            },
-            "actuation": "confirm",
+            "anchor": "mais de oitenta por cento das famílias terminam o mês no aperto ou no endividamento",
+            "target_id": "card_armadilha",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "Endividamento atinge patamar recorde",
+            "treatment": "giant_number",
             "emphasis": {
-              "phrase": "Renda fixa",
+              "phrase": "Famílias no aperto",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "aplicar o método de pagar a si mesmo primeiro",
+            "target_id": "card_metodo",
+            "action": "reveal",
+            "actuation": "confirm",
+            "headline": "Pague a si mesmo antes de gastar",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Orçamento em blocos",
               "style": "highlight"
             },
             "kind": "fact",
@@ -500,6 +632,21 @@
               "style": "slide",
               "direction": "right"
             }
+          },
+          {
+            "anchor": "primeira atitude prática começa no diagnóstico",
+            "target_id": "card_metodo",
+            "action": "focus",
+            "actuation": "tap",
+            "headline": "Diagnóstico do seu fluxo de caixa",
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
           }
         ]
       },
@@ -507,11 +654,11 @@
         "delivery": "hook",
         "cues": [
           {
-            "text": "qual seria o seu primeiro pensamento?",
+            "text": "Você já tentou economizar dinheiro guardando o que sobra no final do mês?",
             "kind": "emphasis",
             "intent": "curiosity",
             "arc": "question",
-            "emphasis_word": "primeiro",
+            "emphasis_word": "sobra",
             "pause_before_ms": 0
           }
         ]
@@ -521,11 +668,10 @@
       "id": "scene-01",
       "index": 1,
       "scene_index": 1,
-      "title": "A regra legal da poupança",
-      "narration": "Para entender a conta, precisamos olhar a regra oficial estabelecida em lei para a caderneta de poupança. Desde a mudança legislativa de dois mil e doze, o rendimento depende do patamar da taxa básica de juros, a Selic. Sempre que a Selic estiver acima de oito vírgula cinco por cento ao ano, como acontece no cenário atual, a poupança tem retorno fixo de meio por cento ao mês somado à Taxa Referencial. Esse rendimento é totalmente isento de imposto de renda para pessoas físicas e cai na conta a cada trinta dias, na data de aniversário do depósito.",
+      "title": "O ralo financeiro das dívidas caras",
+      "narration": "Antes de pensar em qualquer investimento mirabolante, você precisa estancar o ralo invisível por onde o seu dinheiro escorre. Dados consolidados do Banco Central mostram que os juros do cartão de crédito rotativo ultrapassam quatrocentos e quarenta por cento ao ano. Para você ter uma ideia, se uma dívida de mil reais ficar rolando, ela dobra em poucos meses até atingir o teto legal. Nenhum investimento no planeta rende mais do que o custo dessa bola de neve. Por isso, a prioridade absoluta de qualquer organização financeira é listar todas as contas atrasadas e eliminar primeiro as dívidas de juros mais altos.",
       "claim_ids": [
-        "C1",
-        "C2"
+        "C1"
       ],
       "visual": {
         "type": "EDITORIAL",
@@ -536,15 +682,15 @@
           "motion_profile": "narrative",
           "elements": [
             {
-              "id": "rule_selic",
+              "id": "card_rotativo",
               "kind": "metric",
-              "label": "Selic Meta atual",
+              "label": "Juros do rotativo",
               "x": 6,
               "y": 18,
               "width": 42,
               "height": 58,
               "initially_visible": true,
-              "icon": "bank",
+              "icon": "warning",
               "svg_motion": "trace",
               "sustain": {
                 "kind": "float",
@@ -553,20 +699,20 @@
               },
               "label_size": 44,
               "surface": "spotlight",
-              "value": "13,75%",
+              "value": "444,9%",
               "value_size": 130,
-              "detail": "Copom • Banco Central"
+              "detail": "Ao ano • Banco Central"
             },
             {
-              "id": "rule_yield",
+              "id": "card_prioridade",
               "kind": "step",
-              "label": "Regra da poupança",
+              "label": "Eliminar dívidas caras",
               "x": 52,
               "y": 18,
               "width": 42,
               "height": 58,
               "initially_visible": false,
-              "icon": "document",
+              "icon": "shield",
               "svg_motion": "trace",
               "sustain": {
                 "kind": "breathe",
@@ -575,16 +721,16 @@
               },
               "label_size": 44,
               "surface": "spotlight",
-              "value": "0,5% + TR",
+              "value": "Passo 1",
               "value_size": 110,
-              "detail": "Ao mês • Isento de IR"
+              "detail": "Estancar o ralo financeiro"
             }
           ],
           "connections": [
             {
-              "id": "conn_selic_yield",
-              "from": "rule_selic",
-              "to": "rule_yield",
+              "id": "conn_rotativo_prioridade",
+              "from": "card_rotativo",
+              "to": "card_prioridade",
               "semantic": "cause",
               "motion": "flow",
               "period_seconds": 2.2
@@ -601,14 +747,14 @@
         },
         "beats": [
           {
-            "anchor": "o rendimento depende do patamar da taxa básica de juros",
-            "target_id": "rule_selic",
+            "anchor": "os juros do cartão de crédito rotativo ultrapassam quatrocentos e quarenta por cento ao ano",
+            "target_id": "card_rotativo",
             "action": "focus",
             "actuation": "signal",
-            "headline": "Selic baliza o retorno da poupança",
+            "headline": "A taxa que corrói o patrimônio",
             "treatment": "giant_number",
             "emphasis": {
-              "phrase": "Selic Meta",
+              "phrase": "Juros do rotativo",
               "style": "highlight"
             },
             "kind": "fact",
@@ -621,14 +767,34 @@
             "motion_seconds": 0.8
           },
           {
-            "anchor": "retorno fixo de meio por cento ao mês",
-            "target_id": "rule_yield",
-            "action": "reveal",
-            "actuation": "confirm",
-            "headline": "Regra: 0,5% ao mês mais TR",
+            "anchor": "ela dobra em poucos meses até atingir o teto legal",
+            "target_id": "card_rotativo",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "A bola de neve do endividamento",
             "treatment": "giant_number",
             "emphasis": {
-              "phrase": "Regra da poupança",
+              "phrase": "Juros do rotativo",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "eliminar primeiro as dívidas de juros mais altos",
+            "target_id": "card_prioridade",
+            "action": "reveal",
+            "actuation": "confirm",
+            "headline": "Foco prioritário: zerar juros caros",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Eliminar dívidas",
               "style": "highlight"
             },
             "kind": "fact",
@@ -650,11 +816,11 @@
         "delivery": "explain",
         "cues": [
           {
-            "text": "a poupança tem retorno fixo de meio por cento ao mês somado à Taxa Referencial.",
+            "text": "os juros do cartão de crédito rotativo ultrapassam quatrocentos e quarenta por cento ao ano.",
             "kind": "emphasis",
             "intent": "conviction",
             "arc": "resolve",
-            "emphasis_word": "fixo",
+            "emphasis_word": "quarenta",
             "pause_before_ms": 80
           }
         ]
@@ -664,9 +830,10 @@
       "id": "scene-02",
       "index": 2,
       "scene_index": 2,
-      "title": "A conta exata de R$ 82 milhões",
-      "narration": "Vamos agora para uma simulação ilustrativa com os oitenta e dois milhões de reais. Considerando apenas a taxa fixa de meio por cento ao mês, o rendimento mensal garantido é de quatrocentos e dez mil reais. Quando adicionamos a Taxa Referencial média recente, o ganho mensal total se aproxima de quatrocentos e noventa mil reais. Em um período de doze meses, essa aplicação acumula cerca de seis milhões e duzentos mil reais de rendimento líquido. É uma quantia impressionante, mas a comparação com a renda fixa tradicional mostra onde mora o problema.",
+      "title": "A regra prática dos três blocos",
+      "narration": "Com as dívidas sob controle, entra em cena o sistema que coloca ordem no seu orçamento: a regra dos três blocos. Vamos ver uma simulação ilustrativa com uma renda líquida de três mil reais. O primeiro bloco destina cinquenta por cento, ou mil e quinhentos reais, para necessidades essenciais como moradia, alimentação e contas básicas. O segundo bloco reserva trinta por cento, somando novecentos reais, para estilo de vida, compras e momentos de lazer. E o terceiro bloco separa religiosamente vinte por cento, garantindo seiscentos reais para a reserva e o seu futuro. Essa divisão clara impede que um gasto desnecessário devore a sua tranquilidade.",
       "claim_ids": [
+        "C2",
         "C3"
       ],
       "visual": {
@@ -678,99 +845,99 @@
           "motion_profile": "narrative",
           "elements": [
             {
-              "id": "calc_label",
+              "id": "label_simulacao",
               "kind": "label",
-              "label": "Simulação de rendimento",
+              "label": "Orçamento dos três blocos",
               "x": 8,
               "y": 4,
               "width": 84,
-              "height": 18,
+              "height": 16,
               "initially_visible": true,
               "label_size": 46,
               "surface": "none",
-              "detail": "Valores ilustrativos"
+              "detail": "Valores ilustrativos para R$ 3.000"
             },
             {
-              "id": "calc_patrimonio",
+              "id": "bloco_essencial",
               "kind": "step",
-              "label": "Capital investido",
+              "label": "Gastos essenciais",
               "x": 6,
-              "y": 24,
+              "y": 22,
               "width": 26,
-              "height": 52,
+              "height": 54,
               "initially_visible": true,
-              "icon": "wallet",
+              "icon": "house",
               "svg_motion": "trace",
               "sustain": {
                 "kind": "tilt",
                 "amplitude": 6,
                 "period_seconds": 3.5
               },
-              "label_size": 40,
+              "label_size": 38,
               "surface": "spotlight",
-              "value": "R$ 82 mi",
-              "value_size": 76,
-              "detail": "Patrimônio inicial"
+              "value": "50%",
+              "value_size": 80,
+              "detail": "R$ 1.500 • Moradia e comida"
             },
             {
-              "id": "calc_mensal",
+              "id": "bloco_estilo",
               "kind": "step",
-              "label": "Ganho mensal estimado",
+              "label": "Estilo de vida",
               "x": 37,
-              "y": 24,
+              "y": 22,
               "width": 26,
-              "height": 52,
+              "height": 54,
               "initially_visible": false,
-              "icon": "coins",
+              "icon": "cart",
               "svg_motion": "trace",
               "sustain": {
                 "kind": "float",
                 "amplitude": 8,
                 "period_seconds": 3
               },
-              "label_size": 40,
+              "label_size": 38,
               "surface": "spotlight",
-              "value": "R$ 490 mil",
-              "value_size": 76,
-              "detail": "Com 0,5% + TR média"
+              "value": "30%",
+              "value_size": 80,
+              "detail": "R$ 900 • Lazer e compras"
             },
             {
-              "id": "calc_anual",
+              "id": "bloco_reserva",
               "kind": "metric",
-              "label": "Total em um ano",
+              "label": "Futuro e reserva",
               "x": 68,
-              "y": 24,
+              "y": 22,
               "width": 26,
-              "height": 52,
+              "height": 54,
               "initially_visible": false,
-              "icon": "chart",
+              "icon": "coins",
               "svg_motion": "trace",
               "sustain": {
                 "kind": "breathe",
                 "amplitude": 8,
                 "period_seconds": 3.5
               },
-              "label_size": 40,
+              "label_size": 38,
               "surface": "spotlight",
-              "value": "R$ 6,2 mi",
-              "value_size": 76,
-              "detail": "Rendimento anual isento"
+              "value": "20%",
+              "value_size": 80,
+              "detail": "R$ 600 • Poupança e aportes"
             }
           ],
           "connections": [
             {
-              "id": "conn_fluxo_rendimento",
-              "from": "calc_patrimonio",
-              "to": "calc_mensal",
+              "id": "conn_essencial_estilo",
+              "from": "bloco_essencial",
+              "to": "bloco_estilo",
               "semantic": "transfer",
               "motion": "flow",
               "period_seconds": 2.2,
               "token_label": "R$"
             },
             {
-              "id": "conn_fluxo_anual",
-              "from": "calc_mensal",
-              "to": "calc_anual",
+              "id": "conn_estilo_reserva",
+              "from": "bloco_estilo",
+              "to": "bloco_reserva",
               "semantic": "sequence",
               "motion": "flow",
               "period_seconds": 2.5
@@ -787,14 +954,34 @@
         },
         "beats": [
           {
-            "anchor": "quatrocentos e dez mil reais",
-            "target_id": "calc_mensal",
-            "action": "reveal",
-            "actuation": "count",
-            "headline": "Quase meio milhão por mês",
+            "anchor": "cinquenta por cento, ou mil e quinhentos reais, para necessidades essenciais",
+            "target_id": "bloco_essencial",
+            "action": "focus",
+            "actuation": "confirm",
+            "headline": "50%: Moradia, comida e saúde",
             "treatment": "giant_number",
             "emphasis": {
-              "phrase": "Ganho mensal",
+              "phrase": "Gastos essenciais",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "trinta por cento, somando novecentos reais, para estilo de vida",
+            "target_id": "bloco_estilo",
+            "action": "reveal",
+            "actuation": "confirm",
+            "headline": "30%: Lazer, conforto e bem-estar",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Estilo de vida",
               "style": "highlight"
             },
             "kind": "fact",
@@ -811,14 +998,14 @@
             }
           },
           {
-            "anchor": "seis milhões e duzentos mil reais",
-            "target_id": "calc_anual",
+            "anchor": "seiscentos reais para a reserva",
+            "target_id": "bloco_reserva",
             "action": "reveal",
-            "actuation": "confirm",
-            "headline": "Mais de R$ 6 milhões ao ano",
+            "actuation": "count",
+            "headline": "20%: O valor sagrado do futuro",
             "treatment": "giant_number",
             "emphasis": {
-              "phrase": "Total em um ano",
+              "phrase": "Futuro e reserva",
               "style": "highlight"
             },
             "kind": "fact",
@@ -833,6 +1020,21 @@
               "style": "slide",
               "direction": "right"
             }
+          },
+          {
+            "anchor": "impede que um gasto desnecessário devore a sua tranquilidade",
+            "target_id": "bloco_reserva",
+            "action": "focus",
+            "actuation": "confirm",
+            "headline": "Blindagem financeira do orçamento",
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
           }
         ]
       },
@@ -840,11 +1042,11 @@
         "delivery": "explain",
         "cues": [
           {
-            "text": "o rendimento mensal garantido é de quatrocentos e dez mil reais.",
+            "text": "garantindo seiscentos reais para a reserva e o seu futuro.",
             "kind": "number",
             "intent": "discovery",
             "arc": "resolve",
-            "emphasis_word": "garantido",
+            "emphasis_word": "seiscentos",
             "pause_before_ms": 100
           }
         ]
@@ -854,8 +1056,8 @@
       "id": "scene-03",
       "index": 3,
       "scene_index": 3,
-      "title": "A comparação com o CDI e Tesouro Selic",
-      "narration": "Se esse mesmo montante for aplicado em títulos de renda fixa que rendem cem por cento do CDI, como o Tesouro Selic ou CDBs de liquidez diária, o cenário muda completamente. Com a taxa básica atual, o rendimento bruto mensal fica em torno de oitocentos e oitenta mil reais. Mesmo descontando a alíquota máxima de imposto de renda no primeiro mês, o valor líquido no bolso passa de seiscentos e oitenta mil reais. São cerca de cento e noventa mil reais a mais por mês em comparação com a poupança, superando dois milhões de reais de vantagem em um único ano.",
+      "title": "O poder de pagar a si mesmo primeiro",
+      "narration": "Agora que você conhece os percentuais, vem o segredo prático que faz o método funcionar no mundo real: a automação. Se você deixar esses seiscentos reais parados na conta do dia a dia, a mente humana sempre encontra um motivo urgente para gastar. O truque psicológico é programar uma transferência automática no mesmo dia em que o pagamento entra na conta. O dinheiro do seu futuro sai antes mesmo de você ver o saldo total. Se você quer dominar seu dinheiro e construir patrimônio com clareza, se inscreva no canal O Dinheiro Explica e ative as notificações. Automatizar o hábito vence a força de vontade em todos os meses.",
       "claim_ids": [
         "C4"
       ],
@@ -868,58 +1070,59 @@
           "motion_profile": "narrative",
           "elements": [
             {
-              "id": "alt_cdi",
-              "kind": "metric",
-              "label": "100% do CDI líquido",
-              "x": 8,
-              "y": 20,
-              "width": 40,
-              "height": 56,
+              "id": "card_conta_salario",
+              "kind": "step",
+              "label": "Conta do salário",
+              "x": 6,
+              "y": 18,
+              "width": 42,
+              "height": 58,
               "initially_visible": true,
-              "icon": "chart",
+              "icon": "wallet",
               "svg_motion": "trace",
               "sustain": {
                 "kind": "float",
                 "amplitude": 8,
                 "period_seconds": 3.5
               },
-              "label_size": 42,
+              "label_size": 44,
               "surface": "spotlight",
-              "value": "R$ 680 mil+",
-              "value_size": 90,
-              "detail": "Primeiro mês com IR 22,5%"
+              "value": "Entrada",
+              "value_size": 96,
+              "detail": "Saldo inicial do pagamento"
             },
             {
-              "id": "alt_gap",
-              "kind": "step",
-              "label": "Diferença mensal",
+              "id": "card_transferencia",
+              "kind": "metric",
+              "label": "Envio automático",
               "x": 52,
-              "y": 20,
-              "width": 40,
-              "height": 56,
+              "y": 18,
+              "width": 42,
+              "height": 58,
               "initially_visible": false,
-              "icon": "coins",
+              "icon": "route",
               "svg_motion": "trace",
               "sustain": {
                 "kind": "breathe",
                 "amplitude": 8,
                 "period_seconds": 3
               },
-              "label_size": 42,
+              "label_size": 44,
               "surface": "spotlight",
-              "value": "+ R$ 190 mil",
+              "value": "Pague-se 1º",
               "value_size": 86,
-              "detail": "Vantagem sobre a poupança"
+              "detail": "Agendado no mesmo dia"
             }
           ],
           "connections": [
             {
-              "id": "conn_alt_diff",
-              "from": "alt_cdi",
-              "to": "alt_gap",
-              "semantic": "comparison",
+              "id": "conn_salario_reserva",
+              "from": "card_conta_salario",
+              "to": "card_transferencia",
+              "semantic": "transfer",
               "motion": "flow",
-              "period_seconds": 2.2
+              "period_seconds": 2.2,
+              "token_label": "R$"
             }
           ],
           "captions": {
@@ -933,13 +1136,14 @@
         },
         "beats": [
           {
-            "anchor": "o valor líquido no bolso passa de seiscentos e oitenta mil reais",
-            "target_id": "alt_cdi",
+            "anchor": "mente humana sempre encontra um motivo urgente para gastar",
+            "target_id": "card_conta_salario",
             "action": "focus",
-            "headline": "Mais de R$ 680 mil líquidos ao mês",
+            "actuation": "signal",
+            "headline": "A armadilha de deixar a sobra na conta",
             "treatment": "giant_number",
             "emphasis": {
-              "phrase": "100% do CDI",
+              "phrase": "Conta do salário",
               "style": "highlight"
             },
             "kind": "fact",
@@ -952,21 +1156,14 @@
             "motion_seconds": 0.8
           },
           {
-            "anchor": "cento e noventa mil reais a mais por mês",
-            "target_id": "alt_gap",
+            "anchor": "programar uma transferência automática no mesmo dia em que o pagamento entra na conta",
+            "target_id": "card_transferencia",
             "action": "reveal",
-            "actuation": "count",
-            "headline": "R$ 190 mil a mais todo mês",
-            "treatment": "split_compare",
-            "operation": {
-              "kind": "compare",
-              "element_ids": [
-                "alt_cdi",
-                "alt_gap"
-              ]
-            },
+            "actuation": "confirm",
+            "headline": "Transferência automática no dia 1",
+            "treatment": "giant_number",
             "emphasis": {
-              "phrase": "Diferença mensal",
+              "phrase": "Envio automático",
               "style": "highlight"
             },
             "kind": "fact",
@@ -981,6 +1178,36 @@
               "style": "slide",
               "direction": "right"
             }
+          },
+          {
+            "anchor": "se inscreva no canal O Dinheiro Explica e ative as notificações",
+            "target_id": "card_transferencia",
+            "action": "focus",
+            "actuation": "tap",
+            "headline": "Acompanhe o canal O Dinheiro Explica",
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Automatizar o hábito vence a força de vontade",
+            "target_id": "card_transferencia",
+            "action": "focus",
+            "actuation": "confirm",
+            "headline": "O sistema vence a disciplina isolada",
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
           }
         ]
       },
@@ -988,12 +1215,12 @@
         "delivery": "contrast",
         "cues": [
           {
-            "text": "São cerca de cento e noventa mil reais a mais por mês em comparação com a poupança, superando dois milhões de reais de vantagem em um único ano.",
-            "kind": "contrast",
+            "text": "programar uma transferência automática no mesmo dia em que o pagamento entra na conta.",
+            "kind": "emphasis",
             "intent": "conviction",
             "arc": "contrast",
-            "emphasis_word": "vantagem",
-            "pause_before_ms": 100
+            "emphasis_word": "automática",
+            "pause_before_ms": 60
           }
         ]
       }
@@ -1002,8 +1229,8 @@
       "id": "scene-04",
       "index": 4,
       "scene_index": 4,
-      "title": "A segurança do patrimônio e o limite do FGC",
-      "narration": "Existe ainda outro ponto fundamental que poucos consideram: a segurança do patrimônio. O Fundo Garantidor de Créditos cobre apenas até duzentos e cinquenta mil reais por instituição financeira. Deixar oitenta e dois milhões de reais em uma única conta de poupança é concentrar risco sem qualquer motivo, enquanto títulos públicos do Tesouro Nacional oferecem a garantia soberana do governo federal. Se você quer aprender a proteger seu patrimônio e tomar decisões inteligentes, se inscreva no canal O Dinheiro Explica e compartilhe esta comparação.",
+      "title": "Onde guardar a sua reserva com segurança",
+      "narration": "Mas para onde esse dinheiro deve ir? Jamais deixe a quantia na conta corrente e evite a caderneta de poupança, que trava o rendimento por trinta dias na data de aniversário. A reserva de emergência é um montante equivalente a três a seis meses das suas despesas básicas para imprevistos. O lugar ideal para esse dinheiro são ativos com liquidez diária e proteção de baixo risco, como o Tesouro Selic ou um CDB com garantia do Fundo Garantidor de Créditos. Nessas opções, o seu dinheiro rende todos os dias úteis, acompanha os juros básicos da economia e fica disponível no momento em que você precisar resgatar.",
       "claim_ids": [
         "C5"
       ],
@@ -1016,55 +1243,55 @@
           "motion_profile": "narrative",
           "elements": [
             {
-              "id": "warn_fgc",
+              "id": "card_poupanca_trava",
               "kind": "metric",
-              "label": "Limite do FGC",
-              "x": 8,
-              "y": 20,
-              "width": 40,
-              "height": 56,
+              "label": "Poupança tradicional",
+              "x": 6,
+              "y": 18,
+              "width": 42,
+              "height": 58,
               "initially_visible": true,
-              "icon": "warning",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3
-              },
-              "label_size": 42,
-              "surface": "spotlight",
-              "value": "R$ 250 mil",
-              "value_size": 90,
-              "detail": "Teto por CPF e instituição"
-            },
-            {
-              "id": "safe_treasury",
-              "kind": "step",
-              "label": "Tesouro Nacional",
-              "x": 52,
-              "y": 20,
-              "width": 40,
-              "height": 56,
-              "initially_visible": false,
-              "icon": "shield",
+              "icon": "clock",
               "svg_motion": "trace",
               "sustain": {
                 "kind": "float",
                 "amplitude": 8,
+                "period_seconds": 3
+              },
+              "label_size": 44,
+              "surface": "spotlight",
+              "value": "30 dias",
+              "value_size": 110,
+              "detail": "Rendimento preso no aniversário"
+            },
+            {
+              "id": "card_cdb",
+              "kind": "metric",
+              "label": "Liquidez diária",
+              "x": 52,
+              "y": 18,
+              "width": 42,
+              "height": 58,
+              "initially_visible": false,
+              "icon": "shield",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 8,
                 "period_seconds": 3.5
               },
-              "label_size": 42,
+              "label_size": 44,
               "surface": "spotlight",
-              "value": "Soberano",
-              "value_size": 90,
-              "detail": "Garantia federal sem teto"
+              "value": "Tesouro / CDB",
+              "value_size": 80,
+              "detail": "Rende todo dia útil • FGC"
             }
           ],
           "connections": [
             {
-              "id": "conn_fgc_treasury",
-              "from": "warn_fgc",
-              "to": "safe_treasury",
+              "id": "conn_poupanca_cdb",
+              "from": "card_poupanca_trava",
+              "to": "card_cdb",
               "semantic": "comparison",
               "motion": "flow",
               "period_seconds": 2.5
@@ -1081,14 +1308,14 @@
         },
         "beats": [
           {
-            "anchor": "apenas até duzentos e cinquenta mil reais",
-            "target_id": "warn_fgc",
+            "anchor": "trava o rendimento por trinta dias na data de aniversário",
+            "target_id": "card_poupanca_trava",
             "action": "focus",
             "actuation": "signal",
-            "headline": "FGC cobre apenas R$ 250 mil",
+            "headline": "A trava mensal da poupança",
             "treatment": "giant_number",
             "emphasis": {
-              "phrase": "Limite do FGC",
+              "phrase": "Poupança tradicional",
               "style": "highlight"
             },
             "kind": "fact",
@@ -1101,14 +1328,41 @@
             "motion_seconds": 0.8
           },
           {
-            "anchor": "oferecem a garantia soberana do governo federal",
-            "target_id": "safe_treasury",
-            "action": "reveal",
-            "actuation": "confirm",
-            "headline": "Tesouro tem garantia soberana",
+            "anchor": "três a seis meses das suas despesas básicas",
+            "target_id": "card_poupanca_trava",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "Tamanho ideal: 3 a 6 meses",
             "treatment": "giant_number",
             "emphasis": {
-              "phrase": "Tesouro Nacional",
+              "phrase": "Poupança tradicional",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Tesouro Selic ou um CDB com garantia do Fundo Garantidor de Créditos",
+            "target_id": "card_cdb",
+            "action": "reveal",
+            "actuation": "confirm",
+            "headline": "Renda fixa com liquidez diária",
+            "treatment": "split_compare",
+            "operation": {
+              "kind": "compare",
+              "element_ids": [
+                "card_poupanca_trava",
+                "card_cdb"
+              ]
+            },
+            "emphasis": {
+              "phrase": "Liquidez diária",
               "style": "highlight"
             },
             "kind": "fact",
@@ -1123,6 +1377,200 @@
               "style": "slide",
               "direction": "right"
             }
+          },
+          {
+            "anchor": "disponível no momento em que você precisar resgatar",
+            "target_id": "card_cdb",
+            "action": "focus",
+            "actuation": "confirm",
+            "headline": "Segurança e saque imediato",
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          }
+        ]
+      },
+      "tts": {
+        "delivery": "explain",
+        "cues": [
+          {
+            "text": "ativos com liquidez diária e proteção de baixo risco, como o Tesouro Selic ou um CDB com garantia do Fundo Garantidor de Créditos.",
+            "kind": "emphasis",
+            "intent": "discovery",
+            "arc": "resolve",
+            "emphasis_word": "garantia",
+            "pause_before_ms": 80
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-05",
+      "index": 5,
+      "scene_index": 5,
+      "title": "O plano de ação para começar a poupar",
+      "narration": "Organizar as contas e guardar dinheiro não depende de mágica nem de privação extrema. O caminho seguro é simples: estancar juros caros, dividir a renda nos três blocos, programar a transferência no dia do salário e construir a sua reserva em aplicações seguras de liquidez diária. Se você não conseguir começar com vinte por cento, comece com dez ou cinco por cento, mas comece já no próximo salário. Você já aplica alguma regra para guardar dinheiro todo mês? Escreva a sua experiência nos comentários. Até o próximo episódio!",
+      "claim_ids": [
+        "C2",
+        "C4",
+        "C5"
+      ],
+      "visual": {
+        "type": "EDITORIAL",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "camera_mode": "auto",
+          "motion_profile": "narrative",
+          "elements": [
+            {
+              "id": "card_plano_passos",
+              "kind": "step",
+              "label": "Plano de consistência",
+              "x": 6,
+              "y": 18,
+              "width": 42,
+              "height": 58,
+              "initially_visible": true,
+              "icon": "route",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "tilt",
+                "amplitude": 6,
+                "period_seconds": 3.5
+              },
+              "label_size": 44,
+              "surface": "spotlight",
+              "value": "4 Passos",
+              "value_size": 110,
+              "detail": "Dívidas • Blocos • Automação • Reserva"
+            },
+            {
+              "id": "card_resultado_final",
+              "kind": "metric",
+              "label": "Controle financeiro",
+              "x": 52,
+              "y": 18,
+              "width": 42,
+              "height": 58,
+              "initially_visible": false,
+              "icon": "chart",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 8,
+                "period_seconds": 3.5
+              },
+              "label_size": 44,
+              "surface": "spotlight",
+              "value": "Liberdade",
+              "value_size": 86,
+              "detail": "Patrimônio e tranquilidade"
+            }
+          ],
+          "connections": [
+            {
+              "id": "conn_plano_resultado",
+              "from": "card_plano_passos",
+              "to": "card_resultado_final",
+              "semantic": "cause",
+              "motion": "flow",
+              "period_seconds": 2.5
+            }
+          ],
+          "captions": {
+            "enabled": true,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          }
+        },
+        "beats": [
+          {
+            "anchor": "estancar juros caros, dividir a renda nos três blocos",
+            "target_id": "card_plano_passos",
+            "action": "focus",
+            "actuation": "signal",
+            "headline": "O método comprovado em 4 etapas",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Plano de consistência",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "comece com dez ou cinco por cento, mas comece já no próximo salário",
+            "target_id": "card_plano_passos",
+            "action": "focus",
+            "actuation": "confirm",
+            "headline": "A constância supera o valor de início",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Plano de consistência",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Escreva a sua experiência nos comentários",
+            "target_id": "card_resultado_final",
+            "action": "reveal",
+            "actuation": "confirm",
+            "headline": "Compartilhe sua experiência no canal",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Controle financeiro",
+              "style": "highlight"
+            },
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "tick",
+            "prominence": "contextual",
+            "motion_seconds": 0.9,
+            "entrance": {
+              "style": "slide",
+              "direction": "right"
+            }
+          },
+          {
+            "anchor": "Até o próximo episódio!",
+            "target_id": "card_resultado_final",
+            "action": "focus",
+            "actuation": "tap",
+            "headline": "O Dinheiro Explica",
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.8
           }
         ]
       },
@@ -1130,793 +1578,15 @@
         "delivery": "closing",
         "cues": [
           {
-            "text": "se inscreva no canal O Dinheiro Explica e compartilhe esta comparação.",
+            "text": "Escreva a sua experiência nos comentários.",
             "kind": "emphasis",
             "intent": "reassurance",
             "arc": "resolve",
-            "emphasis_word": "inscreva",
-            "pause_before_ms": 120
+            "emphasis_word": "comentários",
+            "pause_before_ms": 80
           }
         ]
       }
     }
-  ],
-  "script": {
-    "scenes": [
-      {
-        "id": "scene-00",
-        "index": 0,
-        "scene_index": 0,
-        "title": "O fascínio dos R$ 82 milhões na poupança",
-        "narration": "Se você ganhasse oitenta e dois milhões de reais em um sorteio, qual seria o seu primeiro pensamento? Para muitas pessoas, a resposta imediata é colocar tudo na poupança e viver de renda. Mas quanto esse valor rende na prática? Eu sou o Roberto, do O Dinheiro Explica. Com a Selic em treze vírgula setenta e cinco por cento ao ano, a poupança rende meio por cento ao mês mais a Taxa Referencial. Isso parece muito dinheiro, mas você vai ver que deixar essa fortuna na caderneta significa abrir mão de milhões de reais todos os anos.",
-        "claim_ids": [
-          "C1",
-          "C2"
-        ],
-        "visual": {
-          "type": "EDITORIAL",
-          "transition": "cut",
-          "stage": {
-            "show_title": false,
-            "camera_mode": "auto",
-            "motion_profile": "narrative",
-            "elements": [
-              {
-                "id": "card_poupanca",
-                "kind": "metric",
-                "label": "Rendimento mensal",
-                "x": 6,
-                "y": 18,
-                "width": 42,
-                "height": 58,
-                "initially_visible": true,
-                "icon": "coins",
-                "svg_motion": "trace",
-                "sustain": {
-                  "kind": "float",
-                  "amplitude": 8,
-                  "period_seconds": 3.2
-                },
-                "label_size": 44,
-                "surface": "spotlight",
-                "value": "R$ 410 mil+",
-                "value_size": 96,
-                "detail": "Poupança a 0,5% a.m. + TR"
-              },
-              {
-                "id": "card_alternativas",
-                "kind": "metric",
-                "label": "Renda fixa com Selic",
-                "x": 52,
-                "y": 18,
-                "width": 42,
-                "height": 58,
-                "initially_visible": false,
-                "icon": "chart",
-                "svg_motion": "trace",
-                "sustain": {
-                  "kind": "breathe",
-                  "amplitude": 8,
-                  "period_seconds": 3.2
-                },
-                "label_size": 44,
-                "surface": "spotlight",
-                "value": "R$ 680 mil+",
-                "value_size": 96,
-                "detail": "Tesouro Selic / CDI líquido"
-              }
-            ],
-            "connections": [
-              {
-                "id": "conn_poupanca_selic",
-                "from": "card_poupanca",
-                "to": "card_alternativas",
-                "semantic": "comparison",
-                "motion": "flow",
-                "period_seconds": 2.5
-              }
-            ],
-            "captions": {
-              "enabled": true,
-              "max_words": 6,
-              "words_per_line": 3,
-              "max_lines": 2,
-              "font_size": 64,
-              "min_free_area_ratio": 0.3
-            }
-          },
-          "beats": [
-            {
-              "anchor": "colocar tudo na poupança e viver de renda",
-              "target_id": "card_poupanca",
-              "action": "focus",
-              "actuation": "count",
-              "headline": "O plano clássico da poupança",
-              "treatment": "giant_number",
-              "emphasis": {
-                "phrase": "Rendimento mensal",
-                "style": "highlight"
-              },
-              "kind": "fact",
-              "behavior": "transform",
-              "transition": "cut",
-              "placement": "full",
-              "medium": "motion_graphic",
-              "sound": "none",
-              "prominence": "contextual",
-              "motion_seconds": 0.8
-            },
-            {
-              "anchor": "abrir mão de milhões de reais todos os anos",
-              "target_id": "card_alternativas",
-              "action": "reveal",
-              "headline": "Alternativas rendem muito mais",
-              "treatment": "split_compare",
-              "operation": {
-                "kind": "compare",
-                "element_ids": [
-                  "card_poupanca",
-                  "card_alternativas"
-                ]
-              },
-              "actuation": "confirm",
-              "emphasis": {
-                "phrase": "Renda fixa",
-                "style": "highlight"
-              },
-              "kind": "fact",
-              "behavior": "transform",
-              "transition": "cut",
-              "placement": "full",
-              "medium": "motion_graphic",
-              "sound": "tick",
-              "prominence": "contextual",
-              "motion_seconds": 0.9,
-              "entrance": {
-                "style": "slide",
-                "direction": "right"
-              }
-            }
-          ]
-        },
-        "tts": {
-          "delivery": "hook",
-          "cues": [
-            {
-              "text": "qual seria o seu primeiro pensamento?",
-              "kind": "emphasis",
-              "intent": "curiosity",
-              "arc": "question",
-              "emphasis_word": "primeiro",
-              "pause_before_ms": 0
-            }
-          ]
-        }
-      },
-      {
-        "id": "scene-01",
-        "index": 1,
-        "scene_index": 1,
-        "title": "A regra legal da poupança",
-        "narration": "Para entender a conta, precisamos olhar a regra oficial estabelecida em lei para a caderneta de poupança. Desde a mudança legislativa de dois mil e doze, o rendimento depende do patamar da taxa básica de juros, a Selic. Sempre que a Selic estiver acima de oito vírgula cinco por cento ao ano, como acontece no cenário atual, a poupança tem retorno fixo de meio por cento ao mês somado à Taxa Referencial. Esse rendimento é totalmente isento de imposto de renda para pessoas físicas e cai na conta a cada trinta dias, na data de aniversário do depósito.",
-        "claim_ids": [
-          "C1",
-          "C2"
-        ],
-        "visual": {
-          "type": "EDITORIAL",
-          "transition": "cut",
-          "stage": {
-            "show_title": false,
-            "camera_mode": "auto",
-            "motion_profile": "narrative",
-            "elements": [
-              {
-                "id": "rule_selic",
-                "kind": "metric",
-                "label": "Selic Meta atual",
-                "x": 6,
-                "y": 18,
-                "width": 42,
-                "height": 58,
-                "initially_visible": true,
-                "icon": "bank",
-                "svg_motion": "trace",
-                "sustain": {
-                  "kind": "float",
-                  "amplitude": 6,
-                  "period_seconds": 4
-                },
-                "label_size": 44,
-                "surface": "spotlight",
-                "value": "13,75%",
-                "value_size": 130,
-                "detail": "Copom • Banco Central"
-              },
-              {
-                "id": "rule_yield",
-                "kind": "step",
-                "label": "Regra da poupança",
-                "x": 52,
-                "y": 18,
-                "width": 42,
-                "height": 58,
-                "initially_visible": false,
-                "icon": "document",
-                "svg_motion": "trace",
-                "sustain": {
-                  "kind": "breathe",
-                  "amplitude": 6,
-                  "period_seconds": 3.5
-                },
-                "label_size": 44,
-                "surface": "spotlight",
-                "value": "0,5% + TR",
-                "value_size": 110,
-                "detail": "Ao mês • Isento de IR"
-              }
-            ],
-            "connections": [
-              {
-                "id": "conn_selic_yield",
-                "from": "rule_selic",
-                "to": "rule_yield",
-                "semantic": "cause",
-                "motion": "flow",
-                "period_seconds": 2.2
-              }
-            ],
-            "captions": {
-              "enabled": true,
-              "max_words": 6,
-              "words_per_line": 3,
-              "max_lines": 2,
-              "font_size": 64,
-              "min_free_area_ratio": 0.3
-            }
-          },
-          "beats": [
-            {
-              "anchor": "o rendimento depende do patamar da taxa básica de juros",
-              "target_id": "rule_selic",
-              "action": "focus",
-              "actuation": "signal",
-              "headline": "Selic baliza o retorno da poupança",
-              "treatment": "giant_number",
-              "emphasis": {
-                "phrase": "Selic Meta",
-                "style": "highlight"
-              },
-              "kind": "fact",
-              "behavior": "transform",
-              "transition": "cut",
-              "placement": "full",
-              "medium": "motion_graphic",
-              "sound": "none",
-              "prominence": "contextual",
-              "motion_seconds": 0.8
-            },
-            {
-              "anchor": "retorno fixo de meio por cento ao mês",
-              "target_id": "rule_yield",
-              "action": "reveal",
-              "actuation": "confirm",
-              "headline": "Regra: 0,5% ao mês mais TR",
-              "treatment": "giant_number",
-              "emphasis": {
-                "phrase": "Regra da poupança",
-                "style": "highlight"
-              },
-              "kind": "fact",
-              "behavior": "transform",
-              "transition": "cut",
-              "placement": "full",
-              "medium": "motion_graphic",
-              "sound": "tick",
-              "prominence": "contextual",
-              "motion_seconds": 0.9,
-              "entrance": {
-                "style": "slide",
-                "direction": "right"
-              }
-            }
-          ]
-        },
-        "tts": {
-          "delivery": "explain",
-          "cues": [
-            {
-              "text": "a poupança tem retorno fixo de meio por cento ao mês somado à Taxa Referencial.",
-              "kind": "emphasis",
-              "intent": "conviction",
-              "arc": "resolve",
-              "emphasis_word": "fixo",
-              "pause_before_ms": 80
-            }
-          ]
-        }
-      },
-      {
-        "id": "scene-02",
-        "index": 2,
-        "scene_index": 2,
-        "title": "A conta exata de R$ 82 milhões",
-        "narration": "Vamos agora para uma simulação ilustrativa com os oitenta e dois milhões de reais. Considerando apenas a taxa fixa de meio por cento ao mês, o rendimento mensal garantido é de quatrocentos e dez mil reais. Quando adicionamos a Taxa Referencial média recente, o ganho mensal total se aproxima de quatrocentos e noventa mil reais. Em um período de doze meses, essa aplicação acumula cerca de seis milhões e duzentos mil reais de rendimento líquido. É uma quantia impressionante, mas a comparação com a renda fixa tradicional mostra onde mora o problema.",
-        "claim_ids": [
-          "C3"
-        ],
-        "visual": {
-          "type": "EDITORIAL",
-          "transition": "cut",
-          "stage": {
-            "show_title": false,
-            "camera_mode": "auto",
-            "motion_profile": "narrative",
-            "elements": [
-              {
-                "id": "calc_label",
-                "kind": "label",
-                "label": "Simulação de rendimento",
-                "x": 8,
-                "y": 4,
-                "width": 84,
-                "height": 18,
-                "initially_visible": true,
-                "label_size": 46,
-                "surface": "none",
-                "detail": "Valores ilustrativos"
-              },
-              {
-                "id": "calc_patrimonio",
-                "kind": "step",
-                "label": "Capital investido",
-                "x": 6,
-                "y": 24,
-                "width": 26,
-                "height": 52,
-                "initially_visible": true,
-                "icon": "wallet",
-                "svg_motion": "trace",
-                "sustain": {
-                  "kind": "tilt",
-                  "amplitude": 6,
-                  "period_seconds": 3.5
-                },
-                "label_size": 40,
-                "surface": "spotlight",
-                "value": "R$ 82 mi",
-                "value_size": 76,
-                "detail": "Patrimônio inicial"
-              },
-              {
-                "id": "calc_mensal",
-                "kind": "step",
-                "label": "Ganho mensal estimado",
-                "x": 37,
-                "y": 24,
-                "width": 26,
-                "height": 52,
-                "initially_visible": false,
-                "icon": "coins",
-                "svg_motion": "trace",
-                "sustain": {
-                  "kind": "float",
-                  "amplitude": 8,
-                  "period_seconds": 3
-                },
-                "label_size": 40,
-                "surface": "spotlight",
-                "value": "R$ 490 mil",
-                "value_size": 76,
-                "detail": "Com 0,5% + TR média"
-              },
-              {
-                "id": "calc_anual",
-                "kind": "metric",
-                "label": "Total em um ano",
-                "x": 68,
-                "y": 24,
-                "width": 26,
-                "height": 52,
-                "initially_visible": false,
-                "icon": "chart",
-                "svg_motion": "trace",
-                "sustain": {
-                  "kind": "breathe",
-                  "amplitude": 8,
-                  "period_seconds": 3.5
-                },
-                "label_size": 40,
-                "surface": "spotlight",
-                "value": "R$ 6,2 mi",
-                "value_size": 76,
-                "detail": "Rendimento anual isento"
-              }
-            ],
-            "connections": [
-              {
-                "id": "conn_fluxo_rendimento",
-                "from": "calc_patrimonio",
-                "to": "calc_mensal",
-                "semantic": "transfer",
-                "motion": "flow",
-                "period_seconds": 2.2,
-                "token_label": "R$"
-              },
-              {
-                "id": "conn_fluxo_anual",
-                "from": "calc_mensal",
-                "to": "calc_anual",
-                "semantic": "sequence",
-                "motion": "flow",
-                "period_seconds": 2.5
-              }
-            ],
-            "captions": {
-              "enabled": true,
-              "max_words": 6,
-              "words_per_line": 3,
-              "max_lines": 2,
-              "font_size": 64,
-              "min_free_area_ratio": 0.3
-            }
-          },
-          "beats": [
-            {
-              "anchor": "quatrocentos e dez mil reais",
-              "target_id": "calc_mensal",
-              "action": "reveal",
-              "actuation": "count",
-              "headline": "Quase meio milhão por mês",
-              "treatment": "giant_number",
-              "emphasis": {
-                "phrase": "Ganho mensal",
-                "style": "highlight"
-              },
-              "kind": "fact",
-              "behavior": "transform",
-              "transition": "cut",
-              "placement": "full",
-              "medium": "motion_graphic",
-              "sound": "tick",
-              "prominence": "contextual",
-              "motion_seconds": 0.9,
-              "entrance": {
-                "style": "slide",
-                "direction": "right"
-              }
-            },
-            {
-              "anchor": "seis milhões e duzentos mil reais",
-              "target_id": "calc_anual",
-              "action": "reveal",
-              "actuation": "confirm",
-              "headline": "Mais de R$ 6 milhões ao ano",
-              "treatment": "giant_number",
-              "emphasis": {
-                "phrase": "Total em um ano",
-                "style": "highlight"
-              },
-              "kind": "fact",
-              "behavior": "transform",
-              "transition": "cut",
-              "placement": "full",
-              "medium": "motion_graphic",
-              "sound": "tick",
-              "prominence": "contextual",
-              "motion_seconds": 0.9,
-              "entrance": {
-                "style": "slide",
-                "direction": "right"
-              }
-            }
-          ]
-        },
-        "tts": {
-          "delivery": "explain",
-          "cues": [
-            {
-              "text": "o rendimento mensal garantido é de quatrocentos e dez mil reais.",
-              "kind": "number",
-              "intent": "discovery",
-              "arc": "resolve",
-              "emphasis_word": "garantido",
-              "pause_before_ms": 100
-            }
-          ]
-        }
-      },
-      {
-        "id": "scene-03",
-        "index": 3,
-        "scene_index": 3,
-        "title": "A comparação com o CDI e Tesouro Selic",
-        "narration": "Se esse mesmo montante for aplicado em títulos de renda fixa que rendem cem por cento do CDI, como o Tesouro Selic ou CDBs de liquidez diária, o cenário muda completamente. Com a taxa básica atual, o rendimento bruto mensal fica em torno de oitocentos e oitenta mil reais. Mesmo descontando a alíquota máxima de imposto de renda no primeiro mês, o valor líquido no bolso passa de seiscentos e oitenta mil reais. São cerca de cento e noventa mil reais a mais por mês em comparação com a poupança, superando dois milhões de reais de vantagem em um único ano.",
-        "claim_ids": [
-          "C4"
-        ],
-        "visual": {
-          "type": "EDITORIAL",
-          "transition": "cut",
-          "stage": {
-            "show_title": false,
-            "camera_mode": "auto",
-            "motion_profile": "narrative",
-            "elements": [
-              {
-                "id": "alt_cdi",
-                "kind": "metric",
-                "label": "100% do CDI líquido",
-                "x": 8,
-                "y": 20,
-                "width": 40,
-                "height": 56,
-                "initially_visible": true,
-                "icon": "chart",
-                "svg_motion": "trace",
-                "sustain": {
-                  "kind": "float",
-                  "amplitude": 8,
-                  "period_seconds": 3.5
-                },
-                "label_size": 42,
-                "surface": "spotlight",
-                "value": "R$ 680 mil+",
-                "value_size": 90,
-                "detail": "Primeiro mês com IR 22,5%"
-              },
-              {
-                "id": "alt_gap",
-                "kind": "step",
-                "label": "Diferença mensal",
-                "x": 52,
-                "y": 20,
-                "width": 40,
-                "height": 56,
-                "initially_visible": false,
-                "icon": "coins",
-                "svg_motion": "trace",
-                "sustain": {
-                  "kind": "breathe",
-                  "amplitude": 8,
-                  "period_seconds": 3
-                },
-                "label_size": 42,
-                "surface": "spotlight",
-                "value": "+ R$ 190 mil",
-                "value_size": 86,
-                "detail": "Vantagem sobre a poupança"
-              }
-            ],
-            "connections": [
-              {
-                "id": "conn_alt_diff",
-                "from": "alt_cdi",
-                "to": "alt_gap",
-                "semantic": "comparison",
-                "motion": "flow",
-                "period_seconds": 2.2
-              }
-            ],
-            "captions": {
-              "enabled": true,
-              "max_words": 6,
-              "words_per_line": 3,
-              "max_lines": 2,
-              "font_size": 64,
-              "min_free_area_ratio": 0.3
-            }
-          },
-          "beats": [
-            {
-              "anchor": "o valor líquido no bolso passa de seiscentos e oitenta mil reais",
-              "target_id": "alt_cdi",
-              "action": "focus",
-              "headline": "Mais de R$ 680 mil líquidos ao mês",
-              "treatment": "giant_number",
-              "emphasis": {
-                "phrase": "100% do CDI",
-                "style": "highlight"
-              },
-              "kind": "fact",
-              "behavior": "transform",
-              "transition": "cut",
-              "placement": "full",
-              "medium": "motion_graphic",
-              "sound": "none",
-              "prominence": "contextual",
-              "motion_seconds": 0.8
-            },
-            {
-              "anchor": "cento e noventa mil reais a mais por mês",
-              "target_id": "alt_gap",
-              "action": "reveal",
-              "actuation": "count",
-              "headline": "R$ 190 mil a mais todo mês",
-              "treatment": "split_compare",
-              "operation": {
-                "kind": "compare",
-                "element_ids": [
-                  "alt_cdi",
-                  "alt_gap"
-                ]
-              },
-              "emphasis": {
-                "phrase": "Diferença mensal",
-                "style": "highlight"
-              },
-              "kind": "fact",
-              "behavior": "transform",
-              "transition": "cut",
-              "placement": "full",
-              "medium": "motion_graphic",
-              "sound": "tick",
-              "prominence": "contextual",
-              "motion_seconds": 0.9,
-              "entrance": {
-                "style": "slide",
-                "direction": "right"
-              }
-            }
-          ]
-        },
-        "tts": {
-          "delivery": "contrast",
-          "cues": [
-            {
-              "text": "São cerca de cento e noventa mil reais a mais por mês em comparação com a poupança, superando dois milhões de reais de vantagem em um único ano.",
-              "kind": "contrast",
-              "intent": "conviction",
-              "arc": "contrast",
-              "emphasis_word": "vantagem",
-              "pause_before_ms": 100
-            }
-          ]
-        }
-      },
-      {
-        "id": "scene-04",
-        "index": 4,
-        "scene_index": 4,
-        "title": "A segurança do patrimônio e o limite do FGC",
-        "narration": "Existe ainda outro ponto fundamental que poucos consideram: a segurança do patrimônio. O Fundo Garantidor de Créditos cobre apenas até duzentos e cinquenta mil reais por instituição financeira. Deixar oitenta e dois milhões de reais em uma única conta de poupança é concentrar risco sem qualquer motivo, enquanto títulos públicos do Tesouro Nacional oferecem a garantia soberana do governo federal. Se você quer aprender a proteger seu patrimônio e tomar decisões inteligentes, se inscreva no canal O Dinheiro Explica e compartilhe esta comparação.",
-        "claim_ids": [
-          "C5"
-        ],
-        "visual": {
-          "type": "EDITORIAL",
-          "transition": "cut",
-          "stage": {
-            "show_title": false,
-            "camera_mode": "auto",
-            "motion_profile": "narrative",
-            "elements": [
-              {
-                "id": "warn_fgc",
-                "kind": "metric",
-                "label": "Limite do FGC",
-                "x": 8,
-                "y": 20,
-                "width": 40,
-                "height": 56,
-                "initially_visible": true,
-                "icon": "warning",
-                "svg_motion": "trace",
-                "sustain": {
-                  "kind": "breathe",
-                  "amplitude": 8,
-                  "period_seconds": 3
-                },
-                "label_size": 42,
-                "surface": "spotlight",
-                "value": "R$ 250 mil",
-                "value_size": 90,
-                "detail": "Teto por CPF e instituição"
-              },
-              {
-                "id": "safe_treasury",
-                "kind": "step",
-                "label": "Tesouro Nacional",
-                "x": 52,
-                "y": 20,
-                "width": 40,
-                "height": 56,
-                "initially_visible": false,
-                "icon": "shield",
-                "svg_motion": "trace",
-                "sustain": {
-                  "kind": "float",
-                  "amplitude": 8,
-                  "period_seconds": 3.5
-                },
-                "label_size": 42,
-                "surface": "spotlight",
-                "value": "Soberano",
-                "value_size": 90,
-                "detail": "Garantia federal sem teto"
-              }
-            ],
-            "connections": [
-              {
-                "id": "conn_fgc_treasury",
-                "from": "warn_fgc",
-                "to": "safe_treasury",
-                "semantic": "comparison",
-                "motion": "flow",
-                "period_seconds": 2.5
-              }
-            ],
-            "captions": {
-              "enabled": true,
-              "max_words": 6,
-              "words_per_line": 3,
-              "max_lines": 2,
-              "font_size": 64,
-              "min_free_area_ratio": 0.3
-            }
-          },
-          "beats": [
-            {
-              "anchor": "apenas até duzentos e cinquenta mil reais",
-              "target_id": "warn_fgc",
-              "action": "focus",
-              "actuation": "signal",
-              "headline": "FGC cobre apenas R$ 250 mil",
-              "treatment": "giant_number",
-              "emphasis": {
-                "phrase": "Limite do FGC",
-                "style": "highlight"
-              },
-              "kind": "fact",
-              "behavior": "transform",
-              "transition": "cut",
-              "placement": "full",
-              "medium": "motion_graphic",
-              "sound": "none",
-              "prominence": "contextual",
-              "motion_seconds": 0.8
-            },
-            {
-              "anchor": "oferecem a garantia soberana do governo federal",
-              "target_id": "safe_treasury",
-              "action": "reveal",
-              "actuation": "confirm",
-              "headline": "Tesouro tem garantia soberana",
-              "treatment": "giant_number",
-              "emphasis": {
-                "phrase": "Tesouro Nacional",
-                "style": "highlight"
-              },
-              "kind": "fact",
-              "behavior": "transform",
-              "transition": "cut",
-              "placement": "full",
-              "medium": "motion_graphic",
-              "sound": "tick",
-              "prominence": "contextual",
-              "motion_seconds": 0.9,
-              "entrance": {
-                "style": "slide",
-                "direction": "right"
-              }
-            }
-          ]
-        },
-        "tts": {
-          "delivery": "closing",
-          "cues": [
-            {
-              "text": "se inscreva no canal O Dinheiro Explica e compartilhe esta comparação.",
-              "kind": "emphasis",
-              "intent": "reassurance",
-              "arc": "resolve",
-              "emphasis_word": "inscreva",
-              "pause_before_ms": 120
-            }
-          ]
-        }
-      }
-    ],
-    "hook": "Se você ganhasse oitenta e dois milhões de reais em um sorteio, qual seria o seu primeiro pensamento? Para muitas pessoas, a resposta imediata é colocar tudo na poupança e viver de renda. Mas quanto esse valor rende na prática? Eu sou o Roberto, do O Dinheiro Explica. Com a Selic em treze vírgula setenta e cinco por cento ao ano, a poupança rende meio por cento ao mês mais a Taxa Referencial. Isso parece muito dinheiro, mas você vai ver que deixar essa fortuna na caderneta significa abrir mão de milhões de reais todos os anos."
-  }
+  ]
 }
