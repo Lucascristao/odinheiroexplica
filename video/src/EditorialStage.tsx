@@ -9,7 +9,7 @@ import {useEditorialFont, measureEditorialText} from "./editorial-font";
 import {composeText, EDITORIAL_FONT} from "../../src/lib/editorial-typography";
 import {entranceMotion, layoutStage, nodeContent, pointOnRoute} from "../../src/lib/editorial-layout";
 import {editorialStageSchema, kineticWordProgress, type EditorialStage as Stage, type StageEvent} from "../../src/lib/editorial-stage";
-import {connectionCycle, surfaceBackground, sustainedTransform} from "./editorial-sustained-motion";
+import {connectionCycle, documentSupportShadow, surfaceBackground, sustainedTransform} from "./editorial-sustained-motion";
 
 const FONT = EDITORIAL_FONT;
 const WHITE = "#f6f7f8";
@@ -25,7 +25,7 @@ const TextBox = ({text, width, height, maxSize = 42, minSize = 32, color = WHITE
   const start=emphasis ? normalized.indexOf(emphasis.phrase.trim().replace(/\s+/g," ")) : -1;
   const end=start+(emphasis?.phrase.trim().replace(/\s+/g," ").length??0);
   const wordCount=lines.join(" ").trim().split(/\s+/).length;
-  const wordTravel=Math.max(0,Math.min(size*.12,(height-layout.requiredHeight)*.5));
+  const wordTravel=Math.max(0,Math.min(size*.35,(height-layout.requiredHeight)*.5));
   let cursor=0, wordIndex=0;
   return <div data-text-minimum={minSize} data-text-size={size} style={{fontSize:size,lineHeight:1.18,fontWeight:700,color,whiteSpace:"pre",letterSpacing:0}}>{lines.map((line,i)=>{
     const offset=cursor;cursor+=line.length+1;
@@ -37,7 +37,7 @@ const TextBox = ({text, width, height, maxSize = 42, minSize = 32, color = WHITE
       const a=Math.max(0,start-tokenOffset),b=Math.min(token.length,end-tokenOffset);
       const marked=start>=0&&b>a;
       const markProgress=Math.max(0,Math.min(1,(progress*(end-start)-(tokenOffset+a-start))/Math.max(1,b-a)));
-      return <span key={index} data-motion-word={kinetic?wordIndex:undefined} style={{display:"inline-block",opacity:p,transform:kinetic?`translateY(${(1-p)*wordTravel}px) scale(${.88+.12*p})`:undefined,transformOrigin:"left bottom",filter:kinetic&&p<1?`blur(${(1-p)*1.2}px)`:undefined}}>
+      return <span key={index} data-motion-word={kinetic?wordIndex:undefined} style={{display:"inline-block",opacity:p,transform:kinetic?`translateY(${(1-p)*wordTravel}px) scale(${.76+.24*p})`:undefined,transformOrigin:"left bottom",filter:kinetic&&p<1?`blur(${(1-p)*1.8}px)`:undefined}}>
         {marked?<>{token.slice(0,a)}<span style={{position:"relative",display:"inline-block"}}>
           {token.slice(a,b)}
           {emphasis?.style==="highlight" && <span style={{position:"absolute",inset:0,color:"#101317",background:GOLD,clipPath:`inset(0 ${(1-markProgress)*100}% 0 0)`}}>{token.slice(a,b)}</span>}
@@ -166,7 +166,7 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
         // Treatments alter the targeted information at its authored cue. Their
         // transforms stay inside the reserved box, preserving complete framing.
         const giantNumber = element.treatment === "giant_number";
-        const kineticLabel = checkedStage.motion_profile !== "static" && element.treatment === "kinetic_type" && ["reveal", "update"].includes(element.cueAction ?? "");
+        const kineticLabel = checkedStage.motion_profile !== "static" && element.treatment === "kinetic_type" && ["focus", "reveal", "update"].includes(element.cueAction ?? "");
         const maskedEmphasis = element.treatment === "masked_emphasis" && !element.emphasis;
         const color = selected && active?.prominence !== "support" ? accent : WHITE;
         // Facts are displayed exactly as authored. String parsing cannot infer
@@ -195,8 +195,8 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
               background: authoredSurface ? (!["photo","object"].includes(element.kind) ? surface : undefined) : cardBg,
               border: authoredSurface ? undefined : cardBorder,
               borderLeft: !authoredSurface && isDiagramStep && !isRouteNode ? `5px solid ${selected ? GOLD : "#45515a"}` : undefined,
-              boxShadow: authoredSurface ? undefined : cardShadow,
-              borderRadius: isCard && !isRouteNode ? 18 : (element.overlay_on ? 12 : undefined),
+              boxShadow: isExcerpt && authoredSurface ? documentSupportShadow(element.surface,frame,fps,sustain,element.changedAt) : authoredSurface ? undefined : cardShadow,
+              borderRadius: isExcerpt && authoredSurface ? 8 : isCard && !isRouteNode ? 18 : (element.overlay_on ? 12 : undefined),
               transform: `translate(${translateX}px, ${translateY}px) scale(${scalePop})`,
               boxSizing: "border-box",
               display: "flex",
@@ -331,7 +331,7 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
                 </div>
               </>
             )}
-            {selected && !maskedEmphasis && !element.emphasis && !["photo", "source_excerpt", "chart"].includes(element.kind) && (
+            {selected && !authoredSurface && !maskedEmphasis && !element.emphasis && !["photo", "source_excerpt", "chart"].includes(element.kind) && (
               <div
                 style={{
                   position: "absolute",

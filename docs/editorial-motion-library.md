@@ -1,6 +1,6 @@
 # Biblioteca de movimento editorial
 
-> Para a produção atual, siga primeiro [editorial-continuity.md](editorial-continuity.md). Texto por palavra, grifos, SVGs em camadas e operações agora participam do palco persistente. Recursos de montagem fotográfica e transição do renderer antigo continuam identificados como legados.
+> Para a produção atual, siga primeiro [editorial-continuity.md](editorial-continuity.md). Tratamentos pontuais de texto editorial, grifos, SVGs em camadas e operações participam do palco persistente. Legendas da narração usam blocos completos, sem animação palavra a palavra. Recursos de montagem fotográfica e transição do renderer antigo continuam identificados como legados.
 
 Esta biblioteca existe para ampliar a linguagem do canal, não para criar um novo template fixo.
 
@@ -35,7 +35,7 @@ O Actions executa uma verificação antes da narração e outra com o relógio d
 
 ### Conferir o que será executado
 
-O diagnóstico de direção separa erros de execução de alertas editoriais. Uma escolha explícita sem os dados exigidos interrompe o plano antes da voz: `flow_diagram` precisa de uma conexão do alvo, `equation`/`split_compare`/`stack`/`meter`/`signal` precisam de uma operação correspondente, `kinetic_type` precisa de `reveal`/`update` de texto, `giant_number` precisa de `value`, e `masked_emphasis` precisa de um rótulo de texto. Uma operação já declarada pode continuar visível nos beats seguintes; não duplicar dados para simular continuidade.
+O diagnóstico de direção separa erros de execução de alertas editoriais. Uma escolha explícita sem os dados exigidos interrompe o plano antes da voz: `flow_diagram` precisa de uma conexão do alvo, `equation`/`split_compare`/`stack`/`meter`/`signal` precisam de uma operação correspondente, `kinetic_type` precisa de texto em `reveal`/`update` ou `focus` autoral, `giant_number` precisa de `value`, e `masked_emphasis` precisa de um rótulo de texto. Uma operação já declarada pode continuar visível nos beats seguintes; não duplicar dados para simular continuidade.
 
 No palco persistente, `behavior: reframe` sozinho não move câmera. Declare `camera` ou selecione `camera_mode: auto` conscientemente; em uma prova documental, `view` ou `mark_ids` executam a aproximação ou o destaque regional. Um nome de tratamento, `transition` ou uma frase em `visual_direction` não substitui esses dados.
 
@@ -61,7 +61,7 @@ A entrada apresenta o assunto; o desenvolvimento precisa continuar mostrando o p
 
 | Contrato autoral | Uso |
 |---|---|
-| `element.sustain` | `{kind: breathe | drift | float | tilt, amplitude: 0..12, period_seconds: 2..12, phase?: number}`: movimento pequeno, determinístico, reservado com o objeto. A amplitude é limitada pelo contrato; não deslocar dados para fora da região nem fazê-los oscilar para sugerir valores. |
+| `element.sustain` | `{kind: breathe | drift | float | tilt, amplitude: 0..40, period_seconds: 2..12, phase?: number}`: movimento autoral e perceptível, determinístico, dentro do envelope do objeto. O motor limita o envelope a até 12% do objeto e a inclinação a 4°. Escolher amplitude pela ação e escala, sem mover dados para fora da região ou fazê-los oscilar para sugerir valores. |
 | `connection.motion` | `once` desenha o percurso e repousa; `flow` mantém o percurso ativo; `pulse` destaca a ligação periodicamente. `period_seconds` controla o ciclo. Escolher continuidade só quando há relação/processo em curso, sem inferir velocidade, frequência ou volume financeiro. |
 | `beat.actuation` | `tap`, `lock`, `unlock`, `confirm` ou `signal`: ação das partes do SVG ligada à âncora da fala. Usar com um alvo compatível; desenhar um cadeado não demonstra abrir/fechar, e aproximar o bloco inteiro não demonstra tocar a tela. |
 | `element.surface` | `none`, `glow`, `paper` ou `spotlight`: acabamento escolhido pela função. Uma escolha explícita retira painel, borda e regra lateral legados; `none` mostra arte/tipografia limpa, `glow` e `spotlight` são luz, sem cartão obrigatório. `paper` fica no suporte de photo/object, separado do rótulo branco; documentos preservam os pixels e podem usar iluminação no fundo. |
@@ -72,21 +72,23 @@ Os objetos esquemáticos incluem `receipt`, `wallet`, `bank`, `component`, `fact
 
 Um foco dominante pode atuar enquanto apoios permanecem legíveis. Fluxo e movimento secundário sustentam contexto, mas não devem disputar atenção com uma palavra, número ou ação principal. Repetir o ciclo enquanto a fala explica uma relação é diferente de movimentar todo cartão como decoração.
 
-### Legendas editoriais curtas em espaços adaptativos
+### Legendas em blocos somente onde a composição permite
 
-`stage.captions` é uma escolha explícita para aquela cena: `{enabled, max_words: 1 | 2, font_size: 72..140, preferred_side: auto | left | right | center, region?: {x, y, width, height}}`. A região usa percentuais do palco. Ausência não adiciona legenda automaticamente aos projetos anteriores.
+`stage.captions` é uma escolha explícita para aquela cena. O contrato aceita `max_words:1..8` (padrão 6), `words_per_line:1..4` (padrão 3), `max_lines:1|2` (padrão 2), `font_size:48..140` (padrão 64) e `min_free_area_ratio:0.30..0.40` (padrão 0.30). A faixa de fonte até 140 conserva projetos antigos; o renderer limita a presença da legenda a 96 px. Novas produções usam blocos normais de aproximadamente três palavras por linha, com até duas linhas. Mesmo com `max_words` antigo de 1 ou 2, o renderer agrupa ao menos três palavras quando há fala contínua; as faixas não autorizam retomar a legenda palavra a palavra. Não inventar palavras para completar um fragmento curto. Ausência não adiciona legenda automaticamente aos projetos anteriores.
 
-As palavras acompanham a narração em grupos curtos, com presença tipográfica grande e legível. A posição considera os objetos e a câmera apresentados naquele momento; `auto` procura espaço disponível, e uma região autoral indica o lugar preferido para o texto. Se ela não comportar a legenda legível, o motor procura outra área livre do palco antes de reduzir a fonte. Quando um objeto sai, o vazio pode receber a próxima palavra ou uma nova função visual; quando a prova ocupa a região, preservar seu texto, valor e unidade. Não fixar toda legenda no rodapé nem cobrir elementos essenciais para cumprir uma escolha de lado.
+As ilustrações comandam a composição. A legenda entra apenas quando houver uma área livre contígua que atinja o limiar escolhido de 30–40% do quadro do vídeo, considerando objetos, câmera, entradas, rotas, operadores e documentos. Vazios pequenos separados não somam essa área. Se não houver área suficiente, omitir a legenda naquele momento; não afastar, reduzir ou retirar a ilustração para criar espaço e não promover um vazio pequeno a faixa de legenda.
+
+Não reservar uma região para legenda. Os campos antigos `region` e `preferred_side` continuam aceitos por compatibilidade, mas não podem forçar a entrada, superar o limiar de área livre nem alterar a composição. Exibir o bloco completo de uma vez, sincronizado ao trecho falado, sem sublinhado, karaoke, destaque progressivo ou pop individual de palavras. Ler o bloco deve ser confortável, sem perseguir uma palavra a cada instante.
 
 O worker prepara `scene.audio_captions` no input gerado: `text`, `start_frame`, `end_frame` e `timing_source`. `scene.caption_timing` registra origem, palavras correspondidas e hashes de áudio/narração. Palavras reconhecidas usam `audio-word-alignment`; interpolação entre âncoras ou atividade do áudio permanece identificada como estimativa. Nunca apresentar uma estimativa como sincronismo confirmado. Não escrever tokens ou tempos finais manualmente em `daily.json`.
 
-Legendas seguem palavras literais da fala, sem inventar termos, quantias ou condições. Elas ajudam a ocupar e conduzir o olhar; não substituem a demonstração de uma transferência, comparação ou condição. Rótulos persistentes e legendas da fala têm papéis diferentes: evitar duplicá-los no mesmo foco. Desabilitar legendas quando leitura documental ou uma conta completa exigir o quadro.
+Legendas seguem palavras literais da fala, sem inventar termos, quantias ou condições. Elas acompanham a compreensão quando o espaço já existe; não devem determinar o enquadramento nem preencher todo vazio. Não substituem a demonstração de uma transferência, comparação ou condição. Rótulos persistentes e legendas da fala têm papéis diferentes: evitar duplicá-los no mesmo foco. Desabilitar legendas quando leitura documental ou uma conta completa exigir o quadro.
 
 ### word cascade no palco
 
 Aplicado dentro de kinetic_type. Palavras não aparecem como um bloco único: entram em sequência, com deslocamento e blur discreto. A sequência precisa caber no intervalo real do beat.
 
-No palco persistente, o label mantém suas linhas e sua região medida; os dados numéricos permanecem exatos. Use o tratamento nos reveals/updates pertinentes, sem aplicá-lo a toda frase.
+No palco persistente, o label mantém suas linhas e sua região medida; os dados numéricos permanecem exatos. Use o tratamento nos reveals/updates ou focus autorais pertinentes, sem aplicá-lo a toda frase. Essa cascata pertence ao rótulo editorial pontual; a legenda da narração sempre entra em bloco completo, sem movimento palavra a palavra.
 
 ### Números no palco e renderer legado
 
@@ -101,6 +103,8 @@ Uma faixa de destaque percorre a frase sem trocar a composição inteira. Use pa
 ### Foto em movimento e montagem legada
 
 No palco persistente, `depth_photo` exige um alvo `kind: photo` com `image_motion: push | pan`; o movimento fica dentro da região da imagem. Um `source_excerpt` preserva a evidência documental e usa `view`/`mark_ids`, sem receber essa animação fotográfica.
+
+Fotos e recortes precisam de acabamento autoral: suporte visual, moldura, profundidade, luz e entrada conforme a pauta. Um retângulo branco solto não é composição final. Aplicar esse tratamento ao redor ou na apresentação do material, preservando pixels, texto, fonte, atribuição e contexto da evidência. Não redesenhar um documento, esconder condições ou trocar o conteúdo para obter acabamento. O suporte não deve impor a mesma moldura a todas as cenas.
 
 A montagem com uma fotografia recortada entre texto de fundo e primeiro plano (`depth_photo` com `medium: photo_cutout`) pertence ao renderer legado. O palco não cria essa profundidade apenas pelo nome do tratamento. Quando a história exigir essa interação espacial, crie e valide uma composição autoral que a execute.
 

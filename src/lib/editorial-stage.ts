@@ -14,7 +14,7 @@ const stageEntranceSchema = z.object({
 });
 const stageSustainSchema = z.object({
   kind: z.enum(["breathe", "drift", "float", "tilt"]),
-  amplitude: z.number().min(0).max(12),
+  amplitude: z.number().min(0).max(40),
   period_seconds: z.number().min(2).max(12),
   phase: z.number().min(0).max(1).optional(),
 });
@@ -71,8 +71,11 @@ export const editorialStageSchema = z.object({
   motion_profile: z.enum(["narrative", "static"]).default("narrative"),
   captions: z.object({
     enabled: z.boolean().default(true),
-    max_words: z.union([z.literal(1), z.literal(2)]).default(2),
-    font_size: z.number().min(72).max(140).default(104),
+    max_words: z.number().int().min(1).max(8).default(6),
+    words_per_line: z.number().int().min(1).max(4).default(3),
+    max_lines: z.union([z.literal(1), z.literal(2)]).default(2),
+    font_size: z.number().min(48).max(140).default(64),
+    min_free_area_ratio: z.number().min(.30).max(.40).default(.30),
     preferred_side: z.enum(["auto", "left", "right", "center"]).default("auto"),
     region: regionSchema.optional(),
   }).optional(),

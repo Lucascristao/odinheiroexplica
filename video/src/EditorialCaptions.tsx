@@ -11,14 +11,15 @@ export type CaptionWord = {
   end_frame: number;
   timing_source: string;
 };
-type CaptionPlacement = {box: Box; size: number; multiline: boolean};
+type CaptionPlacement = {box: Box; freeRegion: Box; size: number; lines: string[]};
 const clamp = {extrapolateLeft: "clamp", extrapolateRight: "clamp"} as const;
-const SCREEN_GAP = 24;
-const CAPTION_PADDING = 16;
+const SCREEN_GAP = 32;
+const PADDING = 16;
+const joinsNext = (word: string) => /^(a|o|as|os|um|uma|uns|umas|de|da|do|das|dos|em|na|no|nas|nos|ao|aos|à|às|para|por|com|sem|que|e|ou|não|se)$/i.test(word);
+const terminal = (word: string) => /[.!?;:]$/.test(word);
 
-// Screen-space occupancy comes from the same camera and geometry as the scene.
-// Captions yield to evidence, labels, route corridors and operations, including
-// incoming/retiring elements. They never infer that empty image pixels are free.
+// The illustration is composed first. Screen-space occupancy follows that
+// composition, including camera poses, route corridors and retiring objects.
 const occupiedAt = (stage: EditorialStage, beats: StageEvent[], frame: number, fps: number, width: number, height: number, title?: string) => {
   const solved = layoutStage(stage, beats, frame, fps, width, height, measureEditorialText, title);
   const {canvas, camera} = solved;
@@ -40,46 +41,96 @@ const occupiedAt = (stage: EditorialStage, beats: StageEvent[], frame: number, f
   return {boxes, safe: {x: canvas.x + 12, y: canvas.y + 12, w: canvas.width - 24, h: canvas.height - 24}};
 };
 
+// Find a contiguous empty rectangle, not a sum of disconnected gaps or merely
+// a box large enough for the letters. The minimum is a fraction of the VIDEO.
+const freeRegions = (safe: Box, occupied: Box[], minimumArea: number): Box[] => {
+  const obstacles = occupied.map(b => {
+    const x = Math.max(safe.x, b.x - SCREEN_GAP), y = Math.max(safe.y, b.y - SCREEN_GAP);
+    return {x, y, w: Math.min(safe.x + safe.w, b.x + b.w + SCREEN_GAP) - x,
+      h: Math.min(safe.y + safe.h, b.y + b.h + SCREEN_GAP) - y};
+  }).filter(b => b.w > 0 && b.h > 0);
+  const xs = [...new Set([safe.x, safe.x + safe.w, ...obstacles.flatMap(b => [b.x, b.x + b.w])])].sort((a, b) => a - b);
+  const result: Box[] = [];
+  for (let left = 0; left < xs.length - 1; left++) for (let right = left + 1; right < xs.length; right++) {
+    const x = xs[left], w = xs[right] - x;
+    if (w * safe.h < minimumArea) continue;
+    const blocked = obstacles.filter(b => b.x < xs[right] - .01 && b.x + b.w > x + .01).sort((a, b) => a.y - b.y);
+    let cursor = safe.y;
+    const add = (bottom: number) => {
+      const h = bottom - cursor;
+      if (w * h >= minimumArea) result.push({x, y: cursor, w, h});
+    };
+    for (const b of blocked) {
+      if (b.y > cursor) add(b.y);
+      cursor = Math.max(cursor, b.y + b.h);
+    }
+    add(safe.y + safe.h);
+  }
+  return result.sort((a, b) => b.w * b.h - a.w * a.h);
+};
+
+const phraseChunks = (words: CaptionWord[], stage: EditorialStage, fps: number): CaptionWord[][] => {
+  const perLine = Math.max(3, stage.captions?.words_per_line ?? 3);
+  const lines = stage.captions?.max_lines ?? 2;
+  // Importing an old max_words:1 project must not restore word-by-word motion.
+  const configured = stage.captions?.max_words ?? 6;
+  const limit = Math.min(perLine * lines, configured < 3 ? 6 : configured);
+  const chunks: CaptionWord[][] = [];
+  let index = 0;
+  while (index < words.length) {
+    let phraseEnd = index + 1;
+    while (phraseEnd < words.length && !terminal(words[phraseEnd - 1].text)
+      && words[phraseEnd].start_frame - words[phraseEnd - 1].end_frame < fps * .8) phraseEnd++;
+    let end = Math.min(phraseEnd, index + limit);
+    // Balance the final blocks instead of flashing a lone leftover word.
+    if (phraseEnd - end > 0 && phraseEnd - end < 3 && end - index > 2) end -= 3 - (phraseEnd - end);
+    if (end < phraseEnd && !terminal(words[end - 1].text)) {
+      while (end - index > 3 && joinsNext(words[end - 1].text)) end--;
+    }
+    chunks.push(words.slice(index, end));
+    index = end;
+  }
+  return chunks;
+};
+
+const lineOptions = (words: CaptionWord[], stage: EditorialStage): string[][] => {
+  const text = words.map(word => word.text);
+  const perLine = Math.max(3, stage.captions?.words_per_line ?? 3);
+  if (text.length <= perLine || stage.captions?.max_lines === 1) return [[text.join(" ")]];
+  const splits = Array.from({length: text.length - 1}, (_, i) => i + 1)
+    .filter(at => at <= perLine + 1 && text.length - at <= perLine + 1)
+    .sort((a, b) => {
+      const score = (at: number) => (joinsNext(text[at - 1]) ? 20 : 0)
+        + Math.abs(at - perLine) + Math.abs(at - (text.length - at)) * .3
+        + (at === 1 || text.length - at === 1 ? 3 : 0);
+      return score(a) - score(b);
+    });
+  return splits.map(at => [text.slice(0, at).join(" "), text.slice(at).join(" ")]);
+};
+
 const placeCaption = (stage: EditorialStage, beats: StageEvent[], words: CaptionWord[], fps: number, width: number, height: number, title?: string): CaptionPlacement | null => {
   if (!words.length) return null;
   const first = words[0].start_frame, last = words.at(-1)!.end_frame;
-  const samples = [...new Set([first, first + 1, Math.round((first + last) / 2), Math.max(first, last - 1), ...beats.flatMap(b => {
-    const at = b.resolved_frame ?? -1;
-    return at >= first && at < last ? [at, Math.min(last - 1, at + 1)] : [];
-  })])];
+  const samples = [...new Set([first, Math.min(last - 1, first + 1), Math.round((first + last - 1) / 2), last - 1,
+    ...beats.flatMap(beat => {
+      const at = beat.resolved_frame ?? -1;
+      const finish = at + Math.ceil((beat.motion_seconds ?? .45) * fps);
+      return [at, at + 1, finish].filter(frame => frame >= first && frame < last);
+    })])];
   const layouts = samples.map(at => occupiedAt(stage, beats, at, fps, width, height, title));
-  const canvasSafe = layouts[0].safe;
-  const region = stage.captions?.region;
-  // The author's region is preferred. A smaller region must not suppress a
-  // readable caption when another unoccupied area of the scene is available.
-  const regions = region ? [{
-    x: canvasSafe.x + region.x * canvasSafe.w / 100,
-    y: canvasSafe.y + region.y * canvasSafe.h / 100,
-    w: canvasSafe.w * region.width / 100,
-    h: canvasSafe.h * region.height / 100,
-  }, canvasSafe] : [canvasSafe];
-  const occupied = layouts.flatMap(l => l.boxes);
-  const side = stage.captions?.preferred_side ?? "auto";
-  const requested = stage.captions?.font_size ?? 112;
-  const text = words.map(word => word.text.toLocaleUpperCase("pt-BR"));
-  const sizes = [...new Set([requested, ...Array.from({length: Math.ceil((requested - 72) / 8)}, (_, i) => Math.max(72, requested - (i + 1) * 8)), 72])];
-  for (const size of sizes) for (const multiline of words.length > 1 ? [false, true] : [false]) {
-    const lines = multiline ? text : [text.join(" ")];
-    const w = (multiline ? Math.max(...lines.map(line => measureEditorialText(line, size)))
-      : text.reduce((sum, word) => sum + measureEditorialText(word, size), 0) + Math.max(0, text.length - 1) * size * .28) + CAPTION_PADDING * 2;
-    const h = lines.length * size * 1.12 + CAPTION_PADDING * 2;
-    for (const safe of regions) {
-      if (w > safe.w || h > safe.h) continue;
-      const targetX = side === "left" ? safe.x + safe.w * .25 : side === "right" ? safe.x + safe.w * .75 : safe.x + safe.w / 2;
-      const xs = [safe.x, safe.x + (safe.w - w) / 2, safe.x + safe.w - w, targetX - w / 2,
-        ...occupied.flatMap(b => [b.x - w - SCREEN_GAP, b.x + b.w + SCREEN_GAP])];
-      const ys = [safe.y + (safe.h - h) / 2, safe.y, safe.y + safe.h - h,
-        ...occupied.flatMap(b => [b.y - h - SCREEN_GAP, b.y + b.h + SCREEN_GAP])];
-      const candidates = xs.flatMap(x => ys.map(y => ({x, y, w, h})))
-        .filter(box => contains(safe, box) && occupied.every(b => !intersects(box, b, SCREEN_GAP)))
-        .sort((a, b) => (Math.abs(a.x + w / 2 - targetX) + Math.abs(a.y + h / 2 - safe.y - safe.h / 2) * .35)
-          - (Math.abs(b.x + w / 2 - targetX) + Math.abs(b.y + h / 2 - safe.y - safe.h / 2) * .35));
-      if (candidates[0]) return {box: candidates[0], size, multiline};
+  const occupied = [...new Map<string, Box>(layouts.flatMap(l => l.boxes).map(b => [[b.x, b.y, b.w, b.h].join(","), b] as const)).values()];
+  // Legacy region/side fields cannot reserve space or override the area rule.
+  const regions = freeRegions(layouts[0].safe, occupied, width * height * (stage.captions?.min_free_area_ratio ?? .30));
+  if (!regions.length) return null;
+  const requested = Math.min(96, stage.captions?.font_size ?? 64);
+  const sizes = [...new Set([requested, ...Array.from({length: Math.ceil((requested - 48) / 4)}, (_, i) => Math.max(48, requested - (i + 1) * 4)), 48])];
+  const options = lineOptions(words, stage);
+  for (const size of sizes) for (const lines of options) {
+    const w = Math.max(...lines.map(line => measureEditorialText(line, size))) + PADDING * 2;
+    const h = lines.length * size * 1.16 + PADDING * 2;
+    for (const freeRegion of regions) {
+      const box = {x: freeRegion.x + (freeRegion.w - w) / 2, y: freeRegion.y + (freeRegion.h - h) / 2, w, h};
+      if (contains(freeRegion, box) && occupied.every(b => !intersects(box, b, SCREEN_GAP))) return {box, freeRegion, size, lines};
     }
   }
   return null;
@@ -92,53 +143,29 @@ export const EditorialCaptions = ({stage: rawStage, beats, words, title}: {
   const {fps, width, height} = useVideoConfig();
   const ready = useEditorialFont();
   const stage = useMemo(() => editorialStageSchema.parse(rawStage), [rawStage]);
-  const chunks = useMemo(() => {
-    const result: CaptionWord[][] = [];
-    for (const word of words) {
-      const previous = result.at(-1);
-      if (previous && previous.length < (stage.captions?.max_words ?? 2) && !/[.!?;:]$/.test(previous.at(-1)!.text)
-        && word.start_frame - previous.at(-1)!.end_frame < fps * .8) previous.push(word);
-      else result.push([word]);
-    }
-    return result;
-  }, [words, stage.captions?.max_words, fps]);
-  const chunkIndex = chunks.findIndex(chunk => frame >= chunk[0].start_frame && frame < chunk.at(-1)!.end_frame);
-  const chunk = chunkIndex >= 0 ? chunks[chunkIndex] : undefined;
+  const chunks = useMemo(() => phraseChunks(words, stage, fps), [words, stage, fps]);
+  const chunk = chunks.find(part => frame >= part[0].start_frame && frame < part.at(-1)!.end_frame);
   const placement = useMemo(() => !ready || !stage.captions?.enabled || !chunk ? null
     : placeCaption(stage, beats, chunk, fps, width, height, title), [ready, stage, beats, chunk, fps, width, height, title]);
-  const currentWord = chunk?.find(word => frame >= word.start_frame && frame < word.end_frame);
-  const singlePlacement = useMemo(() => !ready || placement || !currentWord || !stage.captions?.enabled ? null
-    : placeCaption(stage, beats, [currentWord], fps, width, height, title), [ready, placement, currentWord, stage, beats, fps, width, height, title]);
-  const layout = placement ?? singlePlacement;
-  const shown = placement ? chunk : currentWord ? [currentWord] : undefined;
-  if (!ready || !stage.captions?.enabled || !layout || !shown) return null;
-  // Re-check the current frame as well as the chunk envelope: a caption must
-  // disappear rather than cover an unexpected intermediate camera/route pose.
-  if (occupiedAt(stage, beats, frame, fps, width, height, title).boxes.some(b => intersects(layout.box, b, SCREEN_GAP))) return null;
-  const end = shown.at(-1)!.end_frame;
-  const outgoing = interpolate(frame, [end - Math.min(3, (end - shown[0].start_frame) / 4), end], [1, 0], clamp);
+  if (!placement || !chunk) return null;
+  // If an intermediate camera/entrance pose consumes the substantial empty
+  // region, suppress this caption. Never move the illustration to recover it.
+  const current = occupiedAt(stage, beats, frame, fps, width, height, title);
+  if (!contains(current.safe, placement.freeRegion) || current.boxes.some(b => intersects(placement.freeRegion, b, SCREEN_GAP - .1))) return null;
+  const start = chunk[0].start_frame, end = chunk.at(-1)!.end_frame;
+  const duration = Math.max(1, end - start);
+  const enter = interpolate(frame - start + 1, [0, Math.min(5, duration)], [0, 1], clamp);
+  const leave = interpolate(frame, [end - Math.min(3, duration / 4), end], [1, 0], clamp);
   const animate = stage.motion_profile !== "static";
   return <AbsoluteFill style={{pointerEvents: "none"}}>
-    <div data-editorial-caption="narration" data-caption-timing={shown.some(w => w.timing_source !== "audio-word-alignment") ? "estimated" : "aligned"}
-      style={{position: "absolute", left: layout.box.x, top: layout.box.y, width: layout.box.w, height: layout.box.h,
-        boxSizing: "border-box", padding: CAPTION_PADDING, display: "flex", flexDirection: layout.multiline ? "column" : "row",
-        justifyContent: "center", alignItems: "center", gap: layout.multiline ? 0 : layout.size * .28,
-        fontFamily: EDITORIAL_FONT, fontWeight: 700, fontSize: layout.size, lineHeight: 1.12,
-        textAlign: "center", color: "#f6f7f8", opacity: animate ? outgoing : 1,
-        textShadow: "0 4px 18px rgba(0,0,0,.85)"}}>
-      {shown.map(word => {
-        const duration = Math.max(1, word.end_frame - word.start_frame);
-        const p = animate ? interpolate(frame - word.start_frame + 1, [0, Math.min(5, duration)], [0, 1], clamp) : 1;
-        const ease = 1 - Math.pow(1 - p, 3);
-        const active = frame >= word.start_frame && frame < word.end_frame;
-        return <span key={word.start_frame + word.text} style={{display: "inline-block", position: "relative", whiteSpace: "nowrap",
-          opacity: p, transform: `translateY(${(1 - ease) * 14}px) scale(${.94 + .06 * ease})`,
-          color: active ? "#ffbd19" : "#f6f7f8"}}>
-          {word.text.toLocaleUpperCase("pt-BR")}
-          {active && <span style={{position: "absolute", left: 0, bottom: -4, height: 5, borderRadius: 4,
-            width: `${ease * 100}%`, background: "#ffbd19", opacity: .8}} />}
-        </span>;
-      })}
+    <div data-editorial-caption="phrase" data-caption-timing={chunk.some(w => w.timing_source !== "audio-word-alignment") ? "estimated" : "aligned"}
+      data-free-area-ratio={(placement.freeRegion.w * placement.freeRegion.h / (width * height)).toFixed(3)}
+      style={{position: "absolute", left: placement.box.x, top: placement.box.y, width: placement.box.w, height: placement.box.h,
+        boxSizing: "border-box", padding: PADDING, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center",
+        fontFamily: EDITORIAL_FONT, fontWeight: 700, fontSize: placement.size, lineHeight: 1.16, textAlign: "center", color: "#f6f7f8",
+        opacity: animate ? enter * leave : 1, transform: animate ? `translateY(${(1 - enter) * 6}px)` : undefined,
+        textShadow: "0 3px 10px rgba(0,0,0,.9)"}}>
+      {placement.lines.map((line, index) => <span key={index} style={{display: "block", whiteSpace: "nowrap"}}>{line}</span>)}
     </div>
   </AbsoluteFill>;
 };

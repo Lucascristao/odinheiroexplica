@@ -215,7 +215,7 @@ export const visualCapabilities = {
   signal:{requires:"operation.kind=signal + status/message",effect:"Condição textual e sinal cromático explícitos."},
   flow_diagram:{requires:"stage.connections",effect:"Traçado e percurso nas relações declaradas."},
   giant_number:{requires:"target.value",effect:"Valor ampliado dentro de sua área reservada."},
-  kinetic_type:{requires:"reveal/update + target.label",effect:"Palavras entram em sequência nas linhas medidas, com deslocamento e pausa após a cue; nunca altera números."},
+  kinetic_type:{requires:"reveal/update/focus autoral + target.label",effect:"Palavras entram em sequência nas linhas medidas, com deslocamento e pausa após a cue; nunca altera números."},
   masked_emphasis:{requires:"target.label / emphasis",effect:"Varredura do grifo pela frase existente, no intervalo declarado e sem trocar a composição."},
   depth_photo:{requires:"photo.image_motion",effect:"Movimento limitado da imagem dentro de sua região."},
   spotlight:{requires:"target_id",effect:"Destaque do participante ou prova alvo."},

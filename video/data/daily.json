@@ -3,8 +3,8 @@
   "title": "Dinheiro físico está acabando? O plano do Banco24Horas",
   "version": "1.0",
   "presenter": {
-    "gender": "female",
-    "name": "Luana"
+    "gender": "male",
+    "name": "Roberto"
   },
   "speech": {
     "pronunciations": {
@@ -39,7 +39,7 @@
     }
   ],
   "visual_direction": {
-    "concept": "A cédula não desaparece: seu circuito se desloca para infraestrutura compartilhada, atendimento multibanco, varejo e informação. Caixas, agência, comércio e cédulas são participantes concretos; legenda falada ocupa espaço livre e muda de lado conforme a composição.",
+    "concept": "A infraestrutura física e seus participantes concretos dominam o quadro: cédulas, caixa, rede operacional, agência compartilhada, comércio e informação. Números e limites têm regiões próprias. A legenda em frases é secundária e só aparece quando o compositor encontra um retângulo livre contíguo suficiente, sem reduzir objetos para produzir vazio.",
     "world": "network",
     "secondary_color": "#FFBD19",
     "motifs": [
@@ -51,12 +51,13 @@
       "dados de saques"
     ],
     "motion_language": [
-      "Manter cédulas enquanto o caixa ganha sinal e uma nova função; cortes unem o dinheiro físico aos objetos seguintes.",
-      "Demonstrar custo dividido por operações com hipótese permanente e depois cortar para a rede prestadora.",
-      "Revelar cédulas saindo do comércio e registro correspondente na conta do lojista; conexões contínuas explicam o circuito.",
-      "Separar o dado observado da meta com recorte real e comparação legível, sem animação de contagem.",
-      "Atuar nos SVGs de caixa, agência, telefone e dados conforme a frase; preservar movimentos leves durante a fala.",
-      "Variar legenda dominante de uma ou duas palavras entre esquerda, direita e espaço inferior, deixando objetos e relações inteiros."
+      "A câmera começa próxima da cédula e abre para o caixa; os participantes mudam de posição quando a fala distingue suas funções.",
+      "Dados de uso e preferência ocupam duas áreas grandes, conservando denominadores e período; a conta hipotética mantém operadores, resultado e ressalva legíveis.",
+      "Rede e operador se rearranjam durante a terceirização; o edifício de agência domina a cena e os limites aparecem em texto cinético curto.",
+      "O comércio entrega notas por um circuito grande e o registro correspondente surge na conta; o movimento não inventa saldo, tarifa nem resultado.",
+      "Manchete real recebe iluminação e moldura ao redor, preservando integralmente os pixels; realizado e meta entram separadamente.",
+      "A estrutura de dados recebe o fluxo e depois seu limite; o acesso conectado ganha um plano próprio antes do retorno à comparação.",
+      "Movimentos sustentados de 16 a 30 pixels são específicos dos participantes e permanecem dentro dos envelopes do motor. Legendas opcionais acompanham até seis palavras, em duas linhas, apenas se houver área livre contígua de pelo menos 30%."
     ],
     "avoid": [
       "teto ou cancela deR$ 500 do Pix",
@@ -84,7 +85,7 @@
     ],
     "narrative_contract": {
       "topic_explanation": "o dinheiro pode perder espaço sem desaparecer, e o caixa eletrônico pode ganhar outras funções.",
-      "presenter_introduction": "Eu sou a Luana, do O Dinheiro Explica.",
+      "presenter_introduction": "Eu sou o Roberto, do O Dinheiro Explica.",
       "subscription_request": "Se você gosta de entender essas viradas por trás das empresas, se inscreva no O Dinheiro Explica."
     },
     "source_balance": {
@@ -117,7 +118,7 @@
     },
     "render_review": {
       "status": "production_review_pending",
-      "note": "Roteiro novo; síntese Gemini 3.8 Live com Luana/Autonoe. Conferir a produção real e o pacote do Drive. Usuário dispensou testes prévios; não registrar verificação que não foi executada."
+      "note": "Direção revista prioriza ilustrações, dados e documento com acabamento. Roberto/Charon por preferência explícita; apenas a apresentação literal mudou. Produção audiovisual e entrega no Drive pendentes; testes, typecheck, validadores e renders locais não executados nesta revisão."
     },
     "explanation": {
       "version": "1.0",
@@ -646,7 +647,7 @@
         }
       ],
       "review": {
-        "content_sha256": "d58124045e3d9fa2fdf8a2706a87e11c737c1dc5e482a189b4a2ad3933cdd35b",
+        "content_sha256": "1801c2b0dd8341ad8e62c1eda6d1c38df9c6897130535d1d3a8d032e3330ace0",
         "findings": [
           {
             "question": "O vídeo responde sem prever uma extinção que as fontes não comprovam?",
@@ -662,7 +663,7 @@
               "scene_id": "scene-01",
               "quote": "Não são a fatia do dinheiro no valor de todas as compras."
             },
-            "conclusion": "Pessoas na pesquisa 2024 são separadas de volume monetário; o mini separa resultado 2025 de plano 2026. Os dois indicadores conservam o detalhe Entrevistados • pesquisa 2024, com áreas mais altas e sem alterar as fontes ou a narração."
+            "conclusion": "Pessoas na pesquisa 2024 são separadas de volume monetário. Os dois indicadores conservam o detalhe e ganham áreas amplas; texto cinético distingue a população da pesquisa e os anos, sem converter pessoas em compras."
           },
           {
             "question": "O exemplo deixa clara sua natureza e a diferença entre custo e tarifa?",
@@ -694,7 +695,15 @@
               "scene_id": "scene-08",
               "quote": "Portanto, dinheiro na mão e acesso ao dinheiro são coisas diferentes."
             },
-            "conclusion": "O roteiro limita a independência do celular ao ato de entregar uma nota; o acesso ao caixa mantém dependências. A comparação atua nas cédulas e o beat de bloqueio atua no telefone, correspondendo aos elementos declarados em U9."
+            "conclusion": "O roteiro limita a independência do celular ao ato de entregar uma nota. A comparação atua nas cédulas; o plano do telefone destaca a dependência de acesso conectado, e as duas formas voltam ao quadro antes da ressalva de cuidado. U9 continua ligado aos beats dos elementos corretos."
+          },
+          {
+            "question": "As ilustrações e os dados continuam sendo o foco, com a voz preservada na explicação?",
+            "evidence": {
+              "scene_id": "scene-09",
+              "quote": "É vender operação, compartilhar atendimento e buscar novas funções para uma infraestrutura que já existe."
+            },
+            "conclusion": "A direção amplia os participantes e dados pertinentes, mantém regiões próprias mesmo para elementos ocultos e segue frases existentes com câmeras e atuações distintas. Contas, pesquisa e documento dispensam legenda; nas demais cenas ela não recebe área reservada. A única mudança literal é a apresentação de Roberto, solicitada pelo usuário; a produção real ainda precisa ser acompanhada."
           }
         ]
       }
@@ -978,7 +987,7 @@
       "index": 0,
       "scene_index": 0,
       "title": "Menos notas, mais agência?",
-      "narration": "O dinheiro físico está acabando? Se quase tudo cabe no celular, por que a dona do Banco24Horas quer investir em atendimento presencial? Parece uma contradição. Mas o plano da Tecban ajuda a enxergar uma mudança maior: o dinheiro pode perder espaço sem desaparecer, e o caixa eletrônico pode ganhar outras funções. Eu sou a Luana, do O Dinheiro Explica. Vamos separar três coisas que costumam se misturar: usar menos notas, precisar menos de atendimento e deixar de precisar de uma estrutura física. Elas não são a mesma coisa. E é nesse intervalo que a empresa está procurando seu próximo negócio.",
+      "narration": "O dinheiro físico está acabando? Se quase tudo cabe no celular, por que a dona do Banco24Horas quer investir em atendimento presencial? Parece uma contradição. Mas o plano da Tecban ajuda a enxergar uma mudança maior: o dinheiro pode perder espaço sem desaparecer, e o caixa eletrônico pode ganhar outras funções. Eu sou o Roberto, do O Dinheiro Explica. Vamos separar três coisas que costumam se misturar: usar menos notas, precisar menos de atendimento e deixar de precisar de uma estrutura física. Elas não são a mesma coisa. E é nesse intervalo que a empresa está procurando seu próximo negócio.",
       "claim_ids": [
         "C1",
         "C9",
@@ -996,42 +1005,51 @@
               "id": "cash",
               "kind": "object",
               "label": "Cédulas",
-              "x": 59,
-              "y": 12,
-              "width": 33,
-              "height": 47,
+              "x": 5,
+              "y": 8,
+              "width": 46,
+              "height": 65,
               "initially_visible": true,
-              "label_size": 48,
+              "label_size": 54,
               "surface": "none",
               "object_type": "cash",
               "svg_motion": "assemble",
               "sustain": {
                 "kind": "float",
-                "amplitude": 4,
-                "period_seconds": 5
+                "amplitude": 28,
+                "period_seconds": 4.6,
+                "phase": 0.12
               }
             },
             {
               "id": "atm",
               "kind": "object",
               "label": "Banco24Horas",
-              "x": 64,
-              "y": 65,
-              "width": 24,
-              "height": 28,
+              "x": 61,
+              "y": 14,
+              "width": 31,
+              "height": 73,
               "initially_visible": false,
-              "label_size": 48,
+              "label_size": 52,
               "surface": "spotlight",
               "object_type": "atm",
-              "svg_motion": "assemble"
+              "svg_motion": "assemble",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 18,
+                "period_seconds": 7.4,
+                "phase": 0.35
+              }
             }
           ],
           "connections": [],
           "captions": {
             "enabled": true,
-            "max_words": 1,
-            "font_size": 112,
-            "preferred_side": "left"
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
           }
         },
         "beats": [
@@ -1050,10 +1068,10 @@
             "prominence": "contextual",
             "motion_seconds": 0.55,
             "camera": {
-              "x": 64,
-              "y": 42,
-              "zoom": 1.18,
-              "motion_seconds": 1
+              "x": 40,
+              "y": 43,
+              "zoom": 1.32,
+              "motion_seconds": 1.15
             }
           },
           {
@@ -1069,7 +1087,7 @@
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.7,
+            "motion_seconds": 1.1,
             "entrance": {
               "style": "slide",
               "direction": "up"
@@ -1078,16 +1096,32 @@
             "moves": [
               {
                 "id": "cash",
-                "x": 59,
-                "y": 8
+                "x": 8,
+                "y": 14
               }
             ],
             "camera": {
               "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.8
+              "y": 48,
+              "zoom": 1.07,
+              "motion_seconds": 1.25
             }
+          },
+          {
+            "anchor": "usar menos notas",
+            "target_id": "cash",
+            "action": "focus",
+            "headline": "Menos uso continua sendo uso",
+            "treatment": "spotlight",
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.95,
+            "actuation": "count"
           },
           {
             "anchor": "Elas não são a mesma coisa",
@@ -1102,8 +1136,20 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.4,
-            "camera_mode": "hold"
+            "motion_seconds": 1.1,
+            "moves": [
+              {
+                "id": "cash",
+                "x": 6,
+                "y": 10
+              }
+            ],
+            "camera": {
+              "x": 49,
+              "y": 48,
+              "zoom": 1.08,
+              "motion_seconds": 1.1
+            }
           }
         ]
       },
@@ -1159,39 +1205,65 @@
               "id": "users",
               "kind": "metric",
               "label": "Usavam dinheiro",
-              "x": 6,
-              "y": 12,
-              "width": 40,
-              "height": 34,
+              "x": 5,
+              "y": 17,
+              "width": 43,
+              "height": 60,
               "initially_visible": true,
-              "label_size": 44,
+              "label_size": 54,
               "surface": "glow",
               "value": "68,9%",
-              "value_size": 126,
+              "value_size": 164,
               "detail": "Entrevistados • pesquisa 2024"
             },
             {
               "id": "main",
               "kind": "metric",
               "label": "Meio mais frequente",
-              "x": 6,
-              "y": 51,
-              "width": 40,
-              "height": 34,
+              "x": 53,
+              "y": 17,
+              "width": 42,
+              "height": 60,
               "initially_visible": false,
-              "label_size": 44,
+              "label_size": 50,
               "surface": "none",
               "value": "22%",
-              "value_size": 126,
+              "value_size": 164,
               "detail": "Entrevistados • pesquisa 2024"
+            },
+            {
+              "id": "population",
+              "kind": "label",
+              "label": "Pessoas, não compras",
+              "x": 5,
+              "y": 2,
+              "width": 90,
+              "height": 12,
+              "label_size": 50,
+              "initially_visible": false,
+              "surface": "none"
+            },
+            {
+              "id": "period",
+              "kind": "label",
+              "label": "2024 ≠ 2026",
+              "x": 12,
+              "y": 84,
+              "width": 76,
+              "height": 12,
+              "label_size": 54,
+              "initially_visible": false,
+              "surface": "none"
             }
           ],
           "connections": [],
           "captions": {
-            "enabled": true,
-            "max_words": 1,
-            "font_size": 112,
-            "preferred_side": "right"
+            "enabled": false,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
           }
         },
         "beats": [
@@ -1210,10 +1282,10 @@
             "prominence": "contextual",
             "motion_seconds": 0.55,
             "camera": {
-              "x": 41,
-              "y": 49,
-              "zoom": 1.1,
-              "motion_seconds": 0.9
+              "x": 43,
+              "y": 47,
+              "zoom": 1.12,
+              "motion_seconds": 1
             }
           },
           {
@@ -1229,15 +1301,35 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.75,
+            "motion_seconds": 0.9,
             "entrance": {
-              "style": "fade"
+              "style": "slide",
+              "direction": "right"
             },
             "camera": {
               "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.65
+              "y": 47,
+              "zoom": 1.04,
+              "motion_seconds": 1.15
+            }
+          },
+          {
+            "anchor": "Esses percentuais são de pessoas",
+            "target_id": "population",
+            "action": "reveal",
+            "headline": "Pessoas, não compras",
+            "treatment": "kinetic_type",
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.9,
+            "entrance": {
+              "style": "wipe",
+              "direction": "left"
             }
           },
           {
@@ -1276,6 +1368,30 @@
             "sound": "none",
             "prominence": "contextual",
             "motion_seconds": 0.4,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.9
+            }
+          },
+          {
+            "anchor": "não é uma fotografia de 2026",
+            "target_id": "period",
+            "action": "reveal",
+            "headline": "2024 ≠ 2026",
+            "treatment": "kinetic_type",
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 0.9,
+            "entrance": {
+              "style": "fade"
+            },
             "camera_mode": "hold"
           }
         ]
@@ -1337,7 +1453,7 @@
               "width": 84,
               "height": 13,
               "initially_visible": true,
-              "label_size": 46,
+              "label_size": 54,
               "surface": "none"
             },
             {
@@ -1345,56 +1461,64 @@
               "kind": "metric",
               "label": "Custo no mês",
               "x": 4,
-              "y": 26,
-              "width": 26,
-              "height": 32,
+              "y": 24,
+              "width": 28,
+              "height": 56,
               "initially_visible": false,
-              "label_size": 38,
+              "label_size": 46,
               "surface": "none",
               "value": "R$ 1.200",
-              "value_size": 88
+              "value_size": 108
             },
             {
               "id": "volume",
               "kind": "metric",
               "label": "Saques no mês",
-              "x": 38,
-              "y": 26,
+              "x": 40,
+              "y": 24,
               "width": 24,
-              "height": 32,
+              "height": 56,
               "initially_visible": false,
-              "label_size": 38,
+              "label_size": 44,
               "surface": "none",
               "value": "600",
-              "value_size": 102
+              "value_size": 142
             },
             {
               "id": "unit",
               "kind": "metric",
               "label": "Custo por saque",
-              "x": 70,
-              "y": 26,
-              "width": 26,
-              "height": 32,
+              "x": 72,
+              "y": 24,
+              "width": 24,
+              "height": 56,
               "initially_visible": false,
-              "label_size": 38,
+              "label_size": 44,
               "surface": "glow",
               "value": "R$ 2",
-              "value_size": 102
+              "value_size": 138
+            },
+            {
+              "id": "pressure",
+              "kind": "label",
+              "label": "Volume menor, peso maior",
+              "x": 7,
+              "y": 84,
+              "width": 86,
+              "height": 12,
+              "label_size": 50,
+              "initially_visible": false,
+              "surface": "none"
             }
           ],
           "connections": [],
           "captions": {
-            "enabled": true,
-            "max_words": 2,
-            "font_size": 112,
-            "preferred_side": "center",
-            "region": {
-              "x": 5,
-              "y": 71,
-              "width": 90,
-              "height": 23
-            }
+            "enabled": false,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
           }
         },
         "beats": [
@@ -1411,9 +1535,10 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.45,
+            "motion_seconds": 0.9,
             "entrance": {
-              "style": "fade"
+              "style": "slide",
+              "direction": "left"
             }
           },
           {
@@ -1429,7 +1554,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.7,
+            "motion_seconds": 0.85,
             "entrance": {
               "style": "scale"
             }
@@ -1447,7 +1572,7 @@
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.85,
+            "motion_seconds": 1.2,
             "operation": {
               "kind": "equation",
               "input_ids": [
@@ -1458,7 +1583,7 @@
               "result_id": "unit"
             },
             "entrance": {
-              "style": "fade"
+              "style": "scale"
             }
           },
           {
@@ -1480,6 +1605,32 @@
               "style": "underline"
             },
             "camera_mode": "hold"
+          },
+          {
+            "anchor": "cada operação fica mais pesada",
+            "target_id": "pressure",
+            "action": "reveal",
+            "headline": "Volume menor, peso maior",
+            "treatment": "kinetic_type",
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 1.1,
+            "entrance": {
+              "style": "wipe",
+              "direction": "right"
+            },
+            "moves": [
+              {
+                "id": "volume",
+                "x": 40,
+                "y": 27
+              }
+            ]
           }
         ]
       },
@@ -1536,34 +1687,41 @@
               "id": "machine",
               "kind": "object",
               "label": "Rede do banco",
-              "x": 6,
-              "y": 20,
-              "width": 30,
-              "height": 57,
+              "x": 5,
+              "y": 7,
+              "width": 35,
+              "height": 79,
               "initially_visible": true,
-              "label_size": 48,
+              "label_size": 52,
               "surface": "none",
               "object_type": "atm",
               "svg_motion": "assemble",
               "sustain": {
-                "kind": "breathe",
-                "amplitude": 3,
-                "period_seconds": 6
+                "kind": "float",
+                "amplitude": 22,
+                "period_seconds": 6.8,
+                "phase": 0.33
               }
             },
             {
               "id": "operator",
               "kind": "object",
               "label": "Operação compartilhada",
-              "x": 62,
-              "y": 29,
-              "width": 30,
-              "height": 47,
+              "x": 58,
+              "y": 20,
+              "width": 37,
+              "height": 61,
               "initially_visible": false,
-              "label_size": 48,
+              "label_size": 50,
               "surface": "spotlight",
               "object_type": "hub",
-              "svg_motion": "assemble"
+              "svg_motion": "assemble",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 28,
+                "period_seconds": 5.8,
+                "phase": 0.1
+              }
             }
           ],
           "connections": [
@@ -1573,7 +1731,7 @@
               "to": "machine",
               "semantic": "relation",
               "motion": "flow",
-              "period_seconds": 4.5,
+              "period_seconds": 3.3,
               "label_position": "auto",
               "from_port": "left",
               "to_port": "right"
@@ -1581,15 +1739,11 @@
           ],
           "captions": {
             "enabled": true,
-            "max_words": 1,
-            "font_size": 112,
-            "preferred_side": "center",
-            "region": {
-              "x": 5,
-              "y": 2,
-              "width": 90,
-              "height": 15
-            }
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
           }
         },
         "beats": [
@@ -1606,17 +1760,17 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.8,
+            "motion_seconds": 1.1,
             "entrance": {
               "style": "wipe",
               "direction": "right"
             },
             "actuation": "signal",
             "camera": {
-              "x": 48,
+              "x": 50,
               "y": 47,
-              "zoom": 1.12,
-              "motion_seconds": 0.9
+              "zoom": 1.06,
+              "motion_seconds": 1.2
             }
           },
           {
@@ -1632,8 +1786,26 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.65,
-            "actuation": "confirm"
+            "motion_seconds": 1.3,
+            "actuation": "confirm",
+            "moves": [
+              {
+                "id": "machine",
+                "x": 5,
+                "y": 12
+              },
+              {
+                "id": "operator",
+                "x": 58,
+                "y": 14
+              }
+            ],
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.08,
+              "motion_seconds": 1.35
+            }
           },
           {
             "anchor": "Pode, não quer dizer que toda contratação será mais barata",
@@ -1653,7 +1825,7 @@
               "x": 50,
               "y": 50,
               "zoom": 1,
-              "motion_seconds": 0.6
+              "motion_seconds": 1.05
             }
           }
         ]
@@ -1703,52 +1875,55 @@
               "id": "branch",
               "kind": "object",
               "label": "Atendimento compartilhado",
-              "x": 5,
-              "y": 20,
-              "width": 48,
-              "height": 67,
+              "x": 4,
+              "y": 19,
+              "width": 66,
+              "height": 70,
               "initially_visible": true,
-              "label_size": 48,
+              "label_size": 60,
               "surface": "spotlight",
               "object_type": "branch",
               "svg_motion": "assemble",
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 3,
-                "period_seconds": 7
+                "amplitude": 24,
+                "period_seconds": 7.3,
+                "phase": 0.2
               }
             },
             {
               "id": "pilot",
               "kind": "label",
               "label": "Piloto • setembro 2026",
-              "x": 61,
-              "y": 4,
-              "width": 35,
-              "height": 17,
+              "x": 5,
+              "y": 2,
+              "width": 90,
+              "height": 12,
               "initially_visible": false,
-              "label_size": 42,
+              "label_size": 62,
               "surface": "none"
             },
             {
               "id": "accounts",
               "kind": "label",
               "label": "Contas continuam separadas",
-              "x": 61,
-              "y": 79,
-              "width": 35,
-              "height": 17,
+              "x": 75,
+              "y": 31,
+              "width": 22,
+              "height": 52,
               "initially_visible": false,
-              "label_size": 40,
+              "label_size": 46,
               "surface": "none"
             }
           ],
           "connections": [],
           "captions": {
             "enabled": true,
-            "max_words": 1,
-            "font_size": 112,
-            "preferred_side": "right"
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
           }
         },
         "beats": [
@@ -1767,10 +1942,10 @@
             "prominence": "contextual",
             "motion_seconds": 0.7,
             "camera": {
-              "x": 41,
-              "y": 53,
-              "zoom": 1.18,
-              "motion_seconds": 0.9
+              "x": 43,
+              "y": 54,
+              "zoom": 1.15,
+              "motion_seconds": 1.25
             }
           },
           {
@@ -1786,7 +1961,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.8,
+            "motion_seconds": 1.1,
             "entrance": {
               "style": "slide",
               "direction": "down"
@@ -1795,7 +1970,7 @@
               "x": 50,
               "y": 50,
               "zoom": 1,
-              "motion_seconds": 0.9
+              "motion_seconds": 1.25
             }
           },
           {
@@ -1811,9 +1986,16 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.7,
+            "motion_seconds": 1.25,
             "actuation": "unlock",
-            "camera_mode": "hold"
+            "camera_mode": "hold",
+            "moves": [
+              {
+                "id": "branch",
+                "x": 7,
+                "y": 19
+              }
+            ]
           },
           {
             "anchor": "Não é juntar as contas dos clientes",
@@ -1828,27 +2010,28 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.6,
+            "motion_seconds": 1.1,
             "emphasis": {
               "phrase": "separadas",
               "style": "underline"
             },
             "entrance": {
-              "style": "fade"
+              "style": "wipe",
+              "direction": "down"
             },
             "camera": {
               "x": 50,
               "y": 50,
               "zoom": 1,
-              "motion_seconds": 0.7
+              "motion_seconds": 1.05
             }
           },
           {
             "anchor": "Mas piloto não é cobertura nacional",
             "target_id": "pilot",
-            "action": "focus",
-            "headline": "Plano não é disponibilidade geral",
-            "treatment": "spotlight",
+            "action": "update",
+            "headline": "Piloto ≠ cobertura nacional",
+            "treatment": "kinetic_type",
             "kind": "fact",
             "behavior": "transform",
             "transition": "cut",
@@ -1856,7 +2039,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.45,
+            "motion_seconds": 1.1,
             "camera_mode": "hold"
           }
         ]
@@ -1912,48 +2095,61 @@
               "id": "store",
               "kind": "object",
               "label": "Caixa da loja",
-              "x": 7,
-              "y": 17,
-              "width": 31,
-              "height": 52,
+              "x": 6,
+              "y": 8,
+              "width": 41,
+              "height": 77,
               "initially_visible": true,
-              "label_size": 48,
+              "label_size": 52,
               "surface": "spotlight",
               "object_type": "store",
-              "svg_motion": "assemble"
+              "svg_motion": "assemble",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 16,
+                "period_seconds": 8.1,
+                "phase": 0.4
+              }
             },
             {
               "id": "cash",
               "kind": "object",
               "label": "Notas ao cliente",
-              "x": 64,
-              "y": 12,
-              "width": 27,
-              "height": 34,
+              "x": 59,
+              "y": 5,
+              "width": 36,
+              "height": 35,
               "initially_visible": false,
-              "label_size": 48,
+              "label_size": 52,
               "surface": "none",
               "object_type": "cash",
               "svg_motion": "assemble",
               "sustain": {
-                "kind": "float",
-                "amplitude": 3,
-                "period_seconds": 5
+                "kind": "drift",
+                "amplitude": 30,
+                "period_seconds": 5.2,
+                "phase": 0.2
               }
             },
             {
               "id": "account",
               "kind": "object",
               "label": "Conta da loja",
-              "x": 64,
-              "y": 60,
-              "width": 27,
-              "height": 31,
+              "x": 59,
+              "y": 56,
+              "width": 36,
+              "height": 37,
               "initially_visible": false,
-              "label_size": 48,
+              "label_size": 50,
               "surface": "none",
               "object_type": "bank",
-              "svg_motion": "assemble"
+              "svg_motion": "assemble",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 20,
+                "period_seconds": 6.5,
+                "phase": 0.1
+              }
             }
           ],
           "connections": [
@@ -1963,7 +2159,7 @@
               "to": "cash",
               "semantic": "transfer",
               "motion": "flow",
-              "period_seconds": 4,
+              "period_seconds": 3.5,
               "label_position": "auto",
               "token_label": "R$",
               "from_port": "right",
@@ -1975,7 +2171,7 @@
               "to": "account",
               "semantic": "relation",
               "motion": "pulse",
-              "period_seconds": 5,
+              "period_seconds": 4.8,
               "label_position": "auto",
               "from_port": "bottom",
               "to_port": "top"
@@ -1983,18 +2179,35 @@
           ],
           "captions": {
             "enabled": true,
-            "max_words": 1,
-            "font_size": 112,
-            "preferred_side": "left",
-            "region": {
-              "x": 4,
-              "y": 76,
-              "width": 56,
-              "height": 19
-            }
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
           }
         },
         "beats": [
+          {
+            "anchor": "Existe outra maneira de aproximar o físico do digital",
+            "target_id": "store",
+            "action": "focus",
+            "headline": "O comércio participa da passagem entre as formas",
+            "treatment": "spotlight",
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 1.1,
+            "camera": {
+              "x": 35,
+              "y": 47,
+              "zoom": 1.13,
+              "motion_seconds": 1.25
+            }
+          },
           {
             "anchor": "recebe as notas que estavam no caixa da loja",
             "target_id": "cash",
@@ -2008,12 +2221,18 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.75,
+            "motion_seconds": 1.1,
             "entrance": {
               "style": "slide",
-              "direction": "right"
+              "direction": "left"
             },
-            "actuation": "count"
+            "actuation": "count",
+            "camera": {
+              "x": 50,
+              "y": 48,
+              "zoom": 1.04,
+              "motion_seconds": 1.3
+            }
           },
           {
             "anchor": "é creditado na conta do comerciante",
@@ -2028,11 +2247,18 @@
             "medium": "motion_graphic",
             "sound": "tick",
             "prominence": "contextual",
-            "motion_seconds": 0.7,
+            "motion_seconds": 1.05,
             "entrance": {
-              "style": "fade"
+              "style": "slide",
+              "direction": "up"
             },
-            "actuation": "confirm"
+            "actuation": "confirm",
+            "camera": {
+              "x": 50,
+              "y": 49,
+              "zoom": 1.06,
+              "motion_seconds": 1.2
+            }
           },
           {
             "anchor": "O dinheiro não nasceu ali",
@@ -2047,13 +2273,20 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55,
+            "motion_seconds": 1.15,
             "camera": {
               "x": 50,
               "y": 50,
-              "zoom": 1.12,
-              "motion_seconds": 0.8
-            }
+              "zoom": 1,
+              "motion_seconds": 1.1
+            },
+            "moves": [
+              {
+                "id": "cash",
+                "x": 57,
+                "y": 8
+              }
+            ]
           },
           {
             "anchor": "a vantagem depende de ter dinheiro disponível",
@@ -2133,16 +2366,17 @@
               "x": 4,
               "y": 13,
               "width": 21,
-              "height": 62,
+              "height": 72,
               "initially_visible": true,
               "label_size": 44,
               "surface": "spotlight",
               "object_type": "terminal",
               "svg_motion": "assemble",
               "sustain": {
-                "kind": "breathe",
-                "amplitude": 3,
-                "period_seconds": 6
+                "kind": "drift",
+                "amplitude": 18,
+                "period_seconds": 6.4,
+                "phase": 0.3
               }
             },
             {
@@ -2151,16 +2385,17 @@
               "label": "Tecban • janeiro 2026",
               "x": 30,
               "y": 3,
-              "width": 65,
-              "height": 35,
+              "width": 66,
+              "height": 37,
               "initially_visible": false,
               "label_size": 48,
               "surface": "glow",
               "asset_id": "A_mini",
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 3,
-                "period_seconds": 7
+                "amplitude": 18,
+                "period_seconds": 7.6,
+                "phase": 0.2
               },
               "image_fit": "contain",
               "photo_style": "clean"
@@ -2170,50 +2405,46 @@
               "kind": "metric",
               "label": "Fim de 2025 informado",
               "x": 31,
-              "y": 46,
+              "y": 47,
               "width": 29,
-              "height": 31,
+              "height": 42,
               "initially_visible": false,
-              "label_size": 40,
+              "label_size": 42,
               "surface": "none",
               "value": "1.775",
-              "value_size": 112
+              "value_size": 132
             },
             {
               "id": "goal",
               "kind": "metric",
               "label": "Meta anunciada para 2026",
               "x": 65,
-              "y": 46,
+              "y": 47,
               "width": 30,
-              "height": 31,
+              "height": 42,
               "initially_visible": false,
-              "label_size": 38,
+              "label_size": 40,
               "surface": "glow",
               "value": "+1.000",
-              "value_size": 106
+              "value_size": 132
             }
           ],
           "connections": [],
           "captions": {
-            "enabled": true,
-            "max_words": 1,
-            "font_size": 112,
-            "preferred_side": "center",
-            "region": {
-              "x": 4,
-              "y": 82,
-              "width": 92,
-              "height": 14
-            }
+            "enabled": false,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
           }
         },
         "beats": [
           {
             "anchor": "A Tecban informou que terminou 2025",
             "target_id": "mini",
-            "action": "retire",
-            "headline": "O equipamento dá lugar ao resultado reportado",
+            "action": "focus",
+            "headline": "A operação já existe; o resultado é informado pela empresa",
             "treatment": "spotlight",
             "kind": "fact",
             "behavior": "transform",
@@ -2222,7 +2453,8 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55
+            "motion_seconds": 1.1,
+            "actuation": "signal"
           },
           {
             "anchor": "mil setecentos e setenta e cinco dispositivos mini em operação",
@@ -2237,7 +2469,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.75,
+            "motion_seconds": 0.95,
             "entrance": {
               "style": "scale"
             }
@@ -2255,7 +2487,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.6,
+            "motion_seconds": 1.1,
             "entrance": {
               "style": "fade"
             }
@@ -2273,9 +2505,9 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.65,
+            "motion_seconds": 0.9,
             "entrance": {
-              "style": "fade"
+              "style": "scale"
             }
           },
           {
@@ -2314,7 +2546,14 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.4
+            "motion_seconds": 1.1,
+            "moves": [
+              {
+                "id": "mini",
+                "x": 4,
+                "y": 16
+              }
+            ]
           }
         ]
       },
@@ -2370,32 +2609,39 @@
               "kind": "object",
               "label": "Pontos de saque",
               "x": 5,
-              "y": 14,
-              "width": 26,
-              "height": 53,
+              "y": 15,
+              "width": 37,
+              "height": 70,
               "initially_visible": true,
-              "label_size": 48,
+              "label_size": 52,
               "surface": "none",
               "object_type": "atm",
-              "svg_motion": "assemble"
+              "svg_motion": "assemble",
+              "sustain": {
+                "kind": "float",
+                "amplitude": 20,
+                "period_seconds": 6.9,
+                "phase": 0.25
+              }
             },
             {
               "id": "data",
               "kind": "object",
               "label": "Padrões de uso",
               "x": 58,
-              "y": 14,
-              "width": 33,
-              "height": 53,
+              "y": 7,
+              "width": 37,
+              "height": 80,
               "initially_visible": false,
-              "label_size": 48,
+              "label_size": 54,
               "surface": "glow",
               "object_type": "data",
               "svg_motion": "assemble",
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 3,
-                "period_seconds": 6
+                "amplitude": 26,
+                "period_seconds": 5.5,
+                "phase": 0.1
               }
             }
           ],
@@ -2406,7 +2652,7 @@
               "to": "data",
               "semantic": "relation",
               "motion": "flow",
-              "period_seconds": 5,
+              "period_seconds": 3.7,
               "label_position": "auto",
               "from_port": "right",
               "to_port": "left"
@@ -2414,18 +2660,35 @@
           ],
           "captions": {
             "enabled": true,
-            "max_words": 1,
-            "font_size": 112,
-            "preferred_side": "center",
-            "region": {
-              "x": 5,
-              "y": 77,
-              "width": 90,
-              "height": 18
-            }
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
           }
         },
         "beats": [
+          {
+            "anchor": "O terceiro caminho aparece onde quase ninguém olha",
+            "target_id": "atm",
+            "action": "focus",
+            "headline": "A informação nasce da operação física",
+            "treatment": "spotlight",
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 1,
+            "camera": {
+              "x": 38,
+              "y": 48,
+              "zoom": 1.16,
+              "motion_seconds": 1.2
+            }
+          },
           {
             "anchor": "transformar esse conhecimento em serviço",
             "target_id": "data",
@@ -2439,12 +2702,18 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.85,
+            "motion_seconds": 1.2,
             "entrance": {
               "style": "wipe",
               "direction": "left"
             },
-            "actuation": "signal"
+            "actuation": "signal",
+            "camera": {
+              "x": 50,
+              "y": 47,
+              "zoom": 1.08,
+              "motion_seconds": 1.35
+            }
           },
           {
             "anchor": "Sacar uma nota não revela, por si só, onde aquela nota será gasta depois",
@@ -2459,8 +2728,15 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55,
-            "actuation": "lock"
+            "motion_seconds": 1.2,
+            "actuation": "lock",
+            "moves": [
+              {
+                "id": "data",
+                "x": 58,
+                "y": 11
+              }
+            ]
           },
           {
             "anchor": "não demonstra todos os contratos",
@@ -2477,10 +2753,10 @@
             "prominence": "contextual",
             "motion_seconds": 0.55,
             "camera": {
-              "x": 47.5,
-              "y": 44,
-              "zoom": 1.14,
-              "motion_seconds": 0.9
+              "x": 50,
+              "y": 51,
+              "zoom": 1.07,
+              "motion_seconds": 1.2
             }
           }
         ]
@@ -2538,47 +2814,55 @@
               "kind": "object",
               "label": "Pagamento em mãos",
               "x": 5,
-              "y": 13,
-              "width": 34,
-              "height": 55,
+              "y": 8,
+              "width": 43,
+              "height": 77,
               "initially_visible": true,
-              "label_size": 48,
+              "label_size": 54,
               "surface": "none",
               "object_type": "cash",
               "svg_motion": "assemble",
               "sustain": {
                 "kind": "float",
-                "amplitude": 3,
-                "period_seconds": 6
+                "amplitude": 26,
+                "period_seconds": 5.4,
+                "phase": 0.25
               }
             },
             {
               "id": "phone",
               "kind": "object",
               "label": "Pagamento conectado",
-              "x": 61,
-              "y": 13,
-              "width": 32,
-              "height": 55,
+              "x": 58,
+              "y": 10,
+              "width": 35,
+              "height": 81,
               "initially_visible": false,
-              "label_size": 48,
+              "label_size": 50,
               "surface": "spotlight",
               "object_type": "phone",
-              "svg_motion": "assemble"
+              "svg_motion": "assemble",
+              "sustain": {
+                "kind": "drift",
+                "amplitude": 16,
+                "period_seconds": 7.2,
+                "phase": 0.15
+              }
             }
           ],
           "connections": [],
           "captions": {
             "enabled": true,
-            "max_words": 1,
-            "font_size": 112,
-            "preferred_side": "center",
-            "region": {
-              "x": 5,
-              "y": 79,
-              "width": 90,
-              "height": 17
-            }
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          },
+          "initial_camera": {
+            "x": 35,
+            "y": 48,
+            "zoom": 1.17
           }
         },
         "beats": [
@@ -2595,12 +2879,18 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.65,
+            "motion_seconds": 1.05,
             "entrance": {
               "style": "slide",
               "direction": "left"
             },
-            "actuation": "tap"
+            "actuation": "tap",
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.06,
+              "motion_seconds": 1.25
+            }
           },
           {
             "anchor": "entregar uma nota sem sinal no seu celular",
@@ -2615,7 +2905,7 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.8,
+            "motion_seconds": 1.2,
             "operation": {
               "kind": "compare",
               "element_ids": [
@@ -2623,7 +2913,25 @@
                 "phone"
               ]
             },
-            "actuation": "confirm"
+            "actuation": "confirm",
+            "moves": [
+              {
+                "id": "cash",
+                "x": 5,
+                "y": 12
+              },
+              {
+                "id": "phone",
+                "x": 60,
+                "y": 10
+              }
+            ],
+            "camera": {
+              "x": 50,
+              "y": 48,
+              "zoom": 1.05,
+              "motion_seconds": 1.15
+            }
           },
           {
             "anchor": "sacar essa nota num caixa eletrônico continua dependendo",
@@ -2638,13 +2946,47 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.55,
+            "motion_seconds": 1.05,
             "actuation": "lock",
             "camera": {
-              "x": 49,
-              "y": 43,
-              "zoom": 1.1,
-              "motion_seconds": 0.8
+              "x": 77.5,
+              "y": 50.5,
+              "zoom": 1.18,
+              "motion_seconds": 1.35
+            },
+            "retire_ids": [
+              "cash"
+            ]
+          },
+          {
+            "anchor": "dinheiro na mão e acesso ao dinheiro são coisas diferentes",
+            "target_id": "cash",
+            "action": "reveal",
+            "headline": "Pagamento e acesso voltam à comparação",
+            "treatment": "split_compare",
+            "kind": "fact",
+            "behavior": "transform",
+            "transition": "cut",
+            "placement": "full",
+            "medium": "motion_graphic",
+            "sound": "none",
+            "prominence": "contextual",
+            "motion_seconds": 1.15,
+            "operation": {
+              "kind": "compare",
+              "element_ids": [
+                "cash",
+                "phone"
+              ]
+            },
+            "entrance": {
+              "style": "fade"
+            },
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.04,
+              "motion_seconds": 1.3
             }
           },
           {
@@ -2666,7 +3008,7 @@
               "x": 50,
               "y": 50,
               "zoom": 1,
-              "motion_seconds": 0.7
+              "motion_seconds": 1.05
             }
           }
         ]
@@ -2725,28 +3067,31 @@
               "id": "atm",
               "kind": "object",
               "label": "Além do saque",
-              "x": 6,
-              "y": 10,
-              "width": 35,
-              "height": 76,
+              "x": 17,
+              "y": 5,
+              "width": 58,
+              "height": 83,
               "initially_visible": true,
-              "label_size": 48,
+              "label_size": 62,
               "surface": "spotlight",
               "object_type": "atm",
               "svg_motion": "assemble",
               "sustain": {
-                "kind": "breathe",
-                "amplitude": 3,
-                "period_seconds": 7
+                "kind": "drift",
+                "amplitude": 20,
+                "period_seconds": 8.4,
+                "phase": 0.3
               }
             }
           ],
           "connections": [],
           "captions": {
             "enabled": true,
-            "max_words": 1,
-            "font_size": 112,
-            "preferred_side": "right"
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
           }
         },
         "beats": [
@@ -2766,10 +3111,10 @@
             "motion_seconds": 0.6,
             "actuation": "signal",
             "camera": {
-              "x": 33,
-              "y": 50,
-              "zoom": 1.2,
-              "motion_seconds": 0.95
+              "x": 45,
+              "y": 46.5,
+              "zoom": 1.16,
+              "motion_seconds": 1.25
             }
           },
           {
@@ -2785,20 +3130,20 @@
             "medium": "motion_graphic",
             "sound": "none",
             "prominence": "contextual",
-            "motion_seconds": 0.7,
+            "motion_seconds": 1.35,
             "actuation": "confirm",
             "moves": [
               {
                 "id": "atm",
-                "x": 9,
-                "y": 10
+                "x": 25,
+                "y": 7
               }
             ],
             "camera": {
               "x": 50,
               "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.75
+              "zoom": 1.04,
+              "motion_seconds": 1.3
             }
           },
           {
@@ -2851,14 +3196,14 @@
     }
   ],
   "script": {
-    "hook": "O dinheiro físico está acabando? Se quase tudo cabe no celular, por que a dona do Banco24Horas quer investir em atendimento presencial? Parece uma contradição. Mas o plano da Tecban ajuda a enxergar uma mudança maior: o dinheiro pode perder espaço sem desaparecer, e o caixa eletrônico pode ganhar outras funções. Eu sou a Luana, do O Dinheiro Explica. Vamos separar três coisas que costumam se misturar: usar menos notas, precisar menos de atendimento e deixar de precisar de uma estrutura física. Elas não são a mesma coisa. E é nesse intervalo que a empresa está procurando seu próximo negócio.",
+    "hook": "O dinheiro físico está acabando? Se quase tudo cabe no celular, por que a dona do Banco24Horas quer investir em atendimento presencial? Parece uma contradição. Mas o plano da Tecban ajuda a enxergar uma mudança maior: o dinheiro pode perder espaço sem desaparecer, e o caixa eletrônico pode ganhar outras funções. Eu sou o Roberto, do O Dinheiro Explica. Vamos separar três coisas que costumam se misturar: usar menos notas, precisar menos de atendimento e deixar de precisar de uma estrutura física. Elas não são a mesma coisa. E é nesse intervalo que a empresa está procurando seu próximo negócio.",
     "scenes": [
       {
         "id": "scene-00",
         "index": 0,
         "scene_index": 0,
         "title": "Menos notas, mais agência?",
-        "narration": "O dinheiro físico está acabando? Se quase tudo cabe no celular, por que a dona do Banco24Horas quer investir em atendimento presencial? Parece uma contradição. Mas o plano da Tecban ajuda a enxergar uma mudança maior: o dinheiro pode perder espaço sem desaparecer, e o caixa eletrônico pode ganhar outras funções. Eu sou a Luana, do O Dinheiro Explica. Vamos separar três coisas que costumam se misturar: usar menos notas, precisar menos de atendimento e deixar de precisar de uma estrutura física. Elas não são a mesma coisa. E é nesse intervalo que a empresa está procurando seu próximo negócio.",
+        "narration": "O dinheiro físico está acabando? Se quase tudo cabe no celular, por que a dona do Banco24Horas quer investir em atendimento presencial? Parece uma contradição. Mas o plano da Tecban ajuda a enxergar uma mudança maior: o dinheiro pode perder espaço sem desaparecer, e o caixa eletrônico pode ganhar outras funções. Eu sou o Roberto, do O Dinheiro Explica. Vamos separar três coisas que costumam se misturar: usar menos notas, precisar menos de atendimento e deixar de precisar de uma estrutura física. Elas não são a mesma coisa. E é nesse intervalo que a empresa está procurando seu próximo negócio.",
         "claim_ids": [
           "C1",
           "C9",
@@ -2876,42 +3221,51 @@
                 "id": "cash",
                 "kind": "object",
                 "label": "Cédulas",
-                "x": 59,
-                "y": 12,
-                "width": 33,
-                "height": 47,
+                "x": 5,
+                "y": 8,
+                "width": 46,
+                "height": 65,
                 "initially_visible": true,
-                "label_size": 48,
+                "label_size": 54,
                 "surface": "none",
                 "object_type": "cash",
                 "svg_motion": "assemble",
                 "sustain": {
                   "kind": "float",
-                  "amplitude": 4,
-                  "period_seconds": 5
+                  "amplitude": 28,
+                  "period_seconds": 4.6,
+                  "phase": 0.12
                 }
               },
               {
                 "id": "atm",
                 "kind": "object",
                 "label": "Banco24Horas",
-                "x": 64,
-                "y": 65,
-                "width": 24,
-                "height": 28,
+                "x": 61,
+                "y": 14,
+                "width": 31,
+                "height": 73,
                 "initially_visible": false,
-                "label_size": 48,
+                "label_size": 52,
                 "surface": "spotlight",
                 "object_type": "atm",
-                "svg_motion": "assemble"
+                "svg_motion": "assemble",
+                "sustain": {
+                  "kind": "breathe",
+                  "amplitude": 18,
+                  "period_seconds": 7.4,
+                  "phase": 0.35
+                }
               }
             ],
             "connections": [],
             "captions": {
               "enabled": true,
-              "max_words": 1,
-              "font_size": 112,
-              "preferred_side": "left"
+              "max_words": 6,
+              "words_per_line": 3,
+              "max_lines": 2,
+              "font_size": 64,
+              "min_free_area_ratio": 0.3
             }
           },
           "beats": [
@@ -2930,10 +3284,10 @@
               "prominence": "contextual",
               "motion_seconds": 0.55,
               "camera": {
-                "x": 64,
-                "y": 42,
-                "zoom": 1.18,
-                "motion_seconds": 1
+                "x": 40,
+                "y": 43,
+                "zoom": 1.32,
+                "motion_seconds": 1.15
               }
             },
             {
@@ -2949,7 +3303,7 @@
               "medium": "motion_graphic",
               "sound": "tick",
               "prominence": "contextual",
-              "motion_seconds": 0.7,
+              "motion_seconds": 1.1,
               "entrance": {
                 "style": "slide",
                 "direction": "up"
@@ -2958,16 +3312,32 @@
               "moves": [
                 {
                   "id": "cash",
-                  "x": 59,
-                  "y": 8
+                  "x": 8,
+                  "y": 14
                 }
               ],
               "camera": {
                 "x": 50,
-                "y": 50,
-                "zoom": 1,
-                "motion_seconds": 0.8
+                "y": 48,
+                "zoom": 1.07,
+                "motion_seconds": 1.25
               }
+            },
+            {
+              "anchor": "usar menos notas",
+              "target_id": "cash",
+              "action": "focus",
+              "headline": "Menos uso continua sendo uso",
+              "treatment": "spotlight",
+              "kind": "fact",
+              "behavior": "transform",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.95,
+              "actuation": "count"
             },
             {
               "anchor": "Elas não são a mesma coisa",
@@ -2982,8 +3352,20 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.4,
-              "camera_mode": "hold"
+              "motion_seconds": 1.1,
+              "moves": [
+                {
+                  "id": "cash",
+                  "x": 6,
+                  "y": 10
+                }
+              ],
+              "camera": {
+                "x": 49,
+                "y": 48,
+                "zoom": 1.08,
+                "motion_seconds": 1.1
+              }
             }
           ]
         },
@@ -3039,39 +3421,65 @@
                 "id": "users",
                 "kind": "metric",
                 "label": "Usavam dinheiro",
-                "x": 6,
-                "y": 12,
-                "width": 40,
-                "height": 34,
+                "x": 5,
+                "y": 17,
+                "width": 43,
+                "height": 60,
                 "initially_visible": true,
-                "label_size": 44,
+                "label_size": 54,
                 "surface": "glow",
                 "value": "68,9%",
-                "value_size": 126,
+                "value_size": 164,
                 "detail": "Entrevistados • pesquisa 2024"
               },
               {
                 "id": "main",
                 "kind": "metric",
                 "label": "Meio mais frequente",
-                "x": 6,
-                "y": 51,
-                "width": 40,
-                "height": 34,
+                "x": 53,
+                "y": 17,
+                "width": 42,
+                "height": 60,
                 "initially_visible": false,
-                "label_size": 44,
+                "label_size": 50,
                 "surface": "none",
                 "value": "22%",
-                "value_size": 126,
+                "value_size": 164,
                 "detail": "Entrevistados • pesquisa 2024"
+              },
+              {
+                "id": "population",
+                "kind": "label",
+                "label": "Pessoas, não compras",
+                "x": 5,
+                "y": 2,
+                "width": 90,
+                "height": 12,
+                "label_size": 50,
+                "initially_visible": false,
+                "surface": "none"
+              },
+              {
+                "id": "period",
+                "kind": "label",
+                "label": "2024 ≠ 2026",
+                "x": 12,
+                "y": 84,
+                "width": 76,
+                "height": 12,
+                "label_size": 54,
+                "initially_visible": false,
+                "surface": "none"
               }
             ],
             "connections": [],
             "captions": {
-              "enabled": true,
-              "max_words": 1,
-              "font_size": 112,
-              "preferred_side": "right"
+              "enabled": false,
+              "max_words": 6,
+              "words_per_line": 3,
+              "max_lines": 2,
+              "font_size": 64,
+              "min_free_area_ratio": 0.3
             }
           },
           "beats": [
@@ -3090,10 +3498,10 @@
               "prominence": "contextual",
               "motion_seconds": 0.55,
               "camera": {
-                "x": 41,
-                "y": 49,
-                "zoom": 1.1,
-                "motion_seconds": 0.9
+                "x": 43,
+                "y": 47,
+                "zoom": 1.12,
+                "motion_seconds": 1
               }
             },
             {
@@ -3109,15 +3517,35 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.75,
+              "motion_seconds": 0.9,
               "entrance": {
-                "style": "fade"
+                "style": "slide",
+                "direction": "right"
               },
               "camera": {
                 "x": 50,
-                "y": 50,
-                "zoom": 1,
-                "motion_seconds": 0.65
+                "y": 47,
+                "zoom": 1.04,
+                "motion_seconds": 1.15
+              }
+            },
+            {
+              "anchor": "Esses percentuais são de pessoas",
+              "target_id": "population",
+              "action": "reveal",
+              "headline": "Pessoas, não compras",
+              "treatment": "kinetic_type",
+              "kind": "fact",
+              "behavior": "transform",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.9,
+              "entrance": {
+                "style": "wipe",
+                "direction": "left"
               }
             },
             {
@@ -3156,6 +3584,30 @@
               "sound": "none",
               "prominence": "contextual",
               "motion_seconds": 0.4,
+              "camera": {
+                "x": 50,
+                "y": 50,
+                "zoom": 1,
+                "motion_seconds": 0.9
+              }
+            },
+            {
+              "anchor": "não é uma fotografia de 2026",
+              "target_id": "period",
+              "action": "reveal",
+              "headline": "2024 ≠ 2026",
+              "treatment": "kinetic_type",
+              "kind": "fact",
+              "behavior": "transform",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 0.9,
+              "entrance": {
+                "style": "fade"
+              },
               "camera_mode": "hold"
             }
           ]
@@ -3217,7 +3669,7 @@
                 "width": 84,
                 "height": 13,
                 "initially_visible": true,
-                "label_size": 46,
+                "label_size": 54,
                 "surface": "none"
               },
               {
@@ -3225,56 +3677,64 @@
                 "kind": "metric",
                 "label": "Custo no mês",
                 "x": 4,
-                "y": 26,
-                "width": 26,
-                "height": 32,
+                "y": 24,
+                "width": 28,
+                "height": 56,
                 "initially_visible": false,
-                "label_size": 38,
+                "label_size": 46,
                 "surface": "none",
                 "value": "R$ 1.200",
-                "value_size": 88
+                "value_size": 108
               },
               {
                 "id": "volume",
                 "kind": "metric",
                 "label": "Saques no mês",
-                "x": 38,
-                "y": 26,
+                "x": 40,
+                "y": 24,
                 "width": 24,
-                "height": 32,
+                "height": 56,
                 "initially_visible": false,
-                "label_size": 38,
+                "label_size": 44,
                 "surface": "none",
                 "value": "600",
-                "value_size": 102
+                "value_size": 142
               },
               {
                 "id": "unit",
                 "kind": "metric",
                 "label": "Custo por saque",
-                "x": 70,
-                "y": 26,
-                "width": 26,
-                "height": 32,
+                "x": 72,
+                "y": 24,
+                "width": 24,
+                "height": 56,
                 "initially_visible": false,
-                "label_size": 38,
+                "label_size": 44,
                 "surface": "glow",
                 "value": "R$ 2",
-                "value_size": 102
+                "value_size": 138
+              },
+              {
+                "id": "pressure",
+                "kind": "label",
+                "label": "Volume menor, peso maior",
+                "x": 7,
+                "y": 84,
+                "width": 86,
+                "height": 12,
+                "label_size": 50,
+                "initially_visible": false,
+                "surface": "none"
               }
             ],
             "connections": [],
             "captions": {
-              "enabled": true,
-              "max_words": 2,
-              "font_size": 112,
-              "preferred_side": "center",
-              "region": {
-                "x": 5,
-                "y": 71,
-                "width": 90,
-                "height": 23
-              }
+              "enabled": false,
+              "max_words": 6,
+              "words_per_line": 3,
+              "max_lines": 2,
+              "font_size": 64,
+              "min_free_area_ratio": 0.3
             }
           },
           "beats": [
@@ -3291,9 +3751,10 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.45,
+              "motion_seconds": 0.9,
               "entrance": {
-                "style": "fade"
+                "style": "slide",
+                "direction": "left"
               }
             },
             {
@@ -3309,7 +3770,7 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.7,
+              "motion_seconds": 0.85,
               "entrance": {
                 "style": "scale"
               }
@@ -3327,7 +3788,7 @@
               "medium": "motion_graphic",
               "sound": "tick",
               "prominence": "contextual",
-              "motion_seconds": 0.85,
+              "motion_seconds": 1.2,
               "operation": {
                 "kind": "equation",
                 "input_ids": [
@@ -3338,7 +3799,7 @@
                 "result_id": "unit"
               },
               "entrance": {
-                "style": "fade"
+                "style": "scale"
               }
             },
             {
@@ -3360,6 +3821,32 @@
                 "style": "underline"
               },
               "camera_mode": "hold"
+            },
+            {
+              "anchor": "cada operação fica mais pesada",
+              "target_id": "pressure",
+              "action": "reveal",
+              "headline": "Volume menor, peso maior",
+              "treatment": "kinetic_type",
+              "kind": "fact",
+              "behavior": "transform",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 1.1,
+              "entrance": {
+                "style": "wipe",
+                "direction": "right"
+              },
+              "moves": [
+                {
+                  "id": "volume",
+                  "x": 40,
+                  "y": 27
+                }
+              ]
             }
           ]
         },
@@ -3416,34 +3903,41 @@
                 "id": "machine",
                 "kind": "object",
                 "label": "Rede do banco",
-                "x": 6,
-                "y": 20,
-                "width": 30,
-                "height": 57,
+                "x": 5,
+                "y": 7,
+                "width": 35,
+                "height": 79,
                 "initially_visible": true,
-                "label_size": 48,
+                "label_size": 52,
                 "surface": "none",
                 "object_type": "atm",
                 "svg_motion": "assemble",
                 "sustain": {
-                  "kind": "breathe",
-                  "amplitude": 3,
-                  "period_seconds": 6
+                  "kind": "float",
+                  "amplitude": 22,
+                  "period_seconds": 6.8,
+                  "phase": 0.33
                 }
               },
               {
                 "id": "operator",
                 "kind": "object",
                 "label": "Operação compartilhada",
-                "x": 62,
-                "y": 29,
-                "width": 30,
-                "height": 47,
+                "x": 58,
+                "y": 20,
+                "width": 37,
+                "height": 61,
                 "initially_visible": false,
-                "label_size": 48,
+                "label_size": 50,
                 "surface": "spotlight",
                 "object_type": "hub",
-                "svg_motion": "assemble"
+                "svg_motion": "assemble",
+                "sustain": {
+                  "kind": "breathe",
+                  "amplitude": 28,
+                  "period_seconds": 5.8,
+                  "phase": 0.1
+                }
               }
             ],
             "connections": [
@@ -3453,7 +3947,7 @@
                 "to": "machine",
                 "semantic": "relation",
                 "motion": "flow",
-                "period_seconds": 4.5,
+                "period_seconds": 3.3,
                 "label_position": "auto",
                 "from_port": "left",
                 "to_port": "right"
@@ -3461,15 +3955,11 @@
             ],
             "captions": {
               "enabled": true,
-              "max_words": 1,
-              "font_size": 112,
-              "preferred_side": "center",
-              "region": {
-                "x": 5,
-                "y": 2,
-                "width": 90,
-                "height": 15
-              }
+              "max_words": 6,
+              "words_per_line": 3,
+              "max_lines": 2,
+              "font_size": 64,
+              "min_free_area_ratio": 0.3
             }
           },
           "beats": [
@@ -3486,17 +3976,17 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.8,
+              "motion_seconds": 1.1,
               "entrance": {
                 "style": "wipe",
                 "direction": "right"
               },
               "actuation": "signal",
               "camera": {
-                "x": 48,
+                "x": 50,
                 "y": 47,
-                "zoom": 1.12,
-                "motion_seconds": 0.9
+                "zoom": 1.06,
+                "motion_seconds": 1.2
               }
             },
             {
@@ -3512,8 +4002,26 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.65,
-              "actuation": "confirm"
+              "motion_seconds": 1.3,
+              "actuation": "confirm",
+              "moves": [
+                {
+                  "id": "machine",
+                  "x": 5,
+                  "y": 12
+                },
+                {
+                  "id": "operator",
+                  "x": 58,
+                  "y": 14
+                }
+              ],
+              "camera": {
+                "x": 50,
+                "y": 50,
+                "zoom": 1.08,
+                "motion_seconds": 1.35
+              }
             },
             {
               "anchor": "Pode, não quer dizer que toda contratação será mais barata",
@@ -3533,7 +4041,7 @@
                 "x": 50,
                 "y": 50,
                 "zoom": 1,
-                "motion_seconds": 0.6
+                "motion_seconds": 1.05
               }
             }
           ]
@@ -3583,52 +4091,55 @@
                 "id": "branch",
                 "kind": "object",
                 "label": "Atendimento compartilhado",
-                "x": 5,
-                "y": 20,
-                "width": 48,
-                "height": 67,
+                "x": 4,
+                "y": 19,
+                "width": 66,
+                "height": 70,
                 "initially_visible": true,
-                "label_size": 48,
+                "label_size": 60,
                 "surface": "spotlight",
                 "object_type": "branch",
                 "svg_motion": "assemble",
                 "sustain": {
                   "kind": "breathe",
-                  "amplitude": 3,
-                  "period_seconds": 7
+                  "amplitude": 24,
+                  "period_seconds": 7.3,
+                  "phase": 0.2
                 }
               },
               {
                 "id": "pilot",
                 "kind": "label",
                 "label": "Piloto • setembro 2026",
-                "x": 61,
-                "y": 4,
-                "width": 35,
-                "height": 17,
+                "x": 5,
+                "y": 2,
+                "width": 90,
+                "height": 12,
                 "initially_visible": false,
-                "label_size": 42,
+                "label_size": 62,
                 "surface": "none"
               },
               {
                 "id": "accounts",
                 "kind": "label",
                 "label": "Contas continuam separadas",
-                "x": 61,
-                "y": 79,
-                "width": 35,
-                "height": 17,
+                "x": 75,
+                "y": 31,
+                "width": 22,
+                "height": 52,
                 "initially_visible": false,
-                "label_size": 40,
+                "label_size": 46,
                 "surface": "none"
               }
             ],
             "connections": [],
             "captions": {
               "enabled": true,
-              "max_words": 1,
-              "font_size": 112,
-              "preferred_side": "right"
+              "max_words": 6,
+              "words_per_line": 3,
+              "max_lines": 2,
+              "font_size": 64,
+              "min_free_area_ratio": 0.3
             }
           },
           "beats": [
@@ -3647,10 +4158,10 @@
               "prominence": "contextual",
               "motion_seconds": 0.7,
               "camera": {
-                "x": 41,
-                "y": 53,
-                "zoom": 1.18,
-                "motion_seconds": 0.9
+                "x": 43,
+                "y": 54,
+                "zoom": 1.15,
+                "motion_seconds": 1.25
               }
             },
             {
@@ -3666,7 +4177,7 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.8,
+              "motion_seconds": 1.1,
               "entrance": {
                 "style": "slide",
                 "direction": "down"
@@ -3675,7 +4186,7 @@
                 "x": 50,
                 "y": 50,
                 "zoom": 1,
-                "motion_seconds": 0.9
+                "motion_seconds": 1.25
               }
             },
             {
@@ -3691,9 +4202,16 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.7,
+              "motion_seconds": 1.25,
               "actuation": "unlock",
-              "camera_mode": "hold"
+              "camera_mode": "hold",
+              "moves": [
+                {
+                  "id": "branch",
+                  "x": 7,
+                  "y": 19
+                }
+              ]
             },
             {
               "anchor": "Não é juntar as contas dos clientes",
@@ -3708,27 +4226,28 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.6,
+              "motion_seconds": 1.1,
               "emphasis": {
                 "phrase": "separadas",
                 "style": "underline"
               },
               "entrance": {
-                "style": "fade"
+                "style": "wipe",
+                "direction": "down"
               },
               "camera": {
                 "x": 50,
                 "y": 50,
                 "zoom": 1,
-                "motion_seconds": 0.7
+                "motion_seconds": 1.05
               }
             },
             {
               "anchor": "Mas piloto não é cobertura nacional",
               "target_id": "pilot",
-              "action": "focus",
-              "headline": "Plano não é disponibilidade geral",
-              "treatment": "spotlight",
+              "action": "update",
+              "headline": "Piloto ≠ cobertura nacional",
+              "treatment": "kinetic_type",
               "kind": "fact",
               "behavior": "transform",
               "transition": "cut",
@@ -3736,7 +4255,7 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.45,
+              "motion_seconds": 1.1,
               "camera_mode": "hold"
             }
           ]
@@ -3792,48 +4311,61 @@
                 "id": "store",
                 "kind": "object",
                 "label": "Caixa da loja",
-                "x": 7,
-                "y": 17,
-                "width": 31,
-                "height": 52,
+                "x": 6,
+                "y": 8,
+                "width": 41,
+                "height": 77,
                 "initially_visible": true,
-                "label_size": 48,
+                "label_size": 52,
                 "surface": "spotlight",
                 "object_type": "store",
-                "svg_motion": "assemble"
+                "svg_motion": "assemble",
+                "sustain": {
+                  "kind": "breathe",
+                  "amplitude": 16,
+                  "period_seconds": 8.1,
+                  "phase": 0.4
+                }
               },
               {
                 "id": "cash",
                 "kind": "object",
                 "label": "Notas ao cliente",
-                "x": 64,
-                "y": 12,
-                "width": 27,
-                "height": 34,
+                "x": 59,
+                "y": 5,
+                "width": 36,
+                "height": 35,
                 "initially_visible": false,
-                "label_size": 48,
+                "label_size": 52,
                 "surface": "none",
                 "object_type": "cash",
                 "svg_motion": "assemble",
                 "sustain": {
-                  "kind": "float",
-                  "amplitude": 3,
-                  "period_seconds": 5
+                  "kind": "drift",
+                  "amplitude": 30,
+                  "period_seconds": 5.2,
+                  "phase": 0.2
                 }
               },
               {
                 "id": "account",
                 "kind": "object",
                 "label": "Conta da loja",
-                "x": 64,
-                "y": 60,
-                "width": 27,
-                "height": 31,
+                "x": 59,
+                "y": 56,
+                "width": 36,
+                "height": 37,
                 "initially_visible": false,
-                "label_size": 48,
+                "label_size": 50,
                 "surface": "none",
                 "object_type": "bank",
-                "svg_motion": "assemble"
+                "svg_motion": "assemble",
+                "sustain": {
+                  "kind": "breathe",
+                  "amplitude": 20,
+                  "period_seconds": 6.5,
+                  "phase": 0.1
+                }
               }
             ],
             "connections": [
@@ -3843,7 +4375,7 @@
                 "to": "cash",
                 "semantic": "transfer",
                 "motion": "flow",
-                "period_seconds": 4,
+                "period_seconds": 3.5,
                 "label_position": "auto",
                 "token_label": "R$",
                 "from_port": "right",
@@ -3855,7 +4387,7 @@
                 "to": "account",
                 "semantic": "relation",
                 "motion": "pulse",
-                "period_seconds": 5,
+                "period_seconds": 4.8,
                 "label_position": "auto",
                 "from_port": "bottom",
                 "to_port": "top"
@@ -3863,18 +4395,35 @@
             ],
             "captions": {
               "enabled": true,
-              "max_words": 1,
-              "font_size": 112,
-              "preferred_side": "left",
-              "region": {
-                "x": 4,
-                "y": 76,
-                "width": 56,
-                "height": 19
-              }
+              "max_words": 6,
+              "words_per_line": 3,
+              "max_lines": 2,
+              "font_size": 64,
+              "min_free_area_ratio": 0.3
             }
           },
           "beats": [
+            {
+              "anchor": "Existe outra maneira de aproximar o físico do digital",
+              "target_id": "store",
+              "action": "focus",
+              "headline": "O comércio participa da passagem entre as formas",
+              "treatment": "spotlight",
+              "kind": "fact",
+              "behavior": "transform",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 1.1,
+              "camera": {
+                "x": 35,
+                "y": 47,
+                "zoom": 1.13,
+                "motion_seconds": 1.25
+              }
+            },
             {
               "anchor": "recebe as notas que estavam no caixa da loja",
               "target_id": "cash",
@@ -3888,12 +4437,18 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.75,
+              "motion_seconds": 1.1,
               "entrance": {
                 "style": "slide",
-                "direction": "right"
+                "direction": "left"
               },
-              "actuation": "count"
+              "actuation": "count",
+              "camera": {
+                "x": 50,
+                "y": 48,
+                "zoom": 1.04,
+                "motion_seconds": 1.3
+              }
             },
             {
               "anchor": "é creditado na conta do comerciante",
@@ -3908,11 +4463,18 @@
               "medium": "motion_graphic",
               "sound": "tick",
               "prominence": "contextual",
-              "motion_seconds": 0.7,
+              "motion_seconds": 1.05,
               "entrance": {
-                "style": "fade"
+                "style": "slide",
+                "direction": "up"
               },
-              "actuation": "confirm"
+              "actuation": "confirm",
+              "camera": {
+                "x": 50,
+                "y": 49,
+                "zoom": 1.06,
+                "motion_seconds": 1.2
+              }
             },
             {
               "anchor": "O dinheiro não nasceu ali",
@@ -3927,13 +4489,20 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.55,
+              "motion_seconds": 1.15,
               "camera": {
                 "x": 50,
                 "y": 50,
-                "zoom": 1.12,
-                "motion_seconds": 0.8
-              }
+                "zoom": 1,
+                "motion_seconds": 1.1
+              },
+              "moves": [
+                {
+                  "id": "cash",
+                  "x": 57,
+                  "y": 8
+                }
+              ]
             },
             {
               "anchor": "a vantagem depende de ter dinheiro disponível",
@@ -4013,16 +4582,17 @@
                 "x": 4,
                 "y": 13,
                 "width": 21,
-                "height": 62,
+                "height": 72,
                 "initially_visible": true,
                 "label_size": 44,
                 "surface": "spotlight",
                 "object_type": "terminal",
                 "svg_motion": "assemble",
                 "sustain": {
-                  "kind": "breathe",
-                  "amplitude": 3,
-                  "period_seconds": 6
+                  "kind": "drift",
+                  "amplitude": 18,
+                  "period_seconds": 6.4,
+                  "phase": 0.3
                 }
               },
               {
@@ -4031,16 +4601,17 @@
                 "label": "Tecban • janeiro 2026",
                 "x": 30,
                 "y": 3,
-                "width": 65,
-                "height": 35,
+                "width": 66,
+                "height": 37,
                 "initially_visible": false,
                 "label_size": 48,
                 "surface": "glow",
                 "asset_id": "A_mini",
                 "sustain": {
                   "kind": "breathe",
-                  "amplitude": 3,
-                  "period_seconds": 7
+                  "amplitude": 18,
+                  "period_seconds": 7.6,
+                  "phase": 0.2
                 },
                 "image_fit": "contain",
                 "photo_style": "clean"
@@ -4050,50 +4621,46 @@
                 "kind": "metric",
                 "label": "Fim de 2025 informado",
                 "x": 31,
-                "y": 46,
+                "y": 47,
                 "width": 29,
-                "height": 31,
+                "height": 42,
                 "initially_visible": false,
-                "label_size": 40,
+                "label_size": 42,
                 "surface": "none",
                 "value": "1.775",
-                "value_size": 112
+                "value_size": 132
               },
               {
                 "id": "goal",
                 "kind": "metric",
                 "label": "Meta anunciada para 2026",
                 "x": 65,
-                "y": 46,
+                "y": 47,
                 "width": 30,
-                "height": 31,
+                "height": 42,
                 "initially_visible": false,
-                "label_size": 38,
+                "label_size": 40,
                 "surface": "glow",
                 "value": "+1.000",
-                "value_size": 106
+                "value_size": 132
               }
             ],
             "connections": [],
             "captions": {
-              "enabled": true,
-              "max_words": 1,
-              "font_size": 112,
-              "preferred_side": "center",
-              "region": {
-                "x": 4,
-                "y": 82,
-                "width": 92,
-                "height": 14
-              }
+              "enabled": false,
+              "max_words": 6,
+              "words_per_line": 3,
+              "max_lines": 2,
+              "font_size": 64,
+              "min_free_area_ratio": 0.3
             }
           },
           "beats": [
             {
               "anchor": "A Tecban informou que terminou 2025",
               "target_id": "mini",
-              "action": "retire",
-              "headline": "O equipamento dá lugar ao resultado reportado",
+              "action": "focus",
+              "headline": "A operação já existe; o resultado é informado pela empresa",
               "treatment": "spotlight",
               "kind": "fact",
               "behavior": "transform",
@@ -4102,7 +4669,8 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.55
+              "motion_seconds": 1.1,
+              "actuation": "signal"
             },
             {
               "anchor": "mil setecentos e setenta e cinco dispositivos mini em operação",
@@ -4117,7 +4685,7 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.75,
+              "motion_seconds": 0.95,
               "entrance": {
                 "style": "scale"
               }
@@ -4135,7 +4703,7 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.6,
+              "motion_seconds": 1.1,
               "entrance": {
                 "style": "fade"
               }
@@ -4153,9 +4721,9 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.65,
+              "motion_seconds": 0.9,
               "entrance": {
-                "style": "fade"
+                "style": "scale"
               }
             },
             {
@@ -4194,7 +4762,14 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.4
+              "motion_seconds": 1.1,
+              "moves": [
+                {
+                  "id": "mini",
+                  "x": 4,
+                  "y": 16
+                }
+              ]
             }
           ]
         },
@@ -4250,32 +4825,39 @@
                 "kind": "object",
                 "label": "Pontos de saque",
                 "x": 5,
-                "y": 14,
-                "width": 26,
-                "height": 53,
+                "y": 15,
+                "width": 37,
+                "height": 70,
                 "initially_visible": true,
-                "label_size": 48,
+                "label_size": 52,
                 "surface": "none",
                 "object_type": "atm",
-                "svg_motion": "assemble"
+                "svg_motion": "assemble",
+                "sustain": {
+                  "kind": "float",
+                  "amplitude": 20,
+                  "period_seconds": 6.9,
+                  "phase": 0.25
+                }
               },
               {
                 "id": "data",
                 "kind": "object",
                 "label": "Padrões de uso",
                 "x": 58,
-                "y": 14,
-                "width": 33,
-                "height": 53,
+                "y": 7,
+                "width": 37,
+                "height": 80,
                 "initially_visible": false,
-                "label_size": 48,
+                "label_size": 54,
                 "surface": "glow",
                 "object_type": "data",
                 "svg_motion": "assemble",
                 "sustain": {
                   "kind": "breathe",
-                  "amplitude": 3,
-                  "period_seconds": 6
+                  "amplitude": 26,
+                  "period_seconds": 5.5,
+                  "phase": 0.1
                 }
               }
             ],
@@ -4286,7 +4868,7 @@
                 "to": "data",
                 "semantic": "relation",
                 "motion": "flow",
-                "period_seconds": 5,
+                "period_seconds": 3.7,
                 "label_position": "auto",
                 "from_port": "right",
                 "to_port": "left"
@@ -4294,18 +4876,35 @@
             ],
             "captions": {
               "enabled": true,
-              "max_words": 1,
-              "font_size": 112,
-              "preferred_side": "center",
-              "region": {
-                "x": 5,
-                "y": 77,
-                "width": 90,
-                "height": 18
-              }
+              "max_words": 6,
+              "words_per_line": 3,
+              "max_lines": 2,
+              "font_size": 64,
+              "min_free_area_ratio": 0.3
             }
           },
           "beats": [
+            {
+              "anchor": "O terceiro caminho aparece onde quase ninguém olha",
+              "target_id": "atm",
+              "action": "focus",
+              "headline": "A informação nasce da operação física",
+              "treatment": "spotlight",
+              "kind": "fact",
+              "behavior": "transform",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 1,
+              "camera": {
+                "x": 38,
+                "y": 48,
+                "zoom": 1.16,
+                "motion_seconds": 1.2
+              }
+            },
             {
               "anchor": "transformar esse conhecimento em serviço",
               "target_id": "data",
@@ -4319,12 +4918,18 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.85,
+              "motion_seconds": 1.2,
               "entrance": {
                 "style": "wipe",
                 "direction": "left"
               },
-              "actuation": "signal"
+              "actuation": "signal",
+              "camera": {
+                "x": 50,
+                "y": 47,
+                "zoom": 1.08,
+                "motion_seconds": 1.35
+              }
             },
             {
               "anchor": "Sacar uma nota não revela, por si só, onde aquela nota será gasta depois",
@@ -4339,8 +4944,15 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.55,
-              "actuation": "lock"
+              "motion_seconds": 1.2,
+              "actuation": "lock",
+              "moves": [
+                {
+                  "id": "data",
+                  "x": 58,
+                  "y": 11
+                }
+              ]
             },
             {
               "anchor": "não demonstra todos os contratos",
@@ -4357,10 +4969,10 @@
               "prominence": "contextual",
               "motion_seconds": 0.55,
               "camera": {
-                "x": 47.5,
-                "y": 44,
-                "zoom": 1.14,
-                "motion_seconds": 0.9
+                "x": 50,
+                "y": 51,
+                "zoom": 1.07,
+                "motion_seconds": 1.2
               }
             }
           ]
@@ -4418,47 +5030,55 @@
                 "kind": "object",
                 "label": "Pagamento em mãos",
                 "x": 5,
-                "y": 13,
-                "width": 34,
-                "height": 55,
+                "y": 8,
+                "width": 43,
+                "height": 77,
                 "initially_visible": true,
-                "label_size": 48,
+                "label_size": 54,
                 "surface": "none",
                 "object_type": "cash",
                 "svg_motion": "assemble",
                 "sustain": {
                   "kind": "float",
-                  "amplitude": 3,
-                  "period_seconds": 6
+                  "amplitude": 26,
+                  "period_seconds": 5.4,
+                  "phase": 0.25
                 }
               },
               {
                 "id": "phone",
                 "kind": "object",
                 "label": "Pagamento conectado",
-                "x": 61,
-                "y": 13,
-                "width": 32,
-                "height": 55,
+                "x": 58,
+                "y": 10,
+                "width": 35,
+                "height": 81,
                 "initially_visible": false,
-                "label_size": 48,
+                "label_size": 50,
                 "surface": "spotlight",
                 "object_type": "phone",
-                "svg_motion": "assemble"
+                "svg_motion": "assemble",
+                "sustain": {
+                  "kind": "drift",
+                  "amplitude": 16,
+                  "period_seconds": 7.2,
+                  "phase": 0.15
+                }
               }
             ],
             "connections": [],
             "captions": {
               "enabled": true,
-              "max_words": 1,
-              "font_size": 112,
-              "preferred_side": "center",
-              "region": {
-                "x": 5,
-                "y": 79,
-                "width": 90,
-                "height": 17
-              }
+              "max_words": 6,
+              "words_per_line": 3,
+              "max_lines": 2,
+              "font_size": 64,
+              "min_free_area_ratio": 0.3
+            },
+            "initial_camera": {
+              "x": 35,
+              "y": 48,
+              "zoom": 1.17
             }
           },
           "beats": [
@@ -4475,12 +5095,18 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.65,
+              "motion_seconds": 1.05,
               "entrance": {
                 "style": "slide",
                 "direction": "left"
               },
-              "actuation": "tap"
+              "actuation": "tap",
+              "camera": {
+                "x": 50,
+                "y": 50,
+                "zoom": 1.06,
+                "motion_seconds": 1.25
+              }
             },
             {
               "anchor": "entregar uma nota sem sinal no seu celular",
@@ -4495,7 +5121,7 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.8,
+              "motion_seconds": 1.2,
               "operation": {
                 "kind": "compare",
                 "element_ids": [
@@ -4503,7 +5129,25 @@
                   "phone"
                 ]
               },
-              "actuation": "confirm"
+              "actuation": "confirm",
+              "moves": [
+                {
+                  "id": "cash",
+                  "x": 5,
+                  "y": 12
+                },
+                {
+                  "id": "phone",
+                  "x": 60,
+                  "y": 10
+                }
+              ],
+              "camera": {
+                "x": 50,
+                "y": 48,
+                "zoom": 1.05,
+                "motion_seconds": 1.15
+              }
             },
             {
               "anchor": "sacar essa nota num caixa eletrônico continua dependendo",
@@ -4518,13 +5162,47 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.55,
+              "motion_seconds": 1.05,
               "actuation": "lock",
               "camera": {
-                "x": 49,
-                "y": 43,
-                "zoom": 1.1,
-                "motion_seconds": 0.8
+                "x": 77.5,
+                "y": 50.5,
+                "zoom": 1.18,
+                "motion_seconds": 1.35
+              },
+              "retire_ids": [
+                "cash"
+              ]
+            },
+            {
+              "anchor": "dinheiro na mão e acesso ao dinheiro são coisas diferentes",
+              "target_id": "cash",
+              "action": "reveal",
+              "headline": "Pagamento e acesso voltam à comparação",
+              "treatment": "split_compare",
+              "kind": "fact",
+              "behavior": "transform",
+              "transition": "cut",
+              "placement": "full",
+              "medium": "motion_graphic",
+              "sound": "none",
+              "prominence": "contextual",
+              "motion_seconds": 1.15,
+              "operation": {
+                "kind": "compare",
+                "element_ids": [
+                  "cash",
+                  "phone"
+                ]
+              },
+              "entrance": {
+                "style": "fade"
+              },
+              "camera": {
+                "x": 50,
+                "y": 50,
+                "zoom": 1.04,
+                "motion_seconds": 1.3
               }
             },
             {
@@ -4546,7 +5224,7 @@
                 "x": 50,
                 "y": 50,
                 "zoom": 1,
-                "motion_seconds": 0.7
+                "motion_seconds": 1.05
               }
             }
           ]
@@ -4605,28 +5283,31 @@
                 "id": "atm",
                 "kind": "object",
                 "label": "Além do saque",
-                "x": 6,
-                "y": 10,
-                "width": 35,
-                "height": 76,
+                "x": 17,
+                "y": 5,
+                "width": 58,
+                "height": 83,
                 "initially_visible": true,
-                "label_size": 48,
+                "label_size": 62,
                 "surface": "spotlight",
                 "object_type": "atm",
                 "svg_motion": "assemble",
                 "sustain": {
-                  "kind": "breathe",
-                  "amplitude": 3,
-                  "period_seconds": 7
+                  "kind": "drift",
+                  "amplitude": 20,
+                  "period_seconds": 8.4,
+                  "phase": 0.3
                 }
               }
             ],
             "connections": [],
             "captions": {
               "enabled": true,
-              "max_words": 1,
-              "font_size": 112,
-              "preferred_side": "right"
+              "max_words": 6,
+              "words_per_line": 3,
+              "max_lines": 2,
+              "font_size": 64,
+              "min_free_area_ratio": 0.3
             }
           },
           "beats": [
@@ -4646,10 +5327,10 @@
               "motion_seconds": 0.6,
               "actuation": "signal",
               "camera": {
-                "x": 33,
-                "y": 50,
-                "zoom": 1.2,
-                "motion_seconds": 0.95
+                "x": 45,
+                "y": 46.5,
+                "zoom": 1.16,
+                "motion_seconds": 1.25
               }
             },
             {
@@ -4665,20 +5346,20 @@
               "medium": "motion_graphic",
               "sound": "none",
               "prominence": "contextual",
-              "motion_seconds": 0.7,
+              "motion_seconds": 1.35,
               "actuation": "confirm",
               "moves": [
                 {
                   "id": "atm",
-                  "x": 9,
-                  "y": 10
+                  "x": 25,
+                  "y": 7
                 }
               ],
               "camera": {
                 "x": 50,
                 "y": 50,
-                "zoom": 1,
-                "motion_seconds": 0.75
+                "zoom": 1.04,
+                "motion_seconds": 1.3
               }
             },
             {
