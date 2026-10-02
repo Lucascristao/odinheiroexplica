@@ -1,13 +1,28 @@
 export function productionChatRequest(request: string): string {
   return `${request}
 
-Use o sistema https://github.com/Lucascristao/odinheiroexplica e leia as instruções atuais de AGENTS.md, prompts/daily-editorial.md, docs/editorial-motion-library.md e docs/visual-preview.md. Crie direção de voz, câmera e motion graphics própria para esta pauta, preservando o tema escolhido.
+Use o sistema https://github.com/Lucascristao/odinheiroexplica e siga as regras de AGENTS.md, prompts/daily-editorial.md e docs/editorial-motion-library.md.
 
-Planeje o movimento durante a explicação inteira, com atuação de objetos, relações e transformações pertinentes; entradas rápidas seguidas de listas paradas não bastam. As ilustrações comandam a composição. Use legenda normal em blocos de aproximadamente três palavras por linha, até duas linhas, sincronizada ao trecho da fala, sem sublinhado ou animação palavra a palavra. Só exiba a legenda quando já houver uma área livre contígua que atinja o limiar escolhido de 30–40% do vídeo; não some vazios separados, promova uma área pequena nem reserve faixa ou mova/reduza ilustrações para acomodar texto. Se faltar espaço, omita a legenda. Varie escala, composição e superfície sem impor templates, cotas ou flutuação genérica. Dê acabamento autoral às fotos e recortes com suporte, moldura, profundidade, luz e entrada, preservando pixels, fontes e contexto; evite retângulo branco solto. Preserve o repertório expressivo no renderer efetivamente usado.
+DIRETRIZES VISUAIS OBRIGATÓRIAS (Padrão de Dinamismo):
+1. RITMO E ILUSTRAÇÃO CONTÍNUA (Regra dos 4 segundos):
+   - A narração deve ser ilustrada o tempo todo. Cada nova afirmação, dado ou virada de raciocínio da fala exige um evento visual correspondente.
+   - NUNCA deixe a tela estática ou com a mesma lista/gráfico parado por mais de 4 a 5 segundos enquanto o narrador fala de outros tópicos. Divida a cena em microcenas e beats visuais ativos.
 
-Priorize sempre Roberto com a voz Charon. Escolha Luana/Autonoe somente quando a pauta for dirigida ao público feminino, sem alternância estética ou automática. Mantenha apresentador, apresentação falada e contrato coerentes; trocar a voz exige nova narração e cache compatível, sem reutilizar áudio da voz anterior.
+2. ELEMENTOS VISUAIS E SVGs GRANDES:
+   - Os elementos gráficos e ilustrações em SVG devem ser GRANDES, centrais e protagonistas (250px a 500px de destaque), nunca ícones pequenos e tímidos perdidos na tela.
+   - Aplique animações de traço (trace), fluxo ativo (flow) e sustentação viva (breathe, float, pulse) para manter a tela em movimento orgânico durante a explicação.
 
-Respeite o modo solicitado: se o pedido disser produção direta sem testes, não rode suítes de testes localmente ou no CI, prévias ou demonstrações. Registre o que não foi executado e preserve as suítes permanentes. A preparação necessária do render real continua: compilação/typecheck de produção, contratos, assets, fontes, integridade de voz e alinhamento; não prometa bypass desses gates. No modo normal, confira roteiro, recursos executáveis e layout antes da narração.
+3. TIPOGRAFIA CINÉTICA E NÚMEROS GIGANTES:
+   - Destaques numéricos, valores em dinheiro e porcentagens devem ser GIGANTES e impactantes, usando kinetic_type e count em amarelo #FFBD19 sobre a base escura.
 
-A produção na main está autorizada: acompanhe o vídeo real, corrija falhas preservando a explicação e retome pelo cache. Julgue ritmo percebido, movimento dos objetos, legendas, legibilidade e uso dos vazios no MP4 com áudio; um CI verde não aprova a linguagem visual. Dê atualizações claras no chat e continue até confirmar vídeo, título e descrição na pasta do Google Drive; disparar o render não conclui o pedido. Depois faça a capa final conforme as regras do canal e entregue-a na mesma pasta. Ao terminar, informe os links da entrega e eventuais limitações reais.`;
+4. CÂMERA ATIVA E REENQUADRAMENTO:
+   - Planeje movimento de câmera com propósito narrativo: push-in para revelar detalhes e gerar tensão, pan para comparações e reframe para acompanhar o novo foco da narração. Evite câmeras totalmente paradas o vídeo inteiro.
+
+5. IDENTIDADE VOCAL E ENTREGA:
+   - Narrador padrão: Roberto com voz Charon (Gemini Live). Use Luana/Autonoe apenas se a pauta for especificamente voltada ao público feminino.
+   - Entregue o vídeo renderizado, título e descrição completa na pasta do Google Drive.
+
+6. CAPA FINAL (THUMBNAIL):
+   - Ao concluir a entrega do vídeo no Drive, gere a thumbnail final 16:9 de alta conversão: limpa, minimalista, com texto de 2 a 4 palavras, sem poluição visual ou erros de texto, e salve-a na mesma pasta do Drive.`;
 }
+
