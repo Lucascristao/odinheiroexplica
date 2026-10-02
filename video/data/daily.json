@@ -594,13 +594,13 @@
               "kind": "label",
               "label": "Exemplo hipotético",
               "x": 8,
-              "y": 6,
+              "y": 4,
               "width": 84,
-              "height": 12,
+              "height": 18,
               "initially_visible": true,
               "label_size": 46,
               "surface": "none",
-              "detail": "Valores ilustrativos de dívida"
+              "detail": "Valores ilustrativos"
             },
             {
               "id": "calc_principal",
@@ -705,7 +705,7 @@
             "motion_seconds": 0.9,
             "entrance": {
               "style": "slide",
-              "direction": "up"
+              "direction": "right"
             }
           }
         ]
@@ -1186,13 +1186,13 @@
                 "kind": "label",
                 "label": "Exemplo hipotético",
                 "x": 8,
-                "y": 6,
+                "y": 4,
                 "width": 84,
-                "height": 12,
+                "height": 18,
                 "initially_visible": true,
                 "label_size": 46,
                 "surface": "none",
-                "detail": "Valores ilustrativos de dívida"
+                "detail": "Valores ilustrativos"
               },
               {
                 "id": "calc_principal",
@@ -1297,7 +1297,7 @@
               "motion_seconds": 0.9,
               "entrance": {
                 "style": "slide",
-                "direction": "up"
+                "direction": "right"
               }
             }
           ]
