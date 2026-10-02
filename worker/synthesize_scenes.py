@@ -653,13 +653,16 @@ async def _synthesize_scene_with_retries(
                     f"similaridade {similarity:.4f}; alteração literal: "
                     f"{json.dumps(fidelity['differences'][:3], ensure_ascii=False)}."
                 )
-                if fidelity.get("numeric_only_mismatch"):
-                    raise RetryableLiveError(
-                        message
-                        + " Divergência apenas numérica; refazendo a cena "
-                        "na mesma voz/modelo."
-                    )
-                raise RuntimeError(message)
+                mismatch_kind = (
+                    "apenas numérica"
+                    if fidelity.get("numeric_only_mismatch")
+                    else "lexical"
+                )
+                raise RetryableLiveError(
+                    message
+                    + f" Divergência {mismatch_kind}; áudio rejeitado. "
+                    "Retentativa na mesma cena/voz/modelo, limitada pela política Live."
+                )
 
             write_pcm_wav(job["output_file"], pcm)
             duration = duration_seconds(job["output_file"])

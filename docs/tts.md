@@ -12,7 +12,7 @@ A direção vocal continua centralizada na política: português brasileiro de c
 
 A narração é enviada ao Live como texto literal. A instrução de sistema proíbe introduções, comentários, resumos, reformulações ou qualquer palavra extra. `speech.pronunciations` continua sendo respeitado como instrução de fala, preservando a grafia correta no roteiro e na tela.
 
-A Live API devolve também a transcrição da própria saída. Cada cena só é aceita quando essa transcrição corresponde lexicalmente ao roteiro depois de normalizações seguras. Anos de quatro dígitos entre 1900 e 2099 recebem automaticamente orientação de pronúncia em português brasileiro sem alterar o texto do roteiro. O validador aceita representações equivalentes do mesmo ano que apareça no roteiro, como `2027`, `dois mil e vinte e sete` ou a forma de ASR `vinte vinte e sete`; um ano diferente continua sendo erro. Divergências apenas numéricas são refeitas na mesma voz/modelo, enquanto mudanças lexicais comuns continuam fatais. O manifesto registra a transcrição, as equivalências e a pontuação de fidelidade.
+A Live API devolve também a transcrição da própria saída. Cada cena só é aceita quando essa transcrição corresponde lexicalmente ao roteiro depois de normalizações seguras. Anos de quatro dígitos entre 1900 e 2099 recebem automaticamente orientação de pronúncia em português brasileiro sem alterar o texto do roteiro. O validador aceita representações equivalentes do mesmo ano que apareça no roteiro, como `2027`, `dois mil e vinte e sete` ou a forma de ASR `vinte vinte e sete`; um ano diferente continua sendo erro. Qualquer divergência literal, numérica ou lexical, rejeita o áudio daquela tentativa e permite refazer somente a mesma cena em uma sessão nova, mantendo voz, modelo e roteiro. O gate continua estrito: o áudio divergente não é escrito nem cacheado, mesmo com similaridade alta. A produção para se as quatro tentativas da cena forem rejeitadas. Os diagnósticos distinguem divergência apenas numérica de lexical; o manifesto das cenas aceitas registra a transcrição, as equivalências e a pontuação de fidelidade.
 
 ## Áudio bruto
 
@@ -26,7 +26,7 @@ Cada WAV tem um sidecar `.tts.json` com texto, modelo, voz, duração, hash do �
 
 Regeneração integral continua exigindo o input manual `force_fresh_audio` no primeiro attempt de um `workflow_dispatch`. Pushes e reruns retomam cache válido.
 
-Falhas transitórias do Live, incluindo fechamento 1011/1012/1013, Resource Exhausted temporário, timeout ou conexão interrompida, são repetidas na mesma cena em uma sessão nova com backoff de 5 s, 15 s e 30 s. Não existe fallback para outro modelo. Erros de fidelidade do roteiro, formato de áudio ou configuração inválida continuam fatais.
+Falhas transitórias do Live, incluindo fechamento 1011/1012/1013, Resource Exhausted temporário, timeout ou conexão interrompida, e rejeições de fidelidade da saída são repetidas na mesma cena em uma sessão nova com backoff de 5 s, 15 s e 30 s, dentro do limite de quatro tentativas. Não existe fallback para outro modelo. Formato de áudio ou configuração inválida continuam fatais, assim como fidelidade rejeitada depois de esgotar as tentativas. As cenas já aceitas preservam seu cache.
 
 O worker registra `daily-live-diagnostics.json` com versão do SDK, tentativa por cena, latência até o primeiro áudio, bytes PCM, duração, `usage_metadata`, `go_away`, updates de retomada recebidos e código/motivo de fechamento quando houver. Session Resumption fica desativado porque cada cena é independente.
 
