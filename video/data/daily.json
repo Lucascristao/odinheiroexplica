@@ -352,7 +352,7 @@
         }
       ],
       "review": {
-        "content_sha256": "d56fb287a9e5ce43fc575d5bc049d8082962a05d380310c461cb664543628f5a",
+        "content_sha256": "46d51d2d1b04725ba3a7ec00ac95b77f881f6e548acc6adb3b05597918dd5820",
         "findings": [
           {
             "question": "A simulação dos valores de rendimento está claramente identificada como ilustrativa?",
@@ -398,11 +398,11 @@
               "svg_motion": "trace",
               "sustain": {
                 "kind": "float",
-                "amplitude": 5,
-                "period_seconds": 4
+                "amplitude": 8,
+                "period_seconds": 3.2
               },
               "label_size": 44,
-              "surface": "none",
+              "surface": "spotlight",
               "value": "R$ 410 mil+",
               "value_size": 96,
               "detail": "Poupança a 0,5% a.m. + TR"
@@ -420,8 +420,8 @@
               "svg_motion": "trace",
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 5,
-                "period_seconds": 4
+                "amplitude": 8,
+                "period_seconds": 3.2
               },
               "label_size": 44,
               "surface": "spotlight",
@@ -436,7 +436,8 @@
               "from": "card_poupanca",
               "to": "card_alternativas",
               "semantic": "comparison",
-              "motion": "flow"
+              "motion": "flow",
+              "period_seconds": 2.5
             }
           ],
           "captions": {
@@ -455,7 +456,11 @@
             "action": "focus",
             "actuation": "count",
             "headline": "O plano clássico da poupança",
-            "treatment": "spotlight",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Rendimento mensal",
+              "style": "highlight"
+            },
             "kind": "fact",
             "behavior": "transform",
             "transition": "cut",
@@ -470,7 +475,19 @@
             "target_id": "card_alternativas",
             "action": "reveal",
             "headline": "Alternativas rendem muito mais",
-            "treatment": "spotlight",
+            "treatment": "split_compare",
+            "operation": {
+              "kind": "compare",
+              "element_ids": [
+                "card_poupanca",
+                "card_alternativas"
+              ]
+            },
+            "actuation": "confirm",
+            "emphasis": {
+              "phrase": "Renda fixa",
+              "style": "highlight"
+            },
             "kind": "fact",
             "behavior": "transform",
             "transition": "cut",
@@ -530,12 +547,12 @@
               "icon": "bank",
               "svg_motion": "trace",
               "sustain": {
-                "kind": "breathe",
-                "amplitude": 4,
-                "period_seconds": 5
+                "kind": "float",
+                "amplitude": 6,
+                "period_seconds": 4
               },
               "label_size": 44,
-              "surface": "none",
+              "surface": "spotlight",
               "value": "13,75%",
               "value_size": 130,
               "detail": "Copom • Banco Central"
@@ -552,9 +569,9 @@
               "icon": "document",
               "svg_motion": "trace",
               "sustain": {
-                "kind": "float",
-                "amplitude": 4,
-                "period_seconds": 4
+                "kind": "breathe",
+                "amplitude": 6,
+                "period_seconds": 3.5
               },
               "label_size": 44,
               "surface": "spotlight",
@@ -569,7 +586,8 @@
               "from": "rule_selic",
               "to": "rule_yield",
               "semantic": "cause",
-              "motion": "flow"
+              "motion": "flow",
+              "period_seconds": 2.2
             }
           ],
           "captions": {
@@ -588,7 +606,11 @@
             "action": "focus",
             "actuation": "signal",
             "headline": "Selic baliza o retorno da poupança",
-            "treatment": "spotlight",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Selic Meta",
+              "style": "highlight"
+            },
             "kind": "fact",
             "behavior": "transform",
             "transition": "cut",
@@ -602,8 +624,13 @@
             "anchor": "retorno fixo de meio por cento ao mês",
             "target_id": "rule_yield",
             "action": "reveal",
+            "actuation": "confirm",
             "headline": "Regra: 0,5% ao mês mais TR",
-            "treatment": "spotlight",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Regra da poupança",
+              "style": "highlight"
+            },
             "kind": "fact",
             "behavior": "transform",
             "transition": "cut",
@@ -674,8 +701,13 @@
               "initially_visible": true,
               "icon": "wallet",
               "svg_motion": "trace",
+              "sustain": {
+                "kind": "tilt",
+                "amplitude": 6,
+                "period_seconds": 3.5
+              },
               "label_size": 40,
-              "surface": "none",
+              "surface": "spotlight",
               "value": "R$ 82 mi",
               "value_size": 76,
               "detail": "Patrimônio inicial"
@@ -693,7 +725,7 @@
               "svg_motion": "trace",
               "sustain": {
                 "kind": "float",
-                "amplitude": 5,
+                "amplitude": 8,
                 "period_seconds": 3
               },
               "label_size": 40,
@@ -715,8 +747,8 @@
               "svg_motion": "trace",
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 5,
-                "period_seconds": 4
+                "amplitude": 8,
+                "period_seconds": 3.5
               },
               "label_size": 40,
               "surface": "spotlight",
@@ -732,6 +764,7 @@
               "to": "calc_mensal",
               "semantic": "transfer",
               "motion": "flow",
+              "period_seconds": 2.2,
               "token_label": "R$"
             },
             {
@@ -739,7 +772,8 @@
               "from": "calc_mensal",
               "to": "calc_anual",
               "semantic": "sequence",
-              "motion": "flow"
+              "motion": "flow",
+              "period_seconds": 2.5
             }
           ],
           "captions": {
@@ -758,7 +792,11 @@
             "action": "reveal",
             "actuation": "count",
             "headline": "Quase meio milhão por mês",
-            "treatment": "spotlight",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Ganho mensal",
+              "style": "highlight"
+            },
             "kind": "fact",
             "behavior": "transform",
             "transition": "cut",
@@ -776,8 +814,13 @@
             "anchor": "seis milhões e duzentos mil reais",
             "target_id": "calc_anual",
             "action": "reveal",
+            "actuation": "confirm",
             "headline": "Mais de R$ 6 milhões ao ano",
-            "treatment": "spotlight",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Total em um ano",
+              "style": "highlight"
+            },
             "kind": "fact",
             "behavior": "transform",
             "transition": "cut",
@@ -837,11 +880,11 @@
               "svg_motion": "trace",
               "sustain": {
                 "kind": "float",
-                "amplitude": 5,
-                "period_seconds": 4
+                "amplitude": 8,
+                "period_seconds": 3.5
               },
               "label_size": 42,
-              "surface": "none",
+              "surface": "spotlight",
               "value": "R$ 680 mil+",
               "value_size": 90,
               "detail": "Primeiro mês com IR 22,5%"
@@ -859,7 +902,7 @@
               "svg_motion": "trace",
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 5,
+                "amplitude": 8,
                 "period_seconds": 3
               },
               "label_size": 42,
@@ -875,7 +918,8 @@
               "from": "alt_cdi",
               "to": "alt_gap",
               "semantic": "comparison",
-              "motion": "flow"
+              "motion": "flow",
+              "period_seconds": 2.2
             }
           ],
           "captions": {
@@ -893,7 +937,11 @@
             "target_id": "alt_cdi",
             "action": "focus",
             "headline": "Mais de R$ 680 mil líquidos ao mês",
-            "treatment": "spotlight",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "100% do CDI",
+              "style": "highlight"
+            },
             "kind": "fact",
             "behavior": "transform",
             "transition": "cut",
@@ -909,7 +957,18 @@
             "action": "reveal",
             "actuation": "count",
             "headline": "R$ 190 mil a mais todo mês",
-            "treatment": "spotlight",
+            "treatment": "split_compare",
+            "operation": {
+              "kind": "compare",
+              "element_ids": [
+                "alt_cdi",
+                "alt_gap"
+              ]
+            },
+            "emphasis": {
+              "phrase": "Diferença mensal",
+              "style": "highlight"
+            },
             "kind": "fact",
             "behavior": "transform",
             "transition": "cut",
@@ -969,11 +1028,11 @@
               "svg_motion": "trace",
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 4,
-                "period_seconds": 4
+                "amplitude": 8,
+                "period_seconds": 3
               },
               "label_size": 42,
-              "surface": "none",
+              "surface": "spotlight",
               "value": "R$ 250 mil",
               "value_size": 90,
               "detail": "Teto por CPF e instituição"
@@ -991,8 +1050,8 @@
               "svg_motion": "trace",
               "sustain": {
                 "kind": "float",
-                "amplitude": 5,
-                "period_seconds": 4
+                "amplitude": 8,
+                "period_seconds": 3.5
               },
               "label_size": 42,
               "surface": "spotlight",
@@ -1007,7 +1066,8 @@
               "from": "warn_fgc",
               "to": "safe_treasury",
               "semantic": "comparison",
-              "motion": "flow"
+              "motion": "flow",
+              "period_seconds": 2.5
             }
           ],
           "captions": {
@@ -1024,8 +1084,13 @@
             "anchor": "apenas até duzentos e cinquenta mil reais",
             "target_id": "warn_fgc",
             "action": "focus",
+            "actuation": "signal",
             "headline": "FGC cobre apenas R$ 250 mil",
-            "treatment": "spotlight",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Limite do FGC",
+              "style": "highlight"
+            },
             "kind": "fact",
             "behavior": "transform",
             "transition": "cut",
@@ -1041,7 +1106,11 @@
             "action": "reveal",
             "actuation": "confirm",
             "headline": "Tesouro tem garantia soberana",
-            "treatment": "spotlight",
+            "treatment": "giant_number",
+            "emphasis": {
+              "phrase": "Tesouro Nacional",
+              "style": "highlight"
+            },
             "kind": "fact",
             "behavior": "transform",
             "transition": "cut",
@@ -1105,11 +1174,11 @@
                 "svg_motion": "trace",
                 "sustain": {
                   "kind": "float",
-                  "amplitude": 5,
-                  "period_seconds": 4
+                  "amplitude": 8,
+                  "period_seconds": 3.2
                 },
                 "label_size": 44,
-                "surface": "none",
+                "surface": "spotlight",
                 "value": "R$ 410 mil+",
                 "value_size": 96,
                 "detail": "Poupança a 0,5% a.m. + TR"
@@ -1127,8 +1196,8 @@
                 "svg_motion": "trace",
                 "sustain": {
                   "kind": "breathe",
-                  "amplitude": 5,
-                  "period_seconds": 4
+                  "amplitude": 8,
+                  "period_seconds": 3.2
                 },
                 "label_size": 44,
                 "surface": "spotlight",
@@ -1143,7 +1212,8 @@
                 "from": "card_poupanca",
                 "to": "card_alternativas",
                 "semantic": "comparison",
-                "motion": "flow"
+                "motion": "flow",
+                "period_seconds": 2.5
               }
             ],
             "captions": {
@@ -1162,7 +1232,11 @@
               "action": "focus",
               "actuation": "count",
               "headline": "O plano clássico da poupança",
-              "treatment": "spotlight",
+              "treatment": "giant_number",
+              "emphasis": {
+                "phrase": "Rendimento mensal",
+                "style": "highlight"
+              },
               "kind": "fact",
               "behavior": "transform",
               "transition": "cut",
@@ -1177,7 +1251,19 @@
               "target_id": "card_alternativas",
               "action": "reveal",
               "headline": "Alternativas rendem muito mais",
-              "treatment": "spotlight",
+              "treatment": "split_compare",
+              "operation": {
+                "kind": "compare",
+                "element_ids": [
+                  "card_poupanca",
+                  "card_alternativas"
+                ]
+              },
+              "actuation": "confirm",
+              "emphasis": {
+                "phrase": "Renda fixa",
+                "style": "highlight"
+              },
               "kind": "fact",
               "behavior": "transform",
               "transition": "cut",
@@ -1237,12 +1323,12 @@
                 "icon": "bank",
                 "svg_motion": "trace",
                 "sustain": {
-                  "kind": "breathe",
-                  "amplitude": 4,
-                  "period_seconds": 5
+                  "kind": "float",
+                  "amplitude": 6,
+                  "period_seconds": 4
                 },
                 "label_size": 44,
-                "surface": "none",
+                "surface": "spotlight",
                 "value": "13,75%",
                 "value_size": 130,
                 "detail": "Copom • Banco Central"
@@ -1259,9 +1345,9 @@
                 "icon": "document",
                 "svg_motion": "trace",
                 "sustain": {
-                  "kind": "float",
-                  "amplitude": 4,
-                  "period_seconds": 4
+                  "kind": "breathe",
+                  "amplitude": 6,
+                  "period_seconds": 3.5
                 },
                 "label_size": 44,
                 "surface": "spotlight",
@@ -1276,7 +1362,8 @@
                 "from": "rule_selic",
                 "to": "rule_yield",
                 "semantic": "cause",
-                "motion": "flow"
+                "motion": "flow",
+                "period_seconds": 2.2
               }
             ],
             "captions": {
@@ -1295,7 +1382,11 @@
               "action": "focus",
               "actuation": "signal",
               "headline": "Selic baliza o retorno da poupança",
-              "treatment": "spotlight",
+              "treatment": "giant_number",
+              "emphasis": {
+                "phrase": "Selic Meta",
+                "style": "highlight"
+              },
               "kind": "fact",
               "behavior": "transform",
               "transition": "cut",
@@ -1309,8 +1400,13 @@
               "anchor": "retorno fixo de meio por cento ao mês",
               "target_id": "rule_yield",
               "action": "reveal",
+              "actuation": "confirm",
               "headline": "Regra: 0,5% ao mês mais TR",
-              "treatment": "spotlight",
+              "treatment": "giant_number",
+              "emphasis": {
+                "phrase": "Regra da poupança",
+                "style": "highlight"
+              },
               "kind": "fact",
               "behavior": "transform",
               "transition": "cut",
@@ -1381,8 +1477,13 @@
                 "initially_visible": true,
                 "icon": "wallet",
                 "svg_motion": "trace",
+                "sustain": {
+                  "kind": "tilt",
+                  "amplitude": 6,
+                  "period_seconds": 3.5
+                },
                 "label_size": 40,
-                "surface": "none",
+                "surface": "spotlight",
                 "value": "R$ 82 mi",
                 "value_size": 76,
                 "detail": "Patrimônio inicial"
@@ -1400,7 +1501,7 @@
                 "svg_motion": "trace",
                 "sustain": {
                   "kind": "float",
-                  "amplitude": 5,
+                  "amplitude": 8,
                   "period_seconds": 3
                 },
                 "label_size": 40,
@@ -1422,8 +1523,8 @@
                 "svg_motion": "trace",
                 "sustain": {
                   "kind": "breathe",
-                  "amplitude": 5,
-                  "period_seconds": 4
+                  "amplitude": 8,
+                  "period_seconds": 3.5
                 },
                 "label_size": 40,
                 "surface": "spotlight",
@@ -1439,6 +1540,7 @@
                 "to": "calc_mensal",
                 "semantic": "transfer",
                 "motion": "flow",
+                "period_seconds": 2.2,
                 "token_label": "R$"
               },
               {
@@ -1446,7 +1548,8 @@
                 "from": "calc_mensal",
                 "to": "calc_anual",
                 "semantic": "sequence",
-                "motion": "flow"
+                "motion": "flow",
+                "period_seconds": 2.5
               }
             ],
             "captions": {
@@ -1465,7 +1568,11 @@
               "action": "reveal",
               "actuation": "count",
               "headline": "Quase meio milhão por mês",
-              "treatment": "spotlight",
+              "treatment": "giant_number",
+              "emphasis": {
+                "phrase": "Ganho mensal",
+                "style": "highlight"
+              },
               "kind": "fact",
               "behavior": "transform",
               "transition": "cut",
@@ -1483,8 +1590,13 @@
               "anchor": "seis milhões e duzentos mil reais",
               "target_id": "calc_anual",
               "action": "reveal",
+              "actuation": "confirm",
               "headline": "Mais de R$ 6 milhões ao ano",
-              "treatment": "spotlight",
+              "treatment": "giant_number",
+              "emphasis": {
+                "phrase": "Total em um ano",
+                "style": "highlight"
+              },
               "kind": "fact",
               "behavior": "transform",
               "transition": "cut",
@@ -1544,11 +1656,11 @@
                 "svg_motion": "trace",
                 "sustain": {
                   "kind": "float",
-                  "amplitude": 5,
-                  "period_seconds": 4
+                  "amplitude": 8,
+                  "period_seconds": 3.5
                 },
                 "label_size": 42,
-                "surface": "none",
+                "surface": "spotlight",
                 "value": "R$ 680 mil+",
                 "value_size": 90,
                 "detail": "Primeiro mês com IR 22,5%"
@@ -1566,7 +1678,7 @@
                 "svg_motion": "trace",
                 "sustain": {
                   "kind": "breathe",
-                  "amplitude": 5,
+                  "amplitude": 8,
                   "period_seconds": 3
                 },
                 "label_size": 42,
@@ -1582,7 +1694,8 @@
                 "from": "alt_cdi",
                 "to": "alt_gap",
                 "semantic": "comparison",
-                "motion": "flow"
+                "motion": "flow",
+                "period_seconds": 2.2
               }
             ],
             "captions": {
@@ -1600,7 +1713,11 @@
               "target_id": "alt_cdi",
               "action": "focus",
               "headline": "Mais de R$ 680 mil líquidos ao mês",
-              "treatment": "spotlight",
+              "treatment": "giant_number",
+              "emphasis": {
+                "phrase": "100% do CDI",
+                "style": "highlight"
+              },
               "kind": "fact",
               "behavior": "transform",
               "transition": "cut",
@@ -1616,7 +1733,18 @@
               "action": "reveal",
               "actuation": "count",
               "headline": "R$ 190 mil a mais todo mês",
-              "treatment": "spotlight",
+              "treatment": "split_compare",
+              "operation": {
+                "kind": "compare",
+                "element_ids": [
+                  "alt_cdi",
+                  "alt_gap"
+                ]
+              },
+              "emphasis": {
+                "phrase": "Diferença mensal",
+                "style": "highlight"
+              },
               "kind": "fact",
               "behavior": "transform",
               "transition": "cut",
@@ -1676,11 +1804,11 @@
                 "svg_motion": "trace",
                 "sustain": {
                   "kind": "breathe",
-                  "amplitude": 4,
-                  "period_seconds": 4
+                  "amplitude": 8,
+                  "period_seconds": 3
                 },
                 "label_size": 42,
-                "surface": "none",
+                "surface": "spotlight",
                 "value": "R$ 250 mil",
                 "value_size": 90,
                 "detail": "Teto por CPF e instituição"
@@ -1698,8 +1826,8 @@
                 "svg_motion": "trace",
                 "sustain": {
                   "kind": "float",
-                  "amplitude": 5,
-                  "period_seconds": 4
+                  "amplitude": 8,
+                  "period_seconds": 3.5
                 },
                 "label_size": 42,
                 "surface": "spotlight",
@@ -1714,7 +1842,8 @@
                 "from": "warn_fgc",
                 "to": "safe_treasury",
                 "semantic": "comparison",
-                "motion": "flow"
+                "motion": "flow",
+                "period_seconds": 2.5
               }
             ],
             "captions": {
@@ -1731,8 +1860,13 @@
               "anchor": "apenas até duzentos e cinquenta mil reais",
               "target_id": "warn_fgc",
               "action": "focus",
+              "actuation": "signal",
               "headline": "FGC cobre apenas R$ 250 mil",
-              "treatment": "spotlight",
+              "treatment": "giant_number",
+              "emphasis": {
+                "phrase": "Limite do FGC",
+                "style": "highlight"
+              },
               "kind": "fact",
               "behavior": "transform",
               "transition": "cut",
@@ -1748,7 +1882,11 @@
               "action": "reveal",
               "actuation": "confirm",
               "headline": "Tesouro tem garantia soberana",
-              "treatment": "spotlight",
+              "treatment": "giant_number",
+              "emphasis": {
+                "phrase": "Tesouro Nacional",
+                "style": "highlight"
+              },
               "kind": "fact",
               "behavior": "transform",
               "transition": "cut",

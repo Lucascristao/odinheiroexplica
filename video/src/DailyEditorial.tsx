@@ -1780,10 +1780,12 @@ const SceneComposition = ({
   scene,
   isLast,
   direction,
+  hasMasterAudio,
 }: {
   scene: Scene;
   isLast: boolean;
   direction: EditorialDirection;
+  hasMasterAudio?: boolean;
 }) => {
   const frame = useCurrentFrame();
   const {fps} = useVideoConfig();
@@ -1811,16 +1813,18 @@ const SceneComposition = ({
       <EditorialCaptions stage={scene.visual.stage} beats={beats} words={scene.audio_captions ?? []} title={scene.title} />
       <SceneTransitionAccent type={scene.visual?.transition} sceneIndex={scene.scene_index} secondaryColor={direction.secondary_color} />
       <SoundDesign scene={scene} isLast={isLast} />
-      <Audio
-        src={staticFile(scene.audio_file)}
-        volume={(f) => {
-          const mult = scene.audio_volume_multiplier ?? 1;
-          const total = scene.duration_frames || 30;
-          const fadeIn = Math.min(1, Math.max(0, f / 3));
-          const fadeOut = Math.min(1, Math.max(0, (total - f) / 3));
-          return mult * Math.min(fadeIn, fadeOut);
-        }}
-      />
+      {!hasMasterAudio && (
+        <Audio
+          src={staticFile(scene.audio_file)}
+          volume={(f) => {
+            const mult = scene.audio_volume_multiplier ?? 1;
+            const total = scene.duration_frames || 30;
+            const fadeIn = scene.scene_index === 0 ? Math.min(1, Math.max(0, f / 2)) : 1;
+            const fadeOut = isLast ? Math.min(1, Math.max(0, (total - f) / 10)) : 1;
+            return mult * Math.min(fadeIn, fadeOut);
+          }}
+        />
+      )}
     </AbsoluteFill>;
   }
 
@@ -1849,16 +1853,18 @@ const SceneComposition = ({
       />
 
       <SoundDesign scene={scene} isLast={isLast} />
-      <Audio
-        src={staticFile(scene.audio_file)}
-        volume={(f) => {
-          const mult = scene.audio_volume_multiplier ?? 1;
-          const total = scene.duration_frames || 30;
-          const fadeIn = Math.min(1, Math.max(0, f / 3));
-          const fadeOut = Math.min(1, Math.max(0, (total - f) / 3));
-          return mult * Math.min(fadeIn, fadeOut);
-        }}
-      />
+      {!hasMasterAudio && (
+        <Audio
+          src={staticFile(scene.audio_file)}
+          volume={(f) => {
+            const mult = scene.audio_volume_multiplier ?? 1;
+            const total = scene.duration_frames || 30;
+            const fadeIn = scene.scene_index === 0 ? Math.min(1, Math.max(0, f / 2)) : 1;
+            const fadeOut = isLast ? Math.min(1, Math.max(0, (total - f) / 10)) : 1;
+            return mult * Math.min(fadeIn, fadeOut);
+          }}
+        />
+      )}
     </AbsoluteFill>
   );
 };
@@ -1869,11 +1875,23 @@ export const DailyEditorial = () => {
     ...((renderInput as unknown as {visual_direction?: EditorialDirection}).visual_direction ?? {}),
     secondary_color: GOLD,
   };
+  const masterAudio = (renderInput as unknown as {narration_master_audio?: string}).narration_master_audio;
 
   return (
     <AbsoluteFill style={{backgroundColor: BG}}>
       {direction.world === "market" ? <AbsoluteFill style={{background: "radial-gradient(ellipse at 60% 35%, rgba(255,189,25,0.035), transparent 65%), linear-gradient(145deg,#10161b,#080c10)"}} /> : <StoryWorldBackground direction={direction} />}
       <Brand />
+      {masterAudio && (
+        <Audio
+          src={staticFile(masterAudio)}
+          volume={(f) => {
+            const total = (renderInput as unknown as {duration_in_frames?: number}).duration_in_frames || 30;
+            const fadeIn = Math.min(1, Math.max(0, f / 2));
+            const fadeOut = Math.min(1, Math.max(0, (total - f) / 10));
+            return Math.min(fadeIn, fadeOut);
+          }}
+        />
+      )}
       {scenes.map((scene, index) => (
         <Sequence
           key={scene.id}
@@ -1884,6 +1902,7 @@ export const DailyEditorial = () => {
             scene={scene}
             isLast={index === scenes.length - 1}
             direction={direction}
+            hasMasterAudio={Boolean(masterAudio)}
           />
         </Sequence>
       ))}

@@ -369,6 +369,44 @@ def main() -> None:
         )
         cursor += duration_frames
 
+    # Constrói a faixa de áudio contínua (single continuous master audio) para eliminar cortes na voz
+    continuous_filename = "daily-continuous-narration.wav"
+    master_audio_path = audio_dir / continuous_filename
+    master_created = False
+    try:
+        import wave
+        sample_rate = 24000
+        samples_per_frame = sample_rate // FPS
+        continuous_samples = bytearray()
+        valid = True
+        for scene in output_scenes:
+            audio_path = audio_dir / Path(scene["audio_file"]).name
+            if not audio_path.is_file():
+                valid = False
+                break
+            with wave.open(str(audio_path), "rb") as w:
+                if w.getframerate() != sample_rate or w.getnchannels() != 1 or w.getsampwidth() != 2:
+                    valid = False
+                    break
+                raw_pcm = w.readframes(w.getnframes())
+            continuous_samples.extend(raw_pcm)
+            scene_total_samples = scene["duration_frames"] * samples_per_frame
+            actual_samples = len(raw_pcm) // 2
+            padding_samples = max(0, scene_total_samples - actual_samples)
+            continuous_samples.extend(b"\x00\x00" * padding_samples)
+
+        if valid and continuous_samples:
+            master_audio_path.parent.mkdir(parents=True, exist_ok=True)
+            with wave.open(str(master_audio_path), "wb") as w:
+                w.setnchannels(1)
+                w.setsampwidth(2)
+                w.setframerate(sample_rate)
+                w.writeframes(continuous_samples)
+            master_created = True
+            print(f"Trilha contínua gerada sem cortes: {master_audio_path} ({len(continuous_samples)/2/sample_rate:.2f}s)")
+    except Exception as exc:
+        print(f"Aviso: Não foi possível gerar trilha contínua: {exc}")
+
     payload = {
         "project_id": project.get("project_id", "project"),
         "title": project.get("title", "O Dinheiro Explica"),
@@ -379,6 +417,10 @@ def main() -> None:
         "voice_postprocess": manifest.get("postprocess"),
         "voice_alignment": manifest.get("alignment"),
         "voice_policy_version": manifest.get("voice_policy_version"),
+        "narration_master_audio": (
+            f"{args.audio_public_prefix.rstrip('/')}/{continuous_filename}"
+            if master_created else None
+        ),
         "scenes": output_scenes,
     }
 
