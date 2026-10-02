@@ -1,0 +1,47 @@
+name: Upload Thumbnail to Google Drive
+
+on:
+  workflow_dispatch:
+    inputs:
+      folder_id:
+        description: "Google Drive Folder ID"
+        required: true
+        default: "1x37_bbVwNOSOFD1xPxn-pXhL4QehNNUu"
+      thumbnail_path:
+        description: "Caminho da thumbnail"
+        required: false
+        default: "packaging/daily-thumbnail.jpg"
+
+jobs:
+  upload-thumb:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: pip install --no-cache-dir -r worker/requirements.txt
+      - name: Upload thumbnail to target folder
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+          TARGET_FOLDER_ID: ${{ inputs.folder_id }}
+        run: |
+          python - <<'PY'
+          import os
+          from pathlib import Path
+          from worker.drive import uploader_from_env
+
+          uploader = uploader_from_env()
+          if not uploader:
+              raise RuntimeError("Drive não configurado.")
+          folder_id = os.environ.get("TARGET_FOLDER_ID")
+          path = Path("${{ inputs.thumbnail_path }}")
+          if not path.exists():
+              raise RuntimeError(f"Thumbnail não encontrada em {path}")
+          file_id = uploader.upload(path, "daily-thumbnail.jpg", folder_id=folder_id)
+          print(f"THUMBNAIL_UPLOAD_OK:{file_id}")
+          print(f"WEB_VIEW_URL:https://drive.google.com/file/d/{file_id}/view")
+          PY
