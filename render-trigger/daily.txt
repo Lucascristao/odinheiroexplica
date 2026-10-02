@@ -2,5 +2,5 @@ Produção autorizada: O teto de juros do cartão de crédito: a regra dos 100%.
 Projeto: cartao-rotativo-teto-100-2026-10-02
 Narração: Roberto / Charon, somente gemini-3.8-live com sessão contínua multi-turn conforme worker/tts_config.py.
 Usar video/data/daily.json atual.
-Trigger: cartao-rotativo-teto-100-2026-10-02-v3
+Trigger: cartao-rotativo-teto-100-2026-10-02-v4
 Data: 2026-10-02
