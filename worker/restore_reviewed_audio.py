@@ -211,8 +211,15 @@ def safe_members(archive: zipfile.ZipFile) -> dict[str, zipfile.ZipInfo]:
     return members
 
 
-def unique_member(members: dict, filename: str) -> zipfile.ZipInfo:
+def unique_member(members: dict, filename: str, preferred_dir: str | None = None) -> zipfile.ZipInfo:
     matches = [info for name, info in members.items() if PurePosixPath(name).name == filename]
+    if len(matches) > 1 and preferred_dir:
+        dir_matches = [
+            info for name, info in members.items()
+            if PurePosixPath(name).name == filename and preferred_dir in PurePosixPath(name).parts
+        ]
+        if len(dir_matches) == 1:
+            return dir_matches[0]
     if len(matches) != 1:
         raise RuntimeError(f"O artifact deve conter exatamente um {filename}.")
     return matches[0]
@@ -300,7 +307,7 @@ def restore(project: dict, archive_path: Path, output_dir: Path, provenance: dic
                 raise RuntimeError(f"Tratamento de áudio diverge da política de origem em {scene_id}.")
             if source.get("file") != f"{scene_id}.wav":
                 raise RuntimeError(f"Nome do WAV não corresponde à cena {scene_id}.")
-            audio_info = unique_member(members, source["file"])
+            audio_info = unique_member(members, source["file"], "generated-audio")
             if not 1000 < audio_info.file_size <= MAX_AUDIO_BYTES:
                 raise RuntimeError(f"Tamanho de áudio inválido na cena {scene_id}.")
             output = output_dir / source["file"]

@@ -3,5 +3,5 @@ Projeto: quanto-rende-82-milhoes-poupanca-2026-10-02
 restore_audio_artifact = 11212092314
 Narração: Roberto / Charon, trilha contínua mestre sem cortes e Remotion com motion dinâmico v2.
 Usar video/data/daily.json atual.
-Trigger: quanto-rende-82-milhoes-poupanca-v2-motion-zero-cut
+Trigger: quanto-rende-82-milhoes-poupanca-v2-motion-zero-cut-r2
 Data: 2026-10-02
