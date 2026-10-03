@@ -57,3 +57,11 @@ Ao criar um novo VideoProject, consulte apenas a seção mais recente para ident
 - participantes: carteira, juros do rotativo, blocos 50-30-20, automação e reserva de emergência;
 - foco: método pague-se primeiro, eliminação prioritária de dívidas caras (>400% a.a.) e divisão em blocos com reserva em liquidez diária (Tesouro Selic / CDB com FGC);
 - evitar repetir automaticamente: método dos blocos 50-30-20, simulação genérica de salário de R$ 3.000 e conceito de pague-se primeiro como tema central do vídeo.
+
+## Pix Automático: o dinheiro vai sair da sua conta sozinho? — 2026-10-03
+
+- universo: fintechs, pagamentos instantâneos e regulação bancária;
+- participantes: alerta de débito sem senha, Banco Central, card de autorização prévia (chave/biometria), teto de valor de segurança (simulação conta de luz R$ 200), notificação antecipada com prazo limite até 23h59 da véspera, comparativo de convênios bancários tradicionais vs rede aberta unificada, alerta de golpes e Mecanismo Especial de Devolução (MED);
+- foco: desmistificar o medo de saques automáticos sem senha, apresentar o controle total de limites e cancelamento pelo correntista, e explicar a disputa nos bastidores entre os grandes bancos e as empresas por menores tarifas;
+- evitar repetir automaticamente: notificação de Pix de madrugada como gancho de abertura, regras de cancelamento até 23h59 e cobrança recorrente no Pix como pauta principal.
+
