@@ -43,3 +43,17 @@ Ao criar um novo VideoProject, consulte apenas a seção mais recente para ident
 - legenda secundária em frases de até seis palavras, três por linha, até duas linhas, 64 px; entrada opcional apenas se houver retângulo livre contíguo de pelo menos 30% da área do vídeo; não abrir vazio artificial para a legenda; pesquisa, conta e documento sem legenda;
 - apresentador: Roberto/Charon, conforme a preferência do usuário; a narração original conserva todas as frases além da apresentação corrigida;
 - evitar repetir automaticamente: cédulas como abertura, conta de custo por saque, triângulo loja/notas/conta, agência compartilhada e grade dos dois percentuais. Reutilizar capacidades do motor com direção própria para a próxima história.
+
+## Quanto rende R$ 82 milhões na poupança? — 2026-10-02
+
+- universo: financeiro/bancário;
+- participantes: cofre, caderneta de poupança, taxas de juros, inflação e poder de compra;
+- foco: cálculo exato do rendimento mensal e anual, comparação com CDI/Tesouro Selic e perda real frente à inflação;
+- evitar repetir automaticamente: simulação de prêmio milionário em poupança, medidor de rendimento estático e comparativo isolado poupança vs CDI sem contexto prático.
+
+## Como organizar suas finanças e guardar dinheiro — 2026-10-02
+
+- universo: finanças pessoais e orçamento doméstico;
+- participantes: carteira, juros do rotativo, blocos 50-30-20, automação e reserva de emergência;
+- foco: método pague-se primeiro, eliminação prioritária de dívidas caras (>400% a.a.) e divisão em blocos com reserva em liquidez diária (Tesouro Selic / CDB com FGC);
+- evitar repetir automaticamente: método dos blocos 50-30-20, simulação genérica de salário de R$ 3.000 e conceito de pague-se primeiro como tema central do vídeo.

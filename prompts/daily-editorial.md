@@ -1,11 +1,12 @@
 # Prompt diário
 
-## Regra de independência editorial
+## Regra de independência editorial e seleção de pauta
 
-Preserve a pauta aprovada pelo usuário ao atualizar datas, dados ou visuais de um episódio em andamento. Só selecione outro assunto quando a solicitação pedir essa nova escolha.
+1. **Anti-repetição obrigatória**: Antes de sugerir ou iniciar qualquer roteiro, consulte obrigatoriamente `docs/visual-history.md`, os commits recentes e o repositório para verificar os vídeos já produzidos pelo canal. Nunca repita temas, ganchos ou ângulos idênticos aos episódios anteriores.
+2. **Apresentação de 3 opções ao usuário**: Ao receber o pedido de um novo vídeo diário (ou nova seleção de pauta), pesquise a fundo o cenário econômico/financeiro do momento e apresente 3 opções qualificadas e distintas no chat (com título provisório, gancho, promessa narrativa, dados concretos, potencial visual e fontes). Aguarde a escolha do usuário antes de escrever `video/data/daily.json` e iniciar o render.
+3. **Preservação de pauta aprovada**: Uma vez que o usuário escolheu ou aprovou uma pauta na conversa, preserve esse assunto ao atualizar datas, dados ou visuais do episódio. Não troque de tema sem pedido explícito.
 
 Arquivos de piloto, testes, demonstrações e exemplos anteriores existem apenas para validar a tecnologia. Nunca use o assunto, a estrutura narrativa, o título, a thumbnail, os visuais ou o enquadramento de um piloto como molde ou preferência para um novo vídeo. Cada pauta deve nascer da solicitação atual e da pesquisa atual. O piloto do Pix é somente um teste técnico e não deve influenciar a seleção ou a forma dos próximos vídeos.
-
 
 Pesquise profundamente acontecimentos recentes ligados a dinheiro, empresas, economia, bancos, fintechs, tecnologia com impacto econômico e grandes movimentos empresariais relevantes para o público brasileiro.
 
