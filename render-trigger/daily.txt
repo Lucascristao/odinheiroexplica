@@ -1,6 +1,7 @@
 Produção autorizada: Como organizar suas finanças e guardar dinheiro: o método que funciona.
 Projeto: como-organizar-financas-guardar-dinheiro-2026-10-02
+restore_audio_artifact = 11233370934
 Motor de Áudio: Gemini 3.8 Live com voz Charon (Roberto) + trilha sonora editorial contínua.
 Motion Graphics: Padrão de dinamismo (beats a cada 4 segundos, SVGs grandes 250-500px, kinetic type, números gigantes #FFBD19, câmera auto ativa).
-Trigger: como-organizar-financas-guardar-dinheiro-v1
-Data: 2026-10-02
+Trigger: como-organizar-financas-guardar-dinheiro-2026-10-03-v3
+Data: 2026-10-03
