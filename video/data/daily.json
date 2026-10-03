@@ -1,6 +1,6 @@
 {
-  "project_id": "como-organizar-financas-guardar-dinheiro-2026-10-02",
-  "title": "Como organizar suas finanças e guardar dinheiro: o método que funciona",
+  "project_id": "pix-automatico-nova-regra-debito-2026-10-03",
+  "title": "Pix Automático: o dinheiro vai sair da sua conta sozinho?",
   "version": "1.0",
   "presenter": {
     "gender": "male",
@@ -8,125 +8,114 @@
   },
   "speech": {
     "pronunciations": {
-      "Selic": "selic",
-      "Copom": "cópom",
-      "CDB": "cê dê bê",
-      "CDBs": "cê dê bês",
-      "CDI": "cê dê i",
-      "FGC": "éfe gê cê",
-      "Peic": "pê ic",
-      "CNC": "cê ene cê"
+      "Pix": "pix",
+      "Bacen": "bacen",
+      "BCB": "bê cê bê",
+      "MED": "méd",
+      "CNPJ": "cê ene pê jota",
+      "QR": "quê érre",
+      "Febraban": "febraban"
     },
     "ignore_pronunciation_terms": []
   },
   "story": {
-    "subject": "O método prático para organizar o orçamento pessoal, eliminar a armadilha do endividamento no cartão de crédito rotativo e guardar dinheiro com consistência através do princípio pague-se primeiro e da reserva de emergência.",
-    "angle": "Explicar por que tentar guardar apenas o que sobra no fim do mês falha para 82% das famílias brasileiras, demonstrar a divisão orçamentária dos três blocos e ensinar onde colocar a reserva para render com liquidez diária e segurança.",
-    "promise": "Entregar um plano acionável de organização financeira que qualquer pessoa pode aplicar no próximo pagamento para sair do zero e construir reserva de emergência.",
-    "why_now": "Com o endividamento das famílias atingindo 82% em 2026 e os juros do rotativo em 444,9% ao ano, organizar o fluxo de caixa é a única proteção real contra a perda de poder de compra.",
-    "category": "personal_finance"
+    "subject": "O funcionamento do Pix Automático regulamentado pelo Banco Central para cobranças recorrentes, os mecanismos de segurança, limites de valor, regras de cancelamento e o impacto na concorrência bancária contra os velhos convênios de débito em conta.",
+    "angle": "Quebrar o pânico de débitos sem autorização, demonstrando a exigência da trava prévia e como o consumidor tem poder total de limite e cancelamento imediato, enquanto as empresas ganham agilidade e menores tarifas.",
+    "promise": "Explicar em detalhes se o banco pode debitar sem senha, como funciona a aprovação prévia, como travar valores indesejados e como se proteger de tentativas de golpe.",
+    "why_now": "A implementação do Pix Automático pelo Banco Central altera as cobranças recorrentes de concessionárias e serviços, gerando dúvidas e alertas sobre a segurança do saldo bancário dos brasileiros.",
+    "category": "fintech_regulation"
   },
   "packaging": {
     "titles": [
       {
-        "text": "Como organizar suas finanças e guardar dinheiro de verdade",
+        "text": "Pix Automático: o dinheiro vai sair da sua conta sozinho?",
         "platform": "youtube"
       }
     ],
     "thumbnails": [
       {
-        "headline": "PARE DE GUARDAR A SOBRA",
+        "headline": "DEBITOU SEM AVISAR?",
         "style": "editorial_bold"
       }
     ],
     "strategy": {
-      "click_reason": "Quebra a premissa errada de que economizar é guardar a sobra do mês, oferecendo um método prático e numérico.",
-      "visual_focus": "Destaque visual limpo em alto contraste com números da regra dos blocos e carteira em destaque.",
-      "curiosity_gap": "Por que quem ganha mais muitas vezes continua sem guardar nada e como inverter essa dinâmica.",
-      "mobile_readability": "Texto curto de 4 palavras legível em telas pequenas de celular.",
-      "anti_clickbait_check": "O vídeo realmente ensina o método dos blocos, o pague-se primeiro e a matemática da reserva.",
-      "repetition_check": "Não repete a embalagem nem os dados do episódio anterior.",
-      "youtube_safety_check": "Conteúdo 100% de educação financeira sem promessas irrealistas de enriquecimento ou especulação."
+      "click_reason": "Responde ao medo genuíno do cidadão de ver cobranças sendo debitadas automaticamente da conta sem senha a cada mês.",
+      "visual_focus": "Notificação de Pix automático saindo da conta, cadeado aberto e alerta em alto contraste grafite e amarelo.",
+      "curiosity_gap": "Como o Pix pode cobrar sem senha na hora, quem autoriza e como cancelar em segundos se o valor estiver errado.",
+      "mobile_readability": "Texto curto de 3 palavras em alto contraste legível instantaneamente no celular.",
+      "anti_clickbait_check": "O vídeo explica a regra exata do Banco Central com limites, exigência de autorização e direito de estorno.",
+      "repetition_check": "Pauta inédita sobre cobrança recorrente e Pix Automático, sem repetir nenhum dos 11 episódios anteriores.",
+      "youtube_safety_check": "Conteúdo estritamente educacional de regulação bancária e direitos do consumidor sem incentivo a fraudes."
     }
   },
   "publication": {
-    "description": "Aprenda como organizar suas finanças e guardar dinheiro com consistência usando o método dos três blocos e o princípio de pagar a si mesmo primeiro.\n\n- Com o endividamento das famílias brasileiras atingindo 82% na Peic da CNC e juros do rotativo a 444,9% ao ano, tentar guardar o que sobra quase sempre resulta em frustração.\n- A regra dos blocos divide a renda líquida em 50% para despesas essenciais, 30% para estilo de vida e 20% para reserva e futuro.\n- Em um salário ilustrativo de R$ 3.000, isso significa separar R$ 600 logo no primeiro dia do pagamento.\n- O primeiro destino do dinheiro guardado deve ser uma reserva de emergência de 3 a 6 meses em ativos com liquidez diária, como Tesouro Selic ou CDB a 100% do CDI garantido pelo FGC.",
-    "engagement_question": "Você costuma separar o dinheiro para guardar no início do mês ou espera ver o que sobra no final?",
+    "description": "O Pix Automático chegou para substituir boletos e o débito tradicional em contas de água, luz, internet e assinaturas. Neste vídeo, você descobre se o banco pode tirar dinheiro da sua conta sozinho e como manter seu saldo 100% protegido.\n\n- Como funciona a autorização prévia obrigatória antes de qualquer débito\n- O direito de fixar um teto máximo de valor para evitar cobranças abusivas\n- Como cancelar pagamentos ou revogar a cobrança até as 23h59 da véspera\n- A disputa nos bastidores entre os grandes bancos e as empresas por tarifas menores",
+    "engagement_question": "Você pretende usar o Pix Automático para pagar suas contas do mês ou prefere continuar pagando manualmente no boleto?",
     "hashtags": [
-      "#FinancasPessoais",
-      "#GuardarDinheiro",
+      "#PixAutomatico",
+      "#BancoCentral",
       "#ODinheiroExplica"
     ],
     "seo": {
-      "primary_keyword": "como organizar suas finanças e guardar dinheiro"
+      "primary_keyword": "Pix Automático"
     }
   },
   "sources": [
     {
       "id": "S1",
-      "title": "Banco Central do Brasil — Relatório de Estatísticas Monetárias e de Crédito",
-      "url": "https://www.bcb.gov.br/estatisticas/estatisticasmonetariascredito",
+      "title": "Banco Central do Brasil — Resoluções e Regulamento do Pix Automático",
+      "url": "https://www.bcb.gov.br/estabilidadefinanceira/pix",
       "publisher": "Banco Central do Brasil",
       "publisher_class": "official",
       "editorial_role": "regulatory_standard",
       "source_type": "primary",
-      "notes": "Registra a taxa média de juros do rotativo do cartão de crédito em 444,9% ao ano e as diretrizes do crédito bancário."
+      "notes": "Define a estrutura normativa do Pix Automático, obrigatoriedade de autorização prévia e parâmetros de cancelamento."
     },
     {
       "id": "S2",
-      "title": "Confederação Nacional do Comércio — Pesquisa de Endividamento e Inadimplência do Consumidor (Peic)",
-      "url": "https://www.portaldocomercio.org.br/pesquisas-e-analises/peic",
-      "publisher": "CNC",
-      "publisher_class": "industry",
-      "editorial_role": "data_context",
-      "source_type": "primary",
-      "notes": "Apresenta o percentual de famílias brasileiras endividadas em 82% e a inadimplência próxima a 30% em 2026."
-    },
-    {
-      "id": "S3",
-      "title": "Tesouro Nacional — Regras e Liquidez do Tesouro Selic no Tesouro Direto",
-      "url": "https://www.tesourodireto.com.br/titulos/precos-e-taxas.htm",
-      "publisher": "Tesouro Nacional",
+      "title": "Banco Central do Brasil — Relatório de Gestão do Pix e Estatísticas do Sistema de Pagamentos Instantâneos",
+      "url": "https://www.bcb.gov.br/estatisticas/spi",
+      "publisher": "Banco Central do Brasil",
       "publisher_class": "official",
       "editorial_role": "regulatory_standard",
       "source_type": "primary",
-      "notes": "Ativo de baixo risco com garantia soberana da União e liquidez diária indicado para reservas financeiras."
+      "notes": "Registra dados operacionais e volume de transações do ecossistema de pagamentos instantâneos brasileiro."
     },
     {
-      "id": "S4",
-      "title": "Fundo Garantidor de Créditos — Limites e Regras de Cobertura Ordinária",
-      "url": "https://www.fgc.org.br/garantia-fgc/sobre-a-garantia-fgc",
-      "publisher": "FGC",
+      "id": "S3",
+      "title": "Febraban — Federação Brasileira de Bancos — Posicionamento sobre Cobranças Recorrentes no Pix",
+      "url": "https://portal.febraban.org.br/",
+      "publisher": "Febraban",
       "publisher_class": "industry",
       "editorial_role": "data_context",
       "source_type": "primary",
-      "notes": "Garantia de até R$ 250 mil por CPF e por instituição associada em depósitos e títulos de renda fixa como CDBs."
+      "notes": "Apresenta a adaptação da infraestrutura tecnológica dos bancos associados para integração com a liquidação instantânea."
     },
     {
-      "id": "S5",
-      "title": "Como organizar o orçamento e cortar gastos invisíveis diante da inflação e dos juros",
-      "url": "https://www.gazetadopovo.com.br/economia/financas-pessoais-orcamento-inflacao-juros/",
+      "id": "S4",
+      "title": "Pix Automático: como a novidade quebra monopólios bancários e reduz custos para empresas",
+      "url": "https://www.gazetadopovo.com.br/economia/pix-automatico-quebra-monopolio-tarifas-bancarias/",
       "publisher": "Gazeta do Povo",
       "publisher_class": "independent_journalism",
       "editorial_role": "market_counterpoint",
       "source_type": "secondary",
-      "notes": "Enfatiza a prioridade de quitar dívidas caras e programar transferências automáticas antes dos gastos discricionários."
+      "notes": "Análise destacando que a ferramenta acaba com reservas de mercado históricas dos grandes bancos, permitindo que qualquer fintech participe da arrecadação com menores tarifas operacionais."
     },
     {
-      "id": "S6",
-      "title": "A regra 50-30-20 e o método pague-se primeiro: o passo a passo para sair do zero",
-      "url": "https://www.infomoney.com.br/guias/como-organizar-suas-financas/",
+      "id": "S5",
+      "title": "Pix Automático: regras de limites, cancelamento e direitos do consumidor nas contas do mês",
+      "url": "https://www.infomoney.com.br/minhas-financas/pix-automatico-regras-seguranca/",
       "publisher": "InfoMoney",
       "publisher_class": "independent_journalism",
       "editorial_role": "journalistic_coverage",
       "source_type": "secondary",
-      "notes": "Metodologia prática de divisão da renda líquida mensal e a importância comportamental de poupar no primeiro dia."
+      "notes": "Guia detalhando os prazos de cancelamento, a notificação prévia obrigatória e a fixação de tetos de valor por débito."
     }
   ],
   "claims": [
     {
       "id": "C1",
-      "statement": "Segundo levantamentos da CNC e do Banco Central, o endividamento atinge cerca de oitenta e dois por cento das famílias brasileiras, com as taxas do cartão rotativo ultrapassando quatrocentos por cento ao ano.",
+      "statement": "O Pix Automático foi regulamentado pelo Banco Central para permitir pagamentos recorrentes sem a necessidade de autenticar com senha a cada cobrança individual.",
       "source_ids": [
         "S1",
         "S2"
@@ -138,10 +127,10 @@
     },
     {
       "id": "C2",
-      "statement": "A regra orçamentária dos blocos divide a renda líquida mensal em cinquenta por cento para despesas essenciais, trinta por cento para estilo de vida e vinte por cento para a reserva e futuro.",
+      "statement": "Nenhuma cobrança por Pix Automático pode ser debitada sem uma autorização prévia e documentada aprovada pelo titular da conta no aplicativo do seu banco.",
       "source_ids": [
-        "S5",
-        "S6"
+        "S1",
+        "S5"
       ],
       "framing": "verified_fact",
       "confidence": "high",
@@ -150,21 +139,22 @@
     },
     {
       "id": "C3",
-      "statement": "Em uma renda líquida mensal ilustrativa de três mil reais, a separação de vinte por cento destina exatamente seiscentos reais para a reserva e investimentos.",
+      "statement": "O consumidor tem o direito de definir um teto máximo de valor por parcela e cancelar qualquer pagamento agendado até as vinte e três horas e cinquenta e nove minutos da véspera.",
       "source_ids": [
-        "S6"
+        "S1",
+        "S5"
       ],
-      "framing": "analysis",
+      "framing": "verified_fact",
       "confidence": "high",
       "verification_status": "verified",
       "attribution_required": false
     },
     {
       "id": "C4",
-      "statement": "O método de pagar a si mesmo primeiro determina que a quantia da reserva seja transferida no dia do recebimento do salário, antes de iniciar os gastos do mês.",
+      "statement": "No débito automático tradicional, as empresas dependiam de convênios bilaterais com grandes bancos, enquanto o Pix Automático unifica a cobrança para todas as instituições autorizadas.",
       "source_ids": [
-        "S5",
-        "S6"
+        "S3",
+        "S4"
       ],
       "framing": "verified_fact",
       "confidence": "high",
@@ -173,10 +163,9 @@
     },
     {
       "id": "C5",
-      "statement": "A reserva de emergência deve cobrir de três a seis meses de despesas básicas e ficar aplicada em opções de liquidez diária e baixo risco, como Tesouro Selic ou CDB coberto pelo FGC.",
+      "statement": "O Mecanismo Especial de Devolução do Pix pode ser acionado em casos de fraude ou inconsistência operacional comprovada na cobrança.",
       "source_ids": [
-        "S3",
-        "S4"
+        "S1"
       ],
       "framing": "verified_fact",
       "confidence": "high",
@@ -186,55 +175,56 @@
   ],
   "visual_assets": [],
   "visual_direction": {
-    "concept": "Cenário editorial moderno com tipografia cinética, números amarelos gigantes, objetos esquemáticos protagonistas e comparações fluidas.",
-    "world": "finance",
+    "concept": "Visualização editorial de segurança bancária, fluxo de autorização digital, limites de proteção e rompimento de monopólios em alto contraste.",
+    "world": "fintech_security",
     "secondary_color": "#FFBD19",
     "motifs": [
-      "carteira",
-      "orçamento",
-      "reserva de emergência",
-      "taxa de juros",
-      "renda fixa"
+      "pix",
+      "autorizacao",
+      "cadeado",
+      "notificacao",
+      "banco_central",
+      "concorrencia"
     ],
     "motion_language": [
       "Transições limpas e ilustrações ativas contínuas sem telas estáticas.",
-      "Números gigantes com tipografia cinética para fixação de dados e valores monetários.",
+      "Números gigantes com tipografia cinética para fixação de prazos e valores monetários.",
       "SVGs esquemáticos com traço e sustentação viva guiando a compreensão de cada virada de fala."
     ],
     "avoid": [
-      "promessas de enriquecimento fácil ou especulação",
       "telas paradas por mais de quatro segundos",
-      "ícones pequenos perdidos no espaço visual"
+      "ícones pequenos perdidos no espaço visual",
+      "sensacionalismo sem respaldo técnico"
     ]
   },
   "editorial": {
     "strengths": [
-      "Resolução imediata para uma dor financeira que afeta a maioria da população brasileira.",
-      "Abordagem prática, com método visual passo a passo e contas transparentes.",
-      "Equilíbrio entre a eliminação de dívidas caras e a construção da reserva de emergência."
+      "Abordagem direta de uma preocupação universal dos usuários de banco sobre débitos automáticos.",
+      "Explicação transparente e rigorosa dos direitos do consumidor e travas de segurança.",
+      "Contraponto econômico independente demonstrando a concorrência bancária e redução de custos."
     ],
     "risk_flags": [
-      "Deixar explícito que os exemplos de valores em reais são simulações ilustrativas e os percentuais devem ser adaptados a cada realidade familiar.",
-      "Destacar que investimentos não substituem o controle de gastos e a quitação de dívidas com juros altos."
+      "Esclarecer que a simulação de valor de teto na conta de luz é um exemplo ilustrativo.",
+      "Ressaltar que a segurança do sistema não elimina a necessidade de cuidado contra links fraudulentos."
     ],
     "narrative_contract": {
-      "topic_explanation": "Organizar as finanças não é sobre cortar todo o cafezinho, mas sobre aplicar o método de pagar a si mesmo primeiro e separar a renda em blocos antes de começar a gastar.",
+      "topic_explanation": "O Pix Automático foi regulamentado pelo Banco Central para substituir boletos e o débito automático tradicional em contas recorrentes de água, luz, internet e assinaturas, permitindo que pagamentos futuros aconteçam de forma programada direto no sistema instantâneo.",
       "presenter_introduction": "Eu sou o Roberto, do O Dinheiro Explica.",
       "subscription_request": "se inscreva no canal O Dinheiro Explica e ative as notificações"
     },
     "source_balance": {
       "requires_diversity": true,
       "public_policy_or_regulation": true,
-      "official_sources_role": "Banco Central e Tesouro Nacional fornecem as taxas oficiais de juros, métricas do crédito rotativo e regras de títulos públicos.",
-      "independent_sources_role": "Pesquisas da CNC e jornalismo financeiro fornecem a realidade do endividamento das famílias e metodologias práticas de orçamento pessoal.",
-      "counterpoint_summary": "Cortar gastos pequenos de conveniência traz pouco efeito se o orçamento estiver sangrando juros de mais de 400% ao ano no rotativo ou se o consumidor não tiver automação de aportes.",
+      "official_sources_role": "O Banco Central do Brasil fornece o regulamento operacional, os limites de segurança e os direitos de cancelamento do Pix Automático.",
+      "independent_sources_role": "Análises da imprensa econômica independente avaliam a quebra de receitas dos grandes bancos com convênios e a eficiência operacional para as empresas.",
+      "counterpoint_summary": "Embora os bancos tradicionais tenham resistido pela perda de receitas de convênio, o modelo padronizado pelo BC reduz custos para as empresas e amplia a liberdade de escolha do consumidor.",
       "official_claims_attributed": true,
       "right_editorial_review": {
         "consulted": [
           {
             "publisher": "Gazeta do Povo",
-            "url": "https://www.gazetadopovo.com.br/economia/financas-pessoais-orcamento-inflacao-juros/",
-            "summary": "Análise sobre a necessidade de disciplina orçamentária, eliminação prioritária de passivos com juros exorbitantes e a importância de poupar no primeiro dia do mês contra a inflação."
+            "url": "https://www.gazetadopovo.com.br/economia/pix-automatico-quebra-monopolio-tarifas-bancarias/",
+            "summary": "Análise destacando que a ferramenta acaba com reservas de mercado históricas dos grandes bancos, permitindo que qualquer fintech participe da arrecadação com menores tarifas operacionais."
           }
         ]
       }
@@ -242,244 +232,214 @@
     "youtube_suitability": {
       "risk_level": "low",
       "sensitive_topics": [
-        "finanças pessoais",
-        "dívidas",
-        "orçamento",
-        "poupança"
+        "segurança bancária",
+        "pix",
+        "fraudes",
+        "direitos do consumidor"
       ],
-      "context_notes": "Conteúdo estritamente educacional de planejamento orçamentário e educação financeira sem indicação individual de ativos.",
-      "title_thumbnail_safe": true,
-      "monetization_notes": "Tema educativo e seguro para todas as idades e anunciantes."
+      "context_notes": "Conteúdo jornalístico e de educação financeira explicando normas oficiais de pagamento sem apologia a golpes."
     },
     "render_review": {
       "status": "production_review_pending",
-      "note": "Episódio dinâmico focado em como organizar finanças e guardar dinheiro com voz contínua do Roberto."
+      "note": "Episódio viral e explicativo sobre o Pix Automático com apresentação do Roberto e dinamismo contínuo."
     },
     "explanation": {
       "version": "1.0",
       "concepts": [
         {
-          "id": "pague-se-primeiro",
+          "id": "autorizacao-previa",
           "terms": [
-            "pagar a si mesmo primeiro",
-            "pague-se primeiro"
+            "autorização prévia",
+            "permissão documentada"
           ],
           "explanation": {
-            "scene_id": "scene-00",
-            "quote": "aplicar o método de pagar a si mesmo primeiro e separar a renda em blocos antes de começar a gastar"
+            "scene_id": "scene-01",
+            "quote": "nenhuma empresa pode tirar um centavo da sua conta sem uma autorização prévia e documentada"
           },
           "claim_ids": [
-            "C4"
+            "C2"
           ],
-          "boundary": "Consiste em priorizar a transferência do valor da reserva antes de pagar as contas do mês e gastos discricionários."
+          "boundary": "A autorização precisa ser confirmada ativamente pelo titular no app bancário antes de qualquer cobrança recorrente."
         },
         {
-          "id": "reserva-emergencia",
+          "id": "teto-seguranca",
           "terms": [
-            "reserva de emergência",
-            "reserva"
+            "teto máximo de valor",
+            "limite de valor"
           ],
           "explanation": {
-            "scene_id": "scene-04",
-            "quote": "A reserva de emergência é um montante equivalente a três a seis meses das suas despesas básicas para imprevistos."
+            "scene_id": "scene-01",
+            "quote": "estabeleça um teto máximo de valor por cobrança"
           },
           "claim_ids": [
-            "C5"
+            "C3"
           ],
-          "boundary": "Deve ficar alocada em ativos de liquidez imediata com proteção soberana ou garantia do FGC, e não em renda variável ou prazos longos."
+          "boundary": "Permite travar o débito caso uma fatura venha com valor anormal ou acima da média combinada."
         }
       ],
       "examples": [
         {
-          "id": "exemplo-50-30-20",
-          "purpose": "Demonstrar a aplicação prática da divisão orçamentária dos blocos em uma renda familiar ilustrativa.",
+          "id": "exemplo-teto-luz",
+          "purpose": "Demonstrar a aplicação do teto de segurança em uma conta de luz residencial.",
           "kind": "illustrative",
           "actors": [
-            "poupador",
-            "instituição financeira"
+            "consumidor",
+            "concessionária de energia"
           ],
           "assumptions": [
-            "Salário líquido mensal ilustrativo de três mil reais",
-            "Destinação de vinte por cento para reserva e futuro"
+            "Conta de luz média de cento e cinquenta reais",
+            "Teto de proteção estipulado em duzentos reais"
           ],
           "claim_ids": [
-            "C2",
             "C3"
           ],
           "inputs": [
             {
-              "id": "renda_liquida",
-              "value": 3000,
+              "id": "valor_medio_conta",
+              "value": 150,
               "unit": "BRL"
             },
             {
-              "id": "fator_reserva",
-              "value": 0.2,
-              "unit": "ratio"
+              "id": "margem_seguranca",
+              "value": 50,
+              "unit": "BRL"
             }
           ],
           "calculation": {
-            "operation": "multiply",
+            "operation": "add",
             "input_ids": [
-              "renda_liquida",
-              "fator_reserva"
+              "valor_medio_conta",
+              "margem_seguranca"
             ],
-            "result": 600,
+            "result": 200,
             "unit": "BRL"
           },
-          "limitation": "Não reflete variações tributárias individuais ou rendas com alta volatilidade mensal.",
+          "limitation": "Valores ilustrativos que variam conforme o consumo de cada residência.",
           "narration_refs": [
             {
-              "scene_id": "scene-02",
-              "quote": "seiscentos reais para a reserva"
+              "scene_id": "scene-01",
+              "quote": "limitar o débito em duzentos reais para evitar surpresas"
             }
           ],
           "visual_bindings": [
             {
-              "scene_id": "scene-02",
-              "element_id": "bloco_reserva",
-              "beat_anchor": "seiscentos reais para a reserva"
+              "scene_id": "scene-01",
+              "element_id": "card_teto",
+              "beat_anchor": "limitar o débito em duzentos reais para evitar surpresas"
             }
           ],
           "identification": {
-            "scene_id": "scene-02",
+            "scene_id": "scene-01",
             "quote": "simulação ilustrativa"
           },
           "visual_identification": {
-            "scene_id": "scene-02",
-            "element_id": "label_simulacao"
+            "scene_id": "scene-01",
+            "element_id": "card_teto"
           }
         }
       ],
       "learning_units": [
         {
-          "id": "unit-diagnostico",
-          "question": "Por que a estratégia de guardar o que sobra no fim do mês falha?",
-          "answer": {
-            "scene_id": "scene-00",
-            "quote": "mais de oitenta por cento das famílias terminam o mês no aperto ou no endividamento"
-          },
-          "concept_ids": [
-            "pague-se-primeiro"
-          ],
-          "claim_ids": [
-            "C1"
-          ],
-          "example_ids": [],
-          "visual_purpose": "Mostrar a carteira e o contraste entre renda e endividamento recorde.",
-          "bindings": [
-            {
-              "scene_id": "scene-00",
-              "element_id": "card_armadilha"
-            }
-          ]
-        },
-        {
-          "id": "unit-dividas-caras",
-          "question": "Qual é a primeira barreira que deve ser eliminada antes de investir?",
+          "id": "unit-autorizacao",
+          "question": "O Pix pode debitar valores da conta sem que o correntista autorize?",
           "answer": {
             "scene_id": "scene-01",
-            "quote": "os juros do cartão de crédito rotativo ultrapassam quatrocentos e quarenta por cento ao ano"
+            "quote": "nenhuma empresa pode tirar um centavo da sua conta sem uma autorização prévia e documentada"
           },
-          "concept_ids": [],
+          "concept_ids": [
+            "autorizacao-previa"
+          ],
           "claim_ids": [
-            "C1"
+            "C2"
           ],
           "example_ids": [],
-          "visual_purpose": "Destacar os juros exorbitantes do rotativo e a prioridade de estancar o ralo financeiro.",
+          "visual_purpose": "Demonstrar a trava mandatória de segurança no aplicativo bancário.",
           "bindings": [
             {
               "scene_id": "scene-01",
-              "element_id": "card_rotativo"
+              "element_id": "card_autorizacao"
             }
           ]
         },
         {
-          "id": "unit-regra-blocos",
-          "question": "Como funciona na prática a divisão da renda líquida em três blocos?",
+          "id": "unit-cancelamento",
+          "question": "Até quando o correntista pode cancelar ou suspender um débito agendado?",
           "answer": {
             "scene_id": "scene-02",
-            "quote": "cinquenta por cento, ou mil e quinhentos reais, para necessidades essenciais"
+            "quote": "cancelar a autorização inteira com apenas um toque no aplicativo até as vinte e três horas e cinquenta e nove minutos da véspera"
           },
           "concept_ids": [],
           "claim_ids": [
-            "C2",
             "C3"
           ],
-          "example_ids": [
-            "exemplo-50-30-20"
-          ],
-          "visual_purpose": "Apresentar a divisão visual dos blocos orçamentários com números gigantes e setas de transferência.",
+          "example_ids": [],
+          "visual_purpose": "Destacar o prazo limite de 23h59 e a facilidade de cancelamento sem burocracia.",
           "bindings": [
             {
               "scene_id": "scene-02",
-              "element_id": "bloco_reserva"
+              "element_id": "card_cancelamento"
             }
           ]
         },
         {
-          "id": "unit-automacao",
-          "question": "Como garantir que o valor da reserva não seja gasto ao longo do mês?",
+          "id": "unit-concorrencia",
+          "question": "Qual a diferença entre o Pix Automático e o débito automático tradicional?",
           "answer": {
             "scene_id": "scene-03",
-            "quote": "programar uma transferência automática no mesmo dia em que o pagamento entra na conta"
+            "quote": "No débito automático tradicional, cada concessionária de luz ou telefone precisava fechar convênios bilaterais com cada banco"
           },
-          "concept_ids": [
-            "pague-se-primeiro"
-          ],
+          "concept_ids": [],
           "claim_ids": [
             "C4"
           ],
           "example_ids": [],
-          "visual_purpose": "Demonstrar o fluxo automatizado do dinheiro saindo da conta corrente para a conta de segurança.",
+          "visual_purpose": "Comparar o sistema fechado antigo com a rede aberta e unificada pelo Banco Central.",
           "bindings": [
             {
               "scene_id": "scene-03",
-              "element_id": "card_transferencia"
+              "element_id": "card_debito_antigo"
             }
           ]
         },
         {
-          "id": "unit-reserva-segura",
-          "question": "Onde deve ficar guardado o dinheiro da reserva de emergência?",
+          "id": "unit-seguranca",
+          "question": "O que fazer se houver fraude comprovada em uma cobrança?",
           "answer": {
             "scene_id": "scene-04",
-            "quote": "ativos com liquidez diária e proteção de baixo risco, como o Tesouro Selic ou um CDB com garantia do Fundo Garantidor de Créditos"
+            "quote": "o Mecanismo Especial de Devolução do Pix pode ser acionado para bloquear e rastrear o dinheiro"
           },
-          "concept_ids": [
-            "reserva-emergencia"
-          ],
+          "concept_ids": [],
           "claim_ids": [
             "C5"
           ],
           "example_ids": [],
-          "visual_purpose": "Comparar a poupança tradicional com opções pós-fixadas de liquidez diária e cobertura do FGC.",
+          "visual_purpose": "Apresentar a atuação do MED para bloqueio e estorno em casos de golpe.",
           "bindings": [
             {
               "scene_id": "scene-04",
-              "element_id": "card_cdb"
+              "element_id": "card_med_seguranca"
             }
           ]
         }
       ],
       "review": {
-        "content_sha256": "9deb72acd49e4b8cdfa24d2806dd0ce5d6fb8902ed8c96dd2f33e11550955bf7",
+        "content_sha256": "0066624039b16e6271584d604797664dafaa95b859054db88dbb901015970042",
         "findings": [
           {
-            "question": "A divisão orçamentária e a simulação de valores estão identificadas como ilustrativas?",
+            "question": "A trava de autorização prévia e a simulação de teto estão claras e identificadas?",
             "evidence": {
-              "scene_id": "scene-02",
+              "scene_id": "scene-01",
               "quote": "simulação ilustrativa"
             },
-            "conclusion": "Sim, a locução e o cabeçalho visual declaram a hipótese antes dos números."
+            "conclusion": "Sim, a locução e os cards visuais especificam a hipótese ilustrativa e as regras de segurança do Banco Central."
           },
           {
-            "question": "O conceito de pagar a si mesmo primeiro foi explicado antes de ser aplicado como regra?",
+            "question": "O direito de cancelamento e o prazo limite foram explicados com precisão?",
             "evidence": {
-              "scene_id": "scene-00",
-              "quote": "aplicar o método de pagar a si mesmo primeiro e separar a renda em blocos antes de começar a gastar"
+              "scene_id": "scene-02",
+              "quote": "cancelar a autorização inteira com apenas um toque no aplicativo até as vinte e três horas e cinquenta e nove minutos da véspera"
             },
-            "conclusion": "Sim, a abertura define o conceito na abertura e fundamenta a automação nas cenas seguintes."
+            "conclusion": "Sim, a narração estabelece o horário exato e o canal direto pelo aplicativo."
           }
         ]
       }
@@ -490,246 +450,8 @@
       "id": "scene-00",
       "index": 0,
       "scene_index": 0,
-      "title": "O erro clássico de tentar guardar a sobra",
-      "narration": "Você já tentou economizar dinheiro guardando o que sobra no final do mês? Se você é como a maioria das pessoas, o resultado no final dos trinta dias é quase sempre zero. Segundo levantamentos recentes do comércio, mais de oitenta por cento das famílias terminam o mês no aperto ou no endividamento justamente por caírem nessa armadilha mental. Eu sou o Roberto, do O Dinheiro Explica. Organizar as finanças não é sobre cortar todo o cafezinho, mas sobre aplicar o método de pagar a si mesmo primeiro e separar a renda em blocos antes de começar a gastar. E a primeira atitude prática começa no diagnóstico do seu dinheiro.",
-      "claim_ids": [
-        "C1",
-        "C4"
-      ],
-      "visual": {
-        "type": "EDITORIAL",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "camera_mode": "auto",
-          "motion_profile": "narrative",
-          "elements": [
-            {
-              "id": "card_armadilha",
-              "kind": "metric",
-              "label": "Famílias no aperto",
-              "x": 6,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "initially_visible": true,
-              "icon": "warning",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "82%",
-              "value_size": 130,
-              "detail": "Endividamento Peic • CNC"
-            },
-            {
-              "id": "card_metodo",
-              "kind": "step",
-              "label": "Orçamento em blocos",
-              "x": 52,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "initially_visible": false,
-              "icon": "wallet",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "Pague-se 1º",
-              "value_size": 86,
-              "detail": "Método de controle financeiro"
-            }
-          ],
-          "connections": [
-            {
-              "id": "conn_armadilha_metodo",
-              "from": "card_armadilha",
-              "to": "card_metodo",
-              "semantic": "comparison",
-              "motion": "flow",
-              "period_seconds": 2.5
-            }
-          ],
-          "captions": {
-            "enabled": true,
-            "max_words": 6,
-            "words_per_line": 3,
-            "max_lines": 2,
-            "font_size": 64,
-            "min_free_area_ratio": 0.3
-          }
-        },
-        "beats": [
-          {
-            "anchor": "guardando o que sobra no final do mês",
-            "target_id": "card_armadilha",
-            "action": "focus",
-            "actuation": "signal",
-            "headline": "A ilusão de guardar o que sobra",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Famílias no aperto",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "o resultado no final dos trinta dias é quase sempre zero",
-            "target_id": "card_armadilha",
-            "action": "focus",
-            "actuation": "signal",
-            "headline": "O ciclo da frustração financeira",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Famílias no aperto",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "mais de oitenta por cento das famílias terminam o mês no aperto",
-            "target_id": "card_armadilha",
-            "action": "focus",
-            "actuation": "signal",
-            "headline": "82% das famílias no aperto",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Famílias no aperto",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "justamente por caírem nessa armadilha mental",
-            "target_id": "card_armadilha",
-            "action": "focus",
-            "actuation": "signal",
-            "headline": "A armadilha mental das finanças",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Famílias no aperto",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Eu sou o Roberto, do O Dinheiro Explica",
-            "target_id": "card_armadilha",
-            "action": "focus",
-            "actuation": "signal",
-            "headline": "O Dinheiro Explica: a virada prática",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Famílias no aperto",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "aplicar o método de pagar a si mesmo primeiro",
-            "target_id": "card_metodo",
-            "action": "reveal",
-            "actuation": "confirm",
-            "headline": "Pague a si mesmo antes de gastar",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Orçamento em blocos",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.9,
-            "entrance": {
-              "style": "slide",
-              "direction": "right"
-            }
-          },
-          {
-            "anchor": "primeira atitude prática começa no diagnóstico",
-            "target_id": "card_metodo",
-            "action": "focus",
-            "actuation": "tap",
-            "headline": "Diagnóstico do seu fluxo de caixa",
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          }
-        ]
-      },
-      "tts": {
-        "delivery": "hook",
-        "cues": [
-          {
-            "text": "Você já tentou economizar dinheiro guardando o que sobra no final do mês?",
-            "kind": "emphasis",
-            "intent": "curiosity",
-            "arc": "question",
-            "emphasis_word": "sobra",
-            "pause_before_ms": 0
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-01",
-      "index": 1,
-      "scene_index": 1,
-      "title": "O ralo financeiro das dívidas caras",
-      "narration": "Antes de pensar em qualquer investimento mirabolante, você precisa estancar o ralo invisível por onde o seu dinheiro escorre. Dados consolidados do Banco Central mostram que os juros do cartão de crédito rotativo ultrapassam quatrocentos e quarenta por cento ao ano. Para você ter uma ideia, se uma dívida de mil reais ficar rolando, ela dobra em poucos meses até atingir o teto legal. Nenhum investimento no planeta rende mais do que o custo dessa bola de neve. Por isso, a prioridade absoluta de qualquer organização financeira é listar todas as contas atrasadas e eliminar primeiro as dívidas de juros mais altos.",
+      "title": "O medo do débito sem senha e o Pix Automático",
+      "narration": "Imagine acordar de manhã, abrir o aplicativo do seu banco e ver que um Pix saiu da sua conta sem você ter digitado senha nenhuma. Isso é golpe ou a nova regra do Banco Central? Eu sou o Roberto, do O Dinheiro Explica. O Pix Automático foi regulamentado pelo Banco Central para substituir boletos e o débito automático tradicional em contas recorrentes de água, luz, internet e assinaturas, permitindo que pagamentos futuros aconteçam de forma programada direto no sistema instantâneo. Mas antes de entrar em pânico achando que qualquer empresa vai puxar o seu dinheiro, você precisa entender o que a regra exige para esse débito acontecer.",
       "claim_ids": [
         "C1"
       ],
@@ -742,9 +464,9 @@
           "motion_profile": "narrative",
           "elements": [
             {
-              "id": "card_rotativo",
+              "id": "card_alerta",
               "kind": "metric",
-              "label": "Juros do rotativo",
+              "label": "Pix sem senha?",
               "x": 6,
               "y": 18,
               "width": 42,
@@ -754,244 +476,142 @@
               "svg_motion": "trace",
               "sustain": {
                 "kind": "float",
-                "amplitude": 6,
-                "period_seconds": 4
+                "amplitude": 8,
+                "period_seconds": 3.2
               },
               "label_size": 44,
               "surface": "spotlight",
-              "value": "444,9%",
-              "value_size": 130,
-              "detail": "Ao ano • Banco Central"
+              "value": "Débito",
+              "value_size": 110,
+              "detail": "Alerta de segurança no saldo"
             },
             {
-              "id": "card_prioridade",
+              "id": "card_pix_auto",
               "kind": "step",
-              "label": "Eliminar dívidas caras",
+              "label": "Pix Automático",
               "x": 52,
               "y": 18,
               "width": 42,
               "height": 58,
               "initially_visible": false,
-              "icon": "shield",
+              "icon": "bank",
               "svg_motion": "trace",
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 6,
-                "period_seconds": 3.5
+                "amplitude": 8,
+                "period_seconds": 3.2
               },
               "label_size": 44,
               "surface": "spotlight",
-              "value": "Passo 1",
-              "value_size": 110,
-              "detail": "Estancar o ralo financeiro"
+              "value": "Bacen",
+              "value_size": 100,
+              "detail": "Cobranças recorrentes agendadas"
             }
           ],
           "connections": [
             {
-              "id": "conn_rotativo_prioridade",
-              "from": "card_rotativo",
-              "to": "card_prioridade",
-              "semantic": "cause",
-              "motion": "flow",
-              "period_seconds": 2.2
+              "from": "card_alerta",
+              "to": "card_pix_auto",
+              "label": "Regra oficial",
+              "semantic": "sequence",
+              "motion": "flow"
             }
-          ],
-          "captions": {
-            "enabled": true,
-            "max_words": 6,
-            "words_per_line": 3,
-            "max_lines": 2,
-            "font_size": 64,
-            "min_free_area_ratio": 0.3
-          }
+          ]
         },
         "beats": [
           {
-            "anchor": "estancar o ralo invisível por onde o seu dinheiro escorre",
-            "target_id": "card_rotativo",
+            "anchor": "Imagine acordar de manhã",
             "action": "focus",
-            "actuation": "signal",
-            "headline": "Estancar o ralo invisível",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Juros do rotativo",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "target_id": "card_alerta",
+            "headline": "Notificação de débito inesperado",
+            "detail": "O medo de cobranças automáticas sem senha"
           },
           {
-            "anchor": "juros do cartão de crédito rotativo ultrapassam quatrocentos e quarenta por cento ao ano",
-            "target_id": "card_rotativo",
-            "action": "focus",
-            "actuation": "signal",
-            "headline": "A taxa que corrói o patrimônio",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Juros do rotativo",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "anchor": "ver que um Pix saiu da sua conta",
+            "action": "update",
+            "target_id": "card_alerta",
+            "value": "Sem senha?",
+            "headline": "Débito ocorrido de madrugada",
+            "detail": "Dúvida sobre a segurança da conta"
           },
           {
-            "anchor": "se uma dívida de mil reais ficar rolando",
-            "target_id": "card_rotativo",
-            "action": "focus",
-            "actuation": "signal",
-            "headline": "Dívida de R$ 1.000 rolando",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Juros do rotativo",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "anchor": "Isso é golpe ou a nova regra",
+            "action": "update",
+            "target_id": "card_alerta",
+            "value": "Nova regra",
+            "headline": "Regulamentação pelo Banco Central",
+            "detail": "Regra do Banco Central"
           },
           {
-            "anchor": "ela dobra em poucos meses até atingir o teto legal",
-            "target_id": "card_rotativo",
+            "anchor": "Eu sou o Roberto",
             "action": "focus",
-            "actuation": "signal",
-            "headline": "A bola de neve do endividamento",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Juros do rotativo",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "target_id": "card_alerta",
+            "headline": "O Dinheiro Explica",
+            "detail": "Análise editorial com Roberto"
           },
           {
-            "anchor": "Nenhum investimento no planeta rende mais do que o custo dessa bola de neve",
-            "target_id": "card_prioridade",
+            "anchor": "O Pix Automático foi regulamentado",
             "action": "reveal",
-            "actuation": "confirm",
-            "headline": "Custo maior que qualquer rendimento",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Eliminar dívidas",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.9,
-            "entrance": {
-              "style": "slide",
-              "direction": "right"
-            }
+            "target_id": "card_pix_auto",
+            "reveal_ids": [
+              "card_pix_auto"
+            ],
+            "headline": "Chegada do Pix Automático",
+            "detail": "Substituição moderna de boletos e débitos antigos"
           },
           {
-            "anchor": "a prioridade absoluta de qualquer organização financeira",
-            "target_id": "card_prioridade",
-            "action": "focus",
-            "actuation": "signal",
-            "headline": "A prioridade absoluta do método",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Eliminar dívidas",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "anchor": "substituir boletos e o débito automático",
+            "action": "update",
+            "target_id": "card_pix_auto",
+            "value": "Contas",
+            "headline": "Fim dos boletos manuais",
+            "detail": "Pagamentos mensais automatizados"
           },
           {
-            "anchor": "listar todas as contas atrasadas",
-            "target_id": "card_prioridade",
+            "anchor": "em contas recorrentes de água, luz, internet",
             "action": "focus",
-            "actuation": "confirm",
-            "headline": "Listar contas atrasadas",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Eliminar dívidas",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "target_id": "card_pix_auto",
+            "headline": "Serviços essenciais e assinaturas",
+            "detail": "Luz, água, internet, streaming e escolas"
           },
           {
-            "anchor": "eliminar primeiro as dívidas de juros mais altos",
-            "target_id": "card_prioridade",
-            "action": "focus",
-            "actuation": "confirm",
-            "headline": "Foco prioritário: zerar juros caros",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Eliminar dívidas",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          }
-        ]
-      },
-      "tts": {
-        "delivery": "explain",
-        "cues": [
+            "anchor": "permitindo que pagamentos futuros aconteçam",
+            "action": "update",
+            "target_id": "card_pix_auto",
+            "value": "Agendado",
+            "headline": "Liquidação no vencimento",
+            "detail": "Processamento direto no ecossistema instantâneo"
+          },
           {
-            "text": "os juros do cartão de crédito rotativo ultrapassam quatrocentos e quarenta por cento ao ano.",
-            "kind": "emphasis",
-            "intent": "conviction",
-            "arc": "resolve",
-            "emphasis_word": "quarenta",
-            "pause_before_ms": 80
+            "anchor": "direto no sistema instantâneo",
+            "action": "focus",
+            "target_id": "card_pix_auto",
+            "headline": "Sem espera de compensação",
+            "detail": "Pagamento confirmado no mesmo segundo"
+          },
+          {
+            "anchor": "Mas antes de entrar em pânico",
+            "action": "focus",
+            "target_id": "card_alerta",
+            "headline": "Controle do titular",
+            "detail": "Regras estritas contra débitos indevidos"
+          },
+          {
+            "anchor": "você precisa entender o que a regra exige",
+            "action": "focus",
+            "target_id": "card_pix_auto",
+            "headline": "A exigência da autorização prévia",
+            "detail": "O mecanismo de proteção que ninguém pode pular"
           }
         ]
       }
     },
     {
-      "id": "scene-02",
-      "index": 2,
-      "scene_index": 2,
-      "title": "A regra prática dos três blocos",
-      "narration": "Com as dívidas sob controle, entra em cena o sistema que coloca ordem no seu orçamento: a regra dos três blocos. Vamos ver uma simulação ilustrativa com uma renda líquida de três mil reais. O primeiro bloco destina cinquenta por cento, ou mil e quinhentos reais, para necessidades essenciais como moradia, alimentação e contas básicas. O segundo bloco reserva trinta por cento, somando novecentos reais, para estilo de vida, compras e momentos de lazer. E o terceiro bloco separa religiosamente vinte por cento, garantindo seiscentos reais para a reserva e o seu futuro. Essa divisão clara impede que um gasto desnecessário devore a sua tranquilidade.",
+      "id": "scene-01",
+      "index": 1,
+      "scene_index": 1,
+      "title": "A trava da autorização e o teto de valor",
+      "narration": "A verdade é que nenhuma empresa pode tirar um centavo da sua conta sem uma autorização prévia e documentada. O processo funciona assim: para ativar a cobrança, a prestadora de serviços precisa te enviar uma solicitação com as regras do contrato, o valor estimado e a periodicidade. É você quem confirma essa permissão dentro do aplicativo do seu próprio banco, digitando a sua senha pessoal ou usando a biometria. Além disso, a norma do Banco Central permite que você estabeleça um teto máximo de valor por cobrança. Em uma simulação ilustrativa de uma conta de luz média de cento e cinquenta reais, você pode limitar o débito em duzentos reais para evitar surpresas se houver um erro de medição. Se você quer manter o controle do seu saldo e entender as mudanças no seu dinheiro antes que elas cheguem no seu extrato, se inscreva no canal O Dinheiro Explica e ative as notificações.",
       "claim_ids": [
         "C2",
         "C3"
@@ -1005,289 +625,319 @@
           "motion_profile": "narrative",
           "elements": [
             {
-              "id": "label_simulacao",
-              "kind": "label",
-              "label": "Orçamento dos três blocos",
-              "x": 8,
-              "y": 4,
-              "width": 84,
-              "height": 16,
-              "initially_visible": true,
-              "label_size": 46,
-              "surface": "none",
-              "detail": "Valores ilustrativos para R$ 3.000"
-            },
-            {
-              "id": "bloco_essencial",
+              "id": "card_autorizacao",
               "kind": "step",
-              "label": "Gastos essenciais",
+              "label": "Autorização prévia",
               "x": 6,
-              "y": 22,
-              "width": 26,
-              "height": 54,
+              "y": 18,
+              "width": 42,
+              "height": 58,
               "initially_visible": true,
-              "icon": "house",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "tilt",
-                "amplitude": 6,
-                "period_seconds": 3.5
-              },
-              "label_size": 38,
-              "surface": "spotlight",
-              "value": "50%",
-              "value_size": 80,
-              "detail": "R$ 1.500 • Moradia e comida"
-            },
-            {
-              "id": "bloco_estilo",
-              "kind": "step",
-              "label": "Estilo de vida",
-              "x": 37,
-              "y": 22,
-              "width": 26,
-              "height": 54,
-              "initially_visible": false,
-              "icon": "cart",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3
-              },
-              "label_size": 38,
-              "surface": "spotlight",
-              "value": "30%",
-              "value_size": 80,
-              "detail": "R$ 900 • Lazer e compras"
-            },
-            {
-              "id": "bloco_reserva",
-              "kind": "metric",
-              "label": "Futuro e reserva",
-              "x": 68,
-              "y": 22,
-              "width": 26,
-              "height": 54,
-              "initially_visible": false,
-              "icon": "coins",
+              "icon": "key",
               "svg_motion": "trace",
               "sustain": {
                 "kind": "breathe",
                 "amplitude": 8,
-                "period_seconds": 3.5
+                "period_seconds": 3.2
               },
-              "label_size": 38,
+              "label_size": 44,
               "surface": "spotlight",
-              "value": "20%",
-              "value_size": 80,
-              "detail": "R$ 600 • Poupança e aportes"
+              "value": "Senha / Bio",
+              "value_size": 78,
+              "detail": "Validação exclusiva no app do banco"
+            },
+            {
+              "id": "card_teto",
+              "kind": "metric",
+              "label": "Teto de segurança",
+              "x": 52,
+              "y": 18,
+              "width": 42,
+              "height": 58,
+              "initially_visible": false,
+              "icon": "shield",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "float",
+                "amplitude": 8,
+                "period_seconds": 3.2
+              },
+              "label_size": 44,
+              "surface": "spotlight",
+              "value": "R$ 200",
+              "value_size": 110,
+              "detail": "Simulação ilustrativa de teto na luz"
             }
           ],
           "connections": [
             {
-              "id": "conn_essencial_estilo",
-              "from": "bloco_essencial",
-              "to": "bloco_estilo",
-              "semantic": "transfer",
-              "motion": "flow",
-              "period_seconds": 2.2,
-              "token_label": "R$"
-            },
-            {
-              "id": "conn_estilo_reserva",
-              "from": "bloco_estilo",
-              "to": "bloco_reserva",
+              "from": "card_autorizacao",
+              "to": "card_teto",
+              "label": "Proteção de saldo",
               "semantic": "sequence",
-              "motion": "flow",
-              "period_seconds": 2.5
+              "motion": "flow"
             }
-          ],
-          "captions": {
-            "enabled": true,
-            "max_words": 6,
-            "words_per_line": 3,
-            "max_lines": 2,
-            "font_size": 64,
-            "min_free_area_ratio": 0.3
-          }
+          ]
         },
         "beats": [
           {
-            "anchor": "o sistema que coloca ordem no seu orçamento",
-            "target_id": "bloco_essencial",
+            "anchor": "A verdade é que nenhuma empresa",
             "action": "focus",
-            "actuation": "signal",
-            "headline": "A regra dos três blocos",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Gastos essenciais",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "target_id": "card_autorizacao",
+            "headline": "Trava obrigatória de segurança",
+            "detail": "Nenhum saque sem aprovação do titular"
           },
           {
-            "anchor": "simulação ilustrativa com uma renda líquida de três mil reais",
-            "target_id": "bloco_essencial",
+            "anchor": "sem uma autorização prévia e documentada",
+            "action": "update",
+            "target_id": "card_autorizacao",
+            "value": "Obrigatória",
+            "headline": "Exigência regulatória do Bacen",
+            "detail": "Documento digital registrado no sistema"
+          },
+          {
+            "anchor": "para ativar a cobrança, a prestadora",
             "action": "focus",
+            "target_id": "card_autorizacao",
+            "headline": "Solicitação formal de cobrança",
+            "detail": "Empresa envia contrato com valor e prazo"
+          },
+          {
+            "anchor": "solicitação com as regras do contrato",
+            "action": "update",
+            "target_id": "card_autorizacao",
+            "value": "Contrato",
+            "headline": "Condições prévias informadas",
+            "detail": "Periodicidade e valor estimado especificados"
+          },
+          {
+            "anchor": "É você quem confirma essa permissão",
+            "action": "update",
             "actuation": "confirm",
-            "headline": "Renda base: R$ 3.000 líquidos",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Gastos essenciais",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "target_id": "card_autorizacao",
+            "headline": "Aprovação com senha ou biometria",
+            "detail": "O cliente tem a chave final da autorização"
           },
           {
-            "anchor": "cinquenta por cento, ou mil e quinhentos reais, para necessidades essenciais",
-            "target_id": "bloco_essencial",
+            "anchor": "digitando a sua senha pessoal ou usando a biometria",
             "action": "focus",
-            "actuation": "confirm",
-            "headline": "50%: Moradia, comida e saúde",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Gastos essenciais",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "target_id": "card_autorizacao",
+            "headline": "Autenticação forte no app",
+            "detail": "Ambiente seguro do próprio banco do cliente"
           },
           {
-            "anchor": "moradia, alimentação e contas básicas",
-            "target_id": "bloco_essencial",
-            "action": "focus",
-            "actuation": "signal",
-            "headline": "Moradia, alimentação e contas",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Gastos essenciais",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "trinta por cento, somando novecentos reais, para estilo de vida",
-            "target_id": "bloco_estilo",
+            "anchor": "estabeleça um teto máximo de valor",
             "action": "reveal",
-            "actuation": "confirm",
-            "headline": "30%: Lazer, conforto e bem-estar",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Estilo de vida",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.9,
-            "entrance": {
-              "style": "slide",
-              "direction": "right"
-            }
+            "target_id": "card_teto",
+            "reveal_ids": [
+              "card_teto"
+            ],
+            "headline": "Limite máximo de segurança",
+            "detail": "Bloqueio automático contra cobranças acima do teto"
           },
           {
-            "anchor": "compras e momentos de lazer",
-            "target_id": "bloco_estilo",
+            "anchor": "Em uma simulação ilustrativa",
             "action": "focus",
-            "actuation": "signal",
-            "headline": "Compras e momentos de lazer",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Estilo de vida",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "target_id": "card_teto",
+            "headline": "Exemplo numérico ilustrativo",
+            "detail": "Média de R$ 150 na conta de energia"
           },
           {
-            "anchor": "seiscentos reais para a reserva",
-            "target_id": "bloco_reserva",
-            "action": "reveal",
-            "actuation": "count",
-            "headline": "20%: O valor sagrado do futuro",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Futuro e reserva",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.9,
-            "entrance": {
-              "style": "slide",
-              "direction": "right"
-            }
+            "anchor": "limitar o débito em duzentos reais para evitar surpresas",
+            "action": "update",
+            "target_id": "card_teto",
+            "value": "Teto R$ 200",
+            "headline": "Conta protegida contra erros",
+            "detail": "Bloqueio acima de R$ 200"
           },
           {
-            "anchor": "impede que um gasto desnecessário devore a sua tranquilidade",
-            "target_id": "bloco_reserva",
+            "anchor": "se houver um erro de medição",
             "action": "focus",
-            "actuation": "confirm",
-            "headline": "Blindagem financeira do orçamento",
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "target_id": "card_teto",
+            "headline": "Barreira contra abusos",
+            "detail": "Cobrança anômala é rejeitada automaticamente"
+          },
+          {
+            "anchor": "manter o controle do seu saldo",
+            "action": "focus",
+            "target_id": "card_autorizacao",
+            "headline": "Domínio total das finanças",
+            "detail": "Você no comando de cada saída da conta"
+          },
+          {
+            "anchor": "se inscreva no canal O Dinheiro Explica",
+            "action": "focus",
+            "target_id": "card_teto",
+            "headline": "Educação financeira e controle",
+            "detail": "Inscreva-se no O Dinheiro Explica"
           }
         ]
-      },
-      "tts": {
-        "delivery": "explain",
-        "cues": [
+      }
+    },
+    {
+      "id": "scene-02",
+      "index": 2,
+      "scene_index": 2,
+      "title": "Notificação prévia e cancelamento com um clique",
+      "narration": "E o que acontece se você discordar de uma cobrança ou simplesmente não quiser mais continuar pagando aquele serviço? Aqui está a maior diferença em relação a outros métodos do passado. O banco é obrigado a te enviar uma notificação no celular dias antes de cada débito ocorrer, informando exatamente a quantia que será descontada na data prevista. Se o valor estiver errado, ou se você cancelou o plano, você pode suspender aquela cobrança pontual ou cancelar a autorização inteira com apenas um toque no aplicativo até as vinte e três horas e cinquenta e nove minutos da véspera. Não precisa ligar em central de atendimento nem passar horas em fila de espera para travar o pagamento.",
+      "claim_ids": [
+        "C3"
+      ],
+      "visual": {
+        "type": "EDITORIAL",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "camera_mode": "auto",
+          "motion_profile": "narrative",
+          "elements": [
+            {
+              "id": "card_aviso",
+              "kind": "step",
+              "label": "Aviso de débito",
+              "x": 6,
+              "y": 18,
+              "width": 42,
+              "height": 58,
+              "initially_visible": true,
+              "icon": "bell",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 8,
+                "period_seconds": 3.2
+              },
+              "label_size": 44,
+              "surface": "spotlight",
+              "value": "Notificação",
+              "value_size": 80,
+              "detail": "Alerta prévio com valor e vencimento"
+            },
+            {
+              "id": "card_cancelamento",
+              "kind": "metric",
+              "label": "Prazo de cancelamento",
+              "x": 52,
+              "y": 18,
+              "width": 42,
+              "height": 58,
+              "initially_visible": false,
+              "icon": "clock",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "float",
+                "amplitude": 8,
+                "period_seconds": 3.2
+              },
+              "label_size": 44,
+              "surface": "spotlight",
+              "value": "23h59",
+              "value_size": 110,
+              "detail": "Véspera do débito pelo app"
+            }
+          ],
+          "connections": [
+            {
+              "from": "card_aviso",
+              "to": "card_cancelamento",
+              "label": "Direito de recusa",
+              "semantic": "sequence",
+              "motion": "flow"
+            }
+          ]
+        },
+        "beats": [
           {
-            "text": "garantindo seiscentos reais para a reserva e o seu futuro.",
-            "kind": "number",
-            "intent": "discovery",
-            "arc": "resolve",
-            "emphasis_word": "seiscentos",
-            "pause_before_ms": 100
+            "anchor": "E o que acontece se você discordar",
+            "action": "focus",
+            "target_id": "card_aviso",
+            "headline": "Cobrança divergente ou indevida",
+            "detail": "O que fazer quando o valor vem errado"
+          },
+          {
+            "anchor": "não quiser mais continuar pagando aquele serviço",
+            "action": "update",
+            "target_id": "card_aviso",
+            "value": "Suspensão",
+            "headline": "Direito de interrupção",
+            "detail": "Liberdade para parar a cobrança quando quiser"
+          },
+          {
+            "anchor": "Aqui está a maior diferença",
+            "action": "focus",
+            "target_id": "card_aviso",
+            "headline": "Transparência obrigatória",
+            "detail": "Fim das surpresas na fatura no fim do mês"
+          },
+          {
+            "anchor": "O banco é obrigado a te enviar uma notificação",
+            "action": "update",
+            "target_id": "card_aviso",
+            "value": "Push no app",
+            "headline": "Notificação antecipada no celular",
+            "detail": "Aviso emitido dias antes do vencimento"
+          },
+          {
+            "anchor": "dias antes de cada débito ocorrer",
+            "action": "focus",
+            "target_id": "card_aviso",
+            "headline": "Prazo prévio para conferência",
+            "detail": "Tempo para o correntista checar os detalhes"
+          },
+          {
+            "anchor": "informando exatamente a quantia que será descontada",
+            "action": "update",
+            "target_id": "card_aviso",
+            "value": "Valor exato",
+            "headline": "Discriminação clara do valor",
+            "detail": "Sem letras miúdas ou custos escondidos"
+          },
+          {
+            "anchor": "Se o valor estiver errado",
+            "action": "focus",
+            "target_id": "card_aviso",
+            "headline": "Identificação de erro",
+            "detail": "Opção imediata de bloqueio pontual"
+          },
+          {
+            "anchor": "suspender aquela cobrança pontual",
+            "action": "reveal",
+            "target_id": "card_cancelamento",
+            "reveal_ids": [
+              "card_cancelamento"
+            ],
+            "headline": "Cancelamento instantâneo pelo app",
+            "detail": "Sem filas de SAC ou burocracia"
+          },
+          {
+            "anchor": "cancelar a autorização inteira com apenas um toque",
+            "action": "focus",
+            "target_id": "card_cancelamento",
+            "headline": "Comando direto no aplicativo",
+            "detail": "Suspensão definitiva da cobrança"
+          },
+          {
+            "anchor": "até as vinte e três horas e cinquenta",
+            "action": "update",
+            "target_id": "card_cancelamento",
+            "value": "23h59",
+            "headline": "Prazo limite até 23h59 da véspera",
+            "detail": "Trava em 1 clique"
+          },
+          {
+            "anchor": "Não precisa ligar em central de atendimento",
+            "action": "focus",
+            "target_id": "card_cancelamento",
+            "headline": "Autonomia total do correntista",
+            "detail": "Fim das horas preso em centrais telefônicas"
+          },
+          {
+            "anchor": "nem passar horas em fila de espera",
+            "action": "update",
+            "target_id": "card_cancelamento",
+            "value": "1 clique",
+            "headline": "Resolução imediata pelo celular",
+            "detail": "Ação direta no app"
           }
         ]
       }
@@ -1296,8 +946,8 @@
       "id": "scene-03",
       "index": 3,
       "scene_index": 3,
-      "title": "O poder de pagar a si mesmo primeiro",
-      "narration": "Agora que você conhece os percentuais, vem o segredo prático que faz o método funcionar no mundo real: a automação. Se você deixar esses seiscentos reais parados na conta do dia a dia, a mente humana sempre encontra um motivo urgente para gastar. O truque psicológico é programar uma transferência automática no mesmo dia em que o pagamento entra na conta. O dinheiro do seu futuro sai antes mesmo de você ver o saldo total. Se você quer dominar seu dinheiro e construir patrimônio com clareza, se inscreva no canal O Dinheiro Explica e ative as notificações. Automatizar o hábito vence a força de vontade em todos os meses.",
+      "title": "O fim do monopólio dos convênios bancários",
+      "narration": "Se a ferramenta parece tão prática, por que ela gerou tanta discussão nos bastidores do sistema financeiro? A resposta envolve muito dinheiro e poder de mercado. No débito automático tradicional, cada concessionária de luz ou telefone precisava fechar convênios bilaterais com cada banco, pagando tarifas bancárias pesadas por cada fatura recebida. Esse sistema privilegiava os quatro ou cinco maiores bancos do país e criava uma barreira para bancos menores e fintechs. Com o Pix Automático, a infraestrutura é aberta e unificada pelo Banco Central. Qualquer pessoa com conta em qualquer instituição autorizada pode pagar qualquer fatura sem custo adicional, enquanto as empresas pagam tarifas muito menores para processar o recebimento. Veículos econômicos independentes destacaram que essa abertura quebra reservas de mercado históricas e reduz o custo operacional de empresas no Brasil inteiro.",
       "claim_ids": [
         "C4"
       ],
@@ -1310,237 +960,166 @@
           "motion_profile": "narrative",
           "elements": [
             {
-              "id": "card_conta_salario",
+              "id": "card_debito_antigo",
               "kind": "step",
-              "label": "Conta do salário",
+              "label": "Débito tradicional",
               "x": 6,
               "y": 18,
               "width": 42,
               "height": 58,
               "initially_visible": true,
-              "icon": "wallet",
+              "icon": "bank",
               "svg_motion": "trace",
               "sustain": {
-                "kind": "float",
+                "kind": "breathe",
                 "amplitude": 8,
-                "period_seconds": 3.5
+                "period_seconds": 3.2
               },
               "label_size": 44,
               "surface": "spotlight",
-              "value": "Entrada",
-              "value_size": 96,
-              "detail": "Saldo inicial do pagamento"
+              "value": "Convênios",
+              "value_size": 80,
+              "detail": "Acordos restritos e tarifas altas"
             },
             {
-              "id": "card_transferencia",
+              "id": "card_pix_livre",
               "kind": "metric",
-              "label": "Envio automático",
+              "label": "Rede unificada",
               "x": 52,
               "y": 18,
               "width": 42,
               "height": 58,
               "initially_visible": false,
-              "icon": "route",
+              "icon": "globe",
               "svg_motion": "trace",
               "sustain": {
-                "kind": "breathe",
+                "kind": "float",
                 "amplitude": 8,
-                "period_seconds": 3
+                "period_seconds": 3.2
               },
               "label_size": 44,
               "surface": "spotlight",
-              "value": "Pague-se 1º",
-              "value_size": 86,
-              "detail": "Agendado no mesmo dia"
+              "value": "Aberta",
+              "value_size": 110,
+              "detail": "Todas as instituições e fintechs"
             }
           ],
           "connections": [
             {
-              "id": "conn_salario_reserva",
-              "from": "card_conta_salario",
-              "to": "card_transferencia",
-              "semantic": "transfer",
-              "motion": "flow",
-              "period_seconds": 2.2,
-              "token_label": "R$"
+              "from": "card_debito_antigo",
+              "to": "card_pix_livre",
+              "label": "Abertura de mercado",
+              "semantic": "comparison",
+              "motion": "flow"
             }
-          ],
-          "captions": {
-            "enabled": true,
-            "max_words": 6,
-            "words_per_line": 3,
-            "max_lines": 2,
-            "font_size": 64,
-            "min_free_area_ratio": 0.3
-          }
+          ]
         },
         "beats": [
           {
-            "anchor": "o segredo prático que faz o método funcionar no mundo real",
-            "target_id": "card_conta_salario",
+            "anchor": "Se a ferramenta parece tão prática",
             "action": "focus",
-            "actuation": "signal",
-            "headline": "O segredo prático: automação",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Conta do salário",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "target_id": "card_debito_antigo",
+            "headline": "A disputa nos bastidores bancários",
+            "detail": "Por que os grandes bancos resistiram"
           },
           {
-            "anchor": "esses seiscentos reais parados na conta do dia a dia",
-            "target_id": "card_conta_salario",
-            "action": "focus",
-            "actuation": "signal",
-            "headline": "O risco do dinheiro parado na conta",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Conta do salário",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "anchor": "bastidores do sistema financeiro",
+            "action": "update",
+            "target_id": "card_debito_antigo",
+            "value": "Disputa",
+            "headline": "Tensões na transição tecnológica",
+            "detail": "Interesses econômicos no fluxo de pagamentos"
           },
           {
-            "anchor": "mente humana sempre encontra um motivo urgente para gastar",
-            "target_id": "card_conta_salario",
+            "anchor": "muito dinheiro e poder de mercado",
             "action": "focus",
-            "actuation": "signal",
-            "headline": "A armadilha de deixar a sobra na conta",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Conta do salário",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "target_id": "card_debito_antigo",
+            "headline": "Bilhões em tarifas anuais",
+            "detail": "O mercado bilionário de arrecadação"
           },
           {
-            "anchor": "programar uma transferência automática no mesmo dia em que o pagamento entra na conta",
-            "target_id": "card_transferencia",
+            "anchor": "No débito automático tradicional",
+            "action": "update",
+            "target_id": "card_debito_antigo",
+            "value": "Fechado",
+            "headline": "Reserva de mercado histórica",
+            "detail": "Tarifas pesadas cobradas das concessionárias"
+          },
+          {
+            "anchor": "fechar convênios bilaterais com cada banco",
+            "action": "focus",
+            "target_id": "card_debito_antigo",
+            "headline": "Acordos restritos com bancos",
+            "detail": "Concessionárias presas a convênios caros"
+          },
+          {
+            "anchor": "pagando tarifas bancárias pesadas",
+            "action": "focus",
+            "target_id": "card_debito_antigo",
+            "headline": "Custo alto para arrecadar",
+            "detail": "Taxa cobrada em cada boleto ou fatura"
+          },
+          {
+            "anchor": "privilegiava os quatro ou cinco maiores bancos",
+            "action": "update",
+            "target_id": "card_debito_antigo",
+            "value": "Concentrado",
+            "headline": "Concentração bancária histórica",
+            "detail": "Grandes redes dominavam os acordos"
+          },
+          {
+            "anchor": "criava uma barreira para bancos menores e fintechs",
+            "action": "focus",
+            "target_id": "card_debito_antigo",
+            "headline": "Barreira de entrada para fintechs",
+            "detail": "Bancos digitais ficavam de fora dos convênios"
+          },
+          {
+            "anchor": "Com o Pix Automático, a infraestrutura é aberta e unificada",
             "action": "reveal",
-            "actuation": "confirm",
-            "headline": "Transferência automática no dia 1",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Envio automático",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.9,
-            "entrance": {
-              "style": "slide",
-              "direction": "right"
-            }
+            "target_id": "card_pix_livre",
+            "reveal_ids": [
+              "card_pix_livre"
+            ],
+            "headline": "Sistema aberto e competitivo",
+            "detail": "Qualquer fintech e banco participa em igualdade"
           },
           {
-            "anchor": "O dinheiro do seu futuro sai antes mesmo de você ver o saldo total",
-            "target_id": "card_transferencia",
+            "anchor": "Qualquer pessoa com conta em qualquer instituição",
             "action": "focus",
-            "actuation": "signal",
-            "headline": "Sai antes de ver o saldo",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Envio automático",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "target_id": "card_pix_livre",
+            "headline": "Liberdade de escolha do cliente",
+            "detail": "Sem obrigação de abrir conta em bancão"
           },
           {
-            "anchor": "dominar seu dinheiro e construir patrimônio com clareza",
-            "target_id": "card_transferencia",
-            "action": "focus",
-            "actuation": "signal",
-            "headline": "Construir patrimônio com clareza",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Envio automático",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "anchor": "enquanto as empresas pagam tarifas muito menores",
+            "action": "update",
+            "target_id": "card_pix_livre",
+            "value": "Tarifa baixa",
+            "headline": "Queda expressiva nas tarifas",
+            "detail": "Menor custo para empresas"
           },
           {
-            "anchor": "se inscreva no canal O Dinheiro Explica e ative as notificações",
-            "target_id": "card_transferencia",
+            "anchor": "Veículos econômicos independentes destacaram",
             "action": "focus",
-            "actuation": "tap",
-            "headline": "Acompanhe o canal O Dinheiro Explica",
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "target_id": "card_pix_livre",
+            "headline": "Análise da imprensa econômica",
+            "detail": "Impacto na produtividade e redução de custos"
           },
           {
-            "anchor": "Automatizar o hábito vence a força de vontade",
-            "target_id": "card_transferencia",
-            "action": "focus",
-            "actuation": "confirm",
-            "headline": "O sistema vence a disciplina isolada",
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          }
-        ]
-      },
-      "tts": {
-        "delivery": "explain",
-        "cues": [
+            "anchor": "quebra reservas de mercado históricas",
+            "action": "update",
+            "target_id": "card_pix_livre",
+            "value": "Aberto",
+            "headline": "Fim do monopólio dos convênios",
+            "detail": "Mais concorrência e agilidade"
+          },
           {
-            "text": "programar uma transferência automática no mesmo dia em que o pagamento entra na conta.",
-            "kind": "emphasis",
-            "intent": "conviction",
-            "arc": "contrast",
-            "emphasis_word": "automática",
-            "pause_before_ms": 60
+            "anchor": "reduz o custo operacional de empresas",
+            "action": "focus",
+            "target_id": "card_pix_livre",
+            "headline": "Eficiência para toda a economia",
+            "detail": "Fim das taxas abusivas de arrecadação"
           }
         ]
       }
@@ -1549,8 +1128,8 @@
       "id": "scene-04",
       "index": 4,
       "scene_index": 4,
-      "title": "Onde guardar a sua reserva com segurança",
-      "narration": "Mas para onde esse dinheiro deve ir? Jamais deixe a quantia na conta corrente e evite a caderneta de poupança, que trava o rendimento por trinta dias na data de aniversário. A reserva de emergência é um montante equivalente a três a seis meses das suas despesas básicas para imprevistos. O lugar ideal para esse dinheiro são ativos com liquidez diária e proteção de baixo risco, como o Tesouro Selic ou um CDB com garantia do Fundo Garantidor de Créditos. Nessas opções, o seu dinheiro rende todos os dias úteis, acompanha os juros básicos da economia e fica disponível no momento em que você precisar resgatar.",
+      "title": "Proteção contra golpes e a conclusão",
+      "narration": "Mesmo com toda essa estrutura, o cidadão precisa redobrar a atenção contra golpes de engenharia social. Criminosos podem tentar enviar links falsos fingindo ser faturas atrasadas para induzir a vítima a autorizar um Pix Automático disfarçado de cobrança comum. A regra de ouro é conferir sempre o nome do beneficiário e o Cadastro Nacional da Pessoa Jurídica antes de confirmar qualquer solicitação no aplicativo do banco. E caso ocorra uma fraude comprovada ou falha operacional na cobrança, o Mecanismo Especial de Devolução do Pix pode ser acionado para bloquear e rastrear o dinheiro. O Pix não vai tirar dinheiro da sua conta sozinho sem o seu consentimento, mas a sua vigilância digital continua sendo a chave principal para manter o seu saldo protegido.",
       "claim_ids": [
         "C5"
       ],
@@ -1563,507 +1142,151 @@
           "motion_profile": "narrative",
           "elements": [
             {
-              "id": "card_poupanca_trava",
-              "kind": "metric",
-              "label": "Poupança tradicional",
+              "id": "card_alerta_fraude",
+              "kind": "step",
+              "label": "Atenção a golpes",
               "x": 6,
               "y": 18,
               "width": 42,
               "height": 58,
               "initially_visible": true,
-              "icon": "clock",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3
-              },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "30 dias",
-              "value_size": 110,
-              "detail": "Rendimento preso no aniversário"
-            },
-            {
-              "id": "card_cdb",
-              "kind": "metric",
-              "label": "Liquidez diária",
-              "x": 52,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "initially_visible": false,
               "icon": "shield",
               "svg_motion": "trace",
               "sustain": {
                 "kind": "breathe",
                 "amplitude": 8,
-                "period_seconds": 3.5
+                "period_seconds": 3.2
               },
               "label_size": 44,
               "surface": "spotlight",
-              "value": "Tesouro / CDB",
+              "value": "Vigilância",
               "value_size": 80,
-              "detail": "Rende todo dia útil • FGC"
-            }
-          ],
-          "connections": [
-            {
-              "id": "conn_poupanca_cdb",
-              "from": "card_poupanca_trava",
-              "to": "card_cdb",
-              "semantic": "comparison",
-              "motion": "flow",
-              "period_seconds": 2.5
-            }
-          ],
-          "captions": {
-            "enabled": true,
-            "max_words": 6,
-            "words_per_line": 3,
-            "max_lines": 2,
-            "font_size": 64,
-            "min_free_area_ratio": 0.3
-          }
-        },
-        "beats": [
-          {
-            "anchor": "Jamais deixe a quantia na conta corrente e evite a caderneta de poupança",
-            "target_id": "card_poupanca_trava",
-            "action": "focus",
-            "actuation": "signal",
-            "headline": "Fuja da conta corrente e poupança",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Poupança tradicional",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "trava o rendimento por trinta dias na data de aniversário",
-            "target_id": "card_poupanca_trava",
-            "action": "focus",
-            "actuation": "signal",
-            "headline": "A trava mensal da poupança",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Poupança tradicional",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "três a seis meses das suas despesas básicas",
-            "target_id": "card_poupanca_trava",
-            "action": "focus",
-            "actuation": "signal",
-            "headline": "Tamanho ideal: 3 a 6 meses",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Poupança tradicional",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "ativos com liquidez diária e proteção de baixo risco",
-            "target_id": "card_cdb",
-            "action": "reveal",
-            "actuation": "confirm",
-            "headline": "Renda fixa com liquidez diária",
-            "treatment": "split_compare",
-            "operation": {
-              "kind": "compare",
-              "element_ids": [
-                "card_poupanca_trava",
-                "card_cdb"
-              ]
-            },
-            "emphasis": {
-              "phrase": "Liquidez diária",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.9,
-            "entrance": {
-              "style": "slide",
-              "direction": "right"
-            }
-          },
-          {
-            "anchor": "Tesouro Selic ou um CDB com garantia do Fundo Garantidor de Créditos",
-            "target_id": "card_cdb",
-            "action": "focus",
-            "actuation": "signal",
-            "headline": "Tesouro Selic ou CDB com FGC",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Liquidez diária",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "rende todos os dias úteis, acompanha os juros básicos",
-            "target_id": "card_cdb",
-            "action": "focus",
-            "actuation": "confirm",
-            "headline": "Rentabilidade em dias úteis",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Liquidez diária",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "disponível no momento em que você precisar resgatar",
-            "target_id": "card_cdb",
-            "action": "focus",
-            "actuation": "confirm",
-            "headline": "Segurança e saque imediato",
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          }
-        ]
-      },
-      "tts": {
-        "delivery": "explain",
-        "cues": [
-          {
-            "text": "ativos com liquidez diária e proteção de baixo risco, como o Tesouro Selic ou um CDB com garantia do Fundo Garantidor de Créditos.",
-            "kind": "emphasis",
-            "intent": "discovery",
-            "arc": "resolve",
-            "emphasis_word": "garantia",
-            "pause_before_ms": 80
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-05",
-      "index": 5,
-      "scene_index": 5,
-      "title": "O plano de ação para começar a poupar",
-      "narration": "Organizar as contas e guardar dinheiro não depende de mágica nem de privação extrema. O caminho seguro é simples: estancar juros caros, dividir a renda nos três blocos, programar a transferência no dia do salário e construir a sua reserva em aplicações seguras de liquidez diária. Se você não conseguir começar com vinte por cento, comece com dez ou cinco por cento, mas comece já no próximo salário. Você já aplica alguma regra para guardar dinheiro todo mês? Escreva a sua experiência nos comentários. Até o próximo episódio!",
-      "claim_ids": [
-        "C2",
-        "C4",
-        "C5"
-      ],
-      "visual": {
-        "type": "EDITORIAL",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "camera_mode": "auto",
-          "motion_profile": "narrative",
-          "elements": [
-            {
-              "id": "card_plano_passos",
-              "kind": "step",
-              "label": "Plano de consistência",
-              "x": 6,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "initially_visible": true,
-              "icon": "route",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "tilt",
-                "amplitude": 6,
-                "period_seconds": 3.5
-              },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "4 Passos",
-              "value_size": 110,
-              "detail": "Dívidas • Blocos • Automação • Reserva"
+              "detail": "Conferir CNPJ e favorecido"
             },
             {
-              "id": "card_resultado_final",
+              "id": "card_med_seguranca",
               "kind": "metric",
-              "label": "Controle financeiro",
+              "label": "Devolução e proteção",
               "x": 52,
               "y": 18,
               "width": 42,
               "height": 58,
               "initially_visible": false,
-              "icon": "chart",
+              "icon": "refund",
               "svg_motion": "trace",
               "sustain": {
-                "kind": "breathe",
+                "kind": "float",
                 "amplitude": 8,
-                "period_seconds": 3.5
+                "period_seconds": 3.2
               },
               "label_size": 44,
               "surface": "spotlight",
-              "value": "Liberdade",
-              "value_size": 86,
-              "detail": "Patrimônio e tranquilidade"
+              "value": "MED / BC",
+              "value_size": 100,
+              "detail": "Bloqueio e estorno em fraudes"
             }
           ],
           "connections": [
             {
-              "id": "conn_plano_resultado",
-              "from": "card_plano_passos",
-              "to": "card_resultado_final",
-              "semantic": "cause",
-              "motion": "flow",
-              "period_seconds": 2.5
+              "from": "card_alerta_fraude",
+              "to": "card_med_seguranca",
+              "label": "Proteção ao saldo",
+              "semantic": "sequence",
+              "motion": "flow"
             }
-          ],
-          "captions": {
-            "enabled": true,
-            "max_words": 6,
-            "words_per_line": 3,
-            "max_lines": 2,
-            "font_size": 64,
-            "min_free_area_ratio": 0.3
-          }
+          ]
         },
         "beats": [
           {
-            "anchor": "não depende de mágica nem de privação extrema",
-            "target_id": "card_plano_passos",
+            "anchor": "Mesmo com toda essa estrutura",
             "action": "focus",
-            "actuation": "signal",
-            "headline": "Sem mágica e sem privação extrema",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Plano de consistência",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "target_id": "card_alerta_fraude",
+            "headline": "Cuidado com faturas falsas",
+            "detail": "Atenção a links suspeitos e mensagens de texto"
           },
           {
-            "anchor": "estancar juros caros, dividir a renda nos três blocos",
-            "target_id": "card_plano_passos",
-            "action": "focus",
-            "actuation": "signal",
-            "headline": "O método comprovado em 4 etapas",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Plano de consistência",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "anchor": "golpes de engenharia social",
+            "action": "update",
+            "target_id": "card_alerta_fraude",
+            "value": "Atenção",
+            "headline": "Engenharia social e falsos avisos",
+            "detail": "Golpistas simulam faturas atrasadas"
           },
           {
-            "anchor": "programar a transferência no dia do salário",
-            "target_id": "card_plano_passos",
+            "anchor": "tentar enviar links falsos",
             "action": "focus",
-            "actuation": "signal",
-            "headline": "Automação no dia do pagamento",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Plano de consistência",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "target_id": "card_alerta_fraude",
+            "headline": "Nunca clique em links desconhecidos",
+            "detail": "Mensagens de SMS ou e-mails falsificados"
           },
           {
-            "anchor": "construir a sua reserva em aplicações seguras de liquidez diária",
-            "target_id": "card_plano_passos",
-            "action": "focus",
-            "actuation": "confirm",
-            "headline": "Reserva com proteção e liquidez",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Plano de consistência",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "anchor": "autorizar um Pix Automático disfarçado",
+            "action": "update",
+            "target_id": "card_alerta_fraude",
+            "value": "Falso débito",
+            "headline": "Tentativa de autorização maliciosa",
+            "detail": "Golpe que induz a aceitar cobrança contínua"
           },
           {
-            "anchor": "Se você não conseguir começar com vinte por cento",
-            "target_id": "card_plano_passos",
+            "anchor": "conferir sempre o nome do beneficiário",
             "action": "focus",
-            "actuation": "signal",
-            "headline": "Não consegue 20%? Comece menor",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Plano de consistência",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "target_id": "card_alerta_fraude",
+            "headline": "Checagem do favorecido",
+            "detail": "Confirmação rigorosa dos dados da empresa"
           },
           {
-            "anchor": "comece com dez ou cinco por cento, mas comece já no próximo salário",
-            "target_id": "card_plano_passos",
-            "action": "focus",
-            "actuation": "confirm",
-            "headline": "A constância supera o valor de início",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Plano de consistência",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "anchor": "Cadastro Nacional da Pessoa Jurídica",
+            "action": "update",
+            "target_id": "card_alerta_fraude",
+            "value": "CNPJ Real",
+            "headline": "Validação de dados cadastrais",
+            "detail": "Verificação oficial da concessionária"
           },
           {
-            "anchor": "Você já aplica alguma regra para guardar dinheiro todo mês",
-            "target_id": "card_resultado_final",
+            "anchor": "confirmar qualquer solicitação no aplicativo",
+            "action": "focus",
+            "target_id": "card_alerta_fraude",
+            "headline": "Checagem antes da senha",
+            "detail": "Revisão atenta da tela de confirmação"
+          },
+          {
+            "anchor": "fraude comprovada ou falha operacional",
+            "action": "focus",
+            "target_id": "card_alerta_fraude",
+            "headline": "Garantia de contestação",
+            "detail": "Direito de reclamação no canal oficial"
+          },
+          {
+            "anchor": "o Mecanismo Especial de Devolução do Pix pode ser acionado para bloquear e rastrear o dinheiro",
             "action": "reveal",
-            "actuation": "confirm",
-            "headline": "Qual é a sua estratégia hoje?",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Controle financeiro",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.9,
-            "entrance": {
-              "style": "slide",
-              "direction": "right"
-            }
+            "target_id": "card_med_seguranca",
+            "reveal_ids": [
+              "card_med_seguranca"
+            ],
+            "headline": "Acionamento do mecanismo MED",
+            "detail": "Rastreamento e estorno pelo Banco Central"
           },
           {
-            "anchor": "Escreva a sua experiência nos comentários",
-            "target_id": "card_resultado_final",
+            "anchor": "O Pix não vai tirar dinheiro da sua conta",
             "action": "focus",
-            "actuation": "confirm",
-            "headline": "Compartilhe sua experiência no canal",
-            "treatment": "giant_number",
-            "emphasis": {
-              "phrase": "Controle financeiro",
-              "style": "highlight"
-            },
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "tick",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
+            "target_id": "card_med_seguranca",
+            "headline": "Consentimento e controle do usuário",
+            "detail": "Nenhum centavo debitado sem autorização"
           },
           {
-            "anchor": "Até o próximo episódio!",
-            "target_id": "card_resultado_final",
-            "action": "focus",
-            "actuation": "tap",
-            "headline": "O Dinheiro Explica",
-            "kind": "fact",
-            "behavior": "transform",
-            "transition": "cut",
-            "placement": "full",
-            "medium": "motion_graphic",
-            "sound": "none",
-            "prominence": "contextual",
-            "motion_seconds": 0.8
-          }
-        ]
-      },
-      "tts": {
-        "delivery": "closing",
-        "cues": [
+            "anchor": "sem o seu consentimento",
+            "action": "update",
+            "target_id": "card_med_seguranca",
+            "value": "Protegido",
+            "headline": "Trava definitiva de proteção",
+            "detail": "O correntista é o dono da decisão"
+          },
           {
-            "text": "Escreva a sua experiência nos comentários.",
-            "kind": "emphasis",
-            "intent": "reassurance",
-            "arc": "resolve",
-            "emphasis_word": "comentários",
-            "pause_before_ms": 80
+            "anchor": "sua vigilância digital continua sendo",
+            "action": "focus",
+            "target_id": "card_med_seguranca",
+            "headline": "Saldo seguro com informação",
+            "detail": "Conhecimento e proteção para o seu bolso"
           }
         ]
       }

@@ -5,11 +5,6 @@ import { normalizeEditorialProject, explanationReviewContent, stableJson } from 
 const path = process.argv[2] ?? "video/data/daily.json";
 const raw = JSON.parse(readFileSync(path, "utf8"));
 
-// Ajuste na cena 02: trocar actuation 'count' por 'confirm' no elemento calc_anual (que usa ícone chart)
-const s2 = raw.scenes.find((s: any) => s.id === "scene-02");
-if (s2 && s2.visual?.beats?.[1]) {
-  s2.visual.beats[1].actuation = "confirm";
-}
 if (raw.script?.scenes) {
   raw.script.scenes = raw.scenes;
 }
