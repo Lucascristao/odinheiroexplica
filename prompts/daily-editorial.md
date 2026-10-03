@@ -3,8 +3,14 @@
 ## Regra de independência editorial e seleção de pauta
 
 1. **Anti-repetição obrigatória**: Antes de sugerir ou iniciar qualquer roteiro, consulte obrigatoriamente `docs/visual-history.md`, os commits recentes e o repositório para verificar os vídeos já produzidos pelo canal. Nunca repita temas, ganchos ou ângulos idênticos aos episódios anteriores.
-2. **Apresentação de 3 opções ao usuário**: Ao receber o pedido de um novo vídeo diário (ou nova seleção de pauta), pesquise a fundo o cenário econômico/financeiro do momento e apresente 3 opções qualificadas e distintas no chat (com título provisório, gancho, promessa narrativa, dados concretos, potencial visual e fontes). Aguarde a escolha do usuário antes de escrever `video/data/daily.json` e iniciar o render.
-3. **Preservação de pauta aprovada**: Uma vez que o usuário escolheu ou aprovou uma pauta na conversa, preserve esse assunto ao atualizar datas, dados ou visuais do episódio. Não troque de tema sem pedido explícito.
+2. **Apresentação de 3 opções virais ao usuário**: Ao receber o pedido de um novo vídeo diário (ou nova seleção de pauta), pesquise a fundo o cenário do momento e apresente 3 opções qualificadas, distintas e com alta predisposição a viralizar. Cada opção deve conter:
+   - **Título Viral de Alto CTR**: Sem jargões técnicos ("marcação a mercado", "juro real", "subvenção"). O título deve ativar curiosidade irresistível ou medo de perder dinheiro.
+   - **Thumbnail Magnética**: Conceito visual e texto de 2 a 4 palavras de alto impacto emocional, complementando o título.
+   - **Gancho Hipnótico (Primeiros 5s)**: Abertura na tensão máxima, quebrando crenças comuns.
+   - **Gatilho Mental Central**: Qual motor psicológico puxa o clique (Aversão à perda, Segredo revelado, Curiosidade oculta, Alerta no bolso).
+   - **Fatos e Dados Concretos**: Sustentação real e fontes balanceadas (clickbait ético: alta curiosidade, entrega 100% verdadeira).
+   Aguarde a escolha do usuário antes de escrever `video/data/daily.json` e iniciar o render.
+3. **Preservação e Potencialização da Pauta Escolhida**: Uma vez que o usuário escolheu ou aprovou uma pauta na conversa, preserve esse assunto e aplique toda essa engenharia viral no título final, na thumbnail, na abertura e no ritmo do roteiro. Não troque de tema sem pedido explícito.
 
 Arquivos de piloto, testes, demonstrações e exemplos anteriores existem apenas para validar a tecnologia. Nunca use o assunto, a estrutura narrativa, o título, a thumbnail, os visuais ou o enquadramento de um piloto como molde ou preferência para um novo vídeo. Cada pauta deve nascer da solicitação atual e da pesquisa atual. O piloto do Pix é somente um teste técnico e não deve influenciar a seleção ou a forma dos próximos vídeos.
 
@@ -31,6 +37,10 @@ Crie somente UMA embalagem principal. Não gere alternativas por obrigação.
 A thumbnail final não é renderizada pelo Remotion nem montada a partir de uma imagem-base. Depois que o vídeo terminar e for enviado ao Google Drive, o ChatGPT deve gerar a capa completa, já com composição, imagem, texto e acabamento final, pronta para uso no YouTube, seguindo docs/thumbnail-identity.md. O campo packaging.thumbnails[0].visual_prompt deve descrever essa capa completa. Cada capa deve ser única e magnética, mas manter o DNA visual do canal. Depois de gerar, o ChatGPT deve enviar a capa para a mesma pasta do Google Drive criada para o vídeo. A produção da capa só termina quando o arquivo final estiver nessa pasta.
 
 A embalagem precisa:
+- **Ter predisposição viral**: baseada em curiosidade irresistível, aversão à perda, quebra de expectativa ou urgência real no bolso do espectador;
+- **Zero jargão no título**: nunca use termos como "marcação a mercado", "juro real recorde", "arcabouço", "subvenção" ou siglas obscuras no título. Ninguém clica nisso no YouTube. Traduza para a dor ou consequência direta: "Renda fixa dando prejuízo?", "O banco pode tirar dinheiro da sua conta?", "Demitido e sem FGTS?";
+- **Curiosity gap e tensão**: o título e a thumb abrem uma lacuna mental que a pessoa PRECISA clicar para preencher;
+- **Sinergia e não repetição**: o título coloca a dúvida/impacto, a thumbnail traz a imagem chocante e um texto de 2 a 4 palavras de alto contraste emocional (ex.: Título: *Renda fixa dando prejuízo? O erro que faz muita gente perder dinheiro* -> Thumb: *RENDA FIXA NEGATIVA?*);
 - comunicar uma ideia central;
 - ser entendida rapidamente no feed e no celular;
 - ter um elemento visual dominante e reconhecível;
@@ -49,6 +59,12 @@ Preencha packaging.strategy com:
 - mobile_readability;
 - anti_clickbait_check;
 - repetition_check.
+
+### Gancho Hipnótico nos Primeiros 5 Segundos (Hook)
+Esqueça introduções mornas ("Olá, bem-vindos ao canal", "No vídeo de hoje vamos analisar..."). O vídeo deve começar direto no ponto de maior tensão ou na quebra de paradigma:
+- Exemplo fraco: "O Tesouro Direto é um investimento muito conhecido e hoje vamos explicar como funcionam os títulos IPCA+..."
+- Exemplo viral: "Você investe na renda fixa acreditando que é o lugar mais seguro do Brasil... e de repente o seu saldo diminui. Como um investimento seguro pode dar prejuízo no extrato?"
+O espectador decide ficar ou sair nos primeiros 5 a 10 segundos. O gancho precisa prender pela garganta.
 
 Depois construa uma narrativa original que entregue essa promessa. Não reescreva uma reportagem.
 

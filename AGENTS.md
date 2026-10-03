@@ -2,11 +2,16 @@
 
 Quando a pessoa pedir **“Gerar o vídeo de hoje”** ou um vídeo por tema neste repositório:
 
-- **Seleção e Decisão de Pauta**: Se ainda não existe uma pauta aprovada nesta conversa, ou se a solicitação pede uma nova seleção de assunto:
+- **Seleção e Decisão de Pauta com Potencial Viral e Alto CTR**: Se ainda não existe uma pauta aprovada nesta conversa, ou se a solicitação pede uma nova seleção de assunto:
   1. O assistente DEVE consultar `docs/visual-history.md`, os commits recentes e o histórico do repositório para verificar TODOS os vídeos já produzidos (ex.: Proibição das Bets, Alta dos Combustíveis, MED 2.0 do Pix, Split Payment, Dólar a R$ 5,21, Simples Nacional, Pix por Aproximação, Banco24Horas, Teto de 100% dos juros do cartão, R$ 82 milhões na poupança, Como organizar finanças e guardar dinheiro). É terminantemente proibido repetir temas já abordados.
-  2. O assistente DEVE pesquisar acontecimentos recentes e de impacto e apresentar **3 opções de pautas fortes, distintas e aprofundadas** no chat (com título provisório, gancho, promessa narrativa, dados concretos, potencial visual dinâmico e fontes balanceadas).
+  2. **Mentalidade de Viralidade e Curiosidade**: É proibido sugerir títulos burocráticos, técnicos ou acadêmicos (ex.: "Marcação a mercado", "Juro real", "Subvenção fiscal"). As pessoas clicam pelo impacto direto no bolso, medo de perder dinheiro, curiosidade irresistível ou quebra de crença. O assistente DEVE apresentar **3 opções de pautas genuinamente virais e magnéticas**, estruturadas com:
+     - **Título Viral de Alto CTR**: Sem jargões, direto, focado na dor, no bolso ou na curiosidade do cidadão comum.
+     - **Thumbnail de Alto Impacto**: Conceito visual e texto de 2 a 4 palavras em alto contraste emocional (que complementa o título sem repeti-lo).
+     - **Gancho Hipnótico (Primeiros 5 segundos)**: Quebra de expectativa ou choque imediato na abertura, sem enrolação.
+     - **Gatilho Mental Central**: Identificação clara do motor psicológico (Aversão à Perda, Curiosidade Oculta, Alerta de Bloqueio, Dinheiro na Mesa).
+     - **Fatos e Dados Concretos**: A apuração rigorosa que entrega a promessa com fontes balanceadas (clickbait ético).
   3. O assistente DEVE aguardar a escolha do usuário antes de escrever `video/data/daily.json` ou disparar a produção.
-- **Preservação de Pauta Aprovada**: Se já existe uma pauta aprovada na conversa, preserve o assunto ao atualizar a data, os dados ou os visuais. Uma atualização do episódio não autoriza trocar de tema. Escolha outra pauta somente quando a solicitação pedir uma nova seleção de assunto.
+- **Preservação e Potencialização da Pauta Escolhida**: Ao usuário escolher o tema, preserve o assunto e aplique toda essa engenharia viral no título final, na thumbnail, no gancho de abertura e no roteiro. Uma atualização do episódio não autoriza trocar de tema. Escolha outra pauta somente quando a solicitação pedir uma nova seleção de assunto.
 
 1. Leia `prompts/daily-editorial.md`, `docs/editorial-explanation.md`, `docs/editorial-continuity.md`, `docs/editorial-attention.md`, `docs/editorial-voice.md`, `docs/source-neutrality.md`, `docs/tts.md` e `docs/youtube-packaging.md`. Pesquise a pauta atual e escreva `video/data/daily.json` com fatos verificáveis, datas, fontes específicas e imagens utilizáveis. Consulte sempre também pelo menos um veículo de linha editorial à direita ou centro-direita e registre a matéria e o que ela acrescentou; confronte interpretações oficiais sem descartar dados públicos por pressuposto político.
 2. Antes de renderizar, crie um storyboard dinâmico da pauta: gancho visual, objetos que persistem, percurso da câmera, mudança visual ligada a cada afirmação, provas e saída. Use a paleta do canal (#FFBD19, grafite/escuro e branco), mas não repita a composição do episódio anterior. Linha do tempo só deve ser usada quando datas ou a sequência temporal ajudam a explicar a história.

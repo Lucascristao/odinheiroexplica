@@ -2,26 +2,30 @@
 
 Estas regras valem para toda nova produção do O Dinheiro Explica. O objetivo é aumentar clareza, descoberta e vontade de clicar sem transformar a embalagem em clickbait.
 
-## Título: assunto primeiro, consequência depois
+## Engenharia de Título Viral: Curiosidade, Dor e Gatilhos Mentais
 
-O título deve traduzir regra, imposto, economia ou tecnologia para uma consequência concreta para quem assiste.
+O título não pode parecer um artigo acadêmico ou relatório de banco. Ninguém clica em "Marcação a mercado", "Juro real recorde", "Subvenção" ou "Spread bancário". O título deve explorar a psicologia do espectador no YouTube:
 
-Regras:
-- coloque o assunto ou palavra-chave principal nas primeiras 3 a 5 palavras sempre que isso soar natural;
-- prefira títulos que continuem compreensíveis quando o YouTube cortar o final no celular;
-- use como referência editorial cerca de 45 a 65 caracteres; o limite técnico continua em 100;
-- pense internamente em uma formulação de busca e outra de curiosidade, mas publique apenas uma opção;
-- quando funcionar, use a estrutura `Fato/tema: consequência ou dúvida`;
-- depois de nomear o assunto, dê motivo concreto para clicar: dinheiro, custo, prazo, limite, segurança, bloqueio, imposto, risco ou efeito prático, somente quando sustentado pela pauta;
-- não abra com número de norma, nome burocrático ou expressão administrativa se o público pode entender primeiro a consequência;
-- evite começos genéricos como "Entenda", "Saiba" ou "Veja" quando o próprio assunto puder abrir o título;
-- não afirme ganho, prejuízo, risco ou urgência que o roteiro não demonstra.
+1. **Gatilhos Psicológicos de Alto CTR**:
+   - **Aversão à perda (Medo de perder dinheiro)**: O ser humano tem o dobro de medo de perder o que tem do que vontade de ganhar. (Ex.: *Renda fixa dando prejuízo?*, *O erro que está comendo o saldo*, *O banco pode tirar o seu dinheiro?*).
+   - **Curiosidade oculta / Segredo bancário**: O que não contam ou a regra escondida. (Ex.: *O que o banco nunca te conta sobre...*, *A trava oculta no seu benefício*).
+   - **Contraintuitivo / Quebra de crença**: Chocar uma certeza popular. (Ex.: *Investimento seguro com saldo negativo?*, *Por que guardar na poupança te faz perder poder de compra*).
+   - **Alerta de urgência no bolso**: Mudança em regras diárias (Pix, compras, demissão, FGTS, taxas).
 
-Exemplo de lógica:
-- fraco: `Entenda a nova regulamentação do Pix por aproximação`
-- melhor: `Pix por aproximação sem teto: o que muda acima de R$ 500?`
+2. **Regras de Ouro**:
+   - **Zero jargão**: elimine termos técnicos do título. O roteiro pode e deve explicar o conceito com rigor, mas o título tem que ser 100% inteligível para qualquer pessoa no ônibus ou na fila do pão;
+   - coloque o gancho principal nas primeiras 4 a 6 palavras (visível no feed do celular sem truncar);
+   - use como referência editorial cerca de 45 a 65 caracteres;
+   - evite começos mornos como "Entenda", "Saiba como", "Análise de";
+   - nunca use clickbait enganoso: todo choque ou dúvida do título deve ser rigorosamente explicado e comprovado no vídeo.
 
-A fórmula é uma ferramenta, não um template obrigatório. Não force dois-pontos quando outro título for mais claro.
+### Exemplos de Transformação: Burocrático vs Viral
+- ❌ **Burocrático**: `Tesouro IPCA+ com Juro Real Recorde: Oportunidade ou Armadilha da Marcação a Mercado?`
+- ✅ **Viral**: `Renda fixa dando prejuízo? O erro que faz muita gente perder dinheiro`
+- ❌ **Burocrático**: `Pix Automático e Resolução do Bacen: Análise de Débito em Conta`
+- ✅ **Viral**: `O Pix vai tirar dinheiro da sua conta sozinho? A nova regra que assusta`
+- ❌ **Burocrático**: `Regulamentação do Saque-Aniversário do FGTS em Caso de Rescisão`
+- ✅ **Viral**: `Demitido e sem FGTS: a trava silenciosa que pegou milhões de surpresa`
 
 ## Sinergia título + thumbnail
 
