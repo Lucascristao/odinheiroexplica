@@ -437,7 +437,7 @@
         }
       ],
       "review": {
-        "content_sha256": "abea846b4fe03ecef5878e8a2423996d479d116fbec01e0570b8a8ca393e6e71",
+        "content_sha256": "2c23171da51db56f4e32e7f225f6b715982aaeb9b124777f70e79db3da62180d",
         "findings": [
           {
             "question": "O espectador compreende por que o orçamento do governo não está livre para novos gastos?",
@@ -687,9 +687,9 @@
               "kind": "metric",
               "label": "Despesas Obrigatórias",
               "x": 6,
-              "y": 18,
+              "y": 15,
               "width": 42,
-              "height": 58,
+              "height": 64,
               "initially_visible": true,
               "icon": "lock",
               "svg_motion": "trace",
@@ -701,17 +701,17 @@
               "label_size": 44,
               "surface": "spotlight",
               "value": "90%",
-              "value_size": 110,
-              "detail": "Previdência, salários, saúde e educação"
+              "value_size": 96,
+              "detail": "Previdência, salários e saúde"
             },
             {
               "id": "card_margem_livre",
               "kind": "metric",
               "label": "Espaço Livre para Gastar",
               "x": 52,
-              "y": 18,
+              "y": 15,
               "width": 42,
-              "height": 58,
+              "height": 64,
               "initially_visible": false,
               "icon": "coins",
               "svg_motion": "trace",
@@ -723,8 +723,8 @@
               "label_size": 44,
               "surface": "spotlight",
               "value": "10%",
-              "value_size": 110,
-              "detail": "Investimentos e novas promessas"
+              "value_size": 96,
+              "detail": "Investimentos e novas obras"
             }
           ],
           "connections": [
@@ -757,7 +757,7 @@
             "target_id": "card_despesas_obrigatorias",
             "value": "Ilusão",
             "headline": "Cofre travado",
-            "detail": "A realidade constitucional do orçamento da União"
+            "detail": "Orçamento travado por lei"
           },
           {
             "anchor": "mais de noventa por cento de todo o orçamento",
@@ -765,14 +765,14 @@
             "target_id": "card_despesas_obrigatorias",
             "value": "90%",
             "headline": "Gasto já carimbado",
-            "detail": "Mais de 90% do orçamento já é obrigatório por lei"
+            "detail": "90% obrigatório por lei"
           },
           {
             "anchor": "São as chamadas despesas obrigatórias",
             "action": "focus",
             "target_id": "card_despesas_obrigatorias",
             "headline": "Previdência e folha",
-            "detail": "Aposentadorias, funcionalismo, saúde e educação"
+            "detail": "Aposentadorias, funcionalismo e saúde"
           },
           {
             "anchor": "salários de servidores públicos",
@@ -780,7 +780,7 @@
             "target_id": "card_despesas_obrigatorias",
             "value": "Travado",
             "headline": "Rigidez constitucional",
-            "detail": "Despesas que não podem ser canceladas por decreto"
+            "detail": "Gasto não cancelável por decreto"
           },
           {
             "anchor": "O que sobra para investimentos",
@@ -810,7 +810,7 @@
             },
             "value": "< 10%",
             "headline": "Fatia minúscula",
-            "detail": "Espaço orçamentário real para investimentos"
+            "detail": "Espaço real para investimentos"
           }
         ]
       },
