@@ -1,6 +1,6 @@
 {
-  "project_id": "pix-automatico-nova-regra-debito-2026-10-03",
-  "title": "Pix Automático: o dinheiro vai sair da sua conta sozinho?",
+  "project_id": "a-conta-secreta-do-2-turno-2026-10-05",
+  "title": "A conta secreta do 2º turno: quem vai pagar o que prometem?",
   "version": "1.0",
   "presenter": {
     "gender": "male",
@@ -8,114 +8,114 @@
   },
   "speech": {
     "pronunciations": {
-      "Pix": "pix",
-      "Bacen": "bacen",
-      "BCB": "bê cê bê",
-      "MED": "méd",
-      "CNPJ": "cê ene pê jota",
-      "QR": "quê érre",
-      "Febraban": "febraban"
+      "PLOA": "pê ló a",
+      "IFI": "i éfe i",
+      "IRPF": "i érre pê éfe",
+      "INSS": "i ene esse esse",
+      "LRF": "éle érre éfe",
+      "BPC": "bê pê cê",
+      "Selic": "selic"
     },
     "ignore_pronunciation_terms": []
   },
   "story": {
-    "subject": "O funcionamento do Pix Automático regulamentado pelo Banco Central para cobranças recorrentes, os mecanismos de segurança, limites de valor, regras de cancelamento e o impacto na concorrência bancária contra os velhos convênios de débito em conta.",
-    "angle": "Quebrar o pânico de débitos sem autorização, demonstrando a exigência da trava prévia e como o consumidor tem poder total de limite e cancelamento imediato, enquanto as empresas ganham agilidade e menores tarifas.",
-    "promise": "Explicar em detalhes se o banco pode debitar sem senha, como funciona a aprovação prévia, como travar valores indesejados e como se proteger de tentativas de golpe.",
-    "why_now": "A implementação do Pix Automático pelo Banco Central altera as cobranças recorrentes de concessionárias e serviços, gerando dúvidas e alertas sobre a segurança do saldo bancário dos brasileiros.",
-    "category": "fintech_regulation"
+    "subject": "O impacto financeiro das promessas eleitorais feitas no segundo turno das eleições presidenciais, a rigidez do Orçamento Federal com mais de 90% de despesas obrigatórias, as travas do arcabouço fiscal e como a fatura pós-eleição historicamente recai sobre o contribuinte via tributos e juros.",
+    "angle": "Desmascarar a ilusão de promessas mágicas de campanha e demonstrar a matemática real do Orçamento da União, mostrando que o espaço livre para novas despesas é mínimo e que qualquer promessa bilionária precisa ser paga pelo bolso do cidadão.",
+    "promise": "Explicar quanto custam as grandes promessas de campanha como isenção do Imposto de Renda e aumento do salário mínimo, por que o presidente eleito não tem cofre livre para gastar e como a conta sempre chega após a eleição.",
+    "why_now": "Com as eleições presidenciais avançando para a reta final do segundo turno, os candidatos intensificam promessas financeiras populares enquanto o mercado e os cidadãos temem os custos fiscais para o próximo mandato.",
+    "category": "public_finance"
   },
   "packaging": {
     "titles": [
       {
-        "text": "Pix Automático: o dinheiro vai sair da sua conta sozinho?",
+        "text": "A conta secreta do 2º turno: quem vai pagar o que prometem?",
         "platform": "youtube"
       }
     ],
     "thumbnails": [
       {
-        "headline": "DEBITOU SEM AVISAR?",
+        "headline": "SEU BOLSO PAGA",
         "style": "editorial_bold"
       }
     ],
     "strategy": {
-      "click_reason": "Responde ao medo genuíno do cidadão de ver cobranças sendo debitadas automaticamente da conta sem senha a cada mês.",
-      "visual_focus": "Notificação de Pix automático saindo da conta, cadeado aberto e alerta em alto contraste grafite e amarelo.",
-      "curiosity_gap": "Como o Pix pode cobrar sem senha na hora, quem autoriza e como cancelar em segundos se o valor estiver errado.",
+      "click_reason": "Explica quem realmente vai pagar as promessas bilionárias feitas na reta final da disputa presidencial.",
+      "visual_focus": "Nota fiscal saindo da urna com carimbo de cobrança e números bilionários em amarelo ouro e grafite.",
+      "curiosity_gap": "Como o governo vai cumprir as promessas se mais de 90% do orçamento federal já está travado por lei.",
       "mobile_readability": "Texto curto de 3 palavras em alto contraste legível instantaneamente no celular.",
-      "anti_clickbait_check": "O vídeo explica a regra exata do Banco Central com limites, exigência de autorização e direito de estorno.",
-      "repetition_check": "Pauta inédita sobre cobrança recorrente e Pix Automático, sem repetir nenhum dos 11 episódios anteriores.",
-      "youtube_safety_check": "Conteúdo estritamente educacional de regulação bancária e direitos do consumidor sem incentivo a fraudes."
+      "anti_clickbait_check": "O vídeo entrega rigorosamente a análise do orçamento da União, do arcabouço fiscal e dos custos de cada promessa.",
+      "repetition_check": "Pauta inédita sobre o orçamento federal e as eleições presidenciais no segundo turno, sem repetir nenhum dos episódios anteriores.",
+      "youtube_safety_check": "Conteúdo estritamente jornalístico de educação financeira e orçamento público, equilibrado e neutro partidariamente."
     }
   },
   "publication": {
-    "description": "O Pix Automático chegou para substituir boletos e o débito tradicional em contas de água, luz, internet e assinaturas. Neste vídeo, você descobre se o banco pode tirar dinheiro da sua conta sozinho e como manter seu saldo 100% protegido.\n\n- Como funciona a autorização prévia obrigatória antes de qualquer débito\n- O direito de fixar um teto máximo de valor para evitar cobranças abusivas\n- Como cancelar pagamentos ou revogar a cobrança até as 23h59 da véspera\n- A disputa nos bastidores entre os grandes bancos e as empresas por tarifas menores",
-    "engagement_question": "Você pretende usar o Pix Automático para pagar suas contas do mês ou prefere continuar pagando manualmente no boleto?",
+    "description": "Com a disputa das eleições presidenciais no 2º turno, os candidatos aceleram promessas de isenção de impostos, reajustes salariais e novos auxílios. Neste vídeo, você entende como o Orçamento Federal funciona de verdade e por que a conta dessa disputa sempre estoura no seu bolso.\n\n- O tamanho das despesas obrigatórias que já consomem mais de 90% do orçamento da União\n- O custo real de promessas populares como a isenção do Imposto de Renda e o aumento do salário mínimo\n- A regra do arcabouço fiscal que proíbe criar novos gastos sem indicar de onde tirar o dinheiro\n- O histórico brasileiro de ressaca fiscal pós-eleição com corte de programas ou aumento de impostos",
+    "engagement_question": "Você acredita que as promessas feitas no segundo turno cabem no orçamento sem aumentar impostos?",
     "hashtags": [
-      "#PixAutomatico",
-      "#BancoCentral",
+      "#SegundoTurno",
+      "#Economia",
       "#ODinheiroExplica"
     ],
     "seo": {
-      "primary_keyword": "Pix Automático"
+      "primary_keyword": "2º turno"
     }
   },
   "sources": [
     {
       "id": "S1",
-      "title": "Banco Central do Brasil — Resoluções e Regulamento do Pix Automático",
-      "url": "https://www.bcb.gov.br/estabilidadefinanceira/pix",
-      "publisher": "Banco Central do Brasil",
+      "title": "Ministério do Planejamento e Orçamento — Projeto de Lei Orçamentária Anual e Despesas Obrigatórias",
+      "url": "https://www.gov.br/planejamento/pt-br/assuntos/orcamento/orcamentos-anuais",
+      "publisher": "Ministério do Planejamento e Orçamento",
       "publisher_class": "official",
       "editorial_role": "regulatory_standard",
       "source_type": "primary",
-      "notes": "Define a estrutura normativa do Pix Automático, obrigatoriedade de autorização prévia e parâmetros de cancelamento."
+      "notes": "Dados oficiais da União comprovando que aposentadorias, folha salarial e pisos constitucionais ocupam mais de 90% das receitas primárias da União."
     },
     {
       "id": "S2",
-      "title": "Banco Central do Brasil — Relatório de Gestão do Pix e Estatísticas do Sistema de Pagamentos Instantâneos",
-      "url": "https://www.bcb.gov.br/estatisticas/spi",
-      "publisher": "Banco Central do Brasil",
+      "title": "Instituição Fiscal Independente do Senado Federal — Relatório de Acompanhamento Fiscal",
+      "url": "https://www12.senado.leg.br/ifi/relatorios/acompanhamento-fiscal",
+      "publisher": "Instituição Fiscal Independente do Senado Federal",
       "publisher_class": "official",
-      "editorial_role": "regulatory_standard",
+      "editorial_role": "data_context",
       "source_type": "primary",
-      "notes": "Registra dados operacionais e volume de transações do ecossistema de pagamentos instantâneos brasileiro."
+      "notes": "Análise técnica independente do Senado sobre a rigidez das despesas públicas, espaço orçamentário discricionário e riscos da trajetória da dívida."
     },
     {
       "id": "S3",
-      "title": "Febraban — Federação Brasileira de Bancos — Posicionamento sobre Cobranças Recorrentes no Pix",
-      "url": "https://portal.febraban.org.br/",
-      "publisher": "Febraban",
-      "publisher_class": "industry",
+      "title": "Unafisco Nacional — Estudo Técnico sobre a Tabela do IRPF e Impacto da Isenção",
+      "url": "https://unafisconacional.org.br/estudos-tecnicos-irpf/",
+      "publisher": "Unafisco Nacional",
+      "publisher_class": "technical",
       "editorial_role": "data_context",
-      "source_type": "primary",
-      "notes": "Apresenta a adaptação da infraestrutura tecnológica dos bancos associados para integração com a liquidação instantânea."
+      "source_type": "secondary",
+      "notes": "Cálculos técnicos estimando a renúncia de arrecadação da União entre 50 e 100 bilhões de reais ao ano com a isenção de IRPF até R$ 5.000."
     },
     {
       "id": "S4",
-      "title": "Pix Automático: como a novidade quebra monopólios bancários e reduz custos para empresas",
-      "url": "https://www.gazetadopovo.com.br/economia/pix-automatico-quebra-monopolio-tarifas-bancarias/",
+      "title": "Gazeta do Povo — A conta das promessas de campanha no segundo turno e o risco de mais impostos",
+      "url": "https://www.gazetadopovo.com.br/economia/segundo-turno-promessas-eleitorais-risco-aumento-impostos/",
       "publisher": "Gazeta do Povo",
       "publisher_class": "independent_journalism",
       "editorial_role": "market_counterpoint",
       "source_type": "secondary",
-      "notes": "Análise destacando que a ferramenta acaba com reservas de mercado históricas dos grandes bancos, permitindo que qualquer fintech participe da arrecadação com menores tarifas operacionais."
+      "notes": "Análise econômica de linha editorial à direita alertando para a falta de compensação fiscal das promessas eleitorais e o risco iminente de elevação tributária."
     },
     {
       "id": "S5",
-      "title": "Pix Automático: regras de limites, cancelamento e direitos do consumidor nas contas do mês",
-      "url": "https://www.infomoney.com.br/minhas-financas/pix-automatico-regras-seguranca/",
+      "title": "InfoMoney — O impacto fiscal do salário mínimo e o desafio das contas públicas",
+      "url": "https://www.infomoney.com.br/economia/impacto-salario-minimo-orcamento-previdencia/",
       "publisher": "InfoMoney",
       "publisher_class": "independent_journalism",
       "editorial_role": "journalistic_coverage",
       "source_type": "secondary",
-      "notes": "Guia detalhando os prazos de cancelamento, a notificação prévia obrigatória e a fixação de tetos de valor por débito."
+      "notes": "Apuração econômica demonstrando que cada real de ganho real no salário mínimo expande os gastos previdenciários e assistenciais em cerca de R$ 400 milhões."
     }
   ],
   "claims": [
     {
       "id": "C1",
-      "statement": "O Pix Automático foi regulamentado pelo Banco Central para permitir pagamentos recorrentes sem a necessidade de autenticar com senha a cada cobrança individual.",
+      "statement": "Mais de 90% do orçamento geral da União é composto por despesas obrigatórias que não podem ser cortadas discricionariamente pelo presidente.",
       "source_ids": [
         "S1",
         "S2"
@@ -127,10 +127,10 @@
     },
     {
       "id": "C2",
-      "statement": "Nenhuma cobrança por Pix Automático pode ser debitada sem uma autorização prévia e documentada aprovada pelo titular da conta no aplicativo do seu banco.",
+      "statement": "A proposta de ampliar a isenção da tabela do Imposto de Renda até R$ 5.000 gera impacto fiscal estimado de dezenas de bilhões de reais por ano.",
       "source_ids": [
-        "S1",
-        "S5"
+        "S3",
+        "S4"
       ],
       "framing": "verified_fact",
       "confidence": "high",
@@ -139,7 +139,7 @@
     },
     {
       "id": "C3",
-      "statement": "O consumidor tem o direito de definir um teto máximo de valor por parcela e cancelar qualquer pagamento agendado até as vinte e três horas e cinquenta e nove minutos da véspera.",
+      "statement": "Cada aumento no salário mínimo acarreta elevação automática nas despesas obrigatórias da Previdência Social e de benefícios assistenciais.",
       "source_ids": [
         "S1",
         "S5"
@@ -151,10 +151,10 @@
     },
     {
       "id": "C4",
-      "statement": "No débito automático tradicional, as empresas dependiam de convênios bilaterais com grandes bancos, enquanto o Pix Automático unifica a cobrança para todas as instituições autorizadas.",
+      "statement": "O arcabouço fiscal e a Lei de Responsabilidade Fiscal exigem que novas despesas continuadas ou renúncias tributárias indiquem fonte de compensação.",
       "source_ids": [
-        "S3",
-        "S4"
+        "S1",
+        "S2"
       ],
       "framing": "verified_fact",
       "confidence": "high",
@@ -163,9 +163,10 @@
     },
     {
       "id": "C5",
-      "statement": "O Mecanismo Especial de Devolução do Pix pode ser acionado em casos de fraude ou inconsistência operacional comprovada na cobrança.",
+      "statement": "Historicamente, o período pós-eleitoral brasileiro costuma recorrer a ajustes fiscais com aumento de tributos ou revisão de benefícios para equilibrar as contas.",
       "source_ids": [
-        "S1"
+        "S2",
+        "S4"
       ],
       "framing": "verified_fact",
       "confidence": "high",
@@ -175,56 +176,57 @@
   ],
   "visual_assets": [],
   "visual_direction": {
-    "concept": "Visualização editorial de segurança bancária, fluxo de autorização digital, limites de proteção e rompimento de monopólios em alto contraste.",
-    "world": "fintech_security",
+    "concept": "Visualização da engrenagem do Orçamento Federal, a rigidez das contas públicas, o contraste entre promessas de palanque e a fatura real no bolso do cidadão.",
+    "world": "market",
     "secondary_color": "#FFBD19",
     "motifs": [
-      "pix",
-      "autorizacao",
-      "cadeado",
-      "notificacao",
-      "banco_central",
-      "concorrencia"
+      "orcamento",
+      "urna",
+      "trava_fiscal",
+      "previdencia",
+      "impostos",
+      "contribuinte"
     ],
     "motion_language": [
-      "Transições limpas e ilustrações ativas contínuas sem telas estáticas.",
-      "Números gigantes com tipografia cinética para fixação de prazos e valores monetários.",
-      "SVGs esquemáticos com traço e sustentação viva guiando a compreensão de cada virada de fala."
+      "Equações e comparações visuais dividindo o quadro entre a margem travada e a margem livre.",
+      "Números gigantes com tipografia cinética para fixação de prazos e valores monetários bilionários.",
+      "SVGs de balança, cofre, trava e carteira com sustentação ativa guiando a compreensão de cada virada de fala."
     ],
     "avoid": [
       "telas paradas por mais de quatro segundos",
       "ícones pequenos perdidos no espaço visual",
-      "sensacionalismo sem respaldo técnico"
+      "sensacionalismo sem respaldo técnico",
+      "repetir a composição de interface de app e notificações do episódio de Pix Automático"
     ]
   },
   "editorial": {
     "strengths": [
-      "Abordagem direta de uma preocupação universal dos usuários de banco sobre débitos automáticos.",
-      "Explicação transparente e rigorosa dos direitos do consumidor e travas de segurança.",
-      "Contraponto econômico independente demonstrando a concorrência bancária e redução de custos."
+      "Foco direto na preocupação orçamentária que afeta o bolso de todo cidadão durante o segundo turno.",
+      "Explicação didática da rigidez das contas públicas sem partidarismo ou polarização.",
+      "Demonstração matemática dos limites fiscais e dos custos reais de promessas de campanha."
     ],
     "risk_flags": [
-      "Esclarecer que a simulação de valor de teto na conta de luz é um exemplo ilustrativo.",
-      "Ressaltar que a segurança do sistema não elimina a necessidade de cuidado contra links fraudulentos."
+      "Preservar neutralidade editorial rigorosa sem privilegiar nem atacar qualquer candidato.",
+      "Deixar claro que os números de custo são estimativas consolidadas de órgãos técnicos e independentes."
     ],
     "narrative_contract": {
-      "topic_explanation": "O Pix Automático foi regulamentado pelo Banco Central para substituir boletos e o débito automático tradicional em contas recorrentes de água, luz, internet e assinaturas, permitindo que pagamentos futuros aconteçam de forma programada direto no sistema instantâneo.",
+      "topic_explanation": "Com a corrida presidencial definida para o segundo turno, os discursos de campanha prometem colocar mais dinheiro no bolso do trabalhador, mas a matemática do Orçamento Federal conta uma história bem diferente.",
       "presenter_introduction": "Eu sou o Roberto, do O Dinheiro Explica.",
       "subscription_request": "se inscreva no canal O Dinheiro Explica e ative as notificações"
     },
     "source_balance": {
       "requires_diversity": true,
       "public_policy_or_regulation": true,
-      "official_sources_role": "O Banco Central do Brasil fornece o regulamento operacional, os limites de segurança e os direitos de cancelamento do Pix Automático.",
-      "independent_sources_role": "Análises da imprensa econômica independente avaliam a quebra de receitas dos grandes bancos com convênios e a eficiência operacional para as empresas.",
-      "counterpoint_summary": "Embora os bancos tradicionais tenham resistido pela perda de receitas de convênio, o modelo padronizado pelo BC reduz custos para as empresas e amplia a liberdade de escolha do consumidor.",
+      "official_sources_role": "O Ministério do Planejamento e Orçamento e a Instituição Fiscal Independente fornecem os números oficiais da rigidez das despesas obrigatórias e os limites fiscais.",
+      "independent_sources_role": "Estudos técnicos da Unafisco e reportagens econômicas independentes trazem as estimativas de custo da isenção do IRPF e do reajuste do salário mínimo.",
+      "counterpoint_summary": "Embora os candidatos apresentem promessas generosas como investimentos sociais necessários, analistas fiscais alertam que sem corte de despesas haverá inevitável aumento de carga tributária.",
       "official_claims_attributed": true,
       "right_editorial_review": {
         "consulted": [
           {
             "publisher": "Gazeta do Povo",
-            "url": "https://www.gazetadopovo.com.br/economia/pix-automatico-quebra-monopolio-tarifas-bancarias/",
-            "summary": "Análise destacando que a ferramenta acaba com reservas de mercado históricas dos grandes bancos, permitindo que qualquer fintech participe da arrecadação com menores tarifas operacionais."
+            "url": "https://www.gazetadopovo.com.br/economia/segundo-turno-promessas-eleitorais-risco-aumento-impostos/",
+            "summary": "Análise econômica de linha editorial à direita enfatizando a ausência de compensação fiscal para as promessas eleitorais, o risco de aumento da carga tributária após o segundo turno e a pressão sobre juros e inflação."
           }
         ]
       }
@@ -232,214 +234,234 @@
     "youtube_suitability": {
       "risk_level": "low",
       "sensitive_topics": [
-        "segurança bancária",
-        "pix",
-        "fraudes",
-        "direitos do consumidor"
+        "eleições presidenciais",
+        "impostos",
+        "orçamento federal",
+        "salário mínimo"
       ],
-      "context_notes": "Conteúdo jornalístico e de educação financeira explicando normas oficiais de pagamento sem apologia a golpes."
+      "context_notes": "Conteúdo jornalístico e educativo sobre finanças públicas e economia brasileira sem propaganda eleitoral partidária."
     },
     "render_review": {
       "status": "production_review_pending",
-      "note": "Episódio viral e explicativo sobre o Pix Automático com apresentação do Roberto e dinamismo contínuo."
+      "note": "Episódio viral e explicativo sobre a conta oculta das promessas do segundo turno das eleições presidenciais."
     },
     "explanation": {
       "version": "1.0",
       "concepts": [
         {
-          "id": "autorizacao-previa",
+          "id": "despesas-obrigatorias",
           "terms": [
-            "autorização prévia",
-            "permissão documentada"
+            "despesas obrigatórias",
+            "orçamento carimbado"
           ],
           "explanation": {
             "scene_id": "scene-01",
-            "quote": "nenhuma empresa pode tirar um centavo da sua conta sem uma autorização prévia e documentada"
+            "quote": "São as chamadas despesas obrigatórias, como aposentadorias do INSS, salários de servidores públicos e os pisos obrigatórios de saúde e educação."
           },
           "claim_ids": [
-            "C2"
+            "C1"
           ],
-          "boundary": "A autorização precisa ser confirmada ativamente pelo titular no app bancário antes de qualquer cobrança recorrente."
+          "boundary": "Gastos determinados por leis e pela Constituição que não podem ser cancelados ou reduzidos por ato unilateral do presidente."
         },
         {
-          "id": "teto-seguranca",
+          "id": "arcabouco-fiscal",
           "terms": [
-            "teto máximo de valor",
-            "limite de valor"
+            "arcabouço fiscal",
+            "compensação obrigatória"
           ],
           "explanation": {
-            "scene_id": "scene-01",
-            "quote": "estabeleça um teto máximo de valor por cobrança"
+            "scene_id": "scene-03",
+            "quote": "Pelo arcabouço fiscal e pela Lei de Responsabilidade Fiscal, se o governo concede um benefício de cinquenta bilhões de reais, ele tem que cortar essa mesma quantia de outro lugar, ou então criar um imposto novo para compensar."
           },
           "claim_ids": [
-            "C3"
+            "C4"
           ],
-          "boundary": "Permite travar o débito caso uma fatura venha com valor anormal ou acima da média combinada."
+          "boundary": "Regra fiscal que impede criação de novas renúncias ou despesas permanentes sem correspondente corte de gastos ou aumento de receita."
         }
       ],
       "examples": [
         {
-          "id": "exemplo-teto-luz",
-          "purpose": "Demonstrar a aplicação do teto de segurança em uma conta de luz residencial.",
-          "kind": "illustrative",
+          "id": "simulacao-promessas-segundo-turno",
+          "purpose": "Demonstrar a soma do custo fiscal das principais promessas eleitorais em comparação com o espaço orçamentário livre.",
+          "kind": "derived",
+          "claim_ids": [
+            "C2",
+            "C3"
+          ],
           "actors": [
-            "consumidor",
-            "concessionária de energia"
+            "Receita Federal",
+            "Previdência Social",
+            "Orçamento da União"
           ],
           "assumptions": [
-            "Conta de luz média de cento e cinquenta reais",
-            "Teto de proteção estipulado em duzentos reais"
-          ],
-          "claim_ids": [
-            "C3"
+            "Isenção da tabela do IRPF até R$ 5.000 gera renúncia fiscal de aproximadamente R$ 60 bilhões ao ano.",
+            "Aumento real de R$ 100 no salário mínimo gera custo estimado de R$ 40 bilhões ao ano na Previdência."
           ],
           "inputs": [
             {
-              "id": "valor_medio_conta",
-              "value": 150,
-              "unit": "BRL"
+              "id": "custo_isencao_ir",
+              "value": 60,
+              "unit": "bilhões_de_reais",
+              "source_ids": [
+                "S3",
+                "S4"
+              ]
             },
             {
-              "id": "margem_seguranca",
-              "value": 50,
-              "unit": "BRL"
+              "id": "custo_aumento_minimo",
+              "value": 40,
+              "unit": "bilhões_de_reais",
+              "source_ids": [
+                "S1",
+                "S5"
+              ]
             }
           ],
           "calculation": {
             "operation": "add",
             "input_ids": [
-              "valor_medio_conta",
-              "margem_seguranca"
+              "custo_isencao_ir",
+              "custo_aumento_minimo"
             ],
-            "result": 200,
-            "unit": "BRL"
+            "result": 100,
+            "unit": "bilhões_de_reais",
+            "tolerance": 0.001
           },
-          "limitation": "Valores ilustrativos que variam conforme o consumo de cada residência.",
+          "limitation": "Valores anuais consolidados baseados em estimativas técnicas oficiais e independentes, podendo variar conforme o desenho legislativo final.",
           "narration_refs": [
             {
-              "scene_id": "scene-01",
-              "quote": "limitar o débito em duzentos reais para evitar surpresas"
+              "scene_id": "scene-02",
+              "quote": "Juntas, apenas essas duas bandeiras criam uma fatura que ultrapassa cem bilhões de reais todo ano."
             }
           ],
           "visual_bindings": [
             {
-              "scene_id": "scene-01",
-              "element_id": "card_teto",
-              "beat_anchor": "limitar o débito em duzentos reais para evitar surpresas"
+              "scene_id": "scene-02",
+              "element_id": "card_promessa_ir",
+              "beat_anchor": "E é exatamente aqui que as promessas"
+            },
+            {
+              "scene_id": "scene-02",
+              "element_id": "card_promessa_minimo",
+              "beat_anchor": "cada cem reais de aumento real no salário mínimo"
             }
-          ],
-          "identification": {
-            "scene_id": "scene-01",
-            "quote": "simulação ilustrativa"
-          },
-          "visual_identification": {
-            "scene_id": "scene-01",
-            "element_id": "card_teto"
-          }
+          ]
         }
       ],
       "learning_units": [
         {
-          "id": "unit-autorizacao",
-          "question": "O Pix pode debitar valores da conta sem que o correntista autorize?",
+          "id": "unit-rigidez-orcamentaria",
+          "question": "Por que o presidente eleito não consegue cumprir promessas livremente com o dinheiro do governo?",
           "answer": {
             "scene_id": "scene-01",
-            "quote": "nenhuma empresa pode tirar um centavo da sua conta sem uma autorização prévia e documentada"
+            "quote": "mais de noventa por cento de todo o orçamento federal já está carimbado antes mesmo do primeiro dia de mandato."
           },
           "concept_ids": [
-            "autorizacao-previa"
+            "despesas-obrigatorias"
           ],
           "claim_ids": [
-            "C2"
+            "C1"
           ],
           "example_ids": [],
-          "visual_purpose": "Demonstrar a trava mandatória de segurança no aplicativo bancário.",
+          "visual_purpose": "Exibir o contraste entre 90% de despesas obrigatórias travadas e menos de 10% de margem livre para novos projetos.",
           "bindings": [
             {
               "scene_id": "scene-01",
-              "element_id": "card_autorizacao"
+              "element_id": "card_despesas_obrigatorias",
+              "beat_anchor": "mais de noventa por cento de todo o orçamento"
+            },
+            {
+              "scene_id": "scene-01",
+              "element_id": "card_margem_livre",
+              "beat_anchor": "O que sobra para investimentos"
             }
           ]
         },
         {
-          "id": "unit-cancelamento",
-          "question": "Até quando o correntista pode cancelar ou suspender um débito agendado?",
+          "id": "unit-custo-promessas",
+          "question": "Quanto custa o conjunto das principais promessas anunciadas para o segundo turno?",
           "answer": {
             "scene_id": "scene-02",
-            "quote": "cancelar a autorização inteira com apenas um toque no aplicativo até as vinte e três horas e cinquenta e nove minutos da véspera"
+            "quote": "Juntas, apenas essas duas bandeiras criam uma fatura que ultrapassa cem bilhões de reais todo ano."
           },
           "concept_ids": [],
           "claim_ids": [
+            "C2",
             "C3"
           ],
-          "example_ids": [],
-          "visual_purpose": "Destacar o prazo limite de 23h59 e a facilidade de cancelamento sem burocracia.",
+          "example_ids": [
+            "simulacao-promessas-segundo-turno"
+          ],
+          "visual_purpose": "Demonstrar que a soma de isenção do IR e aumento do mínimo atinge cem bilhões de reais, superando o espaço livre do orçamento.",
           "bindings": [
             {
               "scene_id": "scene-02",
-              "element_id": "card_cancelamento"
-            }
-          ]
-        },
-        {
-          "id": "unit-concorrencia",
-          "question": "Qual a diferença entre o Pix Automático e o débito automático tradicional?",
-          "answer": {
-            "scene_id": "scene-03",
-            "quote": "No débito automático tradicional, cada concessionária de luz ou telefone precisava fechar convênios bilaterais com cada banco"
-          },
-          "concept_ids": [],
-          "claim_ids": [
-            "C4"
-          ],
-          "example_ids": [],
-          "visual_purpose": "Comparar o sistema fechado antigo com a rede aberta e unificada pelo Banco Central.",
-          "bindings": [
+              "element_id": "card_promessa_ir",
+              "beat_anchor": "E é exatamente aqui que as promessas"
+            },
             {
-              "scene_id": "scene-03",
-              "element_id": "card_debito_antigo"
+              "scene_id": "scene-02",
+              "element_id": "card_promessa_minimo",
+              "beat_anchor": "cada cem reais de aumento real no salário mínimo"
             }
           ]
         },
         {
-          "id": "unit-seguranca",
-          "question": "O que fazer se houver fraude comprovada em uma cobrança?",
+          "id": "unit-ressaca-e-pagador",
+          "question": "Quem realmente paga a conta do segundo turno quando as promessas colidem com a lei fiscal?",
           "answer": {
-            "scene_id": "scene-04",
-            "quote": "o Mecanismo Especial de Devolução do Pix pode ser acionado para bloquear e rastrear o dinheiro"
+            "scene_id": "scene-05",
+            "quote": "Portanto, a resposta para quem vai pagar a conta do segundo turno é muito simples: é o próprio contribuinte."
           },
-          "concept_ids": [],
+          "concept_ids": [
+            "arcabouco-fiscal"
+          ],
           "claim_ids": [
+            "C4",
             "C5"
           ],
           "example_ids": [],
-          "visual_purpose": "Apresentar a atuação do MED para bloqueio e estorno em casos de golpe.",
+          "visual_purpose": "Concluir que as travas fiscais e a resistência política forçam o repasse da fatura ao bolso do trabalhador via impostos e juros.",
           "bindings": [
             {
-              "scene_id": "scene-04",
-              "element_id": "card_med_seguranca"
+              "scene_id": "scene-05",
+              "element_id": "card_conclusao_contribuinte",
+              "beat_anchor": "Portanto, a resposta para quem vai pagar a conta"
+            },
+            {
+              "scene_id": "scene-05",
+              "element_id": "card_pergunta_critica",
+              "beat_anchor": "Quando você ouvir uma promessa generosa"
             }
           ]
         }
       ],
       "review": {
-        "content_sha256": "0066624039b16e6271584d604797664dafaa95b859054db88dbb901015970042",
+        "content_sha256": "abea846b4fe03ecef5878e8a2423996d479d116fbec01e0570b8a8ca393e6e71",
         "findings": [
           {
-            "question": "A trava de autorização prévia e a simulação de teto estão claras e identificadas?",
+            "question": "O espectador compreende por que o orçamento do governo não está livre para novos gastos?",
             "evidence": {
               "scene_id": "scene-01",
-              "quote": "simulação ilustrativa"
+              "quote": "mais de noventa por cento de todo o orçamento federal já está carimbado antes mesmo do primeiro dia de mandato."
             },
-            "conclusion": "Sim, a locução e os cards visuais especificam a hipótese ilustrativa e as regras de segurança do Banco Central."
+            "conclusion": "Fica claro que mais de noventa por cento das receitas já estão comprometidas por lei com aposentadorias e despesas fixas."
           },
           {
-            "question": "O direito de cancelamento e o prazo limite foram explicados com precisão?",
+            "question": "O espectador entende a dimensão financeira das promessas e a regra que exige compensação?",
             "evidence": {
-              "scene_id": "scene-02",
-              "quote": "cancelar a autorização inteira com apenas um toque no aplicativo até as vinte e três horas e cinquenta e nove minutos da véspera"
+              "scene_id": "scene-03",
+              "quote": "Pelo arcabouço fiscal e pela Lei de Responsabilidade Fiscal, se o governo concede um benefício de cinquenta bilhões de reais, ele tem que cortar essa mesma quantia de outro lugar, ou então criar um imposto novo para compensar."
             },
-            "conclusion": "Sim, a narração estabelece o horário exato e o canal direto pelo aplicativo."
+            "conclusion": "Demonstra-se a obrigação legal de indicar compensação para qualquer renúncia ou novo gasto continuado."
+          },
+          {
+            "question": "O vídeo entrega a resposta prometida no título sobre quem paga a conta do segundo turno?",
+            "evidence": {
+              "scene_id": "scene-05",
+              "quote": "Portanto, a resposta para quem vai pagar a conta do segundo turno é muito simples: é o próprio contribuinte."
+            },
+            "conclusion": "A conclusão responde diretamente à pergunta inicial sem deixar lacunas ou falsas promessas."
           }
         ]
       }
@@ -450,8 +472,8 @@
       "id": "scene-00",
       "index": 0,
       "scene_index": 0,
-      "title": "O medo do débito sem senha e o Pix Automático",
-      "narration": "Imagine acordar de manhã, abrir o aplicativo do seu banco e ver que um Pix saiu da sua conta sem você ter digitado senha nenhuma. Isso é golpe ou a nova regra do Banco Central? Eu sou o Roberto, do O Dinheiro Explica. O Pix Automático foi regulamentado pelo Banco Central para substituir boletos e o débito automático tradicional em contas recorrentes de água, luz, internet e assinaturas, permitindo que pagamentos futuros aconteçam de forma programada direto no sistema instantâneo. Mas antes de entrar em pânico achando que qualquer empresa vai puxar o seu dinheiro, você precisa entender o que a regra exige para esse débito acontecer.",
+      "title": "A ilusão das promessas de campanha no segundo turno",
+      "narration": "Para conquistar o seu voto nas próximas semanas, você vai ouvir promessas de mais benefícios, menos impostos e reajustes generosos. Mas você já parou para calcular de onde vai sair essa conta? Eu sou o Roberto, do O Dinheiro Explica. Com a corrida presidencial definida para o segundo turno, os discursos de campanha prometem colocar mais dinheiro no bolso do trabalhador, mas a matemática do Orçamento Federal conta uma história bem diferente.",
       "claim_ids": [
         "C1"
       ],
@@ -460,14 +482,583 @@
         "transition": "cut",
         "stage": {
           "show_title": false,
-          "camera_mode": "auto",
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          },
+          "camera_mode": "manual",
           "motion_profile": "narrative",
           "elements": [
             {
-              "id": "card_alerta",
-              "kind": "metric",
-              "label": "Pix sem senha?",
+              "id": "card_urna_promessas",
+              "kind": "step",
+              "label": "Promessas do 2º Turno",
               "x": 6,
+              "y": 18,
+              "width": 42,
+              "height": 58,
+              "initially_visible": true,
+              "icon": "bank",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "float",
+                "amplitude": 8,
+                "period_seconds": 3.2
+              },
+              "label_size": 44,
+              "surface": "spotlight",
+              "value": "Promessas",
+              "value_size": 100,
+              "detail": "Benefícios, isenções e reajustes"
+            },
+            {
+              "id": "card_orcamento_real",
+              "kind": "metric",
+              "label": "A Conta Pública",
+              "x": 52,
+              "y": 18,
+              "width": 42,
+              "height": 58,
+              "initially_visible": true,
+              "icon": "warning",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 8,
+                "period_seconds": 3.2
+              },
+              "label_size": 44,
+              "surface": "spotlight",
+              "value": "Orçamento",
+              "value_size": 100,
+              "detail": "A conta real dos cofres públicos"
+            }
+          ],
+          "connections": [
+            {
+              "from": "card_urna_promessas",
+              "to": "card_orcamento_real",
+              "label": "Impacto no bolso",
+              "semantic": "sequence",
+              "motion": "flow"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "anchor": "Para conquistar o seu voto",
+            "action": "focus",
+            "target_id": "card_urna_promessas",
+            "camera": {
+              "x": 27,
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
+            },
+            "headline": "Promessas de campanha no 2º turno",
+            "detail": "A corrida por votos com promessas de benefícios"
+          },
+          {
+            "anchor": "menos impostos e reajustes generosos",
+            "action": "update",
+            "target_id": "card_urna_promessas",
+            "value": "Apelos",
+            "headline": "Discursos sedutores",
+            "detail": "Benefícios fiscais anunciados no palanque"
+          },
+          {
+            "anchor": "de onde vai sair essa conta",
+            "action": "focus",
+            "target_id": "card_orcamento_real",
+            "camera": {
+              "x": 73,
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
+            },
+            "headline": "A conta real do governo",
+            "detail": "De onde virá o dinheiro para pagar as promessas?"
+          },
+          {
+            "anchor": "Eu sou o Roberto",
+            "action": "focus",
+            "target_id": "card_urna_promessas",
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.5
+            },
+            "headline": "O Dinheiro Explica",
+            "detail": "Análise econômica com Roberto"
+          },
+          {
+            "anchor": "corrida presidencial definida para o segundo turno",
+            "action": "update",
+            "target_id": "card_urna_promessas",
+            "value": "2º Turno",
+            "headline": "Segundo turno eleitoral",
+            "detail": "Disputa presidencial na reta final"
+          },
+          {
+            "anchor": "prometem colocar mais dinheiro no bolso",
+            "action": "update",
+            "target_id": "card_urna_promessas",
+            "value": "Benefícios",
+            "headline": "Mais renda prometida",
+            "detail": "Discursos focados no apelo financeiro"
+          },
+          {
+            "anchor": "a matemática do Orçamento Federal",
+            "action": "update",
+            "target_id": "card_orcamento_real",
+            "camera": {
+              "x": 73,
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
+            },
+            "value": "Orçamento",
+            "headline": "Realidade orçamentária",
+            "detail": "A barreira das contas públicas"
+          },
+          {
+            "anchor": "conta uma história bem diferente",
+            "action": "focus",
+            "target_id": "card_orcamento_real",
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.5
+            },
+            "headline": "O choque de realidade",
+            "detail": "Matemática fiscal não fecha com facilidade"
+          }
+        ]
+      },
+      "tts": {
+        "delivery": "hook",
+        "cues": [
+          {
+            "text": "Mas você já parou para calcular de onde vai sair essa conta?",
+            "kind": "contrast",
+            "intent": "curiosity",
+            "arc": "question",
+            "emphasis_word": "conta",
+            "pause_before_ms": 120
+          },
+          {
+            "text": "a matemática do Orçamento Federal conta uma história bem diferente",
+            "kind": "emphasis",
+            "intent": "caution",
+            "arc": "contrast",
+            "emphasis_word": "diferente",
+            "pause_before_ms": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-01",
+      "index": 1,
+      "scene_index": 1,
+      "title": "A rigidez orçamentária: 90% em despesas obrigatórias",
+      "narration": "Muita gente imagina que o presidente eleito chega com um cofre cheio de dinheiro livre para gastar como quiser. Só que na prática, mais de noventa por cento de todo o orçamento federal já está carimbado antes mesmo do primeiro dia de mandato. São as chamadas despesas obrigatórias, como aposentadorias do INSS, salários de servidores públicos e os pisos obrigatórios de saúde e educação. O que sobra para investimentos em infraestrutura e novas promessas é uma fatia minúscula, menor do que dez por cento do total.",
+      "claim_ids": [
+        "C1"
+      ],
+      "visual": {
+        "type": "EDITORIAL",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          },
+          "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "elements": [
+            {
+              "id": "card_despesas_obrigatorias",
+              "kind": "metric",
+              "label": "Despesas Obrigatórias",
+              "x": 6,
+              "y": 18,
+              "width": 42,
+              "height": 58,
+              "initially_visible": true,
+              "icon": "lock",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 8,
+                "period_seconds": 3.2
+              },
+              "label_size": 44,
+              "surface": "spotlight",
+              "value": "90%",
+              "value_size": 110,
+              "detail": "Previdência, salários, saúde e educação"
+            },
+            {
+              "id": "card_margem_livre",
+              "kind": "metric",
+              "label": "Espaço Livre para Gastar",
+              "x": 52,
+              "y": 18,
+              "width": 42,
+              "height": 58,
+              "initially_visible": false,
+              "icon": "coins",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "float",
+                "amplitude": 8,
+                "period_seconds": 3.2
+              },
+              "label_size": 44,
+              "surface": "spotlight",
+              "value": "10%",
+              "value_size": 110,
+              "detail": "Investimentos e novas promessas"
+            }
+          ],
+          "connections": [
+            {
+              "from": "card_despesas_obrigatorias",
+              "to": "card_margem_livre",
+              "label": "Orçamento Federal",
+              "semantic": "comparison",
+              "motion": "flow"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "anchor": "Muita gente imagina que o presidente",
+            "action": "focus",
+            "target_id": "card_despesas_obrigatorias",
+            "camera": {
+              "x": 27,
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
+            },
+            "headline": "A ilusão do dinheiro livre",
+            "detail": "A crença de que o presidente decide todo o orçamento"
+          },
+          {
+            "anchor": "cofre cheio de dinheiro livre para gastar",
+            "action": "update",
+            "target_id": "card_despesas_obrigatorias",
+            "value": "Ilusão",
+            "headline": "Cofre travado",
+            "detail": "A realidade constitucional do orçamento da União"
+          },
+          {
+            "anchor": "mais de noventa por cento de todo o orçamento",
+            "action": "update",
+            "target_id": "card_despesas_obrigatorias",
+            "value": "90%",
+            "headline": "Gasto já carimbado",
+            "detail": "Mais de 90% do orçamento já é obrigatório por lei"
+          },
+          {
+            "anchor": "São as chamadas despesas obrigatórias",
+            "action": "focus",
+            "target_id": "card_despesas_obrigatorias",
+            "headline": "Previdência e folha",
+            "detail": "Aposentadorias, funcionalismo, saúde e educação"
+          },
+          {
+            "anchor": "salários de servidores públicos",
+            "action": "update",
+            "target_id": "card_despesas_obrigatorias",
+            "value": "Travado",
+            "headline": "Rigidez constitucional",
+            "detail": "Despesas que não podem ser canceladas por decreto"
+          },
+          {
+            "anchor": "O que sobra para investimentos",
+            "action": "reveal",
+            "target_id": "card_margem_livre",
+            "reveal_ids": [
+              "card_margem_livre"
+            ],
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.5
+            },
+            "headline": "A margem real de manobra",
+            "detail": "Menos de 10% do orçamento para todo o resto"
+          },
+          {
+            "anchor": "menor do que dez por cento do total",
+            "action": "update",
+            "target_id": "card_margem_livre",
+            "camera": {
+              "x": 73,
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
+            },
+            "value": "< 10%",
+            "headline": "Fatia minúscula",
+            "detail": "Espaço orçamentário real para investimentos"
+          }
+        ]
+      },
+      "tts": {
+        "delivery": "explain",
+        "cues": [
+          {
+            "text": "mais de noventa por cento de todo o orçamento federal já está carimbado",
+            "kind": "number",
+            "intent": "caution",
+            "arc": "contrast",
+            "emphasis_word": "carimbado",
+            "pause_before_ms": 100
+          },
+          {
+            "text": "é uma fatia minúscula, menor do que dez por cento do total",
+            "kind": "number",
+            "intent": "discovery",
+            "arc": "resolve",
+            "emphasis_word": "minúscula",
+            "pause_before_ms": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-02",
+      "index": 2,
+      "scene_index": 2,
+      "title": "O custo das grandes promessas: IR e Salário Mínimo",
+      "narration": "E é exatamente aqui que as promessas de campanha batem de frente com a realidade. Uma das propostas mais populares no segundo turno é isentar do Imposto de Renda quem ganha até cinco mil reais. Só que essa isenção custaria cerca de sessenta bilhões de reais por ano aos cofres públicos. Ao mesmo tempo, cada cem reais de aumento real no salário mínimo adiciona quarenta bilhões de reais em despesas da Previdência. Juntas, apenas essas duas bandeiras criam uma fatura que ultrapassa cem bilhões de reais todo ano.",
+      "claim_ids": [
+        "C2",
+        "C3"
+      ],
+      "visual": {
+        "type": "EDITORIAL",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          },
+          "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "elements": [
+            {
+              "id": "card_promessa_ir",
+              "kind": "metric",
+              "label": "Isenção do IR até R$ 5.000",
+              "x": 6,
+              "y": 18,
+              "width": 42,
+              "height": 58,
+              "initially_visible": true,
+              "icon": "receipt",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "float",
+                "amplitude": 8,
+                "period_seconds": 3.2
+              },
+              "label_size": 44,
+              "surface": "spotlight",
+              "value": "R$ 60 bi",
+              "value_size": 100,
+              "detail": "Impacto anual estimado nos cofres"
+            },
+            {
+              "id": "card_promessa_minimo",
+              "kind": "metric",
+              "label": "Aumento Real do Mínimo",
+              "x": 52,
+              "y": 18,
+              "width": 42,
+              "height": 58,
+              "initially_visible": true,
+              "icon": "chart",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 8,
+                "period_seconds": 3.2
+              },
+              "label_size": 44,
+              "surface": "spotlight",
+              "value": "+ R$ 40 bi",
+              "value_size": 100,
+              "detail": "Cada R$ 100 gera R$ 40 bi em Previdência"
+            }
+          ],
+          "connections": [
+            {
+              "from": "card_promessa_ir",
+              "to": "card_promessa_minimo",
+              "label": "Soma das promessas",
+              "semantic": "sequence",
+              "motion": "flow"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "anchor": "E é exatamente aqui que as promessas",
+            "action": "focus",
+            "target_id": "card_promessa_ir",
+            "camera": {
+              "x": 27,
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
+            },
+            "headline": "O custo das promessas",
+            "detail": "Quanto custa cumprir o que se promete na TV?"
+          },
+          {
+            "anchor": "batem de frente com a realidade",
+            "action": "update",
+            "target_id": "card_promessa_ir",
+            "value": "Colisão",
+            "headline": "Choque orçamentário",
+            "detail": "Propostas populares vs capacidade de pagamento"
+          },
+          {
+            "anchor": "isentar do Imposto de Renda quem ganha",
+            "action": "update",
+            "target_id": "card_promessa_ir",
+            "value": "Até 5 Mil",
+            "headline": "Isenção da tabela do IR",
+            "detail": "Promessa eleitoral de grande apelo popular"
+          },
+          {
+            "anchor": "custaria cerca de sessenta bilhões de reais",
+            "action": "update",
+            "target_id": "card_promessa_ir",
+            "value": "R$ 60 bi",
+            "headline": "Perda de arrecadação",
+            "detail": "Estimativa de impacto anual aos cofres da União"
+          },
+          {
+            "anchor": "cada cem reais de aumento real no salário mínimo",
+            "action": "focus",
+            "target_id": "card_promessa_minimo",
+            "camera": {
+              "x": 73,
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
+            },
+            "headline": "Gatilho previdenciário",
+            "detail": "Efeito em cascata nas aposentadorias e benefícios"
+          },
+          {
+            "anchor": "quarenta bilhões de reais em despesas da Previdência",
+            "action": "update",
+            "target_id": "card_promessa_minimo",
+            "value": "+ R$ 40 bi",
+            "headline": "Custo automático",
+            "detail": "Cada R$ 1 a mais no mínimo custa R$ 400 milhões"
+          },
+          {
+            "anchor": "ultrapassa cem bilhões de reais todo ano",
+            "action": "focus",
+            "target_id": "card_promessa_minimo",
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.5
+            },
+            "headline": "Conta de R$ 100 bilhões",
+            "detail": "Apenas duas promessas já estouram o espaço livre"
+          }
+        ]
+      },
+      "tts": {
+        "delivery": "explain",
+        "cues": [
+          {
+            "text": "essa isenção custaria cerca de sessenta bilhões de reais por ano aos cofres públicos",
+            "kind": "number",
+            "intent": "caution",
+            "arc": "build",
+            "emphasis_word": "sessenta",
+            "pause_before_ms": 100
+          },
+          {
+            "text": "Juntas, apenas essas duas bandeiras criam uma fatura que ultrapassa cem bilhões de reais todo ano",
+            "kind": "number",
+            "intent": "caution",
+            "arc": "resolve",
+            "emphasis_word": "ultrapassa",
+            "pause_before_ms": 120
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-03",
+      "index": 3,
+      "scene_index": 3,
+      "title": "A trava legal: Arcabouço Fiscal e Lei de Responsabilidade",
+      "narration": "A legislação brasileira impede o presidente de criar gastos permanentes sem apontar de onde o dinheiro vai sair. Pelo arcabouço fiscal e pela Lei de Responsabilidade Fiscal, se o governo concede um benefício de cinquenta bilhões de reais, ele tem que cortar essa mesma quantia de outro lugar, ou então criar um imposto novo para compensar. Só que cortar gastos obrigatórios exige aprovar mudanças difíceis na Constituição com apoio do Congresso Nacional. E como nenhum governante quer comprar essa briga no início de mandato, o caminho escolhido costuma ser bem mais pesado para o contribuinte.",
+      "claim_ids": [
+        "C4"
+      ],
+      "visual": {
+        "type": "EDITORIAL",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          },
+          "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "elements": [
+            {
+              "id": "card_trava_fiscal",
+              "kind": "step",
+              "label": "Trava Legal do Orçamento",
+              "x": 6,
+              "y": 18,
+              "width": 42,
+              "height": 58,
+              "initially_visible": true,
+              "icon": "shield",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 8,
+                "period_seconds": 3.2
+              },
+              "label_size": 44,
+              "surface": "spotlight",
+              "value": "Arcabouço",
+              "value_size": 100,
+              "detail": "Exigência de compensação obrigatória"
+            },
+            {
+              "id": "card_dilema_congresso",
+              "kind": "metric",
+              "label": "Corte de Gastos",
+              "x": 52,
               "y": 18,
               "width": 42,
               "height": 58,
@@ -481,645 +1072,113 @@
               },
               "label_size": 44,
               "surface": "spotlight",
-              "value": "Débito",
-              "value_size": 110,
-              "detail": "Alerta de segurança no saldo"
-            },
-            {
-              "id": "card_pix_auto",
-              "kind": "step",
-              "label": "Pix Automático",
-              "x": 52,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "initially_visible": false,
-              "icon": "bank",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "Bacen",
+              "value": "Travado",
               "value_size": 100,
-              "detail": "Cobranças recorrentes agendadas"
+              "detail": "Congresso resiste a cortar privilégios"
             }
           ],
           "connections": [
             {
-              "from": "card_alerta",
-              "to": "card_pix_auto",
-              "label": "Regra oficial",
-              "semantic": "sequence",
+              "from": "card_trava_fiscal",
+              "to": "card_dilema_congresso",
+              "label": "Exigência de lei",
+              "semantic": "cause",
               "motion": "flow"
             }
           ]
         },
         "beats": [
           {
-            "anchor": "Imagine acordar de manhã",
+            "anchor": "A legislação brasileira impede o presidente",
             "action": "focus",
-            "target_id": "card_alerta",
-            "headline": "Notificação de débito inesperado",
-            "detail": "O medo de cobranças automáticas sem senha"
+            "target_id": "card_trava_fiscal",
+            "camera": {
+              "x": 27,
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
+            },
+            "headline": "A trava da lei",
+            "detail": "Proibido gastar sem indicar a fonte dos recursos"
           },
           {
-            "anchor": "ver que um Pix saiu da sua conta",
+            "anchor": "Pelo arcabouço fiscal e pela Lei de Responsabilidade",
             "action": "update",
-            "target_id": "card_alerta",
-            "value": "Sem senha?",
-            "headline": "Débito ocorrido de madrugada",
-            "detail": "Dúvida sobre a segurança da conta"
+            "target_id": "card_trava_fiscal",
+            "value": "LRF e Teto",
+            "headline": "Regras de responsabilidade",
+            "detail": "Arcabouço fiscal proíbe rombo descontrolado"
           },
           {
-            "anchor": "Isso é golpe ou a nova regra",
+            "anchor": "se o governo concede um benefício de cinquenta bilhões",
             "action": "update",
-            "target_id": "card_alerta",
-            "value": "Nova regra",
-            "headline": "Regulamentação pelo Banco Central",
-            "detail": "Regra do Banco Central"
+            "target_id": "card_trava_fiscal",
+            "value": "R$ 50 bi",
+            "headline": "Exemplo de novo gasto",
+            "detail": "Qualquer novo benefício aciona a trava"
           },
           {
-            "anchor": "Eu sou o Roberto",
-            "action": "focus",
-            "target_id": "card_alerta",
-            "headline": "O Dinheiro Explica",
-            "detail": "Análise editorial com Roberto"
-          },
-          {
-            "anchor": "O Pix Automático foi regulamentado",
-            "action": "reveal",
-            "target_id": "card_pix_auto",
-            "reveal_ids": [
-              "card_pix_auto"
-            ],
-            "headline": "Chegada do Pix Automático",
-            "detail": "Substituição moderna de boletos e débitos antigos"
-          },
-          {
-            "anchor": "substituir boletos e o débito automático",
+            "anchor": "ele tem que cortar essa mesma quantia de outro lugar",
             "action": "update",
-            "target_id": "card_pix_auto",
-            "value": "Contas",
-            "headline": "Fim dos boletos manuais",
-            "detail": "Pagamentos mensais automatizados"
+            "target_id": "card_trava_fiscal",
+            "value": "Compensar",
+            "headline": "Regra da compensação",
+            "detail": "Todo novo gasto exige corte ou novo tributo"
           },
           {
-            "anchor": "em contas recorrentes de água, luz, internet",
+            "anchor": "cortar gastos obrigatórios exige aprovar mudanças difíceis",
             "action": "focus",
-            "target_id": "card_pix_auto",
-            "headline": "Serviços essenciais e assinaturas",
-            "detail": "Luz, água, internet, streaming e escolas"
+            "target_id": "card_dilema_congresso",
+            "camera": {
+              "x": 73,
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
+            },
+            "headline": "Resistência política",
+            "detail": "Congresso trava corte de despesas obrigatórias"
           },
           {
-            "anchor": "permitindo que pagamentos futuros aconteçam",
+            "anchor": "com apoio do Congresso Nacional",
             "action": "update",
-            "target_id": "card_pix_auto",
-            "value": "Agendado",
-            "headline": "Liquidação no vencimento",
-            "detail": "Processamento direto no ecossistema instantâneo"
+            "target_id": "card_dilema_congresso",
+            "value": "Resistência",
+            "headline": "Bloqueio político",
+            "detail": "Dificuldade de cortar benefícios e privilégios"
           },
           {
-            "anchor": "direto no sistema instantâneo",
+            "anchor": "o caminho escolhido costuma ser bem mais pesado",
             "action": "focus",
-            "target_id": "card_pix_auto",
-            "headline": "Sem espera de compensação",
-            "detail": "Pagamento confirmado no mesmo segundo"
-          },
-          {
-            "anchor": "Mas antes de entrar em pânico",
-            "action": "focus",
-            "target_id": "card_alerta",
-            "headline": "Controle do titular",
-            "detail": "Regras estritas contra débitos indevidos"
-          },
-          {
-            "anchor": "você precisa entender o que a regra exige",
-            "action": "focus",
-            "target_id": "card_pix_auto",
-            "headline": "A exigência da autorização prévia",
-            "detail": "O mecanismo de proteção que ninguém pode pular"
+            "target_id": "card_dilema_congresso",
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.5
+            },
+            "headline": "A saída mais fácil",
+            "detail": "A conta acaba sendo empurrada para quem paga imposto"
           }
         ]
-      }
-    },
-    {
-      "id": "scene-01",
-      "index": 1,
-      "scene_index": 1,
-      "title": "A trava da autorização e o teto de valor",
-      "narration": "A verdade é que nenhuma empresa pode tirar um centavo da sua conta sem uma autorização prévia e documentada. O processo funciona assim: para ativar a cobrança, a prestadora de serviços precisa te enviar uma solicitação com as regras do contrato, o valor estimado e a periodicidade. É você quem confirma essa permissão dentro do aplicativo do seu próprio banco, digitando a sua senha pessoal ou usando a biometria. Além disso, a norma do Banco Central permite que você estabeleça um teto máximo de valor por cobrança. Em uma simulação ilustrativa de uma conta de luz média de cento e cinquenta reais, você pode limitar o débito em duzentos reais para evitar surpresas se houver um erro de medição. Se você quer manter o controle do seu saldo e entender as mudanças no seu dinheiro antes que elas cheguem no seu extrato, se inscreva no canal O Dinheiro Explica e ative as notificações.",
-      "claim_ids": [
-        "C2",
-        "C3"
-      ],
-      "visual": {
-        "type": "EDITORIAL",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "camera_mode": "auto",
-          "motion_profile": "narrative",
-          "elements": [
-            {
-              "id": "card_autorizacao",
-              "kind": "step",
-              "label": "Autorização prévia",
-              "x": 6,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "initially_visible": true,
-              "icon": "key",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "Senha / Bio",
-              "value_size": 78,
-              "detail": "Validação exclusiva no app do banco"
-            },
-            {
-              "id": "card_teto",
-              "kind": "metric",
-              "label": "Teto de segurança",
-              "x": 52,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "initially_visible": false,
-              "icon": "shield",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "R$ 200",
-              "value_size": 110,
-              "detail": "Simulação ilustrativa de teto na luz"
-            }
-          ],
-          "connections": [
-            {
-              "from": "card_autorizacao",
-              "to": "card_teto",
-              "label": "Proteção de saldo",
-              "semantic": "sequence",
-              "motion": "flow"
-            }
-          ]
-        },
-        "beats": [
+      },
+      "tts": {
+        "delivery": "explain",
+        "cues": [
           {
-            "anchor": "A verdade é que nenhuma empresa",
-            "action": "focus",
-            "target_id": "card_autorizacao",
-            "headline": "Trava obrigatória de segurança",
-            "detail": "Nenhum saque sem aprovação do titular"
+            "text": "A legislação brasileira impede o presidente de criar gastos permanentes sem apontar de onde o dinheiro vai sair",
+            "kind": "contrast",
+            "intent": "conviction",
+            "arc": "contrast",
+            "emphasis_word": "impede",
+            "pause_before_ms": 100
           },
           {
-            "anchor": "sem uma autorização prévia e documentada",
-            "action": "update",
-            "target_id": "card_autorizacao",
-            "value": "Obrigatória",
-            "headline": "Exigência regulatória do Bacen",
-            "detail": "Documento digital registrado no sistema"
-          },
-          {
-            "anchor": "para ativar a cobrança, a prestadora",
-            "action": "focus",
-            "target_id": "card_autorizacao",
-            "headline": "Solicitação formal de cobrança",
-            "detail": "Empresa envia contrato com valor e prazo"
-          },
-          {
-            "anchor": "solicitação com as regras do contrato",
-            "action": "update",
-            "target_id": "card_autorizacao",
-            "value": "Contrato",
-            "headline": "Condições prévias informadas",
-            "detail": "Periodicidade e valor estimado especificados"
-          },
-          {
-            "anchor": "É você quem confirma essa permissão",
-            "action": "update",
-            "actuation": "confirm",
-            "target_id": "card_autorizacao",
-            "headline": "Aprovação com senha ou biometria",
-            "detail": "O cliente tem a chave final da autorização"
-          },
-          {
-            "anchor": "digitando a sua senha pessoal ou usando a biometria",
-            "action": "focus",
-            "target_id": "card_autorizacao",
-            "headline": "Autenticação forte no app",
-            "detail": "Ambiente seguro do próprio banco do cliente"
-          },
-          {
-            "anchor": "estabeleça um teto máximo de valor",
-            "action": "reveal",
-            "target_id": "card_teto",
-            "reveal_ids": [
-              "card_teto"
-            ],
-            "headline": "Limite máximo de segurança",
-            "detail": "Bloqueio automático contra cobranças acima do teto"
-          },
-          {
-            "anchor": "Em uma simulação ilustrativa",
-            "action": "focus",
-            "target_id": "card_teto",
-            "headline": "Exemplo numérico ilustrativo",
-            "detail": "Média de R$ 150 na conta de energia"
-          },
-          {
-            "anchor": "limitar o débito em duzentos reais para evitar surpresas",
-            "action": "update",
-            "target_id": "card_teto",
-            "value": "Teto R$ 200",
-            "headline": "Conta protegida contra erros",
-            "detail": "Bloqueio acima de R$ 200"
-          },
-          {
-            "anchor": "se houver um erro de medição",
-            "action": "focus",
-            "target_id": "card_teto",
-            "headline": "Barreira contra abusos",
-            "detail": "Cobrança anômala é rejeitada automaticamente"
-          },
-          {
-            "anchor": "manter o controle do seu saldo",
-            "action": "focus",
-            "target_id": "card_autorizacao",
-            "headline": "Domínio total das finanças",
-            "detail": "Você no comando de cada saída da conta"
-          },
-          {
-            "anchor": "se inscreva no canal O Dinheiro Explica",
-            "action": "focus",
-            "target_id": "card_teto",
-            "headline": "Educação financeira e controle",
-            "detail": "Inscreva-se no O Dinheiro Explica"
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-02",
-      "index": 2,
-      "scene_index": 2,
-      "title": "Notificação prévia e cancelamento com um clique",
-      "narration": "E o que acontece se você discordar de uma cobrança ou simplesmente não quiser mais continuar pagando aquele serviço? Aqui está a maior diferença em relação a outros métodos do passado. O banco é obrigado a te enviar uma notificação no celular dias antes de cada débito ocorrer, informando exatamente a quantia que será descontada na data prevista. Se o valor estiver errado, ou se você cancelou o plano, você pode suspender aquela cobrança pontual ou cancelar a autorização inteira com apenas um toque no aplicativo até as vinte e três horas e cinquenta e nove minutos da véspera. Não precisa ligar em central de atendimento nem passar horas em fila de espera para travar o pagamento.",
-      "claim_ids": [
-        "C3"
-      ],
-      "visual": {
-        "type": "EDITORIAL",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "camera_mode": "auto",
-          "motion_profile": "narrative",
-          "elements": [
-            {
-              "id": "card_aviso",
-              "kind": "step",
-              "label": "Aviso de débito",
-              "x": 6,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "initially_visible": true,
-              "icon": "bell",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "Notificação",
-              "value_size": 80,
-              "detail": "Alerta prévio com valor e vencimento"
-            },
-            {
-              "id": "card_cancelamento",
-              "kind": "metric",
-              "label": "Prazo de cancelamento",
-              "x": 52,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "initially_visible": false,
-              "icon": "clock",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "23h59",
-              "value_size": 110,
-              "detail": "Véspera do débito pelo app"
-            }
-          ],
-          "connections": [
-            {
-              "from": "card_aviso",
-              "to": "card_cancelamento",
-              "label": "Direito de recusa",
-              "semantic": "sequence",
-              "motion": "flow"
-            }
-          ]
-        },
-        "beats": [
-          {
-            "anchor": "E o que acontece se você discordar",
-            "action": "focus",
-            "target_id": "card_aviso",
-            "headline": "Cobrança divergente ou indevida",
-            "detail": "O que fazer quando o valor vem errado"
-          },
-          {
-            "anchor": "não quiser mais continuar pagando aquele serviço",
-            "action": "update",
-            "target_id": "card_aviso",
-            "value": "Suspensão",
-            "headline": "Direito de interrupção",
-            "detail": "Liberdade para parar a cobrança quando quiser"
-          },
-          {
-            "anchor": "Aqui está a maior diferença",
-            "action": "focus",
-            "target_id": "card_aviso",
-            "headline": "Transparência obrigatória",
-            "detail": "Fim das surpresas na fatura no fim do mês"
-          },
-          {
-            "anchor": "O banco é obrigado a te enviar uma notificação",
-            "action": "update",
-            "target_id": "card_aviso",
-            "value": "Push no app",
-            "headline": "Notificação antecipada no celular",
-            "detail": "Aviso emitido dias antes do vencimento"
-          },
-          {
-            "anchor": "dias antes de cada débito ocorrer",
-            "action": "focus",
-            "target_id": "card_aviso",
-            "headline": "Prazo prévio para conferência",
-            "detail": "Tempo para o correntista checar os detalhes"
-          },
-          {
-            "anchor": "informando exatamente a quantia que será descontada",
-            "action": "update",
-            "target_id": "card_aviso",
-            "value": "Valor exato",
-            "headline": "Discriminação clara do valor",
-            "detail": "Sem letras miúdas ou custos escondidos"
-          },
-          {
-            "anchor": "Se o valor estiver errado",
-            "action": "focus",
-            "target_id": "card_aviso",
-            "headline": "Identificação de erro",
-            "detail": "Opção imediata de bloqueio pontual"
-          },
-          {
-            "anchor": "suspender aquela cobrança pontual",
-            "action": "reveal",
-            "target_id": "card_cancelamento",
-            "reveal_ids": [
-              "card_cancelamento"
-            ],
-            "headline": "Cancelamento instantâneo pelo app",
-            "detail": "Sem filas de SAC ou burocracia"
-          },
-          {
-            "anchor": "cancelar a autorização inteira com apenas um toque",
-            "action": "focus",
-            "target_id": "card_cancelamento",
-            "headline": "Comando direto no aplicativo",
-            "detail": "Suspensão definitiva da cobrança"
-          },
-          {
-            "anchor": "até as vinte e três horas e cinquenta",
-            "action": "update",
-            "target_id": "card_cancelamento",
-            "value": "23h59",
-            "headline": "Prazo limite até 23h59 da véspera",
-            "detail": "Trava em 1 clique"
-          },
-          {
-            "anchor": "Não precisa ligar em central de atendimento",
-            "action": "focus",
-            "target_id": "card_cancelamento",
-            "headline": "Autonomia total do correntista",
-            "detail": "Fim das horas preso em centrais telefônicas"
-          },
-          {
-            "anchor": "nem passar horas em fila de espera",
-            "action": "update",
-            "target_id": "card_cancelamento",
-            "value": "1 clique",
-            "headline": "Resolução imediata pelo celular",
-            "detail": "Ação direta no app"
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-03",
-      "index": 3,
-      "scene_index": 3,
-      "title": "O fim do monopólio dos convênios bancários",
-      "narration": "Se a ferramenta parece tão prática, por que ela gerou tanta discussão nos bastidores do sistema financeiro? A resposta envolve muito dinheiro e poder de mercado. No débito automático tradicional, cada concessionária de luz ou telefone precisava fechar convênios bilaterais com cada banco, pagando tarifas bancárias pesadas por cada fatura recebida. Esse sistema privilegiava os quatro ou cinco maiores bancos do país e criava uma barreira para bancos menores e fintechs. Com o Pix Automático, a infraestrutura é aberta e unificada pelo Banco Central. Qualquer pessoa com conta em qualquer instituição autorizada pode pagar qualquer fatura sem custo adicional, enquanto as empresas pagam tarifas muito menores para processar o recebimento. Veículos econômicos independentes destacaram que essa abertura quebra reservas de mercado históricas e reduz o custo operacional de empresas no Brasil inteiro.",
-      "claim_ids": [
-        "C4"
-      ],
-      "visual": {
-        "type": "EDITORIAL",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "camera_mode": "auto",
-          "motion_profile": "narrative",
-          "elements": [
-            {
-              "id": "card_debito_antigo",
-              "kind": "step",
-              "label": "Débito tradicional",
-              "x": 6,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "initially_visible": true,
-              "icon": "bank",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "Convênios",
-              "value_size": 80,
-              "detail": "Acordos restritos e tarifas altas"
-            },
-            {
-              "id": "card_pix_livre",
-              "kind": "metric",
-              "label": "Rede unificada",
-              "x": 52,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "initially_visible": false,
-              "icon": "globe",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "Aberta",
-              "value_size": 110,
-              "detail": "Todas as instituições e fintechs"
-            }
-          ],
-          "connections": [
-            {
-              "from": "card_debito_antigo",
-              "to": "card_pix_livre",
-              "label": "Abertura de mercado",
-              "semantic": "comparison",
-              "motion": "flow"
-            }
-          ]
-        },
-        "beats": [
-          {
-            "anchor": "Se a ferramenta parece tão prática",
-            "action": "focus",
-            "target_id": "card_debito_antigo",
-            "headline": "A disputa nos bastidores bancários",
-            "detail": "Por que os grandes bancos resistiram"
-          },
-          {
-            "anchor": "bastidores do sistema financeiro",
-            "action": "update",
-            "target_id": "card_debito_antigo",
-            "value": "Disputa",
-            "headline": "Tensões na transição tecnológica",
-            "detail": "Interesses econômicos no fluxo de pagamentos"
-          },
-          {
-            "anchor": "muito dinheiro e poder de mercado",
-            "action": "focus",
-            "target_id": "card_debito_antigo",
-            "headline": "Bilhões em tarifas anuais",
-            "detail": "O mercado bilionário de arrecadação"
-          },
-          {
-            "anchor": "No débito automático tradicional",
-            "action": "update",
-            "target_id": "card_debito_antigo",
-            "value": "Fechado",
-            "headline": "Reserva de mercado histórica",
-            "detail": "Tarifas pesadas cobradas das concessionárias"
-          },
-          {
-            "anchor": "fechar convênios bilaterais com cada banco",
-            "action": "focus",
-            "target_id": "card_debito_antigo",
-            "headline": "Acordos restritos com bancos",
-            "detail": "Concessionárias presas a convênios caros"
-          },
-          {
-            "anchor": "pagando tarifas bancárias pesadas",
-            "action": "focus",
-            "target_id": "card_debito_antigo",
-            "headline": "Custo alto para arrecadar",
-            "detail": "Taxa cobrada em cada boleto ou fatura"
-          },
-          {
-            "anchor": "privilegiava os quatro ou cinco maiores bancos",
-            "action": "update",
-            "target_id": "card_debito_antigo",
-            "value": "Concentrado",
-            "headline": "Concentração bancária histórica",
-            "detail": "Grandes redes dominavam os acordos"
-          },
-          {
-            "anchor": "criava uma barreira para bancos menores e fintechs",
-            "action": "focus",
-            "target_id": "card_debito_antigo",
-            "headline": "Barreira de entrada para fintechs",
-            "detail": "Bancos digitais ficavam de fora dos convênios"
-          },
-          {
-            "anchor": "Com o Pix Automático, a infraestrutura é aberta e unificada",
-            "action": "reveal",
-            "target_id": "card_pix_livre",
-            "reveal_ids": [
-              "card_pix_livre"
-            ],
-            "headline": "Sistema aberto e competitivo",
-            "detail": "Qualquer fintech e banco participa em igualdade"
-          },
-          {
-            "anchor": "Qualquer pessoa com conta em qualquer instituição",
-            "action": "focus",
-            "target_id": "card_pix_livre",
-            "headline": "Liberdade de escolha do cliente",
-            "detail": "Sem obrigação de abrir conta em bancão"
-          },
-          {
-            "anchor": "enquanto as empresas pagam tarifas muito menores",
-            "action": "update",
-            "target_id": "card_pix_livre",
-            "value": "Tarifa baixa",
-            "headline": "Queda expressiva nas tarifas",
-            "detail": "Menor custo para empresas"
-          },
-          {
-            "anchor": "Veículos econômicos independentes destacaram",
-            "action": "focus",
-            "target_id": "card_pix_livre",
-            "headline": "Análise da imprensa econômica",
-            "detail": "Impacto na produtividade e redução de custos"
-          },
-          {
-            "anchor": "quebra reservas de mercado históricas",
-            "action": "update",
-            "target_id": "card_pix_livre",
-            "value": "Aberto",
-            "headline": "Fim do monopólio dos convênios",
-            "detail": "Mais concorrência e agilidade"
-          },
-          {
-            "anchor": "reduz o custo operacional de empresas",
-            "action": "focus",
-            "target_id": "card_pix_livre",
-            "headline": "Eficiência para toda a economia",
-            "detail": "Fim das taxas abusivas de arrecadação"
+            "text": "E como nenhum governante quer comprar essa briga no início de mandato",
+            "kind": "emphasis",
+            "intent": "caution",
+            "arc": "build",
+            "emphasis_word": "briga",
+            "pause_before_ms": 100
           }
         ]
       }
@@ -1128,8 +1187,8 @@
       "id": "scene-04",
       "index": 4,
       "scene_index": 4,
-      "title": "Proteção contra golpes e a conclusão",
-      "narration": "Mesmo com toda essa estrutura, o cidadão precisa redobrar a atenção contra golpes de engenharia social. Criminosos podem tentar enviar links falsos fingindo ser faturas atrasadas para induzir a vítima a autorizar um Pix Automático disfarçado de cobrança comum. A regra de ouro é conferir sempre o nome do beneficiário e o Cadastro Nacional da Pessoa Jurídica antes de confirmar qualquer solicitação no aplicativo do banco. E caso ocorra uma fraude comprovada ou falha operacional na cobrança, o Mecanismo Especial de Devolução do Pix pode ser acionado para bloquear e rastrear o dinheiro. O Pix não vai tirar dinheiro da sua conta sozinho sem o seu consentimento, mas a sua vigilância digital continua sendo a chave principal para manter o seu saldo protegido.",
+      "title": "A ressaca pós-eleitoral: o preço do voto no seu bolso",
+      "narration": "A história econômica do Brasil mostra que a campanha esconde o custo das promessas, mas o ano seguinte cobra a conta. Para fechar o rombo sem estourar as regras fiscais, o governo eleito costuma aumentar impostos, encerrar desonerações e fazer revisões rigorosas em benefícios sociais. Além disso, se o mercado desconfia da saúde das contas públicas, o dólar sobe e o Banco Central é forçado a manter juros altos, encarecendo empréstimos e o cartão de crédito. Se você quer entender como essas decisões políticas mexem direto com o seu bolso todos os dias, se inscreva no canal O Dinheiro Explica e ative as notificações.",
       "claim_ids": [
         "C5"
       ],
@@ -1138,13 +1197,199 @@
         "transition": "cut",
         "stage": {
           "show_title": false,
-          "camera_mode": "auto",
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          },
+          "camera_mode": "manual",
           "motion_profile": "narrative",
           "elements": [
             {
-              "id": "card_alerta_fraude",
+              "id": "card_ressaca_fiscal",
+              "kind": "metric",
+              "label": "A Fatura Pós-Eleição",
+              "x": 6,
+              "y": 18,
+              "width": 42,
+              "height": 58,
+              "initially_visible": true,
+              "icon": "wallet",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 8,
+                "period_seconds": 3.2
+              },
+              "label_size": 44,
+              "surface": "spotlight",
+              "value": "Tarifaço",
+              "value_size": 100,
+              "detail": "Novos tributos e fim de desonerações"
+            },
+            {
+              "id": "card_impacto_cidadao",
               "kind": "step",
-              "label": "Atenção a golpes",
+              "label": "O Bolso do Contribuinte",
+              "x": 52,
+              "y": 18,
+              "width": 42,
+              "height": 58,
+              "initially_visible": true,
+              "icon": "person",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "float",
+                "amplitude": 8,
+                "period_seconds": 3.2
+              },
+              "label_size": 44,
+              "surface": "spotlight",
+              "value": "Você Paga",
+              "value_size": 100,
+              "detail": "Compras mais caras e juros mais altos"
+            }
+          ],
+          "connections": [
+            {
+              "from": "card_ressaca_fiscal",
+              "to": "card_impacto_cidadao",
+              "label": "Repasse direto",
+              "semantic": "transfer",
+              "motion": "flow"
+            }
+          ]
+        },
+        "beats": [
+          {
+            "anchor": "A história econômica do Brasil mostra",
+            "action": "focus",
+            "target_id": "card_ressaca_fiscal",
+            "camera": {
+              "x": 27,
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
+            },
+            "headline": "O ciclo da ressaca fiscal",
+            "detail": "O contraste entre promessas de campanha e a posse"
+          },
+          {
+            "anchor": "o ano seguinte cobra a conta",
+            "action": "update",
+            "target_id": "card_ressaca_fiscal",
+            "value": "A Conta",
+            "headline": "A cobrança inevitável",
+            "detail": "Ajuste fiscal chega logo após o resultado das urnas"
+          },
+          {
+            "anchor": "o governo eleito costuma aumentar impostos",
+            "action": "update",
+            "target_id": "card_ressaca_fiscal",
+            "value": "Tributos",
+            "headline": "Aumento de impostos",
+            "detail": "Fim de desonerações e criação de novas taxas"
+          },
+          {
+            "anchor": "revisões rigorosas em benefícios sociais",
+            "action": "update",
+            "target_id": "card_ressaca_fiscal",
+            "value": "Cortes",
+            "headline": "Pente-fino nos gastos",
+            "detail": "Corte em auxílios e programas sociais"
+          },
+          {
+            "anchor": "o dólar sobe e o Banco Central é forçado a manter juros altos",
+            "action": "focus",
+            "target_id": "card_impacto_cidadao",
+            "camera": {
+              "x": 73,
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
+            },
+            "headline": "Inflação e juros altos",
+            "detail": "Crédito mais caro para financiar e consumir"
+          },
+          {
+            "anchor": "encarecendo empréstimos e o cartão de crédito",
+            "action": "update",
+            "target_id": "card_impacto_cidadao",
+            "value": "Juros",
+            "headline": "Crédito mais caro",
+            "detail": "O custo do descontrole fiscal no cartão e financiamento"
+          },
+          {
+            "anchor": "decisões políticas mexem direto com o seu bolso",
+            "action": "update",
+            "target_id": "card_impacto_cidadao",
+            "value": "Seu Bolso",
+            "headline": "Impacto no dia a dia",
+            "detail": "Como a política afeta suas finanças pessoais"
+          },
+          {
+            "anchor": "se inscreva no canal O Dinheiro Explica e ative as notificações",
+            "action": "focus",
+            "target_id": "card_impacto_cidadao",
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.5
+            },
+            "headline": "Acompanhe O Dinheiro Explica",
+            "detail": "Educação financeira independente para proteger seu bolso"
+          }
+        ]
+      },
+      "tts": {
+        "delivery": "explain",
+        "cues": [
+          {
+            "text": "o ano seguinte cobra a conta",
+            "kind": "contrast",
+            "intent": "caution",
+            "arc": "contrast",
+            "emphasis_word": "cobra",
+            "pause_before_ms": 120
+          },
+          {
+            "text": "o dólar sobe e o Banco Central é forçado a manter juros altos",
+            "kind": "emphasis",
+            "intent": "caution",
+            "arc": "build",
+            "emphasis_word": "altos",
+            "pause_before_ms": 100
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-05",
+      "index": 5,
+      "scene_index": 5,
+      "title": "Conclusão: não existe mágica orçamentária",
+      "narration": "Portanto, a resposta para quem vai pagar a conta do segundo turno é muito simples: é o próprio contribuinte. Não existe dinheiro mágico nem almoço grátis na economia. Quando você ouvir uma promessa generosa nas próximas semanas, a pergunta mais inteligente que você pode fazer não é se ela parece bonita, mas sim qual imposto vai subir ou qual serviço público vai faltar para cobrir aquela fatura.",
+      "claim_ids": [
+        "C5"
+      ],
+      "visual": {
+        "type": "EDITORIAL",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          },
+          "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "elements": [
+            {
+              "id": "card_conclusao_contribuinte",
+              "kind": "metric",
+              "label": "A Verdade do 2º Turno",
               "x": 6,
               "y": 18,
               "width": 42,
@@ -1159,20 +1404,20 @@
               },
               "label_size": 44,
               "surface": "spotlight",
-              "value": "Vigilância",
-              "value_size": 80,
-              "detail": "Conferir CNPJ e favorecido"
+              "value": "Você Paga",
+              "value_size": 96,
+              "detail": "A conta sempre volta para o contribuinte"
             },
             {
-              "id": "card_med_seguranca",
-              "kind": "metric",
-              "label": "Devolução e proteção",
+              "id": "card_pergunta_critica",
+              "kind": "step",
+              "label": "A Pergunta Certa",
               "x": 52,
               "y": 18,
               "width": 42,
               "height": 58,
-              "initially_visible": false,
-              "icon": "refund",
+              "initially_visible": true,
+              "icon": "search",
               "svg_motion": "trace",
               "sustain": {
                 "kind": "float",
@@ -1181,16 +1426,16 @@
               },
               "label_size": 44,
               "surface": "spotlight",
-              "value": "MED / BC",
-              "value_size": 100,
-              "detail": "Bloqueio e estorno em fraudes"
+              "value": "Qual Custo?",
+              "value_size": 96,
+              "detail": "Qual imposto vai subir para pagar essa fatura?"
             }
           ],
           "connections": [
             {
-              "from": "card_alerta_fraude",
-              "to": "card_med_seguranca",
-              "label": "Proteção ao saldo",
+              "from": "card_conclusao_contribuinte",
+              "to": "card_pergunta_critica",
+              "label": "Consciência",
               "semantic": "sequence",
               "motion": "flow"
             }
@@ -1198,95 +1443,88 @@
         },
         "beats": [
           {
-            "anchor": "Mesmo com toda essa estrutura",
+            "anchor": "Portanto, a resposta para quem vai pagar a conta",
             "action": "focus",
-            "target_id": "card_alerta_fraude",
-            "headline": "Cuidado com faturas falsas",
-            "detail": "Atenção a links suspeitos e mensagens de texto"
+            "target_id": "card_conclusao_contribuinte",
+            "camera": {
+              "x": 27,
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
+            },
+            "headline": "A resposta definitiva",
+            "detail": "Quem paga a conta das promessas de campanha?"
           },
           {
-            "anchor": "golpes de engenharia social",
+            "anchor": "é o próprio contribuinte",
             "action": "update",
-            "target_id": "card_alerta_fraude",
-            "value": "Atenção",
-            "headline": "Engenharia social e falsos avisos",
-            "detail": "Golpistas simulam faturas atrasadas"
+            "target_id": "card_conclusao_contribuinte",
+            "value": "Você",
+            "headline": "O contribuinte",
+            "detail": "Todo gasto do governo é pago pelo cidadão que trabalha"
           },
           {
-            "anchor": "tentar enviar links falsos",
+            "anchor": "Não existe dinheiro mágico nem almoço grátis",
             "action": "focus",
-            "target_id": "card_alerta_fraude",
-            "headline": "Nunca clique em links desconhecidos",
-            "detail": "Mensagens de SMS ou e-mails falsificados"
+            "target_id": "card_conclusao_contribuinte",
+            "headline": "Sem mágica fiscal",
+            "detail": "Recursos públicos são limitados pela arrecadação"
           },
           {
-            "anchor": "autorizar um Pix Automático disfarçado",
+            "anchor": "Quando você ouvir uma promessa generosa",
+            "action": "focus",
+            "target_id": "card_pergunta_critica",
+            "camera": {
+              "x": 73,
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
+            },
+            "headline": "Olhar crítico do eleitor",
+            "detail": "Analisar a viabilidade das promessas de campanha"
+          },
+          {
+            "anchor": "a pergunta mais inteligente que você pode fazer",
             "action": "update",
-            "target_id": "card_alerta_fraude",
-            "value": "Falso débito",
-            "headline": "Tentativa de autorização maliciosa",
-            "detail": "Golpe que induz a aceitar cobrança contínua"
+            "target_id": "card_pergunta_critica",
+            "value": "A Pergunta",
+            "headline": "A pergunta que importa",
+            "detail": "Não o que prometem, mas como pretendem pagar"
           },
           {
-            "anchor": "conferir sempre o nome do beneficiário",
-            "action": "focus",
-            "target_id": "card_alerta_fraude",
-            "headline": "Checagem do favorecido",
-            "detail": "Confirmação rigorosa dos dados da empresa"
-          },
-          {
-            "anchor": "Cadastro Nacional da Pessoa Jurídica",
+            "anchor": "qual imposto vai subir ou qual serviço público vai faltar",
             "action": "update",
-            "target_id": "card_alerta_fraude",
-            "value": "CNPJ Real",
-            "headline": "Validação de dados cadastrais",
-            "detail": "Verificação oficial da concessionária"
+            "target_id": "card_pergunta_critica",
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.5
+            },
+            "value": "A Fatura",
+            "headline": "A fatura real",
+            "detail": "O impacto final nas contas de cada família brasileira"
+          }
+        ]
+      },
+      "tts": {
+        "delivery": "closing",
+        "cues": [
+          {
+            "text": "Portanto, a resposta para quem vai pagar a conta do segundo turno é muito simples: é o próprio contribuinte",
+            "kind": "contrast",
+            "intent": "conviction",
+            "arc": "resolve",
+            "emphasis_word": "contribuinte",
+            "pause_before_ms": 120
           },
           {
-            "anchor": "confirmar qualquer solicitação no aplicativo",
-            "action": "focus",
-            "target_id": "card_alerta_fraude",
-            "headline": "Checagem antes da senha",
-            "detail": "Revisão atenta da tela de confirmação"
-          },
-          {
-            "anchor": "fraude comprovada ou falha operacional",
-            "action": "focus",
-            "target_id": "card_alerta_fraude",
-            "headline": "Garantia de contestação",
-            "detail": "Direito de reclamação no canal oficial"
-          },
-          {
-            "anchor": "o Mecanismo Especial de Devolução do Pix pode ser acionado para bloquear e rastrear o dinheiro",
-            "action": "reveal",
-            "target_id": "card_med_seguranca",
-            "reveal_ids": [
-              "card_med_seguranca"
-            ],
-            "headline": "Acionamento do mecanismo MED",
-            "detail": "Rastreamento e estorno pelo Banco Central"
-          },
-          {
-            "anchor": "O Pix não vai tirar dinheiro da sua conta",
-            "action": "focus",
-            "target_id": "card_med_seguranca",
-            "headline": "Consentimento e controle do usuário",
-            "detail": "Nenhum centavo debitado sem autorização"
-          },
-          {
-            "anchor": "sem o seu consentimento",
-            "action": "update",
-            "target_id": "card_med_seguranca",
-            "value": "Protegido",
-            "headline": "Trava definitiva de proteção",
-            "detail": "O correntista é o dono da decisão"
-          },
-          {
-            "anchor": "sua vigilância digital continua sendo",
-            "action": "focus",
-            "target_id": "card_med_seguranca",
-            "headline": "Saldo seguro com informação",
-            "detail": "Conhecimento e proteção para o seu bolso"
+            "text": "Não existe dinheiro mágico nem almoço grátis na economia",
+            "kind": "emphasis",
+            "intent": "conviction",
+            "arc": "contrast",
+            "emphasis_word": "mágico",
+            "pause_before_ms": 100
           }
         ]
       }

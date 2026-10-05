@@ -65,3 +65,10 @@ Ao criar um novo VideoProject, consulte apenas a seção mais recente para ident
 - foco: desmistificar o medo de saques automáticos sem senha, apresentar o controle total de limites e cancelamento pelo correntista, e explicar a disputa nos bastidores entre os grandes bancos e as empresas por menores tarifas;
 - evitar repetir automaticamente: notificação de Pix de madrugada como gancho de abertura, regras de cancelamento até 23h59 e cobrança recorrente no Pix como pauta principal.
 
+## A conta secreta do 2º turno: quem vai pagar o que prometem? — 2026-10-05
+
+- universo: finanças públicas, orçamento federal e eleições;
+- participantes: urna eleitoral, propostas de palanque, Orçamento da União, despesas obrigatórias (90%), margem discricionária (< 10%), travas do arcabouço fiscal e bolso do contribuinte;
+- foco: demonstrar matematicamente a rigidez das contas públicas, o custo real de promessas de campanha (isenção do IRPF até R$ 5.000 e aumento do salário mínimo somando mais de R$ 100 bilhões anuais) e a regra do arcabouço fiscal que proíbe criar gastos sem compensação;
+- evitar repetir automaticamente: comparação de despesas obrigatórias vs discricionárias em 90/10, promessa de isenção de imposto de renda e o termo ressaca pós-eleitoral como pauta central de episódios subsequentes.
+
