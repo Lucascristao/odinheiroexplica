@@ -1,6 +1,6 @@
 {
-  "project_id": "a-conta-secreta-do-2-turno-2026-10-05",
-  "title": "A conta secreta do 2º turno: quem vai pagar o que prometem?",
+  "project_id": "como-quitar-financiamento-de-30-anos-em-5-2026-10-06",
+  "title": "Financiamento imobiliário: como quitar 30 anos em 5",
   "version": "1.0",
   "presenter": {
     "gender": "male",
@@ -8,128 +8,128 @@
   },
   "speech": {
     "pronunciations": {
-      "PLOA": "pê ló a",
-      "IFI": "i éfe i",
-      "IRPF": "i érre pê éfe",
-      "INSS": "i ene esse esse",
-      "LRF": "éle érre éfe",
-      "BPC": "bê pê cê",
-      "Selic": "selic"
+      "SAC": "saqui",
+      "SFH": "esse éfe agá",
+      "CDC": "cê dê cê",
+      "FGTS": "éfe gê tê esse",
+      "TR": "tê érre",
+      "Bacen": "bacén",
+      "CMN": "cê eme ene",
+      "Price": "práice",
+      "MIP": "mipe",
+      "DFI": "dê éfe i"
     },
     "ignore_pronunciation_terms": []
   },
   "story": {
-    "subject": "O impacto financeiro das promessas eleitorais feitas no segundo turno das eleições presidenciais, a rigidez do Orçamento Federal com mais de 90% de despesas obrigatórias, as travas do arcabouço fiscal e como a fatura pós-eleição historicamente recai sobre o contribuinte via tributos e juros.",
-    "angle": "Desmascarar a ilusão de promessas mágicas de campanha e demonstrar a matemática real do Orçamento da União, mostrando que o espaço livre para novas despesas é mínimo e que qualquer promessa bilionária precisa ser paga pelo bolso do cidadão.",
-    "promise": "Explicar quanto custam as grandes promessas de campanha como isenção do Imposto de Renda e aumento do salário mínimo, por que o presidente eleito não tem cofre livre para gastar e como a conta sempre chega após a eleição.",
-    "why_now": "Com as eleições presidenciais avançando para a reta final do segundo turno, os candidatos intensificam promessas financeiras populares enquanto o mercado e os cidadãos temem os custos fiscais para o próximo mandato.",
-    "category": "public_finance"
+    "subject": "A matemática real do financiamento imobiliário de 30 anos no Brasil, a divisão da parcela entre amortização do principal e cobrança de juros sobre o saldo devedor, e a estratégia da amortização extraordinária focada em redução de prazo, permitindo quitar o contrato décadas mais cedo e economizar centenas de milhares de reais.",
+    "angle": "Quebrar a crença de que financiar um imóvel condena a família a pagar três casas ao banco durante 30 anos e demonstrar, na prática e sem enrolação, por que pequenas quantias extras eliminam parcelas inteiras do final do contrato com desconto de juros futuros.",
+    "promise": "Explicar como funciona a composição da prestação bancária, a diferença crucial entre amortizar no prazo ou na parcela, os direitos garantidos pelo Código de Defesa do Consumidor e um plano prático com pequenas quantias e FGTS para liquidar a dívida muito antes do prazo.",
+    "why_now": "Com taxas de juros no crédito imobiliário na faixa de dez a onze por cento ao ano, o custo acumulado em 30 anos ultrapassa o dobro do valor emprestado, tornando a amortização antecipada a decisão financeira mais lucrativa e protetiva para as famílias.",
+    "category": "personal_finance"
   },
   "packaging": {
     "titles": [
       {
-        "text": "A conta secreta do 2º turno: quem vai pagar o que prometem?",
+        "text": "Financiamento imobiliário: como quitar 30 anos em 5",
         "platform": "youtube"
       }
     ],
     "thumbnails": [
       {
-        "headline": "SEU BOLSO PAGA",
+        "headline": "CORTE 25 ANOS!",
         "style": "editorial_bold"
       }
     ],
     "strategy": {
-      "click_reason": "Explica quem realmente vai pagar as promessas bilionárias feitas na reta final da disputa presidencial.",
-      "visual_focus": "Nota fiscal saindo da urna com carimbo de cobrança e números bilionários em amarelo ouro e grafite.",
-      "curiosity_gap": "Como o governo vai cumprir as promessas se mais de 90% do orçamento federal já está travado por lei.",
-      "mobile_readability": "Texto curto de 3 palavras em alto contraste legível instantaneamente no celular.",
-      "anti_clickbait_check": "O vídeo entrega rigorosamente a análise do orçamento da União, do arcabouço fiscal e dos custos de cada promessa.",
-      "repetition_check": "Pauta inédita sobre o orçamento federal e as eleições presidenciais no segundo turno, sem repetir nenhum dos episódios anteriores.",
-      "youtube_safety_check": "Conteúdo estritamente jornalístico de educação financeira e orçamento público, equilibrado e neutro partidariamente."
+      "click_reason": "Ensina a estratégia matemática e legal para liquidar um financiamento de 30 anos em poucos anos sem ser engolido pelos juros bancários.",
+      "visual_focus": "Casa residencial moderna sob iluminação dramática com carimbo de alívio 'CORTE 25 ANOS' e números de saldo devedor abatidos em amarelo #FFBD19.",
+      "curiosity_gap": "Como um aporte extra de apenas algumas centenas de reais consegue abater parcelas inteiras do final e eliminar décadas de dívida.",
+      "mobile_readability": "Texto curto e impactante de 3 palavras em alto contraste perfeitamente legível na tela do celular.",
+      "anti_clickbait_check": "O vídeo entrega rigorosamente a matemática da amortização no saldo devedor, as regras da Caixa e Bacen e simulações com cálculos exatos.",
+      "repetition_check": "Pauta inédita sobre crédito habitacional e amortização extraordinária, sem repetir nenhum dos temas anteriores do canal.",
+      "youtube_safety_check": "Conteúdo estritamente educativo sobre planejamento financeiro familiar e direitos do consumidor bancário, sem promessas irrealistas."
     }
   },
   "publication": {
-    "description": "Com a disputa das eleições presidenciais no 2º turno, os candidatos aceleram promessas de isenção de impostos, reajustes salariais e novos auxílios. Neste vídeo, você entende como o Orçamento Federal funciona de verdade e por que a conta dessa disputa sempre estoura no seu bolso.\n\n- O tamanho das despesas obrigatórias que já consomem mais de 90% do orçamento da União\n- O custo real de promessas populares como a isenção do Imposto de Renda e o aumento do salário mínimo\n- A regra do arcabouço fiscal que proíbe criar novos gastos sem indicar de onde tirar o dinheiro\n- O histórico brasileiro de ressaca fiscal pós-eleição com corte de programas ou aumento de impostos",
-    "engagement_question": "Você acredita que as promessas feitas no segundo turno cabem no orçamento sem aumentar impostos?",
+    "description": "Financiamento imobiliário não precisa ser uma sentença de 30 anos de dívida e juros para o banco. Neste vídeo, você entende a matemática real da sua parcela e como a amortização extraordinária permite quitar sua casa própria muito mais rápido.\n\n- Como a parcela é dividida entre amortização do principal, juros e seguros\n- O custo real de 30 anos onde você chega a pagar quase três imóveis\n- A diferença entre amortizar reduzindo o prazo ou reduzindo o valor da parcela\n- O plano prático usando pequenas quantias e o FGTS para eliminar anos de dívida",
+    "engagement_question": "Você já fez alguma amortização no seu financiamento imobiliário ou ainda paga apenas a parcela normal?",
     "hashtags": [
-      "#SegundoTurno",
-      "#Economia",
+      "#FinanciamentoImobiliario",
+      "#EducacaoFinanceira",
       "#ODinheiroExplica"
     ],
     "seo": {
-      "primary_keyword": "2º turno"
+      "primary_keyword": "Financiamento imobiliário",
+      "secondary_keywords": [
+        "amortização extraordinária",
+        "quitar financiamento",
+        "tabela SAC",
+        "tabela Price",
+        "Caixa Habitação"
+      ],
+      "search_intent": "Informacional e educacional sobre como pagar menos juros e quitar financiamento imobiliário antecipadamente.",
+      "description_strategy": "Palavra-chave principal nas primeiras duas palavras, gancho inicial em 2 frases diretas e 4 bullets de alto valor educativo."
     }
   },
   "sources": [
     {
       "id": "S1",
-      "title": "Ministério do Planejamento e Orçamento — Projeto de Lei Orçamentária Anual e Despesas Obrigatórias",
-      "url": "https://www.gov.br/planejamento/pt-br/assuntos/orcamento/orcamentos-anuais",
-      "publisher": "Ministério do Planejamento e Orçamento",
+      "title": "Caixa Econômica Federal — Regras de Amortização e Liquidação Antecipada do Crédito Imobiliário",
+      "url": "https://www.caixa.gov.br/voce/habitacao/amortizacao-e-liquidacao/Paginas/default.aspx",
+      "publisher": "Caixa Econômica Federal",
       "publisher_class": "official",
       "editorial_role": "regulatory_standard",
       "source_type": "primary",
-      "notes": "Dados oficiais da União comprovando que aposentadorias, folha salarial e pisos constitucionais ocupam mais de 90% das receitas primárias da União."
+      "notes": "Regras oficiais de amortização extraordinária pelo App Habitação Caixa, garantindo opções de redução de prazo ou prestação."
     },
     {
       "id": "S2",
-      "title": "Instituição Fiscal Independente do Senado Federal — Relatório de Acompanhamento Fiscal",
-      "url": "https://www12.senado.leg.br/ifi/relatorios/acompanhamento-fiscal",
-      "publisher": "Instituição Fiscal Independente do Senado Federal",
+      "title": "Banco Central do Brasil — Resolução CMN nº 3.516/2007 e Liquidação Antecipada de Débitos",
+      "url": "https://www.bcb.gov.br/estabilidadefinanceira/liquidacaoantecipada",
+      "publisher": "Banco Central do Brasil",
       "publisher_class": "official",
-      "editorial_role": "data_context",
+      "editorial_role": "regulatory_standard",
       "source_type": "primary",
-      "notes": "Análise técnica independente do Senado sobre a rigidez das despesas públicas, espaço orçamentário discricionário e riscos da trajetória da dívida."
+      "notes": "Norma do Conselho Monetário Nacional que proíbe cobrança de tarifas na liquidação antecipada e assegura redução proporcional de juros."
     },
     {
       "id": "S3",
-      "title": "Unafisco Nacional — Estudo Técnico sobre a Tabela do IRPF e Impacto da Isenção",
-      "url": "https://unafisconacional.org.br/estudos-tecnicos-irpf/",
-      "publisher": "Unafisco Nacional",
-      "publisher_class": "technical",
-      "editorial_role": "data_context",
-      "source_type": "secondary",
-      "notes": "Cálculos técnicos estimando a renúncia de arrecadação da União entre 50 e 100 bilhões de reais ao ano com a isenção de IRPF até R$ 5.000."
+      "title": "Conselho Curador do FGTS — Utilização do FGTS na Moradia Própria e Amortização de Saldo Devedor",
+      "url": "https://www.fgts.gov.br/Pages/sobre-fgts/moradia-propria.aspx",
+      "publisher": "Conselho Curador do FGTS",
+      "publisher_class": "official",
+      "editorial_role": "regulatory_standard",
+      "source_type": "primary",
+      "notes": "Regras legais que permitem utilizar o saldo do FGTS a cada dois anos para amortizar ou liquidar financiamentos no SFH."
     },
     {
       "id": "S4",
-      "title": "Gazeta do Povo — A conta das promessas de campanha no segundo turno e o risco de mais impostos",
-      "url": "https://www.gazetadopovo.com.br/economia/segundo-turno-promessas-eleitorais-risco-aumento-impostos/",
-      "publisher": "Gazeta do Povo",
-      "publisher_class": "independent_journalism",
-      "editorial_role": "market_counterpoint",
-      "source_type": "secondary",
-      "notes": "Análise econômica de linha editorial à direita alertando para a falta de compensação fiscal das promessas eleitorais e o risco iminente de elevação tributária."
-    },
-    {
-      "id": "S5",
-      "title": "InfoMoney — O impacto fiscal do salário mínimo e o desafio das contas públicas",
-      "url": "https://www.infomoney.com.br/economia/impacto-salario-minimo-orcamento-previdencia/",
+      "title": "InfoMoney — Amortização de financiamento imobiliário: vale a pena reduzir o prazo ou a parcela?",
+      "url": "https://www.infomoney.com.br/minhas-financas/amortizacao-de-financiamento-imobiliario-vale-a-pena-reduzir-prazo-parcela/",
       "publisher": "InfoMoney",
       "publisher_class": "independent_journalism",
       "editorial_role": "journalistic_coverage",
       "source_type": "secondary",
-      "notes": "Apuração econômica demonstrando que cada real de ganho real no salário mínimo expande os gastos previdenciários e assistenciais em cerca de R$ 400 milhões."
+      "notes": "Análise técnica demonstrando a economia de juros obtida ao amortizar no prazo em comparação com a redução da prestação."
+    },
+    {
+      "id": "S5",
+      "title": "Gazeta do Povo — Amortização de financiamento imobiliário: como funciona para reduzir prazo ou parcela",
+      "url": "https://www.gazetadopovo.com.br/bom-gourmet/imoveis/amortizacao-financiamento-imobiliario-como-funciona/",
+      "publisher": "Gazeta do Povo",
+      "publisher_class": "independent_journalism",
+      "editorial_role": "market_counterpoint",
+      "source_type": "secondary",
+      "notes": "Cobertura de linha editorial à direita detalhando a matemática de juros sobre saldo devedor e alertando sobre preservar a reserva de emergência antes de amortizar."
     }
   ],
   "claims": [
     {
       "id": "C1",
-      "statement": "Mais de 90% do orçamento geral da União é composto por despesas obrigatórias que não podem ser cortadas discricionariamente pelo presidente.",
+      "statement": "A parcela do financiamento imobiliário é dividida entre amortização do saldo devedor, juros sobre a dívida restante e seguros obrigatórios como MIP e DFI.",
       "source_ids": [
         "S1",
-        "S2"
-      ],
-      "framing": "verified_fact",
-      "confidence": "high",
-      "verification_status": "verified",
-      "attribution_required": false
-    },
-    {
-      "id": "C2",
-      "statement": "A proposta de ampliar a isenção da tabela do Imposto de Renda até R$ 5.000 gera impacto fiscal estimado de dezenas de bilhões de reais por ano.",
-      "source_ids": [
-        "S3",
         "S4"
       ],
       "framing": "verified_fact",
@@ -138,8 +138,8 @@
       "attribution_required": false
     },
     {
-      "id": "C3",
-      "statement": "Cada aumento no salário mínimo acarreta elevação automática nas despesas obrigatórias da Previdência Social e de benefícios assistenciais.",
+      "id": "C2",
+      "statement": "Em um financiamento tradicional de 30 anos (360 meses), o total acumulado de juros e encargos pagos ao banco pode superar o dobro do valor original emprestado.",
       "source_ids": [
         "S1",
         "S5"
@@ -150,8 +150,8 @@
       "attribution_required": false
     },
     {
-      "id": "C4",
-      "statement": "O arcabouço fiscal e a Lei de Responsabilidade Fiscal exigem que novas despesas continuadas ou renúncias tributárias indiquem fonte de compensação.",
+      "id": "C3",
+      "statement": "A amortização extraordinária é um direito garantido por lei e pelo Banco Central, sem cobrança de taxas, abatendo 100% no saldo devedor com desconto proporcional de juros futuros.",
       "source_ids": [
         "S1",
         "S2"
@@ -162,11 +162,23 @@
       "attribution_required": false
     },
     {
-      "id": "C5",
-      "statement": "Historicamente, o período pós-eleitoral brasileiro costuma recorrer a ajustes fiscais com aumento de tributos ou revisão de benefícios para equilibrar as contas.",
+      "id": "C4",
+      "statement": "Ao amortizar escolhendo a redução do prazo, o pagamento abate o principal de parcelas futuras, eliminando juros acumulados de anos no final do contrato.",
       "source_ids": [
-        "S2",
-        "S4"
+        "S4",
+        "S5"
+      ],
+      "framing": "verified_fact",
+      "confidence": "high",
+      "verification_status": "verified",
+      "attribution_required": false
+    },
+    {
+      "id": "C5",
+      "statement": "O mutuário pode utilizar recursos próprios ou o saldo do FGTS a cada dois anos para amortizar financiamentos enquadrados no Sistema Financeiro da Habitação.",
+      "source_ids": [
+        "S1",
+        "S3"
       ],
       "framing": "verified_fact",
       "confidence": "high",
@@ -176,57 +188,57 @@
   ],
   "visual_assets": [],
   "visual_direction": {
-    "concept": "Visualização da engrenagem do Orçamento Federal, a rigidez das contas públicas, o contraste entre promessas de palanque e a fatura real no bolso do cidadão.",
+    "concept": "A mecânica oculta do financiamento imobiliário de 30 anos, o contraste entre pagar 3 imóveis em juros e a alavancagem da amortização extraordinária no prazo cortando décadas de dívida.",
     "world": "market",
     "secondary_color": "#FFBD19",
     "motifs": [
-      "orcamento",
-      "urna",
-      "trava_fiscal",
-      "previdencia",
-      "impostos",
-      "contribuinte"
+      "financiamento",
+      "casa_propria",
+      "juros_bancarios",
+      "amortizacao",
+      "prazo",
+      "fgts"
     ],
     "motion_language": [
-      "Equações e comparações visuais dividindo o quadro entre a margem travada e a margem livre.",
-      "Números gigantes com tipografia cinética para fixação de prazos e valores monetários bilionários.",
-      "SVGs de balança, cofre, trava e carteira com sustentação ativa guiando a compreensão de cada virada de fala."
+      "Equações e diagramas dividindo a parcela entre amortização do principal e fatia dominante de juros.",
+      "Números gigantes com tipografia cinética para prazos de 30 anos cortados para 5 anos e saldo devedor abatido.",
+      "SVGs de imóvel, cofre, escudo, relógio e carteira com sustentação ativa guiando cada virada de raciocínio da fala."
     ],
     "avoid": [
       "telas paradas por mais de quatro segundos",
       "ícones pequenos perdidos no espaço visual",
-      "sensacionalismo sem respaldo técnico",
-      "repetir a composição de interface de app e notificações do episódio de Pix Automático"
+      "repetir a composição de urna e orçamento do episódio anterior",
+      "promessas irreais de quitação mágica sem esforço financeiro"
     ]
   },
   "editorial": {
     "strengths": [
-      "Foco direto na preocupação orçamentária que afeta o bolso de todo cidadão durante o segundo turno.",
-      "Explicação didática da rigidez das contas públicas sem partidarismo ou polarização.",
-      "Demonstração matemática dos limites fiscais e dos custos reais de promessas de campanha."
+      "Abordagem de altíssimo interesse popular e impacto financeiro direto na vida de milhões de famílias brasileiras.",
+      "Explicação matemática cristalina da diferença entre amortização do principal e juros sobre o saldo devedor.",
+      "Orientação prática e legal respaldada pelo Código de Defesa do Consumidor e normas do Banco Central."
     ],
     "risk_flags": [
-      "Preservar neutralidade editorial rigorosa sem privilegiar nem atacar qualquer candidato.",
-      "Deixar claro que os números de custo são estimativas consolidadas de órgãos técnicos e independentes."
+      "Ressaltar com clareza que o número de parcelas abatidas varia com o saldo devedor e a tabela do contrato.",
+      "Enfatizar a necessidade prudencial de preservar a reserva de emergência antes de amortizar recursos."
     ],
     "narrative_contract": {
-      "topic_explanation": "Com a corrida presidencial definida para o segundo turno, os discursos de campanha prometem colocar mais dinheiro no bolso do trabalhador, mas a matemática do Orçamento Federal conta uma história bem diferente.",
+      "topic_explanation": "Num financiamento imobiliário de trinta anos pelo Sistema Financeiro da Habitação, a maioria das pessoas não faz ideia de como a parcela mensal é calculada de verdade.",
       "presenter_introduction": "Eu sou o Roberto, do O Dinheiro Explica.",
       "subscription_request": "se inscreva no canal O Dinheiro Explica e ative as notificações"
     },
     "source_balance": {
       "requires_diversity": true,
       "public_policy_or_regulation": true,
-      "official_sources_role": "O Ministério do Planejamento e Orçamento e a Instituição Fiscal Independente fornecem os números oficiais da rigidez das despesas obrigatórias e os limites fiscais.",
-      "independent_sources_role": "Estudos técnicos da Unafisco e reportagens econômicas independentes trazem as estimativas de custo da isenção do IRPF e do reajuste do salário mínimo.",
-      "counterpoint_summary": "Embora os candidatos apresentem promessas generosas como investimentos sociais necessários, analistas fiscais alertam que sem corte de despesas haverá inevitável aumento de carga tributária.",
+      "official_sources_role": "A Caixa Econômica Federal, o Banco Central e o Conselho Curador do FGTS definem as regras oficiais de crédito habitacional, os sistemas de amortização e a vedação à cobrança de tarifas na liquidação antecipada.",
+      "independent_sources_role": "Reportagens e simulações do InfoMoney e da Gazeta do Povo demonstram a matemática do custo total da dívida em 30 anos e comparam o impacto financeiro entre reduzir prazo ou parcela.",
+      "counterpoint_summary": "Embora a amortização no prazo seja a opção mais vantajosa matematicamente para cortar juros, analistas alertam que o devedor não deve esgotar suas economias sem manter uma reserva de emergência em liquidez diária, pois o dinheiro amortizado fica imobilizado no imóvel.",
       "official_claims_attributed": true,
       "right_editorial_review": {
         "consulted": [
           {
             "publisher": "Gazeta do Povo",
-            "url": "https://www.gazetadopovo.com.br/economia/segundo-turno-promessas-eleitorais-risco-aumento-impostos/",
-            "summary": "Análise econômica de linha editorial à direita enfatizando a ausência de compensação fiscal para as promessas eleitorais, o risco de aumento da carga tributária após o segundo turno e a pressão sobre juros e inflação."
+            "url": "https://www.gazetadopovo.com.br/bom-gourmet/imoveis/amortizacao-financiamento-imobiliario-como-funciona/",
+            "summary": "Análise da Gazeta do Povo detalhando os sistemas SAC e Price, o efeito de abater o principal no saldo devedor para cortar juros futuros e o alerta de segurança sobre manter reserva de emergência antes de amortizar."
           }
         ]
       }
@@ -234,83 +246,81 @@
     "youtube_suitability": {
       "risk_level": "low",
       "sensitive_topics": [
-        "eleições presidenciais",
-        "impostos",
-        "orçamento federal",
-        "salário mínimo"
+        "financiamento imobiliário",
+        "juros",
+        "dívidas",
+        "FGTS"
       ],
-      "context_notes": "Conteúdo jornalístico e educativo sobre finanças públicas e economia brasileira sem propaganda eleitoral partidária."
+      "context_notes": "Conteúdo educativo de finanças pessoais, direitos do consumidor bancário e matemática financeira doméstica sem recomendação de investimentos."
     },
     "render_review": {
       "status": "production_review_pending",
-      "note": "Episódio viral e explicativo sobre a conta oculta das promessas do segundo turno das eleições presidenciais."
+      "note": "Episódio viral e educativo sobre a matemática da amortização de financiamento imobiliário de 30 anos."
     },
     "explanation": {
       "version": "1.0",
       "concepts": [
         {
-          "id": "despesas-obrigatorias",
+          "id": "amortizacao-ordinaria",
           "terms": [
-            "despesas obrigatórias",
-            "orçamento carimbado"
+            "amortização",
+            "saldo devedor"
           ],
           "explanation": {
-            "scene_id": "scene-01",
-            "quote": "São as chamadas despesas obrigatórias, como aposentadorias do INSS, salários de servidores públicos e os pisos obrigatórios de saúde e educação."
+            "scene_id": "scene-00",
+            "quote": "Amortização é a parte da parcela que efetivamente abate o que você pegou emprestado, enquanto os juros remuneram o banco pelo tempo do empréstimo."
           },
           "claim_ids": [
             "C1"
           ],
-          "boundary": "Gastos determinados por leis e pela Constituição que não podem ser cancelados ou reduzidos por ato unilateral do presidente."
+          "boundary": "Amortização não se confunde com os juros ou os seguros embutidos na prestação mensal."
         },
         {
-          "id": "arcabouco-fiscal",
+          "id": "amortizacao-extraordinaria",
           "terms": [
-            "arcabouço fiscal",
-            "compensação obrigatória"
+            "amortização extraordinária",
+            "redução de prazo"
           ],
           "explanation": {
-            "scene_id": "scene-03",
-            "quote": "Pelo arcabouço fiscal e pela Lei de Responsabilidade Fiscal, se o governo concede um benefício de cinquenta bilhões de reais, ele tem que cortar essa mesma quantia de outro lugar, ou então criar um imposto novo para compensar."
+            "scene_id": "scene-02",
+            "quote": "A amortização extraordinária é qualquer pagamento adicional feito diretamente para abater o saldo devedor, com desconto integral de todos os juros futuros."
           },
           "claim_ids": [
+            "C3",
             "C4"
           ],
-          "boundary": "Regra fiscal que impede criação de novas renúncias ou despesas permanentes sem correspondente corte de gastos ou aumento de receita."
+          "boundary": "Aplica-se exclusivamente ao saldo principal da dívida, extinguindo os encargos que seriam gerados caso o tempo continuasse correndo."
         }
       ],
       "examples": [
         {
-          "id": "simulacao-promessas-segundo-turno",
-          "purpose": "Demonstrar a soma do custo fiscal das principais promessas eleitorais em comparação com o espaço orçamentário livre.",
+          "id": "simulacao-financiamento-30-anos",
+          "purpose": "Demonstrar o custo total acumulado de um financiamento de 30 anos comparado ao valor original do imóvel.",
           "kind": "derived",
           "claim_ids": [
-            "C2",
-            "C3"
+            "C2"
           ],
           "actors": [
-            "Receita Federal",
-            "Previdência Social",
-            "Orçamento da União"
+            "comprador",
+            "banco"
           ],
           "assumptions": [
-            "Isenção da tabela do IRPF até R$ 5.000 gera renúncia fiscal de aproximadamente R$ 60 bilhões ao ano.",
-            "Aumento real de R$ 100 no salário mínimo gera custo estimado de R$ 40 bilhões ao ano na Previdência."
+            "Financiamento imobiliário de R$ 300.000 em 360 meses com taxa média de mercado de 10% a 11% ao ano."
           ],
           "inputs": [
             {
-              "id": "custo_isencao_ir",
-              "value": 60,
-              "unit": "bilhões_de_reais",
+              "id": "in_valor_imovel",
+              "value": 300000,
+              "unit": "BRL",
               "source_ids": [
-                "S3",
-                "S4"
+                "S1",
+                "S5"
               ]
             },
             {
-              "id": "custo_aumento_minimo",
-              "value": 40,
-              "unit": "bilhões_de_reais",
+              "id": "in_juros_acumulados",
+              "value": 480000,
+              "unit": "BRL",
               "source_ids": [
                 "S1",
                 "S5"
@@ -320,148 +330,213 @@
           "calculation": {
             "operation": "add",
             "input_ids": [
-              "custo_isencao_ir",
-              "custo_aumento_minimo"
+              "in_valor_imovel",
+              "in_juros_acumulados"
             ],
-            "result": 100,
-            "unit": "bilhões_de_reais",
-            "tolerance": 0.001
+            "result": 780000,
+            "unit": "BRL"
           },
-          "limitation": "Valores anuais consolidados baseados em estimativas técnicas oficiais e independentes, podendo variar conforme o desenho legislativo final.",
+          "limitation": "Valores dependem da taxa exata de juros do contrato, seguros individuais e da correção monetária pela TR.",
           "narration_refs": [
             {
-              "scene_id": "scene-02",
-              "quote": "Juntas, apenas essas duas bandeiras criam uma fatura que ultrapassa cem bilhões de reais todo ano."
+              "scene_id": "scene-01",
+              "quote": "Ao longo de trinta anos, o total pago ultrapassa setecentos e oitenta mil reais."
             }
           ],
           "visual_bindings": [
             {
-              "scene_id": "scene-02",
-              "element_id": "card_promessa_ir",
-              "beat_anchor": "E é exatamente aqui que as promessas"
+              "scene_id": "scene-01",
+              "element_id": "card_total_pago",
+              "beat_anchor": "Ao longo de trinta anos, o total pago ultrapassa"
+            }
+          ]
+        },
+        {
+          "id": "exemplo-abate-parcelas-final",
+          "purpose": "Demonstrar como um aporte extra modesto abate o valor principal de parcelas do final do contrato.",
+          "kind": "illustrative",
+          "claim_ids": [
+            "C4"
+          ],
+          "actors": [
+            "comprador",
+            "banco"
+          ],
+          "assumptions": [
+            "Simulação hipotética da parcela número 350 com cota de amortização do principal em R$ 200."
+          ],
+          "inputs": [
+            {
+              "id": "in_aporte_extra",
+              "value": 600,
+              "unit": "BRL"
             },
             {
-              "scene_id": "scene-02",
-              "element_id": "card_promessa_minimo",
-              "beat_anchor": "cada cem reais de aumento real no salário mínimo"
+              "id": "in_principal_parcela_final",
+              "value": 200,
+              "unit": "BRL"
+            }
+          ],
+          "calculation": {
+            "operation": "divide",
+            "input_ids": [
+              "in_aporte_extra",
+              "in_principal_parcela_final"
+            ],
+            "result": 3,
+            "unit": "BRL"
+          },
+          "limitation": "O número exato de parcelas abatidas varia com o saldo devedor residual e a tabela de amortização do contrato.",
+          "identification": {
+            "scene_id": "scene-03",
+            "quote": "Em uma simulação hipotética, veja como isso funciona."
+          },
+          "visual_identification": {
+            "scene_id": "scene-03",
+            "element_id": "card_simulacao_hipotetica"
+          },
+          "narration_refs": [
+            {
+              "scene_id": "scene-03",
+              "quote": "com apenas seiscentos reais extras você elimina de vez três parcelas inteiras do final do contrato."
+            }
+          ],
+          "visual_bindings": [
+            {
+              "scene_id": "scene-03",
+              "element_id": "card_parcelas_eliminadas",
+              "beat_anchor": "com apenas seiscentos reais extras você elimina de vez três parcelas"
             }
           ]
         }
       ],
       "learning_units": [
         {
-          "id": "unit-rigidez-orcamentaria",
-          "question": "Por que o presidente eleito não consegue cumprir promessas livremente com o dinheiro do governo?",
+          "id": "unit-composicao-parcela",
+          "question": "Como é dividida a parcela mensal de um financiamento imobiliário e por que a dívida demora a cair?",
           "answer": {
-            "scene_id": "scene-01",
-            "quote": "mais de noventa por cento de todo o orçamento federal já está carimbado antes mesmo do primeiro dia de mandato."
+            "scene_id": "scene-00",
+            "quote": "apenas quinhentos a seiscentos reais abatem a dívida real, e todo o resto é juro e seguro que vão direto para o banco."
           },
           "concept_ids": [
-            "despesas-obrigatorias"
+            "amortizacao-ordinaria"
           ],
           "claim_ids": [
             "C1"
           ],
           "example_ids": [],
-          "visual_purpose": "Exibir o contraste entre 90% de despesas obrigatórias travadas e menos de 10% de margem livre para novos projetos.",
+          "visual_purpose": "Exibir o contraste gráfico da fatura entre a pequena fatia de amortização e a enorme fatia de juros e encargos.",
           "bindings": [
             {
-              "scene_id": "scene-01",
-              "element_id": "card_despesas_obrigatorias",
-              "beat_anchor": "mais de noventa por cento de todo o orçamento"
-            },
-            {
-              "scene_id": "scene-01",
-              "element_id": "card_margem_livre",
-              "beat_anchor": "O que sobra para investimentos"
+              "scene_id": "scene-00",
+              "element_id": "card_divisao_parcela",
+              "beat_anchor": "apenas quinhentos a seiscentos reais abatem a dívida real"
             }
           ]
         },
         {
-          "id": "unit-custo-promessas",
-          "question": "Quanto custa o conjunto das principais promessas anunciadas para o segundo turno?",
+          "id": "unit-custo-total-30-anos",
+          "question": "Qual é o custo financeiro total de manter um financiamento de 30 anos sem amortizações?",
           "answer": {
-            "scene_id": "scene-02",
-            "quote": "Juntas, apenas essas duas bandeiras criam uma fatura que ultrapassa cem bilhões de reais todo ano."
+            "scene_id": "scene-01",
+            "quote": "Ao longo de trinta anos, o total pago ultrapassa setecentos e oitenta mil reais."
           },
           "concept_ids": [],
           "claim_ids": [
-            "C2",
-            "C3"
+            "C2"
           ],
           "example_ids": [
-            "simulacao-promessas-segundo-turno"
+            "simulacao-financiamento-30-anos"
           ],
-          "visual_purpose": "Demonstrar que a soma de isenção do IR e aumento do mínimo atinge cem bilhões de reais, superando o espaço livre do orçamento.",
+          "visual_purpose": "Comparar o valor financiado do imóvel com o custo total acumulado, evidenciando o pagamento equivalente a quase três imóveis.",
           "bindings": [
             {
-              "scene_id": "scene-02",
-              "element_id": "card_promessa_ir",
-              "beat_anchor": "E é exatamente aqui que as promessas"
-            },
-            {
-              "scene_id": "scene-02",
-              "element_id": "card_promessa_minimo",
-              "beat_anchor": "cada cem reais de aumento real no salário mínimo"
+              "scene_id": "scene-01",
+              "element_id": "card_total_pago",
+              "beat_anchor": "Ao longo de trinta anos, o total pago ultrapassa"
             }
           ]
         },
         {
-          "id": "unit-ressaca-e-pagador",
-          "question": "Quem realmente paga a conta do segundo turno quando as promessas colidem com a lei fiscal?",
+          "id": "unit-mecanica-amortizacao-prazo",
+          "question": "Como a amortização extraordinária focada em redução de prazo consegue cortar anos de financiamento?",
           "answer": {
-            "scene_id": "scene-05",
-            "quote": "Portanto, a resposta para quem vai pagar a conta do segundo turno é muito simples: é o próprio contribuinte."
+            "scene_id": "scene-02",
+            "quote": "Quando você escolhe reduzir o prazo, cada real extra abate diretamente o principal de parcelas lá do final, cortando juros que nunca mais serão cobrados."
           },
           "concept_ids": [
-            "arcabouco-fiscal"
+            "amortizacao-extraordinaria"
           ],
           "claim_ids": [
-            "C4",
+            "C3",
+            "C4"
+          ],
+          "example_ids": [],
+          "visual_purpose": "Demonstrar a conexão de fluxo cortando as parcelas do fim do contrato e desarmando o acúmulo de juros.",
+          "bindings": [
+            {
+              "scene_id": "scene-02",
+              "element_id": "card_reduzir_prazo",
+              "beat_anchor": "Quando você escolhe reduzir o prazo, cada real extra"
+            }
+          ]
+        },
+        {
+          "id": "unit-estrategia-quitacao",
+          "question": "Qual a estratégia recomendada para quitar o financiamento em poucos anos sem comprometer a segurança da família?",
+          "answer": {
+            "scene_id": "scene-05",
+            "quote": "combinando aportes mensais no prazo, uso do FGTS e a preservação rigorosa da sua reserva de emergência, você liquida o contrato em cinco a oito anos"
+          },
+          "concept_ids": [],
+          "claim_ids": [
             "C5"
           ],
           "example_ids": [],
-          "visual_purpose": "Concluir que as travas fiscais e a resistência política forçam o repasse da fatura ao bolso do trabalhador via impostos e juros.",
+          "visual_purpose": "Apresentar a linha de vitória com a dívida zerada, casa quitada e centenas de milhares de reais economizados.",
           "bindings": [
             {
               "scene_id": "scene-05",
-              "element_id": "card_conclusao_contribuinte",
-              "beat_anchor": "Portanto, a resposta para quem vai pagar a conta"
-            },
-            {
-              "scene_id": "scene-05",
-              "element_id": "card_pergunta_critica",
-              "beat_anchor": "Quando você ouvir uma promessa generosa"
+              "element_id": "card_vitoria_quitacao",
+              "beat_anchor": "combinando aportes mensais no prazo, uso do FGTS"
             }
           ]
         }
       ],
       "review": {
-        "content_sha256": "2c23171da51db56f4e32e7f225f6b715982aaeb9b124777f70e79db3da62180d",
+        "content_sha256": "6c9ce79bd3c9fe743bee6625f4c166fb8947fe6214e2760dca82996d2ac7bfb7",
         "findings": [
           {
-            "question": "O espectador compreende por que o orçamento do governo não está livre para novos gastos?",
+            "question": "O espectador compreende a divisão da parcela entre amortização e juros?",
+            "evidence": {
+              "scene_id": "scene-00",
+              "quote": "apenas quinhentos a seiscentos reais abatem a dívida real, e todo o resto é juro e seguro que vão direto para o banco."
+            },
+            "conclusion": "Fica evidente que a maior parte da parcela inicial não diminui a dívida, sendo consumida por juros e encargos."
+          },
+          {
+            "question": "O custo total acumulado de um contrato de 30 anos é demonstrado?",
             "evidence": {
               "scene_id": "scene-01",
-              "quote": "mais de noventa por cento de todo o orçamento federal já está carimbado antes mesmo do primeiro dia de mandato."
+              "quote": "Ao longo de trinta anos, o total pago ultrapassa setecentos e oitenta mil reais."
             },
-            "conclusion": "Fica claro que mais de noventa por cento das receitas já estão comprometidas por lei com aposentadorias e despesas fixas."
+            "conclusion": "O cálculo demonstra que o comprador chega a pagar quase três vezes o valor financiado ao longo de três décadas."
           },
           {
-            "question": "O espectador entende a dimensão financeira das promessas e a regra que exige compensação?",
+            "question": "A mecânica de redução de prazo na amortização extraordinária é esclarecida?",
             "evidence": {
-              "scene_id": "scene-03",
-              "quote": "Pelo arcabouço fiscal e pela Lei de Responsabilidade Fiscal, se o governo concede um benefício de cinquenta bilhões de reais, ele tem que cortar essa mesma quantia de outro lugar, ou então criar um imposto novo para compensar."
+              "scene_id": "scene-02",
+              "quote": "Quando você escolhe reduzir o prazo, cada real extra abate diretamente o principal de parcelas lá do final, cortando juros que nunca mais serão cobrados."
             },
-            "conclusion": "Demonstra-se a obrigação legal de indicar compensação para qualquer renúncia ou novo gasto continuado."
+            "conclusion": "O público aprende por que amortizar no prazo é financeiramente superior a apenas reduzir o valor da prestação."
           },
           {
-            "question": "O vídeo entrega a resposta prometida no título sobre quem paga a conta do segundo turno?",
+            "question": "A importância da reserva de emergência antes de amortizar é enfatizada?",
             "evidence": {
               "scene_id": "scene-05",
-              "quote": "Portanto, a resposta para quem vai pagar a conta do segundo turno é muito simples: é o próprio contribuinte."
+              "quote": "combinando aportes mensais no prazo, uso do FGTS e a preservação rigorosa da sua reserva de emergência, você liquida o contrato em cinco a oito anos"
             },
-            "conclusion": "A conclusão responde diretamente à pergunta inicial sem deixar lacunas ou falsas promessas."
+            "conclusion": "O vídeo entrega uma estratégia equilibrada que protege o patrimônio da família contra imprevistos financeiros."
           }
         ]
       }
@@ -470,1061 +545,1270 @@
   "scenes": [
     {
       "id": "scene-00",
-      "index": 0,
       "scene_index": 0,
-      "title": "A ilusão das promessas de campanha no segundo turno",
-      "narration": "Para conquistar o seu voto nas próximas semanas, você vai ouvir promessas de mais benefícios, menos impostos e reajustes generosos. Mas você já parou para calcular de onde vai sair essa conta? Eu sou o Roberto, do O Dinheiro Explica. Com a corrida presidencial definida para o segundo turno, os discursos de campanha prometem colocar mais dinheiro no bolso do trabalhador, mas a matemática do Orçamento Federal conta uma história bem diferente.",
-      "claim_ids": [
-        "C1"
-      ],
+      "narration": "Se você paga prestação de financiamento imobiliário há anos e acha que a sua dívida está diminuindo, prepare-se para o choque: quase todo o seu dinheiro está indo direto para o bolso do banco. Eu sou o Roberto, do O Dinheiro Explica. Num financiamento imobiliário de trinta anos pelo Sistema Financeiro da Habitação, a maioria das pessoas não faz ideia de como a parcela mensal é calculada de verdade. Em uma parcela típica de três mil reais, por exemplo, apenas quinhentos a seiscentos reais abatem a dívida real, e todo o resto é juro e seguro que vão direto para o banco. Amortização é a parte da parcela que efetivamente abate o que você pegou emprestado, enquanto os juros remuneram o banco pelo tempo do empréstimo. E enquanto você não entender essa divisão, vai continuar pagando duas ou três casas sem perceber.",
+      "tts": {
+        "delivery": "hook",
+        "cues": [
+          {
+            "text": "prepare-se para o choque: quase todo o seu dinheiro está indo direto para o bolso do banco.",
+            "kind": "contrast",
+            "intent": "caution",
+            "arc": "question",
+            "emphasis_word": "choque"
+          },
+          {
+            "text": "a maioria das pessoas não faz ideia de como a parcela mensal é calculada de verdade.",
+            "kind": "emphasis",
+            "intent": "curiosity",
+            "arc": "build",
+            "emphasis_word": "verdade"
+          },
+          {
+            "text": "apenas quinhentos a seiscentos reais abatem a dívida real, e todo o resto é juro e seguro que vão direto para o banco.",
+            "kind": "number",
+            "intent": "caution",
+            "arc": "contrast",
+            "emphasis_word": "quinhentos"
+          },
+          {
+            "text": "vai continuar pagando duas ou três casas sem perceber.",
+            "kind": "contrast",
+            "intent": "conviction",
+            "arc": "resolve",
+            "emphasis_word": "casas"
+          }
+        ]
+      },
       "visual": {
-        "type": "EDITORIAL",
-        "transition": "cut",
         "stage": {
-          "show_title": false,
+          "show_title": true,
           "initial_camera": {
             "x": 50,
             "y": 50,
             "zoom": 1
           },
           "camera_mode": "manual",
-          "motion_profile": "narrative",
           "elements": [
             {
-              "id": "card_urna_promessas",
-              "kind": "step",
-              "label": "Promessas do 2º Turno",
+              "id": "card_imovel_divida",
+              "kind": "object",
+              "object_type": "store",
+              "label": "Financiamento Habitacional",
+              "detail": "Contrato padrão de 360 meses no SFH",
+              "value": "30 ANOS",
               "x": 6,
-              "y": 18,
+              "y": 14,
               "width": 42,
-              "height": 58,
-              "initially_visible": true,
-              "icon": "bank",
-              "svg_motion": "trace",
+              "height": 74,
+              "svg_motion": "assemble",
               "sustain": {
                 "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3.2
+                "amplitude": 18,
+                "period_seconds": 4.2
               },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "Promessas",
-              "value_size": 100,
-              "detail": "Benefícios, isenções e reajustes"
+              "surface": "spotlight"
             },
             {
-              "id": "card_orcamento_real",
+              "id": "card_divisao_parcela",
               "kind": "metric",
-              "label": "A Conta Pública",
+              "icon": "chart",
+              "label": "Composição da Parcela",
+              "detail": "R$ 2.400 em juros e seguros vs R$ 600 em amortização",
+              "value": "80% JUROS",
               "x": 52,
-              "y": 18,
+              "y": 14,
               "width": 42,
-              "height": 58,
-              "initially_visible": true,
-              "icon": "warning",
+              "height": 74,
               "svg_motion": "trace",
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
+                "amplitude": 18,
+                "period_seconds": 4.5
               },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "Orçamento",
-              "value_size": 100,
-              "detail": "A conta real dos cofres públicos"
+              "surface": "spotlight"
             }
           ],
           "connections": [
             {
-              "from": "card_urna_promessas",
-              "to": "card_orcamento_real",
-              "label": "Impacto no bolso",
-              "semantic": "sequence",
-              "motion": "flow"
+              "id": "conn_parcela_divisao",
+              "from": "card_imovel_divida",
+              "to": "card_divisao_parcela",
+              "label": "fatia mensal",
+              "semantic": "relation",
+              "motion": "flow",
+              "period_seconds": 4
             }
           ]
         },
         "beats": [
           {
-            "anchor": "Para conquistar o seu voto",
+            "anchor": "Se você paga prestação de financiamento",
+            "target_id": "card_imovel_divida",
             "action": "focus",
-            "target_id": "card_urna_promessas",
+            "headline": "O Peso do Financiamento de 30 Anos",
             "camera": {
               "x": 27,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            },
-            "headline": "Promessas de campanha no 2º turno",
-            "detail": "A corrida por votos com promessas de benefícios"
+              "y": 50,
+              "zoom": 1.06,
+              "motion_seconds": 0.4
+            }
           },
           {
-            "anchor": "menos impostos e reajustes generosos",
-            "action": "update",
-            "target_id": "card_urna_promessas",
-            "value": "Apelos",
-            "headline": "Discursos sedutores",
-            "detail": "Benefícios fiscais anunciados no palanque"
-          },
-          {
-            "anchor": "de onde vai sair essa conta",
+            "anchor": "prepare-se para o choque",
+            "target_id": "card_imovel_divida",
             "action": "focus",
-            "target_id": "card_orcamento_real",
+            "headline": "Para Onde Vai o Seu Dinheiro?",
             "camera": {
-              "x": 73,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            },
-            "headline": "A conta real do governo",
-            "detail": "De onde virá o dinheiro para pagar as promessas?"
+              "x": 27,
+              "y": 50,
+              "zoom": 1.12,
+              "motion_seconds": 0.4
+            }
           },
           {
-            "anchor": "Eu sou o Roberto",
+            "anchor": "quase todo o seu dinheiro está indo direto",
+            "target_id": "card_divisao_parcela",
             "action": "focus",
-            "target_id": "card_urna_promessas",
+            "headline": "O Lucro do Banco na Sua Prestação",
+            "treatment": "giant_number",
+            "value": "LUCRO BANCÁRIO"
+          },
+          {
+            "anchor": "Eu sou o Roberto, do O Dinheiro Explica",
+            "target_id": "card_imovel_divida",
+            "action": "focus",
+            "headline": "O Dinheiro Explica: Financiamento Real",
             "camera": {
               "x": 50,
               "y": 50,
               "zoom": 1,
-              "motion_seconds": 0.5
-            },
-            "headline": "O Dinheiro Explica",
-            "detail": "Análise econômica com Roberto"
+              "motion_seconds": 0.4
+            }
           },
           {
-            "anchor": "corrida presidencial definida para o segundo turno",
-            "action": "update",
-            "target_id": "card_urna_promessas",
-            "value": "2º Turno",
-            "headline": "Segundo turno eleitoral",
-            "detail": "Disputa presidencial na reta final"
-          },
-          {
-            "anchor": "prometem colocar mais dinheiro no bolso",
-            "action": "update",
-            "target_id": "card_urna_promessas",
-            "value": "Benefícios",
-            "headline": "Mais renda prometida",
-            "detail": "Discursos focados no apelo financeiro"
-          },
-          {
-            "anchor": "a matemática do Orçamento Federal",
-            "action": "update",
-            "target_id": "card_orcamento_real",
+            "anchor": "Num financiamento imobiliário de trinta anos",
+            "target_id": "card_divisao_parcela",
+            "action": "focus",
+            "headline": "O Mistério da Parcela de 30 Anos",
             "camera": {
               "x": 73,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            },
-            "value": "Orçamento",
-            "headline": "Realidade orçamentária",
-            "detail": "A barreira das contas públicas"
+              "y": 50,
+              "zoom": 1.06,
+              "motion_seconds": 0.4
+            }
           },
           {
-            "anchor": "conta uma história bem diferente",
+            "anchor": "a maioria das pessoas não faz ideia",
+            "target_id": "card_divisao_parcela",
             "action": "focus",
-            "target_id": "card_orcamento_real",
+            "headline": "A Regra Escondida na Prestação",
+            "treatment": "kinetic_type"
+          },
+          {
+            "anchor": "Em uma parcela típica de três mil reais",
+            "target_id": "card_divisao_parcela",
+            "action": "focus",
+            "headline": "Simulação de Parcela de R$ 3.000",
+            "treatment": "giant_number",
+            "value": "R$ 3.000/MÊS"
+          },
+          {
+            "anchor": "apenas quinhentos a seiscentos reais abatem a dívida real",
+            "target_id": "card_divisao_parcela",
+            "action": "update",
+            "headline": "A Fatia Minúscula que Abate a Dívida",
+            "detail": "Apenas R$ 600 abatem o saldo devedor principal",
+            "value": "R$ 600 PRINCIPAL"
+          },
+          {
+            "anchor": "e todo o resto é juro e seguro que vão direto",
+            "target_id": "card_divisao_parcela",
+            "action": "update",
+            "headline": "A Grande Fatia de Juros e Encargos",
+            "detail": "R$ 2.400 em juros contratuais, taxa de administração e seguros",
+            "value": "R$ 2.400 JUROS"
+          },
+          {
+            "anchor": "Amortização é a parte da parcela que efetivamente abate",
+            "target_id": "card_imovel_divida",
+            "action": "focus",
+            "headline": "Conceito: O que é Amortização?",
             "camera": {
               "x": 50,
               "y": 50,
               "zoom": 1,
-              "motion_seconds": 0.5
-            },
-            "headline": "O choque de realidade",
-            "detail": "Matemática fiscal não fecha com facilidade"
-          }
-        ]
-      },
-      "tts": {
-        "delivery": "hook",
-        "cues": [
-          {
-            "text": "Mas você já parou para calcular de onde vai sair essa conta?",
-            "kind": "contrast",
-            "intent": "curiosity",
-            "arc": "question",
-            "emphasis_word": "conta",
-            "pause_before_ms": 120
+              "motion_seconds": 0.4
+            }
           },
           {
-            "text": "a matemática do Orçamento Federal conta uma história bem diferente",
-            "kind": "emphasis",
-            "intent": "caution",
-            "arc": "contrast",
-            "emphasis_word": "diferente",
-            "pause_before_ms": 100
+            "anchor": "enquanto os juros remuneram o banco",
+            "target_id": "card_divisao_parcela",
+            "action": "focus",
+            "headline": "O Custo do Tempo nos Juros",
+            "treatment": "kinetic_type"
+          },
+          {
+            "anchor": "E enquanto você não entender essa divisão",
+            "target_id": "card_imovel_divida",
+            "action": "focus",
+            "headline": "O Alerta Central do Mutuário",
+            "treatment": "kinetic_type"
+          },
+          {
+            "anchor": "vai continuar pagando duas ou três casas",
+            "target_id": "card_divisao_parcela",
+            "action": "focus",
+            "headline": "A Conta Oculta: Três Imóveis no Final",
+            "treatment": "giant_number",
+            "value": "3 CASAS"
           }
         ]
       }
     },
     {
       "id": "scene-01",
-      "index": 1,
       "scene_index": 1,
-      "title": "A rigidez orçamentária: 90% em despesas obrigatórias",
-      "narration": "Muita gente imagina que o presidente eleito chega com um cofre cheio de dinheiro livre para gastar como quiser. Só que na prática, mais de noventa por cento de todo o orçamento federal já está carimbado antes mesmo do primeiro dia de mandato. São as chamadas despesas obrigatórias, como aposentadorias do INSS, salários de servidores públicos e os pisos obrigatórios de saúde e educação. O que sobra para investimentos em infraestrutura e novas promessas é uma fatia minúscula, menor do que dez por cento do total.",
-      "claim_ids": [
-        "C1"
-      ],
+      "narration": "Coloque essa matemática no papel por um instante para ver o tamanho do estrago. Imagine que você financiou um imóvel de trezentos mil reais em trinta anos com taxa média de dez vírgula cinco por cento ao ano. Ao longo de trinta anos, o total pago ultrapassa setecentos e oitenta mil reais. Isso significa que você comprou um apartamento para a sua família e deu quase dois outros apartamentos inteiros de presente para o banco em juros. E por que essa conta é tão cruel? Porque no crédito imobiliário, os juros são recalculados todo mês sobre o saldo devedor restante. Enquanto você só paga a parcela mínima, o saldo devedor quase não se mexe, e o banco continua cobrando juros sobre uma montanha de dinheiro por três décadas.",
+      "tts": {
+        "delivery": "explain",
+        "cues": [
+          {
+            "text": "Imagine que você financiou um imóvel de trezentos mil reais em trinta anos com taxa média de dez vírgula cinco por cento ao ano.",
+            "kind": "number",
+            "intent": "curiosity",
+            "arc": "build",
+            "emphasis_word": "trezentos"
+          },
+          {
+            "text": "Ao longo de trinta anos, o total pago ultrapassa setecentos e oitenta mil reais.",
+            "kind": "number",
+            "intent": "caution",
+            "arc": "contrast",
+            "emphasis_word": "setecentos"
+          },
+          {
+            "text": "deu quase dois outros apartamentos inteiros de presente para o banco em juros.",
+            "kind": "contrast",
+            "intent": "caution",
+            "arc": "question",
+            "emphasis_word": "presente"
+          },
+          {
+            "text": "Enquanto você só paga a parcela mínima, o saldo devedor quase não se mexe,",
+            "kind": "emphasis",
+            "intent": "conviction",
+            "arc": "resolve",
+            "emphasis_word": "mexe"
+          }
+        ]
+      },
       "visual": {
-        "type": "EDITORIAL",
-        "transition": "cut",
         "stage": {
-          "show_title": false,
+          "show_title": true,
           "initial_camera": {
             "x": 50,
             "y": 50,
             "zoom": 1
           },
           "camera_mode": "manual",
-          "motion_profile": "narrative",
           "elements": [
             {
-              "id": "card_despesas_obrigatorias",
+              "id": "card_valor_financiado",
               "kind": "metric",
-              "label": "Despesas Obrigatórias",
+              "icon": "house",
+              "label": "Valor Original Financiado",
+              "detail": "Valor do crédito contratado para a compra",
+              "value": "R$ 300 MIL",
               "x": 6,
-              "y": 15,
+              "y": 14,
               "width": 42,
-              "height": 64,
-              "initially_visible": true,
-              "icon": "lock",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "90%",
-              "value_size": 96,
-              "detail": "Previdência, salários e saúde"
-            },
-            {
-              "id": "card_margem_livre",
-              "kind": "metric",
-              "label": "Espaço Livre para Gastar",
-              "x": 52,
-              "y": 15,
-              "width": 42,
-              "height": 64,
-              "initially_visible": false,
-              "icon": "coins",
+              "height": 74,
               "svg_motion": "trace",
               "sustain": {
                 "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3.2
+                "amplitude": 18,
+                "period_seconds": 4.5
               },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "10%",
-              "value_size": 96,
-              "detail": "Investimentos e novas obras"
+              "surface": "spotlight"
+            },
+            {
+              "id": "card_total_pago",
+              "kind": "metric",
+              "icon": "coins",
+              "label": "Custo Total em 30 Anos",
+              "detail": "R$ 300 mil principal + R$ 480 mil em juros e encargos",
+              "value": "R$ 780 MIL",
+              "x": 52,
+              "y": 14,
+              "width": 42,
+              "height": 74,
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 18,
+                "period_seconds": 4
+              },
+              "surface": "spotlight"
             }
           ],
           "connections": [
             {
-              "from": "card_despesas_obrigatorias",
-              "to": "card_margem_livre",
-              "label": "Orçamento Federal",
+              "id": "conn_comparativo_custo",
+              "from": "card_valor_financiado",
+              "to": "card_total_pago",
+              "label": "multiplicação por 2,6x",
               "semantic": "comparison",
-              "motion": "flow"
+              "motion": "pulse",
+              "period_seconds": 3.5
             }
           ]
         },
         "beats": [
           {
-            "anchor": "Muita gente imagina que o presidente",
+            "anchor": "Coloque essa matemática no papel por um instante",
+            "target_id": "card_valor_financiado",
             "action": "focus",
-            "target_id": "card_despesas_obrigatorias",
+            "headline": "Simulação Real da Dívida Habitacional",
             "camera": {
               "x": 27,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            },
-            "headline": "A ilusão do dinheiro livre",
-            "detail": "A crença de que o presidente decide todo o orçamento"
+              "y": 50,
+              "zoom": 1.06,
+              "motion_seconds": 0.4
+            }
           },
           {
-            "anchor": "cofre cheio de dinheiro livre para gastar",
-            "action": "update",
-            "target_id": "card_despesas_obrigatorias",
-            "value": "Ilusão",
-            "headline": "Cofre travado",
-            "detail": "Orçamento travado por lei"
-          },
-          {
-            "anchor": "mais de noventa por cento de todo o orçamento",
-            "action": "update",
-            "target_id": "card_despesas_obrigatorias",
-            "value": "90%",
-            "headline": "Gasto já carimbado",
-            "detail": "90% obrigatório por lei"
-          },
-          {
-            "anchor": "São as chamadas despesas obrigatórias",
+            "anchor": "financiou um imóvel de trezentos mil reais",
+            "target_id": "card_valor_financiado",
             "action": "focus",
-            "target_id": "card_despesas_obrigatorias",
-            "headline": "Previdência e folha",
-            "detail": "Aposentadorias, funcionalismo e saúde"
+            "headline": "Valor Emprestado: R$ 300.000",
+            "treatment": "giant_number",
+            "value": "R$ 300 MIL"
           },
           {
-            "anchor": "salários de servidores públicos",
-            "action": "update",
-            "target_id": "card_despesas_obrigatorias",
-            "value": "Travado",
-            "headline": "Rigidez constitucional",
-            "detail": "Gasto não cancelável por decreto"
-          },
-          {
-            "anchor": "O que sobra para investimentos",
-            "action": "reveal",
-            "target_id": "card_margem_livre",
-            "reveal_ids": [
-              "card_margem_livre"
-            ],
+            "anchor": "taxa média de dez vírgula cinco por cento",
+            "target_id": "card_valor_financiado",
+            "action": "focus",
+            "headline": "Juros Médios de Mercado: 10,5% a.a.",
             "camera": {
               "x": 50,
               "y": 50,
               "zoom": 1,
-              "motion_seconds": 0.5
-            },
-            "headline": "A margem real de manobra",
-            "detail": "Menos de 10% do orçamento para todo o resto"
+              "motion_seconds": 0.4
+            }
           },
           {
-            "anchor": "menor do que dez por cento do total",
-            "action": "update",
-            "target_id": "card_margem_livre",
+            "anchor": "Ao longo de trinta anos, o total pago ultrapassa",
+            "target_id": "card_total_pago",
+            "action": "focus",
+            "headline": "Total Desembolsado: Mais de R$ 780 Mil",
+            "treatment": "giant_number",
+            "value": "R$ 780 MIL",
             "camera": {
               "x": 73,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            },
-            "value": "< 10%",
-            "headline": "Fatia minúscula",
-            "detail": "Espaço real para investimentos"
-          }
-        ]
-      },
-      "tts": {
-        "delivery": "explain",
-        "cues": [
-          {
-            "text": "mais de noventa por cento de todo o orçamento federal já está carimbado",
-            "kind": "number",
-            "intent": "caution",
-            "arc": "contrast",
-            "emphasis_word": "carimbado",
-            "pause_before_ms": 100
+              "y": 50,
+              "zoom": 1.08,
+              "motion_seconds": 0.4
+            }
           },
           {
-            "text": "é uma fatia minúscula, menor do que dez por cento do total",
-            "kind": "number",
-            "intent": "discovery",
-            "arc": "resolve",
-            "emphasis_word": "minúscula",
-            "pause_before_ms": 100
+            "anchor": "Isso significa que você comprou um apartamento",
+            "target_id": "card_valor_financiado",
+            "action": "focus",
+            "headline": "Um Imóvel Para Morar",
+            "treatment": "kinetic_type"
+          },
+          {
+            "anchor": "deu quase dois outros apartamentos inteiros",
+            "target_id": "card_total_pago",
+            "action": "update",
+            "headline": "Dois Imóveis Pagos ao Banco em Juros",
+            "detail": "R$ 480 mil em juros remuneratórios e seguros",
+            "value": "+2 CASAS EM JUROS"
+          },
+          {
+            "anchor": "E por que essa conta é tão cruel?",
+            "target_id": "card_valor_financiado",
+            "action": "focus",
+            "headline": "Por Que os Juros São Tão Pesados?",
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.4
+            }
+          },
+          {
+            "anchor": "os juros são recalculados todo mês sobre o saldo devedor",
+            "target_id": "card_total_pago",
+            "action": "focus",
+            "headline": "Juros Incidentes Sobre o Saldo Devedor",
+            "treatment": "kinetic_type"
+          },
+          {
+            "anchor": "o saldo devedor quase não se mexe",
+            "target_id": "card_valor_financiado",
+            "action": "update",
+            "headline": "O Saldo Devedor Quase Travado",
+            "detail": "Nos primeiros anos, o abatimento da dívida é lentíssimo",
+            "value": "DÍVIDA LENTA"
+          },
+          {
+            "anchor": "o banco continua cobrando juros sobre uma montanha de dinheiro",
+            "target_id": "card_total_pago",
+            "action": "focus",
+            "headline": "Juros Cobrados Sobre a Montanha Devedora",
+            "treatment": "giant_number",
+            "value": "30 ANOS JUROS"
           }
         ]
       }
     },
     {
       "id": "scene-02",
-      "index": 2,
       "scene_index": 2,
-      "title": "O custo das grandes promessas: IR e Salário Mínimo",
-      "narration": "E é exatamente aqui que as promessas de campanha batem de frente com a realidade. Uma das propostas mais populares no segundo turno é isentar do Imposto de Renda quem ganha até cinco mil reais. Só que essa isenção custaria cerca de sessenta bilhões de reais por ano aos cofres públicos. Ao mesmo tempo, cada cem reais de aumento real no salário mínimo adiciona quarenta bilhões de reais em despesas da Previdência. Juntas, apenas essas duas bandeiras criam uma fatura que ultrapassa cem bilhões de reais todo ano.",
-      "claim_ids": [
-        "C2",
-        "C3"
-      ],
+      "narration": "Mas existe uma regra matemática e legal que os bancos não colocam em propaganda: a amortização extraordinária. A amortização extraordinária é qualquer pagamento adicional feito diretamente para abater o saldo devedor, com desconto integral de todos os juros futuros. Pelo Código de Defesa do Consumidor e pelas normas do Banco Central, o banco é obrigado a abater o saldo sem cobrar nenhuma taxa por isso. E aqui está o segredo: no aplicativo do banco, você sempre terá duas opções: reduzir o valor da parcela ou reduzir o prazo. Se você escolhe reduzir a parcela, seu mês fica mais leve, mas o prazo continua longo e os juros continuam correndo. Quando você escolhe reduzir o prazo, cada real extra abate diretamente o principal de parcelas lá do final, cortando juros que nunca mais serão cobrados. Se você quer aprender a proteger seu dinheiro e parar de enriquecer o banco, se inscreva no canal O Dinheiro Explica e ative as notificações.",
+      "tts": {
+        "delivery": "explain",
+        "cues": [
+          {
+            "text": "A amortização extraordinária é qualquer pagamento adicional feito diretamente para abater o saldo devedor, com desconto integral de todos os juros futuros.",
+            "kind": "emphasis",
+            "intent": "discovery",
+            "arc": "build",
+            "emphasis_word": "integral"
+          },
+          {
+            "text": "o banco é obrigado a abater o saldo sem cobrar nenhuma taxa por isso.",
+            "kind": "emphasis",
+            "intent": "conviction",
+            "arc": "resolve",
+            "emphasis_word": "taxa"
+          },
+          {
+            "text": "Quando você escolhe reduzir o prazo, cada real extra abate diretamente o principal de parcelas lá do final, cortando juros que nunca mais serão cobrados.",
+            "kind": "contrast",
+            "intent": "discovery",
+            "arc": "contrast",
+            "emphasis_word": "final"
+          },
+          {
+            "text": "se inscreva no canal O Dinheiro Explica e ative as notificações.",
+            "kind": "emphasis",
+            "intent": "reassurance",
+            "arc": "resolve",
+            "emphasis_word": "notificações"
+          }
+        ]
+      },
       "visual": {
-        "type": "EDITORIAL",
-        "transition": "cut",
         "stage": {
-          "show_title": false,
+          "show_title": true,
           "initial_camera": {
             "x": 50,
             "y": 50,
             "zoom": 1
           },
           "camera_mode": "manual",
-          "motion_profile": "narrative",
           "elements": [
             {
-              "id": "card_promessa_ir",
-              "kind": "metric",
-              "label": "Isenção do IR até R$ 5.000",
+              "id": "card_regra_amortizacao",
+              "kind": "step",
+              "icon": "shield",
+              "label": "Direito de Amortizar",
+              "detail": "Garantia legal: CDC e Bacen proíbem cobrança de taxas",
+              "value": "SEM TAXAS",
               "x": 6,
-              "y": 18,
+              "y": 14,
               "width": 42,
-              "height": 58,
-              "initially_visible": true,
-              "icon": "receipt",
+              "height": 74,
               "svg_motion": "trace",
               "sustain": {
                 "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3.2
+                "amplitude": 18,
+                "period_seconds": 4
               },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "R$ 60 bi",
-              "value_size": 100,
-              "detail": "Impacto anual estimado nos cofres"
+              "surface": "spotlight"
             },
             {
-              "id": "card_promessa_minimo",
-              "kind": "metric",
-              "label": "Aumento Real do Mínimo",
+              "id": "card_reduzir_prazo",
+              "kind": "step",
+              "icon": "clock",
+              "label": "Redução de Prazo",
+              "detail": "Elimina parcelas do final e cancela juros futuros",
+              "value": "MENOS ANOS",
               "x": 52,
-              "y": 18,
+              "y": 14,
               "width": 42,
-              "height": 58,
-              "initially_visible": true,
-              "icon": "chart",
+              "height": 74,
               "svg_motion": "trace",
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
+                "amplitude": 18,
+                "period_seconds": 4.5
               },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "+ R$ 40 bi",
-              "value_size": 100,
-              "detail": "Cada R$ 100 gera R$ 40 bi em Previdência"
+              "surface": "spotlight"
             }
           ],
           "connections": [
             {
-              "from": "card_promessa_ir",
-              "to": "card_promessa_minimo",
-              "label": "Soma das promessas",
-              "semantic": "sequence",
-              "motion": "flow"
+              "id": "conn_abate_prazo",
+              "from": "card_regra_amortizacao",
+              "to": "card_reduzir_prazo",
+              "label": "abate no saldo devedor",
+              "semantic": "cause",
+              "motion": "flow",
+              "period_seconds": 3.8
             }
           ]
         },
         "beats": [
           {
-            "anchor": "E é exatamente aqui que as promessas",
+            "anchor": "Mas existe uma regra matemática e legal",
+            "target_id": "card_regra_amortizacao",
             "action": "focus",
-            "target_id": "card_promessa_ir",
+            "headline": "O Mecanismo da Amortização Extraordinária",
             "camera": {
               "x": 27,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            },
-            "headline": "O custo das promessas",
-            "detail": "Quanto custa cumprir o que se promete na TV?"
+              "y": 50,
+              "zoom": 1.06,
+              "motion_seconds": 0.4
+            }
           },
           {
-            "anchor": "batem de frente com a realidade",
-            "action": "update",
-            "target_id": "card_promessa_ir",
-            "value": "Colisão",
-            "headline": "Choque orçamentário",
-            "detail": "Propostas populares vs capacidade de pagamento"
-          },
-          {
-            "anchor": "isentar do Imposto de Renda quem ganha",
-            "action": "update",
-            "target_id": "card_promessa_ir",
-            "value": "Até 5 Mil",
-            "headline": "Isenção da tabela do IR",
-            "detail": "Promessa eleitoral de grande apelo popular"
-          },
-          {
-            "anchor": "custaria cerca de sessenta bilhões de reais",
-            "action": "update",
-            "target_id": "card_promessa_ir",
-            "value": "R$ 60 bi",
-            "headline": "Perda de arrecadação",
-            "detail": "Estimativa de impacto anual aos cofres da União"
-          },
-          {
-            "anchor": "cada cem reais de aumento real no salário mínimo",
+            "anchor": "A amortização extraordinária é qualquer pagamento adicional",
+            "target_id": "card_regra_amortizacao",
             "action": "focus",
-            "target_id": "card_promessa_minimo",
-            "camera": {
-              "x": 73,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            },
-            "headline": "Gatilho previdenciário",
-            "detail": "Efeito em cascata nas aposentadorias e benefícios"
+            "headline": "Abate Direto no Saldo Devedor",
+            "treatment": "giant_number",
+            "value": "100% NO SALDO"
           },
           {
-            "anchor": "quarenta bilhões de reais em despesas da Previdência",
+            "anchor": "com desconto integral de todos os juros futuros",
+            "target_id": "card_regra_amortizacao",
             "action": "update",
-            "target_id": "card_promessa_minimo",
-            "value": "+ R$ 40 bi",
-            "headline": "Custo automático",
-            "detail": "Cada R$ 1 a mais no mínimo custa R$ 400 milhões"
+            "headline": "Desconto Total de Juros Futuros",
+            "detail": "Os juros das parcelas abatidas são cancelados",
+            "value": "ZERO JUROS"
           },
           {
-            "anchor": "ultrapassa cem bilhões de reais todo ano",
+            "anchor": "Pelo Código de Defesa do Consumidor e pelas normas",
+            "target_id": "card_regra_amortizacao",
             "action": "focus",
-            "target_id": "card_promessa_minimo",
+            "headline": "Direito Garantido por Lei (CDC e Bacen)",
             "camera": {
               "x": 50,
               "y": 50,
               "zoom": 1,
-              "motion_seconds": 0.5
-            },
-            "headline": "Conta de R$ 100 bilhões",
-            "detail": "Apenas duas promessas já estouram o espaço livre"
-          }
-        ]
-      },
-      "tts": {
-        "delivery": "explain",
-        "cues": [
-          {
-            "text": "essa isenção custaria cerca de sessenta bilhões de reais por ano aos cofres públicos",
-            "kind": "number",
-            "intent": "caution",
-            "arc": "build",
-            "emphasis_word": "sessenta",
-            "pause_before_ms": 100
+              "motion_seconds": 0.4
+            }
           },
           {
-            "text": "Juntas, apenas essas duas bandeiras criam uma fatura que ultrapassa cem bilhões de reais todo ano",
-            "kind": "number",
-            "intent": "caution",
-            "arc": "resolve",
-            "emphasis_word": "ultrapassa",
-            "pause_before_ms": 120
+            "anchor": "o banco é obrigado a abater o saldo sem cobrar",
+            "target_id": "card_regra_amortizacao",
+            "action": "focus",
+            "headline": "Sem Tarifas de Liquidação",
+            "treatment": "giant_number",
+            "value": "TAXA ZERO"
+          },
+          {
+            "anchor": "no aplicativo do banco, você sempre terá duas opções",
+            "target_id": "card_reduzir_prazo",
+            "action": "focus",
+            "headline": "O Dilema: Reduzir Parcela ou Prazo?",
+            "camera": {
+              "x": 73,
+              "y": 50,
+              "zoom": 1.06,
+              "motion_seconds": 0.4
+            }
+          },
+          {
+            "anchor": "reduzir o valor da parcela ou reduzir o prazo",
+            "target_id": "card_reduzir_prazo",
+            "action": "focus",
+            "headline": "As Duas Rotas no App do Banco",
+            "treatment": "kinetic_type"
+          },
+          {
+            "anchor": "Se você escolhe reduzir a parcela",
+            "target_id": "card_reduzir_prazo",
+            "action": "update",
+            "headline": "Reduzir Parcela: Alívio Curto, Dívida Longa",
+            "detail": "Mantém o prazo em 30 anos gerando juros",
+            "value": "30 ANOS IGUAL"
+          },
+          {
+            "anchor": "mas o prazo continua longo e os juros continuam correndo",
+            "target_id": "card_regra_amortizacao",
+            "action": "focus",
+            "headline": "Juros Continuam Ativos Por Décadas",
+            "treatment": "kinetic_type"
+          },
+          {
+            "anchor": "Quando você escolhe reduzir o prazo, cada real extra",
+            "target_id": "card_reduzir_prazo",
+            "action": "update",
+            "headline": "Reduzir Prazo: O Golpe Certeiro na Dívida",
+            "detail": "Abate parcelas lá do final e encurta os anos de contrato",
+            "value": "CORTE DE ANOS"
+          },
+          {
+            "anchor": "cortando juros que nunca mais serão cobrados",
+            "target_id": "card_regra_amortizacao",
+            "action": "focus",
+            "headline": "Juros Que Nunca Mais Entrarão na Conta",
+            "treatment": "giant_number",
+            "value": "JUROS CORTADOS"
+          },
+          {
+            "anchor": "Se você quer aprender a proteger seu dinheiro",
+            "target_id": "card_reduzir_prazo",
+            "action": "focus",
+            "headline": "Educação Financeira Contra o Lucro do Banco",
+            "treatment": "kinetic_type"
+          },
+          {
+            "anchor": "se inscreva no canal O Dinheiro Explica e ative as notificações",
+            "target_id": "card_reduzir_prazo",
+            "action": "focus",
+            "headline": "Inscreva-se no O Dinheiro Explica",
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.4
+            }
           }
         ]
       }
     },
     {
       "id": "scene-03",
-      "index": 3,
       "scene_index": 3,
-      "title": "A trava legal: Arcabouço Fiscal e Lei de Responsabilidade",
-      "narration": "A legislação brasileira impede o presidente de criar gastos permanentes sem apontar de onde o dinheiro vai sair. Pelo arcabouço fiscal e pela Lei de Responsabilidade Fiscal, se o governo concede um benefício de cinquenta bilhões de reais, ele tem que cortar essa mesma quantia de outro lugar, ou então criar um imposto novo para compensar. Só que cortar gastos obrigatórios exige aprovar mudanças difíceis na Constituição com apoio do Congresso Nacional. E como nenhum governante quer comprar essa briga no início de mandato, o caminho escolhido costuma ser bem mais pesado para o contribuinte.",
-      "claim_ids": [
-        "C4"
-      ],
+      "narration": "Em uma simulação hipotética, veja como isso funciona. Olhe para a última parcela do seu financiamento de trinta anos, lá no mês trezentos e cinquenta. Naquela altura do campeonato, o juro já caiu quase todo, e a amortização do principal daquela parcela é de apenas duzentos reais. Isso quer dizer que se você entrar no aplicativo da Caixa ou do seu banco e fizer uma amortização de seiscentos reais reduzindo o prazo, você não está adiantando um mês: com apenas seiscentos reais extras você elimina de vez três parcelas inteiras do final do contrato. Você acabou de apagar três meses de dívida, cancelou três meses de seguro habitacional e impediu o banco de lucrar milhares de reais em juros que seriam gerados até lá.",
+      "tts": {
+        "delivery": "explain",
+        "cues": [
+          {
+            "text": "Em uma simulação hipotética, veja como isso funciona.",
+            "kind": "emphasis",
+            "intent": "curiosity",
+            "arc": "question",
+            "emphasis_word": "hipotética"
+          },
+          {
+            "text": "e a amortização do principal daquela parcela é de apenas duzentos reais.",
+            "kind": "number",
+            "intent": "discovery",
+            "arc": "build",
+            "emphasis_word": "duzentos"
+          },
+          {
+            "text": "com apenas seiscentos reais extras você elimina de vez três parcelas inteiras do final do contrato.",
+            "kind": "number",
+            "intent": "conviction",
+            "arc": "resolve",
+            "emphasis_word": "três"
+          },
+          {
+            "text": "impediu o banco de lucrar milhares de reais em juros que seriam gerados até lá.",
+            "kind": "contrast",
+            "intent": "conviction",
+            "arc": "contrast",
+            "emphasis_word": "milhares"
+          }
+        ]
+      },
       "visual": {
-        "type": "EDITORIAL",
-        "transition": "cut",
         "stage": {
-          "show_title": false,
+          "show_title": true,
           "initial_camera": {
             "x": 50,
             "y": 50,
             "zoom": 1
           },
           "camera_mode": "manual",
-          "motion_profile": "narrative",
           "elements": [
             {
-              "id": "card_trava_fiscal",
-              "kind": "step",
-              "label": "Trava Legal do Orçamento",
+              "id": "card_simulacao_hipotetica",
+              "kind": "label",
+              "icon": "search",
+              "label": "Simulação Hipotética",
+              "detail": "Valores ilustrativos: amortização de parcela final R$ 200",
+              "value": "PARCELA FINAL",
               "x": 6,
-              "y": 18,
+              "y": 14,
               "width": 42,
-              "height": 58,
-              "initially_visible": true,
-              "icon": "shield",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "Arcabouço",
-              "value_size": 100,
-              "detail": "Exigência de compensação obrigatória"
-            },
-            {
-              "id": "card_dilema_congresso",
-              "kind": "metric",
-              "label": "Corte de Gastos",
-              "x": 52,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "initially_visible": true,
-              "icon": "warning",
+              "height": 74,
               "svg_motion": "trace",
               "sustain": {
                 "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3.2
+                "amplitude": 18,
+                "period_seconds": 4.2
               },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "Travado",
-              "value_size": 100,
-              "detail": "Congresso resiste a cortar privilégios"
+              "surface": "spotlight"
+            },
+            {
+              "id": "card_parcelas_eliminadas",
+              "kind": "metric",
+              "icon": "check",
+              "label": "Parcelas Eliminadas",
+              "detail": "Aporte ilustrativo de R$ 600 apaga 3 meses do fim do contrato",
+              "value": "-3 MESES",
+              "x": 52,
+              "y": 14,
+              "width": 42,
+              "height": 74,
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 18,
+                "period_seconds": 4
+              },
+              "surface": "spotlight"
             }
           ],
           "connections": [
             {
-              "from": "card_trava_fiscal",
-              "to": "card_dilema_congresso",
-              "label": "Exigência de lei",
-              "semantic": "cause",
-              "motion": "flow"
+              "id": "conn_abate_multiplo",
+              "from": "card_simulacao_hipotetica",
+              "to": "card_parcelas_eliminadas",
+              "label": "divisão: R$ 600 ÷ R$ 200",
+              "semantic": "transfer",
+              "motion": "flow",
+              "period_seconds": 3.5
             }
           ]
         },
         "beats": [
           {
-            "anchor": "A legislação brasileira impede o presidente",
+            "anchor": "Em uma simulação hipotética, veja como isso funciona",
+            "target_id": "card_simulacao_hipotetica",
             "action": "focus",
-            "target_id": "card_trava_fiscal",
+            "headline": "Cálculo Hipotético da Parcela Final",
             "camera": {
               "x": 27,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            },
-            "headline": "A trava da lei",
-            "detail": "Proibido gastar sem indicar a fonte dos recursos"
+              "y": 50,
+              "zoom": 1.06,
+              "motion_seconds": 0.4
+            }
           },
           {
-            "anchor": "Pelo arcabouço fiscal e pela Lei de Responsabilidade",
-            "action": "update",
-            "target_id": "card_trava_fiscal",
-            "value": "LRF e Teto",
-            "headline": "Regras de responsabilidade",
-            "detail": "Arcabouço fiscal proíbe rombo descontrolado"
-          },
-          {
-            "anchor": "se o governo concede um benefício de cinquenta bilhões",
-            "action": "update",
-            "target_id": "card_trava_fiscal",
-            "value": "R$ 50 bi",
-            "headline": "Exemplo de novo gasto",
-            "detail": "Qualquer novo benefício aciona a trava"
-          },
-          {
-            "anchor": "ele tem que cortar essa mesma quantia de outro lugar",
-            "action": "update",
-            "target_id": "card_trava_fiscal",
-            "value": "Compensar",
-            "headline": "Regra da compensação",
-            "detail": "Todo novo gasto exige corte ou novo tributo"
-          },
-          {
-            "anchor": "cortar gastos obrigatórios exige aprovar mudanças difíceis",
+            "anchor": "Olhe para a última parcela do seu financiamento",
+            "target_id": "card_simulacao_hipotetica",
             "action": "focus",
-            "target_id": "card_dilema_congresso",
-            "camera": {
-              "x": 73,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            },
-            "headline": "Resistência política",
-            "detail": "Congresso trava corte de despesas obrigatórias"
+            "headline": "A Última Parcela no Mês 350",
+            "treatment": "giant_number",
+            "value": "MÊS 350"
           },
           {
-            "anchor": "com apoio do Congresso Nacional",
-            "action": "update",
-            "target_id": "card_dilema_congresso",
-            "value": "Resistência",
-            "headline": "Bloqueio político",
-            "detail": "Dificuldade de cortar benefícios e privilégios"
-          },
-          {
-            "anchor": "o caminho escolhido costuma ser bem mais pesado",
+            "anchor": "lá no mês trezentos e cinquenta",
+            "target_id": "card_simulacao_hipotetica",
             "action": "focus",
-            "target_id": "card_dilema_congresso",
+            "headline": "O Fim da Linha de 30 Anos",
+            "treatment": "kinetic_type"
+          },
+          {
+            "anchor": "Naquela altura do campeonato, o juro já caiu",
+            "target_id": "card_simulacao_hipotetica",
+            "action": "focus",
+            "headline": "Juros Já Quase Extintos no Fim",
             "camera": {
               "x": 50,
               "y": 50,
               "zoom": 1,
-              "motion_seconds": 0.5
-            },
-            "headline": "A saída mais fácil",
-            "detail": "A conta acaba sendo empurrada para quem paga imposto"
-          }
-        ]
-      },
-      "tts": {
-        "delivery": "explain",
-        "cues": [
-          {
-            "text": "A legislação brasileira impede o presidente de criar gastos permanentes sem apontar de onde o dinheiro vai sair",
-            "kind": "contrast",
-            "intent": "conviction",
-            "arc": "contrast",
-            "emphasis_word": "impede",
-            "pause_before_ms": 100
+              "motion_seconds": 0.4
+            }
           },
           {
-            "text": "E como nenhum governante quer comprar essa briga no início de mandato",
-            "kind": "emphasis",
-            "intent": "caution",
-            "arc": "build",
-            "emphasis_word": "briga",
-            "pause_before_ms": 100
+            "anchor": "a amortização do principal daquela parcela é de apenas duzentos reais",
+            "target_id": "card_simulacao_hipotetica",
+            "action": "update",
+            "headline": "Principal da Parcela Final: R$ 200",
+            "detail": "Apenas R$ 200 de saldo principal para quitar aquele mês",
+            "value": "R$ 200 PRINCIPAL"
+          },
+          {
+            "anchor": "se você entrar no aplicativo da Caixa",
+            "target_id": "card_parcelas_eliminadas",
+            "action": "focus",
+            "headline": "Aporte Extra Pelo Aplicativo",
+            "camera": {
+              "x": 73,
+              "y": 50,
+              "zoom": 1.06,
+              "motion_seconds": 0.4
+            }
+          },
+          {
+            "anchor": "fizer uma amortização de seiscentos reais reduzindo o prazo",
+            "target_id": "card_parcelas_eliminadas",
+            "action": "focus",
+            "headline": "Aporte Extra de R$ 600 no Prazo",
+            "treatment": "giant_number",
+            "value": "R$ 600 EXTRA"
+          },
+          {
+            "anchor": "você não está adiantando um mês:",
+            "target_id": "card_parcelas_eliminadas",
+            "action": "focus",
+            "headline": "Muito Mais Que Uma Única Parcela",
+            "treatment": "kinetic_type"
+          },
+          {
+            "anchor": "com apenas seiscentos reais extras você elimina de vez três parcelas",
+            "target_id": "card_parcelas_eliminadas",
+            "action": "update",
+            "headline": "Três Parcelas Inteiras Apagadas de Vez",
+            "detail": "Três meses eliminados com um único pagamento extra",
+            "value": "-3 PARCELAS",
+            "camera": {
+              "x": 73,
+              "y": 50,
+              "zoom": 1.08,
+              "motion_seconds": 0.4
+            }
+          },
+          {
+            "anchor": "Você acabou de apagar três meses de dívida",
+            "target_id": "card_parcelas_eliminadas",
+            "action": "focus",
+            "headline": "Menos Três Meses de Dívida",
+            "treatment": "kinetic_type"
+          },
+          {
+            "anchor": "cancelou três meses de seguro habitacional",
+            "target_id": "card_simulacao_hipotetica",
+            "action": "focus",
+            "headline": "Economia Também nos Seguros MIP e DFI",
+            "treatment": "giant_number",
+            "value": "SEGURO ZERO"
+          },
+          {
+            "anchor": "impediu o banco de lucrar milhares de reais em juros",
+            "target_id": "card_parcelas_eliminadas",
+            "action": "focus",
+            "headline": "Milhares de Reais Poupados em Juros",
+            "treatment": "giant_number",
+            "value": "ECONOMIA REAL",
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.4
+            }
           }
         ]
       }
     },
     {
       "id": "scene-04",
-      "index": 4,
       "scene_index": 4,
-      "title": "A ressaca pós-eleitoral: o preço do voto no seu bolso",
-      "narration": "A história econômica do Brasil mostra que a campanha esconde o custo das promessas, mas o ano seguinte cobra a conta. Para fechar o rombo sem estourar as regras fiscais, o governo eleito costuma aumentar impostos, encerrar desonerações e fazer revisões rigorosas em benefícios sociais. Além disso, se o mercado desconfia da saúde das contas públicas, o dólar sobe e o Banco Central é forçado a manter juros altos, encarecendo empréstimos e o cartão de crédito. Se você quer entender como essas decisões políticas mexem direto com o seu bolso todos os dias, se inscreva no canal O Dinheiro Explica e ative as notificações.",
-      "claim_ids": [
-        "C5"
-      ],
+      "narration": "Agora multiplique esse efeito ao longo dos meses e anos. Se com valores pequenos você já elimina meses inteiros, o que acontece quando você monta uma estratégia de amortização consistente? O plano para transformar trinta anos em cinco a oito anos se apoia em três pilares principais. O primeiro é destinar um valor fixo mensal, mesmo que sejam duzentos ou quatrocentos reais que sobraram do orçamento. O segundo é direcionar rendas extraordinárias, como o décimo terceiro salário, bônus e a restituição do Imposto de Renda. E o terceiro é usar o FGTS: pela regra do Sistema Financeiro da Habitação, você pode resgatar o saldo acumulado do FGTS a cada dois anos exclusivamente para abater o saldo devedor da sua casa própria.",
+      "tts": {
+        "delivery": "explain",
+        "cues": [
+          {
+            "text": "O plano para transformar trinta anos em cinco a oito anos se apoia em três pilares principais.",
+            "kind": "emphasis",
+            "intent": "conviction",
+            "arc": "build",
+            "emphasis_word": "pilares"
+          },
+          {
+            "text": "O primeiro é destinar um valor fixo mensal, mesmo que sejam duzentos ou quatrocentos reais que sobraram do orçamento.",
+            "kind": "number",
+            "intent": "reassurance",
+            "arc": "resolve",
+            "emphasis_word": "mensal"
+          },
+          {
+            "text": "como o décimo terceiro salário, bônus e a restituição do Imposto de Renda.",
+            "kind": "emphasis",
+            "intent": "curiosity",
+            "arc": "contrast",
+            "emphasis_word": "restituição"
+          },
+          {
+            "text": "você pode resgatar o saldo acumulado do FGTS a cada dois anos exclusivamente para abater o saldo devedor da sua casa própria.",
+            "kind": "emphasis",
+            "intent": "conviction",
+            "arc": "resolve",
+            "emphasis_word": "FGTS"
+          }
+        ]
+      },
       "visual": {
-        "type": "EDITORIAL",
-        "transition": "cut",
         "stage": {
-          "show_title": false,
+          "show_title": true,
           "initial_camera": {
             "x": 50,
             "y": 50,
             "zoom": 1
           },
           "camera_mode": "manual",
-          "motion_profile": "narrative",
           "elements": [
             {
-              "id": "card_ressaca_fiscal",
-              "kind": "metric",
-              "label": "A Fatura Pós-Eleição",
-              "x": 6,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "initially_visible": true,
-              "icon": "wallet",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "Tarifaço",
-              "value_size": 100,
-              "detail": "Novos tributos e fim de desonerações"
-            },
-            {
-              "id": "card_impacto_cidadao",
+              "id": "card_estrategia_quitacao",
               "kind": "step",
-              "label": "O Bolso do Contribuinte",
-              "x": 52,
-              "y": 18,
+              "icon": "route",
+              "label": "Os Três Pilares da Quitação",
+              "detail": "Aporte mensal contínuo + Renda extra periódica",
+              "value": "MÉTODO 5 ANOS",
+              "x": 6,
+              "y": 14,
               "width": 42,
-              "height": 58,
-              "initially_visible": true,
-              "icon": "person",
+              "height": 74,
               "svg_motion": "trace",
               "sustain": {
                 "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3.2
+                "amplitude": 18,
+                "period_seconds": 4.5
               },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "Você Paga",
-              "value_size": 100,
-              "detail": "Compras mais caras e juros mais altos"
+              "surface": "spotlight"
+            },
+            {
+              "id": "card_uso_fgts",
+              "kind": "step",
+              "icon": "wallet",
+              "label": "Alavancagem do FGTS",
+              "detail": "Uso legal a cada 2 anos para abater saldo devedor no SFH",
+              "value": "A CADA 2 ANOS",
+              "x": 52,
+              "y": 14,
+              "width": 42,
+              "height": 74,
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 18,
+                "period_seconds": 4
+              },
+              "surface": "spotlight"
             }
           ],
           "connections": [
             {
-              "from": "card_ressaca_fiscal",
-              "to": "card_impacto_cidadao",
-              "label": "Repasse direto",
-              "semantic": "transfer",
-              "motion": "flow"
+              "id": "conn_alavancagem_recursos",
+              "from": "card_estrategia_quitacao",
+              "to": "card_uso_fgts",
+              "label": "combinação de recursos",
+              "semantic": "sequence",
+              "motion": "flow",
+              "period_seconds": 3.5
             }
           ]
         },
         "beats": [
           {
-            "anchor": "A história econômica do Brasil mostra",
+            "anchor": "Agora multiplique esse efeito ao longo dos meses",
+            "target_id": "card_estrategia_quitacao",
             "action": "focus",
-            "target_id": "card_ressaca_fiscal",
+            "headline": "O Efeito Acumulado da Amortização",
             "camera": {
               "x": 27,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            },
-            "headline": "O ciclo da ressaca fiscal",
-            "detail": "O contraste entre promessas de campanha e a posse"
+              "y": 50,
+              "zoom": 1.06,
+              "motion_seconds": 0.4
+            }
           },
           {
-            "anchor": "o ano seguinte cobra a conta",
-            "action": "update",
-            "target_id": "card_ressaca_fiscal",
-            "value": "A Conta",
-            "headline": "A cobrança inevitável",
-            "detail": "Ajuste fiscal chega logo após o resultado das urnas"
-          },
-          {
-            "anchor": "o governo eleito costuma aumentar impostos",
-            "action": "update",
-            "target_id": "card_ressaca_fiscal",
-            "value": "Tributos",
-            "headline": "Aumento de impostos",
-            "detail": "Fim de desonerações e criação de novas taxas"
-          },
-          {
-            "anchor": "revisões rigorosas em benefícios sociais",
-            "action": "update",
-            "target_id": "card_ressaca_fiscal",
-            "value": "Cortes",
-            "headline": "Pente-fino nos gastos",
-            "detail": "Corte em auxílios e programas sociais"
-          },
-          {
-            "anchor": "o dólar sobe e o Banco Central é forçado a manter juros altos",
+            "anchor": "Se com valores pequenos você já elimina meses inteiros",
+            "target_id": "card_estrategia_quitacao",
             "action": "focus",
-            "target_id": "card_impacto_cidadao",
-            "camera": {
-              "x": 73,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            },
-            "headline": "Inflação e juros altos",
-            "detail": "Crédito mais caro para financiar e consumir"
+            "headline": "Pequenos Aportes, Grande Impacto",
+            "treatment": "kinetic_type"
           },
           {
-            "anchor": "encarecendo empréstimos e o cartão de crédito",
-            "action": "update",
-            "target_id": "card_impacto_cidadao",
-            "value": "Juros",
-            "headline": "Crédito mais caro",
-            "detail": "O custo do descontrole fiscal no cartão e financiamento"
-          },
-          {
-            "anchor": "decisões políticas mexem direto com o seu bolso",
-            "action": "update",
-            "target_id": "card_impacto_cidadao",
-            "value": "Seu Bolso",
-            "headline": "Impacto no dia a dia",
-            "detail": "Como a política afeta suas finanças pessoais"
-          },
-          {
-            "anchor": "se inscreva no canal O Dinheiro Explica e ative as notificações",
+            "anchor": "o que acontece quando você monta uma estratégia",
+            "target_id": "card_estrategia_quitacao",
             "action": "focus",
-            "target_id": "card_impacto_cidadao",
+            "headline": "Estratégia Consistente de Eliminação de Dívida",
+            "treatment": "kinetic_type"
+          },
+          {
+            "anchor": "O plano para transformar trinta anos em cinco",
+            "target_id": "card_estrategia_quitacao",
+            "action": "focus",
+            "headline": "De 30 Anos Para 5 a 8 Anos",
+            "treatment": "giant_number",
+            "value": "5 A 8 ANOS"
+          },
+          {
+            "anchor": "O primeiro é destinar um valor fixo mensal",
+            "target_id": "card_estrategia_quitacao",
+            "action": "update",
+            "headline": "Pilar 1: Aporte Fixo Todo Mês",
+            "detail": "R$ 200 a R$ 500 extras destinados direto ao saldo",
+            "value": "APORTE MENSAL"
+          },
+          {
+            "anchor": "mesmo que sejam duzentos ou quatrocentos reais",
+            "target_id": "card_estrategia_quitacao",
+            "action": "focus",
+            "headline": "Qualquer Quantia Extra Faz a Diferença",
+            "treatment": "kinetic_type"
+          },
+          {
+            "anchor": "O segundo é direcionar rendas extraordinárias",
+            "target_id": "card_estrategia_quitacao",
+            "action": "focus",
+            "headline": "Pilar 2: Rendas Extras Periódicas",
             "camera": {
               "x": 50,
               "y": 50,
               "zoom": 1,
-              "motion_seconds": 0.5
-            },
-            "headline": "Acompanhe O Dinheiro Explica",
-            "detail": "Educação financeira independente para proteger seu bolso"
-          }
-        ]
-      },
-      "tts": {
-        "delivery": "explain",
-        "cues": [
-          {
-            "text": "o ano seguinte cobra a conta",
-            "kind": "contrast",
-            "intent": "caution",
-            "arc": "contrast",
-            "emphasis_word": "cobra",
-            "pause_before_ms": 120
+              "motion_seconds": 0.4
+            }
           },
           {
-            "text": "o dólar sobe e o Banco Central é forçado a manter juros altos",
-            "kind": "emphasis",
-            "intent": "caution",
-            "arc": "build",
-            "emphasis_word": "altos",
-            "pause_before_ms": 100
+            "anchor": "como o décimo terceiro salário, bônus",
+            "target_id": "card_estrategia_quitacao",
+            "action": "update",
+            "headline": "13º Salário e Restituição do IR",
+            "detail": "Grandes amortizações pontuais que destroem anos de contrato",
+            "value": "13º + IR"
+          },
+          {
+            "anchor": "E o terceiro é usar o FGTS",
+            "target_id": "card_uso_fgts",
+            "action": "focus",
+            "headline": "Pilar 3: O Poder do FGTS Acumulado",
+            "camera": {
+              "x": 73,
+              "y": 50,
+              "zoom": 1.08,
+              "motion_seconds": 0.4
+            }
+          },
+          {
+            "anchor": "você pode resgatar o saldo acumulado do FGTS a cada dois anos",
+            "target_id": "card_uso_fgts",
+            "action": "update",
+            "headline": "FGTS a Cada 2 Anos no SFH",
+            "detail": "Direito garantido por lei para contratos habitacionais",
+            "value": "FGTS BIENAL"
+          },
+          {
+            "anchor": "exclusivamente para abater o saldo devedor",
+            "target_id": "card_uso_fgts",
+            "action": "focus",
+            "headline": "Abatimento Direto do Saldo Principal",
+            "treatment": "giant_number",
+            "value": "DÍVIDA CAI RÁPIDO",
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.4
+            }
           }
         ]
       }
     },
     {
       "id": "scene-05",
-      "index": 5,
       "scene_index": 5,
-      "title": "Conclusão: não existe mágica orçamentária",
-      "narration": "Portanto, a resposta para quem vai pagar a conta do segundo turno é muito simples: é o próprio contribuinte. Não existe dinheiro mágico nem almoço grátis na economia. Quando você ouvir uma promessa generosa nas próximas semanas, a pergunta mais inteligente que você pode fazer não é se ela parece bonita, mas sim qual imposto vai subir ou qual serviço público vai faltar para cobrir aquela fatura.",
-      "claim_ids": [
-        "C5"
-      ],
+      "narration": "Mas atenção a uma regra de ouro essencial de segurança financeira: nunca use todo o seu dinheiro para amortizar sem antes ter uma reserva de emergência sólida guardada em um investimento com liquidez imediata. Se surgir um imprevisto de saúde ou de trabalho, o dinheiro que você amortizou não pode ser sacado de volta do imóvel. Portanto, a resposta para quem quer se livrar de trinta anos de dívida é simples: combinando aportes mensais no prazo, uso do FGTS e a preservação rigorosa da sua reserva de emergência, você liquida o contrato em cinco a oito anos, poupa centenas de milhares de reais e conquista a sua casa própria de verdade.",
+      "tts": {
+        "delivery": "closing",
+        "cues": [
+          {
+            "text": "nunca use todo o seu dinheiro para amortizar sem antes ter uma reserva de emergência sólida",
+            "kind": "emphasis",
+            "intent": "caution",
+            "arc": "contrast",
+            "emphasis_word": "reserva"
+          },
+          {
+            "text": "Se surgir um imprevisto de saúde ou de trabalho, o dinheiro que você amortizou não pode ser sacado de volta do imóvel.",
+            "kind": "contrast",
+            "intent": "caution",
+            "arc": "question",
+            "emphasis_word": "sacado"
+          },
+          {
+            "text": "você liquida o contrato em cinco a oito anos, poupa centenas de milhares de reais",
+            "kind": "number",
+            "intent": "conviction",
+            "arc": "build",
+            "emphasis_word": "milhares"
+          },
+          {
+            "text": "e conquista a sua casa própria de verdade.",
+            "kind": "emphasis",
+            "intent": "conviction",
+            "arc": "resolve",
+            "emphasis_word": "própria"
+          }
+        ]
+      },
       "visual": {
-        "type": "EDITORIAL",
-        "transition": "cut",
         "stage": {
-          "show_title": false,
+          "show_title": true,
           "initial_camera": {
             "x": 50,
             "y": 50,
             "zoom": 1
           },
           "camera_mode": "manual",
-          "motion_profile": "narrative",
           "elements": [
             {
-              "id": "card_conclusao_contribuinte",
+              "id": "card_reserva_seguranca",
               "kind": "metric",
-              "label": "A Verdade do 2º Turno",
-              "x": 6,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "initially_visible": true,
               "icon": "shield",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "Você Paga",
-              "value_size": 96,
-              "detail": "A conta sempre volta para o contribuinte"
-            },
-            {
-              "id": "card_pergunta_critica",
-              "kind": "step",
-              "label": "A Pergunta Certa",
-              "x": 52,
-              "y": 18,
+              "label": "Reserva de Emergência",
+              "detail": "Segurança financeira preservada antes de amortizar",
+              "value": "BLINDAGEM",
+              "x": 6,
+              "y": 14,
               "width": 42,
-              "height": 58,
-              "initially_visible": true,
-              "icon": "search",
+              "height": 74,
               "svg_motion": "trace",
               "sustain": {
                 "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3.2
+                "amplitude": 18,
+                "period_seconds": 4.5
               },
-              "label_size": 44,
-              "surface": "spotlight",
-              "value": "Qual Custo?",
-              "value_size": 96,
-              "detail": "Qual imposto vai subir para pagar essa fatura?"
+              "surface": "spotlight"
+            },
+            {
+              "id": "card_vitoria_quitacao",
+              "kind": "metric",
+              "icon": "house",
+              "label": "Casa Própria Quitada",
+              "detail": "Saldo devedor zerado em 5 a 8 anos sem juros abusivos",
+              "value": "QUITADO!",
+              "x": 52,
+              "y": 14,
+              "width": 42,
+              "height": 74,
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 18,
+                "period_seconds": 4
+              },
+              "surface": "spotlight"
             }
           ],
           "connections": [
             {
-              "from": "card_conclusao_contribuinte",
-              "to": "card_pergunta_critica",
-              "label": "Consciência",
-              "semantic": "sequence",
-              "motion": "flow"
+              "id": "conn_seguranca_quitacao",
+              "from": "card_reserva_seguranca",
+              "to": "card_vitoria_quitacao",
+              "label": "quitação sustentável",
+              "semantic": "cause",
+              "motion": "flow",
+              "period_seconds": 3.5
             }
           ]
         },
         "beats": [
           {
-            "anchor": "Portanto, a resposta para quem vai pagar a conta",
+            "anchor": "Mas atenção a uma regra de ouro essencial",
+            "target_id": "card_reserva_seguranca",
             "action": "focus",
-            "target_id": "card_conclusao_contribuinte",
+            "headline": "Alerta Crítico: Reserva de Emergência",
             "camera": {
               "x": 27,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            },
-            "headline": "A resposta definitiva",
-            "detail": "Quem paga a conta das promessas de campanha?"
+              "y": 50,
+              "zoom": 1.06,
+              "motion_seconds": 0.4
+            }
           },
           {
-            "anchor": "é o próprio contribuinte",
-            "action": "update",
-            "target_id": "card_conclusao_contribuinte",
-            "value": "Você",
-            "headline": "O contribuinte",
-            "detail": "Todo gasto do governo é pago pelo cidadão que trabalha"
-          },
-          {
-            "anchor": "Não existe dinheiro mágico nem almoço grátis",
+            "anchor": "nunca use todo o seu dinheiro para amortizar",
+            "target_id": "card_reserva_seguranca",
             "action": "focus",
-            "target_id": "card_conclusao_contribuinte",
-            "headline": "Sem mágica fiscal",
-            "detail": "Recursos públicos são limitados pela arrecadação"
+            "headline": "Não Zere o Seu Caixa Doméstico",
+            "treatment": "giant_number",
+            "value": "RESERVA PRIMEIRO"
           },
           {
-            "anchor": "Quando você ouvir uma promessa generosa",
+            "anchor": "reserva de emergência sólida guardada",
+            "target_id": "card_reserva_seguranca",
+            "action": "update",
+            "headline": "Segurança em Liquidez Diária",
+            "detail": "Mantenha de 3 a 6 meses de despesas protegidos",
+            "value": "LIQUIDEZ DIÁRIA"
+          },
+          {
+            "anchor": "em um investimento com liquidez imediata",
+            "target_id": "card_reserva_seguranca",
             "action": "focus",
-            "target_id": "card_pergunta_critica",
-            "camera": {
-              "x": 73,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            },
-            "headline": "Olhar crítico do eleitor",
-            "detail": "Analisar a viabilidade das promessas de campanha"
+            "headline": "Reserva de Fácil Acesso",
+            "treatment": "kinetic_type"
           },
           {
-            "anchor": "a pergunta mais inteligente que você pode fazer",
-            "action": "update",
-            "target_id": "card_pergunta_critica",
-            "value": "A Pergunta",
-            "headline": "A pergunta que importa",
-            "detail": "Não o que prometem, mas como pretendem pagar"
-          },
-          {
-            "anchor": "qual imposto vai subir ou qual serviço público vai faltar",
-            "action": "update",
-            "target_id": "card_pergunta_critica",
+            "anchor": "Se surgir um imprevisto de saúde ou de trabalho",
+            "target_id": "card_reserva_seguranca",
+            "action": "focus",
+            "headline": "O Risco da Falta de Liquidez",
             "camera": {
               "x": 50,
               "y": 50,
               "zoom": 1,
-              "motion_seconds": 0.5
-            },
-            "value": "A Fatura",
-            "headline": "A fatura real",
-            "detail": "O impacto final nas contas de cada família brasileira"
-          }
-        ]
-      },
-      "tts": {
-        "delivery": "closing",
-        "cues": [
-          {
-            "text": "Portanto, a resposta para quem vai pagar a conta do segundo turno é muito simples: é o próprio contribuinte",
-            "kind": "contrast",
-            "intent": "conviction",
-            "arc": "resolve",
-            "emphasis_word": "contribuinte",
-            "pause_before_ms": 120
+              "motion_seconds": 0.4
+            }
           },
           {
-            "text": "Não existe dinheiro mágico nem almoço grátis na economia",
-            "kind": "emphasis",
-            "intent": "conviction",
-            "arc": "contrast",
-            "emphasis_word": "mágico",
-            "pause_before_ms": 100
+            "anchor": "o dinheiro que você amortizou não pode ser sacado",
+            "target_id": "card_reserva_seguranca",
+            "action": "focus",
+            "headline": "Dinheiro Amortizado Fica no Imóvel",
+            "treatment": "kinetic_type"
+          },
+          {
+            "anchor": "Portanto, a resposta para quem quer se livrar",
+            "target_id": "card_vitoria_quitacao",
+            "action": "focus",
+            "headline": "O Caminho da Liberdade Financeira",
+            "camera": {
+              "x": 73,
+              "y": 50,
+              "zoom": 1.08,
+              "motion_seconds": 0.4
+            }
+          },
+          {
+            "anchor": "combinando aportes mensais no prazo, uso do FGTS",
+            "target_id": "card_vitoria_quitacao",
+            "action": "focus",
+            "headline": "O Combo Perfeito de Amortização",
+            "treatment": "giant_number",
+            "value": "MÉTODO COMPLETO"
+          },
+          {
+            "anchor": "você liquida o contrato em cinco a oito anos",
+            "target_id": "card_vitoria_quitacao",
+            "action": "update",
+            "headline": "Quitação de 30 Anos em 5 a 8 Anos",
+            "detail": "Contrato encerrado décadas antes do prazo final",
+            "value": "5 A 8 ANOS"
+          },
+          {
+            "anchor": "poupa centenas de milhares de reais",
+            "target_id": "card_vitoria_quitacao",
+            "action": "focus",
+            "headline": "Centenas de Milhares de Reais Poupados",
+            "treatment": "giant_number",
+            "value": "FORTUNA POUPADA"
+          },
+          {
+            "anchor": "conquista a sua casa própria de verdade",
+            "target_id": "card_vitoria_quitacao",
+            "action": "update",
+            "headline": "Sua Casa Própria Livre e Quitada",
+            "detail": "Patrimônio 100% quitado da família",
+            "value": "CASA 100% SUA",
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1,
+              "motion_seconds": 0.4
+            }
           }
         ]
       }

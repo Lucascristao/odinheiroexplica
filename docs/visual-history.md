@@ -72,3 +72,10 @@ Ao criar um novo VideoProject, consulte apenas a seção mais recente para ident
 - foco: demonstrar matematicamente a rigidez das contas públicas, o custo real de promessas de campanha (isenção do IRPF até R$ 5.000 e aumento do salário mínimo somando mais de R$ 100 bilhões anuais) e a regra do arcabouço fiscal que proíbe criar gastos sem compensação;
 - evitar repetir automaticamente: comparação de despesas obrigatórias vs discricionárias em 90/10, promessa de isenção de imposto de renda e o termo ressaca pós-eleitoral como pauta central de episódios subsequentes.
 
+## Financiamento imobiliário: como quitar 30 anos em 5 — 2026-10-06
+
+- universo: crédito habitacional, dívidas bancárias e finanças pessoais;
+- participantes: imóvel residencial, divisão da parcela (juros dominantes vs amortização pequena), custo total em 30 anos (R$ 780 mil), regra legal da amortização extraordinária, redução de prazo vs redução de parcela, simulação da parcela final (R$ 200) abatida com R$ 600, alavancagem com FGTS e blindagem da reserva de emergência;
+- foco: desmistificar a crença de que financiar exige pagar 3 casas ao banco durante 30 anos, comprovar matematicamente que aportes modestos no prazo eliminam parcelas inteiras do fim do contrato com cancelamento de juros futuros e apresentar o método sustentável de quitação em 5 a 8 anos;
+- evitar repetir automaticamente: simulação de financiamento de 30 anos, desmembramento de parcela em juros vs amortização e abatimento de prazo com FGTS como tema central de episódios subsequentes.
+
