@@ -799,7 +799,7 @@ async def synthesize_missing_jobs(
         "voice": voice,
         "sdk_package": "google-genai",
         "sdk_version": sdk_version,
-        "session_strategy": "continuous-multi-turn-with-scene-checkpoints",
+        "session_strategy": VOICE_POLICY["live_runtime"]["session_strategy"],
         "temperature_mode": "provider-default",
         "session_resumption_enabled": False,
         "max_attempts_per_scene": LIVE_MAX_ATTEMPTS,
@@ -823,18 +823,17 @@ async def synthesize_missing_jobs(
     client = genai.Client(api_key=gemini_key)
     config = live_session_config(voice, pronunciations)
     completed: dict[str, dict] = {}
-    session_holder = [None, None]
-    previous_context = None
-
-    try:
-        for position, job in enumerate(jobs):
-            scene_id = job["scene_id"]
-            reusing = session_holder[1] is not None
-            print(
-                f"  [Gemini Live {position + 1}/{len(jobs)}] {scene_id}: "
-                f"{'reaproveitando sessão contínua...' if reusing else 'abrindo sessão...'}",
-                flush=True,
-            )
+    for position, job in enumerate(jobs):
+        scene_id = job["scene_id"]
+        # This holder belongs to one scene. A completed receive loop and its
+        # conversational context must never carry into the following scene.
+        session_holder = [None, None]
+        print(
+            f"  [Gemini Live {position + 1}/{len(jobs)}] {scene_id}: "
+            "abrindo sessão isolada...",
+            flush=True,
+        )
+        try:
             completed[scene_id] = await _synthesize_scene_with_retries(
                 client=client,
                 job=job,
@@ -845,15 +844,13 @@ async def synthesize_missing_jobs(
                 diagnostics=diagnostics,
                 diagnostics_path=diagnostics_path,
                 session_holder=session_holder,
-                previous_context=previous_context,
             )
-            previous_context = job["narration"]
-    finally:
-        if session_holder[0] is not None:
-            try:
-                await session_holder[0].__aexit__(None, None, None)
-            except Exception:
-                pass
+        finally:
+            if session_holder[0] is not None:
+                try:
+                    await session_holder[0].__aexit__(None, None, None)
+                except Exception:
+                    pass
 
     diagnostics["status"] = "success"
     write_live_diagnostics(diagnostics_path, diagnostics)
@@ -1072,9 +1069,9 @@ def main() -> None:
         "speech_profile_fingerprint": speech_fingerprint,
         "output_format": "pcm-s16le-24000-mono-wav",
         "timing_mode": "estimated-character-alignment",
-        "delivery_version": "gemini-live-v4-continuous-session-diagnostics",
+        "delivery_version": "gemini-live-v5-isolated-session-diagnostics",
         "live_sdk_version": installed_google_genai_version(),
-        "live_session_strategy": "continuous-multi-turn-with-scene-checkpoints",
+        "live_session_strategy": VOICE_POLICY["live_runtime"]["session_strategy"],
         "live_temperature_mode": "provider-default",
         "fallback_scene_ids": [],
         "fallback_scene_ids_by_model": {},
