@@ -192,9 +192,10 @@
       "country_context": "global",
       "source_page_url": "https://www.pexels.com/photo/family-doing-shopping-in-the-grocery-store-3985056/",
       "image_url": "https://images.pexels.com/photos/3985056/pexels-photo-3985056.jpeg?cs=srgb&dl=pexels-gustavo-fring-3985056.jpg&fm=jpg",
-      "license": "Pexels License: https://www.pexels.com/license/ — uso e edição permitidos; não insinuar endosso ou conduta negativa dos fotografados.",
+      "license": "Licença Pexels — uso e edição permitidos; sem insinuar endosso ou conduta negativa dos fotografados.",
       "attribution": "Foto: Gustavo Fring / Pexels",
-      "needs_cutout": false
+      "needs_cutout": false,
+      "license_url": "https://www.pexels.com/license/"
     },
     {
       "id": "quantity-rule",
@@ -850,7 +851,7 @@
         }
       ],
       "review": {
-        "content_sha256": "6b7f7fef3c1ec8b281a8f60b87fac866d87673716ed956a432fd2e74a99d5053",
+        "content_sha256": "3b19e49b051a9350b7bf7cd8f541b30be7b4e21709d0dd846308bc3fc3c33dab",
         "findings": [
           {
             "question": "A promessa é entregue sem generalizar o percentual?",

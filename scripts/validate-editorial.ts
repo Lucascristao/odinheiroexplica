@@ -147,6 +147,7 @@ if (scenes.length >= 4 && imageScenes === 0) {
 }
 const sourceIds=new Set((project.sources??[]).map((s:{id:string})=>s.id));
 for(const raw of project.visual_assets??[]){
+  if(raw.attribution && /https?:\/\/|www\.|\[[^\]]+\]\([^)]+\)/i.test(`${raw.attribution} ${raw.license??""}`))packagingError(`Crédito público do asset ${raw.id} contém link. Use crédito/licença textual compatível e preserve o endereço em license_url ou nos metadados técnicos.`);
   const result=visualAssetSchema.safeParse(raw);
   if(!result.success){console.error(result.error.message);failures++;}
   if(raw.type==="source_excerpt"&&!sourceIds.has(raw.source_id)){console.error(`Fonte inexistente para recorte ${raw.id}`);failures++;}

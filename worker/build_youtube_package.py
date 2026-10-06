@@ -99,7 +99,12 @@ def main() -> None:
 
     sources = project.get("sources", [])
     source_titles = unique_nonempty(
-        [source.get("title", "Fonte") for source in sources]
+        [
+            f"{source['publisher']} — {source.get('title', 'Fonte')}"
+            if source.get("publisher")
+            else source.get("title", "Fonte")
+            for source in sources
+        ]
     )
     source_text = "\n".join(f"- {title}" for title in source_titles)
 
