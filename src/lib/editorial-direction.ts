@@ -212,6 +212,20 @@ export function summarizeEditorialDirection(project: any) {
     addWarning("repeated-spotlight", "Os eventos pontuais repetem apenas spotlight: revise se revelam relações e consequências, além de destacar objetos. Sustentação ou legendas podem manter atividade sem entregar uma nova explicação.");
   }
   const stagedScenes = scenes.filter((_: any, index: number) => rawScenes[index].visual?.stage);
+  const simpleFlowScenes = rawScenes.filter((scene: any) => {
+    const stage=scene.visual?.stage,events=scene.visual?.beats??[];
+    return stage?.elements?.length===2 && stage.elements.every((element: any)=>textKinds.has(element.kind)) && stage.connections?.length===1 && !events.some((beat: any)=>beat.operation || beat.moves?.length);
+  });
+  if(simpleFlowScenes.length>1 && simpleFlowScenes.length===stagedScenes.length)addWarning("repeated-two-node-flow", "Todas as cenas do palco usam dois elementos de texto e uma conexão, sem operações ou rearranjos. Zoom, cascata e fluxo não demonstram variedade de composição. Revise o storyboard pela função de cada afirmação; preserve dados, contas e relações em vez de decorar o mesmo diagrama.");
+  const compositions = new Map<string, string[]>();
+  for(const [index,scene] of rawScenes.entries()) {
+    const stage=scene.visual?.stage;
+    if(!stage)continue;
+    const signature=JSON.stringify(stage.elements.map((element: any)=>({kind:textKinds.has(element.kind)?"text":element.kind,x:element.x,y:element.y,width:element.width,height:element.height,surface:element.surface??"default"})).sort((a: any,b: any)=>a.x-b.x||a.y-b.y));
+    const ids=compositions.get(signature)??[];
+    ids.push(String(scene.id??index));compositions.set(signature,ids);
+  }
+  for(const ids of compositions.values())if(ids.length>1)addWarning("repeated-composition", `As cenas ${ids.join(", ")} repetem regiões, superfícies e tipos de conteúdo. Confira se a mesma composição ainda explica relações distintas; trocar rótulos, ícones ou câmera não altera essa estrutura. Este aviso exige revisão editorial, sem cota de formatos nem reprovação automática.`);
   if (stagedScenes.length > 1 && stagedScenes.every((s: any) => s.camera_cues === 0 && s.moves === 0 && !s.sustained_choices.some((choice: any) => choice.amplitude > 0) && !s.connection_motion.some((edge: any) => ["flow", "pulse"].includes(edge.motion)) && !s.actuation_choices.length)) addWarning("stationary-plan", "Todas as cenas mantêm câmera e posições dos objetos, sem sustentação, fluxo contínuo ou atuação declarados. Revise onde o quadro estável ajuda a ler e onde um percurso ou transformação explica melhor a relação. Legendas não substituem essa explicação; a escolha é da pauta, sem cota de movimentos.");
   const durations = beats.map((b: any) => b.motion_seconds);
   if (durations.length > 1 && durations.every((n: any) => n !== undefined && n === durations[0])) {

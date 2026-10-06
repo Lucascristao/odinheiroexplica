@@ -31,6 +31,8 @@ export const stageElementSchema = z.object({
   text_region: regionSchema.optional(),
   label_size: z.number().min(32).max(120).optional(),
   value_size: z.number().min(48).max(260).default(72),
+  icon_size: z.number().min(48).max(500).optional(),
+  content_layout: z.enum(["row", "column"]).optional(),
   object_type: z.enum(["wallet", "bank", "receipt", "component", "factory", "truck", "package", "atm", "cash", "branch", "hub", "data", "store", "phone", "terminal"]).optional(),
   label: z.string().min(1).max(80),
   detail: z.string().max(160).optional(),
@@ -109,6 +111,8 @@ export const editorialStageSchema = z.object({
       if(!parent || !region || !["photo","object"].includes(parent.kind) || !["label","metric"].includes(element.kind) || element.detail || element.icon || parent.overlay_on || element.x<parent.x+region.x*parent.width/100 || element.y<parent.y+region.y*parent.height/100 || element.x+element.width>parent.x+(region.x+region.width)*parent.width/100 || element.y+element.height>parent.y+(region.y+region.height)*parent.height/100)ctx.addIssue({code:"custom",path:["elements",index],message:"Camada de texto precisa caber na região reservada de uma foto/objeto, sem ícone ou detalhe."});
     }
     if (element.kind === "object" && !element.object_type) ctx.addIssue({code: "custom", path: ["elements", index, "object_type"], message: "Objeto precisa de object_type."});
+    if(element.icon_size !== undefined && (!element.icon || ["photo", "object", "source_excerpt", "chart"].includes(element.kind)))ctx.addIssue({code:"custom",path:["elements",index,"icon_size"],message:"icon_size exige um elemento de texto com icon; fotos, objetos e gráficos usam a própria região."});
+    if(element.content_layout && ["photo", "object", "source_excerpt", "chart"].includes(element.kind))ctx.addIssue({code:"custom",path:["elements",index,"content_layout"],message:"content_layout organiza ícone e texto; mídia, objetos e gráficos usam a própria composição."});
     if(element.svg_motion==="assemble"&&element.kind!=="object")ctx.addIssue({code:"custom",path:["elements",index,"svg_motion"],message:"Montagem por partes exige um objeto SVG; ícones usam trace ou none."});
     if(element.surface==="paper" && !["photo","object"].includes(element.kind))ctx.addIssue({code:"custom",path:["elements",index,"surface"],message:"Papel claro é suporte da mídia/objeto, sem colocar texto branco sobre papel."});
     if(element.sustain && !["photo","object"].includes(element.kind) && !element.icon && !["glow","spotlight"].includes(element.surface??""))ctx.addIssue({code:"custom",path:["elements",index,"sustain"],message:"Sustentação move mídia/ícone ou iluminação autoral; rótulos, números e documentos permanecem estáveis para leitura."});

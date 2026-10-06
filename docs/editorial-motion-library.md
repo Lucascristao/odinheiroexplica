@@ -4,6 +4,8 @@
 
 Esta biblioteca existe para ampliar a linguagem do canal, não para criar um novo template fixo.
 
+Planeje a demonstração com `editorial-scene-design.md`. Elementos com icon aceitam `icon_size:48..500` e `content_layout:row|column`; use região suficiente para uma arte protagonista de 250–500 px, preservando texto legível. `surface:none` remove a bolha do ícone. Valores ausentes mantêm a composição compatível dos episódios existentes.
+
 Cada vídeo tem composição e direção próprias. Escolha recursos conforme o que precisa ser explicado; não percorra esta biblioteca como uma lista obrigatória. O diagnóstico de direção mostra decisões executáveis e aponta repetições para revisão, sem exigir quantidade mínima de efeitos ou mudanças por segundo.
 
 Ela foi desenhada a partir de três referências técnicas estudadas em setembro de 2026:

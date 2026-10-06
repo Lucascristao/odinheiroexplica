@@ -13,6 +13,8 @@ export function partitionLayoutIssues<T extends LayoutIssue>(issues: T[], mode: 
 
 export function layoutRepairGuidance(code: string): string {
   switch (code) {
+    case "icon-capacity":
+      return "Amplie a região do protagonista ou use content_layout column; reserve espaço para ícone e texto sem reduzir a arte apenas para passar no gate.";
     case "text-capacity": case "title-capacity": case "dom-text-capacity": case "signal-capacity":
       return "Amplie a região ou ajuste o texto visual preservando o sentido; mantenha a fonte mínima e o roteiro.";
     case "connection-space": case "operation-space": case "equation-space":

@@ -129,8 +129,6 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
         const opacity = (element.visible ? reveal : element.wasVisible ? 1-reveal : 0) * cameraAlpha * (takeover && !selected ? 0.15 : 1);
         if (opacity === 0) return null;
 
-        const isWideBanner = !isExcerpt && (element.width >= 50 && element.height <= 26);
-        const stacked = element.kind === "step" && !isWideBanner;
         // Surface follows the information: large figures and causal steps live
         // directly in the scene; only notes and small figures need a panel.
         const isHeroMetric = element.kind === "metric" && element.width >= 40 && !element.overlay_on;
@@ -151,7 +149,7 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
           : undefined;
 
         const content=nodeContent(element,box,isRouteNode);
-        const {padding:cardPadding,iconSize,innerW,valueH,detailH,labelH}=content;
+        const {wide:isWideBanner,stacked,padding:cardPadding,iconSize,innerW,valueH,detailH,labelH}=content;
 
         const cueProgress = checkedStage.motion_profile === "static" ? 1 : interpolate(frame - element.cueFrame, [0, element.cueDuration], [0, 1], clamp);
         const cueEase = cueProgress * cueProgress * (3 - 2 * cueProgress);
@@ -201,7 +199,7 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
               boxSizing: "border-box",
               display: "flex",
               flexDirection: isWideBanner ? "row" : stacked ? "column" : "row",
-              alignItems: isWideBanner ? "center" : stacked ? "flex-start" : "center",
+              alignItems: stacked && element.content_layout !== "column" ? "flex-start" : "center",
               justifyContent: isWideBanner ? "flex-start" : "center",
               gap: element.icon ? 20 : 0,
             }}
@@ -275,9 +273,9 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
                       justifyContent: "center",
                       width: iconSize + 12,
                       height: iconSize + 12,
-                      borderRadius: "50%",
-                      background: selected ? "rgba(255, 189, 25, 0.16)" : "rgba(255, 255, 255, 0.05)",
-                      boxShadow: selected ? "0 0 20px rgba(255, 189, 25, 0.35)" : undefined,
+                      borderRadius: element.surface === "none" ? undefined : "50%",
+                      background: element.surface === "none" ? undefined : selected ? "rgba(255, 189, 25, 0.16)" : "rgba(255, 255, 255, 0.05)",
+                      boxShadow: element.surface !== "none" && selected ? "0 0 20px rgba(255, 189, 25, 0.35)" : undefined,
                       flexShrink: 0,
                       clipPath:motion.clip,
                     }}

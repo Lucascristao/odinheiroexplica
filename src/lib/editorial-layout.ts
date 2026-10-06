@@ -2,7 +2,7 @@ import {resolveStage, resolveStageCamera, type EditorialStage, type StageEvent} 
 import {composeText, textMinimums, type MeasureWidth, type TextLayout, type TextRole} from "./editorial-typography";
 import {chartLayout} from "./editorial-chart-layout";
 
-export const LAYOUT_VERSION = "2026-10-01.2";
+export const LAYOUT_VERSION = "2026-10-06.1";
 export type Box = {x: number; y: number; w: number; h: number};
 export type Point = {x: number; y: number};
 export type LayoutIssue = {code: string; element?: string; connection?: string; role?: string; message: string};
@@ -46,12 +46,14 @@ export function transformedRect(e: ResolvedElement, frame: number, canvas: {widt
   return {x:b.x+b.w*(1-m.scale)/2+m.x,y:b.y+b.h*(1-m.scale)/2+m.y,w:b.w*m.scale,h:b.h*m.scale};
 }
 export function nodeContent(e: ResolvedElement, box: Box, routeNode: boolean) {
-  const wide=e.kind!=="source_excerpt"&&e.width>=50&&e.height<=26;
-  const stacked=e.kind==="step"&&!wide;
+  const banner=e.kind!=="source_excerpt"&&e.width>=50&&e.height<=26;
+  const stacked=e.content_layout ? e.content_layout==="column" : e.kind==="step"&&!banner;
+  const wide=banner&&!stacked;
   const hero=e.kind==="metric"&&e.width>=40&&!e.overlay_on;
   const card=e.kind==="note"||(e.kind==="metric"&&!hero);
   const padding=e.kind==="source_excerpt"?0:card&&!routeNode?24:16;
-  const iconSize=e.icon?(wide?48:Math.min(130,Math.max(68,box.h*.38))):0;
+  // Explicit sizes remain exact; insufficient space is reported by the audit.
+  const iconSize=e.icon?(e.icon_size??(wide?48:Math.min(130,Math.max(68,box.h*.38)))):0;
   const iconSpace=e.icon?iconSize+12+20:0;
   const innerW=Math.max(1,box.w-padding*2-(stacked?0:iconSpace));
   const innerH=Math.max(1,box.h-padding*2-(stacked?iconSpace:0));
@@ -285,6 +287,8 @@ export function layoutStage(stage:EditorialStage,beats:StageEvent[],frame:number
   const issues:LayoutIssue[]=[];
   if(stage.show_title&&title&&!composeText(title,canvas.width,90,46,textMinimums.title,measure).fits)issues.push({code:"title-capacity",role:"title",message:"Título do palco não cabe na fonte mínima; amplie a área ou revise a composição."});
   for(const e of state.elements) {
+    const box=elementRect(e,canvas),content=nodeContent(e,box,routeIds.has(e.id));
+    if(e.icon && content.iconSize+12>Math.min(box.w-content.padding*2,box.h-content.padding*2))issues.push({code:"icon-capacity",element:e.id,message:`Ícone de ${content.iconSize} px não cabe na região; amplie a composição preservando o tamanho protagonista e espaço para o texto.`});
     for(const t of nodeTexts(e,elementRect(e,canvas),routeIds.has(e.id),measure)) if(!t.layout.fits)issues.push({code:"text-capacity",element:e.id,role:t.role,message:`“${t.text}” exige ${Math.ceil(t.layout.requiredWidth)} × ${Math.ceil(t.layout.requiredHeight)} px na fonte mínima ${t.layout.size}; disponíveis ${Math.floor(t.layout.width)} × ${Math.floor(t.layout.height)} px.`});
     if(e.kind==="chart"&&e.chart){const b=elementRect(e,canvas);chartLayout(e.chart,b.w-32,b.h-32,e.label,measure).problems.forEach(message=>issues.push({code:"chart-capacity",element:e.id,message}));}
     if(["photo","source_excerpt"].includes(e.kind)&&!e.asset_file)issues.push({code:"missing-visual-asset",element:e.id,message:"Imagem/recorte precisa do arquivo real preparado; o motor não substitui evidência por texto inventado."});

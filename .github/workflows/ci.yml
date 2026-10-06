@@ -7,6 +7,8 @@ on:
 
 jobs:
   build:
+    # Explicit direct production leaves permanent suites available for other runs.
+    if: github.event_name != 'push' || !contains(github.event.head_commit.message, '[production direct]')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
