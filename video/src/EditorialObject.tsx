@@ -38,7 +38,7 @@ const Actuation = ({kind, progress, x, y, accent, locked, lockFrom, lockProgress
 // Original schematic illustrations, assembled at their reveal cue. These are
 // primitives for the authored scene, not a mandatory motion template. Focusing
 // an object never hides/rebuilds it, changes a value or starts an ambient loop.
-export const EditorialObject = ({type, accent, progress, emphasisProgress = 1, active = false, motion = "assemble", actuation, actuationProgress = 1, locked, lockFrom, lockProgress}: {
+export const EditorialObject = ({type, accent, progress, emphasisProgress = 1, active = false, motion = "assemble", actuation, actuationProgress = 1, locked, lockFrom, lockProgress, contentFraction = 1}: {
   type: NonNullable<StageElement["object_type"]>;
   accent: string;
   progress: number;
@@ -50,6 +50,7 @@ export const EditorialObject = ({type, accent, progress, emphasisProgress = 1, a
   locked?: boolean;
   lockFrom?: boolean;
   lockProgress?: number;
+  contentFraction?: number;
 }) => {
   const layers = motion === "assemble" ? progress : 1;
   const strokes = motion === "none" ? 1 : progress;
@@ -59,7 +60,7 @@ export const EditorialObject = ({type, accent, progress, emphasisProgress = 1, a
   const countWave = actuation === "count" && action > 0 && action < 1 ? Math.sin(Math.PI * action) : 0;
   const actuationAnchor: Record<NonNullable<StageElement["object_type"]>, [number, number]> = {
     factory:[184,252],truck:[307,246],package:[260,178],component:[200,201],receipt:[257,282],wallet:[293,243],bank:[200,96],
-    atm:[200,131],cash:[230,202],branch:[200,251],hub:[200,190],data:[200,184],store:[242,254],phone:[200,154],terminal:[200,142],
+    atm:[200,131],cash:[230,202],branch:[200,251],hub:[200,190],data:[200,184],store:[242,254],phone:[200,154],terminal:[200,142],grocery_package:[270,210],
   };
   const actionAnchor = actuation === "tap" ? type === "atm" ? [177,207] : type === "phone" ? [200,266] : type === "terminal" ? [247,288] : actuationAnchor[type] : actuationAnchor[type];
   return <svg data-svg-motion={motion} data-object-type={type} aria-hidden viewBox="0 0 400 400" width="100%" height="100%">
@@ -95,6 +96,22 @@ export const EditorialObject = ({type, accent, progress, emphasisProgress = 1, a
         </Layer>)}
         <Trace d="M67 152 H224 M67 174 H224" stroke="#829996" width={6} progress={strokes} start={0.4} end={0.96} />
         <FocusTrace d="M255 169 H302 L359 231 V285" progress={emphasisProgress} emphasis={emphasis} />
+      </>}
+      {type === "grocery_package" && <>
+        <Layer name="pouch" progress={layers} end={0.62} y={8}>
+          <path d="M99 58 H301 L286 110 L312 330 Q200 354 88 330 L114 110 Z" fill="#252b32" stroke="#f6f7f8" strokeWidth="5" />
+          <path d="M99 58 H301 L291 89 H109 Z" fill={accent} />
+          <path d="M111 109 H289" stroke="#8b929a" strokeWidth="5" />
+        </Layer>
+        <Layer name="window" progress={layers} start={0.16} end={0.78}>
+          <rect x="125" y="150" width="150" height="160" rx="12" fill="#101317" stroke="#89949e" strokeWidth="3" />
+          <svg x="133" y="158" width="134" height="144" viewBox="0 0 134 144" overflow="hidden">
+            <rect data-package-content="true" x="0" y={144*(1-contentFraction)} width="134" height={144*contentFraction} fill={accent} />
+            {[0,1,2,3,4,5].map(row=><path key={row} d={`M8 ${139-row*24} H126`} stroke="#101317" strokeWidth="3" opacity={Math.max(0,Math.min(1,(contentFraction-row/6)*6))} />)}
+          </svg>
+          <path d="M131 131 H269" stroke="#f6f7f8" strokeWidth="7" strokeLinecap="round" />
+        </Layer>
+        <FocusTrace d="M99 58 H301 M125 310 H275" progress={emphasisProgress} emphasis={emphasis} />
       </>}
       {type === "package" && <>
         <Layer name="left-face" progress={layers} end={0.64} y={5}>

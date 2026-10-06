@@ -1,5 +1,14 @@
 # Histórico de direção visual
 
+## Supermercado: o aumento de preço que você não vê — 2026-10-06
+
+- direção preparada para produção real; avaliação do MP4 pendente;
+- universo: embalagem, comparação na prateleira e informação ao consumidor;
+- embalagem esquemática persiste e perde conteúdo; sem marca real ou acusação específica;
+- contas livres com operação de divisão, números protagonistas sem cards, barras históricas reveladas na fala, fotografia contextual licenciada e artigo legal capturado de fonte real;
+- valores hipotéticos permanecem identificados; médias de 2022/2023 não são cotação atual;
+- evitar repetir automaticamente: embalagem que encolhe, conta R$ 10/500 g e composição das três colunas. Reutilizar capacidades de animação conforme a próxima história.
+
 Este arquivo existe apenas para evitar repetição estética entre vídeos. Ele não deve servir como molde narrativo nem influenciar a escolha de pauta.
 
 ## Bets proibidas — 2026-09-28
@@ -78,4 +87,3 @@ Ao criar um novo VideoProject, consulte apenas a seção mais recente para ident
 - participantes: imóvel residencial, divisão da parcela (juros dominantes vs amortização pequena), custo total em 30 anos (R$ 780 mil), regra legal da amortização extraordinária, redução de prazo vs redução de parcela, simulação da parcela final (R$ 200) abatida com R$ 600, alavancagem com FGTS e blindagem da reserva de emergência;
 - foco: desmistificar a crença de que financiar exige pagar 3 casas ao banco durante 30 anos, comprovar matematicamente que aportes modestos no prazo eliminam parcelas inteiras do fim do contrato com cancelamento de juros futuros e apresentar o método sustentável de quitação em 5 a 8 anos;
 - evitar repetir automaticamente: simulação de financiamento de 30 anos, desmembramento de parcela em juros vs amortização e abatimento de prazo com FGTS como tema central de episódios subsequentes.
-

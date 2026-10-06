@@ -12,6 +12,14 @@
    Aguarde a escolha do usuário antes de escrever `video/data/daily.json` e iniciar o render.
 3. **Preservação e Potencialização da Pauta Escolhida**: Uma vez que o usuário escolheu ou aprovou uma pauta na conversa, preserve esse assunto e aplique toda essa engenharia viral no título final, na thumbnail, na abertura e no ritmo do roteiro. Não troque de tema sem pedido explícito.
 
+### Conflito concreto antes da seleção
+
+Cada candidata deve conter uma situação reconhecível do bolso, uma crença contrariada por um fato verificável e uma resposta que possa ser demonstrada. Resolva internamente: o que a pessoa acredita, o que acontece de diferente, qual consequência ela sofre e qual prova/conta/objeto torna a descoberta compreensível. Um aviso de serviço, lista de benefícios ou tutorial genérico não basta por ter palavras como "dinheiro" ou "perder".
+
+Referência de qualidade aprovada: **"Supermercado: o aumento de preço que você não vê"**, thumbnail **"CADÊ O RESTO?"**, abertura **"O preço não mudou. Então por que você está pagando mais?"**. A força nasce da contradição entre preço da embalagem e preço por quantidade. Reutilize o critério, nunca o tema ou a fórmula nas próximas pautas.
+
+Prefira assunto reconhecível cedo no título e tensão específica a adjetivos alarmistas. Título, thumbnail e gancho vendem a mesma descoberta, entregue no roteiro. Não transformar hipótese em fato, caso isolado em aumento universal, redução informada em fraude, risco em perda certa ou exemplo numérico em estatística observada. Potencial editorial não é CTR medido nem promessa de viralidade.
+
 Arquivos de piloto, testes, demonstrações e exemplos anteriores existem apenas para validar a tecnologia. Nunca use o assunto, a estrutura narrativa, o título, a thumbnail, os visuais ou o enquadramento de um piloto como molde ou preferência para um novo vídeo. Cada pauta deve nascer da solicitação atual e da pesquisa atual. O piloto do Pix é somente um teste técnico e não deve influenciar a seleção ou a forma dos próximos vídeos.
 
 Pesquise profundamente acontecimentos recentes ligados a dinheiro, empresas, economia, bancos, fintechs, tecnologia com impacto econômico e grandes movimentos empresariais relevantes para o público brasileiro.

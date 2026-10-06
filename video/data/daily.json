@@ -1,1820 +1,2366 @@
 {
-  "project_id": "como-quitar-financiamento-de-30-anos-em-5-2026-10-06",
-  "title": "Financiamento imobiliário: como quitar 30 anos em 5",
   "version": "1.0",
+  "project_id": "supermercado-aumento-que-voce-nao-ve-2026-10-06",
+  "title": "Supermercado: o aumento de preço que você não vê",
   "presenter": {
     "gender": "male",
     "name": "Roberto"
   },
   "speech": {
     "pronunciations": {
-      "SAC": "saqui",
-      "SFH": "esse éfe agá",
-      "CDC": "cê dê cê",
-      "FGTS": "éfe gê tê esse",
-      "TR": "tê érre",
-      "Bacen": "bacén",
-      "CMN": "cê eme ene",
-      "Price": "práice",
-      "MIP": "mipe",
-      "DFI": "dê éfe i"
+      "Horus": "hórus",
+      "Procon": "procon"
     },
     "ignore_pronunciation_terms": []
   },
   "story": {
-    "subject": "A matemática real do financiamento imobiliário de 30 anos no Brasil, a divisão da parcela entre amortização do principal e cobrança de juros sobre o saldo devedor, e a estratégia da amortização extraordinária focada em redução de prazo, permitindo quitar o contrato décadas mais cedo e economizar centenas de milhares de reais.",
-    "angle": "Quebrar a crença de que financiar um imóvel condena a família a pagar três casas ao banco durante 30 anos e demonstrar, na prática e sem enrolação, por que pequenas quantias extras eliminam parcelas inteiras do final do contrato com desconto de juros futuros.",
-    "promise": "Explicar como funciona a composição da prestação bancária, a diferença crucial entre amortizar no prazo ou na parcela, os direitos garantidos pelo Código de Defesa do Consumidor e um plano prático com pequenas quantias e FGTS para liquidar a dívida muito antes do prazo.",
-    "why_now": "Com taxas de juros no crédito imobiliário na faixa de dez a onze por cento ao ano, o custo acumulado em 30 anos ultrapassa o dobro do valor emprestado, tornando a amortização antecipada a decisão financeira mais lucrativa e protetiva para as famílias.",
-    "category": "personal_finance"
-  },
-  "packaging": {
-    "titles": [
-      {
-        "text": "Financiamento imobiliário: como quitar 30 anos em 5",
-        "platform": "youtube"
-      }
-    ],
-    "thumbnails": [
-      {
-        "headline": "CORTE 25 ANOS!",
-        "style": "editorial_bold"
-      }
-    ],
-    "strategy": {
-      "click_reason": "Ensina a estratégia matemática e legal para liquidar um financiamento de 30 anos em poucos anos sem ser engolido pelos juros bancários.",
-      "visual_focus": "Casa residencial moderna sob iluminação dramática com carimbo de alívio 'CORTE 25 ANOS' e números de saldo devedor abatidos em amarelo #FFBD19.",
-      "curiosity_gap": "Como um aporte extra de apenas algumas centenas de reais consegue abater parcelas inteiras do final e eliminar décadas de dívida.",
-      "mobile_readability": "Texto curto e impactante de 3 palavras em alto contraste perfeitamente legível na tela do celular.",
-      "anti_clickbait_check": "O vídeo entrega rigorosamente a matemática da amortização no saldo devedor, as regras da Caixa e Bacen e simulações com cálculos exatos.",
-      "repetition_check": "Pauta inédita sobre crédito habitacional e amortização extraordinária, sem repetir nenhum dos temas anteriores do canal.",
-      "youtube_safety_check": "Conteúdo estritamente educativo sobre planejamento financeiro familiar e direitos do consumidor bancário, sem promessas irrealistas."
-    }
-  },
-  "publication": {
-    "description": "Financiamento imobiliário não precisa ser uma sentença de 30 anos de dívida e juros para o banco. Neste vídeo, você entende a matemática real da sua parcela e como a amortização extraordinária permite quitar sua casa própria muito mais rápido.\n\n- Como a parcela é dividida entre amortização do principal, juros e seguros\n- O custo real de 30 anos onde você chega a pagar quase três imóveis\n- A diferença entre amortizar reduzindo o prazo ou reduzindo o valor da parcela\n- O plano prático usando pequenas quantias e o FGTS para eliminar anos de dívida",
-    "engagement_question": "Você já fez alguma amortização no seu financiamento imobiliário ou ainda paga apenas a parcela normal?",
-    "hashtags": [
-      "#FinanciamentoImobiliario",
-      "#EducacaoFinanceira",
-      "#ODinheiroExplica"
-    ],
-    "seo": {
-      "primary_keyword": "Financiamento imobiliário",
-      "secondary_keywords": [
-        "amortização extraordinária",
-        "quitar financiamento",
-        "tabela SAC",
-        "tabela Price",
-        "Caixa Habitação"
-      ],
-      "search_intent": "Informacional e educacional sobre como pagar menos juros e quitar financiamento imobiliário antecipadamente.",
-      "description_strategy": "Palavra-chave principal nas primeiras duas palavras, gancho inicial em 2 frases diretas e 4 bullets de alto valor educativo."
-    }
+    "subject": "Reduflação no supermercado: menos quantidade, custo maior por quilo e informação na embalagem",
+    "angle": "A mesma etiqueta pode comprar menos; a unidade de medida revela o aumento escondido.",
+    "promise": "Demonstrar o custo por quantidade, distinguir exemplos de dados históricos e explicar o aviso ao consumidor.",
+    "why_now": "Reportagem local de 28/09/2026 retoma a percepção cotidiana da reduflação; o episódio usa dados históricos identificados para explicar o mecanismo.",
+    "category": "money"
   },
   "sources": [
     {
       "id": "S1",
-      "title": "Caixa Econômica Federal — Regras de Amortização e Liquidação Antecipada do Crédito Imobiliário",
-      "url": "https://www.caixa.gov.br/voce/habitacao/amortizacao-e-liquidacao/Paginas/default.aspx",
-      "publisher": "Caixa Econômica Federal",
-      "publisher_class": "official",
-      "editorial_role": "regulatory_standard",
+      "title": "Portaria nº 392, de 29 de setembro de 2021",
+      "url": "https://bibliotecadigital.mj.gov.br/bitstream/1/5525/2/PRT_GM_2021_392.html",
+      "publisher": "Ministério da Justiça e Segurança Pública",
       "source_type": "primary",
-      "notes": "Regras oficiais de amortização extraordinária pelo App Habitação Caixa, garantindo opções de redução de prazo ou prestação."
+      "publisher_class": "official",
+      "editorial_role": "primary_document",
+      "published_at": "2021-09-30",
+      "notes": "Artigos 2, 3 e 4: informação da redução, painel principal e prazo mínimo de seis meses. Exceção art. 3 §2 preservada. Repositório consultado em 06/10/2026 não registra revogação expressa; não converter norma em resultado fiscalizatório."
     },
     {
       "id": "S2",
-      "title": "Banco Central do Brasil — Resolução CMN nº 3.516/2007 e Liquidação Antecipada de Débitos",
-      "url": "https://www.bcb.gov.br/estabilidadefinanceira/liquidacaoantecipada",
-      "publisher": "Banco Central do Brasil",
-      "publisher_class": "official",
-      "editorial_role": "regulatory_standard",
+      "title": "Mesmo preço, menor quantidade: entenda o que é a reduflação e como denunciar",
+      "url": "https://www.procon.sc.gov.br/mesmo-preco-menor-quantidade-entenda-o-que-e-a-reduflacao-e-como-denunciar/",
+      "publisher": "Procon Santa Catarina",
       "source_type": "primary",
-      "notes": "Norma do Conselho Monetário Nacional que proíbe cobrança de tarifas na liquidação antecipada e assegura redução proporcional de juros."
+      "publisher_class": "official",
+      "editorial_role": "technical_analysis",
+      "published_at": "2025-03-06",
+      "notes": "Conceito e orientação de comparar kg/litro/unidade, legibilidade e denúncia. Não usamos a estimativa de perda de poder de compra sem metodologia integral."
     },
     {
       "id": "S3",
-      "title": "Conselho Curador do FGTS — Utilização do FGTS na Moradia Própria e Amortização de Saldo Devedor",
-      "url": "https://www.fgts.gov.br/Pages/sobre-fgts/moradia-propria.aspx",
-      "publisher": "Conselho Curador do FGTS",
-      "publisher_class": "official",
-      "editorial_role": "regulatory_standard",
-      "source_type": "primary",
-      "notes": "Regras legais que permitem utilizar o saldo do FGTS a cada dois anos para amortizar ou liquidar financiamentos no SFH."
+      "title": "Reduflação: produtos diminuem de tamanho, mas preços se mantêm e pesam para consumidores em Belém",
+      "url": "https://www.oliberal.com/economia/reduflac-o-produtos-diminuem-de-tamanho-mas-precos-se-mantem-e-pesam-para-consumidores-em-belem-1.1172097",
+      "publisher": "O Liberal",
+      "source_type": "secondary",
+      "publisher_class": "independent_journalism",
+      "editorial_role": "independent_reporting",
+      "published_at": "2026-09-28",
+      "notes": "Relato local recente e dados históricos Horus; não generalizar percepção dos entrevistados nem confundir data da reportagem com período do levantamento."
     },
     {
       "id": "S4",
-      "title": "InfoMoney — Amortização de financiamento imobiliário: vale a pena reduzir o prazo ou a parcela?",
-      "url": "https://www.infomoney.com.br/minhas-financas/amortizacao-de-financiamento-imobiliario-vale-a-pena-reduzir-prazo-parcela/",
-      "publisher": "InfoMoney",
-      "publisher_class": "independent_journalism",
-      "editorial_role": "journalistic_coverage",
+      "title": "Os vilões que fazem os produtos diminuírem de tamanho e ficarem mais caros",
+      "url": "https://www.moneytimes.com.br/os-viloes-que-fazem-os-produtos-diminuirem-de-tamanho-e-ficarem-mais-caros/",
+      "publisher": "Money Times",
       "source_type": "secondary",
-      "notes": "Análise técnica demonstrando a economia de juros obtida ao amortizar no prazo em comparação com a redução da prestação."
+      "publisher_class": "independent_journalism",
+      "editorial_role": "data_context",
+      "published_at": "2023-10-13",
+      "notes": "Horus citado em reportagem: janeiro-agosto de 2023 contra mesmo período de 2022; chocolate médio 167,6/143,7g e R$15,85/R$16,78. Cruzado com O Liberal. O levantamento primário integral não foi obtido; atribuir às reportagens e preservar média e período."
     },
     {
       "id": "S5",
-      "title": "Gazeta do Povo — Amortização de financiamento imobiliário: como funciona para reduzir prazo ou parcela",
-      "url": "https://www.gazetadopovo.com.br/bom-gourmet/imoveis/amortizacao-financiamento-imobiliario-como-funciona/",
+      "title": "Bloomberg faz paralelo de Lula e Biden e aponta reduflação como empecilho para reeleição do petista",
+      "url": "https://www.gazetadopovo.com.br/mundo/bloomberg-faz-paralelo-de-lula-e-biden-e-aponta-reduflacao-como-empecilho-para-reeleicao-do-petista/",
       "publisher": "Gazeta do Povo",
+      "source_type": "context",
       "publisher_class": "independent_journalism",
-      "editorial_role": "market_counterpoint",
+      "editorial_role": "independent_reporting",
+      "published_at": "2026-04-14",
+      "notes": "Consulta de linha editorial à direita: percepção cotidiana do custo de vida pode contrastar com indicadores e mensagens oficiais. Interpretação eleitoral é argumento da cobertura, não dado causal ou prova de preços e não entra como fato no roteiro."
+    },
+    {
+      "id": "S6",
+      "title": "Produto diminui, mas preço sobe: veja os itens de supermercado que mais sofreram reduflação este ano",
+      "url": "https://www.cnnbrasil.com.br/economia/seu-bolso/meu-dinheiro/produto-diminui-mas-preco-sobe-veja-os-itens-de-supermercado-que-mais-sofreram-reduflacao-este-ano/",
+      "publisher": "CNN Brasil",
       "source_type": "secondary",
-      "notes": "Cobertura de linha editorial à direita detalhando a matemática de juros sobre saldo devedor e alertando sobre preservar a reserva de emergência antes de amortizar."
+      "publisher_class": "independent_journalism",
+      "editorial_role": "technical_analysis",
+      "notes": "Explicação atribuída a especialista sobre custos, inclusive transporte, e redução não proibida quando informada. Não reproduzir percentuais derivados inconsistentes nem atribuir motivo a todas as marcas."
+    },
+    {
+      "id": "S7",
+      "title": "Family Doing Shopping in the Grocery Store",
+      "url": "https://www.pexels.com/photo/family-doing-shopping-in-the-grocery-store-3985056/",
+      "publisher": "Gustavo Fring / Pexels",
+      "source_type": "context",
+      "publisher_class": "other",
+      "editorial_role": "other",
+      "published_at": "2020-03-22",
+      "license": "Pexels License — https://www.pexels.com/license/",
+      "notes": "Imagem contextual de compra, país não especificado. Não representa fraude, redução de marca ou endosso dos fotografados."
     }
   ],
   "claims": [
     {
       "id": "C1",
-      "statement": "A parcela do financiamento imobiliário é dividida entre amortização do saldo devedor, juros sobre a dívida restante e seguros obrigatórios como MIP e DFI.",
+      "text": "Redução de quantidade com preço mantido eleva custo por unidade de medida; o mecanismo é chamado de reduflação.",
       "source_ids": [
-        "S1",
-        "S4"
-      ],
-      "framing": "verified_fact",
-      "confidence": "high",
-      "verification_status": "verified",
-      "attribution_required": false
-    },
-    {
-      "id": "C2",
-      "statement": "Em um financiamento tradicional de 30 anos (360 meses), o total acumulado de juros e encargos pagos ao banco pode superar o dobro do valor original emprestado.",
-      "source_ids": [
-        "S1",
-        "S5"
-      ],
-      "framing": "verified_fact",
-      "confidence": "high",
-      "verification_status": "verified",
-      "attribution_required": false
-    },
-    {
-      "id": "C3",
-      "statement": "A amortização extraordinária é um direito garantido por lei e pelo Banco Central, sem cobrança de taxas, abatendo 100% no saldo devedor com desconto proporcional de juros futuros.",
-      "source_ids": [
-        "S1",
-        "S2"
-      ],
-      "framing": "verified_fact",
-      "confidence": "high",
-      "verification_status": "verified",
-      "attribution_required": false
-    },
-    {
-      "id": "C4",
-      "statement": "Ao amortizar escolhendo a redução do prazo, o pagamento abate o principal de parcelas futuras, eliminando juros acumulados de anos no final do contrato.",
-      "source_ids": [
-        "S4",
-        "S5"
-      ],
-      "framing": "verified_fact",
-      "confidence": "high",
-      "verification_status": "verified",
-      "attribution_required": false
-    },
-    {
-      "id": "C5",
-      "statement": "O mutuário pode utilizar recursos próprios ou o saldo do FGTS a cada dois anos para amortizar financiamentos enquadrados no Sistema Financeiro da Habitação.",
-      "source_ids": [
-        "S1",
+        "S2",
         "S3"
       ],
       "framing": "verified_fact",
+      "attribution_required": false,
       "confidence": "high",
-      "verification_status": "verified",
-      "attribution_required": false
+      "verification_status": "verified"
+    },
+    {
+      "id": "C2",
+      "text": "A comparação correta entre produtos equivalentes usa a mesma unidade de medida; os valores de R$10/500g, R$10/400g e R$9/400g são hipóteses ilustrativas, com aritmética explícita.",
+      "source_ids": [
+        "S2"
+      ],
+      "framing": "verified_fact",
+      "attribution_required": false,
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C3",
+      "text": "Reportagens citam dados Horus de janeiro-agosto 2022/2023: chocolate com gramatura média 167,6/143,7g e preços médios R$15,85/R$16,78.",
+      "source_ids": [
+        "S4",
+        "S3"
+      ],
+      "framing": "reported_claim",
+      "attribution_required": true,
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C4",
+      "text": "Uma reportagem relaciona a decisão de reduzir embalagens à pressão de custos, incluindo transporte; isso não prova a motivação de cada marca.",
+      "source_ids": [
+        "S6"
+      ],
+      "framing": "reported_claim",
+      "attribution_required": true,
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C5",
+      "text": "Redução de quantidade informada não configura automaticamente fraude; o menor gasto inicial não demonstra menor custo por quilo.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S6"
+      ],
+      "framing": "analysis",
+      "attribution_required": false,
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C6",
+      "text": "Segundo a Portaria 392/2021, o aviso deve ser legível e destacado no painel principal, com quantidade antiga/nova e diferença absoluta/percentual; há exceção para painel pequeno sem espaço. O aviso permanece no mínimo seis meses após alteração.",
+      "source_ids": [
+        "S1"
+      ],
+      "framing": "official_position",
+      "attribution_required": true,
+      "confidence": "high",
+      "verification_status": "verified"
+    },
+    {
+      "id": "C7",
+      "text": "Procon orienta comparar unidade de medida e denunciar informação ausente ou escondida; compra deve considerar consumo, orçamento e desperdício.",
+      "source_ids": [
+        "S2"
+      ],
+      "framing": "official_position",
+      "attribution_required": true,
+      "confidence": "high",
+      "verification_status": "verified"
     }
   ],
-  "visual_assets": [],
+  "visual_assets": [
+    {
+      "id": "shopping-photo",
+      "type": "photo",
+      "source_id": "S7",
+      "subject": "Família escolhendo produto em supermercado",
+      "narrative_role": "Contextualizar o gesto de comparar na prateleira, sem acusação contra pessoas ou marcas.",
+      "country_context": "global",
+      "source_page_url": "https://www.pexels.com/photo/family-doing-shopping-in-the-grocery-store-3985056/",
+      "image_url": "https://images.pexels.com/photos/3985056/pexels-photo-3985056.jpeg?cs=srgb&dl=pexels-gustavo-fring-3985056.jpg&fm=jpg",
+      "license": "Pexels License: https://www.pexels.com/license/ — uso e edição permitidos; não insinuar endosso ou conduta negativa dos fotografados.",
+      "attribution": "Foto: Gustavo Fring / Pexels",
+      "needs_cutout": false
+    },
+    {
+      "id": "quantity-rule",
+      "type": "source_excerpt",
+      "source_id": "S1",
+      "subject": "Artigo 4º da Portaria 392/2021",
+      "narrative_role": "Prova documental real do prazo mínimo do aviso, com texto inteiro preservado.",
+      "country_context": "BR",
+      "source_page_url": "https://bibliotecadigital.mj.gov.br/bitstream/1/5525/2/PRT_GM_2021_392.html",
+      "capture_file": "research/captures/supermercado/portaria-392-art4.png",
+      "expected_text": "pelo prazo mínimo de seis meses, a contar da data de sua alteração.",
+      "license": "Texto normativo oficial de acesso público; reprodução documental do artigo com fonte e contexto preservados.",
+      "attribution": "Ministério da Justiça — Portaria 392/2021, art. 4º",
+      "needs_cutout": false
+    }
+  ],
   "visual_direction": {
-    "concept": "A mecânica oculta do financiamento imobiliário de 30 anos, o contraste entre pagar 3 imóveis em juros e a alavancagem da amortização extraordinária no prazo cortando décadas de dívida.",
+    "concept": "A quantidade desaparece antes de a etiqueta denunciar o custo",
     "world": "market",
     "secondary_color": "#FFBD19",
     "motifs": [
-      "financiamento",
-      "casa_propria",
-      "juros_bancarios",
-      "amortizacao",
-      "prazo",
-      "fgts"
+      "embalagem esquemática",
+      "unidade de medida",
+      "prateleira",
+      "documento autêntico"
     ],
     "motion_language": [
-      "Equações e diagramas dividindo a parcela entre amortização do principal e fatia dominante de juros.",
-      "Números gigantes com tipografia cinética para prazos de 30 anos cortados para 5 anos e saldo devedor abatido.",
-      "SVGs de imóvel, cofre, escudo, relógio e carteira com sustentação ativa guiando cada virada de raciocínio da fala."
+      "conteúdo proporcional que diminui",
+      "equação atualizada na fala",
+      "barras reveladas com escala fixa",
+      "aproximação curta e abertura"
     ],
     "avoid": [
-      "telas paradas por mais de quatro segundos",
-      "ícones pequenos perdidos no espaço visual",
-      "repetir a composição de urna e orçamento do episódio anterior",
-      "promessas irreais de quitação mágica sem esforço financeiro"
+      "dois cards com seta",
+      "marca acusada sem prova",
+      "dados históricos apresentados como atuais",
+      "números inventados como estatística"
     ]
   },
   "editorial": {
     "strengths": [
-      "Abordagem de altíssimo interesse popular e impacto financeiro direto na vida de milhões de famílias brasileiras.",
-      "Explicação matemática cristalina da diferença entre amortização do principal e juros sobre o saldo devedor.",
-      "Orientação prática e legal respaldada pelo Código de Defesa do Consumidor e normas do Banco Central."
+      "Conflito reconhecível e conta verificável",
+      "Regra e limitações claras",
+      "Cena responde a cada afirmação"
     ],
     "risk_flags": [
-      "Ressaltar com clareza que o número de parcelas abatidas varia com o saldo devedor e a tabela do contrato.",
-      "Enfatizar a necessidade prudencial de preservar a reserva de emergência antes de amortizar recursos."
+      "Dados Horus são de reportagens e período histórico",
+      "Contas hipotéticas identificadas",
+      "Foto contextual sem local brasileiro presumido"
     ],
-    "narrative_contract": {
-      "topic_explanation": "Num financiamento imobiliário de trinta anos pelo Sistema Financeiro da Habitação, a maioria das pessoas não faz ideia de como a parcela mensal é calculada de verdade.",
-      "presenter_introduction": "Eu sou o Roberto, do O Dinheiro Explica.",
-      "subscription_request": "se inscreva no canal O Dinheiro Explica e ative as notificações"
-    },
     "source_balance": {
       "requires_diversity": true,
       "public_policy_or_regulation": true,
-      "official_sources_role": "A Caixa Econômica Federal, o Banco Central e o Conselho Curador do FGTS definem as regras oficiais de crédito habitacional, os sistemas de amortização e a vedação à cobrança de tarifas na liquidação antecipada.",
-      "independent_sources_role": "Reportagens e simulações do InfoMoney e da Gazeta do Povo demonstram a matemática do custo total da dívida em 30 anos e comparam o impacto financeiro entre reduzir prazo ou parcela.",
-      "counterpoint_summary": "Embora a amortização no prazo seja a opção mais vantajosa matematicamente para cortar juros, analistas alertam que o devedor não deve esgotar suas economias sem manter uma reserva de emergência em liquidez diária, pois o dinheiro amortizado fica imobilizado no imóvel.",
+      "official_sources_role": "Texto legal da obrigação e orientação do Procon; não substituem apuração do mercado.",
+      "independent_sources_role": "Reportagem local recente, médias históricas cruzadas, custos atribuídos e perspectiva crítica de percepção de preços.",
+      "counterpoint_summary": "Redução informada não é fraude automática; pacote menor pode caber no orçamento, mas não é necessariamente barato por quantidade. Motivo de cada marca não está comprovado; médias antigas não medem o mercado atual.",
       "official_claims_attributed": true,
       "right_editorial_review": {
         "consulted": [
           {
             "publisher": "Gazeta do Povo",
-            "url": "https://www.gazetadopovo.com.br/bom-gourmet/imoveis/amortizacao-financiamento-imobiliario-como-funciona/",
-            "summary": "Análise da Gazeta do Povo detalhando os sistemas SAC e Price, o efeito de abater o principal no saldo devedor para cortar juros futuros e o alerta de segurança sobre manter reserva de emergência antes de amortizar."
+            "url": "https://www.gazetadopovo.com.br/mundo/bloomberg-faz-paralelo-de-lula-e-biden-e-aponta-reduflacao-como-empecilho-para-reeleicao-do-petista/",
+            "summary": "Consulta de linha editorial à direita: percepção cotidiana do custo de vida pode contrastar com indicadores e mensagens oficiais. Interpretação eleitoral é argumento da cobertura, não dado causal ou prova de preços e não entra como fato no roteiro."
           }
         ]
       }
     },
-    "youtube_suitability": {
-      "risk_level": "low",
-      "sensitive_topics": [
-        "financiamento imobiliário",
-        "juros",
-        "dívidas",
-        "FGTS"
-      ],
-      "context_notes": "Conteúdo educativo de finanças pessoais, direitos do consumidor bancário e matemática financeira doméstica sem recomendação de investimentos."
-    },
-    "render_review": {
-      "status": "production_review_pending",
-      "note": "Episódio viral e educativo sobre a matemática da amortização de financiamento imobiliário de 30 anos."
+    "narrative_contract": {
+      "topic_explanation": "Quando a embalagem traz menos produto e mantém o preço, cada grama fica mais cara.",
+      "presenter_introduction": "Eu sou Roberto, e vou mostrar o aumento que pode passar despercebido na prateleira.",
+      "subscription_request": "Se essa comparação ajudou, inscreva-se no canal para entender melhor o que pesa no seu bolso."
     },
     "explanation": {
       "version": "1.0",
       "concepts": [
         {
-          "id": "amortizacao-ordinaria",
+          "id": "reduflacao",
           "terms": [
-            "amortização",
-            "saldo devedor"
+            "reduflação"
           ],
           "explanation": {
-            "scene_id": "scene-00",
-            "quote": "Amortização é a parte da parcela que efetivamente abate o que você pegou emprestado, enquanto os juros remuneram o banco pelo tempo do empréstimo."
+            "scene_id": "scene-01",
+            "quote": "Quando a embalagem traz menos produto e mantém o preço, cada grama fica mais cara."
+          },
+          "first_use": {
+            "scene_id": "scene-01",
+            "quote": "Essa redução de quantidade é chamada de reduflação."
           },
           "claim_ids": [
             "C1"
           ],
-          "boundary": "Amortização não se confunde com os juros ou os seguros embutidos na prestação mensal."
+          "boundary": "Redução informada não equivale automaticamente a fraude."
         },
         {
-          "id": "amortizacao-extraordinaria",
+          "id": "preco-unidade",
           "terms": [
-            "amortização extraordinária",
-            "redução de prazo"
+            "preço por quilo",
+            "preço por unidade"
           ],
           "explanation": {
             "scene_id": "scene-02",
-            "quote": "A amortização extraordinária é qualquer pagamento adicional feito diretamente para abater o saldo devedor, com desconto integral de todos os juros futuros."
+            "quote": "Esse é o preço para comparar a mesma quantidade, mesmo entre pacotes de tamanhos diferentes."
           },
           "claim_ids": [
-            "C3",
-            "C4"
+            "C2"
           ],
-          "boundary": "Aplica-se exclusivamente ao saldo principal da dívida, extinguindo os encargos que seriam gerados caso o tempo continuasse correndo."
+          "boundary": "Comparar produtos equivalentes; avaliar consumo, orçamento e desperdício."
+        },
+        {
+          "id": "bases-percentuais",
+          "terms": [
+            "base do percentual"
+          ],
+          "explanation": {
+            "scene_id": "scene-03",
+            "quote": "São cinco reais a mais sobre uma base de vinte. O aumento é de vinte e cinco por cento."
+          },
+          "claim_ids": [
+            "C2"
+          ],
+          "boundary": "25% é a conta hipotética; não é estatística de inflação."
         }
       ],
       "examples": [
         {
-          "id": "simulacao-financiamento-30-anos",
-          "purpose": "Demonstrar o custo total acumulado de um financiamento de 30 anos comparado ao valor original do imóvel.",
-          "kind": "derived",
+          "id": "before",
+          "purpose": "Explicar preço por quilo antes da redução",
+          "kind": "illustrative",
           "claim_ids": [
             "C2"
           ],
           "actors": [
-            "comprador",
-            "banco"
+            "Comprador",
+            "Pacote sem marca"
           ],
           "assumptions": [
-            "Financiamento imobiliário de R$ 300.000 em 360 meses com taxa média de mercado de 10% a 11% ao ano."
+            "Produtos equivalentes e mesmas condições de compra",
+            "Valores hipotéticos, sem preço real ou estatística de inflação"
           ],
           "inputs": [
             {
-              "id": "in_valor_imovel",
-              "value": 300000,
+              "id": "price",
+              "value": 10,
               "unit": "BRL",
-              "source_ids": [
-                "S1",
-                "S5"
-              ]
+              "source_ids": []
             },
             {
-              "id": "in_juros_acumulados",
-              "value": 480000,
-              "unit": "BRL",
-              "source_ids": [
-                "S1",
-                "S5"
-              ]
-            }
-          ],
-          "calculation": {
-            "operation": "add",
-            "input_ids": [
-              "in_valor_imovel",
-              "in_juros_acumulados"
-            ],
-            "result": 780000,
-            "unit": "BRL"
-          },
-          "limitation": "Valores dependem da taxa exata de juros do contrato, seguros individuais e da correção monetária pela TR.",
-          "narration_refs": [
-            {
-              "scene_id": "scene-01",
-              "quote": "Ao longo de trinta anos, o total pago ultrapassa setecentos e oitenta mil reais."
-            }
-          ],
-          "visual_bindings": [
-            {
-              "scene_id": "scene-01",
-              "element_id": "card_total_pago",
-              "beat_anchor": "Ao longo de trinta anos, o total pago ultrapassa"
-            }
-          ]
-        },
-        {
-          "id": "exemplo-abate-parcelas-final",
-          "purpose": "Demonstrar como um aporte extra modesto abate o valor principal de parcelas do final do contrato.",
-          "kind": "illustrative",
-          "claim_ids": [
-            "C4"
-          ],
-          "actors": [
-            "comprador",
-            "banco"
-          ],
-          "assumptions": [
-            "Simulação hipotética da parcela número 350 com cota de amortização do principal em R$ 200."
-          ],
-          "inputs": [
-            {
-              "id": "in_aporte_extra",
-              "value": 600,
-              "unit": "BRL"
-            },
-            {
-              "id": "in_principal_parcela_final",
-              "value": 200,
-              "unit": "BRL"
+              "id": "weight",
+              "value": 0.5,
+              "unit": "kg",
+              "source_ids": []
             }
           ],
           "calculation": {
             "operation": "divide",
             "input_ids": [
-              "in_aporte_extra",
-              "in_principal_parcela_final"
+              "price",
+              "weight"
             ],
-            "result": 3,
-            "unit": "BRL"
+            "result": 20,
+            "unit": "BRL/kg"
           },
-          "limitation": "O número exato de parcelas abatidas varia com o saldo devedor residual e a tabela de amortização do contrato.",
+          "limitation": "Exemplo aritmético; não mede o mercado nem comprova conduta de fabricante.",
+          "narration_refs": [
+            {
+              "scene_id": "scene-02",
+              "quote": "Dez reais divididos por meio quilo dão vinte reais por quilo."
+            }
+          ],
+          "visual_bindings": [
+            {
+              "scene_id": "scene-02",
+              "element_id": "unit"
+            }
+          ],
           "identification": {
-            "scene_id": "scene-03",
-            "quote": "Em uma simulação hipotética, veja como isso funciona."
+            "scene_id": "scene-02",
+            "quote": "Vamos usar um exemplo ilustrativo"
           },
           "visual_identification": {
-            "scene_id": "scene-03",
-            "element_id": "card_simulacao_hipotetica"
+            "scene_id": "scene-02",
+            "element_id": "example"
+          }
+        },
+        {
+          "id": "after",
+          "purpose": "Explicar preço por quilo com menos conteúdo",
+          "kind": "illustrative",
+          "claim_ids": [
+            "C2"
+          ],
+          "actors": [
+            "Comprador",
+            "Pacote sem marca"
+          ],
+          "assumptions": [
+            "Produtos equivalentes e mesmas condições de compra",
+            "Valores hipotéticos, sem preço real ou estatística de inflação"
+          ],
+          "inputs": [
+            {
+              "id": "price",
+              "value": 10,
+              "unit": "BRL",
+              "source_ids": []
+            },
+            {
+              "id": "weight",
+              "value": 0.4,
+              "unit": "kg",
+              "source_ids": []
+            }
+          ],
+          "calculation": {
+            "operation": "divide",
+            "input_ids": [
+              "price",
+              "weight"
+            ],
+            "result": 25,
+            "unit": "BRL/kg"
           },
+          "limitation": "Exemplo aritmético; não mede o mercado nem comprova conduta de fabricante.",
+          "narration_refs": [
+            {
+              "scene_id": "scene-02",
+              "quote": "Dez divididos por zero vírgula quatro dão vinte e cinco reais por quilo."
+            }
+          ],
+          "visual_bindings": [
+            {
+              "scene_id": "scene-02",
+              "element_id": "unit"
+            }
+          ],
+          "identification": {
+            "scene_id": "scene-02",
+            "quote": "Vamos usar um exemplo ilustrativo"
+          },
+          "visual_identification": {
+            "scene_id": "scene-02",
+            "element_id": "example"
+          }
+        },
+        {
+          "id": "ratio",
+          "purpose": "Mostrar a base do aumento por quantidade",
+          "kind": "illustrative",
+          "claim_ids": [
+            "C2"
+          ],
+          "actors": [
+            "Comprador",
+            "Pacote sem marca"
+          ],
+          "assumptions": [
+            "Produtos equivalentes e mesmas condições de compra",
+            "Valores hipotéticos, sem preço real ou estatística de inflação"
+          ],
+          "inputs": [
+            {
+              "id": "difference",
+              "value": 5,
+              "unit": "BRL/kg",
+              "source_ids": []
+            },
+            {
+              "id": "base",
+              "value": 20,
+              "unit": "BRL/kg",
+              "source_ids": []
+            }
+          ],
+          "calculation": {
+            "operation": "divide",
+            "input_ids": [
+              "difference",
+              "base"
+            ],
+            "result": 0.25,
+            "unit": "proporção"
+          },
+          "limitation": "Exemplo aritmético; não mede o mercado nem comprova conduta de fabricante.",
           "narration_refs": [
             {
               "scene_id": "scene-03",
-              "quote": "com apenas seiscentos reais extras você elimina de vez três parcelas inteiras do final do contrato."
+              "quote": "São cinco reais a mais sobre uma base de vinte. O aumento é de vinte e cinco por cento."
             }
           ],
           "visual_bindings": [
             {
               "scene_id": "scene-03",
-              "element_id": "card_parcelas_eliminadas",
-              "beat_anchor": "com apenas seiscentos reais extras você elimina de vez três parcelas"
+              "element_id": "increase"
+            }
+          ],
+          "identification": {
+            "scene_id": "scene-03",
+            "quote": "Nesse mesmo exemplo ilustrativo"
+          },
+          "visual_identification": {
+            "scene_id": "scene-03",
+            "element_id": "example"
+          }
+        },
+        {
+          "id": "historical",
+          "purpose": "Ancorar o mecanismo em médias históricas atribuídas",
+          "kind": "observed",
+          "claim_ids": [
+            "C3"
+          ],
+          "actors": [
+            "Categoria chocolate no levantamento Horus"
+          ],
+          "assumptions": [
+            "Médias da categoria, janeiro-agosto de cada ano"
+          ],
+          "inputs": [
+            {
+              "id": "grams2022",
+              "value": 167.6,
+              "unit": "g",
+              "source_ids": [
+                "S4",
+                "S3"
+              ]
+            },
+            {
+              "id": "grams2023",
+              "value": 143.7,
+              "unit": "g",
+              "source_ids": [
+                "S4",
+                "S3"
+              ]
+            },
+            {
+              "id": "price2022",
+              "value": 15.85,
+              "unit": "BRL",
+              "source_ids": [
+                "S4",
+                "S3"
+              ]
+            },
+            {
+              "id": "price2023",
+              "value": 16.78,
+              "unit": "BRL",
+              "source_ids": [
+                "S4",
+                "S3"
+              ]
+            }
+          ],
+          "limitation": "Levantamento primário integral não obtido; números reportados e cruzados, não cotação atual nem marca específica.",
+          "narration_refs": [
+            {
+              "scene_id": "scene-04",
+              "quote": "São médias da categoria, não a história de uma única marca ou de todos os chocolates."
+            }
+          ],
+          "visual_bindings": [
+            {
+              "scene_id": "scene-04",
+              "element_id": "chart"
+            },
+            {
+              "scene_id": "scene-04",
+              "element_id": "price"
+            },
+            {
+              "scene_id": "scene-04",
+              "element_id": "period"
             }
           ]
+        },
+        {
+          "id": "comparison-small",
+          "purpose": "Distinguir etiqueta menor de custo menor por quilo",
+          "kind": "illustrative",
+          "claim_ids": [
+            "C2"
+          ],
+          "actors": [
+            "Comprador",
+            "Pacote sem marca"
+          ],
+          "assumptions": [
+            "Produtos equivalentes e mesmas condições de compra",
+            "Valores hipotéticos, sem preço real ou estatística de inflação"
+          ],
+          "inputs": [
+            {
+              "id": "price",
+              "value": 9,
+              "unit": "BRL",
+              "source_ids": []
+            },
+            {
+              "id": "weight",
+              "value": 0.4,
+              "unit": "kg",
+              "source_ids": []
+            }
+          ],
+          "calculation": {
+            "operation": "divide",
+            "input_ids": [
+              "price",
+              "weight"
+            ],
+            "result": 22.5,
+            "unit": "BRL/kg"
+          },
+          "limitation": "Exemplo aritmético; não mede o mercado nem comprova conduta de fabricante.",
+          "narration_refs": [
+            {
+              "scene_id": "scene-07",
+              "quote": "Dividindo nove por zero vírgula quatro, ele sai por vinte e dois reais e cinquenta por quilo."
+            }
+          ],
+          "visual_bindings": [
+            {
+              "scene_id": "scene-07",
+              "element_id": "unit"
+            }
+          ],
+          "identification": {
+            "scene_id": "scene-07",
+            "quote": "Vamos a outro exemplo ilustrativo"
+          },
+          "visual_identification": {
+            "scene_id": "scene-07",
+            "element_id": "example"
+          }
+        },
+        {
+          "id": "comparison-large",
+          "purpose": "Demonstrar comparação em unidade comum",
+          "kind": "illustrative",
+          "claim_ids": [
+            "C2"
+          ],
+          "actors": [
+            "Comprador",
+            "Pacote sem marca"
+          ],
+          "assumptions": [
+            "Produtos equivalentes e mesmas condições de compra",
+            "Valores hipotéticos, sem preço real ou estatística de inflação"
+          ],
+          "inputs": [
+            {
+              "id": "price",
+              "value": 10,
+              "unit": "BRL",
+              "source_ids": []
+            },
+            {
+              "id": "weight",
+              "value": 0.5,
+              "unit": "kg",
+              "source_ids": []
+            }
+          ],
+          "calculation": {
+            "operation": "divide",
+            "input_ids": [
+              "price",
+              "weight"
+            ],
+            "result": 20,
+            "unit": "BRL/kg"
+          },
+          "limitation": "Exemplo aritmético; não mede o mercado nem comprova conduta de fabricante.",
+          "narration_refs": [
+            {
+              "scene_id": "scene-07",
+              "quote": "Dez divididos por meio quilo dão vinte reais por quilo. Nesse exemplo, o segundo custa menos."
+            }
+          ],
+          "visual_bindings": [
+            {
+              "scene_id": "scene-07",
+              "element_id": "unit"
+            }
+          ],
+          "identification": {
+            "scene_id": "scene-07",
+            "quote": "Vamos a outro exemplo ilustrativo"
+          },
+          "visual_identification": {
+            "scene_id": "scene-07",
+            "element_id": "example"
+          }
         }
       ],
       "learning_units": [
         {
-          "id": "unit-composicao-parcela",
-          "question": "Como é dividida a parcela mensal de um financiamento imobiliário e por que a dívida demora a cair?",
+          "id": "mechanism",
+          "question": "Como a mesma etiqueta pode esconder um custo maior?",
           "answer": {
-            "scene_id": "scene-00",
-            "quote": "apenas quinhentos a seiscentos reais abatem a dívida real, e todo o resto é juro e seguro que vão direto para o banco."
+            "scene_id": "scene-01",
+            "quote": "Quando a embalagem traz menos produto e mantém o preço, cada grama fica mais cara."
           },
           "concept_ids": [
-            "amortizacao-ordinaria"
+            "reduflacao"
           ],
           "claim_ids": [
             "C1"
           ],
           "example_ids": [],
-          "visual_purpose": "Exibir o contraste gráfico da fatura entre a pequena fatia de amortização e a enorme fatia de juros e encargos.",
+          "visual_purpose": "A embalagem persiste e o conteúdo diminui; o objeto demonstra a relação.",
           "bindings": [
             {
-              "scene_id": "scene-00",
-              "element_id": "card_divisao_parcela",
-              "beat_anchor": "apenas quinhentos a seiscentos reais abatem a dívida real"
+              "scene_id": "scene-01",
+              "element_id": "bag"
             }
           ]
         },
         {
-          "id": "unit-custo-total-30-anos",
-          "question": "Qual é o custo financeiro total de manter um financiamento de 30 anos sem amortizações?",
+          "id": "calculation",
+          "question": "Como encontrar o custo da mesma quantidade?",
           "answer": {
-            "scene_id": "scene-01",
-            "quote": "Ao longo de trinta anos, o total pago ultrapassa setecentos e oitenta mil reais."
+            "scene_id": "scene-02",
+            "quote": "Dez divididos por zero vírgula quatro dão vinte e cinco reais por quilo."
           },
-          "concept_ids": [],
+          "concept_ids": [
+            "preco-unidade",
+            "bases-percentuais"
+          ],
           "claim_ids": [
             "C2"
           ],
           "example_ids": [
-            "simulacao-financiamento-30-anos"
+            "before",
+            "after",
+            "ratio"
           ],
-          "visual_purpose": "Comparar o valor financiado do imóvel com o custo total acumulado, evidenciando o pagamento equivalente a quase três imóveis.",
-          "bindings": [
-            {
-              "scene_id": "scene-01",
-              "element_id": "card_total_pago",
-              "beat_anchor": "Ao longo de trinta anos, o total pago ultrapassa"
-            }
-          ]
-        },
-        {
-          "id": "unit-mecanica-amortizacao-prazo",
-          "question": "Como a amortização extraordinária focada em redução de prazo consegue cortar anos de financiamento?",
-          "answer": {
-            "scene_id": "scene-02",
-            "quote": "Quando você escolhe reduzir o prazo, cada real extra abate diretamente o principal de parcelas lá do final, cortando juros que nunca mais serão cobrados."
-          },
-          "concept_ids": [
-            "amortizacao-extraordinaria"
-          ],
-          "claim_ids": [
-            "C3",
-            "C4"
-          ],
-          "example_ids": [],
-          "visual_purpose": "Demonstrar a conexão de fluxo cortando as parcelas do fim do contrato e desarmando o acúmulo de juros.",
+          "visual_purpose": "Operandos e resultado mudam no mesmo lugar, com divisão completa e indicação de hipótese.",
           "bindings": [
             {
               "scene_id": "scene-02",
-              "element_id": "card_reduzir_prazo",
-              "beat_anchor": "Quando você escolhe reduzir o prazo, cada real extra"
+              "element_id": "price"
+            },
+            {
+              "scene_id": "scene-02",
+              "element_id": "weight"
+            },
+            {
+              "scene_id": "scene-02",
+              "element_id": "unit"
+            },
+            {
+              "scene_id": "scene-03",
+              "element_id": "increase"
             }
           ]
         },
         {
-          "id": "unit-estrategia-quitacao",
-          "question": "Qual a estratégia recomendada para quitar o financiamento em poucos anos sem comprometer a segurança da família?",
+          "id": "evidence",
+          "question": "Qual é o alcance dos números reais apresentados?",
           "answer": {
-            "scene_id": "scene-05",
-            "quote": "combinando aportes mensais no prazo, uso do FGTS e a preservação rigorosa da sua reserva de emergência, você liquida o contrato em cinco a oito anos"
+            "scene_id": "scene-04",
+            "quote": "E são dados de dois mil e vinte e dois e vinte e três, não uma cotação atual."
           },
           "concept_ids": [],
           "claim_ids": [
-            "C5"
+            "C3"
           ],
-          "example_ids": [],
-          "visual_purpose": "Apresentar a linha de vitória com a dívida zerada, casa quitada e centenas de milhares de reais economizados.",
+          "example_ids": [
+            "historical"
+          ],
+          "visual_purpose": "Barras entram na fala com escala fixa, período e preço médio separados.",
           "bindings": [
             {
-              "scene_id": "scene-05",
-              "element_id": "card_vitoria_quitacao",
-              "beat_anchor": "combinando aportes mensais no prazo, uso do FGTS"
+              "scene_id": "scene-04",
+              "element_id": "chart"
+            },
+            {
+              "scene_id": "scene-04",
+              "element_id": "period"
+            }
+          ]
+        },
+        {
+          "id": "rights",
+          "question": "A redução pode ocorrer sem informação legível?",
+          "answer": {
+            "scene_id": "scene-06",
+            "quote": "O aviso identifica a mudança, a quantidade anterior, a nova e a diferença absoluta e percentual."
+          },
+          "concept_ids": [],
+          "claim_ids": [
+            "C6",
+            "C7"
+          ],
+          "example_ids": [],
+          "visual_purpose": "O texto legal real ancora o prazo do aviso, sem simular documento ou congelamento de preço.",
+          "bindings": [
+            {
+              "scene_id": "scene-06",
+              "element_id": "rule"
+            },
+            {
+              "scene_id": "scene-06",
+              "element_id": "months"
+            }
+          ]
+        },
+        {
+          "id": "decision",
+          "question": "Como comparar pacotes e responder à pergunta inicial?",
+          "answer": {
+            "scene_id": "scene-08",
+            "quote": "A melhor referência é o preço por quilo, litro ou unidade, junto do que você vai consumir."
+          },
+          "concept_ids": [
+            "preco-unidade"
+          ],
+          "claim_ids": [
+            "C2",
+            "C7"
+          ],
+          "example_ids": [
+            "comparison-small",
+            "comparison-large"
+          ],
+          "visual_purpose": "Dois pacotes equivalentes e conta atualizada; encerramento retoma o objeto inicial.",
+          "bindings": [
+            {
+              "scene_id": "scene-07",
+              "element_id": "small"
+            },
+            {
+              "scene_id": "scene-07",
+              "element_id": "large"
+            },
+            {
+              "scene_id": "scene-07",
+              "element_id": "unit"
+            },
+            {
+              "scene_id": "scene-08",
+              "element_id": "bag"
+            },
+            {
+              "scene_id": "scene-08",
+              "element_id": "answer"
             }
           ]
         }
       ],
       "review": {
-        "content_sha256": "b13196108693427664dbea2c44dd0aafc0189407ba3910e675ed7293666ce2d6",
+        "content_sha256": "d2ad8a42796579acb3970d057b05b66f8b24c53883cc88d493cdb7d22a8e3789",
         "findings": [
           {
-            "question": "O espectador compreende a divisão da parcela entre amortização e juros?",
+            "question": "A promessa é entregue sem generalizar o percentual?",
             "evidence": {
-              "scene_id": "scene-00",
-              "quote": "apenas quinhentos a seiscentos reais abatem a dívida real, e todo o resto é juro e seguro que vão direto para o banco."
+              "scene_id": "scene-03",
+              "quote": "Essa porcentagem pertence só à nossa conta hipotética, não à inflação do supermercado."
             },
-            "conclusion": "Fica evidente que a maior parte da parcela inicial não diminui a dívida, sendo consumida por juros e encargos."
+            "conclusion": "As contas revelam o custo por quantidade e identificam a hipótese; título não promete aumento geral de 25%."
           },
           {
-            "question": "O custo total acumulado de um contrato de 30 anos é demonstrado?",
+            "question": "A obrigação tem condições e atribuição explícitas?",
             "evidence": {
-              "scene_id": "scene-01",
-              "quote": "Ao longo de trinta anos, o total pago ultrapassa setecentos e oitenta mil reais."
+              "scene_id": "scene-06",
+              "quote": "Em painel pequeno sem espaço contínuo suficiente, há uma exceção para o aviso resumido."
             },
-            "conclusion": "O cálculo demonstra que o comprador chega a pagar quase três vezes o valor financiado ao longo de três décadas."
+            "conclusion": "Texto legal, exceção e prazo do aviso são explicados, sem concluir fraude automática ou congelamento de preços."
           },
           {
-            "question": "A mecânica de redução de prazo na amortização extraordinária é esclarecida?",
+            "question": "O conselho inclui limites da comparação?",
             "evidence": {
-              "scene_id": "scene-02",
-              "quote": "Quando você escolhe reduzir o prazo, cada real extra abate diretamente o principal de parcelas lá do final, cortando juros que nunca mais serão cobrados."
+              "scene_id": "scene-07",
+              "quote": "Um pacote maior só compensa se couber no seu orçamento e for consumido, sem desperdício."
             },
-            "conclusion": "O público aprende por que amortizar no prazo é financeiramente superior a apenas reduzir o valor da prestação."
-          },
-          {
-            "question": "A importância da reserva de emergência antes de amortizar é enfatizada?",
-            "evidence": {
-              "scene_id": "scene-05",
-              "quote": "combinando aportes mensais no prazo, uso do FGTS e a preservação rigorosa da sua reserva de emergência, você liquida o contrato em cinco a oito anos"
-            },
-            "conclusion": "O vídeo entrega uma estratégia equilibrada que protege o patrimônio da família contra imprevistos financeiros."
-          }
-        ]
-      }
-    }
-  },
-  "scenes": [
-    {
-      "id": "scene-00",
-      "scene_index": 0,
-      "narration": "Se você paga prestação de financiamento imobiliário há anos e acha que a sua dívida está diminuindo, prepare-se para o choque: quase todo o seu dinheiro está indo direto para o bolso do banco. Eu sou o Roberto, do O Dinheiro Explica. Num financiamento imobiliário de trinta anos pelo Sistema Financeiro da Habitação, a maioria das pessoas não faz ideia de como a parcela mensal é calculada de verdade. Em uma parcela típica de três mil reais, por exemplo, apenas quinhentos a seiscentos reais abatem a dívida real, e todo o resto é juro e seguro que vão direto para o banco. Amortização é a parte da parcela que efetivamente abate o que você pegou emprestado, enquanto os juros remuneram o banco pelo tempo do empréstimo. E enquanto você não entender essa divisão, vai continuar pagando duas ou três casas sem perceber.",
-      "tts": {
-        "delivery": "hook",
-        "cues": [
-          {
-            "text": "prepare-se para o choque: quase todo o seu dinheiro está indo direto para o bolso do banco.",
-            "kind": "contrast",
-            "intent": "caution",
-            "arc": "question",
-            "emphasis_word": "choque"
-          },
-          {
-            "text": "a maioria das pessoas não faz ideia de como a parcela mensal é calculada de verdade.",
-            "kind": "emphasis",
-            "intent": "curiosity",
-            "arc": "build",
-            "emphasis_word": "verdade"
-          },
-          {
-            "text": "apenas quinhentos a seiscentos reais abatem a dívida real, e todo o resto é juro e seguro que vão direto para o banco.",
-            "kind": "number",
-            "intent": "caution",
-            "arc": "contrast",
-            "emphasis_word": "quinhentos"
-          },
-          {
-            "text": "vai continuar pagando duas ou três casas sem perceber.",
-            "kind": "contrast",
-            "intent": "conviction",
-            "arc": "resolve",
-            "emphasis_word": "casas"
-          }
-        ]
-      },
-      "visual": {
-        "stage": {
-          "show_title": false,
-          "initial_camera": {
-            "x": 50,
-            "y": 50,
-            "zoom": 1
-          },
-          "camera_mode": "manual",
-          "elements": [
-            {
-              "id": "card_imovel_divida",
-              "kind": "step",
-              "icon": "house",
-              "label": "Financiamento Habitacional",
-              "detail": "Contrato padrão de 360 meses no SFH",
-              "value": "30 ANOS",
-              "x": 6,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "svg_motion": "trace",
-              "label_size": 44,
-              "value_size": 96,
-              "sustain": {
-                "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "surface": "spotlight"
-            },
-            {
-              "id": "card_divisao_parcela",
-              "kind": "metric",
-              "icon": "chart",
-              "label": "Composição da Parcela",
-              "detail": "R$ 2.400 juros vs R$ 600 amortização",
-              "value": "80% JUROS",
-              "x": 52,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "svg_motion": "trace",
-              "label_size": 44,
-              "value_size": 96,
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "surface": "spotlight"
-            }
-          ],
-          "connections": [
-            {
-              "from": "card_imovel_divida",
-              "to": "card_divisao_parcela",
-              "label": "Fatia mensal",
-              "semantic": "relation",
-              "motion": "flow"
-            }
-          ]
-        },
-        "beats": [
-          {
-            "anchor": "Se você paga prestação de financiamento",
-            "target_id": "card_imovel_divida",
-            "action": "focus",
-            "headline": "O Peso do Financiamento de 30 Anos",
-            "camera": {
-              "x": 27,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            }
-          },
-          {
-            "anchor": "prepare-se para o choque",
-            "target_id": "card_imovel_divida",
-            "action": "focus",
-            "headline": "Para Onde Vai o Seu Dinheiro?",
-            "camera": {
-              "x": 27,
-              "y": 47,
-              "zoom": 1.18,
-              "motion_seconds": 0.4
-            }
-          },
-          {
-            "anchor": "quase todo o seu dinheiro está indo direto",
-            "target_id": "card_divisao_parcela",
-            "action": "focus",
-            "headline": "O Lucro do Banco na Sua Prestação",
-            "treatment": "giant_number",
-            "value": "LUCRO BANCÁRIO"
-          },
-          {
-            "anchor": "Eu sou o Roberto, do O Dinheiro Explica",
-            "target_id": "card_imovel_divida",
-            "action": "focus",
-            "headline": "O Dinheiro Explica: Financiamento Real",
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.4
-            }
-          },
-          {
-            "anchor": "Num financiamento imobiliário de trinta anos",
-            "target_id": "card_divisao_parcela",
-            "action": "focus",
-            "headline": "O Mistério da Parcela de 30 Anos",
-            "camera": {
-              "x": 73,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            }
-          },
-          {
-            "anchor": "a maioria das pessoas não faz ideia",
-            "target_id": "card_divisao_parcela",
-            "action": "focus",
-            "headline": "A Regra Escondida na Prestação",
-            "treatment": "kinetic_type"
-          },
-          {
-            "anchor": "Em uma parcela típica de três mil reais",
-            "target_id": "card_divisao_parcela",
-            "action": "focus",
-            "headline": "Simulação de Parcela de R$ 3.000",
-            "treatment": "giant_number",
-            "value": "R$ 3.000/MÊS"
-          },
-          {
-            "anchor": "apenas quinhentos a seiscentos reais abatem a dívida real",
-            "target_id": "card_divisao_parcela",
-            "action": "update",
-            "headline": "A Fatia Minúscula que Abate a Dívida",
-            "detail": "Apenas R$ 600 abatem o saldo devedor principal",
-            "value": "R$ 600 PRINCIPAL"
-          },
-          {
-            "anchor": "e todo o resto é juro e seguro que vão direto",
-            "target_id": "card_divisao_parcela",
-            "action": "update",
-            "headline": "A Grande Fatia de Juros e Encargos",
-            "detail": "R$ 2.400 em juros contratuais, taxa e seguros",
-            "value": "R$ 2.400 JUROS"
-          },
-          {
-            "anchor": "Amortização é a parte da parcela que efetivamente abate",
-            "target_id": "card_imovel_divida",
-            "action": "focus",
-            "headline": "Conceito: O que é Amortização?",
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.4
-            }
-          },
-          {
-            "anchor": "enquanto os juros remuneram o banco",
-            "target_id": "card_divisao_parcela",
-            "action": "focus",
-            "headline": "O Custo do Tempo nos Juros",
-            "treatment": "kinetic_type"
-          },
-          {
-            "anchor": "E enquanto você não entender essa divisão",
-            "target_id": "card_imovel_divida",
-            "action": "focus",
-            "headline": "O Alerta Central do Mutuário",
-            "treatment": "kinetic_type"
-          },
-          {
-            "anchor": "vai continuar pagando duas ou três casas",
-            "target_id": "card_divisao_parcela",
-            "action": "focus",
-            "headline": "A Conta Oculta: Três Imóveis no Final",
-            "treatment": "giant_number",
-            "value": "3 CASAS"
+            "conclusion": "A decisão depende de equivalência, unidade comum, consumo e caixa disponível; não se prescreve comprar sempre o maior pacote."
           }
         ]
       }
     },
+    "production_mode": "direct",
+    "checks_not_run": [
+      "suítes de testes locais e CI",
+      "prévia silenciosa",
+      "render de demonstração",
+      "amostras de voz"
+    ],
+    "review_notes": "Revisão semântica das fontes, aritmética, condições e entrega registrada no hash atual. Produção real mantém compilação, contratos, geometria, assets, integridade da voz e alinhamento."
+  },
+  "packaging": {
+    "titles": [
+      {
+        "id": "approved",
+        "text": "Supermercado: o aumento de preço que você não vê",
+        "rationale": "Assunto reconhecível no início; descoberta concreta do custo por quantidade, sem promessa numérica de mercado."
+      }
+    ],
+    "thumbnails": [
+      {
+        "id": "approved",
+        "headline": "CADÊ O RESTO?",
+        "concept": "Pacote genérico aberto, grande, com pouco alimento dentro; conflito visível entre embalagem e conteúdo.",
+        "visual_prompt": "Capa final completa 16:9, embalagem sem marca aberta e quase vazia em fundo grafite, luz amarela #FFBD19, texto gigante branco e amarelo CADÊ O RESTO?, sem logo, sem gráfico ou seta, sem dado de perda geral."
+      }
+    ],
+    "strategy": {
+      "click_reason": "A etiqueta parece igual, mas a compra entrega menos; a conta revela a diferença.",
+      "visual_focus": "Embalagem genérica aberta e conteúdo escasso, uma metáfora ilustrativa.",
+      "curiosity_gap": "Onde o aumento se esconde quando o valor em reais não muda?",
+      "mobile_readability": "Três palavras grandes e um objeto dominante, sem subtítulo.",
+      "anti_clickbait_check": "Entrega cálculo por quilo, limita hipóteses e dados históricos e não acusa todas as marcas.",
+      "repetition_check": "Assunto aprovado e inédito no histórico; evita financiamento, nós com setas e composições recentes.",
+      "youtube_safety_check": "Educação ao consumidor com fontes, exemplos sinalizados e nenhuma acusação específica não comprovada."
+    }
+  },
+  "publication": {
+    "description": "Supermercado: a etiqueta pode continuar igual enquanto o pacote entrega menos. Entenda a reduflação, a conta por quilo e o aviso que deve aparecer na embalagem.\n\n- Como a mesma etiqueta pode esconder um custo maior\n- A diferença entre preço do pacote e preço por quilo\n- O aviso de redução e o que observar na embalagem\n- Como comparar produtos sem ignorar orçamento e desperdício",
+    "engagement_question": "Você já percebeu um produto encolher na sua compra? Qual mudança chamou sua atenção?",
+    "hashtags": [
+      "#Supermercado",
+      "#ReducaoDeQuantidade",
+      "#EducacaoFinanceira"
+    ],
+    "seo": {
+      "primary_keyword": "Supermercado",
+      "secondary_keywords": [
+        "reduflação",
+        "preço por quilo",
+        "embalagem menor",
+        "direitos do consumidor"
+      ],
+      "search_intent": "Entender por que recebe menos pelo mesmo preço e como comparar embalagens.",
+      "description_strategy": "Abertura com situação concreta e quatro tópicos curtos; pipeline acrescenta capítulos, fontes e créditos uma única vez."
+    },
+    "tags": [
+      "supermercado",
+      "reduflação",
+      "preço por quilo",
+      "embalagem",
+      "consumidor",
+      "educação financeira"
+    ]
+  },
+  "scenes": [
     {
       "id": "scene-01",
-      "scene_index": 1,
-      "narration": "Coloque essa matemática no papel por um instante para ver o tamanho do estrago. Imagine que você financiou um imóvel de trezentos mil reais em trinta anos com taxa média de dez vírgula cinco por cento ao ano. Ao longo de trinta anos, o total pago ultrapassa setecentos e oitenta mil reais. Isso significa que você comprou um apartamento para a sua família e deu quase dois outros apartamentos inteiros de presente para o banco em juros. E por que essa conta é tão cruel? Porque no crédito imobiliário, os juros são recalculados todo mês sobre o saldo devedor restante. Enquanto você só paga a parcela mínima, o saldo devedor quase não se mexe, e o banco continua cobrando juros sobre uma montanha de dinheiro por três décadas.",
+      "index": 0,
+      "title": "A etiqueta não conta tudo",
+      "claim_ids": [
+        "C1"
+      ],
+      "narration": "O preço não mudou. Então por que você está pagando mais no supermercado? Eu sou Roberto, e vou mostrar o aumento que pode passar despercebido na prateleira. Quando a embalagem traz menos produto e mantém o preço, cada grama fica mais cara. Essa redução de quantidade é chamada de reduflação. Ela pode acontecer mesmo sem aumentar o valor da etiqueta. A embalagem na tela é um esquema ilustrativo, sem marca. Não é prova contra um fabricante. Para enxergar o custo real, precisamos abrir a conta.",
       "tts": {
         "delivery": "explain",
+        "pause_ms": 150,
         "cues": [
           {
-            "text": "Imagine que você financiou um imóvel de trezentos mil reais em trinta anos com taxa média de dez vírgula cinco por cento ao ano.",
-            "kind": "number",
-            "intent": "curiosity",
-            "arc": "build",
-            "emphasis_word": "trezentos"
-          },
-          {
-            "text": "Ao longo de trinta anos, o total pago ultrapassa setecentos e oitenta mil reais.",
-            "kind": "number",
-            "intent": "caution",
-            "arc": "contrast",
-            "emphasis_word": "setecentos"
-          },
-          {
-            "text": "deu quase dois outros apartamentos inteiros de presente para o banco em juros.",
-            "kind": "contrast",
-            "intent": "caution",
-            "arc": "question",
-            "emphasis_word": "presente"
-          },
-          {
-            "text": "Enquanto você só paga a parcela mínima, o saldo devedor quase não se mexe,",
+            "text": "Então por que você está pagando mais no supermercado?",
             "kind": "emphasis",
-            "intent": "conviction",
-            "arc": "resolve",
-            "emphasis_word": "mexe"
+            "intent": "curiosity",
+            "arc": "question",
+            "emphasis_word": "mais"
           }
         ]
       },
       "visual": {
+        "type": "authored_stage",
+        "transition": "cut",
         "stage": {
           "show_title": false,
-          "initial_camera": {
-            "x": 50,
-            "y": 50,
-            "zoom": 1
-          },
           "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "captions": {
+            "enabled": true,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          },
           "elements": [
             {
-              "id": "card_valor_financiado",
-              "kind": "metric",
-              "icon": "house",
-              "label": "Valor Original Financiado",
-              "detail": "Valor do crédito contratado",
-              "value": "R$ 300 MIL",
+              "id": "bag",
+              "kind": "object",
+              "label": "EMBALAGEM",
               "x": 6,
-              "y": 18,
-              "width": 42,
-              "height": 58,
+              "y": 8,
+              "width": 40,
+              "height": 78,
+              "surface": "none",
+              "object_type": "grocery_package",
+              "content_fraction": 1,
               "svg_motion": "trace",
-              "label_size": 44,
-              "value_size": 96,
               "sustain": {
                 "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "surface": "spotlight"
+                "amplitude": 12,
+                "period_seconds": 5
+              }
             },
             {
-              "id": "card_total_pago",
-              "kind": "metric",
-              "icon": "coins",
-              "label": "Custo Total em 30 Anos",
-              "detail": "R$ 300 mil principal + R$ 480 mil juros",
-              "value": "R$ 780 MIL",
-              "x": 52,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "svg_motion": "trace",
-              "label_size": 44,
-              "value_size": 96,
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "surface": "spotlight"
+              "id": "discovery",
+              "kind": "label",
+              "label": "MENOS PRODUTO",
+              "x": 54,
+              "y": 26,
+              "width": 40,
+              "height": 24,
+              "surface": "none",
+              "label_size": 80,
+              "initially_visible": false
+            },
+            {
+              "id": "example",
+              "kind": "label",
+              "label": "ESQUEMA ILUSTRATIVO",
+              "x": 54,
+              "y": 60,
+              "width": 40,
+              "height": 12,
+              "surface": "none",
+              "label_size": 34
             }
           ],
-          "connections": [
-            {
-              "from": "card_valor_financiado",
-              "to": "card_total_pago",
-              "label": "Multiplica 2,6x",
-              "semantic": "comparison",
-              "motion": "flow"
-            }
-          ]
+          "connections": []
         },
         "beats": [
           {
-            "anchor": "Coloque essa matemática no papel por um instante",
-            "target_id": "card_valor_financiado",
+            "anchor": "O preço não mudou.",
+            "target_id": "bag",
+            "headline": "MESMA ETIQUETA",
             "action": "focus",
-            "headline": "Simulação Real da Dívida Habitacional",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
             "camera": {
-              "x": 27,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
+              "x": 50,
+              "y": 50,
+              "zoom": 1.04,
+              "motion_seconds": 0.8
             }
           },
           {
-            "anchor": "financiou um imóvel de trezentos mil reais",
-            "target_id": "card_valor_financiado",
+            "anchor": "Então por que você está pagando mais no supermercado?",
+            "target_id": "bag",
+            "headline": "MENOS CONTEÚDO",
             "action": "focus",
-            "headline": "Valor Emprestado: R$ 300.000",
-            "treatment": "giant_number",
-            "value": "R$ 300 MIL"
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 1.2,
+            "content_fraction": 0.8
           },
           {
-            "anchor": "taxa média de dez vírgula cinco por cento",
-            "target_id": "card_valor_financiado",
+            "anchor": "Eu sou Roberto, e vou mostrar o aumento que pode passar despercebido na prateleira.",
+            "target_id": "discovery",
+            "headline": "MENOS PRODUTO",
+            "action": "reveal",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "entrance": {
+              "style": "wipe",
+              "direction": "left"
+            }
+          },
+          {
+            "anchor": "Quando a embalagem traz menos produto e mantém o preço, cada grama fica mais cara.",
+            "target_id": "bag",
+            "headline": "CADA GRAMA CONTA",
             "action": "focus",
-            "headline": "Juros Médios de Mercado: 10,5% a.a.",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
             "camera": {
               "x": 50,
               "y": 50,
               "zoom": 1,
-              "motion_seconds": 0.4
+              "motion_seconds": 0.8
             }
           },
           {
-            "anchor": "Ao longo de trinta anos, o total pago ultrapassa",
-            "target_id": "card_total_pago",
-            "action": "focus",
-            "headline": "Total Desembolsado: Mais de R$ 780 Mil",
-            "treatment": "giant_number",
-            "value": "R$ 780 MIL",
-            "camera": {
-              "x": 73,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            }
-          },
-          {
-            "anchor": "Isso significa que você comprou um apartamento",
-            "target_id": "card_valor_financiado",
-            "action": "focus",
-            "headline": "Um Imóvel Para Morar",
-            "treatment": "kinetic_type"
-          },
-          {
-            "anchor": "deu quase dois outros apartamentos inteiros",
-            "target_id": "card_total_pago",
+            "anchor": "Essa redução de quantidade é chamada de reduflação.",
+            "target_id": "discovery",
+            "headline": "REDUFLAÇÃO",
             "action": "update",
-            "headline": "Dois Imóveis Pagos ao Banco em Juros",
-            "detail": "R$ 480 mil em juros acumulados e seguros",
-            "value": "+2 CASAS"
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
           },
           {
-            "anchor": "E por que essa conta é tão cruel?",
-            "target_id": "card_valor_financiado",
+            "anchor": "Ela pode acontecer mesmo sem aumentar o valor da etiqueta.",
+            "target_id": "bag",
+            "headline": "A ETIQUETA NÃO BASTA",
             "action": "focus",
-            "headline": "Por Que os Juros São Tão Pesados?",
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.4
-            }
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8
           },
           {
-            "anchor": "os juros são recalculados todo mês sobre o saldo devedor",
-            "target_id": "card_total_pago",
+            "anchor": "A embalagem na tela é um esquema ilustrativo, sem marca.",
+            "target_id": "example",
+            "headline": "ESQUEMA ILUSTRATIVO",
             "action": "focus",
-            "headline": "Juros Incidentes Sobre o Saldo Devedor",
-            "treatment": "kinetic_type"
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
           },
           {
-            "anchor": "o saldo devedor quase não se mexe",
-            "target_id": "card_valor_financiado",
+            "anchor": "Não é prova contra um fabricante. Para enxergar o custo real, precisamos abrir a conta.",
+            "target_id": "discovery",
+            "headline": "ABRA A CONTA",
             "action": "update",
-            "headline": "O Saldo Devedor Quase Travado",
-            "detail": "Nos primeiros anos, o abatimento é lentíssimo",
-            "value": "DÍVIDA LENTA"
-          },
-          {
-            "anchor": "o banco continua cobrando juros sobre uma montanha de dinheiro",
-            "target_id": "card_total_pago",
-            "action": "focus",
-            "headline": "Juros Cobrados Sobre a Montanha Devedora",
-            "treatment": "giant_number",
-            "value": "30 ANOS JUROS"
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
           }
         ]
       }
     },
     {
       "id": "scene-02",
-      "scene_index": 2,
-      "narration": "Mas existe uma regra matemática e legal que os bancos não colocam em propaganda: a amortização extraordinária. A amortização extraordinária é qualquer pagamento adicional feito diretamente para abater o saldo devedor, com desconto integral de todos os juros futuros. Pelo Código de Defesa do Consumidor e pelas normas do Banco Central, o banco é obrigado a abater o saldo sem cobrar nenhuma taxa por isso. E aqui está o segredo: no aplicativo do banco, você sempre terá duas opções: reduzir o valor da parcela ou reduzir o prazo. Se você escolhe reduzir a parcela, seu mês fica mais leve, mas o prazo continua longo e os juros continuam correndo. Quando você escolhe reduzir o prazo, cada real extra abate diretamente o principal de parcelas lá do final, cortando juros que nunca mais serão cobrados. Se você quer aprender a proteger seu dinheiro e parar de enriquecer o banco, se inscreva no canal O Dinheiro Explica e ative as notificações.",
+      "index": 1,
+      "title": "A conta por quilo",
+      "claim_ids": [
+        "C2"
+      ],
+      "narration": "Vamos usar um exemplo ilustrativo: um pacote custa dez reais e contém quinhentos gramas. Quinhentos gramas são meio quilo. É essa quantidade que entra na divisão. Dez reais divididos por meio quilo dão vinte reais por quilo. Esse é o preço para comparar a mesma quantidade, mesmo entre pacotes de tamanhos diferentes. Agora o pacote passa a ter quatrocentos gramas, mas a etiqueta continua em dez reais. Quatrocentos gramas são quatro décimos de quilo. Dez divididos por zero vírgula quatro dão vinte e cinco reais por quilo. O caixa cobra os mesmos dez reais. Só que eles compram menos produto. O aumento aparece quando colocamos os dois pacotes na mesma unidade de comparação.",
       "tts": {
         "delivery": "explain",
+        "pause_ms": 150,
         "cues": [
           {
-            "text": "A amortização extraordinária é qualquer pagamento adicional feito diretamente para abater o saldo devedor, com desconto integral de todos os juros futuros.",
-            "kind": "emphasis",
+            "text": "Dez divididos por zero vírgula quatro dão vinte e cinco reais por quilo.",
+            "kind": "number",
             "intent": "discovery",
-            "arc": "build",
-            "emphasis_word": "integral"
-          },
-          {
-            "text": "o banco é obrigado a abater o saldo sem cobrar nenhuma taxa por isso.",
-            "kind": "emphasis",
-            "intent": "conviction",
-            "arc": "resolve",
-            "emphasis_word": "taxa"
-          },
-          {
-            "text": "Quando você escolhe reduzir o prazo, cada real extra abate diretamente o principal de parcelas lá do final, cortando juros que nunca mais serão cobrados.",
-            "kind": "contrast",
-            "intent": "discovery",
-            "arc": "contrast",
-            "emphasis_word": "final"
-          },
-          {
-            "text": "se inscreva no canal O Dinheiro Explica e ative as notificações.",
-            "kind": "emphasis",
-            "intent": "reassurance",
-            "arc": "resolve",
-            "emphasis_word": "notificações"
+            "arc": "resolve"
           }
         ]
       },
       "visual": {
+        "type": "authored_stage",
+        "transition": "cut",
         "stage": {
           "show_title": false,
-          "initial_camera": {
-            "x": 50,
-            "y": 50,
-            "zoom": 1
-          },
           "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "captions": {
+            "enabled": false,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          },
           "elements": [
             {
-              "id": "card_regra_amortizacao",
-              "kind": "step",
-              "icon": "shield",
-              "label": "Direito de Amortizar",
-              "detail": "CDC e Bacen proíbem cobrança de taxas",
-              "value": "SEM TAXAS",
+              "id": "example",
+              "kind": "label",
+              "label": "EXEMPLO ILUSTRATIVO",
               "x": 6,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "svg_motion": "trace",
-              "label_size": 44,
-              "value_size": 96,
-              "sustain": {
-                "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "surface": "spotlight"
+              "y": 2,
+              "width": 88,
+              "height": 10,
+              "surface": "none",
+              "label_size": 36
             },
             {
-              "id": "card_reduzir_prazo",
-              "kind": "step",
-              "icon": "clock",
-              "label": "Redução de Prazo",
-              "detail": "Elimina parcelas do final do contrato",
-              "value": "MENOS ANOS",
-              "x": 52,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "svg_motion": "trace",
-              "label_size": 44,
-              "value_size": 96,
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "surface": "spotlight"
+              "id": "price",
+              "kind": "metric",
+              "label": "ETIQUETA",
+              "x": 6,
+              "y": 30,
+              "width": 24,
+              "height": 44,
+              "surface": "none",
+              "value": "R$ 10",
+              "value_size": 140,
+              "label_size": 40,
+              "initially_visible": false
+            },
+            {
+              "id": "weight",
+              "kind": "metric",
+              "label": "PESO",
+              "x": 40,
+              "y": 30,
+              "width": 24,
+              "height": 44,
+              "surface": "none",
+              "value": "0,5 kg",
+              "value_size": 130,
+              "label_size": 40,
+              "initially_visible": false
+            },
+            {
+              "id": "unit",
+              "kind": "metric",
+              "label": "POR QUILO",
+              "x": 74,
+              "y": 30,
+              "width": 24,
+              "height": 44,
+              "surface": "none",
+              "value": "R$ 20/kg",
+              "value_size": 106,
+              "label_size": 36,
+              "initially_visible": false
             }
           ],
-          "connections": [
-            {
-              "from": "card_regra_amortizacao",
-              "to": "card_reduzir_prazo",
-              "label": "Abate no saldo",
-              "semantic": "cause",
-              "motion": "flow"
-            }
-          ]
+          "connections": []
         },
         "beats": [
           {
-            "anchor": "Mas existe uma regra matemática e legal",
-            "target_id": "card_regra_amortizacao",
-            "action": "focus",
-            "headline": "O Mecanismo da Amortização Extraordinária",
-            "camera": {
-              "x": 27,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            }
-          },
-          {
-            "anchor": "A amortização extraordinária é qualquer pagamento adicional",
-            "target_id": "card_regra_amortizacao",
-            "action": "focus",
-            "headline": "Abate Direto no Saldo Devedor",
+            "anchor": "Vamos usar um exemplo ilustrativo: um pacote custa dez reais e contém quinhentos gramas.",
+            "target_id": "price",
+            "headline": "ETIQUETA",
+            "action": "reveal",
             "treatment": "giant_number",
-            "value": "100% NO SALDO"
-          },
-          {
-            "anchor": "com desconto integral de todos os juros futuros",
-            "target_id": "card_regra_amortizacao",
-            "action": "update",
-            "headline": "Desconto Total de Juros Futuros",
-            "detail": "Os juros das parcelas abatidas são cancelados",
-            "value": "ZERO JUROS"
-          },
-          {
-            "anchor": "Pelo Código de Defesa do Consumidor e pelas normas",
-            "target_id": "card_regra_amortizacao",
-            "action": "focus",
-            "headline": "Direito Garantido por Lei (CDC e Bacen)",
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.4
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "entrance": {
+              "style": "scale"
             }
           },
           {
-            "anchor": "o banco é obrigado a abater o saldo sem cobrar",
-            "target_id": "card_regra_amortizacao",
-            "action": "focus",
-            "headline": "Sem Tarifas de Liquidação",
+            "anchor": "Quinhentos gramas são meio quilo. É essa quantidade que entra na divisão.",
+            "target_id": "weight",
+            "headline": "PESO",
+            "action": "reveal",
             "treatment": "giant_number",
-            "value": "TAXA ZERO"
+            "behavior": "transform",
+            "motion_seconds": 0.8
           },
           {
-            "anchor": "no aplicativo do banco, você sempre terá duas opções",
-            "target_id": "card_reduzir_prazo",
-            "action": "focus",
-            "headline": "O Dilema: Reduzir Parcela ou Prazo?",
-            "camera": {
-              "x": 73,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
+            "anchor": "Dez reais divididos por meio quilo dão vinte reais por quilo.",
+            "target_id": "unit",
+            "headline": "POR QUILO",
+            "action": "reveal",
+            "treatment": "equation",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "operation": {
+              "kind": "equation",
+              "input_ids": [
+                "price",
+                "weight"
+              ],
+              "operator": "÷",
+              "result_id": "unit"
             }
           },
           {
-            "anchor": "reduzir o valor da parcela ou reduzir o prazo",
-            "target_id": "card_reduzir_prazo",
+            "anchor": "Esse é o preço para comparar a mesma quantidade, mesmo entre pacotes de tamanhos diferentes.",
+            "target_id": "unit",
+            "headline": "COMPARE A QUANTIDADE",
             "action": "focus",
-            "headline": "As Duas Rotas no App do Banco",
-            "treatment": "kinetic_type"
-          },
-          {
-            "anchor": "Se você escolhe reduzir a parcela",
-            "target_id": "card_reduzir_prazo",
-            "action": "update",
-            "headline": "Reduzir Parcela: Alívio Curto, Dívida Longa",
-            "detail": "Mantém o prazo em 30 anos gerando juros",
-            "value": "30 ANOS IGUAL"
-          },
-          {
-            "anchor": "mas o prazo continua longo e os juros continuam correndo",
-            "target_id": "card_regra_amortizacao",
-            "action": "focus",
-            "headline": "Juros Continuam Ativos Por Décadas",
-            "treatment": "kinetic_type"
-          },
-          {
-            "anchor": "Quando você escolhe reduzir o prazo, cada real extra",
-            "target_id": "card_reduzir_prazo",
-            "action": "update",
-            "headline": "Reduzir Prazo: O Golpe Certeiro na Dívida",
-            "detail": "Abate parcelas lá do final e encurta os anos de contrato",
-            "value": "CORTE DE ANOS"
-          },
-          {
-            "anchor": "cortando juros que nunca mais serão cobrados",
-            "target_id": "card_regra_amortizacao",
-            "action": "focus",
-            "headline": "Juros Que Nunca Mais Entrarão na Conta",
             "treatment": "giant_number",
-            "value": "JUROS CORTADOS"
+            "behavior": "transform",
+            "motion_seconds": 0.8
           },
           {
-            "anchor": "Se você quer aprender a proteger seu dinheiro",
-            "target_id": "card_reduzir_prazo",
-            "action": "focus",
-            "headline": "Educação Financeira Contra o Lucro do Banco",
-            "treatment": "kinetic_type"
+            "anchor": "Agora o pacote passa a ter quatrocentos gramas, mas a etiqueta continua em dez reais.",
+            "target_id": "weight",
+            "headline": "PESO",
+            "action": "update",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "value": "0,4 kg",
+            "retire_ids": [
+              "unit"
+            ]
           },
           {
-            "anchor": "se inscreva no canal O Dinheiro Explica e ative as notificações",
-            "target_id": "card_reduzir_prazo",
+            "anchor": "Quatrocentos gramas são quatro décimos de quilo.",
+            "target_id": "weight",
+            "headline": "PESO REDUZIDO",
             "action": "focus",
-            "headline": "Inscreva-se no O Dinheiro Explica",
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.4
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Dez divididos por zero vírgula quatro dão vinte e cinco reais por quilo.",
+            "target_id": "unit",
+            "headline": "POR QUILO",
+            "action": "update",
+            "treatment": "equation",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "value": "R$ 25/kg",
+            "reveal_ids": [
+              "unit"
+            ],
+            "operation": {
+              "kind": "equation",
+              "input_ids": [
+                "price",
+                "weight"
+              ],
+              "operator": "÷",
+              "result_id": "unit"
             }
+          },
+          {
+            "anchor": "O caixa cobra os mesmos dez reais. Só que eles compram menos produto.",
+            "target_id": "price",
+            "headline": "MESMO PREÇO",
+            "action": "update",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "O aumento aparece quando colocamos os dois pacotes na mesma unidade de comparação.",
+            "target_id": "unit",
+            "headline": "POR QUILO",
+            "action": "focus",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8
           }
         ]
       }
     },
     {
       "id": "scene-03",
-      "scene_index": 3,
-      "narration": "Em uma simulação hipotética, veja como isso funciona. Olhe para a última parcela do seu financiamento de trinta anos, lá no mês trezentos e cinquenta. Naquela altura do campeonato, o juro já caiu quase todo, e a amortização do principal daquela parcela é de apenas duzentos reais. Isso quer dizer que se você entrar no aplicativo da Caixa ou do seu banco e fizer uma amortização de seiscentos reais reduzindo o prazo, você não está adiantando um mês: com apenas seiscentos reais extras você elimina de vez três parcelas inteiras do final do contrato. Você acabou de apagar três meses de dívida, cancelou três meses de seguro habitacional e impediu o banco de lucrar milhares de reais em juros que seriam gerados até lá.",
+      "index": 2,
+      "title": "Menos quantidade, mais custo",
+      "claim_ids": [
+        "C2"
+      ],
+      "narration": "Nesse mesmo exemplo ilustrativo, o preço por quilo saltou de vinte para vinte e cinco reais. São cinco reais a mais sobre uma base de vinte. O aumento é de vinte e cinco por cento. Já a quantidade caiu de quinhentos para quatrocentos gramas: vinte por cento a menos. Os percentuais são diferentes porque as bases da conta são diferentes. Perder um quinto do conteúdo faz o mesmo dinheiro comprar quatro quintos do pacote anterior. Para recompor um quilo, você precisa gastar mais. Não houve aumento de vinte e cinco por cento em tudo. Essa porcentagem pertence só à nossa conta hipotética, não à inflação do supermercado. Se essa comparação ajudou, inscreva-se no canal para entender melhor o que pesa no seu bolso.",
       "tts": {
         "delivery": "explain",
+        "pause_ms": 150,
         "cues": [
           {
-            "text": "Em uma simulação hipotética, veja como isso funciona.",
-            "kind": "emphasis",
-            "intent": "curiosity",
-            "arc": "question",
-            "emphasis_word": "hipotética"
-          },
-          {
-            "text": "e a amortização do principal daquela parcela é de apenas duzentos reais.",
+            "text": "O aumento é de vinte e cinco por cento.",
             "kind": "number",
             "intent": "discovery",
-            "arc": "build",
-            "emphasis_word": "duzentos"
-          },
-          {
-            "text": "com apenas seiscentos reais extras você elimina de vez três parcelas inteiras do final do contrato.",
-            "kind": "number",
-            "intent": "conviction",
-            "arc": "resolve",
-            "emphasis_word": "três"
-          },
-          {
-            "text": "impediu o banco de lucrar milhares de reais em juros que seriam gerados até lá.",
-            "kind": "contrast",
-            "intent": "conviction",
-            "arc": "contrast",
-            "emphasis_word": "milhares"
+            "arc": "resolve"
           }
         ]
       },
       "visual": {
+        "type": "authored_stage",
+        "transition": "cut",
         "stage": {
           "show_title": false,
-          "initial_camera": {
-            "x": 50,
-            "y": 50,
-            "zoom": 1
-          },
           "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "captions": {
+            "enabled": false,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          },
           "elements": [
             {
-              "id": "card_simulacao_hipotetica",
+              "id": "example",
               "kind": "label",
-              "icon": "search",
-              "label": "Simulação Hipotética",
-              "detail": "Amortização de parcela final R$ 200",
-              "value": "PARCELA FINAL",
+              "label": "EXEMPLO ILUSTRATIVO",
               "x": 6,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "svg_motion": "trace",
-              "label_size": 44,
-              "value_size": 96,
-              "sustain": {
-                "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "surface": "spotlight"
+              "y": 2,
+              "width": 88,
+              "height": 10,
+              "surface": "none",
+              "label_size": 36
             },
             {
-              "id": "card_parcelas_eliminadas",
+              "id": "increase",
               "kind": "metric",
-              "icon": "check",
-              "label": "Parcelas Eliminadas",
-              "detail": "Aporte de R$ 600 apaga 3 meses finais",
-              "value": "-3 MESES",
-              "x": 52,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "svg_motion": "trace",
-              "label_size": 44,
-              "value_size": 96,
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "surface": "spotlight"
+              "label": "PREÇO POR QUILO",
+              "x": 6,
+              "y": 20,
+              "width": 52,
+              "height": 55,
+              "surface": "none",
+              "value": "25%",
+              "value_size": 260,
+              "label_size": 52,
+              "initially_visible": false
+            },
+            {
+              "id": "reduction",
+              "kind": "metric",
+              "label": "MENOS PRODUTO",
+              "x": 66,
+              "y": 31,
+              "width": 28,
+              "height": 36,
+              "surface": "none",
+              "value": "20%",
+              "value_size": 160,
+              "label_size": 38,
+              "initially_visible": false
             }
           ],
-          "connections": [
-            {
-              "from": "card_simulacao_hipotetica",
-              "to": "card_parcelas_eliminadas",
-              "label": "Abate de parcelas",
-              "semantic": "transfer",
-              "motion": "flow"
-            }
-          ]
+          "connections": []
         },
         "beats": [
           {
-            "anchor": "Em uma simulação hipotética, veja como isso funciona",
-            "target_id": "card_simulacao_hipotetica",
-            "action": "focus",
-            "headline": "Cálculo Hipotético da Parcela Final",
-            "camera": {
-              "x": 27,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
+            "anchor": "Nesse mesmo exemplo ilustrativo, o preço por quilo saltou de vinte para vinte e cinco reais.",
+            "target_id": "increase",
+            "headline": "PREÇO POR QUILO",
+            "action": "reveal",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "entrance": {
+              "style": "scale"
             }
           },
           {
-            "anchor": "Olhe para a última parcela do seu financiamento",
-            "target_id": "card_simulacao_hipotetica",
+            "anchor": "São cinco reais a mais sobre uma base de vinte. O aumento é de vinte e cinco por cento.",
+            "target_id": "increase",
+            "headline": "PREÇO POR QUILO",
             "action": "focus",
-            "headline": "A Última Parcela no Mês 350",
             "treatment": "giant_number",
-            "value": "MÊS 350"
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.04,
+              "motion_seconds": 1
+            }
           },
           {
-            "anchor": "lá no mês trezentos e cinquenta",
-            "target_id": "card_simulacao_hipotetica",
-            "action": "focus",
-            "headline": "O Fim da Linha de 30 Anos",
-            "treatment": "kinetic_type"
-          },
-          {
-            "anchor": "Naquela altura do campeonato, o juro já caiu",
-            "target_id": "card_simulacao_hipotetica",
-            "action": "focus",
-            "headline": "Juros Já Quase Extintos no Fim",
+            "anchor": "Já a quantidade caiu de quinhentos para quatrocentos gramas: vinte por cento a menos.",
+            "target_id": "reduction",
+            "headline": "MENOS PRODUTO",
+            "action": "reveal",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
             "camera": {
               "x": 50,
               "y": 50,
               "zoom": 1,
-              "motion_seconds": 0.4
+              "motion_seconds": 0.8
             }
           },
           {
-            "anchor": "a amortização do principal daquela parcela é de apenas duzentos reais",
-            "target_id": "card_simulacao_hipotetica",
+            "anchor": "Os percentuais são diferentes porque as bases da conta são diferentes.",
+            "target_id": "increase",
+            "headline": "BASES DIFERENTES",
             "action": "update",
-            "headline": "Principal da Parcela Final: R$ 200",
-            "detail": "Apenas R$ 200 de saldo principal para quitar aquele mês",
-            "value": "R$ 200 PRINCIPAL"
-          },
-          {
-            "anchor": "se você entrar no aplicativo da Caixa",
-            "target_id": "card_parcelas_eliminadas",
-            "action": "focus",
-            "headline": "Aporte Extra Pelo Aplicativo",
-            "camera": {
-              "x": 73,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            }
-          },
-          {
-            "anchor": "fizer uma amortização de seiscentos reais reduzindo o prazo",
-            "target_id": "card_parcelas_eliminadas",
-            "action": "focus",
-            "headline": "Aporte Extra de R$ 600 no Prazo",
             "treatment": "giant_number",
-            "value": "R$ 600 EXTRA"
+            "behavior": "transform",
+            "motion_seconds": 0.8
           },
           {
-            "anchor": "você não está adiantando um mês:",
-            "target_id": "card_parcelas_eliminadas",
-            "action": "focus",
-            "headline": "Muito Mais Que Uma Única Parcela",
-            "treatment": "kinetic_type"
-          },
-          {
-            "anchor": "com apenas seiscentos reais extras você elimina de vez três parcelas",
-            "target_id": "card_parcelas_eliminadas",
+            "anchor": "Perder um quinto do conteúdo faz o mesmo dinheiro comprar quatro quintos do pacote anterior.",
+            "target_id": "reduction",
+            "headline": "QUANTIDADE REDUZIDA",
             "action": "update",
-            "headline": "Três Parcelas Inteiras Apagadas de Vez",
-            "detail": "Três meses eliminados com um único pagamento extra",
-            "value": "-3 PARCELAS"
-          },
-          {
-            "anchor": "Você acabou de apagar três meses de dívida",
-            "target_id": "card_parcelas_eliminadas",
-            "action": "focus",
-            "headline": "Menos Três Meses de Dívida",
-            "treatment": "kinetic_type"
-          },
-          {
-            "anchor": "cancelou três meses de seguro habitacional",
-            "target_id": "card_simulacao_hipotetica",
-            "action": "focus",
-            "headline": "Economia Também nos Seguros MIP e DFI",
             "treatment": "giant_number",
-            "value": "SEGURO ZERO"
+            "behavior": "transform",
+            "motion_seconds": 0.8
           },
           {
-            "anchor": "impediu o banco de lucrar milhares de reais em juros",
-            "target_id": "card_parcelas_eliminadas",
-            "action": "focus",
-            "headline": "Milhares de Reais Poupados em Juros",
+            "anchor": "Para recompor um quilo, você precisa gastar mais. Não houve aumento de vinte e cinco por cento em tudo.",
+            "target_id": "increase",
+            "headline": "NESTE EXEMPLO",
+            "action": "update",
             "treatment": "giant_number",
-            "value": "ECONOMIA REAL",
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.4
-            }
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Essa porcentagem pertence só à nossa conta hipotética, não à inflação do supermercado.",
+            "target_id": "example",
+            "headline": "EXEMPLO ILUSTRATIVO",
+            "action": "focus",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Se essa comparação ajudou, inscreva-se no canal para entender melhor o que pesa no seu bolso.",
+            "target_id": "increase",
+            "headline": "COMPARE POR QUILO",
+            "action": "update",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8
           }
         ]
       }
     },
     {
       "id": "scene-04",
-      "scene_index": 4,
-      "narration": "Agora multiplique esse efeito ao longo dos meses e anos. Se com valores pequenos você já elimina meses inteiros, o que acontece quando você monta uma estratégia de amortização consistente? O plano para transformar trinta anos em cinco a oito anos se apoia em três pilares principais. O primeiro é destinar um valor fixo mensal, mesmo que sejam duzentos ou quatrocentos reais que sobraram do orçamento. O segundo é direcionar rendas extraordinárias, como o décimo terceiro salário, bônus e a restituição do Imposto de Renda. E o terceiro é usar o FGTS: pela regra do Sistema Financeiro da Habitação, você pode resgatar o saldo acumulado do FGTS a cada dois anos exclusivamente para abater o saldo devedor da sua casa própria.",
+      "index": 3,
+      "title": "Um levantamento histórico",
+      "claim_ids": [
+        "C3"
+      ],
+      "narration": "Existe um retrato real desse mecanismo, mas com período e limites bem definidos. Reportagens consultadas citaram um levantamento da Horus sobre embalagens de chocolate. Na comparação de janeiro a agosto de dois mil e vinte e dois com o mesmo período de vinte e três, a gramatura média passou de cento e sessenta e sete vírgula seis gramas para cento e quarenta e três vírgula sete gramas. O preço médio foi de quinze reais e oitenta e cinco centavos para dezesseis reais e setenta e oito centavos. Nesse levantamento, as médias mostram menos conteúdo e uma etiqueta também mais cara. São médias da categoria, não a história de uma única marca ou de todos os chocolates. E são dados de dois mil e vinte e dois e vinte e três, não uma cotação atual.",
       "tts": {
         "delivery": "explain",
-        "cues": [
-          {
-            "text": "O plano para transformar trinta anos em cinco a oito anos se apoia em três pilares principais.",
-            "kind": "emphasis",
-            "intent": "conviction",
-            "arc": "build",
-            "emphasis_word": "pilares"
-          },
-          {
-            "text": "O primeiro é destinar um valor fixo mensal, mesmo que sejam duzentos ou quatrocentos reais que sobraram do orçamento.",
-            "kind": "number",
-            "intent": "reassurance",
-            "arc": "resolve",
-            "emphasis_word": "mensal"
-          },
-          {
-            "text": "como o décimo terceiro salário, bônus e a restituição do Imposto de Renda.",
-            "kind": "emphasis",
-            "intent": "curiosity",
-            "arc": "contrast",
-            "emphasis_word": "restituição"
-          },
-          {
-            "text": "você pode resgatar o saldo acumulado do FGTS a cada dois anos exclusivamente para abater o saldo devedor da sua casa própria.",
-            "kind": "emphasis",
-            "intent": "conviction",
-            "arc": "resolve",
-            "emphasis_word": "FGTS"
-          }
-        ]
+        "pause_ms": 150,
+        "cues": []
       },
       "visual": {
+        "type": "authored_stage",
+        "transition": "cut",
         "stage": {
           "show_title": false,
-          "initial_camera": {
-            "x": 50,
-            "y": 50,
-            "zoom": 1
-          },
           "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "captions": {
+            "enabled": false,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          },
           "elements": [
             {
-              "id": "card_estrategia_quitacao",
-              "kind": "step",
-              "icon": "route",
-              "label": "Os Três Pilares da Quitação",
-              "detail": "Aporte mensal e renda extra periódica",
-              "value": "MÉTODO 5 ANOS",
-              "x": 6,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "svg_motion": "trace",
-              "label_size": 44,
-              "value_size": 96,
-              "sustain": {
-                "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "surface": "spotlight"
+              "id": "chart",
+              "kind": "chart",
+              "label": "Chocolate: gramatura média",
+              "x": 4,
+              "y": 15,
+              "width": 68,
+              "height": 68,
+              "surface": "none",
+              "chart_reveal_to": -1,
+              "chart": {
+                "type": "bar",
+                "source_id": "S4",
+                "unit": "Gramas por embalagem",
+                "x_label": "Janeiro a agosto de cada ano",
+                "y_min": 0,
+                "y_max": 180,
+                "points": [
+                  {
+                    "x": 2022,
+                    "label": "2022",
+                    "value": 167.6
+                  },
+                  {
+                    "x": 2023,
+                    "label": "2023",
+                    "value": 143.7
+                  }
+                ]
+              }
             },
             {
-              "id": "card_uso_fgts",
-              "kind": "step",
-              "icon": "wallet",
-              "label": "Alavancagem do FGTS",
-              "detail": "Uso legal a cada 2 anos no SFH",
-              "value": "A CADA 2 ANOS",
-              "x": 52,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "svg_motion": "trace",
-              "label_size": 44,
-              "value_size": 96,
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "surface": "spotlight"
+              "id": "price",
+              "kind": "metric",
+              "label": "PREÇO MÉDIO",
+              "x": 76,
+              "y": 30,
+              "width": 22,
+              "height": 38,
+              "surface": "none",
+              "value": "R$ 15,85",
+              "value_size": 94,
+              "label_size": 36,
+              "initially_visible": false
+            },
+            {
+              "id": "period",
+              "kind": "label",
+              "label": "DADOS HISTÓRICOS · 2022 / 2023",
+              "x": 5,
+              "y": 87,
+              "width": 90,
+              "height": 11,
+              "surface": "none",
+              "label_size": 34
             }
           ],
-          "connections": [
-            {
-              "from": "card_estrategia_quitacao",
-              "to": "card_uso_fgts",
-              "label": "Soma de recursos",
-              "semantic": "sequence",
-              "motion": "flow"
-            }
-          ]
+          "connections": []
         },
         "beats": [
           {
-            "anchor": "Agora multiplique esse efeito ao longo dos meses",
-            "target_id": "card_estrategia_quitacao",
+            "anchor": "Existe um retrato real desse mecanismo, mas com período e limites bem definidos.",
+            "target_id": "chart",
+            "headline": "LEVANTAMENTO HISTÓRICO",
             "action": "focus",
-            "headline": "O Efeito Acumulado da Amortização",
-            "camera": {
-              "x": 27,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Reportagens consultadas citaram um levantamento da Horus sobre embalagens de chocolate.",
+            "target_id": "chart",
+            "headline": "GRAMATURA MÉDIA",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Na comparação de janeiro a agosto de dois mil e vinte e dois com o mesmo período de vinte e três,",
+            "target_id": "period",
+            "headline": "DADOS HISTÓRICOS · 2022 / 2023",
+            "action": "focus",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "a gramatura média passou de cento e sessenta e sete vírgula seis gramas",
+            "target_id": "chart",
+            "headline": "2022",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 1.2,
+            "chart_reveal_to": 0,
+            "chart_focus": {
+              "from": 0,
+              "to": 0
             }
           },
           {
-            "anchor": "Se com valores pequenos você já elimina meses inteiros",
-            "target_id": "card_estrategia_quitacao",
+            "anchor": "para cento e quarenta e três vírgula sete gramas.",
+            "target_id": "chart",
+            "headline": "2023",
             "action": "focus",
-            "headline": "Pequenos Aportes, Grande Impacto",
-            "treatment": "kinetic_type"
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 1.2,
+            "chart_reveal_to": 1,
+            "chart_focus": {
+              "from": 1,
+              "to": 1
+            }
           },
           {
-            "anchor": "o que acontece quando você monta uma estratégia",
-            "target_id": "card_estrategia_quitacao",
-            "action": "focus",
-            "headline": "Estratégia Consistente de Eliminação de Dívida",
-            "treatment": "kinetic_type"
-          },
-          {
-            "anchor": "O plano para transformar trinta anos em cinco",
-            "target_id": "card_estrategia_quitacao",
-            "action": "focus",
-            "headline": "De 30 Anos Para 5 a 8 Anos",
+            "anchor": "O preço médio foi de quinze reais e oitenta e cinco centavos",
+            "target_id": "price",
+            "headline": "PREÇO MÉDIO",
+            "action": "reveal",
             "treatment": "giant_number",
-            "value": "5 A 8 ANOS"
+            "behavior": "transform",
+            "motion_seconds": 0.8
           },
           {
-            "anchor": "O primeiro é destinar um valor fixo mensal",
-            "target_id": "card_estrategia_quitacao",
+            "anchor": "para dezesseis reais e setenta e oito centavos.",
+            "target_id": "price",
+            "headline": "PREÇO MÉDIO",
             "action": "update",
-            "headline": "Pilar 1: Aporte Fixo Todo Mês",
-            "detail": "R$ 200 a R$ 500 extras destinados direto ao saldo",
-            "value": "APORTE MENSAL"
-          },
-          {
-            "anchor": "mesmo que sejam duzentos ou quatrocentos reais",
-            "target_id": "card_estrategia_quitacao",
-            "action": "focus",
-            "headline": "Qualquer Quantia Extra Faz a Diferença",
-            "treatment": "kinetic_type"
-          },
-          {
-            "anchor": "O segundo é direcionar rendas extraordinárias",
-            "target_id": "card_estrategia_quitacao",
-            "action": "focus",
-            "headline": "Pilar 2: Rendas Extras Periódicas",
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.4
-            }
-          },
-          {
-            "anchor": "como o décimo terceiro salário, bônus",
-            "target_id": "card_estrategia_quitacao",
-            "action": "update",
-            "headline": "13º Salário e Restituição do IR",
-            "detail": "Grandes amortizações pontuais que destroem anos de contrato",
-            "value": "13º + IR"
-          },
-          {
-            "anchor": "E o terceiro é usar o FGTS",
-            "target_id": "card_uso_fgts",
-            "action": "focus",
-            "headline": "Pilar 3: O Poder do FGTS Acumulado",
-            "camera": {
-              "x": 73,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
-            }
-          },
-          {
-            "anchor": "você pode resgatar o saldo acumulado do FGTS a cada dois anos",
-            "target_id": "card_uso_fgts",
-            "action": "update",
-            "headline": "FGTS a Cada 2 Anos no SFH",
-            "detail": "Direito garantido por lei para contratos habitacionais",
-            "value": "FGTS BIENAL"
-          },
-          {
-            "anchor": "exclusivamente para abater o saldo devedor",
-            "target_id": "card_uso_fgts",
-            "action": "focus",
-            "headline": "Abatimento Direto do Saldo Principal",
             "treatment": "giant_number",
-            "value": "DÍVIDA CAI RÁPIDO",
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.4
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "value": "R$ 16,78"
+          },
+          {
+            "anchor": "Nesse levantamento, as médias mostram menos conteúdo e uma etiqueta também mais cara.",
+            "target_id": "chart",
+            "headline": "MENOS CONTEÚDO",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "chart_focus": {
+              "from": 0,
+              "to": 1
             }
+          },
+          {
+            "anchor": "São médias da categoria, não a história de uma única marca ou de todos os chocolates.",
+            "target_id": "price",
+            "headline": "MÉDIA DA CATEGORIA",
+            "action": "update",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "E são dados de dois mil e vinte e dois e vinte e três, não uma cotação atual.",
+            "target_id": "period",
+            "headline": "HISTÓRICO · NÃO É COTAÇÃO ATUAL",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
           }
         ]
       }
     },
     {
       "id": "scene-05",
-      "scene_index": 5,
-      "narration": "Mas atenção a uma regra de ouro essencial de segurança financeira: nunca use todo o seu dinheiro para amortizar sem antes ter uma reserva de emergência sólida guardada em um investimento com liquidez imediata. Se surgir um imprevisto de saúde ou de trabalho, o dinheiro que você amortizou não pode ser sacado de volta do imóvel. Portanto, a resposta para quem quer se livrar de trinta anos de dívida é simples: combinando aportes mensais no prazo, uso do FGTS e a preservação rigorosa da sua reserva de emergência, você liquida o contrato em cinco a oito anos, poupa centenas de milhares de reais e conquista a sua casa própria de verdade.",
+      "index": 4,
+      "title": "Por que mudar a embalagem?",
+      "claim_ids": [
+        "C4",
+        "C5"
+      ],
+      "narration": "Mas por que diminuir a embalagem em vez de subir o preço? Uma reportagem consultada relaciona essa decisão à pressão de custos, incluindo transporte. Manter a etiqueta pode tornar a mudança menos perceptível para quem olha só o valor em reais. Isso ajuda a explicar uma estratégia comercial. Não prova o motivo de cada fabricante. Também há uma diferença importante entre vender menos quantidade e esconder a mudança. Um pacote menor pode caber no dinheiro disponível para aquela compra. Mas caber no orçamento não significa sair mais barato por quilo. E nem toda redução é fraude. O consumidor precisa receber informação clara para decidir.",
       "tts": {
-        "delivery": "closing",
-        "cues": [
-          {
-            "text": "nunca use todo o seu dinheiro para amortizar sem antes ter uma reserva de emergência sólida",
-            "kind": "emphasis",
-            "intent": "caution",
-            "arc": "contrast",
-            "emphasis_word": "reserva"
-          },
-          {
-            "text": "Se surgir um imprevisto de saúde ou de trabalho, o dinheiro que você amortizou não pode ser sacado de volta do imóvel.",
-            "kind": "contrast",
-            "intent": "caution",
-            "arc": "question",
-            "emphasis_word": "sacado"
-          },
-          {
-            "text": "você liquida o contrato em cinco a oito anos, poupa centenas de milhares de reais",
-            "kind": "number",
-            "intent": "conviction",
-            "arc": "build",
-            "emphasis_word": "milhares"
-          },
-          {
-            "text": "e conquista a sua casa própria de verdade.",
-            "kind": "emphasis",
-            "intent": "conviction",
-            "arc": "resolve",
-            "emphasis_word": "própria"
-          }
-        ]
+        "delivery": "explain",
+        "pause_ms": 150,
+        "cues": []
       },
       "visual": {
+        "type": "authored_stage",
+        "transition": "cut",
         "stage": {
           "show_title": false,
-          "initial_camera": {
-            "x": 50,
-            "y": 50,
-            "zoom": 1
-          },
           "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "captions": {
+            "enabled": true,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          },
           "elements": [
             {
-              "id": "card_reserva_seguranca",
-              "kind": "metric",
-              "icon": "shield",
-              "label": "Reserva de Emergência",
-              "detail": "Mantenha de 3 a 6 meses de segurança",
-              "value": "BLINDAGEM",
-              "x": 6,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "svg_motion": "trace",
-              "label_size": 44,
-              "value_size": 96,
-              "sustain": {
-                "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "surface": "spotlight"
-            },
-            {
-              "id": "card_vitoria_quitacao",
-              "kind": "metric",
-              "icon": "house",
-              "label": "Casa Própria Quitada",
-              "detail": "Saldo devedor zerado em 5 a 8 anos",
-              "value": "QUITADO!",
-              "x": 52,
-              "y": 18,
-              "width": 42,
-              "height": 58,
-              "svg_motion": "trace",
-              "label_size": 44,
-              "value_size": 96,
+              "id": "shopping",
+              "kind": "photo",
+              "label": "O GESTO DE COMPARAR",
+              "x": 4,
+              "y": 8,
+              "width": 55,
+              "height": 76,
+              "surface": "spotlight",
+              "asset_id": "shopping-photo",
+              "image_fit": "cover",
+              "image_motion": "pan",
+              "focal_x": 55,
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 8,
-                "period_seconds": 3.2
-              },
-              "surface": "spotlight"
+                "amplitude": 6,
+                "period_seconds": 6
+              }
+            },
+            {
+              "id": "factory",
+              "kind": "object",
+              "label": "PRESSÃO DE CUSTOS",
+              "x": 65,
+              "y": 10,
+              "width": 30,
+              "height": 70,
+              "surface": "none",
+              "object_type": "factory",
+              "svg_motion": "trace",
+              "initially_visible": false,
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 9,
+                "period_seconds": 4
+              }
+            },
+            {
+              "id": "limit",
+              "kind": "label",
+              "label": "CONTEXTO · NÃO PROVA DE CADA MARCA",
+              "x": 5,
+              "y": 87,
+              "width": 90,
+              "height": 11,
+              "surface": "none",
+              "label_size": 34
             }
           ],
-          "connections": [
-            {
-              "from": "card_reserva_seguranca",
-              "to": "card_vitoria_quitacao",
-              "label": "Quitação segura",
-              "semantic": "cause",
-              "motion": "flow"
-            }
-          ]
+          "connections": []
         },
         "beats": [
           {
-            "anchor": "Mas atenção a uma regra de ouro essencial",
-            "target_id": "card_reserva_seguranca",
+            "anchor": "Mas por que diminuir a embalagem em vez de subir o preço?",
+            "target_id": "shopping",
+            "headline": "DECISÃO NA PRATELEIRA",
             "action": "focus",
-            "headline": "Alerta Crítico: Reserva de Emergência",
-            "camera": {
-              "x": 27,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
+            "treatment": "depth_photo",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Uma reportagem consultada relaciona essa decisão à pressão de custos, incluindo transporte.",
+            "target_id": "factory",
+            "headline": "PRESSÃO DE CUSTOS",
+            "action": "reveal",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "entrance": {
+              "style": "wipe",
+              "direction": "up"
             }
           },
           {
-            "anchor": "nunca use todo o seu dinheiro para amortizar",
-            "target_id": "card_reserva_seguranca",
+            "anchor": "Manter a etiqueta pode tornar a mudança menos perceptível para quem olha só o valor em reais.",
+            "target_id": "shopping",
+            "headline": "ETIQUETA EM FOCO",
             "action": "focus",
-            "headline": "Não Zere o Seu Caixa Doméstico",
-            "treatment": "giant_number",
-            "value": "RESERVA PRIMEIRO"
+            "treatment": "depth_photo",
+            "behavior": "transform",
+            "motion_seconds": 0.8
           },
           {
-            "anchor": "reserva de emergência sólida guardada",
-            "target_id": "card_reserva_seguranca",
+            "anchor": "Isso ajuda a explicar uma estratégia comercial. Não prova o motivo de cada fabricante.",
+            "target_id": "limit",
+            "headline": "EXPLICAÇÃO POSSÍVEL · NÃO PROVA",
             "action": "update",
-            "headline": "Segurança em Liquidez Diária",
-            "detail": "Mantenha de 3 a 6 meses de despesas protegidos",
-            "value": "LIQUIDEZ DIÁRIA"
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
           },
           {
-            "anchor": "em um investimento com liquidez imediata",
-            "target_id": "card_reserva_seguranca",
-            "action": "focus",
-            "headline": "Reserva de Fácil Acesso",
-            "treatment": "kinetic_type"
+            "anchor": "Também há uma diferença importante entre vender menos quantidade e esconder a mudança.",
+            "target_id": "factory",
+            "headline": "INFORMAÇÃO IMPORTA",
+            "action": "update",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8
           },
           {
-            "anchor": "Se surgir um imprevisto de saúde ou de trabalho",
-            "target_id": "card_reserva_seguranca",
+            "anchor": "Um pacote menor pode caber no dinheiro disponível para aquela compra.",
+            "target_id": "shopping",
+            "headline": "ORÇAMENTO DA COMPRA",
             "action": "focus",
-            "headline": "O Risco da Falta de Liquidez",
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.4
+            "treatment": "depth_photo",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Mas caber no orçamento não significa sair mais barato por quilo.",
+            "target_id": "factory",
+            "headline": "CUSTO POR QUANTIDADE",
+            "action": "update",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "E nem toda redução é fraude. O consumidor precisa receber informação clara para decidir.",
+            "target_id": "limit",
+            "headline": "REDUZIR NÃO AUTORIZA ESCONDER",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-06",
+      "index": 5,
+      "title": "O aviso na embalagem",
+      "claim_ids": [
+        "C6",
+        "C7"
+      ],
+      "narration": "Segundo a portaria do Ministério da Justiça, a redução deve ser informada na embalagem. A regra pede destaque no painel principal, com leitura fácil. O aviso identifica a mudança, a quantidade anterior, a nova e a diferença absoluta e percentual. Em painel pequeno sem espaço contínuo suficiente, há uma exceção para o aviso resumido. O artigo quatro exige que a informação permaneça por pelo menos seis meses após a alteração. Esse prazo é do aviso. Não é uma garantia de que o preço ficará congelado. Se a informação estiver escondida ou faltar, o Procon orienta registrar e denunciar. Fotografe a embalagem e guarde o comprovante. A apuração depende do caso e das provas.",
+      "tts": {
+        "delivery": "explain",
+        "pause_ms": 150,
+        "cues": []
+      },
+      "visual": {
+        "type": "authored_stage",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "captions": {
+            "enabled": false,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          },
+          "elements": [
+            {
+              "id": "heading",
+              "kind": "label",
+              "label": "O AVISO NA EMBALAGEM",
+              "x": 5,
+              "y": 1,
+              "width": 90,
+              "height": 9,
+              "surface": "none",
+              "label_size": 36
+            },
+            {
+              "id": "rule",
+              "kind": "source_excerpt",
+              "label": "Portaria 392/2021 · Art. 4º",
+              "x": 4,
+              "y": 14,
+              "width": 92,
+              "height": 37,
+              "surface": "spotlight",
+              "asset_id": "quantity-rule"
+            },
+            {
+              "id": "months",
+              "kind": "metric",
+              "label": "PRAZO MÍNIMO DO AVISO",
+              "x": 12,
+              "y": 61,
+              "width": 76,
+              "height": 31,
+              "surface": "none",
+              "value": "6 MESES",
+              "value_size": 140,
+              "label_size": 36,
+              "initially_visible": false
             }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "Segundo a portaria do Ministério da Justiça, a redução deve ser informada na embalagem.",
+            "target_id": "rule",
+            "headline": "REGRA DOCUMENTADA",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8
           },
           {
-            "anchor": "o dinheiro que você amortizou não pode ser sacado",
-            "target_id": "card_reserva_seguranca",
-            "action": "focus",
-            "headline": "Dinheiro Amortizado Fica no Imóvel",
-            "treatment": "kinetic_type"
+            "anchor": "A regra pede destaque no painel principal, com leitura fácil.",
+            "target_id": "heading",
+            "headline": "AVISO VISÍVEL",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
           },
           {
-            "anchor": "Portanto, a resposta para quem quer se livrar",
-            "target_id": "card_vitoria_quitacao",
-            "action": "focus",
-            "headline": "O Caminho da Liberdade Financeira",
-            "camera": {
+            "anchor": "O aviso identifica a mudança, a quantidade anterior, a nova e a diferença absoluta e percentual.",
+            "target_id": "heading",
+            "headline": "ANTES · DEPOIS · DIFERENÇA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Em painel pequeno sem espaço contínuo suficiente, há uma exceção para o aviso resumido.",
+            "target_id": "heading",
+            "headline": "EXCEÇÃO PARA PAINEL PEQUENO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "O artigo quatro exige que a informação permaneça por pelo menos seis meses após a alteração.",
+            "target_id": "months",
+            "headline": "PRAZO MÍNIMO DO AVISO",
+            "action": "reveal",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Esse prazo é do aviso. Não é uma garantia de que o preço ficará congelado.",
+            "target_id": "months",
+            "headline": "PRAZO DO AVISO",
+            "action": "update",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Se a informação estiver escondida ou faltar, o Procon orienta registrar e denunciar.",
+            "target_id": "heading",
+            "headline": "INFORMAÇÃO ESCONDIDA? REGISTRE",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Fotografe a embalagem e guarde o comprovante. A apuração depende do caso e das provas.",
+            "target_id": "heading",
+            "headline": "EMBALAGEM + COMPROVANTE",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-07",
+      "index": 6,
+      "title": "Qual pacote sai mais barato?",
+      "claim_ids": [
+        "C2",
+        "C7"
+      ],
+      "narration": "Na prateleira, compare produtos equivalentes. Vamos a outro exemplo ilustrativo. Um custa nove reais por quatrocentos gramas. Dividindo nove por zero vírgula quatro, ele sai por vinte e dois reais e cinquenta por quilo. O outro custa dez reais, mas entrega quinhentos gramas. A etiqueta do segundo parece mais cara: dez em vez de nove. Só que ele contém meio quilo, não quatro décimos. Dez divididos por meio quilo dão vinte reais por quilo. Nesse exemplo, o segundo custa menos. Você pode usar o preço por quilo na etiqueta ou dividir o preço pela quantidade em quilos. Para líquidos, compare por litro. Para itens contados, compare por unidade. Um pacote maior só compensa se couber no seu orçamento e for consumido, sem desperdício.",
+      "tts": {
+        "delivery": "explain",
+        "pause_ms": 150,
+        "cues": []
+      },
+      "visual": {
+        "type": "authored_stage",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "captions": {
+            "enabled": false,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          },
+          "elements": [
+            {
+              "id": "example",
+              "kind": "label",
+              "label": "EXEMPLO ILUSTRATIVO",
+              "x": 6,
+              "y": 2,
+              "width": 88,
+              "height": 10,
+              "surface": "none",
+              "label_size": 36
+            },
+            {
+              "id": "small",
+              "kind": "object",
+              "label": "400 g · R$ 9",
+              "x": 5,
+              "y": 15,
+              "width": 30,
+              "height": 43,
+              "surface": "none",
+              "object_type": "grocery_package",
+              "content_fraction": 0.8,
+              "svg_motion": "trace"
+            },
+            {
+              "id": "large",
+              "kind": "object",
+              "label": "500 g · R$ 10",
+              "x": 65,
+              "y": 15,
+              "width": 30,
+              "height": 43,
+              "surface": "none",
+              "object_type": "grocery_package",
+              "content_fraction": 1,
+              "svg_motion": "trace",
+              "initially_visible": false
+            },
+            {
+              "id": "price",
+              "kind": "metric",
+              "label": "ETIQUETA",
+              "x": 5,
+              "y": 66,
+              "width": 24,
+              "height": 32,
+              "surface": "none",
+              "value": "R$ 9",
+              "value_size": 104,
+              "label_size": 32,
+              "initially_visible": false
+            },
+            {
+              "id": "weight",
+              "kind": "metric",
+              "label": "PESO",
+              "x": 39,
+              "y": 66,
+              "width": 24,
+              "height": 32,
+              "surface": "none",
+              "value": "0,4 kg",
+              "value_size": 104,
+              "label_size": 32,
+              "initially_visible": false
+            },
+            {
+              "id": "unit",
+              "kind": "metric",
+              "label": "POR QUILO",
               "x": 73,
-              "y": 47,
-              "zoom": 1.15,
-              "motion_seconds": 0.5
+              "y": 66,
+              "width": 25,
+              "height": 32,
+              "surface": "none",
+              "value": "R$ 22,50/kg",
+              "value_size": 80,
+              "label_size": 32,
+              "initially_visible": false
+            }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "Na prateleira, compare produtos equivalentes. Vamos a outro exemplo ilustrativo.",
+            "target_id": "small",
+            "headline": "PACOTE MENOR",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Um custa nove reais por quatrocentos gramas.",
+            "target_id": "price",
+            "headline": "ETIQUETA",
+            "action": "reveal",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "reveal_ids": [
+              "weight"
+            ]
+          },
+          {
+            "anchor": "Dividindo nove por zero vírgula quatro, ele sai por vinte e dois reais e cinquenta por quilo.",
+            "target_id": "unit",
+            "headline": "POR QUILO",
+            "action": "reveal",
+            "treatment": "equation",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "operation": {
+              "kind": "equation",
+              "input_ids": [
+                "price",
+                "weight"
+              ],
+              "operator": "÷",
+              "result_id": "unit"
             }
           },
           {
-            "anchor": "combinando aportes mensais no prazo, uso do FGTS",
-            "target_id": "card_vitoria_quitacao",
-            "action": "focus",
-            "headline": "O Combo Perfeito de Amortização",
-            "treatment": "giant_number",
-            "value": "MÉTODO COMPLETO"
+            "anchor": "O outro custa dez reais, mas entrega quinhentos gramas.",
+            "target_id": "large",
+            "headline": "PACOTE MAIOR",
+            "action": "reveal",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8
           },
           {
-            "anchor": "você liquida o contrato em cinco a oito anos",
-            "target_id": "card_vitoria_quitacao",
+            "anchor": "A etiqueta do segundo parece mais cara: dez em vez de nove.",
+            "target_id": "price",
+            "headline": "ETIQUETA",
             "action": "update",
-            "headline": "Quitação de 30 Anos em 5 a 8 Anos",
-            "detail": "Contrato encerrado décadas antes do prazo final",
-            "value": "5 A 8 ANOS"
-          },
-          {
-            "anchor": "poupa centenas de milhares de reais",
-            "target_id": "card_vitoria_quitacao",
-            "action": "focus",
-            "headline": "Centenas de Milhares de Reais Poupados",
             "treatment": "giant_number",
-            "value": "FORTUNA POUPADA"
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "value": "R$ 10",
+            "retire_ids": [
+              "unit"
+            ]
           },
           {
-            "anchor": "conquista a sua casa própria de verdade",
-            "target_id": "card_vitoria_quitacao",
+            "anchor": "Só que ele contém meio quilo, não quatro décimos.",
+            "target_id": "weight",
+            "headline": "PESO",
             "action": "update",
-            "headline": "Sua Casa Própria Livre e Quitada",
-            "detail": "Patrimônio 100% quitado da família",
-            "value": "CASA 100% SUA",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "value": "0,5 kg"
+          },
+          {
+            "anchor": "Dez divididos por meio quilo dão vinte reais por quilo. Nesse exemplo, o segundo custa menos.",
+            "target_id": "unit",
+            "headline": "POR QUILO",
+            "action": "update",
+            "treatment": "equation",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "value": "R$ 20/kg",
+            "reveal_ids": [
+              "unit"
+            ],
+            "operation": {
+              "kind": "equation",
+              "input_ids": [
+                "price",
+                "weight"
+              ],
+              "operator": "÷",
+              "result_id": "unit"
+            }
+          },
+          {
+            "anchor": "Você pode usar o preço por quilo na etiqueta ou dividir o preço pela quantidade em quilos.",
+            "target_id": "unit",
+            "headline": "MESMA UNIDADE",
+            "action": "update",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Para líquidos, compare por litro. Para itens contados, compare por unidade.",
+            "target_id": "weight",
+            "headline": "QUILO · LITRO · UNIDADE",
+            "action": "update",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Um pacote maior só compensa se couber no seu orçamento e for consumido, sem desperdício.",
+            "target_id": "large",
+            "headline": "CONSUMO SEM DESPERDÍCIO",
+            "action": "update",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-08",
+      "index": 7,
+      "title": "A resposta está na quantidade",
+      "claim_ids": [
+        "C1",
+        "C2",
+        "C7"
+      ],
+      "narration": "Então, onde está o aumento de preço que você não vê no supermercado? Ele pode estar na quantidade: você paga o mesmo, recebe menos e gasta mais por quilo. Olhe o peso ou volume, procure o aviso de mudança e compare produtos equivalentes. A melhor referência é o preço por quilo, litro ou unidade, junto do que você vai consumir. Você já percebeu um produto encolher na sua compra? Conte qual mudança chamou sua atenção. Eu sou Roberto. Até a próxima.",
+      "tts": {
+        "delivery": "explain",
+        "pause_ms": 150,
+        "cues": []
+      },
+      "visual": {
+        "type": "authored_stage",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "captions": {
+            "enabled": true,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          },
+          "elements": [
+            {
+              "id": "bag",
+              "kind": "object",
+              "label": "OLHE A QUANTIDADE",
+              "x": 30,
+              "y": 8,
+              "width": 40,
+              "height": 70,
+              "surface": "none",
+              "object_type": "grocery_package",
+              "content_fraction": 0.8,
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "float",
+                "amplitude": 10,
+                "period_seconds": 5
+              }
+            },
+            {
+              "id": "answer",
+              "kind": "label",
+              "label": "COMPARE POR QUILO, LITRO OU UNIDADE",
+              "x": 5,
+              "y": 83,
+              "width": 90,
+              "height": 12,
+              "surface": "none",
+              "label_size": 44
+            }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "Então, onde está o aumento de preço que você não vê no supermercado?",
+            "target_id": "bag",
+            "headline": "A RESPOSTA ESTÁ NO PACOTE",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.04,
+              "motion_seconds": 1
+            }
+          },
+          {
+            "anchor": "Ele pode estar na quantidade: você paga o mesmo, recebe menos e gasta mais por quilo.",
+            "target_id": "answer",
+            "headline": "MESMA ETIQUETA · MENOS PRODUTO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
             "camera": {
               "x": 50,
               "y": 50,
               "zoom": 1,
-              "motion_seconds": 0.4
+              "motion_seconds": 0.8
             }
+          },
+          {
+            "anchor": "Olhe o peso ou volume, procure o aviso de mudança e compare produtos equivalentes.",
+            "target_id": "bag",
+            "headline": "PESO · VOLUME · AVISO",
+            "action": "update",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "A melhor referência é o preço por quilo, litro ou unidade, junto do que você vai consumir.",
+            "target_id": "answer",
+            "headline": "COMPARE POR QUILO, LITRO OU UNIDADE",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Você já percebeu um produto encolher na sua compra? Conte qual mudança chamou sua atenção.",
+            "target_id": "bag",
+            "headline": "QUAL MUDANÇA VOCÊ PERCEBEU?",
+            "action": "update",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Eu sou Roberto. Até a próxima.",
+            "target_id": "answer",
+            "headline": "O DINHEIRO EXPLICA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
           }
         ]
       }

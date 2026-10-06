@@ -24,6 +24,7 @@ export const stageElementSchema = z.object({
   id: z.string().min(1),
   kind: z.enum(["step", "label", "metric", "note", "photo", "object", "source_excerpt", "chart"]),
   chart: chartSchema.optional(),
+  chart_reveal_to: z.number().int().min(-1).max(39).optional(),
   annotations: z.array(annotationSchema).max(16).default([]),
   asset_width: z.number().positive().optional(),
   asset_height: z.number().positive().optional(),
@@ -33,7 +34,8 @@ export const stageElementSchema = z.object({
   value_size: z.number().min(48).max(260).default(72),
   icon_size: z.number().min(48).max(500).optional(),
   content_layout: z.enum(["row", "column"]).optional(),
-  object_type: z.enum(["wallet", "bank", "receipt", "component", "factory", "truck", "package", "atm", "cash", "branch", "hub", "data", "store", "phone", "terminal"]).optional(),
+  object_type: z.enum(["wallet", "bank", "receipt", "component", "factory", "truck", "package", "grocery_package", "atm", "cash", "branch", "hub", "data", "store", "phone", "terminal"]).optional(),
+  content_fraction: z.number().min(0).max(1).optional(),
   label: z.string().min(1).max(80),
   detail: z.string().max(160).optional(),
   value: z.string().max(32).optional(),
@@ -103,6 +105,7 @@ export const editorialStageSchema = z.object({
     if (ids.has(element.id)) ctx.addIssue({code: "custom", path: ["elements", index, "id"], message: "ID visual duplicado."});
     ids.add(element.id);
     if(element.kind === "chart" && (!element.chart || element.width<60 || element.height<50))ctx.addIssue({code:"custom",path:["elements",index],message:"Gráfico exige dados e região de pelo menos 60% × 50%."});
+    if(element.chart_reveal_to !== undefined && (element.kind !== "chart" || !element.chart || element.chart_reveal_to >= element.chart.points.length))ctx.addIssue({code:"custom",path:["elements",index,"chart_reveal_to"],message:"Revelação exige índice existente do gráfico; -1 mostra somente os eixos."});
     if(new Set(element.annotations.map(a=>a.id)).size !== element.annotations.length)ctx.addIssue({code:"custom",path:["elements",index],message:"Marcação com ID duplicado."});
     if(element.annotations.length && element.kind!=="source_excerpt")ctx.addIssue({code:"custom",path:["elements",index],message:"Marcações por região pertencem a recortes."});
     if(element.overlay_on){
@@ -111,6 +114,7 @@ export const editorialStageSchema = z.object({
       if(!parent || !region || !["photo","object"].includes(parent.kind) || !["label","metric"].includes(element.kind) || element.detail || element.icon || parent.overlay_on || element.x<parent.x+region.x*parent.width/100 || element.y<parent.y+region.y*parent.height/100 || element.x+element.width>parent.x+(region.x+region.width)*parent.width/100 || element.y+element.height>parent.y+(region.y+region.height)*parent.height/100)ctx.addIssue({code:"custom",path:["elements",index],message:"Camada de texto precisa caber na região reservada de uma foto/objeto, sem ícone ou detalhe."});
     }
     if (element.kind === "object" && !element.object_type) ctx.addIssue({code: "custom", path: ["elements", index, "object_type"], message: "Objeto precisa de object_type."});
+    if(element.content_fraction !== undefined && (element.kind !== "object" || element.object_type !== "grocery_package"))ctx.addIssue({code:"custom",path:["elements",index,"content_fraction"],message:"Conteúdo proporcional exige embalagem esquemática grocery_package."});
     if(element.icon_size !== undefined && (!element.icon || ["photo", "object", "source_excerpt", "chart"].includes(element.kind)))ctx.addIssue({code:"custom",path:["elements",index,"icon_size"],message:"icon_size exige um elemento de texto com icon; fotos, objetos e gráficos usam a própria região."});
     if(element.content_layout && ["photo", "object", "source_excerpt", "chart"].includes(element.kind))ctx.addIssue({code:"custom",path:["elements",index,"content_layout"],message:"content_layout organiza ícone e texto; mídia, objetos e gráficos usam a própria composição."});
     if(element.svg_motion==="assemble"&&element.kind!=="object")ctx.addIssue({code:"custom",path:["elements",index,"svg_motion"],message:"Montagem por partes exige um objeto SVG; ícones usam trace ou none."});
@@ -141,6 +145,8 @@ export const editorialStageSchema = z.object({
 });
 
 export const stageEventFields = {
+  chart_reveal_to: z.number().int().min(-1).max(39).optional(),
+  content_fraction: z.number().min(0).max(1).optional(),
   operation: visualOperationSchema.optional(),
   motion_seconds: z.number().min(0.1).max(2).optional(),
   camera: stageCameraSchema.optional(),
@@ -163,6 +169,8 @@ export const stageEventFields = {
 export type EditorialStage = z.infer<typeof editorialStageSchema>;
 export type StageElement = z.infer<typeof stageElementSchema>;
 export type StageEvent = {
+  chart_reveal_to?: number;
+  content_fraction?: number;
   operation?: VisualOperation;
   treatment?: "kinetic_type" | "giant_number" | "flow_diagram" | "timeline" | "split_compare" | "meter" | "spotlight" | "equation" | "stack" | "signal" | "masked_emphasis" | "depth_photo";
   motion_seconds?: number;
@@ -290,7 +298,9 @@ export function validateStageEvents(stage: EditorialStage, beats: StageEvent[]):
   for (const [index, beat] of beats.entries()) {
     if(beat.camera&&beat.camera_mode==="hold")errors.push(`Beat ${index}: camera e camera_mode hold são instruções contraditórias; escolha mover ou manter o plano.`);
     const target=layout.find(e=>e.id===beat.target_id);
+    if(beat.chart_reveal_to !== undefined && (!target || target.kind !== "chart" || !target.chart || beat.chart_reveal_to >= target.chart.points.length))errors.push(`Beat ${index}: revelação exige índice existente do gráfico.`);
     if(target){
+      if(beat.content_fraction !== undefined && (target.kind !== "object" || target.object_type !== "grocery_package"))errors.push(`Beat ${index}: conteúdo proporcional exige embalagem esquemática grocery_package.`);
       if(beat.action==="update"){target.label=beat.headline;}
       if(beat.emphasis && (!target.label.includes(beat.emphasis.phrase) || target.label.split(beat.emphasis.phrase).length!==2 || !["label","note","step","metric"].includes(target.kind)))errors.push(`Beat ${index}: frase de marcação precisa ser única no rótulo de texto.`);
       if(beat.view && target.kind!=="source_excerpt")errors.push(`Beat ${index}: enquadramento regional exige recorte.`);
@@ -347,7 +357,7 @@ export function validateStageEvents(stage: EditorialStage, beats: StageEvent[]):
 // Pure frame evaluation works with parallel/out-of-order Remotion rendering.
 // Events preserve element identity and previous values until explicitly changed.
 export function resolveStage(stage: EditorialStage, beats: StageEvent[], frame: number, fps=30) {
-  const elements = stage.elements.map((element) => ({...element, motionProfile:stage.motion_profile, entrance:undefined as StageEvent["entrance"], actuation:undefined as StageEvent["actuation"], actuationFrame:0, actuationDuration:fps*0.9, locked:undefined as boolean|undefined, lockFrom:true, lockFrame:0, lockDuration:fps*0.75, visible: element.initially_visible !== false, wasVisible: element.initially_visible !== false, changedAt: 0, cueFrame:0, cueDuration:fps*0.45, cueAction:undefined as StageEvent["action"], treatment:undefined as StageEvent["treatment"], visibilityDuration:fps*0.35, markIds:[] as string[], markTiming:{} as Record<string,{frame:number;duration:number}>, emphasisTiming:{frame:0,duration:1}, view:{...fullView}, emphasis:null as Emphasis|null, chartFocus:null as {from:number;to:number}|null}));
+  const elements = stage.elements.map((element) => ({...element, chartRevealFrom:element.chart_reveal_to??((element.chart?.points.length??0)-1), chartRevealFrame:0, chartRevealDuration:1, motionProfile:stage.motion_profile, entrance:undefined as StageEvent["entrance"], actuation:undefined as StageEvent["actuation"], actuationFrame:0, actuationDuration:fps*0.9, locked:undefined as boolean|undefined, lockFrom:true, lockFrame:0, lockDuration:fps*0.75, visible: element.initially_visible !== false, wasVisible: element.initially_visible !== false, changedAt: 0, cueFrame:0, cueDuration:fps*0.45, cueAction:undefined as StageEvent["action"], treatment:undefined as StageEvent["treatment"], visibilityDuration:fps*0.35, markIds:[] as string[], markTiming:{} as Record<string,{frame:number;duration:number}>, emphasisTiming:{frame:0,duration:1}, view:{...fullView}, emphasis:null as Emphasis|null, chartFocus:null as {from:number;to:number}|null}));
   let active: StageEvent | undefined;
   const ordered = beats.filter((b) => Number.isFinite(b.resolved_frame)).slice().sort((a, b) => a.resolved_frame! - b.resolved_frame!);
   for (const [index, beat] of ordered.entries()) {
@@ -363,6 +373,8 @@ export function resolveStage(stage: EditorialStage, beats: StageEvent[], frame: 
       if (beat.reveal_ids?.includes(element.id)) visible = true;
       if (beat.retire_ids?.includes(element.id)) visible = false;
       if (element.id === beat.target_id) {
+        if(beat.content_fraction !== undefined)element.content_fraction=(element.content_fraction??1)+(beat.content_fraction-(element.content_fraction??1))*eased;
+        if(beat.chart_reveal_to !== undefined && beat.chart_reveal_to !== element.chart_reveal_to){element.chartRevealFrom=element.chart_reveal_to??((element.chart?.points.length??0)-1);element.chart_reveal_to=beat.chart_reveal_to;element.chartRevealFrame=beat.resolved_frame!;element.chartRevealDuration=motionFrames;}
         element.cueFrame=beat.resolved_frame!; element.cueDuration=motionFrames;
         element.cueAction=beat.action; element.treatment=beat.treatment;
         element.entrance=beat.entrance;

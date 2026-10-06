@@ -4,6 +4,8 @@
 
 Esta biblioteca existe para ampliar a linguagem do canal, não para criar um novo template fixo.
 
+Gráficos aceitam `chart_reveal_to` no elemento e no beat: `-1` mantém somente os eixos, `0` revela o primeiro ponto e assim por diante. Barras crescem desde zero e linhas revelam segmentos, com escala fixa e valores finais preservados. O índice precisa existir nos dados; pontos futuros e seus rótulos permanecem ocultos. A progressão tem relógio próprio e não reinicia por um beat de foco posterior. Sem esse campo, o comportamento anterior é preservado.
+
 Planeje a demonstração com `editorial-scene-design.md`. Elementos com icon aceitam `icon_size:48..500` e `content_layout:row|column`; use região suficiente para uma arte protagonista de 250–500 px, preservando texto legível. `surface:none` remove a bolha do ícone. Valores ausentes mantêm a composição compatível dos episódios existentes.
 
 Cada vídeo tem composição e direção próprias. Escolha recursos conforme o que precisa ser explicado; não percorra esta biblioteca como uma lista obrigatória. O diagnóstico de direção mostra decisões executáveis e aponta repetições para revisão, sem exigir quantidade mínima de efeitos ou mudanças por segundo.
@@ -71,6 +73,8 @@ A entrada apresenta o assunto; o desenvolvimento precisa continuar mostrando o p
 Esses campos são opcionais e autorais. Projetos anteriores conservam o caminho existente quando omitidos; não ativar sustentação, câmera ou ciclos genericamente em todas as cenas. `motion_profile: static` desativa a atuação e os movimentos do palco para uma leitura estável. Legendas seguem seu contrato próprio e podem ser desabilitadas quando interferirem na prova.
 
 Os objetos esquemáticos incluem `receipt`, `wallet`, `bank`, `component`, `factory`, `truck`, `package`, `atm`, `cash`, `branch`, `hub`, `data`, `store`, `phone` e `terminal`. Escolha o participante que a história realmente usa; esquema de terminal ou banco não é foto/documento de uma empresa real. Combinar objeto dominante, informação espacial, documento ou comparação conforme a ideia, sem impor entrada/meio/saída iguais.
+
+`grocery_package` é uma embalagem esquemática sem marca, com janela de conteúdo. `element.content_fraction:0..1` define a proporção inicial e `beat.content_fraction` a transforma dentro da mesma embalagem e região, pela âncora e `motion_seconds`. Use proporções sustentadas pelos dados ou identificadas como ilustrativas, com os números/unidades em rótulos externos. A arte não é foto de produto nem prova de uma marca; a geometria e a voz continuam no contrato comum.
 
 Um foco dominante pode atuar enquanto apoios permanecem legíveis. Fluxo e movimento secundário sustentam contexto, mas não devem disputar atenção com uma palavra, número ou ação principal. Repetir o ciclo enquanto a fala explica uma relação é diferente de movimentar todo cartão como decoração.
 

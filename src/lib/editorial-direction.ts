@@ -144,6 +144,8 @@ export function summarizeEditorialDirection(project: any) {
       }
       if (beat.operation && JSON.stringify(beat.operation) !== JSON.stringify(activeOperation)) {transformationIndices.add(index); motionIndices.add(index);}
       if (target && (beat.actuation || beat.view || beat.mark_ids?.length || beat.chart_focus || beat.emphasis)) transformationIndices.add(index);
+      if(target && beat.content_fraction !== undefined){if((target.content_fraction??1)!==beat.content_fraction){transformationIndices.add(index);motionIndices.add(index);}target.content_fraction=beat.content_fraction;}
+      if(target && beat.chart_reveal_to !== undefined){if((target.chart_reveal_to??((target.chart?.points.length??0)-1))!==beat.chart_reveal_to){transformationIndices.add(index);motionIndices.add(index);}target.chart_reveal_to=beat.chart_reveal_to;}
       activeOperation = beat.operation ?? activeOperation;
       const requiredOperation = operationTreatments[beat.treatment];
       if (requiredOperation && activeOperation?.kind !== requiredOperation) add("error", "missing-operation", `${beat.treatment} exige operation.kind=${requiredOperation} com seus dados neste beat ou em um estado anterior que continua em cena. Declare a relação real; trocar só o nome do tratamento não cria a operação.`, index);

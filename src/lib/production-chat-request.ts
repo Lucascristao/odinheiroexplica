@@ -8,6 +8,12 @@ MODO DE PRODUÇÃO DIRETA:
 - Nos commits desta produção, use o marcador [production direct], que suprime o job de testes do CI e conserva o deploy do painel. Não use [skip ci] para publicar o painel pelo Git, pois também suprime o deploy Netlify.
 - Não gere vídeo antes da decisão de pauta. Se ainda não houver tema aprovado, consulte o histórico completo de vídeos e apresente três opções virais fundamentadas, com título, thumbnail, gancho, gatilho e fontes; aguarde minha escolha. Se o tema já foi aprovado, preserve-o.
 
+PAUTA E TÍTULO COM CONFLITO CONCRETO:
+- Escolha uma história que faça a pessoa reconhecer uma situação do próprio bolso e querer descobrir uma resposta: preço igual com menos produto, dinheiro garantido que fica indisponível, custo novo cuja responsabilidade está em disputa. A tensão precisa nascer de um mecanismo verificável, não de adjetivos alarmistas.
+- Evite propostas com cara de aviso de serviço, lista de benefícios ou tutorial genérico. Antes de apresentar as três opções, resolva para cada uma: o que a pessoa acredita, qual fato contraria essa crença, qual consequência concreta ela sofre e qual demonstração entrega a resposta.
+- Nomeie cedo um assunto reconhecível e abra uma pergunta ou contradição específica. Referência de qualidade aprovada: "Supermercado: o aumento de preço que você não vê", com thumbnail "CADÊ O RESTO?" e gancho "O preço não mudou. Então por que você está pagando mais?". Use o princípio, sem repetir o tema, a frase ou a composição nas próximas produções.
+- Título, thumbnail e abertura precisam vender a mesma descoberta. Não prometa valor encontrado, aumento universal, fraude, perda ou urgência que as fontes não sustentam. Diferencie caso real, hipótese e risco; números ilustrativos não viram manchete factual. Não afirme CTR ou viralidade medidos sem dados.
+
 DIREÇÃO VISUAL QUE EXPLICA A HISTÓRIA:
 1. Antes do JSON, construa um storyboard: para cada cena registre a afirmação/pergunta, o protagonista, a demonstração visual, os dados/asset, a transformação ligada à fala, a câmera e a saída. Compare a composição com o episódio anterior no Git, além de consultar docs/visual-history.md.
 2. Escolha a composição pela relação explicada: quantidade pede escala/gráfico verificável; uma conta pede operation; uma regra pode pedir recorte autêntico; uma ação pede objeto que atua; um valor pode ocupar o quadro com tipografia livre. Não use dois blocos com uma seta como solução universal. Conexões só entram quando o percurso explica uma relação real. Não imponha uma sequência fixa de formatos.
@@ -22,6 +28,7 @@ IDENTIDADE, VOZ E ENTREGA:
 - Paleta #FFBD19, grafite e branco; composição própria para esta história. Legendas sincronizadas em blocos limpos e secundários à ilustração.
 - Roberto/Charon com Gemini 3.8 Live é o padrão. Luana/Autonoe somente para pauta dirigida ao público feminino. Preserve o roteiro completo, as fontes verificadas e os contratos de explicação; não encurte para economizar TTS.
 - Conduza o render real até a entrega: acompanhe Actions, corrija falhas preservando a explicação e retome cache compatível. Confira o MP4 completo com áudio e vídeo/título/descrição na pasta do Drive antes de anunciar conclusão; informe limitações reais.
+- As correções necessárias encontradas durante esta geração estão autorizadas: ajuste o conteúdo, o motor ou o pipeline conforme a falha comprovada, publique na main e retome a produção preservando o tema, os gates e o cache válido.
 - Depois da entrega do vídeo, gere a thumbnail final 16:9 de alta conversão, com imagem, composição, acabamento e texto de 2 a 4 palavras que complemente o título. Envie a capa para a mesma pasta do Drive. Publicação no YouTube é manual.`;
 }
 

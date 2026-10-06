@@ -224,13 +224,16 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
                 height={box.h - 32}
                 focus={element.chartFocus}
                 progress={cueProgress}
+                revealTo={element.chart_reveal_to}
+                revealFrom={element.chartRevealFrom}
+                revealProgress={checkedStage.motion_profile === "static" ? 1 : interpolate(frame - element.chartRevealFrame, [0, element.chartRevealDuration], [0, 1], clamp)}
               />
             ) : element.kind === "object" && element.object_type ? (
               <div style={{width: "100%", height: "100%", display: "flex", flexDirection: "column"}}>
                 <div style={{flex: 1, minHeight: 0, position:"relative", clipPath:motion.clip}}>
                   {surface && <div data-editorial-surface={element.surface} aria-hidden style={{position:"absolute",inset:0,background:surface,borderRadius:element.surface==="paper"?6:0}} />}
                   <div style={{width:"100%",height:"100%",position:"relative",transform:sustainedTransform(mediaSustain,frame,fps,Math.max(1,box.w-cardPadding*2),Math.max(1,box.h-cardPadding*2-90),element.changedAt),transformOrigin:"center"}}>
-                    <EditorialObject type={element.object_type} accent={accent} progress={reveal} emphasisProgress={cueEase} active={selected && checkedStage.motion_profile !== "static"} actuation={element.actuation} actuationProgress={actuationProgress} locked={element.locked} lockFrom={element.lockFrom} lockProgress={lockProgress} motion={checkedStage.motion_profile === "static" ? "none" : element.svg_motion} />
+                    <EditorialObject type={element.object_type} accent={accent} progress={reveal} emphasisProgress={cueEase} active={selected && checkedStage.motion_profile !== "static"} actuation={element.actuation} actuationProgress={actuationProgress} locked={element.locked} lockFrom={element.lockFrom} lockProgress={lockProgress} contentFraction={element.content_fraction} motion={checkedStage.motion_profile === "static" ? "none" : element.svg_motion} />
                   </div>
                 </div>
                 <div style={{height:90,flexShrink:0}}><TextBox text={element.label} width={box.w - 32} height={90} maxSize={element.label_size??42} kinetic={kineticLabel} wordProgress={cueProgress} /></div>

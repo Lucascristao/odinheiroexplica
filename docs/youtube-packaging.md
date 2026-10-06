@@ -27,7 +27,15 @@ O título não pode parecer um artigo acadêmico ou relatório de banco. Ningué
 - ❌ **Burocrático**: `Regulamentação do Saque-Aniversário do FGTS em Caso de Rescisão`
 - ✅ **Viral**: `Demitido e sem FGTS: a trava silenciosa que pegou milhões de surpresa`
 
-## Sinergia título + thumbnail
+## Situação reconhecível e descoberta
+
+Antes de fechar a embalagem, identifique a crença inicial, o fato que a contraria, a consequência concreta no bolso e a demonstração que resolve a dúvida. Evite títulos com cara de aviso de serviço ou tutorial genérico; o conflito precisa existir na apuração, não ser acrescentado por palavras alarmistas.
+
+Referência aprovada: "Supermercado: o aumento de preço que você não vê" + "CADÊ O RESTO?". A promessa é descobrir como a mesma etiqueta pode comprar menos produto. O exemplo orienta o critério de qualidade; não é fórmula de título nem autorização para repetir a pauta.
+
+Caso real, hipótese, possibilidade de repasse e risco têm graus diferentes de certeza. Preserve essa diferença desde o título. Não usar valor ilustrativo como estatística, sugerir fraude sem prova ou garantir desempenho de cliques.
+
+## Complemento visual
 
 Título e thumbnail são uma única promessa, mas não repetem a mesma frase.
 
