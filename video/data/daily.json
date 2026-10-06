@@ -192,10 +192,11 @@
       "country_context": "global",
       "source_page_url": "https://www.pexels.com/photo/family-doing-shopping-in-the-grocery-store-3985056/",
       "image_url": "https://images.pexels.com/photos/3985056/pexels-photo-3985056.jpeg?cs=srgb&dl=pexels-gustavo-fring-3985056.jpg&fm=jpg",
-      "license": "Licença Pexels — uso e edição permitidos; sem insinuar endosso ou conduta negativa dos fotografados.",
+      "license": "Licença Pexels",
       "attribution": "Foto: Gustavo Fring / Pexels",
       "needs_cutout": false,
-      "license_url": "https://www.pexels.com/license/"
+      "license_url": "https://www.pexels.com/license/",
+      "license_notes": "Licença Pexels — uso e edição permitidos; sem insinuar endosso ou conduta negativa dos fotografados."
     },
     {
       "id": "quantity-rule",
@@ -207,9 +208,11 @@
       "source_page_url": "https://bibliotecadigital.mj.gov.br/bitstream/1/5525/2/PRT_GM_2021_392.html",
       "capture_file": "research/captures/supermercado/portaria-392-art4.png",
       "expected_text": "pelo prazo mínimo de seis meses, a contar da data de sua alteração.",
-      "license": "Texto normativo oficial de acesso público; reprodução documental do artigo com fonte e contexto preservados.",
+      "license": "Texto normativo de acesso público",
       "attribution": "Ministério da Justiça — Portaria 392/2021, art. 4º",
-      "needs_cutout": false
+      "needs_cutout": false,
+      "license_notes": "Texto normativo oficial de acesso público; reprodução documental do artigo com fonte e contexto preservados.",
+      "annotation_review": "Grifo de seis meses verificado na captura real do art. 4º de 1136 × 110 px da produção 37539442605; sem reconstrução ou corte de texto."
     }
   ],
   "visual_direction": {
@@ -851,7 +854,7 @@
         }
       ],
       "review": {
-        "content_sha256": "3b19e49b051a9350b7bf7cd8f541b30be7b4e21709d0dd846308bc3fc3c33dab",
+        "content_sha256": "f8bc02c603b666f9c623da96d63308a4893a43f0db2844973435cb229c452d6f",
         "findings": [
           {
             "question": "A promessa é entregue sem generalizar o percentual?",
@@ -887,7 +890,20 @@
       "render de demonstração",
       "amostras de voz"
     ],
-    "review_notes": "Revisão semântica das fontes, aritmética, condições e entrega registrada no hash atual. Produção real mantém compilação, contratos, geometria, assets, integridade da voz e alinhamento."
+    "review_notes": "Revisão semântica das fontes, aritmética, condições e entrega registrada no hash atual. Produção real mantém compilação, contratos, geometria, assets, integridade da voz e alinhamento.",
+    "visual_review": {
+      "run_id": "37540325263",
+      "reviewed_file": "daily-video.mp4",
+      "duration_seconds": 330.346667,
+      "method": "Quadros do MP4 ao longo do episódio, captura documental original e relatórios de ritmo; sem escuta subjetiva integral disponível nesta sessão.",
+      "changes": [
+        "Resultado retirado antes da troca dos operandos",
+        "Micro-beats nas ressalvas percentuais, jurídicas e de unidade",
+        "Grifo verificado no prazo documental",
+        "Métrica e período do gráfico entram em updates próprios"
+      ],
+      "audio_preserved": true
+    }
   },
   "packaging": {
     "titles": [
@@ -1260,7 +1276,16 @@
             "motion_seconds": 0.8
           },
           {
-            "anchor": "Agora o pacote passa a ter quatrocentos gramas, mas a etiqueta continua em dez reais.",
+            "anchor": "Agora o pacote passa a ter",
+            "target_id": "unit",
+            "headline": "NOVA QUANTIDADE",
+            "action": "retire",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.35
+          },
+          {
+            "anchor": "quatrocentos gramas, mas a etiqueta continua em dez reais.",
             "target_id": "weight",
             "headline": "PESO",
             "action": "update",
@@ -1473,11 +1498,29 @@
             "motion_seconds": 0.8
           },
           {
+            "anchor": "Não houve aumento de vinte e cinco por cento em tudo.",
+            "target_id": "increase",
+            "headline": "CONTA HIPOTÉTICA",
+            "action": "update",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
             "anchor": "Essa porcentagem pertence só à nossa conta hipotética, não à inflação do supermercado.",
             "target_id": "example",
             "headline": "EXEMPLO ILUSTRATIVO",
             "action": "focus",
             "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "não à inflação do supermercado.",
+            "target_id": "increase",
+            "headline": "SEM MEDIR A INFLAÇÃO",
+            "action": "update",
+            "treatment": "giant_number",
             "behavior": "transform",
             "motion_seconds": 0.8
           },
@@ -1525,7 +1568,7 @@
             {
               "id": "chart",
               "kind": "chart",
-              "label": "Chocolate: gramatura média",
+              "label": "Um levantamento histórico",
               "x": 4,
               "y": 15,
               "width": 68,
@@ -1594,8 +1637,8 @@
           {
             "anchor": "Reportagens consultadas citaram um levantamento da Horus sobre embalagens de chocolate.",
             "target_id": "chart",
-            "headline": "GRAMATURA MÉDIA",
-            "action": "focus",
+            "headline": "Chocolate: média em gramas",
+            "action": "update",
             "treatment": "spotlight",
             "behavior": "transform",
             "motion_seconds": 0.8
@@ -1603,8 +1646,8 @@
           {
             "anchor": "Na comparação de janeiro a agosto de dois mil e vinte e dois com o mesmo período de vinte e três,",
             "target_id": "period",
-            "headline": "DADOS HISTÓRICOS · 2022 / 2023",
-            "action": "focus",
+            "headline": "JANEIRO A AGOSTO · 2022 / 2023",
+            "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
             "motion_seconds": 0.8
@@ -1901,7 +1944,19 @@
               "width": 92,
               "height": 37,
               "surface": "spotlight",
-              "asset_id": "quantity-rule"
+              "asset_id": "quantity-rule",
+              "annotations": [
+                {
+                  "id": "six-months",
+                  "style": "highlight",
+                  "region": {
+                    "x": 0,
+                    "y": 68,
+                    "width": 14.5,
+                    "height": 31
+                  }
+                }
+              ]
             },
             {
               "id": "months",
@@ -1967,6 +2022,18 @@
             "motion_seconds": 0.8
           },
           {
+            "anchor": "pelo menos seis meses após a alteração.",
+            "target_id": "rule",
+            "headline": "PRAZO LEGAL",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "mark_ids": [
+              "six-months"
+            ]
+          },
+          {
             "anchor": "Esse prazo é do aviso. Não é uma garantia de que o preço ficará congelado.",
             "target_id": "months",
             "headline": "PRAZO DO AVISO",
@@ -1976,9 +2043,27 @@
             "motion_seconds": 0.8
           },
           {
+            "anchor": "Não é uma garantia de que o preço ficará congelado.",
+            "target_id": "heading",
+            "headline": "AVISO NÃO CONGELA PREÇO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
             "anchor": "Se a informação estiver escondida ou faltar, o Procon orienta registrar e denunciar.",
             "target_id": "heading",
             "headline": "INFORMAÇÃO ESCONDIDA? REGISTRE",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "o Procon orienta registrar e denunciar.",
+            "target_id": "heading",
+            "headline": "PROCURE O PROCON",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
@@ -2156,7 +2241,10 @@
             "action": "reveal",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.8,
+            "retire_ids": [
+              "unit"
+            ]
           },
           {
             "anchor": "A etiqueta do segundo parece mais cara: dez em vez de nove.",
@@ -2204,6 +2292,15 @@
             }
           },
           {
+            "anchor": "Nesse exemplo, o segundo custa menos.",
+            "target_id": "unit",
+            "headline": "MENOR CUSTO POR QUILO",
+            "action": "update",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
             "anchor": "Você pode usar o preço por quilo na etiqueta ou dividir o preço pela quantidade em quilos.",
             "target_id": "unit",
             "headline": "MESMA UNIDADE",
@@ -2213,9 +2310,18 @@
             "motion_seconds": 0.8
           },
           {
-            "anchor": "Para líquidos, compare por litro. Para itens contados, compare por unidade.",
+            "anchor": "Para líquidos, compare por litro.",
             "target_id": "weight",
-            "headline": "QUILO · LITRO · UNIDADE",
+            "headline": "MESMA UNIDADE",
+            "action": "update",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.8
+          },
+          {
+            "anchor": "Para itens contados, compare por unidade.",
+            "target_id": "weight",
+            "headline": "MESMA UNIDADE",
             "action": "update",
             "treatment": "giant_number",
             "behavior": "transform",

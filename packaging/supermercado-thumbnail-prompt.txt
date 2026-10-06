@@ -1,0 +1,10 @@
+Use case: ads-marketing
+Asset type: capa final completa de YouTube, 16:9, 2048 × 1152.
+Primary request: revelar visualmente a tensão de uma embalagem grande que entrega menos conteúdo, para o título “Supermercado: o aumento de preço que você não vê”.
+Subject: uma embalagem genérica de alimento sem marca, aberta, com o interior visível e pouca massa seca no fundo. Metáfora editorial ilustrativa; nenhum produto real acusado.
+Style/medium: ilustração 3D editorial sofisticada, materiais e luz fotográficos, aparência de capa final profissional.
+Composition/framing: pacote grande no centro-direita, enquadrado inteiro, visto ligeiramente de cima para mostrar a falta de conteúdo. Texto dominante à esquerda em duas linhas, com respiro. Fundo carvão com prateleiras desfocadas sugeridas, sem detalhes concorrentes. Canto inferior direito livre para a duração.
+Lighting/mood: luz lateral cinematográfica amarela, sombra profunda, contraste imediato.
+Color palette: carvão/preto, branco quente #F6F7F8 e amarelo #FFBD19.
+Text (verbatim): “CADÊ O RESTO?”; CADÊ em branco, O RESTO? em amarelo. Fonte muito pesada, limpa, grande, sem letras comprimidas; acento circunflexo e ponto de interrogação corretos.
+Constraints: imagem já completa com composição e texto final, exatamente 16:9; legível em celular; uma embalagem e seu conteúdo como foco; sem logotipo, nome do canal, selo, rosto, seta, gráfico, preço, porcentagem, subtítulo ou texto miúdo.
