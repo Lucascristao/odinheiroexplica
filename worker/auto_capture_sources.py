@@ -2,7 +2,7 @@ import argparse
 import json
 import sys
 from datetime import datetime, timezone
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from urllib.parse import parse_qs, urlparse
 
 
@@ -241,8 +241,13 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
         capture_file = f"research/captures/{safe_id}.png"
         asset["capture_file"] = capture_file
 
-    filename = Path(capture_file).name
-    dest_path = captures_dir / filename
+    declared = PurePosixPath(str(capture_file))
+    if "\\" in str(capture_file) or ".." in declared.parts or declared.parts[:2] != ("research", "captures") or len(declared.parts) < 3:
+        raise RuntimeError(f"Asset {asset.get('id')}: capture_file deve permanecer em research/captures/.")
+    relative = declared.relative_to("research/captures")
+    dest_path = (captures_dir / Path(*relative.parts)).resolve()
+    if not dest_path.is_relative_to(captures_dir.resolve()):
+        raise RuntimeError(f"Asset {asset.get('id')}: destino fora da pasta de capturas.")
     if playwright_browser is None:
         raise RuntimeError(f"Asset {asset.get('id')}: navegador Playwright indisponível; nenhuma captura foi criada.")
 

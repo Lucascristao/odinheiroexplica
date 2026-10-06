@@ -38,4 +38,6 @@ Recorte: Art. 4º da portaria original em HTML. Captura preserva texto e bloco c
 
 ## Revisão editorial
 
+Correções comprovadas no fluxo real: área vertical dos operandos/resultados da cena 7 ampliada para preservar rótulo na fonte mínima; capturador passa a conservar subpastas declaradas em `capture_file`, com destino validado dentro de `research/captures`. Capturas e assets preparados entram no pacote de revisão para conferência do material usado no MP4. Nenhum desses ajustes remove evidência, relação ou parte da narração.
+
 O título promete revelar um aumento por quantidade, não provar aumento de todo preço ou fraude generalizada. A abertura nomeia supermercado e pergunta central; Roberto se apresenta após o gancho. As contas entregam a primeira resposta, seguida de um único convite de inscrição. Conceito, exemplos, período histórico, explicação atribuída, obrigação e limites são separados na fala e na tela. A conclusão responde à pergunta e oferece comparação prática com consumo e desperdício.

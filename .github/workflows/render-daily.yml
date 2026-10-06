@@ -404,6 +404,8 @@ jobs:
             video/generated/daily-source-audit.json
             video/generated/daily-pronunciation-audit.json
             video/generated/daily-visual-assets.json
+            research/captures/
+            public/generated-assets/
             render-output/layout-geometry/
             render-output/layout-preflight/
             render-output/layout-final/
