@@ -504,7 +504,7 @@
         }
       ],
       "review": {
-        "content_sha256": "6c9ce79bd3c9fe743bee6625f4c166fb8947fe6214e2760dca82996d2ac7bfb7",
+        "content_sha256": "b13196108693427664dbea2c44dd0aafc0189407ba3910e675ed7293666ce2d6",
         "findings": [
           {
             "question": "O espectador compreende a divisão da parcela entre amortização e juros?",
@@ -582,7 +582,7 @@
       },
       "visual": {
         "stage": {
-          "show_title": true,
+          "show_title": false,
           "initial_camera": {
             "x": 50,
             "y": 50,
@@ -592,20 +592,22 @@
           "elements": [
             {
               "id": "card_imovel_divida",
-              "kind": "object",
-              "object_type": "store",
+              "kind": "step",
+              "icon": "house",
               "label": "Financiamento Habitacional",
               "detail": "Contrato padrão de 360 meses no SFH",
               "value": "30 ANOS",
               "x": 6,
-              "y": 14,
+              "y": 18,
               "width": 42,
-              "height": 74,
-              "svg_motion": "assemble",
+              "height": 58,
+              "svg_motion": "trace",
+              "label_size": 44,
+              "value_size": 96,
               "sustain": {
                 "kind": "float",
-                "amplitude": 18,
-                "period_seconds": 4.2
+                "amplitude": 8,
+                "period_seconds": 3.2
               },
               "surface": "spotlight"
             },
@@ -614,30 +616,30 @@
               "kind": "metric",
               "icon": "chart",
               "label": "Composição da Parcela",
-              "detail": "R$ 2.400 em juros e seguros vs R$ 600 em amortização",
+              "detail": "R$ 2.400 juros vs R$ 600 amortização",
               "value": "80% JUROS",
               "x": 52,
-              "y": 14,
+              "y": 18,
               "width": 42,
-              "height": 74,
+              "height": 58,
               "svg_motion": "trace",
+              "label_size": 44,
+              "value_size": 96,
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 18,
-                "period_seconds": 4.5
+                "amplitude": 8,
+                "period_seconds": 3.2
               },
               "surface": "spotlight"
             }
           ],
           "connections": [
             {
-              "id": "conn_parcela_divisao",
               "from": "card_imovel_divida",
               "to": "card_divisao_parcela",
-              "label": "fatia mensal",
+              "label": "Fatia mensal",
               "semantic": "relation",
-              "motion": "flow",
-              "period_seconds": 4
+              "motion": "flow"
             }
           ]
         },
@@ -649,9 +651,9 @@
             "headline": "O Peso do Financiamento de 30 Anos",
             "camera": {
               "x": 27,
-              "y": 50,
-              "zoom": 1.06,
-              "motion_seconds": 0.4
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
             }
           },
           {
@@ -661,8 +663,8 @@
             "headline": "Para Onde Vai o Seu Dinheiro?",
             "camera": {
               "x": 27,
-              "y": 50,
-              "zoom": 1.12,
+              "y": 47,
+              "zoom": 1.18,
               "motion_seconds": 0.4
             }
           },
@@ -693,9 +695,9 @@
             "headline": "O Mistério da Parcela de 30 Anos",
             "camera": {
               "x": 73,
-              "y": 50,
-              "zoom": 1.06,
-              "motion_seconds": 0.4
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
             }
           },
           {
@@ -726,7 +728,7 @@
             "target_id": "card_divisao_parcela",
             "action": "update",
             "headline": "A Grande Fatia de Juros e Encargos",
-            "detail": "R$ 2.400 em juros contratuais, taxa de administração e seguros",
+            "detail": "R$ 2.400 em juros contratuais, taxa e seguros",
             "value": "R$ 2.400 JUROS"
           },
           {
@@ -805,7 +807,7 @@
       },
       "visual": {
         "stage": {
-          "show_title": true,
+          "show_title": false,
           "initial_camera": {
             "x": 50,
             "y": 50,
@@ -818,17 +820,19 @@
               "kind": "metric",
               "icon": "house",
               "label": "Valor Original Financiado",
-              "detail": "Valor do crédito contratado para a compra",
+              "detail": "Valor do crédito contratado",
               "value": "R$ 300 MIL",
               "x": 6,
-              "y": 14,
+              "y": 18,
               "width": 42,
-              "height": 74,
+              "height": 58,
               "svg_motion": "trace",
+              "label_size": 44,
+              "value_size": 96,
               "sustain": {
                 "kind": "float",
-                "amplitude": 18,
-                "period_seconds": 4.5
+                "amplitude": 8,
+                "period_seconds": 3.2
               },
               "surface": "spotlight"
             },
@@ -837,30 +841,30 @@
               "kind": "metric",
               "icon": "coins",
               "label": "Custo Total em 30 Anos",
-              "detail": "R$ 300 mil principal + R$ 480 mil em juros e encargos",
+              "detail": "R$ 300 mil principal + R$ 480 mil juros",
               "value": "R$ 780 MIL",
               "x": 52,
-              "y": 14,
+              "y": 18,
               "width": 42,
-              "height": 74,
+              "height": 58,
               "svg_motion": "trace",
+              "label_size": 44,
+              "value_size": 96,
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 18,
-                "period_seconds": 4
+                "amplitude": 8,
+                "period_seconds": 3.2
               },
               "surface": "spotlight"
             }
           ],
           "connections": [
             {
-              "id": "conn_comparativo_custo",
               "from": "card_valor_financiado",
               "to": "card_total_pago",
-              "label": "multiplicação por 2,6x",
+              "label": "Multiplica 2,6x",
               "semantic": "comparison",
-              "motion": "pulse",
-              "period_seconds": 3.5
+              "motion": "flow"
             }
           ]
         },
@@ -872,9 +876,9 @@
             "headline": "Simulação Real da Dívida Habitacional",
             "camera": {
               "x": 27,
-              "y": 50,
-              "zoom": 1.06,
-              "motion_seconds": 0.4
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
             }
           },
           {
@@ -906,9 +910,9 @@
             "value": "R$ 780 MIL",
             "camera": {
               "x": 73,
-              "y": 50,
-              "zoom": 1.08,
-              "motion_seconds": 0.4
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
             }
           },
           {
@@ -923,8 +927,8 @@
             "target_id": "card_total_pago",
             "action": "update",
             "headline": "Dois Imóveis Pagos ao Banco em Juros",
-            "detail": "R$ 480 mil em juros remuneratórios e seguros",
-            "value": "+2 CASAS EM JUROS"
+            "detail": "R$ 480 mil em juros acumulados e seguros",
+            "value": "+2 CASAS"
           },
           {
             "anchor": "E por que essa conta é tão cruel?",
@@ -950,7 +954,7 @@
             "target_id": "card_valor_financiado",
             "action": "update",
             "headline": "O Saldo Devedor Quase Travado",
-            "detail": "Nos primeiros anos, o abatimento da dívida é lentíssimo",
+            "detail": "Nos primeiros anos, o abatimento é lentíssimo",
             "value": "DÍVIDA LENTA"
           },
           {
@@ -1003,7 +1007,7 @@
       },
       "visual": {
         "stage": {
-          "show_title": true,
+          "show_title": false,
           "initial_camera": {
             "x": 50,
             "y": 50,
@@ -1016,17 +1020,19 @@
               "kind": "step",
               "icon": "shield",
               "label": "Direito de Amortizar",
-              "detail": "Garantia legal: CDC e Bacen proíbem cobrança de taxas",
+              "detail": "CDC e Bacen proíbem cobrança de taxas",
               "value": "SEM TAXAS",
               "x": 6,
-              "y": 14,
+              "y": 18,
               "width": 42,
-              "height": 74,
+              "height": 58,
               "svg_motion": "trace",
+              "label_size": 44,
+              "value_size": 96,
               "sustain": {
                 "kind": "float",
-                "amplitude": 18,
-                "period_seconds": 4
+                "amplitude": 8,
+                "period_seconds": 3.2
               },
               "surface": "spotlight"
             },
@@ -1035,30 +1041,30 @@
               "kind": "step",
               "icon": "clock",
               "label": "Redução de Prazo",
-              "detail": "Elimina parcelas do final e cancela juros futuros",
+              "detail": "Elimina parcelas do final do contrato",
               "value": "MENOS ANOS",
               "x": 52,
-              "y": 14,
+              "y": 18,
               "width": 42,
-              "height": 74,
+              "height": 58,
               "svg_motion": "trace",
+              "label_size": 44,
+              "value_size": 96,
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 18,
-                "period_seconds": 4.5
+                "amplitude": 8,
+                "period_seconds": 3.2
               },
               "surface": "spotlight"
             }
           ],
           "connections": [
             {
-              "id": "conn_abate_prazo",
               "from": "card_regra_amortizacao",
               "to": "card_reduzir_prazo",
-              "label": "abate no saldo devedor",
+              "label": "Abate no saldo",
               "semantic": "cause",
-              "motion": "flow",
-              "period_seconds": 3.8
+              "motion": "flow"
             }
           ]
         },
@@ -1070,9 +1076,9 @@
             "headline": "O Mecanismo da Amortização Extraordinária",
             "camera": {
               "x": 27,
-              "y": 50,
-              "zoom": 1.06,
-              "motion_seconds": 0.4
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
             }
           },
           {
@@ -1118,9 +1124,9 @@
             "headline": "O Dilema: Reduzir Parcela ou Prazo?",
             "camera": {
               "x": 73,
-              "y": 50,
-              "zoom": 1.06,
-              "motion_seconds": 0.4
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
             }
           },
           {
@@ -1222,7 +1228,7 @@
       },
       "visual": {
         "stage": {
-          "show_title": true,
+          "show_title": false,
           "initial_camera": {
             "x": 50,
             "y": 50,
@@ -1235,17 +1241,19 @@
               "kind": "label",
               "icon": "search",
               "label": "Simulação Hipotética",
-              "detail": "Valores ilustrativos: amortização de parcela final R$ 200",
+              "detail": "Amortização de parcela final R$ 200",
               "value": "PARCELA FINAL",
               "x": 6,
-              "y": 14,
+              "y": 18,
               "width": 42,
-              "height": 74,
+              "height": 58,
               "svg_motion": "trace",
+              "label_size": 44,
+              "value_size": 96,
               "sustain": {
                 "kind": "float",
-                "amplitude": 18,
-                "period_seconds": 4.2
+                "amplitude": 8,
+                "period_seconds": 3.2
               },
               "surface": "spotlight"
             },
@@ -1254,30 +1262,30 @@
               "kind": "metric",
               "icon": "check",
               "label": "Parcelas Eliminadas",
-              "detail": "Aporte ilustrativo de R$ 600 apaga 3 meses do fim do contrato",
+              "detail": "Aporte de R$ 600 apaga 3 meses finais",
               "value": "-3 MESES",
               "x": 52,
-              "y": 14,
+              "y": 18,
               "width": 42,
-              "height": 74,
+              "height": 58,
               "svg_motion": "trace",
+              "label_size": 44,
+              "value_size": 96,
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 18,
-                "period_seconds": 4
+                "amplitude": 8,
+                "period_seconds": 3.2
               },
               "surface": "spotlight"
             }
           ],
           "connections": [
             {
-              "id": "conn_abate_multiplo",
               "from": "card_simulacao_hipotetica",
               "to": "card_parcelas_eliminadas",
-              "label": "divisão: R$ 600 ÷ R$ 200",
+              "label": "Abate de parcelas",
               "semantic": "transfer",
-              "motion": "flow",
-              "period_seconds": 3.5
+              "motion": "flow"
             }
           ]
         },
@@ -1289,9 +1297,9 @@
             "headline": "Cálculo Hipotético da Parcela Final",
             "camera": {
               "x": 27,
-              "y": 50,
-              "zoom": 1.06,
-              "motion_seconds": 0.4
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
             }
           },
           {
@@ -1336,9 +1344,9 @@
             "headline": "Aporte Extra Pelo Aplicativo",
             "camera": {
               "x": 73,
-              "y": 50,
-              "zoom": 1.06,
-              "motion_seconds": 0.4
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
             }
           },
           {
@@ -1362,13 +1370,7 @@
             "action": "update",
             "headline": "Três Parcelas Inteiras Apagadas de Vez",
             "detail": "Três meses eliminados com um único pagamento extra",
-            "value": "-3 PARCELAS",
-            "camera": {
-              "x": 73,
-              "y": 50,
-              "zoom": 1.08,
-              "motion_seconds": 0.4
-            }
+            "value": "-3 PARCELAS"
           },
           {
             "anchor": "Você acabou de apagar três meses de dívida",
@@ -1441,7 +1443,7 @@
       },
       "visual": {
         "stage": {
-          "show_title": true,
+          "show_title": false,
           "initial_camera": {
             "x": 50,
             "y": 50,
@@ -1454,17 +1456,19 @@
               "kind": "step",
               "icon": "route",
               "label": "Os Três Pilares da Quitação",
-              "detail": "Aporte mensal contínuo + Renda extra periódica",
+              "detail": "Aporte mensal e renda extra periódica",
               "value": "MÉTODO 5 ANOS",
               "x": 6,
-              "y": 14,
+              "y": 18,
               "width": 42,
-              "height": 74,
+              "height": 58,
               "svg_motion": "trace",
+              "label_size": 44,
+              "value_size": 96,
               "sustain": {
                 "kind": "float",
-                "amplitude": 18,
-                "period_seconds": 4.5
+                "amplitude": 8,
+                "period_seconds": 3.2
               },
               "surface": "spotlight"
             },
@@ -1473,30 +1477,30 @@
               "kind": "step",
               "icon": "wallet",
               "label": "Alavancagem do FGTS",
-              "detail": "Uso legal a cada 2 anos para abater saldo devedor no SFH",
+              "detail": "Uso legal a cada 2 anos no SFH",
               "value": "A CADA 2 ANOS",
               "x": 52,
-              "y": 14,
+              "y": 18,
               "width": 42,
-              "height": 74,
+              "height": 58,
               "svg_motion": "trace",
+              "label_size": 44,
+              "value_size": 96,
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 18,
-                "period_seconds": 4
+                "amplitude": 8,
+                "period_seconds": 3.2
               },
               "surface": "spotlight"
             }
           ],
           "connections": [
             {
-              "id": "conn_alavancagem_recursos",
               "from": "card_estrategia_quitacao",
               "to": "card_uso_fgts",
-              "label": "combinação de recursos",
+              "label": "Soma de recursos",
               "semantic": "sequence",
-              "motion": "flow",
-              "period_seconds": 3.5
+              "motion": "flow"
             }
           ]
         },
@@ -1508,9 +1512,9 @@
             "headline": "O Efeito Acumulado da Amortização",
             "camera": {
               "x": 27,
-              "y": 50,
-              "zoom": 1.06,
-              "motion_seconds": 0.4
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
             }
           },
           {
@@ -1577,9 +1581,9 @@
             "headline": "Pilar 3: O Poder do FGTS Acumulado",
             "camera": {
               "x": 73,
-              "y": 50,
-              "zoom": 1.08,
-              "motion_seconds": 0.4
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
             }
           },
           {
@@ -1646,7 +1650,7 @@
       },
       "visual": {
         "stage": {
-          "show_title": true,
+          "show_title": false,
           "initial_camera": {
             "x": 50,
             "y": 50,
@@ -1659,17 +1663,19 @@
               "kind": "metric",
               "icon": "shield",
               "label": "Reserva de Emergência",
-              "detail": "Segurança financeira preservada antes de amortizar",
+              "detail": "Mantenha de 3 a 6 meses de segurança",
               "value": "BLINDAGEM",
               "x": 6,
-              "y": 14,
+              "y": 18,
               "width": 42,
-              "height": 74,
+              "height": 58,
               "svg_motion": "trace",
+              "label_size": 44,
+              "value_size": 96,
               "sustain": {
                 "kind": "float",
-                "amplitude": 18,
-                "period_seconds": 4.5
+                "amplitude": 8,
+                "period_seconds": 3.2
               },
               "surface": "spotlight"
             },
@@ -1678,30 +1684,30 @@
               "kind": "metric",
               "icon": "house",
               "label": "Casa Própria Quitada",
-              "detail": "Saldo devedor zerado em 5 a 8 anos sem juros abusivos",
+              "detail": "Saldo devedor zerado em 5 a 8 anos",
               "value": "QUITADO!",
               "x": 52,
-              "y": 14,
+              "y": 18,
               "width": 42,
-              "height": 74,
+              "height": 58,
               "svg_motion": "trace",
+              "label_size": 44,
+              "value_size": 96,
               "sustain": {
                 "kind": "breathe",
-                "amplitude": 18,
-                "period_seconds": 4
+                "amplitude": 8,
+                "period_seconds": 3.2
               },
               "surface": "spotlight"
             }
           ],
           "connections": [
             {
-              "id": "conn_seguranca_quitacao",
               "from": "card_reserva_seguranca",
               "to": "card_vitoria_quitacao",
-              "label": "quitação sustentável",
+              "label": "Quitação segura",
               "semantic": "cause",
-              "motion": "flow",
-              "period_seconds": 3.5
+              "motion": "flow"
             }
           ]
         },
@@ -1713,9 +1719,9 @@
             "headline": "Alerta Crítico: Reserva de Emergência",
             "camera": {
               "x": 27,
-              "y": 50,
-              "zoom": 1.06,
-              "motion_seconds": 0.4
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
             }
           },
           {
@@ -1767,9 +1773,9 @@
             "headline": "O Caminho da Liberdade Financeira",
             "camera": {
               "x": 73,
-              "y": 50,
-              "zoom": 1.08,
-              "motion_seconds": 0.4
+              "y": 47,
+              "zoom": 1.15,
+              "motion_seconds": 0.5
             }
           },
           {
