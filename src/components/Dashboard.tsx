@@ -14,7 +14,7 @@ import { supabase } from "../lib/supabase";
 import type { VideoProjectRow } from "../lib/database.types";
 import { ProjectDetail } from "./ProjectDetail";
 import { RenderStatusPanel } from "./RenderStatusPanel";
-import { productionChatRequest } from "../lib/production-chat-request";
+import { productionChatRequest, type ProductionRequestOptions } from "../lib/production-chat-request";
 
 function formatDate(value: string) {
   return new Intl.DateTimeFormat("pt-BR", {
@@ -62,8 +62,8 @@ export function Dashboard() {
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState<string | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
-  async function copyRequest(text: string) {
-    try {await navigator.clipboard.writeText(productionChatRequest(text)); setCopied(text);}
+  async function copyRequest(text: string, options: ProductionRequestOptions = {}) {
+    try {await navigator.clipboard.writeText(productionChatRequest(text, options)); setCopied(text);}
     catch {setCopied("Não foi possível copiar. Selecione o pedido abaixo.");}
   }
 
@@ -163,7 +163,7 @@ export function Dashboard() {
           <p className="eyebrow">Produção diária</p>
           <h1>Crie no chat. Acompanhe por aqui.</h1>
           <p className="muted hero-copy">
-            Pesquisa, roteiro e direção visual começam no ChatGPT. Este painel
+            Pesquisa, roteiro e direção visual começam na sua IA. Este painel
             acompanha narração, render e entrega no Drive. A capa final continua
             sendo uma etapa conduzida no chat.
           </p>
@@ -182,11 +182,11 @@ export function Dashboard() {
         <div className="panel-heading">
           <div>
             <p className="eyebrow">Como iniciar</p>
-            <h2>Leve o próximo pedido ao ChatGPT</h2>
+            <h2>Leve o próximo pedido à sua IA</h2>
           </div>
           <div className="chat-origin">
             <MessageSquareText size={16} />
-            Começa no ChatGPT
+            Começa na sua IA
           </div>
         </div>
 
@@ -199,12 +199,12 @@ export function Dashboard() {
               <span className="request-kicker">Assuntos do dia</span>
               <h3>Vídeo do dia</h3>
               <p>
-                Eu pesquiso notícias e movimentos recentes em dinheiro,
-                empresas, economia, bancos, fintechs e finanças e escolho uma
-                história forte para o canal.
+                A IA pesquisa notícias e movimentos recentes em dinheiro,
+                empresas, economia, bancos, fintechs e finanças e escolhe uma
+                história inédita para o canal.
               </p>
               <div className="request-command">“Gerar o vídeo de hoje.”</div>
-              <button className="card-link-button" onClick={() => void copyRequest("Gerar o vídeo de hoje.")}><Copy size={15}/>{copied === "Gerar o vídeo de hoje." ? "Copiado" : "Copiar pedido"}</button>
+              <button className="card-link-button" onClick={() => void copyRequest("Gerar o vídeo de hoje.", {chooseTopic: true})}><Copy size={15}/>{copied === "Gerar o vídeo de hoje." ? "Copiado" : "Copiar pedido"}</button>
             </div>
           </article>
 
@@ -221,14 +221,14 @@ export function Dashboard() {
                 produção.
               </p>
               <div className="request-command">
-                “Faça um vídeo sobre como organizar suas finanças e guardar dinheiro.”
+                “Faça um vídeo sobre [assunto].”
               </div>
               <button className="card-link-button" onClick={() => void copyRequest("Faça um vídeo sobre [assunto], seguindo as regras atuais do O Dinheiro Explica.")}><Copy size={15}/>{copied?.startsWith("Faça um vídeo") ? "Copiado" : "Copiar modelo"}</button>
             </div>
           </article>
         </div>
 
-        {copied && <p className="muted small" role="status">{copied.startsWith("Não foi") ? copied : "Pedido copiado. Cole na conversa do projeto no ChatGPT."}</p>}
+        {copied && <p className="muted small" role="status">{copied.startsWith("Não foi") ? copied : "Pedido copiado. Cole na sua IA com acesso a este repositório."}</p>}
 
         <div className="production-flow">
           <span>Pesquisa</span>
