@@ -42,7 +42,15 @@ def main():
     verified=uploader.service.files().get(fileId=file_id,fields="id,name,parents,size,md5Checksum,webViewLink").execute()
     if args.folder_id not in verified.get("parents",[]) or int(verified.get("size",-1))!=path.stat().st_size or verified.get("md5Checksum")!=hashlib.md5(path.read_bytes()).hexdigest():
         raise RuntimeError("Readback do Drive diverge do arquivo enviado.")
-    result={"folder":folder,"role":args.role,"file":verified,"source_path":args.asset,"sha256":digest,"verified_readback":True}
+    folder_files=[]
+    page_token=None
+    while True:
+        page=uploader.service.files().list(q=f"'{args.folder_id}' in parents and trashed = false",fields="nextPageToken,files(id,name,mimeType,size,md5Checksum,webViewLink)",pageSize=100,pageToken=page_token).execute()
+        folder_files.extend(page.get("files",[]))
+        page_token=page.get("nextPageToken")
+        if not page_token:
+            break
+    result={"folder":folder,"folder_files":folder_files,"role":args.role,"file":verified,"source_path":args.asset,"sha256":digest,"verified_readback":True}
     output=root/args.output
     output.parent.mkdir(parents=True,exist_ok=True)
     output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")

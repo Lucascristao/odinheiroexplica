@@ -62,9 +62,9 @@ class ProductionWorkflowTests(unittest.TestCase):
                 system = next(step for step in steps if "apt-get install" in step)
                 self.assertIn("command -v ffmpeg", system)
                 self.assertIn("command -v ffprobe", system)
-                self.assertIn("compositor-linux-x64-gnu", system)
-                self.assertIn('echo "$MEDIA_BIN" >> "$GITHUB_PATH"', system)
-                self.assertLess(system.index("compositor-linux-x64-gnu"), system.index("apt-get update"))
+                self.assertNotIn('echo "$MEDIA_BIN" >> "$GITHUB_PATH"', system)
+                self.assertIn("full pipeline needs stock FFmpeg", system)
+                self.assertLess(system.index("command -v ffmpeg"), system.index("apt-get update"))
                 self.assertNotIn("--no-cache-dir", "\n".join(steps))
         production = read_steps("render-daily.yml")
         browser = production[step_index(production, "python -m playwright install chromium")]
