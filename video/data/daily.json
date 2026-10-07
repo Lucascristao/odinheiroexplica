@@ -1,519 +1,467 @@
 {
   "version": "1.0",
-  "project_id": "consorcio-pagar-nao-garante-carro-2026-10-07",
-  "title": "Consórcio: por que pagar não garante levar o carro?",
+  "project_id": "nome-limpo-credito-negado-2026-10-07",
+  "title": "Nome limpo: por que o banco ainda pode negar crédito?",
   "presenter": {
     "gender": "male",
     "name": "Roberto"
   },
   "speech": {
-    "pronunciations": {},
+    "pronunciations": {
+      "SCR": "ésse cê érre",
+      "gov.br": "góv ponto bê érre",
+      "score": "iscór"
+    },
     "ignore_pronunciation_terms": []
   },
   "story": {
-    "subject": "Consórcio de carro: pagamento, contemplação, custos e lance embutido",
-    "angle": "Pagar a parcela não determina quando o carro chega; a conta e o contrato revelam as condições.",
-    "promise": "Explicar o fundo comum, sorteio e lance, demonstrar custos e crédito disponível e responder à pergunta inicial.",
-    "why_now": "Reportagem de 15/09/2026 recoloca consórcio e financiamento na comparação; o episódio explica condições atuais sem prever juros ou contemplação.",
-    "category": "money"
+    "subject": "Nome limpo e crédito negado",
+    "angle": "Pagamento, histórico mensal e capacidade de assumir nova parcela são informações diferentes.",
+    "promise": "Entender por que pagar não garante aprovação e o que conferir nos próprios dados.",
+    "why_now": "Pauta escolhida pelo usuário após análise do canal; explicação evergreen apoiada em FAQ de agosto de 2026.",
+    "category": "evergreen"
   },
   "sources": [
     {
       "id": "S1",
-      "title": "Lei nº 11.795, de 8 de outubro de 2008",
-      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11795.htm",
-      "publisher": "Presidência da República — Planalto",
-      "source_type": "primary",
+      "title": "Paguei a dívida, mas ela ainda aparece no histórico do relatório",
+      "url": "https://www.bcb.gov.br/meubc/faqs/p/paguei-a-divida-mas-ela-ainda-aparece-no-historico-do-relatorio1",
+      "publisher": "Banco Central do Brasil",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "published_at": "2008-10-09",
-      "notes": "Arts. 2, 5 §3, 14, 22–27. Texto consultado em 07/10/2026; regras não são promessa de data individual."
+      "published_at": "2026-08-31",
+      "source_type": "primary",
+      "notes": "Pagamento altera posições posteriores; retrato passado permanece.",
+      "metadata": {
+        "consulted_at": "2026-10-07"
+      }
     },
     {
       "id": "S2",
-      "title": "Resolução BCB nº 285, de 19 de janeiro de 2023 — texto consolidado",
-      "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=285&tipo=resolu%C3%A7%C3%A3o+bcb",
+      "title": "Relatório de Empréstimos e Financiamentos (SCR)",
+      "url": "https://www.bcb.gov.br/meubc/faqs/s/relatorio-de-emprestimos-e-financiamentos-scr",
       "publisher": "Banco Central do Brasil",
-      "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "published_at": "2023-01-20",
-      "notes": "Arts. 12 e 13, incluindo alteração 362/2023. Lance vencedor amortiza prestações; embutido reduz crédito para compra."
+      "published_at": "2026-04-22",
+      "source_type": "primary",
+      "notes": "Conteúdo, operações em dia e atrasadas, consulta pessoal no Registrato.",
+      "metadata": {
+        "consulted_at": "2026-10-07"
+      }
     },
     {
       "id": "S3",
-      "title": "Consórcio — perguntas frequentes",
-      "url": "https://www.bcb.gov.br/meubc/faqs/s/consorcio",
+      "title": "Como corrigir informações do relatório",
+      "url": "https://www.bcb.gov.br/meubc/faqs/p/como-corrigir-informacoes-do-relatorio4",
       "publisher": "Banco Central do Brasil",
-      "source_type": "primary",
       "publisher_class": "official",
-      "editorial_role": "technical_analysis",
-      "published_at": "2023-03-03",
-      "notes": "Itens 10–12 e 18: composição da prestação, disponibilidade de recursos e antecipação sem garantia de contemplação imediata. Consulta em 07/10/2026."
+      "editorial_role": "primary_document",
+      "published_at": "2026-02-26",
+      "source_type": "primary",
+      "notes": "Responsabilidade da instituição; atendimento, ouvidoria e reclamação. Não misturar prazo de correção com disponibilidade mensal após pagamento.",
+      "metadata": {
+        "consulted_at": "2026-10-07"
+      }
     },
     {
       "id": "S4",
-      "title": "Consórcio em tempos de juros altos: quando ele vale mais a pena do que financiamento?",
-      "url": "https://www.infomoney.com.br/consumo/consorcio-juros-altos/",
-      "publisher": "InfoMoney",
+      "title": "Score para empréstimo pessoal: entenda a análise antes de pedir",
+      "url": "https://www.serasa.com.br/score/blog/score-bom/",
+      "publisher": "Serasa",
+      "publisher_class": "company",
+      "editorial_role": "company_position",
+      "published_at": "2026-06-18",
       "source_type": "secondary",
-      "publisher_class": "independent_journalism",
-      "editorial_role": "independent_reporting",
-      "published_at": "2026-09-15",
-      "notes": "Carla Carvalho. Contexto de planejamento, urgência e liquidez; não adotamos dados de crescimento reportados sem primário integral nem tratamos entrevistas como consenso."
+      "notes": "Critérios próprios, renda e compromissos; publicidade excluída.",
+      "metadata": {
+        "consulted_at": "2026-10-07"
+      }
     },
     {
       "id": "S5",
-      "title": "Alta de juros favorece consórcio",
-      "url": "https://www.abac.org.br/servicos/clipping/agosto2013/02_08_13/gazeta_do_povo.pdf",
+      "title": "Sistema de Informações de Crédito do Banco Central",
+      "url": "https://www.sicredi.com.br/site/scr/",
+      "publisher": "Sicredi",
+      "publisher_class": "company",
+      "editorial_role": "company_position",
+      "source_type": "secondary",
+      "notes": "SCR inclui operações em dia e em atraso, sem impedimento automático.",
+      "metadata": {
+        "consulted_at": "2026-10-07"
+      }
+    },
+    {
+      "id": "S6",
+      "title": "Cadastro Positivo: tire dúvidas sobre o banco de dados de bons pagadores",
+      "url": "https://www.gazetadopovo.com.br/economia/o-que-e-cadastro-positivo-tire-duvidas-banco-dados-bons-pagadores/",
       "publisher": "Gazeta do Povo",
-      "source_type": "context",
       "publisher_class": "independent_journalism",
-      "editorial_role": "data_context",
-      "published_at": "2013-07-22",
-      "notes": "Taiana Bubniak. Reportagem histórica em arquivo ABAC: urgência e consulta da administradora. Nenhum juro, preço, taxa ou previsão de renda de 2013 usado como dado atual."
+      "editorial_role": "independent_reporting",
+      "published_at": "2020-01-13",
+      "source_type": "secondary",
+      "notes": "Fernanda Trisotto; contexto histórico sobre dados positivos e acesso/correção. Não usar regras antigas de score como atuais.",
+      "metadata": {
+        "consulted_at": "2026-10-07"
+      }
+    },
+    {
+      "id": "S7",
+      "title": "Tenho nome limpo, mas não consigo crédito; por que isso acontece?",
+      "url": "https://economia.uol.com.br/financas-pessoais/noticias/redacao/2019/10/31/nome-limpo-credito-emprestimo-score-cadastro-historico-pagamentos.amp.htm",
+      "publisher": "UOL",
+      "publisher_class": "independent_journalism",
+      "editorial_role": "independent_reporting",
+      "published_at": "2019-10-31",
+      "source_type": "secondary",
+      "notes": "Filipe Andretta; contexto histórico cruzado com fontes atuais, sem converter percentual de renda em regra universal.",
+      "metadata": {
+        "consulted_at": "2026-10-07"
+      }
     }
   ],
   "claims": [
     {
       "id": "C1",
-      "text": "Consórcio é autofinanciamento coletivo; pagamento não garante contemplação imediata.",
+      "text": "Ausência de negativação não garante concessão de crédito.",
       "source_ids": [
-        "S1",
-        "S3"
+        "S4",
+        "S5",
+        "S7"
       ],
       "confidence": "high",
       "verification_status": "verified",
       "framing": "verified_fact",
-      "attribution_required": false,
-      "metadata": {}
+      "attribution_required": false
     },
     {
       "id": "C2",
-      "text": "Fundo comum viabiliza créditos aos contemplados; uso de crédito obedece categoria e contrato.",
+      "text": "Score estima risco e não determina aprovação automática.",
       "source_ids": [
-        "S1",
-        "S3"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "verified_fact",
-      "attribution_required": false,
-      "metadata": {}
-    },
-    {
-      "id": "C3",
-      "text": "Contemplação ocorre por sorteio ou lance e depende de recursos; lance vencedor amortiza prestações.",
-      "source_ids": [
-        "S1",
-        "S2",
-        "S3"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "verified_fact",
-      "attribution_required": false,
-      "metadata": {}
-    },
-    {
-      "id": "C4",
-      "text": "Administração tem remuneração contratual e podem existir outras obrigações; sem juros não significa sem custo.",
-      "source_ids": [
-        "S1",
-        "S3"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "verified_fact",
-      "attribution_required": false,
-      "metadata": {}
-    },
-    {
-      "id": "C5",
-      "text": "No exemplo fictício com base fixa: 100.000 × 0,20 = 20.000; soma com base = 120.000, excluídos outros custos.",
-      "source_ids": [
-        "S1",
         "S4"
       ],
       "confidence": "high",
       "verification_status": "verified",
-      "framing": "analysis",
-      "attribution_required": false,
-      "metadata": {
-        "example_kind": "illustrative",
-        "provenance": "Aritmética própria; fontes sustentam existência de custos, não os valores fictícios."
-      }
+      "framing": "verified_fact",
+      "attribution_required": false
     },
     {
-      "id": "C6",
-      "text": "Lance embutido vencedor é deduzido do crédito distribuído; 100.000 − 30.000 = 70.000 no exemplo permitido pelo contrato.",
+      "id": "C3",
+      "text": "SCR registra operações em dia e em atraso; Registrato permite consultar relatórios pessoais.",
       "source_ids": [
+        "S2",
+        "S5"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "verified_fact",
+      "attribution_required": false
+    },
+    {
+      "id": "C4",
+      "text": "Pagamento não reescreve posições passadas; posições posteriores refletem regularização.",
+      "source_ids": [
+        "S1"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "official_position",
+      "attribution_required": true
+    },
+    {
+      "id": "C5",
+      "text": "Atualização após pagamento não é instantânea; mês dos dados é distinto da data de consulta.",
+      "source_ids": [
+        "S1",
         "S2"
       ],
       "confidence": "high",
       "verification_status": "verified",
-      "framing": "verified_fact",
-      "attribution_required": false,
-      "metadata": {}
+      "framing": "official_position",
+      "attribution_required": true
     },
     {
-      "id": "C7",
-      "text": "Referência e regras de atualização constam do contrato; utilizar crédito exige as garantias nele previstas.",
-      "source_ids": [
-        "S1",
-        "S3"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "verified_fact",
-      "attribution_required": false,
-      "metadata": {}
-    },
-    {
-      "id": "C8",
-      "text": "Urgência, custo e disponibilidade de reserva alteram a adequação da modalidade; não existe comparação universal.",
+      "id": "C6",
+      "text": "Renda, compromissos e critérios da instituição podem influenciar a decisão.",
       "source_ids": [
         "S4",
         "S5"
       ],
       "confidence": "high",
       "verification_status": "verified",
-      "framing": "analysis",
-      "attribution_required": true,
-      "metadata": {}
+      "framing": "verified_fact",
+      "attribution_required": false
+    },
+    {
+      "id": "C7",
+      "text": "Consulta exige conta gov.br prata/ouro com duas etapas; instituição corrige informação, com canais de atendimento e reclamação.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "official_position",
+      "attribution_required": true
     }
   ],
   "visual_assets": [
     {
-      "id": "contemplacao-rule",
+      "id": "paid-history",
       "type": "source_excerpt",
       "source_id": "S1",
-      "subject": "Lei dos Consórcios, art. 22 §1",
-      "narrative_role": "Provar no documento real os dois caminhos, sem simular data individual.",
+      "subject": "Banco Central: histórico após pagamento",
+      "narrative_role": "Provar que pagar não altera posições passadas.",
       "country_context": "BR",
-      "source_page_url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11795.htm",
-      "capture_file": "research/captures/consorcio/lei-art22.png",
-      "expected_text": "A contemplação ocorre por meio de sorteio ou de lance",
-      "license": "Texto normativo de acesso público",
-      "attribution": "Planalto — Lei 11.795/2008, art. 22 §1",
-      "needs_cutout": false,
-      "license_notes": "Reprodução documental contextual, sem reconstrução de texto."
+      "source_page_url": "https://www.bcb.gov.br/meubc/faqs/p/paguei-a-divida-mas-ela-ainda-aparece-no-historico-do-relatorio1",
+      "capture_file": "research/captures/nome-limpo/bc-historico.png",
+      "expected_text": "pagamento realizado não altera posições passadas, somente posições futuras.",
+      "license": "Reprodução documental contextual de informação pública",
+      "attribution": "Banco Central do Brasil — FAQ sobre histórico após pagamento",
+      "needs_cutout": false
     }
   ],
   "visual_direction": {
-    "concept": "Carro condicionado à contemplação; dinheiro do grupo, prova documental e crédito dividido demonstram a pergunta.",
-    "world": "industrial",
+    "concept": "Comprovante, arquivo e retratos mensais: pagamento não apaga o passado nem decide a análise.",
+    "world": "paper",
     "secondary_color": "#FFBD19",
     "motifs": [
-      "carro e cancela",
-      "fundo coletivo",
-      "chave condicional",
-      "contrato real"
+      "comprovante",
+      "arquivo de operações",
+      "mês de referência",
+      "parcelas"
     ],
     "motion_language": [
-      "estados HTML alinhados",
-      "contas com operandos completos",
-      "pan entre condições",
-      "grifos e tipografia cinética"
+      "confirmação do pagamento",
+      "revelação de funções distintas",
+      "preservação do mês antigo",
+      "soma de parcelas"
     ],
     "avoid": [
-      "composição do supermercado",
-      "fila com ordem inventada",
-      "sorteio aleatório",
-      "percentual universal",
-      "movimento sem relação explicativa"
+      "cadeado de CPF",
+      "lista secreta",
+      "score fictício como dado",
+      "garantia de crédito"
     ]
   },
   "publication": {
-    "description": "Consórcio: pagar as parcelas não define quando você recebe o carro. Veja como a contemplação funciona e o que muda na conta quando aparece um lance embutido.\n\n- Por que pagar e ser contemplado são etapas diferentes\n- O custo que a expressão sem juros não explica sozinha\n- Quanto sobra do crédito depois de um lance embutido\n- O que conferir no prazo, no reajuste e no contrato",
-    "engagement_question": "O que mais pesa para você numa compra: a parcela ou a data para receber o carro?",
+    "description": "Nome limpo e crédito negado podem acontecer juntos. Entenda o que muda quando uma dívida é paga, por que um registro antigo continua aparecendo e quais dados conferir antes de tentar outro pedido.\n\n- A diferença entre negativação, score e relatório do SCR\n- Por que pagar não reescreve o histórico de um mês antigo\n- Uma conta ilustrativa de parcelas e capacidade de pagamento\n- Como conferir dados e pedir correção de uma informação errada",
+    "engagement_question": "Sua dúvida é um registro antigo, um dado errado ou uma parcela que ainda não cabe?",
     "hashtags": [
-      "#Consorcio",
-      "#EducacaoFinanceira",
-      "#SeuBolso"
+      "#NomeLimpo",
+      "#Credito",
+      "#EducacaoFinanceira"
     ],
     "seo": {
-      "primary_keyword": "Consórcio",
+      "primary_keyword": "Nome limpo",
       "secondary_keywords": [
-        "consórcio de carro",
-        "contemplação",
-        "lance embutido",
-        "taxa de administração"
+        "crédito negado",
+        "SCR",
+        "Registrato",
+        "score",
+        "dívida quitada"
       ],
-      "search_intent": "Entender quando o carro pode ser recebido e quanto do crédito fica disponível.",
-      "description_strategy": "Gancho concreto e quatro bullets; seções técnicas acrescentadas uma única vez pelo pipeline."
+      "search_intent": "Entender recusa de crédito após pagar uma dívida e conferir os registros pessoais.",
+      "description_strategy": "Gancho e quatro bullets no celular; pipeline acrescenta capítulos, fontes e créditos uma vez."
     },
     "tags": [
-      "consórcio",
-      "consórcio de carro",
-      "lance embutido",
-      "contemplação",
-      "taxa de administração",
+      "nome limpo",
+      "crédito negado",
+      "SCR",
+      "Registrato",
+      "score",
+      "dívida quitada",
       "educação financeira"
     ]
   },
   "packaging": {
+    "strategy": {
+      "click_reason": "Contradição reconhecível após quitar uma dívida.",
+      "visual_focus": "Comprovante de quitação protagonista e recusa no telefone, sem marca.",
+      "curiosity_gap": "Qual informação explica o descompasso entre pagamento e aprovação?",
+      "mobile_readability": "Duas palavras grandes, um comprovante e um telefone secundário em alto contraste.",
+      "anti_clickbait_check": "Pode negar, sem diagnóstico individual ou promessa de liberação; limites falados e demonstrados.",
+      "repetition_check": "Tema inédito no histórico; capa de comprovante diferente do telefone isolado de Pix Automático.",
+      "youtube_safety_check": "Educação com fontes, sem dados pessoais nem alegações de bloqueio universal."
+    },
     "titles": [
       {
         "id": "approved",
-        "text": "Consórcio: por que pagar não garante levar o carro?",
-        "rationale": "Assunto no início e uma expectativa cotidiana contrariada por condições demonstráveis."
+        "text": "Nome limpo: por que o banco ainda pode negar crédito?",
+        "rationale": "Assunto cedo e consequência específica como pergunta."
       }
     ],
     "thumbnails": [
       {
         "id": "approved",
-        "headline": "PAGOU. E AGORA?",
-        "concept": "Recibo pago em primeiro plano e carro grande atrás de uma cancela; mão busca uma chave ausente, sem marca.",
-        "visual_prompt": "Capa final completa 16:9. Carro genérico realista atrás de uma cancela gráfica escura com luz amarela #FFBD19; recibo ilustrativo sem dados reais em primeiro plano e mão vazia pedindo a chave. Texto grande PAGOU. E AGORA? em branco e amarelo. Fundo grafite, contraste forte, sem logo, sem marca, sem percentuais, sem alegar golpe ou perda certa."
+        "headline": "PAGOU. NEGADO.",
+        "concept": "Comprovante branco grande de pagamento confirmado e telefone atrás com pedido recusado, sem marca, em grafite e amarelo.",
+        "visual_prompt": "Capa completa 16:9; recibo de quitação protagonista, telefone secundário, texto PAGOU. NEGADO. branco e amarelo #FFBD19. Contradição reconhecível sem interface oficial falsa."
       }
-    ],
-    "strategy": {
-      "click_reason": "A compra parece avançar quando a parcela é paga, mas ainda falta a condição para receber o carro.",
-      "visual_focus": "Recibo e carro separados pela cancela, com a chave como descoberta.",
-      "curiosity_gap": "Qual condição existe entre pagar e receber?",
-      "mobile_readability": "Três palavras grandes e um carro dominante, sem subtítulo.",
-      "anti_clickbait_check": "Explica caminhos de contemplação e custos; não acusa o sistema de fraude nem promete perdas.",
-      "repetition_check": "Consórcio é inédito no histórico; capa substitui a fórmula CADÊ do episódio anterior e palco não reutiliza embalagem/gráfico.",
-      "youtube_safety_check": "Conteúdo educativo com exemplos sinalizados e fontes; sem ataque a pessoas ou marcas."
-    }
+    ]
   },
   "editorial": {
     "strengths": [
-      "Pergunta cotidiana e demonstração do mecanismo",
-      "Contas hipotéticas completas e condicionadas",
-      "Norma real, reportagem recente e contraponto histórico identificados"
+      "Resposta útil na abertura",
+      "Demonstração temporal com prova documental",
+      "Soma ilustrativa delimitada"
     ],
     "risk_flags": [
-      "20% é taxa total fictícia",
-      "Lance não garante vitória",
-      "Reajuste depende do contrato",
-      "Figuras do grupo são ilustrativas"
+      "Não inferir causa de recusa individual",
+      "Distinguir mês dos dados de data da consulta"
     ],
-    "production_mode": "normal",
-    "checks_not_run": [],
     "source_balance": {
       "requires_diversity": true,
       "public_policy_or_regulation": true,
-      "official_sources_role": "Normas sustentam regras de contemplação e composição; não comprovam vantagem econômica individual.",
-      "independent_sources_role": "Reportagem recente sobre adequação ao prazo; contraponto histórico apenas como contexto, sem números de 2013.",
-      "counterpoint_summary": "Consórcio pode servir a planejamento com espera, mas custos e urgência impedem declarar vantagem universal. Lance não é dinheiro grátis e pode reduzir crédito disponível.",
+      "official_sources_role": "Documento e regras de consulta do BC; posicionamento identificado na fala.",
+      "independent_sources_role": "Contexto histórico sobre nome limpo e registros positivos, cruzado com fontes atuais.",
+      "counterpoint_summary": "Dados em dia também entram no SCR; fontes empresariais não permitem chamar o sistema de veto automático. Não importar regras antigas de score ou percentual universal.",
       "official_claims_attributed": true,
       "right_editorial_review": {
         "consulted": [
           {
             "publisher": "Gazeta do Povo",
-            "url": "https://www.abac.org.br/servicos/clipping/agosto2013/02_08_13/gazeta_do_povo.pdf",
-            "summary": "Reportagem de 22/07/2013 consultada integralmente. Acrescentou urgência e consulta da administradora; juros, preços e taxas antigos foram descartados. Arquivo ABAC preserva autoria jornalística; nenhuma afirmação histórica vira notícia atual."
+            "url": "https://www.gazetadopovo.com.br/economia/o-que-e-cadastro-positivo-tire-duvidas-banco-dados-bons-pagadores/",
+            "summary": "Fernanda Trisotto; contexto histórico sobre dados positivos e acesso/correção. Não usar regras antigas de score como atuais."
           }
         ]
       }
     },
+    "youtube_suitability": {
+      "risk_level": "low",
+      "sensitive_topics": [],
+      "context_notes": "Educação financeira sem dados pessoais ou promessa individual.",
+      "title_thumbnail_safe": true,
+      "monetization_notes": "Arte autoral e explicação original sustentada por fontes."
+    },
     "narrative_contract": {
-      "topic_explanation": "Consórcio é um grupo que reúne contribuições para financiar as compras dos participantes.",
-      "presenter_introduction": "Eu sou Roberto, e vou mostrar o que existe entre a parcela paga e a chave na sua mão.",
-      "subscription_request": "Se essa conta esclareceu a promessa, inscreva-se no canal para entender melhor o seu dinheiro."
+      "topic_explanation": "Nome limpo não garante crédito aprovado: o banco analisa mais do que a ausência de uma negativação.",
+      "presenter_introduction": "Eu sou Roberto, e vamos separar o que foi pago, o que ficou no histórico e o que entra na decisão do banco.",
+      "subscription_request": "Se essa distinção ajudou, inscreva-se no canal para entender melhor as decisões que mexem com seu dinheiro."
     },
     "explanation": {
       "version": "1.0",
       "concepts": [
         {
-          "id": "consorcio",
+          "id": "negative",
           "terms": [
-            "consórcio"
+            "nome limpo",
+            "negativação"
           ],
           "explanation": {
-            "scene_id": "scene-01",
-            "quote": "Consórcio é um grupo que reúne contribuições para financiar as compras dos participantes."
+            "scene_id": "scene-02",
+            "quote": "Quando alguém fala em nome limpo, normalmente está falando da ausência de uma anotação negativa em serviços de proteção ao crédito."
           },
           "claim_ids": [
             "C1"
           ],
-          "boundary": "Participação não garante data imediata."
+          "boundary": "Nenhuma informação isolada garante concessão de crédito."
         },
         {
-          "id": "fundo",
+          "id": "score",
           "terms": [
-            "fundo comum"
+            "score"
           ],
           "explanation": {
             "scene_id": "scene-02",
-            "quote": "Uma parte das parcelas vai para o fundo comum: o dinheiro coletivo usado nas compras."
+            "quote": "Já o score é uma pontuação que ajuda a estimar o risco, não uma ordem para liberar dinheiro."
           },
           "claim_ids": [
             "C2"
           ],
-          "boundary": "Grupo esquemático sem quantidade real de cotas."
+          "boundary": "Nenhuma informação isolada garante concessão de crédito."
         },
         {
-          "id": "contemplacao",
+          "id": "scr",
           "terms": [
-            "contemplação"
+            "SCR",
+            "Sistema de Informações de Crédito"
           ],
           "explanation": {
             "scene_id": "scene-02",
-            "quote": "A contemplação é a atribuição do crédito a um participante para a compra do bem."
+            "quote": "Ele reúne informações sobre operações com bancos e financeiras, inclusive compromissos em dia."
           },
           "claim_ids": [
-            "C2",
             "C3"
           ],
-          "boundary": "Atribuição não elimina requisitos de utilização."
+          "boundary": "Nenhuma informação isolada garante concessão de crédito."
         },
         {
-          "id": "credito",
+          "id": "registrato",
           "terms": [
-            "carta de crédito"
+            "Registrato"
           ],
           "explanation": {
             "scene_id": "scene-02",
-            "quote": "A carta de crédito representa o valor disponível para essa compra, dentro das regras do contrato."
-          },
-          "claim_ids": [
-            "C2"
-          ]
-        },
-        {
-          "id": "lance",
-          "terms": [
-            "lance"
-          ],
-          "explanation": {
-            "scene_id": "scene-03",
-            "quote": "Outra via é o lance: uma oferta de antecipação de pagamentos para disputar a contemplação."
+            "quote": "O Registrato é o lugar onde você consulta seus próprios relatórios; não é uma nova dívida."
           },
           "claim_ids": [
             "C3"
           ],
-          "boundary": "Oferta não garante vitória."
-        },
-        {
-          "id": "amortizacao",
-          "terms": [
-            "amortizar"
-          ],
-          "explanation": {
-            "scene_id": "scene-03",
-            "quote": "Amortizar significa abater parte do que você ainda deve."
-          },
-          "claim_ids": [
-            "C3"
-          ]
-        },
-        {
-          "id": "administracao",
-          "terms": [
-            "taxa de administração"
-          ],
-          "explanation": {
-            "scene_id": "scene-04",
-            "quote": "A taxa de administração remunera o trabalho da administradora, como estabelece a lei."
-          },
-          "claim_ids": [
-            "C4"
-          ],
-          "boundary": "Percentual fictício total, não anual."
-        },
-        {
-          "id": "embutido",
-          "terms": [
-            "lance embutido"
-          ],
-          "explanation": {
-            "scene_id": "scene-06",
-            "quote": "O lance embutido usa parte do próprio crédito para antecipar pagamentos."
-          },
-          "claim_ids": [
-            "C6"
-          ],
-          "boundary": "Precisa ser permitido pelo contrato; diminui disponibilidade."
+          "boundary": "Nenhuma informação isolada garante concessão de crédito."
         }
       ],
       "examples": [
         {
-          "id": "fee",
-          "purpose": "Calcular remuneração total fictícia sem confundi-la com juro anual.",
+          "id": "months",
+          "purpose": "Distinguir histórico do mês anterior da posição posterior ao pagamento.",
           "kind": "illustrative",
           "claim_ids": [
-            "C4",
-            "C5"
+            "C4"
           ],
           "actors": [
-            "participante de um grupo hipotético"
+            "pessoa hipotética com dívida de cartão"
           ],
           "assumptions": [
-            "Valores fixos inventados para explicar; não representam oferta nem média de mercado.",
-            "Base de R$ 100 mil; demais custos e reajustes não incluídos."
+            "Atraso em setembro e quitação em outubro são uma hipótese didática."
           ],
-          "inputs": [
-            {
-              "id": "credit",
-              "value": 100000,
-              "unit": "BRL",
-              "source_ids": []
-            },
-            {
-              "id": "rate",
-              "value": 0.2,
-              "unit": "ratio",
-              "source_ids": []
-            }
-          ],
-          "calculation": {
-            "operation": "multiply",
-            "input_ids": [
-              "credit",
-              "rate"
-            ],
-            "result": 20000,
-            "unit": "BRL"
-          },
-          "limitation": "Hipótese aritmética, sem previsão de custos reais, reajustes ou data de contemplação.",
+          "inputs": [],
+          "limitation": "Não é relatório individual, prazo de aprovação nem afirmação de atualização instantânea.",
           "narration_refs": [
             {
-              "scene_id": "scene-04",
-              "quote": "Vinte por cento de cem mil são vinte mil reais."
+              "scene_id": "scene-03",
+              "quote": "Imagine um exemplo hipotético: uma dívida de cartão ficou atrasada em setembro e foi quitada em outubro. O relatório de setembro retrata a situação de setembro. Por isso, o atraso daquele mês não desaparece como se nunca tivesse ocorrido. A posição posterior deve refletir a regularização."
             }
           ],
           "visual_bindings": [
             {
-              "scene_id": "scene-04",
-              "element_id": "fee"
+              "scene_id": "scene-03",
+              "element_id": "months"
             }
           ],
           "identification": {
-            "scene_id": "scene-04",
-            "quote": "Vamos usar um exemplo ilustrativo"
+            "scene_id": "scene-03",
+            "quote": "Imagine um exemplo hipotético"
           },
           "visual_identification": {
-            "scene_id": "scene-04",
+            "scene_id": "scene-03",
             "element_id": "hypothesis"
           }
         },
         {
-          "id": "sum",
-          "purpose": "Somar crédito-base e administração e delimitar os custos ausentes.",
+          "id": "budget",
+          "purpose": "Demonstrar que ausência de negativação e capacidade de pagamento respondem perguntas distintas.",
           "kind": "illustrative",
           "claim_ids": [
-            "C5"
+            "C6"
           ],
           "actors": [
-            "participante de um grupo hipotético"
+            "pessoa hipotética com renda mensal de três mil reais"
           ],
           "assumptions": [
-            "Valores fixos inventados para explicar; não representam oferta nem média de mercado.",
-            "Base de R$ 100 mil; demais custos e reajustes não incluídos."
+            "Valores inventados para explicar; não correspondem a regra, oferta ou média de mercado.",
+            "Não quantifica despesas essenciais nem reproduz algoritmo bancário."
           ],
           "inputs": [
             {
-              "id": "credit",
-              "value": 100000,
+              "id": "existing",
+              "value": 800,
               "unit": "BRL",
               "source_ids": []
             },
             {
-              "id": "fee",
-              "value": 20000,
+              "id": "new",
+              "value": 700,
               "unit": "BRL",
               "source_ids": []
             }
@@ -521,20 +469,28 @@
           "calculation": {
             "operation": "add",
             "input_ids": [
-              "credit",
-              "fee"
+              "existing",
+              "new"
             ],
-            "result": 120000,
+            "result": 1500,
             "unit": "BRL"
           },
-          "limitation": "Hipótese aritmética, sem previsão de custos reais, reajustes ou data de contemplação.",
+          "limitation": "Não estabelece percentual máximo de comprometimento nem garante aprovação.",
           "narration_refs": [
             {
               "scene_id": "scene-05",
-              "quote": "Somando cem mil com vinte mil, chegamos a cento e vinte mil reais."
+              "quote": "As prestações somariam mil e quinhentos reais."
             }
           ],
           "visual_bindings": [
+            {
+              "scene_id": "scene-05",
+              "element_id": "existing"
+            },
+            {
+              "scene_id": "scene-05",
+              "element_id": "new"
+            },
             {
               "scene_id": "scene-05",
               "element_id": "total"
@@ -542,151 +498,98 @@
           ],
           "identification": {
             "scene_id": "scene-05",
-            "quote": "No nosso exemplo ilustrativo"
+            "quote": "Num exemplo hipotético"
           },
           "visual_identification": {
             "scene_id": "scene-05",
-            "element_id": "hypothesis"
-          }
-        },
-        {
-          "id": "embedded",
-          "purpose": "Deduzir o lance vencedor do crédito e mostrar o valor disponível.",
-          "kind": "illustrative",
-          "claim_ids": [
-            "C6"
-          ],
-          "actors": [
-            "participante de um grupo hipotético"
-          ],
-          "assumptions": [
-            "Valores fixos inventados para explicar; não representam oferta nem média de mercado.",
-            "Base de R$ 100 mil; demais custos e reajustes não incluídos.",
-            "Oferta embutida permitida pelo grupo e vencedora neste exemplo; não é garantia de resultado."
-          ],
-          "inputs": [
-            {
-              "id": "credit",
-              "value": 100000,
-              "unit": "BRL",
-              "source_ids": []
-            },
-            {
-              "id": "bid",
-              "value": 30000,
-              "unit": "BRL",
-              "source_ids": []
-            }
-          ],
-          "calculation": {
-            "operation": "subtract",
-            "input_ids": [
-              "credit",
-              "bid"
-            ],
-            "result": 70000,
-            "unit": "BRL"
-          },
-          "limitation": "Hipótese aritmética, sem previsão de custos reais, reajustes ou data de contemplação.",
-          "narration_refs": [
-            {
-              "scene_id": "scene-06",
-              "quote": "Cem mil menos trinta mil deixam setenta mil reais disponíveis para a compra."
-            }
-          ],
-          "visual_bindings": [
-            {
-              "scene_id": "scene-06",
-              "element_id": "available"
-            }
-          ],
-          "identification": {
-            "scene_id": "scene-06",
-            "quote": "Num exemplo ilustrativo"
-          },
-          "visual_identification": {
-            "scene_id": "scene-06",
             "element_id": "hypothesis"
           }
         }
       ],
       "learning_units": [
         {
-          "id": "mechanism",
-          "question": "Por que pagar não determina a data da compra?",
+          "id": "distinction",
+          "question": "Por que o nome limpo não garante crédito?",
           "answer": {
-            "scene_id": "scene-02",
-            "quote": "Por isso, pagar em dia e receber o carro são coisas relacionadas, mas diferentes."
+            "scene_id": "scene-01",
+            "quote": "Nome limpo não garante crédito aprovado: o banco analisa mais do que a ausência de uma negativação."
           },
           "concept_ids": [
-            "consorcio",
-            "fundo",
-            "contemplacao",
-            "credito"
+            "negative",
+            "score",
+            "scr",
+            "registrato"
           ],
           "claim_ids": [
             "C1",
-            "C2"
-          ],
-          "example_ids": [],
-          "visual_purpose": "Fluxo coletivo entra na fala; crédito aparece depois da contribuição e permanece condicionado.",
-          "bindings": [
-            {
-              "scene_id": "scene-02",
-              "element_id": "pool"
-            }
-          ]
-        },
-        {
-          "id": "routes",
-          "question": "Como ocorre a contemplação e qual é o papel do lance?",
-          "answer": {
-            "scene_id": "scene-03",
-            "quote": "Outra via é o lance: uma oferta de antecipação de pagamentos para disputar a contemplação."
-          },
-          "concept_ids": [
-            "lance",
-            "amortizacao"
-          ],
-          "claim_ids": [
+            "C2",
             "C3"
           ],
           "example_ids": [],
-          "visual_purpose": "Documento real ancora caminhos distintos; amortização e falta de garantia surgem em updates.",
+          "visual_purpose": "Pagamento e pedido recusado coexistem; funções diferentes aparecem no arquivo.",
           "bindings": [
             {
-              "scene_id": "scene-03",
-              "element_id": "law"
+              "scene_id": "scene-01",
+              "element_id": "contrast"
             },
             {
-              "scene_id": "scene-03",
-              "element_id": "bid"
+              "scene_id": "scene-02",
+              "element_id": "archive"
             }
           ]
         },
         {
-          "id": "cost",
-          "question": "Por que sem juros não significa sem custo?",
+          "id": "history",
+          "question": "Por que um atraso antigo pode aparecer depois de pagar?",
           "answer": {
-            "scene_id": "scene-05",
-            "quote": "Somando cem mil com vinte mil, chegamos a cento e vinte mil reais."
+            "scene_id": "scene-04",
+            "quote": "o pagamento não reescreve as posições passadas."
           },
           "concept_ids": [
-            "administracao"
+            "scr"
           ],
           "claim_ids": [
             "C4",
             "C5"
           ],
           "example_ids": [
-            "fee",
-            "sum"
+            "months"
           ],
-          "visual_purpose": "Operações completas mantêm três participantes e a indicação de hipótese.",
+          "visual_purpose": "Duas páginas preservam o passado e recebem pagamento; documento autêntico sustenta a regra.",
           "bindings": [
             {
+              "scene_id": "scene-03",
+              "element_id": "months"
+            },
+            {
               "scene_id": "scene-04",
-              "element_id": "fee"
+              "element_id": "proof"
+            }
+          ]
+        },
+        {
+          "id": "capacity",
+          "question": "Por que o banco pode recusar uma nova parcela?",
+          "answer": {
+            "scene_id": "scene-05a",
+            "quote": "o banco pode avaliar renda, compromissos e seus próprios critérios de risco."
+          },
+          "concept_ids": [
+            "score",
+            "scr"
+          ],
+          "claim_ids": [
+            "C1",
+            "C6"
+          ],
+          "example_ids": [
+            "budget"
+          ],
+          "visual_purpose": "Soma de duas parcelas sem fabricar fórmula universal de aprovação.",
+          "bindings": [
+            {
+              "scene_id": "scene-05a",
+              "element_id": "wallet"
             },
             {
               "scene_id": "scene-05",
@@ -695,121 +598,194 @@
           ]
         },
         {
-          "id": "available",
-          "question": "Quanto do crédito fica disponível no lance embutido?",
+          "id": "check",
+          "question": "Como distinguir informação errada de histórico correto?",
           "answer": {
             "scene_id": "scene-06",
-            "quote": "Cem mil menos trinta mil deixam setenta mil reais disponíveis para a compra."
+            "quote": "Corrigir informação errada e apagar um histórico verdadeiro são coisas diferentes."
           },
           "concept_ids": [
-            "embutido",
-            "amortizacao"
+            "scr",
+            "registrato"
           ],
           "claim_ids": [
-            "C6"
+            "C4",
+            "C7"
           ],
-          "example_ids": [
-            "embedded"
-          ],
-          "visual_purpose": "Subtração mostra o crédito que sobra; a diferença do carro aparece sem duplicar o lance como custo.",
+          "example_ids": [],
+          "visual_purpose": "Conferência de campos e mudança de destinatário preservam o protocolo.",
           "bindings": [
             {
               "scene_id": "scene-06",
-              "element_id": "available"
-            }
-          ]
-        },
-        {
-          "id": "decision",
-          "question": "O que diferencia planejamento possível de prazo incompatível?",
-          "answer": {
-            "scene_id": "scene-09",
-            "quote": "Pode haver um planejamento adequado, mas ele precisa sobreviver à espera e às obrigações."
-          },
-          "concept_ids": [
-            "contemplacao",
-            "credito"
-          ],
-          "claim_ids": [
-            "C7",
-            "C8"
-          ],
-          "example_ids": [],
-          "visual_purpose": "Calendário e condições precedem comparação e retorno ao carro sem liberar uma chave por pagamento.",
-          "bindings": [
-            {
-              "scene_id": "scene-07",
-              "element_id": "contract"
+              "element_id": "record"
             },
             {
-              "scene_id": "scene-08",
-              "element_id": "urgent"
+              "scene_id": "scene-06",
+              "element_id": "route"
             },
             {
-              "scene_id": "scene-09",
-              "element_id": "car"
+              "scene_id": "scene-06",
+              "element_id": "protocol"
             }
           ]
         }
       ],
       "review": {
-        "content_sha256": "825919ec727a84f00cba57e4b10c5337aa821b718e652d97a28cdbbaa2fe113d",
+        "content_sha256": "973b0b82a1d5899a843f850f8b968b3ea836736350be6c21ccccff95b8307ab9",
         "findings": [
           {
-            "question": "A abertura explica por que pagamento e compra não têm a mesma data?",
+            "question": "O gancho entrega a distinção antes da apresentação?",
             "evidence": {
               "scene_id": "scene-01",
-              "quote": "Consórcio é um grupo que reúne contribuições para financiar as compras dos participantes."
+              "quote": "Nome limpo não garante crédito aprovado: o banco analisa mais do que a ausência de uma negativação."
             },
-            "conclusion": "Define o grupo e distingue a obrigação do participante da contemplação; a cancela não abre com o recibo."
+            "conclusion": "A resposta vem na abertura; não esconde o mecanismo até o final."
           },
           {
-            "question": "O exemplo de taxa pode parecer uma média atual ou juros anuais?",
+            "question": "O histórico antigo é tratado como dívida ainda aberta?",
             "evidence": {
               "scene_id": "scene-04",
-              "quote": "Essa taxa é pelo plano inteiro neste exemplo, não vinte por cento ao ano."
+              "quote": "Se você olha só uma data antiga, pode concluir que continua devendo uma conta que já quitou."
             },
-            "conclusion": "A hipótese é literal e persistente no palco; taxa total fictícia com base fixa e custos excluídos na cena seguinte."
+            "conclusion": "O mês antigo permanece; regularização posterior e latência estão explícitas, sem prazo inventado."
           },
           {
-            "question": "O lance embutido é mostrado como dinheiro grátis ou custo extra duplicado?",
+            "question": "A soma é confundida com regra de underwriting?",
+            "evidence": {
+              "scene_id": "scene-05",
+              "quote": "Essa conta não reproduz a fórmula de nenhum banco, nem estabelece um limite obrigatório."
+            },
+            "conclusion": "Hipótese identificada na fala e tela; soma exata sem percentual regulatório ou aprovação automática."
+          },
+          {
+            "question": "O encerramento responde à recusa sem prometer crédito?",
             "evidence": {
               "scene_id": "scene-06",
-              "quote": "Eles não são um presente, nem um custo extra somado por fora a essa mesma conta."
+              "quote": "Nenhum desses passos é uma garantia de aprovação."
             },
-            "conclusion": "A subtração reduz a disponibilidade, a fala destina o lance às prestações e explicita a diferença do carro sem somar o lance duas vezes."
-          },
-          {
-            "question": "A conclusão entrega a pergunta sem condenar ou promover qualquer modalidade?",
-            "evidence": {
-              "scene_id": "scene-09",
-              "quote": "Pode haver um planejamento adequado, mas ele precisa sobreviver à espera e às obrigações."
-            },
-            "conclusion": "Responde por mecanismos e condições, reconhece planejamento possível e não atribui vantagem universal ou perda certa."
+            "conclusion": "Mostra conferência e correção com limite claro; não diagnostica a recusa individual."
           }
         ]
       }
+    },
+    "learning_strategy": {
+      "version": "1.0",
+      "audience": {
+        "situation": "Quitou dívida e teve crédito ou aumento de limite recusado.",
+        "prior_belief": "Nome limpo apaga todos os registros e determina aprovação.",
+        "desired_understanding": "Separar situação atual, histórico mensal e capacidade de pagamento."
+      },
+      "hypothesis": {
+        "change": "Entregar primeira distinção útil antes da apresentação e demonstrar com meses e conta.",
+        "expected_effect": "Reduzir abandono antes da primeira explicação, mantendo a promessa do título.",
+        "evaluation": "Comparar retenção aos 30 segundos e curva inicial de vídeos longos com idade e origem semelhantes em 72h, 7 e 28 dias; um vídeo não prova causalidade."
+      },
+      "first_value": {
+        "scene_id": "scene-01",
+        "quote": "Nome limpo não garante crédito aprovado: o banco analisa mais do que a ausência de uma negativação."
+      },
+      "promises": [
+        {
+          "surface": "title",
+          "text": "Nome limpo: por que o banco ainda pode negar crédito?",
+          "kind": "explanation",
+          "claim_ids": [
+            "C1",
+            "C4",
+            "C6"
+          ],
+          "learning_unit_ids": [
+            "distinction",
+            "history",
+            "capacity"
+          ],
+          "example_ids": [],
+          "delivery": {
+            "scene_id": "scene-07",
+            "quote": "Porque a ausência de negativação não resume o histórico nem a capacidade de assumir um novo compromisso."
+          },
+          "boundary": {
+            "scene_id": "scene-06",
+            "quote": "Nenhum desses passos é uma garantia de aprovação."
+          }
+        },
+        {
+          "surface": "thumbnail",
+          "text": "PAGOU. NEGADO.",
+          "kind": "explanation",
+          "claim_ids": [
+            "C1",
+            "C4",
+            "C6"
+          ],
+          "learning_unit_ids": [
+            "distinction",
+            "history",
+            "capacity"
+          ],
+          "example_ids": [],
+          "delivery": {
+            "scene_id": "scene-07",
+            "quote": "Porque a ausência de negativação não resume o histórico nem a capacidade de assumir um novo compromisso."
+          },
+          "boundary": {
+            "scene_id": "scene-06",
+            "quote": "Nenhum desses passos é uma garantia de aprovação."
+          }
+        }
+      ],
+      "progression": [
+        {
+          "learning_unit_id": "distinction",
+          "new_information": "Cada registro cumpre uma função e nome limpo não garante concessão.",
+          "next_question": "Por que um atraso pode continuar aparecendo depois de pago?"
+        },
+        {
+          "learning_unit_id": "history",
+          "new_information": "O relatório preserva o retrato passado, com atualização de posições posteriores.",
+          "next_question": "Por que a situação regularizada ainda pode receber recusa?"
+        },
+        {
+          "learning_unit_id": "capacity",
+          "new_information": "Renda e compromissos entram numa análise distinta da negativação.",
+          "next_question": "Como conferir se o problema é um dado errado ou histórico correto?"
+        },
+        {
+          "learning_unit_id": "check",
+          "new_information": "Consulta, comparação e protocolo encaminham erro à instituição responsável.",
+          "next_question": "Qual das três dúvidas o seu relatório realmente mostra?"
+        }
+      ]
     }
   },
   "scenes": [
     {
       "id": "scene-01",
       "index": 0,
-      "title": "Pagou, mas quando recebe?",
+      "title": "Pagou, mas o crédito foi negado",
+      "narration": "Pagou a dívida. Limpou o nome. E o banco negou. Por que o crédito continua negado? Nome limpo não garante crédito aprovado: o banco analisa mais do que a ausência de uma negativação. Eu sou Roberto, e vamos separar o que foi pago, o que ficou no histórico e o que entra na decisão do banco. Essa diferença importa porque procurar uma dívida onde só existe um registro antigo pode fazer você gastar tempo tentando resolver o problema errado. Vamos começar pelo que cada informação realmente mostra.",
       "claim_ids": [
         "C1",
-        "C3"
+        "C3",
+        "C6"
       ],
-      "narration": "Você entrou num consórcio, pagou a parcela e já começou a imaginar o carro na garagem. Mas por que pagar não garante levar o carro? Eu sou Roberto, e vou mostrar o que existe entre a parcela paga e a chave na sua mão. Consórcio é um grupo que reúne contribuições para financiar as compras dos participantes. Você assume pagamentos, mas o dinheiro para a compra depende de uma etapa chamada contemplação. Ela pode chegar cedo ou depois de uma espera. A parcela caber no bolso não resolve, sozinha, a data em que você precisa do carro. E um lance pode mudar a disputa sem eliminar as condições. Vamos abrir essa conta.",
       "tts": {
         "delivery": "explain",
         "pause_ms": 150,
         "cues": [
           {
-            "text": "Mas por que pagar não garante levar o carro?",
+            "text": "Por que o crédito continua negado?",
             "kind": "emphasis",
             "intent": "curiosity",
-            "arc": "question"
+            "arc": "question",
+            "pause_before_ms": 100
+          },
+          {
+            "text": "Nome limpo não garante crédito aprovado:",
+            "kind": "contrast",
+            "intent": "discovery",
+            "arc": "resolve",
+            "pause_before_ms": 100
           }
         ]
       },
@@ -826,36 +802,48 @@
             "words_per_line": 3,
             "max_lines": 2,
             "font_size": 64,
-            "min_free_area_ratio": 0.3
+            "min_free_area_ratio": 0.3,
+            "preferred_side": "center",
+            "region": {
+              "x": 5,
+              "y": 67,
+              "width": 90,
+              "height": 30
+            }
           },
           "elements": [
             {
-              "id": "car",
+              "id": "contrast",
               "kind": "object",
-              "label": "PARCELA PAGA ≠ CHAVE NA MÃO",
+              "label": "ILUSTRAÇÃO ESQUEMÁTICA",
               "x": 5,
               "y": 3,
-              "width": 49,
-              "height": 82,
+              "width": 90,
+              "height": 47,
               "surface": "none",
-              "object_type": "hub",
+              "label_size": 48,
+              "object_type": "data",
               "hyperframes": {
-                "entry": "video/hyperframes/car-gate/index.html",
+                "entry": "video/hyperframes/credit-contrast/index.html",
                 "initial_state": "paid",
-                "width": 960,
-                "height": 720,
+                "width": 1280,
+                "height": 640,
                 "states": [
                   {
-                    "anchor": "Você entrou num consórcio, pagou a parcela e já começou a imaginar o carro na garagem.",
+                    "anchor": "Pagou a dívida.",
                     "state": "paid"
                   },
                   {
-                    "anchor": "Mas por que pagar não garante levar o carro?",
-                    "state": "waiting"
+                    "anchor": "E o banco negou.",
+                    "state": "denied"
                   },
                   {
-                    "anchor": "E um lance pode mudar a disputa sem eliminar as condições. Vamos abrir essa conta.",
-                    "state": "choice"
+                    "anchor": "o banco analisa mais",
+                    "state": "criteria"
+                  },
+                  {
+                    "anchor": "o que ficou no histórico",
+                    "state": "history"
                   }
                 ]
               }
@@ -863,131 +851,141 @@
             {
               "id": "question",
               "kind": "label",
-              "label": "E A CHAVE?",
-              "x": 60,
-              "y": 16,
-              "width": 35,
-              "height": 25,
-              "surface": "none",
-              "label_size": 70,
-              "initially_visible": false
-            },
-            {
-              "id": "condition",
-              "kind": "label",
-              "label": "DATA A CONFIRMAR",
-              "x": 60,
-              "y": 49,
-              "width": 35,
-              "height": 14,
-              "surface": "none",
-              "label_size": 38,
-              "initially_visible": false
-            },
-            {
-              "id": "scheme",
-              "kind": "label",
-              "label": "ESQUEMA ILUSTRATIVO",
-              "x": 7,
-              "y": 88,
-              "width": 47,
+              "label": "PAGOU. E O CRÉDITO?",
+              "x": 5,
+              "y": 53,
+              "width": 90,
               "height": 10,
               "surface": "none",
-              "label_size": 32
+              "label_size": 48
             }
           ],
           "connections": []
         },
         "beats": [
           {
-            "anchor": "Você entrou num consórcio, pagou a parcela e já começou a imaginar o carro na garagem.",
-            "target_id": "car",
-            "headline": "PARCELA PAGA",
+            "anchor": "Pagou a dívida.",
+            "target_id": "contrast",
+            "headline": "DÍVIDA QUITADA",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.8,
+            "motion_seconds": 0.85,
+            "actuation": "confirm",
             "camera": {
               "x": 50,
-              "y": 50,
+              "y": 48,
               "zoom": 1.02,
-              "motion_seconds": 0.9
+              "motion_seconds": 0.85
             }
           },
           {
-            "anchor": "Mas por que pagar não garante levar o carro?",
-            "target_id": "question",
-            "headline": "E A CHAVE?",
-            "action": "reveal",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.65,
-            "entrance": {
-              "style": "wipe",
-              "direction": "left"
-            }
-          },
-          {
-            "anchor": "Eu sou Roberto, e vou mostrar o que existe entre a parcela paga e a chave na sua mão.",
-            "target_id": "car",
-            "headline": "DO PAGAMENTO À COMPRA",
+            "anchor": "E o banco negou.",
+            "target_id": "contrast",
+            "headline": "PEDIDO RECUSADO",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.65,
+            "motion_seconds": 0.85,
+            "actuation": "signal",
             "camera": {
               "x": 50,
-              "y": 50,
+              "y": 48,
               "zoom": 1.04,
-              "motion_seconds": 0.9
+              "motion_seconds": 0.85
             }
           },
           {
-            "anchor": "Consórcio é um grupo que reúne contribuições para financiar as compras dos participantes.",
+            "anchor": "Por que o crédito continua negado?",
             "target_id": "question",
-            "headline": "COMPRA EM GRUPO",
+            "headline": "POR QUE FOI NEGADO?",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
             "motion_seconds": 0.45
           },
           {
-            "anchor": "Você assume pagamentos, mas o dinheiro para a compra depende de uma etapa chamada contemplação.",
-            "target_id": "condition",
-            "headline": "CONTEMPLAÇÃO",
-            "action": "reveal",
+            "anchor": "Nome limpo não garante crédito aprovado:",
+            "target_id": "question",
+            "headline": "NOME LIMPO ≠ CRÉDITO APROVADO",
+            "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.65
+            "motion_seconds": 0.45
           },
           {
-            "anchor": "Ela pode chegar cedo ou depois de uma espera.",
-            "target_id": "car",
-            "headline": "QUANDO?",
+            "anchor": "o banco analisa mais",
+            "target_id": "contrast",
+            "headline": "ANÁLISE DO BANCO",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.65,
+            "motion_seconds": 0.85,
             "camera": {
               "x": 50,
-              "y": 50,
-              "zoom": 1.02,
-              "motion_seconds": 0.9
+              "y": 48,
+              "zoom": 1.01,
+              "motion_seconds": 0.85
             }
           },
           {
-            "anchor": "A parcela caber no bolso não resolve, sozinha, a data em que você precisa do carro.",
+            "anchor": "Eu sou Roberto,",
             "target_id": "question",
-            "headline": "PARCELA ≠ PRAZO",
+            "headline": "ROBERTO · O DINHEIRO EXPLICA",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
             "motion_seconds": 0.45
           },
           {
-            "anchor": "E um lance pode mudar a disputa sem eliminar as condições. Vamos abrir essa conta.",
-            "target_id": "condition",
-            "headline": "LANCE TEM REGRAS",
+            "anchor": "o que foi pago,",
+            "target_id": "question",
+            "headline": "PAGAMENTO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "o que ficou no histórico",
+            "target_id": "question",
+            "headline": "HISTÓRICO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "o que entra na decisão do banco.",
+            "target_id": "question",
+            "headline": "DECISÃO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "procurar uma dívida onde só existe um registro antigo",
+            "target_id": "question",
+            "headline": "DÍVIDA ATUAL OU REGISTRO ANTIGO?",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "pode fazer você gastar tempo",
+            "target_id": "question",
+            "headline": "CONFIRA ANTES DE TENTAR APAGAR",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Vamos começar pelo que cada informação realmente mostra.",
+            "target_id": "question",
+            "headline": "O QUE CADA INFORMAÇÃO MOSTRA?",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
@@ -999,13 +997,13 @@
     {
       "id": "scene-02",
       "index": 1,
-      "title": "O dinheiro vem do grupo",
+      "title": "Cada informação responde uma pergunta",
+      "narration": "Quando alguém fala em nome limpo, normalmente está falando da ausência de uma anotação negativa em serviços de proteção ao crédito. Já o score é uma pontuação que ajuda a estimar o risco, não uma ordem para liberar dinheiro. E existe o Sistema de Informações de Crédito, o SCR, do Banco Central. Ele reúne informações sobre operações com bancos e financeiras, inclusive compromissos em dia. O Registrato é o lugar onde você consulta seus próprios relatórios; não é uma nova dívida. Então aparecer ali não significa, por si só, estar negativado ou proibido de conseguir crédito. O que importa é qual informação aparece e a que mês ela se refere.",
       "claim_ids": [
         "C1",
         "C2",
-        "C4"
+        "C3"
       ],
-      "narration": "Imagine este desenho como um grupo, sem representar um número real de participantes. Uma parte das parcelas vai para o fundo comum: o dinheiro coletivo usado nas compras. A administradora organiza o grupo; a remuneração dela é uma cobrança separada. O fundo não entrega todos os carros ao mesmo tempo. A contemplação é a atribuição do crédito a um participante para a compra do bem. A carta de crédito representa o valor disponível para essa compra, dentro das regras do contrato. Não é uma promessa de dinheiro livre na sua conta a cada parcela paga. E, segundo a lei, as contemplações dependem de dinheiro disponível no grupo. Por isso, pagar em dia e receber o carro são coisas relacionadas, mas diferentes.",
       "tts": {
         "delivery": "explain",
         "pause_ms": 150,
@@ -1019,170 +1017,208 @@
           "camera_mode": "manual",
           "motion_profile": "narrative",
           "captions": {
-            "enabled": false,
+            "enabled": true,
             "max_words": 6,
             "words_per_line": 3,
             "max_lines": 2,
             "font_size": 64,
-            "min_free_area_ratio": 0.3
+            "min_free_area_ratio": 0.3,
+            "preferred_side": "center",
+            "region": {
+              "x": 5,
+              "y": 67,
+              "width": 90,
+              "height": 30
+            }
           },
           "elements": [
             {
-              "id": "pool",
+              "id": "archive",
               "kind": "object",
-              "label": "FUNDO COMUM → CRÉDITO PARA COMPRA",
-              "x": 16,
-              "y": 4,
-              "width": 68,
-              "height": 77,
+              "label": "ILUSTRAÇÃO ESQUEMÁTICA",
+              "x": 5,
+              "y": 3,
+              "width": 90,
+              "height": 47,
               "surface": "none",
-              "object_type": "hub",
+              "label_size": 48,
+              "object_type": "data",
               "hyperframes": {
-                "entry": "video/hyperframes/group-pool/index.html",
-                "initial_state": "group",
-                "width": 960,
-                "height": 720,
+                "entry": "video/hyperframes/credit-archive/index.html",
+                "initial_state": "negative",
+                "width": 1280,
+                "height": 640,
                 "states": [
                   {
-                    "anchor": "Imagine este desenho como um grupo, sem representar um número real de participantes.",
-                    "state": "group"
+                    "anchor": "Quando alguém fala em nome limpo",
+                    "state": "negative"
                   },
                   {
-                    "anchor": "Uma parte das parcelas vai para o fundo comum: o dinheiro coletivo usado nas compras.",
-                    "state": "contribute"
+                    "anchor": "Já o score é uma pontuação",
+                    "state": "score"
                   },
                   {
-                    "anchor": "A contemplação é a atribuição do crédito a um participante para a compra do bem.",
-                    "state": "allocate"
+                    "anchor": "E existe o Sistema de Informações de Crédito",
+                    "state": "scr"
                   },
                   {
-                    "anchor": "E, segundo a lei, as contemplações dependem de dinheiro disponível no grupo.",
-                    "state": "condition"
+                    "anchor": "inclusive compromissos em dia.",
+                    "state": "good"
+                  },
+                  {
+                    "anchor": "O Registrato é o lugar",
+                    "state": "consult"
+                  },
+                  {
+                    "anchor": "a que mês ela se refere.",
+                    "state": "month"
                   }
                 ]
               }
             },
             {
-              "id": "group-note",
+              "id": "definition",
               "kind": "label",
-              "label": "GRUPO ILUSTRATIVO",
-              "x": 15,
-              "y": 86,
-              "width": 70,
+              "label": "NOME LIMPO",
+              "x": 5,
+              "y": 53,
+              "width": 90,
               "height": 10,
               "surface": "none",
-              "label_size": 38
+              "label_size": 48
             }
           ],
           "connections": []
         },
         "beats": [
           {
-            "anchor": "Imagine este desenho como um grupo, sem representar um número real de participantes.",
-            "target_id": "pool",
-            "headline": "GRUPO ILUSTRATIVO",
+            "anchor": "Quando alguém fala em nome limpo",
+            "target_id": "archive",
+            "headline": "ANOTAÇÃO NEGATIVA",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.8,
+            "motion_seconds": 0.85,
             "camera": {
               "x": 50,
-              "y": 50,
-              "zoom": 1.02,
-              "motion_seconds": 0.9
+              "y": 48,
+              "zoom": 1.01,
+              "motion_seconds": 0.85
             }
           },
           {
-            "anchor": "Uma parte das parcelas vai para o fundo comum: o dinheiro coletivo usado nas compras.",
-            "target_id": "pool",
-            "headline": "FUNDO COMUM",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.65,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.04,
-              "motion_seconds": 0.9
-            }
-          },
-          {
-            "anchor": "A administradora organiza o grupo; a remuneração dela é uma cobrança separada.",
-            "target_id": "group-note",
-            "headline": "ADMINISTRAÇÃO: CUSTO SEPARADO",
+            "anchor": "ausência de uma anotação negativa",
+            "target_id": "definition",
+            "headline": "NOME LIMPO: SEM NEGATIVAÇÃO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
             "motion_seconds": 0.45
           },
           {
-            "anchor": "O fundo não entrega todos os carros ao mesmo tempo.",
-            "target_id": "pool",
-            "headline": "RECURSOS DO GRUPO",
+            "anchor": "Já o score é uma pontuação",
+            "target_id": "archive",
+            "headline": "PONTUAÇÃO",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.65,
+            "motion_seconds": 0.85,
             "camera": {
               "x": 50,
-              "y": 50,
-              "zoom": 1.02,
-              "motion_seconds": 0.9
-            }
-          },
-          {
-            "anchor": "A contemplação é a atribuição do crédito a um participante para a compra do bem.",
-            "target_id": "pool",
-            "headline": "CONTEMPLAÇÃO → CRÉDITO",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.65,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.06,
-              "motion_seconds": 0.9
-            }
-          },
-          {
-            "anchor": "A carta de crédito representa o valor disponível para essa compra, dentro das regras do contrato.",
-            "target_id": "group-note",
-            "headline": "CRÉDITO PARA A COMPRA",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Não é uma promessa de dinheiro livre na sua conta a cada parcela paga.",
-            "target_id": "group-note",
-            "headline": "NÃO É SAQUE AUTOMÁTICO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "E, segundo a lei, as contemplações dependem de dinheiro disponível no grupo.",
-            "target_id": "pool",
-            "headline": "DEPENDE DOS RECURSOS",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.65,
-            "camera": {
-              "x": 50,
-              "y": 50,
+              "y": 48,
               "zoom": 1.03,
-              "motion_seconds": 0.9
+              "motion_seconds": 0.85
             }
           },
           {
-            "anchor": "Por isso, pagar em dia e receber o carro são coisas relacionadas, mas diferentes.",
-            "target_id": "group-note",
-            "headline": "PAGAR ≠ RECEBER AGORA",
+            "anchor": "não uma ordem para liberar dinheiro.",
+            "target_id": "definition",
+            "headline": "SCORE ESTIMA RISCO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "E existe o Sistema de Informações de Crédito",
+            "target_id": "archive",
+            "headline": "REGISTRO DE OPERAÇÕES",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.85,
+            "camera": {
+              "x": 50,
+              "y": 48,
+              "zoom": 1.01,
+              "motion_seconds": 0.85
+            }
+          },
+          {
+            "anchor": "o SCR, do Banco Central.",
+            "target_id": "definition",
+            "headline": "SCR · SISTEMA DE INFORMAÇÕES DE CRÉDITO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "operações com bancos e financeiras,",
+            "target_id": "definition",
+            "headline": "OPERAÇÕES COM BANCOS E FINANCEIRAS",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "inclusive compromissos em dia.",
+            "target_id": "archive",
+            "headline": "TAMBÉM OPERAÇÕES EM DIA",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.85,
+            "actuation": "confirm"
+          },
+          {
+            "anchor": "O Registrato é o lugar",
+            "target_id": "definition",
+            "headline": "REGISTRATO: CONSULTA DOS RELATÓRIOS",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Então aparecer ali não significa",
+            "target_id": "definition",
+            "headline": "REGISTRO ≠ PROIBIÇÃO DE CRÉDITO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "ou proibido de conseguir crédito.",
+            "target_id": "archive",
+            "headline": "REGISTRO NÃO É VETO",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.85,
+            "camera": {
+              "x": 50,
+              "y": 48,
+              "zoom": 1.02,
+              "motion_seconds": 0.85
+            }
+          },
+          {
+            "anchor": "a que mês ela se refere.",
+            "target_id": "definition",
+            "headline": "CONFIRA O MÊS DE REFERÊNCIA",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
@@ -1194,15 +1230,23 @@
     {
       "id": "scene-03",
       "index": 2,
-      "title": "Dois caminhos, nenhuma data automática",
+      "title": "Um mês não apaga o outro",
+      "narration": "Imagine um exemplo hipotético: uma dívida de cartão ficou atrasada em setembro e foi quitada em outubro. O relatório de setembro retrata a situação de setembro. Por isso, o atraso daquele mês não desaparece como se nunca tivesse ocorrido. A posição posterior deve refletir a regularização.",
       "claim_ids": [
-        "C3"
+        "C4"
       ],
-      "narration": "A contemplação tem dois caminhos previstos na lei. O sorteio seleciona uma cota entre as que podem participar, conforme as regras do grupo. Outra via é o lance: uma oferta de antecipação de pagamentos para disputar a contemplação. Só oferecer um lance não significa vencer. As regras, o desempate e o dinheiro disponível precisam entrar na análise. O lance vencedor deve quitar ou amortizar prestações futuras, da forma prevista no contrato. Amortizar significa abater parte do que você ainda deve. Segundo o Banco Central, até antecipar todas as parcelas não garante contemplação imediata. A pergunta, então, não é apenas quanto você consegue pagar, mas quando poderá usar o crédito.",
       "tts": {
         "delivery": "explain",
         "pause_ms": 150,
-        "cues": []
+        "cues": [
+          {
+            "text": "A posição posterior deve refletir a regularização.",
+            "kind": "emphasis",
+            "intent": "reassurance",
+            "arc": "resolve",
+            "pause_before_ms": 100
+          }
+        ]
       },
       "visual": {
         "type": "authored_stage",
@@ -1212,67 +1256,89 @@
           "camera_mode": "manual",
           "motion_profile": "narrative",
           "captions": {
-            "enabled": false,
+            "enabled": true,
             "max_words": 6,
             "words_per_line": 3,
             "max_lines": 2,
             "font_size": 64,
-            "min_free_area_ratio": 0.3
+            "min_free_area_ratio": 0.3,
+            "preferred_side": "center",
+            "region": {
+              "x": 5,
+              "y": 67,
+              "width": 90,
+              "height": 30
+            }
           },
           "elements": [
             {
-              "id": "law",
-              "kind": "source_excerpt",
-              "label": "LEI 11.795/2008 · ART. 22 §1",
+              "id": "months",
+              "kind": "object",
+              "label": "ILUSTRAÇÃO ESQUEMÁTICA",
+              "x": 5,
+              "y": 16,
+              "width": 90,
+              "height": 34,
+              "surface": "none",
+              "label_size": 48,
+              "object_type": "data",
+              "hyperframes": {
+                "entry": "video/hyperframes/credit-months/index.html",
+                "initial_state": "september",
+                "width": 1280,
+                "height": 640,
+                "states": [
+                  {
+                    "anchor": "Imagine um exemplo hipotético",
+                    "state": "september"
+                  },
+                  {
+                    "anchor": "e foi quitada em outubro.",
+                    "state": "paid"
+                  },
+                  {
+                    "anchor": "O relatório de setembro",
+                    "state": "old"
+                  },
+                  {
+                    "anchor": "A posição posterior",
+                    "state": "new"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "hypothesis",
+              "kind": "label",
+              "label": "EXEMPLO HIPOTÉTICO",
+              "x": 5,
+              "y": 53,
+              "width": 90,
+              "height": 10,
+              "surface": "none",
+              "label_size": 48
+            },
+            {
+              "id": "sep",
+              "kind": "label",
+              "label": "SETEMBRO",
               "x": 7,
               "y": 3,
-              "width": 86,
-              "height": 23,
+              "width": 40,
+              "height": 9,
               "surface": "none",
-              "asset_id": "contemplacao-rule",
-              "image_fit": "contain",
-              "label_size": 36
+              "label_size": 48
             },
             {
-              "id": "draw",
+              "id": "oct",
               "kind": "label",
-              "label": "SORTEIO",
-              "x": 8,
-              "y": 33,
-              "width": 36,
-              "height": 39,
+              "label": "OUTUBRO",
+              "x": 53,
+              "y": 3,
+              "width": 40,
+              "height": 9,
               "surface": "none",
-              "label_size": 60,
-              "icon": "route",
-              "icon_size": 250,
-              "content_layout": "row",
-              "initially_visible": false
-            },
-            {
-              "id": "bid",
-              "kind": "label",
-              "label": "LANCE",
-              "x": 56,
-              "y": 33,
-              "width": 36,
-              "height": 39,
-              "surface": "none",
-              "label_size": 60,
-              "icon": "coins",
-              "icon_size": 250,
-              "content_layout": "row",
-              "initially_visible": false
-            },
-            {
-              "id": "rule-note",
-              "kind": "label",
-              "label": "REGRAS DO GRUPO",
-              "x": 10,
-              "y": 83,
-              "width": 80,
-              "height": 11,
-              "surface": "none",
-              "label_size": 42,
+              "label_size": 48,
               "initially_visible": false
             }
           ],
@@ -1280,110 +1346,94 @@
         },
         "beats": [
           {
-            "anchor": "A contemplação tem dois caminhos previstos na lei.",
-            "target_id": "law",
-            "headline": "DOIS CAMINHOS",
+            "anchor": "Imagine um exemplo hipotético",
+            "target_id": "months",
+            "headline": "SETEMBRO",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 1.1,
+            "motion_seconds": 0.85,
             "camera": {
               "x": 50,
-              "y": 50,
+              "y": 48,
               "zoom": 1.01,
-              "motion_seconds": 0.9
+              "motion_seconds": 0.85
             }
           },
           {
-            "anchor": "O sorteio seleciona uma cota entre as que podem participar, conforme as regras do grupo.",
-            "target_id": "draw",
-            "headline": "SORTEIO",
-            "action": "reveal",
+            "anchor": "uma dívida de cartão ficou atrasada em setembro",
+            "target_id": "hypothesis",
+            "headline": "HIPÓTESE: SETEMBRO EM ATRASO",
+            "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.65,
-            "entrance": {
-              "style": "slide",
-              "direction": "left"
-            }
+            "motion_seconds": 0.45
           },
           {
-            "anchor": "Outra via é o lance: uma oferta de antecipação de pagamentos para disputar a contemplação.",
-            "target_id": "bid",
-            "headline": "LANCE",
-            "action": "reveal",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.65,
-            "entrance": {
-              "style": "slide",
-              "direction": "right"
-            }
-          },
-          {
-            "anchor": "Só oferecer um lance não significa vencer.",
-            "target_id": "rule-note",
-            "headline": "OFERTAR ≠ VENCER",
-            "action": "reveal",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.65
-          },
-          {
-            "anchor": "As regras, o desempate e o dinheiro disponível precisam entrar na análise.",
-            "target_id": "law",
-            "headline": "REGRA E RECURSOS",
+            "anchor": "e foi quitada em outubro.",
+            "target_id": "months",
+            "headline": "OUTUBRO: PAGAMENTO",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 1.1,
+            "motion_seconds": 0.85,
+            "actuation": "confirm",
             "camera": {
               "x": 50,
-              "y": 50,
+              "y": 48,
+              "zoom": 1.04,
+              "motion_seconds": 0.85
+            },
+            "reveal_ids": [
+              "oct"
+            ]
+          },
+          {
+            "anchor": "O relatório de setembro",
+            "target_id": "hypothesis",
+            "headline": "HIPÓTESE: RETRATO DE SETEMBRO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Por isso, o atraso daquele mês",
+            "target_id": "months",
+            "headline": "O RETRATO ANTIGO PERMANECE",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.85,
+            "camera": {
+              "x": 50,
+              "y": 48,
+              "zoom": 1.01,
+              "motion_seconds": 0.85
+            }
+          },
+          {
+            "anchor": "como se nunca tivesse ocorrido.",
+            "target_id": "hypothesis",
+            "headline": "HIPÓTESE: O PASSADO NÃO É REESCRITO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "A posição posterior",
+            "target_id": "months",
+            "headline": "REGULARIZAÇÃO POSTERIOR",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.85,
+            "camera": {
+              "x": 50,
+              "y": 48,
               "zoom": 1.03,
-              "motion_seconds": 0.9
-            }
-          },
-          {
-            "anchor": "O lance vencedor deve quitar ou amortizar prestações futuras, da forma prevista no contrato.",
-            "target_id": "rule-note",
-            "headline": "LANCE AMORTIZA PARCELAS",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Amortizar significa abater parte do que você ainda deve.",
-            "target_id": "rule-note",
-            "headline": "AMORTIZAR = ABATER A DÍVIDA",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Segundo o Banco Central, até antecipar todas as parcelas não garante contemplação imediata.",
-            "target_id": "rule-note",
-            "headline": "ANTECIPAR ≠ RECEBER IMEDIATAMENTE",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "A pergunta, então, não é apenas quanto você consegue pagar, mas quando poderá usar o crédito.",
-            "target_id": "law",
-            "headline": "PAGAMENTO E DATA SÃO DIFERENTES",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 1.1,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.01,
-              "motion_seconds": 0.9
+              "motion_seconds": 0.85
             }
           }
         ]
@@ -1392,12 +1442,12 @@
     {
       "id": "scene-04",
       "index": 3,
-      "title": "Sem juros, mas com custo",
+      "title": "A prova e a data correta",
+      "narration": "Segundo o Banco Central, o pagamento não reescreve as posições passadas. É como conferir dois retratos de momentos diferentes: um não invalida o outro. Também não confunda o mês dos dados com o dia em que você abriu o relatório. A atualização do pagamento não é instantânea. Se você olha só uma data antiga, pode concluir que continua devendo uma conta que já quitou.",
       "claim_ids": [
         "C4",
         "C5"
       ],
-      "narration": "Agora vem a expressão que pode encurtar demais a conversa: sem juros. O consórcio não funciona como um empréstimo bancário com juros, mas tem custos. A taxa de administração remunera o trabalho da administradora, como estabelece a lei. Vamos usar um exemplo ilustrativo, com valores fixos e sem reajustes. Suponha um crédito de cem mil reais e uma taxa total de vinte por cento sobre esse valor. Vinte por cento de cem mil são vinte mil reais. Essa taxa é pelo plano inteiro neste exemplo, não vinte por cento ao ano. O percentual real e a forma de cobrança devem estar no contrato. Então a ausência de juros não zera a remuneração de quem organiza o grupo.",
       "tts": {
         "delivery": "explain",
         "pause_ms": 150,
@@ -1411,75 +1461,42 @@
           "camera_mode": "manual",
           "motion_profile": "narrative",
           "captions": {
-            "enabled": false,
+            "enabled": true,
             "max_words": 6,
             "words_per_line": 3,
             "max_lines": 2,
             "font_size": 64,
-            "min_free_area_ratio": 0.3
+            "min_free_area_ratio": 0.3,
+            "preferred_side": "center",
+            "region": {
+              "x": 5,
+              "y": 67,
+              "width": 90,
+              "height": 30
+            }
           },
           "elements": [
             {
-              "id": "base",
-              "kind": "metric",
-              "label": "CRÉDITO-BASE",
+              "id": "proof",
+              "kind": "source_excerpt",
+              "label": "BANCO CENTRAL · HISTÓRICO DO SCR",
               "x": 5,
-              "y": 24,
-              "width": 24,
-              "height": 43,
+              "y": 3,
+              "width": 90,
+              "height": 47,
               "surface": "none",
-              "value": "R$ 100 mil",
-              "value_size": 150,
               "label_size": 48,
-              "initially_visible": false
+              "asset_id": "paid-history",
+              "image_fit": "contain"
             },
             {
-              "id": "rate",
-              "kind": "metric",
-              "label": "TAXA TOTAL",
-              "x": 38,
-              "y": 24,
-              "width": 24,
-              "height": 43,
-              "surface": "none",
-              "value": "20%",
-              "value_size": 150,
-              "label_size": 48,
-              "initially_visible": false
-            },
-            {
-              "id": "fee",
-              "kind": "metric",
-              "label": "ADMINISTRAÇÃO",
-              "x": 71,
-              "y": 24,
-              "width": 24,
-              "height": 43,
-              "surface": "none",
-              "value": "R$ 20 mil",
-              "value_size": 150,
-              "label_size": 48,
-              "initially_visible": false
-            },
-            {
-              "id": "hypothesis",
+              "id": "meaning",
               "kind": "label",
-              "label": "EXEMPLO ILUSTRATIVO",
-              "x": 8,
-              "y": 6,
-              "width": 84,
+              "label": "PAGAMENTO NÃO REESCREVE O PASSADO",
+              "x": 5,
+              "y": 53,
+              "width": 90,
               "height": 10,
-              "surface": "none",
-              "label_size": 38
-            },
-            {
-              "id": "fee-note",
-              "kind": "label",
-              "label": "SEM JUROS ≠ SEM CUSTO",
-              "x": 8,
-              "y": 83,
-              "width": 84,
-              "height": 12,
               "surface": "none",
               "label_size": 48
             }
@@ -1488,105 +1505,250 @@
         },
         "beats": [
           {
-            "anchor": "Agora vem a expressão que pode encurtar demais a conversa: sem juros.",
-            "target_id": "fee-note",
-            "headline": "SEM JUROS ≠ SEM CUSTO",
+            "anchor": "Segundo o Banco Central,",
+            "target_id": "proof",
+            "headline": "BANCO CENTRAL",
             "action": "focus",
-            "treatment": "kinetic_type",
+            "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.8,
+            "motion_seconds": 0.85,
             "camera": {
               "x": 50,
-              "y": 50,
-              "zoom": 1.02,
-              "motion_seconds": 0.9
+              "y": 48,
+              "zoom": 1.01,
+              "motion_seconds": 0.85
             }
           },
           {
-            "anchor": "O consórcio não funciona como um empréstimo bancário com juros, mas tem custos.",
-            "target_id": "fee-note",
-            "headline": "EXISTEM CUSTOS",
+            "anchor": "o pagamento não reescreve as posições passadas.",
+            "target_id": "meaning",
+            "headline": "POSIÇÕES PASSADAS CONTINUAM",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
             "motion_seconds": 0.45
           },
           {
-            "anchor": "A taxa de administração remunera o trabalho da administradora, como estabelece a lei.",
-            "target_id": "fee-note",
-            "headline": "ADMINISTRAÇÃO É REMUNERADA",
+            "anchor": "É como conferir dois retratos",
+            "target_id": "meaning",
+            "headline": "DOIS RETRATOS DE MESES DIFERENTES",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
             "motion_seconds": 0.45
           },
           {
-            "anchor": "Vamos usar um exemplo ilustrativo, com valores fixos e sem reajustes.",
-            "target_id": "hypothesis",
-            "headline": "EXEMPLO · SEM REAJUSTE",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Suponha um crédito de cem mil reais e uma taxa total de vinte por cento sobre esse valor.",
-            "target_id": "base",
-            "headline": "CRÉDITO-BASE",
-            "action": "reveal",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.65,
-            "reveal_ids": [
-              "rate"
-            ]
-          },
-          {
-            "anchor": "Vinte por cento de cem mil são vinte mil reais.",
-            "target_id": "fee",
-            "headline": "ADMINISTRAÇÃO",
-            "action": "reveal",
-            "treatment": "equation",
-            "behavior": "transform",
-            "motion_seconds": 1.2,
-            "operation": {
-              "kind": "equation",
-              "input_ids": [
-                "base",
-                "rate"
-              ],
-              "operator": "×",
-              "result_id": "fee"
-            }
-          },
-          {
-            "anchor": "Essa taxa é pelo plano inteiro neste exemplo, não vinte por cento ao ano.",
-            "target_id": "fee-note",
-            "headline": "20% NO PLANO · NÃO AO ANO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "O percentual real e a forma de cobrança devem estar no contrato.",
-            "target_id": "rate",
-            "headline": "TAXA TOTAL",
+            "anchor": "um não invalida o outro.",
+            "target_id": "proof",
+            "headline": "DOCUMENTO ORIGINAL",
             "action": "focus",
-            "treatment": "giant_number",
+            "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.65,
+            "motion_seconds": 0.85,
             "camera": {
               "x": 50,
-              "y": 50,
-              "zoom": 1.015,
-              "motion_seconds": 0.9
+              "y": 48,
+              "zoom": 1.03,
+              "motion_seconds": 0.85
             }
           },
           {
-            "anchor": "Então a ausência de juros não zera a remuneração de quem organiza o grupo.",
-            "target_id": "fee-note",
-            "headline": "SEM JUROS ≠ CUSTO ZERO",
+            "anchor": "Também não confunda o mês dos dados",
+            "target_id": "meaning",
+            "headline": "MÊS DOS DADOS ≠ DATA DA CONSULTA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "o dia em que você abriu o relatório.",
+            "target_id": "proof",
+            "headline": "REFERÊNCIA DO REGISTRO",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.85,
+            "camera": {
+              "x": 50,
+              "y": 48,
+              "zoom": 1.01,
+              "motion_seconds": 0.85
+            }
+          },
+          {
+            "anchor": "A atualização do pagamento não é instantânea.",
+            "target_id": "meaning",
+            "headline": "ATUALIZAÇÃO NÃO É INSTANTÂNEA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Se você olha só uma data antiga,",
+            "target_id": "meaning",
+            "headline": "CONFIRA A POSIÇÃO POSTERIOR",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "uma conta que já quitou.",
+            "target_id": "meaning",
+            "headline": "REGISTRO ANTIGO ≠ DÍVIDA ATUAL",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-05a",
+      "index": 4,
+      "title": "A análise inclui a capacidade de pagamento",
+      "narration": "Agora vem a outra parte: até com a situação regularizada, o banco pode avaliar renda, compromissos e seus próprios critérios de risco. Uma pontuação boa não transforma toda parcela numa parcela possível.",
+      "claim_ids": [
+        "C1",
+        "C6"
+      ],
+      "tts": {
+        "delivery": "explain",
+        "pause_ms": 150,
+        "cues": []
+      },
+      "visual": {
+        "type": "authored_stage",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "captions": {
+            "enabled": true,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3,
+            "preferred_side": "center",
+            "region": {
+              "x": 5,
+              "y": 67,
+              "width": 90,
+              "height": 30
+            }
+          },
+          "elements": [
+            {
+              "id": "bank",
+              "kind": "object",
+              "label": "CRITÉRIOS DA INSTITUIÇÃO",
+              "x": 5,
+              "y": 4,
+              "width": 40,
+              "height": 44,
+              "surface": "none",
+              "label_size": 48,
+              "object_type": "bank",
+              "svg_motion": "assemble"
+            },
+            {
+              "id": "wallet",
+              "kind": "object",
+              "label": "RENDA E COMPROMISSOS",
+              "x": 55,
+              "y": 4,
+              "width": 40,
+              "height": 44,
+              "surface": "none",
+              "label_size": 48,
+              "object_type": "wallet",
+              "svg_motion": "assemble",
+              "initially_visible": false
+            },
+            {
+              "id": "criteria",
+              "kind": "label",
+              "label": "RENDA · COMPROMISSOS · CRITÉRIOS",
+              "x": 5,
+              "y": 53,
+              "width": 90,
+              "height": 10,
+              "surface": "none",
+              "label_size": 48
+            }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "Agora vem a outra parte:",
+            "target_id": "bank",
+            "headline": "ANÁLISE DO BANCO",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.85,
+            "camera": {
+              "x": 50,
+              "y": 48,
+              "zoom": 1.01,
+              "motion_seconds": 0.85
+            }
+          },
+          {
+            "anchor": "até com a situação regularizada,",
+            "target_id": "criteria",
+            "headline": "SITUAÇÃO REGULARIZADA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "o banco pode avaliar renda,",
+            "target_id": "wallet",
+            "headline": "RENDA E COMPROMISSOS",
+            "action": "reveal",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "entrance": {
+              "style": "scale"
+            }
+          },
+          {
+            "anchor": "seus próprios critérios de risco.",
+            "target_id": "criteria",
+            "headline": "CRITÉRIOS DA INSTITUIÇÃO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Uma pontuação boa",
+            "target_id": "bank",
+            "headline": "PONTUAÇÃO E CRITÉRIOS",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.85,
+            "camera": {
+              "x": 50,
+              "y": 48,
+              "zoom": 1.03,
+              "motion_seconds": 0.85
+            }
+          },
+          {
+            "anchor": "numa parcela possível.",
+            "target_id": "criteria",
+            "headline": "A PARCELA PRECISA CABER",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
@@ -1597,17 +1759,25 @@
     },
     {
       "id": "scene-05",
-      "index": 4,
-      "title": "A soma que o anúncio não encerra",
+      "index": 5,
+      "title": "Uma parcela precisa caber na renda",
+      "narration": "Num exemplo hipotético, alguém recebe três mil reais, já paga oitocentos em prestações e pensa em assumir mais setecentos. As prestações somariam mil e quinhentos reais. Ainda existem aluguel, alimentação e outras despesas. Essa conta não reproduz a fórmula de nenhum banco, nem estabelece um limite obrigatório. Ela só mostra por que a capacidade de pagamento é uma pergunta diferente de estar negativado. O histórico pode pesar na análise, mas um registro no SCR não determina sozinho uma recusa.",
       "claim_ids": [
-        "C4",
-        "C5"
+        "C1",
+        "C6"
       ],
-      "narration": "A taxa muda o total da conta, mesmo quando a palavra juros não aparece. No nosso exemplo ilustrativo, continuam cem mil de crédito e vinte mil de administração. Somando cem mil com vinte mil, chegamos a cento e vinte mil reais. Esse valor considera apenas o crédito-base e a taxa que inventamos para explicar. Pode haver fundo de reserva, seguro e outras obrigações, se previstas no contrato. Reajustes também ficaram fora dessa conta. Portanto, ela não é o preço final de uma oferta real. O ponto é comparar o plano completo, e não tratar a taxa como se ela não existisse. Se essa conta esclareceu a promessa, inscreva-se no canal para entender melhor o seu dinheiro. E há outra pergunta: do crédito anunciado, quanto chega de fato à compra?",
       "tts": {
         "delivery": "explain",
         "pause_ms": 150,
-        "cues": []
+        "cues": [
+          {
+            "text": "As prestações somariam mil e quinhentos reais.",
+            "kind": "number",
+            "intent": "discovery",
+            "arc": "resolve",
+            "pause_before_ms": 100
+          }
+        ]
       },
       "visual": {
         "type": "authored_stage",
@@ -1617,182 +1787,204 @@
           "camera_mode": "manual",
           "motion_profile": "narrative",
           "captions": {
-            "enabled": false,
+            "enabled": true,
             "max_words": 6,
             "words_per_line": 3,
             "max_lines": 2,
             "font_size": 64,
-            "min_free_area_ratio": 0.3
+            "min_free_area_ratio": 0.3,
+            "preferred_side": "center",
+            "region": {
+              "x": 5,
+              "y": 67,
+              "width": 90,
+              "height": 30
+            }
           },
           "elements": [
             {
-              "id": "credit",
+              "id": "income",
               "kind": "metric",
-              "label": "CRÉDITO-BASE",
+              "label": "RENDA ILUSTRATIVA",
               "x": 5,
-              "y": 24,
-              "width": 24,
-              "height": 43,
+              "y": 0,
+              "width": 90,
+              "height": 20,
               "surface": "none",
-              "value": "R$ 100 mil",
-              "value_size": 150,
-              "label_size": 48,
+              "label_size": 32,
+              "value": "R$ 3.000",
+              "value_size": 90,
               "initially_visible": false
             },
             {
-              "id": "fee",
+              "id": "existing",
               "kind": "metric",
-              "label": "ADMINISTRAÇÃO",
-              "x": 38,
+              "label": "PARCELAS ATUAIS",
+              "x": 3,
               "y": 24,
-              "width": 24,
-              "height": 43,
+              "width": 23,
+              "height": 29,
               "surface": "none",
-              "value": "R$ 20 mil",
-              "value_size": 150,
               "label_size": 48,
+              "value": "R$ 800",
+              "value_size": 82,
+              "initially_visible": false
+            },
+            {
+              "id": "new",
+              "kind": "metric",
+              "label": "NOVA PARCELA",
+              "x": 37,
+              "y": 24,
+              "width": 23,
+              "height": 29,
+              "surface": "none",
+              "label_size": 48,
+              "value": "R$ 700",
+              "value_size": 82,
               "initially_visible": false
             },
             {
               "id": "total",
               "kind": "metric",
-              "label": "BASE + TAXA",
-              "x": 71,
+              "label": "TOTAL DE PARCELAS",
+              "x": 74,
               "y": 24,
-              "width": 24,
-              "height": 43,
+              "width": 23,
+              "height": 29,
               "surface": "none",
-              "value": "R$ 120 mil",
-              "value_size": 150,
               "label_size": 48,
+              "value": "R$ 1.500",
+              "value_size": 82,
               "initially_visible": false
             },
             {
               "id": "hypothesis",
               "kind": "label",
-              "label": "EXEMPLO ILUSTRATIVO",
-              "x": 8,
-              "y": 6,
-              "width": 84,
-              "height": 10,
+              "label": "EXEMPLO HIPOTÉTICO",
+              "x": 5,
+              "y": 56,
+              "width": 90,
+              "height": 9,
               "surface": "none",
-              "label_size": 38
-            },
-            {
-              "id": "sum-note",
-              "kind": "label",
-              "label": "SÓ BASE E ADMINISTRAÇÃO",
-              "x": 8,
-              "y": 83,
-              "width": 84,
-              "height": 12,
-              "surface": "none",
-              "label_size": 44
+              "label_size": 42
             }
           ],
           "connections": []
         },
         "beats": [
           {
-            "anchor": "A taxa muda o total da conta, mesmo quando a palavra juros não aparece.",
-            "target_id": "sum-note",
-            "headline": "A TAXA ENTRA NA CONTA",
-            "action": "focus",
+            "anchor": "Num exemplo hipotético,",
+            "target_id": "hypothesis",
+            "headline": "EXEMPLO HIPOTÉTICO",
+            "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.8,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.01,
-              "motion_seconds": 0.9
-            }
+            "motion_seconds": 0.45
           },
           {
-            "anchor": "No nosso exemplo ilustrativo, continuam cem mil de crédito e vinte mil de administração.",
-            "target_id": "credit",
-            "headline": "CRÉDITO-BASE",
+            "anchor": "alguém recebe três mil reais,",
+            "target_id": "income",
+            "headline": "RENDA ILUSTRATIVA",
             "action": "reveal",
             "treatment": "giant_number",
             "behavior": "transform",
-            "motion_seconds": 0.65,
-            "reveal_ids": [
-              "fee"
-            ]
+            "motion_seconds": 0.7,
+            "camera": {
+              "x": 50,
+              "y": 48,
+              "zoom": 1.02,
+              "motion_seconds": 0.85
+            },
+            "entrance": {
+              "style": "slide",
+              "direction": "down"
+            }
           },
           {
-            "anchor": "Somando cem mil com vinte mil, chegamos a cento e vinte mil reais.",
+            "anchor": "já paga oitocentos em prestações",
+            "target_id": "existing",
+            "headline": "PARCELAS ATUAIS",
+            "action": "reveal",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "entrance": {
+              "style": "slide",
+              "direction": "up"
+            }
+          },
+          {
+            "anchor": "assumir mais setecentos.",
+            "target_id": "new",
+            "headline": "NOVA PARCELA",
+            "action": "reveal",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "entrance": {
+              "style": "slide",
+              "direction": "up"
+            }
+          },
+          {
+            "anchor": "As prestações somariam mil e quinhentos reais.",
             "target_id": "total",
-            "headline": "BASE + TAXA",
+            "headline": "TOTAL DE PARCELAS",
             "action": "reveal",
             "treatment": "equation",
             "behavior": "transform",
-            "motion_seconds": 1.2,
+            "motion_seconds": 0.7,
             "operation": {
               "kind": "equation",
               "input_ids": [
-                "credit",
-                "fee"
+                "existing",
+                "new"
               ],
               "operator": "+",
               "result_id": "total"
-            }
-          },
-          {
-            "anchor": "Esse valor considera apenas o crédito-base e a taxa que inventamos para explicar.",
-            "target_id": "hypothesis",
-            "headline": "EXEMPLO · VALORES FIXOS",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Pode haver fundo de reserva, seguro e outras obrigações, se previstas no contrato.",
-            "target_id": "sum-note",
-            "headline": "OUTRAS OBRIGAÇÕES: CONFIRA O CONTRATO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Reajustes também ficaram fora dessa conta. Portanto, ela não é o preço final de uma oferta real.",
-            "target_id": "sum-note",
-            "headline": "REAJUSTES NÃO INCLUÍDOS",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "O ponto é comparar o plano completo, e não tratar a taxa como se ela não existisse.",
-            "target_id": "total",
-            "headline": "BASE + TAXA",
-            "action": "focus",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.65,
+            },
             "camera": {
               "x": 50,
-              "y": 50,
-              "zoom": 1.025,
-              "motion_seconds": 0.9
+              "y": 48,
+              "zoom": 1.01,
+              "motion_seconds": 0.85
+            },
+            "entrance": {
+              "style": "scale"
             }
           },
           {
-            "anchor": "Se essa conta esclareceu a promessa, inscreva-se no canal para entender melhor o seu dinheiro.",
-            "target_id": "sum-note",
-            "headline": "ENTENDA O PLANO COMPLETO",
+            "anchor": "Ainda existem aluguel, alimentação e outras despesas.",
+            "target_id": "hypothesis",
+            "headline": "HIPÓTESE: AINDA HÁ DESPESAS ESSENCIAIS",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
             "motion_seconds": 0.45
           },
           {
-            "anchor": "E há outra pergunta: do crédito anunciado, quanto chega de fato à compra?",
-            "target_id": "sum-note",
-            "headline": "QUANTO SOBRA PARA A COMPRA?",
+            "anchor": "Essa conta não reproduz a fórmula de nenhum banco,",
+            "target_id": "hypothesis",
+            "headline": "HIPÓTESE · SEM LIMITE UNIVERSAL",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "a capacidade de pagamento é uma pergunta diferente",
+            "target_id": "hypothesis",
+            "headline": "HIPÓTESE · CAPACIDADE DE PAGAMENTO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "O histórico pode pesar na análise,",
+            "target_id": "hypothesis",
+            "headline": "HISTÓRICO NÃO DECIDE SOZINHO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
@@ -1803,22 +1995,24 @@
     },
     {
       "id": "scene-06",
-      "index": 5,
-      "title": "O pedaço que sai do crédito",
+      "index": 6,
+      "title": "Conferir o dado e guardar o protocolo",
+      "narration": "Pra conferir sua situação, consulte seus dados nos serviços de proteção ao crédito e o relatório de empréstimos e financiamentos no Registrato, pelo endereço oficial do Banco Central. Para esse acesso, o BC pede conta gov.br prata ou ouro e verificação em duas etapas. Compare a instituição, a operação, o mês de referência e o comprovante da quitação. Se houver informação errada, procure o banco ou a financeira que enviou o registro e guarde o protocolo. Sem solução, avance para a ouvidoria; se persistir, existe o canal de reclamação do Banco Central. Corrigir informação errada e apagar um histórico verdadeiro são coisas diferentes. Nenhum desses passos é uma garantia de aprovação.",
       "claim_ids": [
-        "C6",
-        "C3"
+        "C7",
+        "C4",
+        "C1"
       ],
-      "narration": "O lance embutido usa parte do próprio crédito para antecipar pagamentos. Isso precisa ser permitido pelas regras do seu grupo. Num exemplo ilustrativo, o crédito é de cem mil reais e o lance embutido vencedor é de trinta mil. Cem mil menos trinta mil deixam setenta mil reais disponíveis para a compra. Os trinta mil são deduzidos do crédito e usados para quitar ou amortizar prestações futuras. Eles não são um presente, nem um custo extra somado por fora a essa mesma conta. Se o carro do exemplo custa cem mil, ainda faltam trinta mil de recursos do comprador. Um crédito anunciado de cem mil pode, portanto, resultar em menos dinheiro disponível para o carro. E o lance embutido também não garante vitória: a disputa continua seguindo o contrato.",
       "tts": {
         "delivery": "explain",
         "pause_ms": 150,
         "cues": [
           {
-            "text": "Cem mil menos trinta mil deixam setenta mil reais disponíveis para a compra.",
-            "kind": "number",
-            "intent": "discovery",
-            "arc": "resolve"
+            "text": "Nenhum desses passos é uma garantia de aprovação.",
+            "kind": "contrast",
+            "intent": "caution",
+            "arc": "resolve",
+            "pause_before_ms": 100
           }
         ]
       },
@@ -1830,176 +2024,208 @@
           "camera_mode": "manual",
           "motion_profile": "narrative",
           "captions": {
-            "enabled": false,
+            "enabled": true,
             "max_words": 6,
             "words_per_line": 3,
             "max_lines": 2,
             "font_size": 64,
-            "min_free_area_ratio": 0.3
+            "min_free_area_ratio": 0.3,
+            "preferred_side": "center",
+            "region": {
+              "x": 5,
+              "y": 67,
+              "width": 90,
+              "height": 30
+            }
           },
           "elements": [
             {
-              "id": "credit",
-              "kind": "metric",
-              "label": "CRÉDITO",
+              "id": "record",
+              "kind": "object",
+              "label": "CONFERÊNCIA DOS DADOS",
               "x": 5,
-              "y": 24,
-              "width": 24,
-              "height": 43,
+              "y": 3,
+              "width": 29,
+              "height": 42,
               "surface": "none",
-              "value": "R$ 100 mil",
-              "value_size": 150,
               "label_size": 48,
+              "object_type": "receipt",
+              "svg_motion": "assemble",
+              "sustain": {
+                "kind": "tilt",
+                "amplitude": 2,
+                "period_seconds": 7
+              }
+            },
+            {
+              "id": "route",
+              "kind": "step",
+              "label": "BANCO OU FINANCEIRA",
+              "x": 40,
+              "y": 2,
+              "width": 55,
+              "height": 24,
+              "surface": "none",
+              "label_size": 48,
+              "icon": "bank",
+              "icon_size": 130,
+              "content_layout": "row",
               "initially_visible": false
             },
             {
-              "id": "bid",
-              "kind": "metric",
-              "label": "LANCE EMBUTIDO",
-              "x": 38,
-              "y": 24,
-              "width": 24,
-              "height": 43,
+              "id": "protocol",
+              "kind": "step",
+              "label": "GUARDE O PROTOCOLO",
+              "x": 40,
+              "y": 29,
+              "width": 55,
+              "height": 22,
               "surface": "none",
-              "value": "R$ 30 mil",
-              "value_size": 150,
               "label_size": 48,
+              "icon": "document",
+              "icon_size": 120,
+              "content_layout": "row",
               "initially_visible": false
             },
             {
-              "id": "available",
-              "kind": "metric",
-              "label": "PARA A COMPRA",
-              "x": 71,
-              "y": 24,
-              "width": 24,
-              "height": 43,
-              "surface": "none",
-              "value": "R$ 70 mil",
-              "value_size": 150,
-              "label_size": 48,
-              "initially_visible": false
-            },
-            {
-              "id": "hypothesis",
+              "id": "check",
               "kind": "label",
-              "label": "EXEMPLO ILUSTRATIVO",
-              "x": 8,
-              "y": 6,
-              "width": 84,
+              "label": "CONSULTE SEUS RELATÓRIOS",
+              "x": 5,
+              "y": 53,
+              "width": 90,
               "height": 10,
               "surface": "none",
-              "label_size": 38
-            },
-            {
-              "id": "embedded-note",
-              "kind": "label",
-              "label": "PARTE DO CRÉDITO VIRA LANCE",
-              "x": 8,
-              "y": 83,
-              "width": 84,
-              "height": 12,
-              "surface": "none",
-              "label_size": 44
+              "label_size": 48
             }
           ],
           "connections": []
         },
         "beats": [
           {
-            "anchor": "O lance embutido usa parte do próprio crédito para antecipar pagamentos.",
-            "target_id": "embedded-note",
-            "headline": "CRÉDITO USADO NO LANCE",
+            "anchor": "Pra conferir sua situação,",
+            "target_id": "record",
+            "headline": "CONFERIR DADOS",
             "action": "focus",
-            "treatment": "kinetic_type",
+            "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.8,
+            "motion_seconds": 0.85,
             "camera": {
               "x": 50,
-              "y": 50,
-              "zoom": 1.02,
-              "motion_seconds": 0.9
+              "y": 48,
+              "zoom": 1.01,
+              "motion_seconds": 0.85
             }
           },
           {
-            "anchor": "Isso precisa ser permitido pelas regras do seu grupo.",
-            "target_id": "embedded-note",
-            "headline": "SE O GRUPO PERMITIR",
+            "anchor": "serviços de proteção ao crédito",
+            "target_id": "check",
+            "headline": "PROTEÇÃO AO CRÉDITO + REGISTRATO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
             "motion_seconds": 0.45
           },
           {
-            "anchor": "Num exemplo ilustrativo, o crédito é de cem mil reais e o lance embutido vencedor é de trinta mil.",
-            "target_id": "credit",
-            "headline": "CRÉDITO",
-            "action": "reveal",
-            "treatment": "giant_number",
+            "anchor": "pelo endereço oficial do Banco Central.",
+            "target_id": "check",
+            "headline": "USE O ENDEREÇO OFICIAL DO BC",
+            "action": "update",
+            "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.65,
-            "reveal_ids": [
-              "bid"
-            ]
+            "motion_seconds": 0.45
           },
           {
-            "anchor": "Cem mil menos trinta mil deixam setenta mil reais disponíveis para a compra.",
-            "target_id": "available",
-            "headline": "PARA A COMPRA",
-            "action": "reveal",
-            "treatment": "equation",
+            "anchor": "conta gov.br prata ou ouro",
+            "target_id": "check",
+            "headline": "GOV.BR PRATA OU OURO · DUAS ETAPAS",
+            "action": "update",
+            "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 1.2,
-            "operation": {
-              "kind": "equation",
-              "input_ids": [
-                "credit",
-                "bid"
-              ],
-              "operator": "-",
-              "result_id": "available"
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Compare a instituição, a operação,",
+            "target_id": "record",
+            "headline": "INSTITUIÇÃO · OPERAÇÃO",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.85,
+            "actuation": "tap",
+            "camera": {
+              "x": 50,
+              "y": 48,
+              "zoom": 1.03,
+              "motion_seconds": 0.85
             }
           },
           {
-            "anchor": "Os trinta mil são deduzidos do crédito e usados para quitar ou amortizar prestações futuras.",
-            "target_id": "bid",
-            "headline": "AMORTIZA PARCELAS",
-            "action": "update",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Eles não são um presente, nem um custo extra somado por fora a essa mesma conta.",
-            "target_id": "embedded-note",
-            "headline": "NÃO É DINHEIRO GRÁTIS",
+            "anchor": "o mês de referência e o comprovante",
+            "target_id": "check",
+            "headline": "MÊS DOS DADOS + COMPROVANTE",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
             "motion_seconds": 0.45
           },
           {
-            "anchor": "Se o carro do exemplo custa cem mil, ainda faltam trinta mil de recursos do comprador.",
-            "target_id": "embedded-note",
-            "headline": "CARRO DE R$ 100 MIL: FALTAM R$ 30 MIL",
+            "anchor": "Se houver informação errada,",
+            "target_id": "route",
+            "headline": "BANCO OU FINANCEIRA",
+            "action": "reveal",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "entrance": {
+              "style": "slide",
+              "direction": "right"
+            }
+          },
+          {
+            "anchor": "guarde o protocolo.",
+            "target_id": "protocol",
+            "headline": "GUARDE O PROTOCOLO",
+            "action": "reveal",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "entrance": {
+              "style": "wipe",
+              "direction": "left"
+            }
+          },
+          {
+            "anchor": "Sem solução, avance para a ouvidoria;",
+            "target_id": "route",
+            "headline": "SEM SOLUÇÃO: OUVIDORIA",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
             "motion_seconds": 0.45
           },
           {
-            "anchor": "Um crédito anunciado de cem mil pode, portanto, resultar em menos dinheiro disponível para o carro.",
-            "target_id": "available",
-            "headline": "DISPONÍVEL PARA COMPRAR",
+            "anchor": "se persistir, existe o canal de reclamação",
+            "target_id": "route",
+            "headline": "PERSISTIU: RECLAMAÇÃO AO BC",
             "action": "update",
-            "treatment": "giant_number",
+            "treatment": "kinetic_type",
             "behavior": "transform",
             "motion_seconds": 0.45
           },
           {
-            "anchor": "E o lance embutido também não garante vitória: a disputa continua seguindo o contrato.",
-            "target_id": "embedded-note",
-            "headline": "LANCE ≠ VITÓRIA GARANTIDA",
+            "anchor": "Corrigir informação errada",
+            "target_id": "check",
+            "headline": "CORRIGIR ERRO ≠ APAGAR HISTÓRICO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Nenhum desses passos é uma garantia de aprovação.",
+            "target_id": "check",
+            "headline": "SEM GARANTIA DE APROVAÇÃO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
@@ -2010,388 +2236,15 @@
     },
     {
       "id": "scene-07",
-      "index": 6,
-      "title": "O contrato continua depois da contemplação",
-      "claim_ids": [
-        "C7"
-      ],
-      "narration": "Também é preciso olhar o tempo que passa até a compra. O contrato define a referência do crédito e os critérios de atualização. Dependendo dessas regras, o valor da parcela pode mudar ao longo do plano. Não estamos dizendo que todo grupo aumenta igual, nem usando uma taxa de reajuste fictícia como previsão. A pergunta útil é qual referência será usada, quando será aplicada e o que ainda ficará a pagar. Ser contemplado não elimina automaticamente as obrigações restantes. Para usar o crédito, também existem as garantias previstas no contrato. Conseguir a contemplação e concluir a compra são etapas que você precisa entender separadamente. A chave chega depois de cumprir as condições, não apenas depois de ouvir o anúncio.",
-      "tts": {
-        "delivery": "explain",
-        "pause_ms": 150,
-        "cues": []
-      },
-      "visual": {
-        "type": "authored_stage",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "camera_mode": "manual",
-          "motion_profile": "narrative",
-          "captions": {
-            "enabled": true,
-            "max_words": 6,
-            "words_per_line": 3,
-            "max_lines": 2,
-            "font_size": 64,
-            "min_free_area_ratio": 0.3
-          },
-          "elements": [
-            {
-              "id": "calendar",
-              "kind": "label",
-              "label": "TEMPO ATÉ A COMPRA",
-              "x": 5,
-              "y": 5,
-              "width": 36,
-              "height": 73,
-              "surface": "none",
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "float",
-                "amplitude": 8,
-                "period_seconds": 5
-              },
-              "icon": "clock",
-              "icon_size": 450,
-              "content_layout": "column",
-              "label_size": 42
-            },
-            {
-              "id": "contract",
-              "kind": "label",
-              "label": "REGRA DE ATUALIZAÇÃO",
-              "x": 53,
-              "y": 5,
-              "width": 40,
-              "height": 42,
-              "surface": "none",
-              "label_size": 52,
-              "icon": "document",
-              "icon_size": 250,
-              "content_layout": "row"
-            },
-            {
-              "id": "term",
-              "kind": "label",
-              "label": "QUAL REFERÊNCIA?",
-              "x": 53,
-              "y": 54,
-              "width": 40,
-              "height": 20,
-              "surface": "none",
-              "label_size": 56,
-              "initially_visible": false
-            },
-            {
-              "id": "timing-note",
-              "kind": "label",
-              "label": "CONDIÇÕES DO CONTRATO",
-              "x": 7,
-              "y": 88,
-              "width": 86,
-              "height": 9,
-              "surface": "none",
-              "label_size": 38
-            }
-          ],
-          "connections": []
-        },
-        "beats": [
-          {
-            "anchor": "Também é preciso olhar o tempo que passa até a compra.",
-            "target_id": "calendar",
-            "headline": "TEMPO ATÉ A COMPRA",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.8,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.02,
-              "motion_seconds": 0.9
-            }
-          },
-          {
-            "anchor": "O contrato define a referência do crédito e os critérios de atualização.",
-            "target_id": "contract",
-            "headline": "REGRA DE ATUALIZAÇÃO",
-            "action": "focus",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.65,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.04,
-              "motion_seconds": 0.9
-            }
-          },
-          {
-            "anchor": "Dependendo dessas regras, o valor da parcela pode mudar ao longo do plano.",
-            "target_id": "term",
-            "headline": "PARCELA PODE MUDAR",
-            "action": "reveal",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.65
-          },
-          {
-            "anchor": "Não estamos dizendo que todo grupo aumenta igual, nem usando uma taxa de reajuste fictícia como previsão.",
-            "target_id": "timing-note",
-            "headline": "REAJUSTE DEPENDE DO CONTRATO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "A pergunta útil é qual referência será usada, quando será aplicada e o que ainda ficará a pagar.",
-            "target_id": "term",
-            "headline": "REFERÊNCIA E MOMENTO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Ser contemplado não elimina automaticamente as obrigações restantes.",
-            "target_id": "timing-note",
-            "headline": "PARCELAS RESTANTES CONTINUAM",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Para usar o crédito, também existem as garantias previstas no contrato.",
-            "target_id": "contract",
-            "headline": "GARANTIAS PARA USAR O CRÉDITO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Conseguir a contemplação e concluir a compra são etapas que você precisa entender separadamente.",
-            "target_id": "term",
-            "headline": "CRÉDITO → COMPRA",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "A chave chega depois de cumprir as condições, não apenas depois de ouvir o anúncio.",
-            "target_id": "timing-note",
-            "headline": "CUMPRA AS CONDIÇÕES",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-08",
       "index": 7,
-      "title": "A urgência muda a comparação",
-      "claim_ids": [
-        "C8",
-        "C7"
-      ],
-      "narration": "Isso torna todo consórcio uma escolha ruim? Não. Uma reportagem consultada ressalta a diferença entre planejar e precisar do bem imediatamente. Quem pode esperar avalia uma situação diferente de quem precisa do carro para trabalhar no mês que vem. E ter dinheiro para um lance também exige olhar o que sobra para a própria reserva. A comparação com financiamento precisa colocar prazo, custos e reajustes na mesma conversa. Antes de assinar, consulte se a administradora é autorizada pelo Banco Central e leia o contrato. Peça os custos discriminados e as regras de sorteio, lance e utilização do crédito. Histórico de lances pode dar contexto; não transforma o próximo resultado em promessa. Uma modalidade pode combinar com um planejamento e falhar no prazo de outra pessoa.",
-      "tts": {
-        "delivery": "explain",
-        "pause_ms": 150,
-        "cues": []
-      },
-      "visual": {
-        "type": "authored_stage",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "camera_mode": "manual",
-          "motion_profile": "narrative",
-          "captions": {
-            "enabled": false,
-            "max_words": 6,
-            "words_per_line": 3,
-            "max_lines": 2,
-            "font_size": 64,
-            "min_free_area_ratio": 0.3
-          },
-          "elements": [
-            {
-              "id": "urgent",
-              "kind": "label",
-              "label": "PRECISA AGORA?",
-              "x": 7,
-              "y": 3,
-              "width": 38,
-              "height": 59,
-              "surface": "none",
-              "label_size": 62,
-              "icon": "car",
-              "icon_size": 350,
-              "content_layout": "column"
-            },
-            {
-              "id": "wait",
-              "kind": "label",
-              "label": "PODE ESPERAR?",
-              "x": 55,
-              "y": 3,
-              "width": 38,
-              "height": 59,
-              "surface": "none",
-              "label_size": 62,
-              "icon": "clock",
-              "icon_size": 350,
-              "content_layout": "column",
-              "initially_visible": false
-            },
-            {
-              "id": "decision-note",
-              "kind": "label",
-              "label": "COMPARE PRAZO E CUSTO",
-              "x": 10,
-              "y": 66,
-              "width": 80,
-              "height": 14,
-              "surface": "none",
-              "label_size": 58
-            },
-            {
-              "id": "context-note",
-              "kind": "label",
-              "label": "SEM VANTAGEM UNIVERSAL",
-              "x": 10,
-              "y": 87,
-              "width": 80,
-              "height": 11,
-              "surface": "none",
-              "label_size": 34
-            }
-          ],
-          "connections": []
-        },
-        "beats": [
-          {
-            "anchor": "Isso torna todo consórcio uma escolha ruim? Não.",
-            "target_id": "decision-note",
-            "headline": "DEPENDE DO PLANEJAMENTO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Uma reportagem consultada ressalta a diferença entre planejar e precisar do bem imediatamente.",
-            "target_id": "wait",
-            "headline": "PODE ESPERAR?",
-            "action": "reveal",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.65,
-            "entrance": {
-              "style": "slide",
-              "direction": "right"
-            }
-          },
-          {
-            "anchor": "Quem pode esperar avalia uma situação diferente de quem precisa do carro para trabalhar no mês que vem.",
-            "target_id": "urgent",
-            "headline": "PRECISA AGORA?",
-            "action": "focus",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.65,
-            "camera": {
-              "x": 49,
-              "y": 50,
-              "zoom": 1.03,
-              "motion_seconds": 0.9
-            }
-          },
-          {
-            "anchor": "E ter dinheiro para um lance também exige olhar o que sobra para a própria reserva.",
-            "target_id": "decision-note",
-            "headline": "LANCE E RESERVA",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "A comparação com financiamento precisa colocar prazo, custos e reajustes na mesma conversa.",
-            "target_id": "decision-note",
-            "headline": "PRAZO + CUSTOS + REAJUSTES",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Antes de assinar, consulte se a administradora é autorizada pelo Banco Central e leia o contrato.",
-            "target_id": "context-note",
-            "headline": "VERIFIQUE A ADMINISTRADORA",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Peça os custos discriminados e as regras de sorteio, lance e utilização do crédito.",
-            "target_id": "decision-note",
-            "headline": "LEIA REGRAS E CUSTOS",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Histórico de lances pode dar contexto; não transforma o próximo resultado em promessa.",
-            "target_id": "context-note",
-            "headline": "HISTÓRICO NÃO GARANTE RESULTADO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Uma modalidade pode combinar com um planejamento e falhar no prazo de outra pessoa.",
-            "target_id": "wait",
-            "headline": "PODE ESPERAR?",
-            "action": "focus",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.65,
-            "camera": {
-              "x": 51,
-              "y": 50,
-              "zoom": 1.03,
-              "motion_seconds": 0.9
-            }
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-09",
-      "index": 8,
-      "title": "A resposta antes da assinatura",
+      "title": "A resposta é separar as três perguntas",
+      "narration": "Então, por que o banco pode negar crédito com o nome limpo? Porque a ausência de negativação não resume o histórico nem a capacidade de assumir um novo compromisso. Uma dívida quitada deve ter sua situação atualizada, mas o mês em que houve atraso continua sendo um registro daquele momento. E a decisão ainda depende dos critérios da instituição. Se essa distinção ajudou, inscreva-se no canal para entender melhor as decisões que mexem com seu dinheiro. Antes de tentar mais um pedido, confira o que o relatório realmente diz. No seu caso, a dúvida é um registro antigo, um dado errado ou uma parcela que ainda não cabe?",
       "claim_ids": [
         "C1",
-        "C3",
         "C4",
         "C6",
-        "C7",
-        "C8"
+        "C7"
       ],
-      "narration": "Então, por que pagar o consórcio não garante levar o carro? Porque a parcela sustenta sua participação no grupo; o crédito depende da contemplação. Ela acontece por sorteio ou lance, com recursos e regras. E utilizar esse crédito exige cumprir as condições do contrato. A conta completa inclui custos, possível atualização e quanto sobra depois de um lance embutido. O perigo é escolher olhando apenas a parcela e descobrir depois que a data não serve para sua vida. Pode haver um planejamento adequado, mas ele precisa sobreviver à espera e às obrigações. Antes de imaginar a chave, entenda quando ela pode chegar e qual dinheiro estará disponível.",
       "tts": {
         "delivery": "explain",
         "pause_ms": 150,
@@ -2410,36 +2263,44 @@
             "words_per_line": 3,
             "max_lines": 2,
             "font_size": 64,
-            "min_free_area_ratio": 0.3
+            "min_free_area_ratio": 0.3,
+            "preferred_side": "center",
+            "region": {
+              "x": 5,
+              "y": 67,
+              "width": 90,
+              "height": 30
+            }
           },
           "elements": [
             {
-              "id": "car",
+              "id": "resolution",
               "kind": "object",
-              "label": "DA PARCELA À CHAVE: EXISTEM CONDIÇÕES",
+              "label": "ILUSTRAÇÃO ESQUEMÁTICA",
               "x": 5,
               "y": 3,
-              "width": 49,
-              "height": 82,
+              "width": 90,
+              "height": 47,
               "surface": "none",
-              "object_type": "hub",
+              "label_size": 48,
+              "object_type": "data",
               "hyperframes": {
-                "entry": "video/hyperframes/car-gate/index.html",
-                "initial_state": "waiting",
-                "width": 960,
-                "height": 720,
+                "entry": "video/hyperframes/credit-archive/index.html",
+                "initial_state": "consult",
+                "width": 1280,
+                "height": 640,
                 "states": [
                   {
-                    "anchor": "Então, por que pagar o consórcio não garante levar o carro?",
-                    "state": "waiting"
+                    "anchor": "Então, por que o banco pode negar crédito",
+                    "state": "consult"
                   },
                   {
-                    "anchor": "E utilizar esse crédito exige cumprir as condições do contrato.",
-                    "state": "choice"
+                    "anchor": "o histórico nem a capacidade",
+                    "state": "good"
                   },
                   {
-                    "anchor": "Antes de imaginar a chave, entenda quando ela pode chegar e qual dinheiro estará disponível.",
-                    "state": "summary"
+                    "anchor": "o mês em que houve atraso",
+                    "state": "month"
                   }
                 ]
               }
@@ -2447,129 +2308,125 @@
             {
               "id": "answer",
               "kind": "label",
-              "label": "PAGAR ≠ RECEBER",
-              "x": 60,
-              "y": 16,
-              "width": 35,
-              "height": 25,
-              "surface": "none",
-              "label_size": 70
-            },
-            {
-              "id": "condition",
-              "kind": "label",
-              "label": "CONTRATO + RECURSOS",
-              "x": 60,
-              "y": 49,
-              "width": 35,
-              "height": 14,
-              "surface": "none",
-              "label_size": 38
-            },
-            {
-              "id": "scheme",
-              "kind": "label",
-              "label": "ESQUEMA ILUSTRATIVO",
-              "x": 7,
-              "y": 88,
-              "width": 47,
+              "label": "NOME LIMPO NÃO RESUME TODA A ANÁLISE",
+              "x": 5,
+              "y": 53,
+              "width": 90,
               "height": 10,
               "surface": "none",
-              "label_size": 32
+              "label_size": 48
             }
           ],
           "connections": []
         },
         "beats": [
           {
-            "anchor": "Então, por que pagar o consórcio não garante levar o carro?",
-            "target_id": "car",
-            "headline": "A PERGUNTA INICIAL",
+            "anchor": "Então, por que o banco pode negar crédito",
+            "target_id": "resolution",
+            "headline": "A RESPOSTA",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.8,
+            "motion_seconds": 0.85,
             "camera": {
               "x": 50,
-              "y": 50,
+              "y": 48,
               "zoom": 1.02,
-              "motion_seconds": 0.9
+              "motion_seconds": 0.85
             }
           },
           {
-            "anchor": "Porque a parcela sustenta sua participação no grupo; o crédito depende da contemplação.",
+            "anchor": "Porque a ausência de negativação",
             "target_id": "answer",
-            "headline": "DEPENDE DA CONTEMPLAÇÃO",
+            "headline": "NOME LIMPO NÃO RESUME A ANÁLISE",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
             "motion_seconds": 0.45
           },
           {
-            "anchor": "Ela acontece por sorteio ou lance, com recursos e regras.",
-            "target_id": "condition",
-            "headline": "SORTEIO OU LANCE",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "E utilizar esse crédito exige cumprir as condições do contrato.",
-            "target_id": "car",
-            "headline": "CONDIÇÕES PARA USAR O CRÉDITO",
+            "anchor": "o histórico nem a capacidade",
+            "target_id": "resolution",
+            "headline": "HISTÓRICO E CAPACIDADE",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.65,
+            "motion_seconds": 0.85,
             "camera": {
               "x": 50,
-              "y": 50,
-              "zoom": 1.04,
-              "motion_seconds": 0.9
-            }
-          },
-          {
-            "anchor": "A conta completa inclui custos, possível atualização e quanto sobra depois de um lance embutido.",
-            "target_id": "condition",
-            "headline": "CUSTO E CRÉDITO DISPONÍVEL",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "O perigo é escolher olhando apenas a parcela e descobrir depois que a data não serve para sua vida.",
-            "target_id": "answer",
-            "headline": "A DATA PRECISA SERVIR",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Pode haver um planejamento adequado, mas ele precisa sobreviver à espera e às obrigações.",
-            "target_id": "condition",
-            "headline": "ESPERA + OBRIGAÇÕES",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.45
-          },
-          {
-            "anchor": "Antes de imaginar a chave, entenda quando ela pode chegar e qual dinheiro estará disponível.",
-            "target_id": "car",
-            "headline": "ANTES DE IMAGINAR A CHAVE",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.65,
-            "camera": {
-              "x": 50,
-              "y": 50,
+              "y": 48,
               "zoom": 1.01,
-              "motion_seconds": 0.9
+              "motion_seconds": 0.85
             }
+          },
+          {
+            "anchor": "Uma dívida quitada deve ter sua situação atualizada,",
+            "target_id": "answer",
+            "headline": "PAGOU: A SITUAÇÃO DEVE SER ATUALIZADA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "o mês em que houve atraso",
+            "target_id": "answer",
+            "headline": "O MÊS ANTIGO RETRATA AQUELE MOMENTO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "E a decisão ainda depende",
+            "target_id": "answer",
+            "headline": "A DECISÃO DEPENDE DA INSTITUIÇÃO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Se essa distinção ajudou,",
+            "target_id": "answer",
+            "headline": "INSCREVA-SE · O DINHEIRO EXPLICA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "as decisões que mexem com seu dinheiro.",
+            "target_id": "resolution",
+            "headline": "ENTENDER PARA DECIDIR",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.85,
+            "camera": {
+              "x": 50,
+              "y": 48,
+              "zoom": 1.03,
+              "motion_seconds": 0.85
+            }
+          },
+          {
+            "anchor": "Antes de tentar mais um pedido,",
+            "target_id": "answer",
+            "headline": "CONFIRA O QUE O RELATÓRIO DIZ",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "No seu caso, a dúvida é",
+            "target_id": "answer",
+            "headline": "REGISTRO ANTIGO · DADO ERRADO · PARCELA?",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
           }
         ]
       }
