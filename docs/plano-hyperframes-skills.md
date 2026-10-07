@@ -2,7 +2,7 @@
 
 Data: 7 de outubro de 2026. Base local analisada: `44d28b9c2115266b5b6ab0c63ec3a37baaabc756`.
 
-Status atualizado em 07/10/2026: núcleo portável implementado na `main`, CI aprovado em `c1e188d409a6351b0bcf074fa369851b3e56aca6`. O render real `37577381645` gerou o MP4; a retomada `37581899656` concluiu o envio do mesmo arquivo ao Drive. Capa gerada e suplemento em conclusão. As seções de diagnóstico abaixo descrevem a base anterior à implementação.
+Status atualizado em 07/10/2026: núcleo portável implementado na `main`, CI aprovado em `c1e188d409a6351b0bcf074fa369851b3e56aca6`. O render real `37577381645` gerou o MP4; a retomada `37581899656` concluiu o envio do mesmo arquivo ao Drive. Vídeo, título/descrição, capa e relatório editorial confirmados na mesma pasta pelo conector do Drive. As seções de diagnóstico abaixo descrevem a base anterior à implementação.
 
 ## Implementação realizada
 

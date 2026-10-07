@@ -96,4 +96,4 @@ Ao criar um novo VideoProject, consulte apenas a seção mais recente para ident
 - demonstrações: R$100mil×20%=R$20mil; base+taxa=R$120mil sem representar custo final completo; crédito R$100mil−lance R$30mil=R$70mil disponível. Exemplos e limites identificados;
 - composição: HyperFrames em protagonistas de carro/trava e fundo do grupo; Stage conserva texto, relações, contas e câmera. Retorno ao carro responde ao gancho. Capa “PAGOU. E AGORA?”;
 - evitar repetir: consórcio versus entrega imediata do carro, mesmas contas de taxa/lance e barreira/chave como metáfora central em novo episódio;
-- entrega: render37577381645, retomada37581899656; MP4 7:00,57 no Drive, pesquisa e relatórios em production/consorcio-2026-10-07. Não publicado automaticamente no YouTube.
+- entrega: render37577381645, retomada37581899656; MP4 7:00,57, capa e relatório final confirmados na mesma pasta do Drive; pesquisa e relatórios em production/consorcio-2026-10-07. Não publicado automaticamente no YouTube.

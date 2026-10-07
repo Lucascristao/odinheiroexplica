@@ -1,0 +1,30 @@
+{
+  "project_id": "consorcio-pagar-nao-garante-carro-2026-10-07",
+  "assets": [
+    {
+      "id": "contemplacao-rule",
+      "width": 1168,
+      "height": 66,
+      "original_width": 1168,
+      "original_height": 66,
+      "original_file": "generated-assets/contemplacao-rule.source.png",
+      "crop": {
+        "x": 0,
+        "y": 0,
+        "width": 100,
+        "height": 100
+      },
+      "sha256": "e7a5dec13b3d1df41256be3874245ab96d92a961c3cf37ec24ac2e1dc2cea783",
+      "source_id": "S1",
+      "captured_at": "2026-10-07T05:41:35Z",
+      "type": "source_excerpt",
+      "subject": "Lei dos Consórcios, art. 22 §1",
+      "narrative_role": "Provar no documento real os dois caminhos, sem simular data individual.",
+      "country_context": "BR",
+      "source_page_url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11795.htm",
+      "license": "Texto normativo de acesso público",
+      "attribution": "Planalto — Lei 11.795/2008, art. 22 §1",
+      "public_file": "generated-assets/contemplacao-rule.png"
+    }
+  ]
+}

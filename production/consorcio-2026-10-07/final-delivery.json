@@ -1,0 +1,50 @@
+{
+  "verified_at": "2026-10-07T11:46:15Z",
+  "method": "Google Drive connector list_folder and metadata",
+  "folder_id": "17qR45AW8_eN1eP0aZkIP-0fVNeIjohZw",
+  "folder_url": "https://drive.google.com/drive/folders/17qR45AW8_eN1eP0aZkIP-0fVNeIjohZw",
+  "files": [
+    {
+      "id": "1_8NHbvRWfIAVtUAsz8NNUSLOeZgW8azV",
+      "name": "editorial-review-dd8ac5c5acb9.md",
+      "size": "5379",
+      "url": "https://drive.google.com/file/d/1_8NHbvRWfIAVtUAsz8NNUSLOeZgW8azV/view?usp=drivesdk"
+    },
+    {
+      "id": "1TRFGEgb0Mc0Ma8XUaYJfZcyuZP8pbflY",
+      "name": "thumbnail-30ed6f930c0f.jpg",
+      "size": "414140",
+      "url": "https://drive.google.com/file/d/1TRFGEgb0Mc0Ma8XUaYJfZcyuZP8pbflY/view?usp=drivesdk"
+    },
+    {
+      "id": "19hEZCp1xywTVABkJUoMj_ghRe79-cj41",
+      "name": "daily-visual-review.zip",
+      "size": "16500580",
+      "url": "https://drive.google.com/file/d/19hEZCp1xywTVABkJUoMj_ghRe79-cj41/view?usp=drivesdk"
+    },
+    {
+      "id": "1gj2AN_V1v9Hdk37jX6xVMyVwp4VuDHh8",
+      "name": "daily-youtube.txt",
+      "size": "1482",
+      "url": "https://drive.google.com/file/d/1gj2AN_V1v9Hdk37jX6xVMyVwp4VuDHh8/view?usp=drivesdk"
+    },
+    {
+      "id": "1m3DyrqZvteSjzvEd5TEhXHmj0xNNdrrQ",
+      "name": "daily-youtube.json",
+      "size": "3978",
+      "url": "https://drive.google.com/file/d/1m3DyrqZvteSjzvEd5TEhXHmj0xNNdrrQ/view?usp=drivesdk"
+    },
+    {
+      "id": "1B5mU3C7VcZMQOGSE6F7X2bWOmAjgznh4",
+      "name": "daily-video.mp4",
+      "size": "69296309",
+      "url": "https://drive.google.com/file/d/1B5mU3C7VcZMQOGSE6F7X2bWOmAjgznh4/view?usp=drivesdk"
+    }
+  ],
+  "complete_package": true,
+  "thumbnail_sha256": "30ed6f930c0f637341c12e381aeb4fd5ce80f31c6a9e7ec54b7adb37c20c8c6b",
+  "supplement_runs": {
+    "thumbnail": 37616095428,
+    "editorial_review": 37616230636
+  }
+}
