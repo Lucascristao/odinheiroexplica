@@ -2,7 +2,20 @@
 
 Data: 7 de outubro de 2026. Base local analisada: `44d28b9c2115266b5b6ab0c63ec3a37baaabc756`.
 
-Status: proposta técnica e editorial. Nenhum motor, skill, dependência, episódio ou workflow de produção foi alterado nesta análise.
+Status atualizado em 07/10/2026: núcleo portável implementado na `main`, CI aprovado em `c1e188d409a6351b0bcf074fa369851b3e56aca6`. O render real `37577381645` gerou o MP4; a retomada `37581899656` concluiu o envio do mesmo arquivo ao Drive. Capa gerada e suplemento em conclusão. As seções de diagnóstico abaixo descrevem a base anterior à implementação.
+
+## Implementação realizada
+
+- Oito skills canônicas em `skills/`, `frame.md`, arquitetura atualizada e pedido reutilizável em `docs/production-prompt.md`.
+- CLI `npm run ode --` com contexto, preflight, dispatch condicionado ao Git/CI, status, retomada, revisão e suplemento no Drive. A autoria não depende de um fornecedor de IA; requer um agente com acesso ao repositório e às ferramentas.
+- HyperFrames 0.8.139 e GSAP 3.13.0 fixados. HTML local por protagonista é renderizado com eventos do áudio real e integrado ao Stage/Remotion, com cache por conteúdo e integridade. A montagem final conserva os contratos existentes.
+- Extração de quadros e análise regional dos pixels do MP4, sem tratar movimento como aprovação semântica.
+- Direção vocal comum mais estável; montagem contínua equaliza energia de fala ativa com alvo compartilhado e registra diagnóstico de registro vocal, sem alterar os WAVs brutos.
+- Entrega de capa/revisão para a pasta do episódio verifica destino, tamanho e checksum no readback.
+
+O episódio de aplicação é **Consórcio: por que pagar não garante levar o carro?**, com nove cenas e duas artes HTML (carro/trava e fundo do grupo). Pesquisa e storyboard: `research/consorcio-2026-10-07.md`.
+
+Ainda não implementado: migração completa de renderer, registro geral de cenas Remotion autorais, B-roll arbitrário, alpha no clipe, formatos 9:16, painel novo de revisão e alinhamento maior por escalada. Não foram medidos CTR/retensão nem equivalência entre IAs.
 
 ## Recomendação
 
@@ -89,7 +102,7 @@ O material do canal pode alimentar Markdown e JSON próprios; o arquivo `SKILL.m
 1. Não usar `/goal`, ferramentas privativas, nome de modelo de autoria ou diretório de um fornecedor como dependência do núcleo.
 2. Resolver recursos a partir da raiz do projeto, com caminhos relativos e executáveis configuráveis para Windows e Linux.
 3. Exportar schemas, exemplos válidos, capacidades do motor e diagnóstico em JSON.
-4. Criar uma interface de comandos que encapsule as etapas existentes. Nomes sugeridos: `context`, `capabilities`, `preflight`, `render`, `review` e `resume`. Esses comandos ainda não existem.
+4. Criar uma interface de comandos que encapsule as etapas existentes. Implementado: `context`, `capabilities`, `preflight`, `dispatch`/`render`, `status`, `review`, `resume` e `deliver` em `npm run ode --`. O `dispatch` confere projeto, Git remoto e CI do mesmo commit.
 5. Registrar o estado de execução em arquivo versionado de contrato: hashes, outputs, etapa concluída, falha, modo, aprovações existentes e revisão pendente. Não depender da memória de um chat para retomar.
 6. Gerar wrappers opcionais para os agentes utilizados; testar que todos consomem os mesmos contratos.
 
@@ -239,3 +252,14 @@ O trabalho de infraestrutura deve ser desenvolvido e verificado em solicitaçõe
 | `.github/workflows/render-daily.yml` | Preparar caminhos novos, preservar cache/entrega e respeitar o modo solicitado |
 
 As primeiras entregas devem melhorar o contexto que a IA recebe e a forma como o resultado é julgado. A entrada do HyperFrames terá valor quando facilitar demonstrações concretas com esse mesmo contrato editorial.
+
+## Resultado do episódio aplicado
+
+- MP4 1080p/30fps, 12.617 frames, 7:00,57; [pasta de entrega](https://drive.google.com/drive/folders/17qR45AW8_eN1eP0aZkIP-0fVNeIjohZw). Pesquisa, artes, capa, prompt, relatórios, recibos e provas selecionadas estão no Git em `production/consorcio-2026-10-07/`.
+- Duas artes HyperFrames usadas em três cenas, com clipes e hashes conferidos. A abordagem adiciona protagonistas HTML ao Stage; não migra todo o renderer.
+- Fala ativa da trilha contínua: variação real de 0,0764 dB entre nove cenas, frente a 2,596 dB nos WAVs; alvo −18 dBFS atingido. Fidelidade textual: 9/9 cenas sem diferenças nos tokens canônicos.
+- Conferência antiga interrompeu envio por 63 ms de cauda AAC no contêiner. Corrigida para o relógio da trilha de vídeo; ferramentas auxiliares de provas/movimento são diagnósticas e não bloqueiam entrega de MP4 aprovado. A retomada só de entrega preserva o render pronto.
+- Inspeção dos nove contatos e oito quadros completos não encontrou corte, colisão ou aritmética incorreta. 243 quadros de prova e 841 amostras regionais foram extraídos.
+- Limites: 51/79 âncoras confirmadas, 28 estimadas; 10/338 tempos de legenda estimados. Registro vocal é diagnóstico. Esta sessão não suporta entrada de áudio, portanto não certificou naturalidade/timbre por escuta ou sincronização audiovisual contínua. CTR e retenção não medidos.
+
+Relatório completo: `production/consorcio-2026-10-07/review.md`. Pedido reutilizável: `docs/production-prompt.md`; os dois botões do painel usam o mesmo contrato compartilhado, com escolha autônoma de pauta no diário e preservação do tema no pedido por assunto.

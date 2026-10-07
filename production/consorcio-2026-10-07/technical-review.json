@@ -1,0 +1,1113 @@
+{
+  "version": "1.0",
+  "scope": "Measured technical and declared-direction evidence from the actual rendered MP4. No subjective listening or semantic visual approval was performed by this reviewer.",
+  "source": {
+    "run_id": 37577381645,
+    "run_url": "https://github.com/Lucascristao/odinheiroexplica/actions/runs/37577381645",
+    "head_sha": "1dcfb0384cd4d70bb2be1c1ee597f4861dffdcc6",
+    "artifact_id": 11464640194,
+    "artifact_reported_sha256": "80912381bd938722c3cb71938aba7848ba22133677411900cfa1f2d2b7eb9fc2",
+    "render_step": "success",
+    "delivery_qa_step": "success",
+    "review_extraction_step": "failure due to AAC/container duration comparison; video track exactly covers planned frames"
+  },
+  "project_id": "consorcio-pagar-nao-garante-carro-2026-10-07",
+  "title": "Consórcio: por que pagar não garante levar o carro?",
+  "video": {
+    "file": "render-output/daily-video.mp4",
+    "sha256": "60d65d7ff77932937550894fa1df13643567431f0b0a2eb62c2a05eb7e7df036",
+    "sha256_matches_qa": true,
+    "timeline_frames": 12617,
+    "timeline_fps": 30,
+    "timeline_seconds": 420.56666666666666,
+    "probe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "index": 0,
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080,
+          "avg_frame_rate": "30/1",
+          "duration": "420.566667",
+          "nb_frames": "12617",
+          "side_data_list": [
+            {}
+          ]
+        },
+        {
+          "index": 1,
+          "codec_name": "aac",
+          "codec_type": "audio",
+          "sample_rate": "48000",
+          "channels": 2,
+          "avg_frame_rate": "0/0",
+          "duration": "420.629333",
+          "nb_frames": "19717"
+        }
+      ],
+      "format": {
+        "duration": "420.629333",
+        "size": "69296309"
+      }
+    },
+    "video_track_delta_seconds": 3.3333333249174757e-07,
+    "container_minus_video_seconds": 0.0626659999999788,
+    "qa_audio_metrics": {
+      "integrated_lufs": -15.74,
+      "true_peak_dbtp": -0.99,
+      "loudness_range_lu": 2.8,
+      "channel_handling": "actual encoded channel layout; no downmix"
+    }
+  },
+  "delivery_qa": {
+    "status": "warn",
+    "failures": [],
+    "warning_counts": {
+      "estimated-visual-anchors": 8,
+      "estimated-register-variation": 3
+    },
+    "warnings": [
+      {
+        "code": "estimated-visual-anchors",
+        "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+        "scene_id": "scene-01",
+        "count": 4
+      },
+      {
+        "code": "estimated-visual-anchors",
+        "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+        "scene_id": "scene-03",
+        "count": 1
+      },
+      {
+        "code": "estimated-visual-anchors",
+        "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+        "scene_id": "scene-04",
+        "count": 4
+      },
+      {
+        "code": "estimated-visual-anchors",
+        "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+        "scene_id": "scene-05",
+        "count": 3
+      },
+      {
+        "code": "estimated-visual-anchors",
+        "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+        "scene_id": "scene-06",
+        "count": 6
+      },
+      {
+        "code": "estimated-visual-anchors",
+        "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+        "scene_id": "scene-07",
+        "count": 2
+      },
+      {
+        "code": "estimated-visual-anchors",
+        "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+        "scene_id": "scene-08",
+        "count": 7
+      },
+      {
+        "code": "estimated-visual-anchors",
+        "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+        "scene_id": "scene-09",
+        "count": 1
+      },
+      {
+        "code": "estimated-register-variation",
+        "message": "Estimativa de registro variou; conferir por escuta antes de decidir nova síntese.",
+        "from": "scene-01",
+        "to": "scene-02",
+        "estimated_register_delta_semitones": -5.43,
+        "action": "Review by listening; estimate is not proof of an identity change."
+      },
+      {
+        "code": "estimated-register-variation",
+        "message": "Estimativa de registro variou; conferir por escuta antes de decidir nova síntese.",
+        "from": "scene-02",
+        "to": "scene-03",
+        "estimated_register_delta_semitones": 3,
+        "action": "Review by listening; estimate is not proof of an identity change."
+      },
+      {
+        "code": "estimated-register-variation",
+        "message": "Estimativa de registro variou; conferir por escuta antes de decidir nova síntese.",
+        "from": "scene-06",
+        "to": "scene-07",
+        "estimated_register_delta_semitones": -3.54,
+        "action": "Review by listening; estimate is not proof of an identity change."
+      }
+    ],
+    "subjective_listening_performed": false
+  },
+  "voice": {
+    "model": "gemini-3.8-live",
+    "voice": "Charon",
+    "policy_version": "2026-10-07.1",
+    "session_count": 9,
+    "attempts_per_scene": [
+      {
+        "scene_id": "scene-01",
+        "attempt": 1,
+        "status": "success",
+        "session_opened": true,
+        "session_reused": false,
+        "completion_signal": "generation_complete_after_grace",
+        "transcription_similarity": 1.0
+      },
+      {
+        "scene_id": "scene-02",
+        "attempt": 1,
+        "status": "success",
+        "session_opened": true,
+        "session_reused": false,
+        "completion_signal": "generation_complete_after_grace",
+        "transcription_similarity": 1.0
+      },
+      {
+        "scene_id": "scene-03",
+        "attempt": 1,
+        "status": "success",
+        "session_opened": true,
+        "session_reused": false,
+        "completion_signal": "generation_complete_after_grace",
+        "transcription_similarity": 1.0
+      },
+      {
+        "scene_id": "scene-04",
+        "attempt": 1,
+        "status": "success",
+        "session_opened": true,
+        "session_reused": false,
+        "completion_signal": "generation_complete_after_grace",
+        "transcription_similarity": 1.0
+      },
+      {
+        "scene_id": "scene-05",
+        "attempt": 1,
+        "status": "success",
+        "session_opened": true,
+        "session_reused": false,
+        "completion_signal": "generation_complete_after_grace",
+        "transcription_similarity": 1.0
+      },
+      {
+        "scene_id": "scene-06",
+        "attempt": 1,
+        "status": "success",
+        "session_opened": true,
+        "session_reused": false,
+        "completion_signal": "generation_complete_after_grace",
+        "transcription_similarity": 1.0
+      },
+      {
+        "scene_id": "scene-07",
+        "attempt": 1,
+        "status": "success",
+        "session_opened": true,
+        "session_reused": false,
+        "completion_signal": "generation_complete_after_grace",
+        "transcription_similarity": 1.0
+      },
+      {
+        "scene_id": "scene-08",
+        "attempt": 1,
+        "status": "success",
+        "session_opened": true,
+        "session_reused": false,
+        "completion_signal": "generation_complete_after_grace",
+        "transcription_similarity": 1.0
+      },
+      {
+        "scene_id": "scene-09",
+        "attempt": 1,
+        "status": "success",
+        "session_opened": true,
+        "session_reused": false,
+        "completion_signal": "generation_complete_after_grace",
+        "transcription_similarity": 1.0
+      }
+    ],
+    "literal_transcript_scenes": [
+      {
+        "id": "scene-01",
+        "passed": true,
+        "canonical_token_match": true,
+        "reference_token_count": 112,
+        "output_token_count": 112,
+        "token_difference_count": 0,
+        "raw_bytes_verified": true,
+        "words_per_minute": 156.03
+      },
+      {
+        "id": "scene-02",
+        "passed": true,
+        "canonical_token_match": true,
+        "reference_token_count": 121,
+        "output_token_count": 121,
+        "token_difference_count": 0,
+        "raw_bytes_verified": true,
+        "words_per_minute": 155.96
+      },
+      {
+        "id": "scene-03",
+        "passed": true,
+        "canonical_token_match": true,
+        "reference_token_count": 109,
+        "output_token_count": 109,
+        "token_difference_count": 0,
+        "raw_bytes_verified": true,
+        "words_per_minute": 142.3
+      },
+      {
+        "id": "scene-04",
+        "passed": true,
+        "canonical_token_match": true,
+        "reference_token_count": 117,
+        "output_token_count": 117,
+        "token_difference_count": 0,
+        "raw_bytes_verified": true,
+        "words_per_minute": 165.22
+      },
+      {
+        "id": "scene-05",
+        "passed": true,
+        "canonical_token_match": true,
+        "reference_token_count": 131,
+        "output_token_count": 131,
+        "token_difference_count": 0,
+        "raw_bytes_verified": true,
+        "words_per_minute": 160.15
+      },
+      {
+        "id": "scene-06",
+        "passed": true,
+        "canonical_token_match": true,
+        "reference_token_count": 129,
+        "output_token_count": 129,
+        "token_difference_count": 0,
+        "raw_bytes_verified": true,
+        "words_per_minute": 153.42
+      },
+      {
+        "id": "scene-07",
+        "passed": true,
+        "canonical_token_match": true,
+        "reference_token_count": 119,
+        "output_token_count": 119,
+        "token_difference_count": 0,
+        "raw_bytes_verified": true,
+        "words_per_minute": 153.85
+      },
+      {
+        "id": "scene-08",
+        "passed": true,
+        "canonical_token_match": true,
+        "reference_token_count": 125,
+        "output_token_count": 125,
+        "token_difference_count": 0,
+        "raw_bytes_verified": true,
+        "words_per_minute": 160.84
+      },
+      {
+        "id": "scene-09",
+        "passed": true,
+        "canonical_token_match": true,
+        "reference_token_count": 107,
+        "output_token_count": 107,
+        "token_difference_count": 0,
+        "raw_bytes_verified": true,
+        "words_per_minute": 140.64
+      }
+    ],
+    "master_sha256": "75388fe47942c42bb261246e088093eab2468a5a448152cc9f06019d5e265407",
+    "master_sha256_matches_report": true,
+    "target_active_rms_dbfs": -18.0,
+    "raw_active_rms_range_db": 2.596,
+    "measured_master_active_rms_range_db": 0.0764,
+    "independently_measured_master_levels": [
+      {
+        "id": "scene-01",
+        "active_rms_dbfs": -17.9629
+      },
+      {
+        "id": "scene-02",
+        "active_rms_dbfs": -18.0075
+      },
+      {
+        "id": "scene-03",
+        "active_rms_dbfs": -17.9868
+      },
+      {
+        "id": "scene-04",
+        "active_rms_dbfs": -18.0009
+      },
+      {
+        "id": "scene-05",
+        "active_rms_dbfs": -17.972
+      },
+      {
+        "id": "scene-06",
+        "active_rms_dbfs": -18.0054
+      },
+      {
+        "id": "scene-07",
+        "active_rms_dbfs": -17.9311
+      },
+      {
+        "id": "scene-08",
+        "active_rms_dbfs": -17.992
+      },
+      {
+        "id": "scene-09",
+        "active_rms_dbfs": -17.945
+      }
+    ],
+    "pitch": [
+      {
+        "id": "scene-01",
+        "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+        "voiced_windows": 165,
+        "median_hz": 180.45,
+        "opening_hz": 165.18,
+        "closing_hz": 195.12,
+        "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+      },
+      {
+        "id": "scene-02",
+        "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+        "voiced_windows": 204,
+        "median_hz": 131.87,
+        "opening_hz": 124.37,
+        "closing_hz": 138.73,
+        "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+      },
+      {
+        "id": "scene-03",
+        "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+        "voiced_windows": 189,
+        "median_hz": 156.86,
+        "opening_hz": 164.39,
+        "closing_hz": 179.1,
+        "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+      },
+      {
+        "id": "scene-04",
+        "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+        "voiced_windows": 191,
+        "median_hz": 150.94,
+        "opening_hz": 165.52,
+        "closing_hz": 143.72,
+        "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+      },
+      {
+        "id": "scene-05",
+        "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+        "voiced_windows": 203,
+        "median_hz": 155.84,
+        "opening_hz": 145.8,
+        "closing_hz": 158.56,
+        "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+      },
+      {
+        "id": "scene-06",
+        "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+        "voiced_windows": 232,
+        "median_hz": 178.44,
+        "opening_hz": 137.79,
+        "closing_hz": 230.77,
+        "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+      },
+      {
+        "id": "scene-07",
+        "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+        "voiced_windows": 201,
+        "median_hz": 145.45,
+        "opening_hz": 124.55,
+        "closing_hz": 152.87,
+        "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+      },
+      {
+        "id": "scene-08",
+        "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+        "voiced_windows": 216,
+        "median_hz": 159.47,
+        "opening_hz": 156.86,
+        "closing_hz": 154.84,
+        "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+      },
+      {
+        "id": "scene-09",
+        "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+        "voiced_windows": 229,
+        "median_hz": 162.16,
+        "opening_hz": 158.66,
+        "closing_hz": 187.5,
+        "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+      }
+    ],
+    "pitch_warnings": [
+      {
+        "from": "scene-01",
+        "to": "scene-02",
+        "estimated_register_delta_semitones": -5.43,
+        "action": "Review by listening; estimate is not proof of an identity change."
+      },
+      {
+        "from": "scene-02",
+        "to": "scene-03",
+        "estimated_register_delta_semitones": 3.0,
+        "action": "Review by listening; estimate is not proof of an identity change."
+      },
+      {
+        "from": "scene-06",
+        "to": "scene-07",
+        "estimated_register_delta_semitones": -3.54,
+        "action": "Review by listening; estimate is not proof of an identity change."
+      }
+    ],
+    "pitch_correction_applied": false,
+    "boundaries": [
+      {
+        "from": "scene-01",
+        "to": "scene-02",
+        "at_seconds": 43.36666666666667,
+        "activity_gap_seconds": 0.5667,
+        "delta_wpm": -0.07,
+        "delta_rms_db": -1.703
+      },
+      {
+        "from": "scene-02",
+        "to": "scene-03",
+        "at_seconds": 90.2,
+        "activity_gap_seconds": 0.5733,
+        "delta_wpm": -13.66,
+        "delta_rms_db": 0.879
+      },
+      {
+        "from": "scene-03",
+        "to": "scene-04",
+        "at_seconds": 136.46666666666667,
+        "activity_gap_seconds": 0.5467,
+        "delta_wpm": 22.92,
+        "delta_rms_db": -0.615
+      },
+      {
+        "from": "scene-04",
+        "to": "scene-05",
+        "at_seconds": 179.26666666666668,
+        "activity_gap_seconds": 0.56,
+        "delta_wpm": -5.07,
+        "delta_rms_db": 1.288
+      },
+      {
+        "from": "scene-05",
+        "to": "scene-06",
+        "at_seconds": 228.63333333333333,
+        "activity_gap_seconds": 0.6467,
+        "delta_wpm": -6.73,
+        "delta_rms_db": -1.667
+      },
+      {
+        "from": "scene-06",
+        "to": "scene-07",
+        "at_seconds": 279.3666666666667,
+        "activity_gap_seconds": 0.5733,
+        "delta_wpm": 0.43,
+        "delta_rms_db": 1.834
+      },
+      {
+        "from": "scene-07",
+        "to": "scene-08",
+        "at_seconds": 326.06666666666666,
+        "activity_gap_seconds": 0.58,
+        "delta_wpm": 6.99,
+        "delta_rms_db": -0.758
+      },
+      {
+        "from": "scene-08",
+        "to": "scene-09",
+        "at_seconds": 373.0,
+        "activity_gap_seconds": 0.6333,
+        "delta_wpm": -20.2,
+        "delta_rms_db": 1.649
+      }
+    ]
+  },
+  "alignment": {
+    "engine": "faster-whisper-cpu-int8",
+    "model": "base",
+    "confirmed_beats": 51,
+    "total_beats": 79,
+    "estimated_beats": 28,
+    "scenes": [
+      {
+        "id": "scene-01",
+        "transcript_coverage": 0.9464,
+        "aligned_beats": 4,
+        "total_beats": 8
+      },
+      {
+        "id": "scene-02",
+        "transcript_coverage": 1.0,
+        "aligned_beats": 9,
+        "total_beats": 9
+      },
+      {
+        "id": "scene-03",
+        "transcript_coverage": 0.9908,
+        "aligned_beats": 8,
+        "total_beats": 9
+      },
+      {
+        "id": "scene-04",
+        "transcript_coverage": 0.9402,
+        "aligned_beats": 5,
+        "total_beats": 9
+      },
+      {
+        "id": "scene-05",
+        "transcript_coverage": 0.9771,
+        "aligned_beats": 6,
+        "total_beats": 9
+      },
+      {
+        "id": "scene-06",
+        "transcript_coverage": 0.907,
+        "aligned_beats": 3,
+        "total_beats": 9
+      },
+      {
+        "id": "scene-07",
+        "transcript_coverage": 0.9832,
+        "aligned_beats": 7,
+        "total_beats": 9
+      },
+      {
+        "id": "scene-08",
+        "transcript_coverage": 0.928,
+        "aligned_beats": 2,
+        "total_beats": 9
+      },
+      {
+        "id": "scene-09",
+        "transcript_coverage": 1.0,
+        "aligned_beats": 7,
+        "total_beats": 8
+      }
+    ]
+  },
+  "direction": {
+    "source": "daily-rhythm-report.json; declared Stage contract, not MP4 motion perception",
+    "internal_hyperframes_motion_not_counted_by_stage_rhythm_report": true,
+    "scenes": [
+      {
+        "id": "scene-01",
+        "start_seconds": 0.0,
+        "duration_seconds": 43.36666666666667,
+        "beat_count": 8,
+        "first_beat_seconds": 2.3,
+        "camera_cues": 3,
+        "transformations": 5,
+        "longest_declared_visual_hold_seconds": 0.63,
+        "longest_declared_transformation_gap_seconds": 9.45,
+        "declared_visual_holds_over_5_seconds": [],
+        "caption_tokens": 112,
+        "estimated_caption_tokens": 7
+      },
+      {
+        "id": "scene-02",
+        "start_seconds": 43.36666666666667,
+        "duration_seconds": 46.833333333333336,
+        "beat_count": 9,
+        "first_beat_seconds": 0.0,
+        "camera_cues": 5,
+        "transformations": 4,
+        "longest_declared_visual_hold_seconds": 6.25,
+        "longest_declared_transformation_gap_seconds": 13.32,
+        "declared_visual_holds_over_5_seconds": [
+          {
+            "from_seconds": 11.82,
+            "to_seconds": 17.13,
+            "duration_seconds": 5.32
+          },
+          {
+            "from_seconds": 25.58,
+            "to_seconds": 31.83,
+            "duration_seconds": 6.25
+          },
+          {
+            "from_seconds": 41.58,
+            "to_seconds": 46.83,
+            "duration_seconds": 5.25
+          }
+        ],
+        "caption_tokens": 0,
+        "estimated_caption_tokens": 0
+      },
+      {
+        "id": "scene-03",
+        "start_seconds": 90.2,
+        "duration_seconds": 46.266666666666666,
+        "beat_count": 9,
+        "first_beat_seconds": 0.0,
+        "camera_cues": 3,
+        "transformations": 6,
+        "longest_declared_visual_hold_seconds": 5.65,
+        "longest_declared_transformation_gap_seconds": 11.58,
+        "declared_visual_holds_over_5_seconds": [
+          {
+            "from_seconds": 4.22,
+            "to_seconds": 9.43,
+            "duration_seconds": 5.22
+          },
+          {
+            "from_seconds": 10.08,
+            "to_seconds": 15.73,
+            "duration_seconds": 5.65
+          },
+          {
+            "from_seconds": 34.68,
+            "to_seconds": 40.23,
+            "duration_seconds": 5.55
+          }
+        ],
+        "caption_tokens": 0,
+        "estimated_caption_tokens": 0
+      },
+      {
+        "id": "scene-04",
+        "start_seconds": 136.46666666666667,
+        "duration_seconds": 42.8,
+        "beat_count": 9,
+        "first_beat_seconds": 0.0,
+        "camera_cues": 2,
+        "transformations": 7,
+        "longest_declared_visual_hold_seconds": 4.95,
+        "longest_declared_transformation_gap_seconds": 9.62,
+        "declared_visual_holds_over_5_seconds": [],
+        "caption_tokens": 0,
+        "estimated_caption_tokens": 0
+      },
+      {
+        "id": "scene-05",
+        "start_seconds": 179.26666666666668,
+        "duration_seconds": 49.36666666666667,
+        "beat_count": 9,
+        "first_beat_seconds": 0.0,
+        "camera_cues": 2,
+        "transformations": 7,
+        "longest_declared_visual_hold_seconds": 6.62,
+        "longest_declared_transformation_gap_seconds": 11.05,
+        "declared_visual_holds_over_5_seconds": [
+          {
+            "from_seconds": 5.78,
+            "to_seconds": 11.03,
+            "duration_seconds": 5.25
+          },
+          {
+            "from_seconds": 21.68,
+            "to_seconds": 27.17,
+            "duration_seconds": 5.48
+          },
+          {
+            "from_seconds": 27.62,
+            "to_seconds": 32.93,
+            "duration_seconds": 5.32
+          },
+          {
+            "from_seconds": 39.12,
+            "to_seconds": 45.73,
+            "duration_seconds": 6.62
+          }
+        ],
+        "caption_tokens": 0,
+        "estimated_caption_tokens": 0
+      },
+      {
+        "id": "scene-06",
+        "start_seconds": 228.63333333333333,
+        "duration_seconds": 50.733333333333334,
+        "beat_count": 9,
+        "first_beat_seconds": 1.7667,
+        "camera_cues": 1,
+        "transformations": 8,
+        "longest_declared_visual_hold_seconds": 5.78,
+        "longest_declared_transformation_gap_seconds": 5.78,
+        "declared_visual_holds_over_5_seconds": [
+          {
+            "from_seconds": 10.78,
+            "to_seconds": 15.83,
+            "duration_seconds": 5.05
+          },
+          {
+            "from_seconds": 21.78,
+            "to_seconds": 27.1,
+            "duration_seconds": 5.32
+          },
+          {
+            "from_seconds": 27.55,
+            "to_seconds": 32.6,
+            "duration_seconds": 5.05
+          },
+          {
+            "from_seconds": 33.05,
+            "to_seconds": 38.83,
+            "duration_seconds": 5.78
+          },
+          {
+            "from_seconds": 39.28,
+            "to_seconds": 45.03,
+            "duration_seconds": 5.75
+          },
+          {
+            "from_seconds": 45.48,
+            "to_seconds": 50.73,
+            "duration_seconds": 5.25
+          }
+        ],
+        "caption_tokens": 0,
+        "estimated_caption_tokens": 0
+      },
+      {
+        "id": "scene-07",
+        "start_seconds": 279.3666666666667,
+        "duration_seconds": 46.7,
+        "beat_count": 9,
+        "first_beat_seconds": 0.0,
+        "camera_cues": 2,
+        "transformations": 7,
+        "longest_declared_visual_hold_seconds": 0,
+        "longest_declared_transformation_gap_seconds": 8.83,
+        "declared_visual_holds_over_5_seconds": [],
+        "caption_tokens": 119,
+        "estimated_caption_tokens": 3
+      },
+      {
+        "id": "scene-08",
+        "start_seconds": 326.06666666666666,
+        "duration_seconds": 46.93333333333333,
+        "beat_count": 9,
+        "first_beat_seconds": 0.9,
+        "camera_cues": 2,
+        "transformations": 7,
+        "longest_declared_visual_hold_seconds": 5.45,
+        "longest_declared_transformation_gap_seconds": 10.95,
+        "declared_visual_holds_over_5_seconds": [
+          {
+            "from_seconds": 4.48,
+            "to_seconds": 9.77,
+            "duration_seconds": 5.28
+          },
+          {
+            "from_seconds": 21.18,
+            "to_seconds": 26.63,
+            "duration_seconds": 5.45
+          },
+          {
+            "from_seconds": 27.08,
+            "to_seconds": 32.13,
+            "duration_seconds": 5.05
+          },
+          {
+            "from_seconds": 32.58,
+            "to_seconds": 38.03,
+            "duration_seconds": 5.45
+          },
+          {
+            "from_seconds": 38.48,
+            "to_seconds": 43.73,
+            "duration_seconds": 5.25
+          }
+        ],
+        "caption_tokens": 0,
+        "estimated_caption_tokens": 0
+      },
+      {
+        "id": "scene-09",
+        "start_seconds": 373.0,
+        "duration_seconds": 47.56666666666667,
+        "beat_count": 8,
+        "first_beat_seconds": 0.0,
+        "camera_cues": 3,
+        "transformations": 5,
+        "longest_declared_visual_hold_seconds": 2.3,
+        "longest_declared_transformation_gap_seconds": 13.72,
+        "declared_visual_holds_over_5_seconds": [],
+        "caption_tokens": 107,
+        "estimated_caption_tokens": 0
+      }
+    ],
+    "total_caption_tokens": 338,
+    "estimated_caption_tokens": 10,
+    "declared_visual_holds_over_5_seconds_count": 21
+  },
+  "hyperframes": {
+    "clips": [
+      {
+        "scene_id": "scene-01",
+        "element_id": "car",
+        "engine": "hyperframes@0.8.139",
+        "frames": 1301,
+        "fps": 30,
+        "duration_seconds": 43.36666666666667,
+        "width": 960,
+        "height": 720,
+        "output_sha256": "6c48034d5c6a126f7adca725ced1d6c50bb7024b0dda090cda4cb9073cba4822",
+        "hash_verified": true,
+        "states": [
+          {
+            "state": "paid",
+            "frame": 69,
+            "timing_source": "estimated-between-audio-anchors"
+          },
+          {
+            "state": "waiting",
+            "frame": 175,
+            "timing_source": "estimated-between-audio-anchors"
+          },
+          {
+            "state": "choice",
+            "frame": 1118,
+            "timing_source": "audio-word-alignment"
+          }
+        ]
+      },
+      {
+        "scene_id": "scene-02",
+        "element_id": "pool",
+        "engine": "hyperframes@0.8.139",
+        "frames": 1405,
+        "fps": 30,
+        "duration_seconds": 46.833333333333336,
+        "width": 960,
+        "height": 720,
+        "output_sha256": "bd3fae352da6f2d8d127765b862833a21a1ebc451e85d8ee0feb86557fabac51",
+        "hash_verified": true,
+        "states": [
+          {
+            "state": "group",
+            "frame": 0,
+            "timing_source": "audio-word-alignment"
+          },
+          {
+            "state": "contribute",
+            "frame": 166,
+            "timing_source": "audio-word-alignment"
+          },
+          {
+            "state": "allocate",
+            "frame": 613,
+            "timing_source": "audio-word-alignment"
+          },
+          {
+            "state": "condition",
+            "frame": 1092,
+            "timing_source": "audio-word-alignment"
+          }
+        ]
+      },
+      {
+        "scene_id": "scene-09",
+        "element_id": "car",
+        "engine": "hyperframes@0.8.139",
+        "frames": 1427,
+        "fps": 30,
+        "duration_seconds": 47.56666666666667,
+        "width": 960,
+        "height": 720,
+        "output_sha256": "65069b2973a02ff446856e3ecbaf0abdb527f8f62837c2ce1427ef84db893036",
+        "hash_verified": true,
+        "states": [
+          {
+            "state": "waiting",
+            "frame": 0,
+            "timing_source": "audio-word-alignment"
+          },
+          {
+            "state": "choice",
+            "frame": 460,
+            "timing_source": "audio-word-alignment"
+          },
+          {
+            "state": "summary",
+            "frame": 1185,
+            "timing_source": "audio-word-alignment"
+          }
+        ]
+      }
+    ],
+    "confirmed_state_timings": 8,
+    "estimated_state_timings": 2
+  },
+  "evidence_hashes": {
+    "daily-aligned-tts-manifest.json": "c4c7e5ffa6fea2dff8b2499352f90a14b0b2a6d150c53c9766434fb62ba70aad",
+    "daily-alignment-report.json": "9ad626c13e8415e3a330410b758d60806bc5aab94c301c1e879cf784e25cbbcb",
+    "daily-delivery-qa.json": "fb06bef99ccde5f82bcae13678a210c0ce351210507802a59169da955903ae74",
+    "daily-hyperframes-manifest.json": "7528fde3cf405e6e9afabd238cb6fecce7672fbf28aca208552fa660ed6285a4",
+    "daily-hyperframes-preflight.json": "ae9d8f04954d294e7fd7be41354a330b6955ac8a00216c175da57f2aeacb0d40",
+    "daily-layout-final.json": "d3dd25b3c61d5a4a64c1f1dc188d244399e0b515c789f3d488f0d802f756bc4d",
+    "daily-layout-geometry.json": "54409bd2b51730b918a965c58947900d44b433b9b516223c493c95b4fbc60edf",
+    "daily-layout-preflight.json": "2012222c343823b5c6cfae1ef0e63d05820ce2a78b5ed76cf809e82961392e5b",
+    "daily-live-diagnostics.json": "d50c540dd38d802cf8c83d5afce3174bae7f967b5a0723cc39ee5ed79fa5f032",
+    "daily-processed-tts-manifest.json": "d0bd7e6e13bb606d22446bde4ec09b3a06350c63d26180d58e80b1ca76233ac4",
+    "daily-project.json": "da08b3254cb09b1a288afbcc1df7db85d29d029c910944c68f6df5a65c0e85be",
+    "daily-pronunciation-audit.json": "6919088d769c77033a3334d1c17e62fe2bbb30f53bf3c85071846d24ce85c687",
+    "daily-render-input.json": "8da07d7cb31f9fd104f44cf22bdf194ff6b495fe5b2b00f74d995f7a0566eb96",
+    "daily-rhythm-report.json": "9b9013787e5abb741c3649c333510c428f2d3bd8760b7825325df4085bd6bbf4",
+    "daily-source-audit.json": "090d44e0674a858ab80bb4e2cad446a8e4fab4117fa218eefc36e78dc8d33076",
+    "daily-tts-manifest.json": "6dba36eb7b7aace477322b05c8df70143d9f5e5b13bb23a073018ec7c08f008c",
+    "daily-visual-assets.json": "2d952a03cd44b10c6594ac52c52b83d6f2e61c4db82d5f547c827dd15e2f9715",
+    "daily-voice-master-report.json": "cef0f8cdeb47f0b0a74d883d45769626cb5c5ac02c335ee06ec7d948ee0fe38a"
+  },
+  "limitations": [
+    "RMS verifies speech energy consistency; it cannot prove identical perceived timbre, pitch or emotional register.",
+    "Pitch estimates can contain octave errors and content-dependent intonation; the three reported changes require subjective listening rather than automatic pitch DSP or voice replacement.",
+    "51 of 79 visual anchors were locally confirmed; 28 remain explicitly estimated. Ten of 338 caption token times are estimated.",
+    "Declared Stage holds do not capture all internal HyperFrames animation. Actual proof frames and listening are still required for perceptual judgment.",
+    "Raw WAV integrity and Live transcript token fidelity do not independently establish every spoken phoneme or fact; transcripts are model output and local ASR coverage is incomplete.",
+    "This technical summary does not attest Drive delivery, thumbnail upload or YouTube publication."
+  ],
+  "audits": {
+    "sources": {
+      "passed": true,
+      "source_count": 5,
+      "publisher_count": 4,
+      "publisher_class_counts": {
+        "official": 3,
+        "independent_journalism": 2
+      },
+      "right_editorial_consulted_count": 1,
+      "issues": [],
+      "warnings": [
+        "C1: fato sustentado apenas por fonte oficial; confirme se é dado normativo/operacional.",
+        "C2: fato sustentado apenas por fonte oficial; confirme se é dado normativo/operacional.",
+        "C3: fato sustentado apenas por fonte oficial; confirme se é dado normativo/operacional.",
+        "C4: fato sustentado apenas por fonte oficial; confirme se é dado normativo/operacional.",
+        "C6: fato sustentado apenas por fonte oficial; confirme se é dado normativo/operacional.",
+        "C7: fato sustentado apenas por fonte oficial; confirme se é dado normativo/operacional."
+      ]
+    },
+    "pronunciation": {
+      "status": "ok",
+      "resolved": [],
+      "unresolved": [],
+      "global_lexicon_size": 0,
+      "project_lexicon_size": 0
+    },
+    "final_layout": {
+      "mode": "final-timing",
+      "issues": [],
+      "scenes": [
+        {
+          "scene_id": "scene-01",
+          "font_loaded": true,
+          "checked_frames": 576,
+          "issues": []
+        },
+        {
+          "scene_id": "scene-02",
+          "font_loaded": true,
+          "checked_frames": 576,
+          "issues": []
+        },
+        {
+          "scene_id": "scene-03",
+          "font_loaded": true,
+          "checked_frames": 576,
+          "issues": []
+        },
+        {
+          "scene_id": "scene-04",
+          "font_loaded": true,
+          "checked_frames": 576,
+          "issues": []
+        },
+        {
+          "scene_id": "scene-05",
+          "font_loaded": true,
+          "checked_frames": 576,
+          "issues": []
+        },
+        {
+          "scene_id": "scene-06",
+          "font_loaded": true,
+          "checked_frames": 629,
+          "issues": []
+        },
+        {
+          "scene_id": "scene-07",
+          "font_loaded": true,
+          "checked_frames": 576,
+          "issues": []
+        },
+        {
+          "scene_id": "scene-08",
+          "font_loaded": true,
+          "checked_frames": 603,
+          "issues": []
+        },
+        {
+          "scene_id": "scene-09",
+          "font_loaded": true,
+          "checked_frames": 512,
+          "issues": []
+        }
+      ]
+    },
+    "youtube_packaging": {
+      "title": "Consórcio: por que pagar não garante levar o carro?",
+      "chapters": [
+        {
+          "time": "0:00",
+          "title": "Pagou, mas quando recebe?"
+        },
+        {
+          "time": "0:43",
+          "title": "O dinheiro vem do grupo"
+        },
+        {
+          "time": "1:30",
+          "title": "Dois caminhos, nenhuma data automática"
+        },
+        {
+          "time": "2:16",
+          "title": "Sem juros, mas com custo"
+        },
+        {
+          "time": "2:59",
+          "title": "A soma que o anúncio não encerra"
+        },
+        {
+          "time": "3:48",
+          "title": "O pedaço que sai do crédito"
+        },
+        {
+          "time": "4:39",
+          "title": "O contrato continua depois da contemplação"
+        },
+        {
+          "time": "5:26",
+          "title": "A urgência muda a comparação"
+        },
+        {
+          "time": "6:13",
+          "title": "A resposta antes da assinatura"
+        }
+      ],
+      "description_present": true,
+      "contains_single_source_section": true,
+      "contains_single_chapters_section": true,
+      "hashtags": [
+        "#Consorcio",
+        "#EducacaoFinanceira",
+        "#SeuBolso"
+      ]
+    }
+  }
+}

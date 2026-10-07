@@ -1,0 +1,133 @@
+{
+  "version": "1.0",
+  "scope": "Arte esquemática dentro de regiões Stage; texto/dados são auditados separadamente.",
+  "input_sha256": "1a738140a0d267c1814fd74eb101269faf8b16e8d46856d95d0d826353df0408",
+  "clips": [
+    {
+      "scene_id": "scene-01",
+      "element_id": "car",
+      "entry": "video/hyperframes/car-gate/index.html",
+      "key": "e4d194efef84b007c8313e399e1574ea00ea455451b6784859297bdd85a1929c",
+      "engine": "hyperframes@0.8.139",
+      "sourceFiles": [
+        {
+          "file": "index.html",
+          "sha256": "a38c874f86740dc611c2302a492cf432e23b248178d7d557538f832bda66a81e"
+        }
+      ],
+      "states": [
+        {
+          "anchor": "Você entrou num consórcio, pagou a parcela e já começou a imaginar o carro na garagem.",
+          "state": "paid",
+          "frame": 69,
+          "timing_source": "estimated-between-audio-anchors"
+        },
+        {
+          "anchor": "Mas por que pagar não garante levar o carro?",
+          "state": "waiting",
+          "frame": 175,
+          "timing_source": "estimated-between-audio-anchors"
+        },
+        {
+          "anchor": "E um lance pode mudar a disputa sem eliminar as condições. Vamos abrir essa conta.",
+          "state": "choice",
+          "frame": 1118,
+          "timing_source": "audio-word-alignment"
+        }
+      ],
+      "frames": 1301,
+      "fps": 30,
+      "width": 960,
+      "height": 720,
+      "public_file": "generated-clips/scene-01-car-e4d194efef84b007.mp4",
+      "output_sha256": "6c48034d5c6a126f7adca725ced1d6c50bb7024b0dda090cda4cb9073cba4822",
+      "cached": false
+    },
+    {
+      "scene_id": "scene-02",
+      "element_id": "pool",
+      "entry": "video/hyperframes/group-pool/index.html",
+      "key": "ea63bfc56d180d0e46991808269a3072c1ed49399a8c0e76376bd85b2077689c",
+      "engine": "hyperframes@0.8.139",
+      "sourceFiles": [
+        {
+          "file": "index.html",
+          "sha256": "fe8db1c2e3d60a2298b5f911f210edce8e59cce540000e54ec140d76d07342ca"
+        }
+      ],
+      "states": [
+        {
+          "anchor": "Imagine este desenho como um grupo, sem representar um número real de participantes.",
+          "state": "group",
+          "frame": 0,
+          "timing_source": "audio-word-alignment"
+        },
+        {
+          "anchor": "Uma parte das parcelas vai para o fundo comum: o dinheiro coletivo usado nas compras.",
+          "state": "contribute",
+          "frame": 166,
+          "timing_source": "audio-word-alignment"
+        },
+        {
+          "anchor": "A contemplação é a atribuição do crédito a um participante para a compra do bem.",
+          "state": "allocate",
+          "frame": 613,
+          "timing_source": "audio-word-alignment"
+        },
+        {
+          "anchor": "E, segundo a lei, as contemplações dependem de dinheiro disponível no grupo.",
+          "state": "condition",
+          "frame": 1092,
+          "timing_source": "audio-word-alignment"
+        }
+      ],
+      "frames": 1405,
+      "fps": 30,
+      "width": 960,
+      "height": 720,
+      "public_file": "generated-clips/scene-02-pool-ea63bfc56d180d0e.mp4",
+      "output_sha256": "bd3fae352da6f2d8d127765b862833a21a1ebc451e85d8ee0feb86557fabac51",
+      "cached": false
+    },
+    {
+      "scene_id": "scene-09",
+      "element_id": "car",
+      "entry": "video/hyperframes/car-gate/index.html",
+      "key": "fc9e63116c2512e95cef71d7d0cf703d7798b417c6409f49023886d329f04968",
+      "engine": "hyperframes@0.8.139",
+      "sourceFiles": [
+        {
+          "file": "index.html",
+          "sha256": "a38c874f86740dc611c2302a492cf432e23b248178d7d557538f832bda66a81e"
+        }
+      ],
+      "states": [
+        {
+          "anchor": "Então, por que pagar o consórcio não garante levar o carro?",
+          "state": "waiting",
+          "frame": 0,
+          "timing_source": "audio-word-alignment"
+        },
+        {
+          "anchor": "E utilizar esse crédito exige cumprir as condições do contrato.",
+          "state": "choice",
+          "frame": 460,
+          "timing_source": "audio-word-alignment"
+        },
+        {
+          "anchor": "Antes de imaginar a chave, entenda quando ela pode chegar e qual dinheiro estará disponível.",
+          "state": "summary",
+          "frame": 1185,
+          "timing_source": "audio-word-alignment"
+        }
+      ],
+      "frames": 1427,
+      "fps": 30,
+      "width": 960,
+      "height": 720,
+      "public_file": "generated-clips/scene-09-car-fc9e63116c2512e9.mp4",
+      "output_sha256": "65069b2973a02ff446856e3ecbaf0abdb527f8f62837c2ce1427ef84db893036",
+      "cached": false
+    }
+  ]
+}

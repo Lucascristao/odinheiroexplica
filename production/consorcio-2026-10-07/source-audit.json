@@ -1,0 +1,21 @@
+{
+  "requires_diversity": true,
+  "public_policy_or_regulation": true,
+  "source_count": 5,
+  "publisher_count": 4,
+  "publisher_class_counts": {
+    "official": 3,
+    "independent_journalism": 2
+  },
+  "right_editorial_consulted_count": 1,
+  "issues": [],
+  "warnings": [
+    "C1: fato sustentado apenas por fonte oficial; confirme se é dado normativo/operacional.",
+    "C2: fato sustentado apenas por fonte oficial; confirme se é dado normativo/operacional.",
+    "C3: fato sustentado apenas por fonte oficial; confirme se é dado normativo/operacional.",
+    "C4: fato sustentado apenas por fonte oficial; confirme se é dado normativo/operacional.",
+    "C6: fato sustentado apenas por fonte oficial; confirme se é dado normativo/operacional.",
+    "C7: fato sustentado apenas por fonte oficial; confirme se é dado normativo/operacional."
+  ],
+  "passed": true
+}

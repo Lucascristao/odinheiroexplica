@@ -1,0 +1,64 @@
+{
+  "version": "1.0",
+  "run_id": 37577381645,
+  "project_id": "consorcio-pagar-nao-garante-carro-2026-10-07",
+  "video_sha256": "60d65d7ff77932937550894fa1df13643567431f0b0a2eb62c2a05eb7e7df036",
+  "status": "no_concrete_blocking_defect_found_in_inspected_frames",
+  "scope": "Inspeção visual dos contatos reais das cenas 03 a 09 e de oito quadros completos extraídos do MP4 codificado. Cenas 01 e 02 são responsabilidade da revisão do agente principal. Esta revisão não ouviu o áudio, não viu o vídeo em reprodução contínua e não examinou todos os frames.",
+  "inspected_contact_sheets": [
+    "review/scene-03-contact.jpg",
+    "review/scene-04-contact.jpg",
+    "review/scene-05-contact.jpg",
+    "review/scene-06-contact.jpg",
+    "review/scene-07-contact.jpg",
+    "review/scene-08-contact.jpg",
+    "review/scene-09-contact.jpg"
+  ],
+  "inspected_full_frames": [
+    "review/scene-03-12-003276.jpg",
+    "review/scene-04-16-004892.jpg",
+    "review/scene-05-10-005871.jpg",
+    "review/scene-06-18-007687.jpg",
+    "review/scene-07-22-009463.jpg",
+    "review/scene-08-27-011114.jpg",
+    "review/scene-09-13-011798.jpg",
+    "review/scene-09-23-012616.jpg"
+  ],
+  "findings": [
+    {
+      "scene": 3,
+      "result": "O recorte do artigo 22, parágrafo primeiro, apresenta as duas linhas inteiras do trecho mostrado. Sorteio e lance têm regiões separadas e os textos são legíveis no quadro completo. A condição do contrato aparece no próprio trecho; os rodapés reforçam regras do grupo e antecipar não significa receber imediatamente. Não observei corte de informação ou colisão."
+    },
+    {
+      "scene": 4,
+      "result": "A conta R$ 100 mil × 20% = R$ 20 mil está correta, com números grandes e funções identificadas. A tela identifica o exemplo sem reajuste e taxa total; um quadro posterior explicita 20% no plano, não ao ano. Não observei corte ou sobreposição dos números."
+    },
+    {
+      "scene": 5,
+      "result": "A soma R$ 100 mil + R$ 20 mil = R$ 120 mil está correta. O resultado é rotulado BASE + TAXA e o rodapé SÓ BASE E ADMINISTRAÇÃO evita apresentá-lo como custo final completo. Os contatos posteriores reforçam valores fixos e reajustes não incluídos. Nenhum corte ou colisão observado."
+    },
+    {
+      "scene": 6,
+      "result": "A conta R$ 100 mil − R$ 30 mil = R$ 70 mil está correta. O valor de R$ 30 mil é inicialmente identificado como lance embutido e depois como amortização de parcelas; R$ 70 mil é identificado como disponível para comprar. Os rodapés sucessivos mostram se o grupo permitir, não é dinheiro grátis, faltam R$ 30 mil para carro de R$ 100 mil e lance não significa vitória garantida. Não observei perda das condições relevantes nos contatos inspecionados."
+    },
+    {
+      "scene": 7,
+      "result": "Relógio e contrato ocupam áreas distintas. Os rótulos de prazo, referência de atualização, garantias e parcelas restantes estão inteiros. A condição de reajuste depender do contrato fica explícita em um dos contatos. Não observei colisão ou informação cortada."
+    },
+    {
+      "scene": 8,
+      "result": "A comparação entre precisar agora e poder esperar é legível. Os rodapés identificam ausência de vantagem universal, necessidade de verificar a administradora e histórico sem garantia de resultado. Ícones e rótulos cabem inteiros, sem colisão observada."
+    },
+    {
+      "scene": 9,
+      "result": "O retorno ao carro, barreira fechada, cadeado e chave condicionada mantém a conclusão visual sem prometer entrega automática. Os quadros completos mostram depende da contemplação, custo e crédito disponível, e espera mais obrigações. O esquema está explicitamente identificado como ilustrativo. Não observei corte do objeto ou colisão com os rótulos."
+    }
+  ],
+  "blocking_findings": [],
+  "limitations": [
+    "Não equivale a aprovação de fidelidade ou naturalidade do áudio.",
+    "Contatos amostram momentos do vídeo; transições completas e cada frame intermediário não foram vistos.",
+    "A sincronização de legendas com a fala requer reprodução com áudio e não foi aprovada por esta inspeção.",
+    "Pausas, composição pouco densa ou repetição estética isoladas não foram tratadas como motivo automático para bloquear a entrega."
+  ]
+}

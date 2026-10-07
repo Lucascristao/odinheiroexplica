@@ -1,0 +1,15 @@
+{
+  "tool": "native image_gen",
+  "generated_after_drive_delivery": true,
+  "native_source": "thumbnail-source.png",
+  "final_file": "thumbnail.jpg",
+  "headline": "PAGOU. E AGORA?",
+  "width": 1672,
+  "height": 941,
+  "bytes": 414140,
+  "sha256": "30ed6f930c0f637341c12e381aeb4fd5ce80f31c6a9e7ec54b7adb37c20c8c6b",
+  "processing": "JPEG format conversion only; original composition preserved",
+  "prompt": "thumbnail-prompt.txt",
+  "transparent_background": false,
+  "visual_review": "headline complete and readable, one car/barrier focus, no logo or forged document"
+}

@@ -87,3 +87,13 @@ Ao criar um novo VideoProject, consulte apenas a seção mais recente para ident
 - participantes: imóvel residencial, divisão da parcela (juros dominantes vs amortização pequena), custo total em 30 anos (R$ 780 mil), regra legal da amortização extraordinária, redução de prazo vs redução de parcela, simulação da parcela final (R$ 200) abatida com R$ 600, alavancagem com FGTS e blindagem da reserva de emergência;
 - foco: desmistificar a crença de que financiar exige pagar 3 casas ao banco durante 30 anos, comprovar matematicamente que aportes modestos no prazo eliminam parcelas inteiras do fim do contrato com cancelamento de juros futuros e apresentar o método sustentável de quitação em 5 a 8 anos;
 - evitar repetir automaticamente: simulação de financiamento de 30 anos, desmembramento de parcela em juros vs amortização e abatimento de prazo com FGTS como tema central de episódios subsequentes.
+
+## Consórcio: por que pagar não garante levar o carro? — 2026-10-07
+
+- universo: compra de carro, consórcio e urgência do comprador;
+- participantes: carro atrás da barreira, pagamento, chave condicionada, fundo comum ilustrativo, sorteio/lance, artigo 22 §1, taxa total, lance embutido, contrato e prazo;
+- foco: pagar parcelas não fixa data de contemplação; sem juros não significa sem custos; lance embutido reduz crédito disponível e amortiza parcelas conforme as regras do grupo;
+- demonstrações: R$100mil×20%=R$20mil; base+taxa=R$120mil sem representar custo final completo; crédito R$100mil−lance R$30mil=R$70mil disponível. Exemplos e limites identificados;
+- composição: HyperFrames em protagonistas de carro/trava e fundo do grupo; Stage conserva texto, relações, contas e câmera. Retorno ao carro responde ao gancho. Capa “PAGOU. E AGORA?”;
+- evitar repetir: consórcio versus entrega imediata do carro, mesmas contas de taxa/lance e barreira/chave como metáfora central em novo episódio;
+- entrega: render37577381645, retomada37581899656; MP4 7:00,57 no Drive, pesquisa e relatórios em production/consorcio-2026-10-07. Não publicado automaticamente no YouTube.

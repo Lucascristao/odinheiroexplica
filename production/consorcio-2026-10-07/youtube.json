@@ -1,0 +1,79 @@
+{
+  "title": "Consórcio: por que pagar não garante levar o carro?",
+  "thumbnail_headline": "PAGOU. E AGORA?",
+  "packaging_strategy": {
+    "click_reason": "A compra parece avançar quando a parcela é paga, mas ainda falta a condição para receber o carro.",
+    "visual_focus": "Recibo e carro separados pela cancela, com a chave como descoberta.",
+    "curiosity_gap": "Qual condição existe entre pagar e receber?",
+    "mobile_readability": "Três palavras grandes e um carro dominante, sem subtítulo.",
+    "anti_clickbait_check": "Explica caminhos de contemplação e custos; não acusa o sistema de fraude nem promete perdas.",
+    "repetition_check": "Consórcio é inédito no histórico; capa substitui a fórmula CADÊ do episódio anterior e palco não reutiliza embalagem/gráfico.",
+    "youtube_safety_check": "Conteúdo educativo com exemplos sinalizados e fontes; sem ataque a pessoas ou marcas."
+  },
+  "youtube_suitability": {},
+  "seo": {
+    "primary_keyword": "Consórcio",
+    "secondary_keywords": [
+      "consórcio de carro",
+      "contemplação",
+      "lance embutido",
+      "taxa de administração"
+    ],
+    "search_intent": "Entender quando o carro pode ser recebido e quanto do crédito fica disponível.",
+    "description_strategy": "Gancho concreto e quatro bullets; seções técnicas acrescentadas uma única vez pelo pipeline."
+  },
+  "tags": [
+    "consórcio",
+    "consórcio de carro",
+    "lance embutido",
+    "contemplação",
+    "taxa de administração",
+    "educação financeira"
+  ],
+  "engagement_question": "O que mais pesa para você numa compra: a parcela ou a data para receber o carro?",
+  "hashtags": [
+    "#Consorcio",
+    "#EducacaoFinanceira",
+    "#SeuBolso"
+  ],
+  "description": "Consórcio: pagar as parcelas não define quando você recebe o carro. Veja como a contemplação funciona e o que muda na conta quando aparece um lance embutido.\n\n- Por que pagar e ser contemplado são etapas diferentes\n- O custo que a expressão sem juros não explica sozinha\n- Quanto sobra do crédito depois de um lance embutido\n- O que conferir no prazo, no reajuste e no contrato\n\nCAPÍTULOS\n0:00 Pagou, mas quando recebe?\n0:43 O dinheiro vem do grupo\n1:30 Dois caminhos, nenhuma data automática\n2:16 Sem juros, mas com custo\n2:59 A soma que o anúncio não encerra\n3:48 O pedaço que sai do crédito\n4:39 O contrato continua depois da contemplação\n5:26 A urgência muda a comparação\n6:13 A resposta antes da assinatura\n\nFONTES\n- Presidência da República — Planalto — Lei nº 11.795, de 8 de outubro de 2008\n- Banco Central do Brasil — Resolução BCB nº 285, de 19 de janeiro de 2023 — texto consolidado\n- Banco Central do Brasil — Consórcio — perguntas frequentes\n- InfoMoney — Consórcio em tempos de juros altos: quando ele vale mais a pena do que financiamento?\n- Gazeta do Povo — Alta de juros favorece consórcio\n\nCréditos visuais:\n- Planalto — Lei 11.795/2008, art. 22 §1 — Texto normativo de acesso público\n\nO que mais pesa para você numa compra: a parcela ou a data para receber o carro?\n\n#Consorcio #EducacaoFinanceira #SeuBolso",
+  "chapters": [
+    {
+      "time": "0:00",
+      "title": "Pagou, mas quando recebe?"
+    },
+    {
+      "time": "0:43",
+      "title": "O dinheiro vem do grupo"
+    },
+    {
+      "time": "1:30",
+      "title": "Dois caminhos, nenhuma data automática"
+    },
+    {
+      "time": "2:16",
+      "title": "Sem juros, mas com custo"
+    },
+    {
+      "time": "2:59",
+      "title": "A soma que o anúncio não encerra"
+    },
+    {
+      "time": "3:48",
+      "title": "O pedaço que sai do crédito"
+    },
+    {
+      "time": "4:39",
+      "title": "O contrato continua depois da contemplação"
+    },
+    {
+      "time": "5:26",
+      "title": "A urgência muda a comparação"
+    },
+    {
+      "time": "6:13",
+      "title": "A resposta antes da assinatura"
+    }
+  ],
+  "duration_seconds": 420.57
+}

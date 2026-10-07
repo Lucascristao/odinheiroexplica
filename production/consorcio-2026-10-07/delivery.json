@@ -1,0 +1,35 @@
+{
+  "folder_id": "17qR45AW8_eN1eP0aZkIP-0fVNeIjohZw",
+  "folder_url": "https://drive.google.com/drive/folders/17qR45AW8_eN1eP0aZkIP-0fVNeIjohZw",
+  "files": {
+    "video": {
+      "file_id": "1B5mU3C7VcZMQOGSE6F7X2bWOmAjgznh4",
+      "name": "daily-video.mp4",
+      "web_view_url": "https://drive.google.com/file/d/1B5mU3C7VcZMQOGSE6F7X2bWOmAjgznh4/view",
+      "size_bytes": 69296309,
+      "sha256": "60d65d7ff77932937550894fa1df13643567431f0b0a2eb62c2a05eb7e7df036"
+    },
+    "metadata": {
+      "file_id": "1m3DyrqZvteSjzvEd5TEhXHmj0xNNdrrQ",
+      "name": "daily-youtube.json",
+      "web_view_url": "https://drive.google.com/file/d/1m3DyrqZvteSjzvEd5TEhXHmj0xNNdrrQ/view",
+      "size_bytes": 3978,
+      "sha256": "23a934d0eb21d2c7f64bc4a061de0aa8f533a20adad21850d5a2c23f569b5672"
+    },
+    "publication_text": {
+      "file_id": "1gj2AN_V1v9Hdk37jX6xVMyVwp4VuDHh8",
+      "name": "daily-youtube.txt",
+      "web_view_url": "https://drive.google.com/file/d/1gj2AN_V1v9Hdk37jX6xVMyVwp4VuDHh8/view",
+      "size_bytes": 1482,
+      "sha256": "cc1bc90a5f99523946c403f8b13d15d4e1c73c83f9caf3bdc121e49b91dc3a19"
+    },
+    "visual_review": {
+      "file_id": "19hEZCp1xywTVABkJUoMj_ghRe79-cj41",
+      "name": "daily-visual-review.zip",
+      "web_view_url": "https://drive.google.com/file/d/19hEZCp1xywTVABkJUoMj_ghRe79-cj41/view",
+      "size_bytes": 16500580,
+      "sha256": "7631257bab428b25c0211e815468a17148903ee92c33fc967927b0b20646de41"
+    }
+  },
+  "uploaded_at": "2026-10-07T06:34:05.825591+00:00"
+}

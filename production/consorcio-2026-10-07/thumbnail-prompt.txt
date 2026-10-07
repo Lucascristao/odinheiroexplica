@@ -1,0 +1,9 @@
+Use case: ads-marketing
+Asset type: final complete YouTube thumbnail for a Brazilian personal finance explainer; exact 16:9 landscape, 1920x1080 or 1536x864.
+Primary request: create an excellent finished editorial photographic thumbnail that communicates the tension of paying consortium installments without receiving the car immediately.
+Scene/backdrop: a charcoal-black cinematic environment. A large unbranded realistic silver car is clearly visible in three-quarter view behind a lowered yellow barrier. The car and barrier form one dominant visual idea, with sharp contrast and realistic depth; the barrier is a visual metaphor for waiting, not an allegation of fraud.
+Composition: the car occupies the central/right portion, large and recognizable even at 320x180. Clear open dark space at upper left for the headline. Keep bottom-right uncluttered for YouTube duration. Comfortable safe margins on all sides.
+Text (verbatim): "PAGOU. E AGORA?"
+Typography: extremely large bold clean sans-serif, warm white #F6F7F8 with the final question in signature yellow #FFBD19, set in two or three balanced lines; generous natural spacing, no condensed cramped letters. This is the ONLY text. All words and question mark must be complete and easy to read on a phone.
+Style/medium: polished cinematic editorial photography with controlled warm yellow lighting, charcoal background, believable reflections and shadows, high contrast. One restrained stylized payment cue is optional only if it adds clarity, otherwise omit it.
+Constraints: headline complements the video title "Consórcio: por que pagar não garante levar o carro?" without repeating it. No brand, logo, channel name, watermark, fake bank interface, fake receipt, money figures, extra small text, arrows, coins flying, people, or guaranteed delivery/loss claims. Final complete composition including typography; do not produce a blank image base. Opaque background.

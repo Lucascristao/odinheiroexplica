@@ -1,0 +1,189 @@
+{
+  "version": "1.0",
+  "levels": {
+    "method": "active-speech-rms-shared-target-v1",
+    "requested_dbfs": -18.0,
+    "target_dbfs": -18.0,
+    "peak_ceiling": 0.975,
+    "scenes": [
+      {
+        "gain": 0.8390734899101361,
+        "gain_db": -1.524,
+        "raw_active_rms_dbfs": -16.476,
+        "expected_active_rms_dbfs": -18.0,
+        "expected_peak_dbfs": -3.061,
+        "id": "scene-01"
+      },
+      {
+        "gain": 1.031810635267592,
+        "gain_db": 0.272,
+        "raw_active_rms_dbfs": -18.272,
+        "expected_active_rms_dbfs": -18.0,
+        "expected_peak_dbfs": -1.272,
+        "id": "scene-02"
+      },
+      {
+        "gain": 0.9238468875379452,
+        "gain_db": -0.688,
+        "raw_active_rms_dbfs": -17.312,
+        "expected_active_rms_dbfs": -18.0,
+        "expected_peak_dbfs": -2.287,
+        "id": "scene-03"
+      },
+      {
+        "gain": 1.0068157482323414,
+        "gain_db": 0.059,
+        "raw_active_rms_dbfs": -18.059,
+        "expected_active_rms_dbfs": -18.0,
+        "expected_peak_dbfs": -2.102,
+        "id": "scene-04"
+      },
+      {
+        "gain": 0.8469348426866785,
+        "gain_db": -1.443,
+        "raw_active_rms_dbfs": -16.557,
+        "expected_active_rms_dbfs": -18.0,
+        "expected_peak_dbfs": -2.948,
+        "id": "scene-05"
+      },
+      {
+        "gain": 1.0297931531974431,
+        "gain_db": 0.255,
+        "raw_active_rms_dbfs": -18.255,
+        "expected_active_rms_dbfs": -18.0,
+        "expected_peak_dbfs": -0.877,
+        "id": "scene-06"
+      },
+      {
+        "gain": 0.8573339067404218,
+        "gain_db": -1.337,
+        "raw_active_rms_dbfs": -16.663,
+        "expected_active_rms_dbfs": -18.0,
+        "expected_peak_dbfs": -2.54,
+        "id": "scene-07"
+      },
+      {
+        "gain": 0.9357288076216926,
+        "gain_db": -0.577,
+        "raw_active_rms_dbfs": -17.423,
+        "expected_active_rms_dbfs": -18.0,
+        "expected_peak_dbfs": -1.95,
+        "id": "scene-08"
+      },
+      {
+        "gain": 0.7652441178142357,
+        "gain_db": -2.324,
+        "raw_active_rms_dbfs": -15.676,
+        "expected_active_rms_dbfs": -18.0,
+        "expected_peak_dbfs": -3.419,
+        "id": "scene-09"
+      }
+    ]
+  },
+  "pitch": [
+    {
+      "id": "scene-01",
+      "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+      "voiced_windows": 165,
+      "median_hz": 180.45,
+      "opening_hz": 165.18,
+      "closing_hz": 195.12,
+      "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+    },
+    {
+      "id": "scene-02",
+      "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+      "voiced_windows": 204,
+      "median_hz": 131.87,
+      "opening_hz": 124.37,
+      "closing_hz": 138.73,
+      "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+    },
+    {
+      "id": "scene-03",
+      "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+      "voiced_windows": 189,
+      "median_hz": 156.86,
+      "opening_hz": 164.39,
+      "closing_hz": 179.1,
+      "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+    },
+    {
+      "id": "scene-04",
+      "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+      "voiced_windows": 191,
+      "median_hz": 150.94,
+      "opening_hz": 165.52,
+      "closing_hz": 143.72,
+      "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+    },
+    {
+      "id": "scene-05",
+      "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+      "voiced_windows": 203,
+      "median_hz": 155.84,
+      "opening_hz": 145.8,
+      "closing_hz": 158.56,
+      "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+    },
+    {
+      "id": "scene-06",
+      "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+      "voiced_windows": 232,
+      "median_hz": 178.44,
+      "opening_hz": 137.79,
+      "closing_hz": 230.77,
+      "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+    },
+    {
+      "id": "scene-07",
+      "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+      "voiced_windows": 201,
+      "median_hz": 145.45,
+      "opening_hz": 124.55,
+      "closing_hz": 152.87,
+      "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+    },
+    {
+      "id": "scene-08",
+      "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+      "voiced_windows": 216,
+      "median_hz": 159.47,
+      "opening_hz": 156.86,
+      "closing_hz": 154.84,
+      "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+    },
+    {
+      "id": "scene-09",
+      "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+      "voiced_windows": 229,
+      "median_hz": 162.16,
+      "opening_hz": 158.66,
+      "closing_hz": 187.5,
+      "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+    }
+  ],
+  "warnings": [
+    {
+      "from": "scene-01",
+      "to": "scene-02",
+      "estimated_register_delta_semitones": -5.43,
+      "action": "Review by listening; estimate is not proof of an identity change."
+    },
+    {
+      "from": "scene-02",
+      "to": "scene-03",
+      "estimated_register_delta_semitones": 3.0,
+      "action": "Review by listening; estimate is not proof of an identity change."
+    },
+    {
+      "from": "scene-06",
+      "to": "scene-07",
+      "estimated_register_delta_semitones": -3.54,
+      "action": "Review by listening; estimate is not proof of an identity change."
+    }
+  ],
+  "raw_scene_wavs_unchanged": true,
+  "pitch_correction_applied": false,
+  "master_sha256": "75388fe47942c42bb261246e088093eab2468a5a448152cc9f06019d5e265407"
+}
