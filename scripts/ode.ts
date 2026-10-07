@@ -58,11 +58,13 @@ if(command==="prompt") {
   else gh(["run","list","--workflow","render-daily.yml","--limit","5","--json","databaseId,headSha,status,conclusion,url"]);
 } else if(command==="resume") {
   const id=option("--run-id");if(!id||!/^\d+$/.test(id))throw new Error("resume exige --run-id numérico. Confira que o run corresponde ao commit desejado.");
-  gh(["run","rerun",id,"--failed"]);
+  if(args.includes("--delivery-only")) {
+    gh(["workflow","run","resume-delivery.yml","--ref","main","-f",`source_run_id=${id}`]);
+  } else gh(["run","rerun",id,"--failed"]);
 } else if(command==="review") {
   run(python,["worker/review_rendered_video.py","--input","video/generated/daily-render-input.json","--video","render-output/daily-video.mp4","--output-dir","render-output/visual-review"]);
 } else if(command==="deliver") {
   const folder=option("--folder-id"),file=option("--file"),role=option("--role","thumbnail");
   if(!folder||!file?.startsWith("production/")||!['thumbnail','editorial-review'].includes(role!))throw new Error("deliver exige pasta verificada, --file production/... e --role thumbnail|editorial-review.");
   gh(["workflow","run","deliver-supplement.yml","--ref","main","-f",`folder_id=${folder}`,"-f",`asset_path=${file}`,"-f",`role=${role}`]);
-} else throw new Error("Comando desconhecido: context, capabilities, prompt, preflight, dispatch, render, status, resume, review.");
+} else throw new Error("Comando desconhecido: context, capabilities, prompt, preflight, dispatch, render, status, resume, review, deliver.");

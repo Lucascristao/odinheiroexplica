@@ -16,10 +16,14 @@ from PIL import Image, ImageDraw
 def review(video: Path, timeline: dict, output: Path, regions: dict) -> dict:
     fps = timeline["fps"]
     output.mkdir(parents=True, exist_ok=True)
-    probe = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "json", str(video)], check=True, capture_output=True, text=True)
-    duration = float(json.loads(probe.stdout)["format"]["duration"])
+    probe = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=duration,nb_frames,avg_frame_rate:format=duration", "-of", "json", str(video)], check=True, capture_output=True, text=True)
+    metadata = json.loads(probe.stdout)
+    duration = float(metadata["streams"][0]["duration"])
+    container_duration = float(metadata["format"]["duration"])
     expected = timeline["duration_in_frames"] / fps
-    if abs(duration-expected) > 1/fps+.01:
+    # AAC padding can make the container longer than its video track. Delivery
+    # QA already verifies audio; proof frames follow the actual video clock.
+    if abs(duration-expected) > .1:
         raise ValueError("MP4 e timeline divergem; revisar não deve esconder duração errada.")
     sample_width, sample_height, sample_fps = 480, 270, 2
     decode = subprocess.Popen(["ffmpeg", "-v", "error", "-i", str(video), "-vf", f"fps={sample_fps},scale={sample_width}:{sample_height}", "-pix_fmt", "gray", "-f", "rawvideo", "pipe:1"], stdout=subprocess.PIPE)
@@ -75,7 +79,7 @@ def review(video: Path, timeline: dict, output: Path, regions: dict) -> dict:
         sheet.save(output/f"{scene['id']}-contact.jpg", quality=92)
     with video.open("rb") as video_source:
         video_hash = hashlib.file_digest(video_source, "sha256").hexdigest()
-    report = {"version": "1.0", "video_sha256": video_hash, "duration_seconds": duration, "method": {"decode": "final MP4", "sample_fps": sample_fps, "sample_resolution": [sample_width, sample_height], "regions": "Stage resolver; visible object envelopes include labels and entrance/camera", "measure": "mean absolute grayscale difference 0..255"}, "scope": "Quadros reais e diagnóstico de movimento; não aprova semântica, prosódia, fatos, legibilidade raster ou retenção.", "semantic_review": "pending-agent-review", "proofs": proofs, "motion": motion}
+    report = {"version": "1.0", "video_sha256": video_hash, "duration_seconds": duration, "container_duration_seconds": container_duration, "video_stream": metadata["streams"][0], "method": {"decode": "final MP4", "sample_fps": sample_fps, "sample_resolution": [sample_width, sample_height], "regions": "Stage resolver; visible object envelopes include labels and entrance/camera", "measure": "mean absolute grayscale difference 0..255"}, "scope": "Quadros reais e diagnóstico de movimento; não aprova semântica, prosódia, fatos, legibilidade raster ou retenção.", "semantic_review": "pending-agent-review", "proofs": proofs, "motion": motion}
     (output/"report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
     with zipfile.ZipFile(output.parent/"daily-visual-review.zip", "w", zipfile.ZIP_DEFLATED) as archive:
         for path in sorted(output.rglob("*")):

@@ -14,6 +14,7 @@ Leia skills/ode-video/SKILL.md. O pedido reutilizável está em docs/production-
 4. No modo normal, execute npm run typecheck e as suítes relevantes. Faça commit e push na main sem alterar render-trigger/daily.txt; espere CI do mesmo commit.
 5. npm run ode -- dispatch solicita workflow_dispatch na main. Compare o headSha do run com o commit enviado.
 6. npm run ode -- status; para falha transitória, npm run ode -- resume --run-id NUMERO. Corrigir conteúdo exige novo commit e novo run, que reutiliza cenas de voz compatíveis.
+   Se o render e o QA terminaram e a falha ocorreu na conferência auxiliar ou no envio, use npm run ode -- resume --run-id NUMERO --delivery-only. A retomada confere a procedência e reaproveita o MP4 sem sintetizar voz nem renderizar novamente; veja docs/recovery-render.md.
 7. Baixe daily-production-review do Actions; revise relatórios e o MP4 completo com áudio. Use npm run ode -- review para repetir a extração local no vídeo real.
 8. Confira a pasta Drive, gere a capa completa conforme a skill de embalagem, salve-a em production/ID-DO-EPISODIO/, faça commit/push e envie para a pasta observada com npm run ode -- deliver --folder-id ID --file production/ID-DO-EPISODIO/thumbnail.jpg --role thumbnail. O workflow verifica pasta, tamanho, formato e readback do arquivo. Registre a revisão em production/ e use --role editorial-review para entregá-la também.
 
@@ -22,5 +23,7 @@ O estado local em work/production-state.json só organiza a sessão e não é fo
 ## Falhas e retomada
 
 Não encurte o roteiro para quota de voz. Respeite retry/backoff do mesmo modelo e use cache por cena. Não peça regeneração total no gatilho: force_fresh_audio é input manual do workflow e só vale na primeira tentativa. Se o agente não puder assistir/escutar, registre essa limitação; métricas e transcrição não equivalem a revisão perceptual.
+
+A conferência automática de entrega bloqueia falhas concretas de integridade. A extração de quadros e as métricas de movimento são auxiliares: uma falha nessa ferramenta não impede enviar um MP4 aprovado pelo QA. Pausas, variação de pitch e avisos de ritmo orientam a revisão editorial, sem exigir nova produção por si só. A duração do contêiner pode incluir cauda de áudio; os quadros seguem a duração da trilha de vídeo.
 
 Produção direta sem testes é uma opção somente quando explicitamente pedida; o prompt --direct registra o modo e o commit usa [production direct]. Os gates necessários da produção continuam.

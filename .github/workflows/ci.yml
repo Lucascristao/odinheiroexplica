@@ -104,7 +104,9 @@ jobs:
         run: python worker/test_synthesize_scenes.py
 
       - name: Test reviewed audio provenance and legacy cache (offline)
-        run: python worker/test_restore_reviewed_audio.py
+        run: |
+          python worker/test_restore_reviewed_audio.py
+          python worker/test_restore_completed_render.py
 
       - name: Test narration anchor alignment (offline)
         run: python worker/test_align_narration.py

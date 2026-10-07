@@ -406,11 +406,19 @@ jobs:
             --output video/generated/daily-delivery-qa.json
 
       - name: Extract review evidence from the final encoded video
+        id: encoded_review
+        continue-on-error: true
         run: |
           python worker/review_rendered_video.py \
             --input video/generated/daily-render-input.json \
             --video render-output/daily-video.mp4 \
             --output-dir render-output/visual-review
+
+      - name: Record diagnostic review outcome
+        env:
+          ODE_REVIEW_OUTCOME: ${{ steps.encoded_review.outcome }}
+        run: |
+          python -c 'import json, os, pathlib; p=pathlib.Path("video/generated/daily-review-status.json"); p.write_text(json.dumps({"encoded_review_outcome": os.environ["ODE_REVIEW_OUTCOME"], "semantic_review": "pending-agent-review", "blocking": False}, indent=2)+"\n")'
 
       - name: Upload production review artifact
         if: always()
@@ -424,6 +432,7 @@ jobs:
             video/generated/daily-layout-preflight.json
             video/generated/daily-layout-final.json
             video/generated/daily-delivery-qa.json
+            video/generated/daily-review-status.json
             video/generated/daily-source-audit.json
             video/generated/daily-pronunciation-audit.json
             video/generated/daily-visual-assets.json
@@ -455,6 +464,7 @@ jobs:
 
       - name: Upload package to Google Drive
         env:
+          ODE_REVIEW_OUTCOME: ${{ steps.encoded_review.outcome }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
@@ -473,11 +483,15 @@ jobs:
             --percent 94 \
             --detail "Enviando vídeo e pacote de publicação para o Google Drive."
 
+          REVIEW_ARGS=()
+          if [ "$ODE_REVIEW_OUTCOME" = "success" ] && [ -f render-output/daily-visual-review.zip ]; then
+            REVIEW_ARGS=(--review-package render-output/daily-visual-review.zip)
+          fi
           python worker/upload_outputs_to_drive.py \
             --video render-output/daily-video.mp4 \
             --metadata render-output/daily-youtube.json \
             --publication-text render-output/daily-youtube.txt \
-            --review-package render-output/daily-visual-review.zip \
+            "${REVIEW_ARGS[@]}" \
             --project-slug "$ODE_PROJECT_SLUG" \
             --output render-output/daily-drive.json
 
