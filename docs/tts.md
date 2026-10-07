@@ -73,3 +73,11 @@ O autor escolhe esses campos pelo sentido do vídeo; não há inferência autom�
 Fluxo: roteiro → auditoria de pronúncia → Gemini 3.8 Live → verificação de fidelidade → passthrough byte-idêntico → alinhamento local das âncoras → timeline → render.
 
 `worker/align_narration.py` continua usando o áudio real para melhorar o sincronismo visual. A transcrição do Live valida o conteúdo falado; o alinhamento local continua responsável por localizar as palavras no tempo. O gate lexical não aprova presença ou prosódia e não exige ritmo neutro: revise o MP4 final para intenção, naturalidade, ritmo, dicção e sincronização visual. Uma comparação curta de direções pode ajudar quando houver uma dúvida concreta, sem ser uma etapa obrigatória de cada produção.
+
+## Constância entre cenas · 07/10/2026
+
+A política 2026-10-07.1 orienta todas as sessões como a mesma conversa, com registro médio, timbre e energia estáveis. Cues mudam articulação e intenção, sem pedir troca de registro ou volume.
+
+O alinhador mede active_rms_dbfs em janelas de 20 ms acima de −45 dBFS; RMS do arquivo inteiro permanece como diagnóstico separado. A faixa contínua planeja um alvo comum de −18 dBFS de fala ativa, reduzido para todos se necessário para respeitar pico 0,975. Não há clamp de ganho de 0,5–1,5 nem limitação independente que mude só uma cena. Se os picos impedirem alvo adequado, a montagem falha e exige revisão. WAVs brutos permanecem byte-idênticos; só o master aplica ganho e envelopes de 5 ms.
+
+O daily-voice-master-report.json registra ganhos, alvo, hash do master e estimativas de registro por autocorrelação. O QA mede novamente cada trecho do master. Pitch é diagnóstico incerto: entonação, voz crepitante e erros de oitava pedem escuta; nenhuma mudança artificial de pitch é aplicada. Essas medições não garantem naturalidade.

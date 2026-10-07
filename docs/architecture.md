@@ -1,83 +1,29 @@
-# Arquitetura revisada
+# Arquitetura de produção
 
-## Objetivo
+A IA autora lê o repositório, apura, escreve o VideoProject e acompanha a entrega. Pode ser qualquer agente com leitura/escrita de arquivos e acesso ao GitHub; nenhum SDK de Claude participa do motor. O botão do painel copia esse pedido.
 
-Criar uma redação semiautomatizada para o canal O Dinheiro Explica. A automação cuida do trabalho mecânico, enquanto pauta e aprovação continuam sob controle humano.
+## Caminho executado
 
-## Princípios editoriais
+Pedido → skills/ode-video → pesquisa e storyboard → video/data/daily.json → contratos editoriais, fontes, pronúncia e layout → Gemini 3.8 Live / Roberto–Charon → alinhamento ao áudio real → arte HyperFrames → Remotion → QA do MP4 → pacote de revisão → Google Drive. A publicação no YouTube é manual.
 
-1. Um assunto forte por vídeo.
-2. Duração definida pela história, não por meta artificial.
-3. Título e thumbnail chamativos, mas sustentados pelo conteúdo.
-4. Claims importantes precisam apontar para fontes.
-5. Conteúdo informativo, sem recomendação individual de compra ou venda.
-6. Bloqueadores editoriais impedem renderização futura, mas podem ser importados para correção.
-7. Estrutura e visuais devem variar para não produzir conteúdo repetitivo em escala.
+O JSON é a interface estável entre autoria e execução. Texto, claims, provas, operações, câmera e legendas pertencem ao Stage. HyperFrames renderiza HTML/GSAP local em um objeto do Stage, com envelope explícito. Recebe os frames dos beats depois do alinhamento, produz um clipe mudo por objeto e não cria voz, fatos ou legendas. O compilador valida fps, dimensões, duração e número de frames.
 
-## Fluxo do MVP
+## Onde está cada responsabilidade
 
-ChatGPT
-→ VideoProject v1.0
-→ validação Zod
-→ RPC transacional do Supabase
-→ projeto + fontes + claims + cenas
-→ revisão no painel
+- AGENTS.md: autorização, pauta, qualidade e condução até a entrega.
+- skills/ e frame.md: procedimentos por função e identidade do canal.
+- src/lib/: contratos compartilhados, normalização e geometria.
+- video/hyperframes/: arte HTML autoral determinística, sem rede.
+- scripts/ode.ts: contexto, prompt, preflight, disparo, acompanhamento e retomada.
+- worker/: preparação, voz, alinhamento, QA, embalagem e entrega.
+- .github/workflows/render-daily.yml: execução real com secrets do GitHub.
 
-A renderização ainda não faz parte desta primeira entrega.
+As dependências HyperFrames e GSAP estão fixadas no lockfile. Clipes reutilizam cache por fonte HTML, GSAP, versão do motor, dimensão, duração e tempos; mudanças visuais não alteram o cache de voz. A política de voz continua em worker/voice-policy.json, sem troca automática de modelo.
 
-## Por que o import é uma RPC
+## Revisão e limites
 
-O pacote contém várias entidades. Fazer inserts separados pelo navegador permitiria estados parciais em caso de falha.
+O motor extrai quadros do MP4 antes/durante/depois dos beats e mede mudança de pixels em regiões. Isso ajuda a localizar vazios e transições; não aprova compreensão, fatos, fala ou retenção. O agente faz essa revisão, registra limitações e corrige cenas preservando o áudio compatível. Os relatórios e seus hashes acompanham a entrega.
 
-A função `import_video_project` executa a importação em uma transação do Postgres. Se qualquer fonte, claim ou cena falhar, o projeto inteiro volta ao estado anterior.
+O painel também mantém importação transacional e autenticação via Supabase; isso é independente do render em Actions. Chaves privilegiadas permanecem no servidor. Não é necessário consultar ou migrar o banco para gerar um vídeo por Git.
 
-## Segurança
-
-Todas as tabelas públicas usam RLS.
-
-Cada registro carrega `owner_id` e as tabelas filhas usam uma foreign key composta `(project_id, owner_id)`. Isso impede que um usuário associe dados próprios a um projeto pertencente a outro usuário.
-
-A chave `service_role` nunca entra no frontend.
-
-## Fases
-
-### Fase 1, em andamento
-
-- Auth
-- painel
-- schema VideoProject
-- importação atômica
-- listagem de projetos
-
-### Fase 2
-
-- página de revisão do projeto
-- edição de roteiro por cena
-- claims e fontes lado a lado
-- guardas de transição de status
-
-### Fase 3
-
-- Kokoro TTS
-- cache de áudio por cena
-- duração calculada pelo áudio
-
-### Fase 4
-
-- Remotion
-- biblioteca de componentes visuais
-- render parcial por cena
-- render final
-
-### Fase 5
-
-- GitHub Actions
-- Google Drive
-- thumbnails A/B/C
-
-### Fase 6
-
-- YouTube
-- analytics
-- retenção ligada às cenas
-- aprendizado editorial
+Leia docs/production-portable.md para executar o fluxo.

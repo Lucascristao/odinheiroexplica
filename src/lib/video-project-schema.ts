@@ -417,6 +417,9 @@ const canonicalVideoProjectSchema = z
           ctx.addIssue({code: "custom", path: ["script", "scenes", index, "visual"], message});
         }
         for (const element of scene.visual.stage.elements) {
+          if(element.hyperframes)for(const state of element.hyperframes.states) {
+            if(!beats.some(beat=>beat.anchor===state.anchor))ctx.addIssue({code:"custom",path:["script","scenes",index,"visual","stage"],message:`Estado HyperFrames sem beat literal: ${state.anchor}`});
+          }
           if(element.chart&&!sourceIds.has(element.chart.source_id))ctx.addIssue({code:"custom",path:["script","scenes",index,"visual","stage"],message:"Gráfico referencia fonte inexistente."});
           if(element.kind==="source_excerpt"&&!project.visual_assets.some(a=>a.id===element.asset_id&&a.type==="source_excerpt"))ctx.addIssue({code:"custom",path:["script","scenes",index,"visual","stage"],message:"Recorte precisa de asset documental."});
           if (element.asset_id && !visualAssetIds.has(element.asset_id)) {

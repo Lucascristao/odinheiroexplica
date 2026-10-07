@@ -44,6 +44,7 @@ def audio_activity(path):
             "duration_seconds": round(duration, 6), "lead_seconds": round(lead, 6),
             "tail_seconds": round(duration-last, 6), "active_seconds": round(len(active) * .02, 6),
             "has_activity": bool(len(active)), "rms_dbfs": round(float(20 * np.log10(max(1e-12, np.sqrt(np.mean(samples**2))))), 3),
+            "active_rms_dbfs": round(float(20*np.log10(max(1e-12,np.sqrt(np.mean(rms[active]**2))))),3) if len(active) else None,
             "sample_peak_dbfs": round(float(20 * np.log10(max(1e-12, np.max(np.abs(samples))))), 3),
             "caveat": "activity estimates, not exact phonetic boundaries or a listening assessment"}
 

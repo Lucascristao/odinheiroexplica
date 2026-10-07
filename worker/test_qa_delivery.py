@@ -76,6 +76,27 @@ class DeliveryGateTests(unittest.TestCase):
         self.assertFalse(result["subjective_listening_performed"])
         self.assertEqual(result["video"]["true_peak_dbtp"], -1.23)
 
+    def test_master_is_measured_from_actual_samples_and_hash_checked(self):
+        from align_narration import audio_activity
+        from voice_master import level_plan
+        plan=level_plan([audio_activity(self.audio)])
+        with wave.open(str(self.audio),"rb") as wav:
+            raw=np.frombuffer(wav.readframes(wav.getnframes()),dtype="<i2").astype(float)
+        master=self.audio_dir/"daily-continuous-narration.wav"
+        pcm=np.concatenate([raw*plan["scenes"][0]["gain"],np.zeros(24000*19//10)]).astype("<i2")
+        with wave.open(str(master),"wb") as wav:
+            wav.setparams((1,2,24000,0,"NONE","not compressed"))
+            wav.writeframes(pcm.tobytes())
+        self.render["narration_master_audio"]="processed-audio/daily/"+master.name
+        self.render["voice_master"]={"levels":plan,"master_sha256":hashlib.sha256(master.read_bytes()).hexdigest(),"pitch":[],"warnings":[]}
+        result=self.analyze()
+        self.assertTrue(result["voice_master"]["sha256_verified"])
+        self.assertAlmostEqual(result["voice_master"]["actual_levels"][0]["actual_master_active_rms_dbfs"],plan["target_dbfs"],delta=.1)
+        master.write_bytes(master.read_bytes()+b"changed")
+        result=self.analyze()
+        self.assertEqual(result["status"],"fail")
+        self.assertTrue(any("hash divergente" in failure["message"] for failure in result["failures"]))
+
     def test_changed_waveform_cannot_pass_even_with_same_narration(self):
         with self.audio.open("ab") as file:
             file.write(b"modified")

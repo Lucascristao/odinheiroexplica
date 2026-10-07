@@ -66,6 +66,8 @@ jobs:
           npm run test:direction
           npm run test:motion
           npm run test:preflight
+          npm run test:portable
+          npm run prepare:hyperframes -- --preflight
 
       - name: Validate Python pipeline
         run: python -m py_compile worker/editorial_project.py worker/qa_delivery.py worker/render_request.py worker/tts_config.py worker/gemini_live_fidelity.py worker/synthesize_scenes.py worker/process_voice_continuity.py worker/restore_reviewed_audio.py worker/build_render_input.py worker/build_youtube_package.py worker/editorial_source_audit.py worker/prepare_visual_assets.py worker/auto_capture_sources.py
@@ -96,7 +98,12 @@ jobs:
             sudo apt-get update -o Acquire::Retries=2 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30
             sudo apt-get install -y --no-install-recommends ffmpeg
           fi
-          python -m pip install --disable-pip-version-check "numpy>=1.26" "num2words>=0.5.13,<1" "google-genai==2.26.0"
+          python -m pip install --disable-pip-version-check "numpy>=1.26" "Pillow>=10.4" "num2words>=0.5.13,<1" "google-genai==2.26.0"
+
+      - name: Test review of encoded pixels (offline)
+        run: |
+          python worker/test_review_rendered_video.py
+          python worker/test_voice_master.py
 
       - name: Test Gemini Live cache, fidelity and timing (offline)
         run: python worker/test_synthesize_scenes.py

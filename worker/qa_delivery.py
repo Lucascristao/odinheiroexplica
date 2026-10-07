@@ -9,6 +9,7 @@ import subprocess
 import wave
 
 from align_narration import audio_activity
+from voice_master import active_rms
 from editorial_project import normalize_project
 from gemini_live_fidelity import canonical_tokens, evaluate_transcription
 from tts_config import (DEFAULT_PRESENTER, MINIMUM_TRANSCRIPTION_SIMILARITY, PRESENTER_VOICES,
@@ -154,6 +155,29 @@ def analyze_delivery(project, render_input, manifest, video, audio_dir):
                 issue("failures", "scene-integrity", str(exc), scene_id)
         if abs(previous_end-expected_duration) > .001:
             issue("failures", "render-total-duration", "Duração total não corresponde ao fim da última cena.")
+        master=render_input.get("voice_master")
+        if master:
+            import numpy as np
+            path=audio_dir/Path(render_input.get("narration_master_audio") or "missing").name
+            if not path.is_file() or sha(path)!=master.get("master_sha256"):
+                raise ValueError("Trilha contínua ausente ou hash divergente.")
+            with wave.open(str(path),"rb") as wav:
+                rate=wav.getframerate()
+                if (rate,wav.getnchannels(),wav.getsampwidth())!=(24000,1,2):
+                    raise ValueError("Trilha contínua deve ser PCM16 mono 24kHz.")
+                samples=np.frombuffer(wav.readframes(wav.getnframes()),dtype="<i2").astype(float)/32768
+            measured_levels=[]
+            target=master["levels"]["target_dbfs"]
+            for rendered,audio in zip(render_scenes,audio_scenes):
+                start=round(rendered["start_frame"]/fps*rate)
+                end=start+round(float(audio["duration_seconds"])*rate)
+                level=active_rms(samples[start:end],rate)
+                measured_levels.append({"id":rendered["id"],"actual_master_active_rms_dbfs":round(level,3) if level is not None else None})
+                if level is None or abs(level-target)>1.5:
+                    issue("warnings","master-level-variation","Energia real da fala na trilha contínua exige revisão.",rendered["id"],actual_dbfs=level,target_dbfs=target)
+            report["voice_master"]={"sha256_verified":True,"target_dbfs":target,"actual_levels":measured_levels,"pitch_diagnostics":master.get("pitch"),"pitch_correction_applied":False}
+            for warning in master.get("warnings",[]):
+                issue("warnings","estimated-register-variation","Estimativa de registro variou; conferir por escuta antes de decidir nova síntese.",**warning)
         for current, following in zip(report["scenes"], report["scenes"][1:]):
             gap = following["start_seconds"] + following["activity"]["lead_seconds"] - (current["start_seconds"] + current["audio_seconds"] - current["activity"]["tail_seconds"])
             delta_wpm = following["words_per_minute"]-current["words_per_minute"]

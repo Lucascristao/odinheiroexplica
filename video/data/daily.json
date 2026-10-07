@@ -1,983 +1,815 @@
 {
   "version": "1.0",
-  "project_id": "supermercado-aumento-que-voce-nao-ve-2026-10-06",
-  "title": "Supermercado: o aumento de preço que você não vê",
+  "project_id": "consorcio-pagar-nao-garante-carro-2026-10-07",
+  "title": "Consórcio: por que pagar não garante levar o carro?",
   "presenter": {
     "gender": "male",
     "name": "Roberto"
   },
   "speech": {
-    "pronunciations": {
-      "Horus": "hórus",
-      "Procon": "procon"
-    },
+    "pronunciations": {},
     "ignore_pronunciation_terms": []
   },
   "story": {
-    "subject": "Reduflação no supermercado: menos quantidade, custo maior por quilo e informação na embalagem",
-    "angle": "A mesma etiqueta pode comprar menos; a unidade de medida revela o aumento escondido.",
-    "promise": "Demonstrar o custo por quantidade, distinguir exemplos de dados históricos e explicar o aviso ao consumidor.",
-    "why_now": "Reportagem local de 28/09/2026 retoma a percepção cotidiana da reduflação; o episódio usa dados históricos identificados para explicar o mecanismo.",
+    "subject": "Consórcio de carro: pagamento, contemplação, custos e lance embutido",
+    "angle": "Pagar a parcela não determina quando o carro chega; a conta e o contrato revelam as condições.",
+    "promise": "Explicar o fundo comum, sorteio e lance, demonstrar custos e crédito disponível e responder à pergunta inicial.",
+    "why_now": "Reportagem de 15/09/2026 recoloca consórcio e financiamento na comparação; o episódio explica condições atuais sem prever juros ou contemplação.",
     "category": "money"
   },
   "sources": [
     {
       "id": "S1",
-      "title": "Portaria nº 392, de 29 de setembro de 2021",
-      "url": "https://bibliotecadigital.mj.gov.br/bitstream/1/5525/2/PRT_GM_2021_392.html",
-      "publisher": "Ministério da Justiça e Segurança Pública",
+      "title": "Lei nº 11.795, de 8 de outubro de 2008",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11795.htm",
+      "publisher": "Presidência da República — Planalto",
       "source_type": "primary",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "published_at": "2021-09-30",
-      "notes": "Artigos 2, 3 e 4: informação da redução, painel principal e prazo mínimo de seis meses. Exceção art. 3 §2 preservada. Repositório consultado em 06/10/2026 não registra revogação expressa; não converter norma em resultado fiscalizatório."
+      "published_at": "2008-10-09",
+      "notes": "Arts. 2, 5 §3, 14, 22–27. Texto consultado em 07/10/2026; regras não são promessa de data individual."
     },
     {
       "id": "S2",
-      "title": "Mesmo preço, menor quantidade: entenda o que é a reduflação e como denunciar",
-      "url": "https://www.procon.sc.gov.br/mesmo-preco-menor-quantidade-entenda-o-que-e-a-reduflacao-e-como-denunciar/",
-      "publisher": "Procon Santa Catarina",
+      "title": "Resolução BCB nº 285, de 19 de janeiro de 2023 — texto consolidado",
+      "url": "https://www.bcb.gov.br/estabilidadefinanceira/exibenormativo?numero=285&tipo=resolu%C3%A7%C3%A3o+bcb",
+      "publisher": "Banco Central do Brasil",
       "source_type": "primary",
       "publisher_class": "official",
-      "editorial_role": "technical_analysis",
-      "published_at": "2025-03-06",
-      "notes": "Conceito e orientação de comparar kg/litro/unidade, legibilidade e denúncia. Não usamos a estimativa de perda de poder de compra sem metodologia integral."
+      "editorial_role": "primary_document",
+      "published_at": "2023-01-20",
+      "notes": "Arts. 12 e 13, incluindo alteração 362/2023. Lance vencedor amortiza prestações; embutido reduz crédito para compra."
     },
     {
       "id": "S3",
-      "title": "Reduflação: produtos diminuem de tamanho, mas preços se mantêm e pesam para consumidores em Belém",
-      "url": "https://www.oliberal.com/economia/reduflac-o-produtos-diminuem-de-tamanho-mas-precos-se-mantem-e-pesam-para-consumidores-em-belem-1.1172097",
-      "publisher": "O Liberal",
-      "source_type": "secondary",
-      "publisher_class": "independent_journalism",
-      "editorial_role": "independent_reporting",
-      "published_at": "2026-09-28",
-      "notes": "Relato local recente e dados históricos Horus; não generalizar percepção dos entrevistados nem confundir data da reportagem com período do levantamento."
+      "title": "Consórcio — perguntas frequentes",
+      "url": "https://www.bcb.gov.br/meubc/faqs/s/consorcio",
+      "publisher": "Banco Central do Brasil",
+      "source_type": "primary",
+      "publisher_class": "official",
+      "editorial_role": "technical_analysis",
+      "published_at": "2023-03-03",
+      "notes": "Itens 10–12 e 18: composição da prestação, disponibilidade de recursos e antecipação sem garantia de contemplação imediata. Consulta em 07/10/2026."
     },
     {
       "id": "S4",
-      "title": "Os vilões que fazem os produtos diminuírem de tamanho e ficarem mais caros",
-      "url": "https://www.moneytimes.com.br/os-viloes-que-fazem-os-produtos-diminuirem-de-tamanho-e-ficarem-mais-caros/",
-      "publisher": "Money Times",
+      "title": "Consórcio em tempos de juros altos: quando ele vale mais a pena do que financiamento?",
+      "url": "https://www.infomoney.com.br/consumo/consorcio-juros-altos/",
+      "publisher": "InfoMoney",
       "source_type": "secondary",
       "publisher_class": "independent_journalism",
-      "editorial_role": "data_context",
-      "published_at": "2023-10-13",
-      "notes": "Horus citado em reportagem: janeiro-agosto de 2023 contra mesmo período de 2022; chocolate médio 167,6/143,7g e R$15,85/R$16,78. Cruzado com O Liberal. O levantamento primário integral não foi obtido; atribuir às reportagens e preservar média e período."
+      "editorial_role": "independent_reporting",
+      "published_at": "2026-09-15",
+      "notes": "Carla Carvalho. Contexto de planejamento, urgência e liquidez; não adotamos dados de crescimento reportados sem primário integral nem tratamos entrevistas como consenso."
     },
     {
       "id": "S5",
-      "title": "Bloomberg faz paralelo de Lula e Biden e aponta reduflação como empecilho para reeleição do petista",
-      "url": "https://www.gazetadopovo.com.br/mundo/bloomberg-faz-paralelo-de-lula-e-biden-e-aponta-reduflacao-como-empecilho-para-reeleicao-do-petista/",
+      "title": "Alta de juros favorece consórcio",
+      "url": "https://www.abac.org.br/servicos/clipping/agosto2013/02_08_13/gazeta_do_povo.pdf",
       "publisher": "Gazeta do Povo",
       "source_type": "context",
       "publisher_class": "independent_journalism",
-      "editorial_role": "independent_reporting",
-      "published_at": "2026-04-14",
-      "notes": "Consulta de linha editorial à direita: percepção cotidiana do custo de vida pode contrastar com indicadores e mensagens oficiais. Interpretação eleitoral é argumento da cobertura, não dado causal ou prova de preços e não entra como fato no roteiro."
-    },
-    {
-      "id": "S6",
-      "title": "Produto diminui, mas preço sobe: veja os itens de supermercado que mais sofreram reduflação este ano",
-      "url": "https://www.cnnbrasil.com.br/economia/seu-bolso/meu-dinheiro/produto-diminui-mas-preco-sobe-veja-os-itens-de-supermercado-que-mais-sofreram-reduflacao-este-ano/",
-      "publisher": "CNN Brasil",
-      "source_type": "secondary",
-      "publisher_class": "independent_journalism",
-      "editorial_role": "technical_analysis",
-      "notes": "Explicação atribuída a especialista sobre custos, inclusive transporte, e redução não proibida quando informada. Não reproduzir percentuais derivados inconsistentes nem atribuir motivo a todas as marcas."
-    },
-    {
-      "id": "S7",
-      "title": "Family Doing Shopping in the Grocery Store",
-      "url": "https://www.pexels.com/photo/family-doing-shopping-in-the-grocery-store-3985056/",
-      "publisher": "Gustavo Fring / Pexels",
-      "source_type": "context",
-      "publisher_class": "other",
-      "editorial_role": "other",
-      "published_at": "2020-03-22",
-      "license": "Pexels License — https://www.pexels.com/license/",
-      "notes": "Imagem contextual de compra, país não especificado. Não representa fraude, redução de marca ou endosso dos fotografados."
+      "editorial_role": "data_context",
+      "published_at": "2013-07-22",
+      "notes": "Taiana Bubniak. Reportagem histórica em arquivo ABAC: urgência e consulta da administradora. Nenhum juro, preço, taxa ou previsão de renda de 2013 usado como dado atual."
     }
   ],
   "claims": [
     {
       "id": "C1",
-      "text": "Redução de quantidade com preço mantido eleva custo por unidade de medida; o mecanismo é chamado de reduflação.",
+      "text": "Consórcio é autofinanciamento coletivo; pagamento não garante contemplação imediata.",
       "source_ids": [
-        "S2",
+        "S1",
         "S3"
       ],
+      "confidence": "high",
+      "verification_status": "verified",
       "framing": "verified_fact",
       "attribution_required": false,
-      "confidence": "high",
-      "verification_status": "verified"
+      "metadata": {}
     },
     {
       "id": "C2",
-      "text": "A comparação correta entre produtos equivalentes usa a mesma unidade de medida; os valores de R$10/500g, R$10/400g e R$9/400g são hipóteses ilustrativas, com aritmética explícita.",
+      "text": "Fundo comum viabiliza créditos aos contemplados; uso de crédito obedece categoria e contrato.",
       "source_ids": [
-        "S2"
+        "S1",
+        "S3"
       ],
+      "confidence": "high",
+      "verification_status": "verified",
       "framing": "verified_fact",
       "attribution_required": false,
-      "confidence": "high",
-      "verification_status": "verified"
+      "metadata": {}
     },
     {
       "id": "C3",
-      "text": "Reportagens citam dados Horus de janeiro-agosto 2022/2023: chocolate com gramatura média 167,6/143,7g e preços médios R$15,85/R$16,78.",
-      "source_ids": [
-        "S4",
-        "S3"
-      ],
-      "framing": "reported_claim",
-      "attribution_required": true,
-      "confidence": "high",
-      "verification_status": "verified"
-    },
-    {
-      "id": "C4",
-      "text": "Uma reportagem relaciona a decisão de reduzir embalagens à pressão de custos, incluindo transporte; isso não prova a motivação de cada marca.",
-      "source_ids": [
-        "S6"
-      ],
-      "framing": "reported_claim",
-      "attribution_required": true,
-      "confidence": "high",
-      "verification_status": "verified"
-    },
-    {
-      "id": "C5",
-      "text": "Redução de quantidade informada não configura automaticamente fraude; o menor gasto inicial não demonstra menor custo por quilo.",
+      "text": "Contemplação ocorre por sorteio ou lance e depende de recursos; lance vencedor amortiza prestações.",
       "source_ids": [
         "S1",
         "S2",
-        "S6"
+        "S3"
       ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "verified_fact",
+      "attribution_required": false,
+      "metadata": {}
+    },
+    {
+      "id": "C4",
+      "text": "Administração tem remuneração contratual e podem existir outras obrigações; sem juros não significa sem custo.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "verified_fact",
+      "attribution_required": false,
+      "metadata": {}
+    },
+    {
+      "id": "C5",
+      "text": "No exemplo fictício com base fixa: 100.000 × 0,20 = 20.000; soma com base = 120.000, excluídos outros custos.",
+      "source_ids": [
+        "S1",
+        "S4"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
       "framing": "analysis",
       "attribution_required": false,
-      "confidence": "high",
-      "verification_status": "verified"
+      "metadata": {
+        "example_kind": "illustrative",
+        "provenance": "Aritmética própria; fontes sustentam existência de custos, não os valores fictícios."
+      }
     },
     {
       "id": "C6",
-      "text": "Segundo a Portaria 392/2021, o aviso deve ser legível e destacado no painel principal, com quantidade antiga/nova e diferença absoluta/percentual; há exceção para painel pequeno sem espaço. O aviso permanece no mínimo seis meses após alteração.",
-      "source_ids": [
-        "S1"
-      ],
-      "framing": "official_position",
-      "attribution_required": true,
-      "confidence": "high",
-      "verification_status": "verified"
-    },
-    {
-      "id": "C7",
-      "text": "Procon orienta comparar unidade de medida e denunciar informação ausente ou escondida; compra deve considerar consumo, orçamento e desperdício.",
+      "text": "Lance embutido vencedor é deduzido do crédito distribuído; 100.000 − 30.000 = 70.000 no exemplo permitido pelo contrato.",
       "source_ids": [
         "S2"
       ],
-      "framing": "official_position",
-      "attribution_required": true,
       "confidence": "high",
-      "verification_status": "verified"
+      "verification_status": "verified",
+      "framing": "verified_fact",
+      "attribution_required": false,
+      "metadata": {}
+    },
+    {
+      "id": "C7",
+      "text": "Referência e regras de atualização constam do contrato; utilizar crédito exige as garantias nele previstas.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "verified_fact",
+      "attribution_required": false,
+      "metadata": {}
+    },
+    {
+      "id": "C8",
+      "text": "Urgência, custo e disponibilidade de reserva alteram a adequação da modalidade; não existe comparação universal.",
+      "source_ids": [
+        "S4",
+        "S5"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "analysis",
+      "attribution_required": true,
+      "metadata": {}
     }
   ],
   "visual_assets": [
     {
-      "id": "shopping-photo",
-      "type": "photo",
-      "source_id": "S7",
-      "subject": "Família escolhendo produto em supermercado",
-      "narrative_role": "Contextualizar o gesto de comparar na prateleira, sem acusação contra pessoas ou marcas.",
-      "country_context": "global",
-      "source_page_url": "https://www.pexels.com/photo/family-doing-shopping-in-the-grocery-store-3985056/",
-      "image_url": "https://images.pexels.com/photos/3985056/pexels-photo-3985056.jpeg?cs=srgb&dl=pexels-gustavo-fring-3985056.jpg&fm=jpg",
-      "license": "Licença Pexels",
-      "attribution": "Foto: Gustavo Fring / Pexels",
-      "needs_cutout": false,
-      "license_url": "https://www.pexels.com/license/",
-      "license_notes": "Licença Pexels — uso e edição permitidos; sem insinuar endosso ou conduta negativa dos fotografados."
-    },
-    {
-      "id": "quantity-rule",
+      "id": "contemplacao-rule",
       "type": "source_excerpt",
       "source_id": "S1",
-      "subject": "Artigo 4º da Portaria 392/2021",
-      "narrative_role": "Prova documental real do prazo mínimo do aviso, com texto inteiro preservado.",
+      "subject": "Lei dos Consórcios, art. 22 §1",
+      "narrative_role": "Provar no documento real os dois caminhos, sem simular data individual.",
       "country_context": "BR",
-      "source_page_url": "https://bibliotecadigital.mj.gov.br/bitstream/1/5525/2/PRT_GM_2021_392.html",
-      "capture_file": "research/captures/supermercado/portaria-392-art4.png",
-      "expected_text": "pelo prazo mínimo de seis meses, a contar da data de sua alteração.",
+      "source_page_url": "https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2008/lei/l11795.htm",
+      "capture_file": "research/captures/consorcio/lei-art22.png",
+      "expected_text": "A contemplação ocorre por meio de sorteio ou de lance",
       "license": "Texto normativo de acesso público",
-      "attribution": "Ministério da Justiça — Portaria 392/2021, art. 4º",
+      "attribution": "Planalto — Lei 11.795/2008, art. 22 §1",
       "needs_cutout": false,
-      "license_notes": "Texto normativo oficial de acesso público; reprodução documental do artigo com fonte e contexto preservados.",
-      "annotation_review": "Grifo de seis meses verificado na captura real do art. 4º de 1136 × 110 px da produção 37539442605; sem reconstrução ou corte de texto."
+      "license_notes": "Reprodução documental contextual, sem reconstrução de texto."
     }
   ],
   "visual_direction": {
-    "concept": "A quantidade desaparece antes de a etiqueta denunciar o custo",
-    "world": "market",
+    "concept": "Carro condicionado à contemplação; dinheiro do grupo, prova documental e crédito dividido demonstram a pergunta.",
+    "world": "industrial",
     "secondary_color": "#FFBD19",
     "motifs": [
-      "embalagem esquemática",
-      "unidade de medida",
-      "prateleira",
-      "documento autêntico"
+      "carro e cancela",
+      "fundo coletivo",
+      "chave condicional",
+      "contrato real"
     ],
     "motion_language": [
-      "conteúdo proporcional que diminui",
-      "equação atualizada na fala",
-      "barras reveladas com escala fixa",
-      "aproximação curta e abertura"
+      "estados HTML alinhados",
+      "contas com operandos completos",
+      "pan entre condições",
+      "grifos e tipografia cinética"
     ],
     "avoid": [
-      "dois cards com seta",
-      "marca acusada sem prova",
-      "dados históricos apresentados como atuais",
-      "números inventados como estatística"
+      "composição do supermercado",
+      "fila com ordem inventada",
+      "sorteio aleatório",
+      "percentual universal",
+      "movimento sem relação explicativa"
     ]
+  },
+  "publication": {
+    "description": "Consórcio: pagar as parcelas não define quando você recebe o carro. Veja como a contemplação funciona e o que muda na conta quando aparece um lance embutido.\n\n- Por que pagar e ser contemplado são etapas diferentes\n- O custo que a expressão sem juros não explica sozinha\n- Quanto sobra do crédito depois de um lance embutido\n- O que conferir no prazo, no reajuste e no contrato",
+    "engagement_question": "O que mais pesa para você numa compra: a parcela ou a data para receber o carro?",
+    "hashtags": [
+      "#Consorcio",
+      "#EducacaoFinanceira",
+      "#SeuBolso"
+    ],
+    "seo": {
+      "primary_keyword": "Consórcio",
+      "secondary_keywords": [
+        "consórcio de carro",
+        "contemplação",
+        "lance embutido",
+        "taxa de administração"
+      ],
+      "search_intent": "Entender quando o carro pode ser recebido e quanto do crédito fica disponível.",
+      "description_strategy": "Gancho concreto e quatro bullets; seções técnicas acrescentadas uma única vez pelo pipeline."
+    },
+    "tags": [
+      "consórcio",
+      "consórcio de carro",
+      "lance embutido",
+      "contemplação",
+      "taxa de administração",
+      "educação financeira"
+    ]
+  },
+  "packaging": {
+    "titles": [
+      {
+        "id": "approved",
+        "text": "Consórcio: por que pagar não garante levar o carro?",
+        "rationale": "Assunto no início e uma expectativa cotidiana contrariada por condições demonstráveis."
+      }
+    ],
+    "thumbnails": [
+      {
+        "id": "approved",
+        "headline": "PAGOU. E AGORA?",
+        "concept": "Recibo pago em primeiro plano e carro grande atrás de uma cancela; mão busca uma chave ausente, sem marca.",
+        "visual_prompt": "Capa final completa 16:9. Carro genérico realista atrás de uma cancela gráfica escura com luz amarela #FFBD19; recibo ilustrativo sem dados reais em primeiro plano e mão vazia pedindo a chave. Texto grande PAGOU. E AGORA? em branco e amarelo. Fundo grafite, contraste forte, sem logo, sem marca, sem percentuais, sem alegar golpe ou perda certa."
+      }
+    ],
+    "strategy": {
+      "click_reason": "A compra parece avançar quando a parcela é paga, mas ainda falta a condição para receber o carro.",
+      "visual_focus": "Recibo e carro separados pela cancela, com a chave como descoberta.",
+      "curiosity_gap": "Qual condição existe entre pagar e receber?",
+      "mobile_readability": "Três palavras grandes e um carro dominante, sem subtítulo.",
+      "anti_clickbait_check": "Explica caminhos de contemplação e custos; não acusa o sistema de fraude nem promete perdas.",
+      "repetition_check": "Consórcio é inédito no histórico; capa substitui a fórmula CADÊ do episódio anterior e palco não reutiliza embalagem/gráfico.",
+      "youtube_safety_check": "Conteúdo educativo com exemplos sinalizados e fontes; sem ataque a pessoas ou marcas."
+    }
   },
   "editorial": {
     "strengths": [
-      "Conflito reconhecível e conta verificável",
-      "Regra e limitações claras",
-      "Cena responde a cada afirmação"
+      "Pergunta cotidiana e demonstração do mecanismo",
+      "Contas hipotéticas completas e condicionadas",
+      "Norma real, reportagem recente e contraponto histórico identificados"
     ],
     "risk_flags": [
-      "Dados Horus são de reportagens e período histórico",
-      "Contas hipotéticas identificadas",
-      "Foto contextual sem local brasileiro presumido"
+      "20% é taxa total fictícia",
+      "Lance não garante vitória",
+      "Reajuste depende do contrato",
+      "Figuras do grupo são ilustrativas"
     ],
+    "production_mode": "normal",
+    "checks_not_run": [],
     "source_balance": {
       "requires_diversity": true,
       "public_policy_or_regulation": true,
-      "official_sources_role": "Texto legal da obrigação e orientação do Procon; não substituem apuração do mercado.",
-      "independent_sources_role": "Reportagem local recente, médias históricas cruzadas, custos atribuídos e perspectiva crítica de percepção de preços.",
-      "counterpoint_summary": "Redução informada não é fraude automática; pacote menor pode caber no orçamento, mas não é necessariamente barato por quantidade. Motivo de cada marca não está comprovado; médias antigas não medem o mercado atual.",
+      "official_sources_role": "Normas sustentam regras de contemplação e composição; não comprovam vantagem econômica individual.",
+      "independent_sources_role": "Reportagem recente sobre adequação ao prazo; contraponto histórico apenas como contexto, sem números de 2013.",
+      "counterpoint_summary": "Consórcio pode servir a planejamento com espera, mas custos e urgência impedem declarar vantagem universal. Lance não é dinheiro grátis e pode reduzir crédito disponível.",
       "official_claims_attributed": true,
       "right_editorial_review": {
         "consulted": [
           {
             "publisher": "Gazeta do Povo",
-            "url": "https://www.gazetadopovo.com.br/mundo/bloomberg-faz-paralelo-de-lula-e-biden-e-aponta-reduflacao-como-empecilho-para-reeleicao-do-petista/",
-            "summary": "Consulta de linha editorial à direita: percepção cotidiana do custo de vida pode contrastar com indicadores e mensagens oficiais. Interpretação eleitoral é argumento da cobertura, não dado causal ou prova de preços e não entra como fato no roteiro."
+            "url": "https://www.abac.org.br/servicos/clipping/agosto2013/02_08_13/gazeta_do_povo.pdf",
+            "summary": "Reportagem de 22/07/2013 consultada integralmente. Acrescentou urgência e consulta da administradora; juros, preços e taxas antigos foram descartados. Arquivo ABAC preserva autoria jornalística; nenhuma afirmação histórica vira notícia atual."
           }
         ]
       }
     },
     "narrative_contract": {
-      "topic_explanation": "Quando a embalagem traz menos produto e mantém o preço, cada grama fica mais cara.",
-      "presenter_introduction": "Eu sou Roberto, e vou mostrar o aumento que pode passar despercebido na prateleira.",
-      "subscription_request": "Se essa comparação ajudou, inscreva-se no canal para entender melhor o que pesa no seu bolso."
+      "topic_explanation": "Consórcio é um grupo que reúne contribuições para financiar as compras dos participantes.",
+      "presenter_introduction": "Eu sou Roberto, e vou mostrar o que existe entre a parcela paga e a chave na sua mão.",
+      "subscription_request": "Se essa conta esclareceu a promessa, inscreva-se no canal para entender melhor o seu dinheiro."
     },
     "explanation": {
       "version": "1.0",
       "concepts": [
         {
-          "id": "reduflacao",
+          "id": "consorcio",
           "terms": [
-            "reduflação"
+            "consórcio"
           ],
           "explanation": {
             "scene_id": "scene-01",
-            "quote": "Quando a embalagem traz menos produto e mantém o preço, cada grama fica mais cara."
-          },
-          "first_use": {
-            "scene_id": "scene-01",
-            "quote": "Essa redução de quantidade é chamada de reduflação."
+            "quote": "Consórcio é um grupo que reúne contribuições para financiar as compras dos participantes."
           },
           "claim_ids": [
             "C1"
           ],
-          "boundary": "Redução informada não equivale automaticamente a fraude."
+          "boundary": "Participação não garante data imediata."
         },
         {
-          "id": "preco-unidade",
+          "id": "fundo",
           "terms": [
-            "preço por quilo",
-            "preço por unidade"
+            "fundo comum"
           ],
           "explanation": {
             "scene_id": "scene-02",
-            "quote": "Esse é o preço para comparar a mesma quantidade, mesmo entre pacotes de tamanhos diferentes."
+            "quote": "Uma parte das parcelas vai para o fundo comum: o dinheiro coletivo usado nas compras."
           },
           "claim_ids": [
             "C2"
           ],
-          "boundary": "Comparar produtos equivalentes; avaliar consumo, orçamento e desperdício."
+          "boundary": "Grupo esquemático sem quantidade real de cotas."
         },
         {
-          "id": "bases-percentuais",
+          "id": "contemplacao",
           "terms": [
-            "base do percentual"
+            "contemplação"
+          ],
+          "explanation": {
+            "scene_id": "scene-02",
+            "quote": "A contemplação é a atribuição do crédito a um participante para a compra do bem."
+          },
+          "claim_ids": [
+            "C2",
+            "C3"
+          ],
+          "boundary": "Atribuição não elimina requisitos de utilização."
+        },
+        {
+          "id": "credito",
+          "terms": [
+            "carta de crédito"
+          ],
+          "explanation": {
+            "scene_id": "scene-02",
+            "quote": "A carta de crédito representa o valor disponível para essa compra, dentro das regras do contrato."
+          },
+          "claim_ids": [
+            "C2"
+          ]
+        },
+        {
+          "id": "lance",
+          "terms": [
+            "lance"
           ],
           "explanation": {
             "scene_id": "scene-03",
-            "quote": "São cinco reais a mais sobre uma base de vinte. O aumento é de vinte e cinco por cento."
+            "quote": "Outra via é o lance: uma oferta de antecipação de pagamentos para disputar a contemplação."
           },
           "claim_ids": [
-            "C2"
+            "C3"
           ],
-          "boundary": "25% é a conta hipotética; não é estatística de inflação."
+          "boundary": "Oferta não garante vitória."
+        },
+        {
+          "id": "amortizacao",
+          "terms": [
+            "amortizar"
+          ],
+          "explanation": {
+            "scene_id": "scene-03",
+            "quote": "Amortizar significa abater parte do que você ainda deve."
+          },
+          "claim_ids": [
+            "C3"
+          ]
+        },
+        {
+          "id": "administracao",
+          "terms": [
+            "taxa de administração"
+          ],
+          "explanation": {
+            "scene_id": "scene-04",
+            "quote": "A taxa de administração remunera o trabalho da administradora, como estabelece a lei."
+          },
+          "claim_ids": [
+            "C4"
+          ],
+          "boundary": "Percentual fictício total, não anual."
+        },
+        {
+          "id": "embutido",
+          "terms": [
+            "lance embutido"
+          ],
+          "explanation": {
+            "scene_id": "scene-06",
+            "quote": "O lance embutido usa parte do próprio crédito para antecipar pagamentos."
+          },
+          "claim_ids": [
+            "C6"
+          ],
+          "boundary": "Precisa ser permitido pelo contrato; diminui disponibilidade."
         }
       ],
       "examples": [
         {
-          "id": "before",
-          "purpose": "Explicar preço por quilo antes da redução",
+          "id": "fee",
+          "purpose": "Calcular remuneração total fictícia sem confundi-la com juro anual.",
           "kind": "illustrative",
           "claim_ids": [
-            "C2"
+            "C4",
+            "C5"
           ],
           "actors": [
-            "Comprador",
-            "Pacote sem marca"
+            "participante de um grupo hipotético"
           ],
           "assumptions": [
-            "Produtos equivalentes e mesmas condições de compra",
-            "Valores hipotéticos, sem preço real ou estatística de inflação"
+            "Valores fixos inventados para explicar; não representam oferta nem média de mercado.",
+            "Base de R$ 100 mil; demais custos e reajustes não incluídos."
           ],
           "inputs": [
             {
-              "id": "price",
-              "value": 10,
+              "id": "credit",
+              "value": 100000,
               "unit": "BRL",
               "source_ids": []
             },
             {
-              "id": "weight",
-              "value": 0.5,
-              "unit": "kg",
+              "id": "rate",
+              "value": 0.2,
+              "unit": "ratio",
               "source_ids": []
             }
           ],
           "calculation": {
-            "operation": "divide",
+            "operation": "multiply",
             "input_ids": [
-              "price",
-              "weight"
+              "credit",
+              "rate"
             ],
-            "result": 20,
-            "unit": "BRL/kg"
+            "result": 20000,
+            "unit": "BRL"
           },
-          "limitation": "Exemplo aritmético; não mede o mercado nem comprova conduta de fabricante.",
+          "limitation": "Hipótese aritmética, sem previsão de custos reais, reajustes ou data de contemplação.",
           "narration_refs": [
             {
-              "scene_id": "scene-02",
-              "quote": "Dez reais divididos por meio quilo dão vinte reais por quilo."
+              "scene_id": "scene-04",
+              "quote": "Vinte por cento de cem mil são vinte mil reais."
             }
           ],
           "visual_bindings": [
             {
-              "scene_id": "scene-02",
-              "element_id": "unit"
+              "scene_id": "scene-04",
+              "element_id": "fee"
             }
           ],
           "identification": {
-            "scene_id": "scene-02",
+            "scene_id": "scene-04",
             "quote": "Vamos usar um exemplo ilustrativo"
           },
           "visual_identification": {
-            "scene_id": "scene-02",
-            "element_id": "example"
+            "scene_id": "scene-04",
+            "element_id": "hypothesis"
           }
         },
         {
-          "id": "after",
-          "purpose": "Explicar preço por quilo com menos conteúdo",
+          "id": "sum",
+          "purpose": "Somar crédito-base e administração e delimitar os custos ausentes.",
           "kind": "illustrative",
           "claim_ids": [
-            "C2"
+            "C5"
           ],
           "actors": [
-            "Comprador",
-            "Pacote sem marca"
+            "participante de um grupo hipotético"
           ],
           "assumptions": [
-            "Produtos equivalentes e mesmas condições de compra",
-            "Valores hipotéticos, sem preço real ou estatística de inflação"
+            "Valores fixos inventados para explicar; não representam oferta nem média de mercado.",
+            "Base de R$ 100 mil; demais custos e reajustes não incluídos."
           ],
           "inputs": [
             {
-              "id": "price",
-              "value": 10,
+              "id": "credit",
+              "value": 100000,
               "unit": "BRL",
               "source_ids": []
             },
             {
-              "id": "weight",
-              "value": 0.4,
-              "unit": "kg",
+              "id": "fee",
+              "value": 20000,
+              "unit": "BRL",
               "source_ids": []
             }
           ],
           "calculation": {
-            "operation": "divide",
+            "operation": "add",
             "input_ids": [
-              "price",
-              "weight"
+              "credit",
+              "fee"
             ],
-            "result": 25,
-            "unit": "BRL/kg"
+            "result": 120000,
+            "unit": "BRL"
           },
-          "limitation": "Exemplo aritmético; não mede o mercado nem comprova conduta de fabricante.",
+          "limitation": "Hipótese aritmética, sem previsão de custos reais, reajustes ou data de contemplação.",
           "narration_refs": [
             {
-              "scene_id": "scene-02",
-              "quote": "Dez divididos por zero vírgula quatro dão vinte e cinco reais por quilo."
+              "scene_id": "scene-05",
+              "quote": "Somando cem mil com vinte mil, chegamos a cento e vinte mil reais."
             }
           ],
           "visual_bindings": [
             {
-              "scene_id": "scene-02",
-              "element_id": "unit"
+              "scene_id": "scene-05",
+              "element_id": "total"
             }
           ],
           "identification": {
-            "scene_id": "scene-02",
-            "quote": "Vamos usar um exemplo ilustrativo"
+            "scene_id": "scene-05",
+            "quote": "No nosso exemplo ilustrativo"
           },
           "visual_identification": {
-            "scene_id": "scene-02",
-            "element_id": "example"
+            "scene_id": "scene-05",
+            "element_id": "hypothesis"
           }
         },
         {
-          "id": "ratio",
-          "purpose": "Mostrar a base do aumento por quantidade",
+          "id": "embedded",
+          "purpose": "Deduzir o lance vencedor do crédito e mostrar o valor disponível.",
           "kind": "illustrative",
           "claim_ids": [
-            "C2"
+            "C6"
           ],
           "actors": [
-            "Comprador",
-            "Pacote sem marca"
+            "participante de um grupo hipotético"
           ],
           "assumptions": [
-            "Produtos equivalentes e mesmas condições de compra",
-            "Valores hipotéticos, sem preço real ou estatística de inflação"
+            "Valores fixos inventados para explicar; não representam oferta nem média de mercado.",
+            "Base de R$ 100 mil; demais custos e reajustes não incluídos.",
+            "Oferta embutida permitida pelo grupo e vencedora neste exemplo; não é garantia de resultado."
           ],
           "inputs": [
             {
-              "id": "difference",
-              "value": 5,
-              "unit": "BRL/kg",
+              "id": "credit",
+              "value": 100000,
+              "unit": "BRL",
               "source_ids": []
             },
             {
-              "id": "base",
-              "value": 20,
-              "unit": "BRL/kg",
+              "id": "bid",
+              "value": 30000,
+              "unit": "BRL",
               "source_ids": []
             }
           ],
           "calculation": {
-            "operation": "divide",
+            "operation": "subtract",
             "input_ids": [
-              "difference",
-              "base"
+              "credit",
+              "bid"
             ],
-            "result": 0.25,
-            "unit": "proporção"
+            "result": 70000,
+            "unit": "BRL"
           },
-          "limitation": "Exemplo aritmético; não mede o mercado nem comprova conduta de fabricante.",
+          "limitation": "Hipótese aritmética, sem previsão de custos reais, reajustes ou data de contemplação.",
           "narration_refs": [
             {
-              "scene_id": "scene-03",
-              "quote": "São cinco reais a mais sobre uma base de vinte. O aumento é de vinte e cinco por cento."
+              "scene_id": "scene-06",
+              "quote": "Cem mil menos trinta mil deixam setenta mil reais disponíveis para a compra."
             }
           ],
           "visual_bindings": [
             {
-              "scene_id": "scene-03",
-              "element_id": "increase"
+              "scene_id": "scene-06",
+              "element_id": "available"
             }
           ],
           "identification": {
-            "scene_id": "scene-03",
-            "quote": "Nesse mesmo exemplo ilustrativo"
+            "scene_id": "scene-06",
+            "quote": "Num exemplo ilustrativo"
           },
           "visual_identification": {
-            "scene_id": "scene-03",
-            "element_id": "example"
-          }
-        },
-        {
-          "id": "historical",
-          "purpose": "Ancorar o mecanismo em médias históricas atribuídas",
-          "kind": "observed",
-          "claim_ids": [
-            "C3"
-          ],
-          "actors": [
-            "Categoria chocolate no levantamento Horus"
-          ],
-          "assumptions": [
-            "Médias da categoria, janeiro-agosto de cada ano"
-          ],
-          "inputs": [
-            {
-              "id": "grams2022",
-              "value": 167.6,
-              "unit": "g",
-              "source_ids": [
-                "S4",
-                "S3"
-              ]
-            },
-            {
-              "id": "grams2023",
-              "value": 143.7,
-              "unit": "g",
-              "source_ids": [
-                "S4",
-                "S3"
-              ]
-            },
-            {
-              "id": "price2022",
-              "value": 15.85,
-              "unit": "BRL",
-              "source_ids": [
-                "S4",
-                "S3"
-              ]
-            },
-            {
-              "id": "price2023",
-              "value": 16.78,
-              "unit": "BRL",
-              "source_ids": [
-                "S4",
-                "S3"
-              ]
-            }
-          ],
-          "limitation": "Levantamento primário integral não obtido; números reportados e cruzados, não cotação atual nem marca específica.",
-          "narration_refs": [
-            {
-              "scene_id": "scene-04",
-              "quote": "São médias da categoria, não a história de uma única marca ou de todos os chocolates."
-            }
-          ],
-          "visual_bindings": [
-            {
-              "scene_id": "scene-04",
-              "element_id": "chart"
-            },
-            {
-              "scene_id": "scene-04",
-              "element_id": "price"
-            },
-            {
-              "scene_id": "scene-04",
-              "element_id": "period"
-            }
-          ]
-        },
-        {
-          "id": "comparison-small",
-          "purpose": "Distinguir etiqueta menor de custo menor por quilo",
-          "kind": "illustrative",
-          "claim_ids": [
-            "C2"
-          ],
-          "actors": [
-            "Comprador",
-            "Pacote sem marca"
-          ],
-          "assumptions": [
-            "Produtos equivalentes e mesmas condições de compra",
-            "Valores hipotéticos, sem preço real ou estatística de inflação"
-          ],
-          "inputs": [
-            {
-              "id": "price",
-              "value": 9,
-              "unit": "BRL",
-              "source_ids": []
-            },
-            {
-              "id": "weight",
-              "value": 0.4,
-              "unit": "kg",
-              "source_ids": []
-            }
-          ],
-          "calculation": {
-            "operation": "divide",
-            "input_ids": [
-              "price",
-              "weight"
-            ],
-            "result": 22.5,
-            "unit": "BRL/kg"
-          },
-          "limitation": "Exemplo aritmético; não mede o mercado nem comprova conduta de fabricante.",
-          "narration_refs": [
-            {
-              "scene_id": "scene-07",
-              "quote": "Dividindo nove por zero vírgula quatro, ele sai por vinte e dois reais e cinquenta por quilo."
-            }
-          ],
-          "visual_bindings": [
-            {
-              "scene_id": "scene-07",
-              "element_id": "unit"
-            }
-          ],
-          "identification": {
-            "scene_id": "scene-07",
-            "quote": "Vamos a outro exemplo ilustrativo"
-          },
-          "visual_identification": {
-            "scene_id": "scene-07",
-            "element_id": "example"
-          }
-        },
-        {
-          "id": "comparison-large",
-          "purpose": "Demonstrar comparação em unidade comum",
-          "kind": "illustrative",
-          "claim_ids": [
-            "C2"
-          ],
-          "actors": [
-            "Comprador",
-            "Pacote sem marca"
-          ],
-          "assumptions": [
-            "Produtos equivalentes e mesmas condições de compra",
-            "Valores hipotéticos, sem preço real ou estatística de inflação"
-          ],
-          "inputs": [
-            {
-              "id": "price",
-              "value": 10,
-              "unit": "BRL",
-              "source_ids": []
-            },
-            {
-              "id": "weight",
-              "value": 0.5,
-              "unit": "kg",
-              "source_ids": []
-            }
-          ],
-          "calculation": {
-            "operation": "divide",
-            "input_ids": [
-              "price",
-              "weight"
-            ],
-            "result": 20,
-            "unit": "BRL/kg"
-          },
-          "limitation": "Exemplo aritmético; não mede o mercado nem comprova conduta de fabricante.",
-          "narration_refs": [
-            {
-              "scene_id": "scene-07",
-              "quote": "Dez divididos por meio quilo dão vinte reais por quilo. Nesse exemplo, o segundo custa menos."
-            }
-          ],
-          "visual_bindings": [
-            {
-              "scene_id": "scene-07",
-              "element_id": "unit"
-            }
-          ],
-          "identification": {
-            "scene_id": "scene-07",
-            "quote": "Vamos a outro exemplo ilustrativo"
-          },
-          "visual_identification": {
-            "scene_id": "scene-07",
-            "element_id": "example"
+            "scene_id": "scene-06",
+            "element_id": "hypothesis"
           }
         }
       ],
       "learning_units": [
         {
           "id": "mechanism",
-          "question": "Como a mesma etiqueta pode esconder um custo maior?",
-          "answer": {
-            "scene_id": "scene-01",
-            "quote": "Quando a embalagem traz menos produto e mantém o preço, cada grama fica mais cara."
-          },
-          "concept_ids": [
-            "reduflacao"
-          ],
-          "claim_ids": [
-            "C1"
-          ],
-          "example_ids": [],
-          "visual_purpose": "A embalagem persiste e o conteúdo diminui; o objeto demonstra a relação.",
-          "bindings": [
-            {
-              "scene_id": "scene-01",
-              "element_id": "bag"
-            }
-          ]
-        },
-        {
-          "id": "calculation",
-          "question": "Como encontrar o custo da mesma quantidade?",
+          "question": "Por que pagar não determina a data da compra?",
           "answer": {
             "scene_id": "scene-02",
-            "quote": "Dez divididos por zero vírgula quatro dão vinte e cinco reais por quilo."
+            "quote": "Por isso, pagar em dia e receber o carro são coisas relacionadas, mas diferentes."
           },
           "concept_ids": [
-            "preco-unidade",
-            "bases-percentuais"
+            "consorcio",
+            "fundo",
+            "contemplacao",
+            "credito"
           ],
           "claim_ids": [
+            "C1",
             "C2"
           ],
-          "example_ids": [
-            "before",
-            "after",
-            "ratio"
-          ],
-          "visual_purpose": "Operandos e resultado mudam no mesmo lugar, com divisão completa e indicação de hipótese.",
+          "example_ids": [],
+          "visual_purpose": "Fluxo coletivo entra na fala; crédito aparece depois da contribuição e permanece condicionado.",
           "bindings": [
             {
               "scene_id": "scene-02",
-              "element_id": "price"
-            },
-            {
-              "scene_id": "scene-02",
-              "element_id": "weight"
-            },
-            {
-              "scene_id": "scene-02",
-              "element_id": "unit"
-            },
-            {
-              "scene_id": "scene-03",
-              "element_id": "increase"
+              "element_id": "pool"
             }
           ]
         },
         {
-          "id": "evidence",
-          "question": "Qual é o alcance dos números reais apresentados?",
+          "id": "routes",
+          "question": "Como ocorre a contemplação e qual é o papel do lance?",
           "answer": {
-            "scene_id": "scene-04",
-            "quote": "E são dados de dois mil e vinte e dois e vinte e três, não uma cotação atual."
+            "scene_id": "scene-03",
+            "quote": "Outra via é o lance: uma oferta de antecipação de pagamentos para disputar a contemplação."
           },
-          "concept_ids": [],
+          "concept_ids": [
+            "lance",
+            "amortizacao"
+          ],
           "claim_ids": [
             "C3"
           ],
-          "example_ids": [
-            "historical"
-          ],
-          "visual_purpose": "Barras entram na fala com escala fixa, período e preço médio separados.",
+          "example_ids": [],
+          "visual_purpose": "Documento real ancora caminhos distintos; amortização e falta de garantia surgem em updates.",
           "bindings": [
             {
-              "scene_id": "scene-04",
-              "element_id": "chart"
+              "scene_id": "scene-03",
+              "element_id": "law"
             },
             {
-              "scene_id": "scene-04",
-              "element_id": "period"
+              "scene_id": "scene-03",
+              "element_id": "bid"
             }
           ]
         },
         {
-          "id": "rights",
-          "question": "A redução pode ocorrer sem informação legível?",
+          "id": "cost",
+          "question": "Por que sem juros não significa sem custo?",
+          "answer": {
+            "scene_id": "scene-05",
+            "quote": "Somando cem mil com vinte mil, chegamos a cento e vinte mil reais."
+          },
+          "concept_ids": [
+            "administracao"
+          ],
+          "claim_ids": [
+            "C4",
+            "C5"
+          ],
+          "example_ids": [
+            "fee",
+            "sum"
+          ],
+          "visual_purpose": "Operações completas mantêm três participantes e a indicação de hipótese.",
+          "bindings": [
+            {
+              "scene_id": "scene-04",
+              "element_id": "fee"
+            },
+            {
+              "scene_id": "scene-05",
+              "element_id": "total"
+            }
+          ]
+        },
+        {
+          "id": "available",
+          "question": "Quanto do crédito fica disponível no lance embutido?",
           "answer": {
             "scene_id": "scene-06",
-            "quote": "O aviso identifica a mudança, a quantidade anterior, a nova e a diferença absoluta e percentual."
+            "quote": "Cem mil menos trinta mil deixam setenta mil reais disponíveis para a compra."
           },
-          "concept_ids": [],
-          "claim_ids": [
-            "C6",
-            "C7"
+          "concept_ids": [
+            "embutido",
+            "amortizacao"
           ],
-          "example_ids": [],
-          "visual_purpose": "O texto legal real ancora o prazo do aviso, sem simular documento ou congelamento de preço.",
+          "claim_ids": [
+            "C6"
+          ],
+          "example_ids": [
+            "embedded"
+          ],
+          "visual_purpose": "Subtração mostra o crédito que sobra; a diferença do carro aparece sem duplicar o lance como custo.",
           "bindings": [
             {
               "scene_id": "scene-06",
-              "element_id": "rule"
-            },
-            {
-              "scene_id": "scene-06",
-              "element_id": "months"
+              "element_id": "available"
             }
           ]
         },
         {
           "id": "decision",
-          "question": "Como comparar pacotes e responder à pergunta inicial?",
+          "question": "O que diferencia planejamento possível de prazo incompatível?",
           "answer": {
-            "scene_id": "scene-08",
-            "quote": "A melhor referência é o preço por quilo, litro ou unidade, junto do que você vai consumir."
+            "scene_id": "scene-09",
+            "quote": "Pode haver um planejamento adequado, mas ele precisa sobreviver à espera e às obrigações."
           },
           "concept_ids": [
-            "preco-unidade"
+            "contemplacao",
+            "credito"
           ],
           "claim_ids": [
-            "C2",
-            "C7"
+            "C7",
+            "C8"
           ],
-          "example_ids": [
-            "comparison-small",
-            "comparison-large"
-          ],
-          "visual_purpose": "Dois pacotes equivalentes e conta atualizada; encerramento retoma o objeto inicial.",
+          "example_ids": [],
+          "visual_purpose": "Calendário e condições precedem comparação e retorno ao carro sem liberar uma chave por pagamento.",
           "bindings": [
             {
               "scene_id": "scene-07",
-              "element_id": "small"
-            },
-            {
-              "scene_id": "scene-07",
-              "element_id": "large"
-            },
-            {
-              "scene_id": "scene-07",
-              "element_id": "unit"
+              "element_id": "contract"
             },
             {
               "scene_id": "scene-08",
-              "element_id": "bag"
+              "element_id": "urgent"
             },
             {
-              "scene_id": "scene-08",
-              "element_id": "answer"
+              "scene_id": "scene-09",
+              "element_id": "car"
             }
           ]
         }
       ],
       "review": {
-        "content_sha256": "f8bc02c603b666f9c623da96d63308a4893a43f0db2844973435cb229c452d6f",
+        "content_sha256": "825919ec727a84f00cba57e4b10c5337aa821b718e652d97a28cdbbaa2fe113d",
         "findings": [
           {
-            "question": "A promessa é entregue sem generalizar o percentual?",
+            "question": "A abertura explica por que pagamento e compra não têm a mesma data?",
             "evidence": {
-              "scene_id": "scene-03",
-              "quote": "Essa porcentagem pertence só à nossa conta hipotética, não à inflação do supermercado."
+              "scene_id": "scene-01",
+              "quote": "Consórcio é um grupo que reúne contribuições para financiar as compras dos participantes."
             },
-            "conclusion": "As contas revelam o custo por quantidade e identificam a hipótese; título não promete aumento geral de 25%."
+            "conclusion": "Define o grupo e distingue a obrigação do participante da contemplação; a cancela não abre com o recibo."
           },
           {
-            "question": "A obrigação tem condições e atribuição explícitas?",
+            "question": "O exemplo de taxa pode parecer uma média atual ou juros anuais?",
+            "evidence": {
+              "scene_id": "scene-04",
+              "quote": "Essa taxa é pelo plano inteiro neste exemplo, não vinte por cento ao ano."
+            },
+            "conclusion": "A hipótese é literal e persistente no palco; taxa total fictícia com base fixa e custos excluídos na cena seguinte."
+          },
+          {
+            "question": "O lance embutido é mostrado como dinheiro grátis ou custo extra duplicado?",
             "evidence": {
               "scene_id": "scene-06",
-              "quote": "Em painel pequeno sem espaço contínuo suficiente, há uma exceção para o aviso resumido."
+              "quote": "Eles não são um presente, nem um custo extra somado por fora a essa mesma conta."
             },
-            "conclusion": "Texto legal, exceção e prazo do aviso são explicados, sem concluir fraude automática ou congelamento de preços."
+            "conclusion": "A subtração reduz a disponibilidade, a fala destina o lance às prestações e explicita a diferença do carro sem somar o lance duas vezes."
           },
           {
-            "question": "O conselho inclui limites da comparação?",
+            "question": "A conclusão entrega a pergunta sem condenar ou promover qualquer modalidade?",
             "evidence": {
-              "scene_id": "scene-07",
-              "quote": "Um pacote maior só compensa se couber no seu orçamento e for consumido, sem desperdício."
+              "scene_id": "scene-09",
+              "quote": "Pode haver um planejamento adequado, mas ele precisa sobreviver à espera e às obrigações."
             },
-            "conclusion": "A decisão depende de equivalência, unidade comum, consumo e caixa disponível; não se prescreve comprar sempre o maior pacote."
+            "conclusion": "Responde por mecanismos e condições, reconhece planejamento possível e não atribui vantagem universal ou perda certa."
           }
         ]
       }
-    },
-    "production_mode": "direct",
-    "checks_not_run": [
-      "suítes de testes locais e CI",
-      "prévia silenciosa",
-      "render de demonstração",
-      "amostras de voz"
-    ],
-    "review_notes": "Revisão semântica das fontes, aritmética, condições e entrega registrada no hash atual. Produção real mantém compilação, contratos, geometria, assets, integridade da voz e alinhamento.",
-    "visual_review": {
-      "run_id": "37540325263",
-      "reviewed_file": "daily-video.mp4",
-      "duration_seconds": 330.346667,
-      "method": "Quadros do MP4 ao longo do episódio, captura documental original e relatórios de ritmo; sem escuta subjetiva integral disponível nesta sessão.",
-      "changes": [
-        "Resultado retirado antes da troca dos operandos",
-        "Micro-beats nas ressalvas percentuais, jurídicas e de unidade",
-        "Grifo verificado no prazo documental",
-        "Métrica e período do gráfico entram em updates próprios"
-      ],
-      "audio_preserved": true
     }
-  },
-  "packaging": {
-    "titles": [
-      {
-        "id": "approved",
-        "text": "Supermercado: o aumento de preço que você não vê",
-        "rationale": "Assunto reconhecível no início; descoberta concreta do custo por quantidade, sem promessa numérica de mercado."
-      }
-    ],
-    "thumbnails": [
-      {
-        "id": "approved",
-        "headline": "CADÊ O RESTO?",
-        "concept": "Pacote genérico aberto, grande, com pouco alimento dentro; conflito visível entre embalagem e conteúdo.",
-        "visual_prompt": "Capa final completa 16:9, embalagem sem marca aberta e quase vazia em fundo grafite, luz amarela #FFBD19, texto gigante branco e amarelo CADÊ O RESTO?, sem logo, sem gráfico ou seta, sem dado de perda geral."
-      }
-    ],
-    "strategy": {
-      "click_reason": "A etiqueta parece igual, mas a compra entrega menos; a conta revela a diferença.",
-      "visual_focus": "Embalagem genérica aberta e conteúdo escasso, uma metáfora ilustrativa.",
-      "curiosity_gap": "Onde o aumento se esconde quando o valor em reais não muda?",
-      "mobile_readability": "Três palavras grandes e um objeto dominante, sem subtítulo.",
-      "anti_clickbait_check": "Entrega cálculo por quilo, limita hipóteses e dados históricos e não acusa todas as marcas.",
-      "repetition_check": "Assunto aprovado e inédito no histórico; evita financiamento, nós com setas e composições recentes.",
-      "youtube_safety_check": "Educação ao consumidor com fontes, exemplos sinalizados e nenhuma acusação específica não comprovada."
-    }
-  },
-  "publication": {
-    "description": "Supermercado: a etiqueta pode continuar igual enquanto o pacote entrega menos. Entenda a reduflação, a conta por quilo e o aviso que deve aparecer na embalagem.\n\n- Como a mesma etiqueta pode esconder um custo maior\n- A diferença entre preço do pacote e preço por quilo\n- O aviso de redução e o que observar na embalagem\n- Como comparar produtos sem ignorar orçamento e desperdício",
-    "engagement_question": "Você já percebeu um produto encolher na sua compra? Qual mudança chamou sua atenção?",
-    "hashtags": [
-      "#Supermercado",
-      "#ReducaoDeQuantidade",
-      "#EducacaoFinanceira"
-    ],
-    "seo": {
-      "primary_keyword": "Supermercado",
-      "secondary_keywords": [
-        "reduflação",
-        "preço por quilo",
-        "embalagem menor",
-        "direitos do consumidor"
-      ],
-      "search_intent": "Entender por que recebe menos pelo mesmo preço e como comparar embalagens.",
-      "description_strategy": "Abertura com situação concreta e quatro tópicos curtos; pipeline acrescenta capítulos, fontes e créditos uma única vez."
-    },
-    "tags": [
-      "supermercado",
-      "reduflação",
-      "preço por quilo",
-      "embalagem",
-      "consumidor",
-      "educação financeira"
-    ]
   },
   "scenes": [
     {
       "id": "scene-01",
       "index": 0,
-      "title": "A etiqueta não conta tudo",
+      "title": "Pagou, mas quando recebe?",
       "claim_ids": [
-        "C1"
+        "C1",
+        "C3"
       ],
-      "narration": "O preço não mudou. Então por que você está pagando mais no supermercado? Eu sou Roberto, e vou mostrar o aumento que pode passar despercebido na prateleira. Quando a embalagem traz menos produto e mantém o preço, cada grama fica mais cara. Essa redução de quantidade é chamada de reduflação. Ela pode acontecer mesmo sem aumentar o valor da etiqueta. A embalagem na tela é um esquema ilustrativo, sem marca. Não é prova contra um fabricante. Para enxergar o custo real, precisamos abrir a conta.",
+      "narration": "Você entrou num consórcio, pagou a parcela e já começou a imaginar o carro na garagem. Mas por que pagar não garante levar o carro? Eu sou Roberto, e vou mostrar o que existe entre a parcela paga e a chave na sua mão. Consórcio é um grupo que reúne contribuições para financiar as compras dos participantes. Você assume pagamentos, mas o dinheiro para a compra depende de uma etapa chamada contemplação. Ela pode chegar cedo ou depois de uma espera. A parcela caber no bolso não resolve, sozinha, a data em que você precisa do carro. E um lance pode mudar a disputa sem eliminar as condições. Vamos abrir essa conta.",
       "tts": {
         "delivery": "explain",
         "pause_ms": 150,
         "cues": [
           {
-            "text": "Então por que você está pagando mais no supermercado?",
+            "text": "Mas por que pagar não garante levar o carro?",
             "kind": "emphasis",
             "intent": "curiosity",
-            "arc": "question",
-            "emphasis_word": "mais"
+            "arc": "question"
           }
         ]
       },
@@ -998,54 +830,79 @@
           },
           "elements": [
             {
-              "id": "bag",
+              "id": "car",
               "kind": "object",
-              "label": "EMBALAGEM",
-              "x": 6,
-              "y": 8,
-              "width": 40,
-              "height": 78,
+              "label": "PARCELA PAGA ≠ CHAVE NA MÃO",
+              "x": 5,
+              "y": 3,
+              "width": 49,
+              "height": 82,
               "surface": "none",
-              "object_type": "grocery_package",
-              "content_fraction": 1,
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "float",
-                "amplitude": 12,
-                "period_seconds": 5
+              "object_type": "hub",
+              "hyperframes": {
+                "entry": "video/hyperframes/car-gate/index.html",
+                "initial_state": "paid",
+                "width": 960,
+                "height": 720,
+                "states": [
+                  {
+                    "anchor": "Você entrou num consórcio, pagou a parcela e já começou a imaginar o carro na garagem.",
+                    "state": "paid"
+                  },
+                  {
+                    "anchor": "Mas por que pagar não garante levar o carro?",
+                    "state": "waiting"
+                  },
+                  {
+                    "anchor": "E um lance pode mudar a disputa sem eliminar as condições. Vamos abrir essa conta.",
+                    "state": "choice"
+                  }
+                ]
               }
             },
             {
-              "id": "discovery",
+              "id": "question",
               "kind": "label",
-              "label": "MENOS PRODUTO",
-              "x": 54,
-              "y": 26,
-              "width": 40,
-              "height": 24,
+              "label": "E A CHAVE?",
+              "x": 60,
+              "y": 16,
+              "width": 35,
+              "height": 25,
               "surface": "none",
-              "label_size": 80,
+              "label_size": 70,
               "initially_visible": false
             },
             {
-              "id": "example",
+              "id": "condition",
+              "kind": "label",
+              "label": "DATA A CONFIRMAR",
+              "x": 60,
+              "y": 49,
+              "width": 35,
+              "height": 14,
+              "surface": "none",
+              "label_size": 38,
+              "initially_visible": false
+            },
+            {
+              "id": "scheme",
               "kind": "label",
               "label": "ESQUEMA ILUSTRATIVO",
-              "x": 54,
-              "y": 60,
-              "width": 40,
-              "height": 12,
+              "x": 7,
+              "y": 88,
+              "width": 47,
+              "height": 10,
               "surface": "none",
-              "label_size": 34
+              "label_size": 32
             }
           ],
           "connections": []
         },
         "beats": [
           {
-            "anchor": "O preço não mudou.",
-            "target_id": "bag",
-            "headline": "MESMA ETIQUETA",
+            "anchor": "Você entrou num consórcio, pagou a parcela e já começou a imaginar o carro na garagem.",
+            "target_id": "car",
+            "headline": "PARCELA PAGA",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
@@ -1053,83 +910,88 @@
             "camera": {
               "x": 50,
               "y": 50,
-              "zoom": 1.04,
-              "motion_seconds": 0.8
+              "zoom": 1.02,
+              "motion_seconds": 0.9
             }
           },
           {
-            "anchor": "Então por que você está pagando mais no supermercado?",
-            "target_id": "bag",
-            "headline": "MENOS CONTEÚDO",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 1.2,
-            "content_fraction": 0.8
-          },
-          {
-            "anchor": "Eu sou Roberto, e vou mostrar o aumento que pode passar despercebido na prateleira.",
-            "target_id": "discovery",
-            "headline": "MENOS PRODUTO",
+            "anchor": "Mas por que pagar não garante levar o carro?",
+            "target_id": "question",
+            "headline": "E A CHAVE?",
             "action": "reveal",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.8,
+            "motion_seconds": 0.65,
             "entrance": {
               "style": "wipe",
               "direction": "left"
             }
           },
           {
-            "anchor": "Quando a embalagem traz menos produto e mantém o preço, cada grama fica mais cara.",
-            "target_id": "bag",
-            "headline": "CADA GRAMA CONTA",
+            "anchor": "Eu sou Roberto, e vou mostrar o que existe entre a parcela paga e a chave na sua mão.",
+            "target_id": "car",
+            "headline": "DO PAGAMENTO À COMPRA",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.8,
+            "motion_seconds": 0.65,
             "camera": {
               "x": 50,
               "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.8
+              "zoom": 1.04,
+              "motion_seconds": 0.9
             }
           },
           {
-            "anchor": "Essa redução de quantidade é chamada de reduflação.",
-            "target_id": "discovery",
-            "headline": "REDUFLAÇÃO",
+            "anchor": "Consórcio é um grupo que reúne contribuições para financiar as compras dos participantes.",
+            "target_id": "question",
+            "headline": "COMPRA EM GRUPO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.45
           },
           {
-            "anchor": "Ela pode acontecer mesmo sem aumentar o valor da etiqueta.",
-            "target_id": "bag",
-            "headline": "A ETIQUETA NÃO BASTA",
+            "anchor": "Você assume pagamentos, mas o dinheiro para a compra depende de uma etapa chamada contemplação.",
+            "target_id": "condition",
+            "headline": "CONTEMPLAÇÃO",
+            "action": "reveal",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.65
+          },
+          {
+            "anchor": "Ela pode chegar cedo ou depois de uma espera.",
+            "target_id": "car",
+            "headline": "QUANDO?",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.65,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.02,
+              "motion_seconds": 0.9
+            }
           },
           {
-            "anchor": "A embalagem na tela é um esquema ilustrativo, sem marca.",
-            "target_id": "example",
-            "headline": "ESQUEMA ILUSTRATIVO",
-            "action": "focus",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Não é prova contra um fabricante. Para enxergar o custo real, precisamos abrir a conta.",
-            "target_id": "discovery",
-            "headline": "ABRA A CONTA",
+            "anchor": "A parcela caber no bolso não resolve, sozinha, a data em que você precisa do carro.",
+            "target_id": "question",
+            "headline": "PARCELA ≠ PRAZO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "E um lance pode mudar a disputa sem eliminar as condições. Vamos abrir essa conta.",
+            "target_id": "condition",
+            "headline": "LANCE TEM REGRAS",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
           }
         ]
       }
@@ -1137,22 +999,17 @@
     {
       "id": "scene-02",
       "index": 1,
-      "title": "A conta por quilo",
+      "title": "O dinheiro vem do grupo",
       "claim_ids": [
-        "C2"
+        "C1",
+        "C2",
+        "C4"
       ],
-      "narration": "Vamos usar um exemplo ilustrativo: um pacote custa dez reais e contém quinhentos gramas. Quinhentos gramas são meio quilo. É essa quantidade que entra na divisão. Dez reais divididos por meio quilo dão vinte reais por quilo. Esse é o preço para comparar a mesma quantidade, mesmo entre pacotes de tamanhos diferentes. Agora o pacote passa a ter quatrocentos gramas, mas a etiqueta continua em dez reais. Quatrocentos gramas são quatro décimos de quilo. Dez divididos por zero vírgula quatro dão vinte e cinco reais por quilo. O caixa cobra os mesmos dez reais. Só que eles compram menos produto. O aumento aparece quando colocamos os dois pacotes na mesma unidade de comparação.",
+      "narration": "Imagine este desenho como um grupo, sem representar um número real de participantes. Uma parte das parcelas vai para o fundo comum: o dinheiro coletivo usado nas compras. A administradora organiza o grupo; a remuneração dela é uma cobrança separada. O fundo não entrega todos os carros ao mesmo tempo. A contemplação é a atribuição do crédito a um participante para a compra do bem. A carta de crédito representa o valor disponível para essa compra, dentro das regras do contrato. Não é uma promessa de dinheiro livre na sua conta a cada parcela paga. E, segundo a lei, as contemplações dependem de dinheiro disponível no grupo. Por isso, pagar em dia e receber o carro são coisas relacionadas, mas diferentes.",
       "tts": {
         "delivery": "explain",
         "pause_ms": 150,
-        "cues": [
-          {
-            "text": "Dez divididos por zero vírgula quatro dão vinte e cinco reais por quilo.",
-            "kind": "number",
-            "intent": "discovery",
-            "arc": "resolve"
-          }
-        ]
+        "cues": []
       },
       "visual": {
         "type": "authored_stage",
@@ -1171,180 +1028,165 @@
           },
           "elements": [
             {
-              "id": "example",
+              "id": "pool",
+              "kind": "object",
+              "label": "FUNDO COMUM → CRÉDITO PARA COMPRA",
+              "x": 16,
+              "y": 4,
+              "width": 68,
+              "height": 77,
+              "surface": "none",
+              "object_type": "hub",
+              "hyperframes": {
+                "entry": "video/hyperframes/group-pool/index.html",
+                "initial_state": "group",
+                "width": 960,
+                "height": 720,
+                "states": [
+                  {
+                    "anchor": "Imagine este desenho como um grupo, sem representar um número real de participantes.",
+                    "state": "group"
+                  },
+                  {
+                    "anchor": "Uma parte das parcelas vai para o fundo comum: o dinheiro coletivo usado nas compras.",
+                    "state": "contribute"
+                  },
+                  {
+                    "anchor": "A contemplação é a atribuição do crédito a um participante para a compra do bem.",
+                    "state": "allocate"
+                  },
+                  {
+                    "anchor": "E, segundo a lei, as contemplações dependem de dinheiro disponível no grupo.",
+                    "state": "condition"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "group-note",
               "kind": "label",
-              "label": "EXEMPLO ILUSTRATIVO",
-              "x": 6,
-              "y": 2,
-              "width": 88,
+              "label": "GRUPO ILUSTRATIVO",
+              "x": 15,
+              "y": 86,
+              "width": 70,
               "height": 10,
               "surface": "none",
-              "label_size": 36
-            },
-            {
-              "id": "price",
-              "kind": "metric",
-              "label": "ETIQUETA",
-              "x": 6,
-              "y": 30,
-              "width": 24,
-              "height": 44,
-              "surface": "none",
-              "value": "R$ 10",
-              "value_size": 140,
-              "label_size": 40,
-              "initially_visible": false
-            },
-            {
-              "id": "weight",
-              "kind": "metric",
-              "label": "PESO",
-              "x": 40,
-              "y": 30,
-              "width": 24,
-              "height": 44,
-              "surface": "none",
-              "value": "0,5 kg",
-              "value_size": 130,
-              "label_size": 40,
-              "initially_visible": false
-            },
-            {
-              "id": "unit",
-              "kind": "metric",
-              "label": "POR QUILO",
-              "x": 74,
-              "y": 30,
-              "width": 24,
-              "height": 44,
-              "surface": "none",
-              "value": "R$ 20/kg",
-              "value_size": 106,
-              "label_size": 36,
-              "initially_visible": false
+              "label_size": 38
             }
           ],
           "connections": []
         },
         "beats": [
           {
-            "anchor": "Vamos usar um exemplo ilustrativo: um pacote custa dez reais e contém quinhentos gramas.",
-            "target_id": "price",
-            "headline": "ETIQUETA",
-            "action": "reveal",
-            "treatment": "giant_number",
+            "anchor": "Imagine este desenho como um grupo, sem representar um número real de participantes.",
+            "target_id": "pool",
+            "headline": "GRUPO ILUSTRATIVO",
+            "action": "focus",
+            "treatment": "spotlight",
             "behavior": "transform",
             "motion_seconds": 0.8,
-            "entrance": {
-              "style": "scale"
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.02,
+              "motion_seconds": 0.9
             }
           },
           {
-            "anchor": "Quinhentos gramas são meio quilo. É essa quantidade que entra na divisão.",
-            "target_id": "weight",
-            "headline": "PESO",
-            "action": "reveal",
-            "treatment": "giant_number",
+            "anchor": "Uma parte das parcelas vai para o fundo comum: o dinheiro coletivo usado nas compras.",
+            "target_id": "pool",
+            "headline": "FUNDO COMUM",
+            "action": "focus",
+            "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Dez reais divididos por meio quilo dão vinte reais por quilo.",
-            "target_id": "unit",
-            "headline": "POR QUILO",
-            "action": "reveal",
-            "treatment": "equation",
-            "behavior": "transform",
-            "motion_seconds": 0.8,
-            "operation": {
-              "kind": "equation",
-              "input_ids": [
-                "price",
-                "weight"
-              ],
-              "operator": "÷",
-              "result_id": "unit"
+            "motion_seconds": 0.65,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.04,
+              "motion_seconds": 0.9
             }
           },
           {
-            "anchor": "Esse é o preço para comparar a mesma quantidade, mesmo entre pacotes de tamanhos diferentes.",
-            "target_id": "unit",
-            "headline": "COMPARE A QUANTIDADE",
-            "action": "focus",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Agora o pacote passa a ter",
-            "target_id": "unit",
-            "headline": "NOVA QUANTIDADE",
-            "action": "retire",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.35
-          },
-          {
-            "anchor": "quatrocentos gramas, mas a etiqueta continua em dez reais.",
-            "target_id": "weight",
-            "headline": "PESO",
+            "anchor": "A administradora organiza o grupo; a remuneração dela é uma cobrança separada.",
+            "target_id": "group-note",
+            "headline": "ADMINISTRAÇÃO: CUSTO SEPARADO",
             "action": "update",
-            "treatment": "giant_number",
+            "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.8,
-            "value": "0,4 kg",
-            "retire_ids": [
-              "unit"
-            ]
+            "motion_seconds": 0.45
           },
           {
-            "anchor": "Quatrocentos gramas são quatro décimos de quilo.",
-            "target_id": "weight",
-            "headline": "PESO REDUZIDO",
+            "anchor": "O fundo não entrega todos os carros ao mesmo tempo.",
+            "target_id": "pool",
+            "headline": "RECURSOS DO GRUPO",
             "action": "focus",
-            "treatment": "giant_number",
+            "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Dez divididos por zero vírgula quatro dão vinte e cinco reais por quilo.",
-            "target_id": "unit",
-            "headline": "POR QUILO",
-            "action": "update",
-            "treatment": "equation",
-            "behavior": "transform",
-            "motion_seconds": 0.8,
-            "value": "R$ 25/kg",
-            "reveal_ids": [
-              "unit"
-            ],
-            "operation": {
-              "kind": "equation",
-              "input_ids": [
-                "price",
-                "weight"
-              ],
-              "operator": "÷",
-              "result_id": "unit"
+            "motion_seconds": 0.65,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.02,
+              "motion_seconds": 0.9
             }
           },
           {
-            "anchor": "O caixa cobra os mesmos dez reais. Só que eles compram menos produto.",
-            "target_id": "price",
-            "headline": "MESMO PREÇO",
-            "action": "update",
-            "treatment": "giant_number",
+            "anchor": "A contemplação é a atribuição do crédito a um participante para a compra do bem.",
+            "target_id": "pool",
+            "headline": "CONTEMPLAÇÃO → CRÉDITO",
+            "action": "focus",
+            "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.65,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.06,
+              "motion_seconds": 0.9
+            }
           },
           {
-            "anchor": "O aumento aparece quando colocamos os dois pacotes na mesma unidade de comparação.",
-            "target_id": "unit",
-            "headline": "POR QUILO",
-            "action": "focus",
-            "treatment": "giant_number",
+            "anchor": "A carta de crédito representa o valor disponível para essa compra, dentro das regras do contrato.",
+            "target_id": "group-note",
+            "headline": "CRÉDITO PARA A COMPRA",
+            "action": "update",
+            "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Não é uma promessa de dinheiro livre na sua conta a cada parcela paga.",
+            "target_id": "group-note",
+            "headline": "NÃO É SAQUE AUTOMÁTICO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "E, segundo a lei, as contemplações dependem de dinheiro disponível no grupo.",
+            "target_id": "pool",
+            "headline": "DEPENDE DOS RECURSOS",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.65,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.03,
+              "motion_seconds": 0.9
+            }
+          },
+          {
+            "anchor": "Por isso, pagar em dia e receber o carro são coisas relacionadas, mas diferentes.",
+            "target_id": "group-note",
+            "headline": "PAGAR ≠ RECEBER AGORA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
           }
         ]
       }
@@ -1352,22 +1194,15 @@
     {
       "id": "scene-03",
       "index": 2,
-      "title": "Menos quantidade, mais custo",
+      "title": "Dois caminhos, nenhuma data automática",
       "claim_ids": [
-        "C2"
+        "C3"
       ],
-      "narration": "Nesse mesmo exemplo ilustrativo, o preço por quilo saltou de vinte para vinte e cinco reais. São cinco reais a mais sobre uma base de vinte. O aumento é de vinte e cinco por cento. Já a quantidade caiu de quinhentos para quatrocentos gramas: vinte por cento a menos. Os percentuais são diferentes porque as bases da conta são diferentes. Perder um quinto do conteúdo faz o mesmo dinheiro comprar quatro quintos do pacote anterior. Para recompor um quilo, você precisa gastar mais. Não houve aumento de vinte e cinco por cento em tudo. Essa porcentagem pertence só à nossa conta hipotética, não à inflação do supermercado. Se essa comparação ajudou, inscreva-se no canal para entender melhor o que pesa no seu bolso.",
+      "narration": "A contemplação tem dois caminhos previstos na lei. O sorteio seleciona uma cota entre as que podem participar, conforme as regras do grupo. Outra via é o lance: uma oferta de antecipação de pagamentos para disputar a contemplação. Só oferecer um lance não significa vencer. As regras, o desempate e o dinheiro disponível precisam entrar na análise. O lance vencedor deve quitar ou amortizar prestações futuras, da forma prevista no contrato. Amortizar significa abater parte do que você ainda deve. Segundo o Banco Central, até antecipar todas as parcelas não garante contemplação imediata. A pergunta, então, não é apenas quanto você consegue pagar, mas quando poderá usar o crédito.",
       "tts": {
         "delivery": "explain",
         "pause_ms": 150,
-        "cues": [
-          {
-            "text": "O aumento é de vinte e cinco por cento.",
-            "kind": "number",
-            "intent": "discovery",
-            "arc": "resolve"
-          }
-        ]
+        "cues": []
       },
       "visual": {
         "type": "authored_stage",
@@ -1386,42 +1221,58 @@
           },
           "elements": [
             {
-              "id": "example",
-              "kind": "label",
-              "label": "EXEMPLO ILUSTRATIVO",
-              "x": 6,
-              "y": 2,
-              "width": 88,
-              "height": 10,
+              "id": "law",
+              "kind": "source_excerpt",
+              "label": "LEI 11.795/2008 · ART. 22 §1",
+              "x": 7,
+              "y": 3,
+              "width": 86,
+              "height": 23,
               "surface": "none",
+              "asset_id": "contemplacao-rule",
+              "image_fit": "contain",
               "label_size": 36
             },
             {
-              "id": "increase",
-              "kind": "metric",
-              "label": "PREÇO POR QUILO",
-              "x": 6,
-              "y": 20,
-              "width": 52,
-              "height": 55,
+              "id": "draw",
+              "kind": "label",
+              "label": "SORTEIO",
+              "x": 8,
+              "y": 33,
+              "width": 36,
+              "height": 39,
               "surface": "none",
-              "value": "25%",
-              "value_size": 260,
-              "label_size": 52,
+              "label_size": 60,
+              "icon": "route",
+              "icon_size": 250,
+              "content_layout": "row",
               "initially_visible": false
             },
             {
-              "id": "reduction",
-              "kind": "metric",
-              "label": "MENOS PRODUTO",
-              "x": 66,
-              "y": 31,
-              "width": 28,
-              "height": 36,
+              "id": "bid",
+              "kind": "label",
+              "label": "LANCE",
+              "x": 56,
+              "y": 33,
+              "width": 36,
+              "height": 39,
               "surface": "none",
-              "value": "20%",
-              "value_size": 160,
-              "label_size": 38,
+              "label_size": 60,
+              "icon": "coins",
+              "icon_size": 250,
+              "content_layout": "row",
+              "initially_visible": false
+            },
+            {
+              "id": "rule-note",
+              "kind": "label",
+              "label": "REGRAS DO GRUPO",
+              "x": 10,
+              "y": 83,
+              "width": 80,
+              "height": 11,
+              "surface": "none",
+              "label_size": 42,
               "initially_visible": false
             }
           ],
@@ -1429,109 +1280,111 @@
         },
         "beats": [
           {
-            "anchor": "Nesse mesmo exemplo ilustrativo, o preço por quilo saltou de vinte para vinte e cinco reais.",
-            "target_id": "increase",
-            "headline": "PREÇO POR QUILO",
-            "action": "reveal",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8,
-            "entrance": {
-              "style": "scale"
-            }
-          },
-          {
-            "anchor": "São cinco reais a mais sobre uma base de vinte. O aumento é de vinte e cinco por cento.",
-            "target_id": "increase",
-            "headline": "PREÇO POR QUILO",
+            "anchor": "A contemplação tem dois caminhos previstos na lei.",
+            "target_id": "law",
+            "headline": "DOIS CAMINHOS",
             "action": "focus",
-            "treatment": "giant_number",
+            "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.8,
+            "motion_seconds": 1.1,
             "camera": {
               "x": 50,
               "y": 50,
-              "zoom": 1.04,
-              "motion_seconds": 1
+              "zoom": 1.01,
+              "motion_seconds": 0.9
             }
           },
           {
-            "anchor": "Já a quantidade caiu de quinhentos para quatrocentos gramas: vinte por cento a menos.",
-            "target_id": "reduction",
-            "headline": "MENOS PRODUTO",
+            "anchor": "O sorteio seleciona uma cota entre as que podem participar, conforme as regras do grupo.",
+            "target_id": "draw",
+            "headline": "SORTEIO",
             "action": "reveal",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.8
-            }
-          },
-          {
-            "anchor": "Os percentuais são diferentes porque as bases da conta são diferentes.",
-            "target_id": "increase",
-            "headline": "BASES DIFERENTES",
-            "action": "update",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Perder um quinto do conteúdo faz o mesmo dinheiro comprar quatro quintos do pacote anterior.",
-            "target_id": "reduction",
-            "headline": "QUANTIDADE REDUZIDA",
-            "action": "update",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Para recompor um quilo, você precisa gastar mais. Não houve aumento de vinte e cinco por cento em tudo.",
-            "target_id": "increase",
-            "headline": "NESTE EXEMPLO",
-            "action": "update",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Não houve aumento de vinte e cinco por cento em tudo.",
-            "target_id": "increase",
-            "headline": "CONTA HIPOTÉTICA",
-            "action": "update",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Essa porcentagem pertence só à nossa conta hipotética, não à inflação do supermercado.",
-            "target_id": "example",
-            "headline": "EXEMPLO ILUSTRATIVO",
-            "action": "focus",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.65,
+            "entrance": {
+              "style": "slide",
+              "direction": "left"
+            }
           },
           {
-            "anchor": "não à inflação do supermercado.",
-            "target_id": "increase",
-            "headline": "SEM MEDIR A INFLAÇÃO",
-            "action": "update",
-            "treatment": "giant_number",
+            "anchor": "Outra via é o lance: uma oferta de antecipação de pagamentos para disputar a contemplação.",
+            "target_id": "bid",
+            "headline": "LANCE",
+            "action": "reveal",
+            "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.65,
+            "entrance": {
+              "style": "slide",
+              "direction": "right"
+            }
           },
           {
-            "anchor": "Se essa comparação ajudou, inscreva-se no canal para entender melhor o que pesa no seu bolso.",
-            "target_id": "increase",
-            "headline": "COMPARE POR QUILO",
-            "action": "update",
-            "treatment": "giant_number",
+            "anchor": "Só oferecer um lance não significa vencer.",
+            "target_id": "rule-note",
+            "headline": "OFERTAR ≠ VENCER",
+            "action": "reveal",
+            "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.65
+          },
+          {
+            "anchor": "As regras, o desempate e o dinheiro disponível precisam entrar na análise.",
+            "target_id": "law",
+            "headline": "REGRA E RECURSOS",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 1.1,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.03,
+              "motion_seconds": 0.9
+            }
+          },
+          {
+            "anchor": "O lance vencedor deve quitar ou amortizar prestações futuras, da forma prevista no contrato.",
+            "target_id": "rule-note",
+            "headline": "LANCE AMORTIZA PARCELAS",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Amortizar significa abater parte do que você ainda deve.",
+            "target_id": "rule-note",
+            "headline": "AMORTIZAR = ABATER A DÍVIDA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Segundo o Banco Central, até antecipar todas as parcelas não garante contemplação imediata.",
+            "target_id": "rule-note",
+            "headline": "ANTECIPAR ≠ RECEBER IMEDIATAMENTE",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "A pergunta, então, não é apenas quanto você consegue pagar, mas quando poderá usar o crédito.",
+            "target_id": "law",
+            "headline": "PAGAMENTO E DATA SÃO DIFERENTES",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 1.1,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.01,
+              "motion_seconds": 0.9
+            }
           }
         ]
       }
@@ -1539,11 +1392,12 @@
     {
       "id": "scene-04",
       "index": 3,
-      "title": "Um levantamento histórico",
+      "title": "Sem juros, mas com custo",
       "claim_ids": [
-        "C3"
+        "C4",
+        "C5"
       ],
-      "narration": "Existe um retrato real desse mecanismo, mas com período e limites bem definidos. Reportagens consultadas citaram um levantamento da Horus sobre embalagens de chocolate. Na comparação de janeiro a agosto de dois mil e vinte e dois com o mesmo período de vinte e três, a gramatura média passou de cento e sessenta e sete vírgula seis gramas para cento e quarenta e três vírgula sete gramas. O preço médio foi de quinze reais e oitenta e cinco centavos para dezesseis reais e setenta e oito centavos. Nesse levantamento, as médias mostram menos conteúdo e uma etiqueta também mais cara. São médias da categoria, não a história de uma única marca ou de todos os chocolates. E são dados de dois mil e vinte e dois e vinte e três, não uma cotação atual.",
+      "narration": "Agora vem a expressão que pode encurtar demais a conversa: sem juros. O consórcio não funciona como um empréstimo bancário com juros, mas tem custos. A taxa de administração remunera o trabalho da administradora, como estabelece a lei. Vamos usar um exemplo ilustrativo, com valores fixos e sem reajustes. Suponha um crédito de cem mil reais e uma taxa total de vinte por cento sobre esse valor. Vinte por cento de cem mil são vinte mil reais. Essa taxa é pelo plano inteiro neste exemplo, não vinte por cento ao ano. O percentual real e a forma de cobrança devem estar no contrato. Então a ausência de juros não zera a remuneração de quem organiza o grupo.",
       "tts": {
         "delivery": "explain",
         "pause_ms": 150,
@@ -1566,169 +1420,177 @@
           },
           "elements": [
             {
-              "id": "chart",
-              "kind": "chart",
-              "label": "Um levantamento histórico",
-              "x": 4,
-              "y": 15,
-              "width": 68,
-              "height": 68,
-              "surface": "none",
-              "chart_reveal_to": -1,
-              "chart": {
-                "type": "bar",
-                "source_id": "S4",
-                "unit": "Gramas por embalagem",
-                "x_label": "Janeiro a agosto de cada ano",
-                "y_min": 0,
-                "y_max": 180,
-                "points": [
-                  {
-                    "x": 2022,
-                    "label": "2022",
-                    "value": 167.6
-                  },
-                  {
-                    "x": 2023,
-                    "label": "2023",
-                    "value": 143.7
-                  }
-                ]
-              }
-            },
-            {
-              "id": "price",
+              "id": "base",
               "kind": "metric",
-              "label": "PREÇO MÉDIO",
-              "x": 76,
-              "y": 30,
-              "width": 22,
-              "height": 38,
+              "label": "CRÉDITO-BASE",
+              "x": 5,
+              "y": 24,
+              "width": 24,
+              "height": 43,
               "surface": "none",
-              "value": "R$ 15,85",
-              "value_size": 94,
-              "label_size": 36,
+              "value": "R$ 100 mil",
+              "value_size": 150,
+              "label_size": 48,
               "initially_visible": false
             },
             {
-              "id": "period",
-              "kind": "label",
-              "label": "DADOS HISTÓRICOS · 2022 / 2023",
-              "x": 5,
-              "y": 87,
-              "width": 90,
-              "height": 11,
+              "id": "rate",
+              "kind": "metric",
+              "label": "TAXA TOTAL",
+              "x": 38,
+              "y": 24,
+              "width": 24,
+              "height": 43,
               "surface": "none",
-              "label_size": 34
+              "value": "20%",
+              "value_size": 150,
+              "label_size": 48,
+              "initially_visible": false
+            },
+            {
+              "id": "fee",
+              "kind": "metric",
+              "label": "ADMINISTRAÇÃO",
+              "x": 71,
+              "y": 24,
+              "width": 24,
+              "height": 43,
+              "surface": "none",
+              "value": "R$ 20 mil",
+              "value_size": 150,
+              "label_size": 48,
+              "initially_visible": false
+            },
+            {
+              "id": "hypothesis",
+              "kind": "label",
+              "label": "EXEMPLO ILUSTRATIVO",
+              "x": 8,
+              "y": 6,
+              "width": 84,
+              "height": 10,
+              "surface": "none",
+              "label_size": 38
+            },
+            {
+              "id": "fee-note",
+              "kind": "label",
+              "label": "SEM JUROS ≠ SEM CUSTO",
+              "x": 8,
+              "y": 83,
+              "width": 84,
+              "height": 12,
+              "surface": "none",
+              "label_size": 48
             }
           ],
           "connections": []
         },
         "beats": [
           {
-            "anchor": "Existe um retrato real desse mecanismo, mas com período e limites bem definidos.",
-            "target_id": "chart",
-            "headline": "LEVANTAMENTO HISTÓRICO",
+            "anchor": "Agora vem a expressão que pode encurtar demais a conversa: sem juros.",
+            "target_id": "fee-note",
+            "headline": "SEM JUROS ≠ SEM CUSTO",
             "action": "focus",
-            "treatment": "spotlight",
+            "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.8,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.02,
+              "motion_seconds": 0.9
+            }
           },
           {
-            "anchor": "Reportagens consultadas citaram um levantamento da Horus sobre embalagens de chocolate.",
-            "target_id": "chart",
-            "headline": "Chocolate: média em gramas",
-            "action": "update",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Na comparação de janeiro a agosto de dois mil e vinte e dois com o mesmo período de vinte e três,",
-            "target_id": "period",
-            "headline": "JANEIRO A AGOSTO · 2022 / 2023",
+            "anchor": "O consórcio não funciona como um empréstimo bancário com juros, mas tem custos.",
+            "target_id": "fee-note",
+            "headline": "EXISTEM CUSTOS",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.45
           },
           {
-            "anchor": "a gramatura média passou de cento e sessenta e sete vírgula seis gramas",
-            "target_id": "chart",
-            "headline": "2022",
-            "action": "focus",
-            "treatment": "spotlight",
+            "anchor": "A taxa de administração remunera o trabalho da administradora, como estabelece a lei.",
+            "target_id": "fee-note",
+            "headline": "ADMINISTRAÇÃO É REMUNERADA",
+            "action": "update",
+            "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 1.2,
-            "chart_reveal_to": 0,
-            "chart_focus": {
-              "from": 0,
-              "to": 0
-            }
+            "motion_seconds": 0.45
           },
           {
-            "anchor": "para cento e quarenta e três vírgula sete gramas.",
-            "target_id": "chart",
-            "headline": "2023",
-            "action": "focus",
-            "treatment": "spotlight",
+            "anchor": "Vamos usar um exemplo ilustrativo, com valores fixos e sem reajustes.",
+            "target_id": "hypothesis",
+            "headline": "EXEMPLO · SEM REAJUSTE",
+            "action": "update",
+            "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 1.2,
-            "chart_reveal_to": 1,
-            "chart_focus": {
-              "from": 1,
-              "to": 1
-            }
+            "motion_seconds": 0.45
           },
           {
-            "anchor": "O preço médio foi de quinze reais e oitenta e cinco centavos",
-            "target_id": "price",
-            "headline": "PREÇO MÉDIO",
+            "anchor": "Suponha um crédito de cem mil reais e uma taxa total de vinte por cento sobre esse valor.",
+            "target_id": "base",
+            "headline": "CRÉDITO-BASE",
             "action": "reveal",
             "treatment": "giant_number",
             "behavior": "transform",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.65,
+            "reveal_ids": [
+              "rate"
+            ]
           },
           {
-            "anchor": "para dezesseis reais e setenta e oito centavos.",
-            "target_id": "price",
-            "headline": "PREÇO MÉDIO",
-            "action": "update",
-            "treatment": "giant_number",
+            "anchor": "Vinte por cento de cem mil são vinte mil reais.",
+            "target_id": "fee",
+            "headline": "ADMINISTRAÇÃO",
+            "action": "reveal",
+            "treatment": "equation",
             "behavior": "transform",
-            "motion_seconds": 0.8,
-            "value": "R$ 16,78"
-          },
-          {
-            "anchor": "Nesse levantamento, as médias mostram menos conteúdo e uma etiqueta também mais cara.",
-            "target_id": "chart",
-            "headline": "MENOS CONTEÚDO",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.8,
-            "chart_focus": {
-              "from": 0,
-              "to": 1
+            "motion_seconds": 1.2,
+            "operation": {
+              "kind": "equation",
+              "input_ids": [
+                "base",
+                "rate"
+              ],
+              "operator": "×",
+              "result_id": "fee"
             }
           },
           {
-            "anchor": "São médias da categoria, não a história de uma única marca ou de todos os chocolates.",
-            "target_id": "price",
-            "headline": "MÉDIA DA CATEGORIA",
-            "action": "update",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "E são dados de dois mil e vinte e dois e vinte e três, não uma cotação atual.",
-            "target_id": "period",
-            "headline": "HISTÓRICO · NÃO É COTAÇÃO ATUAL",
+            "anchor": "Essa taxa é pelo plano inteiro neste exemplo, não vinte por cento ao ano.",
+            "target_id": "fee-note",
+            "headline": "20% NO PLANO · NÃO AO ANO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "O percentual real e a forma de cobrança devem estar no contrato.",
+            "target_id": "rate",
+            "headline": "TAXA TOTAL",
+            "action": "focus",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.65,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.015,
+              "motion_seconds": 0.9
+            }
+          },
+          {
+            "anchor": "Então a ausência de juros não zera a remuneração de quem organiza o grupo.",
+            "target_id": "fee-note",
+            "headline": "SEM JUROS ≠ CUSTO ZERO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
           }
         ]
       }
@@ -1736,173 +1598,12 @@
     {
       "id": "scene-05",
       "index": 4,
-      "title": "Por que mudar a embalagem?",
+      "title": "A soma que o anúncio não encerra",
       "claim_ids": [
         "C4",
         "C5"
       ],
-      "narration": "Mas por que diminuir a embalagem em vez de subir o preço? Uma reportagem consultada relaciona essa decisão à pressão de custos, incluindo transporte. Manter a etiqueta pode tornar a mudança menos perceptível para quem olha só o valor em reais. Isso ajuda a explicar uma estratégia comercial. Não prova o motivo de cada fabricante. Também há uma diferença importante entre vender menos quantidade e esconder a mudança. Um pacote menor pode caber no dinheiro disponível para aquela compra. Mas caber no orçamento não significa sair mais barato por quilo. E nem toda redução é fraude. O consumidor precisa receber informação clara para decidir.",
-      "tts": {
-        "delivery": "explain",
-        "pause_ms": 150,
-        "cues": []
-      },
-      "visual": {
-        "type": "authored_stage",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "camera_mode": "manual",
-          "motion_profile": "narrative",
-          "captions": {
-            "enabled": true,
-            "max_words": 6,
-            "words_per_line": 3,
-            "max_lines": 2,
-            "font_size": 64,
-            "min_free_area_ratio": 0.3
-          },
-          "elements": [
-            {
-              "id": "shopping",
-              "kind": "photo",
-              "label": "O GESTO DE COMPARAR",
-              "x": 4,
-              "y": 8,
-              "width": 55,
-              "height": 76,
-              "surface": "spotlight",
-              "asset_id": "shopping-photo",
-              "image_fit": "cover",
-              "image_motion": "pan",
-              "focal_x": 55,
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 6,
-                "period_seconds": 6
-              }
-            },
-            {
-              "id": "factory",
-              "kind": "object",
-              "label": "PRESSÃO DE CUSTOS",
-              "x": 65,
-              "y": 10,
-              "width": 30,
-              "height": 70,
-              "surface": "none",
-              "object_type": "factory",
-              "svg_motion": "trace",
-              "initially_visible": false,
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 9,
-                "period_seconds": 4
-              }
-            },
-            {
-              "id": "limit",
-              "kind": "label",
-              "label": "CONTEXTO · NÃO PROVA DE CADA MARCA",
-              "x": 5,
-              "y": 87,
-              "width": 90,
-              "height": 11,
-              "surface": "none",
-              "label_size": 34
-            }
-          ],
-          "connections": []
-        },
-        "beats": [
-          {
-            "anchor": "Mas por que diminuir a embalagem em vez de subir o preço?",
-            "target_id": "shopping",
-            "headline": "DECISÃO NA PRATELEIRA",
-            "action": "focus",
-            "treatment": "depth_photo",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Uma reportagem consultada relaciona essa decisão à pressão de custos, incluindo transporte.",
-            "target_id": "factory",
-            "headline": "PRESSÃO DE CUSTOS",
-            "action": "reveal",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.8,
-            "entrance": {
-              "style": "wipe",
-              "direction": "up"
-            }
-          },
-          {
-            "anchor": "Manter a etiqueta pode tornar a mudança menos perceptível para quem olha só o valor em reais.",
-            "target_id": "shopping",
-            "headline": "ETIQUETA EM FOCO",
-            "action": "focus",
-            "treatment": "depth_photo",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Isso ajuda a explicar uma estratégia comercial. Não prova o motivo de cada fabricante.",
-            "target_id": "limit",
-            "headline": "EXPLICAÇÃO POSSÍVEL · NÃO PROVA",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Também há uma diferença importante entre vender menos quantidade e esconder a mudança.",
-            "target_id": "factory",
-            "headline": "INFORMAÇÃO IMPORTA",
-            "action": "update",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Um pacote menor pode caber no dinheiro disponível para aquela compra.",
-            "target_id": "shopping",
-            "headline": "ORÇAMENTO DA COMPRA",
-            "action": "focus",
-            "treatment": "depth_photo",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Mas caber no orçamento não significa sair mais barato por quilo.",
-            "target_id": "factory",
-            "headline": "CUSTO POR QUANTIDADE",
-            "action": "update",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "E nem toda redução é fraude. O consumidor precisa receber informação clara para decidir.",
-            "target_id": "limit",
-            "headline": "REDUZIR NÃO AUTORIZA ESCONDER",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-06",
-      "index": 5,
-      "title": "O aviso na embalagem",
-      "claim_ids": [
-        "C6",
-        "C7"
-      ],
-      "narration": "Segundo a portaria do Ministério da Justiça, a redução deve ser informada na embalagem. A regra pede destaque no painel principal, com leitura fácil. O aviso identifica a mudança, a quantidade anterior, a nova e a diferença absoluta e percentual. Em painel pequeno sem espaço contínuo suficiente, há uma exceção para o aviso resumido. O artigo quatro exige que a informação permaneça por pelo menos seis meses após a alteração. Esse prazo é do aviso. Não é uma garantia de que o preço ficará congelado. Se a informação estiver escondida ou faltar, o Procon orienta registrar e denunciar. Fotografe a embalagem e guarde o comprovante. A apuração depende do caso e das provas.",
+      "narration": "A taxa muda o total da conta, mesmo quando a palavra juros não aparece. No nosso exemplo ilustrativo, continuam cem mil de crédito e vinte mil de administração. Somando cem mil com vinte mil, chegamos a cento e vinte mil reais. Esse valor considera apenas o crédito-base e a taxa que inventamos para explicar. Pode haver fundo de reserva, seguro e outras obrigações, se previstas no contrato. Reajustes também ficaram fora dessa conta. Portanto, ela não é o preço final de uma oferta real. O ponto é comparar o plano completo, e não tratar a taxa como se ela não existisse. Se essa conta esclareceu a promessa, inscreva-se no canal para entender melhor o seu dinheiro. E há outra pergunta: do crédito anunciado, quanto chega de fato à compra?",
       "tts": {
         "delivery": "explain",
         "pause_ms": 150,
@@ -1925,476 +1626,65 @@
           },
           "elements": [
             {
-              "id": "heading",
-              "kind": "label",
-              "label": "O AVISO NA EMBALAGEM",
-              "x": 5,
-              "y": 1,
-              "width": 90,
-              "height": 9,
-              "surface": "none",
-              "label_size": 36
-            },
-            {
-              "id": "rule",
-              "kind": "source_excerpt",
-              "label": "Portaria 392/2021 · Art. 4º",
-              "x": 4,
-              "y": 14,
-              "width": 92,
-              "height": 37,
-              "surface": "spotlight",
-              "asset_id": "quantity-rule",
-              "annotations": [
-                {
-                  "id": "six-months",
-                  "style": "highlight",
-                  "region": {
-                    "x": 0,
-                    "y": 68,
-                    "width": 14.5,
-                    "height": 31
-                  }
-                }
-              ]
-            },
-            {
-              "id": "months",
+              "id": "credit",
               "kind": "metric",
-              "label": "PRAZO MÍNIMO DO AVISO",
-              "x": 12,
-              "y": 61,
-              "width": 76,
-              "height": 31,
+              "label": "CRÉDITO-BASE",
+              "x": 5,
+              "y": 24,
+              "width": 24,
+              "height": 43,
               "surface": "none",
-              "value": "6 MESES",
-              "value_size": 140,
-              "label_size": 36,
+              "value": "R$ 100 mil",
+              "value_size": 150,
+              "label_size": 48,
               "initially_visible": false
-            }
-          ],
-          "connections": []
-        },
-        "beats": [
-          {
-            "anchor": "Segundo a portaria do Ministério da Justiça, a redução deve ser informada na embalagem.",
-            "target_id": "rule",
-            "headline": "REGRA DOCUMENTADA",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "A regra pede destaque no painel principal, com leitura fácil.",
-            "target_id": "heading",
-            "headline": "AVISO VISÍVEL",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "O aviso identifica a mudança, a quantidade anterior, a nova e a diferença absoluta e percentual.",
-            "target_id": "heading",
-            "headline": "ANTES · DEPOIS · DIFERENÇA",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Em painel pequeno sem espaço contínuo suficiente, há uma exceção para o aviso resumido.",
-            "target_id": "heading",
-            "headline": "EXCEÇÃO PARA PAINEL PEQUENO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "O artigo quatro exige que a informação permaneça por pelo menos seis meses após a alteração.",
-            "target_id": "months",
-            "headline": "PRAZO MÍNIMO DO AVISO",
-            "action": "reveal",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "pelo menos seis meses após a alteração.",
-            "target_id": "rule",
-            "headline": "PRAZO LEGAL",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.8,
-            "mark_ids": [
-              "six-months"
-            ]
-          },
-          {
-            "anchor": "Esse prazo é do aviso. Não é uma garantia de que o preço ficará congelado.",
-            "target_id": "months",
-            "headline": "PRAZO DO AVISO",
-            "action": "update",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Não é uma garantia de que o preço ficará congelado.",
-            "target_id": "heading",
-            "headline": "AVISO NÃO CONGELA PREÇO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Se a informação estiver escondida ou faltar, o Procon orienta registrar e denunciar.",
-            "target_id": "heading",
-            "headline": "INFORMAÇÃO ESCONDIDA? REGISTRE",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "o Procon orienta registrar e denunciar.",
-            "target_id": "heading",
-            "headline": "PROCURE O PROCON",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Fotografe a embalagem e guarde o comprovante. A apuração depende do caso e das provas.",
-            "target_id": "heading",
-            "headline": "EMBALAGEM + COMPROVANTE",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-07",
-      "index": 6,
-      "title": "Qual pacote sai mais barato?",
-      "claim_ids": [
-        "C2",
-        "C7"
-      ],
-      "narration": "Na prateleira, compare produtos equivalentes. Vamos a outro exemplo ilustrativo. Um custa nove reais por quatrocentos gramas. Dividindo nove por zero vírgula quatro, ele sai por vinte e dois reais e cinquenta por quilo. O outro custa dez reais, mas entrega quinhentos gramas. A etiqueta do segundo parece mais cara: dez em vez de nove. Só que ele contém meio quilo, não quatro décimos. Dez divididos por meio quilo dão vinte reais por quilo. Nesse exemplo, o segundo custa menos. Você pode usar o preço por quilo na etiqueta ou dividir o preço pela quantidade em quilos. Para líquidos, compare por litro. Para itens contados, compare por unidade. Um pacote maior só compensa se couber no seu orçamento e for consumido, sem desperdício.",
-      "tts": {
-        "delivery": "explain",
-        "pause_ms": 150,
-        "cues": []
-      },
-      "visual": {
-        "type": "authored_stage",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "camera_mode": "manual",
-          "motion_profile": "narrative",
-          "captions": {
-            "enabled": false,
-            "max_words": 6,
-            "words_per_line": 3,
-            "max_lines": 2,
-            "font_size": 64,
-            "min_free_area_ratio": 0.3
-          },
-          "elements": [
+            },
             {
-              "id": "example",
+              "id": "fee",
+              "kind": "metric",
+              "label": "ADMINISTRAÇÃO",
+              "x": 38,
+              "y": 24,
+              "width": 24,
+              "height": 43,
+              "surface": "none",
+              "value": "R$ 20 mil",
+              "value_size": 150,
+              "label_size": 48,
+              "initially_visible": false
+            },
+            {
+              "id": "total",
+              "kind": "metric",
+              "label": "BASE + TAXA",
+              "x": 71,
+              "y": 24,
+              "width": 24,
+              "height": 43,
+              "surface": "none",
+              "value": "R$ 120 mil",
+              "value_size": 150,
+              "label_size": 48,
+              "initially_visible": false
+            },
+            {
+              "id": "hypothesis",
               "kind": "label",
               "label": "EXEMPLO ILUSTRATIVO",
-              "x": 6,
-              "y": 2,
-              "width": 88,
+              "x": 8,
+              "y": 6,
+              "width": 84,
               "height": 10,
               "surface": "none",
-              "label_size": 36
+              "label_size": 38
             },
             {
-              "id": "small",
-              "kind": "object",
-              "label": "400 g · R$ 9",
-              "x": 5,
-              "y": 15,
-              "width": 30,
-              "height": 43,
-              "surface": "none",
-              "object_type": "grocery_package",
-              "content_fraction": 0.8,
-              "svg_motion": "trace"
-            },
-            {
-              "id": "large",
-              "kind": "object",
-              "label": "500 g · R$ 10",
-              "x": 65,
-              "y": 15,
-              "width": 30,
-              "height": 43,
-              "surface": "none",
-              "object_type": "grocery_package",
-              "content_fraction": 1,
-              "svg_motion": "trace",
-              "initially_visible": false
-            },
-            {
-              "id": "price",
-              "kind": "metric",
-              "label": "ETIQUETA",
-              "x": 5,
-              "y": 64,
-              "width": 24,
-              "height": 34,
-              "surface": "none",
-              "value": "R$ 9",
-              "value_size": 104,
-              "label_size": 32,
-              "initially_visible": false
-            },
-            {
-              "id": "weight",
-              "kind": "metric",
-              "label": "PESO",
-              "x": 39,
-              "y": 64,
-              "width": 24,
-              "height": 34,
-              "surface": "none",
-              "value": "0,4 kg",
-              "value_size": 104,
-              "label_size": 32,
-              "initially_visible": false
-            },
-            {
-              "id": "unit",
-              "kind": "metric",
-              "label": "POR QUILO",
-              "x": 73,
-              "y": 64,
-              "width": 25,
-              "height": 34,
-              "surface": "none",
-              "value": "R$ 22,50/kg",
-              "value_size": 80,
-              "label_size": 32,
-              "initially_visible": false
-            }
-          ],
-          "connections": []
-        },
-        "beats": [
-          {
-            "anchor": "Na prateleira, compare produtos equivalentes. Vamos a outro exemplo ilustrativo.",
-            "target_id": "small",
-            "headline": "PACOTE MENOR",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Um custa nove reais por quatrocentos gramas.",
-            "target_id": "price",
-            "headline": "ETIQUETA",
-            "action": "reveal",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8,
-            "reveal_ids": [
-              "weight"
-            ]
-          },
-          {
-            "anchor": "Dividindo nove por zero vírgula quatro, ele sai por vinte e dois reais e cinquenta por quilo.",
-            "target_id": "unit",
-            "headline": "POR QUILO",
-            "action": "reveal",
-            "treatment": "equation",
-            "behavior": "transform",
-            "motion_seconds": 0.8,
-            "operation": {
-              "kind": "equation",
-              "input_ids": [
-                "price",
-                "weight"
-              ],
-              "operator": "÷",
-              "result_id": "unit"
-            }
-          },
-          {
-            "anchor": "O outro custa dez reais, mas entrega quinhentos gramas.",
-            "target_id": "large",
-            "headline": "PACOTE MAIOR",
-            "action": "reveal",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.8,
-            "retire_ids": [
-              "unit"
-            ]
-          },
-          {
-            "anchor": "A etiqueta do segundo parece mais cara: dez em vez de nove.",
-            "target_id": "price",
-            "headline": "ETIQUETA",
-            "action": "update",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8,
-            "value": "R$ 10",
-            "retire_ids": [
-              "unit"
-            ]
-          },
-          {
-            "anchor": "Só que ele contém meio quilo, não quatro décimos.",
-            "target_id": "weight",
-            "headline": "PESO",
-            "action": "update",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8,
-            "value": "0,5 kg"
-          },
-          {
-            "anchor": "Dez divididos por meio quilo dão vinte reais por quilo. Nesse exemplo, o segundo custa menos.",
-            "target_id": "unit",
-            "headline": "POR QUILO",
-            "action": "update",
-            "treatment": "equation",
-            "behavior": "transform",
-            "motion_seconds": 0.8,
-            "value": "R$ 20/kg",
-            "reveal_ids": [
-              "unit"
-            ],
-            "operation": {
-              "kind": "equation",
-              "input_ids": [
-                "price",
-                "weight"
-              ],
-              "operator": "÷",
-              "result_id": "unit"
-            }
-          },
-          {
-            "anchor": "Nesse exemplo, o segundo custa menos.",
-            "target_id": "unit",
-            "headline": "MENOR CUSTO POR QUILO",
-            "action": "update",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Você pode usar o preço por quilo na etiqueta ou dividir o preço pela quantidade em quilos.",
-            "target_id": "unit",
-            "headline": "MESMA UNIDADE",
-            "action": "update",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Para líquidos, compare por litro.",
-            "target_id": "weight",
-            "headline": "MESMA UNIDADE",
-            "action": "update",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Para itens contados, compare por unidade.",
-            "target_id": "weight",
-            "headline": "MESMA UNIDADE",
-            "action": "update",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Um pacote maior só compensa se couber no seu orçamento e for consumido, sem desperdício.",
-            "target_id": "large",
-            "headline": "CONSUMO SEM DESPERDÍCIO",
-            "action": "update",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-08",
-      "index": 7,
-      "title": "A resposta está na quantidade",
-      "claim_ids": [
-        "C1",
-        "C2",
-        "C7"
-      ],
-      "narration": "Então, onde está o aumento de preço que você não vê no supermercado? Ele pode estar na quantidade: você paga o mesmo, recebe menos e gasta mais por quilo. Olhe o peso ou volume, procure o aviso de mudança e compare produtos equivalentes. A melhor referência é o preço por quilo, litro ou unidade, junto do que você vai consumir. Você já percebeu um produto encolher na sua compra? Conte qual mudança chamou sua atenção. Eu sou Roberto. Até a próxima.",
-      "tts": {
-        "delivery": "explain",
-        "pause_ms": 150,
-        "cues": []
-      },
-      "visual": {
-        "type": "authored_stage",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "camera_mode": "manual",
-          "motion_profile": "narrative",
-          "captions": {
-            "enabled": true,
-            "max_words": 6,
-            "words_per_line": 3,
-            "max_lines": 2,
-            "font_size": 64,
-            "min_free_area_ratio": 0.3
-          },
-          "elements": [
-            {
-              "id": "bag",
-              "kind": "object",
-              "label": "OLHE A QUANTIDADE",
-              "x": 30,
-              "y": 8,
-              "width": 40,
-              "height": 70,
-              "surface": "none",
-              "object_type": "grocery_package",
-              "content_fraction": 0.8,
-              "svg_motion": "trace",
-              "sustain": {
-                "kind": "float",
-                "amplitude": 10,
-                "period_seconds": 5
-              }
-            },
-            {
-              "id": "answer",
+              "id": "sum-note",
               "kind": "label",
-              "label": "COMPARE POR QUILO, LITRO OU UNIDADE",
-              "x": 5,
+              "label": "SÓ BASE E ADMINISTRAÇÃO",
+              "x": 8,
               "y": 83,
-              "width": 90,
+              "width": 84,
               "height": 12,
               "surface": "none",
               "label_size": 44
@@ -2404,9 +1694,414 @@
         },
         "beats": [
           {
-            "anchor": "Então, onde está o aumento de preço que você não vê no supermercado?",
-            "target_id": "bag",
-            "headline": "A RESPOSTA ESTÁ NO PACOTE",
+            "anchor": "A taxa muda o total da conta, mesmo quando a palavra juros não aparece.",
+            "target_id": "sum-note",
+            "headline": "A TAXA ENTRA NA CONTA",
+            "action": "focus",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.01,
+              "motion_seconds": 0.9
+            }
+          },
+          {
+            "anchor": "No nosso exemplo ilustrativo, continuam cem mil de crédito e vinte mil de administração.",
+            "target_id": "credit",
+            "headline": "CRÉDITO-BASE",
+            "action": "reveal",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.65,
+            "reveal_ids": [
+              "fee"
+            ]
+          },
+          {
+            "anchor": "Somando cem mil com vinte mil, chegamos a cento e vinte mil reais.",
+            "target_id": "total",
+            "headline": "BASE + TAXA",
+            "action": "reveal",
+            "treatment": "equation",
+            "behavior": "transform",
+            "motion_seconds": 1.2,
+            "operation": {
+              "kind": "equation",
+              "input_ids": [
+                "credit",
+                "fee"
+              ],
+              "operator": "+",
+              "result_id": "total"
+            }
+          },
+          {
+            "anchor": "Esse valor considera apenas o crédito-base e a taxa que inventamos para explicar.",
+            "target_id": "hypothesis",
+            "headline": "EXEMPLO · VALORES FIXOS",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Pode haver fundo de reserva, seguro e outras obrigações, se previstas no contrato.",
+            "target_id": "sum-note",
+            "headline": "OUTRAS OBRIGAÇÕES: CONFIRA O CONTRATO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Reajustes também ficaram fora dessa conta. Portanto, ela não é o preço final de uma oferta real.",
+            "target_id": "sum-note",
+            "headline": "REAJUSTES NÃO INCLUÍDOS",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "O ponto é comparar o plano completo, e não tratar a taxa como se ela não existisse.",
+            "target_id": "total",
+            "headline": "BASE + TAXA",
+            "action": "focus",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.65,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.025,
+              "motion_seconds": 0.9
+            }
+          },
+          {
+            "anchor": "Se essa conta esclareceu a promessa, inscreva-se no canal para entender melhor o seu dinheiro.",
+            "target_id": "sum-note",
+            "headline": "ENTENDA O PLANO COMPLETO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "E há outra pergunta: do crédito anunciado, quanto chega de fato à compra?",
+            "target_id": "sum-note",
+            "headline": "QUANTO SOBRA PARA A COMPRA?",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-06",
+      "index": 5,
+      "title": "O pedaço que sai do crédito",
+      "claim_ids": [
+        "C6",
+        "C3"
+      ],
+      "narration": "O lance embutido usa parte do próprio crédito para antecipar pagamentos. Isso precisa ser permitido pelas regras do seu grupo. Num exemplo ilustrativo, o crédito é de cem mil reais e o lance embutido vencedor é de trinta mil. Cem mil menos trinta mil deixam setenta mil reais disponíveis para a compra. Os trinta mil são deduzidos do crédito e usados para quitar ou amortizar prestações futuras. Eles não são um presente, nem um custo extra somado por fora a essa mesma conta. Se o carro do exemplo custa cem mil, ainda faltam trinta mil de recursos do comprador. Um crédito anunciado de cem mil pode, portanto, resultar em menos dinheiro disponível para o carro. E o lance embutido também não garante vitória: a disputa continua seguindo o contrato.",
+      "tts": {
+        "delivery": "explain",
+        "pause_ms": 150,
+        "cues": [
+          {
+            "text": "Cem mil menos trinta mil deixam setenta mil reais disponíveis para a compra.",
+            "kind": "number",
+            "intent": "discovery",
+            "arc": "resolve"
+          }
+        ]
+      },
+      "visual": {
+        "type": "authored_stage",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "captions": {
+            "enabled": false,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          },
+          "elements": [
+            {
+              "id": "credit",
+              "kind": "metric",
+              "label": "CRÉDITO",
+              "x": 5,
+              "y": 24,
+              "width": 24,
+              "height": 43,
+              "surface": "none",
+              "value": "R$ 100 mil",
+              "value_size": 150,
+              "label_size": 48,
+              "initially_visible": false
+            },
+            {
+              "id": "bid",
+              "kind": "metric",
+              "label": "LANCE EMBUTIDO",
+              "x": 38,
+              "y": 24,
+              "width": 24,
+              "height": 43,
+              "surface": "none",
+              "value": "R$ 30 mil",
+              "value_size": 150,
+              "label_size": 48,
+              "initially_visible": false
+            },
+            {
+              "id": "available",
+              "kind": "metric",
+              "label": "PARA A COMPRA",
+              "x": 71,
+              "y": 24,
+              "width": 24,
+              "height": 43,
+              "surface": "none",
+              "value": "R$ 70 mil",
+              "value_size": 150,
+              "label_size": 48,
+              "initially_visible": false
+            },
+            {
+              "id": "hypothesis",
+              "kind": "label",
+              "label": "EXEMPLO ILUSTRATIVO",
+              "x": 8,
+              "y": 6,
+              "width": 84,
+              "height": 10,
+              "surface": "none",
+              "label_size": 38
+            },
+            {
+              "id": "embedded-note",
+              "kind": "label",
+              "label": "PARTE DO CRÉDITO VIRA LANCE",
+              "x": 8,
+              "y": 83,
+              "width": 84,
+              "height": 12,
+              "surface": "none",
+              "label_size": 44
+            }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "O lance embutido usa parte do próprio crédito para antecipar pagamentos.",
+            "target_id": "embedded-note",
+            "headline": "CRÉDITO USADO NO LANCE",
+            "action": "focus",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.8,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.02,
+              "motion_seconds": 0.9
+            }
+          },
+          {
+            "anchor": "Isso precisa ser permitido pelas regras do seu grupo.",
+            "target_id": "embedded-note",
+            "headline": "SE O GRUPO PERMITIR",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Num exemplo ilustrativo, o crédito é de cem mil reais e o lance embutido vencedor é de trinta mil.",
+            "target_id": "credit",
+            "headline": "CRÉDITO",
+            "action": "reveal",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.65,
+            "reveal_ids": [
+              "bid"
+            ]
+          },
+          {
+            "anchor": "Cem mil menos trinta mil deixam setenta mil reais disponíveis para a compra.",
+            "target_id": "available",
+            "headline": "PARA A COMPRA",
+            "action": "reveal",
+            "treatment": "equation",
+            "behavior": "transform",
+            "motion_seconds": 1.2,
+            "operation": {
+              "kind": "equation",
+              "input_ids": [
+                "credit",
+                "bid"
+              ],
+              "operator": "-",
+              "result_id": "available"
+            }
+          },
+          {
+            "anchor": "Os trinta mil são deduzidos do crédito e usados para quitar ou amortizar prestações futuras.",
+            "target_id": "bid",
+            "headline": "AMORTIZA PARCELAS",
+            "action": "update",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Eles não são um presente, nem um custo extra somado por fora a essa mesma conta.",
+            "target_id": "embedded-note",
+            "headline": "NÃO É DINHEIRO GRÁTIS",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Se o carro do exemplo custa cem mil, ainda faltam trinta mil de recursos do comprador.",
+            "target_id": "embedded-note",
+            "headline": "CARRO DE R$ 100 MIL: FALTAM R$ 30 MIL",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Um crédito anunciado de cem mil pode, portanto, resultar em menos dinheiro disponível para o carro.",
+            "target_id": "available",
+            "headline": "DISPONÍVEL PARA COMPRAR",
+            "action": "update",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "E o lance embutido também não garante vitória: a disputa continua seguindo o contrato.",
+            "target_id": "embedded-note",
+            "headline": "LANCE ≠ VITÓRIA GARANTIDA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-07",
+      "index": 6,
+      "title": "O contrato continua depois da contemplação",
+      "claim_ids": [
+        "C7"
+      ],
+      "narration": "Também é preciso olhar o tempo que passa até a compra. O contrato define a referência do crédito e os critérios de atualização. Dependendo dessas regras, o valor da parcela pode mudar ao longo do plano. Não estamos dizendo que todo grupo aumenta igual, nem usando uma taxa de reajuste fictícia como previsão. A pergunta útil é qual referência será usada, quando será aplicada e o que ainda ficará a pagar. Ser contemplado não elimina automaticamente as obrigações restantes. Para usar o crédito, também existem as garantias previstas no contrato. Conseguir a contemplação e concluir a compra são etapas que você precisa entender separadamente. A chave chega depois de cumprir as condições, não apenas depois de ouvir o anúncio.",
+      "tts": {
+        "delivery": "explain",
+        "pause_ms": 150,
+        "cues": []
+      },
+      "visual": {
+        "type": "authored_stage",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "captions": {
+            "enabled": true,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          },
+          "elements": [
+            {
+              "id": "calendar",
+              "kind": "label",
+              "label": "TEMPO ATÉ A COMPRA",
+              "x": 5,
+              "y": 5,
+              "width": 36,
+              "height": 73,
+              "surface": "none",
+              "svg_motion": "trace",
+              "sustain": {
+                "kind": "float",
+                "amplitude": 8,
+                "period_seconds": 5
+              },
+              "icon": "clock",
+              "icon_size": 450,
+              "content_layout": "column",
+              "label_size": 42
+            },
+            {
+              "id": "contract",
+              "kind": "label",
+              "label": "REGRA DE ATUALIZAÇÃO",
+              "x": 53,
+              "y": 5,
+              "width": 40,
+              "height": 42,
+              "surface": "none",
+              "label_size": 52,
+              "icon": "document",
+              "icon_size": 250,
+              "content_layout": "row"
+            },
+            {
+              "id": "term",
+              "kind": "label",
+              "label": "QUAL REFERÊNCIA?",
+              "x": 53,
+              "y": 54,
+              "width": 40,
+              "height": 20,
+              "surface": "none",
+              "label_size": 56,
+              "initially_visible": false
+            },
+            {
+              "id": "timing-note",
+              "kind": "label",
+              "label": "CONDIÇÕES DO CONTRATO",
+              "x": 7,
+              "y": 88,
+              "width": 86,
+              "height": 9,
+              "surface": "none",
+              "label_size": 38
+            }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "Também é preciso olhar o tempo que passa até a compra.",
+            "target_id": "calendar",
+            "headline": "TEMPO ATÉ A COMPRA",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
@@ -2414,60 +2109,467 @@
             "camera": {
               "x": 50,
               "y": 50,
-              "zoom": 1.04,
-              "motion_seconds": 1
+              "zoom": 1.02,
+              "motion_seconds": 0.9
             }
           },
           {
-            "anchor": "Ele pode estar na quantidade: você paga o mesmo, recebe menos e gasta mais por quilo.",
-            "target_id": "answer",
-            "headline": "MESMA ETIQUETA · MENOS PRODUTO",
+            "anchor": "O contrato define a referência do crédito e os critérios de atualização.",
+            "target_id": "contract",
+            "headline": "REGRA DE ATUALIZAÇÃO",
+            "action": "focus",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.65,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.04,
+              "motion_seconds": 0.9
+            }
+          },
+          {
+            "anchor": "Dependendo dessas regras, o valor da parcela pode mudar ao longo do plano.",
+            "target_id": "term",
+            "headline": "PARCELA PODE MUDAR",
+            "action": "reveal",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.65
+          },
+          {
+            "anchor": "Não estamos dizendo que todo grupo aumenta igual, nem usando uma taxa de reajuste fictícia como previsão.",
+            "target_id": "timing-note",
+            "headline": "REAJUSTE DEPENDE DO CONTRATO",
             "action": "update",
             "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "A pergunta útil é qual referência será usada, quando será aplicada e o que ainda ficará a pagar.",
+            "target_id": "term",
+            "headline": "REFERÊNCIA E MOMENTO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Ser contemplado não elimina automaticamente as obrigações restantes.",
+            "target_id": "timing-note",
+            "headline": "PARCELAS RESTANTES CONTINUAM",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Para usar o crédito, também existem as garantias previstas no contrato.",
+            "target_id": "contract",
+            "headline": "GARANTIAS PARA USAR O CRÉDITO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Conseguir a contemplação e concluir a compra são etapas que você precisa entender separadamente.",
+            "target_id": "term",
+            "headline": "CRÉDITO → COMPRA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "A chave chega depois de cumprir as condições, não apenas depois de ouvir o anúncio.",
+            "target_id": "timing-note",
+            "headline": "CUMPRA AS CONDIÇÕES",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-08",
+      "index": 7,
+      "title": "A urgência muda a comparação",
+      "claim_ids": [
+        "C8",
+        "C7"
+      ],
+      "narration": "Isso torna todo consórcio uma escolha ruim? Não. Uma reportagem consultada ressalta a diferença entre planejar e precisar do bem imediatamente. Quem pode esperar avalia uma situação diferente de quem precisa do carro para trabalhar no mês que vem. E ter dinheiro para um lance também exige olhar o que sobra para a própria reserva. A comparação com financiamento precisa colocar prazo, custos e reajustes na mesma conversa. Antes de assinar, consulte se a administradora é autorizada pelo Banco Central e leia o contrato. Peça os custos discriminados e as regras de sorteio, lance e utilização do crédito. Histórico de lances pode dar contexto; não transforma o próximo resultado em promessa. Uma modalidade pode combinar com um planejamento e falhar no prazo de outra pessoa.",
+      "tts": {
+        "delivery": "explain",
+        "pause_ms": 150,
+        "cues": []
+      },
+      "visual": {
+        "type": "authored_stage",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "captions": {
+            "enabled": false,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          },
+          "elements": [
+            {
+              "id": "urgent",
+              "kind": "label",
+              "label": "PRECISA AGORA?",
+              "x": 7,
+              "y": 3,
+              "width": 38,
+              "height": 59,
+              "surface": "none",
+              "label_size": 62,
+              "icon": "car",
+              "icon_size": 350,
+              "content_layout": "column"
+            },
+            {
+              "id": "wait",
+              "kind": "label",
+              "label": "PODE ESPERAR?",
+              "x": 55,
+              "y": 3,
+              "width": 38,
+              "height": 59,
+              "surface": "none",
+              "label_size": 62,
+              "icon": "clock",
+              "icon_size": 350,
+              "content_layout": "column",
+              "initially_visible": false
+            },
+            {
+              "id": "decision-note",
+              "kind": "label",
+              "label": "COMPARE PRAZO E CUSTO",
+              "x": 10,
+              "y": 66,
+              "width": 80,
+              "height": 14,
+              "surface": "none",
+              "label_size": 58
+            },
+            {
+              "id": "context-note",
+              "kind": "label",
+              "label": "SEM VANTAGEM UNIVERSAL",
+              "x": 10,
+              "y": 87,
+              "width": 80,
+              "height": 11,
+              "surface": "none",
+              "label_size": 34
+            }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "Isso torna todo consórcio uma escolha ruim? Não.",
+            "target_id": "decision-note",
+            "headline": "DEPENDE DO PLANEJAMENTO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Uma reportagem consultada ressalta a diferença entre planejar e precisar do bem imediatamente.",
+            "target_id": "wait",
+            "headline": "PODE ESPERAR?",
+            "action": "reveal",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.65,
+            "entrance": {
+              "style": "slide",
+              "direction": "right"
+            }
+          },
+          {
+            "anchor": "Quem pode esperar avalia uma situação diferente de quem precisa do carro para trabalhar no mês que vem.",
+            "target_id": "urgent",
+            "headline": "PRECISA AGORA?",
+            "action": "focus",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.65,
+            "camera": {
+              "x": 49,
+              "y": 50,
+              "zoom": 1.03,
+              "motion_seconds": 0.9
+            }
+          },
+          {
+            "anchor": "E ter dinheiro para um lance também exige olhar o que sobra para a própria reserva.",
+            "target_id": "decision-note",
+            "headline": "LANCE E RESERVA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "A comparação com financiamento precisa colocar prazo, custos e reajustes na mesma conversa.",
+            "target_id": "decision-note",
+            "headline": "PRAZO + CUSTOS + REAJUSTES",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Antes de assinar, consulte se a administradora é autorizada pelo Banco Central e leia o contrato.",
+            "target_id": "context-note",
+            "headline": "VERIFIQUE A ADMINISTRADORA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Peça os custos discriminados e as regras de sorteio, lance e utilização do crédito.",
+            "target_id": "decision-note",
+            "headline": "LEIA REGRAS E CUSTOS",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Histórico de lances pode dar contexto; não transforma o próximo resultado em promessa.",
+            "target_id": "context-note",
+            "headline": "HISTÓRICO NÃO GARANTE RESULTADO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Uma modalidade pode combinar com um planejamento e falhar no prazo de outra pessoa.",
+            "target_id": "wait",
+            "headline": "PODE ESPERAR?",
+            "action": "focus",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.65,
+            "camera": {
+              "x": 51,
+              "y": 50,
+              "zoom": 1.03,
+              "motion_seconds": 0.9
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-09",
+      "index": 8,
+      "title": "A resposta antes da assinatura",
+      "claim_ids": [
+        "C1",
+        "C3",
+        "C4",
+        "C6",
+        "C7",
+        "C8"
+      ],
+      "narration": "Então, por que pagar o consórcio não garante levar o carro? Porque a parcela sustenta sua participação no grupo; o crédito depende da contemplação. Ela acontece por sorteio ou lance, com recursos e regras. E utilizar esse crédito exige cumprir as condições do contrato. A conta completa inclui custos, possível atualização e quanto sobra depois de um lance embutido. O perigo é escolher olhando apenas a parcela e descobrir depois que a data não serve para sua vida. Pode haver um planejamento adequado, mas ele precisa sobreviver à espera e às obrigações. Antes de imaginar a chave, entenda quando ela pode chegar e qual dinheiro estará disponível.",
+      "tts": {
+        "delivery": "explain",
+        "pause_ms": 150,
+        "cues": []
+      },
+      "visual": {
+        "type": "authored_stage",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "captions": {
+            "enabled": true,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          },
+          "elements": [
+            {
+              "id": "car",
+              "kind": "object",
+              "label": "DA PARCELA À CHAVE: EXISTEM CONDIÇÕES",
+              "x": 5,
+              "y": 3,
+              "width": 49,
+              "height": 82,
+              "surface": "none",
+              "object_type": "hub",
+              "hyperframes": {
+                "entry": "video/hyperframes/car-gate/index.html",
+                "initial_state": "waiting",
+                "width": 960,
+                "height": 720,
+                "states": [
+                  {
+                    "anchor": "Então, por que pagar o consórcio não garante levar o carro?",
+                    "state": "waiting"
+                  },
+                  {
+                    "anchor": "E utilizar esse crédito exige cumprir as condições do contrato.",
+                    "state": "choice"
+                  },
+                  {
+                    "anchor": "Antes de imaginar a chave, entenda quando ela pode chegar e qual dinheiro estará disponível.",
+                    "state": "summary"
+                  }
+                ]
+              }
+            },
+            {
+              "id": "answer",
+              "kind": "label",
+              "label": "PAGAR ≠ RECEBER",
+              "x": 60,
+              "y": 16,
+              "width": 35,
+              "height": 25,
+              "surface": "none",
+              "label_size": 70
+            },
+            {
+              "id": "condition",
+              "kind": "label",
+              "label": "CONTRATO + RECURSOS",
+              "x": 60,
+              "y": 49,
+              "width": 35,
+              "height": 14,
+              "surface": "none",
+              "label_size": 38
+            },
+            {
+              "id": "scheme",
+              "kind": "label",
+              "label": "ESQUEMA ILUSTRATIVO",
+              "x": 7,
+              "y": 88,
+              "width": 47,
+              "height": 10,
+              "surface": "none",
+              "label_size": 32
+            }
+          ],
+          "connections": []
+        },
+        "beats": [
+          {
+            "anchor": "Então, por que pagar o consórcio não garante levar o carro?",
+            "target_id": "car",
+            "headline": "A PERGUNTA INICIAL",
+            "action": "focus",
+            "treatment": "spotlight",
             "behavior": "transform",
             "motion_seconds": 0.8,
             "camera": {
               "x": 50,
               "y": 50,
-              "zoom": 1,
-              "motion_seconds": 0.8
+              "zoom": 1.02,
+              "motion_seconds": 0.9
             }
           },
           {
-            "anchor": "Olhe o peso ou volume, procure o aviso de mudança e compare produtos equivalentes.",
-            "target_id": "bag",
-            "headline": "PESO · VOLUME · AVISO",
-            "action": "update",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "A melhor referência é o preço por quilo, litro ou unidade, junto do que você vai consumir.",
+            "anchor": "Porque a parcela sustenta sua participação no grupo; o crédito depende da contemplação.",
             "target_id": "answer",
-            "headline": "COMPARE POR QUILO, LITRO OU UNIDADE",
+            "headline": "DEPENDE DA CONTEMPLAÇÃO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.45
           },
           {
-            "anchor": "Você já percebeu um produto encolher na sua compra? Conte qual mudança chamou sua atenção.",
-            "target_id": "bag",
-            "headline": "QUAL MUDANÇA VOCÊ PERCEBEU?",
-            "action": "update",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.8
-          },
-          {
-            "anchor": "Eu sou Roberto. Até a próxima.",
-            "target_id": "answer",
-            "headline": "O DINHEIRO EXPLICA",
+            "anchor": "Ela acontece por sorteio ou lance, com recursos e regras.",
+            "target_id": "condition",
+            "headline": "SORTEIO OU LANCE",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.8
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "E utilizar esse crédito exige cumprir as condições do contrato.",
+            "target_id": "car",
+            "headline": "CONDIÇÕES PARA USAR O CRÉDITO",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.65,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.04,
+              "motion_seconds": 0.9
+            }
+          },
+          {
+            "anchor": "A conta completa inclui custos, possível atualização e quanto sobra depois de um lance embutido.",
+            "target_id": "condition",
+            "headline": "CUSTO E CRÉDITO DISPONÍVEL",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "O perigo é escolher olhando apenas a parcela e descobrir depois que a data não serve para sua vida.",
+            "target_id": "answer",
+            "headline": "A DATA PRECISA SERVIR",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Pode haver um planejamento adequado, mas ele precisa sobreviver à espera e às obrigações.",
+            "target_id": "condition",
+            "headline": "ESPERA + OBRIGAÇÕES",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.45
+          },
+          {
+            "anchor": "Antes de imaginar a chave, entenda quando ela pode chegar e qual dinheiro estará disponível.",
+            "target_id": "car",
+            "headline": "ANTES DE IMAGINAR A CHAVE",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.65,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.01,
+              "motion_seconds": 0.9
+            }
           }
         ]
       }

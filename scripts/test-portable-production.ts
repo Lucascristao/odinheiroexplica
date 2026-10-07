@@ -1,0 +1,28 @@
+import assert from "node:assert/strict";
+import {readFileSync} from "node:fs";
+import {productionChatRequest} from "../src/lib/production-chat-request";
+import {editorialStageSchema,hyperframesArtSchema} from "../src/lib/editorial-stage";
+import {alignedArtStates,validateArtSource} from "../src/lib/hyperframes-contract";
+
+const request=productionChatRequest("Gere o vídeo de hoje",{chooseTopic:true});
+assert.match(request,/normal, com contratos/);
+assert.match(request,/Autorizo você a escolher/);
+assert.doesNotMatch(request,/Modo: produção direta/);
+assert.match(productionChatRequest("Escolha comigo"),/apresente três opções/);
+assert.match(productionChatRequest("Sem testes",{mode:"direct"}),/\[production direct\]/);
+const config={entry:"video/hyperframes/car-gate/index.html",initial_state:"paid",states:[{anchor:"pagou",state:"paid"},{anchor:"espera",state:"waiting"}],width:960,height:720};
+const source=readFileSync(config.entry,"utf8"),beats=[{anchor:"pagou",resolved_frame:30,timing_source:"asr-word-alignment"},{anchor:"espera",resolved_frame:150,timing_source:"text-fallback"}];
+validateArtSource(source,config,beats);
+assert.equal(alignedArtStates(config,beats,180,30)[1].timing_source,"text-fallback");
+assert.throws(()=>validateArtSource(source,config,[...beats,beats[0]]),/único/);
+assert.throws(()=>validateArtSource(source,{...config,initial_state:"guaranteed"},beats),/suportado/);
+assert.throws(()=>validateArtSource(source+"Math.random()",config,beats),/determinístico/);
+assert.throws(()=>alignedArtStates(config,[beats[0],{...beats[1],resolved_frame:180}],180,30),/dentro/);
+assert.throws(()=>alignedArtStates(config,[{anchor:"pagou"},beats[1]],180,30),/frame/);
+assert.throws(()=>alignedArtStates(config,beats,180,24),/30 fps/);
+assert.equal(hyperframesArtSchema.safeParse({...config,entry:"../other/index.html"}).success,false);
+const object={id:"art",kind:"object",object_type:"hub",label:"Arte",x:10,y:10,width:80,height:80,hyperframes:config};
+assert.equal(editorialStageSchema.safeParse({elements:[object]}).success,true);
+assert.equal(editorialStageSchema.safeParse({elements:[{...object,kind:"metric"}]}).success,false);
+assert.equal(editorialStageSchema.safeParse({elements:[{...object,hyperframes:undefined,clip_file:"generated-clips/x.mp4"}]}).success,false);
+console.log("Portable production: normal default, editorial authorization, source isolation and audio-clock provenance verified.");

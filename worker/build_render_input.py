@@ -11,6 +11,7 @@ from pathlib import Path
 from tts_config import TTS_MODEL_CASCADE, PRESENTER_VOICES, VOICE_POLICY_VERSION, project_speech_fingerprint, voice_policy_fingerprint, scene_direction_fingerprint
 from editorial_project import normalize_project
 from editorial_caption_timing import build_caption_timing
+from voice_master import level_plan,pitch_summary
 
 
 FPS = 30
@@ -332,20 +333,7 @@ def main() -> None:
                 {**((project.get("speech") or {}).get("pronunciations") or {}),
                  **((scene.get("tts") or {}).get("pronunciations") or {})},
             )
-        activity = audio.get("audio_activity") or {}
-        scene_rms = activity.get("rms_dbfs")
-        peak_dbfs = activity.get("sample_peak_dbfs")
-        if isinstance(scene_rms, (int, float)) and math.isfinite(scene_rms) and scene_rms > -60:
-            target_rms = -18.0
-            diff_db = target_rms - float(scene_rms)
-            gain = 10.0 ** (diff_db / 20.0)
-            if isinstance(peak_dbfs, (int, float)) and math.isfinite(peak_dbfs):
-                peak_linear = 10.0 ** (peak_dbfs / 20.0)
-                if peak_linear * gain > 0.975:
-                    gain = 0.975 / max(1e-6, peak_linear)
-            vol_mult = round(float(min(1.5, max(0.5, gain))), 4)
-        else:
-            vol_mult = 1.0
+        vol_mult = 1.0  # Replaced by the joint plan after measuring every scene.
 
         output_scenes.append(
             {
@@ -375,7 +363,12 @@ def main() -> None:
         )
         cursor += duration_frames
 
-    # Constrói a faixa de áudio contínua (single continuous master audio) para eliminar cortes na voz
+    master_levels=level_plan([s.get("audio_activity") or {} for s in output_scenes])
+    for scene,level in zip(output_scenes,master_levels["scenes"]):
+        scene["audio_volume_multiplier"]=level["gain"]
+        level["id"]=scene["id"]
+    master_diagnostics={"version":"1.0","levels":master_levels,"pitch":[],"warnings":[],"raw_scene_wavs_unchanged":True,"pitch_correction_applied":False}
+    # Only the continuous master applies the planned common level and 5ms edges.
     continuous_filename = "daily-continuous-narration.wav"
     master_audio_path = audio_dir / continuous_filename
     master_created = False
@@ -403,6 +396,7 @@ def main() -> None:
             try:
                 import numpy as np
                 pcm_arr = np.frombuffer(raw_pcm, dtype=np.int16).astype(np.float64)
+                master_diagnostics["pitch"].append({"id":scene["id"],**pitch_summary(pcm_arr/32768,sample_rate)})
                 if abs(vol_mult - 1.0) > 0.001 or edge_samples > 0:
                     pcm_arr *= vol_mult
                     if edge_samples > 0 and len(pcm_arr) >= edge_samples * 2:
@@ -452,7 +446,19 @@ def main() -> None:
             master_created = True
             print(f"Trilha contínua equalizada sem cortes: {master_audio_path} ({len(continuous_samples)/2/sample_rate:.2f}s)")
     except Exception as exc:
-        print(f"Aviso: Não foi possível gerar trilha contínua: {exc}")
+        raise RuntimeError("Falha na trilha contínua; não entregar mix por cena sem a equalização solicitada.") from exc
+    if not master_created:
+        raise RuntimeError("Trilha contínua não criada; confira os WAVs PCM16 mono 24kHz.")
+    for current,following in zip(master_diagnostics["pitch"],master_diagnostics["pitch"][1:]):
+        a,b=current.get("median_hz"),following.get("median_hz")
+        if a and b:
+            delta=12*math.log2(b/a)
+            if abs(delta)>3:
+                master_diagnostics["warnings"].append({"from":current["id"],"to":following["id"],"estimated_register_delta_semitones":round(delta,2),"action":"Review by listening; estimate is not proof of an identity change."})
+    master_diagnostics["master_sha256"]=hashlib.sha256(master_audio_path.read_bytes()).hexdigest()
+    diagnostics_path=Path(args.output).with_name("daily-voice-master-report.json")
+    diagnostics_path.parent.mkdir(parents=True,exist_ok=True)
+    diagnostics_path.write_text(json.dumps(master_diagnostics,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 
     payload = {
         "project_id": project.get("project_id", "project"),
@@ -464,6 +470,7 @@ def main() -> None:
         "voice_postprocess": manifest.get("postprocess"),
         "voice_alignment": manifest.get("alignment"),
         "voice_policy_version": manifest.get("voice_policy_version"),
+        "voice_master": master_diagnostics,
         "narration_master_audio": (
             f"{args.audio_public_prefix.rstrip('/')}/{continuous_filename}"
             if master_created else None

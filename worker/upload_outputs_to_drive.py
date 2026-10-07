@@ -1,6 +1,7 @@
 import argparse
 import json
 import re
+import hashlib
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -18,6 +19,7 @@ def main() -> None:
     parser.add_argument("--thumbnail")
     parser.add_argument("--metadata", required=True)
     parser.add_argument("--publication-text")
+    parser.add_argument("--review-package")
     parser.add_argument("--project-slug", required=True)
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
@@ -51,6 +53,8 @@ def main() -> None:
             "file_id": file_id,
             "name": file_path.name,
             "web_view_url": f"https://drive.google.com/file/d/{file_id}/view",
+            "size_bytes": file_path.stat().st_size,
+            "sha256": hashlib.sha256(file_path.read_bytes()).hexdigest(),
         }
 
     upload_one("video", args.video)
@@ -65,6 +69,8 @@ def main() -> None:
         if not publication_text.exists():
             raise RuntimeError(f"Arquivo de publicação não encontrado: {publication_text}")
         upload_one("publication_text", args.publication_text)
+    if args.review_package:
+        upload_one("visual_review", args.review_package)
 
     payload = {
         "folder_id": folder_id,

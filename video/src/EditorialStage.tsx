@@ -4,7 +4,7 @@ import {EditorialIcon} from "./EditorialIcon";
 import {EditorialObject} from "./EditorialObject";
 import {EditorialOperation} from "./EditorialOperation";
 import {useId, useMemo} from "react";
-import {AbsoluteFill, Img, interpolate, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
+import {AbsoluteFill, Img, OffthreadVideo, interpolate, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
 import {useEditorialFont, measureEditorialText} from "./editorial-font";
 import {composeText, EDITORIAL_FONT} from "../../src/lib/editorial-typography";
 import {entranceMotion, layoutStage, nodeContent, pointOnRoute} from "../../src/lib/editorial-layout";
@@ -233,7 +233,7 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
                 <div style={{flex: 1, minHeight: 0, position:"relative", clipPath:motion.clip}}>
                   {surface && <div data-editorial-surface={element.surface} aria-hidden style={{position:"absolute",inset:0,background:surface,borderRadius:element.surface==="paper"?6:0}} />}
                   <div style={{width:"100%",height:"100%",position:"relative",transform:sustainedTransform(mediaSustain,frame,fps,Math.max(1,box.w-cardPadding*2),Math.max(1,box.h-cardPadding*2-90),element.changedAt),transformOrigin:"center"}}>
-                    <EditorialObject type={element.object_type} accent={accent} progress={reveal} emphasisProgress={cueEase} active={selected && checkedStage.motion_profile !== "static"} actuation={element.actuation} actuationProgress={actuationProgress} locked={element.locked} lockFrom={element.lockFrom} lockProgress={lockProgress} contentFraction={element.content_fraction} motion={checkedStage.motion_profile === "static" ? "none" : element.svg_motion} />
+                    {element.clip_file ? <OffthreadVideo muted src={staticFile(element.clip_file)} style={{width:"100%",height:"100%",objectFit:"contain"}} /> : <EditorialObject type={element.object_type} accent={accent} progress={reveal} emphasisProgress={cueEase} active={selected && checkedStage.motion_profile !== "static"} actuation={element.actuation} actuationProgress={actuationProgress} locked={element.locked} lockFrom={element.lockFrom} lockProgress={lockProgress} contentFraction={element.content_fraction} motion={checkedStage.motion_profile === "static" ? "none" : element.svg_motion} />}
                   </div>
                 </div>
                 <div style={{height:90,flexShrink:0}}><TextBox text={element.label} width={box.w - 32} height={90} maxSize={element.label_size??42} kinetic={kineticLabel} wordProgress={cueProgress} /></div>

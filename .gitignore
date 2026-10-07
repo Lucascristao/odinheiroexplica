@@ -12,6 +12,7 @@ public/processed-audio/
 public/generated-assets/
 public/generated-sfx/
 public/generated-music/
+public/generated-clips/
 video/generated/
 voice-model-comparison/
 work/

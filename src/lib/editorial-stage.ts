@@ -20,6 +20,14 @@ const stageSustainSchema = z.object({
 });
 const stageActuationSchema = z.enum(["tap", "lock", "unlock", "confirm", "signal", "dispense", "count"]);
 
+export const hyperframesArtSchema = z.object({
+  entry: z.string().regex(/^video\/hyperframes\/[a-z0-9-]+\/index\.html$/),
+  initial_state: z.string().min(1),
+  states: z.array(z.object({anchor:z.string().min(1),state:z.string().min(1)})).min(1).max(12),
+  width: z.number().int().min(320).max(1920).default(960),
+  height: z.number().int().min(240).max(1080).default(720),
+});
+
 export const stageElementSchema = z.object({
   id: z.string().min(1),
   kind: z.enum(["step", "label", "metric", "note", "photo", "object", "source_excerpt", "chart"]),
@@ -50,6 +58,8 @@ export const stageElementSchema = z.object({
   initially_visible: z.boolean().default(true),
   asset_id: z.string().optional(),
   asset_file: z.string().optional(),
+  hyperframes: hyperframesArtSchema.optional(),
+  clip_file: z.string().regex(/^generated-clips\/[a-zA-Z0-9_-]+\.mp4$/).optional(),
   photo_style: z.enum(["clean", "paper"]).default("clean"),
   image_fit: z.enum(["contain", "cover"]).default("contain"),
   focal_x: z.number().min(0).max(100).default(50),
@@ -104,6 +114,8 @@ export const editorialStageSchema = z.object({
   for (const [index, element] of stage.elements.entries()) {
     if (ids.has(element.id)) ctx.addIssue({code: "custom", path: ["elements", index, "id"], message: "ID visual duplicado."});
     ids.add(element.id);
+    if(element.hyperframes && element.kind!=="object")ctx.addIssue({code:"custom",path:["elements",index,"hyperframes"],message:"Arte HyperFrames ocupa a região interna de um objeto auditado."});
+    if(element.clip_file && !element.hyperframes)ctx.addIssue({code:"custom",path:["elements",index,"clip_file"],message:"Clipe produzido exige contrato HyperFrames."});
     if(element.kind === "chart" && (!element.chart || element.width<60 || element.height<50))ctx.addIssue({code:"custom",path:["elements",index],message:"Gráfico exige dados e região de pelo menos 60% × 50%."});
     if(element.chart_reveal_to !== undefined && (element.kind !== "chart" || !element.chart || element.chart_reveal_to >= element.chart.points.length))ctx.addIssue({code:"custom",path:["elements",index,"chart_reveal_to"],message:"Revelação exige índice existente do gráfico; -1 mostra somente os eixos."});
     if(new Set(element.annotations.map(a=>a.id)).size !== element.annotations.length)ctx.addIssue({code:"custom",path:["elements",index],message:"Marcação com ID duplicado."});

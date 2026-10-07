@@ -68,6 +68,9 @@ jobs:
       - name: Typecheck before narration
         run: npm run typecheck
 
+      - name: Validate portable HyperFrames contracts before narration
+        run: npm run prepare:hyperframes -- --preflight
+
       - name: Validate canonical voice policy before narration
         run: python worker/validate_voice_policy.py
 
@@ -290,6 +293,24 @@ jobs:
             --input video/generated/daily-render-input.json \
             --output video/generated/daily-rhythm-report.json
 
+      - name: Restore authored visual clips
+        uses: actions/cache/restore@v4
+        with:
+          path: public/generated-clips
+          key: hyperframes-art-v1-${{ hashFiles('package-lock.json', 'video/hyperframes/**', 'video/data/daily.json') }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            hyperframes-art-v1-${{ hashFiles('package-lock.json', 'video/hyperframes/**', 'video/data/daily.json') }}-
+
+      - name: Prepare HyperFrames art with the actual narration clock
+        run: npm run prepare:hyperframes
+
+      - name: Save valid authored visual clips
+        if: always() && hashFiles('public/generated-clips/*.mp4.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: public/generated-clips
+          key: hyperframes-art-v1-${{ hashFiles('package-lock.json', 'video/hyperframes/**', 'video/data/daily.json') }}-${{ github.run_id }}-${{ github.run_attempt }}
+
       - name: Generate editorial background music
         run: |
           rm -rf public/generated-music
@@ -389,6 +410,13 @@ jobs:
             --video render-output/daily-video.mp4 \
             --output video/generated/daily-delivery-qa.json
 
+      - name: Extract review evidence from the final encoded video
+        run: |
+          python worker/review_rendered_video.py \
+            --input video/generated/daily-render-input.json \
+            --video render-output/daily-video.mp4 \
+            --output-dir render-output/visual-review
+
       - name: Upload production review artifact
         if: always()
         uses: actions/upload-artifact@v4
@@ -417,11 +445,16 @@ jobs:
             video/generated/daily-processed-tts-manifest.json
             video/generated/daily-aligned-tts-manifest.json
             video/generated/daily-alignment-report.json
+            video/generated/daily-voice-master-report.json
             video/generated/daily-rhythm-report.json
             video/generated/daily-render-input.json
             public/generated-audio/daily/*.wav
             public/processed-audio/daily/*
             public/generated-music/*
+            public/generated-clips/
+            video/generated/daily-hyperframes-*.json
+            render-output/visual-review/
+            render-output/daily-visual-review.zip
           if-no-files-found: warn
           retention-days: 7
 
@@ -449,6 +482,7 @@ jobs:
             --video render-output/daily-video.mp4 \
             --metadata render-output/daily-youtube.json \
             --publication-text render-output/daily-youtube.txt \
+            --review-package render-output/daily-visual-review.zip \
             --project-slug "$ODE_PROJECT_SLUG" \
             --output render-output/daily-drive.json
 

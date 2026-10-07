@@ -1,5 +1,7 @@
 # Produção do O Dinheiro Explica no chat
 
+O fluxo portátil começa em `skills/ode-video/SKILL.md`; `npm run ode -- context` informa contratos, capacidades e estado. As skills canônicas pertencem ao Git e podem ser lidas explicitamente por qualquer agente. `docs/production-portable.md` descreve execução e retomada. Decisões/autorização explícitas da conversa prevalecem: quando o usuário autorizar escolher a pauta, escolha após pesquisa e histórico sem pedir a escolha novamente.
+
 Quando a pessoa pedir **“Gerar o vídeo de hoje”** ou um vídeo por tema neste repositório:
 
 - **Seleção e Decisão de Pauta com Potencial Viral e Alto CTR**: Se ainda não existe uma pauta aprovada nesta conversa, ou se a solicitação pede uma nova seleção de assunto:

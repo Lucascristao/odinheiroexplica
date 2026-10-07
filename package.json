@@ -25,7 +25,10 @@
     "test:preflight": "tsx scripts/test-editorial-preflight.ts",
     "review:motion": "tsx scripts/review-editorial-motion.ts",
     "test:layout": "tsx scripts/test-editorial-layout.ts",
-    "test:motion": "tsx scripts/test-editorial-motion.ts"
+    "test:motion": "tsx scripts/test-editorial-motion.ts",
+    "ode": "tsx scripts/ode.ts",
+    "prepare:hyperframes": "tsx scripts/prepare-hyperframes.ts",
+    "test:portable": "tsx scripts/test-portable-production.ts"
   },
   "dependencies": {
     "@netlify/blobs": "11.0.3",
@@ -37,15 +40,17 @@
   },
   "devDependencies": {
     "@fontsource/inter": "^5.3.0",
-    "@remotion/cli": "4.0.529",
     "@remotion/bundler": "4.0.529",
-    "@remotion/renderer": "4.0.529",
+    "@remotion/cli": "4.0.529",
     "@remotion/fonts": "4.0.529",
     "@remotion/layout-utils": "4.0.529",
     "@remotion/media": "4.0.529",
+    "@remotion/renderer": "4.0.529",
     "@types/react": "^19.1.16",
     "@types/react-dom": "^19.1.9",
     "@vitejs/plugin-react": "^5.0.4",
+    "gsap": "3.13.0",
+    "hyperframes": "0.8.139",
     "remotion": "4.0.529",
     "tsx": "^4.23.15",
     "typescript": "^5.9.2",
