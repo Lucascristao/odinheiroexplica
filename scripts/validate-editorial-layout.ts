@@ -54,6 +54,7 @@ try {
     if(!result)throw new Error(`Cena ${index} não devolveu diagnóstico de layout.`);
     if(!result.font_loaded)throw new Error(`Cena ${scene.id??index}: fonte real não carregada; auditoria inconclusiva.`);
     report.scenes.push({...result,input_scene_index:index});
+    for(const warning of result.warnings??[])console.warn(`${scene.id??index} [${warning.code}] ${warning.element}: ${warning.message}`);
     report.issues.push(...result.issues.map((i:any)=>({...i,scene_id:scene.id??index,repair_guidance:layoutRepairGuidance(i.code)})));
     report.deferred_assets.push(...(result.deferred_assets??[]).map((i:any)=>({...i,scene_id:scene.id??index})));
   }

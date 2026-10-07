@@ -28,9 +28,11 @@ const Audit=({scene,fps=30,mode="pre-voice"}:AuditProps)=> {
   }
   const issues:any[]=[];
   const deferred:any[]=[];
+  const mediaPeaks=new Map<string,ReturnType<typeof layoutStage>["media_layout"][number]>();
   const seen=new Set<string>();
   if(ready)for(const frame of [...frames].sort((a,b)=>a-b)) {
     const result=layoutStage(stage,beats,frame,fps,1920,1080,measureEditorialText,scene.title);
+    for(const media of result.media_layout)if(media.frame_area_ratio>(mediaPeaks.get(media.id)?.frame_area_ratio??0))mediaPeaks.set(media.id,media);
     const audit=partitionLayoutIssues(result.issues,mode as LayoutAuditMode);
     for(const issue of audit.deferred)if(!deferred.some(item=>item.element===issue.element))deferred.push(issue);
     for(const issue of audit.issues) {
@@ -40,10 +42,12 @@ const Audit=({scene,fps=30,mode="pre-voice"}:AuditProps)=> {
   }
   if(mode==="final-timing"&&(scene.visual.beats??[]).some((b:any)=>!Number.isFinite(b.resolved_frame)))issues.push({code:"missing-final-timing",message:"O passe final exige resolved_frame real em todos os beats; não usa tempos sintéticos."});
   const representative=ready?layoutStage(stage,beats,duration-1,fps,1920,1080,measureEditorialText,scene.title):null;
+  const mediaLayout=[...mediaPeaks.values()];
+  const warnings=mediaLayout.filter(media=>media.visual_role==="protagonist"&&media.frame_area_ratio<.12).map(media=>({code:"small-protagonist",element:media.id,message:`A arte protagonista ocupa apenas ${(media.frame_area_ratio*100).toFixed(1)}% do quadro mesmo no maior estado conferido. Amplie a região e confira a proporção do clipe; largura do contêiner não comprova tamanho da ilustração.`,frame_area_ratio:media.frame_area_ratio,region_fill_ratio:media.region_fill_ratio}));
   useEffect(()=> {
     if(!ready||!representative)return;
     if(mode==="geometry-only") {
-      console.info("ODE_LAYOUT_REPORT:"+JSON.stringify({version:LAYOUT_VERSION,typography_version:TYPOGRAPHY_VERSION,font:EDITORIAL_FONT,font_loaded:document.fonts.check(`700 32px "${EDITORIAL_FONT}"`),resolution:{width:1920,height:1080},mode,scene_id:scene.id??scene.scene_index,checked_frames:frames.size,issues,deferred_assets:deferred,dom:[],dom_connections:[],dom_photo_captions:[],typography:[],scope:"Geometria e texto com fonte real. Assets, DOM final e sincronização aguardam os passes de produção."}));
+      console.info("ODE_LAYOUT_REPORT:"+JSON.stringify({version:LAYOUT_VERSION,typography_version:TYPOGRAPHY_VERSION,font:EDITORIAL_FONT,font_loaded:document.fonts.check(`700 32px "${EDITORIAL_FONT}"`),resolution:{width:1920,height:1080},mode,scene_id:scene.id??scene.scene_index,checked_frames:frames.size,issues,warnings,media_layout:mediaLayout,deferred_assets:deferred,dom:[],dom_connections:[],dom_photo_captions:[],typography:[],scope:"Geometria e texto com fonte real. Assets, DOM final e sincronização aguardam os passes de produção."}));
       continueRender(handle);
       return;
     }
@@ -83,7 +87,7 @@ const Audit=({scene,fps=30,mode="pre-voice"}:AuditProps)=> {
     const expectedEdges=representative.connections.filter(c=>c.label&&representative.elements.find(e=>e.id===c.from)?.visible&&representative.elements.find(e=>e.id===c.to)?.visible).length;
     if(!issues.length&&domConnections.length!==expectedEdges)issues.push({code:"missing-dom-legends",message:"A verificação não encontrou todas as legendas visíveis do renderer."});
     if(!issues.length&&domPhotoCaptions.length!==representative.photo_captions.length)issues.push({code:"missing-dom-photo-captions",message:"A verificação não encontrou todas as legendas de fotos."});
-    console.info("ODE_LAYOUT_REPORT:"+JSON.stringify({version:LAYOUT_VERSION,typography_version:TYPOGRAPHY_VERSION,font:EDITORIAL_FONT,font_loaded:document.fonts.check(`700 32px "${EDITORIAL_FONT}"`),resolution:{width:1920,height:1080},mode,scene_id:scene.id??scene.scene_index,checked_frames:frames.size,issues,dom,dom_connections:domConnections,dom_photo_captions:domPhotoCaptions,typography}));
+    console.info("ODE_LAYOUT_REPORT:"+JSON.stringify({version:LAYOUT_VERSION,typography_version:TYPOGRAPHY_VERSION,font:EDITORIAL_FONT,font_loaded:document.fonts.check(`700 32px "${EDITORIAL_FONT}"`),resolution:{width:1920,height:1080},mode,scene_id:scene.id??scene.scene_index,checked_frames:frames.size,issues,warnings,media_layout:mediaLayout,dom,dom_connections:domConnections,dom_photo_captions:domPhotoCaptions,typography}));
     continueRender(handle);
     }));
     return ()=>cancelAnimationFrame(frameHandle);

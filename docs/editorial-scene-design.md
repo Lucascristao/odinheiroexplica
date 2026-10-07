@@ -17,6 +17,12 @@ Essas escolhas não formam um catálogo obrigatório nem uma sequência fixa. Ca
 
 ## Arte protagonista e texto
 
+A ilustração ocupa a maior parte útil do quadro quando comanda a explicação. Não reserve o terço inferior para legendas nem prenda toda cena num retângulo baixo. Componha pela relação: arte ampla com título curto, comparação grande ou protagonista lateral com informação grande. Texto principal normalmente usa 64–96 px, com região suficiente, sem diminuir a arte para caber legendas.
+
+Objetos aceitam `show_label: false`: `label` continua como metadado sem aparecer ou reservar uma faixa. Não escreva “ILUSTRAÇÃO ESQUEMÁTICA” ou outro nome de técnica na tela. Condições necessárias, como “EXEMPLO HIPOTÉTICO”, continuam nos rótulos explicativos; não confundir isso com aviso sobre o formato da arte. Quando o rótulo do objeto estiver visível, o motor mede sua altura real, sem rodapé fixo de 90 px.
+
+Declare `visual_role: protagonist | support` nas artes. O relatório de produção mede a área efetiva do SVG/clipe após o encaixe `contain`, com fonte e câmera reais; uma região larga e baixa pode produzir arte muito pequena. `small-protagonist` avisa quando a maior ocupação conferida fica abaixo de 12% do quadro. É diagnóstico para recompor, não cota de efeitos nem autorização para cortar o desenho. A medida cobre o envelope da arte; transparências e vazios internos do SVG exigem direção e revisão visual.
+
 Elementos de texto com `icon` aceitam `icon_size: 48..500` em pixels. Use 250–500 quando o SVG comandar a cena. O tamanho explícito é preservado; o auditor informa falta de capacidade em vez de reduzir a arte silenciosamente. A ausência mantém os tamanhos dos episódios antigos.
 
 `content_layout: row | column` organiza ícone e texto na mesma região. Em coluna, reserve altura para ambos; em linha, reserve largura. Os mínimos de texto, entradas e câmera continuam valendo. `surface: none` remove também a bolha atrás do ícone. Fotos, recortes, gráficos e `kind: object` usam sua própria região, sem `icon_size` ou `content_layout`.

@@ -168,7 +168,12 @@ export function summarizeEditorialDirection(project: any) {
     }
     if (stage) {
       for (const element of stage.elements ?? []) {
+        if(element.kind==="object"&&element.show_label!==false&&/^ilustra[çc][ãa]o\b|^esquema\b/i.test(element.label??""))add("warning","technical-art-label","O rótulo descreve a técnica em vez da informação. Mantenha a descrição nos metadados e use show_label=false; o texto visível deve explicar a relação da cena.",undefined,element.id);
         if (element.svg_motion === "trace" && element.kind !== "object" && !element.icon) add("error", "missing-svg", "svg_motion=trace exige um objeto SVG ou icon. Declare a arte pertinente ou remova a opção sem efeito.", undefined, element.id);
+        for(const state of element.hyperframes?.states??[]) {
+          const index=beats.findIndex((beat:any)=>beat.anchor===state.anchor);
+          if(index>=0){transformationIndices.add(index);motionIndices.add(index);}
+        }
       }
       if (stage.motion_profile === "static" && (beats.some((b: any) => b.entrance || ["kinetic_type", "masked_emphasis"].includes(b.treatment)) || stage.elements?.some((e: any) => e.svg_motion && e.svg_motion !== "none"))) add("warning", "suppressed-motion", "motion_profile=static desativa entradas, cascatas, grifos e desenho de SVG. Confirme que a pausa estável é intencional; para executar essas animações, use narrative.");
       if (stage.motion_profile === "static" && (stage.elements?.some((e: any) => e.sustain?.amplitude > 0) || stage.connections?.some((edge: any) => ["flow", "pulse"].includes(edge.motion)) || beats.some((b: any) => b.actuation))) add("warning", "suppressed-sustain", "O perfil static suprime movimento sustentado e atuação. Preserve a pausa documental ou selecione narrative para a ação que explica este trecho.");

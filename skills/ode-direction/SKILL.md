@@ -11,4 +11,6 @@ Antes do JSON, registre pergunta, protagonista, relação, dados/assets, estado 
 
 Reserve regiões inclusive para participantes ocultos; entradas e câmera não cortam informação. Stage oferece geometria e eventos auditados. HyperFrames pode substituir a arte interna de um protagonista via element.hyperframes sem trocar texto, relações ou relógio. Registre por que a técnica explica a afirmação.
 
+Arte protagonista ocupa o quadro útil, com `visual_role: protagonist` e escala efetiva conferida após contain. `show_label: false` preserva o label como metadado e libera toda a região da arte; não exibir nomes de técnica. Use texto principal grande e conciso, mantenha condições e exemplos identificados e não reserve faixa para legenda. O motor mede a área efetiva e avisa sobre protagonistas pequenos; confira também vazios internos da fonte HTML/SVG.
+
 Bom: uma carta se divide em lance e crédito disponível, com conta identificada. Inadequado: títulos saltam enquanto nada mostra de onde sai o lance. Entrega: research/storyboard-<tema>.md e bindings coerentes no projeto.

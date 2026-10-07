@@ -1,5 +1,9 @@
 # Prompt diário
 
+## Composição legível no celular
+
+As ilustrações precisam protagonizar o quadro, com informações principais grandes e transformações ligadas à fala. Não usar arte pequena num card com grandes vazios nem reservar espaço para legendas que o motor já posiciona nos vazios reais. Declare `visual_role` e, para objetos cujo rótulo seja só descrição técnica, `show_label: false`. Não exibir “ILUSTRAÇÃO ESQUEMÁTICA”; preserve a identificação de exemplos hipotéticos e condições reais. Confira o tamanho efetivo do clipe/SVG no relatório de produção, além da largura nominal do elemento. Use rótulos curtos em regiões generosas e câmera/estados que mostrem o raciocínio, não apenas foco decorativo.
+
 ## Regra de independência editorial e seleção de pauta
 
 1. **Anti-repetição obrigatória**: Antes de sugerir ou iniciar qualquer roteiro, consulte obrigatoriamente `docs/visual-history.md`, os commits recentes e o repositório para verificar os vídeos já produzidos pelo canal. Nunca repita temas, ganchos ou ângulos idênticos aos episódios anteriores.

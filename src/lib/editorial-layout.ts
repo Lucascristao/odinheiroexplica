@@ -2,7 +2,7 @@ import {resolveStage, resolveStageCamera, type EditorialStage, type StageEvent} 
 import {composeText, textMinimums, type MeasureWidth, type TextLayout, type TextRole} from "./editorial-typography";
 import {chartLayout} from "./editorial-chart-layout";
 
-export const LAYOUT_VERSION = "2026-10-06.1";
+export const LAYOUT_VERSION = "2026-10-07.2";
 export type Box = {x: number; y: number; w: number; h: number};
 export type Point = {x: number; y: number};
 export type LayoutIssue = {code: string; element?: string; connection?: string; role?: string; message: string};
@@ -51,7 +51,7 @@ export function nodeContent(e: ResolvedElement, box: Box, routeNode: boolean) {
   const wide=banner&&!stacked;
   const hero=e.kind==="metric"&&e.width>=40&&!e.overlay_on;
   const card=e.kind==="note"||(e.kind==="metric"&&!hero);
-  const padding=e.kind==="source_excerpt"?0:card&&!routeNode?24:16;
+  const padding=e.kind==="source_excerpt"||(e.kind==="object"&&e.show_label===false)?0:card&&!routeNode?24:16;
   // Explicit sizes remain exact; insufficient space is reported by the audit.
   const iconSize=e.icon?(e.icon_size??(wide?48:Math.min(130,Math.max(68,box.h*.38)))):0;
   const iconSpace=e.icon?iconSize+12+20:0;
@@ -62,12 +62,30 @@ export function nodeContent(e: ResolvedElement, box: Box, routeNode: boolean) {
   const labelH=Math.max(1,innerH-valueH-detailH-(e.value?4:0)-(e.detail?6:0));
   return {wide,stacked,hero,card,padding,iconSize,iconSpace,innerW,innerH,valueH,detailH,labelH};
 }
+// Share the measured object footer between the renderer and the audit. Hidden
+// semantic labels consume no pixels; a short visible label consumes its actual
+// line height, rather than an unconditional 90-pixel strip.
+export function objectContentLayout(e: Pick<ResolvedElement,"label"|"label_size"|"show_label"|"hyperframes">, box: Box, measure: MeasureWidth) {
+  const padding=e.show_label===false?0:16;
+  const width=Math.max(1,box.w-padding*2);
+  const label=e.show_label===false?undefined:composeText(e.label,width,90,e.label_size??42,textMinimums.label,measure);
+  const labelHeight=label?Math.min(90,label.requiredHeight):0;
+  const gap=label?12:0;
+  const media={x:box.x+padding,y:box.y+padding,w:width,h:Math.max(1,box.h-padding*2-labelHeight-gap)};
+  // Native EditorialObject SVGs have a square viewBox; clips use their declared
+  // intrinsic dimensions. Contain preserves the complete drawing.
+  const ratio=e.hyperframes?e.hyperframes.width/e.hyperframes.height:1;
+  const fittedW=Math.min(media.w,media.h*ratio),fittedH=fittedW/ratio;
+  const artwork={x:media.x+(media.w-fittedW)/2,y:media.y+(media.h-fittedH)/2,w:fittedW,h:fittedH};
+  return {padding,width,label,labelHeight,gap,media,artwork};
+}
 export function nodeTexts(e: ResolvedElement, box: Box, routeNode: boolean, measure: MeasureWidth) {
   const c=nodeContent(e,box,routeNode);
   const out: {role:TextRole;text:string;layout:TextLayout}[]=[];
   const add=(role:TextRole,text:string,w:number,h:number,max:number)=>out.push({role,text,layout:composeText(text,w,h,max,textMinimums[role],measure)});
   if(e.kind==="object") {
-    add("label",e.label,box.w-32,90,e.label_size??42);
+    const object=objectContentLayout(e,box,measure);
+    if(object.label)out.push({role:"label",text:e.label,layout:object.label});
     if(e.detail||e.value) out.push({role:"detail",text:e.detail??e.value!,layout:{lines:[],size:28,width:0,height:0,fits:false,requiredWidth:1,requiredHeight:1}});
   } else if(e.kind==="photo") add("caption",e.label,box.w-44,64,27);
   else if(!["source_excerpt","chart"].includes(e.kind)) {
@@ -320,5 +338,9 @@ export function layoutStage(stage:EditorialStage,beats:StageEvent[],frame:number
   }
   const photo_captions=visible.filter(e=>e.kind==="photo"&&e.asset_file&&!stage.elements.some(child=>child.overlay_on===e.id)).map(e=>photoCaptionLayout(e,frame,canvas,camera,measure));
   for(const caption of photo_captions)if(!caption.layout.fits)issues.push({code:"photo-caption-capacity",element:caption.id,role:"caption",message:"A legenda da foto não cabe na área visível na fonte mínima; ajuste a câmera/composição. O motor não oculta a legenda."});
-  return {...state,canvas,connections,camera,operation,photo_captions,issues};
+  const media_layout=visible.filter(e=>e.kind==="object").map(e=>{
+    const content=objectContentLayout(e,transformedRect(e,frame,canvas),measure);
+    return {id:e.id,visual_role:e.visual_role??null,label_visible:e.show_label!==false,artwork:content.artwork,frame_area_ratio:content.artwork.w*content.artwork.h*camera.zoom*camera.zoom/(width*height),region_fill_ratio:content.artwork.w*content.artwork.h/(e.width*canvas.width/100*e.height*canvas.height/100)};
+  });
+  return {...state,canvas,connections,camera,operation,photo_captions,media_layout,issues};
 }

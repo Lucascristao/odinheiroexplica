@@ -39,6 +39,10 @@ export const stageElementSchema = z.object({
   overlay_on: z.string().optional(),
   text_region: regionSchema.optional(),
   label_size: z.number().min(32).max(120).optional(),
+  // The label remains semantic metadata when the illustration needs the whole
+  // region. Showing it is an editorial choice, not an obligatory art footer.
+  show_label: z.boolean().optional(),
+  visual_role: z.enum(["protagonist", "support"]).optional(),
   value_size: z.number().min(48).max(260).default(72),
   icon_size: z.number().min(48).max(500).optional(),
   content_layout: z.enum(["row", "column"]).optional(),
@@ -126,6 +130,7 @@ export const editorialStageSchema = z.object({
       if(!parent || !region || !["photo","object"].includes(parent.kind) || !["label","metric"].includes(element.kind) || element.detail || element.icon || parent.overlay_on || element.x<parent.x+region.x*parent.width/100 || element.y<parent.y+region.y*parent.height/100 || element.x+element.width>parent.x+(region.x+region.width)*parent.width/100 || element.y+element.height>parent.y+(region.y+region.height)*parent.height/100)ctx.addIssue({code:"custom",path:["elements",index],message:"Camada de texto precisa caber na região reservada de uma foto/objeto, sem ícone ou detalhe."});
     }
     if (element.kind === "object" && !element.object_type) ctx.addIssue({code: "custom", path: ["elements", index, "object_type"], message: "Objeto precisa de object_type."});
+    if(element.show_label === false && element.kind !== "object")ctx.addIssue({code:"custom",path:["elements",index,"show_label"],message:"show_label=false pertence à arte de objetos; fatos, números e rótulos editoriais permanecem visíveis."});
     if(element.content_fraction !== undefined && (element.kind !== "object" || element.object_type !== "grocery_package"))ctx.addIssue({code:"custom",path:["elements",index,"content_fraction"],message:"Conteúdo proporcional exige embalagem esquemática grocery_package."});
     if(element.icon_size !== undefined && (!element.icon || ["photo", "object", "source_excerpt", "chart"].includes(element.kind)))ctx.addIssue({code:"custom",path:["elements",index,"icon_size"],message:"icon_size exige um elemento de texto com icon; fotos, objetos e gráficos usam a própria região."});
     if(element.content_layout && ["photo", "object", "source_excerpt", "chart"].includes(element.kind))ctx.addIssue({code:"custom",path:["elements",index,"content_layout"],message:"content_layout organiza ícone e texto; mídia, objetos e gráficos usam a própria composição."});

@@ -7,7 +7,7 @@ import {useId, useMemo} from "react";
 import {AbsoluteFill, Img, OffthreadVideo, interpolate, staticFile, useCurrentFrame, useVideoConfig} from "remotion";
 import {useEditorialFont, measureEditorialText} from "./editorial-font";
 import {composeText, EDITORIAL_FONT} from "../../src/lib/editorial-typography";
-import {entranceMotion, layoutStage, nodeContent, pointOnRoute} from "../../src/lib/editorial-layout";
+import {entranceMotion, layoutStage, nodeContent, objectContentLayout, pointOnRoute} from "../../src/lib/editorial-layout";
 import {editorialStageSchema, kineticWordProgress, type EditorialStage as Stage, type StageEvent} from "../../src/lib/editorial-stage";
 import {connectionCycle, documentSupportShadow, surfaceBackground, sustainedTransform} from "./editorial-sustained-motion";
 
@@ -149,6 +149,7 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
           : undefined;
 
         const content=nodeContent(element,box,isRouteNode);
+        const objectContent=element.kind==="object"?objectContentLayout(element,box,measureEditorialText):undefined;
         const {wide:isWideBanner,stacked,padding:cardPadding,iconSize,innerW,valueH,detailH,labelH}=content;
 
         const cueProgress = checkedStage.motion_profile === "static" ? 1 : interpolate(frame - element.cueFrame, [0, element.cueDuration], [0, 1], clamp);
@@ -232,11 +233,11 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
               <div style={{width: "100%", height: "100%", display: "flex", flexDirection: "column"}}>
                 <div style={{flex: 1, minHeight: 0, position:"relative", clipPath:motion.clip}}>
                   {surface && <div data-editorial-surface={element.surface} aria-hidden style={{position:"absolute",inset:0,background:surface,borderRadius:element.surface==="paper"?6:0}} />}
-                  <div style={{width:"100%",height:"100%",position:"relative",transform:sustainedTransform(mediaSustain,frame,fps,Math.max(1,box.w-cardPadding*2),Math.max(1,box.h-cardPadding*2-90),element.changedAt),transformOrigin:"center"}}>
+                  <div style={{width:"100%",height:"100%",position:"relative",transform:sustainedTransform(mediaSustain,frame,fps,objectContent!.media.w,objectContent!.media.h,element.changedAt),transformOrigin:"center"}}>
                     {element.clip_file ? <OffthreadVideo muted src={staticFile(element.clip_file)} style={{width:"100%",height:"100%",objectFit:"contain"}} /> : <EditorialObject type={element.object_type} accent={accent} progress={reveal} emphasisProgress={cueEase} active={selected && checkedStage.motion_profile !== "static"} actuation={element.actuation} actuationProgress={actuationProgress} locked={element.locked} lockFrom={element.lockFrom} lockProgress={lockProgress} contentFraction={element.content_fraction} motion={checkedStage.motion_profile === "static" ? "none" : element.svg_motion} />}
                   </div>
                 </div>
-                <div style={{height:90,flexShrink:0}}><TextBox text={element.label} width={box.w - 32} height={90} maxSize={element.label_size??42} kinetic={kineticLabel} wordProgress={cueProgress} /></div>
+                {objectContent!.label && <div style={{height:objectContent!.labelHeight,marginTop:objectContent!.gap,flexShrink:0}}><TextBox text={element.label} width={objectContent!.width} height={objectContent!.labelHeight} maxSize={objectContent!.label.size} kinetic={kineticLabel} wordProgress={cueProgress} /></div>}
               </div>
             ) : element.kind === "photo" ? (
               <div

@@ -631,7 +631,7 @@
         }
       ],
       "review": {
-        "content_sha256": "973b0b82a1d5899a843f850f8b968b3ea836736350be6c21ccccff95b8307ab9",
+        "content_sha256": "0eb5e1fd99792e9673e9dc2e6e3561b6a7813bb10ddf98051e13a6b8c693de28",
         "findings": [
           {
             "question": "O gancho entrega a distinção antes da apresentação?",
@@ -664,6 +664,14 @@
               "quote": "Nenhum desses passos é uma garantia de aprovação."
             },
             "conclusion": "Mostra conferência e correção com limite claro; não diagnostica a recusa individual."
+          },
+          {
+            "question": "A revisão visual mantém exemplos e condições reconhecíveis?",
+            "evidence": {
+              "scene_id": "scene-05",
+              "quote": "Essa conta não reproduz a fórmula de nenhum banco, nem estabelece um limite obrigatório."
+            },
+            "conclusion": "Exemplos hipotéticos continuam identificados em textos próprios; valores, soma, documentos e limites são preservados. A descrição técnica das artes fica nos metadados e não compete com a informação."
           }
         ]
       }
@@ -756,7 +764,8 @@
           "next_question": "Qual das três dúvidas o seu relatório realmente mostra?"
         }
       ]
-    }
+    },
+    "production_mode": "direct"
   },
   "scenes": [
     {
@@ -802,24 +811,17 @@
             "words_per_line": 3,
             "max_lines": 2,
             "font_size": 64,
-            "min_free_area_ratio": 0.3,
-            "preferred_side": "center",
-            "region": {
-              "x": 5,
-              "y": 67,
-              "width": 90,
-              "height": 30
-            }
+            "min_free_area_ratio": 0.3
           },
           "elements": [
             {
               "id": "contrast",
               "kind": "object",
-              "label": "ILUSTRAÇÃO ESQUEMÁTICA",
-              "x": 5,
-              "y": 3,
-              "width": 90,
-              "height": 47,
+              "label": "Pagou, mas o crédito foi negado",
+              "x": 3,
+              "y": 20,
+              "width": 94,
+              "height": 75,
               "surface": "none",
               "label_size": 48,
               "object_type": "data",
@@ -838,29 +840,68 @@
                     "state": "denied"
                   },
                   {
+                    "anchor": "Por que o crédito continua negado?",
+                    "state": "denied"
+                  },
+                  {
+                    "anchor": "Nome limpo não garante crédito aprovado:",
+                    "state": "criteria"
+                  },
+                  {
                     "anchor": "o banco analisa mais",
                     "state": "criteria"
                   },
                   {
+                    "anchor": "Eu sou Roberto,",
+                    "state": "criteria"
+                  },
+                  {
+                    "anchor": "o que foi pago,",
+                    "state": "paid"
+                  },
+                  {
                     "anchor": "o que ficou no histórico",
+                    "state": "history"
+                  },
+                  {
+                    "anchor": "o que entra na decisão do banco.",
+                    "state": "criteria"
+                  },
+                  {
+                    "anchor": "procurar uma dívida onde só existe um registro antigo",
+                    "state": "history"
+                  },
+                  {
+                    "anchor": "pode fazer você gastar tempo",
+                    "state": "history"
+                  },
+                  {
+                    "anchor": "Vamos começar pelo que cada informação realmente mostra.",
                     "state": "history"
                   }
                 ]
-              }
+              },
+              "show_label": false,
+              "visual_role": "protagonist"
             },
             {
               "id": "question",
               "kind": "label",
               "label": "PAGOU. E O CRÉDITO?",
-              "x": 5,
-              "y": 53,
-              "width": 90,
-              "height": 10,
+              "x": 4,
+              "y": 1,
+              "width": 92,
+              "height": 16,
               "surface": "none",
-              "label_size": 48
+              "label_size": 80
             }
           ],
-          "connections": []
+          "connections": [],
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          }
         },
         "beats": [
           {
@@ -870,13 +911,13 @@
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "actuation": "confirm",
             "camera": {
               "x": 50,
-              "y": 48,
-              "zoom": 1.02,
-              "motion_seconds": 0.85
+              "y": 50,
+              "zoom": 1.01,
+              "motion_seconds": 0.9
             }
           },
           {
@@ -886,13 +927,13 @@
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "actuation": "signal",
             "camera": {
               "x": 50,
-              "y": 48,
-              "zoom": 1.04,
-              "motion_seconds": 0.85
+              "y": 50,
+              "zoom": 1.03,
+              "motion_seconds": 0.9
             }
           },
           {
@@ -902,7 +943,7 @@
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "Nome limpo não garante crédito aprovado:",
@@ -911,31 +952,31 @@
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "o banco analisa mais",
             "target_id": "contrast",
-            "headline": "ANÁLISE DO BANCO",
+            "headline": "ALÉM DO NOME LIMPO",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
-              "zoom": 1.01,
-              "motion_seconds": 0.85
+              "y": 50,
+              "zoom": 1.015,
+              "motion_seconds": 0.9
             }
           },
           {
             "anchor": "Eu sou Roberto,",
             "target_id": "question",
-            "headline": "ROBERTO · O DINHEIRO EXPLICA",
+            "headline": "EU SOU ROBERTO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "o que foi pago,",
@@ -944,7 +985,7 @@
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "o que ficou no histórico",
@@ -953,43 +994,43 @@
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "o que entra na decisão do banco.",
             "target_id": "question",
-            "headline": "DECISÃO",
+            "headline": "DECISÃO DO BANCO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "procurar uma dívida onde só existe um registro antigo",
             "target_id": "question",
-            "headline": "DÍVIDA ATUAL OU REGISTRO ANTIGO?",
+            "headline": "DÍVIDA OU HISTÓRICO?",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "pode fazer você gastar tempo",
             "target_id": "question",
-            "headline": "CONFIRA ANTES DE TENTAR APAGAR",
+            "headline": "CONFIRA O DADO CERTO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "Vamos começar pelo que cada informação realmente mostra.",
             "target_id": "question",
-            "headline": "O QUE CADA INFORMAÇÃO MOSTRA?",
+            "headline": "O QUE O RELATÓRIO MOSTRA?",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           }
         ]
       }
@@ -1022,31 +1063,24 @@
             "words_per_line": 3,
             "max_lines": 2,
             "font_size": 64,
-            "min_free_area_ratio": 0.3,
-            "preferred_side": "center",
-            "region": {
-              "x": 5,
-              "y": 67,
-              "width": 90,
-              "height": 30
-            }
+            "min_free_area_ratio": 0.3
           },
           "elements": [
             {
               "id": "archive",
               "kind": "object",
-              "label": "ILUSTRAÇÃO ESQUEMÁTICA",
-              "x": 5,
-              "y": 3,
-              "width": 90,
-              "height": 47,
+              "label": "Cada informação responde uma pergunta",
+              "x": 2,
+              "y": 10,
+              "width": 63,
+              "height": 84,
               "surface": "none",
               "label_size": 48,
               "object_type": "data",
               "hyperframes": {
                 "entry": "video/hyperframes/credit-archive/index.html",
                 "initial_state": "negative",
-                "width": 1280,
+                "width": 960,
                 "height": 640,
                 "states": [
                   {
@@ -1054,11 +1088,27 @@
                     "state": "negative"
                   },
                   {
+                    "anchor": "ausência de uma anotação negativa",
+                    "state": "negative"
+                  },
+                  {
                     "anchor": "Já o score é uma pontuação",
                     "state": "score"
                   },
                   {
+                    "anchor": "não uma ordem para liberar dinheiro.",
+                    "state": "score"
+                  },
+                  {
                     "anchor": "E existe o Sistema de Informações de Crédito",
+                    "state": "scr"
+                  },
+                  {
+                    "anchor": "o SCR, do Banco Central.",
+                    "state": "scr"
+                  },
+                  {
+                    "anchor": "operações com bancos e financeiras,",
                     "state": "scr"
                   },
                   {
@@ -1070,25 +1120,40 @@
                     "state": "consult"
                   },
                   {
+                    "anchor": "Então aparecer ali não significa",
+                    "state": "consult"
+                  },
+                  {
+                    "anchor": "ou proibido de conseguir crédito.",
+                    "state": "consult"
+                  },
+                  {
                     "anchor": "a que mês ela se refere.",
                     "state": "month"
                   }
                 ]
-              }
+              },
+              "show_label": false,
+              "visual_role": "protagonist"
             },
             {
               "id": "definition",
               "kind": "label",
               "label": "NOME LIMPO",
-              "x": 5,
-              "y": 53,
-              "width": 90,
-              "height": 10,
+              "x": 69,
+              "y": 7,
+              "width": 29,
+              "height": 86,
               "surface": "none",
-              "label_size": 48
+              "label_size": 82
             }
           ],
-          "connections": []
+          "connections": [],
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          }
         },
         "beats": [
           {
@@ -1098,22 +1163,22 @@
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
+              "y": 50,
               "zoom": 1.01,
-              "motion_seconds": 0.85
+              "motion_seconds": 0.9
             }
           },
           {
             "anchor": "ausência de uma anotação negativa",
             "target_id": "definition",
-            "headline": "NOME LIMPO: SEM NEGATIVAÇÃO",
+            "headline": "SEM NEGATIVAÇÃO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "Já o score é uma pontuação",
@@ -1122,12 +1187,12 @@
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
+              "y": 50,
               "zoom": 1.03,
-              "motion_seconds": 0.85
+              "motion_seconds": 0.9
             }
           },
           {
@@ -1137,7 +1202,7 @@
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "E existe o Sistema de Informações de Crédito",
@@ -1146,59 +1211,59 @@
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
-              "zoom": 1.01,
-              "motion_seconds": 0.85
+              "y": 50,
+              "zoom": 1.015,
+              "motion_seconds": 0.9
             }
           },
           {
             "anchor": "o SCR, do Banco Central.",
             "target_id": "definition",
-            "headline": "SCR · SISTEMA DE INFORMAÇÕES DE CRÉDITO",
+            "headline": "SCR: INFORMAÇÕES DE CRÉDITO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "operações com bancos e financeiras,",
             "target_id": "definition",
-            "headline": "OPERAÇÕES COM BANCOS E FINANCEIRAS",
+            "headline": "BANCOS E FINANCEIRAS",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "inclusive compromissos em dia.",
             "target_id": "archive",
-            "headline": "TAMBÉM OPERAÇÕES EM DIA",
+            "headline": "TAMBÉM DADOS EM DIA",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "actuation": "confirm"
           },
           {
             "anchor": "O Registrato é o lugar",
             "target_id": "definition",
-            "headline": "REGISTRATO: CONSULTA DOS RELATÓRIOS",
+            "headline": "REGISTRATO: SEUS RELATÓRIOS",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "Então aparecer ali não significa",
             "target_id": "definition",
-            "headline": "REGISTRO ≠ PROIBIÇÃO DE CRÉDITO",
+            "headline": "REGISTRO ≠ VETO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "ou proibido de conseguir crédito.",
@@ -1207,22 +1272,22 @@
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
-              "zoom": 1.02,
-              "motion_seconds": 0.85
+              "y": 50,
+              "zoom": 1.04,
+              "motion_seconds": 0.9
             }
           },
           {
             "anchor": "a que mês ela se refere.",
             "target_id": "definition",
-            "headline": "CONFIRA O MÊS DE REFERÊNCIA",
+            "headline": "CONFIRA O MÊS",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           }
         ]
       }
@@ -1261,24 +1326,17 @@
             "words_per_line": 3,
             "max_lines": 2,
             "font_size": 64,
-            "min_free_area_ratio": 0.3,
-            "preferred_side": "center",
-            "region": {
-              "x": 5,
-              "y": 67,
-              "width": 90,
-              "height": 30
-            }
+            "min_free_area_ratio": 0.3
           },
           "elements": [
             {
               "id": "months",
               "kind": "object",
-              "label": "ILUSTRAÇÃO ESQUEMÁTICA",
-              "x": 5,
-              "y": 16,
-              "width": 90,
-              "height": 34,
+              "label": "Um mês não apaga o outro",
+              "x": 3,
+              "y": 19,
+              "width": 94,
+              "height": 67,
               "surface": "none",
               "label_size": 48,
               "object_type": "data",
@@ -1293,6 +1351,10 @@
                     "state": "september"
                   },
                   {
+                    "anchor": "uma dívida de cartão ficou atrasada em setembro",
+                    "state": "old"
+                  },
+                  {
                     "anchor": "e foi quitada em outubro.",
                     "state": "paid"
                   },
@@ -1301,48 +1363,63 @@
                     "state": "old"
                   },
                   {
+                    "anchor": "Por isso, o atraso daquele mês",
+                    "state": "old"
+                  },
+                  {
+                    "anchor": "como se nunca tivesse ocorrido.",
+                    "state": "old"
+                  },
+                  {
                     "anchor": "A posição posterior",
                     "state": "new"
                   }
                 ]
-              }
+              },
+              "show_label": false,
+              "visual_role": "protagonist"
             },
             {
               "id": "hypothesis",
               "kind": "label",
               "label": "EXEMPLO HIPOTÉTICO",
-              "x": 5,
-              "y": 53,
-              "width": 90,
+              "x": 4,
+              "y": 89,
+              "width": 92,
               "height": 10,
               "surface": "none",
-              "label_size": 48
+              "label_size": 56
             },
             {
               "id": "sep",
               "kind": "label",
               "label": "SETEMBRO",
               "x": 7,
-              "y": 3,
+              "y": 1,
               "width": 40,
-              "height": 9,
+              "height": 14,
               "surface": "none",
-              "label_size": 48
+              "label_size": 76
             },
             {
               "id": "oct",
               "kind": "label",
               "label": "OUTUBRO",
               "x": 53,
-              "y": 3,
+              "y": 1,
               "width": 40,
-              "height": 9,
+              "height": 14,
               "surface": "none",
-              "label_size": 48,
+              "label_size": 76,
               "initially_visible": false
             }
           ],
-          "connections": []
+          "connections": [],
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          }
         },
         "beats": [
           {
@@ -1352,12 +1429,12 @@
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
+              "y": 50,
               "zoom": 1.01,
-              "motion_seconds": 0.85
+              "motion_seconds": 0.9
             }
           },
           {
@@ -1367,7 +1444,7 @@
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "e foi quitada em outubro.",
@@ -1376,13 +1453,13 @@
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "actuation": "confirm",
             "camera": {
               "x": 50,
-              "y": 48,
-              "zoom": 1.04,
-              "motion_seconds": 0.85
+              "y": 50,
+              "zoom": 1.03,
+              "motion_seconds": 0.9
             },
             "reveal_ids": [
               "oct"
@@ -1395,45 +1472,45 @@
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "Por isso, o atraso daquele mês",
             "target_id": "months",
-            "headline": "O RETRATO ANTIGO PERMANECE",
+            "headline": "O MÊS ANTIGO PERMANECE",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
-              "zoom": 1.01,
-              "motion_seconds": 0.85
+              "y": 50,
+              "zoom": 1.015,
+              "motion_seconds": 0.9
             }
           },
           {
             "anchor": "como se nunca tivesse ocorrido.",
             "target_id": "hypothesis",
-            "headline": "HIPÓTESE: O PASSADO NÃO É REESCRITO",
+            "headline": "HIPÓTESE: O PASSADO NÃO MUDA",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "A posição posterior",
             "target_id": "months",
-            "headline": "REGULARIZAÇÃO POSTERIOR",
+            "headline": "SITUAÇÃO POSTERIOR REGULARIZADA",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
-              "zoom": 1.03,
-              "motion_seconds": 0.85
+              "y": 50,
+              "zoom": 1.04,
+              "motion_seconds": 0.9
             }
           }
         ]
@@ -1466,25 +1543,18 @@
             "words_per_line": 3,
             "max_lines": 2,
             "font_size": 64,
-            "min_free_area_ratio": 0.3,
-            "preferred_side": "center",
-            "region": {
-              "x": 5,
-              "y": 67,
-              "width": 90,
-              "height": 30
-            }
+            "min_free_area_ratio": 0.3
           },
           "elements": [
             {
               "id": "proof",
               "kind": "source_excerpt",
               "label": "BANCO CENTRAL · HISTÓRICO DO SCR",
-              "x": 5,
-              "y": 3,
-              "width": 90,
-              "height": 47,
-              "surface": "none",
+              "x": 3,
+              "y": 5,
+              "width": 94,
+              "height": 66,
+              "surface": "spotlight",
               "label_size": 48,
               "asset_id": "paid-history",
               "image_fit": "contain"
@@ -1493,15 +1563,20 @@
               "id": "meaning",
               "kind": "label",
               "label": "PAGAMENTO NÃO REESCREVE O PASSADO",
-              "x": 5,
-              "y": 53,
-              "width": 90,
-              "height": 10,
+              "x": 4,
+              "y": 77,
+              "width": 92,
+              "height": 19,
               "surface": "none",
-              "label_size": 48
+              "label_size": 78
             }
           ],
-          "connections": []
+          "connections": [],
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          }
         },
         "beats": [
           {
@@ -1511,31 +1586,31 @@
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
+              "y": 50,
               "zoom": 1.01,
-              "motion_seconds": 0.85
+              "motion_seconds": 0.9
             }
           },
           {
             "anchor": "o pagamento não reescreve as posições passadas.",
             "target_id": "meaning",
-            "headline": "POSIÇÕES PASSADAS CONTINUAM",
+            "headline": "O PASSADO NÃO É REESCRITO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "É como conferir dois retratos",
             "target_id": "meaning",
-            "headline": "DOIS RETRATOS DE MESES DIFERENTES",
+            "headline": "RETRATOS DE MESES DIFERENTES",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "um não invalida o outro.",
@@ -1544,46 +1619,46 @@
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
+              "y": 50,
               "zoom": 1.03,
-              "motion_seconds": 0.85
+              "motion_seconds": 0.9
             }
           },
           {
             "anchor": "Também não confunda o mês dos dados",
             "target_id": "meaning",
-            "headline": "MÊS DOS DADOS ≠ DATA DA CONSULTA",
+            "headline": "MÊS DOS DADOS ≠ DIA DA CONSULTA",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "o dia em que você abriu o relatório.",
             "target_id": "proof",
-            "headline": "REFERÊNCIA DO REGISTRO",
+            "headline": "MÊS DE REFERÊNCIA",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
-              "zoom": 1.01,
-              "motion_seconds": 0.85
+              "y": 50,
+              "zoom": 1.015,
+              "motion_seconds": 0.9
             }
           },
           {
             "anchor": "A atualização do pagamento não é instantânea.",
             "target_id": "meaning",
-            "headline": "ATUALIZAÇÃO NÃO É INSTANTÂNEA",
+            "headline": "ATUALIZAÇÃO LEVA TEMPO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "Se você olha só uma data antiga,",
@@ -1592,7 +1667,7 @@
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "uma conta que já quitou.",
@@ -1601,7 +1676,7 @@
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           }
         ]
       }
@@ -1633,56 +1708,68 @@
             "words_per_line": 3,
             "max_lines": 2,
             "font_size": 64,
-            "min_free_area_ratio": 0.3,
-            "preferred_side": "center",
-            "region": {
-              "x": 5,
-              "y": 67,
-              "width": 90,
-              "height": 30
-            }
+            "min_free_area_ratio": 0.3
           },
           "elements": [
             {
               "id": "bank",
               "kind": "object",
               "label": "CRITÉRIOS DA INSTITUIÇÃO",
-              "x": 5,
-              "y": 4,
-              "width": 40,
-              "height": 44,
+              "x": 3,
+              "y": 21,
+              "width": 43,
+              "height": 74,
               "surface": "none",
               "label_size": 48,
               "object_type": "bank",
-              "svg_motion": "assemble"
+              "svg_motion": "assemble",
+              "show_label": false,
+              "visual_role": "protagonist",
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 18,
+                "period_seconds": 7
+              }
             },
             {
               "id": "wallet",
               "kind": "object",
               "label": "RENDA E COMPROMISSOS",
-              "x": 55,
-              "y": 4,
-              "width": 40,
-              "height": 44,
+              "x": 54,
+              "y": 21,
+              "width": 43,
+              "height": 74,
               "surface": "none",
               "label_size": 48,
               "object_type": "wallet",
               "svg_motion": "assemble",
-              "initially_visible": false
+              "initially_visible": false,
+              "show_label": false,
+              "visual_role": "protagonist",
+              "sustain": {
+                "kind": "float",
+                "amplitude": 16,
+                "period_seconds": 6
+              }
             },
             {
               "id": "criteria",
               "kind": "label",
               "label": "RENDA · COMPROMISSOS · CRITÉRIOS",
-              "x": 5,
-              "y": 53,
-              "width": 90,
-              "height": 10,
+              "x": 4,
+              "y": 1,
+              "width": 92,
+              "height": 16,
               "surface": "none",
-              "label_size": 48
+              "label_size": 80
             }
           ],
-          "connections": []
+          "connections": [],
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          }
         },
         "beats": [
           {
@@ -1692,12 +1779,12 @@
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
+              "y": 50,
               "zoom": 1.01,
-              "motion_seconds": 0.85
+              "motion_seconds": 0.9
             }
           },
           {
@@ -1707,7 +1794,7 @@
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "o banco pode avaliar renda,",
@@ -1716,7 +1803,7 @@
             "action": "reveal",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.7,
+            "motion_seconds": 0.9,
             "entrance": {
               "style": "scale"
             }
@@ -1728,7 +1815,7 @@
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "Uma pontuação boa",
@@ -1737,12 +1824,12 @@
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
+              "y": 50,
               "zoom": 1.03,
-              "motion_seconds": 0.85
+              "motion_seconds": 0.9
             }
           },
           {
@@ -1752,7 +1839,7 @@
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           }
         ]
       }
@@ -1792,28 +1879,21 @@
             "words_per_line": 3,
             "max_lines": 2,
             "font_size": 64,
-            "min_free_area_ratio": 0.3,
-            "preferred_side": "center",
-            "region": {
-              "x": 5,
-              "y": 67,
-              "width": 90,
-              "height": 30
-            }
+            "min_free_area_ratio": 0.3
           },
           "elements": [
             {
               "id": "income",
               "kind": "metric",
               "label": "RENDA ILUSTRATIVA",
-              "x": 5,
-              "y": 0,
-              "width": 90,
-              "height": 20,
+              "x": 3,
+              "y": 3,
+              "width": 61,
+              "height": 25,
               "surface": "none",
-              "label_size": 32,
+              "label_size": 56,
               "value": "R$ 3.000",
-              "value_size": 90,
+              "value_size": 150,
               "initially_visible": false
             },
             {
@@ -1821,56 +1901,73 @@
               "kind": "metric",
               "label": "PARCELAS ATUAIS",
               "x": 3,
-              "y": 24,
-              "width": 23,
-              "height": 29,
+              "y": 33,
+              "width": 26,
+              "height": 46,
               "surface": "none",
-              "label_size": 48,
+              "label_size": 64,
               "value": "R$ 800",
-              "value_size": 82,
+              "value_size": 145,
               "initially_visible": false
             },
             {
               "id": "new",
               "kind": "metric",
               "label": "NOVA PARCELA",
-              "x": 37,
-              "y": 24,
-              "width": 23,
-              "height": 29,
+              "x": 36,
+              "y": 33,
+              "width": 26,
+              "height": 46,
               "surface": "none",
-              "label_size": 48,
+              "label_size": 64,
               "value": "R$ 700",
-              "value_size": 82,
+              "value_size": 145,
               "initially_visible": false
             },
             {
               "id": "total",
               "kind": "metric",
               "label": "TOTAL DE PARCELAS",
-              "x": 74,
-              "y": 24,
-              "width": 23,
-              "height": 29,
+              "x": 71,
+              "y": 33,
+              "width": 26,
+              "height": 46,
               "surface": "none",
-              "label_size": 48,
+              "label_size": 64,
               "value": "R$ 1.500",
-              "value_size": 82,
+              "value_size": 145,
               "initially_visible": false
             },
             {
               "id": "hypothesis",
               "kind": "label",
               "label": "EXEMPLO HIPOTÉTICO",
-              "x": 5,
-              "y": 56,
-              "width": 90,
-              "height": 9,
+              "x": 68,
+              "y": 1,
+              "width": 29,
+              "height": 27,
               "surface": "none",
-              "label_size": 42
+              "label_size": 52
+            },
+            {
+              "id": "limits",
+              "kind": "label",
+              "label": "AINDA HÁ DESPESAS",
+              "x": 4,
+              "y": 84,
+              "width": 92,
+              "height": 13,
+              "label_size": 64,
+              "surface": "none",
+              "initially_visible": false
             }
           ],
-          "connections": []
+          "connections": [],
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          }
         },
         "beats": [
           {
@@ -1880,7 +1977,7 @@
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "alguém recebe três mil reais,",
@@ -1889,12 +1986,12 @@
             "action": "reveal",
             "treatment": "giant_number",
             "behavior": "transform",
-            "motion_seconds": 0.7,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
-              "zoom": 1.02,
-              "motion_seconds": 0.85
+              "y": 50,
+              "zoom": 1.01,
+              "motion_seconds": 0.9
             },
             "entrance": {
               "style": "slide",
@@ -1908,7 +2005,7 @@
             "action": "reveal",
             "treatment": "giant_number",
             "behavior": "transform",
-            "motion_seconds": 0.7,
+            "motion_seconds": 0.9,
             "entrance": {
               "style": "slide",
               "direction": "up"
@@ -1921,7 +2018,7 @@
             "action": "reveal",
             "treatment": "giant_number",
             "behavior": "transform",
-            "motion_seconds": 0.7,
+            "motion_seconds": 0.9,
             "entrance": {
               "style": "slide",
               "direction": "up"
@@ -1934,7 +2031,7 @@
             "action": "reveal",
             "treatment": "equation",
             "behavior": "transform",
-            "motion_seconds": 0.7,
+            "motion_seconds": 0.9,
             "operation": {
               "kind": "equation",
               "input_ids": [
@@ -1946,9 +2043,9 @@
             },
             "camera": {
               "x": 50,
-              "y": 48,
-              "zoom": 1.01,
-              "motion_seconds": 0.85
+              "y": 50,
+              "zoom": 1.03,
+              "motion_seconds": 0.9
             },
             "entrance": {
               "style": "scale"
@@ -1956,39 +2053,39 @@
           },
           {
             "anchor": "Ainda existem aluguel, alimentação e outras despesas.",
-            "target_id": "hypothesis",
-            "headline": "HIPÓTESE: AINDA HÁ DESPESAS ESSENCIAIS",
-            "action": "update",
+            "target_id": "limits",
+            "headline": "AINDA HÁ DESPESAS",
+            "action": "reveal",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "Essa conta não reproduz a fórmula de nenhum banco,",
-            "target_id": "hypothesis",
-            "headline": "HIPÓTESE · SEM LIMITE UNIVERSAL",
+            "target_id": "limits",
+            "headline": "NÃO É REGRA DO BANCO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "a capacidade de pagamento é uma pergunta diferente",
-            "target_id": "hypothesis",
-            "headline": "HIPÓTESE · CAPACIDADE DE PAGAMENTO",
+            "target_id": "limits",
+            "headline": "A PARCELA PRECISA CABER",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "O histórico pode pesar na análise,",
-            "target_id": "hypothesis",
+            "target_id": "limits",
             "headline": "HISTÓRICO NÃO DECIDE SOZINHO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           }
         ]
       }
@@ -2029,46 +2126,41 @@
             "words_per_line": 3,
             "max_lines": 2,
             "font_size": 64,
-            "min_free_area_ratio": 0.3,
-            "preferred_side": "center",
-            "region": {
-              "x": 5,
-              "y": 67,
-              "width": 90,
-              "height": 30
-            }
+            "min_free_area_ratio": 0.3
           },
           "elements": [
             {
               "id": "record",
               "kind": "object",
               "label": "CONFERÊNCIA DOS DADOS",
-              "x": 5,
-              "y": 3,
-              "width": 29,
-              "height": 42,
+              "x": 3,
+              "y": 22,
+              "width": 42,
+              "height": 72,
               "surface": "none",
               "label_size": 48,
               "object_type": "receipt",
               "svg_motion": "assemble",
               "sustain": {
-                "kind": "tilt",
-                "amplitude": 2,
+                "kind": "float",
+                "amplitude": 15,
                 "period_seconds": 7
-              }
+              },
+              "show_label": false,
+              "visual_role": "protagonist"
             },
             {
               "id": "route",
               "kind": "step",
               "label": "BANCO OU FINANCEIRA",
-              "x": 40,
-              "y": 2,
-              "width": 55,
-              "height": 24,
+              "x": 50,
+              "y": 21,
+              "width": 47,
+              "height": 32,
               "surface": "none",
-              "label_size": 48,
+              "label_size": 66,
               "icon": "bank",
-              "icon_size": 130,
+              "icon_size": 220,
               "content_layout": "row",
               "initially_visible": false
             },
@@ -2076,14 +2168,14 @@
               "id": "protocol",
               "kind": "step",
               "label": "GUARDE O PROTOCOLO",
-              "x": 40,
-              "y": 29,
-              "width": 55,
-              "height": 22,
+              "x": 50,
+              "y": 59,
+              "width": 47,
+              "height": 32,
               "surface": "none",
-              "label_size": 48,
+              "label_size": 66,
               "icon": "document",
-              "icon_size": 120,
+              "icon_size": 220,
               "content_layout": "row",
               "initially_visible": false
             },
@@ -2091,15 +2183,20 @@
               "id": "check",
               "kind": "label",
               "label": "CONSULTE SEUS RELATÓRIOS",
-              "x": 5,
-              "y": 53,
-              "width": 90,
-              "height": 10,
+              "x": 4,
+              "y": 1,
+              "width": 92,
+              "height": 16,
               "surface": "none",
-              "label_size": 48
+              "label_size": 76
             }
           ],
-          "connections": []
+          "connections": [],
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          }
         },
         "beats": [
           {
@@ -2109,65 +2206,65 @@
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
+              "y": 50,
               "zoom": 1.01,
-              "motion_seconds": 0.85
+              "motion_seconds": 0.9
             }
           },
           {
             "anchor": "serviços de proteção ao crédito",
             "target_id": "check",
-            "headline": "PROTEÇÃO AO CRÉDITO + REGISTRATO",
+            "headline": "PROTEÇÃO AO CRÉDITO E REGISTRATO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "pelo endereço oficial do Banco Central.",
             "target_id": "check",
-            "headline": "USE O ENDEREÇO OFICIAL DO BC",
+            "headline": "ENDEREÇO OFICIAL DO BC",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "conta gov.br prata ou ouro",
             "target_id": "check",
-            "headline": "GOV.BR PRATA OU OURO · DUAS ETAPAS",
+            "headline": "GOV.BR PRATA OU OURO + DUAS ETAPAS",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "Compare a instituição, a operação,",
             "target_id": "record",
-            "headline": "INSTITUIÇÃO · OPERAÇÃO",
+            "headline": "INSTITUIÇÃO E OPERAÇÃO",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "actuation": "tap",
             "camera": {
               "x": 50,
-              "y": 48,
+              "y": 50,
               "zoom": 1.03,
-              "motion_seconds": 0.85
+              "motion_seconds": 0.9
             }
           },
           {
             "anchor": "o mês de referência e o comprovante",
             "target_id": "check",
-            "headline": "MÊS DOS DADOS + COMPROVANTE",
+            "headline": "MÊS E COMPROVANTE",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "Se houver informação errada,",
@@ -2176,7 +2273,7 @@
             "action": "reveal",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.7,
+            "motion_seconds": 0.9,
             "entrance": {
               "style": "slide",
               "direction": "right"
@@ -2189,7 +2286,7 @@
             "action": "reveal",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.7,
+            "motion_seconds": 0.9,
             "entrance": {
               "style": "wipe",
               "direction": "left"
@@ -2202,16 +2299,16 @@
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "se persistir, existe o canal de reclamação",
             "target_id": "route",
-            "headline": "PERSISTIU: RECLAMAÇÃO AO BC",
+            "headline": "PERSISTIU: RECLAME AO BC",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "Corrigir informação errada",
@@ -2220,7 +2317,7 @@
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "Nenhum desses passos é uma garantia de aprovação.",
@@ -2229,7 +2326,7 @@
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           }
         ]
       }
@@ -2263,31 +2360,24 @@
             "words_per_line": 3,
             "max_lines": 2,
             "font_size": 64,
-            "min_free_area_ratio": 0.3,
-            "preferred_side": "center",
-            "region": {
-              "x": 5,
-              "y": 67,
-              "width": 90,
-              "height": 30
-            }
+            "min_free_area_ratio": 0.3
           },
           "elements": [
             {
               "id": "resolution",
               "kind": "object",
-              "label": "ILUSTRAÇÃO ESQUEMÁTICA",
-              "x": 5,
-              "y": 3,
-              "width": 90,
-              "height": 47,
+              "label": "A resposta é separar as três perguntas",
+              "x": 2,
+              "y": 10,
+              "width": 63,
+              "height": 84,
               "surface": "none",
               "label_size": 48,
               "object_type": "data",
               "hyperframes": {
                 "entry": "video/hyperframes/credit-archive/index.html",
                 "initial_state": "consult",
-                "width": 1280,
+                "width": 960,
                 "height": 640,
                 "states": [
                   {
@@ -2295,29 +2385,64 @@
                     "state": "consult"
                   },
                   {
+                    "anchor": "Porque a ausência de negativação",
+                    "state": "consult"
+                  },
+                  {
                     "anchor": "o histórico nem a capacidade",
+                    "state": "good"
+                  },
+                  {
+                    "anchor": "Uma dívida quitada deve ter sua situação atualizada,",
                     "state": "good"
                   },
                   {
                     "anchor": "o mês em que houve atraso",
                     "state": "month"
+                  },
+                  {
+                    "anchor": "E a decisão ainda depende",
+                    "state": "consult"
+                  },
+                  {
+                    "anchor": "Se essa distinção ajudou,",
+                    "state": "consult"
+                  },
+                  {
+                    "anchor": "as decisões que mexem com seu dinheiro.",
+                    "state": "good"
+                  },
+                  {
+                    "anchor": "Antes de tentar mais um pedido,",
+                    "state": "month"
+                  },
+                  {
+                    "anchor": "No seu caso, a dúvida é",
+                    "state": "consult"
                   }
                 ]
-              }
+              },
+              "show_label": false,
+              "visual_role": "protagonist"
             },
             {
               "id": "answer",
               "kind": "label",
               "label": "NOME LIMPO NÃO RESUME TODA A ANÁLISE",
-              "x": 5,
-              "y": 53,
-              "width": 90,
-              "height": 10,
+              "x": 69,
+              "y": 7,
+              "width": 29,
+              "height": 86,
               "surface": "none",
-              "label_size": 48
+              "label_size": 82
             }
           ],
-          "connections": []
+          "connections": [],
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          }
         },
         "beats": [
           {
@@ -2327,22 +2452,22 @@
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
-              "zoom": 1.02,
-              "motion_seconds": 0.85
+              "y": 50,
+              "zoom": 1.01,
+              "motion_seconds": 0.9
             }
           },
           {
             "anchor": "Porque a ausência de negativação",
             "target_id": "answer",
-            "headline": "NOME LIMPO NÃO RESUME A ANÁLISE",
+            "headline": "NOME LIMPO NÃO É TUDO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "o histórico nem a capacidade",
@@ -2351,49 +2476,49 @@
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
-              "zoom": 1.01,
-              "motion_seconds": 0.85
+              "y": 50,
+              "zoom": 1.03,
+              "motion_seconds": 0.9
             }
           },
           {
             "anchor": "Uma dívida quitada deve ter sua situação atualizada,",
             "target_id": "answer",
-            "headline": "PAGOU: A SITUAÇÃO DEVE SER ATUALIZADA",
+            "headline": "PAGOU: ATUALIZE A SITUAÇÃO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "o mês em que houve atraso",
             "target_id": "answer",
-            "headline": "O MÊS ANTIGO RETRATA AQUELE MOMENTO",
+            "headline": "O MÊS ANTIGO PERMANECE",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "E a decisão ainda depende",
             "target_id": "answer",
-            "headline": "A DECISÃO DEPENDE DA INSTITUIÇÃO",
+            "headline": "CRITÉRIOS DO BANCO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "Se essa distinção ajudou,",
             "target_id": "answer",
-            "headline": "INSCREVA-SE · O DINHEIRO EXPLICA",
+            "headline": "INSCREVA-SE NO CANAL",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "as decisões que mexem com seu dinheiro.",
@@ -2402,31 +2527,31 @@
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.85,
+            "motion_seconds": 0.9,
             "camera": {
               "x": 50,
-              "y": 48,
-              "zoom": 1.03,
-              "motion_seconds": 0.85
+              "y": 50,
+              "zoom": 1.015,
+              "motion_seconds": 0.9
             }
           },
           {
             "anchor": "Antes de tentar mais um pedido,",
             "target_id": "answer",
-            "headline": "CONFIRA O QUE O RELATÓRIO DIZ",
+            "headline": "CONFIRA O RELATÓRIO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           },
           {
             "anchor": "No seu caso, a dúvida é",
             "target_id": "answer",
-            "headline": "REGISTRO ANTIGO · DADO ERRADO · PARCELA?",
+            "headline": "ANTIGO, ERRADO OU PARCELA?",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.45
+            "motion_seconds": 0.5
           }
         ]
       }
