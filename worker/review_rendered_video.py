@@ -13,6 +13,38 @@ import numpy as np
 from PIL import Image, ImageDraw
 
 
+def plan_review_samples(scene: dict, fps: int) -> list[dict]:
+    """Keep event context together; never stride over sorted onset frames."""
+    last = scene["duration_frames"]-1
+    if last < 0 or fps <= 0:
+        raise ValueError("Cena e FPS precisam ter duração positiva.")
+    groups = []
+    beats = sorted(scene.get("visual", {}).get("beats", []), key=lambda b: b["resolved_frame"])
+    for i, beat in enumerate(beats):
+        at = beat["resolved_frame"]
+        if at < 0 or at > last:
+            raise ValueError("Beat fora da cena; não esconder com clamp.")
+        next_at = beats[i+1]["resolved_frame"] if i+1 < len(beats) else last+1
+        # The camera can continue beyond the element's entrance.
+        camera = beat.get("camera") or {}
+        span = max(beat.get("motion_seconds", .45), camera.get("motion_seconds", .9) if camera else 0)
+        end = at+max(1, round(span*fps))
+        available = max(at, next_at-1)
+        after = min(last, available, end+1)
+        hold = after+(available-after)//2
+        groups.append({"beat_index": i, "anchor": beat.get("anchor", ""),
+                       "timing_source": beat.get("timing_source", "unreported"),
+                       "completed_before_next_event": end < next_at and end <= last,
+                       "samples": [{"role": "before", "local_frame": max(0, at-round(.2*fps))},
+                                   {"role": "during", "local_frame": min(available, at+max(1, round(span*fps/2)))},
+                                   {"role": "after", "local_frame": after},
+                                   {"role": "interval", "local_frame": hold}]})
+    groups.append({"beat_index": None, "anchor": "Scene coverage", "timing_source": "video-clock",
+                   "samples": [{"role": role, "local_frame": round(last*ratio)}
+                               for role, ratio in [("start", 0), ("quarter", .25), ("middle", .5), ("end", 1)]]})
+    return groups
+
+
 def review(video: Path, timeline: dict, output: Path, regions: dict) -> dict:
     fps = timeline["fps"]
     output.mkdir(parents=True, exist_ok=True)
@@ -54,11 +86,11 @@ def review(video: Path, timeline: dict, output: Path, regions: dict) -> dict:
     if decode.wait() != 0:
         raise RuntimeError("FFmpeg falhou na análise regional.")
     proofs = []
+    sample_groups = []
     for scene in timeline["scenes"]:
-        frames = {0, scene["duration_frames"]-1}
-        for beat in scene.get("visual", {}).get("beats", []):
-            at = beat["resolved_frame"]
-            frames.update({max(0, at-6), at, min(scene["duration_frames"]-1, at+max(15, round(beat.get("motion_seconds", .5)*fps)))})
+        groups = plan_review_samples(scene, fps)
+        frames = {s["local_frame"] for group in groups for s in group["samples"]}
+        by_frame = {}
         for i, frame in enumerate(sorted(frames)):
             absolute = scene["start_frame"]+frame
             name = f"{scene['id']}-{i:02d}-{absolute:06d}.jpg"
@@ -66,20 +98,31 @@ def review(video: Path, timeline: dict, output: Path, regions: dict) -> dict:
             subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(absolute/fps), "-i", str(video), "-frames:v", "1", "-q:v", "3", str(path)], check=True)
             if not path.is_file():
                 raise RuntimeError(f"Quadro não extraído: {absolute}")
-            proofs.append({"scene_id": scene["id"], "frame": absolute, "seconds": round(absolute/fps, 3), "file": name})
-        selected = [q for q in proofs if q["scene_id"] == scene["id"]][::max(1, len(frames)//8)]
-        sheet = Image.new("RGB", (1280, 210*((len(selected)+3)//4)), "#090b0d")
+            proof = {"scene_id": scene["id"], "frame": absolute, "seconds": round(absolute/fps, 3), "file": name}
+            proofs.append(proof)
+            by_frame[frame] = proof
+        sheet = Image.new("RGB", (1280, 240*len(groups)), "#090b0d")
         draw = ImageDraw.Draw(sheet)
-        for i, proof in enumerate(selected):
-            image = Image.open(output/proof["file"]).convert("RGB")
-            image.thumbnail((320, 340))
-            x, y = (i%4)*320, (i//4)*210
-            sheet.paste(image, (x, y))
-            draw.text((x+10, y+185), f"{proof['seconds']:.2f}s", fill="#ffbd19")
+        for row, group in enumerate(groups):
+            status = "nominal motion interrupted | " if group.get("completed_before_next_event") is False else ""
+            label = f"Beat {group['beat_index']} | {group['timing_source']} | {status}{group['anchor']}"
+            # Full Unicode anchor stays in JSON; portable default font uses Latin-1.
+            draw.text((10, row*240+4), label[:185].encode("latin-1", "replace").decode("latin-1"), fill="#ffffff")
+            samples = []
+            for column, sample in enumerate(group["samples"]):
+                proof = by_frame[sample["local_frame"]]
+                with Image.open(output/proof["file"]) as source:
+                    image = source.convert("RGB")
+                    image.thumbnail((320, 180))
+                    x, y = column*320, row*240+25
+                    sheet.paste(image, (x, y))
+                draw.text((x+10, y+185), f"{sample['role']} | {proof['seconds']:.2f}s", fill="#ffbd19")
+                samples.append({**sample, **proof})
+            sample_groups.append({**group, "scene_id": scene["id"], "samples": samples})
         sheet.save(output/f"{scene['id']}-contact.jpg", quality=92)
     with video.open("rb") as video_source:
         video_hash = hashlib.file_digest(video_source, "sha256").hexdigest()
-    report = {"version": "1.0", "video_sha256": video_hash, "duration_seconds": duration, "container_duration_seconds": container_duration, "video_stream": metadata["streams"][0], "method": {"decode": "final MP4", "sample_fps": sample_fps, "sample_resolution": [sample_width, sample_height], "regions": "Stage resolver; visible object envelopes include labels and entrance/camera", "measure": "mean absolute grayscale difference 0..255"}, "scope": "Quadros reais e diagnóstico de movimento; não aprova semântica, prosódia, fatos, legibilidade raster ou retenção.", "semantic_review": "pending-agent-review", "proofs": proofs, "motion": motion}
+    report = {"version": "1.1", "video_sha256": video_hash, "duration_seconds": duration, "container_duration_seconds": container_duration, "video_stream": metadata["streams"][0], "method": {"decode": "final MP4", "sample_fps": sample_fps, "sample_resolution": [sample_width, sample_height], "regions": "Stage resolver; visible object envelopes include labels and entrance/camera", "measure": "mean absolute grayscale difference 0..255", "contact_sampling": "before/during/after/interval per event plus scene quarters; nominal completion is not semantic approval"}, "scope": "Quadros reais e diagnóstico de movimento; não aprova semântica, prosódia, fatos, legibilidade raster ou retenção.", "semantic_review": "pending-agent-review", "sample_groups": sample_groups, "proofs": proofs, "motion": motion}
     (output/"report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2)+"\n", encoding="utf-8")
     with zipfile.ZipFile(output.parent/"daily-visual-review.zip", "w", zipfile.ZIP_DEFLATED) as archive:
         for path in sorted(output.rglob("*")):

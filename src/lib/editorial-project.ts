@@ -17,5 +17,8 @@ export function explanationReviewContent(project:any) {
   const e=project.editorial?.explanation;
   const assets=(project.visual_assets??[]).map(({captured_at,...asset}:any)=>asset);
   // The semantic record certifies which material was reviewed, never a score.
-  return {story:project.story,sources:project.sources,claims:project.claims,visual_assets:assets,scenes:project.scenes??project.script?.scenes,explanation:e?{version:e.version,concepts:e.concepts,examples:e.examples,learning_units:e.learning_units}:null};
+  return {story:project.story,sources:project.sources,claims:project.claims,visual_assets:assets,scenes:project.scenes??project.script?.scenes,explanation:e?{version:e.version,concepts:e.concepts,examples:e.examples,learning_units:e.learning_units}:null,
+    // Preserve historical review hashes; new strategy reviews include the promise being sold.
+    ...(project.editorial?.learning_strategy?{learning_strategy:project.editorial.learning_strategy,packaging:project.packaging}:{}),
+  };
 }

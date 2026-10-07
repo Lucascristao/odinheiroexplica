@@ -76,6 +76,8 @@ O espectador decide ficar ou sair nos primeiros 5 a 10 segundos. O gancho precis
 
 Depois construa uma narrativa original que entregue essa promessa. Não reescreva uma reportagem.
 
+Leia `docs/editorial-learning.md` e preencha `editorial.learning_strategy`. Defina público e hipótese, entregue uma descoberta útil na primeira cena e vincule título e capa a fatos, unidades e trechos de entrega/limite. Faça os blocos avançarem pelas perguntas das unidades explicativas. Não esconda toda a resposta até o fim nem alongue para uma duração arbitrária. Valide novo episódio com `npm run ode -- preflight --new-episode`; revisão semântica inclui a embalagem e confere se a prova realmente sustenta a promessa.
+
 A narração deve soar como uma pessoa explicando algo interessante para outra pessoa. Evite cadência de relatório, frases excessivamente formais e blocos com o mesmo ritmo. Use português brasileiro natural, variação de frases, perguntas pontuais, exemplos concretos e conectores conversacionais quando fizer sentido. Não force gírias.
 
 ### Texto escrito para ser falado

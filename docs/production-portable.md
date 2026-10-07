@@ -10,7 +10,7 @@ Leia skills/ode-video/SKILL.md. O pedido reutilizável está em docs/production-
 
 1. npm ci e npm run ode -- context mostram contratos, política de voz e recursos disponíveis.
 2. Leia histórico, pesquise fontes atuais e registre storyboard antes de escrever daily.json.
-3. npm run ode -- preflight valida conteúdo, fontes, pronúncia e contratos HyperFrames. Se o Python do sistema não existir, defina ODE_PYTHON com o caminho do executável.
+3. Leia docs/editorial-learning.md. Novo episódio preenche learning_strategy e usa npm run ode -- preflight --new-episode; retomada histórica usa preflight. O comando valida conteúdo, fontes, pronúncia e contratos HyperFrames. Se o Python do sistema não existir, defina ODE_PYTHON com o caminho do executável.
 4. No modo normal, execute npm run typecheck e as suítes relevantes. Faça commit e push na main sem alterar render-trigger/daily.txt; espere CI do mesmo commit.
 5. npm run ode -- dispatch solicita workflow_dispatch na main. Compare o headSha do run com o commit enviado.
 6. npm run ode -- status; para falha transitória, npm run ode -- resume --run-id NUMERO. Corrigir conteúdo exige novo commit e novo run, que reutiliza cenas de voz compatíveis.

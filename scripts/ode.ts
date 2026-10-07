@@ -27,13 +27,15 @@ const project=load("video/data/daily.json");
 const fingerprint=createHash("sha256").update(readFileSync("video/data/daily.json")).digest("hex");
 const state=()=>existsSync(statePath)?load("work/production-state.json"):null;
 const save=(value:object)=>{mkdirSync(dirname(statePath),{recursive:true});writeFileSync(statePath,JSON.stringify(value,null,2)+"\n");};
-if(command==="prompt") {
+if(command==="analytics") {
+  run(process.execPath,["node_modules/tsx/dist/cli.mjs","scripts/youtube-analytics.ts",...args.slice(1)]);
+} else if(command==="prompt") {
   console.log(productionChatRequest(option("--request","Gere um vídeo inédito para o O Dinheiro Explica e entregue o pacote completo no Drive.")!,{mode:args.includes("--direct")?"direct":"normal",chooseTopic:!args.includes("--ask-topic")}));
 } else if(command==="context"||command==="capabilities") {
   console.log(JSON.stringify({version:"1.0",project:project.project_id,title:project.title,project_sha256:fingerprint,voice:load("worker/voice-policy.json"),skills:readdirSync("skills").filter(s=>existsSync(`skills/${s}/SKILL.md`)).map(s=>`skills/${s}/SKILL.md`),contracts:["AGENTS.md","frame.md","docs/architecture.md","docs/production-portable.md","src/lib/video-project-schema.ts","src/lib/editorial-stage.ts"],capabilities:{stage:["objects","camera","equation","compare","chart","source_excerpt","captions","sfx"],hyperframes:"HTML por protagonista, eventos alinhados, texto e relações no Stage",review:"frames do MP4 e diagnóstico regional; revisão semântica pelo agente",delivery:"Actions → Drive; publicação manual"},state:state()},null,2));
 } else if(command==="preflight") {
   registerTemporaryPaths(root,["video/generated/daily-source-audit.json","video/generated/daily-pronunciation-audit.json","video/generated/daily-hyperframes-preflight.json"]);
-  run(process.execPath,["node_modules/tsx/dist/cli.mjs","scripts/validate-editorial.ts","video/data/daily.json","--require-explanation"]);
+  run(process.execPath,["node_modules/tsx/dist/cli.mjs","scripts/validate-editorial.ts","video/data/daily.json","--require-explanation",...(args.includes("--new-episode")?["--require-learning"]:[])]);
   run(python,["worker/editorial_source_audit.py","--input","video/data/daily.json","--output","video/generated/daily-source-audit.json","--strict"]);
   run(python,["worker/pronunciation_audit.py","--input","video/data/daily.json","--output","video/generated/daily-pronunciation-audit.json","--strict"]);
   run(process.execPath,["node_modules/tsx/dist/cli.mjs","scripts/prepare-hyperframes.ts","--preflight"]);
@@ -86,4 +88,4 @@ if(command==="prompt") {
 } else if(command==="complete"||command==="cleanup") {
   const production=option("--production");if(!production)throw new Error("complete exige --production production/EPISODIO com recibo completo.");
   const result=cleanupCompletedProduction(root,production);console.log(JSON.stringify(result,null,2));if(result.status!=="complete")process.exitCode=1;
-} else throw new Error("Comando desconhecido: context, capabilities, prompt, preflight, dispatch, render, status, resume, review, deliver, complete.");
+} else throw new Error("Comando desconhecido: context, capabilities, prompt, analytics, preflight, dispatch, render, status, resume, review, deliver, complete.");

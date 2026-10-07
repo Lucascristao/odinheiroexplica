@@ -21,6 +21,7 @@
     "validate:editorial": "tsx scripts/validate-editorial.ts",
     "validate:layout": "tsx scripts/validate-editorial-layout.ts",
     "test:explanation": "tsx scripts/test-editorial-explanation.ts",
+    "test:learning": "tsx scripts/test-editorial-learning.ts && tsx scripts/test-youtube-analytics.ts",
     "test:direction": "tsx scripts/test-editorial-direction.ts",
     "test:preflight": "tsx scripts/test-editorial-preflight.ts",
     "review:motion": "tsx scripts/review-editorial-motion.ts",

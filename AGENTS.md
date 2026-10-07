@@ -1,5 +1,7 @@
 # Produção do O Dinheiro Explica no chat
 
+Para novos episódios, leia também `docs/editorial-learning.md`, preencha `editorial.learning_strategy` e execute `npm run ode -- preflight --new-episode`. Registre público concreto e hipótese, primeira descoberta na abertura, provas do título/capa com condições e progressão pelas unidades explicativas. O hash da revisão desses projetos inclui estratégia e embalagem. Retomadas históricas preservam contratos e cache. Após publicação manual, registre snapshots reais do Studio em 72h, 7 e 28 dias com `npm run ode -- analytics`; compare formato, idade, janela e origem semelhantes, sem inventar métricas ou atribuir causalidade a um único vídeo.
+
 O fluxo portátil começa em `skills/ode-video/SKILL.md`; `npm run ode -- context` informa contratos, capacidades e estado. As skills canônicas pertencem ao Git e podem ser lidas explicitamente por qualquer agente. `docs/production-portable.md` descreve execução e retomada. Decisões/autorização explícitas da conversa prevalecem: quando o usuário autorizar escolher a pauta, escolha após pesquisa e histórico sem pedir a escolha novamente.
 
 Quando a pessoa pedir **“Gerar o vídeo de hoje”** ou um vídeo por tema neste repositório:

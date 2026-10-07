@@ -4,6 +4,7 @@ import {readFileSync} from "node:fs";
 import {createHash} from "node:crypto";
 import {normalizeEditorialProject,explanationReviewContent,stableJson} from "../src/lib/editorial-project";
 import {validateExplanation} from "../src/lib/editorial-explanation";
+import {validateLearningStrategy} from "../src/lib/editorial-learning";
 import {editorialStageSchema, stageEventFields, validateStageEvents} from "../src/lib/editorial-stage";
 import {z} from "zod";
 import {visualAssetSchema} from "../src/lib/video-project-schema";
@@ -35,6 +36,7 @@ for(const message of direction.errors??[]) {
   failures++;
 }
 for(const error of validateExplanation(project)){console.error(`Explicação: ${error}`);failures++;}
+for(const error of validateLearningStrategy(project,process.argv.includes("--require-learning"))){console.error(`Aprendizado editorial: ${error}`);failures++;}
 if(process.argv.includes("--require-explanation")&&!project.editorial?.explanation){console.error("Produção exige contrato editorial.explanation; migre conceitos, exemplos e unidades.");failures++;}
 if(project.editorial?.explanation) {
   const digest=createHash("sha256").update(stableJson(explanationReviewContent(rawProject))).digest("hex");

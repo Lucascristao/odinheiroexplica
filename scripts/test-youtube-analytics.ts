@@ -1,0 +1,23 @@
+import assert from "node:assert/strict";
+import {importStudioCsv,summarizeSnapshot,studioNumber,analyticsSnapshotSchema} from "../src/lib/youtube-analytics";
+const options={start:"2026-09-09",end:"2026-10-06",format:"long" as const,locale:"pt-BR" as const,source:"Studio CSV",captured_at:"2026-10-07T00:00:00Z"};
+const csv='\uFEFFConteúdo;Título do vídeo;Visualizações;Impressões;Taxa de cliques de impressões (%);Duração média da visualização;Tempo de exibição (horas);Tempo de exibição de impressões (horas)\r\nTotal;Total;721;6.600;2,4;1:54;7,8;5,21\r\nabcdefghijk;"Dinheiro; \"\"pagou\"\"\nmas sumiu?";721;6.600;2,4;1:54;7,8;5,21\r\n';
+const {snapshot}=importStudioCsv(csv,options);
+const metrics=snapshot.videos[0].metrics;
+assert.equal(snapshot.videos.length,1);
+assert.equal(snapshot.videos[0].title,'Dinheiro; "pagou"\nmas sumiu?');
+assert.equal(metrics.views,721);assert.equal(metrics.engaged_views,null);
+assert.equal(metrics.average_view_seconds,114);assert.equal(metrics.impressions,6600);assert.equal(metrics.ctr_percent,2.4);
+assert.equal(summarizeSnapshot(snapshot)[0].watch_seconds_per_impression,2.842);
+assert.equal(summarizeSnapshot(snapshot)[0].age_hours,null);
+const missing=structuredClone(snapshot);missing.videos[0].metrics.watch_hours_from_impressions=null;
+assert.equal(summarizeSnapshot(missing)[0].watch_seconds_per_impression,null); // Never use general watch time.
+assert.equal(studioNumber("—","pt-BR"),null);assert.equal(studioNumber("0","pt-BR"),0);assert.equal(studioNumber("1,234.5","en-US"),1234.5);
+const english=importStudioCsv('Content,Video title,Engaged views,Average view duration\nabcdefghijk,"Title, with comma",159,0:01:58', {...options,locale:"en-US"});
+assert.equal(english.snapshot.videos[0].metrics.views,null);assert.equal(english.snapshot.videos[0].metrics.engaged_views,159);
+assert.equal(english.snapshot.videos[0].metrics.average_view_seconds,118);
+assert.throws(()=>importStudioCsv(csv.replaceAll("1:54","1:90"),options),/Duração/);
+assert.throws(()=>importStudioCsv(csv+'"unclosed',options),/não encerradas/);
+assert.throws(()=>importStudioCsv(csv,{...options,start:"2026-10-07",end:"2026-10-06"}),/invertido/);
+assert.throws(()=>analyticsSnapshotSchema.parse({...snapshot,videos:[...snapshot.videos,...snapshot.videos]}),/duplicado/);
+console.log("Analytics: locale, RFC CSV, ausências, duração engajada, janela, identidade e denominadores verificados.");

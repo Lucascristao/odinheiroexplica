@@ -7,7 +7,7 @@ description: Revisar MP4, localizar falhas visuais/temporais e concluir entrega 
 
 Leia [revisão](../../docs/production-portable.md) e pacote render-output/visual-review. O relatório de ritmo descreve eventos; QA mede integridade/áudio; pixel-diff diagnostica movimento. Nenhum deles comprova compreensão sozinho.
 
-Confira quadros de prova, intermediários e emendas; números/unidades, visibilidade de condições, sincronismo, relações e leitura. Assista com áudio para julgar ritmo e naturalidade. Use tempos/quadros e findings concretos; registre limitações de observação. Movimento de fundo/legenda não demonstra mudança do protagonista.
+Confira grupos antes/durante/depois/intervalo, cobertura de cena e timing_source do pacote de prova, além das emendas; números/unidades, condições, sincronismo, relações e leitura. Registre o segundo real da primeira descoberta e confira sua relação com a promessa conforme [aprendizado](../../docs/editorial-learning.md). Assista com áudio para julgar ritmo e naturalidade. Use tempos/quadros e findings concretos; registre limitações de observação. Movimento de fundo/legenda não demonstra mudança do protagonista.
 
 Bloqueie defeitos concretos de conteúdo ou integridade. Avisos de pausas, pitch e movimento são diagnósticos; não exigem novas animações ou narração apenas para cumprir métricas. A extração auxiliar de provas não bloqueia o envio de um MP4 aprovado pelo QA; registre eventual falha sem declarar revisão concluída. Se o render já terminou e somente a entrega falhou, use `resume --run-id NUMERO --delivery-only` conforme [retomada](../../docs/recovery-render.md).
 

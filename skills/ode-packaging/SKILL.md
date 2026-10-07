@@ -5,7 +5,7 @@ description: Criar título, descrição e capa completos que entreguem a promess
 
 # ode-packaging
 
-Leia [embalagem](../../docs/youtube-packaging.md) e [capa](../../docs/thumbnail-identity.md). Assunto reconhecível cedo, consequência concreta, título e thumbnail complementares. Não prometer CTR medido.
+Leia [embalagem](../../docs/youtube-packaging.md), [aprendizado](../../docs/editorial-learning.md) e [capa](../../docs/thumbnail-identity.md). Assunto reconhecível cedo, consequência concreta, título e thumbnail complementares. Vincule cada promessa aos claims, unidades e trechos que a entregam; um exemplo hipotético não prova resultado universal. Não prometer CTR medido.
 
 Descrição editorial curta para celular; pipeline acrescenta capítulos reais, fontes, créditos, pergunta e três hashtags uma vez. URLs ficam nos metadados internos.
 

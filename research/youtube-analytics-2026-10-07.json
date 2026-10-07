@@ -1,0 +1,123 @@
+{
+  "schema_version": "1.0",
+  "record_type": "manual_observations_from_user_screenshots",
+  "analysis_date": "2026-10-07",
+  "timezone": "America/Fortaleza",
+  "main_window": {
+    "start_date": "2026-09-09",
+    "end_date": "2026-10-06",
+    "label": "Últimos 28 dias"
+  },
+  "source_images": [
+    {"id": "video_grid", "filename": "codex-clipboard-f9736c30-d93b-4cff-adbb-80df92d4c39b.png"},
+    {"id": "overview", "filename": "codex-clipboard-dc53215f-6cf0-42ef-8cc1-b3e0e40ae648.png"},
+    {"id": "content_summary", "filename": "codex-clipboard-52f2b212-faf1-47a3-9a2c-cb1b3bcdd7a7.png"},
+    {"id": "audience_summary", "filename": "codex-clipboard-21f5ca7c-0e55-4cfb-9de6-796a390c4927.png"},
+    {"id": "audience_details", "filename": "codex-clipboard-1093aaeb-35a0-4af6-8e19-5121cfba558f.png"},
+    {"id": "traffic_and_funnel", "filename": "codex-clipboard-90f6ec68-ecc5-428d-bc9e-4894cae67225.png"}
+  ],
+  "metric_definitions": {
+    "views": "Current YouTube documentation counts playback starts across formats beginning 2026-08-24.",
+    "average_view_duration": "Engaged views and their corresponding watch time; do not divide general watch time by all playback starts to reproduce this metric.",
+    "ctr": "Registered thumbnail impressions and corresponding engagement; not all channel views.",
+    "monthly_audience": "Estimated unique viewers over the rolling 28-day audience window.",
+    "device_shares": "Watch-time shares, not view shares.",
+    "subscriber_status_shares": "Watch-time shares, not audience or subscriber-count shares.",
+    "reference_url": "https://support.google.com/youtube/answer/12220281?hl=en"
+  },
+  "channel_observations": {
+    "views": {"value": 721, "source": "content_summary"},
+    "engaged_views": {"value": null, "reason": "Not explicitly displayed in supplied screenshots."},
+    "watch_time_hours": {"value": 7.8, "source": "overview", "display_precision": "one_decimal"},
+    "average_view_duration_seconds": {"value": 114, "source": "content_summary"},
+    "impressions": {"value": 6600, "source": "content_summary", "approximate": true, "display_text": "6,6 mil"},
+    "impressions_ctr_percent": {"value": 2.4, "source": "content_summary"},
+    "monthly_audience": {"value": 153, "source": "audience_summary"},
+    "subscriber_net_change": {"value": 3, "source": "overview"},
+    "subscriber_total_realtime": {"value": 138, "source": "overview", "scope": "current_total_not_main_window_gain"}
+  },
+  "impressions_funnel": {
+    "source": "traffic_and_funnel",
+    "impressions_approximate": 6600,
+    "impressions_from_youtube_recommendations_percent": 86.3,
+    "ctr_percent": 2.4,
+    "engaged_views_from_impressions": 159,
+    "average_view_duration_seconds": 118,
+    "watch_time_from_impressions_hours": 5.21,
+    "derived_watch_seconds_per_impression_approximate": 2.84,
+    "derivation": "5.21 * 3600 / 6600; screenshot values are rounded."
+  },
+  "traffic_view_shares_percent": {
+    "source": "traffic_and_funnel",
+    "browse_features": 65.7,
+    "youtube_search": 18.6,
+    "suggested_videos": 8.2,
+    "external": 3.2,
+    "channel_pages": 1.5,
+    "other": 2.8
+  },
+  "watch_time_device_shares_percent": {
+    "source": "audience_details",
+    "mobile": 54.6,
+    "tv": 28.4,
+    "computer": 15.0,
+    "tablet": 2.0
+  },
+  "watch_time_subscriber_status_shares_percent": {
+    "source": "audience_details",
+    "not_subscribed": 72.2,
+    "subscribed": 27.8
+  },
+  "audience_behavior": {
+    "source": "audience_summary",
+    "new_percent": 94.8,
+    "casual_percent": 5.2,
+    "third_segment_display_label": "Espectadores recorrentes",
+    "third_segment_display_value": "<0,1%",
+    "interpretation_note": "This three-segment card corresponds to new/casual/regular behavior. Do not equate its third segment with the separate returning-viewer metric. Regular/frequent viewers require repeated monthly viewing over more than six months."
+  },
+  "top_videos_main_window": [
+    {"episode": "Bets Foram Proibidas", "views": 406, "source": "traffic_and_funnel"},
+    {"episode": "Golpe do Pix: MED 2.0", "views": 89, "source": "traffic_and_funnel"},
+    {"episode": "Combustíveis em Alta", "views": 74, "source": "traffic_and_funnel"},
+    {"episode": "Pix Automático", "views": 31, "source": "traffic_and_funnel"},
+    {"episode": "Dinheiro físico / Banco24Horas", "views": 22, "source": "traffic_and_funnel"}
+  ],
+  "video_retention_observations": [
+    {
+      "episode": "Bets Foram Proibidas",
+      "source": "content_summary",
+      "card_label": "Vídeos mais recentes (últimos 365 dias)",
+      "still_watching_at_30_seconds_percent": 37,
+      "precise_video_id": null,
+      "retention_curve": null,
+      "note": "Single displayed episode. Not channel-average retention and not proof of retention on October 7 productions."
+    }
+  ],
+  "realtime_observations": {
+    "source": "overview",
+    "window_hours": 48,
+    "views": 89,
+    "top_items": [
+      {"episode": "Pix Automático", "views": 25},
+      {"episode": "Golpe do Pix: MED 2.0", "views": 16},
+      {"episode": "Supermercado", "views": 12}
+    ],
+    "note": "Separate rolling window; do not sum with main-window totals or earlier video-grid counts."
+  },
+  "unavailable_data": [
+    "Complete per-video impressions and CTR split by traffic source",
+    "Complete per-video retention curves and engaged-view counts",
+    "Demographics",
+    "Other channels and videos watched by this audience",
+    "Detailed per-video device and subscriber-status breakdowns"
+  ],
+  "limitations": [
+    "Manual transcription of supplied screenshots; no authenticated Analytics query or CSV export was performed.",
+    "Screenshot capture timestamps are unknown; the analysis date is not an invented capture timestamp.",
+    "Displayed values may be rounded and different cards may have different windows or populations.",
+    "Main reports end on October 6 and do not evaluate the consorcio produced on October 7.",
+    "Observed performance is not causal attribution to titles, thumbnails, voice, renderer or topic.",
+    "Missing values remain null; no absent retention curve or video ID was fabricated."
+  ]
+}

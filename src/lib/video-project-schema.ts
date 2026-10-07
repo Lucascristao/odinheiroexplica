@@ -4,6 +4,7 @@ import {editorialStageSchema, stageEventFields, validateStageEvents} from "./edi
 import {regionSchema} from "./editorial-evidence";
 import {normalizeEditorialProject} from "./editorial-project";
 import {explanationSchema,validateExplanation} from "./editorial-explanation";
+import {learningStrategySchema,validateLearningStrategy} from "./editorial-learning";
 
 const sourceSchema = z
   .object({
@@ -222,6 +223,7 @@ const canonicalVideoProjectSchema = z
     editorial: z
       .object({
         explanation: explanationSchema.optional(),
+        learning_strategy: learningStrategySchema.optional(),
         viral_score: z.number().int().min(0).max(100).optional(),
         strengths: z.array(z.string()).default([]),
         risk_flags: z.array(z.string()).default([]),
@@ -340,6 +342,7 @@ const canonicalVideoProjectSchema = z
   .passthrough()
   .superRefine((project, ctx) => {
     validateExplanation(project).forEach(message=>ctx.addIssue({code:"custom",path:["editorial","explanation"],message}));
+    validateLearningStrategy(project).forEach(message=>ctx.addIssue({code:"custom",path:["editorial","learning_strategy"],message}));
     const sourceIds = new Set<string>();
     project.sources.forEach((source, index) => {
       if (sourceIds.has(source.id)) {

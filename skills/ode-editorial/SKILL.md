@@ -9,4 +9,4 @@ Leia [prompt editorial](../../prompts/daily-editorial.md), [explicação](../../
 
 Resolva crença, conflito, mecanismo e pergunta. Cruze fontes primárias e independentes; registre a consulta de veículo à direita/centro-direita e seus limites. Não inferir consenso. Não recomendar investimento individual nem criar urgência. Escreva para o ouvido, com apresentação após gancho, entrega de valor, CTA breve e fechamento.
 
-Vincule claims, conceitos, exemplos e unidades aos elementos reais do storyboard. Identifique hipóteses na fala e tela. Review exige trechos e conclusões, com hash atual; string presente não demonstra entendimento. Entregue daily.json validável e pesquisa rastreável.
+Leia [aprendizado por publicação](../../docs/editorial-learning.md). Registre learning_strategy com público, hipótese, descoberta na abertura, provas da embalagem e progressão. Vincule claims, conceitos, exemplos e unidades aos elementos reais do storyboard. Identifique hipóteses na fala e tela. Review exige trechos e conclusões, com hash atual; string presente não demonstra entendimento. Entregue daily.json validável e pesquisa rastreável.

@@ -2,6 +2,8 @@
 
 Estas regras valem para toda nova produção do O Dinheiro Explica. O objetivo é aumentar clareza, descoberta e vontade de clicar sem transformar a embalagem em clickbait.
 
+Toda embalagem nova registra suas provas em `editorial.learning_strategy`, conforme [aprendizado por publicação](editorial-learning.md). Título/capa devem corresponder a claims verificados e às unidades que os explicam, com trechos literais de entrega e condições. Resultado quantitativo geral não pode nascer só de um exemplo hipotético. Mudança de embalagem exige renovar a revisão semântica do projeto com estratégia.
+
 ## Engenharia de Título Viral: Curiosidade, Dor e Gatilhos Mentais
 
 O título não pode parecer um artigo acadêmico ou relatório de banco. Ninguém clica em "Marcação a mercado", "Juro real recorde", "Subvenção" ou "Spread bancário". O título deve explorar a psicologia do espectador no YouTube:
