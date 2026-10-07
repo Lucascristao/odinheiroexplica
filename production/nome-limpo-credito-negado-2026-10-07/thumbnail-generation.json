@@ -1,0 +1,22 @@
+{
+  "project_id": "nome-limpo-credito-negado-2026-10-07",
+  "tool": "built-in image_gen",
+  "mode": "generate",
+  "headline": "PAGOU. NEGADO.",
+  "file": "thumbnail.jpg",
+  "prompt": "thumbnail-prompt.txt",
+  "width": 1672,
+  "height": 941,
+  "size_bytes": 522323,
+  "sha256": "b3d7a368748a9b6a99f535612b942f41b103eefb791bdf7ca910bb524d6271e6",
+  "source_sha256": "80ff38b0aae7bc5520d05c38a04302be26158c28ad296ddff98c36da3744cce1",
+  "processing": "PNG converted to JPEG; original pixels, dimensions and composition preserved",
+  "review": {
+    "headline_exact": true,
+    "paid_receipt_is_main_subject": true,
+    "credit_rejection_is_secondary_subject": true,
+    "no_bank_brand_or_official_document": true,
+    "legible_at_mobile_size": true,
+    "duration_corner_clear": true
+  }
+}
