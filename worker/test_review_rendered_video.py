@@ -11,7 +11,12 @@ class EncodedReviewTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary)
             video=root/"proof.mp4"
-            subprocess.run(["ffmpeg","-v","error","-f","lavfi","-i","color=black:s=1920x1080:r=30:d=3","-vf","drawbox=x=0:y=0:w=iw:h=ih:color=white:t=fill:enable='gte(t,1.5)'","-c:v","libx264","-preset","ultrafast","-pix_fmt","yuv420p",str(video)],check=True)
+            # Remotion's lean FFmpeg omits lavfi color/drawbox. Feed real RGB frames.
+            raw=root/"frames.rgb"
+            with raw.open("wb") as file:
+                file.write(bytes(320*180*3)*45)
+                file.write(bytes([255])*(320*180*3)*45)
+            subprocess.run(["ffmpeg","-v","error","-f","rawvideo","-pixel_format","rgb24","-video_size","320x180","-framerate","30","-i",str(raw),"-c:v","libx264","-preset","ultrafast","-pix_fmt","yuv420p",str(video)],check=True)
             timeline={"fps":30,"duration_in_frames":90,"scenes":[{"id":"s","start_frame":0,"duration_frames":90,"visual":{"beats":[{"resolved_frame":45}]}}]}
             regions={"samples":[{"frame":0,"scene_id":"s","regions":[{"id":"hero","kind":"object","hyperframes":True,"x":0,"y":0,"w":1920,"h":1080}]}]}
             report=review(video,timeline,root/"review",regions)

@@ -15,4 +15,3 @@ Use car-gate e group-pool como exemplos autorais, não como layout universal. De
 Não suponha que um nome de estado comprova animação. Confira o clipe e o MP4 real. Não imponha movimento decorativo sobre uma demonstração que exige leitura.
 
 Cache: SHA-256 da fonte e assets, versão de HyperFrames e GSAP, dimensões, duração e frames dos estados. A execução registra daily-hyperframes-manifest.json e entrega o relatório de revisão do MP4.
-
