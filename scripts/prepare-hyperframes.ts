@@ -4,12 +4,21 @@ import {createHash} from "node:crypto";
 import {spawnSync} from "node:child_process";
 import {hyperframesArtSchema} from "../src/lib/editorial-stage";
 import {validateArtSource,alignedArtStates} from "../src/lib/hyperframes-contract";
+import {registerTemporaryPaths} from "./production-cleanup";
 
 const root=resolve(import.meta.dirname,"..");process.chdir(root);
 const args=process.argv.slice(2),preflight=args.includes("--preflight");
 const option=(key:string,fallback:string)=>{const i=args.indexOf(key);return i<0?fallback:args[i+1];};
 const inputPath=option("--input",preflight?"video/data/daily.json":"video/generated/daily-render-input.json");
 const payload=JSON.parse(readFileSync(inputPath,"utf8")),scenes=payload.scenes??payload.script?.scenes??[];
+const currentProject=JSON.parse(readFileSync("video/data/daily.json","utf8"));
+const belongsToCurrent=payload.project_id===currentProject.project_id;
+if(belongsToCurrent) {
+  const outputs=[`video/generated/daily-hyperframes-${preflight?"preflight":"manifest"}.json`];
+  const inputRelative=relative(root,resolve(inputPath)).replaceAll("\\","/");
+  if(!preflight&&inputRelative.startsWith("video/generated/"))outputs.push(inputRelative);
+  registerTemporaryPaths(root,outputs);
+}
 const digest=(s:string|Buffer)=>createHash("sha256").update(s).digest("hex");
 const local=(file:string)=>{const p=realpathSync(resolve(root,file));if(relative(root,p).startsWith("..")||relative(root,p)==="")throw new Error(`Caminho fora do projeto: ${file}`);return p;};
 const files=(dir:string):string[]=>readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?files(join(dir,e.name)):[join(dir,e.name)]).sort();
@@ -34,6 +43,7 @@ for(const scene of scenes)for(const element of scene.visual?.stage?.elements??[]
   let cached=false;
   if(existsSync(out)&&existsSync(meta)){const previous=JSON.parse(readFileSync(meta,"utf8"));cached=previous.key===key&&previous.output_sha256===digest(readFileSync(out));}
   const build=resolve("work/hyperframes",id);mkdirSync(build,{recursive:true});
+  if(belongsToCurrent)registerTemporaryPaths(root,[`work/hyperframes/${id}`,`public/${publicFile}`,`public/${publicFile}.json`]);
   for(const p of files(dirname(entry))){const dest=resolve(build,relative(dirname(entry),p));mkdirSync(dirname(dest),{recursive:true});copyFileSync(p,dest);}
   copyFileSync(gsap,resolve(build,"gsap.min.js"));
   const json=JSON.stringify(data).replaceAll("<","\\u003c");

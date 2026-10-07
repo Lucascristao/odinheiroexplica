@@ -67,6 +67,7 @@ jobs:
           npm run test:motion
           npm run test:preflight
           npm run test:portable
+          npm run test:cleanup
           npm run prepare:hyperframes -- --preflight
 
       - name: Validate Python pipeline

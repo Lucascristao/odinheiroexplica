@@ -16,9 +16,17 @@ Leia skills/ode-video/SKILL.md. O pedido reutilizável está em docs/production-
 6. npm run ode -- status; para falha transitória, npm run ode -- resume --run-id NUMERO. Corrigir conteúdo exige novo commit e novo run, que reutiliza cenas de voz compatíveis.
    Se o render e o QA terminaram e a falha ocorreu na conferência auxiliar ou no envio, use npm run ode -- resume --run-id NUMERO --delivery-only. A retomada confere a procedência e reaproveita o MP4 sem sintetizar voz nem renderizar novamente; veja docs/recovery-render.md.
 7. Baixe daily-production-review do Actions; revise relatórios e o MP4 completo com áudio. Use npm run ode -- review para repetir a extração local no vídeo real.
-8. Confira a pasta Drive, gere a capa completa conforme a skill de embalagem, salve-a em production/ID-DO-EPISODIO/, faça commit/push e envie para a pasta observada com npm run ode -- deliver --folder-id ID --file production/ID-DO-EPISODIO/thumbnail.jpg --role thumbnail. O workflow verifica pasta, tamanho, formato e readback do arquivo. Registre a revisão em production/ e use --role editorial-review para entregá-la também.
+8. Confira a pasta Drive, gere a capa completa conforme a skill de embalagem, salve-a em production/ID-DO-EPISODIO/thumbnail.jpg (ou thumbnail.png), faça commit/push e envie para a pasta observada com npm run ode -- deliver --folder-id ID --file production/ID-DO-EPISODIO/thumbnail.jpg --role thumbnail. O workflow verifica pasta, tamanho, formato e readback do arquivo. Registre a revisão em production/ID-DO-EPISODIO/review.md (ou review.json) e use --role editorial-review para entregá-la também. O comando acompanha o envio; quando vídeo, metadados, texto, capa e revisão atuais estão confirmados na pasta, registra final-delivery.json e limpa automaticamente os temporários locais desse episódio.
 
 O estado local em work/production-state.json só organiza a sessão e não é fonte editorial. Os arquivos editáveis, skills, pesquisa, HTML, workflow e relatório final ficam no Git; derivados grandes ficam em artifacts e Drive, com hashes.
+
+## Limpeza após a entrega
+
+Não mantenha MP4, áudio de revisão, quadros, ZIPs e staging HyperFrames locais após a conclusão. Baixe os artifacts do episódio em work/runs/NUMERO-DO-RUN/ mantendo a estrutura original. A limpeza identifica esses downloads pelo projeto, recibo e checksum do vídeo; preflight, revisão e HyperFrames registram os temporários que criam. Somente os arquivos comprovadamente pertencentes ao episódio concluído são removidos. Falhas ou entregas incompletas preservam os caches para retomada.
+
+Se a entrega foi confirmada por um conector em vez de ode deliver, registre em production/ID-DO-EPISODIO/final-delivery.json o project_id, source_project_sha256 (SHA-256 de daily.json com quebras LF), folder_id, complete_package: true e files com id, name e size observados no Drive. Conserve delivery.json com o checksum do MP4. Execute npm run ode -- complete --production production/ID-DO-EPISODIO para finalizar a limpeza. cleanup.json registra caminhos removidos e espaço liberado; uma falha ao remover arquivos deixa status pending e pode ser retomada com o mesmo comando.
+
+A limpeza preserva arquivos versionados, dependências e produções sem entrega comprovada. Não apague work/ ou public/ inteiros. Não remova arquivos manualmente antes de confirmar o pacote completo no Drive.
 
 ## Falhas e retomada
 

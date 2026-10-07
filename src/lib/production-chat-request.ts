@@ -14,5 +14,7 @@ Use as skills por função. Registre um storyboard próprio antes do JSON. Faça
 
 Execute npm run ode -- preflight. Registre alterações no Git e envie à main. Dispare npm run ode -- dispatch e acompanhe npm run ode -- status. Leia falhas e corrija preservando cache compatível; npm run ode -- resume --run-id ID retoma etapas falhas.
 
-Leia os relatórios e o pacote visual extraído do MP4. Confira o vídeo real com áudio, corrija o necessário e gere a capa completa conforme docs/thumbnail-identity.md. Confirme todos os arquivos no Drive antes de anunciar conclusão. Registre limitações de observação; relatório automático não substitui revisão editorial.`;
+Leia os relatórios e o pacote visual extraído do MP4. Confira o vídeo real com áudio, corrija o necessário e gere a capa completa conforme docs/thumbnail-identity.md. Confirme todos os arquivos no Drive antes de anunciar conclusão. Registre limitações de observação; relatório automático não substitui revisão editorial.
+
+Baixe os artifacts em work/runs/ID mantendo a estrutura original. Salve capa e revisão em production/ID-DO-EPISODIO/thumbnail.jpg (ou .png) e review.md (ou .json); envie com npm run ode -- deliver. Ao confirmar o pacote completo, o comando limpa automaticamente os temporários locais. Se usar um conector para concluir a entrega, siga docs/production-portable.md e execute npm run ode -- complete --production production/ID-DO-EPISODIO. Preserve os registros definitivos e o código no Git; não deixe cópias temporárias de testes, áudio, vídeo ou revisão após a entrega.`;
 }

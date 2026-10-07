@@ -28,7 +28,8 @@
     "test:motion": "tsx scripts/test-editorial-motion.ts",
     "ode": "tsx scripts/ode.ts",
     "prepare:hyperframes": "tsx scripts/prepare-hyperframes.ts",
-    "test:portable": "tsx scripts/test-portable-production.ts"
+    "test:portable": "tsx scripts/test-portable-production.ts",
+    "test:cleanup": "tsx scripts/test-production-cleanup.ts"
   },
   "dependencies": {
     "@netlify/blobs": "11.0.3",

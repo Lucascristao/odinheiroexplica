@@ -50,7 +50,8 @@ def main():
         page_token=page.get("nextPageToken")
         if not page_token:
             break
-    result={"folder":folder,"folder_files":folder_files,"role":args.role,"file":verified,"source_path":args.asset,"sha256":digest,"verified_readback":True}
+    source_hash=hashlib.sha256((root/"video/data/daily.json").read_bytes().replace(b"\r\n",b"\n")).hexdigest()
+    result={"project_id":project["project_id"],"source_project_sha256":source_hash,"folder":folder,"folder_files":folder_files,"role":args.role,"file":verified,"source_path":args.asset,"sha256":digest,"verified_readback":True}
     output=root/args.output
     output.parent.mkdir(parents=True,exist_ok=True)
     output.write_text(json.dumps(result,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
