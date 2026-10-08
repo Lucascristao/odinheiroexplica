@@ -244,7 +244,7 @@
     ]
   },
   "publication": {
-    "description": "Conta de luz quase sem consumo também pode trazer cobrança. Veja o que é o custo de disponibilidade, a diferença entre leitura e piso e como conferir a própria fatura.\n\n- Quando aparecem as referências de 30, 50 ou 100 kWh\n- Uma conta hipotética que mostra o mínimo sem inventar tarifa nacional\n- Por que a Tarifa Social muda essa regra para famílias elegíveis\n- O que são outras cobranças, como iluminação pública\n- Quais campos da fatura conferir",
+    "description": "Conta de luz quase sem consumo também pode trazer cobrança. Veja o que é o custo de disponibilidade, a diferença entre leitura e piso e como conferir a própria fatura.\n\n- Quando aparecem as referências de 30, 50 ou 100 kWh\n- Uma conta hipotética que mostra o mínimo sem inventar tarifa nacional\n- Por que a Tarifa Social muda a regra e quais outras cobranças podem continuar\n- Quais campos conferir na fatura antes de questionar a distribuidora",
     "engagement_question": "Sua dúvida é sobre mínimo faturável, Tarifa Social ou iluminação pública na fatura?",
     "hashtags": [
       "#ContaDeLuz",
@@ -642,7 +642,7 @@
         }
       ],
       "review": {
-        "content_sha256": "d03990312f878679206ca38f3d9810aa2ef86f7a8e9c4c6a910b8d1834c6f905",
+        "content_sha256": "22b8f63345a33f2f83d6218b4f31b522e4d4250e71b28f69cd5d2eb2c020feb0",
         "findings": [
           {
             "question": "O público descobre a cobrança mínima logo após o gancho?",
@@ -1704,7 +1704,7 @@
             "target_id": "proof",
             "headline": "FONTE: ANEEL",
             "action": "reveal",
-            "treatment": "depth_photo",
+            "treatment": "spotlight",
             "behavior": "transform",
             "motion_seconds": 0.7,
             "entrance": {
