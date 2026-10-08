@@ -1,0 +1,93 @@
+name: ODE - entrega final após CI aprovado
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  deliver:
+    if: >-
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'main' &&
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+      CI_SHA: ${{ github.event.workflow_run.head_sha }}
+      PROJECT_ID: conta-luz-minimo-2026-10-08
+    steps:
+      - name: Verify explicit same-commit delivery request
+        id: request
+        shell: bash
+        run: |
+          set -euo pipefail
+          MAIN_SHA="$(gh api "repos/${{ github.repository }}/commits/main" --jq '.sha')"
+          [[ "$MAIN_SHA" == "$CI_SHA" ]] || { echo "CI não pertence à main atual; pular."; exit 0; }
+          MESSAGE="$(gh api "repos/${{ github.repository }}/commits/$CI_SHA" --jq '.commit.message')"
+          [[ "$MESSAGE" == *'[ode deliver after ci]'* ]] || { echo "Nenhuma entrega explicitamente autorizada neste commit."; exit 0; }
+          echo "approved=true" >> "$GITHUB_OUTPUT"
+      - name: Checkout reviewed production
+        if: steps.request.outputs.approved == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          persist-credentials: true
+      - name: Setup Node
+        if: steps.request.outputs.approved == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install and verify immutable package and Drive folder
+        if: steps.request.outputs.approved == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm ci --no-audit --no-fund
+          node - <<'JS'
+          const fs=require('fs');
+          const root='production/'+process.env.PROJECT_ID;
+          const receipt=JSON.parse(fs.readFileSync(root+'/delivery.json','utf8'));
+          const folder=receipt.folder_id;
+          if (!/^[A-Za-z0-9_-]{10,}$/.test(folder || '')) throw Error('Pasta Drive não observada.');
+          if (!fs.existsSync(root+'/thumbnail.jpg') && !fs.existsSync(root+'/thumbnail.png')) throw Error('Capa não versionada.');
+          if (!fs.existsSync(root+'/review.md') && !fs.existsSync(root+'/review.json')) throw Error('Revisão não versionada.');
+          if (receipt.project_id && receipt.project_id!==process.env.PROJECT_ID) throw Error('Projeto diferente do episódio.');
+          fs.appendFileSync(process.env.GITHUB_ENV,'ODE_FOLDER_ID='+folder+'\n');
+          JS
+      - name: Deliver final thumbnail and review through canonical engine
+        if: steps.request.outputs.approved == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="production/$PROJECT_ID"
+          EXT=jpg
+          [[ -f "$BASE/thumbnail.jpg" ]] || EXT=png
+          npm run ode -- deliver --folder-id "$ODE_FOLDER_ID" --file "$BASE/thumbnail.$EXT" --role thumbnail
+          npm run ode -- deliver --folder-id "$ODE_FOLDER_ID" --file "$BASE/review.md" --role editorial-review
+      - name: Preserve confirmed delivery and cleanup receipts in Git
+        if: steps.request.outputs.approved == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE="production/$PROJECT_ID"
+          test -s "$BASE/final-delivery.json"
+          test -s "$BASE/cleanup.json"
+          node - <<'JS'
+          const fs=require('fs');
+          const base='production/'+process.env.PROJECT_ID;
+          const receipt=JSON.parse(fs.readFileSync(base+'/final-delivery.json','utf8'));
+          const clean=JSON.parse(fs.readFileSync(base+'/cleanup.json','utf8'));
+          if(receipt.complete_package!==true || clean.status!=='complete') throw Error('Entrega ou limpeza incompleta; não concluir.');
+          JS
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add "$BASE/final-delivery.json" "$BASE/cleanup.json"
+          git commit -m "chore: record confirmed Drive delivery and cleanup for $PROJECT_ID"
+          git push origin HEAD:main
