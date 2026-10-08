@@ -1,0 +1,71 @@
+name: ODE - dispatch após CI aprovado
+
+on:
+  workflow_run:
+    workflows: ["CI"]
+    types: [completed]
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  dispatch:
+    # Explicit opt-in only. Never dispatch a failed, skipped, or stale CI.
+    if: >-
+      github.event.workflow_run.event == 'push' &&
+      github.event.workflow_run.head_branch == 'main' &&
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      CI_SHA: ${{ github.event.workflow_run.head_sha }}
+    steps:
+      - name: Confirm same-commit request before checkout
+        id: request
+        shell: bash
+        run: |
+          set -euo pipefail
+          MAIN_SHA="$(gh api "repos/${{ github.repository }}/commits/main" --jq '.sha')"
+          if [[ "$MAIN_SHA" != "$CI_SHA" ]]; then
+            echo "CI foi aprovado em outro commit; nenhum render será disparado."
+            exit 0
+          fi
+          MESSAGE="$(gh api "repos/${{ github.repository }}/commits/$CI_SHA" --jq '.commit.message')"
+          if [[ "$MESSAGE" != *'[ode dispatch after ci]'* ]]; then
+            echo "Commit sem marcador explícito de despacho; não disparar."
+            exit 0
+          fi
+          echo "approved=true" >> "$GITHUB_OUTPUT"
+      - name: Checkout do commit aprovado
+        if: steps.request.outputs.approved == 'true'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - name: Node 22
+        if: steps.request.outputs.approved == 'true'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Python 3.11
+        if: steps.request.outputs.approved == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install and show production context
+        if: steps.request.outputs.approved == 'true'
+        run: |
+          npm ci --no-audit --no-fund
+          npm run ode -- context
+      - name: Check new-episode contracts
+        if: steps.request.outputs.approved == 'true'
+        run: |
+          npm run ode -- preflight --new-episode
+      - name: Dispatch canonical production engine
+        if: steps.request.outputs.approved == 'true'
+        run: |
+          # ode dispatch checks local preflight, remote main SHA and a successful CI
+          # for this exact commit. Never substitute a parallel rendering workflow.
+          npm run ode -- dispatch
