@@ -53,6 +53,31 @@ class GeminiLiveTests(unittest.TestCase):
         self.assertGreater(long, short)
         self.assertLess(long, 300)
 
+    def test_truncated_pcm_floor_rejects_full_transcript_with_one_second_audio(self):
+        narration = "Você quase não gastou luz, mas a conta chegou? " * 10
+        self.assertGreater(synth.min_allowed_audio_seconds(narration), 1.02)
+        self.assertLess(synth.min_allowed_audio_seconds(narration), synth.estimated_audio_seconds(narration))
+        self.assertLessEqual(synth.min_allowed_audio_seconds("Oi!"), 0.3)
+
+    def test_rejects_truncated_cached_wav_even_with_matching_metadata(self):
+        narration = "A rede elétrica continua disponível, mesmo quando uma residência consome pouco. " * 8
+        with tempfile.TemporaryDirectory() as tmp:
+            wav = Path(tmp) / "scene-01.wav"
+            synth.write_pcm_wav(wav, b"\\x00\\x00" * 24000)
+            manifest = wav.with_suffix(".tts.json")
+            fingerprint = project_speech_fingerprint({"speech": {"pronunciations": {}}})
+            direction = "test-scene-direction"
+            synth.save_audio_sidecar(
+                wav, "test-narration-hash", PRIMARY_TTS_MODEL, "Charon",
+                1.0, synth.NO_VOICE_TREATMENT, None, fingerprint,
+                narration, 1.0, direction_fingerprint=direction,
+            )
+            self.assertIsNone(synth.cached_duration(
+                wav, "test-narration-hash", PRIMARY_TTS_MODEL, "Charon",
+                synth.NO_VOICE_TREATMENT, fingerprint, narration=narration,
+                direction_fingerprint=direction,
+            ))
+
     def test_scene_direction_is_separate_literal_and_cache_scoped(self):
         scene = {"narration": "A empresa não sai do Simples.", "tts": {"delivery": "contrast", "cues": [{"text": "não sai", "kind": "emphasis"}]}}
         direction = scene_voice_direction(scene)
