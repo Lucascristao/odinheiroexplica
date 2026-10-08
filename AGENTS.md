@@ -58,3 +58,12 @@ Conduza a produção até a entrega: iniciar o Actions não conclui o pedido. D�
 Use quantas cenas forem necessárias para explicar o assunto do começo ao fim. Não reduza cenas, conteúdo ou duração para caber na quota TTS ou economizar chamadas. Trate limites de produção com cache, espera e retomada, sem trocar de modelo ou encurtar a explicação.
 
 Reexecuções aproveitam cenas válidas; mudanças apenas visuais ou de processamento não pedem nova síntese. Regeneração integral exige o input manual `force_fresh_audio` do workflow e só vale na primeira tentativa dessa execução. Não deixe pedidos de regeneração no arquivo de gatilho. Consulte `docs/tts.md` para os gates de fidelidade, cache, passthrough e alinhamento.
+
+
+## Capa: contrato estruturado, inspeção e bloqueio de entrega
+
+Para novos episódios, preencha `packaging.thumbnails[0].contract` com headline exata, protagonista, apoio opcional, composição, tensão visual, paleta, 1280x720, `no_extra_text: true` e `forbidden_elements` específicos. `npm run ode -- preflight --new-episode` exige o contrato. O `visual_prompt` livre não amplia o que foi autorizado. Consulte `docs/thumbnail-identity.md` e a skill `ode-packaging`.
+
+Antes da capa rode `npm run ode -- thumbnail-spec` e use somente os itens e exclusões desse comando. **Não acrescente rostos, setas, cifras ou objetos por heurística genérica de CTR**. Observe a imagem final em tamanho real e 320x180, confira headline, protagonista, apoio, cores, restrições, credibilidade e originalidade. Se algo divergir, rejeite e gere novamente sem inventar uma aprovação.
+
+Registre `production/EPISODIO/thumbnail-audit.json` com hashes do `daily.json`, contrato e arquivo, sete verificações e observações perceptuais reais, autor e restrições conferidas. `ode deliver` recusa capas sem auditoria válida ou que foram alteradas depois da inspeção; envia o registro ao Drive junto da imagem. Os hashes provam integridade e vinculação, **não são detecção visual automática**. É proibido preencher observações sem inspecionar os pixels. Para episódio anterior ao contrato, use snapshot explícito `production/EPISODIO/thumbnail-contract.json`, sem mexer no roteiro já renderizado.

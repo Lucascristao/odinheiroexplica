@@ -5,6 +5,7 @@ import {regionSchema} from "./editorial-evidence";
 import {normalizeEditorialProject} from "./editorial-project";
 import {explanationSchema,validateExplanation} from "./editorial-explanation";
 import {learningStrategySchema,validateLearningStrategy} from "./editorial-learning";
+import {thumbnailContractSchema} from "./thumbnail-contract";
 
 const sourceSchema = z
   .object({
@@ -308,6 +309,7 @@ const canonicalVideoProjectSchema = z
                 headline: z.string().min(1),
                 concept: z.string().min(1),
                 visual_prompt: z.string().optional(),
+                contract: thumbnailContractSchema.optional(),
               })
               .passthrough(),
           )

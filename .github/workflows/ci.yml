@@ -33,6 +33,9 @@ jobs:
       - name: Validate daily editorial contract
         run: npm run validate:editorial -- video/data/daily.json --require-explanation
 
+      - name: Validate episode thumbnail contract
+        run: npm run ode -- thumbnail-spec --check
+
       - name: Normalize current episode for layout audit
         run: python worker/editorial_project.py --input video/data/daily.json --output video/generated/daily-project.json
 
@@ -69,10 +72,11 @@ jobs:
           npm run test:preflight
           npm run test:portable
           npm run test:cleanup
+          npm run test:thumbnail
           npm run prepare:hyperframes -- --preflight
 
       - name: Validate Python pipeline
-        run: python -m py_compile worker/editorial_project.py worker/qa_delivery.py worker/render_request.py worker/tts_config.py worker/gemini_live_fidelity.py worker/synthesize_scenes.py worker/process_voice_continuity.py worker/restore_reviewed_audio.py worker/build_render_input.py worker/build_youtube_package.py worker/editorial_source_audit.py worker/prepare_visual_assets.py worker/auto_capture_sources.py worker/voice_master.py worker/review_rendered_video.py worker/deliver_supplement.py
+        run: python -m py_compile worker/thumbnail_contract.py worker/editorial_project.py worker/qa_delivery.py worker/render_request.py worker/tts_config.py worker/gemini_live_fidelity.py worker/synthesize_scenes.py worker/process_voice_continuity.py worker/restore_reviewed_audio.py worker/build_render_input.py worker/build_youtube_package.py worker/editorial_source_audit.py worker/prepare_visual_assets.py worker/auto_capture_sources.py worker/voice_master.py worker/review_rendered_video.py worker/deliver_supplement.py
 
       - name: Test source-capture navigation retry (offline)
         run: python worker/test_auto_capture_sources.py

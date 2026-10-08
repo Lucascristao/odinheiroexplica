@@ -112,3 +112,8 @@ Antes do TTS, confira:
 - a pergunta de comentários é natural;
 - existem exatamente 3 hashtags;
 - toda promessa do título, thumbnail e descrição é entregue pelo roteiro.
+
+
+## Contrato de capa por episódio
+
+Para episódio novo, acrescente `packaging.thumbnails[0].contract`: `version:"1.0"`, `exact_headline`, `primary_subject`, `secondary_subject` (ou null), `composition`, `visual_tension`, `forbidden_elements`, `palette:{base,accent:"#FFBD19",text:"#F6F7F8"}`, `format:{width:1280,height:720}` e `no_extra_text:true`. O prompt solto não autoriza novos protagonistas ou elementos. Consulte `docs/thumbnail-identity.md`; `npm run ode -- thumbnail-spec` mostra a única referência a usar para a imagem. Depois da inspeção real, grave a auditoria vinculada ao arquivo. O workflow bloqueia entrega sem a auditoria e registra o relatório no Drive, mas o relatório não é um detector visual automático.

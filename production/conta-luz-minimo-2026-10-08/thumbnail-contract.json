@@ -1,0 +1,30 @@
+{
+  "project_id": "conta-luz-minimo-2026-10-08",
+  "headline": "DESLIGOU. PAGOU.",
+  "contract": {
+    "version": "1.0",
+    "exact_headline": "DESLIGOU. PAGOU.",
+    "primary_subject": "Medidor elétrico residencial grande quase apagado, com ligação ainda conectada, protagonista do lado direito",
+    "secondary_subject": "Fatura de energia simbólica ao fundo, sem nomes, preços, tarifas, marcas ou números",
+    "composition": "16:9, headline grande à esquerda em duas palavras, medidor dominante à direita, bastante respiro e canto inferior direito livre para a duração",
+    "visual_tension": "Casa quase sem consumo, mas a rede continua disponível e a cobrança pode existir conforme condições e exceções",
+    "forbidden_elements": [
+      "pessoas, rostos, mãos e silhuetas humanas",
+      "setas e círculos de alerta decorativos",
+      "valores monetários e leituras inventadas no medidor",
+      "documentos com números ou preços simulando fatura real",
+      "celular, logotipo, selo ou nome do canal",
+      "textos adicionais, subtítulos e rodapés"
+    ],
+    "palette": {
+      "base": "#101114",
+      "accent": "#FFBD19",
+      "text": "#F6F7F8"
+    },
+    "format": {
+      "width": 1280,
+      "height": 720
+    },
+    "no_extra_text": true
+  }
+}

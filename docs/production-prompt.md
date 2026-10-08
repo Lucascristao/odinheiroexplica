@@ -9,3 +9,6 @@ Copie o texto abaixo para uma IA com acesso ao checkout e ao GitHub deste projet
 Para gerar uma variante, use npm run ode -- prompt --request "Seu pedido". --ask-topic solicita três opções; --direct exige intenção explícita de produção sem testes. A autoria é independente do fornecedor de IA; a síntese de voz segue a política canônica do canal.
 
 > Em novo episódio, siga docs/editorial-learning.md e preencha editorial.learning_strategy: público concreto, hipótese, descoberta na abertura, provas da embalagem e progressão das unidades. Execute npm run ode -- preflight --new-episode. Confira antes/durante/depois/intervalo por evento no MP4, âncoras estimadas e o segundo real da primeira entrega. Depois da publicação manual, registre snapshots reais do Studio em 72h, 7 e 28 dias com o comando analytics, sem misturar denominadores nem comparar janelas incompatíveis.
+
+
+> Capa: antes da geração, use `npm run ode -- thumbnail-spec`; o contrato autoriza os elementos e determina as exclusões específicas. Não acrescente rostos, setas, valores ou texto só porque parecem melhorar CTR. Inspecione a imagem real e sua visualização 320×180. Salve `production/EPISODIO/thumbnail-audit.json` com sete observações verdadeiras, hashes do episódio/contrato/imagem e restrições conferidas. Se falhar, gere novamente; sem auditoria, `ode deliver` bloqueia o envio da capa.

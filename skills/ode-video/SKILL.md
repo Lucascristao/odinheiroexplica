@@ -14,3 +14,6 @@ Leia [aprendizado editorial](../../docs/editorial-learning.md) para público, hi
 O executor gera áudio, tempos, clipes HyperFrames, mix, MP4, revisão e upload. O agente continua responsável por fatos, explicação e direção. Confira o MP4 e seus relatórios; gere/upload a capa completa e confirme vídeo/título/descrição/capa na mesma pasta. Publicação é manual.
 
 Referências: [fluxo](../../docs/production-portable.md), [arquitetura](../../docs/architecture.md), [prompt](../../docs/production-prompt.md).
+
+
+Capa: use a skill `ode-packaging` e `npm run ode -- thumbnail-spec`. Novo episódio exige `packaging.thumbnails[0].contract`; inspeção da imagem final exige `production/EPISODIO/thumbnail-audit.json` antes de `ode deliver`. Nenhuma composição genérica deve substituir os protagonistas e as exclusões aprovados.

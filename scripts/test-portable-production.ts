@@ -6,6 +6,8 @@ import {alignedArtStates,validateArtSource} from "../src/lib/hyperframes-contrac
 
 const request=productionChatRequest("Gere o vídeo de hoje",{chooseTopic:true});
 assert.match(request,/normal, com contratos/);
+assert.match(request,/thumbnail-spec/);
+assert.match(request,/thumbnail-audit\.json/);
 assert.match(request,/Autorizo você a escolher/);
 assert.doesNotMatch(request,/Modo: produção direta/);
 assert.match(productionChatRequest("Escolha comigo"),/apresente três opções/);

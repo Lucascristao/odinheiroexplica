@@ -30,7 +30,8 @@
     "ode": "tsx scripts/ode.ts",
     "prepare:hyperframes": "tsx scripts/prepare-hyperframes.ts",
     "test:portable": "tsx scripts/test-portable-production.ts",
-    "test:cleanup": "tsx scripts/test-production-cleanup.ts"
+    "test:cleanup": "tsx scripts/test-production-cleanup.ts",
+    "test:thumbnail": "tsx scripts/test-thumbnail-contract.ts && python worker/test_thumbnail_contract.py"
   },
   "dependencies": {
     "@netlify/blobs": "11.0.3",

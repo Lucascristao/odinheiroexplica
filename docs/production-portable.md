@@ -35,3 +35,10 @@ Não encurte o roteiro para quota de voz. Respeite retry/backoff do mesmo modelo
 A conferência automática de entrega bloqueia falhas concretas de integridade. A extração de quadros e as métricas de movimento são auxiliares: uma falha nessa ferramenta não impede enviar um MP4 aprovado pelo QA. Pausas, variação de pitch e avisos de ritmo orientam a revisão editorial, sem exigir nova produção por si só. A duração do contêiner pode incluir cauda de áudio; os quadros seguem a duração da trilha de vídeo.
 
 Produção direta sem testes é uma opção somente quando explicitamente pedida; o prompt --direct registra o modo e o commit usa [production direct]. Os gates necessários da produção continuam.
+
+
+## Auditoria da thumbnail antes de enviar
+
+Na pauta nova, declarar `packaging.thumbnails[0].contract` e rodar `npm run ode -- thumbnail-spec --check --new-episode` (também incluído em `ode preflight --new-episode`). O CI roda `npm run ode -- thumbnail-spec --check` e exige contrato atual; episódios antigos podem manter `production/EPISODIO/thumbnail-contract.json` explícito sem alterar a origem do MP4. A headline e o SHA vinculam o snapshot a um único episódio.
+
+Depois do render, executar `npm run ode -- thumbnail-spec` e usar a instrução resultante sem acrescentar elementos. Inspecionar a imagem completa e a redução a 320×180; se falhar, regenerar e revisar. Persistir `production/EPISODIO/thumbnail-audit.json` conforme a estrutura documentada em `docs/thumbnail-identity.md`, com hashes e observações **realmente verificadas**. O comando de entrega compara `project_sha256`, `contract_sha256`, `image_sha256`, texto, sete verificações e todas as restrições antes do upload, registra também um segundo arquivo `thumbnail-audit-HASH.json` no Drive e verifica seu readback. Isso evita omitir a revisão ou aprovar um arquivo posteriormente alterado, mas não detecta visualmente rostos via código: a inspeção da imagem não pode ser simulada.

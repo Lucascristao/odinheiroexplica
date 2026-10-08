@@ -1,0 +1,12 @@
+import assert from "node:assert/strict";
+import {thumbnailContractSchema,validateThumbnailContract} from "../src/lib/thumbnail-contract";
+const episode={packaging:{thumbnails:[{headline:"DESLIGOU. PAGOU.",concept:"Cobrança de energia com consumo muito baixo"}]}};
+const valid={version:"1.0",exact_headline:"DESLIGOU. PAGOU.",primary_subject:"Medidor de energia em close",secondary_subject:"Fatura simbólica sem números",composition:"Headline à esquerda, medidor grande à direita",visual_tension:"Rede ainda conectada com consumo quase zero",forbidden_elements:["rostos e pessoas","valores fictícios em contas","setas decorativas"],palette:{base:"#101114",accent:"#FFBD19",text:"#F6F7F8"},format:{width:1280,height:720},no_extra_text:true};
+assert(thumbnailContractSchema.safeParse(valid).success);
+assert.deepEqual(validateThumbnailContract(episode,valid),[]);
+assert(validateThumbnailContract(episode,{...valid,exact_headline:"NOVO TÍTULO"}).some(x=>x.includes("diverge")));
+assert(!thumbnailContractSchema.safeParse({...valid,no_extra_text:false}).success);
+assert(!thumbnailContractSchema.safeParse({...valid,palette:{...valid.palette,accent:"#00FF00"}}).success);
+assert(!thumbnailContractSchema.safeParse({...valid,forbidden_elements:["rostos","Rostos"]}).success);
+assert(!thumbnailContractSchema.safeParse({...valid,primary_subject:"",extra:"não aprovado"}).success);
+console.log("Thumbnail: esquema estrito, headline vinculada, elementos vedados e cores aprovadas.");
