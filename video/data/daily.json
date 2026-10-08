@@ -642,7 +642,7 @@
         }
       ],
       "review": {
-        "content_sha256": "a7ee0180dea16fb9dbe42480c8831da57cafe2756c2cb733fd6252c8f2008d46",
+        "content_sha256": "df5eeba541d8ccf7f981dd15a01730625c05eba45112216280b15ace5c5626d8",
         "findings": [
           {
             "question": "O público descobre a cobrança mínima logo após o gancho?",
@@ -1979,9 +1979,9 @@
             "motion_seconds": 0.7
           },
           {
-            "anchor": "energia, o transporte, os encargos",
+            "anchor": "Por isso, duas famílias que gastam",
             "target_id": "energy",
-            "headline": "ENERGIA, REDE E ENCARGOS",
+            "headline": "MESMO CONSUMO, TOTAIS DIFERENTES",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
