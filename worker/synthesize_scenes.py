@@ -148,6 +148,9 @@ def cached_duration(
             return None
         actual_duration = duration_seconds(output_file)
         recorded_duration = float(metadata["duration_seconds"])
+        # A valid-looking provider transcript cannot validate truncated PCM.
+        if narration is not None and actual_duration < min_allowed_audio_seconds(narration):
+            return None
         if (
             not math.isfinite(actual_duration)
             or actual_duration <= 0
@@ -245,6 +248,19 @@ def _jsonable(value):
 def estimated_audio_seconds(narration: str) -> float:
     words = max(1, len(re.findall(r"\S+", narration)))
     return words * 60.0 / LIVE_EXPECTED_SPEECH_WPM
+
+
+def min_allowed_audio_seconds(narration: str) -> float:
+    """Conservative PCM floor: reject near-empty responses for long scripts.
+
+    Do not impose a duration target on short dialogue or pace the narrator.
+    This only blocks objectively truncated audio despite a complete text
+    transcript emitted by the provider.
+    """
+    word_count = len(re.findall(r"\S+", narration))
+    if word_count < 12:
+        return 0.3
+    return max(1.0, estimated_audio_seconds(narration) * 0.35)
 
 
 def max_allowed_audio_seconds(narration: str) -> float:
@@ -685,6 +701,18 @@ async def _synthesize_scene_with_retries(
                     message
                     + f" Divergência {mismatch_kind}; áudio rejeitado. "
                     "Retentativa na mesma cena/voz/modelo, limitada pela política Live."
+                )
+
+            pcm_duration = len(pcm) / (SAMPLE_RATE * CHANNELS * SAMPLE_WIDTH)
+            minimum_duration = min_allowed_audio_seconds(job["narration"])
+            attempt_diag["minimum_acceptable_audio_seconds"] = round(minimum_duration, 3)
+            if pcm_duration < minimum_duration:
+                raise RetryableLiveError(
+                    f"Gemini Live entregou áudio truncado em {scene_id}: "
+                    f"{pcm_duration:.2f}s de PCM, mínimo conservador "
+                    f"{minimum_duration:.2f}s para o tamanho do roteiro, "
+                    "embora a transcrição possa aparentar estar completa. "
+                    "Áudio não será salvo; refazer somente esta cena."
                 )
 
             write_pcm_wav(job["output_file"], pcm)
