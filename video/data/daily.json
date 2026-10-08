@@ -1,165 +1,137 @@
 {
   "version": "1.0",
-  "project_id": "nome-limpo-credito-negado-2026-10-07",
-  "title": "Nome limpo: por que o banco ainda pode negar crédito?",
+  "project_id": "conta-luz-minimo-2026-10-08",
+  "title": "Conta de luz: por que vem cobrança mesmo sem gastar energia?",
   "presenter": {
     "gender": "male",
     "name": "Roberto"
   },
   "speech": {
     "pronunciations": {
-      "SCR": "ésse cê érre",
-      "gov.br": "góv ponto bê érre",
-      "score": "iscór"
+      "Aneel": "anêel"
     },
     "ignore_pronunciation_terms": []
   },
   "story": {
-    "subject": "Nome limpo e crédito negado",
-    "angle": "Pagamento, histórico mensal e capacidade de assumir nova parcela são informações diferentes.",
-    "promise": "Entender por que pagar não garante aprovação e o que conferir nos próprios dados.",
-    "why_now": "Pauta escolhida pelo usuário após análise do canal; explicação evergreen apoiada em FAQ de agosto de 2026.",
+    "subject": "Conta de luz com consumo baixo e custo de disponibilidade",
+    "angle": "O medidor pode marcar pouco, mas a ligação e a regra tarifária explicam o faturamento mínimo; a Tarifa Social cria uma exceção relevante.",
+    "promise": "Entender o mínimo, o cálculo ilustrativo e quais itens conferir na própria fatura sem acreditar numa tarifa universal.",
+    "why_now": "Pauta inédita em 08/10/2026, em meio à atenção às contas de energia; regras verificadas em fonte ANEEL e direito a benefício confirmado.",
     "category": "evergreen"
   },
   "sources": [
     {
       "id": "S1",
-      "title": "Paguei a dívida, mas ela ainda aparece no histórico do relatório",
-      "url": "https://www.bcb.gov.br/meubc/faqs/p/paguei-a-divida-mas-ela-ainda-aparece-no-historico-do-relatorio1",
-      "publisher": "Banco Central do Brasil",
+      "title": "Resolução Normativa ANEEL nº 1.000/2021, artigo 291",
+      "url": "https://www2.aneel.gov.br/cedoc/ren20211000.pdf",
+      "publisher": "Agência Nacional de Energia Elétrica",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "published_at": "2026-08-31",
       "source_type": "primary",
-      "notes": "Pagamento altera posições posteriores; retrato passado permanece.",
+      "notes": "Artigo 291: 30, 50 e 100 kWh equivalentes; art. 290 e exceções; norma vigente consultada em 08/10/2026.",
       "metadata": {
-        "consulted_at": "2026-10-07"
+        "consulted_at": "2026-10-08"
       }
     },
     {
       "id": "S2",
-      "title": "Relatório de Empréstimos e Financiamentos (SCR)",
-      "url": "https://www.bcb.gov.br/meubc/faqs/s/relatorio-de-emprestimos-e-financiamentos-scr",
-      "publisher": "Banco Central do Brasil",
+      "title": "Tarifa Social de Energia Elétrica",
+      "url": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social",
+      "publisher": "ANEEL",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "published_at": "2026-04-22",
       "source_type": "primary",
-      "notes": "Conteúdo, operações em dia e atrasadas, consulta pessoal no Registrato.",
+      "published_at": "2025-07-04",
+      "notes": "Beneficiários: 100% de desconto nos primeiros 80 kWh, também nas instalações trifásicas; outras cobranças podem subsistir.",
       "metadata": {
-        "consulted_at": "2026-10-07"
+        "consulted_at": "2026-10-08"
       }
     },
     {
       "id": "S3",
-      "title": "Como corrigir informações do relatório",
-      "url": "https://www.bcb.gov.br/meubc/faqs/p/como-corrigir-informacoes-do-relatorio4",
-      "publisher": "Banco Central do Brasil",
+      "title": "Micro e Minigeração Distribuída: cobrança do custo de disponibilidade",
+      "url": "https://www.gov.br/aneel/pt-br/assuntos/geracao-distribuida/",
+      "publisher": "ANEEL",
       "publisher_class": "official",
       "editorial_role": "primary_document",
-      "published_at": "2026-02-26",
       "source_type": "primary",
-      "notes": "Responsabilidade da instituição; atendimento, ouvidoria e reclamação. Não misturar prazo de correção com disponibilidade mensal após pagamento.",
+      "notes": "Instalações do grupo B com geração distribuída têm requisitos próprios e podem arcar com custo de disponibilidade.",
       "metadata": {
-        "consulted_at": "2026-10-07"
+        "consulted_at": "2026-10-08"
       }
     },
     {
       "id": "S4",
-      "title": "Score para empréstimo pessoal: entenda a análise antes de pedir",
-      "url": "https://www.serasa.com.br/score/blog/score-bom/",
-      "publisher": "Serasa",
-      "publisher_class": "company",
-      "editorial_role": "company_position",
-      "published_at": "2026-06-18",
-      "source_type": "secondary",
-      "notes": "Critérios próprios, renda e compromissos; publicidade excluída.",
+      "title": "Iluminação Pública: competência local e contribuição",
+      "url": "https://www.gov.br/aneel/pt-br/assuntos/iluminacao-publica",
+      "publisher": "ANEEL",
+      "publisher_class": "official",
+      "editorial_role": "primary_document",
+      "source_type": "primary",
+      "published_at": "2026-06-09",
+      "notes": "CIP/Cosip definida no âmbito municipal ou distrital, não como valor nacional único.",
       "metadata": {
-        "consulted_at": "2026-10-07"
+        "consulted_at": "2026-10-08"
       }
     },
     {
       "id": "S5",
-      "title": "Sistema de Informações de Crédito do Banco Central",
-      "url": "https://www.sicredi.com.br/site/scr/",
-      "publisher": "Sicredi",
-      "publisher_class": "company",
-      "editorial_role": "company_position",
-      "source_type": "secondary",
-      "notes": "SCR inclui operações em dia e em atraso, sem impedimento automático.",
+      "title": "Custo da energia que chega aos consumidores",
+      "url": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/entenda-a-tarifa/custo-da-energia-que-chega-aos-consumidores",
+      "publisher": "ANEEL",
+      "publisher_class": "official",
+      "editorial_role": "primary_document",
+      "source_type": "primary",
+      "notes": "Composição de energia, transporte, encargos e tributos; base do diagnóstico dos itens.",
       "metadata": {
-        "consulted_at": "2026-10-07"
+        "consulted_at": "2026-10-08"
       }
     },
     {
       "id": "S6",
-      "title": "Cadastro Positivo: tire dúvidas sobre o banco de dados de bons pagadores",
-      "url": "https://www.gazetadopovo.com.br/economia/o-que-e-cadastro-positivo-tire-duvidas-banco-dados-bons-pagadores/",
+      "title": "Populismo bancado pela classe média",
+      "url": "https://www.gazetadopovo.com.br/opiniao/editoriais/populismo-bancado-pela-classe-media/",
       "publisher": "Gazeta do Povo",
       "publisher_class": "independent_journalism",
       "editorial_role": "independent_reporting",
-      "published_at": "2020-01-13",
       "source_type": "secondary",
-      "notes": "Fernanda Trisotto; contexto histórico sobre dados positivos e acesso/correção. Não usar regras antigas de score como atuais.",
+      "published_at": "2025-05-22",
+      "notes": "Editorial de centro-direita consultado como contraponto sobre financiamento e distribuição de custo da Tarifa Social; opinião, não prova regulatória nem preços atuais.",
       "metadata": {
-        "consulted_at": "2026-10-07"
+        "consulted_at": "2026-10-08"
       }
     },
     {
       "id": "S7",
-      "title": "Tenho nome limpo, mas não consigo crédito; por que isso acontece?",
-      "url": "https://economia.uol.com.br/financas-pessoais/noticias/redacao/2019/10/31/nome-limpo-credito-emprestimo-score-cadastro-historico-pagamentos.amp.htm",
-      "publisher": "UOL",
+      "title": "Energia mais barata agrega custos ocultos na conta de luz",
+      "url": "https://www.poder360.com.br/poder-infra/infra-em-1-minuto-energia-mais-barata-agrega-custos-ocultos-na-conta-de-luz/",
+      "publisher": "Poder360",
       "publisher_class": "independent_journalism",
       "editorial_role": "independent_reporting",
-      "published_at": "2019-10-31",
       "source_type": "secondary",
-      "notes": "Filipe Andretta; contexto histórico cruzado com fontes atuais, sem converter percentual de renda em regra universal.",
+      "published_at": "2026-07-04",
+      "notes": "Entrevista com analista de setor sobre transporte e subsídios; não apresenta preço universal do kWh.",
       "metadata": {
-        "consulted_at": "2026-10-07"
+        "consulted_at": "2026-10-08"
       }
     }
   ],
   "claims": [
     {
       "id": "C1",
-      "text": "Ausência de negativação não garante concessão de crédito.",
+      "text": "Residências comuns do grupo B podem receber faturamento pelo custo de disponibilidade mesmo com consumo medido inferior ao mínimo.",
       "source_ids": [
-        "S4",
-        "S5",
-        "S7"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "verified_fact",
-      "attribution_required": false
-    },
-    {
-      "id": "C2",
-      "text": "Score estima risco e não determina aprovação automática.",
-      "source_ids": [
-        "S4"
-      ],
-      "confidence": "high",
-      "verification_status": "verified",
-      "framing": "verified_fact",
-      "attribution_required": false
-    },
-    {
-      "id": "C3",
-      "text": "SCR registra operações em dia e em atraso; Registrato permite consultar relatórios pessoais.",
-      "source_ids": [
-        "S2",
+        "S1",
         "S5"
       ],
       "confidence": "high",
       "verification_status": "verified",
-      "framing": "verified_fact",
-      "attribution_required": false
+      "framing": "official_position",
+      "attribution_required": true
     },
     {
-      "id": "C4",
-      "text": "Pagamento não reescreve posições passadas; posições posteriores refletem regularização.",
+      "id": "C2",
+      "text": "Os pisos de disponibilidade previstos no artigo 291 são equivalentes a 30, 50 ou 100 kWh conforme a ligação e os condutores.",
       "source_ids": [
         "S1"
       ],
@@ -169,8 +141,8 @@
       "attribution_required": true
     },
     {
-      "id": "C5",
-      "text": "Atualização após pagamento não é instantânea; mês dos dados é distinto da data de consulta.",
+      "id": "C3",
+      "text": "A cobrança de disponibilidade remunera a rede mantida pronta para atender e não altera a leitura física medida.",
       "source_ids": [
         "S1",
         "S2"
@@ -181,9 +153,21 @@
       "attribution_required": true
     },
     {
-      "id": "C6",
-      "text": "Renda, compromissos e critérios da instituição podem influenciar a decisão.",
+      "id": "C4",
+      "text": "A Tarifa Social garante desconto integral na parcela de energia dos primeiros 80 kWh a beneficiários, inclusive com ligação trifásica, desde julho de 2025.",
       "source_ids": [
+        "S2"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "official_position",
+      "attribution_required": true
+    },
+    {
+      "id": "C5",
+      "text": "Contribuição de iluminação pública e tributos podem permanecer na fatura conforme regras locais.",
+      "source_ids": [
+        "S2",
         "S4",
         "S5"
       ],
@@ -193,10 +177,22 @@
       "attribution_required": false
     },
     {
-      "id": "C7",
-      "text": "Consulta exige conta gov.br prata/ouro com duas etapas; instituição corrige informação, com canais de atendimento e reclamação.",
+      "id": "C6",
+      "text": "Tarifas e outros itens variam com distribuidora e situação; nenhum exemplo hipotético reproduz conta nacional.",
       "source_ids": [
-        "S2",
+        "S1",
+        "S5",
+        "S7"
+      ],
+      "confidence": "high",
+      "verification_status": "verified",
+      "framing": "verified_fact",
+      "attribution_required": false
+    },
+    {
+      "id": "C7",
+      "text": "Unidades com micro ou minigeração distribuída do grupo B seguem regras próprias e podem pagar custo de disponibilidade apesar dos créditos.",
+      "source_ids": [
         "S3"
       ],
       "confidence": "high",
@@ -207,122 +203,132 @@
   ],
   "visual_assets": [
     {
-      "id": "paid-history",
+      "id": "aneel-social",
       "type": "source_excerpt",
-      "source_id": "S1",
-      "subject": "Banco Central: histórico após pagamento",
-      "narrative_role": "Provar que pagar não altera posições passadas.",
+      "source_id": "S2",
+      "subject": "Tarifa Social: desconto nos primeiros 80 kWh",
+      "narrative_role": "Documentar a exceção e a permanência possível de cobranças locais, com fonte autêntica.",
       "country_context": "BR",
-      "source_page_url": "https://www.bcb.gov.br/meubc/faqs/p/paguei-a-divida-mas-ela-ainda-aparece-no-historico-do-relatorio1",
-      "capture_file": "research/captures/nome-limpo/bc-historico.png",
-      "expected_text": "pagamento realizado não altera posições passadas, somente posições futuras.",
-      "license": "Reprodução documental contextual de informação pública",
-      "attribution": "Banco Central do Brasil — FAQ sobre histórico após pagamento",
+      "source_page_url": "https://www.gov.br/aneel/pt-br/assuntos/tarifas/tarifa-social",
+      "capture_file": "research/captures/conta-luz/tarifa-social-aneel.png",
+      "expected_text": "famílias com direito ao benefício não precisarão pagar pelos primeiros 80 quilowatts-hora (kWh) consumidos em cada mês",
+      "license": "Reprodução contextual de trecho informativo público, atribuído à ANEEL",
+      "attribution": "ANEEL, Tarifa Social de Energia Elétrica",
       "needs_cutout": false
     }
   ],
   "visual_direction": {
-    "concept": "Comprovante, arquivo e retratos mensais: pagamento não apaga o passado nem decide a análise.",
-    "world": "paper",
+    "concept": "Luz quase apagada, rede que permanece e conta dividida por regras; medição não vira faturamento.",
+    "world": "network",
     "secondary_color": "#FFBD19",
     "motifs": [
-      "comprovante",
-      "arquivo de operações",
-      "mês de referência",
-      "parcelas"
+      "casa quase sem consumo",
+      "rede ainda disponível",
+      "ligação monofásica, bifásica e trifásica",
+      "fatura separada por itens",
+      "regra da tarifa social"
     ],
     "motion_language": [
-      "confirmação do pagamento",
-      "revelação de funções distintas",
-      "preservação do mês antigo",
-      "soma de parcelas"
+      "rede se mantém conectada",
+      "revelação progressiva de patamares",
+      "operação aritmética real",
+      "separação das parcelas da conta",
+      "percurso de conferência da fatura"
     ],
     "avoid": [
-      "cadeado de CPF",
-      "lista secreta",
-      "score fictício como dado",
-      "garantia de crédito"
+      "comprovante de dívida quitada",
+      "telefone de pedido de crédito",
+      "pessoa pública",
+      "garantia de conta zerada",
+      "soma incorreta de consumo medido e piso"
     ]
   },
   "publication": {
-    "description": "Nome limpo e crédito negado podem acontecer juntos. Entenda o que muda quando uma dívida é paga, por que um registro antigo continua aparecendo e quais dados conferir antes de tentar outro pedido.\n\n- A diferença entre negativação, score e relatório do SCR\n- Por que pagar não reescreve o histórico de um mês antigo\n- Uma conta ilustrativa de parcelas e capacidade de pagamento\n- Como conferir dados e pedir correção de uma informação errada",
-    "engagement_question": "Sua dúvida é um registro antigo, um dado errado ou uma parcela que ainda não cabe?",
+    "description": "Conta de luz quase sem consumo também pode trazer cobrança. Veja o que é o custo de disponibilidade, a diferença entre leitura e piso e como conferir a própria fatura.\n\n- Quando aparecem as referências de 30, 50 ou 100 kWh\n- Uma conta hipotética que mostra o mínimo sem inventar tarifa nacional\n- Por que a Tarifa Social muda essa regra para famílias elegíveis\n- O que são outras cobranças, como iluminação pública\n- Quais campos da fatura conferir",
+    "engagement_question": "Sua dúvida é sobre mínimo faturável, Tarifa Social ou iluminação pública na fatura?",
     "hashtags": [
-      "#NomeLimpo",
-      "#Credito",
+      "#ContaDeLuz",
+      "#EnergiaEletrica",
       "#EducacaoFinanceira"
     ],
     "seo": {
-      "primary_keyword": "Nome limpo",
+      "primary_keyword": "Conta de luz",
       "secondary_keywords": [
-        "crédito negado",
-        "SCR",
-        "Registrato",
-        "score",
-        "dívida quitada"
+        "conta de luz sem consumo",
+        "custo de disponibilidade",
+        "tarifa mínima energia elétrica",
+        "30 50 100 kWh",
+        "Tarifa Social"
       ],
-      "search_intent": "Entender recusa de crédito após pagar uma dívida e conferir os registros pessoais.",
-      "description_strategy": "Gancho e quatro bullets no celular; pipeline acrescenta capítulos, fontes e créditos uma vez."
+      "search_intent": "Entender por que a conta de energia elétrica não zera ao economizar ou deixar imóvel fechado.",
+      "description_strategy": "Primeiros dois parágrafos para celular e bullets; o pipeline acrescenta capítulos, fontes, créditos, comentário e hashtags."
     },
     "tags": [
-      "nome limpo",
-      "crédito negado",
-      "SCR",
-      "Registrato",
-      "score",
-      "dívida quitada",
-      "educação financeira"
+      "conta de luz",
+      "custo de disponibilidade",
+      "conta de energia",
+      "tarifa mínima",
+      "ANEEL",
+      "Tarifa Social",
+      "30 kWh",
+      "50 kWh",
+      "100 kWh"
     ]
   },
   "packaging": {
     "strategy": {
-      "click_reason": "Contradição reconhecível após quitar uma dívida.",
-      "visual_focus": "Comprovante de quitação protagonista e recusa no telefone, sem marca.",
-      "curiosity_gap": "Qual informação explica o descompasso entre pagamento e aprovação?",
-      "mobile_readability": "Duas palavras grandes, um comprovante e um telefone secundário em alto contraste.",
-      "anti_clickbait_check": "Pode negar, sem diagnóstico individual ou promessa de liberação; limites falados e demonstrados.",
-      "repetition_check": "Tema inédito no histórico; capa de comprovante diferente do telefone isolado de Pix Automático.",
-      "youtube_safety_check": "Educação com fontes, sem dados pessoais nem alegações de bloqueio universal."
+      "click_reason": "Contradição real: casa quase sem consumo com cobrança na conta.",
+      "visual_focus": "Medidor escuro de energia sem número inventado e fatura simbólica, em iluminação cinematográfica, sem marca nem interface real.",
+      "curiosity_gap": "O que continua sendo cobrado se quase não houve consumo?",
+      "mobile_readability": "Foco claro e texto enorme de duas palavras; sem detalhamento técnico no canto inferior direito.",
+      "anti_clickbait_check": "Condição e exceções aparecem logo na abertura, na demonstração e na Tarifa Social.",
+      "repetition_check": "Novo universo de rede de energia e fatura; não repetir comprovante branco e celular de crédito negado.",
+      "youtube_safety_check": "Não promete conta zerada, eliminação do mínimo nem cobrança indevida universal."
     },
     "titles": [
       {
         "id": "approved",
-        "text": "Nome limpo: por que o banco ainda pode negar crédito?",
-        "rationale": "Assunto cedo e consequência específica como pergunta."
+        "text": "Conta de luz: por que vem cobrança mesmo sem gastar energia?",
+        "rationale": "Assunto e tensão concreta no começo; resposta condicionada no episódio."
       }
     ],
     "thumbnails": [
       {
         "id": "approved",
-        "headline": "PAGOU. NEGADO.",
-        "concept": "Comprovante branco grande de pagamento confirmado e telefone atrás com pedido recusado, sem marca, em grafite e amarelo.",
-        "visual_prompt": "Capa completa 16:9; recibo de quitação protagonista, telefone secundário, texto PAGOU. NEGADO. branco e amarelo #FFBD19. Contradição reconhecível sem interface oficial falsa."
+        "headline": "DESLIGOU. PAGOU.",
+        "concept": "Medidor residencial quase apagado dominando o primeiro plano; fatura abstrata realista sem valores atrás, sugerindo cobrança mesmo com casa pouco utilizada; foco editorial, não fraude.",
+        "visual_prompt": "Thumbnail completa 16:9 1280x720 do canal O Dinheiro Explica. Preto/carvão profundo, amarelo #FFBD19 e branco quente. Um medidor elétrico residencial grande quase apagado no lado direito, com iluminação dramática revelando o cabo da rede ainda conectado; uma fatura de luz simbólica secundária, sem nome, tarifa, preço ou empresa real. Headline EXATA 'DESLIGOU. PAGOU.' em texto enorme, tipografia pesada, legível, branco e amarelo, no lado esquerdo com respiro. Sem setas, logo, selo, banco, celular, pessoa ou rodapés. Canto inferior direito livre da informação importante. A cena deve comunicar curiosidade, não promessa universal; fotografia/editorial convincente."
       }
     ]
   },
   "editorial": {
+    "production_mode": "normal",
     "strengths": [
-      "Resposta útil na abertura",
-      "Demonstração temporal com prova documental",
-      "Soma ilustrativa delimitada"
+      "Distinção útil entregue imediatamente",
+      "Pisos legais explicados com diferença de ligação",
+      "Uma equação observável e explicitamente hipotética",
+      "Exceção Tarifa Social documentada",
+      "Conferência operacional da fatura"
     ],
     "risk_flags": [
-      "Não inferir causa de recusa individual",
-      "Distinguir mês dos dados de data da consulta"
+      "Não transformar mínimo em taxa fixa nacional",
+      "Exceções de Tarifa Social, pré-pagamento e solar não podem desaparecer",
+      "CIP e tributos dependem de normas locais",
+      "R$ 0,80 por kWh é inventado só para didática"
     ],
     "source_balance": {
       "requires_diversity": true,
       "public_policy_or_regulation": true,
-      "official_sources_role": "Documento e regras de consulta do BC; posicionamento identificado na fala.",
-      "independent_sources_role": "Contexto histórico sobre nome limpo e registros positivos, cruzado com fontes atuais.",
-      "counterpoint_summary": "Dados em dia também entram no SCR; fontes empresariais não permitem chamar o sistema de veto automático. Não importar regras antigas de score ou percentual universal.",
+      "official_sources_role": "Art. 291 da REN 1.000/2021, tarifa social e responsabilidade municipal são regras e documentos, não interpretação de manchete.",
+      "independent_sources_role": "Poder360 traz comentário técnico sobre infraestruturas e subsídios; Gazeta do Povo oferece contraponto editorial sobre custeio do subsídio, não prova normativa.",
+      "counterpoint_summary": "Desconto na componente energia não garante fatura final zerada; ampliação da Tarifa Social pode redistribuir encargos, mas opiniões políticas e projeções de 2025 não são métricas nacionais de 2026.",
       "official_claims_attributed": true,
       "right_editorial_review": {
         "consulted": [
           {
             "publisher": "Gazeta do Povo",
-            "url": "https://www.gazetadopovo.com.br/economia/o-que-e-cadastro-positivo-tire-duvidas-banco-dados-bons-pagadores/",
-            "summary": "Fernanda Trisotto; contexto histórico sobre dados positivos e acesso/correção. Não usar regras antigas de score como atuais."
+            "url": "https://www.gazetadopovo.com.br/opiniao/editoriais/populismo-bancado-pela-classe-media/",
+            "summary": "Editorial de 22/05/2025: crítica sobre custo redistributivo da Tarifa Social; acrescenta cautela sobre 'grátis'. Informação factual cruzada com ANEEL e não usada para deduzir tarifa individual."
           }
         ]
       }
@@ -330,348 +336,353 @@
     "youtube_suitability": {
       "risk_level": "low",
       "sensitive_topics": [],
-      "context_notes": "Educação financeira sem dados pessoais ou promessa individual.",
+      "context_notes": "Educação de consumo de energia e tarifas. Números hipotéticos marcados.",
       "title_thumbnail_safe": true,
-      "monetization_notes": "Arte autoral e explicação original sustentada por fontes."
+      "monetization_notes": "Arte original e fontes verificáveis."
     },
     "narrative_contract": {
-      "topic_explanation": "Nome limpo não garante crédito aprovado: o banco analisa mais do que a ausência de uma negativação.",
-      "presenter_introduction": "Eu sou Roberto, e vamos separar o que foi pago, o que ficou no histórico e o que entra na decisão do banco.",
-      "subscription_request": "Se essa distinção ajudou, inscreva-se no canal para entender melhor as decisões que mexem com seu dinheiro."
+      "topic_explanation": "O nome dessa cobrança é custo de disponibilidade.",
+      "presenter_introduction": "Eu sou Roberto, e vou mostrar a regra, um exemplo de conta e a exceção que muita gente não conhece.",
+      "subscription_request": "Se essa distinção já te ajudou, inscreva-se no canal."
     },
     "explanation": {
       "version": "1.0",
       "concepts": [
         {
-          "id": "negative",
+          "id": "disponibilidade",
           "terms": [
-            "nome limpo",
-            "negativação"
+            "custo de disponibilidade"
           ],
           "explanation": {
-            "scene_id": "scene-02",
-            "quote": "Quando alguém fala em nome limpo, normalmente está falando da ausência de uma anotação negativa em serviços de proteção ao crédito."
+            "scene_id": "scene-01",
+            "quote": "Mesmo com consumo próximo de zero, algumas casas pagam um mínimo pela rede elétrica que fica disponível."
           },
           "claim_ids": [
-            "C1"
+            "C1",
+            "C3"
           ],
-          "boundary": "Nenhuma informação isolada garante concessão de crédito."
+          "boundary": "Mínimo condicionado a tipo de ligação, classe e exceções."
         },
         {
-          "id": "score",
+          "id": "kwh",
           "terms": [
-            "score"
+            "quilowatts-hora"
           ],
           "explanation": {
-            "scene_id": "scene-02",
-            "quote": "Já o score é uma pontuação que ajuda a estimar o risco, não uma ordem para liberar dinheiro."
+            "scene_id": "scene-03",
+            "quote": "Repare: são valores de referência para faturar o mínimo, não uma leitura inventada do medidor."
           },
           "claim_ids": [
             "C2"
           ],
-          "boundary": "Nenhuma informação isolada garante concessão de crédito."
+          "boundary": "Unidade de energia não é valor fixo em reais."
         },
         {
-          "id": "scr",
+          "id": "social",
           "terms": [
-            "SCR",
-            "Sistema de Informações de Crédito"
+            "Tarifa Social"
           ],
           "explanation": {
-            "scene_id": "scene-02",
-            "quote": "Ele reúne informações sobre operações com bancos e financeiras, inclusive compromissos em dia."
+            "scene_id": "scene-05",
+            "quote": "Quem se enquadra na Tarifa Social de Energia Elétrica tem desconto integral na parcela de energia dos primeiros oitenta quilowatts-hora mensais desde julho de dois mil e vinte e cinco."
           },
           "claim_ids": [
-            "C3"
+            "C4"
           ],
-          "boundary": "Nenhuma informação isolada garante concessão de crédito."
+          "boundary": "A elegibilidade precisa existir e outros itens locais podem subsistir."
         },
         {
-          "id": "registrato",
+          "id": "cip",
           "terms": [
-            "Registrato"
+            "contribuição para iluminação pública"
           ],
           "explanation": {
-            "scene_id": "scene-02",
-            "quote": "O Registrato é o lugar onde você consulta seus próprios relatórios; não é uma nova dívida."
+            "scene_id": "scene-06",
+            "quote": "A fatura pode incluir contribuição para iluminação pública, se o município a instituiu, e tributos conforme as regras locais."
           },
           "claim_ids": [
-            "C3"
+            "C5"
           ],
-          "boundary": "Nenhuma informação isolada garante concessão de crédito."
+          "boundary": "CIP varia por município; não cobrar universalmente."
         }
       ],
       "examples": [
         {
-          "id": "months",
-          "purpose": "Distinguir histórico do mês anterior da posição posterior ao pagamento.",
+          "id": "base30",
+          "purpose": "Demonstrar por que um piso de referência não se soma aos 8 kWh efetivamente lidos.",
           "kind": "illustrative",
           "claim_ids": [
-            "C4"
-          ],
-          "actors": [
-            "pessoa hipotética com dívida de cartão"
-          ],
-          "assumptions": [
-            "Atraso em setembro e quitação em outubro são uma hipótese didática."
-          ],
-          "inputs": [],
-          "limitation": "Não é relatório individual, prazo de aprovação nem afirmação de atualização instantânea.",
-          "narration_refs": [
-            {
-              "scene_id": "scene-03",
-              "quote": "Imagine um exemplo hipotético: uma dívida de cartão ficou atrasada em setembro e foi quitada em outubro. O relatório de setembro retrata a situação de setembro. Por isso, o atraso daquele mês não desaparece como se nunca tivesse ocorrido. A posição posterior deve refletir a regularização."
-            }
-          ],
-          "visual_bindings": [
-            {
-              "scene_id": "scene-03",
-              "element_id": "months"
-            }
-          ],
-          "identification": {
-            "scene_id": "scene-03",
-            "quote": "Imagine um exemplo hipotético"
-          },
-          "visual_identification": {
-            "scene_id": "scene-03",
-            "element_id": "hypothesis"
-          }
-        },
-        {
-          "id": "budget",
-          "purpose": "Demonstrar que ausência de negativação e capacidade de pagamento respondem perguntas distintas.",
-          "kind": "illustrative",
-          "claim_ids": [
+            "C2",
             "C6"
           ],
           "actors": [
-            "pessoa hipotética com renda mensal de três mil reais"
+            "casa monofásica hipotética"
           ],
           "assumptions": [
-            "Valores inventados para explicar; não correspondem a regra, oferta ou média de mercado.",
-            "Não quantifica despesas essenciais nem reproduz algoritmo bancário."
+            "Consumo medido de 8 kWh, sem comprovação de unidade real.",
+            "Tarifa simplificada fictícia de R$ 0,80/kWh; exclui outros itens e condições."
           ],
           "inputs": [
             {
-              "id": "existing",
-              "value": 800,
-              "unit": "BRL",
+              "id": "base",
+              "value": 30,
+              "unit": "kWh",
               "source_ids": []
             },
             {
-              "id": "new",
-              "value": 700,
-              "unit": "BRL",
+              "id": "rate",
+              "value": 0.8,
+              "unit": "BRL/kWh",
               "source_ids": []
             }
           ],
           "calculation": {
-            "operation": "add",
+            "operation": "multiply",
             "input_ids": [
-              "existing",
-              "new"
+              "base",
+              "rate"
             ],
-            "result": 1500,
+            "result": 24,
             "unit": "BRL"
           },
-          "limitation": "Não estabelece percentual máximo de comprometimento nem garante aprovação.",
+          "limitation": "A conta de 24 reais é só parcela ilustrativa; tarifas, tributos, bandeiras, desconto e fatura final dependem do caso.",
           "narration_refs": [
             {
-              "scene_id": "scene-05",
-              "quote": "As prestações somariam mil e quinhentos reais."
+              "scene_id": "scene-04",
+              "quote": "Como o piso desse caso é trinta, trinta vezes oitenta centavos dão vinte e quatro reais."
             }
           ],
           "visual_bindings": [
             {
-              "scene_id": "scene-05",
-              "element_id": "existing"
+              "scene_id": "scene-04",
+              "element_id": "base"
             },
             {
-              "scene_id": "scene-05",
-              "element_id": "new"
+              "scene_id": "scene-04",
+              "element_id": "rate"
             },
             {
-              "scene_id": "scene-05",
+              "scene_id": "scene-04",
               "element_id": "total"
             }
           ],
           "identification": {
-            "scene_id": "scene-05",
-            "quote": "Num exemplo hipotético"
+            "scene_id": "scene-04",
+            "quote": "valores inteiramente hipotéticos"
           },
           "visual_identification": {
-            "scene_id": "scene-05",
-            "element_id": "hypothesis"
+            "scene_id": "scene-04",
+            "element_id": "hypo"
           }
         }
       ],
       "learning_units": [
         {
-          "id": "distinction",
-          "question": "Por que o nome limpo não garante crédito?",
+          "id": "why",
+          "question": "Por que chega conta quando quase não houve consumo?",
           "answer": {
             "scene_id": "scene-01",
-            "quote": "Nome limpo não garante crédito aprovado: o banco analisa mais do que a ausência de uma negativação."
+            "quote": "Mesmo com consumo próximo de zero, algumas casas pagam um mínimo pela rede elétrica que fica disponível."
           },
           "concept_ids": [
-            "negative",
-            "score",
-            "scr",
-            "registrato"
+            "disponibilidade"
           ],
           "claim_ids": [
             "C1",
-            "C2",
             "C3"
           ],
           "example_ids": [],
-          "visual_purpose": "Pagamento e pedido recusado coexistem; funções diferentes aparecem no arquivo.",
+          "visual_purpose": "Casa quase vazia e fatura coexistem; ligação do sistema permanece ativa.",
           "bindings": [
             {
               "scene_id": "scene-01",
-              "element_id": "contrast"
+              "element_id": "house"
             },
             {
               "scene_id": "scene-02",
-              "element_id": "archive"
+              "element_id": "grid"
             }
           ]
         },
         {
-          "id": "history",
-          "question": "Por que um atraso antigo pode aparecer depois de pagar?",
+          "id": "levels",
+          "question": "De onde saem os valores 30, 50 e 100 kWh?",
           "answer": {
-            "scene_id": "scene-04",
-            "quote": "o pagamento não reescreve as posições passadas."
+            "scene_id": "scene-03",
+            "quote": "Repare: são valores de referência para faturar o mínimo, não uma leitura inventada do medidor."
           },
           "concept_ids": [
-            "scr"
+            "kwh",
+            "disponibilidade"
           ],
           "claim_ids": [
-            "C4",
-            "C5"
+            "C2"
           ],
-          "example_ids": [
-            "months"
-          ],
-          "visual_purpose": "Duas páginas preservam o passado e recebem pagamento; documento autêntico sustenta a regra.",
+          "example_ids": [],
+          "visual_purpose": "Três pisos dominam em ordem e preservam a diferença dos condutores.",
           "bindings": [
             {
               "scene_id": "scene-03",
-              "element_id": "months"
+              "element_id": "mono"
             },
             {
-              "scene_id": "scene-04",
-              "element_id": "proof"
+              "scene_id": "scene-03",
+              "element_id": "bi"
+            },
+            {
+              "scene_id": "scene-03",
+              "element_id": "tri"
             }
           ]
         },
         {
-          "id": "capacity",
-          "question": "Por que o banco pode recusar uma nova parcela?",
+          "id": "math",
+          "question": "Como uma leitura inferior ao piso vira parcela faturável?",
           "answer": {
-            "scene_id": "scene-05a",
-            "quote": "o banco pode avaliar renda, compromissos e seus próprios critérios de risco."
+            "scene_id": "scene-04",
+            "quote": "Os trinta entram como referência do faturamento mínimo, e não como oito mais trinta."
           },
           "concept_ids": [
-            "score",
-            "scr"
+            "disponibilidade"
           ],
           "claim_ids": [
-            "C1",
+            "C2",
             "C6"
           ],
           "example_ids": [
-            "budget"
+            "base30"
           ],
-          "visual_purpose": "Soma de duas parcelas sem fabricar fórmula universal de aprovação.",
+          "visual_purpose": "Uma equação real multiplica base ilustrativa por tarifa fictícia, sem alterar medição.",
           "bindings": [
             {
-              "scene_id": "scene-05a",
-              "element_id": "wallet"
+              "scene_id": "scene-04",
+              "element_id": "base"
             },
             {
-              "scene_id": "scene-05",
+              "scene_id": "scene-04",
+              "element_id": "rate"
+            },
+            {
+              "scene_id": "scene-04",
               "element_id": "total"
+            },
+            {
+              "scene_id": "scene-04",
+              "element_id": "hypo"
             }
           ]
         },
         {
-          "id": "check",
-          "question": "Como distinguir informação errada de histórico correto?",
+          "id": "exception",
+          "question": "Quem fica protegido por regra de tarifa social?",
           "answer": {
-            "scene_id": "scene-06",
-            "quote": "Corrigir informação errada e apagar um histórico verdadeiro são coisas diferentes."
+            "scene_id": "scene-05",
+            "quote": "A Aneel esclarece que esse tratamento vale mesmo quando a instalação é trifásica."
           },
           "concept_ids": [
-            "scr",
-            "registrato"
+            "social"
           ],
           "claim_ids": [
-            "C4",
-            "C7"
+            "C4"
           ],
           "example_ids": [],
-          "visual_purpose": "Conferência de campos e mudança de destinatário preservam o protocolo.",
+          "visual_purpose": "Trecho real da ANEEL separa desconto da parcela energia e elegibilidade.",
+          "bindings": [
+            {
+              "scene_id": "scene-05",
+              "element_id": "proof"
+            },
+            {
+              "scene_id": "scene-05",
+              "element_id": "exception"
+            }
+          ]
+        },
+        {
+          "id": "verify",
+          "question": "Quais itens olhar antes de questionar a cobrança?",
+          "answer": {
+            "scene_id": "scene-08",
+            "quote": "Para conferir a sua, procure quatro coisas: consumo medido, tipo de fornecimento, Tarifa Social quando houver e contribuição de iluminação pública."
+          },
+          "concept_ids": [
+            "social",
+            "cip"
+          ],
+          "claim_ids": [
+            "C1",
+            "C4",
+            "C5",
+            "C6"
+          ],
+          "example_ids": [],
+          "visual_purpose": "A fatura revela campos concretos e diferencia cobrança de consumo, benefício e CIP.",
           "bindings": [
             {
               "scene_id": "scene-06",
-              "element_id": "record"
+              "element_id": "invoice"
             },
             {
-              "scene_id": "scene-06",
-              "element_id": "route"
+              "scene_id": "scene-08",
+              "element_id": "reading"
             },
             {
-              "scene_id": "scene-06",
-              "element_id": "protocol"
+              "scene_id": "scene-08",
+              "element_id": "supply"
+            },
+            {
+              "scene_id": "scene-08",
+              "element_id": "social"
+            },
+            {
+              "scene_id": "scene-08",
+              "element_id": "cip"
             }
           ]
         }
       ],
       "review": {
-        "content_sha256": "0eb5e1fd99792e9673e9dc2e6e3561b6a7813bb10ddf98051e13a6b8c693de28",
+        "content_sha256": "d03990312f878679206ca38f3d9810aa2ef86f7a8e9c4c6a910b8d1834c6f905",
         "findings": [
           {
-            "question": "O gancho entrega a distinção antes da apresentação?",
+            "question": "O público descobre a cobrança mínima logo após o gancho?",
             "evidence": {
               "scene_id": "scene-01",
-              "quote": "Nome limpo não garante crédito aprovado: o banco analisa mais do que a ausência de uma negativação."
+              "quote": "Mesmo com consumo próximo de zero, algumas casas pagam um mínimo pela rede elétrica que fica disponível."
             },
-            "conclusion": "A resposta vem na abertura; não esconde o mecanismo até o final."
+            "conclusion": "Entrega na primeira cena antes da apresentação, preservando que algumas, não todas, pagam."
           },
           {
-            "question": "O histórico antigo é tratado como dívida ainda aberta?",
+            "question": "Os pisos são apresentados como leitura fictícia ou valor fixo nacional?",
+            "evidence": {
+              "scene_id": "scene-03",
+              "quote": "Repare: são valores de referência para faturar o mínimo, não uma leitura inventada do medidor."
+            },
+            "conclusion": "Patamares dependem da ligação; não são uma medição inventada ou uma tarifa fixa em reais."
+          },
+          {
+            "question": "A demonstração aritmética é correta e condicionada?",
             "evidence": {
               "scene_id": "scene-04",
-              "quote": "Se você olha só uma data antiga, pode concluir que continua devendo uma conta que já quitou."
+              "quote": "Os vinte e quatro reais não são uma cotação real: a conta final depende da tarifa, tributos e outros itens locais."
             },
-            "conclusion": "O mês antigo permanece; regularização posterior e latência estão explícitas, sem prazo inventado."
+            "conclusion": "30 x R$0,80 = R$24; exemplo rotulado e não quantifica uma fatura real."
           },
           {
-            "question": "A soma é confundida com regra de underwriting?",
+            "question": "A exceção da Tarifa Social é preservada e comprovada?",
             "evidence": {
               "scene_id": "scene-05",
-              "quote": "Essa conta não reproduz a fórmula de nenhum banco, nem estabelece um limite obrigatório."
+              "quote": "O benefício depende do enquadramento e do cadastro; se você se enquadra, confirme o desconto na fatura."
             },
-            "conclusion": "Hipótese identificada na fala e tela; soma exata sem percentual regulatório ou aprovação automática."
+            "conclusion": "Regra dos primeiros 80 kWh, inclusive trifásico, é condicionada e atrelada ao documento."
           },
           {
-            "question": "O encerramento responde à recusa sem prometer crédito?",
+            "question": "A conclusão responde ao gancho e mostra o que conferir?",
             "evidence": {
-              "scene_id": "scene-06",
-              "quote": "Nenhum desses passos é uma garantia de aprovação."
+              "scene_id": "scene-08",
+              "quote": "Porque, fora das exceções, a rede disponível pode gerar um faturamento mínimo calculado pelo tipo de ligação."
             },
-            "conclusion": "Mostra conferência e correção com limite claro; não diagnostica a recusa individual."
-          },
-          {
-            "question": "A revisão visual mantém exemplos e condições reconhecíveis?",
-            "evidence": {
-              "scene_id": "scene-05",
-              "quote": "Essa conta não reproduz a fórmula de nenhum banco, nem estabelece um limite obrigatório."
-            },
-            "conclusion": "Exemplos hipotéticos continuam identificados em textos próprios; valores, soma, documentos e limites são preservados. A descrição técnica das artes fica nos metadados e não compete com a informação."
+            "conclusion": "A resposta fecha a contradição e acompanha campos identificáveis da própria fatura."
           }
         ]
       }
@@ -679,124 +690,112 @@
     "learning_strategy": {
       "version": "1.0",
       "audience": {
-        "situation": "Quitou dívida e teve crédito ou aumento de limite recusado.",
-        "prior_belief": "Nome limpo apaga todos os registros e determina aprovação.",
-        "desired_understanding": "Separar situação atual, histórico mensal e capacidade de pagamento."
+        "situation": "Pessoa que deixa um imóvel pouco usado ou percebe consumo muito baixo e recebe a conta de luz.",
+        "prior_belief": "Com medidor quase parado, a distribuidora não deveria cobrar nada.",
+        "desired_understanding": "Distinguir leitura, piso da ligação, exceções da Tarifa Social e linhas locais na fatura."
       },
       "hypothesis": {
-        "change": "Entregar primeira distinção útil antes da apresentação e demonstrar com meses e conta.",
-        "expected_effect": "Reduzir abandono antes da primeira explicação, mantendo a promessa do título.",
-        "evaluation": "Comparar retenção aos 30 segundos e curva inicial de vídeos longos com idade e origem semelhantes em 72h, 7 e 28 dias; um vídeo não prova causalidade."
+        "change": "Entregar a distinção da disponibilidade já na primeira cena e demonstrar piso com operação aritmética simples.",
+        "expected_effect": "Possível aumento de entendimento e menor abandono inicial; efeito não garantido.",
+        "evaluation": "Após postagem manual, comparar 72h, 7 e 28 dias no Studio com vídeos do mesmo formato e janela, considerando origem, idade, impressões, CTR e retenção, sem atribuir causalidade ao episódio."
       },
       "first_value": {
         "scene_id": "scene-01",
-        "quote": "Nome limpo não garante crédito aprovado: o banco analisa mais do que a ausência de uma negativação."
+        "quote": "Mesmo com consumo próximo de zero, algumas casas pagam um mínimo pela rede elétrica que fica disponível."
       },
       "promises": [
         {
           "surface": "title",
-          "text": "Nome limpo: por que o banco ainda pode negar crédito?",
+          "text": "Conta de luz: por que vem cobrança mesmo sem gastar energia?",
           "kind": "explanation",
           "claim_ids": [
             "C1",
-            "C4",
-            "C6"
+            "C2",
+            "C4"
           ],
           "learning_unit_ids": [
-            "distinction",
-            "history",
-            "capacity"
+            "why",
+            "levels",
+            "exception"
           ],
-          "example_ids": [],
+          "example_ids": [
+            "base30"
+          ],
           "delivery": {
-            "scene_id": "scene-07",
-            "quote": "Porque a ausência de negativação não resume o histórico nem a capacidade de assumir um novo compromisso."
+            "scene_id": "scene-08",
+            "quote": "Porque, fora das exceções, a rede disponível pode gerar um faturamento mínimo calculado pelo tipo de ligação."
           },
           "boundary": {
-            "scene_id": "scene-06",
-            "quote": "Nenhum desses passos é uma garantia de aprovação."
+            "scene_id": "scene-05",
+            "quote": "O benefício depende do enquadramento e do cadastro; se você se enquadra, confirme o desconto na fatura."
           }
         },
         {
           "surface": "thumbnail",
-          "text": "PAGOU. NEGADO.",
-          "kind": "explanation",
+          "text": "DESLIGOU. PAGOU.",
+          "kind": "conditional_result",
           "claim_ids": [
             "C1",
-            "C4",
-            "C6"
+            "C4"
           ],
           "learning_unit_ids": [
-            "distinction",
-            "history",
-            "capacity"
+            "why",
+            "exception"
           ],
           "example_ids": [],
           "delivery": {
-            "scene_id": "scene-07",
-            "quote": "Porque a ausência de negativação não resume o histórico nem a capacidade de assumir um novo compromisso."
+            "scene_id": "scene-01",
+            "quote": "Mesmo com consumo próximo de zero, algumas casas pagam um mínimo pela rede elétrica que fica disponível."
           },
           "boundary": {
-            "scene_id": "scene-06",
-            "quote": "Nenhum desses passos é uma garantia de aprovação."
+            "scene_id": "scene-01",
+            "quote": "Isso não vale para todo mundo."
           }
         }
       ],
       "progression": [
         {
-          "learning_unit_id": "distinction",
-          "new_information": "Cada registro cumpre uma função e nome limpo não garante concessão.",
-          "next_question": "Por que um atraso pode continuar aparecendo depois de pago?"
+          "learning_unit_id": "why",
+          "new_information": "Rede disponível pode explicar a cobrança mesmo com leitura muito pequena.",
+          "next_question": "Qual é a base mínima conforme a instalação?"
         },
         {
-          "learning_unit_id": "history",
-          "new_information": "O relatório preserva o retrato passado, com atualização de posições posteriores.",
-          "next_question": "Por que a situação regularizada ainda pode receber recusa?"
+          "learning_unit_id": "levels",
+          "new_information": "Patamares de 30, 50 ou 100 kWh são bases de faturamento por ligação.",
+          "next_question": "Como transformar um desses patamares em reais sem enganar?"
         },
         {
-          "learning_unit_id": "capacity",
-          "new_information": "Renda e compromissos entram numa análise distinta da negativação.",
-          "next_question": "Como conferir se o problema é um dado errado ou histórico correto?"
+          "learning_unit_id": "math",
+          "new_information": "Operação hipotética 30 × 0,80 = 24 reais; a medição de 8 kWh continua a mesma.",
+          "next_question": "E quem é beneficiário da Tarifa Social?"
         },
         {
-          "learning_unit_id": "check",
-          "new_information": "Consulta, comparação e protocolo encaminham erro à instituição responsável.",
-          "next_question": "Qual das três dúvidas o seu relatório realmente mostra?"
+          "learning_unit_id": "exception",
+          "new_information": "Tarifa Social pode anular a parcela de energia até 80 kWh para elegíveis, inclusive trifásicos.",
+          "next_question": "Que outros campos da fatura podem subsistir?"
+        },
+        {
+          "learning_unit_id": "verify",
+          "new_information": "Quatro campos permitem conferir a conta e pedir explicação à distribuidora.",
+          "next_question": "Na minha própria fatura, qual regra e qual benefício foram aplicados?"
         }
       ]
-    },
-    "production_mode": "direct"
+    }
   },
   "scenes": [
     {
       "id": "scene-01",
       "index": 0,
-      "title": "Pagou, mas o crédito foi negado",
-      "narration": "Pagou a dívida. Limpou o nome. E o banco negou. Por que o crédito continua negado? Nome limpo não garante crédito aprovado: o banco analisa mais do que a ausência de uma negativação. Eu sou Roberto, e vamos separar o que foi pago, o que ficou no histórico e o que entra na decisão do banco. Essa diferença importa porque procurar uma dívida onde só existe um registro antigo pode fazer você gastar tempo tentando resolver o problema errado. Vamos começar pelo que cada informação realmente mostra.",
+      "title": "A fatura aparece mesmo com a casa quase sem uso",
+      "narration": "Você quase não gastou luz, mas a conta chegou? Mesmo com consumo próximo de zero, algumas casas pagam um mínimo pela rede elétrica que fica disponível. Isso não vale para todo mundo. O nome dessa cobrança é custo de disponibilidade. Eu sou Roberto, e vou mostrar a regra, um exemplo de conta e a exceção que muita gente não conhece. Não é cobrança por energia que o medidor fingiu registrar.",
       "claim_ids": [
         "C1",
-        "C3",
-        "C6"
+        "C3"
       ],
       "tts": {
         "delivery": "explain",
-        "pause_ms": 150,
-        "cues": [
-          {
-            "text": "Por que o crédito continua negado?",
-            "kind": "emphasis",
-            "intent": "curiosity",
-            "arc": "question",
-            "pause_before_ms": 100
-          },
-          {
-            "text": "Nome limpo não garante crédito aprovado:",
-            "kind": "contrast",
-            "intent": "discovery",
-            "arc": "resolve",
-            "pause_before_ms": 100
-          }
-        ]
+        "pause_ms": 160,
+        "cues": []
       },
       "visual": {
         "type": "authored_stage",
@@ -815,85 +814,48 @@
           },
           "elements": [
             {
-              "id": "contrast",
-              "kind": "object",
-              "label": "Pagou, mas o crédito foi negado",
-              "x": 3,
-              "y": 20,
-              "width": 94,
-              "height": 75,
-              "surface": "none",
-              "label_size": 48,
-              "object_type": "data",
-              "hyperframes": {
-                "entry": "video/hyperframes/credit-contrast/index.html",
-                "initial_state": "paid",
-                "width": 1280,
-                "height": 640,
-                "states": [
-                  {
-                    "anchor": "Pagou a dívida.",
-                    "state": "paid"
-                  },
-                  {
-                    "anchor": "E o banco negou.",
-                    "state": "denied"
-                  },
-                  {
-                    "anchor": "Por que o crédito continua negado?",
-                    "state": "denied"
-                  },
-                  {
-                    "anchor": "Nome limpo não garante crédito aprovado:",
-                    "state": "criteria"
-                  },
-                  {
-                    "anchor": "o banco analisa mais",
-                    "state": "criteria"
-                  },
-                  {
-                    "anchor": "Eu sou Roberto,",
-                    "state": "criteria"
-                  },
-                  {
-                    "anchor": "o que foi pago,",
-                    "state": "paid"
-                  },
-                  {
-                    "anchor": "o que ficou no histórico",
-                    "state": "history"
-                  },
-                  {
-                    "anchor": "o que entra na decisão do banco.",
-                    "state": "criteria"
-                  },
-                  {
-                    "anchor": "procurar uma dívida onde só existe um registro antigo",
-                    "state": "history"
-                  },
-                  {
-                    "anchor": "pode fazer você gastar tempo",
-                    "state": "history"
-                  },
-                  {
-                    "anchor": "Vamos começar pelo que cada informação realmente mostra.",
-                    "state": "history"
-                  }
-                ]
-              },
-              "show_label": false,
-              "visual_role": "protagonist"
+              "id": "headline",
+              "kind": "label",
+              "label": "POUCO CONSUMO. CONTA NA MÃO.",
+              "x": 4,
+              "y": 4,
+              "width": 92,
+              "height": 15,
+              "label_size": 73,
+              "surface": "none"
             },
             {
-              "id": "question",
+              "id": "house",
               "kind": "label",
-              "label": "PAGOU. E O CRÉDITO?",
-              "x": 4,
-              "y": 1,
-              "width": 92,
-              "height": 16,
+              "label": "CASA QUASE SEM USO",
+              "icon": "house",
+              "x": 5,
+              "y": 26,
+              "width": 53,
+              "height": 60,
+              "label_size": 56,
+              "icon_size": 360,
+              "content_layout": "column",
+              "surface": "none"
+            },
+            {
+              "id": "invoice",
+              "kind": "object",
+              "label": "FATURA DE ENERGIA",
+              "object_type": "receipt",
+              "x": 66,
+              "y": 23,
+              "width": 29,
+              "height": 64,
+              "show_label": false,
+              "visual_role": "protagonist",
+              "svg_motion": "assemble",
               "surface": "none",
-              "label_size": 80
+              "sustain": {
+                "kind": "breathe",
+                "amplitude": 16,
+                "period_seconds": 7
+              }
             }
           ],
           "connections": [],
@@ -905,132 +867,116 @@
         },
         "beats": [
           {
-            "anchor": "Pagou a dívida.",
-            "target_id": "contrast",
-            "headline": "DÍVIDA QUITADA",
+            "anchor": "Você quase não gastou luz,",
+            "target_id": "house",
+            "headline": "CASA QUASE PARADA",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.9,
-            "actuation": "confirm",
+            "motion_seconds": 0.7,
             "camera": {
               "x": 50,
               "y": 50,
-              "zoom": 1.01,
-              "motion_seconds": 0.9
+              "zoom": 1.012,
+              "motion_seconds": 0.7
             }
           },
           {
-            "anchor": "E o banco negou.",
-            "target_id": "contrast",
-            "headline": "PEDIDO RECUSADO",
+            "anchor": "mas a conta chegou?",
+            "target_id": "invoice",
+            "headline": "A FATURA CHEGOU",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.9,
+            "motion_seconds": 0.7,
             "actuation": "signal",
             "camera": {
               "x": 50,
               "y": 50,
-              "zoom": 1.03,
-              "motion_seconds": 0.9
+              "zoom": 1.02,
+              "motion_seconds": 0.8
             }
           },
           {
-            "anchor": "Por que o crédito continua negado?",
-            "target_id": "question",
-            "headline": "POR QUE FOI NEGADO?",
+            "anchor": "Mesmo com consumo próximo de zero,",
+            "target_id": "headline",
+            "headline": "CONSUMO QUASE ZERO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "Nome limpo não garante crédito aprovado:",
-            "target_id": "question",
-            "headline": "NOME LIMPO ≠ CRÉDITO APROVADO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "o banco analisa mais",
-            "target_id": "contrast",
-            "headline": "ALÉM DO NOME LIMPO",
+            "anchor": "algumas casas pagam um mínimo pela rede elétrica",
+            "target_id": "invoice",
+            "headline": "O MÍNIMO PODE EXISTIR",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.9,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.015,
-              "motion_seconds": 0.9
-            }
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "Isso não vale para todo mundo.",
+            "target_id": "headline",
+            "headline": "HÁ EXCEÇÕES",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "O nome dessa cobrança é custo de disponibilidade.",
+            "target_id": "headline",
+            "headline": "CUSTO DE DISPONIBILIDADE",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
           },
           {
             "anchor": "Eu sou Roberto,",
-            "target_id": "question",
+            "target_id": "headline",
             "headline": "EU SOU ROBERTO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "o que foi pago,",
-            "target_id": "question",
-            "headline": "PAGAMENTO",
+            "anchor": "vou mostrar a regra,",
+            "target_id": "house",
+            "headline": "ENTENDA A REGRA",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "um exemplo de conta",
+            "target_id": "invoice",
+            "headline": "UMA CONTA DEMONSTRADA",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "a exceção que muita gente não conhece.",
+            "target_id": "headline",
+            "headline": "E QUEM TEM DESCONTO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "o que ficou no histórico",
-            "target_id": "question",
-            "headline": "HISTÓRICO",
+            "anchor": "Não é cobrança por energia",
+            "target_id": "headline",
+            "headline": "LEITURA ≠ MÍNIMO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "o que entra na decisão do banco.",
-            "target_id": "question",
-            "headline": "DECISÃO DO BANCO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "procurar uma dívida onde só existe um registro antigo",
-            "target_id": "question",
-            "headline": "DÍVIDA OU HISTÓRICO?",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "pode fazer você gastar tempo",
-            "target_id": "question",
-            "headline": "CONFIRA O DADO CERTO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "Vamos começar pelo que cada informação realmente mostra.",
-            "target_id": "question",
-            "headline": "O QUE O RELATÓRIO MOSTRA?",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
           }
         ]
       }
@@ -1038,16 +984,16 @@
     {
       "id": "scene-02",
       "index": 1,
-      "title": "Cada informação responde uma pergunta",
-      "narration": "Quando alguém fala em nome limpo, normalmente está falando da ausência de uma anotação negativa em serviços de proteção ao crédito. Já o score é uma pontuação que ajuda a estimar o risco, não uma ordem para liberar dinheiro. E existe o Sistema de Informações de Crédito, o SCR, do Banco Central. Ele reúne informações sobre operações com bancos e financeiras, inclusive compromissos em dia. O Registrato é o lugar onde você consulta seus próprios relatórios; não é uma nova dívida. Então aparecer ali não significa, por si só, estar negativado ou proibido de conseguir crédito. O que importa é qual informação aparece e a que mês ela se refere.",
+      "title": "O que continua disponível",
+      "narration": "Por que existe esse mínimo? A rede não desaparece quando a casa fica vazia. Postes, cabos e atendimento precisam continuar disponíveis para quando alguém ligar a energia. A regra federal chama isso de custo de disponibilidade do sistema elétrico. Não é uma taxa igual em reais para o Brasil inteiro: o valor acompanha a tarifa aplicável e o tipo de ligação. E um detalhe importante: faturar o mínimo não significa dizer que o medidor encontrou aquele consumo. Se essa distinção já te ajudou, inscreva-se no canal.",
       "claim_ids": [
         "C1",
-        "C2",
-        "C3"
+        "C3",
+        "C6"
       ],
       "tts": {
         "delivery": "explain",
-        "pause_ms": 150,
+        "pause_ms": 160,
         "cues": []
       },
       "visual": {
@@ -1067,88 +1013,63 @@
           },
           "elements": [
             {
-              "id": "archive",
-              "kind": "object",
-              "label": "Cada informação responde uma pergunta",
-              "x": 2,
-              "y": 10,
-              "width": 63,
-              "height": 84,
-              "surface": "none",
-              "label_size": 48,
-              "object_type": "data",
-              "hyperframes": {
-                "entry": "video/hyperframes/credit-archive/index.html",
-                "initial_state": "negative",
-                "width": 960,
-                "height": 640,
-                "states": [
-                  {
-                    "anchor": "Quando alguém fala em nome limpo",
-                    "state": "negative"
-                  },
-                  {
-                    "anchor": "ausência de uma anotação negativa",
-                    "state": "negative"
-                  },
-                  {
-                    "anchor": "Já o score é uma pontuação",
-                    "state": "score"
-                  },
-                  {
-                    "anchor": "não uma ordem para liberar dinheiro.",
-                    "state": "score"
-                  },
-                  {
-                    "anchor": "E existe o Sistema de Informações de Crédito",
-                    "state": "scr"
-                  },
-                  {
-                    "anchor": "o SCR, do Banco Central.",
-                    "state": "scr"
-                  },
-                  {
-                    "anchor": "operações com bancos e financeiras,",
-                    "state": "scr"
-                  },
-                  {
-                    "anchor": "inclusive compromissos em dia.",
-                    "state": "good"
-                  },
-                  {
-                    "anchor": "O Registrato é o lugar",
-                    "state": "consult"
-                  },
-                  {
-                    "anchor": "Então aparecer ali não significa",
-                    "state": "consult"
-                  },
-                  {
-                    "anchor": "ou proibido de conseguir crédito.",
-                    "state": "consult"
-                  },
-                  {
-                    "anchor": "a que mês ela se refere.",
-                    "state": "month"
-                  }
-                ]
-              },
-              "show_label": false,
-              "visual_role": "protagonist"
+              "id": "headline",
+              "kind": "label",
+              "label": "A REDE CONTINUA AQUI",
+              "x": 4,
+              "y": 4,
+              "width": 92,
+              "height": 15,
+              "label_size": 75,
+              "surface": "none"
             },
             {
-              "id": "definition",
-              "kind": "label",
-              "label": "NOME LIMPO",
-              "x": 69,
-              "y": 7,
-              "width": 29,
-              "height": 86,
+              "id": "grid",
+              "kind": "object",
+              "label": "REDE DE DISTRIBUIÇÃO",
+              "object_type": "hub",
+              "x": 5,
+              "y": 25,
+              "width": 40,
+              "height": 61,
+              "show_label": false,
+              "visual_role": "protagonist",
+              "svg_motion": "assemble",
               "surface": "none",
-              "label_size": 82
+              "sustain": {
+                "kind": "drift",
+                "amplitude": 18,
+                "period_seconds": 8
+              }
+            },
+            {
+              "id": "house",
+              "kind": "label",
+              "label": "IMÓVEL LIGADO À REDE",
+              "icon": "house",
+              "x": 69,
+              "y": 24,
+              "width": 26,
+              "height": 62,
+              "label_size": 56,
+              "icon_size": 245,
+              "content_layout": "column",
+              "surface": "none"
             }
           ],
-          "connections": [],
+          "connections": [
+            {
+              "id": "line",
+              "from": "grid",
+              "to": "house",
+              "label": "rede disponível",
+              "semantic": "relation",
+              "motion": "flow",
+              "period_seconds": 6,
+              "from_port": "right",
+              "to_port": "left"
+            }
+          ],
           "initial_camera": {
             "x": 50,
             "y": 50,
@@ -1157,137 +1078,100 @@
         },
         "beats": [
           {
-            "anchor": "Quando alguém fala em nome limpo",
-            "target_id": "archive",
-            "headline": "ANOTAÇÃO NEGATIVA",
+            "anchor": "Por que existe esse mínimo?",
+            "target_id": "headline",
+            "headline": "POR QUE COBRA?",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "A rede não desaparece",
+            "target_id": "grid",
+            "headline": "A REDE NÃO DESAPARECE",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.9,
+            "motion_seconds": 0.7,
             "camera": {
               "x": 50,
               "y": 50,
-              "zoom": 1.01,
-              "motion_seconds": 0.9
+              "zoom": 1.014,
+              "motion_seconds": 0.7
             }
           },
           {
-            "anchor": "ausência de uma anotação negativa",
-            "target_id": "definition",
-            "headline": "SEM NEGATIVAÇÃO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "Já o score é uma pontuação",
-            "target_id": "archive",
-            "headline": "PONTUAÇÃO",
+            "anchor": "quando a casa fica vazia.",
+            "target_id": "house",
+            "headline": "CASA COM POUCO USO",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.9,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.03,
-              "motion_seconds": 0.9
-            }
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "não uma ordem para liberar dinheiro.",
-            "target_id": "definition",
-            "headline": "SCORE ESTIMA RISCO",
-            "action": "update",
-            "treatment": "kinetic_type",
+            "anchor": "Postes, cabos e atendimento",
+            "target_id": "grid",
+            "headline": "INFRAESTRUTURA DISPONÍVEL",
+            "action": "focus",
+            "treatment": "flow_diagram",
             "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "E existe o Sistema de Informações de Crédito",
-            "target_id": "archive",
-            "headline": "REGISTRO DE OPERAÇÕES",
+            "anchor": "quando alguém ligar a energia.",
+            "target_id": "house",
+            "headline": "REDE PRONTA PARA USO",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.9,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.015,
-              "motion_seconds": 0.9
-            }
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "o SCR, do Banco Central.",
-            "target_id": "definition",
-            "headline": "SCR: INFORMAÇÕES DE CRÉDITO",
+            "anchor": "A regra federal chama isso",
+            "target_id": "headline",
+            "headline": "DISPONIBILIDADE DO SISTEMA",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "operações com bancos e financeiras,",
-            "target_id": "definition",
-            "headline": "BANCOS E FINANCEIRAS",
+            "anchor": "Não é uma taxa igual em reais",
+            "target_id": "headline",
+            "headline": "NÃO HÁ PREÇO NACIONAL",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "inclusive compromissos em dia.",
-            "target_id": "archive",
-            "headline": "TAMBÉM DADOS EM DIA",
+            "anchor": "o tipo de ligação.",
+            "target_id": "house",
+            "headline": "O TIPO DE LIGAÇÃO MUDA",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.9,
-            "actuation": "confirm"
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "O Registrato é o lugar",
-            "target_id": "definition",
-            "headline": "REGISTRATO: SEUS RELATÓRIOS",
+            "anchor": "faturar o mínimo não significa",
+            "target_id": "headline",
+            "headline": "NÃO MUDA A LEITURA",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "Então aparecer ali não significa",
-            "target_id": "definition",
-            "headline": "REGISTRO ≠ VETO",
+            "anchor": "inscreva-se no canal.",
+            "target_id": "headline",
+            "headline": "INSCREVA-SE",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "ou proibido de conseguir crédito.",
-            "target_id": "archive",
-            "headline": "REGISTRO NÃO É VETO",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.9,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.04,
-              "motion_seconds": 0.9
-            }
-          },
-          {
-            "anchor": "a que mês ela se refere.",
-            "target_id": "definition",
-            "headline": "CONFIRA O MÊS",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
           }
         ]
       }
@@ -1295,23 +1179,15 @@
     {
       "id": "scene-03",
       "index": 2,
-      "title": "Um mês não apaga o outro",
-      "narration": "Imagine um exemplo hipotético: uma dívida de cartão ficou atrasada em setembro e foi quitada em outubro. O relatório de setembro retrata a situação de setembro. Por isso, o atraso daquele mês não desaparece como se nunca tivesse ocorrido. A posição posterior deve refletir a regularização.",
+      "title": "A ligação define a base",
+      "narration": "Para casas de baixa tensão às quais o mínimo se aplica, a resolução da Aneel separa a ligação por tipo. Monofásica, ou bifásica de dois condutores, usa o equivalente a trinta quilowatts-hora. Bifásica de três condutores, cinquenta. Trifásica, cem. Repare: são valores de referência para faturar o mínimo, não uma leitura inventada do medidor. E nem toda instalação entra nessa regra: existem exceções na regulamentação. O jeito seguro é verificar a classificação escrita na sua fatura.",
       "claim_ids": [
-        "C4"
+        "C2"
       ],
       "tts": {
         "delivery": "explain",
-        "pause_ms": 150,
-        "cues": [
-          {
-            "text": "A posição posterior deve refletir a regularização.",
-            "kind": "emphasis",
-            "intent": "reassurance",
-            "arc": "resolve",
-            "pause_before_ms": 100
-          }
-        ]
+        "pause_ms": 160,
+        "cues": []
       },
       "visual": {
         "type": "authored_stage",
@@ -1330,88 +1206,68 @@
           },
           "elements": [
             {
-              "id": "months",
-              "kind": "object",
-              "label": "Um mês não apaga o outro",
-              "x": 3,
-              "y": 19,
-              "width": 94,
-              "height": 67,
-              "surface": "none",
-              "label_size": 48,
-              "object_type": "data",
-              "hyperframes": {
-                "entry": "video/hyperframes/credit-months/index.html",
-                "initial_state": "september",
-                "width": 1280,
-                "height": 640,
-                "states": [
-                  {
-                    "anchor": "Imagine um exemplo hipotético",
-                    "state": "september"
-                  },
-                  {
-                    "anchor": "uma dívida de cartão ficou atrasada em setembro",
-                    "state": "old"
-                  },
-                  {
-                    "anchor": "e foi quitada em outubro.",
-                    "state": "paid"
-                  },
-                  {
-                    "anchor": "O relatório de setembro",
-                    "state": "old"
-                  },
-                  {
-                    "anchor": "Por isso, o atraso daquele mês",
-                    "state": "old"
-                  },
-                  {
-                    "anchor": "como se nunca tivesse ocorrido.",
-                    "state": "old"
-                  },
-                  {
-                    "anchor": "A posição posterior",
-                    "state": "new"
-                  }
-                ]
-              },
-              "show_label": false,
-              "visual_role": "protagonist"
-            },
-            {
-              "id": "hypothesis",
+              "id": "headline",
               "kind": "label",
-              "label": "EXEMPLO HIPOTÉTICO",
+              "label": "QUAL É O PISO DA LIGAÇÃO?",
               "x": 4,
-              "y": 89,
+              "y": 4,
               "width": 92,
-              "height": 10,
-              "surface": "none",
-              "label_size": 56
+              "height": 15,
+              "label_size": 72,
+              "surface": "none"
             },
             {
-              "id": "sep",
-              "kind": "label",
-              "label": "SETEMBRO",
-              "x": 7,
-              "y": 1,
-              "width": 40,
-              "height": 14,
+              "id": "mono",
+              "kind": "metric",
+              "label": "MONO / BI 2 FIOS",
+              "value": "30 kWh",
+              "x": 4,
+              "y": 25,
+              "width": 29,
+              "height": 43,
+              "label_size": 54,
+              "value_size": 128,
               "surface": "none",
-              "label_size": 76
-            },
-            {
-              "id": "oct",
-              "kind": "label",
-              "label": "OUTUBRO",
-              "x": 53,
-              "y": 1,
-              "width": 40,
-              "height": 14,
-              "surface": "none",
-              "label_size": 76,
               "initially_visible": false
+            },
+            {
+              "id": "bi",
+              "kind": "metric",
+              "label": "BI 3 FIOS",
+              "value": "50 kWh",
+              "x": 36,
+              "y": 25,
+              "width": 28,
+              "height": 43,
+              "label_size": 54,
+              "value_size": 128,
+              "surface": "none",
+              "initially_visible": false
+            },
+            {
+              "id": "tri",
+              "kind": "metric",
+              "label": "TRIFÁSICA",
+              "value": "100 kWh",
+              "x": 68,
+              "y": 25,
+              "width": 28,
+              "height": 43,
+              "label_size": 54,
+              "value_size": 124,
+              "surface": "none",
+              "initially_visible": false
+            },
+            {
+              "id": "qualifier",
+              "kind": "label",
+              "label": "BASE DE FATURAMENTO · NÃO LEITURA DO MEDIDOR",
+              "x": 5,
+              "y": 79,
+              "width": 90,
+              "height": 13,
+              "label_size": 53,
+              "surface": "none"
             }
           ],
           "connections": [],
@@ -1423,95 +1279,106 @@
         },
         "beats": [
           {
-            "anchor": "Imagine um exemplo hipotético",
-            "target_id": "months",
-            "headline": "SETEMBRO",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.9,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.01,
-              "motion_seconds": 0.9
-            }
-          },
-          {
-            "anchor": "uma dívida de cartão ficou atrasada em setembro",
-            "target_id": "hypothesis",
-            "headline": "HIPÓTESE: SETEMBRO EM ATRASO",
+            "anchor": "Para casas de baixa tensão",
+            "target_id": "headline",
+            "headline": "BAIXA TENSÃO: REGRA COM LIMITES",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "e foi quitada em outubro.",
-            "target_id": "months",
-            "headline": "OUTUBRO: PAGAMENTO",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.9,
-            "actuation": "confirm",
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.03,
-              "motion_seconds": 0.9
-            },
-            "reveal_ids": [
-              "oct"
-            ]
-          },
-          {
-            "anchor": "O relatório de setembro",
-            "target_id": "hypothesis",
-            "headline": "HIPÓTESE: RETRATO DE SETEMBRO",
+            "anchor": "a resolução da Aneel",
+            "target_id": "headline",
+            "headline": "ARTIGO 291 DA ANEEL",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "Por isso, o atraso daquele mês",
-            "target_id": "months",
-            "headline": "O MÊS ANTIGO PERMANECE",
-            "action": "focus",
-            "treatment": "spotlight",
+            "anchor": "Monofásica, ou bifásica de dois condutores,",
+            "target_id": "mono",
+            "headline": "MONO OU BI 2 FIOS",
+            "action": "reveal",
+            "treatment": "giant_number",
             "behavior": "transform",
-            "motion_seconds": 0.9,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.015,
-              "motion_seconds": 0.9
+            "motion_seconds": 0.7,
+            "value": "30 kWh",
+            "entrance": {
+              "style": "scale"
             }
           },
           {
-            "anchor": "como se nunca tivesse ocorrido.",
-            "target_id": "hypothesis",
-            "headline": "HIPÓTESE: O PASSADO NÃO MUDA",
+            "anchor": "trinta quilowatts-hora.",
+            "target_id": "mono",
+            "headline": "BASE: 30 kWh",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "Bifásica de três condutores, cinquenta.",
+            "target_id": "bi",
+            "headline": "BASE: 50 kWh",
+            "action": "reveal",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "value": "50 kWh",
+            "entrance": {
+              "style": "scale"
+            }
+          },
+          {
+            "anchor": "Trifásica, cem.",
+            "target_id": "tri",
+            "headline": "BASE: 100 kWh",
+            "action": "reveal",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "value": "100 kWh",
+            "entrance": {
+              "style": "scale"
+            }
+          },
+          {
+            "anchor": "Repare: são valores de referência",
+            "target_id": "qualifier",
+            "headline": "SÃO VALORES DE REFERÊNCIA",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "A posição posterior",
-            "target_id": "months",
-            "headline": "SITUAÇÃO POSTERIOR REGULARIZADA",
-            "action": "focus",
-            "treatment": "spotlight",
+            "anchor": "não uma leitura inventada do medidor.",
+            "target_id": "qualifier",
+            "headline": "A LEITURA NÃO É INVENTADA",
+            "action": "update",
+            "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.9,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.04,
-              "motion_seconds": 0.9
-            }
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "nem toda instalação entra nessa regra:",
+            "target_id": "headline",
+            "headline": "EXISTEM EXCEÇÕES",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "verificar a classificação",
+            "target_id": "headline",
+            "headline": "CONFIRA A CLASSIFICAÇÃO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
           }
         ]
       }
@@ -1519,180 +1386,15 @@
     {
       "id": "scene-04",
       "index": 3,
-      "title": "A prova e a data correta",
-      "narration": "Segundo o Banco Central, o pagamento não reescreve as posições passadas. É como conferir dois retratos de momentos diferentes: um não invalida o outro. Também não confunda o mês dos dados com o dia em que você abriu o relatório. A atualização do pagamento não é instantânea. Se você olha só uma data antiga, pode concluir que continua devendo uma conta que já quitou.",
+      "title": "Uma conta hipotética: piso não se soma à leitura",
+      "narration": "Vamos fazer uma conta com valores inteiramente hipotéticos. Suponha uma residência monofásica que mediu oito quilowatts-hora no mês. Para demonstrar, imagine uma tarifa simplificada de oitenta centavos por quilowatt-hora. Como o piso desse caso é trinta, trinta vezes oitenta centavos dão vinte e quatro reais. O medidor continua mostrando oito. Os trinta entram como referência do faturamento mínimo, e não como oito mais trinta. Os vinte e quatro reais não são uma cotação real: a conta final depende da tarifa, tributos e outros itens locais.",
       "claim_ids": [
-        "C4",
-        "C5"
-      ],
-      "tts": {
-        "delivery": "explain",
-        "pause_ms": 150,
-        "cues": []
-      },
-      "visual": {
-        "type": "authored_stage",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "camera_mode": "manual",
-          "motion_profile": "narrative",
-          "captions": {
-            "enabled": true,
-            "max_words": 6,
-            "words_per_line": 3,
-            "max_lines": 2,
-            "font_size": 64,
-            "min_free_area_ratio": 0.3
-          },
-          "elements": [
-            {
-              "id": "proof",
-              "kind": "source_excerpt",
-              "label": "BANCO CENTRAL · HISTÓRICO DO SCR",
-              "x": 3,
-              "y": 5,
-              "width": 94,
-              "height": 66,
-              "surface": "spotlight",
-              "label_size": 48,
-              "asset_id": "paid-history",
-              "image_fit": "contain"
-            },
-            {
-              "id": "meaning",
-              "kind": "label",
-              "label": "PAGAMENTO NÃO REESCREVE O PASSADO",
-              "x": 4,
-              "y": 77,
-              "width": 92,
-              "height": 19,
-              "surface": "none",
-              "label_size": 78
-            }
-          ],
-          "connections": [],
-          "initial_camera": {
-            "x": 50,
-            "y": 50,
-            "zoom": 1
-          }
-        },
-        "beats": [
-          {
-            "anchor": "Segundo o Banco Central,",
-            "target_id": "proof",
-            "headline": "BANCO CENTRAL",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.9,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.01,
-              "motion_seconds": 0.9
-            }
-          },
-          {
-            "anchor": "o pagamento não reescreve as posições passadas.",
-            "target_id": "meaning",
-            "headline": "O PASSADO NÃO É REESCRITO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "É como conferir dois retratos",
-            "target_id": "meaning",
-            "headline": "RETRATOS DE MESES DIFERENTES",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "um não invalida o outro.",
-            "target_id": "proof",
-            "headline": "DOCUMENTO ORIGINAL",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.9,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.03,
-              "motion_seconds": 0.9
-            }
-          },
-          {
-            "anchor": "Também não confunda o mês dos dados",
-            "target_id": "meaning",
-            "headline": "MÊS DOS DADOS ≠ DIA DA CONSULTA",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "o dia em que você abriu o relatório.",
-            "target_id": "proof",
-            "headline": "MÊS DE REFERÊNCIA",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.9,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.015,
-              "motion_seconds": 0.9
-            }
-          },
-          {
-            "anchor": "A atualização do pagamento não é instantânea.",
-            "target_id": "meaning",
-            "headline": "ATUALIZAÇÃO LEVA TEMPO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "Se você olha só uma data antiga,",
-            "target_id": "meaning",
-            "headline": "CONFIRA A POSIÇÃO POSTERIOR",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "uma conta que já quitou.",
-            "target_id": "meaning",
-            "headline": "REGISTRO ANTIGO ≠ DÍVIDA ATUAL",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-05a",
-      "index": 4,
-      "title": "A análise inclui a capacidade de pagamento",
-      "narration": "Agora vem a outra parte: até com a situação regularizada, o banco pode avaliar renda, compromissos e seus próprios critérios de risco. Uma pontuação boa não transforma toda parcela numa parcela possível.",
-      "claim_ids": [
-        "C1",
+        "C2",
         "C6"
       ],
       "tts": {
         "delivery": "explain",
-        "pause_ms": 150,
+        "pause_ms": 160,
         "cues": []
       },
       "visual": {
@@ -1712,56 +1414,78 @@
           },
           "elements": [
             {
-              "id": "bank",
-              "kind": "object",
-              "label": "CRITÉRIOS DA INSTITUIÇÃO",
-              "x": 3,
-              "y": 21,
-              "width": 43,
-              "height": 74,
-              "surface": "none",
-              "label_size": 48,
-              "object_type": "bank",
-              "svg_motion": "assemble",
-              "show_label": false,
-              "visual_role": "protagonist",
-              "sustain": {
-                "kind": "breathe",
-                "amplitude": 18,
-                "period_seconds": 7
-              }
-            },
-            {
-              "id": "wallet",
-              "kind": "object",
-              "label": "RENDA E COMPROMISSOS",
-              "x": 54,
-              "y": 21,
-              "width": 43,
-              "height": 74,
-              "surface": "none",
-              "label_size": 48,
-              "object_type": "wallet",
-              "svg_motion": "assemble",
-              "initially_visible": false,
-              "show_label": false,
-              "visual_role": "protagonist",
-              "sustain": {
-                "kind": "float",
-                "amplitude": 16,
-                "period_seconds": 6
-              }
-            },
-            {
-              "id": "criteria",
+              "id": "headline",
               "kind": "label",
-              "label": "RENDA · COMPROMISSOS · CRITÉRIOS",
+              "label": "COMO CHEGA AO PISO?",
               "x": 4,
-              "y": 1,
+              "y": 4,
               "width": 92,
-              "height": 16,
+              "height": 15,
+              "label_size": 72,
+              "surface": "none"
+            },
+            {
+              "id": "base",
+              "kind": "metric",
+              "label": "PISO ILUSTRATIVO",
+              "value": "30",
+              "x": 4,
+              "y": 25,
+              "width": 27,
+              "height": 37,
+              "label_size": 54,
+              "value_size": 148,
+              "surface": "none"
+            },
+            {
+              "id": "rate",
+              "kind": "metric",
+              "label": "TARIFA HIPOTÉTICA",
+              "value": "R$ 0,80",
+              "x": 37,
+              "y": 25,
+              "width": 27,
+              "height": 37,
+              "label_size": 54,
+              "value_size": 112,
               "surface": "none",
-              "label_size": 80
+              "initially_visible": false
+            },
+            {
+              "id": "total",
+              "kind": "metric",
+              "label": "SÓ ESTA PARCELA",
+              "value": "R$ 24",
+              "x": 70,
+              "y": 25,
+              "width": 26,
+              "height": 37,
+              "label_size": 54,
+              "value_size": 132,
+              "surface": "none",
+              "initially_visible": false
+            },
+            {
+              "id": "measured",
+              "kind": "label",
+              "label": "MEDIU 8 kWh, NÃO 38 kWh",
+              "x": 4,
+              "y": 69,
+              "width": 36,
+              "height": 17,
+              "label_size": 57,
+              "surface": "none"
+            },
+            {
+              "id": "hypo",
+              "kind": "label",
+              "label": "EXEMPLO HIPOTÉTICO · OUTROS ITENS FORA",
+              "x": 46,
+              "y": 69,
+              "width": 49,
+              "height": 17,
+              "label_size": 50,
+              "surface": "none"
             }
           ],
           "connections": [],
@@ -1773,578 +1497,136 @@
         },
         "beats": [
           {
-            "anchor": "Agora vem a outra parte:",
-            "target_id": "bank",
-            "headline": "ANÁLISE DO BANCO",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.9,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.01,
-              "motion_seconds": 0.9
-            }
-          },
-          {
-            "anchor": "até com a situação regularizada,",
-            "target_id": "criteria",
-            "headline": "SITUAÇÃO REGULARIZADA",
+            "anchor": "valores inteiramente hipotéticos.",
+            "target_id": "hypo",
+            "headline": "EXEMPLO HIPOTÉTICO",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "o banco pode avaliar renda,",
-            "target_id": "wallet",
-            "headline": "RENDA E COMPROMISSOS",
-            "action": "reveal",
+            "anchor": "residência monofásica",
+            "target_id": "base",
+            "headline": "MONOFÁSICA: BASE 30",
+            "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.9,
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "mediu oito quilowatts-hora no mês.",
+            "target_id": "measured",
+            "headline": "MEDIÇÃO: 8 kWh",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "tarifa simplificada de oitenta centavos",
+            "target_id": "rate",
+            "headline": "R$ 0,80 / kWh",
+            "action": "reveal",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "value": "R$ 0,80",
             "entrance": {
               "style": "scale"
             }
           },
           {
-            "anchor": "seus próprios critérios de risco.",
-            "target_id": "criteria",
-            "headline": "CRITÉRIOS DA INSTITUIÇÃO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "Uma pontuação boa",
-            "target_id": "bank",
-            "headline": "PONTUAÇÃO E CRITÉRIOS",
+            "anchor": "Como o piso desse caso é trinta,",
+            "target_id": "base",
+            "headline": "BASE: 30 kWh",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.9,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.03,
-              "motion_seconds": 0.9
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "trinta vezes oitenta centavos",
+            "target_id": "total",
+            "headline": "30 × 0,80",
+            "action": "reveal",
+            "treatment": "equation",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "operation": {
+              "kind": "equation",
+              "input_ids": [
+                "base",
+                "rate"
+              ],
+              "operator": "×",
+              "result_id": "total"
+            },
+            "entrance": {
+              "style": "scale"
             }
           },
           {
-            "anchor": "numa parcela possível.",
-            "target_id": "criteria",
-            "headline": "A PARCELA PRECISA CABER",
+            "anchor": "dão vinte e quatro reais.",
+            "target_id": "total",
+            "headline": "RESULTADO: R$ 24",
+            "action": "focus",
+            "treatment": "giant_number",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "value": "R$ 24"
+          },
+          {
+            "anchor": "O medidor continua mostrando oito.",
+            "target_id": "measured",
+            "headline": "A LEITURA CONTINUA 8",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "e não como oito mais trinta.",
+            "target_id": "measured",
+            "headline": "NÃO SOMA 8 + 30",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "não são uma cotação real:",
+            "target_id": "hypo",
+            "headline": "APENAS VALOR ILUSTRATIVO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "tributos e outros itens locais.",
+            "target_id": "hypo",
+            "headline": "FATURA COMPLETA VARIA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
           }
         ]
       }
     },
     {
       "id": "scene-05",
-      "index": 5,
-      "title": "Uma parcela precisa caber na renda",
-      "narration": "Num exemplo hipotético, alguém recebe três mil reais, já paga oitocentos em prestações e pensa em assumir mais setecentos. As prestações somariam mil e quinhentos reais. Ainda existem aluguel, alimentação e outras despesas. Essa conta não reproduz a fórmula de nenhum banco, nem estabelece um limite obrigatório. Ela só mostra por que a capacidade de pagamento é uma pergunta diferente de estar negativado. O histórico pode pesar na análise, mas um registro no SCR não determina sozinho uma recusa.",
+      "index": 4,
+      "title": "Tarifa Social muda o piso",
+      "narration": "Agora a exceção importante. Quem se enquadra na Tarifa Social de Energia Elétrica tem desconto integral na parcela de energia dos primeiros oitenta quilowatts-hora mensais desde julho de dois mil e vinte e cinco. A Aneel esclarece que esse tratamento vale mesmo quando a instalação é trifásica. Portanto, não é correto olhar para o padrão de cem e concluir que toda família trifásica sempre pagará esse piso. O benefício depende do enquadramento e do cadastro; se você se enquadra, confirme o desconto na fatura.",
       "claim_ids": [
-        "C1",
-        "C6"
-      ],
-      "tts": {
-        "delivery": "explain",
-        "pause_ms": 150,
-        "cues": [
-          {
-            "text": "As prestações somariam mil e quinhentos reais.",
-            "kind": "number",
-            "intent": "discovery",
-            "arc": "resolve",
-            "pause_before_ms": 100
-          }
-        ]
-      },
-      "visual": {
-        "type": "authored_stage",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "camera_mode": "manual",
-          "motion_profile": "narrative",
-          "captions": {
-            "enabled": true,
-            "max_words": 6,
-            "words_per_line": 3,
-            "max_lines": 2,
-            "font_size": 64,
-            "min_free_area_ratio": 0.3
-          },
-          "elements": [
-            {
-              "id": "income",
-              "kind": "metric",
-              "label": "RENDA ILUSTRATIVA",
-              "x": 3,
-              "y": 3,
-              "width": 61,
-              "height": 25,
-              "surface": "none",
-              "label_size": 56,
-              "value": "R$ 3.000",
-              "value_size": 150,
-              "initially_visible": false
-            },
-            {
-              "id": "existing",
-              "kind": "metric",
-              "label": "PARCELAS ATUAIS",
-              "x": 3,
-              "y": 33,
-              "width": 26,
-              "height": 46,
-              "surface": "none",
-              "label_size": 64,
-              "value": "R$ 800",
-              "value_size": 145,
-              "initially_visible": false
-            },
-            {
-              "id": "new",
-              "kind": "metric",
-              "label": "NOVA PARCELA",
-              "x": 36,
-              "y": 33,
-              "width": 26,
-              "height": 46,
-              "surface": "none",
-              "label_size": 64,
-              "value": "R$ 700",
-              "value_size": 145,
-              "initially_visible": false
-            },
-            {
-              "id": "total",
-              "kind": "metric",
-              "label": "TOTAL DE PARCELAS",
-              "x": 71,
-              "y": 33,
-              "width": 26,
-              "height": 46,
-              "surface": "none",
-              "label_size": 64,
-              "value": "R$ 1.500",
-              "value_size": 145,
-              "initially_visible": false
-            },
-            {
-              "id": "hypothesis",
-              "kind": "label",
-              "label": "EXEMPLO HIPOTÉTICO",
-              "x": 68,
-              "y": 1,
-              "width": 29,
-              "height": 27,
-              "surface": "none",
-              "label_size": 52
-            },
-            {
-              "id": "limits",
-              "kind": "label",
-              "label": "AINDA HÁ DESPESAS",
-              "x": 4,
-              "y": 84,
-              "width": 92,
-              "height": 13,
-              "label_size": 64,
-              "surface": "none",
-              "initially_visible": false
-            }
-          ],
-          "connections": [],
-          "initial_camera": {
-            "x": 50,
-            "y": 50,
-            "zoom": 1
-          }
-        },
-        "beats": [
-          {
-            "anchor": "Num exemplo hipotético,",
-            "target_id": "hypothesis",
-            "headline": "EXEMPLO HIPOTÉTICO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "alguém recebe três mil reais,",
-            "target_id": "income",
-            "headline": "RENDA ILUSTRATIVA",
-            "action": "reveal",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.9,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.01,
-              "motion_seconds": 0.9
-            },
-            "entrance": {
-              "style": "slide",
-              "direction": "down"
-            }
-          },
-          {
-            "anchor": "já paga oitocentos em prestações",
-            "target_id": "existing",
-            "headline": "PARCELAS ATUAIS",
-            "action": "reveal",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.9,
-            "entrance": {
-              "style": "slide",
-              "direction": "up"
-            }
-          },
-          {
-            "anchor": "assumir mais setecentos.",
-            "target_id": "new",
-            "headline": "NOVA PARCELA",
-            "action": "reveal",
-            "treatment": "giant_number",
-            "behavior": "transform",
-            "motion_seconds": 0.9,
-            "entrance": {
-              "style": "slide",
-              "direction": "up"
-            }
-          },
-          {
-            "anchor": "As prestações somariam mil e quinhentos reais.",
-            "target_id": "total",
-            "headline": "TOTAL DE PARCELAS",
-            "action": "reveal",
-            "treatment": "equation",
-            "behavior": "transform",
-            "motion_seconds": 0.9,
-            "operation": {
-              "kind": "equation",
-              "input_ids": [
-                "existing",
-                "new"
-              ],
-              "operator": "+",
-              "result_id": "total"
-            },
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.03,
-              "motion_seconds": 0.9
-            },
-            "entrance": {
-              "style": "scale"
-            }
-          },
-          {
-            "anchor": "Ainda existem aluguel, alimentação e outras despesas.",
-            "target_id": "limits",
-            "headline": "AINDA HÁ DESPESAS",
-            "action": "reveal",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "Essa conta não reproduz a fórmula de nenhum banco,",
-            "target_id": "limits",
-            "headline": "NÃO É REGRA DO BANCO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "a capacidade de pagamento é uma pergunta diferente",
-            "target_id": "limits",
-            "headline": "A PARCELA PRECISA CABER",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "O histórico pode pesar na análise,",
-            "target_id": "limits",
-            "headline": "HISTÓRICO NÃO DECIDE SOZINHO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-06",
-      "index": 6,
-      "title": "Conferir o dado e guardar o protocolo",
-      "narration": "Pra conferir sua situação, consulte seus dados nos serviços de proteção ao crédito e o relatório de empréstimos e financiamentos no Registrato, pelo endereço oficial do Banco Central. Para esse acesso, o BC pede conta gov.br prata ou ouro e verificação em duas etapas. Compare a instituição, a operação, o mês de referência e o comprovante da quitação. Se houver informação errada, procure o banco ou a financeira que enviou o registro e guarde o protocolo. Sem solução, avance para a ouvidoria; se persistir, existe o canal de reclamação do Banco Central. Corrigir informação errada e apagar um histórico verdadeiro são coisas diferentes. Nenhum desses passos é uma garantia de aprovação.",
-      "claim_ids": [
-        "C7",
         "C4",
-        "C1"
+        "C5"
       ],
       "tts": {
         "delivery": "explain",
-        "pause_ms": 150,
-        "cues": [
-          {
-            "text": "Nenhum desses passos é uma garantia de aprovação.",
-            "kind": "contrast",
-            "intent": "caution",
-            "arc": "resolve",
-            "pause_before_ms": 100
-          }
-        ]
-      },
-      "visual": {
-        "type": "authored_stage",
-        "transition": "cut",
-        "stage": {
-          "show_title": false,
-          "camera_mode": "manual",
-          "motion_profile": "narrative",
-          "captions": {
-            "enabled": true,
-            "max_words": 6,
-            "words_per_line": 3,
-            "max_lines": 2,
-            "font_size": 64,
-            "min_free_area_ratio": 0.3
-          },
-          "elements": [
-            {
-              "id": "record",
-              "kind": "object",
-              "label": "CONFERÊNCIA DOS DADOS",
-              "x": 3,
-              "y": 22,
-              "width": 42,
-              "height": 72,
-              "surface": "none",
-              "label_size": 48,
-              "object_type": "receipt",
-              "svg_motion": "assemble",
-              "sustain": {
-                "kind": "float",
-                "amplitude": 15,
-                "period_seconds": 7
-              },
-              "show_label": false,
-              "visual_role": "protagonist"
-            },
-            {
-              "id": "route",
-              "kind": "step",
-              "label": "BANCO OU FINANCEIRA",
-              "x": 50,
-              "y": 21,
-              "width": 47,
-              "height": 32,
-              "surface": "none",
-              "label_size": 66,
-              "icon": "bank",
-              "icon_size": 220,
-              "content_layout": "row",
-              "initially_visible": false
-            },
-            {
-              "id": "protocol",
-              "kind": "step",
-              "label": "GUARDE O PROTOCOLO",
-              "x": 50,
-              "y": 59,
-              "width": 47,
-              "height": 32,
-              "surface": "none",
-              "label_size": 66,
-              "icon": "document",
-              "icon_size": 220,
-              "content_layout": "row",
-              "initially_visible": false
-            },
-            {
-              "id": "check",
-              "kind": "label",
-              "label": "CONSULTE SEUS RELATÓRIOS",
-              "x": 4,
-              "y": 1,
-              "width": 92,
-              "height": 16,
-              "surface": "none",
-              "label_size": 76
-            }
-          ],
-          "connections": [],
-          "initial_camera": {
-            "x": 50,
-            "y": 50,
-            "zoom": 1
-          }
-        },
-        "beats": [
-          {
-            "anchor": "Pra conferir sua situação,",
-            "target_id": "record",
-            "headline": "CONFERIR DADOS",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.9,
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.01,
-              "motion_seconds": 0.9
-            }
-          },
-          {
-            "anchor": "serviços de proteção ao crédito",
-            "target_id": "check",
-            "headline": "PROTEÇÃO AO CRÉDITO E REGISTRATO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "pelo endereço oficial do Banco Central.",
-            "target_id": "check",
-            "headline": "ENDEREÇO OFICIAL DO BC",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "conta gov.br prata ou ouro",
-            "target_id": "check",
-            "headline": "GOV.BR PRATA OU OURO + DUAS ETAPAS",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "Compare a instituição, a operação,",
-            "target_id": "record",
-            "headline": "INSTITUIÇÃO E OPERAÇÃO",
-            "action": "focus",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.9,
-            "actuation": "tap",
-            "camera": {
-              "x": 50,
-              "y": 50,
-              "zoom": 1.03,
-              "motion_seconds": 0.9
-            }
-          },
-          {
-            "anchor": "o mês de referência e o comprovante",
-            "target_id": "check",
-            "headline": "MÊS E COMPROVANTE",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "Se houver informação errada,",
-            "target_id": "route",
-            "headline": "BANCO OU FINANCEIRA",
-            "action": "reveal",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.9,
-            "entrance": {
-              "style": "slide",
-              "direction": "right"
-            }
-          },
-          {
-            "anchor": "guarde o protocolo.",
-            "target_id": "protocol",
-            "headline": "GUARDE O PROTOCOLO",
-            "action": "reveal",
-            "treatment": "spotlight",
-            "behavior": "transform",
-            "motion_seconds": 0.9,
-            "entrance": {
-              "style": "wipe",
-              "direction": "left"
-            }
-          },
-          {
-            "anchor": "Sem solução, avance para a ouvidoria;",
-            "target_id": "route",
-            "headline": "SEM SOLUÇÃO: OUVIDORIA",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "se persistir, existe o canal de reclamação",
-            "target_id": "route",
-            "headline": "PERSISTIU: RECLAME AO BC",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "Corrigir informação errada",
-            "target_id": "check",
-            "headline": "CORRIGIR ERRO ≠ APAGAR HISTÓRICO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "Nenhum desses passos é uma garantia de aprovação.",
-            "target_id": "check",
-            "headline": "SEM GARANTIA DE APROVAÇÃO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          }
-        ]
-      }
-    },
-    {
-      "id": "scene-07",
-      "index": 7,
-      "title": "A resposta é separar as três perguntas",
-      "narration": "Então, por que o banco pode negar crédito com o nome limpo? Porque a ausência de negativação não resume o histórico nem a capacidade de assumir um novo compromisso. Uma dívida quitada deve ter sua situação atualizada, mas o mês em que houve atraso continua sendo um registro daquele momento. E a decisão ainda depende dos critérios da instituição. Se essa distinção ajudou, inscreva-se no canal para entender melhor as decisões que mexem com seu dinheiro. Antes de tentar mais um pedido, confira o que o relatório realmente diz. No seu caso, a dúvida é um registro antigo, um dado errado ou uma parcela que ainda não cabe?",
-      "claim_ids": [
-        "C1",
-        "C4",
-        "C6",
-        "C7"
-      ],
-      "tts": {
-        "delivery": "explain",
-        "pause_ms": 150,
+        "pause_ms": 160,
         "cues": []
       },
       "visual": {
@@ -2364,77 +1646,40 @@
           },
           "elements": [
             {
-              "id": "resolution",
-              "kind": "object",
-              "label": "A resposta é separar as três perguntas",
-              "x": 2,
-              "y": 10,
-              "width": 63,
-              "height": 84,
-              "surface": "none",
-              "label_size": 48,
-              "object_type": "data",
-              "hyperframes": {
-                "entry": "video/hyperframes/credit-archive/index.html",
-                "initial_state": "consult",
-                "width": 960,
-                "height": 640,
-                "states": [
-                  {
-                    "anchor": "Então, por que o banco pode negar crédito",
-                    "state": "consult"
-                  },
-                  {
-                    "anchor": "Porque a ausência de negativação",
-                    "state": "consult"
-                  },
-                  {
-                    "anchor": "o histórico nem a capacidade",
-                    "state": "good"
-                  },
-                  {
-                    "anchor": "Uma dívida quitada deve ter sua situação atualizada,",
-                    "state": "good"
-                  },
-                  {
-                    "anchor": "o mês em que houve atraso",
-                    "state": "month"
-                  },
-                  {
-                    "anchor": "E a decisão ainda depende",
-                    "state": "consult"
-                  },
-                  {
-                    "anchor": "Se essa distinção ajudou,",
-                    "state": "consult"
-                  },
-                  {
-                    "anchor": "as decisões que mexem com seu dinheiro.",
-                    "state": "good"
-                  },
-                  {
-                    "anchor": "Antes de tentar mais um pedido,",
-                    "state": "month"
-                  },
-                  {
-                    "anchor": "No seu caso, a dúvida é",
-                    "state": "consult"
-                  }
-                ]
-              },
-              "show_label": false,
-              "visual_role": "protagonist"
+              "id": "headline",
+              "kind": "label",
+              "label": "TARIFA SOCIAL: A EXCEÇÃO",
+              "x": 4,
+              "y": 4,
+              "width": 92,
+              "height": 15,
+              "label_size": 73,
+              "surface": "none"
             },
             {
-              "id": "answer",
-              "kind": "label",
-              "label": "NOME LIMPO NÃO RESUME TODA A ANÁLISE",
-              "x": 69,
-              "y": 7,
-              "width": 29,
-              "height": 86,
+              "id": "proof",
+              "kind": "source_excerpt",
+              "label": "Regras oficiais da Tarifa Social",
+              "asset_id": "aneel-social",
+              "x": 5,
+              "y": 23,
+              "width": 90,
+              "height": 58,
+              "photo_style": "clean",
+              "image_fit": "contain",
               "surface": "none",
-              "label_size": 82
+              "initially_visible": false
+            },
+            {
+              "id": "exception",
+              "kind": "label",
+              "label": "ATÉ 80 kWh · QUANDO HÁ DIREITO",
+              "x": 5,
+              "y": 85,
+              "width": 90,
+              "height": 11,
+              "label_size": 56,
+              "surface": "none"
             }
           ],
           "connections": [],
@@ -2446,112 +1691,720 @@
         },
         "beats": [
           {
-            "anchor": "Então, por que o banco pode negar crédito",
-            "target_id": "resolution",
-            "headline": "A RESPOSTA",
-            "action": "focus",
-            "treatment": "spotlight",
+            "anchor": "Agora a exceção importante.",
+            "target_id": "headline",
+            "headline": "UMA EXCEÇÃO IMPORTANTE",
+            "action": "update",
+            "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.9,
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "Quem se enquadra na Tarifa Social",
+            "target_id": "proof",
+            "headline": "FONTE: ANEEL",
+            "action": "reveal",
+            "treatment": "depth_photo",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "entrance": {
+              "style": "fade"
+            },
             "camera": {
               "x": 50,
               "y": 50,
               "zoom": 1.01,
-              "motion_seconds": 0.9
+              "motion_seconds": 0.8
             }
           },
           {
-            "anchor": "Porque a ausência de negativação",
-            "target_id": "answer",
-            "headline": "NOME LIMPO NÃO É TUDO",
+            "anchor": "desconto integral na parcela de energia",
+            "target_id": "exception",
+            "headline": "100% NA PARCELA DE ENERGIA",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "o histórico nem a capacidade",
-            "target_id": "resolution",
-            "headline": "HISTÓRICO E CAPACIDADE",
+            "anchor": "primeiros oitenta quilowatts-hora",
+            "target_id": "exception",
+            "headline": "PRIMEIROS 80 kWh",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "desde julho de dois mil e vinte e cinco.",
+            "target_id": "headline",
+            "headline": "REGRA DESDE JULHO DE 2025",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "vale mesmo quando a instalação é trifásica.",
+            "target_id": "exception",
+            "headline": "VALE TAMBÉM PARA TRIFÁSICA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "não é correto olhar para o padrão de cem",
+            "target_id": "headline",
+            "headline": "100 kWh NÃO É UNIVERSAL",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "O benefício depende do enquadramento",
+            "target_id": "exception",
+            "headline": "CRITÉRIOS DE ELEGIBILIDADE",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "confirme o desconto na fatura.",
+            "target_id": "headline",
+            "headline": "VERIFIQUE O BENEFÍCIO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-06",
+      "index": 5,
+      "title": "A fatura contém mais de uma cobrança",
+      "narration": "Mas tarifa de energia gratuita não significa obrigatoriamente boleto zerado. A fatura pode incluir contribuição para iluminação pública, se o município a instituiu, e tributos conforme as regras locais. Esse dinheiro não deve ser confundido com o consumo da casa. A própria Aneel separa a energia, o transporte, os encargos e os tributos que chegam ao consumidor. Por isso, duas famílias que gastam os mesmos quilowatts-hora podem ver totais diferentes. Também não dá para pegar um exemplo de vinte e quatro reais e transformar num preço nacional.",
+      "claim_ids": [
+        "C4",
+        "C5",
+        "C6"
+      ],
+      "tts": {
+        "delivery": "explain",
+        "pause_ms": 160,
+        "cues": []
+      },
+      "visual": {
+        "type": "authored_stage",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "captions": {
+            "enabled": true,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          },
+          "elements": [
+            {
+              "id": "headline",
+              "kind": "label",
+              "label": "O QUE COMPÕE A CONTA?",
+              "x": 4,
+              "y": 4,
+              "width": 92,
+              "height": 15,
+              "label_size": 74,
+              "surface": "none"
+            },
+            {
+              "id": "invoice",
+              "kind": "object",
+              "label": "FATURA ESQUEMÁTICA",
+              "object_type": "receipt",
+              "x": 5,
+              "y": 23,
+              "width": 37,
+              "height": 61,
+              "show_label": false,
+              "visual_role": "protagonist",
+              "svg_motion": "assemble",
+              "surface": "none"
+            },
+            {
+              "id": "energy",
+              "kind": "label",
+              "label": "PARCELA DE ENERGIA",
+              "x": 53,
+              "y": 23,
+              "width": 42,
+              "height": 14,
+              "label_size": 63,
+              "surface": "none"
+            },
+            {
+              "id": "light",
+              "kind": "label",
+              "label": "ILUMINAÇÃO PÚBLICA · SE HOUVER",
+              "x": 53,
+              "y": 45,
+              "width": 42,
+              "height": 14,
+              "label_size": 55,
+              "surface": "none",
+              "initially_visible": false
+            },
+            {
+              "id": "tax",
+              "kind": "label",
+              "label": "TRIBUTOS CONFORME REGRAS LOCAIS",
+              "x": 53,
+              "y": 67,
+              "width": 42,
+              "height": 14,
+              "label_size": 54,
+              "surface": "none",
+              "initially_visible": false
+            }
+          ],
+          "connections": [
+            {
+              "from": "invoice",
+              "to": "energy",
+              "semantic": "relation",
+              "motion": "once"
+            },
+            {
+              "from": "invoice",
+              "to": "light",
+              "semantic": "relation",
+              "motion": "once"
+            },
+            {
+              "from": "invoice",
+              "to": "tax",
+              "semantic": "relation",
+              "motion": "once"
+            }
+          ],
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          }
+        },
+        "beats": [
+          {
+            "anchor": "tarifa de energia gratuita",
+            "target_id": "energy",
+            "headline": "ENERGIA PODE SER GRATUITA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "não significa obrigatoriamente boleto zerado.",
+            "target_id": "headline",
+            "headline": "BOLETO PODE TER OUTROS ITENS",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "contribuição para iluminação pública,",
+            "target_id": "light",
+            "headline": "ILUMINAÇÃO PÚBLICA",
+            "action": "reveal",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "entrance": {
+              "style": "slide",
+              "direction": "right"
+            }
+          },
+          {
+            "anchor": "se o município a instituiu,",
+            "target_id": "light",
+            "headline": "SE EXISTIR NO MUNICÍPIO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "tributos conforme as regras locais.",
+            "target_id": "tax",
+            "headline": "TRIBUTOS LOCAIS",
+            "action": "reveal",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "entrance": {
+              "style": "slide",
+              "direction": "right"
+            }
+          },
+          {
+            "anchor": "não deve ser confundido",
+            "target_id": "invoice",
+            "headline": "NÃO É CONSUMO DA CASA",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.9,
+            "motion_seconds": 0.7,
             "camera": {
               "x": 50,
               "y": 50,
-              "zoom": 1.03,
-              "motion_seconds": 0.9
+              "zoom": 1.01,
+              "motion_seconds": 0.8
             }
           },
           {
-            "anchor": "Uma dívida quitada deve ter sua situação atualizada,",
-            "target_id": "answer",
-            "headline": "PAGOU: ATUALIZE A SITUAÇÃO",
+            "anchor": "energia, o transporte, os encargos",
+            "target_id": "headline",
+            "headline": "ENERGIA + REDE + ENCARGOS",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "o mês em que houve atraso",
-            "target_id": "answer",
-            "headline": "O MÊS ANTIGO PERMANECE",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "E a decisão ainda depende",
-            "target_id": "answer",
-            "headline": "CRITÉRIOS DO BANCO",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "Se essa distinção ajudou,",
-            "target_id": "answer",
-            "headline": "INSCREVA-SE NO CANAL",
-            "action": "update",
-            "treatment": "kinetic_type",
-            "behavior": "transform",
-            "motion_seconds": 0.5
-          },
-          {
-            "anchor": "as decisões que mexem com seu dinheiro.",
-            "target_id": "resolution",
-            "headline": "ENTENDER PARA DECIDIR",
+            "anchor": "totais diferentes.",
+            "target_id": "invoice",
+            "headline": "CONTAS PODEM DIFERIR",
             "action": "focus",
             "treatment": "spotlight",
             "behavior": "transform",
-            "motion_seconds": 0.9,
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "vinte e quatro reais",
+            "target_id": "headline",
+            "headline": "R$ 24 ERA HIPOTÉTICO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "num preço nacional.",
+            "target_id": "headline",
+            "headline": "NÃO EXISTE VALOR NACIONAL",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-07",
+      "index": 6,
+      "title": "Painel solar tem regras próprias",
+      "narration": "Se você tem painéis solares, cuidado com outra confusão. Injetar mais energia do que consome não elimina automaticamente o custo de disponibilidade das instalações de baixa tensão. A Aneel explica que o sistema de compensação tem regras próprias. E o cálculo pode variar conforme a modalidade e os benefícios aplicáveis. Este vídeo fala do mínimo comum e das exceções, não é uma simulação individual de energia solar. Antes de comparar contas, confirme se o imóvel participa desse sistema.",
+      "claim_ids": [
+        "C7"
+      ],
+      "tts": {
+        "delivery": "explain",
+        "pause_ms": 160,
+        "cues": []
+      },
+      "visual": {
+        "type": "authored_stage",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "captions": {
+            "enabled": true,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          },
+          "elements": [
+            {
+              "id": "headline",
+              "kind": "label",
+              "label": "PAINEL SOLAR NÃO RESOLVE TUDO",
+              "x": 4,
+              "y": 4,
+              "width": 92,
+              "height": 15,
+              "label_size": 71,
+              "surface": "none"
+            },
+            {
+              "id": "house",
+              "kind": "label",
+              "label": "CASA COM GERAÇÃO",
+              "icon": "house",
+              "x": 4,
+              "y": 24,
+              "width": 43,
+              "height": 61,
+              "label_size": 56,
+              "icon_size": 320,
+              "content_layout": "column",
+              "surface": "none"
+            },
+            {
+              "id": "credits",
+              "kind": "label",
+              "label": "ENERGIA INJETADA NA REDE",
+              "x": 57,
+              "y": 26,
+              "width": 38,
+              "height": 21,
+              "label_size": 61,
+              "surface": "none"
+            },
+            {
+              "id": "cost",
+              "kind": "label",
+              "label": "CUSTO DE DISPONIBILIDADE PODE CONTINUAR",
+              "x": 57,
+              "y": 60,
+              "width": 38,
+              "height": 23,
+              "label_size": 55,
+              "surface": "none",
+              "initially_visible": false
+            }
+          ],
+          "connections": [
+            {
+              "from": "house",
+              "to": "credits",
+              "semantic": "relation",
+              "motion": "pulse",
+              "period_seconds": 7
+            }
+          ],
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          }
+        },
+        "beats": [
+          {
+            "anchor": "painéis solares,",
+            "target_id": "house",
+            "headline": "CASA COM PAINÉIS",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
             "camera": {
               "x": 50,
               "y": 50,
-              "zoom": 1.015,
-              "motion_seconds": 0.9
+              "zoom": 1.012,
+              "motion_seconds": 0.8
             }
           },
           {
-            "anchor": "Antes de tentar mais um pedido,",
-            "target_id": "answer",
-            "headline": "CONFIRA O RELATÓRIO",
+            "anchor": "Injetar mais energia",
+            "target_id": "credits",
+            "headline": "ENERGIA INJETADA",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
           },
           {
-            "anchor": "No seu caso, a dúvida é",
-            "target_id": "answer",
-            "headline": "ANTIGO, ERRADO OU PARCELA?",
+            "anchor": "não elimina automaticamente",
+            "target_id": "cost",
+            "headline": "NÃO ZERA AUTOMATICAMENTE",
+            "action": "reveal",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "entrance": {
+              "style": "scale"
+            }
+          },
+          {
+            "anchor": "instalações de baixa tensão.",
+            "target_id": "cost",
+            "headline": "BAIXA TENSÃO: CUSTO PODE VIR",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
-            "motion_seconds": 0.5
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "sistema de compensação",
+            "target_id": "credits",
+            "headline": "REGRAS DA COMPENSAÇÃO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "pode variar conforme a modalidade",
+            "target_id": "headline",
+            "headline": "DEPENDE DA MODALIDADE",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "não é uma simulação individual",
+            "target_id": "headline",
+            "headline": "SEM PROMESSA UNIVERSAL",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "confirme se o imóvel participa",
+            "target_id": "house",
+            "headline": "CONFIRA SEU ENQUADRAMENTO",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          }
+        ]
+      }
+    },
+    {
+      "id": "scene-08",
+      "index": 7,
+      "title": "Como conferir a fatura",
+      "narration": "Então, por que a conta de luz pode chegar mesmo com pouco consumo? Porque, fora das exceções, a rede disponível pode gerar um faturamento mínimo calculado pelo tipo de ligação. Para conferir a sua, procure quatro coisas: consumo medido, tipo de fornecimento, Tarifa Social quando houver e contribuição de iluminação pública. Se o valor parecer incompatível, peça a memória de cálculo ou a explicação à distribuidora antes de afirmar que a cobrança é indevida. A pergunta certa não é só quanto você gastou: é qual regra foi aplicada à sua fatura.",
+      "claim_ids": [
+        "C1",
+        "C2",
+        "C4",
+        "C5",
+        "C6"
+      ],
+      "tts": {
+        "delivery": "explain",
+        "pause_ms": 160,
+        "cues": []
+      },
+      "visual": {
+        "type": "authored_stage",
+        "transition": "cut",
+        "stage": {
+          "show_title": false,
+          "camera_mode": "manual",
+          "motion_profile": "narrative",
+          "captions": {
+            "enabled": true,
+            "max_words": 6,
+            "words_per_line": 3,
+            "max_lines": 2,
+            "font_size": 64,
+            "min_free_area_ratio": 0.3
+          },
+          "elements": [
+            {
+              "id": "headline",
+              "kind": "label",
+              "label": "CONFIRA ESTES QUATRO CAMPOS",
+              "x": 4,
+              "y": 4,
+              "width": 92,
+              "height": 15,
+              "label_size": 71,
+              "surface": "none"
+            },
+            {
+              "id": "invoice",
+              "kind": "object",
+              "label": "FATURA DO CONSUMIDOR",
+              "object_type": "receipt",
+              "x": 4,
+              "y": 25,
+              "width": 40,
+              "height": 61,
+              "show_label": false,
+              "visual_role": "protagonist",
+              "svg_motion": "assemble",
+              "surface": "none"
+            },
+            {
+              "id": "reading",
+              "kind": "label",
+              "label": "CONSUMO MEDIDO",
+              "x": 53,
+              "y": 20,
+              "width": 42,
+              "height": 14,
+              "label_size": 65,
+              "surface": "none"
+            },
+            {
+              "id": "supply",
+              "kind": "label",
+              "label": "TIPO DE LIGAÇÃO",
+              "x": 53,
+              "y": 39,
+              "width": 42,
+              "height": 14,
+              "label_size": 65,
+              "surface": "none",
+              "initially_visible": false
+            },
+            {
+              "id": "social",
+              "kind": "label",
+              "label": "TARIFA SOCIAL",
+              "x": 53,
+              "y": 58,
+              "width": 42,
+              "height": 14,
+              "label_size": 65,
+              "surface": "none",
+              "initially_visible": false
+            },
+            {
+              "id": "cip",
+              "kind": "label",
+              "label": "ILUMINAÇÃO PÚBLICA",
+              "x": 53,
+              "y": 77,
+              "width": 42,
+              "height": 14,
+              "label_size": 61,
+              "surface": "none",
+              "initially_visible": false
+            }
+          ],
+          "connections": [],
+          "initial_camera": {
+            "x": 50,
+            "y": 50,
+            "zoom": 1
+          }
+        },
+        "beats": [
+          {
+            "anchor": "por que a conta de luz pode chegar",
+            "target_id": "headline",
+            "headline": "A RESPOSTA DA CONTA",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "fora das exceções,",
+            "target_id": "headline",
+            "headline": "FORA DAS EXCEÇÕES",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "faturamento mínimo calculado",
+            "target_id": "invoice",
+            "headline": "MÍNIMO PELA REDE",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "camera": {
+              "x": 50,
+              "y": 50,
+              "zoom": 1.012,
+              "motion_seconds": 0.7
+            }
+          },
+          {
+            "anchor": "consumo medido,",
+            "target_id": "reading",
+            "headline": "1. CONSUMO MEDIDO",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "tipo de fornecimento,",
+            "target_id": "supply",
+            "headline": "2. TIPO DE LIGAÇÃO",
+            "action": "reveal",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "entrance": {
+              "style": "fade"
+            }
+          },
+          {
+            "anchor": "Tarifa Social quando houver",
+            "target_id": "social",
+            "headline": "3. TARIFA SOCIAL",
+            "action": "reveal",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "entrance": {
+              "style": "fade"
+            }
+          },
+          {
+            "anchor": "contribuição de iluminação pública.",
+            "target_id": "cip",
+            "headline": "4. ILUMINAÇÃO PÚBLICA",
+            "action": "reveal",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7,
+            "entrance": {
+              "style": "fade"
+            }
+          },
+          {
+            "anchor": "peça a memória de cálculo",
+            "target_id": "invoice",
+            "headline": "PEÇA A EXPLICAÇÃO",
+            "action": "focus",
+            "treatment": "spotlight",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "antes de afirmar que a cobrança é indevida.",
+            "target_id": "headline",
+            "headline": "CONFIRA ANTES DE CONCLUIR",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "qual regra foi aplicada à sua fatura.",
+            "target_id": "headline",
+            "headline": "QUAL REGRA FOI APLICADA?",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
           }
         ]
       }
