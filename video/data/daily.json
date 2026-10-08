@@ -642,7 +642,7 @@
         }
       ],
       "review": {
-        "content_sha256": "22b8f63345a33f2f83d6218b4f31b522e4d4250e71b28f69cd5d2eb2c020feb0",
+        "content_sha256": "a7ee0180dea16fb9dbe42480c8831da57cafe2756c2cb733fd6252c8f2008d46",
         "findings": [
           {
             "question": "O público descobre a cobrança mínima logo após o gancho?",
@@ -1062,7 +1062,6 @@
               "id": "line",
               "from": "grid",
               "to": "house",
-              "label": "rede disponível",
               "semantic": "relation",
               "motion": "flow",
               "period_seconds": 6,
@@ -1431,10 +1430,10 @@
               "value": "30",
               "x": 4,
               "y": 25,
-              "width": 27,
+              "width": 24,
               "height": 37,
               "label_size": 54,
-              "value_size": 148,
+              "value_size": 140,
               "surface": "none"
             },
             {
@@ -1444,10 +1443,10 @@
               "value": "R$ 0,80",
               "x": 37,
               "y": 25,
-              "width": 27,
+              "width": 24,
               "height": 37,
               "label_size": 54,
-              "value_size": 112,
+              "value_size": 102,
               "surface": "none",
               "initially_visible": false
             },
@@ -1458,10 +1457,10 @@
               "value": "R$ 24",
               "x": 70,
               "y": 25,
-              "width": 26,
+              "width": 24,
               "height": 37,
               "label_size": 54,
-              "value_size": 132,
+              "value_size": 127,
               "surface": "none",
               "initially_visible": false
             },
@@ -1974,6 +1973,15 @@
             "anchor": "energia, o transporte, os encargos",
             "target_id": "headline",
             "headline": "ENERGIA + REDE + ENCARGOS",
+            "action": "update",
+            "treatment": "kinetic_type",
+            "behavior": "transform",
+            "motion_seconds": 0.7
+          },
+          {
+            "anchor": "energia, o transporte, os encargos",
+            "target_id": "energy",
+            "headline": "ENERGIA, REDE E ENCARGOS",
             "action": "update",
             "treatment": "kinetic_type",
             "behavior": "transform",
