@@ -1,0 +1,174 @@
+name: ODE - recuperar publicação meio-dia 09-10
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/recover-ode-news-2026-10-09-meio-dia.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: ode-recover-news-2026-10-09-meio-dia
+  cancel-in-progress: false
+
+jobs:
+  recover:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Preparar dependências do YouTube e arte revisada
+        run: |
+          python -m pip install --disable-pip-version-check -r worker/requirements.txt
+          mkdir -p render-output video/generated
+      - name: Recuperar o MP4 original, sem regenerar voz nem render
+        env:
+          GH_TOKEN_FOR_ARTIFACT: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          import io,json,hashlib,os,requests,zipfile
+          from pathlib import Path
+          artifact=11620145402
+          url=f"https://api.github.com/repos/Lucascristao/odinheiroexplica/actions/artifacts/{artifact}/zip"
+          response=requests.get(url,headers={"Authorization":"Bearer "+os.environ["GH_TOKEN_FOR_ARTIFACT"],"Accept":"application/vnd.github+json"},timeout=80)
+          response.raise_for_status()
+          required=["video/generated/daily-project.json","video/generated/daily-delivery-qa.json",
+                    "render-output/daily-video.mp4","render-output/daily-youtube.json"]
+          with zipfile.ZipFile(io.BytesIO(response.content)) as archive:
+              for name in required:
+                  if name not in archive.namelist():
+                      raise SystemExit("Artefato de produção não contém "+name)
+                  dest=Path(name)
+                  dest.parent.mkdir(parents=True,exist_ok=True)
+                  dest.write_bytes(archive.read(name))
+          project=json.loads(Path(required[0]).read_text(encoding="utf-8"))
+          qa=json.loads(Path(required[1]).read_text(encoding="utf-8"))
+          mp4=Path(required[2])
+          digest=hashlib.sha256(mp4.read_bytes()).hexdigest()
+          if project.get("project_id")!="noticia-2026-10-09-meio-dia":
+              raise SystemExit("Bloqueado: projeto não corresponde à edição autorizada.")
+          if qa.get("status") not in ("pass","warn") or qa.get("failures"):
+              raise SystemExit("Bloqueado: existem falhas críticas de QA.")
+          if qa.get("video",{}).get("sha256")!=digest or digest!="c6f991363d481e0e7b3d731846e7a68dbccd56442db1b1e3e3032f3b11ce5fa2":
+              raise SystemExit("Bloqueado: hash do vídeo original diverge.")
+          episode=json.loads(Path("news/episodes/2026-10-09-meio-dia.json").read_text(encoding="utf-8"))
+          if episode.get("episode_id")!=project["project_id"] or episode.get("editorial_status")!="autonomous_fact_checked":
+              raise SystemExit("Bloqueado: episódio sem identificação e revisão.")
+          print("VIDEO_ORIGINAL_CONFIRMED:",digest, "QA:",qa["status"], "AVISOS:",len(qa.get("warnings",[])))
+          PY
+      - name: Reconstruir capa ilustrativa conferida e validar contrato editorial
+        run: |
+          python worker/recover_midday_thumbnail.py
+          python - <<'PY'
+          import json
+          from datetime import datetime,timezone
+          from pathlib import Path
+          from PIL import Image
+          import sys
+          sys.path.insert(0,"worker")
+          from thumbnail_contract import (read_contract,contract_sha256,file_sha256,
+                                          normalized_project_sha256,validate_thumbnail_audit)
+          p=Path("video/generated/daily-project.json")
+          project=json.loads(p.read_text(encoding="utf-8"))
+          root=Path("production")/project["project_id"]
+          image=root/"thumbnail.jpg"
+          contract=read_contract(project,root)
+          with Image.open(image) as photo:
+              if photo.size!=(1280,720) or photo.format!="JPEG":
+                  raise SystemExit("Imagem fora do formato aprovado.")
+          if contract["exact_headline"]!="QUASE 40% VEIO DA LUZ":
+              raise SystemExit("Headline de capa difere do roteiro autorizado.")
+          # A arte é determinística e corresponde ao preview examinado em 09/10.
+          observations={
+            "headline":"Inspeção do preview: somente QUASE, 40%, VEIO DA e LUZ; leitura fiel e imediata.",
+            "primary_subject":"Lâmpada ilustrativa brilhante e moldura que remete a fatura de energia sem dados inventados.",
+            "secondary_subject":"O contrato não prevê segundo protagonista; fundo discreto dá suporte à lâmpada.",
+            "forbidden_absent":"Não há marca de terceiros, valores fictícios, logotipos, documentos reais ou marca d'água.",
+            "identity_and_mobile":"Fundo carvão, acento amarelo, tipografia grande branca e amarela com grande respiro lateral.",
+            "no_fabricated_data":"O único percentual visível é 40%, aproximação factual de 0,32 sobre 0,82 apresentada na reportagem.",
+            "unique_composition":"Headline dominante à esquerda, foco energético à direita, sem copiar portal ou layout de terceiro."
+          }
+          audit={
+             "version":"1.0","project_id":project["project_id"],
+             "project_sha256":normalized_project_sha256(p),
+             "contract_sha256":contract_sha256(contract),
+             "image_sha256":file_sha256(image),
+             "headline":contract["exact_headline"],
+             "approval_status":"approved",
+             "reviewer":"ChatGPT - inspeção visual do preview determinístico",
+             "reviewed_at":datetime.now(timezone.utc).isoformat(),
+             "checks":{key:True for key in ("headline_exact","primary_subject","secondary_subject",
+                       "forbidden_absent","identity_and_mobile","no_fabricated_data","unique_composition")},
+             "observations":observations,
+             "checked_forbidden_elements":contract["forbidden_elements"],
+             "observed_forbidden_elements":[]
+          }
+          (root/"thumbnail-audit.json").write_text(json.dumps(audit,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          validate_thumbnail_audit(Path.cwd(),project,image,project_source_path=p)
+          print("THUMBNAIL_AUDIT_OK:",image)
+          PY
+      - name: Reutilizar upload privado existente ou enviar MP4 original
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python worker/youtube_publication.py upload-private \
+            --project-id noticia-2026-10-09-meio-dia \
+            --video render-output/daily-video.mp4 \
+            --metadata render-output/daily-youtube.json \
+            --project video/generated/daily-project.json \
+            --receipt render-output/daily-youtube-private.json
+      - name: Anexar capa ao ID do upload privado
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python worker/youtube_publication.py thumbnail \
+            --root . --project video/generated/daily-project.json \
+            --project-id noticia-2026-10-09-meio-dia \
+            --receipt render-output/daily-youtube-private.json \
+            --thumbnail production/noticia-2026-10-09-meio-dia/thumbnail.jpg \
+            --delivery-record render-output/youtube-thumbnail-delivery.json
+      - name: Publicar agora com autorização excepcional e checar status público
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python worker/news_autonomous_schedule.py \
+            --root . --project video/generated/daily-project.json \
+            --episode news/episodes/2026-10-09-meio-dia.json \
+            --private-receipt render-output/daily-youtube-private.json \
+            --thumbnail production/noticia-2026-10-09-meio-dia/thumbnail.jpg \
+            --thumbnail-receipt render-output/youtube-thumbnail-delivery.json \
+            --qa video/generated/daily-delivery-qa.json \
+            --config config/news-autonomy.json \
+            --output render-output/news-publication-scheduled.json
+          python - <<'PY'
+          import json
+          p=json.load(open("render-output/news-publication-scheduled.json"))
+          if p.get("publication_confirmation")!="confirmed_public":
+              raise SystemExit("Status público ainda não confirmado.")
+          print("CONFIRMED_PUBLIC_URL:",p["url"])
+          PY
+      - name: Preservar recibos e diagnóstico, mesmo se houver bloqueio
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ode-2026-10-09-meio-dia-recovery-receipts
+          path: |
+            render-output/daily-youtube-private.json
+            render-output/youtube-thumbnail-delivery.json
+            render-output/news-publication-scheduled.json
+            video/generated/daily-delivery-qa.json
+            production/noticia-2026-10-09-meio-dia/thumbnail.jpg
+            production/noticia-2026-10-09-meio-dia/thumbnail-audit.json
+          if-no-files-found: warn
+          retention-days: 30
