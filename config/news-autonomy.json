@@ -18,7 +18,7 @@
   "require_thumbnail_audit": false,
   "require_thumbnail_receipt": false,
   "min_lead_minutes": 5,
-  "publish_if_late": false,
+  "publish_if_late": true,
   "thumbnail_optional": true,
   "thumbnail_provider": "chatgpt_optional_youtube_automatic_fallback",
   "one_time_late_recovery": {
@@ -27,5 +27,8 @@
     "authorized_by_user": true,
     "mode": "publish_immediately_after_qa",
     "reason": "Publicação tardia da edição das 08h solicitada explicitamente pelo titular em 09/10/2026; exceção somente para este episódio"
-  }
+  },
+  "allow_qa_warnings": true,
+  "late_tolerance_minutes": 90,
+  "qa_warning_policy": "record_and_improve_next_episode_no_block"
 }
