@@ -51,14 +51,22 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          [[ "$PROJECT_ID" =~ ^noticias-[0-9]{4}-[0-9]{2}-[0-9]{2}-(manha|tarde|noite)$ ]]
+          [[ "$PROJECT_ID" =~ ^(noticias-[0-9]{4}-[0-9]{2}-[0-9]{2}-(manha|tarde|noite)|noticia-[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9-]+)$ ]]
           [[ "$VIDEO_ID" =~ ^[A-Za-z0-9_-]{11}$ ]]
           [[ "$VIDEO_RUN" =~ ^[0-9]+$ && "$THUMB_RUN" =~ ^[0-9]+$ ]]
           [[ "$ODE_PUBLISH_CONFIRM" == "PUBLICAR_$PROJECT_ID" ]] || { echo "Confirmação explícita ausente"; exit 1; }
-          [[ "$EDITION_PATH" =~ ^news/editions/[A-Za-z0-9._-]+\.json$ ]]
-          python worker/news_project.py --input "$EDITION_PATH" --output video/generated/daily-project.json
+          if [[ "$PROJECT_ID" == noticia-* ]]; then
+            [[ "$EDITION_PATH" =~ ^news/episodes/[A-Za-z0-9._-]+\.json$ ]]
+            python worker/news_single_project.py --input "$EDITION_PATH" --output video/generated/daily-project.json
+            PRIVATE_ARTIFACT=news-single-youtube-private-receipt
+          else
+            [[ "$EDITION_PATH" =~ ^news/editions/[A-Za-z0-9._-]+\.json$ ]]
+            python worker/news_project.py --input "$EDITION_PATH" --output video/generated/daily-project.json
+            PRIVATE_ARTIFACT=news-youtube-private-receipt
+          fi
+          test "$(python -c 'import json;print(json.load(open("video/generated/daily-project.json"))["project_id"])')" = "$PROJECT_ID"
           mkdir -p render-output/private-proof render-output/thumbnail-proof
-          gh run download "$VIDEO_RUN" --repo "$GITHUB_REPOSITORY" --name news-youtube-private-receipt --dir render-output/private-proof
+          gh run download "$VIDEO_RUN" --repo "$GITHUB_REPOSITORY" --name "$PRIVATE_ARTIFACT" --dir render-output/private-proof
           gh run download "$THUMB_RUN" --repo "$GITHUB_REPOSITORY" --name youtube-thumbnail-delivery --dir render-output/thumbnail-proof
       - name: Publicar somente com imagem e revisão aprovadas
         shell: bash

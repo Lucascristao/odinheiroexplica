@@ -1,22 +1,25 @@
-name: ODE Notícias - produção real
+name: ODE Notícia Única - produção real
 on:
   workflow_dispatch:
     inputs:
       edition_path:
         type: string
         required: true
-        default: news/editions/pilot-2026-10-08-noite.json
+        default: news/episodes/2026-10-09-imposto-seletivo.json
+  push:
+    branches: [main]
+    paths: [news/episodes/2026-10-09-imposto-seletivo.json, .github/workflows/render-news-single.yml]
 permissions:
   contents: read
 concurrency:
-  group: ode-news-${{ github.repository }}
+  group: ode-news-single-${{ github.repository }}
   cancel-in-progress: false
 jobs:
   produce:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     env:
-      NEWS_EDITION: ${{ github.event_name == 'workflow_dispatch' && inputs.edition_path || 'news/editions/pilot-2026-10-08-noite.json' }}
+      NEWS_EDITION: ${{ github.event_name == 'workflow_dispatch' && inputs.edition_path || 'news/episodes/2026-10-09-imposto-seletivo.json' }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -37,8 +40,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          [[ "$NEWS_EDITION" =~ ^news/editions/[A-Za-z0-9._-]+\.json$ ]]
-          python worker/news_project.py --input "$NEWS_EDITION" --output video/generated/daily-project.json
+          [[ "$NEWS_EDITION" =~ ^news/episodes/[A-Za-z0-9._-]+\.json$ ]]
+          python worker/news_single_project.py --input "$NEWS_EDITION" --output video/generated/daily-project.json
           python worker/validate_voice_policy.py
       - name: Validar direção visual antes da síntese
         run: |
@@ -54,6 +57,19 @@ jobs:
             sudo apt-get install -y --no-install-recommends ffmpeg
           fi
           ffprobe -version | head -1
+      - name: Instalar navegador para capturas documentais
+        run: python -m playwright install chromium
+      - name: Capturar recortes de notícias autênticas
+        run: |
+          set -euo pipefail
+          cp video/generated/daily-project.json video/generated/news-capture-project.json
+          python worker/auto_capture_sources.py \
+            --project video/generated/news-capture-project.json \
+            --captures-dir research/captures
+          python worker/prepare_visual_assets.py \
+            --project video/generated/daily-project.json \
+            --output-dir public/generated-assets \
+            --manifest video/generated/daily-visual-assets.json
       - name: Efeitos sonoros originais
         run: python worker/generate_sound_design.py --output-dir public/generated-sfx
       - name: Reaproveitar narração idêntica validada do piloto
@@ -97,6 +113,7 @@ jobs:
             --require-gemini --require-voice-continuity \
             --audio-public-prefix processed-audio/daily \
             --audio-dir public/processed-audio/daily \
+            --visual-assets-manifest video/generated/daily-visual-assets.json \
             --output video/generated/daily-render-input.json
       - name: Música e SEO
         run: |
@@ -122,10 +139,12 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: news-production-review
+          name: news-single-production-review
           path: |
             video/generated/daily-project.json
             video/generated/daily-layout-geometry.json
+            video/generated/daily-visual-assets.json
+            research/captures/
             video/generated/daily-alignment-report.json
             video/generated/daily-delivery-qa.json
             render-output/layout-geometry/
@@ -146,10 +165,25 @@ jobs:
             --metadata render-output/daily-youtube.json \
             --project video/generated/daily-project.json \
             --receipt render-output/daily-youtube-private.json
+      - name: Registrar pendência obrigatória de capa
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          receipt = json.loads(Path("render-output/daily-youtube-private.json").read_text())
+          state = {"episode_id": receipt["project_id"], "video_id": receipt["video_id"],
+                   "status": "waiting_thumbnail", "thumbnail_attached": False,
+                   "published": False,
+                   "message": "Vídeo privado NÃO é entrega concluída. Aguardar capa auditada."}
+          Path("render-output/news-delivery-state.json").write_text(json.dumps(state,indent=2)+"\n")
+          print("WAITING_THUMBNAIL:", receipt["project_id"], receipt["video_id"])
+          PY
       - name: Recibo do YouTube
         uses: actions/upload-artifact@v4
         with:
-          name: news-youtube-private-receipt
-          path: render-output/daily-youtube-private.json
+          name: news-single-youtube-private-receipt
+          path: |
+            render-output/daily-youtube-private.json
+            render-output/news-delivery-state.json
           if-no-files-found: error
           retention-days: 30

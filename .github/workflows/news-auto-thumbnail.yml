@@ -1,0 +1,117 @@
+name: ODE Notícias - anexar capa automaticamente
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'production/noticia-*/thumbnail-audit.json'
+  workflow_dispatch:
+    inputs:
+      audit_path:
+        type: string
+        required: true
+        description: 'production/noticia-.../thumbnail-audit.json'
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: ode-cover-auto-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  attach:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      AUDIT_INPUT: ${{ github.event_name == 'workflow_dispatch' && inputs.audit_path || '' }}
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar YouTube API
+        run: python -m pip install --disable-pip-version-check 'google-auth>=2.35' 'google-api-python-client>=2.149'
+      - name: Identificar auditoria, capa e projeto exatos
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -n "$AUDIT_INPUT" ]; then
+            AUDIT="$AUDIT_INPUT"
+          else
+            AUDIT="$(git diff-tree --no-commit-id --name-only -r "$GITHUB_SHA" | grep -E '^production/noticia-[a-z0-9-]+/thumbnail-audit\.json$' | head -n 1)"
+            [ -n "$AUDIT" ]
+          fi
+          [[ "$AUDIT" =~ ^production/(noticia-[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9-]+)/thumbnail-audit\.json$ ]]
+          PROJECT_ID="$(echo "$AUDIT" | cut -d/ -f2)"
+          export PROJECT_ID
+          test -s "$AUDIT"
+          EPISODE="$(python - <<'PY'
+          import json,pathlib,os
+          episode_id=os.environ["PROJECT_ID"]
+          found=[str(p) for p in pathlib.Path("news/episodes").glob("*.json")
+                 if json.loads(p.read_text(encoding="utf-8")).get("episode_id")==episode_id]
+          if len(found)!=1:
+              raise SystemExit("Não há uma pauta única correspondente à capa.")
+          print(found[0])
+          PY
+          )"
+          echo "PROJECT_ID=$PROJECT_ID" >> "$GITHUB_ENV"
+          echo "EPISODE=$EPISODE" >> "$GITHUB_ENV"
+          python worker/news_single_project.py --input "$EPISODE" --output video/generated/daily-project.json
+      - name: Recuperar recibo confirmado de vídeo privado
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p render-output/private-proof
+          RUNS="$(gh run list --repo "$GITHUB_REPOSITORY" --workflow render-news-single.yml --status success --limit 80 --json databaseId --jq '.[].databaseId')"
+          [ -n "$RUNS" ] || { echo "Nenhum vídeo privado confirmado"; exit 1; }
+          FOUND=0
+          for run in $RUNS; do
+            rm -f render-output/private-proof/daily-youtube-private.json
+            gh run download "$run" --repo "$GITHUB_REPOSITORY" --name news-single-youtube-private-receipt --dir render-output/private-proof >/dev/null 2>&1 || continue
+            if python - <<'PY'
+          import json,os
+          from pathlib import Path
+          data=json.loads(Path("render-output/private-proof/daily-youtube-private.json").read_text())
+          assert data["project_id"] == os.environ["PROJECT_ID"]
+          assert data["destination"] == "youtube" and data["privacy_requested"] == "private"
+          assert data["thumbnail_required"] is True
+          PY
+            then
+              echo "PRIVATE_RUN_ID=$run" >> "$GITHUB_ENV"
+              FOUND=1
+              break
+            fi
+          done
+          [ "$FOUND" -eq 1 ] || { echo "Recibo do episódio não encontrado; não anexar capa."; exit 1; }
+      - name: Enviar somente capa aprovada ao canal verificado
+        shell: bash
+        run: |
+          set -euo pipefail
+          PIC="production/$PROJECT_ID/thumbnail.jpg"
+          [ -f "$PIC" ] || PIC="production/$PROJECT_ID/thumbnail.png"
+          test -s "$PIC"
+          VIDEO_ID="$(python -c 'import json;print(json.load(open("render-output/private-proof/daily-youtube-private.json"))["video_id"])')"
+          python worker/youtube_publication.py thumbnail \
+            --root . --project video/generated/daily-project.json \
+            --project-id "$PROJECT_ID" --video-id "$VIDEO_ID" \
+            --thumbnail "$PIC" \
+            --receipt render-output/private-proof/daily-youtube-private.json \
+            --delivery-record render-output/youtube-thumbnail-delivery.json
+          echo "THUMBNAIL_ATTACHED: Vídeo continua PRIVADO aguardando aprovação final."
+      - name: Comprovar ligação da capa com o vídeo
+        uses: actions/upload-artifact@v4
+        with:
+          name: youtube-thumbnail-delivery
+          path: |
+            render-output/youtube-thumbnail-delivery.json
+            render-output/private-proof/daily-youtube-private.json
+          if-no-files-found: error
+          retention-days: 30

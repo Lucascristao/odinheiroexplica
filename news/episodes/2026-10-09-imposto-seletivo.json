@@ -1,0 +1,248 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-09-imposto-seletivo",
+  "news_date": "2026-10-09",
+  "event_date": "2026-10-08",
+  "editorial_status": "approved_for_private_pilot",
+  "reviewed_at": "2026-10-09T00:45:00-03:00",
+  "title": "IMPOSTO DO PECADO: por que o governo deixou a decisão para depois da eleição?",
+  "title_options": [
+    {
+      "text": "IMPOSTO DO PECADO: por que o governo deixou a decisão para depois da eleição?",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Governo adia imposto polêmico até depois das urnas: o que está em jogo?",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Imposto do Pecado: promessa agora, alíquota só depois da eleição",
+      "editorial_quality": 4
+    }
+  ],
+  "thumbnail_headline": "SÓ DEPOIS DA ELEIÇÃO?",
+  "thumbnail_primary": "Uma urna eleitoral brasileira genérica, sem logotipo partidário, ao lado de recibo de compras com símbolo de imposto e bebidas/refrigerante, como metáfora editorial explícita; sem inventar documentos ou preços.",
+  "thumbnail_tension": "O anúncio do adiamento da MP do Imposto Seletivo após o segundo turno versus a discussão pública sobre o valor futuro do tributo.",
+  "scorecard": {
+    "method": "pontuação de julgamento editorial, não métricas de buscas ou audiência reais",
+    "criteria": {
+      "timeliness": 5,
+      "consumer_interest": 5,
+      "public_debate": 5,
+      "documentary_evidence": 4,
+      "original_angle": 4
+    },
+    "unavailable": [
+      "Google Trends",
+      "CTR de concorrentes",
+      "volume de busca em tempo real"
+    ],
+    "reason": "Anúncio oficial confirmado por veículos diferentes em 08/10, relação com preços/tributação e timing eleitoral, enquadramento factual que admite comentários/oposição fundamentados."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/durigan-preve-envio-de-mp-do-imposto-seletivo-apos-eleicoes",
+      "published_at": "2026-10-08",
+      "role": "declaração do ministro e prazo"
+    },
+    {
+      "id": "S2",
+      "publisher": "Folha de S.Paulo",
+      "url": "https://www1.folha.uol.com.br/mercado/2026/10/durigan-promete-mp-do-imposto-do-pecado-para-depois-das-eleicoes-e-fala-em-acordo-com-setores-afetados.shtml",
+      "published_at": "2026-10-08",
+      "role": "confirmação independente e estimativa de atrasos"
+    },
+    {
+      "id": "S3",
+      "publisher": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-08/arrecadacao-com-imposto-do-pecado-deve-chegar-r-419-bi-em-2027",
+      "published_at": "2026-08-31",
+      "role": "previsão do PLOA de 2027; não é arrecadação observada"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Dario Durigan disse no dia 8 de outubro que o governo pretende encaminhar, após o segundo turno, proposta das alíquotas do Imposto Seletivo.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "O Imposto Seletivo integra a reforma tributária e visa desestimular consumo de determinados bens e atividades prejudiciais à saúde ou ambiente.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "status": "background"
+    },
+    {
+      "claim": "O orçamento projetou aproximadamente R$ 41,9 bilhões de arrecadação do Imposto Seletivo em 2027.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "status": "forecast_not_collected"
+    },
+    {
+      "claim": "O adiamento pode afetar o início de cobrança em 2027 pela noventena; a redução estimada de arrecadação de R$ 3,82 bilhões é uma projeção, não perda apurada.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "projection"
+    },
+    {
+      "claim": "Uma discussão com setores afetados foi anunciada para a semana seguinte; as alíquotas específicas ainda dependem dos instrumentos legais apropriados.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-announcement",
+      "kind": "source_excerpt",
+      "source_id": "S1",
+      "source_page_url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/durigan-preve-envio-de-mp-do-imposto-seletivo-apos-eleicoes",
+      "expected_text": "Durigan prevê envio de MP do Imposto Seletivo após eleições",
+      "attribution": "Recorte de manchete para comentário: Agência Brasil, 08/10/2026",
+      "rights_review": "trecho mínimo informativo em contexto crítico; verificar limites de citação, não reutilizar fotos de terceiros",
+      "capture_file": "research/captures/doc-announcement.png"
+    },
+    {
+      "id": "doc-budget",
+      "kind": "source_excerpt",
+      "source_id": "S3",
+      "source_page_url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-08/arrecadacao-com-imposto-do-pecado-deve-chegar-r-419-bi-em-2027",
+      "expected_text": "Novo tributo mira produtos nocivos",
+      "attribution": "Recorte de manchete para comentário: Agência Brasil, 31/08/2026",
+      "rights_review": "trecho mínimo informativo em contexto crítico; verificar limites de citação, não reutilizar fotos de terceiros",
+      "capture_file": "research/captures/doc-budget.png"
+    }
+  ],
+  "segments": [
+    {
+      "id": "hook",
+      "title": "O anúncio depois das eleições",
+      "type": "fact",
+      "label": "NOTÍCIA DO DIA",
+      "headline": "IMPOSTO APÓS A ELEIÇÃO?",
+      "metric": "ANÚNCIO EM 08/10",
+      "object_type": "data",
+      "visual_cards": [
+        "IMPOSTO DO PECADO",
+        "DECISÃO DEPOIS DAS URNAS",
+        "O QUE AINDA NÃO ESTÁ DEFINIDO"
+      ],
+      "narration": "O governo confirmou que quer deixar para depois do segundo turno uma decisão sobre o chamado imposto do pecado. Pois é. A eleição acontece agora, mas a conversa sobre quanto cobrar ficaria para depois. Antes que alguém saia dizendo que um imposto novo já foi cobrado hoje, não é isso. O anúncio é sobre o envio das regras de alíquotas ao Congresso. E a pergunta que interessa é: por que um assunto que mexe com preços e impostos ficou para depois da votação?"
+    },
+    {
+      "id": "announcement",
+      "title": "O que o ministro realmente disse",
+      "type": "fact",
+      "label": "O QUE FOI ANUNCIADO",
+      "headline": "MP APÓS O SEGUNDO TURNO",
+      "metric": "PROPOSTA, NÃO COBRANÇA",
+      "object_type": "data",
+      "document_id": "doc-announcement",
+      "visual_cards": [
+        "DECLARAÇÃO DO MINISTRO",
+        "ENVIO PREVISTO APÓS AS URNAS",
+        "ALÍQUOTAS AINDA EM DISCUSSÃO",
+        "ACORDO COM SETORES"
+      ],
+      "narration": "Na quinta-feira, oito de outubro, o ministro da Fazenda, Dario Durigan, informou que o governo pretende encaminhar ao Congresso, depois do segundo turno, a medida provisória que estabelecerá as alíquotas do Imposto Seletivo. Segundo o ministro, houve um acordo com setores econômicos envolvidos e ainda haverá uma reunião na semana seguinte. O imposto faz parte da reforma tributária, mas as alíquotas específicas e a tramitação dessa proposta não estão concluídas. Veja a diferença: uma declaração de intenção não equivale à aprovação da cobrança. E uma negociação anunciada com empresas não mostra, sozinha, qual será a conta final para o consumidor."
+    },
+    {
+      "id": "what-tax",
+      "title": "Quem pode ser atingido",
+      "type": "fact",
+      "label": "COMO FUNCIONA",
+      "headline": "O QUE ENTRA NA LISTA?",
+      "metric": "SAÚDE E AMBIENTE",
+      "object_type": "store",
+      "visual_cards": [
+        "CIGARROS E BEBIDAS",
+        "REFRIGERANTES E AÇÚCAR",
+        "VEÍCULOS CONFORME REGRAS",
+        "APOSTAS E EXTRAÇÃO MINERAL"
+      ],
+      "narration": "Mas que imposto é esse? O Imposto Seletivo foi previsto para desestimular o consumo de produtos e atividades considerados prejudiciais à saúde ou ao meio ambiente. A relação discutida inclui cigarros, bebidas alcoólicas, refrigerantes e outras bebidas açucaradas, certos veículos, atividades minerais e modalidades de apostas. Isso não significa que todo produto da lista terá a mesma alíquota, nem que o preço de tudo vai subir automaticamente amanhã. Os detalhes dependem de regulamentação. A justificativa defendida pelo governo é reduzir danos e organizar a substituição de tributos existentes. O que ainda falta é mostrar claramente a combinação entre carga tributária, comportamento de consumo e custos para quem compra."
+    },
+    {
+      "id": "budget",
+      "title": "A previsão de arrecadação",
+      "type": "fact",
+      "label": "O TAMANHO DA CONTA",
+      "headline": "R$ 41,9 BILHÕES",
+      "metric": "PREVISÃO PARA 2027",
+      "object_type": "cash",
+      "document_id": "doc-budget",
+      "visual_cards": [
+        "R$ 41,9 BILHÕES",
+        "É PREVISÃO, NÃO RECEITA",
+        "ADIAÇÃO MUDA O CALENDÁRIO",
+        "EFEITO AINDA ESTIMADO"
+      ],
+      "narration": "E tem um número que ajuda a entender o tamanho do debate: quarenta e um bilhões e novecentos milhões de reais. Essa era a previsão de arrecadação com o imposto para dois mil e vinte e sete apresentada no orçamento. Repare bem: previsão. Não é dinheiro já recolhido. Reportagens também apontaram estimativa de redução de arrecadação de cerca de três bilhões e oitocentos e vinte milhões de reais por causa do adiamento e da exigência de prazo antes de um tributo entrar em vigor. O calendário pode mudar a arrecadação esperada. Mas isso não é uma fatura já emitida para o brasileiro; depende das regras e da implementação."
+    },
+    {
+      "id": "comment",
+      "title": "Comentário de Roberto",
+      "type": "opinion",
+      "label": "A MINHA LEITURA",
+      "headline": "POR QUE SÓ DEPOIS?",
+      "metric": "TRANSPARÊNCIA IMPORTA",
+      "object_type": "bank",
+      "visual_cards": [
+        "ALÍQUOTA ANTES OU DEPOIS?",
+        "ELEITOR MERECE SABER",
+        "PROMESSA NÃO É COBRANÇA",
+        "O TEXTO FINAL É DECISIVO"
+      ],
+      "narration": "Agora a minha leitura sobre isso. É curioso como discussão de imposto consegue esperar direitinho o fim da eleição, não é? A urna tem data, mas a alíquota pode ficar para depois. Eu acho que qualquer governo deveria explicar antes da votação qual carga pretende cobrar e quais efeitos espera sobre o bolso da população. Isso vale independentemente do partido que esteja no poder. Do outro lado, o governo afirma ter negociado com os setores afetados e defende o imposto como instrumento de saúde pública e proteção ambiental. São argumentos que merecem ser examinados. A minha crítica é ao calendário e à transparência, não a uma cobrança que ainda não foi definida. Afinal, não dá para o eleitor conferir uma conta cujo valor continua em aberto."
+    },
+    {
+      "id": "closing",
+      "title": "O que observar daqui para frente",
+      "type": "outro",
+      "label": "PRÓXIMOS PASSOS",
+      "headline": "VAMOS VER O TEXTO",
+      "metric": "APÓS O SEGUNDO TURNO",
+      "object_type": "data",
+      "visual_cards": [
+        "REUNIÃO COM SETORES",
+        "TEXTO DA PROPOSTA",
+        "ALÍQUOTAS PUBLICADAS",
+        "IMPACTO REAL A ACOMPANHAR"
+      ],
+      "narration": "Então fica o ponto principal: o governo anunciou que pretende mandar a proposta das alíquotas do Imposto Seletivo ao Congresso depois das eleições. Os números divulgados até agora são projeções, e o efeito sobre cada produto ainda depende das regras aprovadas. Quando esse texto aparecer, será a hora de comparar promessa, justificativa e impacto real. Eu vou acompanhar. E você, acha razoável deixar uma discussão dessas para depois da votação, ou o eleitor deveria conhecer as alíquotas antes? Escreve aqui, porque esse debate envolve o bolso de todo mundo."
+    }
+  ],
+  "engagement_question": "O governo deveria divulgar as alíquotas antes da eleição?",
+  "hashtags": [
+    "#ImpostoSeletivo",
+    "#ReformaTributaria",
+    "#ODinheiroExplica"
+  ],
+  "tags": [
+    "imposto do pecado",
+    "imposto seletivo",
+    "reforma tributária",
+    "economia",
+    "notícias",
+    "governo",
+    "alíquotas",
+    "eleições 2026"
+  ],
+  "primary_keyword": "imposto do pecado depois das eleições",
+  "pronunciations": {
+    "Durigan": "Durigã"
+  }
+}

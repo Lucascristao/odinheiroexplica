@@ -26,3 +26,6 @@ Notícias usam a skill do motor mas têm **contrato separado** em `docs/news-for
 
 
 No formato de notícias, o roteiro é também **comentado pelo Roberto**: ponto de vista editorial de direita/liberal na economia, críticas fundamentadas a medidas estatais e empresariais, reações humanas, ironia e sarcasmo na dose apropriada, sempre distinguindo informação apurada de opinião. Não imitar Piter/ANCAPSU literalmente nem alterar os vídeos explicativos por essa preferência. Conferir exemplos e limites em `docs/news-format.md`.
+
+
+NOVO FORMATO CANÔNICO (09/10/2026): cada notícia é um vídeo exclusivo. `news/episodes/*.json`, `worker/news_single_project.py`, `.github/workflows/render-news-single.yml`. Processo completo e referência ANCAPSU em `docs/news-single-format.md`. A meta de três edições diárias significa três notícias distintas, NÃO um giro com três matérias. Dizer status real e nunca tratar `uploaded_private` como entrega completa. Recortes documentais devem vir de URLs verificadas com contexto; sem autorização explícita, não copiar fotos de imprensa. Capas geradas aqui, encaminhadas para o Git com auditoria real. O anexo ao YouTube após aprovação é automático por `news-auto-thumbnail.yml`.
