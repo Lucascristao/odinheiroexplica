@@ -299,7 +299,7 @@ function operationLayout(stage:EditorialStage,beats:StageEvent[],elements:Resolv
 
 export function layoutStage(stage:EditorialStage,beats:StageEvent[],frame:number,fps:number,width:number,height:number,measure:MeasureWidth,title?:string) {
   const canvas=stage.full_bleed_news
-    ? {x:24,y:24,width:width-48,height:height-48}
+    ? {x:0,y:0,width,height}
     : editorialCanvas(width,height,stage.show_title);
   const state=resolveStage(stage,beats,frame,fps);
   const connections=solveConnections(stage,beats,state.elements,frame,canvas,measure);
@@ -338,7 +338,7 @@ export function layoutStage(stage:EditorialStage,beats:StageEvent[],frame:number
     }
     if(!fits(camera))issues.push({code:"camera-capacity",message:"O grupo visível completo não cabe no enquadramento; ajuste os movimentos ou a área reservada."});
   }
-  const photo_captions=visible.filter(e=>e.kind==="photo"&&e.asset_file&&!stage.elements.some(child=>child.overlay_on===e.id)).map(e=>photoCaptionLayout(e,frame,canvas,camera,measure));
+  const photo_captions=stage.full_bleed_news ? [] : visible.filter(e=>e.kind==="photo"&&e.asset_file&&!stage.elements.some(child=>child.overlay_on===e.id)).map(e=>photoCaptionLayout(e,frame,canvas,camera,measure));
   for(const caption of photo_captions)if(!caption.layout.fits)issues.push({code:"photo-caption-capacity",element:caption.id,role:"caption",message:"A legenda da foto não cabe na área visível na fonte mínima; ajuste a câmera/composição. O motor não oculta a legenda."});
   const media_layout=visible.filter(e=>e.kind==="object").map(e=>{
     const content=objectContentLayout(e,transformedRect(e,frame,canvas),measure);

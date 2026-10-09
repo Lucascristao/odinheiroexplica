@@ -338,5 +338,22 @@
         "https://live.staticflickr.com/65535/52465029467_b12fa630a9_o.jpg"
       ]
     }
+  ],
+  "discovery_strategy": {
+    "viewer_intent": "Quem ouviu falar do Imposto Seletivo quer saber quando será definido, se já existe cobrança e o que pode afetar seus preços.",
+    "search_query": "imposto do pecado depois das eleições imposto seletivo alíquotas 2026",
+    "recommendation_angle": "A decisão ficar para depois da votação cria uma pergunta verificável, com consequência financeira concreta e diferença clara entre proposta e imposto em vigor.",
+    "first_payoff": "Antes que alguém saia dizendo que um imposto novo já foi cobrado hoje, não é isso.",
+    "promise_proof": "Título e capa tratam do calendário. A abertura distingue anúncio e cobrança; o bloco anúncio cita as declarações verificadas e a análise explica o impacto da indefinição.",
+    "audience_hypothesis": "Brasileiros interessados em mudanças de impostos que afetam consumo e custo de vida, sem presumir intenção ou preferência política.",
+    "thumbnail_complement": "A capa provoca a dúvida sobre o momento eleitoral enquanto o título identifica Imposto do Pecado e a explicação que será entregue.",
+    "verification_limits": "Sem métricas comprovadas de busca, CTR, concorrentes ou retenção, a classificação é hipótese editorial, jamais garantia de recomendação ou viralidade."
+  },
+  "publication_description": "Imposto do Pecado depois das eleições? O governo informou que pretende enviar a proposta das alíquotas do Imposto Seletivo após o segundo turno. Isso não significa que uma nova cobrança já esteja em vigor.\n\nNeste vídeo, Roberto comenta o anúncio, as estimativas e o que ainda depende de decisão.\n\n- O que o ministro realmente anunciou\n- Quais produtos e setores podem ser afetados\n- O que significa a previsão de R$ 41,9 bilhões para 2027\n- Por que o calendário da decisão importa",
+  "secondary_keywords": [
+    "imposto seletivo",
+    "reforma tributária",
+    "alíquotas do imposto",
+    "imposto do pecado 2026"
   ]
 }

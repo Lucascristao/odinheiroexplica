@@ -253,7 +253,7 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
     context = None
     try:
         context = playwright_browser.new_context(
-            viewport={"width": 600, "height": 917},
+            viewport={"width": 1360, "height": 900},
             user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128.0.0.0 Safari/537.36",
             device_scale_factor=2,
         )
@@ -362,7 +362,26 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
                 candidates.sort((a, b) => normalize(a.innerText).length - normalize(b.innerText).length);
                 const target = candidates[0];
                 if (!target) return false;
-                target.setAttribute('data-ode-source-proof', 'true');
+                // Prefer the real article's context (headline/byline/hero/lead)
+                // when it fits a legible bounded screenshot. Never move or
+                // synthesize text in the original publication.
+                const parentArticle = target.closest('article, [itemtype*="NewsArticle"], main');
+                let chosen = target;
+                if (parentArticle) {
+                  const valid = [];
+                  for (let p = target; p && parentArticle.contains(p); p = p.parentElement) {
+                    const rect = p.getBoundingClientRect();
+                    if (rect.width >= 480 && rect.width <= 1320 &&
+                        rect.height >= 200 && rect.height <= 1450 &&
+                        normalize(p.innerText).includes(needle)) {
+                      valid.push(p);
+                    }
+                    if (p === parentArticle) break;
+                  }
+                  const rich = valid.filter(el => el.querySelector('h1, h2, img, time'));
+                  chosen = rich.at(-1) || valid.at(-1) || target;
+                }
+                chosen.setAttribute('data-ode-source-proof', 'true');
                 return true;
             }""", expected_text, operation_name="selecionar o bloco de evidência")
             if not selected:
@@ -429,11 +448,13 @@ def main() -> None:
 
     success_count = 0
     try:
-        from news_reconstruction import render_reconstruction, render_verified_article_panel
+        from news_reconstruction import render_reconstruction
         for asset in excerpts:
             try:
                 if capture_asset(asset, captures_dir, browser):
-                    render_verified_article_panel(asset, captures_dir)
+                    # Preserve the authentic page, including its editorial
+                    # surroundings. Do not replace successful screenshots
+                    # with simulated article panels.
                     success_count += 1
             except Exception as exc:
                 if not asset.get("editorial_reconstruction"):
