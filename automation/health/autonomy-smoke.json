@@ -1,0 +1,13 @@
+{
+  "result": "pass",
+  "checked_at_utc": "2026-10-09T06:39:23.165423+00:00",
+  "source_commit": "bd6c23b30739e28b92f0624e76047df13262165d",
+  "run_id": "37894650242",
+  "checks": [
+    "python_compile",
+    "workflow_yaml",
+    "news_adapter",
+    "youtube_oauth_identity"
+  ],
+  "note": "Verifica contrato/sintaxe/autenticação, NÃO valida geração real nem postagem pública."
+}
