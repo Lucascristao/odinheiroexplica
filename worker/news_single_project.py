@@ -133,7 +133,7 @@ def build_stage(segment: dict) -> dict:
     if segment["type"] == "opinion":
         return {
             "show_title": False, "full_bleed_news": True, "motion_profile": "narrative", "camera_mode": "manual",
-            "initial_camera": {"x": 50, "y": 50, "zoom": 1},
+            "initial_camera: {"x": 50, "y": 50, "zoom": 1},
             "captions": {"enabled": True, "max_words": 6, "words_per_line": 3,
                          "max_lines": 2, "font_size": 64, "min_free_area_ratio": .30},
             "elements": [
