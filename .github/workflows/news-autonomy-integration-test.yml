@@ -18,6 +18,8 @@ jobs:
       - name: Instalar editor sem motor/render
         run: python -m pip install --disable-pip-version-check 'google-genai==2.26.0' 'requests>=2.32'
       - name: Ensaio de apuração e contrato, sem commit do episódio
+        id: editorial_check
+        continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
@@ -48,10 +50,26 @@ jobs:
           path.parent.mkdir(parents=True,exist_ok=True)
           path.write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
           PY
-      - name: Salvar somente recibo de ensaio
+      - name: Salvar recibo de ensaio, mesmo quando falhar
+        if: always()
+        env:
+          CHECK_RESULT: ${{ steps.editorial_check.outcome }}
         run: |
+          if [ ! -s automation/health/autonomy-editor-test.json ]; then
+            mkdir -p automation/health
+            python - <<'PY'
+          import json,os
+          from datetime import datetime,timezone
+          from pathlib import Path
+          report={"result":"fail","checked_at_utc":datetime.now(timezone.utc).isoformat(),
+          "run_id":os.environ.get("GITHUB_RUN_ID"),"source_commit":os.environ.get("GITHUB_SHA"),
+          "step":"editorial_check","note":"Consultar logs do Actions; nenhuma notícia enviada/publicada."}
+          Path("automation/health/autonomy-editor-test.json").write_text(json.dumps(report,indent=2)+"\n")
+          PY
+          fi
           git config user.name 'ode-news-test[bot]'
           git config user.email 'ode-news-test@users.noreply.github.com'
           git add automation/health/autonomy-editor-test.json
           git commit -m "ci(news): ensaio de apuracao sem publicar"
           git push origin HEAD:main
+          [ "$CHECK_RESULT" = success ] || exit 1
