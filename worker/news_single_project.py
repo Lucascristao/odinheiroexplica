@@ -23,7 +23,7 @@ def validate(episode: dict, today: date | None = None) -> dict:
     news_day = date.fromisoformat(episode["news_date"])
     require(ep_id.startswith("noticia-" + news_day.isoformat() + "-"), "ID e data divergem")
     require(news_day <= today + timedelta(days=1), "episódio de notícia futura")
-    require(episode.get("editorial_status") == "approved_for_private_pilot", "roteiro ainda não aprovado")
+    require(episode.get("editorial_status") in ("approved_for_private_pilot", "autonomous_fact_checked"), "roteiro ainda não verificado")
     require(bool(episode.get("reviewed_at")), "sem data da revisão editorial")
     require(20 <= len(str(episode.get("title", ""))) <= 100, "título inválido")
     require(8 <= len(str(episode.get("thumbnail_headline", ""))) <= 34, "headline da capa inválida")
