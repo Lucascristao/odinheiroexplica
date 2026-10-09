@@ -46,7 +46,75 @@ jobs:
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
-        run: python worker/youtube_publication.py verify
+        run: |
+          set -euo pipefail
+          python worker/youtube_publication.py verify
+          python - <<'PY'
+          import os
+          from google.auth.transport.requests import Request
+          from google.oauth2.credentials import Credentials
+          from googleapiclient.discovery import build
+
+          from worker.youtube_publication import assert_channel
+
+          REQUIRED = {
+              "https://www.googleapis.com/auth/youtube.upload",
+              "https://www.googleapis.com/auth/youtube.readonly",
+              "https://www.googleapis.com/auth/youtube.force-ssl",
+          }
+          creds = Credentials(
+              token=None,
+              refresh_token=os.environ["YOUTUBE_REFRESH_TOKEN"],
+              token_uri="https://oauth2.googleapis.com/token",
+              client_id=os.environ["GOOGLE_CLIENT_ID"],
+              client_secret=os.environ["GOOGLE_CLIENT_SECRET"],
+              scopes=sorted(REQUIRED),
+          )
+          try:
+              creds.refresh(Request())
+          except Exception as exc:
+              raise SystemExit(
+                  f"YOUTUBE_SSL_REFRESH_FAILED: {type(exc).__name__}. "
+                  "Confira se o YOUTUBE_REFRESH_TOKEN do GitHub foi atualizado."
+              ) from None
+
+          granted = set(creds.granted_scopes or [])
+          if not granted:
+              # The server can omit scope on refresh; inspect the resulting
+              # access token instead of mistaking configured scopes for consent.
+              import requests
+              try:
+                  response = requests.get(
+                      "https://oauth2.googleapis.com/tokeninfo",
+                      params={"access_token": creds.token},
+                      timeout=15,
+                  )
+                  response.raise_for_status()
+                  granted = set(response.json().get("scope", "").split())
+              except Exception as exc:
+                  raise SystemExit(
+                      f"YOUTUBE_SSL_SCOPE_UNVERIFIED: {type(exc).__name__}. "
+                      "Não foi possível confirmar as permissões concedidas."
+                  ) from None
+
+          missing = REQUIRED - granted
+          if missing:
+              print("YOUTUBE_SSL_SCOPE_MISSING: " + ", ".join(sorted(missing)))
+              raise SystemExit(1)
+
+          try:
+              service = build("youtube", "v3", credentials=creds, cache_discovery=False)
+              assert_channel(service)
+          except Exception as exc:
+              raise SystemExit(
+                  f"YOUTUBE_SSL_CHANNEL_FAILED: {type(exc).__name__}. "
+                  "Autorização não confirma o canal correto."
+              ) from None
+
+          print("YOUTUBE_SSL_SCOPE_OK: youtube.upload, youtube.readonly e youtube.force-ssl.")
+          print("YOUTUBE_CHANNEL_OK: O Dinheiro Explica (@odinheiro.explica).")
+          print("READ_ONLY_OK: sem upload, mudança de privacidade ou publicação.")
+          PY
 
       - name: Test Drive upload
         if: github.event_name == 'workflow_dispatch' && inputs.test_target == 'drive'
