@@ -37,8 +37,15 @@ for (const [index, scene] of scenes.entries()) {
       distinctDocs.add(e.asset_id!);
     }
   }
-  const section = stage.elements.find(e => e.id === "section");
-  if (section?.label?.includes("OPINIÃO DO ROBERTO") || section?.label?.includes("ANÁLISE DO ROBERTO")) opinionCount++;
+  // Opinion is signposted in spoken narration and semantic metadata,
+  // not by an isolated visual card obscuring the article.
+  if (scene.editorial_role === "opinion") {
+    const spoken = String(scene.narration ?? "").toLocaleLowerCase("pt-BR");
+    if (!/(minha leitura|minha opinião|na minha análise|meu ponto)/.test(spoken)) {
+      throw new Error("NEWS_PREFLIGHT: Roberto commentary must be explicitly identified in speech");
+    }
+    opinionCount++;
+  }
   const anchors = scene.visual.beats?.map((b: any) => b.anchor) ?? [];
   if (anchors.length < 3 || new Set(anchors).size !== anchors.length) {
     throw new Error("NEWS_PREFLIGHT: missing/duplicate speech anchors scene=" + scene.id);
