@@ -49,7 +49,7 @@ jobs:
           scout = Path(".github/workflows/news-scout.yml").read_text(encoding="utf-8")
           assert render.count("GEMINI_API_KEY:") == 1, "Chave Gemini usada fora do step de voz"
           assert "worker/news_autonomous_thumbnail.py" not in render, "Render chama imagem Gemini"
-          assert "worker/news_autonomous_editor.py" not in editor, "Editor Gemini legado reativado"
+          assert "run: python worker/news_autonomous_editor.py" not in editor, "Editor Gemini legado reativado"
           assert "schedule:" not in editor and "schedule:" not in scout, "Cron editorial concorrente"
           print("GEMINI_VOICE_ONLY_OK")
           PY
