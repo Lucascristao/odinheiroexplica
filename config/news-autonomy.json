@@ -1,0 +1,22 @@
+{
+  "version": "1.0",
+  "enabled": true,
+  "approval_basis": "Piloto explicitamente aprovado pelo titular em 2026-10-09; autorização permanente para edições automáticas futuras, sem revisão humana por episódio",
+  "timezone": "America/Fortaleza",
+  "production_hours": [
+    "06:00",
+    "10:00",
+    "18:00"
+  ],
+  "publication_hours": [
+    "08:00",
+    "12:00",
+    "20:00"
+  ],
+  "required_editorial_status": "autonomous_fact_checked",
+  "require_qa_status": "pass",
+  "require_thumbnail_audit": true,
+  "require_thumbnail_receipt": true,
+  "min_lead_minutes": 5,
+  "publish_if_late": false
+}
