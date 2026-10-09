@@ -57,3 +57,15 @@ Esta implementação é de PRODUÇÃO PRIVADA e testes reais; não anunciar trê
 ## Cadência visual de comentário jornalístico
 
 Narrador e mídia são uma única cena contínua. Os pontos da narração disparam apenas operações úteis sobre o material em exibição; sem tela de "Análise do Roberto" e sem troca da prova por frases soltas. Segurar uma fonte durante o comentário é melhor que cortes artificiais. O texto da fonte pode ser legível por enquadramento aberto/zoom autorado e controlado, mas não há zoom automático que corte evidência. Fotos não precisam de rótulos de arquivo; créditos e direitos continuam obrigatórios no manifesto. Use outras fontes ou gráficos quando o assunto pedir. Para prints inacessíveis, aplicar fallback claramente identificado sem inventar matéria.
+
+## Descoberta e retenção no YouTube (obrigatório para notícia única)
+
+Foco na pessoa que assiste, **não** em manipular métricas: investigar qual pergunta concreta move a pauta, qual fato novo responde à pergunta e qual contexto rende valor em tela. O YouTube descreve recomendações como personalização + satisfação + performance entre os espectadores, enquanto títulos/miniaturas/descrições ajudam o público a decidir clicar. Tags são secundárias; não investir tempo em stuffing ou hashtags genéricas.
+
+**Antes da produção**, preencher `discovery_strategy` no episódio: `viewer_intent`, `search_query`, `recommendation_angle`, `first_payoff` (trecho literal da abertura), `promise_proof`, `audience_hypothesis`, `thumbnail_complement`, `verification_limits`. Escrever `publication_description` em linguagem natural com palavra-chave relevante, promessa entregue e bullets úteis. Registre termos secundários apenas se pertinentes. Três títulos com ângulos editoriais distintos, capa magnética complementar e auditoria de promessa. O motor deve bloquear descrições ou promessas não sustentadas. **Não inventar** volume de busca, CTR, tendência, ranking de assuntos ou dados do Studio.
+
+**Primeiros segundos**: uma pergunta de interesse real e uma primeira resposta concreta antes de alongar a análise. O roteiro entrega a promessa, prova antes de opinião e mantém continuidade visual para favorecer compreensão. Nada de exposição repetitiva, vinheta longa ou pedido de inscrição antes de entregar valor.
+
+**Após publicação humana**: medir impressões e CTR por origem de tráfego (Home, sugeridos, pesquisa), duração média e retenção inicial no mesmo recorte temporal. Verificar 72h, 7 e 28 dias se houver dados do Studio; não atribuir melhora a uma única mudança nem usar visões públicas de concorrentes como se fossem seus dados privados. Mudar embalagem só quando a hipótese for verificável. **Viralidade nunca é garantida.**
+
+Referências oficiais: https://support.google.com/youtube/answer/16533387?hl=pt-BR e https://support.google.com/youtube/answer/146402?hl=pt-BR.
