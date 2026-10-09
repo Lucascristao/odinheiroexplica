@@ -128,72 +128,40 @@ def validate(episode: dict, today: date | None = None) -> dict:
 
 
 def build_stage(segment: dict) -> dict:
-    # Comentário do apresentador precisa ser visualmente diferente de uma
-    # matéria/documento: palco aberto, ideia dominante, sem ícone genérico.
-    if segment["type"] == "opinion":
-        return {
-            "show_title": False, "full_bleed_news": True, "motion_profile": "narrative", "camera_mode": "manual",
-            "initial_camera: {"x": 50, "y": 50, "zoom": 1},
-            "captions": {"enabled": True, "max_words": 6, "words_per_line": 3,
-                         "max_lines": 2, "font_size": 64, "min_free_area_ratio": .30},
-            "elements": [
-                {"id": "section", "kind": "label", "label": "ANÁLISE DO ROBERTO",
-                 "x": 6, "y": 6, "width": 88, "height": 13,
-                 "label_size": 44, "surface": "none"},
-                {"id": "headline", "kind": "label", "label": segment["headline"],
-                 "x": 6, "y": 24, "width": 88, "height": 44,
-                 "label_size": 76, "surface": "none"},
-                {"id": "metric", "kind": "label", "label": segment["metric"],
-                 "x": 6, "y": 78, "width": 85, "height": 14,
-                 "label_size": 48, "surface": "none"},
-            ], "connections": [],
-        }
-    # Visual almost full screen; Roberto narrates instead of occupying a side panel.
-    if segment.get("document_id") or segment.get("photo_id"):
-        if segment.get("document_id"):
-            media = {
-                "id": "document", "kind": "source_excerpt",
-                "label": "TRECHO DA MATÉRIA", "asset_id": segment["document_id"],
-                "x": 1.5, "y": 11, "width": 97, "height": 88,
-                "surface": "none", "image_fit": "contain", "visual_role": "protagonist",
-            }
-        else:
-            media = {
-                "id": "photo-context", "kind": "photo",
-                "label": "IMAGEM DE ARQUIVO", "asset_id": segment["photo_id"],
-                "x": 1.5, "y": 11, "width": 97, "height": 88,
-                "surface": "none", "image_fit": "cover",
-                "image_motion": "push", "photo_style": "clean", "visual_role": "protagonist",
-            }
-        return {
-            "show_title": False, "motion_profile": "narrative", "camera_mode": "manual",
-            "initial_camera": {"x": 50, "y": 50, "zoom": 1},
-            "captions": {"enabled": False},
-            "elements": [
-                {"id": "section", "kind": "label", "label": segment["label"][:78],
-                 "x": 3, "y": 1, "width": 26, "height": 10,
-                 "label_size": 34, "surface": "none"},
-                {"id": "headline", "kind": "label", "label": segment["headline"][:76],
-                 "x": 31, "y": 1, "width": 66, "height": 10,
-                 "label_size": 37, "surface": "none"},
-                media,
-            ], "connections": [],
-        }
+    """Real evidence fills the frame; Roberto's opinion stays on the same visual.
 
-    # Comentário sem fotografia/documento continua com palco próprio.
+    Narration and commentary are audio-first, not isolated title slides.
+    Every newsroom segment must resolve to a verified visual asset.
+    """
+    document_id = segment.get("document_id")
+    photo_id = segment.get("photo_id")
+    require(bool(document_id) != bool(photo_id),
+            "cena jornalística deve exibir uma matéria ou uma imagem identificada")
+    if document_id:
+        evidence = {
+            "id": "evidence", "kind": "source_excerpt",
+            "label": "RECORTE DOCUMENTAL", "asset_id": document_id,
+            "x": 0, "y": 0, "width": 100, "height": 100,
+            "surface": "none", "image_fit": "contain",
+            "visual_role": "protagonist",
+            "annotations": segment.get("annotations", []),
+        }
+    else:
+        evidence = {
+            "id": "evidence", "kind": "photo",
+            "label": segment.get("photo_subject", "FOTOGRAFIA DOCUMENTAL"),
+            "asset_id": photo_id,
+            "x": 0, "y": 0, "width": 100, "height": 100,
+            "surface": "none", "image_fit": "cover",
+            "image_motion": "none", "photo_style": "clean",
+            "visual_role": "protagonist",
+        }
     return {
-        "show_title": False, "motion_profile": "narrative", "camera_mode": "manual",
+        "show_title": False, "full_bleed_news": True,
+        "motion_profile": "narrative", "camera_mode": "manual",
         "initial_camera": {"x": 50, "y": 50, "zoom": 1},
-        "captions": {"enabled": True, "max_words": 6, "words_per_line": 3,
-                     "max_lines": 2, "font_size": 64, "min_free_area_ratio": .30},
-        "elements": [
-            {"id": "section", "kind": "label", "label": segment["label"][:78],
-             "x": 6, "y": 6, "width": 88, "height": 13, "label_size": 44, "surface": "none"},
-            {"id": "headline", "kind": "label", "label": segment["headline"][:76],
-             "x": 6, "y": 24, "width": 88, "height": 44, "label_size": 76, "surface": "none"},
-            {"id": "metric", "kind": "label", "label": segment["metric"][:78],
-             "x": 6, "y": 78, "width": 85, "height": 14, "label_size": 48, "surface": "none"},
-        ], "connections": [],
+        "captions": {"enabled": False},
+        "elements": [evidence], "connections": [],
     }
 
 
@@ -201,21 +169,29 @@ def build_scene(index: int, segment: dict) -> dict:
     narration = segment["narration"]
     available_cues = anchors(narration)
     cards = segment["visual_cards"]
-    # Notícias não usam a cadência de animações dos vídeos explicativos:
-    # 3 a 4 atualizações legíveis por bloco, enquanto a matéria fica na tela.
+    # No unanchored text cards on top of material. Authored focus regions and
+    # marks are optional: if none are reviewed, keep the evidence stable.
     cue_count = min(4, len(cards), len(available_cues))
     cue_indices = [round(i * (len(available_cues) - 1) / (cue_count - 1)) for i in range(cue_count)]
     beats = []
     for i, cue_index in enumerate(cue_indices):
-        beats.append({
-            "anchor": available_cues[cue_index], "target_id": "headline",
-            "action": "update", "headline": cards[i],
-            "treatment": "kinetic_type", "behavior": "transform",
-            "motion_seconds": .5,
-            **({"camera": {"x": 50, "y": 50, "zoom": 1 + .008 * i,
-                            "motion_seconds": 1.25}}
-               if segment.get("document_id") or segment.get("photo_id") else {}),
-        })
+        beat = {
+            "anchor": available_cues[cue_index], "target_id": "evidence",
+            "action": "focus", "headline": cards[i],
+            "treatment": "spotlight", "behavior": "hold",
+            "motion_seconds": .6,
+        }
+        # Never invent crop/mark coordinates. If the editor verified them on
+        # the actual capture, the Remotion evidence engine can animate them.
+        focus_views = segment.get("focus_views") or []
+        mark_sequences = segment.get("mark_sequences") or []
+        if i < len(focus_views):
+            require(segment.get("document_id"), "zoom de trecho exige documento")
+            beat["view"] = focus_views[i]
+        if i < len(mark_sequences):
+            require(segment.get("document_id"), "grifo exige documento")
+            beat["mark_ids"] = mark_sequences[i]
+        beats.append(beat)
     return {
         "id": f"scene-{index:02d}", "index": index, "title": segment["title"],
         "narration": narration, "claim_ids": [],
@@ -225,6 +201,7 @@ def build_scene(index: int, segment: dict) -> dict:
             "stage": build_stage(segment), "beats": beats,
         },
     }
+
 
 
 def transform(episode: dict) -> dict:
@@ -302,7 +279,16 @@ def transform(episode: dict) -> dict:
             "engagement_question": episode["engagement_question"],
             "hashtags": episode["hashtags"],
         },
-        "scenes": [build_scene(i, seg) for i, seg in enumerate(episode["segments"])],
+        "scenes": [
+            build_scene(i, {
+                **seg,
+                **({"document_id": episode["segments"][i-1]["document_id"]}
+                   if seg["type"] == "opinion" and i > 0
+                   and not seg.get("document_id") and not seg.get("photo_id")
+                   and episode["segments"][i-1].get("document_id") else {}),
+            })
+            for i, seg in enumerate(episode["segments"])
+        ],
     }
 
 
