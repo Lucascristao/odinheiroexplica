@@ -23,6 +23,23 @@ class SingleNewsContractTests(unittest.TestCase):
         self.assertGreaterEqual(len(self.doc["sources"]), 2)
         self.assertEqual(self.doc["editorial_status"], "approved_for_private_pilot")
 
+    def test_titles_must_be_distinct_and_chosen_from_highest_ranked_option(self):
+        base = copy.deepcopy(self.doc)
+        validate(base, date(2026, 10, 9))
+        duplicates = copy.deepcopy(base)
+        duplicates["title_options"][1]["text"] = duplicates["title_options"][0]["text"]
+        with self.assertRaisesRegex(ValueError, "diferentes"):
+            validate(duplicates, date(2026, 10, 9))
+        missing = copy.deepcopy(base)
+        missing["title"] = "Imposto seletivo anunciado com outro título que não foi avaliado"
+        with self.assertRaisesRegex(ValueError, "não corresponde"):
+            validate(missing, date(2026, 10, 9))
+        not_best = copy.deepcopy(base)
+        not_best["title_options"][1]["editorial_quality"] = 5
+        not_best["title_options"][0]["editorial_quality"] = 4
+        with self.assertRaisesRegex(ValueError, "melhor alternativa"):
+            validate(not_best, date(2026, 10, 9))
+
     def test_evidence_occupies_the_frame_without_solo_commentary_cards(self):
         project = transform(self.doc)
         self.assertEqual(len(project["scenes"]), len(self.doc["segments"]))
