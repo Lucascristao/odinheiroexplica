@@ -98,3 +98,15 @@ Para **ode-news-single**, apresentar a matéria, print autêntico ou foto em **a
 ## Otimização para recomendações YouTube: notícias únicas
 
 Para toda nova notícia, trabalhar simultaneamente apuração factual, interesse do público, clareza do título, capa complementar, entrega na abertura e retenção visual. Preencher `discovery_strategy` e `publication_description` em `news/episodes/*.json`, conforme `docs/news-single-format.md`; não usar tags como principal alavanca de alcance, nem inventar métricas de buscas/CTR. Respeitar separação entre notícias verificadas e interpretação. O SEO da notícia precisa ajudar a pessoa a encontrar a resposta, sem exageros, insultos ou garantia de viralização. Medir performance verdadeira depois da publicação, com snapshots do YouTube Studio quando disponíveis.
+
+## Autorização permanente: notícias autônomas após piloto aprovado (09/10/2026)
+
+O usuário aprovou expressamente o piloto e AUTORIZOU a operação recorrente sem decisão de pauta ou revisão humana por episódio: início editorial às 06h, 10h e 18h (America/Fortaleza) para tentar publicar às 08h, 12h e 20h do mesmo dia. Isto atualiza as regras históricas de aprovação humana SOMENTE para novos episódios de notícia única com editorial_status=autonomous_fact_checked. Os explicativos evergreen e os pilotos históricos não mudam.
+
+- Fonte de autorização e pausa: config/news-autonomy.json (enabled). Não forjar auditorias nem aprovações.
+- Pesquisa: news-autonomous-editor.yml e worker/news_autonomous_editor.py, Gemini com Google Search grounding, checagem de URLs/trechos reais, seleção anti-repetição e news/episodes/AAAA-MM-DD-{manha,meio-dia,noite}.json. ChatGPT Tasks também aciona edição em cada janela, sempre conferindo a existência do mesmo arquivo antes de criar algo.
+- Render: render-news-single.yml lê o arquivo de episódio exato, não copia o piloto; Gemini Live/Roberto, Remotion e QA canônicos.
+- Capa autônoma: worker/news_autonomous_thumbnail.py usa imagem Gemini e inspeção multimodal dos pixels, com contrato/hashes reais. Geração é antes do envio do MP4, associação ao video_id ocorre depois do upload privado. Se modelo de imagem/visão indisponível ou reprovado, não publicar.
+- YouTube: worker/news_autonomous_schedule.py verifica vídeo/canal, recibos, auditoria de capa e QA, exige horário futuro autorizado, programa publishAt e faz readback. Se o YouTube restringir projeto OAuth não auditado, não contornar o bloqueio nem dizer que publicou.
+- Execução começa em 09/10/2026. O agendamento implementado e a presença de código não comprovam que a primeira edição saiu; confirmar resultado real em Actions e YouTube antes de declarar sucesso.
+- Edições são independentes. Janela perdida, notícia sem prova, duplicata, falha de TTS/render/capa/QA/upload/programação => fica privado ou não é criado; nunca compensar com notícia antiga ou publicação tardia sem autorização.
