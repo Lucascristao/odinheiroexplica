@@ -59,7 +59,7 @@ def assert_channel(service):
     return channel
 
 
-def validate_package(video: Path, metadata: dict, project_id: str, source_fingerprint: str = ""):
+def validate_package(video: Path, metadata: dict, project_id: str, source_fingerprint: str = "", media_sha256: str = ""):
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{2,119}", project_id):
         raise ValueError("project-id inválido.")
     if not video.is_file() or video.suffix.lower() != ".mp4" or video.stat().st_size == 0:
@@ -75,11 +75,12 @@ def validate_package(video: Path, metadata: dict, project_id: str, source_finger
         raise ValueError("Tags inválidas.")
     tag = "ODE_EPISODE_" + project_id
     revision_tag = "ODE_SOURCE_" + source_fingerprint[:16] if source_fingerprint else None
+    media_tag = "ODE_MEDIA_" + media_sha256[:16] if media_sha256 else None
     return {
         "snippet": {
             "title": title,
             "description": description,
-            "tags": list(dict.fromkeys(tags + [tag] + ([revision_tag] if revision_tag else []))),
+            "tags": list(dict.fromkeys(tags + [tag] + ([revision_tag] if revision_tag else []) + ([media_tag] if media_tag else []))),
             "categoryId": "27",
             "defaultLanguage": "pt-BR",
         },
@@ -87,7 +88,7 @@ def validate_package(video: Path, metadata: dict, project_id: str, source_finger
     }
 
 
-def lookup_existing(service, channel: dict, episode_tag: str, revision_tag: str | None = None):
+def lookup_existing(service, channel: dict, episode_tag: str, revision_tag: str | None = None, media_tag: str | None = None):
     playlist = channel.get("contentDetails", {}).get("relatedPlaylists", {}).get("uploads", "")
     if not playlist:
         raise ValueError("Playlist de envios indisponível; não é seguro testar duplicidade.")
@@ -101,7 +102,10 @@ def lookup_existing(service, channel: dict, episode_tag: str, revision_tag: str 
         if ids:
             videos = service.videos().list(part="snippet,status", id=",".join(ids)).execute()
             for item in videos.get("items", []):
-                if episode_tag in item.get("snippet", {}).get("tags", []) and (not revision_tag or revision_tag in item.get("snippet", {}).get("tags", [])):
+                tag_list = item.get("snippet", {}).get("tags", [])
+                if (episode_tag in tag_list
+                    and (not revision_tag or revision_tag in tag_list)
+                    and (not media_tag or media_tag in tag_list)):
                     if item.get("snippet", {}).get("channelId") != EXPECTED_ID:
                         raise ValueError("Vídeo encontrado fora do canal autorizado.")
                     return item
@@ -137,13 +141,13 @@ def save_receipt(path: Path, project_id: str, digest: str, video_id: str, recove
 
 def upload_private(service, channel, video_path: Path, metadata: dict, project_id: str, receipt_path: Path, source_fingerprint: str = ""):
     """Resumable, private upload with receipt and best-effort duplicate protection."""
-    body = validate_package(video_path, metadata, project_id, source_fingerprint)
     digest = sha256(video_path)
+    body = validate_package(video_path, metadata, project_id, source_fingerprint, digest)
     prior = load_receipt(receipt_path, project_id, digest)
     if prior is not None:
         return prior
     rev = "ODE_SOURCE_" + source_fingerprint[:16] if source_fingerprint else None
-    found = lookup_existing(service, channel, "ODE_EPISODE_" + project_id, rev)
+    found = lookup_existing(service, channel, "ODE_EPISODE_" + project_id, rev, "ODE_MEDIA_" + digest[:16])
     if found is not None:
         if found.get("status", {}).get("privacyStatus") != "private":
             raise ValueError("Episódio já existe, mas não está privado. Não alterar.")
