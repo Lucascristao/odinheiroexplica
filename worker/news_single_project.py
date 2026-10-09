@@ -89,7 +89,6 @@ def build_stage(segment: dict) -> dict:
         "asset_id": segment["document_id"], "x": 54, "y": 18, "width": 43,
         "height": 66, "surface": "paper", "image_fit": "contain",
         "visual_role": "support",
-        "sustain": {"kind": "breathe", "amplitude": 5, "period_seconds": 8},
     } if segment.get("document_id") else {
         "id": "subject", "kind": "object", "label": segment["headline"],
         "object_type": segment["object_type"], "x": 61, "y": 24, "width": 36,
@@ -106,7 +105,8 @@ def build_stage(segment: dict) -> dict:
              "x": 6, "y": 5, "width": 85, "height": 13, "label_size": 40, "surface": "none"},
             card, doc,
             {"id": "metric", "kind": "label", "label": segment["metric"][:78],
-             "x": 6, "y": 78, "width": 51, "height": 15, "label_size": 51, "surface": "none"},
+             "x": 6, "y": 78, "width": 46 if segment.get("document_id") else 51,
+             "height": 15, "label_size": 51, "surface": "none"},
         ],
         "connections": [],
     }
