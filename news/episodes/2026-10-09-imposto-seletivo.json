@@ -89,7 +89,8 @@
       "claim": "Dario Durigan disse no dia 8 de outubro que o governo pretende encaminhar, após o segundo turno, proposta das alíquotas do Imposto Seletivo.",
       "source_ids": [
         "S1",
-        "S2"
+        "S2",
+        "S4"
       ],
       "status": "statement"
     },
@@ -105,7 +106,8 @@
       "claim": "O orçamento projetou aproximadamente R$ 41,9 bilhões de arrecadação do Imposto Seletivo em 2027.",
       "source_ids": [
         "S2",
-        "S3"
+        "S3",
+        "S6"
       ],
       "status": "forecast_not_collected"
     },
