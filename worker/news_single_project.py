@@ -58,6 +58,16 @@ def validate(episode: dict, today: date | None = None) -> dict:
         require(doc.get("source_page_url", "").startswith("https://"), "origem visual não comprovada")
         require(len(doc.get("attribution", "")) >= 15 and doc.get("rights_review"), "falta procedência/direitos visuais")
         require(doc.get("capture_file", "").startswith("research/captures/"), "caminho de captura inválido")
+        rec = doc.get("editorial_reconstruction")
+        if rec is not None:
+            require(isinstance(rec, dict), "reconstrução editorial inválida")
+            source = next(s for s in sources if s["id"] == doc["source_id"])
+            require(rec.get("publisher") == source["publisher"], "fonte da reconstrução divergente")
+            require(rec.get("published_at") == source["published_at"], "data da reconstrução divergente")
+            require(20 <= len(str(rec.get("headline", ""))) <= 180, "manchete editorial inválida")
+            require(30 <= len(str(rec.get("context", ""))) <= 420, "resumo editorial inválido")
+            require(any(doc["source_id"] in fact["source_ids"] for fact in claims),
+                    "reconstrução sem fato verificado ligado à fonte")
         require(doc["id"] not in doc_ids, "asset duplicado")
         doc_ids.add(doc["id"])
     photos = episode.get("context_photos") or []
@@ -138,54 +148,52 @@ def build_stage(segment: dict) -> dict:
                  "label_size": 48, "surface": "none"},
             ], "connections": [],
         }
-    label = ("OPINIÃO DO ROBERTO" if segment["type"] == "opinion" else segment["label"])
-    has_media = bool(segment.get("document_id") or segment.get("photo_id"))
-    media_right = has_media and segment.get("media_side", "left") == "right"
-    media_x = 36 if media_right else 4
-    text_x = 4 if media_right else 67
-    # Referência editorial de noticiário: mídia documental protagonista (~60%)
-    # e lateral de narração com frases curtas sincronizadas no lugar do rosto do
-    # comentarista. NÃO usar legenda sobre prova/manchete.
-    card = {
-        "id": "headline", "kind": "label", "label": segment["headline"],
-        "x": text_x if has_media else 6, "y": 24, "width": 30 if has_media else 53,
-        "height": 39, "label_size": 54 if has_media else 66,
-        "surface": "none",
-    }
-    doc = {
-        "id": "document", "kind": "source_excerpt", "label": "TRECHO DA MATÉRIA",
-        "asset_id": segment["document_id"], "x": media_x, "y": 18, "width": 60,
-        "height": 66, "surface": "none", "image_fit": "contain",
-        "visual_role": "support",
-    } if segment.get("document_id") else {
-        "id": "photo-context", "kind": "photo",
-        "label": "IMAGEM DE ARQUIVO", "asset_id": segment["photo_id"],
-        "x": media_x, "y": 18, "width": 60, "height": 66,
-        "surface": "none", "image_fit": "cover", "image_motion": "none",
-        "photo_style": "clean", "visual_role": "support",
-    } if segment.get("photo_id") else {
-        "id": "subject", "kind": "object", "label": segment["headline"],
-        "object_type": segment["object_type"], "x": 61, "y": 24, "width": 36,
-        "height": 56, "show_label": False, "surface": "none", "svg_motion": "assemble",
-        "sustain": {"kind": "breathe", "amplitude": 13, "period_seconds": 6},
-    }
+    # Visual almost full screen; Roberto narrates instead of occupying a side panel.
+    if segment.get("document_id") or segment.get("photo_id"):
+        if segment.get("document_id"):
+            media = {
+                "id": "document", "kind": "source_excerpt",
+                "label": "TRECHO DA MATÉRIA", "asset_id": segment["document_id"],
+                "x": 3, "y": 11, "width": 94, "height": 86,
+                "surface": "none", "image_fit": "contain", "visual_role": "protagonist",
+            }
+        else:
+            media = {
+                "id": "photo-context", "kind": "photo",
+                "label": "IMAGEM DE ARQUIVO", "asset_id": segment["photo_id"],
+                "x": 3, "y": 11, "width": 94, "height": 86,
+                "surface": "none", "image_fit": "cover",
+                "image_motion": "push", "photo_style": "clean", "visual_role": "protagonist",
+            }
+        return {
+            "show_title": False, "motion_profile": "narrative", "camera_mode": "manual",
+            "initial_camera": {"x": 50, "y": 50, "zoom": 1},
+            "captions": {"enabled": False},
+            "elements": [
+                {"id": "section", "kind": "label", "label": segment["label"][:78],
+                 "x": 3, "y": 1, "width": 26, "height": 8,
+                 "label_size": 29, "surface": "none"},
+                {"id": "headline", "kind": "label", "label": segment["headline"][:76],
+                 "x": 31, "y": 1, "width": 66, "height": 8,
+                 "label_size": 37, "surface": "none"},
+                media,
+            ], "connections": [],
+        }
+
+    # Comentário sem fotografia/documento continua com palco próprio.
     return {
         "show_title": False, "motion_profile": "narrative", "camera_mode": "manual",
         "initial_camera": {"x": 50, "y": 50, "zoom": 1},
-        # A headline lateral atualizada pelos beats cumpre o papel de legenda
-        # editorial sem cobrir prints. Closed captions continuam disponíveis no
-        # player do YouTube; sobreposição automática só em cenas sem mídia.
-        "captions": {"enabled": not has_media, "max_words": 6, "words_per_line": 3,
+        "captions": {"enabled": True, "max_words": 6, "words_per_line": 3,
                      "max_lines": 2, "font_size": 64, "min_free_area_ratio": .30},
         "elements": [
-            {"id": "section", "kind": "label", "label": label[:78],
-             "x": 6, "y": 5, "width": 85, "height": 13, "label_size": 40, "surface": "none"},
-            card, doc,
+            {"id": "section", "kind": "label", "label": segment["label"][:78],
+             "x": 6, "y": 6, "width": 88, "height": 13, "label_size": 44, "surface": "none"},
+            {"id": "headline", "kind": "label", "label": segment["headline"][:76],
+             "x": 6, "y": 24, "width": 88, "height": 44, "label_size": 76, "surface": "none"},
             {"id": "metric", "kind": "label", "label": segment["metric"][:78],
-             "x": text_x if has_media else 6, "y": 73, "width": 30 if has_media else 51,
-             "height": 15, "label_size": 43 if has_media else 51, "surface": "none"},
-        ],
-        "connections": [],
+             "x": 6, "y": 78, "width": 85, "height": 14, "label_size": 48, "surface": "none"},
+        ], "connections": [],
     }
 
 
@@ -204,6 +212,9 @@ def build_scene(index: int, segment: dict) -> dict:
             "action": "update", "headline": cards[i],
             "treatment": "kinetic_type", "behavior": "transform",
             "motion_seconds": .5,
+            **({"camera": {"x": 50, "y": 50, "zoom": 1 + .008 * i,
+                            "motion_seconds": 1.25}}
+               if segment.get("document_id") or segment.get("photo_id") else {}),
         })
     return {
         "id": f"scene-{index:02d}", "index": index, "title": segment["title"],
@@ -222,6 +233,9 @@ def transform(episode: dict) -> dict:
         "id": doc["id"], "type": "source_excerpt", "source_page_url": doc["source_page_url"],
         "expected_text": doc["expected_text"], "capture_file": doc["capture_file"],
         "attribution": doc["attribution"], "needs_cutout": False,
+        "source_id": doc["source_id"],
+        **({"editorial_reconstruction": doc["editorial_reconstruction"]}
+           if doc.get("editorial_reconstruction") else {}),
         "narrative_role": "documentary_proof", "country_context": "BR",
     } for doc in episode["documentary_evidence"]]
     photo_assets = [{
@@ -232,6 +246,7 @@ def transform(episode: dict) -> dict:
         "license": photo.get("license"),
         "attribution": photo["attribution"],
         "rights_basis": photo.get("rights_basis", "licensed" if photo.get("license") else "contextual_quotation"),
+        "image_fallback_urls": photo.get("image_fallback_urls", []),
         "needs_cutout": False, "country_context": "BR",
     } for photo in episode["context_photos"]]
     contract = {

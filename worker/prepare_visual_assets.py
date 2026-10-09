@@ -172,7 +172,15 @@ def main() -> None:
         if asset_type == "source_excerpt":
             if asset.get("needs_cutout"):
                 raise RuntimeError("Recorte documental não pode remover fundo.")
-            filename, dimensions = prepare_excerpt(raw, output_dir, asset)
+            try:
+                filename, dimensions = prepare_excerpt(raw, output_dir, asset)
+            except RuntimeError as exc:
+                if not asset.get("editorial_reconstruction"):
+                    raise
+                from news_reconstruction import render_reconstruction
+                render_reconstruction(asset, CAPTURE_ROOT, f"qualidade visual insuficiente: {exc}")
+                raw = (Path(__file__).resolve().parents[1] / asset["capture_file"]).read_bytes()
+                filename, dimensions = prepare_excerpt(raw, output_dir, asset)
         elif asset_type == "graphic" and content_type == "image/svg+xml":
             filename = save_graphic(raw, content_type, output_dir, asset_id)
         else:

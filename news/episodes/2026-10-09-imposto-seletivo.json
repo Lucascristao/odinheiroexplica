@@ -134,7 +134,13 @@
       "expected_text": "Envio da MP do",
       "attribution": "Citação visual de trecho original do Poder360, 08/10/2026, título e fonte identificados",
       "rights_review": "Recorte limitado de manchete para crítica e explicação; preservar autoria, sentido e URL; não reutilizar foto jornalística da matéria",
-      "capture_file": "research/captures/doc-announcement.png"
+      "capture_file": "research/captures/doc-announcement.png",
+      "editorial_reconstruction": {
+        "publisher": "Poder360",
+        "published_at": "2026-10-08",
+        "headline": "Governo pretende enviar proposta do Imposto Seletivo depois das eleições",
+        "context": "O ministro informou que o envio das alíquotas está previsto para depois do segundo turno. O anúncio não significa que uma nova cobrança já tenha sido aprovada."
+      }
     },
     {
       "id": "doc-budget",
@@ -144,7 +150,13 @@
       "expected_text": "R$ 41,9 bilhões referentes ao Imposto Seletivo",
       "attribution": "InfoMoney / Agência O Globo, 01/09/2026, trecho curto sobre previsão orçamentária do Imposto Seletivo",
       "rights_review": "Recorte factual de passagem citada para explicar estimativa fiscal; conservar origem, autor e contexto, sem reproduzir reportagem inteira",
-      "capture_file": "research/captures/doc-budget.png"
+      "capture_file": "research/captures/doc-budget.png",
+      "editorial_reconstruction": {
+        "publisher": "InfoMoney / Agência O Globo",
+        "published_at": "2026-09-01",
+        "headline": "Orçamento de 2027 prevê R$ 41,9 bilhões com Imposto Seletivo",
+        "context": "O valor é uma projeção orçamentária, não receita arrecadada. A definição das alíquotas e o calendário de implementação continuam em discussão."
+      }
     }
   ],
   "segments": [
@@ -310,7 +322,7 @@
       "type": "photo",
       "role": "contexto_eleitoral",
       "subject": "Urna eletrônica recolhida durante segundo turno de 2022, Agência Senado; imagem de arquivo",
-      "image_url": "https://live.staticflickr.com/65535/52465029467_b12fa630a9_o.jpg",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Elei%C3%A7%C3%B5es_2022_-_Segundo_Turno_-_52465029467.jpg/1280px-Elei%C3%A7%C3%B5es_2022_-_Segundo_Turno_-_52465029467.jpg",
       "source_page_url": "https://commons.wikimedia.org/wiki/File:Elei%C3%A7%C3%B5es_2022_-_Segundo_Turno_-_52465029467.jpg",
       "license": "CC BY 2.0",
       "license_url": "https://creativecommons.org/licenses/by/2.0/",
@@ -318,7 +330,11 @@
       "rights_review": "Wikimedia Commons confirmou CC BY 2.0 em 2022; foto de arquivo, não registro da eleição de 2026.",
       "archival": true,
       "reviewed_on": "2026-10-09",
-      "needs_cutout": false
+      "needs_cutout": false,
+      "image_fallback_urls": [
+        "https://upload.wikimedia.org/wikipedia/commons/f/f2/Elei%C3%A7%C3%B5es_2022_-_Segundo_Turno_-_52465029467.jpg",
+        "https://live.staticflickr.com/65535/52465029467_b12fa630a9_o.jpg"
+      ]
     }
   ]
 }

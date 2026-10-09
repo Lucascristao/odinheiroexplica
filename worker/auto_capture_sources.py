@@ -429,8 +429,16 @@ def main() -> None:
 
     success_count = 0
     try:
+        from news_reconstruction import render_reconstruction
         for asset in excerpts:
-            if capture_asset(asset, captures_dir, browser):
+            try:
+                if capture_asset(asset, captures_dir, browser):
+                    success_count += 1
+            except Exception as exc:
+                if not asset.get("editorial_reconstruction"):
+                    raise
+                print(f"[auto_capture] Falha de captura ({exc}). Usando reconstrução editorial identificada.")
+                render_reconstruction(asset, captures_dir, str(exc))
                 success_count += 1
     finally:
         if browser:
