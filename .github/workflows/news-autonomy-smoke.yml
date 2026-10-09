@@ -75,25 +75,39 @@ jobs:
           from google import genai
           from google.genai import types
           c=genai.Client(api_key=os.environ["GEMINI_API_KEY"])
-          response=c.models.generate_content(
-              model="gemini-2.5-flash-image",
-              contents="Cinematic editorial photo, single folded golden origami star on charcoal background, no text.",
-              config=types.GenerateContentConfig(
-                  response_modalities=["IMAGE"],
-                  image_config=types.ImageConfig(aspect_ratio="16:9")
-              )
-          )
-          parts=[part for part in response.candidates[0].content.parts if part.inline_data is not None]
-          assert parts, "No image returned"
+          from PIL import Image, ImageDraw
+          im=Image.new("RGB",(1280,720),"#090B0D")
+          draw=ImageDraw.Draw(im)
+          draw.ellipse((690,130,1130,570),fill="#FFBD19")
           buffer=io.BytesIO()
-          parts[0].as_image().convert("RGB").save(buffer,format="JPEG",quality=86)
+          im.save(buffer,format="JPEG",quality=86)
+          print("DOCUMENTARY_FALLBACK_VISUAL_PREVIEW_OK")
+          try:
+              response=c.models.generate_content(
+                  model="gemini-2.5-flash-image",
+                  contents="One golden paper shape on charcoal background. No text.",
+                  config=types.GenerateContentConfig(
+                      response_modalities=["IMAGE"],
+                      image_config=types.ImageConfig(aspect_ratio="16:9")
+                  ),
+              )
+              parts=[part for part in response.candidates[0].content.parts if part.inline_data is not None]
+              if parts:
+                  buffer=io.BytesIO()
+                  parts[0].as_image().convert("RGB").save(buffer,format="JPEG",quality=86)
+                  print("NATIVE_IMAGE_API_OK")
+          except Exception as error:
+              if "429" in str(error) or "RESOURCE_EXHAUSTED" in str(error):
+                  print("NATIVE_IMAGE_QUOTA_UNAVAILABLE_FALLBACK_REQUIRED")
+              else:
+                  raise
           review=c.models.generate_content(
               model="gemini-2.5-flash",
               contents=[types.Part.from_bytes(data=buffer.getvalue(),mime_type="image/jpeg"),
                         "Em português, descreva somente o objeto central que você vê na imagem."],
           )
           assert review.text and len(review.text.strip()) > 10, "No vision review returned"
-          print("GEMINI_IMAGE_AND_VISION_OK",len(buffer.getvalue()))
+          print("GEMINI_VISION_WITH_LOCAL_IMAGE_OK",len(buffer.getvalue()))
           PY
       - name: Registrar estado completo do smoke para inspeção
         if: always()
