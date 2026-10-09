@@ -84,7 +84,7 @@ jobs:
           print("DOCUMENTARY_FALLBACK_VISUAL_PREVIEW_OK")
           try:
               response=c.models.generate_content(
-                  model="gemini-2.5-flash-image",
+                  model="gemini-3.1-flash-image-preview",
                   contents="One golden paper shape on charcoal background. No text.",
                   config=types.GenerateContentConfig(
                       response_modalities=["IMAGE"],
