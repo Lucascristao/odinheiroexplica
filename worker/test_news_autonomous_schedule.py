@@ -52,6 +52,44 @@ class FakeService:
 
 
 class TestScheduleWithoutCover(unittest.TestCase):
+    def test_youtube_tag_eventually_consistent_after_upload(self):
+        class LaterTags(FakeVideos):
+            def __init__(self, episode_id):
+                super().__init__(episode_id)
+                self.reads = 0
+
+            def list(self, **kwargs):
+                self.reads += 1
+                data = super().list(**kwargs).execute()
+                if self.reads < 3:
+                    data["items"][0]["snippet"].pop("tags")
+                return YouTubeReply(data)
+
+        episode_id = "noticia-2026-10-09-manha"
+        service = FakeService(episode_id)
+        service.impl = LaterTags(episode_id)
+        with patch.object(scheduler.time, "sleep") as sleep:
+            video = scheduler.confirmed_video_identity(service, "abcdefghijk", episode_id)
+        self.assertEqual(video["snippet"]["tags"], ["ODE_EPISODE_" + episode_id])
+        self.assertEqual(service.impl.reads, 3)
+        self.assertEqual(sleep.call_count, 2)
+        self.assertFalse(service.impl.updated)
+
+    def test_absent_youtube_tag_never_allows_publication(self):
+        episode_id = "noticia-2026-10-09-manha"
+        service = FakeService(episode_id)
+        class Untagged(FakeVideos):
+            def list(self, **kwargs):
+                data = super().list(**kwargs).execute()
+                data["items"][0]["snippet"]["tags"] = ["unrelated"]
+                return YouTubeReply(data)
+
+        service.impl = Untagged(episode_id)
+        with patch.object(scheduler.time, "sleep"):
+            with self.assertRaisesRegex(SystemExit, "preservar privado"):
+                scheduler.confirmed_video_identity(service, "abcdefghijk", episode_id, attempts=3)
+        self.assertFalse(service.impl.updated)
+
     def test_publish_at_without_cover(self):
         tomorrow = datetime.now(ZoneInfo("America/Fortaleza")).date() + timedelta(days=1)
         day = tomorrow.isoformat()
