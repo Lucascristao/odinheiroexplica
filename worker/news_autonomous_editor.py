@@ -57,6 +57,24 @@ def existing_history(root):
     return history
 
 
+def prevent_repeated_story(episode, root):
+    import string
+    new_urls = {str(s.get("url", "")).strip().split("?")[0].lower()
+                for s in episode.get("sources", [])}
+    title_words = set(re.findall(r"[a-z0-9]{4,}", plain(episode.get("title", ""))))
+    for old_path in (root / "news" / "episodes").glob("*.json"):
+        old = json.loads(old_path.read_text(encoding="utf-8"))
+        if old.get("episode_id") == episode.get("episode_id"):
+            raise ValueError("Episódio dessa janela já existe.")
+        old_urls = {str(s.get("url", "")).strip().split("?")[0].lower()
+                    for s in old.get("sources", [])}
+        if new_urls.intersection(old_urls):
+            raise ValueError("Notícia usa matéria já coberta no canal: " + old_path.name)
+        words = set(re.findall(r"[a-z0-9]{4,}", plain(old.get("title", ""))))
+        if len(words & title_words) >= 5 and len(words & title_words) >= .70 * max(1, min(len(words),len(title_words))):
+            raise ValueError("Provável tema repetido do título: " + old_path.name)
+
+
 def research(client, candidates, history, target):
     prompt = f"""Você é repórter de O Dinheiro Explica, Brasil.
 Horário de publicação pretendido: {target}; hora da pesquisa:
@@ -227,6 +245,7 @@ def main():
             episode["reviewed_at"] = datetime.now(ZoneInfo("America/Fortaleza")).isoformat()
             episode["editorial_review_method"] = "AI Google Search grounded research and literal source checks"
             validate(episode, today=local.date())
+            prevent_repeated_story(episode, root)
             check_documentary_sources(episode)
             output.parent.mkdir(parents=True, exist_ok=True)
             output.write_text(json.dumps(episode, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
