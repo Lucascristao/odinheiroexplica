@@ -73,13 +73,24 @@ Priorize matérias públicas e acessíveis para captura de trechos pelo navegado
 Separe afirmações do governo, fato, projeção, controvérsia e opinião.
 Não invente números, fotos, notícias, links ou citações.
 Relatório em texto com URLs e trechos originais."""
-    response = client.models.generate_content(
-        model=os.getenv("ODE_NEWS_RESEARCH_MODEL", "gemini-3.1-pro-preview"),
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            tools=[types.Tool(google_search=types.GoogleSearch())], temperature=0.2
-        ),
-    )
+    response = None
+    failures = []
+    for model in (os.getenv("ODE_NEWS_RESEARCH_MODEL", "gemini-3.1-pro-preview"),
+                  "gemini-2.5-flash-lite"):
+        try:
+            response = client.models.generate_content(
+                model=model, contents=prompt,
+                config=types.GenerateContentConfig(
+                    tools=[types.Tool(google_search=types.GoogleSearch())], temperature=0.2
+                ),
+            )
+            break
+        except Exception as error:
+            if "404" not in str(error) and "429" not in str(error):
+                raise
+            failures.append(model + ":" + type(error).__name__)
+    if response is None:
+        raise RuntimeError("Pesquisa indisponível nos modelos autorizados: " + ", ".join(failures))
     grounding = getattr(response.candidates[0], "grounding_metadata", None)
     if not grounding or not getattr(grounding, "grounding_chunks", None):
         raise RuntimeError("A pesquisa não trouxe confirmações por grounding.")
@@ -163,14 +174,23 @@ verification_limits. first_payoff PRECISA SER UM TRECHO EXATO
 e literalmente presente na narração da primeira cena.
 Não reutilize fatos nem tema do vídeo-piloto de imposto seletivo.
 Não invente datas ou alegações sem respaldo documental."""
-    response = client.models.generate_content(
-        model=os.getenv("ODE_NEWS_WRITER_MODEL", "gemini-3.1-pro-preview"),
-        contents=prompt,
-        config=types.GenerateContentConfig(
-            response_mime_type="application/json", temperature=0.25
-        ),
-    )
-    return json.loads(response.text)
+    models = (os.getenv("ODE_NEWS_WRITER_MODEL", "gemini-3.1-pro-preview"),
+              "gemini-2.5-flash-lite")
+    last = None
+    for model in models:
+        try:
+            response = client.models.generate_content(
+                model=model, contents=prompt,
+                config=types.GenerateContentConfig(
+                    response_mime_type="application/json", temperature=0.25
+                ),
+            )
+            return json.loads(response.text)
+        except Exception as error:
+            if "404" not in str(error) and "429" not in str(error):
+                raise
+            last = type(error).__name__
+    raise RuntimeError("Nenhum modelo conseguiu gerar JSON: " + str(last))
 
 
 def main():
