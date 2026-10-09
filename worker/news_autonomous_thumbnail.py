@@ -10,7 +10,7 @@ import os
 from datetime import datetime, timezone
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFont, ImageOps, ImageFilter, ImageEnhance
 from google import genai
 from google.genai import types
 
@@ -92,6 +92,48 @@ Create a distinct composition grounded in this particular news story, not a gene
     raise RuntimeError("O modelo não devolveu pixels de imagem.")
 
 
+def documentary_fallback(episode, root, contract):
+    """A unique editorial cover from real documentary screenshots, never fake AI evidence.
+
+    Used only if Gemini native image generation is unavailable; actual sources
+    have already been captured and verified by the visual-assets pipeline.
+    """
+    existing = []
+    for doc in episode.get("documentary_evidence", []):
+        file = root / doc.get("capture_file", "")
+        if file.is_file():
+            existing.append(file)
+    if not existing:
+        raise RuntimeError("Sem capturas reais para montar a capa editorial.")
+    side = episode.get("thumbnail_text_side", "left")
+    on_right = side == "left"
+    base = Image.new("RGB", (W, H), "#090B0D")
+    with Image.open(existing[0]) as opened:
+        full = ImageOps.fit(opened.convert("RGB"), (W, H), method=Image.Resampling.LANCZOS)
+    full = ImageEnhance.Color(full).enhance(0.38).filter(ImageFilter.GaussianBlur(18))
+    base.paste(Image.blend(full, Image.new("RGB", (W,H), "#090B0D"), 0.68))
+    card_w, card_h = 625, 545
+    with Image.open(existing[0]) as opened:
+        source = ImageOps.fit(opened.convert("RGB"), (card_w, card_h),
+                              method=Image.Resampling.LANCZOS, centering=(.5,.18))
+    # Preserve actual source pixels without invented layout/headlines.
+    frame = Image.new("RGB", (card_w+16,card_h+16), "#F6F7F8")
+    frame.paste(source,(8,8))
+    angle = -5 if on_right else 5
+    tilted=frame.rotate(angle,expand=True,resample=Image.Resampling.BICUBIC)
+    shadow=Image.new("RGBA",tilted.size,(0,0,0,0))
+    shadow.paste((0,0,0,200),(10,12,tilted.width-8,tilted.height-6))
+    shadow=shadow.filter(ImageFilter.GaussianBlur(22))
+    x = 645 if on_right else -45
+    y = 52
+    base.paste(shadow,(x+12,y+17),shadow)
+    base.paste(tilted,(x,y))
+    accent=ImageDraw.Draw(base)
+    edge_x = 640 if on_right else 632
+    accent.line([(edge_x, 105),(edge_x, 600)],fill="#FFBD19",width=7)
+    return draw_title(base, contract["exact_headline"], side)
+
+
 def inspect_pixels(client, image_path, contract):
     image_bytes = Path(image_path).read_bytes()
     query = f"""Inspect the ATTACHED ACTUAL FINAL THUMBNAIL PIXELS, not a proposed design.
@@ -152,7 +194,17 @@ def main():
     client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
     for attempt in range(3):
         try:
-            generate_image(client, contract, episode).save(thumbnail, "JPEG", quality=94)
+            try:
+                picture = generate_image(client, contract, episode)
+                generator = "Gemini-native-image"
+            except Exception as model_error:
+                reason = str(model_error)
+                if not any(code in reason for code in ("429", "RESOURCE_EXHAUSTED", "404", "NOT_FOUND")):
+                    raise
+                print("NATIVE_IMAGE_UNAVAILABLE: usando recorte documental real no lugar de mídia inventada.")
+                picture = documentary_fallback(episode, root, contract)
+                generator = "Verified-documentary-source-collage"
+            picture.save(thumbnail, "JPEG", quality=94)
             checks, observations = inspect_pixels(client, thumbnail, contract)
             audit = {
                 "version": "1.0", "project_id": project["project_id"],
@@ -170,7 +222,7 @@ def main():
                 json.dumps(audit, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
             )
             validate_thumbnail_audit(root, project, thumbnail, project_source_path=args.project)
-            print(f"THUMBNAIL_AUTONOMOUS_OK:{thumbnail} attempt={attempt + 1}")
+            print(f"THUMBNAIL_AUTONOMOUS_OK:{thumbnail} attempt={attempt + 1} generator={generator}")
             return
         except (ValueError, RuntimeError, KeyError, IndexError) as err:
             print(f"THUMBNAIL_RETRY_{attempt+1}:{type(err).__name__}")
