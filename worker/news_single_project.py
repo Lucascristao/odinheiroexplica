@@ -245,11 +245,11 @@ def transform(episode: dict) -> dict:
         "exact_headline": episode["thumbnail_headline"],
         "primary_subject": episode["thumbnail_primary"],
         "secondary_subject": None,
-        "composition": "Notícia única, contraste muito alto, protagonista real, leitura imediata no celular, amarelo e carvão.",
+        "composition": episode.get("thumbnail_composition") or "Composição noticiosa singular com protagonista verificável, amarelo e carvão.",
         "visual_tension": episode["thumbnail_tension"],
-        "forbidden_elements": [
-            "valor de tributo já definido sem fonte", "cópias de capas de terceiros",
-            "foto apresentada como evidência de um evento diferente", "logotipo partidário inventado",
+        "forbidden_elements": episode.get("thumbnail_forbidden_elements") or [
+            "dados ou documentos inventados", "cópias de capas de terceiros",
+            "foto apresentada como evidência de um evento diferente", "logotipo inventado",
             "texto extra", "marca d'água",
         ],
         "palette": {"base": "#090B0D", "accent": "#FFBD19", "text": "#F6F7F8"},
