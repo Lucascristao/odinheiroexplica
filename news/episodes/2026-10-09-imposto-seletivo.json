@@ -61,6 +61,20 @@
       "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-08/arrecadacao-com-imposto-do-pecado-deve-chegar-r-419-bi-em-2027",
       "published_at": "2026-08-31",
       "role": "previsão do PLOA de 2027; não é arrecadação observada"
+    },
+    {
+      "id": "S4",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-economia/envio-da-mp-do-imposto-do-pecado-sera-apos-eleicoes-diz-durigan/",
+      "published_at": "2026-10-08",
+      "role": "registro jornalístico para captura da declaração sobre envio após o segundo turno"
+    },
+    {
+      "id": "S5",
+      "publisher": "UOL Economia",
+      "url": "https://economia.uol.com.br/noticias/redacao/2026/10/08/imposto-do-pecado-tera-aliquotas-discutidas-so-apos-eleicoes.ghtm",
+      "published_at": "2026-10-08",
+      "role": "registro jornalístico da previsão fiscal de R$ 41,9 bilhões para 2027"
     }
   ],
   "verified_facts": [
@@ -108,21 +122,21 @@
     {
       "id": "doc-announcement",
       "kind": "source_excerpt",
-      "source_id": "S1",
-      "source_page_url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/durigan-preve-envio-de-mp-do-imposto-seletivo-apos-eleicoes",
-      "expected_text": "Durigan prevê envio de MP do Imposto Seletivo após eleições",
-      "attribution": "Recorte de manchete para comentário: Agência Brasil, 08/10/2026",
-      "rights_review": "trecho mínimo informativo em contexto crítico; verificar limites de citação, não reutilizar fotos de terceiros",
+      "source_id": "S4",
+      "source_page_url": "https://www.poder360.com.br/poder-economia/envio-da-mp-do-imposto-do-pecado-sera-apos-eleicoes-diz-durigan/",
+      "expected_text": "Envio da MP do",
+      "attribution": "Citação visual de trecho original do Poder360, 08/10/2026, título e fonte identificados",
+      "rights_review": "Recorte limitado de manchete para crítica e explicação; preservar autoria, sentido e URL; não reutilizar foto jornalística da matéria",
       "capture_file": "research/captures/doc-announcement.png"
     },
     {
       "id": "doc-budget",
       "kind": "source_excerpt",
-      "source_id": "S3",
-      "source_page_url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-08/arrecadacao-com-imposto-do-pecado-deve-chegar-r-419-bi-em-2027",
-      "expected_text": "Arrecadação com ‘imposto do pecado’ deve chegar a R$ 41,9 bi em 2027",
-      "attribution": "Recorte de manchete para comentário: Agência Brasil, 31/08/2026",
-      "rights_review": "trecho mínimo informativo em contexto crítico; verificar limites de citação, não reutilizar fotos de terceiros",
+      "source_id": "S5",
+      "source_page_url": "https://economia.uol.com.br/noticias/redacao/2026/10/08/imposto-do-pecado-tera-aliquotas-discutidas-so-apos-eleicoes.ghtm",
+      "expected_text": "Equipe econômica espera arrecadar R$ 41,9 bilhões",
+      "attribution": "Citação visual de trecho do UOL Economia, 08/10/2026, sobre projeção do Imposto Seletivo",
+      "rights_review": "Citação de passagem curta para contextualizar valores projetados, não receita observada; preservar fonte e autoria",
       "capture_file": "research/captures/doc-budget.png"
     }
   ],
