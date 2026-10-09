@@ -1,0 +1,346 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-09-noite",
+  "news_date": "2026-10-09",
+  "event_date": "2026-10-09",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-09T21:05:14.335Z",
+  "publication_target_local": "2026-10-09T20:00:00-03:00",
+  "title": "Gasolina com imposto federal zero: por que R$ 0,89 não é desconto garantido?",
+  "title_options": [
+    {
+      "text": "Gasolina com imposto federal zero: por que R$ 0,89 não é desconto garantido?",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Governo amplia corte de imposto da gasolina: o que chega ao motorista?",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Desoneração da gasolina custa bilhões: o preço na bomba vai baixar?",
+      "editorial_quality": 4
+    }
+  ],
+  "thumbnail_headline": "IMPOSTO ZERO. E O PREÇO?",
+  "thumbnail_primary": "Bico de abastecimento e marcador conceitual de preço em grande escala, representação gráfica editorial original sem preço fictício",
+  "thumbnail_tension": "O corte total dos tributos federais é de R$ 0,89 por litro, mas o benefício adicional em relação à desoneração anterior é R$ 0,26, e o preço na bomba depende de outras etapas.",
+  "thumbnail_composition": "Fundo carvão, bomba de gasolina ilustrativa grande no lado direito com painel conceitual de valor sem preço simulado; headline curta e amarela à esquerda, luz cinematográfica e alto contraste, sem rostos ou marcas.",
+  "thumbnail_text_side": "left",
+  "thumbnail_forbidden_elements": [
+    "preço de posto inventado",
+    "documentos simulados como originais",
+    "logotipos de petrolíferas e jornais",
+    "foto de político não autorizada",
+    "texto adicional à headline",
+    "setas sensacionalistas",
+    "marca d'água"
+  ],
+  "scorecard": {
+    "method": "Avaliação editorial qualitativa baseada em notícia verificada; sem métricas de audiência, buscas ou CTR inferidas",
+    "criteria": {
+      "timeliness": 5,
+      "consumer_interest": 5,
+      "public_debate": 5,
+      "documentary_evidence": 5,
+      "original_angle": 4
+    },
+    "unavailable": [
+      "CTR real",
+      "volume atual de buscas",
+      "preço observado em todos os postos"
+    ],
+    "reason": "O título escolhido nomeia a novidade concreta de 09/10 e desfaz uma leitura errada do valor de R$ 0,89. A abertura e os blocos dois e três demonstram que R$ 0,89 representa o corte federal total, que o acréscimo sobre R$ 0,63 é R$ 0,26 e que não existe preço final universal garantido; os blocos quatro e cinco documentam custos, motivação e limites. Alternativas priorizam impacto fiscal ou repasse, mas são menos específicas."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/tributos-da-gasolina-sao-zerados-e-subsidios-combustiveis-ampliados",
+      "published_at": "2026-10-09",
+      "role": "comunicado jornalístico sobre novo corte, duração, pacote e estimativa de custo"
+    },
+    {
+      "id": "S2",
+      "publisher": "Reuters",
+      "url": "https://noticias.uol.com.br/ultimas-noticias/reuters/2026/10/09/governo-lula-amplia-subsidios-sobre-gasolina-etanol-e-diesel-a-duas-semanas-do-2-turno.htm",
+      "published_at": "2026-10-09",
+      "role": "apuração independente sobre acréscimo fiscal, prorrogação, agentes econômicos e justificativa do governo"
+    },
+    {
+      "id": "S3",
+      "publisher": "Ministério da Justiça e Segurança Pública",
+      "url": "https://www.gov.br/mj/pt-br/assuntos/noticias-1/governo-federal-zera-tributos-sobre-a-gasolina-e-reforca-subvencao-a-importadores-de-diesel/",
+      "published_at": "2026-10-09",
+      "role": "fonte oficial primária para vigência, impostos federais e papel da ANP"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Em 9 de outubro de 2026 o governo anunciou zerar PIS/Pasep, Cofins e Cide sobre gasolina pelo período de 30 dias.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "A desoneração federal da gasolina passa de R$ 0,63 para R$ 0,89 por litro; a diferença entre os dois patamares é R$ 0,26 por litro.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "A Agência Brasil informou impacto estimado de R$ 5,2 bilhões para o conjunto das medidas em 30 dias; a Reuters informou acréscimo de R$ 2,7 bilhões comparado ao cenário anterior.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "O etanol hidratado mantém R$ 0,19 por litro de desoneração e produtores de etanol têm subvenção ampliada de R$ 0,25 para R$ 0,43 por litro.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "Para diesel importado, a subvenção adicional anunciada é de R$ 1,40 por litro, somada ao benefício já existente de R$ 2,12 por litro.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "Segundo o governo, medidas decorrem da elevação internacional do petróleo e da necessidade de manter abastecimento; o Ministério cita compensação fiscal mediante arrecadação extraordinária do petróleo.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "Segundo reportagem da Folha não incluída como recorte documental, cortes anteriores não haviam produzido necessariamente queda correspondente na bomba segundo dados da ANP; isto não comprova o preço futuro.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "background"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "gasolina-agencia",
+      "kind": "source_excerpt",
+      "source_id": "S1",
+      "source_page_url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/tributos-da-gasolina-sao-zerados-e-subsidios-combustiveis-ampliados",
+      "expected_text": "Com a decisão, a redução tributária sobre a gasolina passa de R$ 0,63 para R$ 0,89 por litro",
+      "attribution": "Agência Brasil, Wellton Máximo, notícia publicada em 09/10/2026 às 13h40; manchete e passagem curta sobre a mudança tributária",
+      "rights_review": "Citação jornalística contextual de manchete e frase mínima necessária com identificação de autor e URL; não reproduzir fotografia licenciada da matéria nem artigo integral.",
+      "capture_file": "research/captures/gasolina-agencia.png",
+      "editorial_reconstruction": {
+        "publisher": "Agência Brasil",
+        "published_at": "2026-10-09",
+        "headline": "Tributos da gasolina são zerados e subsídios a combustíveis, ampliados",
+        "context": "A reportagem informa ampliação da redução da tributação federal de R$ 0,63 para R$ 0,89 por litro, válida por trinta dias, e custo estimado de R$ 5,2 bilhões para o conjunto das medidas."
+      }
+    },
+    {
+      "id": "gasolina-reuters",
+      "kind": "source_excerpt",
+      "source_id": "S2",
+      "source_page_url": "https://noticias.uol.com.br/ultimas-noticias/reuters/2026/10/09/governo-lula-amplia-subsidios-sobre-gasolina-etanol-e-diesel-a-duas-semanas-do-2-turno.htm",
+      "expected_text": "Governo Lula amplia subsídios sobre gasolina, etanol e diesel a duas semanas do 2º turno",
+      "attribution": "Reuters via UOL, Bernardo Caram, 09/10/2026 às 12h32; manchete autêntica e contexto breve do anúncio",
+      "rights_review": "Capturar apenas manchete e trecho jornalístico necessário para comentário econômico, citando Reuters/Bernardo Caram e URL; não reutilizar imagem/fotografia de terceiros nem copiar reportagem completa.",
+      "capture_file": "research/captures/gasolina-reuters.png",
+      "editorial_reconstruction": {
+        "publisher": "Reuters",
+        "published_at": "2026-10-09",
+        "headline": "Governo Lula amplia subsídios sobre gasolina, etanol e diesel a duas semanas do 2º turno",
+        "context": "A Reuters registra anúncio de corte federal da gasolina, subsídios de etanol e diesel, acréscimo fiscal de R$ 2,7 bilhões frente ao mecanismo anterior e vigência de trinta dias."
+      }
+    },
+    {
+      "id": "gasolina-mjsp",
+      "kind": "source_excerpt",
+      "source_id": "S3",
+      "source_page_url": "https://www.gov.br/mj/pt-br/assuntos/noticias-1/governo-federal-zera-tributos-sobre-a-gasolina-e-reforca-subvencao-a-importadores-de-diesel/",
+      "expected_text": "Governo Federal zera tributos sobre a gasolina e reforça subvenção a importadores de diesel",
+      "attribution": "Ministério da Justiça e Segurança Pública, comunicado de 09/10/2026 às 16h56 sobre o decreto de desoneração",
+      "rights_review": "Somente trecho factual do comunicado público com identificação da instituição, data e URL; não reutilizar foto da coletiva nem representar a página de forma falsa.",
+      "capture_file": "research/captures/gasolina-mjsp.png",
+      "editorial_reconstruction": {
+        "publisher": "Ministério da Justiça e Segurança Pública",
+        "published_at": "2026-10-09",
+        "headline": "Governo Federal zera tributos sobre a gasolina e reforça subvenção a importadores de diesel",
+        "context": "Comunicado ministerial confirma zeragem de impostos federais por trinta dias, redução tributária total de R$ 0,89 por litro e subvenção adicional ao diesel importado."
+      }
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "abertura",
+      "title": "Imposto zero não é preço garantido",
+      "type": "fact",
+      "document_id": "gasolina-agencia",
+      "object_type": "cash",
+      "label": "GASOLINA",
+      "headline": "TRIBUTO FEDERAL ZERO",
+      "metric": "09/10/2026",
+      "visual_cards": [
+        "TRIBUTOS FEDERAIS ZERADOS",
+        "MEDIDA POR TRINTA DIAS",
+        "VALOR NA BOMBA NÃO GARANTIDO"
+      ],
+      "narration": "O governo zerou os impostos federais da gasolina por trinta dias, mas isso NÃO é uma promessa de combustível oitenta e nove centavos mais barato no posto. Esse é o ponto que pode confundir muita gente nesta sexta-feira. O anúncio fala numa redução tributária de oitenta e nove centavos por litro, mas é preciso conferir o que esse número representa e onde o preço final é formado. Eu sou o Roberto. Vamos abrir a conta do anúncio sem prometer um desconto que ninguém comprovou."
+    },
+    {
+      "id": "mudanca",
+      "title": "O que realmente mudou",
+      "type": "fact",
+      "document_id": "gasolina-mjsp",
+      "object_type": "data",
+      "label": "IMPOSTOS",
+      "headline": "DE 63 PARA 89 CENTAVOS",
+      "metric": "ACRÉSCIMO: 26 CENTAVOS",
+      "visual_cards": [
+        "CORTE ANTERIOR: 63 CENTAVOS",
+        "CORTE TOTAL: 89 CENTAVOS",
+        "ACRÉSCIMO: 26 CENTAVOS"
+      ],
+      "narration": "Até ontem, já havia uma desoneração federal equivalente a sessenta e três centavos por litro de gasolina. A partir deste novo decreto, o corte total passa a oitenta e nove centavos, zerando PIS, Cofins e Cide por trinta dias. Portanto, a diferença adicional anunciada agora é de vinte e seis centavos por litro, não de oitenta e nove. E atenção: estamos falando de imposto federal, não de todos os custos embutidos no preço ao motorista."
+    },
+    {
+      "id": "bomba",
+      "title": "Por que a bomba pode contar outra história",
+      "type": "fact",
+      "document_id": "gasolina-reuters",
+      "object_type": "store",
+      "label": "ABASTECIMENTO",
+      "headline": "REPASSE NÃO AUTOMÁTICO",
+      "metric": "PREÇO FINAL VARIA",
+      "visual_cards": [
+        "DESONERAÇÃO É UM COMPONENTE",
+        "CUSTOS E MARGENS TAMBÉM CONTAM",
+        "OBSERVAR PREÇO EFETIVO DOS POSTOS"
+      ],
+      "narration": "O preço do combustível que chega ao posto não é formado apenas por tributos federais. Há combustível adquirido anteriormente, preço de refinaria ou importação, distribuição, logística, margem de revenda e impostos que não foram eliminados pelo anúncio. Por isso, o corte tributário pode aliviar a pressão sobre o preço sem virar exatamente o mesmo desconto imediato para toda pessoa. Não temos aqui uma medição nova provando queda de oitenta e nove centavos na bomba. Essa diferença entre medida e resultado precisa ficar clara."
+    },
+    {
+      "id": "pacote",
+      "title": "O custo e as outras medidas",
+      "type": "fact",
+      "document_id": "gasolina-agencia",
+      "object_type": "truck",
+      "label": "PACOTE FEDERAL",
+      "headline": "5,2 BILHÕES EM 30 DIAS",
+      "metric": "ESTIMATIVA OFICIAL",
+      "visual_cards": [
+        "IMPACTO TOTAL: 5,2 BILHÕES",
+        "ETANOL MANTÉM DESONERAÇÃO",
+        "DIESEL IMPORTADO GANHA APOIO"
+      ],
+      "narration": "E a gasolina é só uma parte do pacote. A estimativa divulgada para as medidas em trinta dias é de cinco bilhões e duzentos milhões de reais. O etanol mantém uma desoneração de dezenove centavos por litro e tem reforço na subvenção aos produtores. Para o diesel importado, foi anunciado mais um real e quarenta centavos por litro de apoio, além do que já existia. É importante não confundir o custo total anunciado com o gasto adicional em relação ao pacote anterior."
+    },
+    {
+      "id": "contexto",
+      "title": "O argumento do governo",
+      "type": "fact",
+      "document_id": "gasolina-mjsp",
+      "object_type": "data",
+      "label": "CONTEXTO",
+      "headline": "PETRÓLEO INTERNACIONAL EM ALTA",
+      "metric": "PRESSÃO NOS PREÇOS",
+      "visual_cards": [
+        "ALTA INTERNACIONAL DO PETRÓLEO",
+        "ALÍVIO TEMPORÁRIO",
+        "COMPENSAÇÃO FISCAL ALEGADA"
+      ],
+      "narration": "O governo justifica a decisão pela alta do petróleo e pela preocupação com o abastecimento. Alega também que arrecadação extraordinária ligada ao setor petrolífero compensará os incentivos fiscais. Isso é a justificativa oficial, não uma conta independente já encerrada. A medida tem validade de trinta dias e pode ser reavaliada. O anúncio acontece no período eleitoral, mas autoridades negaram que a data da decisão tenha motivação eleitoral. O efeito concreto ainda dependerá da execução e dos preços observados."
+    },
+    {
+      "id": "opiniao",
+      "title": "A análise de Roberto",
+      "type": "opinion",
+      "document_id": "gasolina-reuters",
+      "object_type": "cash",
+      "label": "MINHA LEITURA",
+      "headline": "ALÍVIO PRECISA SER COMPROVADO",
+      "metric": "CONSEQUÊNCIA PARA O MOTORISTA",
+      "visual_cards": [
+        "BENEFÍCIO PRECISA CHEGAR À BOMBA",
+        "CUSTO FISCAL EXIGE TRANSPARÊNCIA",
+        "RESULTADO É MAIS IMPORTANTE QUE ANÚNCIO"
+      ],
+      "narration": "Agora, a minha leitura. Reduzir o imposto pode ser uma forma de aliviar a conta de quem precisa trabalhar, entregar mercadoria e abastecer o carro. Mas divulgar um número grande e deixar a impressão de desconto automático é um caminho ruim. É preciso acompanhar o repasse, mostrar quem absorveu a diferença e explicar quanto o contribuinte está financiando nesse pacote. Minha cobrança vale para qualquer governo: menos propaganda sobre centavos no papel e mais transparência sobre os centavos que chegam, ou não, ao bolso."
+    },
+    {
+      "id": "fechamento",
+      "title": "O que observar a partir de agora",
+      "type": "fact",
+      "document_id": "gasolina-agencia",
+      "object_type": "store",
+      "label": "RESUMO",
+      "headline": "O PREÇO PRECISA SER OBSERVADO",
+      "metric": "NÃO HÁ DESCONTO UNIVERSAL",
+      "visual_cards": [
+        "NOVO CORTE ADICIONAL: 26 CENTAVOS",
+        "MEDIDA DURA TRINTA DIAS",
+        "ACOMPANHE PREÇOS E FISCALIZAÇÃO"
+      ],
+      "narration": "Então fica o resumo: os impostos federais da gasolina foram zerados por trinta dias, a desoneração total agora equivale a oitenta e nove centavos por litro e a ampliação em relação ao modelo anterior é de vinte e seis centavos. O preço do posto não está garantido por esse número. Vale acompanhar as próximas pesquisas de preços e os comunicados oficiais para saber o efeito real. Se esse tipo de notícia ajuda você a enxergar além da manchete, inscreva-se no O Dinheiro Explica. E me diga: na sua cidade, a gasolina mudou de preço hoje?"
+    }
+  ],
+  "engagement_question": "Na sua cidade, o preço da gasolina mudou depois do anúncio?",
+  "hashtags": [
+    "#Gasolina",
+    "#Combustiveis",
+    "#ODinheiroExplica"
+  ],
+  "tags": [
+    "gasolina imposto federal zerado",
+    "gasolina outubro 2026",
+    "preço da gasolina",
+    "PIS Cofins Cide gasolina",
+    "desoneração gasolina 89 centavos",
+    "subsidio diesel outubro 2026",
+    "notícias economia hoje",
+    "imposto gasolina 30 dias"
+  ],
+  "primary_keyword": "gasolina com imposto federal zero",
+  "secondary_keywords": [
+    "R$ 0,89 por litro gasolina",
+    "desoneração federal",
+    "preço nos postos",
+    "subsídio ao diesel"
+  ],
+  "pronunciations": {
+    "PIS": "pís",
+    "Cide": "sídi",
+    "Cofins": "cofíns"
+  },
+  "discovery_strategy": {
+    "viewer_intent": "Saber por que a gasolina teve tributos federais zerados e por que isso não determina o valor exato no posto.",
+    "search_query": "gasolina imposto federal zerado outubro 2026 preço desconto 89 centavos",
+    "recommendation_angle": "O anúncio de corte total de R$ 0,89 contrasta com acréscimo de apenas R$ 0,26 em relação à desoneração federal já em vigor.",
+    "first_payoff": "O governo zerou os impostos federais da gasolina por trinta dias, mas isso NÃO é uma promessa de combustível oitenta e nove centavos mais barato no posto.",
+    "promise_proof": "Agência Brasil, Reuters e comunicado do Ministério da Justiça confirmam tributos zerados e valores de R$ 0,63 e R$ 0,89; o roteiro separa corte de tributo de repasse ao consumidor sem prometer preço.",
+    "audience_hypothesis": "Motoristas, trabalhadores e consumidores brasileiros que querem compreender impacto concreto de anúncios tributários sobre o orçamento.",
+    "thumbnail_complement": "A capa contraporia imposto federal zero à dúvida sobre o preço na bomba sem exibir preço fictício; se indisponível o YouTube gera miniatura.",
+    "verification_limits": "Nenhuma pesquisa própria de preço final nos postos foi realizada; custo fiscal é estimativa oficial, compensação é alegação de governo, dados de busca e CTR não foram consultados."
+  },
+  "publication_description": "Gasolina com imposto federal zero: o governo anunciou nesta sexta-feira, 9 de outubro de 2026, a ampliação da desoneração para R$ 0,89 por litro durante 30 dias. Mas esse valor NÃO significa que todo posto reduzirá a bomba em R$ 0,89.\n\nRoberto mostra a diferença entre o corte que já existia e o novo anúncio, por que o preço final depende de outros custos, e o impacto estimado de R$ 5,2 bilhões para o pacote de medidas.\n\n- O que muda de R$ 0,63 para R$ 0,89\n- Por que não existe desconto universal garantido\n- O que foi anunciado para etanol e diesel\n- Como acompanhar o resultado real nos postos\n\nApuração: Agência Brasil, Reuters e Ministério da Justiça, publicações de 09/10/2026."
+}
