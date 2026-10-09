@@ -10,9 +10,9 @@ on:
           - noite
         required: true
   schedule:
-    - cron: '15 11 * * *'
-    - cron: '15 15 * * *'
-    - cron: '15 23 * * *'
+    - cron: '45 12 * * *'
+    - cron: '45 16 * * *'
+    - cron: '45 0 * * *'
 permissions:
   contents: read
 jobs:
@@ -35,9 +35,9 @@ jobs:
             SLOT="$DISPATCH_SLOT"
           else
             case "$SCHEDULE_EXPRESSION" in
-              '15 11 * * *') SLOT=manha ;;
-              '15 15 * * *') SLOT=meio-dia ;;
-              '15 23 * * *') SLOT=noite ;;
+              '45 12 * * *') SLOT=manha ;;
+              '45 16 * * *') SLOT=meio-dia ;;
+              '45 0 * * *') SLOT=noite ;;
               *) exit 1 ;;
             esac
           fi
