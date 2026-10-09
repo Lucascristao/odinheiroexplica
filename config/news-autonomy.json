@@ -15,8 +15,10 @@
   ],
   "required_editorial_status": "autonomous_fact_checked",
   "require_qa_status": "pass",
-  "require_thumbnail_audit": true,
-  "require_thumbnail_receipt": true,
+  "require_thumbnail_audit": false,
+  "require_thumbnail_receipt": false,
   "min_lead_minutes": 5,
-  "publish_if_late": false
+  "publish_if_late": false,
+  "thumbnail_optional": true,
+  "thumbnail_provider": "chatgpt_optional_youtube_automatic_fallback"
 }
