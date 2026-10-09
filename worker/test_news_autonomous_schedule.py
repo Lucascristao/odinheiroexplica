@@ -188,6 +188,72 @@ class TestScheduleWithoutCover(unittest.TestCase):
             self.assertEqual(result["publication_confirmation"], "confirmed_public")
             self.assertEqual(result["thumbnail_status"], "youtube_automatic")
 
+    def test_late_tolerance_warnings_and_critical_failures(self):
+        day = "2026-10-10"
+        project_id = "noticia-" + day + "-meio-dia"
+        cases = [
+            ("within", 15, 45, "warn", [], "published_within_tolerance"),
+            ("boundary", 16, 30, "warn", [], "published_within_tolerance"),
+            ("outside", 16, 31, "warn", [], "blocked"),
+            ("critical", 15, 45, "fail", [{"code": "missing-video"}], "blocked"),
+            ("almost_due", 14, 58, "warn", [], "scheduled_private_until_publish_at"),
+        ]
+
+        for label, hour, minute, qa_status, failures, expected in cases:
+            with self.subTest(case=label), tempfile.TemporaryDirectory() as root:
+                payloads = {
+                    "project": {"project_id": project_id},
+                    "episode": {"episode_id": project_id, "news_date": day,
+                                "editorial_status": "autonomous_fact_checked",
+                                "publication_target_local": day + "T12:00:00-03:00"},
+                    "qa": {"status": qa_status, "failures": failures,
+                           "warnings": [{"code": "estimated-visual-anchors", "message": "Revisar no próximo ciclo."}]},
+                    "config": {"version": "1.0", "enabled": True,
+                               "required_editorial_status": "autonomous_fact_checked",
+                               "require_qa_status": "pass",
+                               "allow_qa_warnings": True,
+                               "publish_if_late": True,
+                               "late_tolerance_minutes": 90,
+                               "timezone": "America/Fortaleza",
+                               "publication_hours": ["08:00", "12:00", "20:00"],
+                               "min_lead_minutes": 5},
+                    "private-receipt": {"project_id": project_id,
+                                        "video_id": "abcdefghijk", "destination": "youtube",
+                                        "privacy_requested": "private"},
+                }
+                args = ["schedule", "--root", root]
+                for name, payload in payloads.items():
+                    target = Path(root) / (name + ".json")
+                    target.write_text(json.dumps(payload), encoding="utf-8")
+                    args += ["--" + name, str(target)]
+                output = Path(root) / "result.json"
+                args += ["--output", str(output)]
+
+                class FixedNow(datetime):
+                    @classmethod
+                    def now(cls, tz=None):
+                        return datetime(2026, 10, 10, hour, minute, tzinfo=timezone.utc)
+
+                service = FakeService(project_id)
+                with patch.object(sys, "argv", args), \
+                     patch.object(scheduler, "datetime", FixedNow), \\
+                     patch.object(scheduler, "youtube_service", return_value=service), \\
+                     patch.object(scheduler, "assert_channel", return_value=True):
+                    if expected == "blocked":
+                        with self.assertRaisesRegex(SystemExit, "Janela de tolerância|QA técnico"):
+                            scheduler.main()
+                        self.assertFalse(service.impl.updated)
+                    else:
+                        scheduler.main()
+                        result = json.loads(output.read_text(encoding="utf-8"))
+                        self.assertEqual(result["status"], expected)
+                        self.assertEqual(result["qa_warning_count"], 1)
+                        self.assertTrue(service.impl.updated)
+                        self.assertEqual(service.impl.status["privacyStatus"],
+                                         "private" if expected.startswith("scheduled") else "public")
+                        if label == "boundary":
+                            self.assertEqual(result["delay_minutes"], 90)
+
     def test_reject_missing_thumbnail_receipt(self):
         # A submitted cover still requires its own verified receipt.
         tomorrow = datetime.now(ZoneInfo("America/Fortaleza")).date() + timedelta(days=1)
