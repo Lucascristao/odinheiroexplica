@@ -76,9 +76,32 @@ class SingleNewsContractTests(unittest.TestCase):
         excerpt = next(e for e in doc_stage["elements"] if e["kind"] == "source_excerpt")
         headline = next(e for e in doc_stage["elements"] if e["id"] == "headline")
         self.assertGreaterEqual(excerpt["width"], 55)
-        self.assertGreater(headline["x"], excerpt["x"] + excerpt["width"])
+        self.assertGreater(excerpt["x"], headline["x"] + headline["width"])
         self.assertEqual(excerpt["surface"], "none")
         self.assertFalse(doc_stage["captions"]["enabled"])
+
+    def test_stable_documentary_while_short_commentary_updates(self):
+        project = transform(self.doc)
+        stages = [s["visual"]["stage"] for s in project["scenes"]]
+        for index, side in ((0, "left"), (1, "right"), (2, "left"), (3, "right")):
+            elements = stages[index]["elements"]
+            media = next(e for e in elements if e["kind"] in ("photo", "source_excerpt"))
+            headline = next(e for e in elements if e["id"] == "headline")
+            if side == "left":
+                self.assertLess(media["x"] + media["width"], headline["x"])
+            else:
+                self.assertLess(headline["x"] + headline["width"], media["x"])
+            self.assertFalse(stages[index]["captions"]["enabled"])
+            self.assertEqual(len(project["scenes"][index]["visual"]["beats"]),
+                             min(4, len(self.doc["segments"][index]["visual_cards"])))
+            if media["kind"] == "photo":
+                self.assertEqual(media["image_motion"], "none")
+
+    def test_separate_publishers_for_displayed_articles(self):
+        doc = copy.deepcopy(self.doc)
+        doc["documentary_evidence"][1]["source_id"] = doc["documentary_evidence"][0]["source_id"]
+        with self.assertRaisesRegex(ValueError, "publicadores independentes"):
+            validate(doc, date(2026, 10, 9))
 
     def test_opinion_must_be_signposted(self):
         d = copy.deepcopy(self.doc)
@@ -101,7 +124,8 @@ class SingleNewsContractTests(unittest.TestCase):
 
     def test_no_sources_same_domain(self):
         d = copy.deepcopy(self.doc)
-        d["sources"] = d["sources"][::2]
+        for source in d["sources"]:
+            source["url"] = "https://mesmo-portal.example/noticia/" + source["id"]
         with self.assertRaisesRegex(ValueError, "publicadores diferentes"):
             validate(d, date(2026, 10, 9))
 

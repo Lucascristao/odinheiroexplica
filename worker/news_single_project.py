@@ -95,6 +95,9 @@ def validate(episode: dict, today: date | None = None) -> dict:
         cards = segment.get("visual_cards") or []
         require(3 <= len(cards) <= 8 and all(6 <= len(c) <= 65 for c in cards), "faltam destaques sincronizados")
         require(segment.get("object_type") in ("data", "store", "cash", "bank", "package", "truck", "factory"), "objeto gráfico inválido")
+        if segment.get("document_id") or segment.get("photo_id"):
+            require(segment.get("media_side", "left") in ("left", "right"),
+                    "posicionamento da matéria deve ser left ou right")
         require(not (segment.get("document_id") and segment.get("photo_id")),
                 "imagem e documento não podem disputar o mesmo quadro de prova")
         if segment.get("photo_id"):
@@ -104,6 +107,11 @@ def validate(episode: dict, today: date | None = None) -> dict:
             require(segment["document_id"] in doc_ids, "recorte documental não encontrado")
             used_docs.add(segment["document_id"])
     require(len(used_docs) >= 2, "as duas evidências documentais precisam aparecer no vídeo")
+    # Mais de uma matéria visual sobre O MESMO assunto, com fontes diferentes.
+    doc_source = {item["id"]: item["source_id"] for item in documentary}
+    source_host = {item["id"]: urlparse(item["url"]).hostname.lower().removeprefix("www.") for item in sources}
+    require(len({source_host[doc_source[doc_id]] for doc_id in used_docs}) >= 2,
+            "mostrar pelo menos duas matérias de publicadores independentes")
     require(len(used_photos | used_docs) >= len(segments) - 2,
             "noticiário não pode ser quase todo texto e ícones; inclua prints comentados")
     return episode
@@ -132,27 +140,29 @@ def build_stage(segment: dict) -> dict:
         }
     label = ("OPINIÃO DO ROBERTO" if segment["type"] == "opinion" else segment["label"])
     has_media = bool(segment.get("document_id") or segment.get("photo_id"))
+    media_right = has_media and segment.get("media_side", "left") == "right"
+    media_x = 36 if media_right else 4
+    text_x = 4 if media_right else 67
     # Referência editorial de noticiário: mídia documental protagonista (~60%)
     # e lateral de narração com frases curtas sincronizadas no lugar do rosto do
     # comentarista. NÃO usar legenda sobre prova/manchete.
     card = {
         "id": "headline", "kind": "label", "label": segment["headline"],
-        "x": 67 if has_media else 6, "y": 24, "width": 30 if has_media else 53,
+        "x": text_x if has_media else 6, "y": 24, "width": 30 if has_media else 53,
         "height": 39, "label_size": 54 if has_media else 66,
         "surface": "none",
     }
     doc = {
         "id": "document", "kind": "source_excerpt", "label": "TRECHO DA MATÉRIA",
-        "asset_id": segment["document_id"], "x": 4, "y": 18, "width": 60,
+        "asset_id": segment["document_id"], "x": media_x, "y": 18, "width": 60,
         "height": 66, "surface": "none", "image_fit": "contain",
         "visual_role": "support",
     } if segment.get("document_id") else {
         "id": "photo-context", "kind": "photo",
         "label": "IMAGEM DE ARQUIVO", "asset_id": segment["photo_id"],
-        "x": 4, "y": 18, "width": 60, "height": 66,
-        "surface": "none", "image_fit": "cover", "image_motion": "push",
+        "x": media_x, "y": 18, "width": 60, "height": 66,
+        "surface": "none", "image_fit": "cover", "image_motion": "none",
         "photo_style": "clean", "visual_role": "support",
-        "sustain": {"kind": "breathe", "amplitude": 4, "period_seconds": 9},
     } if segment.get("photo_id") else {
         "id": "subject", "kind": "object", "label": segment["headline"],
         "object_type": segment["object_type"], "x": 61, "y": 24, "width": 36,
@@ -172,7 +182,7 @@ def build_stage(segment: dict) -> dict:
              "x": 6, "y": 5, "width": 85, "height": 13, "label_size": 40, "surface": "none"},
             card, doc,
             {"id": "metric", "kind": "label", "label": segment["metric"][:78],
-             "x": 67 if has_media else 6, "y": 73, "width": 30 if has_media else 51,
+             "x": text_x if has_media else 6, "y": 73, "width": 30 if has_media else 51,
              "height": 15, "label_size": 43 if has_media else 51, "surface": "none"},
         ],
         "connections": [],
@@ -181,15 +191,19 @@ def build_stage(segment: dict) -> dict:
 
 def build_scene(index: int, segment: dict) -> dict:
     narration = segment["narration"]
-    cues = anchors(narration)
+    available_cues = anchors(narration)
     cards = segment["visual_cards"]
+    # Notícias não usam a cadência de animações dos vídeos explicativos:
+    # 3 a 4 atualizações legíveis por bloco, enquanto a matéria fica na tela.
+    cue_count = min(4, len(cards), len(available_cues))
+    cue_indices = [round(i * (len(available_cues) - 1) / (cue_count - 1)) for i in range(cue_count)]
     beats = []
-    for i, phrase in enumerate(cues):
-        headline = cards[min(len(cards) - 1, i * len(cards) // len(cues))]
+    for i, cue_index in enumerate(cue_indices):
         beats.append({
-            "anchor": phrase, "target_id": "headline", "action": "update",
-            "headline": headline, "treatment": "kinetic_type",
-            "behavior": "transform", "motion_seconds": .65,
+            "anchor": available_cues[cue_index], "target_id": "headline",
+            "action": "update", "headline": cards[i],
+            "treatment": "kinetic_type", "behavior": "transform",
+            "motion_seconds": .5,
         })
     return {
         "id": f"scene-{index:02d}", "index": index, "title": segment["title"],
@@ -215,7 +229,7 @@ def transform(episode: dict) -> dict:
         "image_url": photo["image_url"],
         "source_page_url": photo["source_page_url"],
         "subject": photo["subject"], "narrative_role": photo["role"],
-        "license": photo["license"],
+        "license": photo.get("license"),
         "attribution": photo["attribution"],
         "rights_basis": photo.get("rights_basis", "licensed" if photo.get("license") else "contextual_quotation"),
         "needs_cutout": False, "country_context": "BR",

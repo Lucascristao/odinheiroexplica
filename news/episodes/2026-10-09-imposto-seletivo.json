@@ -155,7 +155,8 @@
         "O QUE AINDA NÃO ESTÁ DEFINIDO"
       ],
       "narration": "O governo confirmou que quer deixar para depois do segundo turno uma decisão sobre o chamado imposto do pecado. Pois é. A eleição acontece agora, mas a conversa sobre quanto cobrar ficaria para depois. Antes que alguém saia dizendo que um imposto novo já foi cobrado hoje, não é isso. O anúncio é sobre o envio das regras de alíquotas ao Congresso. E a pergunta que interessa é: por que um assunto que mexe com preços e impostos ficou para depois da votação?",
-      "photo_id": "foto-congresso"
+      "photo_id": "foto-congresso",
+      "media_side": "left"
     },
     {
       "id": "announcement",
@@ -172,7 +173,8 @@
         "ALÍQUOTAS AINDA EM DISCUSSÃO",
         "ACORDO COM SETORES"
       ],
-      "narration": "Na quinta-feira, oito de outubro, o ministro da Fazenda, Dario Durigan, informou que o governo pretende encaminhar ao Congresso, depois do segundo turno, a medida provisória que estabelecerá as alíquotas do Imposto Seletivo. Segundo o ministro, houve um acordo com setores econômicos envolvidos e ainda haverá uma reunião na semana seguinte. O imposto faz parte da reforma tributária, mas as alíquotas específicas e a tramitação dessa proposta não estão concluídas. Veja a diferença: uma declaração de intenção não equivale à aprovação da cobrança. E uma negociação anunciada com empresas não mostra, sozinha, qual será a conta final para o consumidor."
+      "narration": "Na quinta-feira, oito de outubro, o ministro da Fazenda, Dario Durigan, informou que o governo pretende encaminhar ao Congresso, depois do segundo turno, a medida provisória que estabelecerá as alíquotas do Imposto Seletivo. Segundo o ministro, houve um acordo com setores econômicos envolvidos e ainda haverá uma reunião na semana seguinte. O imposto faz parte da reforma tributária, mas as alíquotas específicas e a tramitação dessa proposta não estão concluídas. Veja a diferença: uma declaração de intenção não equivale à aprovação da cobrança. E uma negociação anunciada com empresas não mostra, sozinha, qual será a conta final para o consumidor.",
+      "media_side": "right"
     },
     {
       "id": "what-tax",
@@ -189,7 +191,8 @@
         "APOSTAS E EXTRAÇÃO MINERAL"
       ],
       "narration": "Mas que imposto é esse? O Imposto Seletivo foi previsto para desestimular o consumo de produtos e atividades considerados prejudiciais à saúde ou ao meio ambiente. A relação discutida inclui cigarros, bebidas alcoólicas, refrigerantes e outras bebidas açucaradas, certos veículos, atividades minerais e modalidades de apostas. Isso não significa que todo produto da lista terá a mesma alíquota, nem que o preço de tudo vai subir automaticamente amanhã. Os detalhes dependem de regulamentação. A justificativa defendida pelo governo é reduzir danos e organizar a substituição de tributos existentes. O que ainda falta é mostrar claramente a combinação entre carga tributária, comportamento de consumo e custos para quem compra.",
-      "photo_id": "foto-bebidas"
+      "photo_id": "foto-bebidas",
+      "media_side": "left"
     },
     {
       "id": "budget",
@@ -206,7 +209,8 @@
         "ADIAÇÃO MUDA O CALENDÁRIO",
         "EFEITO AINDA ESTIMADO"
       ],
-      "narration": "E tem um número que ajuda a entender o tamanho do debate: quarenta e um bilhões e novecentos milhões de reais. Essa era a previsão de arrecadação com o imposto para dois mil e vinte e sete apresentada no orçamento. Repare bem: previsão. Não é dinheiro já recolhido. Reportagens também apontaram estimativa de redução de arrecadação de cerca de três bilhões e oitocentos e vinte milhões de reais por causa do adiamento e da exigência de prazo antes de um tributo entrar em vigor. O calendário pode mudar a arrecadação esperada. Mas isso não é uma fatura já emitida para o brasileiro; depende das regras e da implementação."
+      "narration": "E tem um número que ajuda a entender o tamanho do debate: quarenta e um bilhões e novecentos milhões de reais. Essa era a previsão de arrecadação com o imposto para dois mil e vinte e sete apresentada no orçamento. Repare bem: previsão. Não é dinheiro já recolhido. Reportagens também apontaram estimativa de redução de arrecadação de cerca de três bilhões e oitocentos e vinte milhões de reais por causa do adiamento e da exigência de prazo antes de um tributo entrar em vigor. O calendário pode mudar a arrecadação esperada. Mas isso não é uma fatura já emitida para o brasileiro; depende das regras e da implementação.",
+      "media_side": "right"
     },
     {
       "id": "comment",
@@ -239,7 +243,8 @@
         "IMPACTO REAL A ACOMPANHAR"
       ],
       "narration": "Então fica o ponto principal: o governo anunciou que pretende mandar a proposta das alíquotas do Imposto Seletivo ao Congresso depois das eleições. Os números divulgados até agora são projeções, e o efeito sobre cada produto ainda depende das regras aprovadas. Quando esse texto aparecer, será a hora de comparar promessa, justificativa e impacto real. Eu vou acompanhar. E você, acha razoável deixar uma discussão dessas para depois da votação, ou o eleitor deveria conhecer as alíquotas antes? Escreve aqui, porque esse debate envolve o bolso de todo mundo.",
-      "photo_id": "foto-urna"
+      "photo_id": "foto-urna",
+      "media_side": "left"
     }
   ],
   "engagement_question": "O governo deveria divulgar as alíquotas antes da eleição?",
