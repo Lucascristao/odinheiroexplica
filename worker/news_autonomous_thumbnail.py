@@ -151,7 +151,7 @@ Visual identity: dark charcoal base, #FFBD19 gold accents, warm white text;
 readable when reduced to 320x180. No misleading fake data or extra text.
 If uncertain, mark false. No invented claim of human viewing."""
     result = client.models.generate_content(
-        model=os.getenv("ODE_NEWS_VISION_MODEL", "gemini-2.5-flash"),
+        model=os.getenv("ODE_NEWS_VISION_MODEL", "gemini-3.8-flash"),
         contents=[
             types.Part.from_bytes(data=image_bytes, mime_type="image/jpeg"), query
         ],
