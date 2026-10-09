@@ -106,11 +106,23 @@ def main():
         raise SystemExit("Publicação fora da data/horários autorizados.")
     now = datetime.now(timezone.utc)
     lead = (target.astimezone(timezone.utc) - now).total_seconds() / 60
-    # Recuperações pontuais autorizadas, nunca uma publicação tardia genérica.
+    # Atraso operacional de até 90 min, conforme autorização permanente.
+    # Não antecipa publicação: se o horário ainda está no futuro, agenda normalmente.
+    grace_minutes = config.get("late_tolerance_minutes", 0)
+    if type(grace_minutes) is not int or not 0 <= grace_minutes <= 180:
+        raise SystemExit("Tolerância de publicação inválida.")
+    delay_minutes = -lead
+    eligible_late_grace = (
+        config.get("publish_if_late") is True
+        and grace_minutes > 0
+        and 0 <= delay_minutes <= grace_minutes
+        and now.astimezone(local_zone).date() == local_target.date()
+    )
+    # Exceções históricas explícitas continuam isoladas por episódio/data.
     recoveries = [config.get("one_time_late_recovery") or {}]
     recoveries.extend(config.get("additional_late_recoveries") or [])
     eligible_recovery = (
-        lead < config["min_lead_minutes"]
+        delay_minutes >= 0
         and now.astimezone(local_zone).date() == local_target.date()
         and any(
             item.get("episode_id") == project_id
@@ -120,8 +132,11 @@ def main():
             for item in recoveries
         )
     )
-    if lead < config["min_lead_minutes"] and not eligible_recovery:
-        raise SystemExit("Janela de publicação perdida: preservar vídeo privado.")
+    publish_now = eligible_late_grace or eligible_recovery
+    if lead < 0 and not publish_now:
+        raise SystemExit("Janela de tolerância vencida; preservar vídeo privado.")
+    if 0 < lead < config["min_lead_minutes"]:
+        print("SHORT_LEAD_ADVISORY: programar no horário original sem atrasar nem cancelar.")
     service = youtube_service()
     assert_channel(service)
     video = confirmed_video_identity(service, video_id, project_id)
@@ -130,9 +145,9 @@ def main():
         raise SystemExit("Vídeo não está privado; não alterar.")
     existing = status.get("publishAt")
     desired = target.astimezone(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
-    if eligible_recovery:
+    if publish_now:
         if existing:
-            raise SystemExit("Recuperação bloqueada: vídeo já foi agendado, não sobrescrever.")
+            raise SystemExit("Publicação imediata bloqueada: vídeo já foi agendado, não sobrescrever.")
         service.videos().update(
             part="status",
             body={"id": video_id, "status": {"privacyStatus": "public"}},
@@ -143,8 +158,11 @@ def main():
         if fresh[0]["status"].get("privacyStatus") != "public":
             raise SystemExit("YouTube não confirmou publicação pública da recuperação.")
         payload = {
-            "project_id": project_id, "video_id": video_id, "status": "published_late_authorized",
+            "project_id": project_id, "video_id": video_id, "status": "published_within_tolerance" if eligible_late_grace else "published_late_authorized",
             "publication_confirmation": "confirmed_public",
+            "delay_minutes": round(max(0, delay_minutes), 2),
+            "late_tolerance_minutes": grace_minutes,
+            "qa_warning_count": len(qa.get("warnings") or []),
             "published_after_target_local": local_target.isoformat(),
             "confirmed_at_utc": datetime.now(timezone.utc).isoformat(),
             "thumbnail_sha256": image_hash,
@@ -179,6 +197,8 @@ def main():
         "thumbnail_sha256": image_hash,
         "thumbnail_status": "attached" if image_hash else "youtube_automatic",
         "qa_status": qa["status"],
+        "qa_warning_count": len(qa.get("warnings") or []),
+        "late_tolerance_minutes": grace_minutes,
         "status": "scheduled_private_until_publish_at",
         "confirmed_at_utc": now.isoformat(), "url": "https://youtu.be/" + video_id,
         "publication_confirmation": "pending_until_due",
