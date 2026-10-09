@@ -429,10 +429,11 @@ def main() -> None:
 
     success_count = 0
     try:
-        from news_reconstruction import render_reconstruction
+        from news_reconstruction import render_reconstruction, render_verified_article_panel
         for asset in excerpts:
             try:
                 if capture_asset(asset, captures_dir, browser):
+                    render_verified_article_panel(asset, captures_dir)
                     success_count += 1
             except Exception as exc:
                 if not asset.get("editorial_reconstruction"):
