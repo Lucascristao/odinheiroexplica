@@ -33,8 +33,13 @@ def draw_title(image, text, side):
     draw = ImageDraw.Draw(layer)
     side = side if side in ("left", "right") else "left"
     x0 = 42 if side == "left" else 645
-    # Local soft dark backing; the generated image remains the protagonist.
-    draw.rounded_rectangle((x0 - 15, 100, x0 + 590, 625), radius=30, fill=(8, 9, 11, 190))
+    # Cinematic edge shading rather than a repeated box/card across thumbnails.
+    for x in range(W):
+        progress = x / (W - 1)
+        strength = (1 - progress) if side == "left" else progress
+        alpha = int(165 * max(0, strength) ** 2.1)
+        if alpha:
+            draw.line((x, 0, x, H), fill=(5, 7, 9, alpha))
     font_path = "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
     words = text.strip().split()
     font_size = 91
