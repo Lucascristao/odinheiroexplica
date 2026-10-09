@@ -17,3 +17,6 @@ Referências: [fluxo](../../docs/production-portable.md), [arquitetura](../../do
 
 
 Capa: use a skill `ode-packaging` e `npm run ode -- thumbnail-spec`. Novo episódio exige `packaging.thumbnails[0].contract`; inspeção da imagem final exige `production/EPISODIO/thumbnail-audit.json` antes de `ode deliver`. Nenhuma composição genérica deve substituir os protagonistas e as exclusões aprovados.
+
+
+Para o destino alternativo de notícias YouTube, reutilize a preparação editorial, narração, composição e QA do motor existente, mas use `ode dispatch --youtube-private` quando essa entrega for explicitamente solicitada. O upload é privado, não passa pelo Drive e exige confirmação da identidade @odinheiro.explica. A imagem é gerada neste chat e anexada depois de auditoria via workflow de capa com `target=youtube`. Não considere o vídeo publicado só porque o upload privado concluiu. Consulte `docs/production-portable.md`.

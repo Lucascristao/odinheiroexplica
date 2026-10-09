@@ -8,6 +8,14 @@ on:
         type: boolean
         required: false
         default: false
+      delivery_target:
+        description: "Drive legado ou envio privado direto para o YouTube"
+        type: choice
+        options:
+          - drive
+          - youtube_private
+        required: false
+        default: drive
   push:
     branches: [main]
     paths:
@@ -30,6 +38,7 @@ jobs:
       ODE_PROGRESS_URL: https://odinheiroexplica.netlify.app/.netlify/functions/render-progress
       ODE_PROGRESS_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
       ODE_ESTIMATED_RENDER_SECONDS: 1200
+      ODE_DELIVERY_TARGET: ${{ github.event_name == 'workflow_dispatch' && inputs.delivery_target || 'drive' }}
 
     steps:
       - name: Checkout
@@ -463,6 +472,7 @@ jobs:
           retention-days: 7
 
       - name: Upload package to Google Drive
+        if: env.ODE_DELIVERY_TARGET == 'drive'
         env:
           ODE_REVIEW_OUTCOME: ${{ steps.encoded_review.outcome }}
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
@@ -495,18 +505,58 @@ jobs:
             --project-slug "$ODE_PROJECT_SLUG" \
             --output render-output/daily-drive.json
 
-      - name: Finish production
+      - name: Enviar vídeo PRIVADO ao YouTube, sem Drive
+        if: env.ODE_DELIVERY_TARGET == 'youtube_private'
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
         run: |
-          VIDEO_DURATION=$(python -c 'import json; p=json.load(open("video/generated/daily-render-input.json")); print(round(p["duration_in_frames"]/p["fps"], 2))')
           python worker/progress_callback.py \
             --run-id "${{ github.run_id }}" \
             --title "$ODE_VIDEO_TITLE" \
-            --status completed \
-            --stage concluido \
-            --percent 100 \
-            --detail "Vídeo e pacote de publicação salvos no Google Drive. A capa será gerada pelo chat." \
-            --delivery-manifest render-output/daily-drive.json \
-            --video-duration-seconds "$VIDEO_DURATION"
+            --status running \
+            --stage publicando \
+            --percent 94 \
+            --detail "Enviando o MP4 ao YouTube como privado, sem passar pelo Drive."
+          python worker/youtube_publication.py upload-private \
+            --project-id "$ODE_PROJECT_SLUG" \
+            --video render-output/daily-video.mp4 \
+            --metadata render-output/daily-youtube.json \
+            --receipt render-output/daily-youtube-private.json
+
+      - name: Preservar recibo do YouTube para posterior envio da capa
+        if: env.ODE_DELIVERY_TARGET == 'youtube_private'
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-youtube-private-receipt
+          path: render-output/daily-youtube-private.json
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Finish production
+        run: |
+          VIDEO_DURATION=$(python -c 'import json; p=json.load(open("video/generated/daily-render-input.json")); print(round(p["duration_in_frames"]/p["fps"], 2))')
+          if [ "$ODE_DELIVERY_TARGET" = "youtube_private" ]; then
+            python worker/progress_callback.py \
+              --run-id "${{ github.run_id }}" \
+              --title "$ODE_VIDEO_TITLE" \
+              --status completed \
+              --stage concluido \
+              --percent 100 \
+              --detail "MP4 enviado como privado ao YouTube. Falta a capa produzida no chat; publicação pública não autorizada." \
+              --video-duration-seconds "$VIDEO_DURATION"
+          else
+            python worker/progress_callback.py \
+              --run-id "${{ github.run_id }}" \
+              --title "$ODE_VIDEO_TITLE" \
+              --status completed \
+              --stage concluido \
+              --percent 100 \
+              --detail "Vídeo e pacote de publicação salvos no Google Drive. A capa será gerada pelo chat." \
+              --delivery-manifest render-output/daily-drive.json \
+              --video-duration-seconds "$VIDEO_DURATION"
+          fi
 
       - name: Report failure
         if: failure()

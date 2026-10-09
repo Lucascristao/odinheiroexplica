@@ -34,7 +34,7 @@ if(command==="thumbnail-spec") {
 } else if(command==="prompt") {
   console.log(productionChatRequest(option("--request","Gere um vídeo inédito para o O Dinheiro Explica e entregue o pacote completo no Drive.")!,{mode:args.includes("--direct")?"direct":"normal",chooseTopic:!args.includes("--ask-topic")}));
 } else if(command==="context"||command==="capabilities") {
-  console.log(JSON.stringify({version:"1.0",project:project.project_id,title:project.title,project_sha256:fingerprint,voice:load("worker/voice-policy.json"),skills:readdirSync("skills").filter(s=>existsSync(`skills/${s}/SKILL.md`)).map(s=>`skills/${s}/SKILL.md`),contracts:["AGENTS.md","frame.md","docs/architecture.md","docs/production-portable.md","src/lib/video-project-schema.ts","src/lib/editorial-stage.ts"],capabilities:{stage:["objects","camera","equation","compare","chart","source_excerpt","captions","sfx"],hyperframes:"HTML por protagonista, eventos alinhados, texto e relações no Stage",review:"frames do MP4 e diagnóstico regional; revisão semântica pelo agente",delivery:"Actions → Drive; publicação manual"},state:state()},null,2));
+  console.log(JSON.stringify({version:"1.0",project:project.project_id,title:project.title,project_sha256:fingerprint,voice:load("worker/voice-policy.json"),skills:readdirSync("skills").filter(s=>existsSync(`skills/${s}/SKILL.md`)).map(s=>`skills/${s}/SKILL.md`),contracts:["AGENTS.md","frame.md","docs/architecture.md","docs/production-portable.md","src/lib/video-project-schema.ts","src/lib/editorial-stage.ts"],capabilities:{stage:["objects","camera","equation","compare","chart","source_excerpt","captions","sfx"],hyperframes:"HTML por protagonista, eventos alinhados, texto e relações no Stage",review:"frames do MP4 e diagnóstico regional; revisão semântica pelo agente",delivery:"Actions → Drive por padrão; --youtube-private envia MP4 ao YouTube privado sem Drive, aguardando capa no chat e liberação posterior"},state:state()},null,2));
 } else if(command==="preflight") {
   registerTemporaryPaths(root,["video/generated/daily-source-audit.json","video/generated/daily-pronunciation-audit.json","video/generated/daily-hyperframes-preflight.json"]);
   run(process.execPath,["node_modules/tsx/dist/cli.mjs","scripts/thumbnail-spec.ts","--check",...(args.includes("--new-episode")?["--new-episode"]:[])]);
@@ -56,7 +56,8 @@ if(command==="thumbnail-spec") {
     const checks=JSON.parse(capture("gh",["run","list","--workflow","ci.yml","--branch","main","--limit","20","--json","headSha,status,conclusion","--repo","Lucascristao/odinheiroexplica"]));
     if(!checks.some((c:any)=>c.headSha===head&&c.status==="completed"&&c.conclusion==="success"))throw new Error("Aguarde o CI aprovado do mesmo commit antes do dispatch normal.");
   }
-  gh(["workflow","run","render-daily.yml","--ref","main"]);
+  if(args.includes("--youtube-private"))gh(["workflow","run","render-daily.yml","--ref","main","-f","delivery_target=youtube_private"]);
+  else gh(["workflow","run","render-daily.yml","--ref","main"]);
   save({...previous,head_sha:head,stage:"dispatch-requested",updated_at:new Date().toISOString()});
   console.log("Disparo solicitado. Use status e confira headSha; iniciar não conclui a entrega.");
 } else if(command==="status") {

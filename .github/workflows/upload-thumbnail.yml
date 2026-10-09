@@ -3,6 +3,22 @@ name: Upload Thumbnail to Google Drive
 on:
   workflow_dispatch:
     inputs:
+      target:
+        description: "Destino: Drive antigo ou YouTube privado"
+        type: choice
+        options:
+          - drive
+          - youtube
+        required: true
+        default: drive
+      project_id:
+        description: "Identificador exato do episódio para conferência da capa no YouTube"
+        required: false
+        type: string
+      video_id:
+        description: "ID do vídeo PRIVADO no YouTube; necessário para target=youtube"
+        required: false
+        type: string
       folder_id:
         description: "Google Drive Folder ID"
         required: true
@@ -23,6 +39,7 @@ jobs:
           python-version: "3.11"
       - run: pip install --no-cache-dir -r worker/requirements.txt
       - name: Upload thumbnail to target folder
+        if: inputs.target == 'drive'
         env:
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
@@ -46,3 +63,25 @@ jobs:
           print(f"THUMBNAIL_UPLOAD_OK:{file_id}")
           print(f"WEB_VIEW_URL:https://drive.google.com/file/d/{file_id}/view")
           PY
+
+      - name: Enviar capa aprovada ao vídeo privado do YouTube
+        if: inputs.target == 'youtube'
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          ODE_THUMB_PROJECT_ID: ${{ inputs.project_id }}
+          ODE_THUMB_VIDEO_ID: ${{ inputs.video_id }}
+          ODE_THUMB_PATH: ${{ inputs.thumbnail_path }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$ODE_THUMB_PROJECT_ID" =~ ^[A-Za-z0-9][A-Za-z0-9._-]+$ ]] || { echo "project_id inválido"; exit 1; }
+          [[ "$ODE_THUMB_VIDEO_ID" =~ ^[A-Za-z0-9_-]{11}$ ]] || { echo "video_id inválido"; exit 1; }
+          [[ "$ODE_THUMB_PATH" =~ ^production/[A-Za-z0-9][A-Za-z0-9._-]*/thumbnail\.(png|jpg)$ ]] || { echo "Caminho da capa não é canônico."; exit 1; }
+          python worker/youtube_publication.py thumbnail \
+            --root . \
+            --project video/data/daily.json \
+            --project-id "$ODE_THUMB_PROJECT_ID" \
+            --thumbnail "$ODE_THUMB_PATH" \
+            --video-id "$ODE_THUMB_VIDEO_ID"
