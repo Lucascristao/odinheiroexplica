@@ -27,8 +27,22 @@ def validate(episode: dict, today: date | None = None) -> dict:
     require(bool(episode.get("reviewed_at")), "sem data da revisão editorial")
     require(20 <= len(str(episode.get("title", ""))) <= 100, "título inválido")
     require(8 <= len(str(episode.get("thumbnail_headline", ""))) <= 34, "headline da capa inválida")
-    require(len(episode.get("title_options", [])) >= 3, "comparar pelo menos três alternativas de título")
-    require(episode.get("scorecard", {}).get("method") and episode["scorecard"].get("reason"), "avaliação de potencial ausente")
+    title_options = episode.get("title_options") or []
+    require(len(title_options) >= 3, "comparar pelo menos três alternativas de título")
+    titles = [str(option.get("text", "")).strip() for option in title_options if isinstance(option, dict)]
+    require(len(titles) == len(title_options) and all(20 <= len(text) <= 100 for text in titles),
+            "alternativas de título incompletas")
+    require(len({re.sub(r"\\s+", " ", text).casefold() for text in titles}) >= 3,
+            "as três alternativas de título precisam ser diferentes")
+    require(episode["title"].strip() in titles,
+            "título final não corresponde às alternativas avaliadas")
+    ratings = [option.get("editorial_quality") for option in title_options]
+    require(all(type(rating) is int and 1 <= rating <= 5 for rating in ratings),
+            "alternativas sem pontuação editorial de 1 a 5")
+    require(max(rating for text, rating in zip(titles, ratings) if text == episode["title"].strip()) == max(ratings),
+            "título final não é a melhor alternativa segundo a avaliação registrada")
+    require(episode.get("scorecard", {}).get("method") and episode["scorecard"].get("reason"),
+            "avaliação de potencial ausente")
     discovery = episode.get("discovery_strategy") or {}
     for field in ("viewer_intent", "search_query", "recommendation_angle", "first_payoff",
                   "promise_proof", "audience_hypothesis", "thumbnail_complement",
