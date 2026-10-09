@@ -108,6 +108,7 @@ jobs:
             --output-dir public/generated-audio/visual-preview \
             --manifest video/generated/visual-preview-tts-manifest.json
           python worker/build_render_input.py \
+            --preview-only \
             --project video/generated/daily-project.json \
             --tts-manifest video/generated/visual-preview-tts-manifest.json \
             --audio-public-prefix generated-audio/visual-preview \
