@@ -20,5 +20,12 @@
   "min_lead_minutes": 5,
   "publish_if_late": false,
   "thumbnail_optional": true,
-  "thumbnail_provider": "chatgpt_optional_youtube_automatic_fallback"
+  "thumbnail_provider": "chatgpt_optional_youtube_automatic_fallback",
+  "one_time_late_recovery": {
+    "episode_id": "noticia-2026-10-09-manha",
+    "original_publication_local": "2026-10-09T08:00:00-03:00",
+    "authorized_by_user": true,
+    "mode": "publish_immediately_after_qa",
+    "reason": "Publicação tardia da edição das 08h solicitada explicitamente pelo titular em 09/10/2026; exceção somente para este episódio"
+  }
 }
