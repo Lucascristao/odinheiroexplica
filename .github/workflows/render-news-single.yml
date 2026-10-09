@@ -8,7 +8,7 @@ on:
         default: news/episodes/2026-10-09-imposto-seletivo.json
   push:
     branches: [main]
-    paths: [news/episodes/2026-10-09-imposto-seletivo.json, worker/news_single_project.py, .github/workflows/render-news-single.yml]
+    paths: [news/episodes/2026-10-09-imposto-seletivo.json, worker/news_single_project.py, scripts/validate-news-single.ts, .github/workflows/render-news-single.yml]
 permissions:
   contents: read
 concurrency:
@@ -43,6 +43,8 @@ jobs:
           [[ "$NEWS_EDITION" =~ ^news/episodes/[A-Za-z0-9._-]+\.json$ ]]
           python worker/news_single_project.py --input "$NEWS_EDITION" --output video/generated/daily-project.json
           python worker/validate_voice_policy.py
+      - name: Validar todas as cenas com o contrato Zod de produção
+        run: npx tsx scripts/validate-news-single.ts video/generated/daily-project.json
       - name: Validar direção visual antes da síntese
         run: |
           npm run validate:layout -- \

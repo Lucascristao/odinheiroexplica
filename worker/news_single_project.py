@@ -78,6 +78,26 @@ def validate(episode: dict, today: date | None = None) -> dict:
 
 
 def build_stage(segment: dict) -> dict:
+    # Comentário do apresentador precisa ser visualmente diferente de uma
+    # matéria/documento: palco aberto, ideia dominante, sem ícone genérico.
+    if segment["type"] == "opinion":
+        return {
+            "show_title": False, "motion_profile": "narrative", "camera_mode": "manual",
+            "initial_camera": {"x": 50, "y": 50, "zoom": 1},
+            "captions": {"enabled": True, "max_words": 6, "words_per_line": 3,
+                         "max_lines": 2, "font_size": 64, "min_free_area_ratio": .30},
+            "elements": [
+                {"id": "section", "kind": "label", "label": "ANÁLISE DO ROBERTO",
+                 "x": 6, "y": 6, "width": 88, "height": 13,
+                 "label_size": 44, "surface": "none"},
+                {"id": "headline", "kind": "label", "label": segment["headline"],
+                 "x": 6, "y": 24, "width": 88, "height": 44,
+                 "label_size": 76, "surface": "none"},
+                {"id": "metric", "kind": "label", "label": segment["metric"],
+                 "x": 6, "y": 78, "width": 85, "height": 14,
+                 "label_size": 48, "surface": "none"},
+            ], "connections": [],
+        }
     label = ("OPINIÃO DO ROBERTO" if segment["type"] == "opinion" else segment["label"])
     card = {
         "id": "headline", "kind": "label", "label": segment["headline"],
