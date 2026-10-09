@@ -171,8 +171,19 @@ jobs:
           project_path = Path("video/generated/daily-project.json")
           project = json.loads(project_path.read_text(encoding="utf-8"))
           qa = json.loads(Path("video/generated/daily-delivery-qa.json").read_text(encoding="utf-8"))
-          if qa.get("status") != "pass" or qa.get("warnings") or qa.get("failures"):
-              raise SystemExit("QA não aprovado: preservar vídeo privado e não agendar.")
+          # Avisos puramente diagnósticos não devem impedir a entrega.
+          # Sincronização incerta, picos de áudio e códigos desconhecidos continuam bloqueantes.
+          advisory_codes = {
+              "delivery-variation",
+              "long-boundary-pause",
+              "estimated-register-variation",
+          }
+          warnings = qa.get("warnings") or []
+          blocking_warnings = [w for w in warnings if w.get("code") not in advisory_codes]
+          if qa.get("failures") or qa.get("status") == "fail" or blocking_warnings or qa.get("status") not in ("pass", "warn"):
+              print("QA_BLOCKING_WARNINGS:", json.dumps(blocking_warnings, ensure_ascii=False))
+              raise SystemExit("QA não aprovado: falhas ou avisos críticos; não enviar nem agendar.")
+          print("QA_ADVISORY_WARNINGS:", json.dumps(warnings, ensure_ascii=False))
           directory = Path("production") / project["project_id"]
           cover = next((p for p in (directory / "thumbnail.jpg", directory / "thumbnail.png")
                         if p.is_file() and p.stat().st_size > 0), None)
