@@ -149,6 +149,19 @@ jobs:
             --tts-manifest video/generated/daily-aligned-tts-manifest.json \
             --audio-dir public/processed-audio/daily --video render-output/daily-video.mp4 \
             --output video/generated/daily-delivery-qa.json
+      - name: Identificar autorização editorial autônoma do episódio
+        shell: bash
+        run: |
+          set -euo pipefail
+          MODE="$(python -c 'import json,os;print("true" if json.load(open(os.environ["NEWS_EDITION"],encoding="utf-8")).get("editorial_status")=="autonomous_fact_checked" else "false")')"
+          echo "ODE_AUTONOMOUS=$MODE" >> "$GITHUB_ENV"
+      - name: Gerar capa completa e auditar pixels antes de enviar ao YouTube
+        if: env.ODE_AUTONOMOUS == 'true'
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python worker/news_autonomous_thumbnail.py --project video/generated/daily-project.json \
+            --episode "$NEWS_EDITION" --root . --qa video/generated/daily-delivery-qa.json
       - name: Capturar quadros de revisão
         continue-on-error: true
         run: |
@@ -170,6 +183,8 @@ jobs:
             render-output/visual-review/
             render-output/daily-video.mp4
             render-output/daily-youtube.json
+            production/noticia-*/thumbnail.jpg
+            production/noticia-*/thumbnail-audit.json
           if-no-files-found: warn
           retention-days: 7
       - name: Entregar vídeo privado sem Google Drive
@@ -184,7 +199,42 @@ jobs:
             --metadata render-output/daily-youtube.json \
             --project video/generated/daily-project.json \
             --receipt render-output/daily-youtube-private.json
+      - name: Anexar capa autônoma ao vídeo privado
+        if: env.ODE_AUTONOMOUS == 'true'
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          PROJECT_ID="$(python -c 'import json;print(json.load(open("video/generated/daily-project.json"))["project_id"])')"
+          python worker/youtube_publication.py thumbnail \
+            --root . --project video/generated/daily-project.json \
+            --project-id "$PROJECT_ID" --receipt render-output/daily-youtube-private.json \
+            --thumbnail "production/$PROJECT_ID/thumbnail.jpg" \
+            --delivery-record render-output/youtube-thumbnail-delivery.json
+      - name: Programar vídeo com capa e QA sem aprovação humana por episódio
+        if: env.ODE_AUTONOMOUS == 'true'
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          PROJECT_ID="$(python -c 'import json;print(json.load(open("video/generated/daily-project.json"))["project_id"])')"
+          python worker/news_autonomous_schedule.py \
+            --root . --project video/generated/daily-project.json \
+            --episode "$NEWS_EDITION" \
+            --thumbnail "production/$PROJECT_ID/thumbnail.jpg" \
+            --private-receipt render-output/daily-youtube-private.json \
+            --thumbnail-receipt render-output/youtube-thumbnail-delivery.json \
+            --qa video/generated/daily-delivery-qa.json \
+            --config config/news-autonomy.json \
+            --output render-output/news-publication-scheduled.json
       - name: Registrar pendência obrigatória de capa
+        if: env.ODE_AUTONOMOUS != 'true'
         run: |
           python - <<'PY'
           import json
@@ -204,5 +254,7 @@ jobs:
           path: |
             render-output/daily-youtube-private.json
             render-output/news-delivery-state.json
+            render-output/youtube-thumbnail-delivery.json
+            render-output/news-publication-scheduled.json
           if-no-files-found: error
           retention-days: 30
