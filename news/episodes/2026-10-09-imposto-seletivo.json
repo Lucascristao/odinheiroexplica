@@ -75,6 +75,13 @@
       "url": "https://economia.uol.com.br/noticias/redacao/2026/10/08/imposto-do-pecado-tera-aliquotas-discutidas-so-apos-eleicoes.ghtm",
       "published_at": "2026-10-08",
       "role": "registro jornalístico da previsão fiscal de R$ 41,9 bilhões para 2027"
+    },
+    {
+      "id": "S6",
+      "publisher": "InfoMoney / Agência O Globo",
+      "url": "https://www.infomoney.com.br/politica/bolsa-familia-r-44-bi-de-emendas-e-socorro-a-estatais-entenda-o-orcamento-de-2027/",
+      "published_at": "2026-09-01",
+      "role": "estimativa de R$ 41,9 bi do Imposto Seletivo no PLOA 2027; matéria jornalística independente para citação"
     }
   ],
   "verified_facts": [
@@ -132,11 +139,11 @@
     {
       "id": "doc-budget",
       "kind": "source_excerpt",
-      "source_id": "S5",
-      "source_page_url": "https://economia.uol.com.br/noticias/redacao/2026/10/08/imposto-do-pecado-tera-aliquotas-discutidas-so-apos-eleicoes.ghtm",
-      "expected_text": "Equipe econômica espera arrecadar R$ 41,9 bilhões",
-      "attribution": "Citação visual de trecho do UOL Economia, 08/10/2026, sobre projeção do Imposto Seletivo",
-      "rights_review": "Citação de passagem curta para contextualizar valores projetados, não receita observada; preservar fonte e autoria",
+      "source_id": "S6",
+      "source_page_url": "https://www.infomoney.com.br/politica/bolsa-familia-r-44-bi-de-emendas-e-socorro-a-estatais-entenda-o-orcamento-de-2027/",
+      "expected_text": "R$ 41,9 bilhões referentes ao Imposto Seletivo",
+      "attribution": "InfoMoney / Agência O Globo, 01/09/2026, trecho curto sobre previsão orçamentária do Imposto Seletivo",
+      "rights_review": "Recorte factual de passagem citada para explicar estimativa fiscal; conservar origem, autor e contexto, sem reproduzir reportagem inteira",
       "capture_file": "research/captures/doc-budget.png"
     }
   ],
