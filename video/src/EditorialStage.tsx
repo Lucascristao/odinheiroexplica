@@ -234,7 +234,6 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
                   )}
                 />
               )
-            )
             ) : element.kind === "chart" && element.chart ? (
               <EditorialChart
                 chart={element.chart}
