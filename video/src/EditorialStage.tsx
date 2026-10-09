@@ -1,4 +1,4 @@
-import {SourceExcerpt, EditorialChart} from "./EditorialEvidence";
+import {SourceExcerpt, NewsDocumentFrame, EditorialChart} from "./EditorialEvidence";
 import type {Emphasis} from "../../src/lib/editorial-evidence";
 import {EditorialIcon} from "./EditorialIcon";
 import {EditorialObject} from "./EditorialObject";
@@ -207,17 +207,34 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
             }}
           >
             {element.kind === "source_excerpt" ? (
-              <SourceExcerpt
-                element={element}
-                view={element.view}
-                markIds={element.markIds}
-                markProgress={Object.fromEntries(
-                  Object.entries(element.markTiming).map(([id, t]) => [
-                    id,
-                    interpolate(frame - t.frame, [0, t.duration], [0, 1], clamp),
-                  ])
-                )}
-              />
+              checkedStage.full_bleed_news ? (
+                <NewsDocumentFrame
+                  element={element}
+                  view={element.view}
+                  markIds={element.markIds}
+                  markProgress={Object.fromEntries(
+                    Object.entries(element.markTiming).map(([id, t]) => [
+                      id,
+                      interpolate(frame - t.frame, [0, t.duration], [0, 1], clamp),
+                    ])
+                  )}
+                  width={box.w-cardPadding*2}
+                  height={box.h-cardPadding*2}
+                />
+              ) : (
+                <SourceExcerpt
+                  element={element}
+                  view={element.view}
+                  markIds={element.markIds}
+                  markProgress={Object.fromEntries(
+                    Object.entries(element.markTiming).map(([id, t]) => [
+                      id,
+                      interpolate(frame - t.frame, [0, t.duration], [0, 1], clamp),
+                    ])
+                  )}
+                />
+              )
+            )
             ) : element.kind === "chart" && element.chart ? (
               <EditorialChart
                 chart={element.chart}
