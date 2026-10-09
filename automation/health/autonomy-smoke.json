@@ -1,8 +1,8 @@
 {
   "result": "fail",
-  "checked_at_utc": "2026-10-09T06:49:22.808082+00:00",
-  "source_commit": "47815ade5c2c63964306b70272deb3c244439337",
-  "run_id": "37895524936",
+  "checked_at_utc": "2026-10-09T06:50:02.523474+00:00",
+  "source_commit": "92a320725422edd9f5d19961ca989fb4cd7c1818",
+  "run_id": "37895591406",
   "checks": {
     "scripts_yaml": "success",
     "news_adapter": "success",
