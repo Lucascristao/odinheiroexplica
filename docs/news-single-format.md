@@ -69,3 +69,13 @@ Foco na pessoa que assiste, **não** em manipular métricas: investigar qual per
 **Após publicação humana**: medir impressões e CTR por origem de tráfego (Home, sugeridos, pesquisa), duração média e retenção inicial no mesmo recorte temporal. Verificar 72h, 7 e 28 dias se houver dados do Studio; não atribuir melhora a uma única mudança nem usar visões públicas de concorrentes como se fossem seus dados privados. Mudar embalagem só quando a hipótese for verificável. **Viralidade nunca é garantida.**
 
 Referências oficiais: https://support.google.com/youtube/answer/16533387?hl=pt-BR e https://support.google.com/youtube/answer/146402?hl=pt-BR.
+
+## Evolução de automação autorizada em 09/10/2026
+
+O piloto de notícia única foi aprovado pelo usuário. A autorização permanente para edições futuras é sem aprovação humana por vídeo, somente para o formato ode-news-single. A regra histórica de revisão/publicação manual acima descreve o piloto anterior e continua disponível apenas para episódios de modo manual. Para edições futuras, a fonte operacional de autorização é config/news-autonomy.json.
+
+O ChatGPT Task e o workflow news-autonomous-editor.yml são gatilhos redundantes da mesma janela; ambos devem respeitar o MESMO arquivo news/episodes/AAAA-MM-DD-{manha,meio-dia,noite}.json, e nunca produzir duas pautas no mesmo horário. GitHub dispara a seleção e apuração às 06h, 10h e 18h, America/Fortaleza, com Google Search grounding e confirmação literal de fontes, e envia a pauta ao motor via workflow_dispatch. Não confundir título RSS com fato apurado.
+
+render-news-single.yml gera a imagem de capa antes do envio de MP4, faz uma inspeção multimodal dos pixels via worker/news_autonomous_thumbnail.py, envia o vídeo PRIVADO e anexa a thumbnail ao video_id exato. Em modo autônomo, worker/news_autonomous_schedule.py só configura publishAt às 08h, 12h ou 20h se houver recibos, QA pass sem avisos, capa auditada e data/hora futura válida. Caso contrário interrompe a publicação; nunca inventa auditoria humana. A revisão automática de visão é uma avaliação de modelo, não prova infalível de qualidade.
+
+news-verify-publication.yml verifica o status público observado 15 minutos após cada janela; agendamento aceito pela API não é confirmação de publicação pública, especialmente quando a auditoria do projeto YouTube API estiver pendente. O primeiro ciclo real ainda precisa demonstrar sucesso para que se afirme que a rotina foi validada ponta a ponta.
