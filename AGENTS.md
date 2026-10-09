@@ -93,3 +93,8 @@ A linha **nova e canônica** é `news/episodes/*.json` com formato `ode-news-sin
 ## Padrão de layout de notícias aprovado (09/10/2026)
 
 Para **ode-news-single**, apresentar a matéria, print autêntico ou foto em **até 100% da tela**, sem títulos em cima, faixas "imagem de arquivo" ou slides isolados de comentário. A fala/opinião do Roberto permanece junto da evidência apropriada na mesma cena. Fotografias, reportagens, pesquisas e gráficos entram quando agregam; grifos, caixas, setas e zoom apenas sobre pontos conferidos no documento original e sincronizados com a voz. Capturar contexto da página em desktop, não apenas um parágrafo de texto. Nunca substituir print real bem-sucedido por uma página gerada artificialmente. Se falhar captura: só usar reconstrução editorial apurada e claramente identificada, com procedência registrada. Essa diretriz **não altera os vídeos explicativos**. Aplicar direitos e licenças adequados. Ler `docs/news-single-format.md` e os testes de `worker/test_news_single_project.py`.
+
+
+## Otimização para recomendações YouTube: notícias únicas
+
+Para toda nova notícia, trabalhar simultaneamente apuração factual, interesse do público, clareza do título, capa complementar, entrega na abertura e retenção visual. Preencher `discovery_strategy` e `publication_description` em `news/episodes/*.json`, conforme `docs/news-single-format.md`; não usar tags como principal alavanca de alcance, nem inventar métricas de buscas/CTR. Respeitar separação entre notícias verificadas e interpretação. O SEO da notícia precisa ajudar a pessoa a encontrar a resposta, sem exageros, insultos ou garantia de viralização. Medir performance verdadeira depois da publicação, com snapshots do YouTube Studio quando disponíveis.
