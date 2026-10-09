@@ -160,7 +160,9 @@ class SingleNewsContractTests(unittest.TestCase):
             self.assertTrue(output.is_file())
             with Image.open(output) as image:
                 self.assertEqual(image.size, (1920, 1080))
-                self.assertEqual(image.getpixel((10, 110)), (255, 189, 25))
+                self.assertEqual(image.getpixel((10, 6)), (255, 189, 25))
+                self.assertEqual(image.getpixel((10, 110)), (246, 245, 240))
+                self.assertEqual(image.getpixel((1900, 1045)), (246, 245, 240))
             receipt = json.loads(output.with_suffix(".provenance.json").read_text(encoding="utf-8"))
             self.assertTrue(receipt["not_original_screenshot"])
             self.assertEqual(receipt["source_id"], "S4")
