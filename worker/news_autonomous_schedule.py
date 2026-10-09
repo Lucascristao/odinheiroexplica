@@ -61,8 +61,11 @@ def main():
         raise SystemExit("Somente notícias únicas podem ser agendadas.")
     if episode.get("episode_id") != project_id or episode.get("editorial_status") != config["required_editorial_status"]:
         raise SystemExit("Notícia sem apuração autônoma identificada.")
-    if qa.get("status") != config["require_qa_status"] or qa.get("failures") or qa.get("warnings"):
-        raise SystemExit("QA técnico não está integralmente aprovado.")
+    allowed_qa_states = ("pass", "warn") if config.get("allow_qa_warnings") is True else (config["require_qa_status"],)
+    if qa.get("status") not in allowed_qa_states or qa.get("failures"):
+        raise SystemExit("QA técnico possui falhas ou status inválido.")
+    if qa.get("warnings"):
+        print("QA_WARNINGS_NON_BLOCKING:", json.dumps(qa["warnings"], ensure_ascii=False))
     receipt = load(args.private_receipt)
     if bool(args.thumbnail) != bool(args.thumbnail_receipt):
         raise SystemExit("Capa e recibo precisam ser informados juntos; ambos opcionais.")
@@ -103,16 +106,19 @@ def main():
         raise SystemExit("Publicação fora da data/horários autorizados.")
     now = datetime.now(timezone.utc)
     lead = (target.astimezone(timezone.utc) - now).total_seconds() / 60
-    recovery = config.get("one_time_late_recovery") or {}
+    # Recuperações pontuais autorizadas, nunca uma publicação tardia genérica.
+    recoveries = [config.get("one_time_late_recovery") or {}]
+    recoveries.extend(config.get("additional_late_recoveries") or [])
     eligible_recovery = (
-        project_id == "noticia-2026-10-09-manha"
-        and recovery.get("episode_id") == project_id
-        and recovery.get("original_publication_local") == "2026-10-09T08:00:00-03:00"
-        and raw_target == recovery.get("original_publication_local")
-        and recovery.get("authorized_by_user") is True
-        and recovery.get("mode") == "publish_immediately_after_qa"
-        and now.astimezone(local_zone).date().isoformat() == "2026-10-09"
-        and lead < config["min_lead_minutes"]
+        lead < config["min_lead_minutes"]
+        and now.astimezone(local_zone).date() == local_target.date()
+        and any(
+            item.get("episode_id") == project_id
+            and item.get("original_publication_local") == raw_target
+            and item.get("authorized_by_user") is True
+            and item.get("mode") == "publish_immediately_after_qa"
+            for item in recoveries
+        )
     )
     if lead < config["min_lead_minutes"] and not eligible_recovery:
         raise SystemExit("Janela de publicação perdida: preservar vídeo privado.")
