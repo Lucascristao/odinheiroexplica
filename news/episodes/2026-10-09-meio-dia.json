@@ -1,0 +1,364 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-09-meio-dia",
+  "news_date": "2026-10-09",
+  "event_date": "2026-10-09",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-09T10:14:19-03:00",
+  "publication_target_local": "2026-10-09T12:00:00-03:00",
+  "title": "Inflação de 0,82%: conta de luz explica quase 40% da alta",
+  "title_options": [
+    {
+      "text": "Inflação de 0,82%: conta de luz explica quase 40% da alta",
+      "editorial_quality": 5
+    },
+    {
+      "text": "A inflação subiu. Mas um único item pesou quase 40%",
+      "editorial_quality": 4
+    },
+    {
+      "text": "IPCA dispara em setembro: o detalhe escondido na conta de luz",
+      "editorial_quality": 4
+    }
+  ],
+  "thumbnail_headline": "QUASE 40% VEIO DA LUZ",
+  "thumbnail_primary": "Fatura genérica de energia elétrica brasileira e indicador de inflação, ilustração editorial sem copiar conta real",
+  "thumbnail_tension": "A energia elétrica teve impacto de 0,32 ponto percentual na alta de 0,82% do IPCA, cerca de 39% da variação",
+  "thumbnail_composition": "Fatura genérica de luz em destaque ao lado de medidor percentual; cores grafite e amarelo, foco no número 0,82%, sem logomarcas ou documentos falsificados",
+  "thumbnail_text_side": "left",
+  "scorecard": {
+    "method": "julgamento editorial qualitativo, sem inventar CTR, tendências ou volume de buscas",
+    "criteria": {
+      "timeliness": 5,
+      "consumer_interest": 5,
+      "public_debate": 4,
+      "documentary_evidence": 5,
+      "original_angle": 5
+    },
+    "unavailable": [
+      "CTR real do público",
+      "volume de busca em tempo real"
+    ],
+    "reason": "O IPCA de setembro foi divulgado hoje (09/10), mas apenas citar 0,82% seria uma manchete fria. A explicação verificável de como a energia elétrica respondeu por 0,32 ponto percentual do índice, aproximadamente 39%, oferece uma surpresa factual clara, sem confundir participação na variação do indicador com a inflação particular de cada família. Os blocos 1 a 4 entregam e contextualizam esse contraste."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "InfoMoney",
+      "url": "https://www.infomoney.com.br/economia/ipca-inflacao-setembro-2026-dados-ibge/",
+      "published_at": "2026-10-09",
+      "role": "resultado do IPCA e contribuição de energia, bônus de Itaipu, alimentação, transportes"
+    },
+    {
+      "id": "S2",
+      "publisher": "UOL Economia",
+      "url": "https://economia.uol.com.br/noticias/redacao/2026/10/09/ipca-setembro-2026.ghtm",
+      "published_at": "2026-10-09",
+      "role": "confirmação independente, energia, alimentação, explicação sobre a medição da inflação"
+    },
+    {
+      "id": "S3",
+      "publisher": "Reuters (via Investing.com)",
+      "url": "https://br.investing.com/news/economic-indicators/ipca-sobe-em-082-em-setembro-diz-ibge-2087795",
+      "published_at": "2026-10-09",
+      "role": "terceira checagem independente do IPCA de 0,82% e acumulado em 12 meses de 4,58%"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O IPCA, inflação oficial brasileira medida pelo IBGE, registrou alta de 0,82% em setembro de 2026, após recuo de 0,32% em agosto.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "O IPCA acumulou 4,58% em 12 meses até setembro, acima do teto de 4,5% do intervalo de tolerância da meta de 3%.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "A energia elétrica residencial teve alta de 7,98% e contribuiu com 0,32 ponto percentual do IPCA de setembro, cerca de 39% da variação de 0,82%.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "O fim da incorporação do Bônus de Itaipu nas faturas de setembro ajudou a explicar o salto da energia em relação aos descontos de agosto.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "Habitação registrou variação de 2,31% e impacto de 0,35 ponto percentual no índice de setembro.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "Alimentação e bebidas subiu 0,83%; a alimentação no domicílio avançou 0,96%, com tomate em alta de 37,76% e batata-inglesa de 24,07%.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "Transportes subiu 0,89%, e os combustíveis aumentaram 1,41% na medição de setembro.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "O IPCA agrega a variação de uma cesta ponderada de produtos e serviços e não mede o mesmo gasto ou consumo para todas as famílias.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "ipca-uol-geral",
+      "kind": "source_excerpt",
+      "source_id": "S2",
+      "source_page_url": "https://economia.uol.com.br/noticias/redacao/2026/10/09/ipca-setembro-2026.ghtm",
+      "expected_text": "A inflação ganhou força após a deflação registrada em agosto",
+      "attribution": "UOL Economia, matéria de 09/10/2026, abertura e explicação sobre o IPCA",
+      "rights_review": "Capturar apenas trecho curto da manchete ou parágrafo diretamente comentado, mantendo crédito e URL; não reproduzir fotografias do portal, não simular logotipo ou screenshot real.",
+      "capture_file": "research/captures/ipca-uol-geral.png",
+      "editorial_reconstruction": {
+        "publisher": "UOL Economia",
+        "published_at": "2026-10-09",
+        "headline": "Inflação avança para 0,82% em setembro de 2026",
+        "context": "Segundo o IBGE, o índice de setembro ficou em 0,82%, depois da deflação de 0,32% em agosto. O resultado foi a maior alta para setembro desde 2021."
+      }
+    },
+    {
+      "id": "ipca-info-energia",
+      "kind": "source_excerpt",
+      "source_id": "S1",
+      "source_page_url": "https://www.infomoney.com.br/economia/ipca-inflacao-setembro-2026-dados-ibge/",
+      "expected_text": "Com o fim da incorporação do Bônus de Itaipu",
+      "attribution": "InfoMoney, 09/10/2026, trecho sobre energia elétrica e Bônus de Itaipu",
+      "rights_review": "Capturar apenas trecho curto da manchete ou parágrafo diretamente comentado, mantendo crédito e URL; não reproduzir fotografias do portal, não simular logotipo ou screenshot real.",
+      "capture_file": "research/captures/ipca-info-energia.png",
+      "editorial_reconstruction": {
+        "publisher": "InfoMoney",
+        "published_at": "2026-10-09",
+        "headline": "Conta de luz explica boa parte da alta da inflação",
+        "context": "A energia elétrica residencial aumentou 7,98% em setembro e contribuiu com 0,32 ponto percentual para o IPCA mensal de 0,82%. O desconto do Bônus de Itaipu já não entrou nas faturas."
+      }
+    },
+    {
+      "id": "ipca-uol-energia",
+      "kind": "source_excerpt",
+      "source_id": "S2",
+      "source_page_url": "https://economia.uol.com.br/noticias/redacao/2026/10/09/ipca-setembro-2026.ghtm",
+      "expected_text": "As tarifas de energia elétrica residencial guiaram a inflação de setembro.",
+      "attribution": "UOL Economia, 09/10/2026, trecho sobre tarifas elétricas, bandeira e bônus",
+      "rights_review": "Capturar apenas trecho curto da manchete ou parágrafo diretamente comentado, mantendo crédito e URL; não reproduzir fotografias do portal, não simular logotipo ou screenshot real.",
+      "capture_file": "research/captures/ipca-uol-energia.png",
+      "editorial_reconstruction": {
+        "publisher": "UOL Economia",
+        "published_at": "2026-10-09",
+        "headline": "Reversão de desconto pesa na conta de luz",
+        "context": "As tarifas residenciais aumentaram depois do abatimento extraordinário do Bônus de Itaipu em agosto. A bandeira amarela também continuou em vigor, conforme reportagem de 9 de outubro."
+      }
+    },
+    {
+      "id": "ipca-info-alimentos",
+      "kind": "source_excerpt",
+      "source_id": "S1",
+      "source_page_url": "https://www.infomoney.com.br/economia/ipca-inflacao-setembro-2026-dados-ibge/",
+      "expected_text": "O grupo Alimentação e bebidas apresentou variação positiva de 0,83% em setembro",
+      "attribution": "InfoMoney, 09/10/2026, trecho sobre inflação de alimentos",
+      "rights_review": "Capturar apenas trecho curto da manchete ou parágrafo diretamente comentado, mantendo crédito e URL; não reproduzir fotografias do portal, não simular logotipo ou screenshot real.",
+      "capture_file": "research/captures/ipca-info-alimentos.png",
+      "editorial_reconstruction": {
+        "publisher": "InfoMoney",
+        "published_at": "2026-10-09",
+        "headline": "Alimentos também pressionaram o índice de setembro",
+        "context": "Além da energia, alimentação e bebidas avançou 0,83%. Itens como tomate e batata-inglesa tiveram altas expressivas, mas a composição da cesta tem pesos diferentes."
+      }
+    },
+    {
+      "id": "ipca-reuters",
+      "kind": "source_excerpt",
+      "source_id": "S3",
+      "source_page_url": "https://br.investing.com/news/economic-indicators/ipca-sobe-em-082-em-setembro-diz-ibge-2087795",
+      "expected_text": "O Índice Nacional de Preços ao Consumidor Amplo (IPCA) subiu 0,82% em setembro",
+      "attribution": "Reuters via Investing.com, 09/10/2026, nota de confirmação do índice agregado",
+      "rights_review": "Capturar apenas trecho curto da manchete ou parágrafo diretamente comentado, mantendo crédito e URL; não reproduzir fotografias do portal, não simular logotipo ou screenshot real.",
+      "capture_file": "research/captures/ipca-reuters.png",
+      "editorial_reconstruction": {
+        "publisher": "Reuters (via Investing.com)",
+        "published_at": "2026-10-09",
+        "headline": "Reuters confirma inflação de 0,82% em setembro",
+        "context": "A Reuters informou a alta de 0,82% do IPCA em setembro, após queda de 0,32% em agosto, e variação acumulada de 4,58% nos 12 meses anteriores."
+      }
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "abertura",
+      "title": "Por que a conta de luz pesou tanto",
+      "type": "fact",
+      "label": "ODE NOTÍCIAS",
+      "headline": "INFLAÇÃO DE 0,82%",
+      "metric": "UM ITEM EXPLICA QUASE 40%",
+      "object_type": "data",
+      "document_id": "ipca-uol-geral",
+      "visual_cards": [
+        "INFLAÇÃO DE 0,82%",
+        "UM ITEM EXPLICA QUASE 40%",
+        "ENERGIA ELÉTRICA EM FOCO",
+        "DADOS DIVULGADOS HOJE"
+      ],
+      "narration": "A inflação de setembro subiu zero vírgula oitenta e dois por cento. Mas o detalhe que chama atenção é outro: aproximadamente trinta e nove por cento dessa alta mensal do índice veio da energia elétrica residencial. Isso não significa que todas as famílias pagaram trinta e nove por cento a mais na conta de luz, atenção. Estamos falando da contribuição desse item para o indicador nacional. Eu sou o Roberto, e vou explicar por que a retirada de um desconto na fatura ajudou a mudar tanto o resultado do mês, e o que mais ficou caro."
+    },
+    {
+      "id": "numeros",
+      "title": "A conta de 0,32 ponto percentual",
+      "type": "fact",
+      "label": "ODE NOTÍCIAS",
+      "headline": "IPCA SUBIU 0,82%",
+      "metric": "LUZ CONTRIBUIU COM 0,32 PONTO",
+      "object_type": "data",
+      "document_id": "ipca-info-energia",
+      "visual_cards": [
+        "IPCA SUBIU 0,82%",
+        "LUZ CONTRIBUIU COM 0,32 PONTO",
+        "TARIFA RESIDENCIAL MAIS ALTA",
+        "NÃO SÃO 39% NA SUA FATURA"
+      ],
+      "narration": "Vamos aos números divulgados pelo IBGE nesta sexta-feira. A energia elétrica residencial aumentou sete vírgula noventa e oito por cento em setembro e respondeu por zero vírgula trinta e dois ponto percentual da inflação do mês. Quando se compara essa contribuição com os zero vírgula oitenta e dois por cento do índice geral, o peso fica perto de trinta e nove por cento. Esse é um retrato estatístico da cesta pesquisada pelo instituto, e não um cálculo individual da sua fatura. A diferença importa para não transformar uma manchete real numa conclusão equivocada."
+    },
+    {
+      "id": "bonificacao",
+      "title": "O efeito do Bônus de Itaipu",
+      "type": "fact",
+      "label": "ODE NOTÍCIAS",
+      "headline": "BÔNUS DE ITAIPU EM AGOSTO",
+      "metric": "DESCONTO NÃO SE REPETIU",
+      "object_type": "bank",
+      "document_id": "ipca-uol-energia",
+      "visual_cards": [
+        "BÔNUS DE ITAIPU EM AGOSTO",
+        "DESCONTO NÃO SE REPETIU",
+        "BANDEIRA AMARELA CONTINUOU",
+        "VARIAÇÃO NÃO É FRAUDE"
+      ],
+      "narration": "E por que a energia mudou tanto de um mês para o outro? Em agosto, muitos consumidores receberam um abatimento na conta pelo chamado Bônus de Itaipu. Em setembro, esse desconto deixou de compor as faturas. Por isso, parte da alta medida é a comparação com uma conta que havia sido reduzida no mês anterior. A bandeira tarifária amarela também permaneceu em vigor, com cobrança adicional vinculada ao consumo. Ou seja, há fatores diferentes atuando ao mesmo tempo: o fim de um abatimento pontual, a bandeira e reajustes locais. Não é correto atribuir tudo a um único motivo."
+    },
+    {
+      "id": "outros-itens",
+      "title": "Nem só a luz subiu de preço",
+      "type": "fact",
+      "label": "ODE NOTÍCIAS",
+      "headline": "ALIMENTAÇÃO AVANÇOU 0,83%",
+      "metric": "TOMATE FOI DESTAQUE",
+      "object_type": "store",
+      "document_id": "ipca-info-alimentos",
+      "visual_cards": [
+        "ALIMENTAÇÃO AVANÇOU 0,83%",
+        "TOMATE FOI DESTAQUE",
+        "TRANSPORTES TAMBÉM SUBIRAM",
+        "PESOS DIFERENTES NA CESTA"
+      ],
+      "narration": "Mas seria um erro concluir que a inflação de setembro foi exclusivamente uma história de energia elétrica. Alimentação e bebidas subiu zero vírgula oitenta e três por cento. Dentro de casa, o tomate teve alta expressiva, assim como a batata-inglesa, enquanto outros alimentos ficaram mais baratos. Os transportes também apresentaram aumento, e os combustíveis pressionaram parte desse grupo. No cálculo do IPCA, cada item tem um peso de acordo com a cesta pesquisada pelo IBGE. Por isso, uma grande variação em um produto não se traduz automaticamente na mesma variação do índice geral."
+    },
+    {
+      "id": "interpretacao",
+      "title": "A leitura do Roberto",
+      "type": "opinion",
+      "label": "ODE NOTÍCIAS",
+      "headline": "UM ÍNDICE NÃO É SUA FATURA",
+      "metric": "DESCONTO PONTUAL MUDA COMPARAÇÃO",
+      "object_type": "data",
+      "document_id": "ipca-reuters",
+      "visual_cards": [
+        "UM ÍNDICE NÃO É SUA FATURA",
+        "DESCONTO PONTUAL MUDA COMPARAÇÃO",
+        "PESO DO BOLSO É INDIVIDUAL",
+        "EVITE CONCLUSÕES RÁPIDAS"
+      ],
+      "narration": "Na minha leitura, a notícia deixa uma lição importante sobre números econômicos. A inflação não é apenas uma lista de preços que subiram: também importa o peso de cada produto e a base de comparação. Quando um desconto pontual reduz uma fatura num mês e desaparece no seguinte, a variação pode parecer surpreendente. Isso não elimina o impacto no orçamento de quem precisou pagar mais. Mas também não autoriza dizer que cada brasileiro sofreu a mesma alta. É essa diferença entre dado nacional e experiência pessoal que merece atenção antes de tomar decisões financeiras."
+    },
+    {
+      "id": "fechamento",
+      "title": "O que observar daqui para frente",
+      "type": "outro",
+      "label": "ODE NOTÍCIAS",
+      "headline": "INFLAÇÃO ACUMULADA DE 4,58%",
+      "metric": "ENERGIA FOI O MAIOR IMPACTO",
+      "object_type": "data",
+      "document_id": "ipca-uol-geral",
+      "visual_cards": [
+        "INFLAÇÃO ACUMULADA DE 4,58%",
+        "ENERGIA FOI O MAIOR IMPACTO",
+        "OUTROS PREÇOS TAMBÉM IMPORTAM",
+        "CONFIRA SUA CONTA E SEUS GASTOS"
+      ],
+      "narration": "Para fechar, o IPCA acumulado em doze meses chegou a quatro vírgula cinquenta e oito por cento, segundo os dados de setembro. Esse número ficou acima do limite de tolerância da meta, mas não quer dizer que o índice vai continuar acelerando no mesmo ritmo. Os próximos resultados dependerão de diversos preços, inclusive da energia, dos alimentos e dos transportes. Se a sua fatura de luz mudou, compare as linhas de desconto, bandeira e reajuste com a cobrança anterior. E me conta: no seu orçamento, o que mais pesou neste mês, a energia, o mercado ou o transporte?"
+    }
+  ],
+  "engagement_question": "No seu orçamento de setembro, o que mais pesou: luz, mercado ou transporte?",
+  "hashtags": [
+    "#Inflacao",
+    "#IPCA",
+    "#ContaDeLuz"
+  ],
+  "tags": [
+    "IPCA setembro 2026",
+    "inflação setembro 2026",
+    "conta de luz",
+    "energia elétrica",
+    "Bônus de Itaipu",
+    "IBGE",
+    "economia brasileira",
+    "preços",
+    "O Dinheiro Explica"
+  ],
+  "primary_keyword": "inflação",
+  "secondary_keywords": [
+    "IPCA setembro 2026",
+    "conta de luz",
+    "energia elétrica",
+    "Bônus de Itaipu",
+    "alta dos preços"
+  ],
+  "pronunciations": {
+    "IPCA": "ípi-cá",
+    "Itaipu": "Itaipú",
+    "IBGE": "ibegê"
+  },
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que a inflação oficial de setembro foi 0,82%, como a luz contribuiu para a alta e quais preços impactaram a cesta.",
+    "search_query": "inflação IPCA setembro 2026 energia elétrica 0,82 0,32 Bônus de Itaipu",
+    "recommendation_angle": "O dado surpreendente é a parcela da inflação explicada pela energia, sem sugerir que todas as contas individuais subiram quase 40%.",
+    "first_payoff": "A inflação de setembro subiu zero vírgula oitenta e dois por cento. Mas o detalhe que chama atenção é outro: aproximadamente trinta e nove por cento dessa alta mensal do índice veio da energia elétrica residencial.",
+    "promise_proof": "Reuters, InfoMoney e UOL confirmam o IPCA de 0,82%; InfoMoney e UOL registram a alta de 7,98% da luz e seu impacto de 0,32 ponto percentual, além do Bônus de Itaipu.",
+    "audience_hypothesis": "Público interessado em notícias econômicas e orçamento doméstico, sem alegações de CTR ou comportamento individual de audiência.",
+    "thumbnail_complement": "Contraste ilustrativo entre inflação geral de 0,82% e uma fatura de luz; headline mostra quase 40% sem fingir leitura de faturas individuais.",
+    "verification_limits": "Sem acesso a CTR, volume de busca ou retenção do YouTube; não atribuir percentuais individuais a moradores e não prever inflação futura como fato."
+  },
+  "publication_description": "A inflação de setembro de 2026 chegou a 0,82% e a conta de luz teve papel decisivo. O IPCA divulgado pelo IBGE mostra contribuição de 0,32 ponto percentual da energia elétrica, quase 39% da alta do índice. Neste vídeo, Roberto explica o que mudou e por que isso não significa que a sua fatura subiu 39%.\n\n- Como a energia pesou no IPCA de setembro\n- O papel do fim do Bônus de Itaipu\n- O que também subiu em alimentos e transportes\n- A diferença entre inflação média e orçamento de cada família"
+}
