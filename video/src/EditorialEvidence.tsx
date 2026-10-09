@@ -22,6 +22,50 @@ export const SourceExcerpt=({element,view,markIds,markProgress}:{element:StageEl
   </div>;
 };
 
+// ODE Notícias: o recorte permanece uma imagem autêntica e sem alterações.
+// O cenário ao redor é um tratamento de apresentação, nunca um portal recriado.
+export const NewsDocumentFrame=({
+  element,view,markIds,markProgress
+}:{
+  element:StageElement;view:Region;markIds:string[];markProgress:Record<string,number>;
+})=>{
+  if(!element.asset_file)throw new Error(`Recorte jornalístico ${element.id} sem arquivo original.`);
+  const sourceWidth=Math.max(1,element.asset_width??1351);
+  const sourceHeight=Math.max(1,element.asset_height??917);
+  const cropWidth=sourceWidth*Math.max(.01,view.width)/100;
+  const cropHeight=sourceHeight*Math.max(.01,view.height)/100;
+  const ratio=cropWidth/cropHeight;
+  // A imagem inteira selecionada cabe no quadro sem distorção ou corte.
+  // Para recortes muito largos, não criar barras vazias sobre fundo preto.
+  const frameWidth=`min(91%, ${Math.round(91*ratio*16/9)}vh)`;
+  const frameHeight=`min(87%, ${Math.round(91/ratio*9/16)}vw)`;
+  return <div data-news-document-backdrop="true" style={{
+    position:"relative",width:"100%",height:"100%",overflow:"hidden",
+    background:"radial-gradient(ellipse at 50% 45%, #253039 0%, #141a20 58%, #0b1015 100%)",
+    display:"flex",alignItems:"center",justifyContent:"center"
+  }}>
+    <Img src={staticFile(element.asset_file)} aria-hidden style={{
+      position:"absolute",inset:"-10%",width:"120%",height:"120%",
+      objectFit:"cover",filter:"blur(40px) brightness(.28) saturate(.68)",
+      opacity:.88
+    }}/>
+    <div aria-hidden style={{
+      position:"absolute",inset:0,
+      background:"linear-gradient(180deg,rgba(8,12,18,.26),rgba(8,12,18,.52))",
+    }}/>
+    <div data-news-document-frame="true" style={{
+      position:"relative",width:frameWidth,height:frameHeight,
+      maxWidth:"92%",maxHeight:"90%",aspectRatio:String(ratio),
+      background:"#f9f8f5",padding:6,boxSizing:"border-box",
+      border:"1px solid rgba(245,247,249,.46)",borderRadius:12,
+      boxShadow:"0 20px 74px rgba(0,0,0,.8), 0 3px 20px rgba(0,0,0,.48)",
+      overflow:"hidden",
+    }}>
+      <SourceExcerpt element={element} view={view} markIds={markIds} markProgress={markProgress}/>
+    </div>
+  </div>;
+};
+
 const ChartText=({layout,x,y,w,color=WHITE}:{layout:TextLayout;x:number;y:number;w:number;color?:string})=><foreignObject x={x} y={y} width={w} height={layout.requiredHeight+.2}><div data-text-minimum={layout.size} data-text-size={layout.size} style={{fontFamily:EDITORIAL_FONT,fontWeight:700,fontSize:layout.size,lineHeight:1.18,color,whiteSpace:"pre"}}>{layout.lines.map((line,i)=><div key={i}>{line}</div>)}</div></foreignObject>;
 export const EditorialChart=({chart,width,height,title,focus,progress,revealTo=chart.points.length-1,revealFrom=revealTo,revealProgress=1}:{chart:Chart;width:number;height:number;title:string;focus:{from:number;to:number}|null;progress:number;revealTo?:number;revealFrom?:number;revealProgress?:number})=> {
   const g=chartLayout(chart,width,height,title,measureEditorialText);
