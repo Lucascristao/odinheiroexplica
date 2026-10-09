@@ -222,6 +222,17 @@ def validate_audio_integrity(scene: dict, audio: dict, audio_dir: Path, project:
         raise RuntimeError(f"Duração do áudio processado diverge: {audio['id']}")
 
 
+def validate_preview_mode(preview_only: bool, require_gemini: bool,
+                          require_voice_continuity: bool, manifest: dict) -> None:
+    """Separate silent visual approximations from publishable voice-master audio."""
+    is_silent = manifest.get("preview_only") is True and manifest.get("engine") == "silent-placeholder"
+    if preview_only:
+        if not is_silent or require_gemini or require_voice_continuity:
+            raise RuntimeError("Prévia silenciosa exige manifesto preview_only e não permite gates de produção.")
+    elif manifest.get("preview_only") is True or manifest.get("engine") == "silent-placeholder":
+        raise RuntimeError("Áudio silencioso de prévia não pode entrar no modo de produção.")
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--project", required=True)
@@ -231,11 +242,13 @@ def main() -> None:
     parser.add_argument("--visual-assets-manifest")
     parser.add_argument("--require-gemini", action="store_true")
     parser.add_argument("--require-voice-continuity", action="store_true")
+    parser.add_argument("--preview-only", action="store_true", help="Silent visual-only preview; never for publishable renders")
     parser.add_argument("--output", required=True)
     args = parser.parse_args()
 
     project = normalize_project(json.loads(Path(args.project).read_text(encoding="utf-8")))
     manifest = json.loads(Path(args.tts_manifest).read_text(encoding="utf-8"))
+    validate_preview_mode(args.preview_only, args.require_gemini, args.require_voice_continuity, manifest)
     if args.require_gemini:
         require_gemini_manifest(manifest)
     if args.require_voice_continuity:
@@ -363,102 +376,113 @@ def main() -> None:
         )
         cursor += duration_frames
 
-    master_levels=level_plan([s.get("audio_activity") or {} for s in output_scenes])
-    for scene,level in zip(output_scenes,master_levels["scenes"]):
-        scene["audio_volume_multiplier"]=level["gain"]
-        level["id"]=scene["id"]
-    master_diagnostics={"version":"1.0","levels":master_levels,"pitch":[],"warnings":[],"raw_scene_wavs_unchanged":True,"pitch_correction_applied":False}
-    # Only the continuous master applies the planned common level and 5ms edges.
-    continuous_filename = "daily-continuous-narration.wav"
-    master_audio_path = audio_dir / continuous_filename
-    master_created = False
-    try:
-        import wave
-        sample_rate = 24000
-        samples_per_frame = sample_rate // FPS
-        continuous_samples = bytearray()
-        valid = True
-        for scene in output_scenes:
-            audio_path = audio_dir / Path(scene["audio_file"]).name
-            if not audio_path.is_file():
-                valid = False
-                break
-            with wave.open(str(audio_path), "rb") as w:
-                if w.getframerate() != sample_rate or w.getnchannels() != 1 or w.getsampwidth() != 2:
+    if args.preview_only:
+        # Prévia deliberadamente sem voz: não calcular energia, pitch ou master PCM.
+        # A imagem é renderizada com --muted e um manifesto de duração estimada.
+        master_created = False
+        master_diagnostics = {
+            "version": "1.0", "preview_only": True,
+            "method": "silent-estimated-visual-only",
+            "warnings": [], "raw_scene_wavs_unchanged": True,
+        }
+        print("VISUAL_PREVIEW_ONLY: sem equalização nem master vocal; render --muted.")
+    else:
+        master_levels=level_plan([s.get("audio_activity") or {} for s in output_scenes])
+        for scene,level in zip(output_scenes,master_levels["scenes"]):
+            scene["audio_volume_multiplier"]=level["gain"]
+            level["id"]=scene["id"]
+        master_diagnostics={"version":"1.0","levels":master_levels,"pitch":[],"warnings":[],"raw_scene_wavs_unchanged":True,"pitch_correction_applied":False}
+        # Only the continuous master applies the planned common level and 5ms edges.
+        continuous_filename = "daily-continuous-narration.wav"
+        master_audio_path = audio_dir / continuous_filename
+        master_created = False
+        try:
+            import wave
+            sample_rate = 24000
+            samples_per_frame = sample_rate // FPS
+            continuous_samples = bytearray()
+            valid = True
+            for scene in output_scenes:
+                audio_path = audio_dir / Path(scene["audio_file"]).name
+                if not audio_path.is_file():
                     valid = False
                     break
-                raw_pcm = w.readframes(w.getnframes())
+                with wave.open(str(audio_path), "rb") as w:
+                    if w.getframerate() != sample_rate or w.getnchannels() != 1 or w.getsampwidth() != 2:
+                        valid = False
+                        break
+                    raw_pcm = w.readframes(w.getnframes())
 
-            vol_mult = float(scene.get("audio_volume_multiplier") or 1.0)
-            n_samples = len(raw_pcm) // 2
-            edge_samples = min(120, max(1, n_samples // 10))  # micro fade de 5ms a 24kHz
+                vol_mult = float(scene.get("audio_volume_multiplier") or 1.0)
+                n_samples = len(raw_pcm) // 2
+                edge_samples = min(120, max(1, n_samples // 10))  # micro fade de 5ms a 24kHz
 
-            try:
-                import numpy as np
-                pcm_arr = np.frombuffer(raw_pcm, dtype=np.int16).astype(np.float64)
-                master_diagnostics["pitch"].append({"id":scene["id"],**pitch_summary(pcm_arr/32768,sample_rate)})
-                if abs(vol_mult - 1.0) > 0.001 or edge_samples > 0:
-                    pcm_arr *= vol_mult
-                    if edge_samples > 0 and len(pcm_arr) >= edge_samples * 2:
-                        ramp_in = np.linspace(0.0, 1.0, edge_samples, endpoint=False)
-                        ramp_out = np.linspace(1.0, 0.0, edge_samples, endpoint=False)
-                        pcm_arr[:edge_samples] *= ramp_in
-                        pcm_arr[-edge_samples:] *= ramp_out
-                    pcm_arr = np.clip(pcm_arr, -32767, 32767).astype(np.int16)
-                scene_pcm_bytes = pcm_arr.tobytes()
-            except ImportError:
-                import struct
-                scene_pcm_bytes = bytearray(n_samples * 2)
-                for i in range(n_samples):
-                    val = struct.unpack_from("<h", raw_pcm, i * 2)[0]
-                    sample_gain = vol_mult
-                    if i < edge_samples:
-                        sample_gain *= (i / edge_samples)
-                    elif i >= (n_samples - edge_samples):
-                        sample_gain *= ((n_samples - 1 - i) / edge_samples)
-                    scaled = int(round(val * sample_gain))
-                    clamped = max(-32767, min(32767, scaled))
-                    struct.pack_into("<h", scene_pcm_bytes, i * 2, clamped)
+                try:
+                    import numpy as np
+                    pcm_arr = np.frombuffer(raw_pcm, dtype=np.int16).astype(np.float64)
+                    master_diagnostics["pitch"].append({"id":scene["id"],**pitch_summary(pcm_arr/32768,sample_rate)})
+                    if abs(vol_mult - 1.0) > 0.001 or edge_samples > 0:
+                        pcm_arr *= vol_mult
+                        if edge_samples > 0 and len(pcm_arr) >= edge_samples * 2:
+                            ramp_in = np.linspace(0.0, 1.0, edge_samples, endpoint=False)
+                            ramp_out = np.linspace(1.0, 0.0, edge_samples, endpoint=False)
+                            pcm_arr[:edge_samples] *= ramp_in
+                            pcm_arr[-edge_samples:] *= ramp_out
+                        pcm_arr = np.clip(pcm_arr, -32767, 32767).astype(np.int16)
+                    scene_pcm_bytes = pcm_arr.tobytes()
+                except ImportError:
+                    import struct
+                    scene_pcm_bytes = bytearray(n_samples * 2)
+                    for i in range(n_samples):
+                        val = struct.unpack_from("<h", raw_pcm, i * 2)[0]
+                        sample_gain = vol_mult
+                        if i < edge_samples:
+                            sample_gain *= (i / edge_samples)
+                        elif i >= (n_samples - edge_samples):
+                            sample_gain *= ((n_samples - 1 - i) / edge_samples)
+                        scaled = int(round(val * sample_gain))
+                        clamped = max(-32767, min(32767, scaled))
+                        struct.pack_into("<h", scene_pcm_bytes, i * 2, clamped)
 
-            continuous_samples.extend(scene_pcm_bytes)
-            scene_total_samples = scene["duration_frames"] * samples_per_frame
-            actual_samples = len(scene_pcm_bytes) // 2
-            padding_samples = max(0, scene_total_samples - actual_samples)
-            if padding_samples > 0:
-                import random
-                import struct
-                rng = random.Random(42 + len(continuous_samples))
-                dither_bytes = bytearray(padding_samples * 2)
-                last_val = 0.0
-                for i in range(padding_samples):
-                    last_val = 0.94 * last_val + 0.06 * (rng.random() * 2.0 - 1.0)
-                    val = int(last_val * 45)  # micro room tone (~ -55 dBFS)
-                    struct.pack_into("<h", dither_bytes, i * 2, val)
-                continuous_samples.extend(dither_bytes)
+                continuous_samples.extend(scene_pcm_bytes)
+                scene_total_samples = scene["duration_frames"] * samples_per_frame
+                actual_samples = len(scene_pcm_bytes) // 2
+                padding_samples = max(0, scene_total_samples - actual_samples)
+                if padding_samples > 0:
+                    import random
+                    import struct
+                    rng = random.Random(42 + len(continuous_samples))
+                    dither_bytes = bytearray(padding_samples * 2)
+                    last_val = 0.0
+                    for i in range(padding_samples):
+                        last_val = 0.94 * last_val + 0.06 * (rng.random() * 2.0 - 1.0)
+                        val = int(last_val * 45)  # micro room tone (~ -55 dBFS)
+                        struct.pack_into("<h", dither_bytes, i * 2, val)
+                    continuous_samples.extend(dither_bytes)
 
-        if valid and continuous_samples:
-            master_audio_path.parent.mkdir(parents=True, exist_ok=True)
-            with wave.open(str(master_audio_path), "wb") as w:
-                w.setnchannels(1)
-                w.setsampwidth(2)
-                w.setframerate(sample_rate)
-                w.writeframes(continuous_samples)
-            master_created = True
-            print(f"Trilha contínua equalizada sem cortes: {master_audio_path} ({len(continuous_samples)/2/sample_rate:.2f}s)")
-    except Exception as exc:
-        raise RuntimeError("Falha na trilha contínua; não entregar mix por cena sem a equalização solicitada.") from exc
-    if not master_created:
-        raise RuntimeError("Trilha contínua não criada; confira os WAVs PCM16 mono 24kHz.")
-    for current,following in zip(master_diagnostics["pitch"],master_diagnostics["pitch"][1:]):
-        a,b=current.get("median_hz"),following.get("median_hz")
-        if a and b:
-            delta=12*math.log2(b/a)
-            if abs(delta)>3:
-                master_diagnostics["warnings"].append({"from":current["id"],"to":following["id"],"estimated_register_delta_semitones":round(delta,2),"action":"Review by listening; estimate is not proof of an identity change."})
-    master_diagnostics["master_sha256"]=hashlib.sha256(master_audio_path.read_bytes()).hexdigest()
-    diagnostics_path=Path(args.output).with_name("daily-voice-master-report.json")
-    diagnostics_path.parent.mkdir(parents=True,exist_ok=True)
-    diagnostics_path.write_text(json.dumps(master_diagnostics,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+            if valid and continuous_samples:
+                master_audio_path.parent.mkdir(parents=True, exist_ok=True)
+                with wave.open(str(master_audio_path), "wb") as w:
+                    w.setnchannels(1)
+                    w.setsampwidth(2)
+                    w.setframerate(sample_rate)
+                    w.writeframes(continuous_samples)
+                master_created = True
+                print(f"Trilha contínua equalizada sem cortes: {master_audio_path} ({len(continuous_samples)/2/sample_rate:.2f}s)")
+        except Exception as exc:
+            raise RuntimeError("Falha na trilha contínua; não entregar mix por cena sem a equalização solicitada.") from exc
+        if not master_created:
+            raise RuntimeError("Trilha contínua não criada; confira os WAVs PCM16 mono 24kHz.")
+        for current,following in zip(master_diagnostics["pitch"],master_diagnostics["pitch"][1:]):
+            a,b=current.get("median_hz"),following.get("median_hz")
+            if a and b:
+                delta=12*math.log2(b/a)
+                if abs(delta)>3:
+                    master_diagnostics["warnings"].append({"from":current["id"],"to":following["id"],"estimated_register_delta_semitones":round(delta,2),"action":"Review by listening; estimate is not proof of an identity change."})
+        master_diagnostics["master_sha256"]=hashlib.sha256(master_audio_path.read_bytes()).hexdigest()
+        diagnostics_path=Path(args.output).with_name("daily-voice-master-report.json")
+        diagnostics_path.parent.mkdir(parents=True,exist_ok=True)
+        diagnostics_path.write_text(json.dumps(master_diagnostics,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
 
     payload = {
         "project_id": project.get("project_id", "project"),
