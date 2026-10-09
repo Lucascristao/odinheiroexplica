@@ -16,6 +16,7 @@ on:
     - cron: '0 21 * * *'
 permissions:
   contents: write
+  actions: write
 concurrency:
   group: ode-news-editor-${{ github.repository }}
   cancel-in-progress: false
@@ -66,7 +67,9 @@ jobs:
           python -m py_compile worker/news_scout.py worker/news_autonomous_editor.py worker/news_single_project.py
           python worker/news_autonomous_editor.py --slot "$ODE_SLOT" --root .
           python worker/news_single_project.py --input "$TARGET" --output /tmp/news-autonomous-project.json
-      - name: Confirmar que não existe pauta concorrente e disparar render pelo push
+      - name: Confirmar episódio único e iniciar render explicitamente
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         shell: bash
         run: |
           set -euo pipefail
@@ -83,4 +86,5 @@ jobs:
           git diff --cached --quiet && { echo 'Sem novo episódio'; exit 0; }
           git commit -m "news: edição autônoma $ODE_LOCAL_DAY $ODE_SLOT"
           git push origin HEAD:main
-          echo "NOVO_EPISODIO_ENVIADO:$TARGET"
+          gh workflow run render-news-single.yml --repo "$GITHUB_REPOSITORY" --ref main -f edition_path="$TARGET"
+          echo "NOVO_EPISODIO_DISPARADO:$TARGET"
