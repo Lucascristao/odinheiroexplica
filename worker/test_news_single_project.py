@@ -4,6 +4,7 @@ from datetime import date
 import json
 from pathlib import Path
 import unittest
+from tempfile import TemporaryDirectory
 
 from news_single_project import validate, transform
 
@@ -70,38 +71,65 @@ class SingleNewsContractTests(unittest.TestCase):
         p["quotation_justification"] = "O roteiro comenta esta imagem diretamente, em trecho curto e contextualizado."
         validate(d, date(2026, 10, 9))
 
-    def test_image_is_primary_and_commentary_in_sidebar(self):
+    def test_documentary_is_primary_in_full_screen_layout(self):
         project = transform(self.doc)
-        doc_stage = project["scenes"][1]["visual"]["stage"]
-        excerpt = next(e for e in doc_stage["elements"] if e["kind"] == "source_excerpt")
-        headline = next(e for e in doc_stage["elements"] if e["id"] == "headline")
-        self.assertGreaterEqual(excerpt["width"], 55)
-        self.assertGreater(excerpt["x"], headline["x"] + headline["width"])
-        self.assertEqual(excerpt["surface"], "none")
-        self.assertFalse(doc_stage["captions"]["enabled"])
+        stage = project["scenes"][1]["visual"]["stage"]
+        media = next(e for e in stage["elements"] if e["kind"] == "source_excerpt")
+        strip = next(e for e in stage["elements"] if e["id"] == "headline")
+        self.assertGreaterEqual(media["width"] * media["height"] / 10000, .80)
+        self.assertGreaterEqual(media["width"], 90)
+        self.assertLessEqual(strip["y"] + strip["height"], media["y"])
+        self.assertEqual(media["surface"], "none")
+        self.assertFalse(stage["captions"]["enabled"])
 
-    def test_stable_documentary_while_short_commentary_updates(self):
+    def test_documentary_remains_stable_with_light_camera_and_header_updates(self):
         project = transform(self.doc)
-        stages = [s["visual"]["stage"] for s in project["scenes"]]
-        for index, side in ((0, "left"), (1, "right"), (2, "left"), (3, "right")):
-            elements = stages[index]["elements"]
-            media = next(e for e in elements if e["kind"] in ("photo", "source_excerpt"))
-            headline = next(e for e in elements if e["id"] == "headline")
-            if side == "left":
-                self.assertLess(media["x"] + media["width"], headline["x"])
-            else:
-                self.assertLess(headline["x"] + headline["width"], media["x"])
-            self.assertFalse(stages[index]["captions"]["enabled"])
-            self.assertEqual(len(project["scenes"][index]["visual"]["beats"]),
+        for index in (0, 1, 2, 3):
+            scene = project["scenes"][index]
+            stage = scene["visual"]["stage"]
+            media = next(e for e in stage["elements"] if e["kind"] in ("photo", "source_excerpt"))
+            strip = next(e for e in stage["elements"] if e["id"] == "headline")
+            self.assertLessEqual(strip["y"] + strip["height"], media["y"])
+            self.assertFalse(stage["captions"]["enabled"])
+            self.assertEqual(len(scene["visual"]["beats"]),
                              min(4, len(self.doc["segments"][index]["visual_cards"])))
+            self.assertTrue(all(b["camera"]["zoom"] <= 1.05 for b in scene["visual"]["beats"]))
             if media["kind"] == "photo":
-                self.assertEqual(media["image_motion"], "none")
+                self.assertEqual(media["image_motion"], "push")
 
     def test_separate_publishers_for_displayed_articles(self):
         doc = copy.deepcopy(self.doc)
-        doc["documentary_evidence"][1]["source_id"] = doc["documentary_evidence"][0]["source_id"]
+        second = doc["documentary_evidence"][1]
+        first = doc["documentary_evidence"][0]
+        second["source_id"] = first["source_id"]
+        publisher = next(s for s in doc["sources"] if s["id"] == first["source_id"])
+        second["editorial_reconstruction"]["publisher"] = publisher["publisher"]
+        second["editorial_reconstruction"]["published_at"] = publisher["published_at"]
         with self.assertRaisesRegex(ValueError, "publicadores independentes"):
             validate(doc, date(2026, 10, 9))
+
+    def test_reconstruction_requires_existing_verified_fact(self):
+        doc = copy.deepcopy(self.doc)
+        for fact in doc["verified_facts"]:
+            fact["source_ids"] = [source for source in fact["source_ids"] if source != "S4"]
+        with self.assertRaisesRegex(ValueError, "reconstrução sem fato verificado"):
+            validate(doc, date(2026, 10, 9))
+
+    def test_reconstruction_is_not_disguised_as_original_screenshot(self):
+        from news_reconstruction import render_reconstruction
+        from PIL import Image
+        project = transform(self.doc)
+        asset = next(a for a in project["visual_assets"] if a["type"] == "source_excerpt")
+        with TemporaryDirectory() as dirname:
+            output = render_reconstruction(asset, Path(dirname), "teste de bloqueio HTTP")
+            self.assertTrue(output.is_file())
+            with Image.open(output) as image:
+                self.assertEqual(image.size, (1920, 1080))
+                self.assertEqual(image.getpixel((10, 110)), (255, 189, 25))
+            receipt = json.loads(output.with_suffix(".provenance.json").read_text(encoding="utf-8"))
+            self.assertTrue(receipt["not_original_screenshot"])
+            self.assertEqual(receipt["source_id"], "S4")
+            self.assertIn("bloqueio HTTP", receipt["capture_error"])
 
     def test_opinion_must_be_signposted(self):
         d = copy.deepcopy(self.doc)
