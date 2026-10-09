@@ -32,7 +32,7 @@ def validate(episode: dict, today: date | None = None) -> dict:
     titles = [str(option.get("text", "")).strip() for option in title_options if isinstance(option, dict)]
     require(len(titles) == len(title_options) and all(20 <= len(text) <= 100 for text in titles),
             "alternativas de título incompletas")
-    require(len({re.sub(r"\\s+", " ", text).casefold() for text in titles}) >= 3,
+    require(len({re.sub(r"\s+", " ", text).casefold() for text in titles}) >= 3,
             "as três alternativas de título precisam ser diferentes")
     require(episode["title"].strip() in titles,
             "título final não corresponde às alternativas avaliadas")
