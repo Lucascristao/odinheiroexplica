@@ -9,6 +9,9 @@ on:
       - '.github/workflows/render-news-single.yml'
       - '.github/workflows/news-scout.yml'
       - 'worker/news_autonomous_schedule.py'
+      - 'worker/news_qa_feedback.py'
+      - 'worker/test_news_qa_feedback.py'
+      - 'config/news-autonomy.json'
       - 'worker/test_news_autonomous_schedule.py'
       - 'worker/news_single_project.py'
       - 'worker/news_reconstruction.py'
@@ -60,7 +63,9 @@ jobs:
           python -m pip install --disable-pip-version-check 'Pillow>=10.4'
           python -m unittest worker/test_news_reconstruction.py -v
       - name: Testar publicação agendada sem capa e proteções
-        run: python -m unittest worker/test_news_autonomous_schedule.py -v
+        run: |
+          python -m unittest worker/test_news_autonomous_schedule.py -v
+          python -m unittest worker/test_news_qa_feedback.py -v
       - name: Confirmar adaptação editorial do piloto sem render nem API
         run: |
           python worker/news_single_project.py --input news/episodes/2026-10-09-imposto-seletivo.json --output /tmp/ode-pilot-transformed.json
