@@ -23,18 +23,18 @@ Pelo menos dois materiais documentais por pauta, com URL HTTPS, frase esperada n
 
 ## Títulos, capa e audiência
 
-Comparar no mínimo 3 títulos por pauta e escolher interesse real, conflito, relevância, clareza e comprovação. Scorecard é **avaliação editorial**, não números de busca ou CTR se eles não foram pesquisados. Título e capa complementares e distintos. Cada vídeo requer capa exclusiva em production/EPISODIO/thumbnail.jpg (ou png), criada aqui no ChatGPT e auditada depois de realmente observar a arte.
+Comparar no mínimo 3 títulos por pauta e escolher interesse real, conflito, relevância, clareza e comprovação. Scorecard é **avaliação editorial**, não números de busca ou CTR se eles não foram pesquisados. Título e capa complementares e distintos. Capa personalizada é OPCIONAL nas notícias autônomas: se a tarefa do ChatGPT conseguir criá-la, inspecioná-la e versioná-la, anexar ao vídeo. Se não conseguir, publicar com miniatura automática do YouTube. Não usar Gemini API para a capa.
 
 ## Execução e estados
 
-1. Scout coleta notícias candidatas três vezes por dia; NÃO redige, aprova nem publica automaticamente, pois manchetes RSS não bastam para apuração.
+1. ChatGPT Tasks inicia às 06h, 10h e 18h America/Fortaleza; pesquisa e redige com suas próprias ferramentas, sem Gemini API editorial. Os antigos crons `news-autonomous-editor.yml` e `news-scout.yml` não devem ser agendados.
 2. Agente/editor seleciona UMA pauta, cruza duas fontes de domínios diferentes, registra no mínimo 4 fatos tipados, escreve opinião em seção clara e indica dois recortes documentais com direitos revisados.
 3. Adapter normaliza para VideoProject existente e os gatekeepers validam. Workflow captura documentos com navegador, prepara assets, sintetiza voz Charon, combina áudio contínuo, renderiza Remotion e faz QA.
-4. Upload direto YouTube PRIVATE, não Drive. Salva recibo e estado waiting_thumbnail, nunca completed só pelo MP4.
-5. A capa é gerada no ChatGPT e inserida junto da auditoria no Git. Push do thumbnail-audit.json aciona news-auto-thumbnail.yml: encontra recibo exato do vídeo privado, valida hashes/projeto/canal e anexa imagem; grava recibo real.
-6. Após assistir ao vídeo e inspecionar a capa anexada, aprovação humana pode habilitar publish-news.yml. A confirmação pela API é obrigatória, e possível bloqueio de publicação pela auditoria do projeto YouTube Data API não é contornado.
+4. Upload direto YouTube PRIVATE, não Drive. Salva recibo. Para `autonomous_fact_checked`, o QA e a publicação programada são obrigatórios; capa é opcional. MP4 isolado nunca comprova publicação.
+5. Se uma capa nativa do ChatGPT estiver disponível, validada e enviada antes do render, a Action pode anexá-la com recibo. Sem capa válida, não gerar por Gemini nem atrasar a edição; usar a miniatura automática do YouTube.
+6. Com autorização permanente já concedida, `worker/news_autonomous_schedule.py` programa publicação sem aprovação por episódio, somente após apuração factual real, QA `pass`, canal validado e recibo do vídeo. A confirmação pela API é obrigatória; bloqueios OAuth/YouTube não são contornados. Edições manuais/pilotos preservam seus próprios gates.
 
-Esta implementação é de PRODUÇÃO PRIVADA e testes reais; não anunciar três vídeos por dia totalmente autônomos ou publicação pública enquanto isso não for comprovado.
+Esta implementação busca produção autônoma; não afirmar que a publicação pública ocorreu até que o vídeo esteja confirmado `public` pelo YouTube. Consulte `docs/news-chatgpt-task.md`. Gemini API é exclusiva da voz Gemini 3.8 Live.
 
 
 ## Direção aprovada: comentário com a prova na tela
