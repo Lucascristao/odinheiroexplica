@@ -77,7 +77,18 @@ def main():
         raise SystemExit("Publicação fora da data/horários autorizados.")
     now = datetime.now(timezone.utc)
     lead = (target.astimezone(timezone.utc) - now).total_seconds() / 60
-    if lead < config["min_lead_minutes"]:
+    recovery = config.get("one_time_late_recovery") or {}
+    eligible_recovery = (
+        project_id == "noticia-2026-10-09-manha"
+        and recovery.get("episode_id") == project_id
+        and recovery.get("original_publication_local") == "2026-10-09T08:00:00-03:00"
+        and raw_target == recovery.get("original_publication_local")
+        and recovery.get("authorized_by_user") is True
+        and recovery.get("mode") == "publish_immediately_after_qa"
+        and now.astimezone(local_zone).date().isoformat() == "2026-10-09"
+        and lead < config["min_lead_minutes"]
+    )
+    if lead < config["min_lead_minutes"] and not eligible_recovery:
         raise SystemExit("Janela de publicação perdida: preservar vídeo privado.")
     service = youtube_service()
     assert_channel(service)
@@ -92,6 +103,32 @@ def main():
         raise SystemExit("Vídeo não está privado; não alterar.")
     existing = status.get("publishAt")
     desired = target.astimezone(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+    if eligible_recovery:
+        if existing:
+            raise SystemExit("Recuperação bloqueada: vídeo já foi agendado, não sobrescrever.")
+        service.videos().update(
+            part="status",
+            body={"id": video_id, "status": {"privacyStatus": "public"}},
+        ).execute()
+        fresh = service.videos().list(part="status,snippet", id=video_id).execute().get("items", [])
+        if len(fresh) != 1 or fresh[0]["snippet"].get("channelId") != EXPECTED_ID:
+            raise SystemExit("YouTube não confirmou o canal após recuperação.")
+        if fresh[0]["status"].get("privacyStatus") != "public":
+            raise SystemExit("YouTube não confirmou publicação pública da recuperação.")
+        payload = {
+            "project_id": project_id, "video_id": video_id, "status": "published_late_authorized",
+            "publication_confirmation": "confirmed_public",
+            "published_after_target_local": local_target.isoformat(),
+            "confirmed_at_utc": datetime.now(timezone.utc).isoformat(),
+            "thumbnail_sha256": image_hash,
+            "thumbnail_status": "attached" if image_hash else "youtube_automatic",
+            "qa_status": qa["status"], "url": "https://youtu.be/" + video_id,
+        }
+        output = Path(args.output)
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print("YOUTUBE_NEWS_LATE_RECOVERY_PUBLISHED:", payload["url"])
+        return
     if existing:
         previous = datetime.fromisoformat(existing.replace("Z", "+00:00"))
         if previous != target.astimezone(timezone.utc):
