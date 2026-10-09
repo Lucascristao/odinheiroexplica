@@ -25,9 +25,10 @@ export const SourceExcerpt=({element,view,markIds,markProgress}:{element:StageEl
 // ODE Notícias: o recorte permanece uma imagem autêntica e sem alterações.
 // O cenário ao redor é um tratamento de apresentação, nunca um portal recriado.
 export const NewsDocumentFrame=({
-  element,view,markIds,markProgress
+  element,view,markIds,markProgress,width,height
 }:{
   element:StageElement;view:Region;markIds:string[];markProgress:Record<string,number>;
+  width:number;height:number;
 })=>{
   if(!element.asset_file)throw new Error(`Recorte jornalístico ${element.id} sem arquivo original.`);
   const sourceWidth=Math.max(1,element.asset_width??1351);
@@ -37,8 +38,8 @@ export const NewsDocumentFrame=({
   const ratio=cropWidth/cropHeight;
   // A imagem inteira selecionada cabe no quadro sem distorção ou corte.
   // Para recortes muito largos, não criar barras vazias sobre fundo preto.
-  const frameWidth=`min(91%, ${Math.round(91*ratio*16/9)}vh)`;
-  const frameHeight=`min(87%, ${Math.round(91/ratio*9/16)}vw)`;
+  const frameWidth=Math.min(Math.max(1,width-128),Math.max(1,height-92)*ratio);
+  const frameHeight=frameWidth/ratio;
   return <div data-news-document-backdrop="true" style={{
     position:"relative",width:"100%",height:"100%",overflow:"hidden",
     background:"radial-gradient(ellipse at 50% 45%, #253039 0%, #141a20 58%, #0b1015 100%)",
@@ -55,7 +56,6 @@ export const NewsDocumentFrame=({
     }}/>
     <div data-news-document-frame="true" style={{
       position:"relative",width:frameWidth,height:frameHeight,
-      maxWidth:"92%",maxHeight:"90%",aspectRatio:String(ratio),
       background:"#f9f8f5",padding:6,boxSizing:"border-box",
       border:"1px solid rgba(245,247,249,.46)",borderRadius:12,
       boxShadow:"0 20px 74px rgba(0,0,0,.8), 0 3px 20px rgba(0,0,0,.48)",
