@@ -251,23 +251,7 @@
         "ETANOL MANTÉM DESONERAÇÃO",
         "DIESEL IMPORTADO GANHA APOIO"
       ],
-      "narration": "E a gasolina é só uma parte do pacote. A estimativa divulgada para as medidas em trinta dias é de cinco bilhões e duzentos milhões de reais. O etanol mantém uma desoneração de dezenove centavos por litro e tem reforço na subvenção aos produtores. Para o diesel importado, foi anunciado mais um real e quarenta centavos por litro de apoio, além do que já existia. É importante não confundir o custo total anunciado com o gasto adicional em relação ao pacote anterior."
-    },
-    {
-      "id": "contexto",
-      "title": "O argumento do governo",
-      "type": "fact",
-      "document_id": "gasolina-mjsp",
-      "object_type": "data",
-      "label": "CONTEXTO",
-      "headline": "PETRÓLEO INTERNACIONAL EM ALTA",
-      "metric": "PRESSÃO NOS PREÇOS",
-      "visual_cards": [
-        "ALTA INTERNACIONAL DO PETRÓLEO",
-        "ALÍVIO TEMPORÁRIO",
-        "COMPENSAÇÃO FISCAL ALEGADA"
-      ],
-      "narration": "O governo justifica a decisão pela alta do petróleo e pela preocupação com o abastecimento. Alega também que arrecadação extraordinária ligada ao setor petrolífero compensará os incentivos fiscais. Isso é a justificativa oficial, não uma conta independente já encerrada. A medida tem validade de trinta dias e pode ser reavaliada. O anúncio acontece no período eleitoral, mas autoridades negaram que a data da decisão tenha motivação eleitoral. O efeito concreto ainda dependerá da execução e dos preços observados."
+      "narration": "E a gasolina é só uma parte do pacote. A estimativa divulgada para as medidas em trinta dias é de cinco bilhões e duzentos milhões de reais. O etanol mantém uma desoneração de dezenove centavos por litro e tem reforço na subvenção aos produtores. Para o diesel importado, foi anunciado mais um real e quarenta centavos por litro de apoio, além do que já existia. É importante não confundir o custo total anunciado com o gasto adicional em relação ao pacote anterior. O governo diz que o pacote busca amortecer a alta internacional do petróleo e preservar o abastecimento. Também afirma que a arrecadação extraordinária ligada ao petróleo compensará parte dos incentivos, mas essa é a justificativa oficial, não um resultado fiscal já comprovado."
     },
     {
       "id": "opiniao",
@@ -283,23 +267,7 @@
         "CUSTO FISCAL EXIGE TRANSPARÊNCIA",
         "RESULTADO É MAIS IMPORTANTE QUE ANÚNCIO"
       ],
-      "narration": "Agora, a minha leitura. Reduzir o imposto pode ser uma forma de aliviar a conta de quem precisa trabalhar, entregar mercadoria e abastecer o carro. Mas divulgar um número grande e deixar a impressão de desconto automático é um caminho ruim. É preciso acompanhar o repasse, mostrar quem absorveu a diferença e explicar quanto o contribuinte está financiando nesse pacote. Minha cobrança vale para qualquer governo: menos propaganda sobre centavos no papel e mais transparência sobre os centavos que chegam, ou não, ao bolso."
-    },
-    {
-      "id": "fechamento",
-      "title": "O que observar a partir de agora",
-      "type": "fact",
-      "document_id": "gasolina-agencia",
-      "object_type": "store",
-      "label": "RESUMO",
-      "headline": "O PREÇO PRECISA SER OBSERVADO",
-      "metric": "NÃO HÁ DESCONTO UNIVERSAL",
-      "visual_cards": [
-        "NOVO CORTE ADICIONAL: 26 CENTAVOS",
-        "MEDIDA DURA TRINTA DIAS",
-        "ACOMPANHE PREÇOS E FISCALIZAÇÃO"
-      ],
-      "narration": "Então fica o resumo: os impostos federais da gasolina foram zerados por trinta dias, a desoneração total agora equivale a oitenta e nove centavos por litro e a ampliação em relação ao modelo anterior é de vinte e seis centavos. O preço do posto não está garantido por esse número. Vale acompanhar as próximas pesquisas de preços e os comunicados oficiais para saber o efeito real. Se esse tipo de notícia ajuda você a enxergar além da manchete, inscreva-se no O Dinheiro Explica. E me diga: na sua cidade, a gasolina mudou de preço hoje?"
+      "narration": "Agora, a minha leitura. Reduzir o imposto pode ser uma forma de aliviar a conta de quem precisa trabalhar, entregar mercadoria e abastecer o carro. Mas divulgar um número grande e deixar a impressão de desconto automático é um caminho ruim. É preciso acompanhar o repasse, mostrar quem absorveu a diferença e explicar quanto o contribuinte está financiando nesse pacote. Minha cobrança vale para qualquer governo: menos propaganda sobre centavos no papel e mais transparência sobre os centavos que chegam, ou não, ao bolso. Para o motorista, fica o resumo: o novo corte federal adicional é de vinte e seis centavos por litro, e o preço cobrado no posto não está garantido pelo anúncio. Vale acompanhar pesquisas de preços para medir o efeito real. Se este vídeo ajudou, inscreva-se no O Dinheiro Explica e conte nos comentários: o preço da gasolina mudou na sua cidade?"
     }
   ],
   "engagement_question": "Na sua cidade, o preço da gasolina mudou depois do anúncio?",
