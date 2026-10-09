@@ -1,0 +1,259 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-09-manha",
+  "news_date": "2026-10-09",
+  "event_date": "2026-10-08",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-09T11:40:40.460Z",
+  "publication_target_local": "2026-10-09T08:00:00-03:00",
+  "title": "Pix bate 1 bilhão de chaves: por que isso não significa 1 bilhão de pessoas?",
+  "title_options": [
+    {
+      "text": "Pix bate 1 bilhão de chaves: por que isso não significa 1 bilhão de pessoas?",
+      "editorial_quality": 5
+    },
+    {
+      "text": "1 BILHÃO de chaves Pix: o número gigante que muita gente confunde",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Pix ultrapassa 1 bilhão de chaves: quem está por trás desse número?",
+      "editorial_quality": 4
+    }
+  ],
+  "thumbnail_headline": "NÃO É 1 BILHÃO DE PESSOAS",
+  "thumbnail_primary": "Um celular brasileiro com interface conceitual de lista de chaves Pix, múltiplos identificadores distintos representando uma única conta, sem copiar telas ou logos bancários",
+  "thumbnail_tension": "O enorme número de chaves Pix não equivale ao número de pessoas e cada cliente pode cadastrar várias chaves por conta",
+  "thumbnail_composition": "Close de celular com múltiplos identificadores de chaves em painel próprio, número grande em destaque, contraste amarelo carvão, sem simular capturas bancárias reais",
+  "thumbnail_text_side": "left",
+  "scorecard": {
+    "method": "julgamento editorial sem dados de CTR ou tendências inventados",
+    "criteria": {
+      "timeliness": 5,
+      "consumer_interest": 5,
+      "public_debate": 3,
+      "documentary_evidence": 5,
+      "original_angle": 4
+    },
+    "unavailable": [
+      "CTR real",
+      "volume de busca em tempo real"
+    ],
+    "reason": "Marco estatístico divulgado em 08/10/2026 com apelo amplo, diferença demonstrável entre cadastros e indivíduos e fontes convergentes."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/economia/money/macroeconomia/pix-ultrapassa-1-bilhao-de-chaves-cadastradas-em-setembro-aponta-bc/",
+      "published_at": "2026-10-08",
+      "role": "marco estatístico, divisão por categoria e explicação de usuários"
+    },
+    {
+      "id": "S2",
+      "publisher": "Convergência Digital",
+      "url": "https://convergenciadigital.com.br/governo/pix-ultrapassa-1-bilhao-de-chaves-cadastradas/",
+      "published_at": "2026-10-08",
+      "role": "confirmação independente dos dados do Banco Central e conceito de chave"
+    },
+    {
+      "id": "S3",
+      "publisher": "UOL Economia",
+      "url": "https://economia.uol.com.br/noticias/redacao/2026/10/08/chaves-pix-passam-de-1-bilhao-aleatorias-lideram-cadastros.amp.htm",
+      "published_at": "2026-10-08",
+      "role": "comparação independente, limites de cadastro e Registrato"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "No fechamento de setembro de 2026, o Banco Central registrava aproximadamente 1,008 bilhão de chaves Pix cadastradas.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "Chaves aleatórias somavam aproximadamente 526,8 milhões, ou 52,3% do total.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "As chaves de telefone celular somavam 166,3 milhões; as de CPF, aproximadamente 153,9 milhões; as de e-mail, cerca de 144,6 milhões.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "O total de chaves não representa o total de usuários: a mesma pessoa pode manter diferentes registros em várias instituições.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "status": "background"
+    },
+    {
+      "claim": "Pessoas físicas podem cadastrar até cinco chaves Pix por conta, e pessoas jurídicas até vinte; cadastrar chave não é obrigatório para usar o Pix.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "status": "background"
+    },
+    {
+      "claim": "Pessoas físicas concentravam cerca de 956,7 milhões de chaves, e empresas, 51,2 milhões, no fechamento de setembro.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "status": "confirmed"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "pix-cnn",
+      "kind": "source_excerpt",
+      "source_id": "S1",
+      "source_page_url": "https://www.cnnbrasil.com.br/economia/money/macroeconomia/pix-ultrapassa-1-bilhao-de-chaves-cadastradas-em-setembro-aponta-bc/",
+      "expected_text": "O número de chaves Pix cadastradas no Brasil ultrapassou a marca de 1 bilhão em setembro.",
+      "attribution": "CNN Brasil, Elis Barreto, 08/10/2026, recorte da manchete e parágrafo com o marco histórico",
+      "rights_review": "Capturar somente manchete e parágrafo estritamente comentado, atribuindo autoria e URL; não reutilizar a fotografia da reportagem",
+      "capture_file": "research/captures/pix-cnn.png",
+      "editorial_reconstruction": {
+        "publisher": "CNN Brasil",
+        "published_at": "2026-10-08",
+        "headline": "Pix ultrapassa 1 bilhão de chaves cadastradas em setembro, aponta BC",
+        "context": "A reportagem atribui ao Banco Central o total de aproximadamente 1,008 bilhão de chaves, das quais 526,8 milhões são aleatórias. O total não identifica pessoas únicas."
+      }
+    },
+    {
+      "id": "pix-convergencia",
+      "kind": "source_excerpt",
+      "source_id": "S2",
+      "source_page_url": "https://convergenciadigital.com.br/governo/pix-ultrapassa-1-bilhao-de-chaves-cadastradas/",
+      "expected_text": "O Pix passou de 1 bilhão de chaves cadastradas em setembro.",
+      "attribution": "Convergência Digital, Ana Paula Lobo, 08/10/2026, passagem curta com estatísticas das chaves",
+      "rights_review": "Somente recorte contextual da manchete e frase principal utilizada na análise; atribuição, data e URL, sem reprodução de foto de terceiros",
+      "capture_file": "research/captures/pix-convergencia.png",
+      "editorial_reconstruction": {
+        "publisher": "Convergência Digital",
+        "published_at": "2026-10-08",
+        "headline": "PIX ultrapassa 1 bilhão de chaves cadastradas",
+        "context": "A notícia resume os dados estatísticos do Banco Central, inclusive 526,8 milhões de chaves aleatórias e a distinção entre chaves e titulares de contas."
+      }
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "abertura",
+      "title": "O número que engana à primeira vista",
+      "type": "fact",
+      "label": "MARCO DO PIX",
+      "headline": "UM BILHÃO DE CHAVES",
+      "metric": "SETEMBRO DE 2026",
+      "object_type": "bank",
+      "document_id": "pix-cnn",
+      "visual_cards": [
+        "MAIS DE 1 BILHÃO DE CHAVES",
+        "CHAVES NÃO SÃO PESSOAS",
+        "DADOS DO BANCO CENTRAL"
+      ],
+      "narration": "O Pix passou de um bilhão de chaves cadastradas. Mas calma: isso não quer dizer que exista um bilhão de brasileiros usando Pix. O dado é verdadeiro e impressiona. No fim de setembro, segundo números do Banco Central divulgados nesta quinta-feira, oito de outubro, havia aproximadamente um bilhão e oito milhões de chaves registradas. Só que chave é um identificador de conta, não uma pessoa diferente. E esse detalhe muda completamente a leitura da notícia. Eu sou o Roberto, e vou te mostrar o que esse número realmente mede, por que ele cresceu tanto e qual é a informação que a manchete não revela."
+    },
+    {
+      "id": "contagem",
+      "title": "O que aparece dentro de um bilhão",
+      "type": "fact",
+      "label": "CATEGORIAS DAS CHAVES",
+      "headline": "MAIORIA É ALEATÓRIA",
+      "metric": "52,3% DAS CHAVES",
+      "object_type": "data",
+      "document_id": "pix-convergencia",
+      "visual_cards": [
+        "526,8 MILHÕES ALEATÓRIAS",
+        "166,3 MILHÕES DE CELULAR",
+        "CPF E E-MAIL TAMBÉM CONTAM"
+      ],
+      "narration": "Vamos abrir essa conta. Do total registrado em setembro, cerca de quinhentos e vinte e seis milhões e oitocentas mil chaves eram aleatórias: cinquenta e dois vírgula três por cento de todas as chaves. Depois aparecem os números de celular, com aproximadamente cento e sessenta e seis milhões e trezentas mil. Os cadastros por CPF somavam perto de cento e cinquenta e três milhões e novecentas mil, e os endereços de e-mail, cerca de cento e quarenta e quatro milhões e seiscentas mil. Repare: estamos somando formas diferentes de identificar contas, não contando cabeças numa fila."
+    },
+    {
+      "id": "explicacao",
+      "title": "Uma pessoa pode ter várias chaves",
+      "type": "fact",
+      "label": "CHAVE É IDENTIFICADOR",
+      "headline": "NÃO É CONTAGEM DE GENTE",
+      "metric": "ATÉ 5 POR CONTA PF",
+      "object_type": "bank",
+      "document_id": "pix-cnn",
+      "visual_cards": [
+        "VÁRIAS CHAVES POR CONTA",
+        "UMA PESSOA EM MAIS BANCOS",
+        "PIX TAMBÉM SEM CHAVE"
+      ],
+      "narration": "Pense numa pessoa que tem conta em dois bancos. Ela pode cadastrar o telefone em uma instituição, o e-mail em outra, além de criar chaves aleatórias. Pronto, uma pessoa já responde por vários registros. As regras permitem até cinco chaves por conta de pessoa física, e até vinte para uma conta empresarial. É por isso que mais de um bilhão de chaves não significa mais de um bilhão de usuários. Aliás, nem é obrigatório ter chave para usar Pix: a transferência também pode acontecer com os dados bancários tradicionais."
+    },
+    {
+      "id": "opiniao",
+      "title": "O que o número diz e o que não diz",
+      "type": "opinion",
+      "label": "LEITURA DO ROBERTO",
+      "headline": "CRESCIMENTO SEM CONFUSÃO",
+      "metric": "USUÁRIOS ≠ CHAVES",
+      "object_type": "data",
+      "document_id": "pix-convergencia",
+      "visual_cards": [
+        "ADOÇÃO DO PIX É REAL",
+        "NÃO CONFUNDA CADASTROS",
+        "CONSULTE SUAS CHAVES"
+      ],
+      "narration": "Minha leitura é simples: esse marco ajuda a mostrar o tamanho que o Pix alcançou no cotidiano brasileiro. Mas usar essa soma para dizer que existe um bilhão de pessoas no sistema seria transformar uma estatística correta numa conclusão errada. Empresas e pessoas físicas podem manter várias chaves, e cada registro conta separadamente. Para quem usa Pix, a dica prática é conferir de tempos em tempos quais chaves estão ligadas ao seu CPF, inclusive pelo Registrato do Banco Central. O mais interessante nessa notícia não é apenas o número gigante. É entender o que ele mede de verdade. E você, quantas chaves Pix tem cadastradas?"
+    }
+  ],
+  "engagement_question": "Você sabe quantas chaves Pix estão cadastradas no seu CPF?",
+  "hashtags": [
+    "#Pix",
+    "#BancoCentral",
+    "#ODinheiroExplica"
+  ],
+  "tags": [
+    "Pix 1 bilhão de chaves",
+    "chaves pix 2026",
+    "banco central",
+    "chave aleatória",
+    "quantos usam Pix",
+    "economia brasileira",
+    "notícia Pix",
+    "Registrato"
+  ],
+  "primary_keyword": "Pix 1 bilhão de chaves",
+  "secondary_keywords": [
+    "quantas chaves pix",
+    "chaves aleatórias",
+    "usuários Pix",
+    "Banco Central Pix"
+  ],
+  "pronunciations": {
+    "Pix": "píquis"
+  },
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que o Pix ultrapassou um bilhão de chaves sem o Brasil ter um bilhão de habitantes e o que o registro significa.",
+    "search_query": "pix um bilhão de chaves setembro 2026 quantas pessoas banco central",
+    "recommendation_angle": "O marco chama atenção, mas revela a confusão entre identificadores e pessoas, com a conta real exposta de modo claro.",
+    "first_payoff": "O Pix passou de um bilhão de chaves cadastradas. Mas calma: isso não quer dizer que exista um bilhão de brasileiros usando Pix.",
+    "promise_proof": "Três matérias de veículos diferentes confirmam 1,008 bilhão de chaves; o roteiro explica os tipos e a possibilidade de múltiplos cadastros por conta.",
+    "audience_hypothesis": "Brasileiros com conta bancária, usuários frequentes de Pix e interessados em tecnologia e finanças, sem inferir dados privados de audiência.",
+    "thumbnail_complement": "A miniatura, quando disponível, contrapõe o número total de chaves ao número de pessoas, sem exagerar o que o BC mediu.",
+    "verification_limits": "Não foi pesquisado volume de busca, CTR ou retenção em tempo real; nenhuma métrica dessas é alegada como fato."
+  },
+  "publication_description": "Pix 1 bilhão de chaves: o Banco Central divulgou que o sistema encerrou setembro de 2026 com aproximadamente 1,008 bilhão de identificadores cadastrados. Mas isso NÃO quer dizer que haja um bilhão de pessoas usando Pix.\n\nNeste vídeo, Roberto explica por que uma pessoa pode ter várias chaves, como funciona a chave aleatória e o que esse número realmente mostra.\n\n- O total divulgado para setembro\n- Por que 52,3% das chaves são aleatórias\n- A diferença entre chaves, contas e usuários\n- Como conferir suas chaves no Registrato"
+}
