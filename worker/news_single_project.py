@@ -194,6 +194,7 @@ def build_scene(index: int, segment: dict) -> dict:
         beats.append(beat)
     return {
         "id": f"scene-{index:02d}", "index": index, "title": segment["title"],
+        "editorial_role": segment["type"],
         "narration": narration, "claim_ids": [],
         "tts": {"delivery": "explain", "pause_ms": 120, "cues": []},
         "visual": {
