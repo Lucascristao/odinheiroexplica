@@ -57,6 +57,36 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check 'google-auth>=2.35' 'google-api-python-client>=2.149'
           python worker/youtube_publication.py verify
+      - name: Validar geração de imagem e inspeção multimodal reais
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python -m pip install --disable-pip-version-check 'google-genai==2.26.0' 'Pillow>=10.4'
+          python - <<'PY'
+          import io, os
+          from google import genai
+          from google.genai import types
+          c=genai.Client(api_key=os.environ["GEMINI_API_KEY"])
+          response=c.models.generate_content(
+              model="gemini-2.5-flash-image",
+              contents="Cinematic editorial photo, single folded golden origami star on charcoal background, no text.",
+              config=types.GenerateContentConfig(
+                  response_modalities=["IMAGE"],
+                  image_config=types.ImageConfig(aspect_ratio="16:9")
+              )
+          )
+          parts=[part for part in response.candidates[0].content.parts if part.inline_data is not None]
+          assert parts, "No image returned"
+          buffer=io.BytesIO()
+          parts[0].as_image().convert("RGB").save(buffer,format="JPEG",quality=86)
+          review=c.models.generate_content(
+              model="gemini-2.5-flash",
+              contents=[types.Part.from_bytes(data=buffer.getvalue(),mime_type="image/jpeg"),
+                        "Em português, descreva somente o objeto central que você vê na imagem."],
+          )
+          assert review.text and len(review.text.strip()) > 10, "No vision review returned"
+          print("GEMINI_IMAGE_AND_VISION_OK",len(buffer.getvalue()))
+          PY
       - name: Registrar execução de smoke validada no repositório
         if: success()
         shell: bash
@@ -72,7 +102,7 @@ jobs:
             "checked_at_utc":datetime.now(timezone.utc).isoformat(),
             "source_commit":os.environ.get("GITHUB_SHA"),
             "run_id":os.environ.get("GITHUB_RUN_ID"),
-            "checks":["python_compile","workflow_yaml","news_adapter","youtube_oauth_identity"],
+            "checks":["python_compile","workflow_yaml","news_adapter","youtube_oauth_identity","gemini_image_api","gemini_vision_api"],
             "note":"Verifica contrato/sintaxe/autenticação, NÃO valida geração real nem postagem pública."
           }
           Path("automation/health/autonomy-smoke.json").write_text(
