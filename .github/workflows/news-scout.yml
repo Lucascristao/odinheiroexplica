@@ -1,4 +1,4 @@
-name: ODE Noticias - pesquisar 3x ao dia
+name: ODE Notícias - coletor RSS sob demanda
 on:
   workflow_dispatch:
   push:
@@ -6,9 +6,7 @@ on:
     paths:
       - .github/workflows/news-scout.yml
       - worker/news_scout.py
-  schedule:
-    # America/Sao_Paulo (UTC-3): 06h, 10h, 18h. GitHub pode atrasar execução.
-    - cron: '0 9,13,21 * * *'
+  # Coleta RSS apenas sob demanda; o ChatGPT Tasks controla a pauta diária.
 permissions:
   contents: read
 jobs:
