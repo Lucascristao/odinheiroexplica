@@ -1,13 +1,13 @@
 {
-  "result": "pass",
-  "checked_at_utc": "2026-10-09T06:39:23.165423+00:00",
-  "source_commit": "bd6c23b30739e28b92f0624e76047df13262165d",
-  "run_id": "37894650242",
-  "checks": [
-    "python_compile",
-    "workflow_yaml",
-    "news_adapter",
-    "youtube_oauth_identity"
-  ],
-  "note": "Verifica contrato/sintaxe/autenticação, NÃO valida geração real nem postagem pública."
+  "result": "fail",
+  "checked_at_utc": "2026-10-09T06:45:33.722505+00:00",
+  "source_commit": "a3a534d73f5ade6706b56704564790dd21aad62a",
+  "run_id": "37895191576",
+  "checks": {
+    "scripts_yaml": "success",
+    "news_adapter": "success",
+    "youtube_oauth_identity": "success",
+    "gemini_image_and_vision": "failure"
+  },
+  "note": "Smoke sintaxe, adapter, OAuth, imagem e visão; NÃO prova publicação pública."
 }
