@@ -1876,11 +1876,16 @@ export const DailyEditorial = () => {
     secondary_color: GOLD,
   };
   const masterAudio = (renderInput as unknown as {narration_master_audio?: string}).narration_master_audio;
+  // Single-story news uses genuine evidence across the entire screen.
+  // The permanent channel bug must not cover part of articles or photographs.
+  const isNewsFullScreen = scenes.length > 0 && scenes.every(
+    (scene) => scene.visual.stage?.full_bleed_news === true,
+  );
 
   return (
     <AbsoluteFill style={{backgroundColor: BG}}>
       {direction.world === "market" ? <AbsoluteFill style={{background: "radial-gradient(ellipse at 60% 35%, rgba(255,189,25,0.035), transparent 65%), linear-gradient(145deg,#10161b,#080c10)"}} /> : <StoryWorldBackground direction={direction} />}
-      <Brand />
+      {!isNewsFullScreen && <Brand />}
       {/* Trilha Sonora Editorial Contínua */}
       <Audio
         src={staticFile("generated-music/daily-bed.wav")}
