@@ -38,7 +38,7 @@ for (const [index, scene] of scenes.entries()) {
     }
   }
   const section = stage.elements.find(e => e.id === "section");
-  if (section?.label?.includes("OPINIÃO DO ROBERTO")) opinionCount++;
+  if (section?.label?.includes("OPINIÃO DO ROBERTO") || section?.label?.includes("ANÁLISE DO ROBERTO")) opinionCount++;
   const anchors = scene.visual.beats?.map((b: any) => b.anchor) ?? [];
   if (anchors.length < 3 || new Set(anchors).size !== anchors.length) {
     throw new Error("NEWS_PREFLIGHT: missing/duplicate speech anchors scene=" + scene.id);

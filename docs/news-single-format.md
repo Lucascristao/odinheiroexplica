@@ -35,3 +35,10 @@ Comparar no mínimo 3 títulos por pauta e escolher interesse real, conflito, re
 6. Após assistir ao vídeo e inspecionar a capa anexada, aprovação humana pode habilitar publish-news.yml. A confirmação pela API é obrigatória, e possível bloqueio de publicação pela auditoria do projeto YouTube Data API não é contornado.
 
 Esta implementação é de PRODUÇÃO PRIVADA e testes reais; não anunciar três vídeos por dia totalmente autônomos ou publicação pública enquanto isso não for comprovado.
+
+
+## Composição principal validada pelo usuário: documento/imagem à esquerda e Roberto à direita
+
+Usar composição inspirada na **lógica visual**, não na pessoa: **60% da área segura para matéria, print, foto ou vídeo real**; **30% à direita para manchete/frases-chave/trechos curtos sincronizados à voz**, com espaço entre as regiões. O Roberto não precisa de rosto/avatar. Alternar com imagens de tela cheia conforme a pauta. Em trechos com provas visuais, não desenhar legendas automáticas por cima do print; usar painel lateral ou legendas selecionáveis no YouTube. Se houver imagem com texto pequeno, aproximar/enquadrar para leitura sem distorcer.
+
+**Direitos de citação, sem licença aberta obrigatória:** o print de matéria usado em contexto de notícia, citação ou crítica pode ser apropriado em certas condições da Lei 9.610/1998, art. 46, III, dependendo da extensão necessária, da identificação de autor e origem e do contexto. Não interpretar como licença automática para reutilização de fotos inteiras, vídeos ou matéria completa. Capturar o trecho mínimo efetivamente comentado, guardar URL, data/crédito e objetivo editorial. **Fotografias de contexto são opcionais:** quando usadas apenas para ilustrar, preferir licenças verificadas; fotos não licenciadas só se a própria imagem for indispensável ao comentário/crítica específica, com justificativa. Nunca exigir quota fixa de fotos. O gate principal é variedade visual relevante, não quantidade de imagens licenciadas.

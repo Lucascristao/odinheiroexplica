@@ -51,11 +51,34 @@ class SingleNewsContractTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "licença"):
             validate(d, date(2026, 10, 9))
 
-    def test_documentary_not_replaceable_with_icons(self):
+    def test_photo_count_is_not_a_fixed_quota(self):
+        # Dê preferência à matéria comentada. Fotos licenciadas são opcionais;
+        # não existe exigência artificial de três imagens genéricas por episódio.
         d = copy.deepcopy(self.doc)
+        d["context_photos"] = d["context_photos"][:2]
         d["segments"][-1].pop("photo_id")
-        with self.assertRaisesRegex(ValueError, "fotografias de contexto"):
+        validate(d, date(2026, 10, 9))
+
+    def test_contextual_photo_requires_targeted_commentary(self):
+        d = copy.deepcopy(self.doc)
+        p = d["context_photos"][0]
+        p.pop("license")
+        p["rights_basis"] = "contextual_quotation"
+        with self.assertRaisesRegex(ValueError, "alvo de crítica"):
             validate(d, date(2026, 10, 9))
+        p["commentary_target"] = True
+        p["quotation_justification"] = "O roteiro comenta esta imagem diretamente, em trecho curto e contextualizado."
+        validate(d, date(2026, 10, 9))
+
+    def test_image_is_primary_and_commentary_in_sidebar(self):
+        project = transform(self.doc)
+        doc_stage = project["scenes"][1]["visual"]["stage"]
+        excerpt = next(e for e in doc_stage["elements"] if e["kind"] == "source_excerpt")
+        headline = next(e for e in doc_stage["elements"] if e["id"] == "headline")
+        self.assertGreaterEqual(excerpt["width"], 55)
+        self.assertGreater(headline["x"], excerpt["x"] + excerpt["width"])
+        self.assertEqual(excerpt["surface"], "none")
+        self.assertFalse(doc_stage["captions"]["enabled"])
 
     def test_opinion_must_be_signposted(self):
         d = copy.deepcopy(self.doc)

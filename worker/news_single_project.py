@@ -61,14 +61,22 @@ def validate(episode: dict, today: date | None = None) -> dict:
         require(doc["id"] not in doc_ids, "asset duplicado")
         doc_ids.add(doc["id"])
     photos = episode.get("context_photos") or []
-    require(isinstance(photos, list) and len(photos) >= 3, "noticiário exige pelo menos 3 fotografias reais autorizadas")
+    require(isinstance(photos, list), "imagens contextuais precisam ser uma lista")
     photo_ids = set()
     for photo in photos:
         require(photo.get("type") == "photo", "imagem contextual precisa ser photo")
         require(photo.get("id") and photo["id"] not in photo_ids, "imagem duplicada")
         photo_ids.add(photo["id"])
-        require(photo.get("license") in ("CC BY 2.0", "CC BY 3.0", "CC BY 4.0", "Unsplash License", "Public Domain"),
-                "licença de imagem não revisada")
+        basis = photo.get("rights_basis", "licensed" if photo.get("license") else "")
+        require(basis in ("licensed", "contextual_quotation"),
+                "uso de foto exige licença ou justificativa específica de citação")
+        if basis == "licensed":
+            require(bool(photo.get("license")) and photo.get("license") not in ("Google Images", "unknown", "all rights reserved"),
+                    "licença de imagem não revisada")
+        if basis == "contextual_quotation":
+            require(photo.get("commentary_target") is True
+                    and len(str(photo.get("quotation_justification", "")).strip()) >= 45,
+                    "foto sem licença só pode ser mostrada se for alvo de crítica/citação necessária")
         require(photo.get("image_url", "").startswith("https://") and photo.get("source_page_url", "").startswith("https://"),
                 "imagem precisa de origem comprovada e URL HTTPS")
         require(len(photo.get("attribution", "")) > 15 and len(photo.get("rights_review", "")) > 25,
@@ -96,9 +104,8 @@ def validate(episode: dict, today: date | None = None) -> dict:
             require(segment["document_id"] in doc_ids, "recorte documental não encontrado")
             used_docs.add(segment["document_id"])
     require(len(used_docs) >= 2, "as duas evidências documentais precisam aparecer no vídeo")
-    require(len(used_photos) >= 3, "pelo menos 3 fotografias de contexto precisam aparecer no vídeo")
-    require(len(used_photos | used_docs) >= len(segments) - 1,
-            "noticiário não pode ser quase todo texto e ícones")
+    require(len(used_photos | used_docs) >= len(segments) - 2,
+            "noticiário não pode ser quase todo texto e ícones; inclua prints comentados")
     return episode
 
 
@@ -125,20 +132,24 @@ def build_stage(segment: dict) -> dict:
         }
     label = ("OPINIÃO DO ROBERTO" if segment["type"] == "opinion" else segment["label"])
     has_media = bool(segment.get("document_id") or segment.get("photo_id"))
+    # Referência editorial de noticiário: mídia documental protagonista (~60%)
+    # e lateral de narração com frases curtas sincronizadas no lugar do rosto do
+    # comentarista. NÃO usar legenda sobre prova/manchete.
     card = {
         "id": "headline", "kind": "label", "label": segment["headline"],
-        "x": 6, "y": 24, "width": 45 if has_media else 53,
-        "height": 39, "label_size": 66, "surface": "none",
+        "x": 67 if has_media else 6, "y": 24, "width": 30 if has_media else 53,
+        "height": 39, "label_size": 54 if has_media else 66,
+        "surface": "none",
     }
     doc = {
         "id": "document", "kind": "source_excerpt", "label": "TRECHO DA MATÉRIA",
-        "asset_id": segment["document_id"], "x": 54, "y": 18, "width": 43,
-        "height": 66, "surface": "paper", "image_fit": "contain",
+        "asset_id": segment["document_id"], "x": 4, "y": 18, "width": 60,
+        "height": 66, "surface": "none", "image_fit": "contain",
         "visual_role": "support",
     } if segment.get("document_id") else {
         "id": "photo-context", "kind": "photo",
         "label": "IMAGEM DE ARQUIVO", "asset_id": segment["photo_id"],
-        "x": 58, "y": 21, "width": 39, "height": 60,
+        "x": 4, "y": 18, "width": 60, "height": 66,
         "surface": "none", "image_fit": "cover", "image_motion": "push",
         "photo_style": "clean", "visual_role": "support",
         "sustain": {"kind": "breathe", "amplitude": 4, "period_seconds": 9},
@@ -151,15 +162,18 @@ def build_stage(segment: dict) -> dict:
     return {
         "show_title": False, "motion_profile": "narrative", "camera_mode": "manual",
         "initial_camera": {"x": 50, "y": 50, "zoom": 1},
-        "captions": {"enabled": True, "max_words": 6, "words_per_line": 3,
+        # A headline lateral atualizada pelos beats cumpre o papel de legenda
+        # editorial sem cobrir prints. Closed captions continuam disponíveis no
+        # player do YouTube; sobreposição automática só em cenas sem mídia.
+        "captions": {"enabled": not has_media, "max_words": 6, "words_per_line": 3,
                      "max_lines": 2, "font_size": 64, "min_free_area_ratio": .30},
         "elements": [
             {"id": "section", "kind": "label", "label": label[:78],
              "x": 6, "y": 5, "width": 85, "height": 13, "label_size": 40, "surface": "none"},
             card, doc,
             {"id": "metric", "kind": "label", "label": segment["metric"][:78],
-             "x": 6, "y": 78, "width": 46 if has_media else 51,
-             "height": 15, "label_size": 51, "surface": "none"},
+             "x": 67 if has_media else 6, "y": 73, "width": 30 if has_media else 51,
+             "height": 15, "label_size": 43 if has_media else 51, "surface": "none"},
         ],
         "connections": [],
     }
@@ -203,6 +217,7 @@ def transform(episode: dict) -> dict:
         "subject": photo["subject"], "narrative_role": photo["role"],
         "license": photo["license"],
         "attribution": photo["attribution"],
+        "rights_basis": photo.get("rights_basis", "licensed" if photo.get("license") else "contextual_quotation"),
         "needs_cutout": False, "country_context": "BR",
     } for photo in episode["context_photos"]]
     contract = {
