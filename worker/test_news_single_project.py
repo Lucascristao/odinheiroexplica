@@ -23,22 +23,36 @@ class SingleNewsContractTests(unittest.TestCase):
         self.assertGreaterEqual(len(self.doc["sources"]), 2)
         self.assertEqual(self.doc["editorial_status"], "approved_for_private_pilot")
 
-    def test_retains_real_documentary_excerpts_and_distinct_persona(self):
-        p = transform(self.doc)
-        self.assertEqual(len(p["scenes"]), len(self.doc["segments"]))
-        self.assertEqual(p["presenter"]["name"], "Roberto")
-        self.assertEqual(len(p["visual_assets"]), 5)
-        self.assertEqual(len({a["id"] for a in p["visual_assets"]}), 5)
-        self.assertEqual(sum(x["type"] == "source_excerpt" for x in p["visual_assets"]), 2)
-        self.assertEqual(sum(x["type"] == "photo" for x in p["visual_assets"]), 3)
-        self.assertEqual(sum(s["visual"]["stage"]["elements"][2]["kind"] == "source_excerpt" for s in p["scenes"]), 2)
-        self.assertEqual(sum(s["visual"]["stage"]["elements"][2]["kind"] == "photo" for s in p["scenes"]), 3)
-        self.assertEqual(sum(s["visual"]["stage"]["elements"][2]["kind"] in ("photo", "source_excerpt") for s in p["scenes"]), 5)
-        self.assertEqual(p["packaging"]["thumbnails"][0]["headline"], self.doc["thumbnail_headline"])
-        for scene in p["scenes"]:
+    def test_evidence_occupies_the_frame_without_solo_commentary_cards(self):
+        project = transform(self.doc)
+        self.assertEqual(len(project["scenes"]), len(self.doc["segments"]))
+        self.assertEqual(project["presenter"]["name"], "Roberto")
+        self.assertEqual(len(project["visual_assets"]), 5)
+        self.assertEqual(sum(x["type"] == "source_excerpt" for x in project["visual_assets"]), 2)
+        self.assertEqual(sum(x["type"] == "photo" for x in project["visual_assets"]), 3)
+        kinds = [scene["visual"]["stage"]["elements"][0]["kind"] for scene in project["scenes"]]
+        self.assertEqual(kinds, ["photo", "source_excerpt", "photo", "source_excerpt",
+                                 "source_excerpt", "photo"])
+        for scene in project["scenes"]:
+            stage = scene["visual"]["stage"]
+            self.assertTrue(stage["full_bleed_news"])
+            self.assertFalse(stage["captions"]["enabled"])
+            self.assertFalse(stage["show_title"])
+            self.assertEqual(len(stage["elements"]), 1)
+            media = stage["elements"][0]
+            self.assertEqual((media["x"], media["y"], media["width"], media["height"]), (0, 0, 100, 100))
+            self.assertTrue(media["asset_id"])
             self.assertTrue(scene["narration"])
             self.assertGreaterEqual(len(scene["visual"]["beats"]), 3)
-            self.assertTrue(all(scene["narration"].count(b["anchor"]) == 1 for b in scene["visual"]["beats"]))
+            self.assertTrue(all(scene["narration"].count(beat["anchor"]) == 1
+                                for beat in scene["visual"]["beats"]))
+            self.assertTrue(all(beat["target_id"] == "evidence" and beat["action"] == "focus"
+                                for beat in scene["visual"]["beats"]))
+            self.assertFalse(any(beat.get("action") == "update" for beat in scene["visual"]["beats"]))
+        opinion = project["scenes"][4]["visual"]["stage"]["elements"][0]
+        self.assertEqual(opinion["asset_id"], "doc-budget")
+        self.assertEqual(project["packaging"]["thumbnails"][0]["headline"],
+                         self.doc["thumbnail_headline"])
 
     def test_no_roundup_or_missing_documents(self):
         d = copy.deepcopy(self.doc)
@@ -71,32 +85,25 @@ class SingleNewsContractTests(unittest.TestCase):
         p["quotation_justification"] = "O roteiro comenta esta imagem diretamente, em trecho curto e contextualizado."
         validate(d, date(2026, 10, 9))
 
-    def test_documentary_is_primary_in_full_screen_layout(self):
-        project = transform(self.doc)
-        stage = project["scenes"][1]["visual"]["stage"]
-        media = next(e for e in stage["elements"] if e["kind"] == "source_excerpt")
-        strip = next(e for e in stage["elements"] if e["id"] == "headline")
-        self.assertGreaterEqual(media["width"] * media["height"] / 10000, .84)
-        self.assertTrue(stage["full_bleed_news"])
-        self.assertGreaterEqual(media["width"], 95)
-        self.assertLessEqual(strip["y"] + strip["height"], media["y"])
-        self.assertEqual(media["surface"], "none")
-        self.assertFalse(stage["captions"]["enabled"])
+    def test_news_layout_has_no_header_or_archive_label_overlay(self):
+        scenes = transform(self.doc)["scenes"]
+        for index in (0, 1, 2, 3, 4, 5):
+            stage = scenes[index]["visual"]["stage"]
+            self.assertEqual(len(stage["elements"]), 1)
+            evidence = stage["elements"][0]
+            self.assertEqual(evidence["visual_role"], "protagonist")
+            self.assertEqual(evidence["surface"], "none")
+            self.assertNotIn("image_motion", evidence) if evidence["kind"] == "source_excerpt" else self.assertEqual(evidence["image_motion"], "none")
+        self.assertEqual(scenes[4]["visual"]["stage"]["elements"][0]["kind"], "source_excerpt")
 
-    def test_documentary_remains_stable_with_light_camera_and_header_updates(self):
+    def test_marks_are_authored_and_never_placed_at_guessed_coordinates(self):
         project = transform(self.doc)
-        for index in (0, 1, 2, 3):
-            scene = project["scenes"][index]
-            stage = scene["visual"]["stage"]
-            media = next(e for e in stage["elements"] if e["kind"] in ("photo", "source_excerpt"))
-            strip = next(e for e in stage["elements"] if e["id"] == "headline")
-            self.assertLessEqual(strip["y"] + strip["height"], media["y"])
-            self.assertFalse(stage["captions"]["enabled"])
-            self.assertEqual(len(scene["visual"]["beats"]),
-                             min(4, len(self.doc["segments"][index]["visual_cards"])))
-            self.assertTrue(all(b["camera"]["zoom"] <= 1.05 for b in scene["visual"]["beats"]))
-            if media["kind"] == "photo":
-                self.assertEqual(media["image_motion"], "push")
+        for scene in project["scenes"]:
+            for beat in scene["visual"]["beats"]:
+                self.assertNotIn("mark_ids", beat)
+                self.assertNotIn("view", beat)
+        self.assertNotIn("render_verified_article_panel(",
+                         (Path(__file__).resolve().parent / "auto_capture_sources.py").read_text())
 
     def test_separate_publishers_for_displayed_articles(self):
         doc = copy.deepcopy(self.doc)
@@ -131,30 +138,6 @@ class SingleNewsContractTests(unittest.TestCase):
             self.assertTrue(receipt["not_original_screenshot"])
             self.assertEqual(receipt["source_id"], "S4")
             self.assertIn("bloqueio HTTP", receipt["capture_error"])
-
-    def test_wide_authentic_excerpt_is_preserved_inside_editorial_page(self):
-        from news_reconstruction import render_verified_article_panel
-        from PIL import Image, ImageDraw
-        project = transform(self.doc)
-        asset = next(a for a in project["visual_assets"] if a["type"] == "source_excerpt")
-        with TemporaryDirectory() as temp:
-            root = Path(temp)
-            original = Image.new("RGB", (1000, 190), "#ffffff")
-            draw = ImageDraw.Draw(original)
-            draw.text((40, 45), "NOTICIA DA FONTE", fill="#222222")
-            path = root / Path(asset["capture_file"]).name
-            original.save(path)
-            result = render_verified_article_panel(asset, root)
-            self.assertEqual(result, path)
-            with Image.open(result) as image:
-                self.assertEqual(image.size, (1920, 1080))
-            authentic = result.with_name(result.stem + ".authentic.png")
-            self.assertTrue(authentic.exists())
-            with Image.open(authentic) as untouched:
-                self.assertEqual(untouched.size, (1000, 190))
-            receipt = json.loads(result.with_suffix(".provenance.json").read_text())
-            self.assertEqual(receipt["kind"], "editorial_presentation_with_authentic_excerpt")
-            self.assertEqual(receipt["source_id"], asset["source_id"])
 
     def test_opinion_must_be_signposted(self):
         d = copy.deepcopy(self.doc)
