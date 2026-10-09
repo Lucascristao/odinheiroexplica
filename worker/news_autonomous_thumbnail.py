@@ -79,7 +79,7 @@ ABSOLUTELY NO WORDS, LETTERS, NUMBERS, LOGOS, WATERMARKS, OR TEXT.
 Avoid: {'; '.join(contract['forbidden_elements'])}.
 Create a distinct composition grounded in this particular news story, not a generic finance template."""
     response = client.models.generate_content(
-        model=os.getenv("ODE_NEWS_IMAGE_MODEL", "gemini-2.5-flash-image"),
+        model=os.getenv("ODE_NEWS_IMAGE_MODEL", "gemini-3.1-flash-image-preview"),
         contents=prompt,
         config=types.GenerateContentConfig(
             response_modalities=["IMAGE"],
