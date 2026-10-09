@@ -1,13 +1,25 @@
 {
-  "result": "fail",
-  "checked_at_utc": "2026-10-09T06:50:02.523474+00:00",
-  "source_commit": "92a320725422edd9f5d19961ca989fb4cd7c1818",
-  "run_id": "37895591406",
+  "result": "pass",
+  "checked_at_utc": "2026-10-09T06:55:10Z",
+  "source_commit": "2c02d99f5f41797a10743a7556c213122d369d8a",
+  "run_id": "37896063327",
+  "run_url": "https://github.com/Lucascristao/odinheiroexplica/actions/runs/37896063327",
   "checks": {
     "scripts_yaml": "success",
-    "news_adapter": "success",
-    "youtube_oauth_identity": "success",
-    "gemini_image_and_vision": "failure"
+    "gemini_voice_only_workflow": "success",
+    "schedule_without_thumbnail": "success",
+    "news_adapter": "success"
   },
-  "note": "Smoke sintaxe, adapter, OAuth, imagem e visão; NÃO prova publicação pública."
+  "scope": "Testes locais e de contratos executados no GitHub Actions, sem chamadas Gemini/YouTube; NÃO comprova execução programada, áudio real, upload, publicação ou resultado de tarefas ChatGPT.",
+  "historical_legacy_check": {
+    "result": "fail",
+    "checked_at_utc": "2026-10-09T06:50:02.523474+00:00",
+    "run_id": "37895591406",
+    "checks": {
+      "scripts_yaml": "success",
+      "news_adapter": "success",
+      "youtube_oauth_identity": "success",
+      "gemini_image_and_vision": "failure"
+    }
+  }
 }
