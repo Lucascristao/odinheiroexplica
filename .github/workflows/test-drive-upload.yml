@@ -1,7 +1,21 @@
-name: Teste Google Drive
+name: Teste OAuth YouTube e Google Drive
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/test-drive-upload.yml"
+      - "worker/youtube_publication.py"
   workflow_dispatch:
+    inputs:
+      test_target:
+        description: "Escolha teste Drive ou apenas verificação OAuth YouTube"
+        type: choice
+        options:
+          - drive
+          - youtube_auth
+        default: youtube_auth
+        required: true
 
 permissions:
   contents: read
@@ -20,10 +34,22 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: Install dependencies
+      - name: Install dependencies for Drive test
+        if: github.event_name == 'workflow_dispatch' && inputs.test_target == 'drive'
         run: pip install --no-cache-dir -r worker/requirements.txt
+      - name: Install minimal OAuth dependencies for YouTube check
+        if: github.event_name == 'push' || inputs.test_target == 'youtube_auth'
+        run: python -m pip install --disable-pip-version-check 'google-auth>=2.35' 'google-api-python-client>=2.149'
+      - name: Read-only YouTube channel OAuth check
+        if: github.event_name == 'push' || inputs.test_target == 'youtube_auth'
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: python worker/youtube_publication.py verify
 
       - name: Test Drive upload
+        if: github.event_name == 'workflow_dispatch' && inputs.test_target == 'drive'
         env:
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
