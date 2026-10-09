@@ -30,5 +30,14 @@
   },
   "allow_qa_warnings": true,
   "late_tolerance_minutes": 90,
-  "qa_warning_policy": "record_and_improve_next_episode_no_block"
+  "qa_warning_policy": "record_and_improve_next_episode_no_block",
+  "additional_late_recoveries": [
+    {
+      "episode_id": "noticia-2026-10-09-meio-dia",
+      "original_publication_local": "2026-10-09T12:00:00-03:00",
+      "authorized_by_user": true,
+      "mode": "publish_immediately_after_qa",
+      "reason": "Autorização direta do titular nesta conversa para publicar imediatamente a edição do meio-dia de 09/10/2026 já renderizada; exceção exclusiva deste episódio, sem duplicação."
+    }
+  ]
 }
