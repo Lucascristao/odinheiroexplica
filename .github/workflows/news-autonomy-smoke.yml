@@ -11,6 +11,8 @@ on:
       - 'worker/news_autonomous_schedule.py'
       - 'worker/test_news_autonomous_schedule.py'
       - 'worker/news_single_project.py'
+      - 'worker/news_reconstruction.py'
+      - 'worker/test_news_reconstruction.py'
 permissions:
   contents: read
 jobs:
@@ -53,6 +55,10 @@ jobs:
           assert "schedule:" not in editor and "schedule:" not in scout, "Cron editorial concorrente"
           print("GEMINI_VOICE_ONLY_OK")
           PY
+      - name: Garantir reconstrução editorial limpa e proveniência fiel
+        run: |
+          python -m pip install --disable-pip-version-check 'Pillow>=10.4'
+          python -m unittest worker/test_news_reconstruction.py -v
       - name: Testar publicação agendada sem capa e proteções
         run: python -m unittest worker/test_news_autonomous_schedule.py -v
       - name: Confirmar adaptação editorial do piloto sem render nem API
