@@ -1,9 +1,7 @@
 name: ODE Notícias - anexar capa automaticamente
 on:
-  push:
-    branches: [main]
-    paths:
-      - 'production/noticia-*/thumbnail-audit.json'
+  # Sem push automático: capa opcional já é anexada em render-news-single.yml.
+  # Uso manual reservado apenas para corrigir capas de episódios históricos.
   workflow_dispatch:
     inputs:
       audit_path:
