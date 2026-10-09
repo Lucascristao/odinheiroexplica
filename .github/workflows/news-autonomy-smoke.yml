@@ -1,0 +1,51 @@
+name: ODE Notícias - conferir motor autônomo
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/news-autonomy-smoke.yml'
+      - '.github/workflows/news-autonomous-editor.yml'
+      - 'worker/news_autonomous_editor.py'
+      - 'worker/news_autonomous_thumbnail.py'
+      - 'worker/news_autonomous_schedule.py'
+      - 'worker/news_single_project.py'
+      - '.github/workflows/render-news-single.yml'
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validar sintaxe de todos os componentes novos
+        run: |
+          python -m py_compile worker/news_autonomous_editor.py worker/news_autonomous_thumbnail.py worker/news_autonomous_schedule.py worker/news_single_project.py
+          python -m pip install --disable-pip-version-check PyYAML
+          python - <<'PY'
+          from pathlib import Path
+          import yaml
+          paths = [
+              ".github/workflows/news-autonomous-editor.yml",
+              ".github/workflows/render-news-single.yml",
+              ".github/workflows/news-scout.yml",
+          ]
+          for path in paths:
+              doc = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
+              assert isinstance(doc, dict) and "jobs" in doc, path
+              print("YAML_OK", path)
+          PY
+      - name: Garantir que notícia nova não herda o tema do piloto
+        run: |
+          python worker/news_single_project.py --input news/episodes/2026-10-09-imposto-seletivo.json --output /tmp/ode-pilot-transformed.json
+          python - <<'PY'
+          import json
+          p=json.load(open("/tmp/ode-pilot-transformed.json",encoding="utf-8"))
+          assert p["story"]["subject"] == p["title"]
+          assert p["packaging"]["thumbnails"][0]["contract"]["exact_headline"]
+          print("SINGLE_NEWS_ADAPTER_OK",p["project_id"])
+          PY
