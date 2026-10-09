@@ -1,0 +1,111 @@
+{
+  "version": "1.0",
+  "format": "ode-news-roundup",
+  "edition_id": "noticias-2026-10-08-noite",
+  "edition_date": "2026-10-08",
+  "slot": "noite",
+  "editorial_status": "approved_for_private_pilot",
+  "reviewed_at": "2026-10-08T23:15:00-03:00",
+  "title": "Correios e AliExpress, leilão de R$ 3 bilhões e bancos no feriado | Giro do Dinheiro",
+  "thumbnail_headline": "ENTREGA MAIS RÁPIDA?",
+  "thumbnail_primary": "Um pacote grande com sinais visuais discretos da logística aérea e brasileira, representando Correios e AliExpress sem simular prova de entrega",
+  "intro": "Uma parceria promete entregas mais ágeis nas compras internacionais, um leilão de petróleo movimentou bilhões de reais, e o feriado de segunda-feira muda a rotina dos bancos. Eu sou Roberto, e este é o Giro do Dinheiro. Vamos aos fatos, ao que ainda não sabemos e ao que muda na prática.",
+  "outro": "Essas foram três histórias importantes para acompanhar. Se houver atualização relevante sobre os prazos de entrega, os novos contratos de petróleo ou o atendimento dos bancos, a próxima edição traz o contexto. E conta aqui: qual dessas notícias pode mexer mais com o seu bolso?",
+  "stories": [
+    {
+      "id": "aliexpress-correios",
+      "slug": "Correios e AliExpress",
+      "label": "COMPRAS INTERNACIONAIS",
+      "icon": "package",
+      "object_type": "package",
+      "headline": "CORREIOS + ALIEXPRESS",
+      "metric": "ENTREGAS",
+      "published_at": "2026-10-08",
+      "source_dates": [
+        "2026-10-08"
+      ],
+      "sources": [
+        {
+          "publisher": "Correios",
+          "url": "https://saladeimprensa.correios.com.br/arquivos/14539",
+          "type": "primary"
+        },
+        {
+          "publisher": "Portal SGC",
+          "url": "https://media.sgc.com.br/noticia/1/451749/aliexpress-e-correios-firmam-acordo-para-acelerar-entregas-no-brasil",
+          "type": "independent"
+        }
+      ],
+      "checked_facts": [
+        "Correios e AliExpress renovaram parceria contratual para entregas no Brasil.",
+        "A assinatura ocorreu em setembro de 2026 na sede do Alibaba Group, na China.",
+        "O memorando prevê ações de melhoria das entregas no 11.11 e na Black Friday.",
+        "Não há prazo universal garantido de entrega no anúncio."
+      ],
+      "narration": "Os Correios e o AliExpress anunciaram uma renovação de parceria para entregas no Brasil. E o detalhe importante é o seguinte: as empresas também assinaram um memorando para tentar acelerar o transporte na época de maior volume de compras, como o onze do onze e a Black Friday. A assinatura foi feita em setembro, na China, e a divulgação ocorreu nesta quinta-feira. Mas atenção à diferença entre anúncio e resultado. O comunicado fala em melhorar prazos, processamento e rastreamento. Ele não estabelece um novo prazo garantido para todos os consumidores. Na prática, a entrega de cada pedido continua dependendo do trajeto, da operação logística e das condições da compra. Para quem compra de fora, a notícia é uma promessa de melhoria que precisará ser acompanhada na temporada de promoções."
+    },
+    {
+      "id": "anp-leilao",
+      "slug": "Leilão da ANP",
+      "label": "PETRÓLEO E INVESTIMENTOS",
+      "icon": "chart",
+      "object_type": "factory",
+      "headline": "49 BLOCOS ARREMATADOS",
+      "metric": "R$ 3 BILHÕES",
+      "published_at": "2026-10-07",
+      "sources": [
+        {
+          "publisher": "ANP",
+          "url": "https://www.gov.br/anp/pt-br/canais_atendimento/imprensa/noticias-comunicados/oferta-permanente-de-concessao-opc-6o-ciclo-tem-maior-arrecadacao-desde-o-inicio-desse-modelo-de-licitacao",
+          "type": "primary"
+        },
+        {
+          "publisher": "Agência Brasil",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/leilao-da-anp-arrecada-r-3-bilhoes-com-venda-de-49-blocos",
+          "type": "independent"
+        },
+        {
+          "publisher": "Folha",
+          "url": "https://www1.folha.uol.com.br/mercado/2026/10/petrobras-lidera-leiloes-de-areas-de-petroleo-e-garante-r-32-bilhoes-ao-governo.shtml",
+          "type": "independent"
+        }
+      ],
+      "checked_facts": [
+        "6º ciclo de concessões da ANP em 7 de outubro teve 49 blocos arrematados.",
+        "Bônus de assinatura dos blocos exploratórios foi aproximadamente R$ 3,005 bilhões.",
+        "Petrobras foi destaque no certame, mas não arrematou todos os blocos.",
+        "Arrecadação em bônus não equivale a lucro já gerado ou petróleo produzido."
+      ],
+      "narration": "Agora, o petróleo. A Agência Nacional do Petróleo realizou um leilão de áreas para exploração e arrecadou cerca de três bilhões de reais em bônus de assinatura. Foram quarenta e nove blocos arrematados no sexto ciclo de concessões, realizado na quarta-feira. A Petrobras foi um dos principais nomes da disputa, mas outras empresas também participaram. E aqui há uma diferença que vale entender: esse dinheiro é o bônus pago pelo direito de explorar áreas, não o valor de petróleo que já saiu do chão. A exploração ainda depende de pesquisas, investimentos, licenças e, principalmente, de haver reservas economicamente viáveis. O governo arrecada com a concessão, enquanto as empresas assumem o risco de desenvolver os projetos. O tamanho da arrecadação chama atenção agora, mas os efeitos sobre produção, empregos e receitas futuras ainda precisam acontecer."
+    },
+    {
+      "id": "bancos-feriado",
+      "slug": "Bancos no feriado",
+      "label": "SERVIÇOS BANCÁRIOS",
+      "icon": "bank",
+      "object_type": "bank",
+      "headline": "SEGUNDA SEM AGÊNCIAS",
+      "metric": "PIX NORMAL",
+      "published_at": "2026-10-08",
+      "sources": [
+        {
+          "publisher": "Febraban",
+          "url": "https://portal.febraban.org.br/noticia/4505/pt-br/",
+          "type": "primary"
+        },
+        {
+          "publisher": "Agência Brasil",
+          "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/saiba-como-ficam-os-servicos-bancarios-no-feriado-do-dia-12-de-outubro",
+          "type": "independent"
+        }
+      ],
+      "checked_facts": [
+        "Agências bancárias não terão atendimento presencial em 12 de outubro de 2026.",
+        "Pix segue disponível normalmente durante o feriado.",
+        "Boletos e operações de compensação podem ser liquidados apenas no dia útil seguinte.",
+        "Tributos e impostos merecem atenção a vencimento para evitar acréscimos."
+      ],
+      "narration": "E uma informação prática para o seu dinheiro. Na segunda-feira, doze de outubro, as agências bancárias estarão fechadas para atendimento presencial por causa do feriado nacional. Segundo a Febraban, os canais digitais, caixas eletrônicos e o Pix continuam funcionando. Ou seja, transferir por Pix não depende da agência estar aberta. Já operações que precisam de compensação bancária podem ser processadas apenas no próximo dia útil. Boletos de consumo com vencimento no feriado, como água e energia, em geral podem ser quitados no primeiro dia útil seguinte sem multa ou juros. Mas isso não deve ser confundido com tributos e impostos, que exigem atenção às regras e aos prazos próprios. A dica é simples: se você depende de atendimento presencial ou de um pagamento com compensação, resolva antes do feriado para evitar imprevistos."
+    }
+  ]
+}

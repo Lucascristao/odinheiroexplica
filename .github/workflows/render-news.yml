@@ -1,0 +1,143 @@
+name: ODE Notícias - produção real
+on:
+  workflow_dispatch:
+    inputs:
+      edition_path:
+        type: string
+        required: true
+        default: news/editions/pilot-2026-10-08-noite.json
+  push:
+    branches: [main]
+    paths: [news/editions/pilot-2026-10-08-noite.json]
+permissions:
+  contents: read
+concurrency:
+  group: ode-news-${{ github.repository }}
+  cancel-in-progress: false
+jobs:
+  produce:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      NEWS_EDITION: ${{ github.event_name == 'workflow_dispatch' && inputs.edition_path || 'news/editions/pilot-2026-10-08-noite.json' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: worker/requirements.txt
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Preparar dependências
+        run: |
+          npm ci --no-audit --no-fund
+          python -m pip install --disable-pip-version-check -r worker/requirements.txt
+          mkdir -p video/generated render-output public/generated-audio/daily public/processed-audio/daily
+      - name: Validar edição e criar projeto de notícias
+        shell: bash
+        run: |
+          set -euo pipefail
+          [[ "$NEWS_EDITION" =~ ^news/editions/[A-Za-z0-9._-]+\.json$ ]]
+          python worker/news_project.py --input "$NEWS_EDITION" --output video/generated/daily-project.json
+          python worker/validate_voice_policy.py
+      - name: Validar direção visual antes da síntese
+        run: |
+          npm run validate:layout -- \
+            --project video/generated/daily-project.json \
+            --mode geometry-only \
+            --output video/generated/daily-layout-geometry.json \
+            --frames-dir render-output/layout-geometry
+      - name: Efeitos sonoros originais
+        run: python worker/generate_sound_design.py --output-dir public/generated-sfx
+      - name: Narração Live Roberto
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          python worker/synthesize_scenes.py \
+            --input video/generated/daily-project.json \
+            --output-dir public/generated-audio/daily \
+            --manifest video/generated/daily-tts-manifest.json \
+            --diagnostics video/generated/daily-live-diagnostics.json
+      - name: Preservar áudio em caso de falha
+        if: always() && hashFiles('public/generated-audio/daily/*.tts.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: public/generated-audio/daily
+          key: news-live-${{ github.run_id }}-${{ github.run_attempt }}
+      - name: Voz contínua e sincronia
+        run: |
+          python worker/process_voice_continuity.py \
+            --input-manifest video/generated/daily-tts-manifest.json \
+            --source-dir public/generated-audio/daily \
+            --output-dir public/processed-audio/daily \
+            --output-manifest video/generated/daily-processed-tts-manifest.json
+          python worker/align_narration.py \
+            --project video/generated/daily-project.json \
+            --input-manifest video/generated/daily-processed-tts-manifest.json \
+            --source-dir public/processed-audio/daily \
+            --output-manifest video/generated/daily-aligned-tts-manifest.json \
+            --report video/generated/daily-alignment-report.json
+          python worker/build_render_input.py \
+            --project video/generated/daily-project.json \
+            --tts-manifest video/generated/daily-aligned-tts-manifest.json \
+            --require-gemini --require-voice-continuity \
+            --audio-public-prefix processed-audio/daily \
+            --audio-dir public/processed-audio/daily \
+            --output video/generated/daily-render-input.json
+      - name: Música e SEO
+        run: |
+          python worker/generate_music.py --project video/generated/daily-project.json \
+            --render-input video/generated/daily-render-input.json --output-dir public/generated-music
+          python worker/build_youtube_package.py --project video/generated/daily-project.json \
+            --render-input video/generated/daily-render-input.json --output render-output/daily-youtube.json
+      - name: Render Remotion
+        run: npm run render:daily
+      - name: Garantia técnica e vocal
+        run: |
+          python worker/qa_delivery.py --project video/generated/daily-project.json \
+            --render-input video/generated/daily-render-input.json \
+            --tts-manifest video/generated/daily-aligned-tts-manifest.json \
+            --audio-dir public/processed-audio/daily --video render-output/daily-video.mp4 \
+            --output video/generated/daily-delivery-qa.json
+      - name: Capturar quadros de revisão
+        continue-on-error: true
+        run: |
+          python worker/review_rendered_video.py --input video/generated/daily-render-input.json \
+            --video render-output/daily-video.mp4 --output-dir render-output/visual-review
+      - name: Preservar vídeo e revisão
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: news-production-review
+          path: |
+            video/generated/daily-project.json
+            video/generated/daily-layout-geometry.json
+            video/generated/daily-alignment-report.json
+            video/generated/daily-delivery-qa.json
+            render-output/layout-geometry/
+            render-output/visual-review/
+            render-output/daily-video.mp4
+            render-output/daily-youtube.json
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Entregar vídeo privado sem Google Drive
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          PROJECT_ID="$(python -c 'import json;print(json.load(open("video/generated/daily-project.json"))["project_id"])')"
+          python worker/youtube_publication.py upload-private \
+            --project-id "$PROJECT_ID" --video render-output/daily-video.mp4 \
+            --metadata render-output/daily-youtube.json \
+            --receipt render-output/daily-youtube-private.json
+      - name: Recibo do YouTube
+        uses: actions/upload-artifact@v4
+        with:
+          name: news-youtube-private-receipt
+          path: render-output/daily-youtube-private.json
+          if-no-files-found: error
+          retention-days: 30

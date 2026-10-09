@@ -20,3 +20,6 @@ Capa: use a skill `ode-packaging` e `npm run ode -- thumbnail-spec`. Novo episó
 
 
 Para o destino alternativo de notícias YouTube, reutilize a preparação editorial, narração, composição e QA do motor existente, mas use `ode dispatch --youtube-private` quando essa entrega for explicitamente solicitada. O upload é privado, não passa pelo Drive e exige confirmação da identidade @odinheiro.explica. A imagem é gerada neste chat e anexada depois de auditoria via workflow de capa com `target=youtube`. Não considere o vídeo publicado só porque o upload privado concluiu. Consulte `docs/production-portable.md`.
+
+
+Notícias usam a skill do motor mas têm **contrato separado** em `docs/news-format.md`, `news/editions` e `worker/news_project.py`. Cada edição contém múltiplas matérias verificadas, apresentador Roberto e conclusão sintética. Reutilizar Live/Remotion/QA, sem mexer em `video/data/daily.json`. O workflow de notícias entrega somente como vídeo privado, aguardando inspeção do MP4, capa feita no chat e liberação pública permitida pelo YouTube.
