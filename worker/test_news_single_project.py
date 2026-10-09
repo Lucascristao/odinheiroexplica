@@ -26,9 +26,13 @@ class SingleNewsContractTests(unittest.TestCase):
         p = transform(self.doc)
         self.assertEqual(len(p["scenes"]), len(self.doc["segments"]))
         self.assertEqual(p["presenter"]["name"], "Roberto")
-        self.assertEqual(len(p["visual_assets"]), 2)
-        self.assertTrue(all(x["type"] == "source_excerpt" for x in p["visual_assets"]))
+        self.assertEqual(len(p["visual_assets"]), 5)
+        self.assertEqual(len({a["id"] for a in p["visual_assets"]}), 5)
+        self.assertEqual(sum(x["type"] == "source_excerpt" for x in p["visual_assets"]), 2)
+        self.assertEqual(sum(x["type"] == "photo" for x in p["visual_assets"]), 3)
         self.assertEqual(sum(s["visual"]["stage"]["elements"][2]["kind"] == "source_excerpt" for s in p["scenes"]), 2)
+        self.assertEqual(sum(s["visual"]["stage"]["elements"][2]["kind"] == "photo" for s in p["scenes"]), 3)
+        self.assertEqual(sum(s["visual"]["stage"]["elements"][2]["kind"] in ("photo", "source_excerpt") for s in p["scenes"]), 5)
         self.assertEqual(p["packaging"]["thumbnails"][0]["headline"], self.doc["thumbnail_headline"])
         for scene in p["scenes"]:
             self.assertTrue(scene["narration"])
@@ -39,6 +43,18 @@ class SingleNewsContractTests(unittest.TestCase):
         d = copy.deepcopy(self.doc)
         d["documentary_evidence"] = []
         with self.assertRaisesRegex(ValueError, "duas referências"):
+            validate(d, date(2026, 10, 9))
+
+    def test_photos_must_have_approved_rights(self):
+        d = copy.deepcopy(self.doc)
+        d["context_photos"][0]["license"] = "Google Images"
+        with self.assertRaisesRegex(ValueError, "licença"):
+            validate(d, date(2026, 10, 9))
+
+    def test_documentary_not_replaceable_with_icons(self):
+        d = copy.deepcopy(self.doc)
+        d["segments"][-1].pop("photo_id")
+        with self.assertRaisesRegex(ValueError, "fotografias de contexto"):
             validate(d, date(2026, 10, 9))
 
     def test_opinion_must_be_signposted(self):

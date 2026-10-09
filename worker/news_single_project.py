@@ -60,20 +60,45 @@ def validate(episode: dict, today: date | None = None) -> dict:
         require(doc.get("capture_file", "").startswith("research/captures/"), "caminho de captura inválido")
         require(doc["id"] not in doc_ids, "asset duplicado")
         doc_ids.add(doc["id"])
+    photos = episode.get("context_photos") or []
+    require(isinstance(photos, list) and len(photos) >= 3, "noticiário exige pelo menos 3 fotografias reais autorizadas")
+    photo_ids = set()
+    for photo in photos:
+        require(photo.get("type") == "photo", "imagem contextual precisa ser photo")
+        require(photo.get("id") and photo["id"] not in photo_ids, "imagem duplicada")
+        photo_ids.add(photo["id"])
+        require(photo.get("license") in ("CC BY 2.0", "CC BY 3.0", "CC BY 4.0", "Unsplash License", "Public Domain"),
+                "licença de imagem não revisada")
+        require(photo.get("image_url", "").startswith("https://") and photo.get("source_page_url", "").startswith("https://"),
+                "imagem precisa de origem comprovada e URL HTTPS")
+        require(len(photo.get("attribution", "")) > 15 and len(photo.get("rights_review", "")) > 25,
+                "falta crédito ou avaliação de direitos de imagem")
+        require(photo.get("archival") is True and len(photo.get("subject", "")) > 20,
+                "foto deve ser identificada como arquivo/contexto, nunca notícia atual")
+        require(photo.get("needs_cutout") is False, "fotos de contexto não podem perder o fundo")
     segments = episode.get("segments") or []
     require(4 <= len(segments) <= 9, "uma notícia exige 4 a 9 blocos narrativos")
     require(sum(s.get("type") == "opinion" for s in segments) >= 1, "falta opinião claramente identificada")
     require(sum(s.get("type") == "fact" for s in segments) >= 2, "poucos blocos factuais")
     used_docs = set()
+    used_photos = set()
     for segment in segments:
         require(len(str(segment.get("narration", "")).split()) >= 47, "bloco narrativo curto demais")
         cards = segment.get("visual_cards") or []
         require(3 <= len(cards) <= 8 and all(6 <= len(c) <= 65 for c in cards), "faltam destaques sincronizados")
         require(segment.get("object_type") in ("data", "store", "cash", "bank", "package", "truck", "factory"), "objeto gráfico inválido")
+        require(not (segment.get("document_id") and segment.get("photo_id")),
+                "imagem e documento não podem disputar o mesmo quadro de prova")
+        if segment.get("photo_id"):
+            require(segment["photo_id"] in photo_ids, "fotografia não encontrada no manifesto")
+            used_photos.add(segment["photo_id"])
         if segment.get("document_id"):
             require(segment["document_id"] in doc_ids, "recorte documental não encontrado")
             used_docs.add(segment["document_id"])
     require(len(used_docs) >= 2, "as duas evidências documentais precisam aparecer no vídeo")
+    require(len(used_photos) >= 3, "pelo menos 3 fotografias de contexto precisam aparecer no vídeo")
+    require(len(used_photos | used_docs) >= len(segments) - 1,
+            "noticiário não pode ser quase todo texto e ícones")
     return episode
 
 
@@ -99,9 +124,10 @@ def build_stage(segment: dict) -> dict:
             ], "connections": [],
         }
     label = ("OPINIÃO DO ROBERTO" if segment["type"] == "opinion" else segment["label"])
+    has_media = bool(segment.get("document_id") or segment.get("photo_id"))
     card = {
         "id": "headline", "kind": "label", "label": segment["headline"],
-        "x": 6, "y": 24, "width": 45 if segment.get("document_id") else 53,
+        "x": 6, "y": 24, "width": 45 if has_media else 53,
         "height": 39, "label_size": 66, "surface": "none",
     }
     doc = {
@@ -110,6 +136,13 @@ def build_stage(segment: dict) -> dict:
         "height": 66, "surface": "paper", "image_fit": "contain",
         "visual_role": "support",
     } if segment.get("document_id") else {
+        "id": "photo-context", "kind": "photo",
+        "label": "IMAGEM DE ARQUIVO", "asset_id": segment["photo_id"],
+        "x": 58, "y": 21, "width": 39, "height": 60,
+        "surface": "none", "image_fit": "cover", "image_motion": "push",
+        "photo_style": "clean", "visual_role": "support",
+        "sustain": {"kind": "breathe", "amplitude": 4, "period_seconds": 9},
+    } if segment.get("photo_id") else {
         "id": "subject", "kind": "object", "label": segment["headline"],
         "object_type": segment["object_type"], "x": 61, "y": 24, "width": 36,
         "height": 56, "show_label": False, "surface": "none", "svg_motion": "assemble",
@@ -125,7 +158,7 @@ def build_stage(segment: dict) -> dict:
              "x": 6, "y": 5, "width": 85, "height": 13, "label_size": 40, "surface": "none"},
             card, doc,
             {"id": "metric", "kind": "label", "label": segment["metric"][:78],
-             "x": 6, "y": 78, "width": 46 if segment.get("document_id") else 51,
+             "x": 6, "y": 78, "width": 46 if has_media else 51,
              "height": 15, "label_size": 51, "surface": "none"},
         ],
         "connections": [],
@@ -163,6 +196,15 @@ def transform(episode: dict) -> dict:
         "attribution": doc["attribution"], "needs_cutout": False,
         "narrative_role": "documentary_proof", "country_context": "BR",
     } for doc in episode["documentary_evidence"]]
+    photo_assets = [{
+        "id": photo["id"], "type": "photo",
+        "image_url": photo["image_url"],
+        "source_page_url": photo["source_page_url"],
+        "subject": photo["subject"], "narrative_role": photo["role"],
+        "license": photo["license"],
+        "attribution": photo["attribution"],
+        "needs_cutout": False, "country_context": "BR",
+    } for photo in episode["context_photos"]]
     contract = {
         "version": "1.0",
         "exact_headline": episode["thumbnail_headline"],
@@ -188,7 +230,7 @@ def transform(episode: dict) -> dict:
                   "category": "finance"},
         "sources": episode["sources"],
         "claims": [],
-        "visual_assets": docs,
+        "visual_assets": docs + photo_assets,
         "visual_direction": {"concept": "Noticiário factual com recortes documentais e análise editorial",
                              "world": "market", "secondary_color": "#FFBD19"},
         "editorial": {

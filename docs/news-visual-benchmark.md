@@ -31,3 +31,12 @@ P1: bibliotecas de fotos com licenças verificáveis e uso contextual, testadas 
 P1: ligação automática da capa com o ID correto e readback da API.
 P2: solicitar referências em vídeo para comparação visual genuína e medir visuais sem extrapolar para outras épocas do canal.
 P2: após alguns vídeos próprios, comparar CTR, retenção e duração no Studio e revisar títulos/capas com dados, não estimativas.
+
+
+## Evolução 09/10: imagens reais como padrão de edição
+- O piloto Imposto Seletivo passou a exigir **cinco visuais de fontes distintas em seis blocos**: dois recortes jornalísticos verificáveis e três fotografias contextuais com licença revista; bloco de opinião mantém palco próprio. Isso é padrão editorial NOSSO, não estatística do ANCAPSU.
+- Foto do Congresso de **Leandro Ciuffo** (arquivo 2011, CC BY 2.0): https://commons.wikimedia.org/wiki/File:Congresso_Nacional_Brasil.jpg
+- Supermercado brasileiro de **Eduardo Soares** (arquivo 2020, Unsplash License): https://unsplash.com/photos/a-grocery-store-filled-with-lots-of-drinks-ouNWk-_iTmM
+- Urna de 2022 de **Pedro França/Agência Senado** (CC BY 2.0, arquivo 2022): https://commons.wikimedia.org/wiki/File:Elei%C3%A7%C3%B5es_2022_-_Segundo_Turno_-_52465029467.jpg
+- Verificar que as imagens entram como contextualização **de arquivo**, não como fotografias capturadas na notícia de 2026. O manifesto identifica origem, licença, autor e relação com o bloco; créditos devem constar na descrição produzida pelo motor.
+- A validação de roteiro bloqueia fotos não licenciadas, número insuficiente de contextos e cenas genéricas com pouco material jornalístico. O render deve produzir 3 fotos + 2 documentos verificáveis em cena antes da avaliação final. Captura/streaming/MP4 continuam **pendentes** até o GitHub terminar.

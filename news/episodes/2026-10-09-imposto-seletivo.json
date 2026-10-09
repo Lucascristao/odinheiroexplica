@@ -120,7 +120,7 @@
       "kind": "source_excerpt",
       "source_id": "S3",
       "source_page_url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-08/arrecadacao-com-imposto-do-pecado-deve-chegar-r-419-bi-em-2027",
-      "expected_text": "Novo tributo mira produtos nocivos",
+      "expected_text": "Arrecadação com ‘imposto do pecado’ deve chegar a R$ 41,9 bi em 2027",
       "attribution": "Recorte de manchete para comentário: Agência Brasil, 31/08/2026",
       "rights_review": "trecho mínimo informativo em contexto crítico; verificar limites de citação, não reutilizar fotos de terceiros",
       "capture_file": "research/captures/doc-budget.png"
@@ -140,7 +140,8 @@
         "DECISÃO DEPOIS DAS URNAS",
         "O QUE AINDA NÃO ESTÁ DEFINIDO"
       ],
-      "narration": "O governo confirmou que quer deixar para depois do segundo turno uma decisão sobre o chamado imposto do pecado. Pois é. A eleição acontece agora, mas a conversa sobre quanto cobrar ficaria para depois. Antes que alguém saia dizendo que um imposto novo já foi cobrado hoje, não é isso. O anúncio é sobre o envio das regras de alíquotas ao Congresso. E a pergunta que interessa é: por que um assunto que mexe com preços e impostos ficou para depois da votação?"
+      "narration": "O governo confirmou que quer deixar para depois do segundo turno uma decisão sobre o chamado imposto do pecado. Pois é. A eleição acontece agora, mas a conversa sobre quanto cobrar ficaria para depois. Antes que alguém saia dizendo que um imposto novo já foi cobrado hoje, não é isso. O anúncio é sobre o envio das regras de alíquotas ao Congresso. E a pergunta que interessa é: por que um assunto que mexe com preços e impostos ficou para depois da votação?",
+      "photo_id": "foto-congresso"
     },
     {
       "id": "announcement",
@@ -173,7 +174,8 @@
         "VEÍCULOS CONFORME REGRAS",
         "APOSTAS E EXTRAÇÃO MINERAL"
       ],
-      "narration": "Mas que imposto é esse? O Imposto Seletivo foi previsto para desestimular o consumo de produtos e atividades considerados prejudiciais à saúde ou ao meio ambiente. A relação discutida inclui cigarros, bebidas alcoólicas, refrigerantes e outras bebidas açucaradas, certos veículos, atividades minerais e modalidades de apostas. Isso não significa que todo produto da lista terá a mesma alíquota, nem que o preço de tudo vai subir automaticamente amanhã. Os detalhes dependem de regulamentação. A justificativa defendida pelo governo é reduzir danos e organizar a substituição de tributos existentes. O que ainda falta é mostrar claramente a combinação entre carga tributária, comportamento de consumo e custos para quem compra."
+      "narration": "Mas que imposto é esse? O Imposto Seletivo foi previsto para desestimular o consumo de produtos e atividades considerados prejudiciais à saúde ou ao meio ambiente. A relação discutida inclui cigarros, bebidas alcoólicas, refrigerantes e outras bebidas açucaradas, certos veículos, atividades minerais e modalidades de apostas. Isso não significa que todo produto da lista terá a mesma alíquota, nem que o preço de tudo vai subir automaticamente amanhã. Os detalhes dependem de regulamentação. A justificativa defendida pelo governo é reduzir danos e organizar a substituição de tributos existentes. O que ainda falta é mostrar claramente a combinação entre carga tributária, comportamento de consumo e custos para quem compra.",
+      "photo_id": "foto-bebidas"
     },
     {
       "id": "budget",
@@ -222,7 +224,8 @@
         "ALÍQUOTAS PUBLICADAS",
         "IMPACTO REAL A ACOMPANHAR"
       ],
-      "narration": "Então fica o ponto principal: o governo anunciou que pretende mandar a proposta das alíquotas do Imposto Seletivo ao Congresso depois das eleições. Os números divulgados até agora são projeções, e o efeito sobre cada produto ainda depende das regras aprovadas. Quando esse texto aparecer, será a hora de comparar promessa, justificativa e impacto real. Eu vou acompanhar. E você, acha razoável deixar uma discussão dessas para depois da votação, ou o eleitor deveria conhecer as alíquotas antes? Escreve aqui, porque esse debate envolve o bolso de todo mundo."
+      "narration": "Então fica o ponto principal: o governo anunciou que pretende mandar a proposta das alíquotas do Imposto Seletivo ao Congresso depois das eleições. Os números divulgados até agora são projeções, e o efeito sobre cada produto ainda depende das regras aprovadas. Quando esse texto aparecer, será a hora de comparar promessa, justificativa e impacto real. Eu vou acompanhar. E você, acha razoável deixar uma discussão dessas para depois da votação, ou o eleitor deveria conhecer as alíquotas antes? Escreve aqui, porque esse debate envolve o bolso de todo mundo.",
+      "photo_id": "foto-urna"
     }
   ],
   "engagement_question": "O governo deveria divulgar as alíquotas antes da eleição?",
@@ -244,5 +247,52 @@
   "primary_keyword": "imposto do pecado depois das eleições",
   "pronunciations": {
     "Durigan": "Durigã"
-  }
+  },
+  "context_photos": [
+    {
+      "id": "foto-congresso",
+      "type": "photo",
+      "role": "contexto_institucional",
+      "subject": "Fachada real do Congresso Nacional em Brasília, fotografia de arquivo de 2011",
+      "image_url": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Congresso_Nacional_Brasil.jpg/1280px-Congresso_Nacional_Brasil.jpg",
+      "source_page_url": "https://commons.wikimedia.org/wiki/File:Congresso_Nacional_Brasil.jpg",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "attribution": "Foto de Leandro Ciuffo / Wikimedia Commons, CC BY 2.0, arquivo 2011",
+      "rights_review": "Licença CC BY 2.0 confirmada na ficha do Wikimedia Commons; reutilização permitida com atribuição; não representa um fato de 2026.",
+      "archival": true,
+      "reviewed_on": "2026-10-09",
+      "needs_cutout": false
+    },
+    {
+      "id": "foto-bebidas",
+      "type": "photo",
+      "role": "consumo_produtos_afetados",
+      "subject": "Exposição de bebidas em supermercado brasileiro; fotografia contextual de 2020",
+      "image_url": "https://images.unsplash.com/photo-1601599561096-f87c95fff1e9?auto=format&fit=crop&w=1280&q=84",
+      "source_page_url": "https://unsplash.com/photos/a-grocery-store-filled-with-lots-of-drinks-ouNWk-_iTmM",
+      "license": "Unsplash License",
+      "license_url": "https://unsplash.com/license",
+      "attribution": "Foto de Eduardo Soares / Unsplash, contextual 2020",
+      "rights_review": "Página da foto informa licença gratuita Unsplash; uso contextual e sem insinuar retratar episódio atual.",
+      "archival": true,
+      "reviewed_on": "2026-10-09",
+      "needs_cutout": false
+    },
+    {
+      "id": "foto-urna",
+      "type": "photo",
+      "role": "contexto_eleitoral",
+      "subject": "Urna eletrônica recolhida durante segundo turno de 2022, Agência Senado; imagem de arquivo",
+      "image_url": "https://live.staticflickr.com/65535/52465029467_b12fa630a9_o.jpg",
+      "source_page_url": "https://commons.wikimedia.org/wiki/File:Elei%C3%A7%C3%B5es_2022_-_Segundo_Turno_-_52465029467.jpg",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0/",
+      "attribution": "Foto de Pedro França / Agência Senado, CC BY 2.0, arquivo 2022",
+      "rights_review": "Wikimedia Commons confirmou CC BY 2.0 em 2022; foto de arquivo, não registro da eleição de 2026.",
+      "archival": true,
+      "reviewed_on": "2026-10-09",
+      "needs_cutout": false
+    }
+  ]
 }
