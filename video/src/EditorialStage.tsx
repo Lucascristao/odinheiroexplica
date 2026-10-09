@@ -150,7 +150,8 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
 
         const content=nodeContent(element,box,isRouteNode);
         const objectContent=element.kind==="object"?objectContentLayout(element,box,measureEditorialText):undefined;
-        const {wide:isWideBanner,stacked,padding:cardPadding,iconSize,innerW,valueH,detailH,labelH}=content;
+        const {wide:isWideBanner,stacked,padding,iconSize,innerW,valueH,detailH,labelH}=content;
+        const cardPadding = checkedStage.full_bleed_news && element.kind === "photo" ? 0 : padding;
 
         const cueProgress = checkedStage.motion_profile === "static" ? 1 : interpolate(frame - element.cueFrame, [0, element.cueDuration], [0, 1], clamp);
         const cueEase = cueProgress * cueProgress * (3 - 2 * cueProgress);
