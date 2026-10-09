@@ -23,6 +23,8 @@ jobs:
         with:
           python-version: '3.11'
       - name: Validar sintaxe de todos os componentes novos
+        id: syntax
+        continue-on-error: true
         run: |
           python -m py_compile worker/news_autonomous_editor.py worker/news_autonomous_thumbnail.py worker/news_autonomous_schedule.py worker/news_single_project.py
           python -m pip install --disable-pip-version-check PyYAML
@@ -40,6 +42,8 @@ jobs:
               print("YAML_OK", path)
           PY
       - name: Garantir que notícia nova não herda o tema do piloto
+        id: adapter
+        continue-on-error: true
         run: |
           python worker/news_single_project.py --input news/episodes/2026-10-09-imposto-seletivo.json --output /tmp/ode-pilot-transformed.json
           python - <<'PY'
@@ -50,6 +54,8 @@ jobs:
           print("SINGLE_NEWS_ADAPTER_OK",p["project_id"])
           PY
       - name: Verificar autenticação do canal, sem publicar
+        id: oauth
+        continue-on-error: true
         env:
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
@@ -58,6 +64,8 @@ jobs:
           python -m pip install --disable-pip-version-check 'google-auth>=2.35' 'google-api-python-client>=2.149'
           python worker/youtube_publication.py verify
       - name: Validar geração de imagem e inspeção multimodal reais
+        id: image
+        continue-on-error: true
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
@@ -87,8 +95,13 @@ jobs:
           assert review.text and len(review.text.strip()) > 10, "No vision review returned"
           print("GEMINI_IMAGE_AND_VISION_OK",len(buffer.getvalue()))
           PY
-      - name: Registrar execução de smoke validada no repositório
-        if: success()
+      - name: Registrar estado completo do smoke para inspeção
+        if: always()
+        env:
+          SYNTAX_CHECK: ${{ steps.syntax.outcome }}
+          ADAPTER_CHECK: ${{ steps.adapter.outcome }}
+          OAUTH_CHECK: ${{ steps.oauth.outcome }}
+          IMAGE_CHECK: ${{ steps.image.outcome }}
         shell: bash
         run: |
           set -euo pipefail
@@ -97,13 +110,17 @@ jobs:
           from datetime import datetime, timezone
           import json, os
           from pathlib import Path
+          checks={k:os.environ.get(v,"not-run") for k,v in {
+            "scripts_yaml":"SYNTAX_CHECK","news_adapter":"ADAPTER_CHECK",
+            "youtube_oauth_identity":"OAUTH_CHECK","gemini_image_and_vision":"IMAGE_CHECK"
+          }.items()}
           state={
-            "result":"pass",
+            "result":"pass" if all(v=="success" for v in checks.values()) else "fail",
             "checked_at_utc":datetime.now(timezone.utc).isoformat(),
             "source_commit":os.environ.get("GITHUB_SHA"),
             "run_id":os.environ.get("GITHUB_RUN_ID"),
-            "checks":["python_compile","workflow_yaml","news_adapter","youtube_oauth_identity","gemini_image_api","gemini_vision_api"],
-            "note":"Verifica contrato/sintaxe/autenticação, NÃO valida geração real nem postagem pública."
+            "checks":checks,
+            "note":"Smoke sintaxe, adapter, OAuth, imagem e visão; NÃO prova publicação pública."
           }
           Path("automation/health/autonomy-smoke.json").write_text(
               json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
@@ -113,3 +130,4 @@ jobs:
           git add automation/health/autonomy-smoke.json
           git commit -m "ci(news): registro da verificação de autonomia"
           git push origin HEAD:main
+          python -c 'import json,sys;sys.exit(0 if json.load(open("automation/health/autonomy-smoke.json"))["result"]=="pass" else 1)'
