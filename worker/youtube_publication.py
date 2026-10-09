@@ -59,7 +59,7 @@ def assert_channel(service):
     return channel
 
 
-def validate_package(video: Path, metadata: dict, project_id: str):
+def validate_package(video: Path, metadata: dict, project_id: str, source_fingerprint: str = ""):
     if not re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9._-]{2,119}", project_id):
         raise ValueError("project-id inválido.")
     if not video.is_file() or video.suffix.lower() != ".mp4" or video.stat().st_size == 0:
@@ -74,11 +74,12 @@ def validate_package(video: Path, metadata: dict, project_id: str):
     if not isinstance(tags, list) or len(tags) > 12 or any(not isinstance(x, str) for x in tags):
         raise ValueError("Tags inválidas.")
     tag = "ODE_EPISODE_" + project_id
+    revision_tag = "ODE_SOURCE_" + source_fingerprint[:16] if source_fingerprint else None
     return {
         "snippet": {
             "title": title,
             "description": description,
-            "tags": list(dict.fromkeys(tags + [tag])),
+            "tags": list(dict.fromkeys(tags + [tag] + ([revision_tag] if revision_tag else []))),
             "categoryId": "27",
             "defaultLanguage": "pt-BR",
         },
@@ -86,7 +87,7 @@ def validate_package(video: Path, metadata: dict, project_id: str):
     }
 
 
-def lookup_existing(service, channel: dict, episode_tag: str):
+def lookup_existing(service, channel: dict, episode_tag: str, revision_tag: str | None = None):
     playlist = channel.get("contentDetails", {}).get("relatedPlaylists", {}).get("uploads", "")
     if not playlist:
         raise ValueError("Playlist de envios indisponível; não é seguro testar duplicidade.")
@@ -100,7 +101,7 @@ def lookup_existing(service, channel: dict, episode_tag: str):
         if ids:
             videos = service.videos().list(part="snippet,status", id=",".join(ids)).execute()
             for item in videos.get("items", []):
-                if episode_tag in item.get("snippet", {}).get("tags", []):
+                if episode_tag in item.get("snippet", {}).get("tags", []) and (not revision_tag or revision_tag in item.get("snippet", {}).get("tags", [])):
                     if item.get("snippet", {}).get("channelId") != EXPECTED_ID:
                         raise ValueError("Vídeo encontrado fora do canal autorizado.")
                     return item
@@ -134,14 +135,15 @@ def save_receipt(path: Path, project_id: str, digest: str, video_id: str, recove
     return data
 
 
-def upload_private(service, channel, video_path: Path, metadata: dict, project_id: str, receipt_path: Path):
+def upload_private(service, channel, video_path: Path, metadata: dict, project_id: str, receipt_path: Path, source_fingerprint: str = ""):
     """Resumable, private upload with receipt and best-effort duplicate protection."""
-    body = validate_package(video_path, metadata, project_id)
+    body = validate_package(video_path, metadata, project_id, source_fingerprint)
     digest = sha256(video_path)
     prior = load_receipt(receipt_path, project_id, digest)
     if prior is not None:
         return prior
-    found = lookup_existing(service, channel, "ODE_EPISODE_" + project_id)
+    rev = "ODE_SOURCE_" + source_fingerprint[:16] if source_fingerprint else None
+    found = lookup_existing(service, channel, "ODE_EPISODE_" + project_id, rev)
     if found is not None:
         if found.get("status", {}).get("privacyStatus") != "private":
             raise ValueError("Episódio já existe, mas não está privado. Não alterar.")
@@ -252,7 +254,15 @@ def cli():
             if not args.video or not args.metadata:
                 p.error("Envio privado exige --video e --metadata.")
             metadata = json.loads(Path(args.metadata).read_text(encoding="utf-8"))
-            result = upload_private(service, channel, Path(args.video), metadata, args.project_id, receipt_path)
+            if args.project_id.startswith("noticias-"):
+                project_path = Path(args.project)
+                project = json.loads(project_path.read_text(encoding="utf-8"))
+                if project.get("project_id") != args.project_id:
+                    raise ValueError("Projeto aprovado não corresponde à edição de notícias.")
+                source_fingerprint = sha256(project_path)
+            else:
+                source_fingerprint = ""
+            result = upload_private(service, channel, Path(args.video), metadata, args.project_id, receipt_path, source_fingerprint)
             print(json.dumps(result, ensure_ascii=False))
         else:
             from thumbnail_contract import validate_thumbnail_audit

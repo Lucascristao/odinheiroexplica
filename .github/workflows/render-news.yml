@@ -147,6 +147,7 @@ jobs:
           python worker/youtube_publication.py upload-private \
             --project-id "$PROJECT_ID" --video render-output/daily-video.mp4 \
             --metadata render-output/daily-youtube.json \
+            --project video/generated/daily-project.json \
             --receipt render-output/daily-youtube-private.json
       - name: Recibo do YouTube
         uses: actions/upload-artifact@v4

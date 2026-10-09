@@ -39,6 +39,9 @@ class YouTubePublicationTest(unittest.TestCase):
         body = validate_package(self.video, self.metadata, "news-2026-10-09-am")
         self.assertEqual(body["status"], {"privacyStatus": "private"})
         self.assertIn("ODE_EPISODE_news-2026-10-09-am", body["snippet"]["tags"])
+        revised = validate_package(self.video, self.metadata, "news-2026-10-09-am", "a" * 64)
+        self.assertIn("ODE_SOURCE_" + "a" * 16, revised["snippet"]["tags"])
+
 
     def test_no_external_privacy_override(self):
         meta = {**self.metadata, "status": {"privacyStatus": "public"}}
