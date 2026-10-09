@@ -7,6 +7,7 @@ import argparse
 from datetime import datetime, timezone
 import json
 import re
+import time
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -16,6 +17,31 @@ from youtube_publication import assert_channel, youtube_service, EXPECTED_ID
 
 def load(path):
     return json.loads(Path(path).read_text(encoding="utf-8"))
+
+
+def confirmed_video_identity(service, video_id: str, project_id: str,
+                             attempts: int = 5) -> dict:
+    """Read-after-write check; YouTube may lag after a private upload.
+
+    Never fall back to matching title, description or an unauthenticated URL.
+    An unproven editorial identity must remain private.
+    """
+    expected_tag = "ODE_EPISODE_" + project_id
+    for attempt in range(attempts):
+        items = service.videos().list(
+            part="snippet,status", id=video_id
+        ).execute().get("items", [])
+        if len(items) == 1:
+            video = items[0]
+            if video.get("snippet", {}).get("channelId") != EXPECTED_ID:
+                raise SystemExit("Vídeo não pertence ao canal esperado.")
+            if expected_tag in video.get("snippet", {}).get("tags", []):
+                return video
+        elif len(items) > 1:
+            raise SystemExit("YouTube retornou identidade ambígua.")
+        if attempt + 1 < attempts:
+            time.sleep(min(2 ** attempt, 5))
+    raise SystemExit("Vídeo sem identificação editorial confirmada após novas consultas; preservar privado.")
 
 
 def main():
@@ -92,13 +118,8 @@ def main():
         raise SystemExit("Janela de publicação perdida: preservar vídeo privado.")
     service = youtube_service()
     assert_channel(service)
-    items = service.videos().list(part="snippet,status", id=video_id).execute().get("items", [])
-    if len(items) != 1 or items[0]["snippet"].get("channelId") != EXPECTED_ID:
-        raise SystemExit("Vídeo não pertence ao canal esperado.")
-    tags = items[0]["snippet"].get("tags", [])
-    if "ODE_EPISODE_" + project_id not in tags:
-        raise SystemExit("Vídeo sem identificação editorial correta.")
-    status = items[0]["status"]
+    video = confirmed_video_identity(service, video_id, project_id)
+    status = video["status"]
     if status.get("privacyStatus") != "private":
         raise SystemExit("Vídeo não está privado; não alterar.")
     existing = status.get("publishAt")
