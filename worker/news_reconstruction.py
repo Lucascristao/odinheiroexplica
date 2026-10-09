@@ -68,29 +68,32 @@ def render_reconstruction(asset: dict, captures_dir: Path, reason: str) -> Path:
         raise RuntimeError("Destino fora da pasta autorizada")
     dest.parent.mkdir(parents=True, exist_ok=True)
 
+    # Um quadro editorial do próprio canal, não um fac-símile do portal.
+    # A proveniência e o motivo de fallback continuam no JSON adjacente.
     im = Image.new("RGB", (1920, 1080), PAPER)
     d = ImageDraw.Draw(im)
-    d.rectangle((0, 0, 1920, 104), fill=INK)
-    d.rectangle((0, 104, 1920, 117), fill=GOLD)
-    d.text((115, 28), "RECONSTRUÇÃO EDITORIAL", font=_font(True, 31), fill=GOLD)
-    d.text((1240, 31), "NÃO É PRINT DO PORTAL", font=_font(True, 23), fill="#FFFFFF")
-    d.text((115, 170), "NOTÍCIA EM CONTEXTO", font=_font(True, 30), fill="#746C61")
-    d.rectangle((115, 228, 215, 242), fill=GOLD)
-    font, lines, line_height = _fit(d, rec["headline"], 1660, 420, True, 108, 64, 1.19)
-    y = 280
+    d.rectangle((0, 0, 1920, 12), fill=GOLD)
+    d.rectangle((115, 134, 252, 142), fill=GOLD)
+    d.text((115, 79), "O DINHEIRO EXPLICA", font=_font(True, 25), fill="#736B62")
+
+    font, lines, line_height = _fit(d, rec["headline"], 1660, 455, True, 108, 64, 1.19)
+    y = 192
     for line in lines:
         d.text((115, y), line, font=font, fill=INK)
         y += line_height
-    d.rectangle((115, 725, 1805, 728), fill="#D2CEC5")
-    font, lines, line_height = _fit(d, rec["context"], 1620, 210, False, 47, 31, 1.32)
-    y = 764
+
+    d.rectangle((115, 706, 1805, 709), fill="#D2CEC5")
+    font, lines, line_height = _fit(d, rec["context"], 1620, 220, False, 47, 31, 1.32)
+    y = 751
     for line in lines:
         d.text((115, y), line, font=font, fill="#34383C")
         y += line_height
-    d.rectangle((0, 1012, 1920, 1080), fill=INK)
-    footer = f"FONTE: {rec['publisher']}  |  {rec['published_at']}  |  Resumo editorial, não reprodução da página"
-    font, lines, _ = _fit(d, footer, 1690, 44, False, 27, 19, 1.1)
-    d.text((115, 1032), lines[0], font=font, fill="#FFFFFF")
+
+    # Crédito discreto sobre o mesmo fundo, sem cabeçalho ou tarja de aviso.
+    # Um título editorial nunca deve ser estilizado como recorte original do jornal.
+    credit = f"Fonte: {rec['publisher']}  •  {rec['published_at']}"
+    credit_font, credit_lines, _ = _fit(d, credit, 1660, 43, False, 27, 19, 1.1)
+    d.text((115, 1017), credit_lines[0], font=credit_font, fill="#68635C")
     im.save(dest, "PNG", optimize=True)
     provenance = {
         "kind": "editorial_reconstruction",
