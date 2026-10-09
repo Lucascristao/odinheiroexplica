@@ -171,10 +171,10 @@ def build_stage(segment: dict) -> dict:
             "captions": {"enabled": False},
             "elements": [
                 {"id": "section", "kind": "label", "label": segment["label"][:78],
-                 "x": 3, "y": 1, "width": 26, "height": 8,
+                 "x": 3, "y": 1, "width": 26, "height": 10,
                  "label_size": 34, "surface": "none"},
                 {"id": "headline", "kind": "label", "label": segment["headline"][:76],
-                 "x": 31, "y": 1, "width": 66, "height": 8,
+                 "x": 31, "y": 1, "width": 66, "height": 10,
                  "label_size": 37, "surface": "none"},
                 media,
             ], "connections": [],
