@@ -8,7 +8,7 @@ on:
         default: news/editions/pilot-2026-10-08-noite.json
   push:
     branches: [main]
-    paths: [news/editions/pilot-2026-10-08-noite.json]
+    paths: [news/editions/pilot-2026-10-08-noite.json, .github/workflows/render-news.yml]
 permissions:
   contents: read
 concurrency:
@@ -50,6 +50,13 @@ jobs:
             --mode geometry-only \
             --output video/generated/daily-layout-geometry.json \
             --frames-dir render-output/layout-geometry
+      - name: Garantir FFmpeg e FFprobe antes de gerar voz
+        run: |
+          if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; then
+            sudo apt-get update -o Acquire::Retries=2 -o Acquire::http::Timeout=30
+            sudo apt-get install -y --no-install-recommends ffmpeg
+          fi
+          ffprobe -version | head -1
       - name: Efeitos sonoros originais
         run: python worker/generate_sound_design.py --output-dir public/generated-sfx
       - name: Narração Live Roberto
