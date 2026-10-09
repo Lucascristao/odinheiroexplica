@@ -94,7 +94,7 @@ Relatório em texto com URLs e trechos originais."""
     response = None
     failures = []
     for model in (os.getenv("ODE_NEWS_RESEARCH_MODEL", "gemini-3.1-pro-preview"),
-                  "gemini-2.5-flash-lite"):
+                  "gemini-3.5-flash-lite"):
         try:
             response = client.models.generate_content(
                 model=model, contents=prompt,
@@ -193,7 +193,7 @@ e literalmente presente na narração da primeira cena.
 Não reutilize fatos nem tema do vídeo-piloto de imposto seletivo.
 Não invente datas ou alegações sem respaldo documental."""
     models = (os.getenv("ODE_NEWS_WRITER_MODEL", "gemini-3.1-pro-preview"),
-              "gemini-2.5-flash-lite")
+              "gemini-3.5-flash-lite")
     last = None
     for model in models:
         try:
