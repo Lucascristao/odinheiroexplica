@@ -29,6 +29,19 @@ def validate(episode: dict, today: date | None = None) -> dict:
     require(8 <= len(str(episode.get("thumbnail_headline", ""))) <= 34, "headline da capa inválida")
     require(len(episode.get("title_options", [])) >= 3, "comparar pelo menos três alternativas de título")
     require(episode.get("scorecard", {}).get("method") and episode["scorecard"].get("reason"), "avaliação de potencial ausente")
+    discovery = episode.get("discovery_strategy") or {}
+    for field in ("viewer_intent", "search_query", "recommendation_angle", "first_payoff",
+                  "promise_proof", "audience_hypothesis", "thumbnail_complement",
+                  "verification_limits"):
+        require(isinstance(discovery.get(field), str) and len(discovery[field].strip()) >= 18,
+                f"estratégia YouTube sem {field}")
+    require(discovery["first_payoff"] in (episode.get("segments") or [{}])[0].get("narration", ""),
+            "a primeira entrega precisa ser trecho literal da abertura")
+    require(episode["thumbnail_headline"].casefold() not in episode["title"].casefold(),
+            "capa não pode repetir o título")
+    require(episode["primary_keyword"].casefold() in
+            (episode["title"] + " " + episode.get("publication_description", "")).casefold(),
+            "palavra-chave relevante precisa existir em título ou descrição")
     require(episode.get("engagement_question", "").endswith("?"), "pergunta final inválida")
     sources = episode.get("sources") or []
     require(len(sources) >= 2, "apuração precisa de ao menos 2 fontes")
@@ -259,23 +272,28 @@ def transform(episode: dict) -> dict:
             "format": "ode-news-single", "date": episode["news_date"],
             "editorial_status": episode["editorial_status"],
             "scorecard": episode["scorecard"],
+            "discovery_strategy": episode["discovery_strategy"],
             "youtube_suitability": {"risk_level": "low", "title_thumbnail_safe": True},
         },
         "packaging": {
             "titles": [{"id": "approved", "text": episode["title"]}],
             "title_alternatives": episode["title_options"],
+            "strategy": {
+                "viewer_intent": episode["discovery_strategy"]["viewer_intent"],
+                "recommendation_angle": episode["discovery_strategy"]["recommendation_angle"],
+                "promise_proof": episode["discovery_strategy"]["promise_proof"],
+                "thumbnail_complement": episode["discovery_strategy"]["thumbnail_complement"],
+                "audience_hypothesis": episode["discovery_strategy"]["audience_hypothesis"],
+                "verification_limits": episode["discovery_strategy"]["verification_limits"],
+            },
             "thumbnails": [{"id": "approved", "headline": episode["thumbnail_headline"],
                             "contract": contract}],
         },
         "publication": {
-            "description": (
-                "O ministro da Fazenda anunciou o envio da proposta de alíquotas do Imposto Seletivo "
-                "para depois do segundo turno das eleições. Entenda a diferença entre anúncio e cobrança, "
-                "quais produtos podem entrar nas regras, o que significam as estimativas de arrecadação "
-                "e a leitura crítica do Roberto sobre o calendário político. Os valores mencionados são "
-                "projeções ou planos, não cobranças implementadas."
-            ),
-            "seo": {"primary_keyword": episode["primary_keyword"]},
+            "description": episode["publication_description"],
+            "seo": {"primary_keyword": episode["primary_keyword"],
+                    "secondary_keywords": episode.get("secondary_keywords", []),
+                    "viewer_search_query": episode["discovery_strategy"]["search_query"]},
             "tags": episode["tags"],
             "engagement_question": episode["engagement_question"],
             "hashtags": episode["hashtags"],
