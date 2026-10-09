@@ -84,7 +84,7 @@ def read_contract(project, production_dir):
     return contract
 
 
-def validate_thumbnail_audit(root, project, thumbnail_path):
+def validate_thumbnail_audit(root, project, thumbnail_path, project_source_path=None):
     root = Path(root)
     episode_id = project.get("project_id")
     production_dir = root / "production" / str(episode_id)
@@ -96,7 +96,7 @@ def validate_thumbnail_audit(root, project, thumbnail_path):
     if not audit_path.is_file():
         raise ValueError("thumbnail: auditoria visual ausente. Não enviar imagem não revisada.")
     data = json.loads(audit_path.read_text(encoding="utf-8"))
-    project_path = root / "video" / "data" / "daily.json"
+    project_path = Path(project_source_path).resolve() if project_source_path else root / "video" / "data" / "daily.json"
     required = {
         "version", "project_id", "project_sha256", "contract_sha256", "image_sha256",
         "headline", "approval_status", "reviewer", "reviewed_at",

@@ -1,7 +1,7 @@
 """YouTube delivery for O Dinheiro Explica.
 
 Video delivery is private-first and skips Drive. Scopes: youtube.upload + youtube.readonly.
-Video publication/public visibility is NOT implemented with these scopes.
+Public release is gated by explicit human review, a real thumbnail receipt and OAuth scope.
 The thumbnail stage uses the canonical image+review audit before upload.
 """
 from __future__ import annotations
@@ -16,7 +16,8 @@ EXPECTED_ID = "UCd7laspUAiQk0DEF9NQ-itw"
 EXPECTED_TITLE = "O Dinheiro Explica"
 EXPECTED_HANDLE = "@odinheiro.explica"
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload",
-          "https://www.googleapis.com/auth/youtube.readonly"]
+          "https://www.googleapis.com/auth/youtube.readonly",
+          "https://www.googleapis.com/auth/youtube.force-ssl"]
 
 
 def sha256(path: Path) -> str:
@@ -179,9 +180,51 @@ def add_thumbnail(service, thumbnail: Path, video_id: str):
     return {"video_id": video_id, "thumbnail_sha256": sha256(thumbnail), "privacy": "private"}
 
 
+def publish_after_review(service, project_id: str, video_id: str, image: Path,
+                         thumbnail_delivery: dict, approval: dict) -> dict:
+    """Fail closed: only explicitly inspected, already-thumbnailed videos may go public.
+
+    Passing these checks does not bypass Google's unverified-API-project restriction.
+    """
+    digest = sha256(image)
+    if thumbnail_delivery.get("video_id") != video_id or thumbnail_delivery.get("thumbnail_sha256") != digest:
+        raise ValueError("O recibo da capa não corresponde ao vídeo/imagem revisados.")
+    if (approval.get("project_id") != project_id or approval.get("video_id") != video_id
+            or approval.get("thumbnail_sha256") != digest
+            or approval.get("status") != "approved_for_publication"
+            or approval.get("full_video_watched") is not True
+            or not isinstance(approval.get("reviewer"), str)
+            or len(approval["reviewer"].strip()) < 3):
+        raise ValueError("Revisão humana do MP4 e da capa não foi aprovada para esta edição.")
+    if os.environ.get("ODE_PUBLISH_CONFIRM") != "PUBLICAR_" + project_id:
+        raise ValueError("Falta confirmação explícita de publicação para o episódio.")
+    listed = service.videos().list(part="status,snippet", id=video_id).execute().get("items", [])
+    if len(listed) != 1:
+        raise ValueError("Vídeo não localizado no canal.")
+    video = listed[0]
+    if video.get("snippet", {}).get("channelId") != EXPECTED_ID:
+        raise ValueError("Vídeo pertence a outro canal.")
+    if "ODE_EPISODE_" + project_id not in video.get("snippet", {}).get("tags", []):
+        raise ValueError("Identificador editorial ausente no vídeo do YouTube.")
+    privacy = video.get("status", {}).get("privacyStatus")
+    if privacy != "private":
+        raise ValueError("Publicação rejeitada: o vídeo não está privado.")
+    service.videos().update(
+        part="status",
+        body={"id": video_id, "status": {"privacyStatus": "public"}},
+    ).execute()
+    check = service.videos().list(part="status,snippet", id=video_id).execute().get("items", [])
+    if len(check) != 1 or check[0].get("status", {}).get("privacyStatus") != "public":
+        raise RuntimeError(
+            "YouTube não confirmou publicação pública. Projeto OAuth não verificado "
+            "pode estar restrito a vídeos privados até auditoria."
+        )
+    return {"video_id": video_id, "url": "https://youtu.be/" + video_id, "confirmed_privacy": "public"}
+
+
 def cli():
     p = argparse.ArgumentParser(description="Entrega direta ao YouTube; sempre privado.")
-    p.add_argument("action", choices=("verify", "upload-private", "thumbnail"))
+    p.add_argument("action", choices=("verify", "upload-private", "thumbnail", "publish"))
     p.add_argument("--project-id")
     p.add_argument("--video")
     p.add_argument("--metadata")
@@ -190,10 +233,13 @@ def cli():
     p.add_argument("--video-id", help="ID do upload privado observado no YouTube")
     p.add_argument("--project", default="video/data/daily.json")
     p.add_argument("--root", default=".")
+    p.add_argument("--delivery-record", help="Salvar recibo da capa após thumbnails.set")
+    p.add_argument("--thumbnail-receipt", help="Recibo observado de thumbnails.set")
+    p.add_argument("--approval-file", help="Revisão real do MP4 com aprovação explícita")
     args = p.parse_args()
     if args.action == "upload-private" and (not args.project_id or not args.receipt):
         p.error("Envio privado exige --project-id e --receipt.")
-    if args.action == "thumbnail" and (not args.project_id or not (args.video_id or args.receipt)):
+    if args.action in ("thumbnail", "publish") and (not args.project_id or not (args.video_id or args.receipt)):
         p.error("Capa exige --project-id e --video-id (ou --receipt).")
     service = youtube_service()
     try:
@@ -216,7 +262,7 @@ def cli():
             project = json.loads(Path(args.project).read_text(encoding="utf-8"))
             if project.get("project_id") != args.project_id:
                 raise ValueError("ID do projeto difere do projeto aprovado.")
-            audit = validate_thumbnail_audit(root, project, Path(args.thumbnail))
+            audit = validate_thumbnail_audit(root, project, Path(args.thumbnail), project_source_path=args.project)
             target_id = args.video_id
             if receipt_path and receipt_path.exists():
                 receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
@@ -227,8 +273,21 @@ def cli():
                 target_id = receipt["video_id"]
             if not target_id or not re.fullmatch(r"[A-Za-z0-9_-]{11}", target_id):
                 raise ValueError("Informe ID válido do vídeo privado.")
-            result = add_thumbnail(service, Path(args.thumbnail), target_id)
-            result["contract_sha256"] = audit["contract_sha256"]
+            if args.action == "thumbnail":
+                result = add_thumbnail(service, Path(args.thumbnail), target_id)
+                result["project_id"] = args.project_id
+                result["contract_sha256"] = audit["contract_sha256"]
+                if args.delivery_record:
+                    Path(args.delivery_record).parent.mkdir(parents=True, exist_ok=True)
+                    Path(args.delivery_record).write_text(
+                        json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+                    )
+            else:
+                if not args.thumbnail_receipt or not args.approval_file:
+                    raise ValueError("Publicação exige recibo real de capa e aprovação do MP4.")
+                delivered = json.loads(Path(args.thumbnail_receipt).read_text(encoding="utf-8"))
+                approved = json.loads(Path(args.approval_file).read_text(encoding="utf-8"))
+                result = publish_after_review(service, args.project_id, target_id, Path(args.thumbnail), delivered, approved)
             print(json.dumps(result, ensure_ascii=False))
     except Exception as error:
         # Google API errors can include URL/request metadata; do not log raw exceptions.

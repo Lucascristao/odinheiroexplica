@@ -19,6 +19,11 @@ on:
         description: "ID do vídeo PRIVADO no YouTube; necessário para target=youtube"
         required: false
         type: string
+      news_edition_path:
+        description: "Para notícias, arquivo editoral validado: news/editions/...json"
+        required: false
+        default: "news/editions/pilot-2026-10-08-noite.json"
+        type: string
       folder_id:
         description: "Google Drive Folder ID"
         required: true
@@ -73,15 +78,32 @@ jobs:
           ODE_THUMB_PROJECT_ID: ${{ inputs.project_id }}
           ODE_THUMB_VIDEO_ID: ${{ inputs.video_id }}
           ODE_THUMB_PATH: ${{ inputs.thumbnail_path }}
+          ODE_NEWS_EDITION_PATH: ${{ inputs.news_edition_path }}
         shell: bash
         run: |
           set -euo pipefail
           [[ "$ODE_THUMB_PROJECT_ID" =~ ^[A-Za-z0-9][A-Za-z0-9._-]+$ ]] || { echo "project_id inválido"; exit 1; }
           [[ "$ODE_THUMB_VIDEO_ID" =~ ^[A-Za-z0-9_-]{11}$ ]] || { echo "video_id inválido"; exit 1; }
           [[ "$ODE_THUMB_PATH" =~ ^production/[A-Za-z0-9][A-Za-z0-9._-]*/thumbnail\.(png|jpg)$ ]] || { echo "Caminho da capa não é canônico."; exit 1; }
+          PROJECT_SOURCE=video/data/daily.json
+          if [[ "$ODE_THUMB_PROJECT_ID" == noticias-* ]]; then
+            [[ "$ODE_NEWS_EDITION_PATH" =~ ^news/editions/[A-Za-z0-9._-]+\.json$ ]] || { echo "Arquivo de notícia inválido."; exit 1; }
+            python worker/news_project.py --input "$ODE_NEWS_EDITION_PATH" --output video/generated/daily-project.json
+            PROJECT_SOURCE=video/generated/daily-project.json
+          fi
           python worker/youtube_publication.py thumbnail \
             --root . \
-            --project video/data/daily.json \
+            --project "$PROJECT_SOURCE" \
             --project-id "$ODE_THUMB_PROJECT_ID" \
             --thumbnail "$ODE_THUMB_PATH" \
-            --video-id "$ODE_THUMB_VIDEO_ID"
+            --video-id "$ODE_THUMB_VIDEO_ID" \
+            --delivery-record render-output/youtube-thumbnail-delivery.json
+
+      - name: Preservar recibo da capa do YouTube
+        if: inputs.target == 'youtube'
+        uses: actions/upload-artifact@v4
+        with:
+          name: youtube-thumbnail-delivery
+          path: render-output/youtube-thumbnail-delivery.json
+          if-no-files-found: error
+          retention-days: 30

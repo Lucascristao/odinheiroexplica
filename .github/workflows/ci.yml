@@ -87,6 +87,7 @@ jobs:
           python worker/test_youtube_package.py
           python worker/test_youtube_publication.py
           python worker/test_news_project.py
+          python worker/test_youtube_release.py
           python worker/test_production_workflow.py
 
       - name: Validate canonical voice policy and documentation
