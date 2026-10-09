@@ -132,7 +132,7 @@ def build_stage(segment: dict) -> dict:
     # matéria/documento: palco aberto, ideia dominante, sem ícone genérico.
     if segment["type"] == "opinion":
         return {
-            "show_title": False, "motion_profile": "narrative", "camera_mode": "manual",
+            "show_title": False, "full_bleed_news": True, "motion_profile": "narrative", "camera_mode": "manual",
             "initial_camera": {"x": 50, "y": 50, "zoom": 1},
             "captions": {"enabled": True, "max_words": 6, "words_per_line": 3,
                          "max_lines": 2, "font_size": 64, "min_free_area_ratio": .30},
@@ -154,14 +154,14 @@ def build_stage(segment: dict) -> dict:
             media = {
                 "id": "document", "kind": "source_excerpt",
                 "label": "TRECHO DA MATÉRIA", "asset_id": segment["document_id"],
-                "x": 3, "y": 11, "width": 94, "height": 86,
+                "x": 1.5, "y": 11, "width": 97, "height": 88,
                 "surface": "none", "image_fit": "contain", "visual_role": "protagonist",
             }
         else:
             media = {
                 "id": "photo-context", "kind": "photo",
                 "label": "IMAGEM DE ARQUIVO", "asset_id": segment["photo_id"],
-                "x": 3, "y": 11, "width": 94, "height": 86,
+                "x": 1.5, "y": 11, "width": 97, "height": 88,
                 "surface": "none", "image_fit": "cover",
                 "image_motion": "push", "photo_style": "clean", "visual_role": "protagonist",
             }
