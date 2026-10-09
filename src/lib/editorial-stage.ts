@@ -82,6 +82,8 @@ export type VisualOperation = z.infer<typeof visualOperationSchema>;
 
 export const editorialStageSchema = z.object({
   show_title: z.boolean().default(true),
+  // Specific to single-story news; do not change the layout of evergreen videos.
+  full_bleed_news: z.boolean().default(false),
   initial_camera: stageCameraSchema.optional(),
   // Automatic reframing is an author-selected tool, never a mandatory template.
   // Missing settings preserve the legacy identity/authored camera path.
