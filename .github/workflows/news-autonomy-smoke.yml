@@ -1,4 +1,4 @@
-name: ODE Notícias - conferir motor autônomo
+name: ODE Notícias - testar motor sem consumir Gemini
 on:
   workflow_dispatch:
   push:
@@ -6,13 +6,13 @@ on:
     paths:
       - '.github/workflows/news-autonomy-smoke.yml'
       - '.github/workflows/news-autonomous-editor.yml'
-      - 'worker/news_autonomous_editor.py'
-      - 'worker/news_autonomous_thumbnail.py'
-      - 'worker/news_autonomous_schedule.py'
-      - 'worker/news_single_project.py'
       - '.github/workflows/render-news-single.yml'
+      - '.github/workflows/news-scout.yml'
+      - 'worker/news_autonomous_schedule.py'
+      - 'worker/test_news_autonomous_schedule.py'
+      - 'worker/news_single_project.py'
 permissions:
-  contents: write
+  contents: read
 jobs:
   smoke:
     runs-on: ubuntu-latest
@@ -22,28 +22,40 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Validar sintaxe de todos os componentes novos
-        id: syntax
-        continue-on-error: true
+      - name: Validar scripts e YAML sem chamadas a APIs
         run: |
-          python -m py_compile worker/news_autonomous_editor.py worker/news_autonomous_thumbnail.py worker/news_autonomous_schedule.py worker/news_single_project.py
+          set -euo pipefail
+          python -m py_compile worker/news_autonomous_schedule.py worker/news_single_project.py worker/test_news_autonomous_schedule.py
           python -m pip install --disable-pip-version-check PyYAML
           python - <<'PY'
           from pathlib import Path
           import yaml
-          paths = [
+          for path in [
               ".github/workflows/news-autonomous-editor.yml",
               ".github/workflows/render-news-single.yml",
               ".github/workflows/news-scout.yml",
-          ]
-          for path in paths:
-              doc = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
-              assert isinstance(doc, dict) and "jobs" in doc, path
+              ".github/workflows/news-autonomy-smoke.yml",
+          ]:
+              data = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
+              assert isinstance(data, dict) and "jobs" in data, path
               print("YAML_OK", path)
           PY
-      - name: Garantir que notícia nova não herda o tema do piloto
-        id: adapter
-        continue-on-error: true
+      - name: Confirmar reserva de Gemini apenas para voz
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          render = Path(".github/workflows/render-news-single.yml").read_text(encoding="utf-8")
+          editor = Path(".github/workflows/news-autonomous-editor.yml").read_text(encoding="utf-8")
+          scout = Path(".github/workflows/news-scout.yml").read_text(encoding="utf-8")
+          assert render.count("GEMINI_API_KEY:") == 1, "Chave Gemini usada fora do step de voz"
+          assert "worker/news_autonomous_thumbnail.py" not in render, "Render chama imagem Gemini"
+          assert "worker/news_autonomous_editor.py" not in editor, "Editor Gemini legado reativado"
+          assert "schedule:" not in editor and "schedule:" not in scout, "Cron editorial concorrente"
+          print("GEMINI_VOICE_ONLY_OK")
+          PY
+      - name: Testar publicação agendada sem capa e proteções
+        run: python -m unittest worker/test_news_autonomous_schedule.py -v
+      - name: Confirmar adaptação editorial do piloto sem render nem API
         run: |
           python worker/news_single_project.py --input news/episodes/2026-10-09-imposto-seletivo.json --output /tmp/ode-pilot-transformed.json
           python - <<'PY'
@@ -51,97 +63,5 @@ jobs:
           p=json.load(open("/tmp/ode-pilot-transformed.json",encoding="utf-8"))
           assert p["story"]["subject"] == p["title"]
           assert p["packaging"]["thumbnails"][0]["contract"]["exact_headline"]
-          print("SINGLE_NEWS_ADAPTER_OK",p["project_id"])
+          print("NEWS_ADAPTER_OK")
           PY
-      - name: Verificar autenticação do canal, sem publicar
-        id: oauth
-        continue-on-error: true
-        env:
-          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
-        run: |
-          python -m pip install --disable-pip-version-check 'google-auth>=2.35' 'google-api-python-client>=2.149'
-          python worker/youtube_publication.py verify
-      - name: Validar geração de imagem e inspeção multimodal reais
-        id: image
-        continue-on-error: true
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: |
-          python -m pip install --disable-pip-version-check 'google-genai==2.26.0' 'Pillow>=10.4'
-          python - <<'PY'
-          import io, os
-          from google import genai
-          from google.genai import types
-          c=genai.Client(api_key=os.environ["GEMINI_API_KEY"])
-          from PIL import Image, ImageDraw
-          im=Image.new("RGB",(1280,720),"#090B0D")
-          draw=ImageDraw.Draw(im)
-          draw.ellipse((690,130,1130,570),fill="#FFBD19")
-          buffer=io.BytesIO()
-          im.save(buffer,format="JPEG",quality=86)
-          print("DOCUMENTARY_FALLBACK_VISUAL_PREVIEW_OK")
-          try:
-              response=c.models.generate_content(
-                  model="gemini-3.1-flash-image-preview",
-                  contents="One golden paper shape on charcoal background. No text.",
-                  config=types.GenerateContentConfig(
-                      response_modalities=["IMAGE"],
-                      image_config=types.ImageConfig(aspect_ratio="16:9")
-                  ),
-              )
-              parts=[part for part in response.candidates[0].content.parts if part.inline_data is not None]
-              if parts:
-                  buffer=io.BytesIO()
-                  parts[0].as_image().convert("RGB").save(buffer,format="JPEG",quality=86)
-                  print("NATIVE_IMAGE_API_OK")
-          except Exception as error:
-              if "429" in str(error) or "RESOURCE_EXHAUSTED" in str(error):
-                  print("NATIVE_IMAGE_QUOTA_UNAVAILABLE_FALLBACK_REQUIRED")
-              else:
-                  raise
-          review=c.models.generate_content(
-              model="gemini-3.8-flash",
-              contents=[types.Part.from_bytes(data=buffer.getvalue(),mime_type="image/jpeg"),
-                        "Em português, descreva somente o objeto central que você vê na imagem."],
-          )
-          assert review.text and len(review.text.strip()) > 10, "No vision review returned"
-          print("GEMINI_VISION_WITH_LOCAL_IMAGE_OK",len(buffer.getvalue()))
-          PY
-      - name: Registrar estado completo do smoke para inspeção
-        if: always()
-        env:
-          SYNTAX_CHECK: ${{ steps.syntax.outcome }}
-          ADAPTER_CHECK: ${{ steps.adapter.outcome }}
-          OAUTH_CHECK: ${{ steps.oauth.outcome }}
-          IMAGE_CHECK: ${{ steps.image.outcome }}
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p automation/health
-          python - <<'PY'
-          from datetime import datetime, timezone
-          import json, os
-          from pathlib import Path
-          checks={k:os.environ.get(v,"not-run") for k,v in {
-            "scripts_yaml":"SYNTAX_CHECK","news_adapter":"ADAPTER_CHECK",
-            "youtube_oauth_identity":"OAUTH_CHECK","gemini_image_and_vision":"IMAGE_CHECK"
-          }.items()}
-          state={
-            "result":"pass" if all(v=="success" for v in checks.values()) else "fail",
-            "checked_at_utc":datetime.now(timezone.utc).isoformat(),
-            "source_commit":os.environ.get("GITHUB_SHA"),
-            "run_id":os.environ.get("GITHUB_RUN_ID"),
-            "checks":checks,
-            "note":"Smoke sintaxe, adapter, OAuth, imagem e visão; NÃO prova publicação pública."
-          }
-          Path("automation/health/autonomy-smoke.json").write_text(
-              json.dumps(state,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
-          PY
-          git config user.name 'ode-news-smoke[bot]'
-          git config user.email 'ode-news-smoke@users.noreply.github.com'
-          git add automation/health/autonomy-smoke.json
-          git commit -m "ci(news): registro da verificação de autonomia"
-          git push origin HEAD:main
-          python -c 'import json,sys;sys.exit(0 if json.load(open("automation/health/autonomy-smoke.json"))["result"]=="pass" else 1)'
