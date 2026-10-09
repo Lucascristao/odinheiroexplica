@@ -90,16 +90,11 @@ def title_with_navigation_retry(page) -> str:
 def sanitize_page_thoroughly(page) -> None:
     """Aplica a sanitização completa testada: clica para aceitar/fechar, remove overlays e reseta opacidade."""
     script = """() => {
-        // 1. Clicar em botões de rejeitar, aceitar ou fechar
-        document.querySelectorAll('button, a').forEach(el => {
-            try {
-                const text = el.textContent || '';
-                const aria = el.getAttribute('aria-label') || '';
-                if (/rejeitar|aceitar|fechar|dispensar|entendi|close/i.test(text) || /fechar|close/i.test(aria) || el.classList.contains('close')) {
-                    el.click();
-                }
-            } catch (e) {}
-        });
+        // 1. Nunca clicar em links nem em botões de consentimento ao capturar
+        // fonte jornalística: links "aceitar/fechar" podem disparar redirecionamento
+        // ou recriar o body enquanto estamos fazendo o screenshot. Somente
+        // neutralizar overlays sem alterar o texto do próprio documento.
+        if (!document.body) return;
 
         // 2. Remover todos os modais, backdrops, popovers, tooltips, banners e widgets flutuantes
         const selectorsToRemove = [
@@ -138,6 +133,7 @@ def sanitize_page_thoroughly(page) -> None:
         });
 
         // 4. Resetar 100% de qualquer filtro de blur, névoa ou opacidade reduzida na página
+        if (!document.body || !document.documentElement) return;
         document.documentElement.style.filter = 'none';
         document.body.style.filter = 'none';
         document.body.style.opacity = '1';
@@ -306,7 +302,14 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
         normalized_content = " ".join(content_text.casefold().split())
         normalized_expected = " ".join(expected_text.casefold().split())
         if normalized_expected not in normalized_content:
-            raise RuntimeError(f"expected_text não encontrado na página: {expected_text!r}")
+            # Título e URL efetivamente carregados ajudam a diferenciar
+            # bloqueio do portal, navegação indesejada e alteração editorial.
+            # Nunca fabricar o trecho ou salvar screenshot sem correspondência.
+            raise RuntimeError(
+                f"expected_text não encontrado na página: {expected_text!r}; "
+                f"titulo={page_title[:100]!r}, url_final={page.url[:180]!r}, "
+                f"caracteres_visiveis={len(content_text)}"
+            )
 
         # 6. Rolar para o trecho ou elemento específico se solicitado (ex: Art. 31 da lei)
         scroll_to_text = asset.get("scroll_to_text") or expected_text
