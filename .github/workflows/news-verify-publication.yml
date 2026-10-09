@@ -1,0 +1,59 @@
+name: ODE Notícias - confirmar publicação pública
+on:
+  workflow_dispatch:
+    inputs:
+      slot:
+        type: choice
+        options:
+          - manha
+          - meio-dia
+          - noite
+        required: true
+  schedule:
+    - cron: '15 11 * * *'
+    - cron: '15 15 * * *'
+    - cron: '15 23 * * *'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Identificar a janela prevista
+        env:
+          SCHEDULE_EXPRESSION: ${{ github.event.schedule }}
+          EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_SLOT: ${{ inputs.slot }}
+        run: |
+          set -euo pipefail
+          if [ "$EVENT_NAME" = workflow_dispatch ]; then
+            SLOT="$DISPATCH_SLOT"
+          else
+            case "$SCHEDULE_EXPRESSION" in
+              '15 11 * * *') SLOT=manha ;;
+              '15 15 * * *') SLOT=meio-dia ;;
+              '15 23 * * *') SLOT=noite ;;
+              *) exit 1 ;;
+            esac
+          fi
+          echo "ODE_SLOT=$SLOT" >> "$GITHUB_ENV"
+      - name: Conferir privacidade pública real, sem fazer qualquer alteração
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python -m pip install --disable-pip-version-check 'google-auth>=2.35' 'google-api-python-client>=2.149'
+          python worker/news_verify_publication.py --slot "$ODE_SLOT" --output render-output/publication-check.json
+      - name: Guardar status observado
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ode-publication-confirmation
+          path: render-output/publication-check.json
+          if-no-files-found: warn
