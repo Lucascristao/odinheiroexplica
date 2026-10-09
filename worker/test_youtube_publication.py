@@ -7,7 +7,7 @@ from pathlib import Path
 from unittest.mock import MagicMock, patch
 from youtube_publication import (
     EXPECTED_ID, EXPECTED_HANDLE, EXPECTED_TITLE,
-    assert_channel, validate_package, load_receipt, upload_private, add_thumbnail,
+    assert_channel, validate_package, load_receipt, upload_private, add_thumbnail, lookup_existing, sha256,
 )
 
 CHANNEL = {"id": EXPECTED_ID, "snippet": {"title": EXPECTED_TITLE, "customUrl": EXPECTED_HANDLE},
@@ -75,6 +75,52 @@ class YouTubePublicationTest(unittest.TestCase):
             result = upload_private(self.service, CHANNEL, self.video, self.metadata, "news-2026-10-09-am", self.receipt)
         self.assertTrue(result["recovered_existing_upload"])
         self.service.videos.return_value.insert.assert_not_called()
+
+    def test_old_private_video_cannot_be_recovered_for_different_mp4_bytes(self):
+        project_id = "noticia-2026-10-09-imposto-seletivo-v3"
+        previous_id = "zzzzzzzzzzz"
+        self.service.playlistItems.return_value.list.return_value.execute.return_value = {
+            "items": [{"contentDetails": {"videoId": previous_id}}]
+        }
+        self.service.videos.return_value.list.return_value.execute.return_value = {
+            "items": [{
+                "id": previous_id,
+                "status": {"privacyStatus": "private"},
+                "snippet": {
+                    "channelId": EXPECTED_ID,
+                    "tags": ["ODE_EPISODE_" + project_id, "ODE_MEDIA_0000000000000000"],
+                },
+            }]
+        }
+        current_media_tag = "ODE_MEDIA_" + sha256(self.video)[:16]
+        self.assertIsNone(lookup_existing(
+            self.service, CHANNEL, "ODE_EPISODE_" + project_id,
+            None, current_media_tag,
+        ))
+        payload = validate_package(self.video, self.metadata, project_id,
+                                   media_sha256=sha256(self.video))
+        self.assertIn(current_media_tag, payload["snippet"]["tags"])
+
+    def test_identical_private_upload_is_recoverable_by_actual_media_hash(self):
+        project_id = "noticia-2026-10-09-imposto-seletivo-v3"
+        self.service.playlistItems.return_value.list.return_value.execute.return_value = {
+            "items": [{"contentDetails": {"videoId": "zzzzzzzzzzz"}}]
+        }
+        self.service.videos.return_value.list.return_value.execute.return_value = {
+            "items": [{
+                "id": "zzzzzzzzzzz",
+                "status": {"privacyStatus": "private"},
+                "snippet": {
+                    "channelId": EXPECTED_ID,
+                    "tags": ["ODE_EPISODE_" + project_id,
+                             "ODE_MEDIA_" + sha256(self.video)[:16]],
+                },
+            }]
+        }
+        found = lookup_existing(self.service, CHANNEL,
+                                "ODE_EPISODE_" + project_id, None,
+                                "ODE_MEDIA_" + sha256(self.video)[:16])
+        self.assertEqual(found["id"], "zzzzzzzzzzz")
 
     def test_existing_public_upload_blocks_retry(self):
         with patch("youtube_publication.lookup_existing", return_value={
