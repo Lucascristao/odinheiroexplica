@@ -7,8 +7,8 @@ on:
       - .github/workflows/news-scout.yml
       - worker/news_scout.py
   schedule:
-    # America/Sao_Paulo (UTC-3): 08h, 14h, 20h. GitHub pode atrasar execução.
-    - cron: '0 11,17,23 * * *'
+    # America/Sao_Paulo (UTC-3): 06h, 10h, 18h. GitHub pode atrasar execução.
+    - cron: '0 9,13,21 * * *'
 permissions:
   contents: read
 jobs:
