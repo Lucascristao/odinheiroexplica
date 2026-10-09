@@ -74,7 +74,7 @@ Separe afirmações do governo, fato, projeção, controvérsia e opinião.
 Não invente números, fotos, notícias, links ou citações.
 Relatório em texto com URLs e trechos originais."""
     response = client.models.generate_content(
-        model=os.getenv("ODE_NEWS_RESEARCH_MODEL", "gemini-2.5-pro"),
+        model=os.getenv("ODE_NEWS_RESEARCH_MODEL", "gemini-3.1-pro-preview"),
         contents=prompt,
         config=types.GenerateContentConfig(
             tools=[types.Tool(google_search=types.GoogleSearch())], temperature=0.2
@@ -164,7 +164,7 @@ e literalmente presente na narração da primeira cena.
 Não reutilize fatos nem tema do vídeo-piloto de imposto seletivo.
 Não invente datas ou alegações sem respaldo documental."""
     response = client.models.generate_content(
-        model=os.getenv("ODE_NEWS_WRITER_MODEL", "gemini-2.5-pro"),
+        model=os.getenv("ODE_NEWS_WRITER_MODEL", "gemini-3.1-pro-preview"),
         contents=prompt,
         config=types.GenerateContentConfig(
             response_mime_type="application/json", temperature=0.25
