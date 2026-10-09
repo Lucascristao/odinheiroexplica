@@ -32,6 +32,10 @@ class NewsPipelineTests(unittest.TestCase):
             self.assertEqual(len(set(anchors)), len(anchors))
             self.assertTrue(all(text.count(a) == 1 for a in anchors))
             self.assertEqual(s["tts"]["delivery"], "explain")
+            self.assertTrue(all(b["action"] == "update" for b in s["visual"]["beats"]))
+            self.assertTrue(all(b["treatment"] == "kinetic_type" for b in s["visual"]["beats"]))
+            self.assertGreaterEqual(len(set(b["headline"] for b in s["visual"]["beats"])), 3)
+
 
     def test_no_one_story_bulletin(self):
         doc = copy.deepcopy(self.edition)

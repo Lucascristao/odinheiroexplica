@@ -51,6 +51,10 @@ def validate(edition: dict, now: date | None = None) -> dict:
         published = date.fromisoformat(story["published_at"])
         require(day - timedelta(days=3) <= published <= day, "notícia fora da janela de 72h")
         require(story.get("object_type") in ("package", "truck", "factory", "bank", "cash", "store", "data"), "objeto visual não aprovado")
+        cards = story.get("visual_cards", [])
+        require(isinstance(cards, list) and len(cards) >= 6
+                and all(isinstance(card, str) and 6 <= len(card) <= 65 for card in cards),
+                "matéria exige cartões visuais revisados, sem dados criados automaticamente")
     return edition
 
 
@@ -92,13 +96,21 @@ def stage(label: str, headline: str, metric: str, object_type: str) -> dict:
     }
 
 
-def scene(index: int, title: str, narration: str, label: str, headline: str, metric: str, object_type: str) -> dict:
+def scene(index: int, title: str, narration: str, label: str, headline: str, metric: str, object_type: str,
+          visual_cards: list[str] | None = None) -> dict:
     cues = anchors(narration)
-    sequence = ["headline", "subject", "metric", "section"]
-    beats = [{"anchor": anchor, "target_id": sequence[i % len(sequence)],
-              "action": "focus", "treatment": "spotlight", "motion_seconds": .55,
-              "behavior": "transform", "headline": headline}
-             for i, anchor in enumerate(cues)]
+    cards = visual_cards or [headline]
+    beats = [
+        {
+            "anchor": anchor, "target_id": "headline",
+            "action": "update", "treatment": "kinetic_type",
+            "motion_seconds": .70, "behavior": "transform",
+            "headline": cards[min(len(cards) - 1, int(i * len(cards) / len(cues)))],
+            "camera": {"x": 50, "y": 50, "zoom": 1.012 if i % 2 else 1.0,
+                       "motion_seconds": .65},
+        }
+        for i, anchor in enumerate(cues)
+    ]
     return {
         "id": f"scene-{index:02d}", "index": index, "title": title,
         "narration": narration, "claim_ids": [],
@@ -123,14 +135,15 @@ def transform(data: dict) -> dict:
                 "url": source["url"],
             })
     scenes = [scene(0, "Abertura do noticiário", data["intro"], "GIRO DO DINHEIRO",
-                    "O QUE MUDOU HOJE?", "3 NOTÍCIAS", "data")]
+                    "O QUE MUDOU HOJE?", "3 NOTÍCIAS", "data", data.get("intro_cards"))]
     for i, item in enumerate(data["stories"], start=1):
         scenes.append(scene(i, item["slug"], item["narration"],
                             f"NOTÍCIA {i}  /  {item['label']}",
-                            item["headline"], item["metric"], item["object_type"]))
+                            item["headline"], item["metric"], item["object_type"],
+                            item["visual_cards"]))
     scenes.append(scene(len(scenes), "Encerramento", data["outro"],
                         "GIRO DO DINHEIRO", "ATÉ A PRÓXIMA EDIÇÃO",
-                        "FATOS E CONTEXTO", "data"))
+                        "FATOS E CONTEXTO", "data", data.get("outro_cards")))
     contract = {
         "version": "1.0", "exact_headline": data["thumbnail_headline"],
         "primary_subject": data["thumbnail_primary"],

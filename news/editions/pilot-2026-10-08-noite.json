@@ -42,7 +42,19 @@
         "O memorando prevê ações de melhoria das entregas no 11.11 e na Black Friday.",
         "Não há prazo universal garantido de entrega no anúncio."
       ],
-      "narration": "Os Correios e o AliExpress anunciaram uma renovação de parceria para entregas no Brasil. E o detalhe importante é o seguinte: as empresas também assinaram um memorando para tentar acelerar o transporte na época de maior volume de compras, como o onze do onze e a Black Friday. A assinatura foi feita em setembro, na China, e a divulgação ocorreu nesta quinta-feira. Mas atenção à diferença entre anúncio e resultado. O comunicado fala em melhorar prazos, processamento e rastreamento. Ele não estabelece um novo prazo garantido para todos os consumidores. Na prática, a entrega de cada pedido continua dependendo do trajeto, da operação logística e das condições da compra. Para quem compra de fora, a notícia é uma promessa de melhoria que precisará ser acompanhada na temporada de promoções."
+      "narration": "Os Correios e o AliExpress anunciaram uma renovação de parceria para entregas no Brasil. E o detalhe importante é o seguinte: as empresas também assinaram um memorando para tentar acelerar o transporte na época de maior volume de compras, como o onze do onze e a Black Friday. A assinatura foi feita em setembro, na China, e a divulgação ocorreu nesta quinta-feira. Mas atenção à diferença entre anúncio e resultado. O comunicado fala em melhorar prazos, processamento e rastreamento. Ele não estabelece um novo prazo garantido para todos os consumidores. Na prática, a entrega de cada pedido continua dependendo do trajeto, da operação logística e das condições da compra. Para quem compra de fora, a notícia é uma promessa de melhoria que precisará ser acompanhada na temporada de promoções.",
+      "visual_cards": [
+        "PARCERIA RENOVADA",
+        "COMPRAS INTERNACIONAIS",
+        "ENTREGAS NO BRASIL",
+        "TEMPORADA DE PROMOÇÕES",
+        "11.11 E BLACK FRIDAY",
+        "PROMESSA DE AGILIDADE",
+        "PRAZO NÃO GARANTIDO",
+        "RASTREAMENTO E PROCESSAMENTO",
+        "CADA PEDIDO É DIFERENTE",
+        "RESULTADOS A CONFIRMAR"
+      ]
     },
     {
       "id": "anp-leilao",
@@ -76,7 +88,19 @@
         "Petrobras foi destaque no certame, mas não arrematou todos os blocos.",
         "Arrecadação em bônus não equivale a lucro já gerado ou petróleo produzido."
       ],
-      "narration": "Agora, o petróleo. A Agência Nacional do Petróleo realizou um leilão de áreas para exploração e arrecadou cerca de três bilhões de reais em bônus de assinatura. Foram quarenta e nove blocos arrematados no sexto ciclo de concessões, realizado na quarta-feira. A Petrobras foi um dos principais nomes da disputa, mas outras empresas também participaram. E aqui há uma diferença que vale entender: esse dinheiro é o bônus pago pelo direito de explorar áreas, não o valor de petróleo que já saiu do chão. A exploração ainda depende de pesquisas, investimentos, licenças e, principalmente, de haver reservas economicamente viáveis. O governo arrecada com a concessão, enquanto as empresas assumem o risco de desenvolver os projetos. O tamanho da arrecadação chama atenção agora, mas os efeitos sobre produção, empregos e receitas futuras ainda precisam acontecer."
+      "narration": "Agora, o petróleo. A Agência Nacional do Petróleo realizou um leilão de áreas para exploração e arrecadou cerca de três bilhões de reais em bônus de assinatura. Foram quarenta e nove blocos arrematados no sexto ciclo de concessões, realizado na quarta-feira. A Petrobras foi um dos principais nomes da disputa, mas outras empresas também participaram. E aqui há uma diferença que vale entender: esse dinheiro é o bônus pago pelo direito de explorar áreas, não o valor de petróleo que já saiu do chão. A exploração ainda depende de pesquisas, investimentos, licenças e, principalmente, de haver reservas economicamente viáveis. O governo arrecada com a concessão, enquanto as empresas assumem o risco de desenvolver os projetos. O tamanho da arrecadação chama atenção agora, mas os efeitos sobre produção, empregos e receitas futuras ainda precisam acontecer.",
+      "visual_cards": [
+        "LEILÃO DA ANP",
+        "49 BLOCOS ARREMATADOS",
+        "CERCA DE R$ 3 BILHÕES",
+        "BÔNUS DE ASSINATURA",
+        "PETROBRAS EM DESTAQUE",
+        "EXPLORAÇÃO AINDA VAI COMEÇAR",
+        "NÃO É PETRÓLEO PRODUZIDO",
+        "PESQUISA E LICENÇAS",
+        "INVESTIMENTOS TÊM RISCO",
+        "RESULTADOS AINDA INCERTOS"
+      ]
     },
     {
       "id": "bancos-feriado",
@@ -105,7 +129,30 @@
         "Boletos e operações de compensação podem ser liquidados apenas no dia útil seguinte.",
         "Tributos e impostos merecem atenção a vencimento para evitar acréscimos."
       ],
-      "narration": "E uma informação prática para o seu dinheiro. Na segunda-feira, doze de outubro, as agências bancárias estarão fechadas para atendimento presencial por causa do feriado nacional. Segundo a Febraban, os canais digitais, caixas eletrônicos e o Pix continuam funcionando. Ou seja, transferir por Pix não depende da agência estar aberta. Já operações que precisam de compensação bancária podem ser processadas apenas no próximo dia útil. Boletos de consumo com vencimento no feriado, como água e energia, em geral podem ser quitados no primeiro dia útil seguinte sem multa ou juros. Mas isso não deve ser confundido com tributos e impostos, que exigem atenção às regras e aos prazos próprios. A dica é simples: se você depende de atendimento presencial ou de um pagamento com compensação, resolva antes do feriado para evitar imprevistos."
+      "narration": "E uma informação prática para o seu dinheiro. Na segunda-feira, doze de outubro, as agências bancárias estarão fechadas para atendimento presencial por causa do feriado nacional. Segundo a Febraban, os canais digitais, caixas eletrônicos e o Pix continuam funcionando. Ou seja, transferir por Pix não depende da agência estar aberta. Já operações que precisam de compensação bancária podem ser processadas apenas no próximo dia útil. Boletos de consumo com vencimento no feriado, como água e energia, em geral podem ser quitados no primeiro dia útil seguinte sem multa ou juros. Mas isso não deve ser confundido com tributos e impostos, que exigem atenção às regras e aos prazos próprios. A dica é simples: se você depende de atendimento presencial ou de um pagamento com compensação, resolva antes do feriado para evitar imprevistos.",
+      "visual_cards": [
+        "FERIADO NACIONAL",
+        "SEGUNDA, 12 DE OUTUBRO",
+        "AGÊNCIAS FECHADAS",
+        "PIX FUNCIONA NORMALMENTE",
+        "CANAIS DIGITAIS ATIVOS",
+        "ATENÇÃO À COMPENSAÇÃO",
+        "BOLETOS DE CONSUMO",
+        "PRÓXIMO DIA ÚTIL",
+        "TRIBUTOS TÊM REGRAS PRÓPRIAS",
+        "EVITE IMPREVISTOS"
+      ]
     }
+  ],
+  "intro_cards": [
+    "O QUE MUDOU HOJE?",
+    "CORREIOS + ALIEXPRESS",
+    "PETRÓLEO: R$ 3 BI",
+    "BANCOS NO FERIADO"
+  ],
+  "outro_cards": [
+    "FATOS COM CONTEXTO",
+    "ACOMPANHE AS ATUALIZAÇÕES",
+    "QUAL NOTÍCIA MAIS IMPORTA?"
   ]
 }

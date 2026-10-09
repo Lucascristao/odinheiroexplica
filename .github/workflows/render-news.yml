@@ -59,6 +59,13 @@ jobs:
           ffprobe -version | head -1
       - name: Efeitos sonoros originais
         run: python worker/generate_sound_design.py --output-dir public/generated-sfx
+      - name: Reaproveitar narração idêntica validada do piloto
+        uses: actions/cache/restore@v4
+        with:
+          path: public/generated-audio/daily
+          key: news-live-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: |
+            news-live-
       - name: Narração Live Roberto
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
