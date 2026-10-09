@@ -5,6 +5,21 @@ Três edições pretendidas, manhã/tarde/noite. Referência de cadência, não 
 
 A preparação editorial se dá em news/editions/ARQUIVO.json com status explícito de aprovação para piloto privado. O adaptador worker/news_project.py **não pesquisa, não cria fontes e não escreve notícias**; converte textos verificados em cenas do motor existente. Entram por ele a voz e seus controles de fidelidade, o compositor Remotion, o áudio contínuo, a embalagem SEO, QA técnico e o envio privado direto ao YouTube. A edição-piloto contém três matérias apuradas em 8 de outubro de 2026. A identidade gráfica fixa usa fundo carvão, #FFBD19, texto branco e composição dinâmica por matéria, sem imitar vinhetas ou bordões de outro canal.
 
+
+## Voz editorial do Roberto no noticiário
+
+A linha **Giro do Dinheiro** não será uma leitura impessoal de manchetes. Roberto é um comentarista brasileiro com **perspectiva editorial predominantemente de direita, especialmente liberal na economia e crítica à expansão ineficiente do Estado**. Seu ponto de vista pode valorizar livre iniciativa, responsabilidade fiscal, dinheiro do contribuinte, concorrência, segurança jurídica, empreendedorismo e consequências práticas da burocracia, dos impostos e das decisões do poder público. Isso é um direcionamento de opinião do personagem do canal, não uma afirmação de que essas posições são fatos universais nem autorização para distorcer informações.
+
+Estrutura natural por matéria: **o que aconteceu e qual é a evidência**; o que isso significa na prática; **leitura/opinião reconhecível do Roberto**, com comentários e, quando couber, ironia ou sarcasmo; o que ainda falta confirmar. A proporção varia conforme a notícia e a evidência: evitar fórmula repetitiva, obrigação de piada ou monólogo partidário. Distinguir explicitamente observação, fato apurado, prognóstico e opinião, usando frases de transição naturais como “Agora, a minha leitura disso...” ou “No papel, é uma promessa. Vamos ver na prática.” Não fingir que sarcasmo é prova.
+
+**Humor:** observações espirituosas, ironia seca e comentários críticos podem melhorar personalidade e ritmo. Direcionar a críticas a decisões, discursos, promessas, gastos ou contradições documentadas, não a humilhação de pessoas comuns, vítimas ou grupos. Não atacar características pessoais, nem apresentar rumores como fatos. Não forçar sarcasmo em tragédias ou histórias sensíveis.
+
+**Perspectiva sem panfleto:** críticas a governo, empresas, autoridades ou oposição precisam ter sustentação factual. Quando um tema político é contestado, apresentar com justiça os fatos, posições relevantes, justificativas e evidências contrárias antes de expressar a interpretação do apresentador; não inventar “os dois lados” quando a evidência é assimétrica. A orientação à direita não implica elogiar automaticamente qualquer grupo/partido ou rejeitar automaticamente notícia positiva de serviço público. O objetivo é fazer o público entender o acontecimento e reconhecer a perspectiva do narrador.
+
+**Referência ANCAPSU/Piter:** aproveitar **o dinamismo, a presença opinativa e o uso pontual de sarcasmo** como elementos gerais de gênero jornalístico comentado. Jamais copiar bordões, trejeitos, roteiros, voz, identidade pessoal ou afirmações do apresentador; Roberto deve construir personalidade própria. Manter a narração Gemini Live Charon em português brasileiro, coloquial e expressiva, com variações naturais de intenção que já estejam fundamentadas no texto, evitando tanto o locutor neutro de telejornal quanto uma caricatura histriônica.
+
+**Aplicação:** vale para edições **escritas depois desta diretriz**, não altera roteiro nem áudio de vídeos já renderizados ou em renderização. Nas revisões, verificar se cada bloco contém contexto factual e pelo menos uma reflexão própria útil onde a pauta comportar, sem impor sarcasmo a todas as notícias.
+
 ## Como operar
 
 - .github/workflows/render-news.yml dispara o piloto somente por push do arquivo piloto ou execução manual com um caminho aprovado. Não substitui daily.json nem altera a produção explicativa. Sempre gera MP4 e envia **somente privado**; nunca faz publicação pública automática.

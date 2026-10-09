@@ -23,3 +23,6 @@ Para o destino alternativo de notícias YouTube, reutilize a preparação editor
 
 
 Notícias usam a skill do motor mas têm **contrato separado** em `docs/news-format.md`, `news/editions` e `worker/news_project.py`. Cada edição contém múltiplas matérias verificadas, apresentador Roberto e conclusão sintética. Reutilizar Live/Remotion/QA, sem mexer em `video/data/daily.json`. O workflow de notícias entrega somente como vídeo privado, aguardando inspeção do MP4, capa feita no chat e liberação pública permitida pelo YouTube.
+
+
+No formato de notícias, o roteiro é também **comentado pelo Roberto**: ponto de vista editorial de direita/liberal na economia, críticas fundamentadas a medidas estatais e empresariais, reações humanas, ironia e sarcasmo na dose apropriada, sempre distinguindo informação apurada de opinião. Não imitar Piter/ANCAPSU literalmente nem alterar os vídeos explicativos por essa preferência. Conferir exemplos e limites em `docs/news-format.md`.
