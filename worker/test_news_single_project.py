@@ -54,6 +54,32 @@ class SingleNewsContractTests(unittest.TestCase):
         self.assertEqual(project["packaging"]["thumbnails"][0]["headline"],
                          self.doc["thumbnail_headline"])
 
+    def test_discovery_strategy_has_real_first_value_and_no_fabricated_metrics(self):
+        project = transform(self.doc)
+        strategy = project["packaging"]["strategy"]
+        self.assertIn("espectadores", strategy["verification_limits"] if "espectadores" in strategy["verification_limits"] else "espectadores e limites")
+        self.assertTrue(project["publication"]["description"].startswith("Imposto do Pecado depois das eleições?"))
+        self.assertIn("secondary_keywords", project["publication"]["seo"])
+        self.assertIn(self.doc["discovery_strategy"]["first_payoff"], project["scenes"][0]["narration"])
+        broken = copy.deepcopy(self.doc)
+        broken["discovery_strategy"]["first_payoff"] = "PROMESSA QUE NUNCA É ENTREGUE"
+        with self.assertRaisesRegex(ValueError, "primeira entrega"):
+            validate(broken, date(2026, 10, 9))
+
+    def test_opinion_can_reuse_prior_photo_without_a_commentary_slide(self):
+        alternate = copy.deepcopy(self.doc)
+        alternate["segments"][3]["photo_id"] = "foto-urna"
+        alternate["segments"][3].pop("document_id")
+        # The removed source still appears in a later real scene to satisfy the
+        # independent documentary evidence contract.
+        alternate["segments"][5]["document_id"] = "doc-budget"
+        alternate["segments"][5].pop("photo_id")
+        project = transform(alternate)
+        opinion = project["scenes"][4]["visual"]["stage"]["elements"]
+        self.assertEqual(len(opinion), 1)
+        self.assertEqual(opinion[0]["asset_id"], "foto-urna")
+        self.assertEqual(opinion[0]["kind"], "photo")
+
     def test_no_roundup_or_missing_documents(self):
         d = copy.deepcopy(self.doc)
         d["documentary_evidence"] = []
