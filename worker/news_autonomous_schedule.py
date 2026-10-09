@@ -20,9 +20,10 @@ def load(path):
 
 def main():
     p = argparse.ArgumentParser()
-    for name in ("project", "episode", "thumbnail", "private-receipt",
-                 "thumbnail-receipt", "qa", "config", "output"):
+    for name in ("project", "episode", "private-receipt", "qa", "config", "output"):
         p.add_argument("--" + name, required=True)
+    p.add_argument("--thumbnail", help="Capa opcional criada e auditada pelo ChatGPT")
+    p.add_argument("--thumbnail-receipt", help="Recibo da capa opcional, se anexada")
     p.add_argument("--root", default=".")
     args = p.parse_args()
     config = load(args.config)
@@ -36,22 +37,31 @@ def main():
         raise SystemExit("Notícia sem apuração autônoma identificada.")
     if qa.get("status") != config["require_qa_status"] or qa.get("failures") or qa.get("warnings"):
         raise SystemExit("QA técnico não está integralmente aprovado.")
-    image = Path(args.thumbnail)
-    validate_thumbnail_audit(
-        Path(args.root).resolve(), project, image, project_source_path=args.project
-    )
-    receipt, delivered = load(args.private_receipt), load(args.thumbnail_receipt)
+    receipt = load(args.private_receipt)
+    if bool(args.thumbnail) != bool(args.thumbnail_receipt):
+        raise SystemExit("Capa e recibo precisam ser informados juntos; ambos opcionais.")
+    image_hash = None
+    delivered = None
+    if args.thumbnail:
+        image = Path(args.thumbnail)
+        validate_thumbnail_audit(
+            Path(args.root).resolve(), project, image, project_source_path=args.project
+        )
+        image_hash = file_sha256(image)
+        delivered = load(args.thumbnail_receipt)
     video_id = receipt.get("video_id")
     if not re.fullmatch(r"[A-Za-z0-9_-]{11}", str(video_id)):
         raise SystemExit("ID de vídeo inválido.")
-    image_hash = file_sha256(image)
     if (receipt.get("project_id") != project_id
         or receipt.get("destination") != "youtube"
-        or receipt.get("privacy_requested") != "private"
-        or delivered.get("project_id") != project_id
+        or receipt.get("privacy_requested") != "private"):
+        raise SystemExit("Recibo do vídeo privado não corresponde ao episódio.")
+    if delivered is not None and (
+        delivered.get("project_id") != project_id
         or delivered.get("video_id") != video_id
-        or delivered.get("thumbnail_sha256") != image_hash):
-        raise SystemExit("Recibos do vídeo e capa não coincidem.")
+        or delivered.get("thumbnail_sha256") != image_hash
+    ):
+        raise SystemExit("Recibo da capa não coincide com o vídeo.")
     raw_target = episode.get("publication_target_local")
     if not isinstance(raw_target, str):
         raise SystemExit("Episódio sem horário de publicação explícito.")
@@ -102,7 +112,9 @@ def main():
     payload = {
         "project_id": project_id, "video_id": video_id,
         "scheduled_for_utc": desired, "scheduled_for_local": local_target.isoformat(),
-        "thumbnail_sha256": image_hash, "qa_status": qa["status"],
+        "thumbnail_sha256": image_hash,
+        "thumbnail_status": "attached" if image_hash else "youtube_automatic",
+        "qa_status": qa["status"],
         "status": "scheduled_private_until_publish_at",
         "confirmed_at_utc": now.isoformat(), "url": "https://youtu.be/" + video_id,
         "publication_confirmation": "pending_until_due",
