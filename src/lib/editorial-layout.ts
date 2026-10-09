@@ -298,7 +298,9 @@ function operationLayout(stage:EditorialStage,beats:StageEvent[],elements:Resolv
 }
 
 export function layoutStage(stage:EditorialStage,beats:StageEvent[],frame:number,fps:number,width:number,height:number,measure:MeasureWidth,title?:string) {
-  const canvas=editorialCanvas(width,height,stage.show_title);
+  const canvas=stage.full_bleed_news
+    ? {x:24,y:24,width:width-48,height:height-48}
+    : editorialCanvas(width,height,stage.show_title);
   const state=resolveStage(stage,beats,frame,fps);
   const connections=solveConnections(stage,beats,state.elements,frame,canvas,measure);
   const routeIds=new Set(stage.connections.flatMap(e=>[e.from,e.to]));
