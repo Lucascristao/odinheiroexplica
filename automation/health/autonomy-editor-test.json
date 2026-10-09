@@ -1,0 +1,8 @@
+{
+  "result": "fail",
+  "checked_at_utc": "2026-10-09T06:44:48.174879+00:00",
+  "run_id": "37895123447",
+  "source_commit": "2ca4b5b15c92ed7b8ecdf6c2f3a752db8389d914",
+  "step": "editorial_check",
+  "note": "Consultar logs do Actions; nenhuma not\u00edcia enviada/publicada."
+}
