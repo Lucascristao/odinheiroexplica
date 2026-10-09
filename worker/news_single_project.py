@@ -301,10 +301,14 @@ def transform(episode: dict) -> dict:
         "scenes": [
             build_scene(i, {
                 **seg,
-                **({"document_id": episode["segments"][i-1]["document_id"]}
-                   if seg["type"] == "opinion" and i > 0
-                   and not seg.get("document_id") and not seg.get("photo_id")
-                   and episode["segments"][i-1].get("document_id") else {}),
+                **({
+                    "document_id" if episode["segments"][i-1].get("document_id") else "photo_id":
+                    episode["segments"][i-1].get("document_id")
+                    or episode["segments"][i-1]["photo_id"]
+                } if seg["type"] == "opinion" and i > 0
+                    and not seg.get("document_id") and not seg.get("photo_id")
+                    and (episode["segments"][i-1].get("document_id")
+                         or episode["segments"][i-1].get("photo_id")) else {}),
             })
             for i, seg in enumerate(episode["segments"])
         ],
