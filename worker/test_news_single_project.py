@@ -57,7 +57,8 @@ class SingleNewsContractTests(unittest.TestCase):
     def test_discovery_strategy_has_real_first_value_and_no_fabricated_metrics(self):
         project = transform(self.doc)
         strategy = project["packaging"]["strategy"]
-        self.assertIn("espectadores", strategy["verification_limits"] if "espectadores" in strategy["verification_limits"] else "espectadores e limites")
+        self.assertIn("CTR", strategy["verification_limits"])
+        self.assertGreaterEqual(len(strategy["viewer_intent"]), 30)
         self.assertTrue(project["publication"]["description"].startswith("Imposto do Pecado depois das eleições?"))
         self.assertIn("secondary_keywords", project["publication"]["seo"])
         self.assertIn(self.doc["discovery_strategy"]["first_payoff"], project["scenes"][0]["narration"])
