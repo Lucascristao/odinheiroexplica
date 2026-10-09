@@ -76,8 +76,9 @@ class SingleNewsContractTests(unittest.TestCase):
         stage = project["scenes"][1]["visual"]["stage"]
         media = next(e for e in stage["elements"] if e["kind"] == "source_excerpt")
         strip = next(e for e in stage["elements"] if e["id"] == "headline")
-        self.assertGreaterEqual(media["width"] * media["height"] / 10000, .80)
-        self.assertGreaterEqual(media["width"], 90)
+        self.assertGreaterEqual(media["width"] * media["height"] / 10000, .84)
+        self.assertTrue(stage["full_bleed_news"])
+        self.assertGreaterEqual(media["width"], 95)
         self.assertLessEqual(strip["y"] + strip["height"], media["y"])
         self.assertEqual(media["surface"], "none")
         self.assertFalse(stage["captions"]["enabled"])
@@ -130,6 +131,30 @@ class SingleNewsContractTests(unittest.TestCase):
             self.assertTrue(receipt["not_original_screenshot"])
             self.assertEqual(receipt["source_id"], "S4")
             self.assertIn("bloqueio HTTP", receipt["capture_error"])
+
+    def test_wide_authentic_excerpt_is_preserved_inside_editorial_page(self):
+        from news_reconstruction import render_verified_article_panel
+        from PIL import Image, ImageDraw
+        project = transform(self.doc)
+        asset = next(a for a in project["visual_assets"] if a["type"] == "source_excerpt")
+        with TemporaryDirectory() as temp:
+            root = Path(temp)
+            original = Image.new("RGB", (1000, 190), "#ffffff")
+            draw = ImageDraw.Draw(original)
+            draw.text((40, 45), "NOTICIA DA FONTE", fill="#222222")
+            path = root / Path(asset["capture_file"]).name
+            original.save(path)
+            result = render_verified_article_panel(asset, root)
+            self.assertEqual(result, path)
+            with Image.open(result) as image:
+                self.assertEqual(image.size, (1920, 1080))
+            authentic = result.with_name(result.stem + ".authentic.png")
+            self.assertTrue(authentic.exists())
+            with Image.open(authentic) as untouched:
+                self.assertEqual(untouched.size, (1000, 190))
+            receipt = json.loads(result.with_suffix(".provenance.json").read_text())
+            self.assertEqual(receipt["kind"], "editorial_presentation_with_authentic_excerpt")
+            self.assertEqual(receipt["source_id"], asset["source_id"])
 
     def test_opinion_must_be_signposted(self):
         d = copy.deepcopy(self.doc)
