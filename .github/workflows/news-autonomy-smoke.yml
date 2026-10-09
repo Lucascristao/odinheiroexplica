@@ -49,3 +49,11 @@ jobs:
           assert p["packaging"]["thumbnails"][0]["contract"]["exact_headline"]
           print("SINGLE_NEWS_ADAPTER_OK",p["project_id"])
           PY
+      - name: Verificar autenticação do canal, sem publicar
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python -m pip install --disable-pip-version-check 'google-auth>=2.35' 'google-api-python-client>=2.149'
+          python worker/youtube_publication.py verify
