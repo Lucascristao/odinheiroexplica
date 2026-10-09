@@ -138,9 +138,9 @@ class TestScheduleWithoutCover(unittest.TestCase):
             output = Path(root) / "late-result.json"
             args.extend(["--output", str(output)])
             service = FakeService(project_id)
-            with patch.object(sys, "argv", args), \\
-                 patch.object(scheduler, "datetime", FixedDateTime), \\
-                 patch.object(scheduler, "youtube_service", return_value=service), \\
+            with patch.object(sys, "argv", args), \
+                 patch.object(scheduler, "datetime", FixedDateTime), \
+                 patch.object(scheduler, "youtube_service", return_value=service), \
                  patch.object(scheduler, "assert_channel", return_value=True):
                 scheduler.main()
             result = json.loads(output.read_text(encoding="utf-8"))
