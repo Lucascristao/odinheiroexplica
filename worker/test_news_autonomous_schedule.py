@@ -236,8 +236,8 @@ class TestScheduleWithoutCover(unittest.TestCase):
 
                 service = FakeService(project_id)
                 with patch.object(sys, "argv", args), \
-                     patch.object(scheduler, "datetime", FixedNow), \\
-                     patch.object(scheduler, "youtube_service", return_value=service), \\
+                     patch.object(scheduler, "datetime", FixedNow), \
+                     patch.object(scheduler, "youtube_service", return_value=service), \
                      patch.object(scheduler, "assert_channel", return_value=True):
                     if expected == "blocked":
                         with self.assertRaisesRegex(SystemExit, "Janela de tolerância|QA técnico"):
