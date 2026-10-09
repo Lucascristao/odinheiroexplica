@@ -130,13 +130,11 @@
       "status": "statement"
     },
     {
-      "claim": "Segundo reportagem da Folha não incluída como recorte documental, cortes anteriores não haviam produzido necessariamente queda correspondente na bomba segundo dados da ANP; isto não comprova o preço futuro.",
+      "claim": "O Ministério da Justiça informou que a Agência Nacional do Petróleo (ANP) acompanhará os preços e o pagamento das subvenções previstas nas medidas.",
       "source_ids": [
-        "S1",
-        "S2",
         "S3"
       ],
-      "status": "background"
+      "status": "statement"
     }
   ],
   "documentary_evidence": [
