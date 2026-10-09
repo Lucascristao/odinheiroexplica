@@ -149,6 +149,23 @@ jobs:
             --tts-manifest video/generated/daily-aligned-tts-manifest.json \
             --audio-dir public/processed-audio/daily --video render-output/daily-video.mp4 \
             --output video/generated/daily-delivery-qa.json
+      - name: Registrar avisos de qualidade para melhoria da próxima edição
+        if: always() && hashFiles('video/generated/daily-delivery-qa.json') != ''
+        run: |
+          python worker/news_qa_feedback.py \
+            --qa video/generated/daily-delivery-qa.json \
+            --episode "$NEWS_EDITION" \
+            --output render-output/news-qa-feedback.json
+      - name: Preservar aprendizado de QA para as próximas pautas
+        if: always() && hashFiles('render-output/news-qa-feedback.json') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: ode-news-qa-feedback
+          path: |
+            render-output/news-qa-feedback.json
+            video/generated/daily-delivery-qa.json
+          if-no-files-found: error
+          retention-days: 30
       - name: Identificar autorização editorial autônoma do episódio
         shell: bash
         run: |
