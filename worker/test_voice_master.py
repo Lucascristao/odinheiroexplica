@@ -7,9 +7,22 @@ from pathlib import Path
 import numpy as np
 from align_narration import audio_activity
 from voice_master import level_plan,pitch_summary
+from build_render_input import validate_preview_mode
 
 
 class VoiceMasterTests(unittest.TestCase):
+    def test_silent_preview_is_explicitly_isolated_from_production(self):
+        silent = {"preview_only": True, "engine": "silent-placeholder", "scenes": []}
+        real = {"engine": "google-gemini-live", "scenes": []}
+        validate_preview_mode(True, False, False, silent)
+        validate_preview_mode(False, True, True, real)
+        with self.assertRaisesRegex(RuntimeError, "não pode entrar no modo de produção"):
+            validate_preview_mode(False, False, False, silent)
+        with self.assertRaisesRegex(RuntimeError, "exige manifesto preview_only"):
+            validate_preview_mode(True, False, False, real)
+        with self.assertRaisesRegex(RuntimeError, "não permite gates de produção"):
+            validate_preview_mode(True, True, False, silent)
+
     def test_pauses_do_not_change_the_level_of_active_speech(self):
         with tempfile.TemporaryDirectory() as folder:
             activities=[]
