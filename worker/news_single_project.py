@@ -13,6 +13,7 @@ import re
 from urllib.parse import urlparse
 
 from news_project import anchors, require
+from build_youtube_package import validate_publication_fields
 
 
 def validate(episode: dict, today: date | None = None) -> dict:
@@ -57,6 +58,13 @@ def validate(episode: dict, today: date | None = None) -> dict:
             (episode["title"] + " " + episode.get("publication_description", "")).casefold(),
             "palavra-chave relevante precisa existir em título ou descrição")
     require(episode.get("engagement_question", "").endswith("?"), "pergunta final inválida")
+    # The downstream YouTube packager's rules must fail here, before costly TTS.
+    validate_publication_fields({
+        "description": episode.get("publication_description"),
+        "seo": {"primary_keyword": episode.get("primary_keyword")},
+        "engagement_question": episode.get("engagement_question"),
+        "hashtags": episode.get("hashtags"),
+    }, episode["title"])
     sources = episode.get("sources") or []
     require(len(sources) >= 2, "apuração precisa de ao menos 2 fontes")
     hosts = set()
