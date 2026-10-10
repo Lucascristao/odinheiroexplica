@@ -20,7 +20,7 @@ def load(path):
 
 
 def confirmed_video_identity(service, video_id: str, project_id: str,
-                             attempts: int = 5) -> dict:
+                             attempts: int = 15) -> dict:
     """Read-after-write check; YouTube may lag after a private upload.
 
     Never fall back to matching title, description or an unauthenticated URL.
@@ -35,12 +35,17 @@ def confirmed_video_identity(service, video_id: str, project_id: str,
             video = items[0]
             if video.get("snippet", {}).get("channelId") != EXPECTED_ID:
                 raise SystemExit("Vídeo não pertence ao canal esperado.")
+            status = video.get("status", {})
+            if status.get("uploadStatus") in ("failed", "rejected", "deleted"):
+                raise SystemExit("YouTube rejeitou o upload; preservar recibo e não repetir envio.")
             if expected_tag in video.get("snippet", {}).get("tags", []):
                 return video
         elif len(items) > 1:
             raise SystemExit("YouTube retornou identidade ambígua.")
         if attempt + 1 < attempts:
-            time.sleep(min(2 ** attempt, 5))
+            # Encoding/indexing can outlast the previous 13-second grace.
+            # Wait at most about five minutes, only reading the existing ID.
+            time.sleep(min(2 ** attempt, 30))
     raise SystemExit("Vídeo sem identificação editorial confirmada após novas consultas; preservar privado.")
 
 

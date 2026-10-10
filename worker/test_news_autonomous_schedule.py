@@ -52,6 +52,28 @@ class FakeService:
 
 
 class TestScheduleWithoutCover(unittest.TestCase):
+    def test_identity_can_arrive_after_the_old_five_read_limit(self):
+        episode_id = "noticia-2026-10-10-teste-producao"
+        service = FakeService(episode_id)
+        good = service.impl.list().execute()["items"][0]
+        pending = {**good, "snippet": {"channelId": scheduler.EXPECTED_ID}}
+        with patch.object(service.impl, "list", side_effect=[YouTubeReply({"items": [pending]}) for _ in range(7)] + [YouTubeReply({"items": [good]})]), \
+             patch.object(scheduler.time, "sleep") as sleep:
+            self.assertEqual(scheduler.confirmed_video_identity(service, "abcdefghijk", episode_id), good)
+        self.assertEqual([call.args[0] for call in sleep.call_args_list], [1, 2, 4, 8, 16, 30, 30])
+        self.assertFalse(service.impl.updated)
+
+    def test_rejected_upload_does_not_wait_or_allow_publication(self):
+        episode_id = "noticia-2026-10-10-teste-producao"
+        service = FakeService(episode_id)
+        failed = {"snippet": {"channelId": scheduler.EXPECTED_ID}, "status": {"uploadStatus": "rejected"}}
+        with patch.object(service.impl, "list", return_value=YouTubeReply({"items": [failed]})), \
+             patch.object(scheduler.time, "sleep") as sleep:
+            with self.assertRaisesRegex(SystemExit, "rejeitou o upload"):
+                scheduler.confirmed_video_identity(service, "abcdefghijk", episode_id)
+        sleep.assert_not_called()
+        self.assertFalse(service.impl.updated)
+
     def test_release_readback_retries_without_repeating_write(self):
         episode_id = "noticia-2026-10-10-manha"
         service = FakeService(episode_id)

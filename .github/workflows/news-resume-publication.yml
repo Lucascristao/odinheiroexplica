@@ -1,5 +1,9 @@
 name: ODE Notícia Única - retomar publicação do upload original
 on:
+  workflow_run:
+    workflows: ['ODE Notícia Única - produção real']
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
     inputs:
       source_run_id:
@@ -18,7 +22,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   recover:
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && (github.event_name != 'workflow_run' || github.event.workflow_run.conclusion == 'failure')
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -31,7 +35,7 @@ jobs:
       - name: Restaurar provas e MP4 original com hashes e revisão conferidos
         env:
           GITHUB_TOKEN: ${{ github.token }}
-          SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+          SOURCE_RUN_ID: ${{ inputs.source_run_id || github.event.workflow_run.id }}
         run: python worker/restore_news_publication.py --run-id "$SOURCE_RUN_ID"
       - name: Consultar identificação e processamento reais do upload existente
         env:
@@ -56,7 +60,7 @@ jobs:
           print("YOUTUBE_EXISTING_UPLOAD_OBSERVED:",json.dumps(observed,ensure_ascii=False))
           PY
       - name: Retomar somente a publicação do mesmo ID
-        if: inputs.publish == true
+        if: inputs.publish == true || github.event_name == 'workflow_run'
         env:
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
