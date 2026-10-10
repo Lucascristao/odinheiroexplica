@@ -54,6 +54,38 @@ def compose_description(
     return "\n\n".join(section for section in sections if section)
 
 
+def validate_publication_fields(publication: dict, title: str) -> list[str]:
+    """Validate editor inputs before expensive narration or rendering."""
+    description = str(publication.get("description") or "").strip()
+    seo = publication.get("seo") or {}
+    question = str(publication.get("engagement_question") or "").strip()
+    raw_hashtags = publication.get("hashtags") or []
+    if not isinstance(raw_hashtags, list):
+        raise RuntimeError("Hashtags precisam ser uma lista.")
+    hashtags = unique_nonempty(raw_hashtags)
+    if not title.strip() or len(title) > 100:
+        raise RuntimeError("Título precisa ter entre 1 e 100 caracteres.")
+    if not description:
+        raise RuntimeError("Descrição editorial ausente.")
+    if not seo.get("primary_keyword"):
+        raise RuntimeError("SEO sem palavra-chave principal.")
+    if not question or not question.endswith("?"):
+        raise RuntimeError("Pergunta de engajamento ausente ou inválida.")
+    if len(hashtags) != len(raw_hashtags):
+        raise RuntimeError("Hashtags repetidas ou vazias não são permitidas.")
+    if not 1 <= len(hashtags) <= 3 or any(
+        not re.fullmatch(r"#[^\s#]+", item) for item in hashtags
+    ):
+        raise RuntimeError("A publicação precisa de 1 a 3 hashtags válidas.")
+    if re.search(r"(?<!\w)#[^\s#]+", description):
+        raise RuntimeError("Hashtags devem ficar apenas no campo publication.hashtags.")
+    compose_description(description, "", "", "", question, hashtags)
+    if re.search(r"https?://|www\.|\[[^\]]+\]\([^)]+\)", description, re.IGNORECASE):
+        raise RuntimeError("Descrição não pode conter links; mantenha URLs nas fontes.")
+    return hashtags
+
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--project", required=True)
@@ -68,9 +100,6 @@ def main() -> None:
     thumbs = project.get("packaging", {}).get("thumbnails", [])
     title = titles[0]["text"] if titles else project["story"]["subject"]
     thumbnail = thumbs[0]["headline"] if thumbs else ""
-    if not title.strip() or len(title) > 100:
-        raise RuntimeError("Título precisa ter entre 1 e 100 caracteres.")
-
     chapters = []
     duration_seconds = render_input["duration_in_frames"] / render_input["fps"]
     chapter_seconds = []
@@ -127,16 +156,7 @@ def main() -> None:
     engagement_question = str(publication.get("engagement_question") or "").strip()
     hashtags = unique_nonempty(publication.get("hashtags", []))
 
-    if not description:
-        raise RuntimeError("Descrição editorial ausente.")
-    if not seo.get("primary_keyword"):
-        raise RuntimeError("SEO sem palavra-chave principal.")
-    if not engagement_question or not engagement_question.endswith("?"):
-        raise RuntimeError("Pergunta de engajamento ausente ou inválida.")
-    if len(hashtags) != 3 or any(
-        not re.fullmatch(r"#[^\s#]+", item) for item in hashtags
-    ):
-        raise RuntimeError("A publicação precisa de exatamente 3 hashtags válidas.")
+    hashtags = validate_publication_fields(publication, title)
 
     full_description = compose_description(
         description,
