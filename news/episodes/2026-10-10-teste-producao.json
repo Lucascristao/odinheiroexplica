@@ -1,0 +1,76 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-10-teste-producao",
+  "news_date": "2026-10-10",
+  "event_date": "2026-10-08",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-10T19:30:00+00:00",
+  "publication_target_local": "2026-10-10T12:00:00-03:00",
+  "production_validation": {
+    "authorized_by_user": true,
+    "purpose": "Segunda publicação real solicitada pelo titular após a recuperação da manhã; episódio separado das três janelas recorrentes.",
+    "duplicate_event_checked": true,
+    "subjective_listening_performed": false
+  },
+  "title": "AliExpress e Correios prometem entregas mais rápidas: falta um detalhe",
+  "title_options": [
+    {"text": "AliExpress e Correios prometem entregas mais rápidas: falta um detalhe", "editorial_quality": 5},
+    {"text": "Sua compra no AliExpress vai chegar antes? O que o acordo realmente diz", "editorial_quality": 4},
+    {"text": "Correios reforçam parceria com AliExpress antes da Black Friday", "editorial_quality": 3}
+  ],
+  "thumbnail_headline": "CHEGA QUANDO?",
+  "thumbnail_primary": "Caixa de encomenda genérica fechada e relógio original, sem logotipos, rótulos de transportadoras ou rastreamento inventado",
+  "thumbnail_tension": "Compromisso de acelerar entregas sem prazo numérico universal divulgado no comunicado consultado.",
+  "thumbnail_composition": "Caixa grande em primeiro plano, relógio ao fundo e pergunta em amarelo sobre carvão; fotografia conceitual, nunca prova de uma encomenda real.",
+  "thumbnail_text_side": "left",
+  "thumbnail_forbidden_elements": ["rastreio falso", "prazo em dias inventado", "logotipo de portal", "foto de consumidor", "promessa de entrega garantida", "marca d'água"],
+  "scorecard": {
+    "method": "Avaliação editorial de clareza, relevância e prova; sem dados de CTR ou volume de busca.",
+    "criteria": {"timeliness": 4, "consumer_interest": 5, "documentary_evidence": 5, "original_angle": 4},
+    "unavailable": ["CTR", "prazos observados depois do acordo", "metas numéricas do contrato"],
+    "reason": "A vencedora nomeia as empresas e a promessa anunciada, mas leva à descoberta entregue na primeira cena: o comunicado não estabelece quantos dias cada compra levará. O roteiro compara documentos e limites sem prometer resultado operacional já medido."
+  },
+  "sources": [
+    {"id": "S1", "publisher": "Correios", "url": "https://saladeimprensa.correios.com.br/arquivos/14539", "published_at": "2026-10-08", "role": "Fonte primária da renovação, assinatura em setembro e três objetivos logísticos; compromisso das empresas, não medição de desempenho."},
+    {"id": "S2", "publisher": "Exame", "url": "https://exame.com/brasil/aliexpress-e-correios-fazem-acordo-para-reduzir-prazo-de-entregas-no-brasil/", "published_at": "2026-10-09", "role": "Veículo de orientação econômica liberal consultado; reportagem China2Brazil/Xinhua acrescenta contexto sobre previsibilidade e integração nos picos de compras. Não comprova melhoria já ocorrida."},
+    {"id": "S3", "publisher": "Agência Brasil", "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/aliexpress-e-correios-firmam-acordo-para-acelerar-entregas-no-brasil", "published_at": "2026-10-08", "role": "Reportagem sobre os documentos, objetivos e calendário. As fontes convergem sobre o anúncio; não são três medições independentes de prazo."}
+  ],
+  "verified_facts": [
+    {"claim": "Correios e AliExpress anunciaram a renovação da parceria de entrega aos consumidores brasileiros.", "source_ids": ["S1", "S2", "S3"], "status": "confirmed"},
+    {"claim": "Segundo o comunicado, a assinatura ocorreu em setembro na sede do Alibaba Group em Hangzhou, China; o anúncio público consultado é de 8 de outubro.", "source_ids": ["S1", "S3"], "status": "statement"},
+    {"claim": "Além da renovação, foi assinado memorando de entendimentos para ações conjuntas nos períodos de maior volume, incluindo 11.11 e Black Friday.", "source_ids": ["S1", "S2", "S3"], "status": "confirmed"},
+    {"claim": "Os objetivos declarados são reduzir prazos, ampliar capacidade de processamento e melhorar a visibilidade do rastreamento.", "source_ids": ["S1", "S2", "S3"], "status": "statement"},
+    {"claim": "O comunicado integral consultado não informa prazo numérico universal nem resultados medidos de entregas depois do acordo.", "source_ids": ["S1"], "status": "background"}
+  ],
+  "documentary_evidence": [
+    {"id": "aliexpress-correios-nota", "kind": "source_excerpt", "source_id": "S1", "source_page_url": "https://saladeimprensa.correios.com.br/arquivos/14539", "expected_text": "Correios e AliExpress renovam parceria e firmam compromisso para acelerar entregas no Brasil", "attribution": "Correios, Sala de Imprensa, comunicado de 08/10/2026; título e contexto do anúncio.", "rights_review": "Citação documental breve e contextual para comentar a promessa logística; preservar origem e texto, sem reutilizar a fotografia de divulgação como ilustração autônoma.", "capture_file": "research/captures/aliexpress-correios-nota-08out.png", "editorial_reconstruction": {"publisher": "Correios", "published_at": "2026-10-08", "headline": "Parceria renovada para preparar a temporada de encomendas", "context": "A nota registra renovação contratual e memorando com objetivos de prazo, processamento e rastreamento, sem apresentar prazo numérico para cada compra."}},
+    {"id": "aliexpress-exame", "kind": "source_excerpt", "source_id": "S2", "source_page_url": "https://exame.com/brasil/aliexpress-e-correios-fazem-acordo-para-reduzir-prazo-de-entregas-no-brasil/", "expected_text": "AliExpress e Correios fazem acordo para reduzir prazo de entregas no Brasil", "attribution": "Exame, China2Brazil, fonte Xinhua, 09/10/2026 às 15h41; trecho pertinente à cooperação logística.", "rights_review": "Trecho mínimo de título/contexto para análise do compromisso anunciado, com autoria e origem. Não usar a foto Getty como elemento ilustrativo separado.", "capture_file": "research/captures/aliexpress-exame-09out.png", "editorial_reconstruction": {"publisher": "Exame", "published_at": "2026-10-09", "headline": "Integração logística busca melhorar a previsibilidade", "context": "Reportagem descreve preparação para picos de compras, reforço da capacidade e rastreamento; trata resultados como expectativa, sem estatística de prazo realizado."}},
+    {"id": "aliexpress-agencia", "kind": "source_excerpt", "source_id": "S3", "source_page_url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/aliexpress-e-correios-firmam-acordo-para-acelerar-entregas-no-brasil", "expected_text": "AliExpress e Correios firmam acordo para acelerar entregas no Brasil", "attribution": "Agência Brasil, 08/10/2026 às 16h27; manchete e contexto do memorando.", "rights_review": "Recorte documental proporcional ao comentário, com fonte, data e URL. A imagem da matéria não será apresentada como prova de resultados nem reutilizada separadamente.", "capture_file": "research/captures/aliexpress-agencia-08out.png", "editorial_reconstruction": {"publisher": "Agência Brasil", "published_at": "2026-10-08", "headline": "Plano de entregas mira o movimento de novembro", "context": "A cobertura confirma renovação e objetivos do memorando para Black Friday e 11 de novembro, distinguindo intenção anunciada de prazo já cumprido."}}
+  ],
+  "context_photos": [],
+  "segments": [
+    {"id": "abertura", "title": "A promessa e o detalhe ausente", "type": "fact", "document_id": "aliexpress-exame", "object_type": "package", "label": "ENTREGAS", "headline": "PROMESSA DE AGILIDADE", "metric": "SEM PRAZO UNIVERSAL", "visual_cards": ["PARCERIA FOI RENOVADA", "ENTREGA MAIS RÁPIDA É OBJETIVO", "QUANTOS DIAS? NÃO FOI INFORMADO", "EXPECTATIVA NÃO É RESULTADO"], "narration": "AliExpress e Correios anunciaram um acordo para acelerar entregas no Brasil. Só que o anúncio não diz em quantos dias a sua compra vai chegar. Esse é o detalhe que separa uma boa promessa de uma garantia para quem está esperando uma encomenda. Eu sou o Roberto. Vamos olhar o que foi assinado, o que as empresas querem melhorar e o que ainda precisa aparecer na prática antes de comemorar."},
+    {"id": "documentos", "title": "O que foi efetivamente assinado", "type": "fact", "document_id": "aliexpress-correios-nota", "object_type": "package", "label": "ACORDO", "headline": "CONTRATO E MEMORANDO", "metric": "ANÚNCIO DE 8 DE OUTUBRO", "visual_cards": ["CONTRATO DE PARCERIA RENOVADO", "ASSINATURA EM SETEMBRO NA CHINA", "MEMORANDO DE AÇÕES CONJUNTAS", "PREPARAÇÃO PARA O FIM DO ANO"], "narration": "A nota publicada em oito de outubro relata dois movimentos. Primeiro, a renovação do contrato da parceria que entrega pedidos da plataforma aos consumidores brasileiros. Segundo, um memorando de entendimentos, um documento que registra ações de cooperação. A assinatura aconteceu em setembro, na sede do grupo Alibaba, na China. O foco agora é preparar a operação para a temporada de maior movimento, incluindo as promoções de onze de novembro e a Black Friday."},
+    {"id": "objetivos", "title": "As três melhorias prometidas", "type": "fact", "document_id": "aliexpress-agencia", "object_type": "truck", "label": "LOGÍSTICA", "headline": "TRÊS OBJETIVOS", "metric": "PRAZO, CAPACIDADE E RASTREIO", "visual_cards": ["REDUZIR O PRAZO DE ENTREGA", "PROCESSAR MAIS ENCOMENDAS", "MELHORAR A VISIBILIDADE DO RASTREIO", "COMPROMISSOS AINDA PRECISAM DE RESULTADO"], "narration": "As empresas apresentam três objetivos: reduzir o prazo de entrega, aumentar a capacidade de processamento das encomendas e melhorar a visibilidade do rastreamento. Para quem compra, isso pode significar menos incerteza sobre o caminho do pacote. Mas estamos falando de objetivos anunciados. As reportagens consultadas não apresentam uma medição provando que todas as encomendas já ficaram mais rápidas. Também não permitem concluir que todo pedido será entregue no mesmo número de dias."},
+    {"id": "limites", "title": "O que o comprador pode concluir", "type": "fact", "document_id": "aliexpress-exame", "object_type": "package", "label": "CONSUMIDOR", "headline": "CONFIRA A PROMESSA DO PEDIDO", "metric": "RESULTADO AINDA NÃO MEDIDO", "visual_cards": ["PARCERIA NÃO É PRAZO INDIVIDUAL", "ANÚNCIO NÃO MEDE CADA ENTREGA", "OBSERVE A PREVISÃO DO SEU PEDIDO", "ACOMPANHE AS ETAPAS REAIS"], "narration": "Então, como interpretar a notícia? O acordo é um sinal de preparação para o aumento das compras, não uma nova data de chegada para cada pessoa. A previsão apresentada no seu pedido e as etapas reais do rastreamento continuam sendo as informações concretas para acompanhar aquela encomenda. O comunicado não fornece uma meta numérica universal. Sem esse número e sem resultados observados, prometer que qualquer compra vai chegar antes seria ir além da evidência disponível."},
+    {"id": "opiniao", "title": "A cobrança por resultado", "type": "opinion", "document_id": "aliexpress-exame", "object_type": "package", "label": "ANÁLISE", "headline": "PROMESSA PRECISA VIRAR ENTREGA", "metric": "MEDIR O QUE MUDOU", "visual_cards": ["COOPERAÇÃO PODE AJUDAR", "CLIENTE PRECISA DE PREVISIBILIDADE", "RESULTADO VALE MAIS QUE ANÚNCIO", "COMPARE PRAZO PROMETIDO E CUMPRIDO"], "narration": "Na minha leitura, cooperação logística pode ser positiva, mas o consumidor precisa de resultado, não só de anúncio. A pergunta agora é se a preparação vai melhorar o prazo cumprido e a clareza do rastreamento quando o volume crescer. Essa resposta ainda não veio nos dados consultados. Se esta análise ajudou você a separar promessa de garantia, inscreva-se no canal. E me conta: nas suas compras, o que incomoda mais, a demora ou ficar sem saber onde está o pacote?"}
+  ],
+  "engagement_question": "Nas suas compras, o que incomoda mais: a demora ou a falta de informação no rastreamento?",
+  "hashtags": ["#AliExpress", "#Correios", "#ComprasOnline"],
+  "tags": ["AliExpress", "Correios", "prazo de entrega", "acordo AliExpress Correios", "rastreamento", "Black Friday 2026"],
+  "primary_keyword": "AliExpress",
+  "secondary_keywords": ["Correios", "entregas no Brasil", "rastreamento de encomendas", "Black Friday"],
+  "pronunciations": {"AliExpress": "áli exprés", "Black Friday": "bléqui fráidai", "Alibaba": "alibabá"},
+  "discovery_strategy": {
+    "viewer_intent": "Saber se o novo acordo muda o prazo da compra que a pessoa está esperando.",
+    "search_query": "AliExpress Correios acordo entregas outubro 2026 prazo",
+    "recommendation_angle": "Uma promessa atraente de agilidade confrontada com o detalhe verificável que falta: prazo numérico por encomenda.",
+    "first_payoff": "AliExpress e Correios anunciaram um acordo para acelerar entregas no Brasil. Só que o anúncio não diz em quantos dias a sua compra vai chegar.",
+    "promise_proof": "Comunicado dos Correios e reportagens de Exame e Agência Brasil documentam contrato, memorando e três objetivos; nenhum dado consultado mede a melhoria já realizada para cada consumidor.",
+    "audience_hypothesis": "Brasileiros que compram em plataformas internacionais e querem previsibilidade sobre suas encomendas.",
+    "thumbnail_complement": "A pergunta CHEGA QUANDO? visualiza a dúvida do comprador sem repetir o título nem inventar um prazo.",
+    "verification_limits": "Sem acesso ao contrato integral, metas internas, custos, dados de rastreamento de consumidores ou medição após o anúncio. Não afirmar exclusividade logística nem redução comprovada de prazo ou frete."
+  },
+  "publication_description": "AliExpress e Correios renovaram a parceria e anunciaram ações para acelerar entregas no Brasil. Mas o comunicado não informa um prazo universal para cada compra. Roberto explica os documentos, os objetivos e o que ainda falta medir.\n\n- O contrato renovado e o memorando de entendimentos\n- As três melhorias anunciadas para a operação\n- Por que o anúncio não garante uma nova data para o seu pacote\n- O que observar na previsão e no rastreamento do pedido"
+}
