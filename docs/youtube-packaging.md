@@ -80,7 +80,7 @@ Neste vídeo, você entende o que realmente mudou e quando um pagamento maior po
 Além de `publication.description`, toda nova produção deve preencher:
 
 - `publication.engagement_question`: uma pergunta simples, diretamente ligada ao vídeo, para comentários;
-- `publication.hashtags`: exatamente 3 hashtags específicas e legíveis, sem espaços;
+- `publication.hashtags`: de 1 a 3 hashtags específicas e legíveis, sem espaços ou repetições; o canal prefere 1 relevante em vez de 3 genéricas;
 - `publication.seo.primary_keyword`: assunto principal que também orienta o começo do título e do gancho;
 - `publication.seo.secondary_keywords`: apenas termos realmente relacionados.
 
@@ -90,7 +90,7 @@ O pipeline acrescenta automaticamente, nesta ordem quando houver conteúdo:
 3. uma única seção `FONTES`, com títulos consolidados e sem links;
 4. créditos visuais necessários;
 5. pergunta para comentários;
-6. 3 hashtags.
+6. de 1 a 3 hashtags;
 
 ## Capítulos
 
@@ -99,6 +99,10 @@ Os capítulos vêm do tempo real do render, nunca de minutagem inventada no rote
 ## Fontes
 
 A descrição pública usa uma única lista de fontes, sem URLs. Não repetir referências dentro de `publication.description`. URLs continuam nos metadados internos do projeto.
+
+## Preflight do noticiário automático
+
+O adaptador `worker/news_single_project.py` chama o mesmo validador de `worker/build_youtube_package.py` antes da narração, para não desperdiçar síntese de voz e processamento em um roteiro com erro de SEO. O corpo da descrição não pode repetir hashtags, seção FONTES, capítulos ou créditos; o empacotador acrescenta essas seções uma única vez. O contrato de notícias é de **1 a 3 hashtags relevantes**.
 
 ## Revisão antes de aprovar
 
@@ -110,7 +114,7 @@ Antes do TTS, confira:
 - há 3 ou 4 bullets úteis;
 - não existem fontes, capítulos ou hashtags duplicados no corpo;
 - a pergunta de comentários é natural;
-- existem exatamente 3 hashtags;
+- existem de 1 a 3 hashtags distintas, e nenhuma é duplicada no corpo editorial;
 - toda promessa do título, thumbnail e descrição é entregue pelo roteiro.
 
 
