@@ -1,0 +1,304 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-10-manha",
+  "news_date": "2026-10-10",
+  "event_date": "2026-10-09",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-10T12:43:43.134Z",
+  "publication_target_local": "2026-10-10T08:00:00-03:00",
+  "title": "Dólar abaixo de R$ 5 e Bolsa recorde: quem realmente ganha?",
+  "title_options": [
+    {
+      "text": "Dólar abaixo de R$ 5 e Bolsa recorde: quem realmente ganha?",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Ibovespa supera 209 mil pontos, mas o ganho não chega a todos",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Bolsa sobe 8,82% na semana: o que explica o salto?",
+      "editorial_quality": 4
+    }
+  ],
+  "thumbnail_headline": "RECORDE. E SEU BOLSO?",
+  "thumbnail_primary": "Dólar ilustrativo com gráfico original do Ibovespa sem criar imagem de bolsa real ou preço de painel fictício",
+  "thumbnail_tension": "Mercado registrou índice recorde e dólar abaixo de cinco reais; vantagem depende da exposição financeira de cada pessoa.",
+  "thumbnail_composition": "Fundo grafite, destaque amarelo e branco, dólar conceitual à esquerda e linha de tendência original à direita; sem fotografias de terceiros, marcas ou preço falso.",
+  "thumbnail_text_side": "left",
+  "thumbnail_forbidden_elements": [
+    "manchete de portal falsificada",
+    "preço individual de ação inventado",
+    "promessa de lucro",
+    "logo de veículo",
+    "imagem de candidato como endosso",
+    "marca d'água"
+  ],
+  "scorecard": {
+    "method": "Avaliação editorial qualitativa com dados verificados de fechamento; sem alegação de CTR, tendência ou volume de buscas.",
+    "criteria": {
+      "timeliness": 5,
+      "consumer_interest": 4,
+      "public_debate": 4,
+      "documentary_evidence": 5,
+      "original_angle": 5
+    },
+    "unavailable": [
+      "CTR",
+      "buscas em tempo real",
+      "efeito em compras individuais"
+    ],
+    "reason": "O título escolhido apresenta dois números/acontecimentos comprovados pelo fechamento de 09/10 e pergunta quem se beneficia. A primeira cena entrega imediatamente o contraste; cenas dois e três mostram os dados e por que indexação e câmbio não representam ganho universal; cenas quatro e cinco separam expectativa de fato e fazem análise."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "B3 Bora Investir",
+      "url": "https://borainvestir.b3.com.br/noticias/mercado/ibovespa-b3-bate-novo-recorde-e-fecha-em-209-mil-pontos-dolar-cai-a-r-498/",
+      "published_at": "2026-10-09",
+      "role": "publicação da própria Bolsa confirmando os recordes, ganhos e dólar"
+    },
+    {
+      "id": "S2",
+      "publisher": "Exame",
+      "url": "https://exame.com/invest/mercados/ibovespa-ibov-fechamento-09-10-2026/",
+      "published_at": "2026-10-09",
+      "role": "reportagem independente sobre recorde histórico, distribuição dos ganhos e fechamento do câmbio"
+    },
+    {
+      "id": "S3",
+      "publisher": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/economia/money/mercado/mercado-financeiro-ibovespa-dolar-9-outubro-2026/",
+      "published_at": "2026-10-09",
+      "role": "reportagem independente sobre o mercado, pesquisas e inflação"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "A B3 informou o recorde de fechamento do Ibovespa em 209.066,90 pontos no pregão de 09/10/2026.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "O Ibovespa subiu 1,38% na sessão e 8,82% na semana encerrada em 09/10/2026.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "O dólar comercial fechou em aproximadamente R$ 4,985, abaixo de cinco reais.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "A Exame noticiou fortes altas em MRV e Magazine Luiza e quedas em empresas do setor de telecomunicações no pregão.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "O IPCA de setembro subiu 0,82%, acima das expectativas citadas pelas reportagens, mesmo com a valorização da Bolsa.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "As reportagens atribuem parte do movimento à reação dos investidores às pesquisas eleitorais e às expectativas de política fiscal, interpretação de mercado e não garantia causal exclusiva.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "statement"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "bolsa-b3",
+      "kind": "source_excerpt",
+      "source_id": "S1",
+      "source_page_url": "https://borainvestir.b3.com.br/noticias/mercado/ibovespa-b3-bate-novo-recorde-e-fecha-em-209-mil-pontos-dolar-cai-a-r-498/",
+      "expected_text": "Ibovespa B3 bate novo recorde e fecha em 209 mil pontos",
+      "attribution": "B3 Bora Investir, Redação B3, 09/10/2026 às 17h46; capturar manchete e trecho curto de resultados.",
+      "rights_review": "Citação contextual e mínima de trecho noticioso para crítica jornalística com URL, crédito e data. Não copiar foto ou artigo inteiro.",
+      "capture_file": "research/captures/bolsa-b3-09out.png",
+      "editorial_reconstruction": {
+        "publisher": "B3 Bora Investir",
+        "published_at": "2026-10-09",
+        "headline": "Ibovespa B3 bate novo recorde e fecha em 209 mil pontos; dólar cai a R$ 4,98",
+        "context": "A B3 registra 209.066,90 pontos no fechamento de sexta-feira, ganho de 8,82% na semana e dólar à vista abaixo de cinco reais."
+      }
+    },
+    {
+      "id": "bolsa-exame",
+      "kind": "source_excerpt",
+      "source_id": "S2",
+      "source_page_url": "https://exame.com/invest/mercados/ibovespa-ibov-fechamento-09-10-2026/",
+      "expected_text": "Ibovespa tem maior alta semanal em 6 anos e bate novo recorde de fechamento",
+      "attribution": "Exame, Clara Assunção, 09/10/2026 às 17h44; manchete e trecho sobre recordes.",
+      "rights_review": "Uso de manchete e trecho estritamente necessário a comentário crítico, mantendo origem e autoria; fotos da Exame não licenciadas ficam excluídas.",
+      "capture_file": "research/captures/bolsa-exame-09out.png",
+      "editorial_reconstruction": {
+        "publisher": "Exame",
+        "published_at": "2026-10-09",
+        "headline": "Ibovespa tem maior alta semanal em 6 anos e bate novo recorde de fechamento",
+        "context": "A reportagem identifica valorização de 1,38% no dia, 8,82% na semana, recorde de encerramento e movimentos diferentes entre ações."
+      }
+    },
+    {
+      "id": "bolsa-cnn",
+      "kind": "source_excerpt",
+      "source_id": "S3",
+      "source_page_url": "https://www.cnnbrasil.com.br/economia/money/mercado/mercado-financeiro-ibovespa-dolar-9-outubro-2026/",
+      "expected_text": "Ibovespa bate recorde e fecha semana com alta de 8%; dólar cai a R$ 4,98",
+      "attribution": "CNN Brasil, Manuela Miniguini e Beatriz Oliveira, atualização 09/10/2026 às 18h28.",
+      "rights_review": "Recorte curto e proporcional ao comentário econômico com identificação de veículo, data e URL, sem utilizar vídeos ou fotografias de terceiros.",
+      "capture_file": "research/captures/bolsa-cnn-09out.png",
+      "editorial_reconstruction": {
+        "publisher": "CNN Brasil",
+        "published_at": "2026-10-09",
+        "headline": "Ibovespa bate recorde e fecha semana com alta de 8%; dólar cai a R$ 4,98",
+        "context": "CNN registra índice em 209.066,90 pontos e dólar à vista perto de 4 reais e 98 centavos; movimentação dialoga com expectativas e dados de inflação."
+      }
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "abertura",
+      "title": "Dólar e Bolsa em direções surpreendentes",
+      "type": "fact",
+      "document_id": "bolsa-b3",
+      "object_type": "data",
+      "label": "MERCADO",
+      "headline": "BOLSA EM RECORDE",
+      "metric": "DÓLAR ABAIXO DE R$ 5",
+      "visual_cards": [
+        "BOLSA EM RECORDE HISTÓRICO",
+        "DÓLAR ABAIXO DE CINCO REAIS",
+        "FECHAMENTO DE SEXTA-FEIRA",
+        "GANHO NÃO É PARA TODOS"
+      ],
+      "narration": "O dólar fechou abaixo de cinco reais e a Bolsa brasileira passou dos duzentos e nove mil pontos pela primeira vez num fechamento. Só que isso não significa que todo brasileiro ganhou dinheiro nesta sexta-feira. Foi um fechamento de mercado com números históricos, e a pergunta mais interessante é: quem pode se beneficiar dessa combinação, e quem ainda não sente nada no bolso? Eu sou o Roberto e vamos separar o recorde da Bolsa do efeito real para você."
+    },
+    {
+      "id": "fechamento",
+      "title": "O que os números realmente mostram",
+      "type": "fact",
+      "document_id": "bolsa-exame",
+      "object_type": "cash",
+      "label": "PREGÃO",
+      "headline": "209 MIL PONTOS",
+      "metric": "ALTA SEMANAL DE 8,82%",
+      "visual_cards": [
+        "ÍNDICE FECHA EM 209.066 PONTOS",
+        "SEMANA SOBE 8,82 POR CENTO",
+        "DÓLAR FECHA PERTO DE R$ 4,99",
+        "NÚMEROS NÃO GARANTEM LUCRO"
+      ],
+      "narration": "Os dados são objetivos. No pregão de nove de outubro, o Ibovespa avançou um vírgula trinta e oito por cento e terminou em duzentos e nove mil e sessenta e seis pontos, novo recorde de fechamento. Na semana, a alta chegou a oito vírgula oitenta e dois por cento. O dólar comercial encerrou perto de quatro reais e noventa e nove centavos, abaixo de cinco reais. Mas o Ibovespa é um índice. Seu rendimento não é igual ao retorno de cada ação, nem do investimento de cada pessoa."
+    },
+    {
+      "id": "ganhadores",
+      "title": "Quem pode ganhar, e quem não ganhou",
+      "type": "fact",
+      "document_id": "bolsa-cnn",
+      "object_type": "bank",
+      "label": "EFEITOS",
+      "headline": "CADA ATIVO REAGE DE UM JEITO",
+      "metric": "NÃO É GANHO UNIVERSAL",
+      "visual_cards": [
+        "ÍNDICE NÃO É CARTEIRA PESSOAL",
+        "CÂMBIO AFETA CUSTOS DIFERENTES",
+        "IMPORTADORES PODEM TER ALÍVIO",
+        "EXPORTADORES TÊM OUTRO EFEITO"
+      ],
+      "narration": "Na prática, ações de empresas diferentes se comportam de formas diferentes. A reportagem da Exame aponta fortes altas em empresas ligadas ao mercado interno, mas também quedas em papéis de operadoras de telecomunicações. Já o dólar mais baixo pode reduzir o custo, em reais, de produtos importados e de viagens ao exterior, quando outras condições não mudam. Por outro lado, exportadores que recebem em dólar podem enfrentar menos receita em reais. Nada disso é automático: contratos, margens, impostos e preços podem mudar o efeito final."
+    },
+    {
+      "id": "motivos",
+      "title": "O que movimentou a sessão",
+      "type": "fact",
+      "document_id": "bolsa-b3",
+      "object_type": "data",
+      "label": "CONTEXTO",
+      "headline": "EXPECTATIVAS MOVERAM PREÇOS",
+      "metric": "IPCA DE 0,82%",
+      "visual_cards": [
+        "PESQUISAS ELEITORAIS NO RADAR",
+        "EXPECTATIVA FISCAL, NÃO GARANTIA",
+        "INFLAÇÃO DE SETEMBRO EM ALTA",
+        "MERCADO ANTECIPA CENÁRIOS"
+      ],
+      "narration": "E o que levou o mercado a esse movimento? As reportagens citam a reação de investidores a pesquisas eleitorais e à expectativa de possíveis mudanças de política econômica. Isso é percepção e avaliação de agentes do mercado, não uma garantia de que o futuro governo, qualquer que seja, cumprirá determinada agenda. Também houve influência do cenário internacional. E atenção: o IPCA de setembro foi de zero vírgula oitenta e dois por cento, acima do esperado. Portanto, não é correto dizer que um pregão histórico resolveu a inflação ou o custo de vida."
+    },
+    {
+      "id": "opiniao",
+      "title": "A leitura crítica do Roberto",
+      "type": "opinion",
+      "document_id": "bolsa-exame",
+      "object_type": "cash",
+      "label": "ANÁLISE",
+      "headline": "RECORDE NÃO PAGA SUA CONTA",
+      "metric": "OLHE O SEU ORÇAMENTO",
+      "visual_cards": [
+        "RECORDE É SINAL, NÃO PROMESSA",
+        "INVESTIMENTO TEM RISCO",
+        "PREÇO AO CONSUMIDOR NÃO CAI NA HORA",
+        "ACOMPANHAR DADOS, NÃO TORCER"
+      ],
+      "narration": "Agora, minha leitura. É positivo quando o mercado atrai interesse e a moeda se fortalece, mas confundir alta de índice com prosperidade imediata é um erro. O cidadão que paga aluguel, supermercado e combustível continua lidando com preços concretos. Investidores também precisam lembrar que resultados passados não garantem retornos futuros. Antes de comemorar qualquer número isolado, vale observar a inflação, os juros, a atividade econômica e o próprio orçamento. O recado é simples: o mercado fechou em festa na sexta-feira, mas o efeito para cada bolso ainda precisa ser medido. Você sentiu alguma diferença?"
+    }
+  ],
+  "engagement_question": "Você percebeu algum efeito concreto do dólar mais baixo no seu bolso?",
+  "hashtags": [
+    "#Ibovespa"
+  ],
+  "tags": [
+    "ibovespa",
+    "dólar",
+    "bolsa de valores",
+    "fechamento 9 outubro 2026",
+    "mercado financeiro",
+    "economia brasileira"
+  ],
+  "primary_keyword": "Dólar",
+  "secondary_keywords": [
+    "Ibovespa",
+    "bolsa de valores",
+    "cotação do dólar",
+    "recorde da bolsa"
+  ],
+  "pronunciations": {
+    "Ibovespa": "ibovêspa",
+    "IPCA": "ípi-cá",
+    "B3": "bê três"
+  },
+  "discovery_strategy": {
+    "viewer_intent": "Saber se dólar abaixo de cinco reais e Bolsa recorde significam vantagem financeira real para o cidadão ou investidor.",
+    "search_query": "dólar abaixo 5 reais Ibovespa recorde 9 outubro 2026",
+    "recommendation_angle": "A novidade comprovada é a combinação de recorde de fechamento e câmbio menor, com efeito desigual para consumidores, investidores e empresas.",
+    "first_payoff": "O dólar fechou abaixo de cinco reais e a Bolsa brasileira passou dos duzentos e nove mil pontos pela primeira vez num fechamento.",
+    "promise_proof": "B3, Exame e CNN confirmam índice em 209.066,90 pontos, ganho semanal de 8,82% e dólar perto de R$ 4,985; roteiro distingue índice de rentabilidade individual.",
+    "audience_hypothesis": "Brasileiros interessados em economia e impacto do câmbio e Bolsa no orçamento, sem supor que todos investem na B3.",
+    "thumbnail_complement": "Contraste entre gráfico conceitual e dólar abaixo de cinco reais sem repetir a pergunta do título.",
+    "verification_limits": "Não há medição de economia do consumidor nem retorno de carteiras individuais; cenário eleitoral é apresentado como avaliação atribuída, não posição do canal."
+  },
+  "publication_description": "Dólar abaixo de R$ 5 e Ibovespa em recorde histórico no fechamento de 9 de outubro de 2026. A Bolsa encerrou a sexta-feira aos 209.066,90 pontos e avançou 8,82% na semana, enquanto o dólar comercial terminou perto de R$ 4,985. Quem pode se beneficiar do câmbio mais baixo? O que realmente significa a alta da Bolsa para quem investe ou paga as contas?\n\nRoberto explica os dados confirmados pela B3, Exame e CNN Brasil, os efeitos diferentes sobre consumidores e empresas, e por que recordes do mercado não garantem ganho para todos.\n\nFontes: B3 Bora Investir, Exame e CNN Brasil. Dados de 09/10/2026. #Ibovespa"
+}
