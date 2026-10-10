@@ -1,0 +1,84 @@
+name: ODE Notícia Única - retomar publicação do upload original
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: Run de produção com QA e upload privado concluídos
+        type: string
+        required: true
+      publish:
+        description: Retomar publicação com os gates e autorização atuais
+        type: boolean
+        default: false
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: ode-news-single-${{ github.repository }}
+  cancel-in-progress: false
+jobs:
+  recover:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Preparar somente dependências de publicação
+        run: python -m pip install --disable-pip-version-check requests google-auth google-api-python-client
+      - name: Restaurar provas e MP4 original com hashes e revisão conferidos
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          SOURCE_RUN_ID: ${{ inputs.source_run_id }}
+        run: python worker/restore_news_publication.py --run-id "$SOURCE_RUN_ID"
+      - name: Consultar identificação e processamento reais do upload existente
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python - <<'PY'
+          import json,sys
+          from pathlib import Path
+          sys.path.insert(0,"worker")
+          from youtube_publication import youtube_service,assert_channel,EXPECTED_ID
+          service=youtube_service()
+          assert_channel(service)
+          proof=json.loads(Path("render-output/news-publication-recovery.json").read_text())
+          state=service.videos().list(part="snippet,status,processingDetails",id=proof["video_id"]).execute().get("items",[])
+          if len(state)!=1 or state[0].get("snippet",{}).get("channelId")!=EXPECTED_ID:
+              raise SystemExit("Upload original não foi confirmado no canal autorizado.")
+          video=state[0]
+          observed={"video_id":video["id"],"snippet":video.get("snippet"),"status":video.get("status"),"processingDetails":video.get("processingDetails")}
+          Path("render-output/news-upload-observed.json").write_text(json.dumps(observed,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
+          print("YOUTUBE_EXISTING_UPLOAD_OBSERVED:",json.dumps(observed,ensure_ascii=False))
+          PY
+      - name: Retomar somente a publicação do mesmo ID
+        if: inputs.publish == true
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python worker/news_autonomous_schedule.py \
+            --root . --project video/generated/daily-project.json \
+            --episode "$NEWS_EDITION" \
+            --private-receipt render-output/daily-youtube-private.json \
+            --qa video/generated/daily-delivery-qa.json \
+            --config config/news-autonomy.json \
+            --output render-output/news-publication-scheduled.json
+      - name: Guardar diagnóstico e recibos, inclusive em falhas
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: news-publication-recovery-receipts
+          path: |
+            render-output/news-publication-recovery.json
+            render-output/news-upload-observed.json
+            render-output/daily-youtube-private.json
+            render-output/news-publication-scheduled.json
+            video/generated/daily-delivery-qa.json
+          if-no-files-found: warn
+          retention-days: 30
