@@ -45,6 +45,13 @@
       "authorized_by_user": true,
       "mode": "publish_immediately_after_qa",
       "reason": "Autorização explícita do titular no chat de 10/10/2026 para recuperar e publicar a edição da manhã mesmo após 09h30; limitada a este episódio; exige QA, canal e identidade YouTube sem duplicatas."
+    },
+    {
+      "episode_id": "noticia-2026-10-10-teste-producao",
+      "original_publication_local": "2026-10-10T12:00:00-03:00",
+      "authorized_by_user": true,
+      "mode": "publish_immediately_after_qa",
+      "reason": "O titular solicitou nesta conversa uma segunda publicação real de teste assim que a manhã concluísse. Autorização exclusiva deste episódio em 10/10/2026, separado das edições recorrentes, mantendo QA, apuração, canal e deduplicação."
     }
   ]
 }
