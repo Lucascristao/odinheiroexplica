@@ -44,6 +44,26 @@ def confirmed_video_identity(service, video_id: str, project_id: str,
     raise SystemExit("Vídeo sem identificação editorial confirmada após novas consultas; preservar privado.")
 
 
+def confirm_release_status(service, video_id, project_id, privacy, publish_at=None,
+                           attempts=5):
+    """Retry only readback: a successful write can take seconds to become visible."""
+    for attempt in range(attempts):
+        video = confirmed_video_identity(service, video_id, project_id)
+        status = video.get("status", {})
+        if status.get("uploadStatus") in ("failed", "rejected", "deleted"):
+            raise SystemExit("YouTube rejeitou o vídeo: " + str(status.get("rejectionReason") or status.get("failureReason") or status["uploadStatus"]))
+        observed_target = status.get("publishAt")
+        target_matches = publish_at is None or (
+            observed_target is not None
+            and datetime.fromisoformat(observed_target.replace("Z", "+00:00")) == publish_at
+        )
+        if status.get("privacyStatus") == privacy and target_matches:
+            return video
+        if attempt + 1 < attempts:
+            time.sleep(min(2 ** attempt, 5))
+    raise SystemExit("YouTube não confirmou " + ("o horário programado" if publish_at else "a publicação pública") + " após novas consultas; verificar o mesmo vídeo, sem repetir upload.")
+
+
 def main():
     p = argparse.ArgumentParser()
     for name in ("project", "episode", "private-receipt", "qa", "config", "output"):
@@ -133,16 +153,27 @@ def main():
         )
     )
     publish_now = eligible_late_grace or eligible_recovery
-    if lead < 0 and not publish_now:
-        raise SystemExit("Janela de tolerância vencida; preservar vídeo privado.")
     if 0 < lead < config["min_lead_minutes"]:
         print("SHORT_LEAD_ADVISORY: programar no horário original sem atrasar nem cancelar.")
     service = youtube_service()
     assert_channel(service)
     video = confirmed_video_identity(service, video_id, project_id)
     status = video["status"]
+    if status.get("privacyStatus") == "public":
+        output = Path(args.output)
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(json.dumps({
+            "project_id": project_id, "video_id": video_id,
+            "status": "already_public", "publication_confirmation": "confirmed_public",
+            "confirmed_at_utc": datetime.now(timezone.utc).isoformat(),
+            "url": "https://youtu.be/" + video_id,
+        }, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        print("YOUTUBE_NEWS_ALREADY_PUBLIC:", "https://youtu.be/" + video_id)
+        return
     if status.get("privacyStatus") != "private":
         raise SystemExit("Vídeo não está privado; não alterar.")
+    if lead < 0 and not publish_now:
+        raise SystemExit("Janela de tolerância vencida; preservar vídeo privado.")
     existing = status.get("publishAt")
     desired = target.astimezone(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
     if publish_now:
@@ -152,11 +183,7 @@ def main():
             part="status",
             body={"id": video_id, "status": {"privacyStatus": "public"}},
         ).execute()
-        fresh = service.videos().list(part="status,snippet", id=video_id).execute().get("items", [])
-        if len(fresh) != 1 or fresh[0]["snippet"].get("channelId") != EXPECTED_ID:
-            raise SystemExit("YouTube não confirmou o canal após recuperação.")
-        if fresh[0]["status"].get("privacyStatus") != "public":
-            raise SystemExit("YouTube não confirmou publicação pública da recuperação.")
+        confirm_release_status(service, video_id, project_id, "public")
         payload = {
             "project_id": project_id, "video_id": video_id, "status": "published_within_tolerance" if eligible_late_grace else "published_late_authorized",
             "publication_confirmation": "confirmed_public",
@@ -183,14 +210,7 @@ def main():
             part="status",
             body={"id": video_id, "status": {"privacyStatus": "private", "publishAt": desired}},
         ).execute()
-    fresh = service.videos().list(part="status,snippet", id=video_id).execute().get("items", [])
-    if len(fresh) != 1 or fresh[0]["snippet"].get("channelId") != EXPECTED_ID:
-        raise SystemExit("YouTube não confirmou canal/agendamento.")
-    confirmed = fresh[0]["status"].get("publishAt")
-    if not confirmed or datetime.fromisoformat(confirmed.replace("Z", "+00:00")) != target.astimezone(timezone.utc):
-        raise SystemExit("YouTube não confirmou o horário programado.")
-    if fresh[0]["status"].get("privacyStatus") != "private":
-        raise SystemExit("Vídeo não ficou privado até a data programada.")
+    confirm_release_status(service, video_id, project_id, "private", target.astimezone(timezone.utc))
     payload = {
         "project_id": project_id, "video_id": video_id,
         "scheduled_for_utc": desired, "scheduled_for_local": local_target.isoformat(),

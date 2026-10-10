@@ -59,6 +59,24 @@ class YouTubePublicationTest(unittest.TestCase):
         self.assertEqual(result["video_id"], "zzzzzzzzzzz")
         self.service.videos.return_value.insert.assert_not_called()
 
+    def test_news_episode_with_different_media_never_creates_second_video(self):
+        with patch("youtube_publication.lookup_existing", side_effect=[None, {
+            "id": "zzzzzzzzzzz", "status": {"privacyStatus": "private"},
+        }]):
+            with self.assertRaisesRegex(ValueError, "sem upload duplicado"):
+                upload_private(self.service, CHANNEL, self.video, self.metadata,
+                               "noticia-2026-10-10-manha", self.receipt)
+        self.service.videos.return_value.insert.assert_not_called()
+
+    def test_identical_published_news_retry_recovers_receipt_without_write(self):
+        with patch("youtube_publication.lookup_existing", return_value={
+            "id": "zzzzzzzzzzz", "status": {"privacyStatus": "public"},
+        }):
+            result = upload_private(self.service, CHANNEL, self.video, self.metadata,
+                                    "noticia-2026-10-10-manha", self.receipt)
+        self.assertTrue(result["recovered_existing_upload"])
+        self.service.videos.return_value.insert.assert_not_called()
+
     def test_edited_media_receipt_fails_closed(self):
         from youtube_publication import save_receipt, sha256
         save_receipt(self.receipt, "news-2026-10-09-am", sha256(self.video), "zzzzzzzzzzz", False)

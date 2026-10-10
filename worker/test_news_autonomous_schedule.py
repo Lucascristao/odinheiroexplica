@@ -52,6 +52,37 @@ class FakeService:
 
 
 class TestScheduleWithoutCover(unittest.TestCase):
+    def test_release_readback_retries_without_repeating_write(self):
+        episode_id = "noticia-2026-10-10-manha"
+        service = FakeService(episode_id)
+        private = service.impl.list().execute()["items"][0]
+        public = {**private, "status": {"privacyStatus": "public"}}
+        with patch.object(scheduler, "confirmed_video_identity", side_effect=[private, private, public]), \
+             patch.object(scheduler.time, "sleep") as sleep:
+            result = scheduler.confirm_release_status(service, "abcdefghijk", episode_id, "public")
+        self.assertEqual(result["status"]["privacyStatus"], "public")
+        self.assertEqual(sleep.call_count, 2)
+        self.assertFalse(service.impl.updated)
+
+    def test_scheduled_readback_waits_for_the_exact_target(self):
+        episode_id = "noticia-2026-10-10-noite"
+        service = FakeService(episode_id)
+        target = datetime(2026, 10, 10, 23, tzinfo=timezone.utc)
+        private = service.impl.list().execute()["items"][0]
+        scheduled = {**private, "status": {"privacyStatus": "private", "publishAt": "2026-10-10T23:00:00Z"}}
+        with patch.object(scheduler, "confirmed_video_identity", side_effect=[private, scheduled]), \
+             patch.object(scheduler.time, "sleep"):
+            scheduler.confirm_release_status(service, "abcdefghijk", episode_id, "private", target)
+        self.assertFalse(service.impl.updated)
+
+    def test_unconfirmed_release_does_not_claim_success(self):
+        episode_id = "noticia-2026-10-10-manha"
+        service = FakeService(episode_id)
+        with patch.object(scheduler.time, "sleep"):
+            with self.assertRaisesRegex(SystemExit, "sem repetir upload"):
+                scheduler.confirm_release_status(service, "abcdefghijk", episode_id, "public", attempts=2)
+        self.assertFalse(service.impl.updated)
+
     def test_youtube_tag_eventually_consistent_after_upload(self):
         class LaterTags(FakeVideos):
             def __init__(self, episode_id):

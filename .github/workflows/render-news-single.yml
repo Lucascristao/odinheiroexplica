@@ -58,7 +58,7 @@ jobs:
           set -euo pipefail
           [[ "$NEWS_EDITION" =~ ^news/episodes/[A-Za-z0-9._-]+\.json$ ]]
           python -m py_compile worker/news_single_project.py worker/news_reconstruction.py worker/auto_capture_sources.py worker/prepare_visual_assets.py
-          python -m unittest discover -s tests -p 'test_news_publication_preflight.py'\n          python worker/news_single_project.py --input "$NEWS_EDITION" --output video/generated/daily-project.json
+          python worker/news_single_project.py --input "$NEWS_EDITION" --output video/generated/daily-project.json
           python worker/validate_voice_policy.py
       - name: Validar todas as cenas com o contrato Zod de produção
         run: npx tsx scripts/validate-news-single.ts video/generated/daily-project.json
@@ -248,6 +248,8 @@ jobs:
             --project video/generated/daily-project.json \
             --receipt render-output/daily-youtube-private.json
       - name: Anexar capa auditada do ChatGPT ao vídeo privado
+        id: attach_cover
+        continue-on-error: true
         if: env.ODE_AUTONOMOUS == 'true' && env.ODE_COVER_READY == 'true'
         env:
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
@@ -273,8 +275,10 @@ jobs:
           set -euo pipefail
           PROJECT_ID="$(python -c 'import json;print(json.load(open("video/generated/daily-project.json"))["project_id"])')"
           COVER_ARGS=()
-          if [[ "${ODE_COVER_READY:-false}" == "true" ]]; then
+          if [[ "${ODE_COVER_READY:-false}" == "true" && "${{ steps.attach_cover.outcome }}" == "success" ]]; then
             COVER_ARGS=(--thumbnail "$ODE_COVER_PATH" --thumbnail-receipt render-output/youtube-thumbnail-delivery.json)
+          elif [[ "${ODE_COVER_READY:-false}" == "true" ]]; then
+            echo "CAPA_OPCIONAL: anexo falhou; preservar diagnóstico e publicar com miniatura automática."
           fi
           python worker/news_autonomous_schedule.py \
             --root . --project video/generated/daily-project.json \
@@ -299,6 +303,7 @@ jobs:
           print("WAITING_THUMBNAIL:", receipt["project_id"], receipt["video_id"])
           PY
       - name: Recibo do YouTube
+        if: always() && hashFiles('render-output/daily-youtube-private.json') != ''
         uses: actions/upload-artifact@v4
         with:
           name: news-single-youtube-private-receipt

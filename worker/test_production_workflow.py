@@ -21,6 +21,13 @@ def step_index(steps: list[str], marker: str) -> int:
 
 
 class ProductionWorkflowTests(unittest.TestCase):
+    def test_shell_blocks_do_not_join_commands_with_literal_newline_text(self):
+        for path in WORKFLOWS.glob("*.yml"):
+            with self.subTest(workflow=path.name):
+                self.assertIsNone(re.search(
+                    r"\\n[ \t]+(?:python|npm|npx|gh)\s", path.read_text(encoding="utf-8")
+                ), "Uma quebra de linha literal uniu dois comandos de produção")
+
     def test_ci_checks_the_current_episode_before_audio_dependencies(self):
         steps = read_steps("ci.yml")
         geometry = step_index(steps, "--mode geometry-only")

@@ -149,9 +149,13 @@ def upload_private(service, channel, video_path: Path, metadata: dict, project_i
     rev = "ODE_SOURCE_" + source_fingerprint[:16] if source_fingerprint else None
     found = lookup_existing(service, channel, "ODE_EPISODE_" + project_id, rev, "ODE_MEDIA_" + digest[:16])
     if found is not None:
-        if found.get("status", {}).get("privacyStatus") != "private":
+        if found.get("status", {}).get("privacyStatus") != "private" and not project_id.startswith("noticia-"):
             raise ValueError("Episódio já existe, mas não está privado. Não alterar.")
         return save_receipt(receipt_path, project_id, digest, found["id"], True)
+    if project_id.startswith("noticia-"):
+        existing_episode = lookup_existing(service, channel, "ODE_EPISODE_" + project_id)
+        if existing_episode is not None:
+            raise ValueError("Episódio já enviado com outro MP4 ou revisão; retomar o vídeo existente sem upload duplicado.")
     from googleapiclient.http import MediaFileUpload
     media = MediaFileUpload(str(video_path), mimetype="video/mp4", chunksize=8 * 1024 * 1024, resumable=True)
     request = service.videos().insert(part="snippet,status", body=body, media_body=media)
