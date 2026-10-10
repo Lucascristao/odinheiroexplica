@@ -38,6 +38,13 @@
       "authorized_by_user": true,
       "mode": "publish_immediately_after_qa",
       "reason": "Autorização direta do titular nesta conversa para publicar imediatamente a edição do meio-dia de 09/10/2026 já renderizada; exceção exclusiva deste episódio, sem duplicação."
+    },
+    {
+      "episode_id": "noticia-2026-10-10-manha",
+      "original_publication_local": "2026-10-10T08:00:00-03:00",
+      "authorized_by_user": true,
+      "mode": "publish_immediately_after_qa",
+      "reason": "Autorização explícita do titular no chat de 10/10/2026 para recuperar e publicar a edição da manhã mesmo após 09h30; limitada a este episódio; exige QA, canal e identidade YouTube sem duplicatas."
     }
   ]
 }
