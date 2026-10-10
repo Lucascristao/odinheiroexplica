@@ -59,9 +59,9 @@ Conferir mentalmente a composição em 320 × 180: foco reconhecível, texto ime
 
 No MED, a tensão é seguir o dinheiro versus conseguir recuperá-lo. Uma trilha interrompida pode comunicar esse limite; não converter automaticamente o conceito em celular + vários nós pequenos. A regra geral é buscar a metáfora mais simples da pauta, sem tornar essa composição um template. O prompt final deve especificar foco, posição e escala do texto, contraste, metáfora, elementos a excluir e exata headline aprovada.
 
-Gerar a capa final completa no ChatGPT após o render, como abaixo. Sem contratar ferramenta paga, fazer testes A/B ou inventar desempenho de clique.
+Para vídeos explicativos com entrega manual no Drive, gerar a capa final completa no ChatGPT após o render, como abaixo. Para notícias automáticas `ode-news-single`, gerar na preparação, depois de fechar título e roteiro e antes do commit que inicia o render, conforme `docs/news-thumbnail-delivery.md`. Sem contratar ferramenta paga, fazer testes A/B ou inventar desempenho de clique.
 
-## Entrega
+## Entrega dos vídeos explicativos no Drive
 
 A thumbnail não faz parte do render do Remotion.
 
@@ -84,5 +84,7 @@ Cada episódio novo exige `packaging.thumbnails[0].contract` com `version: "1.0"
 Inspecione a imagem **real** e também sua leitura reduzida a 320×180; confira headline literal, protagonista, apoio secundário, cores, legibilidade, credibilidade de números/documentos e distinção das capas anteriores. Compare os objetos observados com **cada** exclusão prevista. Se houver divergência, refaça a arte; não ajuste a checklist para permitir uma imagem inadequada. O visual deve ser único, magnético e editorial sem inventar provas. No episódio da conta de luz, o contrato legado em `production/conta-luz-minimo-2026-10-08/thumbnail-contract.json` proíbe expressamente pessoas, valores fictícios, setas e texto extra. É específico daquele vídeo.
 
 Antes da entrega, salve `production/EPISODIO/thumbnail-audit.json` com `version:"1.0"`, `project_id`, `project_sha256` (SHA-256 de daily.json normalizado em LF), `contract_sha256` (SHA-256 do JSON do contrato com chaves ordenadas), `image_sha256`, `headline`, `approval_status:"approved"`, `reviewer`, `reviewed_at` ISO, `checks`, `observations`, `checked_forbidden_elements` (lista exata do contrato), `observed_forbidden_elements:[]`. Os sete itens booleanos obrigatórios de `checks` são `headline_exact`, `primary_subject`, `secondary_subject`, `forbidden_absent`, `identity_and_mobile`, `no_fabricated_data` e `unique_composition`. Em `observations`, são os mesmos, exceto `headline` no lugar de `headline_exact`; cada observação descreve evidência vista no arquivo e não só a intenção do prompt.
+
+Em notícias únicas, `project_sha256` corresponde ao projeto gerado pelo adaptador `worker/news_single_project.py`, com a serialização canônica e LF; não usar `video/data/daily.json` nem o JSON bruto da notícia. A imagem e a auditoria devem acompanhar o episódio antes do gatilho, seguindo `docs/news-thumbnail-delivery.md`.
 
 O verificador `worker/thumbnail_contract.py` bloqueia entrega sem registros ou com hashes divergentes, aprovações falsas em nível de campos ou proibições não marcadas como conferidas. `worker/deliver_supplement.py` envia o relatório junto da imagem e faz readback. **O código não analisa os pixels para detectar semanticamente rostos ou textos**, por isso a observação perceptual continua obrigação do revisor; um relatório preenchido sem observar a imagem é inválido editorialmente.

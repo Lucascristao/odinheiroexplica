@@ -9,7 +9,7 @@ Leia [embalagem](../../docs/youtube-packaging.md), [aprendizado](../../docs/edit
 
 Descrição editorial curta para celular; pipeline acrescenta capítulos reais, fontes, créditos, pergunta e três hashtags uma vez. URLs ficam nos metadados internos.
 
-Após vídeo entregue, gere a capa completa conforme visual_prompt, verifique texto/composição, proporção e limite do YouTube e envie à mesma pasta. Não substituir a capa final por screenshot automático. Registre o arquivo, dimensões e entrega. Preserve a pauta no título e imagem.
+Nos vídeos explicativos com entrega manual no Drive, após vídeo entregue gere a capa completa conforme visual_prompt, verifique texto/composição, proporção e limite do YouTube e envie à mesma pasta. Nas notícias automáticas `ode-news-single`, prepare a capa antes do commit do episódio, depois de fechar título, roteiro e contrato, conforme `docs/news-thumbnail-delivery.md`; imagem e auditoria entram com o episódio na revisão inicial. Registre o arquivo, dimensões e entrega. Preserve a pauta no título e imagem. A autorização de notícias permite miniatura automática do YouTube se a geração, inspeção ou entrega da capa falhar.
 
 
 ## Procedimento obrigatório de thumbnail
