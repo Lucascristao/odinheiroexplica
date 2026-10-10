@@ -58,7 +58,7 @@ jobs:
           set -euo pipefail
           [[ "$NEWS_EDITION" =~ ^news/episodes/[A-Za-z0-9._-]+\.json$ ]]
           python -m py_compile worker/news_single_project.py worker/news_reconstruction.py worker/auto_capture_sources.py worker/prepare_visual_assets.py
-          python worker/news_single_project.py --input "$NEWS_EDITION" --output video/generated/daily-project.json
+          python -m unittest discover -s tests -p 'test_news_publication_preflight.py'\n          python worker/news_single_project.py --input "$NEWS_EDITION" --output video/generated/daily-project.json
           python worker/validate_voice_policy.py
       - name: Validar todas as cenas com o contrato Zod de produção
         run: npx tsx scripts/validate-news-single.ts video/generated/daily-project.json
