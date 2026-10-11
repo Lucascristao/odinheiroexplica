@@ -86,6 +86,7 @@ jobs:
         run: |
           python worker/test_auto_capture_sources.py
           python worker/test_news_visual_cues.py
+          python worker/test_news_document_framing.py
 
       - name: Validate render request, packaging and retry policy (offline)
         run: |

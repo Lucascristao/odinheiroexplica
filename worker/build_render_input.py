@@ -2,7 +2,6 @@ import argparse
 import json
 import math
 import re
-import unicodedata
 import copy
 import hashlib
 import subprocess
@@ -12,6 +11,8 @@ from tts_config import TTS_MODEL_CASCADE, PRESENTER_VOICES, VOICE_POLICY_VERSION
 from editorial_project import normalize_project
 from editorial_caption_timing import build_caption_timing
 from voice_master import level_plan,pitch_summary
+from visual_anchor import normalize_text
+from news_document_framing import apply_news_document_views
 
 
 FPS = 30
@@ -41,14 +42,6 @@ def boundary_padding(audio: dict, following: dict | None, next_scene: dict | Non
 REAL_BOOKMARK_SOURCES = {"azure-bookmark", "tts-bookmark", "audio-word-alignment"}
 ESTIMATED_ANCHOR_SOURCES = {"estimated-text-alignment", "text-fallback", "estimated-between-audio-anchors"}
 
-
-
-def normalize_text(value: str) -> str:
-    normalized = unicodedata.normalize("NFKD", str(value).lower())
-    normalized = "".join(
-        char for char in normalized if not unicodedata.combining(char)
-    )
-    return re.sub(r"\s+", " ", normalized).strip()
 
 
 def resolve_visual_beats(
@@ -341,10 +334,7 @@ def main() -> None:
                             element['document_context_width'] = prepared['context_width']
                             element['document_context_height'] = prepared['context_height']
                         target_beats = [b for b in scene_with_resolved_visual['visual']['beats'] if b.get('target_id') == element['id']]
-                        if prepared.get('proof_region') and target_beats and not any(b.get('view') for b in target_beats):
-                            # Coordinates measured on the same authentic source pixels.
-                            # Preserve all authored camera directions when supplied.
-                            target_beats[0]['view'] = prepared['proof_region']
+                        apply_news_document_views(element, prepared, target_beats)
             scene_with_resolved_visual["visual"]["stage"] = stage
 
         caption_words, caption_timing = ([], None)

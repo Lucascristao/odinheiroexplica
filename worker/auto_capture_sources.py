@@ -107,7 +107,9 @@ def sanitize_page_thoroughly(page) -> None:
             '.tooltip', '[class*="tooltip"]', '[data-tippy-root]',
             '[class*="overlay"]', '[class*="mask"]',
             '[class*="banner"]', '[id*="banner"]',
-            '#barra-brasil', '.govbr-cookie-banner',
+            // The government navigation web component contains a Shadow DOM
+            // scrim. Outer-page visibility/filter resets do not reach it.
+            '#barra-brasil', '#barra-govbr', 'barra-govbr', '.govbr-cookie-banner',
             '[id*="vlibras"]', '[class*="vlibras"]',
             '#widget-leo', '[class*="chatbot"]'
         ];

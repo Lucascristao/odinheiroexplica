@@ -73,6 +73,20 @@ class SingleNewsContractTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "melhor alternativa"):
             validate(not_best, date(2026, 10, 9))
 
+    def test_ambiguous_audio_anchors_fail_before_synthesis(self):
+        # These are literal, case-sensitive matches once, but audio alignment
+        # normalizes their other occurrence. Reject before spending on voice.
+        for repeated in ("ATENÇÃO AO PREÇO", "Atencao ao preco", "Atenção   ao preço"):
+            with self.subTest(repeated=repeated):
+                doc = copy.deepcopy(self.doc)
+                segment = doc["segments"][1]
+                segment["narration"] += " Atenção ao preço. " + repeated + " pode variar."
+                segment["visual_cues"] = [{"anchor": "Atenção ao preço"}]
+                with self.assertRaisesRegex(ValueError, "normalização"):
+                    validate(doc, date(2026, 10, 9))
+                segment["visual_cues"] = [{"anchor": "Atenção ao preço."}]
+                validate(doc, date(2026, 10, 9))
+
     def test_evidence_occupies_the_frame_without_solo_commentary_cards(self):
         project = transform(self.doc)
         self.assertEqual(len(project["scenes"]), len(self.doc["segments"]))

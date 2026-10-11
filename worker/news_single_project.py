@@ -14,6 +14,7 @@ from urllib.parse import urlparse
 
 from news_project import anchors, require
 from build_youtube_package import validate_publication_fields
+from visual_anchor import normalize_text
 
 
 def validate(episode: dict, today: date | None = None) -> dict:
@@ -157,11 +158,15 @@ def validate(episode: dict, today: date | None = None) -> dict:
         if cues is not None:
             require(isinstance(cues, list) and 1 <= len(cues) <= 12, "cues autorais inválidas")
             positions = []
+            normalized_narration = normalize_text(segment["narration"])
             for cue in cues:
                 anchor = cue.get("anchor", "")
                 require(isinstance(anchor, str) and 5 <= len(anchor) <= 160
                         and segment["narration"].count(anchor) == 1, "cue deve ser trecho literal único da fala")
-                positions.append(segment["narration"].index(anchor))
+                normalized_anchor = normalize_text(anchor)
+                require(normalized_narration.count(normalized_anchor) == 1,
+                        "cue deve continuar única após normalização de caixa, acentos e espaços usada na sincronia")
+                positions.append(normalized_narration.index(normalized_anchor))
                 if cue.get("view") or cue.get("mark_ids"):
                     doc = next((d for d in documentary if d["id"] == segment.get("document_id")), {})
                     require(bool(doc.get("capture_sha256")), "zoom/grifo autoral exige captura autêntica revisada e fixada por hash")
@@ -258,6 +263,10 @@ def build_scene(index: int, segment: dict) -> dict:
             require(segment.get("document_id"), "grifo exige documento")
             beat["mark_ids"] = mark_sequences[i]
         beats.append(beat)
+    normalized_narration = normalize_text(narration)
+    for beat in beats:
+        require(normalized_narration.count(normalize_text(beat["anchor"])) == 1,
+                "cue automática ambígua após normalização usada na sincronia")
     return {
         "id": f"scene-{index:02d}", "index": index, "title": segment["title"],
         "editorial_role": segment["type"],
