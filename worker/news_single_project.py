@@ -355,6 +355,8 @@ def transform(episode: dict) -> dict:
                 "verification_limits": episode["discovery_strategy"]["verification_limits"],
             },
             "thumbnails": [{"id": "approved", "headline": episode["thumbnail_headline"],
+                            **({"concept": episode["thumbnail_primary"] + " " + episode["thumbnail_tension"]}
+                               if contextual else {}),
                             "contract": contract}],
         },
         "publication": {

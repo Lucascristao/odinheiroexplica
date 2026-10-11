@@ -35,6 +35,8 @@ class SingleNewsContractTests(unittest.TestCase):
         future['reviewed_at']='2026-10-11T02:05:00-03:00'
         updated=transform(future)
         self.assertEqual(updated['packaging']['thumbnails'][0]['contract']['presenter_identity']['id'],'roberto-v1-engaged')
+        self.assertEqual(updated['packaging']['thumbnails'][0]['concept'],
+                         future['thumbnail_primary'] + ' ' + future['thumbnail_tension'])
         self.assertTrue(all(a['capture_scope']=='desktop_context' for a in updated['visual_assets'] if a['type']=='source_excerpt'))
         self.assertTrue(all(s['visual']['stage']['elements'][0]['document_context_seconds']==1.6 for s in updated['scenes']))
 
