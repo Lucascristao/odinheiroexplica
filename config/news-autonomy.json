@@ -21,6 +21,16 @@
   "publish_if_late": true,
   "thumbnail_optional": true,
   "thumbnail_provider": "chatgpt_optional_youtube_automatic_fallback",
+  "editorial_policy": {
+    "version": "2026-10-11.1",
+    "review_cutover_utc": "2026-10-11T21:00:00Z",
+    "topic_areas": ["politics", "economy", "personal_finance", "business", "international"],
+    "research_politics_each_window": true,
+    "main_event_recency": "same_day",
+    "article_date_does_not_refresh_event": true,
+    "selection_contract": "news_selection",
+    "background_sources_allowed": true
+  },
   "one_time_late_recovery": {
     "episode_id": "noticia-2026-10-09-manha",
     "original_publication_local": "2026-10-09T08:00:00-03:00",

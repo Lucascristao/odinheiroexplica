@@ -24,6 +24,86 @@ class SingleNewsContractTests(unittest.TestCase):
         self.assertGreaterEqual(len(self.doc["sources"]), 2)
         self.assertEqual(self.doc["editorial_status"], "approved_for_private_pilot")
 
+    def current_selection_fixture(self):
+        # Contract fixture only; these edits are never saved as a news episode.
+        doc = copy.deepcopy(self.doc)
+        doc.update(episode_id="noticia-2026-10-11-selection-fixture", news_date="2026-10-11",
+                   event_date="2026-10-11", editorial_status="autonomous_fact_checked",
+                   reviewed_at="2026-10-11T18:00:00-03:00")
+        fact = doc["verified_facts"][0]
+        fact.update(event_date="2026-10-11", status="confirmed",
+                    source_ids=list(dict.fromkeys(fact["source_ids"]
+                                                  + [source["id"] for source in doc["sources"][:2]])))
+        for source in doc["sources"][:2]:
+            source["published_at"] = "2026-10-11"
+        for asset in doc["documentary_evidence"]:
+            if asset.get("editorial_reconstruction"):
+                source = next(s for s in doc["sources"] if s["id"] == asset["source_id"])
+                asset["editorial_reconstruction"]["published_at"] = source["published_at"]
+        doc["news_selection"] = {
+            "topic_area": "politics",
+            "new_fact": fact["claim"],
+            "why_today": "A decisão foi divulgada hoje; o documento e a reportagem confirmam a mudança.",
+            "opening_anchor": doc["segments"][0]["narration"][:100],
+        }
+        return doc
+
+    def test_new_autonomous_review_requires_dated_selection(self):
+        doc = self.current_selection_fixture()
+        del doc["news_selection"]
+        with self.assertRaisesRegex(ValueError, "news_selection"):
+            validate(doc, date(2026, 10, 11))
+
+    def test_today_article_does_not_refresh_an_old_event(self):
+        doc = self.current_selection_fixture()
+        doc["event_date"] = "2026-10-08"
+        with self.assertRaisesRegex(ValueError, "reportagem recente não renova fato antigo"):
+            validate(doc, date(2026, 10, 11))
+        doc["event_date"] = "2026-10-11"
+        doc["verified_facts"][0]["event_date"] = "2026-10-08"
+        with self.assertRaisesRegex(ValueError, "data do acontecimento"):
+            validate(doc, date(2026, 10, 11))
+
+    def test_new_event_needs_current_evidence_from_two_publishers(self):
+        doc = self.current_selection_fixture()
+        for source in doc["sources"]:
+            source["published_at"] = "2026-10-08"
+        with self.assertRaisesRegex(ValueError, "fonte publicada no dia"):
+            validate(doc, date(2026, 10, 11))
+        doc = self.current_selection_fixture()
+        doc["verified_facts"][0]["source_ids"] = [doc["sources"][0]["id"]]
+        with self.assertRaisesRegex(ValueError, "dois publicadores"):
+            validate(doc, date(2026, 10, 11))
+
+    def test_selection_cannot_use_unlinked_fact_or_missing_opening(self):
+        doc = self.current_selection_fixture()
+        doc["news_selection"]["new_fact"] = "Uma novidade declarada sem nenhum fato verificado correspondente."
+        with self.assertRaisesRegex(ValueError, "único verified_fact"):
+            validate(doc, date(2026, 10, 11))
+        doc = self.current_selection_fixture()
+        doc["news_selection"]["opening_anchor"] = "A novidade ficou fora da abertura do vídeo."
+        with self.assertRaisesRegex(ValueError, "abertura"):
+            validate(doc, date(2026, 10, 11))
+
+    def test_politics_with_current_development_keeps_older_context(self):
+        doc = self.current_selection_fixture()
+        # A dated central development can use yesterday's primary document and
+        # today's reporting; background remains available within its old window.
+        doc["sources"][0]["published_at"] = "2026-10-10"
+        for asset in doc["documentary_evidence"]:
+            if asset.get("editorial_reconstruction") and asset["source_id"] == doc["sources"][0]["id"]:
+                asset["editorial_reconstruction"]["published_at"] = "2026-10-10"
+        validate(doc, date(2026, 10, 11))
+        self.assertEqual(transform(doc)["editorial"]["news_selection"], doc["news_selection"])
+
+    def test_historical_review_keeps_its_contract_when_resumed_later(self):
+        doc = self.current_selection_fixture()
+        del doc["news_selection"]
+        doc["reviewed_at"] = "2026-10-11T17:59:59-03:00"
+        doc["event_date"] = "2026-10-08"
+        validate(doc, date(2026, 10, 15))
+        self.assertNotIn("news_selection", transform(doc)["editorial"])
+
     def test_context_and_expression_cutover_preserve_reviewed_historical_project(self):
         root=Path(__file__).resolve().parents[1]
         historical=json.loads((root/'news/episodes/2026-10-11-melhorias-producao.json').read_text(encoding='utf-8'))

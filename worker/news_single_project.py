@@ -17,6 +17,51 @@ from build_youtube_package import validate_publication_fields
 from visual_anchor import normalize_text
 
 
+SELECTION_POLICY_START = datetime(2026, 10, 11, 21, tzinfo=timezone.utc)
+NEWS_TOPIC_AREAS = {"politics", "economy", "personal_finance", "business", "international"}
+
+
+def validate_news_selection(episode: dict, news_day: date) -> None:
+    """Check the editor's dated evidence, without claiming semantic fact checking.
+
+    Freeze the policy against the original review so archived resumes keep their
+    contracts, voice caches and thumbnail hashes. Dates remain the editor's
+    responsibility: a newly published article is not necessarily a new event.
+    """
+    reviewed = datetime.fromisoformat(episode["reviewed_at"].replace("Z", "+00:00"))
+    if reviewed.tzinfo is None:
+        reviewed = reviewed.replace(tzinfo=timezone.utc)
+    required = (episode["editorial_status"] == "autonomous_fact_checked"
+                and reviewed >= SELECTION_POLICY_START)
+    selection = episode.get("news_selection")
+    if not required and selection is None:
+        return
+    require(isinstance(selection, dict), "seleção atual sem news_selection")
+    require(selection.get("topic_area") in NEWS_TOPIC_AREAS, "editoria da notícia inválida")
+    require(episode.get("event_date") == news_day.isoformat(),
+            "o acontecimento novo precisa ser do dia da edição; reportagem recente não renova fato antigo")
+    require(isinstance(selection.get("why_today"), str)
+            and len(selection["why_today"].strip()) >= 30, "seleção sem justificativa de atualidade")
+    fact_text = selection.get("new_fact")
+    require(isinstance(fact_text, str) and len(fact_text.strip()) >= 30,
+            "seleção sem fato novo literal")
+    matching = [fact for fact in episode["verified_facts"] if fact.get("claim") == fact_text]
+    require(len(matching) == 1, "fato novo precisa corresponder a um único verified_fact")
+    fact = matching[0]
+    require(fact.get("event_date") == news_day.isoformat() and fact.get("status") != "background",
+            "fato novo sem data do acontecimento ou classificado apenas como contexto")
+    linked = [source for source in episode["sources"] if source["id"] in fact["source_ids"]]
+    require(len({urlparse(source["url"]).hostname.casefold().removeprefix("www.")
+                 for source in linked}) >= 2, "fato novo precisa de dois publicadores")
+    require(any(source["published_at"] == news_day.isoformat() for source in linked),
+            "fato novo sem fonte publicada no dia da edição")
+    anchor = selection.get("opening_anchor")
+    opening = (episode.get("segments") or [{}])[0].get("narration", "")
+    require(isinstance(anchor, str) and 20 <= len(anchor) <= 160
+            and opening.count(anchor) == 1,
+            "a abertura precisa apresentar o fato novo com trecho literal único de 20 a 160 caracteres")
+
+
 def validate(episode: dict, today: date | None = None) -> dict:
     today = today or date.today()
     require(episode.get("format") == "ode-news-single", "formato deve conter uma matéria por vídeo")
@@ -84,6 +129,7 @@ def validate(episode: dict, today: date | None = None) -> dict:
     for claim in claims:
         require(claim.get("source_ids") and set(claim["source_ids"]) <= source_ids, "fato sem fonte identificável")
         require(claim.get("status") in ("statement", "background", "forecast_not_collected", "projection", "confirmed"), "tipo factual desconhecido")
+    validate_news_selection(episode, news_day)
     documentary = episode.get("documentary_evidence") or []
     require(len(documentary) >= 2, "exigir pelo menos duas referências visuais documentais")
     doc_ids = set()
@@ -350,6 +396,7 @@ def transform(episode: dict) -> dict:
             "editorial_status": episode["editorial_status"],
             "scorecard": episode["scorecard"],
             "discovery_strategy": episode["discovery_strategy"],
+            **({"news_selection": episode["news_selection"]} if "news_selection" in episode else {}),
             "youtube_suitability": {"risk_level": "low", "title_thumbnail_safe": True},
         },
         "packaging": {

@@ -19,6 +19,22 @@ A revisão comparativa de ANCAPSU e Fernando Ulrich, suas evidências e limites 
 
 O Roberto (Charon / Gemini Live) fala como brasileiro conversando, com comentários fundamentados e uma perspectiva econômica à direita, especialmente liberal. Estrutura não mecânica: gancho verdadeiro; prova; explicação concreta; leitura crítica/sarcasmo quando convier; contrapontos e incertezas; conclusão. Distinguir fatos, projeções e opinião em todos os casos. Não concluir que proposta de imposto = imposto já cobrado. Sarcasmo não substitui prova e não precisa aparecer em todas as frases. Perspectivas relevantes contrárias merecem representação fiel.
 
+## Editoria e atualidade (11/10/2026)
+
+As pautas incluem **política**, economia, finanças pessoais, empresas e acontecimentos internacionais relevantes ao público brasileiro. Pesquisar política em cada janela, incluindo eleições, governo, Congresso, STF/TSE e decisões/disputas institucionais. Um fato político pode sustentar o vídeo por sua importância pública; não exigir consequência financeira artificial. Comparar candidatas com datas e URLs verificadas, registrando motivos editoriais em `news_selection.candidate_review` conforme o manual da tarefa. Alegações, decisões provisórias e condenações são situações distintas; checar a última decisão antes de escrever.
+
+Para uma notícia nova, **o acontecimento central deve ser do dia da edição em America/Fortaleza**. `event_date` é a data do fato novo selecionado, não a data da consulta, de uma republicação ou de uma reportagem retrospectiva. Um acontecimento anterior só volta como contexto de um desdobramento comprovado hoje, que comanda a abertura e a promessa. Fontes de contexto permanecem aceitas dentro do período documentado existente de 45 dias. Uma fonte publicada hoje, sozinha, não demonstra atualidade do acontecimento.
+
+Contrato obrigatório para `autonomous_fact_checked` com revisão a partir de `2026-10-11T21:00:00Z` (18h locais), sem alterar retomadas históricas:
+- `event_date` igual a `news_date`;
+- `news_selection.topic_area`: `politics`, `economy`, `personal_finance`, `business` ou `international`;
+- `news_selection.new_fact`: texto literal de um único `verified_facts[].claim`, com no mínimo 30 caracteres. Esse fato recebe `event_date` igual a `news_date`, tipo diferente de `background` e `source_ids` de pelo menos dois publicadores; ao menos uma dessas fontes deve ter `published_at` no dia da edição;
+- `news_selection.why_today`: justificativa concreta, com no mínimo 30 caracteres, do que ocorreu hoje e por que interessa ao público;
+- `news_selection.opening_anchor`: trecho literal único de 20 a 160 caracteres da primeira narração, que apresenta a novidade;
+- `news_selection.candidate_review`: registro editorial das candidatas pesquisadas, suas datas/URLs, resultado da busca política e motivos da escolha/rejeição, sem completar a lista com notícias não verificadas.
+
+O adaptador verifica datas declaradas, referências e integridade dos trechos e preserva `news_selection` no projeto. A avaliação semântica do fato, independência dos publicadores, escolha das candidatas, recência e correspondência entre abertura e novidade permanece responsabilidade do editor ChatGPT. O gate **não detecta automaticamente** se uma data foi inventada nem se uma reportagem apenas reapresenta um estudo antigo. Não retroagir `reviewed_at` para evitar a regra; use a hora real. Preservar episódios já iniciados e seu áudio; novas seleções seguem esta política.
+
 ## Identidade visual e direitos
 
 Pelo menos dois materiais documentais por pauta, com URL HTTPS, frase esperada no documento, atribuição e verificação de uso. Priorizar comunicados, manchetes e recortes curtos contextualizados. Não copiar fotos inteiras de imprensa sem licença. Worker com Playwright captura trechos, falha caso fonte não seja localizada e prepara os recortes para Remotion. Visual documental acompanha a voz e intercala gráficos e elementos próprios; proibir slides estáticos de texto como substituto da notícia. Fundo carvão, amarelo #FFBD19 e tipografia branca #F6F7F8; preservar identidade sem imitar concorrente. Sem textos falsos ou fotografias geradas apresentadas como prova.
