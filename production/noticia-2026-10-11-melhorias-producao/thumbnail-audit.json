@@ -1,0 +1,39 @@
+{
+  "version": "1.0",
+  "project_id": "noticia-2026-10-11-melhorias-producao",
+  "project_sha256": "2579a838bb9b8f596e9778ab52214f4fa9d0dca1464b428aeda9d74e73452714",
+  "contract_sha256": "eec6c26c6bab544adeab382f5833c13f75634df88a30dd1e61013e9822bc524b",
+  "image_sha256": "ef57f83fea94d52e3372042f8ca257765226416952c4d208920b33cc70f84459",
+  "headline": "CADÊ O SALDO?",
+  "approval_status": "approved",
+  "reviewer": "Codex, inspeção visual da imagem do Actions inteira e em 320x180",
+  "reviewed_at": "2026-10-11T04:11:30.318901+00:00",
+  "checks": {
+    "headline_exact": true,
+    "primary_subject": true,
+    "secondary_subject": true,
+    "forbidden_absent": true,
+    "identity_and_mobile": true,
+    "no_fabricated_data": true,
+    "unique_composition": true
+  },
+  "observations": {
+    "headline": "CADÊ O SALDO? aparece em duas linhas amarelas, sem texto adicional do compositor; acento e interrogação legíveis na imagem de 1280x720 e na redução de 320x180.",
+    "primary_subject": "Porta-moedas aberto com poucas moedas no alto à esquerda, separado do rosto e do texto; persiana comercial desfocada ao fundo. Metáfora de resíduo, não conta ou recibo de usuário.",
+    "secondary_subject": "Roberto da referência revisada ocupa a direita em primeiro plano; cabelo, rosto, orelhas e queixo inteiros, expressão atenta, luz suave sem contorno dourado forte. A composição reutiliza a referência SHA-256 registrada.",
+    "forbidden_absent": "Nenhum logotipo/interface de bet, comprovante ou saldo bancário, prêmio, cassino, outro rosto ou marca d’água. O número da moeda pertence ao objeto ilustrativo e não é apresentado como saldo individual.",
+    "identity_and_mobile": "Rosto grande e reconhecível em 320x180, amarelo sobre faixa escura e carvão, pergunta legível, moedas distinguíveis. Não há sobreposição do rosto com a pergunta ou com o porta-moedas.",
+    "no_fabricated_data": "A capa não simula extrato, pagamento ou saldo de uma pessoa. O porta-moedas é metáfora editorial; a quantidade de moedas não estima distribuição dos R$ 159 milhões. A promessa e seus limites estão no roteiro.",
+    "unique_composition": "Objeto no alto à esquerda e rosto próximo à direita; composição diferente da capa anterior de feriado com calendário. Revisão responde à crítica do titular de Roberto pequeno e artificial, inspirada na escala e hierarquia observadas na grade oficial de Ulrich."
+  },
+  "checked_forbidden_elements": [
+    "logotipo ou interface de bet",
+    "slots, dados ou símbolos de prêmio",
+    "comprovante ou saldo bancário fictício",
+    "outro rosto além do Roberto oficial",
+    "montante numérico apresentado como saldo individual",
+    "texto extra além da headline e detalhes naturais das moedas",
+    "marca d'água"
+  ],
+  "observed_forbidden_elements": []
+}
