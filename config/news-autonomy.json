@@ -52,6 +52,13 @@
       "authorized_by_user": true,
       "mode": "publish_immediately_after_qa",
       "reason": "O titular solicitou nesta conversa uma segunda publicação real de teste assim que a manhã concluísse. Autorização exclusiva deste episódio em 10/10/2026, separado das edições recorrentes, mantendo QA, apuração, canal e deduplicação."
+    },
+    {
+      "episode_id": "noticia-2026-10-10-noite",
+      "original_publication_local": "2026-10-10T20:00:00-03:00",
+      "authorized_by_user": true,
+      "mode": "publish_immediately_after_qa",
+      "reason": "O titular respondeu Publicar agora nesta conversa em 10/10/2026 após conferir o vídeo P76-M6tSbzs concluído com capa e saber que a janela das 21h30 havia vencido. Exceção exclusiva deste episódio, preservando o upload original, QA, canal e deduplicação."
     }
   ]
 }
