@@ -13,6 +13,8 @@ Fontes consultadas:
 
 Modelar **princípios do gênero**: um acontecimento, título com tensão verificável, narrador com leitura própria, argumento e evidência. Não copiar bordões, trejeitos, voz, identidade, fotos, insultos ou textos do Peter. Não houve análise quadro a quadro do interior dos vídeos; o tratamento audiovisual abaixo é uma direção ORIGINAL para O Dinheiro Explica, não medição da cadência ANCAPSU.
 
+A revisão comparativa de ANCAPSU e Fernando Ulrich, suas evidências e limites estão em `docs/news-presentation-study.md`. Aplicar os princípios de primeira descoberta, prova contextualizada, denominadores e comentário próprio nas próximas notícias. A referência fixa do Roberto é aplicada pelo motor conforme `docs/presenter-identity.md`.
+
 ## Roteiro e opinião
 
 O Roberto (Charon / Gemini Live) fala como brasileiro conversando, com comentários fundamentados e uma perspectiva econômica à direita, especialmente liberal. Estrutura não mecânica: gancho verdadeiro; prova; explicação concreta; leitura crítica/sarcasmo quando convier; contrapontos e incertezas; conclusão. Distinguir fatos, projeções e opinião em todos os casos. Não concluir que proposta de imposto = imposto já cobrado. Sarcasmo não substitui prova e não precisa aparecer em todas as frases. Perspectivas relevantes contrárias merecem representação fiel.

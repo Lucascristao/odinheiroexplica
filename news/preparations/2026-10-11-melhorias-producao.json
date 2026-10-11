@@ -1,0 +1,1341 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-11-melhorias-producao",
+  "news_date": "2026-10-11",
+  "event_date": "2026-10-10",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-11T04:06:34.784636+00:00",
+  "publication_target_local": "2026-10-11T08:00:00-03:00",
+  "production_validation": {
+    "authorized_by_user": true,
+    "purpose": "O titular pediu publicar um vídeo novo em fluxo real com as melhorias de apresentação e o Roberto consistente na capa. Edição extra com autorização específica para publicação imediata após QA, sem ocupar as janelas recorrentes.",
+    "duplicate_event_checked": true,
+    "subjective_listening_performed": false
+  },
+  "title": "Bets: R$ 159 milhões a devolver, mas 90% das contas têm menos de R$ 1. Como?",
+  "title_options": [
+    {
+      "text": "Bets: R$ 159 milhões a devolver, mas 90% das contas têm menos de R$ 1. Como?",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Dinheiro das bets: quem ainda precisa receber até 14 de outubro?",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Saldo das bets caiu: por que o anúncio ainda não prova que todos receberam?",
+      "editorial_quality": 4
+    }
+  ],
+  "thumbnail_headline": "CADÊ O SALDO?",
+  "thumbnail_primary": "Porta-moedas aberto com poucas moedas diante de uma porta comercial fechada: metáfora editorial de saldo residual, sem representar saldo individual ou prova de pagamento.",
+  "thumbnail_tension": "Há milhões de contas com trocados, mas o valor total ainda informado para devolução é elevado; contar contas não é medir a distribuição do dinheiro.",
+  "thumbnail_composition": "Roberto oficial em primeiro plano à direita, cabeça inteira e rosto dominante com luz suave e natural; porta-moedas e poucas moedas no alto à esquerda; pergunta curta em amarelo na faixa inferior esquerda, com texto e rosto separados.",
+  "thumbnail_text_side": "left",
+  "thumbnail_headline_position": "lower",
+  "thumbnail_portrait_size": "close",
+  "thumbnail_forbidden_elements": [
+    "logotipo ou interface de bet",
+    "slots, dados ou símbolos de prêmio",
+    "comprovante ou saldo bancário fictício",
+    "outro rosto além do Roberto oficial",
+    "montante numérico apresentado como saldo individual",
+    "texto extra além da headline e detalhes naturais das moedas",
+    "marca d'água"
+  ],
+  "scorecard": {
+    "method": "Comparação editorial de pergunta concreta, contexto e prova; sem previsão de CTR ou volume de buscas.",
+    "criteria": {
+      "timeliness": 5,
+      "consumer_interest": 5,
+      "documentary_evidence": 5,
+      "original_angle": 5
+    },
+    "unavailable": [
+      "CTR do canal",
+      "impressões por origem",
+      "extratos individuais",
+      "valor retido pelas oito empresas"
+    ],
+    "reason": "A vencedora reúne dois números atuais que parecem incompatíveis. O roteiro explica que porcentagem de contas e volume de dinheiro têm denominadores diferentes, identifica a origem empresarial e distingue calendário e atualização cadastral de comprovante de pagamento. O desdobramento novo é o saldo atualizado de 10/10, não repetir a proibição das bets já abordada."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/bets-mais-de-r-1-bilhao-foram-devolvidos-apostadores",
+      "published_at": "2026-10-10",
+      "role": "Reportagem de Pedro Peduzzi às 11h47; anúncio de queda do saldo e calendário. A manchete interpreta como devolução; o comunicado primário descreve atualização dos dados, sem conciliação de extratos individuais."
+    },
+    {
+      "id": "S2",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-sportsmkt/bets-informam-r-159-milhoes-a-devolver-apos-prazo-de-saque/",
+      "published_at": "2026-10-10",
+      "role": "Reportagem às 11h49 com link para o comunicado integral; esclarece que os dados são atualizados pelas empresas. Publicador distinto, mesma origem estatística, não pesquisa independente."
+    },
+    {
+      "id": "S3",
+      "publisher": "Gazeta do Povo",
+      "url": "https://www.gazetadopovo.com.br/economia/bets-devolucao-159-milhoes-apostadores/",
+      "published_at": "2026-10-10",
+      "role": "Vandré Kramer às 19h49, veículo à direita/centro-direita consultado integralmente. Acrescenta encadeamento CPF/conta bancária/dados e ressalta as oito empresas; não oferece medição independente da Secom. Foto gerada não será usada como evidência."
+    },
+    {
+      "id": "S4",
+      "publisher": "Secom da Presidência da República, comunicado reproduzido pelo Poder360",
+      "url": "https://static.poder360.com.br/uploads/2026/10/1010-Release-Bets-informam-59-milhoes.pdf",
+      "published_at": "2026-10-10",
+      "role": "Documento primário de duas páginas, texto e primeira página conferidos. Saldo empresarial informado, 22,5 milhões de pessoas, 70,5 milhões de contas e distribuição; limite de conferência: reprodução do comunicado, não acesso à base de dados nem confirmação bancária individual."
+    },
+    {
+      "id": "S5",
+      "publisher": "InfoMoney / Agência Brasil",
+      "url": "https://www.infomoney.com.br/brasil/mais-de-r-1-bilhao-foram-devolvidos-a-apostadores-em-saldos-de-bets/",
+      "published_at": "2026-10-10",
+      "role": "Republicação identificada da Agência Brasil às 14h15, consultada integralmente; captura desta página substitui a captura indisponível do site da agência, sem contar como apuração independente da fonte original."
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O comunicado de 10/10 informa R$ 159 milhões ainda a devolver, com base em dados atualizados pelas próprias empresas.",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "Os dados abrangem 22,5 milhões de apostadores distribuídos em 70,5 milhões de contas com saldo remanescente.",
+      "source_ids": [
+        "S3",
+        "S4"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "90% das contas têm menos de R$ 1 e 97% têm menos de R$ 10; são percentuais de contas, não do valor total nem de pessoas.",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "O valor anterior de aproximadamente R$ 1,2 bilhão refere-se ao fim do saque voluntário em 5/10; o comunicado descreve o atual como atualização no envio de dados.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S4",
+        "S5"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "A devolução pelas instituições financeiras está prevista até 14/10; se houver impedimento, o comunicado prevê transferência à Caixa a partir dessa data.",
+      "source_ids": [
+        "S3",
+        "S4"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "Oito empresas ainda não encaminharam dados necessários aos bancos; a AGU anunciou ação para obrigá-las a fornecer as informações.",
+      "source_ids": [
+        "S3",
+        "S4"
+      ],
+      "status": "statement"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "bets-poder",
+      "kind": "source_excerpt",
+      "source_id": "S2",
+      "source_page_url": "https://www.poder360.com.br/poder-sportsmkt/bets-informam-r-159-milhoes-a-devolver-apos-prazo-de-saque/",
+      "expected_text": "Desse total, 90% das contas têm menos de R$ 1 disponível para restituição",
+      "attribution": "Poder360, 10/10/2026 às 11h49; trecho sobre distribuição de contas.",
+      "rights_review": "Trecho documental necessário à crítica e explicação dos dados, com crédito; não copiar fotografia ou anúncio.",
+      "capture_file": "research/captures/bets-poder-10out.png",
+      "capture_sha256": "21fe6202253ab6342e0f03afd5bd4406697dfabc381bdd6d731f1f92230d1523"
+    },
+    {
+      "id": "bets-gazeta",
+      "kind": "source_excerpt",
+      "source_id": "S3",
+      "source_page_url": "https://www.gazetadopovo.com.br/economia/bets-devolucao-159-milhoes-apostadores/",
+      "expected_text": "Esses dados são necessários para as instituições financeiras realizarem a restituição.",
+      "attribution": "Gazeta do Povo, Vandré Kramer, 10/10/2026 às 19h49; encadeamento dos dados e restituição.",
+      "rights_review": "Recorte mínimo do texto comentado, com crédito e data; excluir foto gerada e não reproduzir a matéria integral.",
+      "capture_file": "research/captures/bets-gazeta-10out.png",
+      "capture_sha256": "54c70efbdd4c40b8f1c5517d2324c683e2f7c851ae5c5439a1624777dea22d78"
+    },
+    {
+      "id": "bets-infomoney",
+      "kind": "source_excerpt",
+      "source_id": "S5",
+      "source_page_url": "https://www.infomoney.com.br/brasil/mais-de-r-1-bilhao-foram-devolvidos-a-apostadores-em-saldos-de-bets/",
+      "expected_text": "segundo dados enviados pelas empresas ao governo federal",
+      "attribution": "InfoMoney / Agência Brasil, 10/10/2026 às 14h15; origem empresarial dos números.",
+      "rights_review": "Trecho curto necessário para comparar o anúncio com o comunicado original, crédito e data; excluir fotografia de apostas.",
+      "capture_file": "research/captures/bets-infomoney-10out.png",
+      "capture_sha256": "5198c60f315a50ab8565fd48106cc7f347e89dd30d05665ea42f35633c360c18"
+    },
+    {
+      "id": "bets-release",
+      "kind": "source_excerpt",
+      "source_id": "S4",
+      "source_page_url": "https://static.poder360.com.br/uploads/2026/10/1010-Release-Bets-informam-59-milhoes.pdf",
+      "expected_text": "Desse total, 90% das contas têm saldo inferior a R$ 1",
+      "attribution": "Secom da Presidência, release de 10/10/2026, primeira página, reproduzido pelo Poder360.",
+      "rights_review": "Página documental necessária para conferir a distribuição e a natureza dos dados; texto público atribuído, sem fotos de terceiros.",
+      "capture_file": "research/captures/bets-release-10out.png",
+      "capture_sha256": "02d22cf4058b67f710ff1fe67909b25b14545b0592f6f185f43bb0e120290d8f"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "descoberta",
+      "title": "Dois números, duas perguntas",
+      "type": "fact",
+      "document_id": "bets-release",
+      "object_type": "data",
+      "label": "SALDOS",
+      "headline": "CONTAS NÃO SÃO DINHEIRO",
+      "metric": "DISTRIBUIÇÃO DIFERENTE",
+      "visual_cards": [
+        "R$ 159 MILHÕES INFORMADOS",
+        "90% DAS CONTAS ABAIXO DE R$ 1",
+        "CONTAS NÃO SÃO PESSOAS",
+        "TOTAL NÃO É SALDO INDIVIDUAL"
+      ],
+      "narration": "As bets ainda têm cento e cinquenta e nove milhões de reais a devolver. Mas nove em cada dez contas têm menos de um real. Como esses números cabem na mesma notícia? A chave é esta: quantidade de contas e quantidade de dinheiro são medidas diferentes. Eu sou o Roberto. A atualização divulgada neste sábado, dez de outubro, também revela um problema prático: oito empresas não entregaram os dados necessários aos bancos. Vamos separar o que os números mostram, o que falta pagar e o que ainda não foi comprovado.",
+      "annotations": [
+        {
+          "id": "total",
+          "style": "highlight",
+          "region": {
+            "x": 25.5,
+            "y": 28.84,
+            "width": 13.87,
+            "height": 1.67
+          }
+        },
+        {
+          "id": "ninety",
+          "style": "highlight",
+          "region": {
+            "x": 70.39,
+            "y": 37.39,
+            "width": 3.74,
+            "height": 1.67
+          }
+        },
+        {
+          "id": "ninety-seven",
+          "style": "highlight",
+          "region": {
+            "x": 29.83,
+            "y": 39.1,
+            "width": 3.74,
+            "height": 1.67
+          }
+        },
+        {
+          "id": "ten",
+          "style": "highlight",
+          "region": {
+            "x": 47.39,
+            "y": 39.1,
+            "width": 5.13,
+            "height": 1.67
+          }
+        },
+        {
+          "id": "eight",
+          "style": "highlight",
+          "region": {
+            "x": 9.51,
+            "y": 51.07,
+            "width": 13.03,
+            "height": 1.67
+          }
+        }
+      ],
+      "visual_cues": [
+        {
+          "anchor": "As bets ainda têm",
+          "view": {
+            "x": 8,
+            "y": 12,
+            "width": 84,
+            "height": 15
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "Mas nove em cada dez contas",
+          "view": {
+            "x": 8,
+            "y": 34.5,
+            "width": 84,
+            "height": 7
+          },
+          "mark_ids": [
+            "ninety"
+          ]
+        },
+        {
+          "anchor": "Como esses números cabem",
+          "view": {
+            "x": 8,
+            "y": 26,
+            "width": 84,
+            "height": 15
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "A chave é esta:",
+          "view": {
+            "x": 8,
+            "y": 34.5,
+            "width": 84,
+            "height": 7
+          },
+          "mark_ids": [
+            "ninety",
+            "ninety-seven"
+          ]
+        },
+        {
+          "anchor": "Eu sou o Roberto.",
+          "view": {
+            "x": 4,
+            "y": 2,
+            "width": 92,
+            "height": 70
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "A atualização divulgada neste sábado",
+          "view": {
+            "x": 8,
+            "y": 26,
+            "width": 84,
+            "height": 9
+          },
+          "mark_ids": [
+            "total"
+          ]
+        },
+        {
+          "anchor": "também revela um problema prático:",
+          "view": {
+            "x": 8,
+            "y": 50,
+            "width": 84,
+            "height": 8.5
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "oito empresas não entregaram",
+          "view": {
+            "x": 8,
+            "y": 50,
+            "width": 84,
+            "height": 8.5
+          },
+          "mark_ids": [
+            "eight"
+          ]
+        },
+        {
+          "anchor": "Vamos separar o que os números",
+          "view": {
+            "x": 8,
+            "y": 26,
+            "width": 84,
+            "height": 32.5
+          },
+          "mark_ids": []
+        }
+      ]
+    },
+    {
+      "id": "pessoas-contas",
+      "title": "Uma pessoa pode ter mais de uma conta",
+      "type": "fact",
+      "document_id": "bets-poder",
+      "object_type": "data",
+      "label": "BASE",
+      "headline": "CONTA NÃO É APOSTADOR",
+      "metric": "BASE INFORMADA PELAS EMPRESAS",
+      "visual_cards": [
+        "22,5 MILHÕES DE APOSTADORES",
+        "70,5 MILHÕES DE CONTAS",
+        "UMA PESSOA PODE TER VÁRIAS",
+        "DADOS NÃO SÃO EXTRATOS CONFERIDOS"
+      ],
+      "narration": "O levantamento reúne vinte e dois milhões e meio de apostadores, distribuídos em setenta milhões e meio de contas. Por que mais contas do que pessoas? Porque o mesmo apostador pode manter cadastro em várias plataformas. Então, quando a reportagem diz que noventa por cento das contas têm menos de um real, ela não está dizendo que noventa por cento das pessoas só têm esse valor no conjunto de seus cadastros. Também não se trata de um dinheiro novo para cada brasileiro: são saldos que já estavam nessas plataformas. A origem é a informação enviada pelas empresas, sem conferência dos extratos individuais nesta apuração.",
+      "annotations": [
+        {
+          "id": "people",
+          "style": "highlight",
+          "region": {
+            "x": 34,
+            "y": 3,
+            "width": 36,
+            "height": 18
+          }
+        },
+        {
+          "id": "accounts",
+          "style": "highlight",
+          "region": {
+            "x": 0,
+            "y": 29,
+            "width": 57,
+            "height": 18
+          }
+        },
+        {
+          "id": "ninety",
+          "style": "highlight",
+          "region": {
+            "x": 73,
+            "y": 29,
+            "width": 10,
+            "height": 18
+          }
+        }
+      ],
+      "visual_cues": [
+        {
+          "anchor": "O levantamento reúne",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 100
+          },
+          "mark_ids": [
+            "people"
+          ]
+        },
+        {
+          "anchor": "distribuídos em setenta milhões e meio",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 100
+          },
+          "mark_ids": [
+            "accounts"
+          ]
+        },
+        {
+          "anchor": "Por que mais contas do que pessoas?",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 52
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "Porque o mesmo apostador",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 100
+          },
+          "mark_ids": [
+            "people",
+            "accounts"
+          ]
+        },
+        {
+          "anchor": "Então, quando a reportagem diz",
+          "view": {
+            "x": 0,
+            "y": 26,
+            "width": 100,
+            "height": 50
+          },
+          "mark_ids": [
+            "ninety"
+          ]
+        },
+        {
+          "anchor": "ela não está dizendo",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 100
+          },
+          "mark_ids": [
+            "people"
+          ]
+        },
+        {
+          "anchor": "no conjunto de seus cadastros.",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 100
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "Também não se trata de um dinheiro novo",
+          "view": {
+            "x": 0,
+            "y": 26,
+            "width": 100,
+            "height": 74
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "são saldos que já estavam nessas plataformas.",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 100
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "A origem é a informação enviada",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 100
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "sem conferência dos extratos individuais",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 76
+          },
+          "mark_ids": []
+        }
+      ]
+    },
+    {
+      "id": "volume",
+      "title": "Contar carteiras não mede o dinheiro",
+      "type": "fact",
+      "document_id": "bets-release",
+      "object_type": "cash",
+      "label": "LEITURA",
+      "headline": "PORCENTAGEM DE CONTAS",
+      "metric": "NÃO É PORCENTAGEM DO VALOR",
+      "visual_cards": [
+        "90% ABAIXO DE R$ 1",
+        "97% ABAIXO DE R$ 10",
+        "MAIORIA DE CONTAS NÃO É MAIORIA DO DINHEIRO",
+        "EXEMPLO NÃO É DISTRIBUIÇÃO REAL"
+      ],
+      "narration": "No documento original aparece outro dado: noventa e sete por cento das contas têm menos de dez reais. Isso mede quantas contas entram nessa faixa, não quanto elas representam do dinheiro total. Imagine, apenas como exemplo, duas carteiras: uma guarda um centavo; a outra, cem reais. Metade das carteiras tem quase nada, mas a maior parte do dinheiro está na outra. Esse exemplo não reproduz a distribuição real das bets. Ele explica por que muitos saldos pequenos podem coexistir com um total grande. Sem a base detalhada, não dá para calcular quanto pertence a cada grupo de apostadores.",
+      "annotations": [
+        {
+          "id": "total",
+          "style": "highlight",
+          "region": {
+            "x": 25.5,
+            "y": 28.84,
+            "width": 13.87,
+            "height": 1.67
+          }
+        },
+        {
+          "id": "ninety",
+          "style": "highlight",
+          "region": {
+            "x": 70.39,
+            "y": 37.39,
+            "width": 3.74,
+            "height": 1.67
+          }
+        },
+        {
+          "id": "ninety-seven",
+          "style": "highlight",
+          "region": {
+            "x": 29.83,
+            "y": 39.1,
+            "width": 3.74,
+            "height": 1.67
+          }
+        },
+        {
+          "id": "ten",
+          "style": "highlight",
+          "region": {
+            "x": 47.39,
+            "y": 39.1,
+            "width": 5.13,
+            "height": 1.67
+          }
+        },
+        {
+          "id": "eight",
+          "style": "highlight",
+          "region": {
+            "x": 9.51,
+            "y": 51.07,
+            "width": 13.03,
+            "height": 1.67
+          }
+        }
+      ],
+      "visual_cues": [
+        {
+          "anchor": "No documento original aparece outro dado:",
+          "view": {
+            "x": 4,
+            "y": 2,
+            "width": 92,
+            "height": 70
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "noventa e sete por cento das contas",
+          "view": {
+            "x": 8,
+            "y": 34.5,
+            "width": 84,
+            "height": 7
+          },
+          "mark_ids": [
+            "ninety-seven",
+            "ten"
+          ]
+        },
+        {
+          "anchor": "Isso mede quantas contas",
+          "view": {
+            "x": 8,
+            "y": 34.5,
+            "width": 84,
+            "height": 7
+          },
+          "mark_ids": [
+            "ninety",
+            "ninety-seven"
+          ]
+        },
+        {
+          "anchor": "não quanto elas representam",
+          "view": {
+            "x": 8,
+            "y": 26,
+            "width": 84,
+            "height": 15
+          },
+          "mark_ids": [
+            "total"
+          ]
+        },
+        {
+          "anchor": "Imagine, apenas como exemplo, duas carteiras:",
+          "view": {
+            "x": 4,
+            "y": 2,
+            "width": 92,
+            "height": 70
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "uma guarda um centavo;",
+          "view": {
+            "x": 8,
+            "y": 34.5,
+            "width": 84,
+            "height": 7
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "Metade das carteiras tem quase nada,",
+          "view": {
+            "x": 8,
+            "y": 26,
+            "width": 84,
+            "height": 15
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "Esse exemplo não reproduz",
+          "view": {
+            "x": 4,
+            "y": 2,
+            "width": 92,
+            "height": 70
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "Ele explica por que muitos saldos pequenos",
+          "view": {
+            "x": 8,
+            "y": 34.5,
+            "width": 84,
+            "height": 7
+          },
+          "mark_ids": [
+            "ninety",
+            "ninety-seven"
+          ]
+        },
+        {
+          "anchor": "Sem a base detalhada,",
+          "view": {
+            "x": 8,
+            "y": 34.5,
+            "width": 84,
+            "height": 14
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "quanto pertence a cada grupo de apostadores.",
+          "view": {
+            "x": 8,
+            "y": 34.5,
+            "width": 84,
+            "height": 7
+          },
+          "mark_ids": []
+        }
+      ]
+    },
+    {
+      "id": "atualizacao",
+      "title": "Atualização não substitui comprovante",
+      "type": "fact",
+      "document_id": "bets-infomoney",
+      "object_type": "data",
+      "label": "APURAÇÃO",
+      "headline": "COMPARE A MESMA DATA",
+      "metric": "SALDO INFORMADO FOI ATUALIZADO",
+      "visual_cards": [
+        "SAQUE VOLUNTÁRIO ATÉ 5 DE OUTUBRO",
+        "VALOR ANTERIOR APROXIMADO",
+        "ATUALIZAÇÃO DAS EMPRESAS",
+        "COMPROVANTE É OUTRA EVIDÊNCIA"
+      ],
+      "narration": "O saldo anterior, de aproximadamente um bilhão e duzentos milhões de reais, é associado ao encerramento do saque voluntário, em cinco de outubro. A cobertura consultada anunciou uma grande devolução. Já o comunicado original descreve o valor atual como resultado da atualização das informações pelas empresas. É uma diferença importante. A queda do total informado, sozinha, não permite reconstruir quais pagamentos aconteceram, para quem e em que momento. Para uma pessoa, a confirmação relevante é o crédito efetivo na conta. Não vamos transformar uma atualização agregada em garantia de que cada apostador já recebeu.",
+      "annotations": [
+        {
+          "id": "previous-current",
+          "style": "highlight",
+          "region": {
+            "x": 0,
+            "y": 51,
+            "width": 50,
+            "height": 18
+          }
+        },
+        {
+          "id": "origin",
+          "style": "highlight",
+          "region": {
+            "x": 9,
+            "y": 61,
+            "width": 40,
+            "height": 9
+          }
+        },
+        {
+          "id": "companies",
+          "style": "highlight",
+          "region": {
+            "x": 0,
+            "y": 72,
+            "width": 13,
+            "height": 9
+          }
+        }
+      ],
+      "visual_cues": [
+        {
+          "anchor": "O saldo anterior,",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 53,
+            "height": 100
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "de aproximadamente um bilhão",
+          "view": {
+            "x": 0,
+            "y": 40,
+            "width": 53,
+            "height": 43
+          },
+          "mark_ids": [
+            "previous-current"
+          ]
+        },
+        {
+          "anchor": "é associado ao encerramento",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 53,
+            "height": 100
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "A cobertura consultada anunciou",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 53,
+            "height": 38
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "Já o comunicado original descreve",
+          "view": {
+            "x": 0,
+            "y": 60,
+            "width": 53,
+            "height": 27
+          },
+          "mark_ids": [
+            "origin",
+            "companies"
+          ]
+        },
+        {
+          "anchor": "É uma diferença importante.",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 53,
+            "height": 100
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "A queda do total informado, sozinha,",
+          "view": {
+            "x": 0,
+            "y": 40,
+            "width": 53,
+            "height": 43
+          },
+          "mark_ids": [
+            "previous-current"
+          ]
+        },
+        {
+          "anchor": "quais pagamentos aconteceram,",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 53,
+            "height": 100
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "Para uma pessoa,",
+          "view": {
+            "x": 0,
+            "y": 60,
+            "width": 53,
+            "height": 27
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "Não vamos transformar",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 53,
+            "height": 100
+          },
+          "mark_ids": []
+        }
+      ]
+    },
+    {
+      "id": "dados-pagamento",
+      "title": "O caminho entre cadastro e devolução",
+      "type": "fact",
+      "document_id": "bets-release",
+      "object_type": "bank",
+      "label": "DEVOLUÇÃO",
+      "headline": "DADOS ANTES DO PAGAMENTO",
+      "metric": "PRAZO INFORMADO: 14 DE OUTUBRO",
+      "visual_cards": [
+        "CPF E CONTA DE ORIGEM",
+        "OITO EMPRESAS SEM DADOS",
+        "AÇÃO ANUNCIADA PELA AGU",
+        "CAIXA SE HOUVER IMPEDIMENTO"
+      ],
+      "narration": "O calendário informado prevê devolução pelos bancos até quarta-feira, quatorze de outubro. Para isso, as plataformas precisam identificar os valores por Cadastro de Pessoa Física, o CPF, e informar a conta bancária utilizada nos depósitos. Oito empresas ainda não encaminharam esses dados. A Advocacia-Geral da União, órgão que representa a União na Justiça, anunciou ação para exigir as informações. Se houver impedimento na devolução bancária, o comunicado prevê transferência dos recursos à Caixa a partir do dia quatorze. Isso descreve o procedimento anunciado; não é prova de que cada transferência já ocorreu ou de que a Caixa pagará tudo no mesmo dia.",
+      "annotations": [
+        {
+          "id": "total",
+          "style": "highlight",
+          "region": {
+            "x": 25.5,
+            "y": 28.84,
+            "width": 13.87,
+            "height": 1.67
+          }
+        },
+        {
+          "id": "ninety",
+          "style": "highlight",
+          "region": {
+            "x": 70.39,
+            "y": 37.39,
+            "width": 3.74,
+            "height": 1.67
+          }
+        },
+        {
+          "id": "ninety-seven",
+          "style": "highlight",
+          "region": {
+            "x": 29.83,
+            "y": 39.1,
+            "width": 3.74,
+            "height": 1.67
+          }
+        },
+        {
+          "id": "ten",
+          "style": "highlight",
+          "region": {
+            "x": 47.39,
+            "y": 39.1,
+            "width": 5.13,
+            "height": 1.67
+          }
+        },
+        {
+          "id": "eight",
+          "style": "highlight",
+          "region": {
+            "x": 9.51,
+            "y": 51.07,
+            "width": 13.03,
+            "height": 1.67
+          }
+        },
+        {
+          "id": "identity",
+          "style": "highlight",
+          "region": {
+            "x": 9.5,
+            "y": 61.2,
+            "width": 80,
+            "height": 3.7
+          }
+        },
+        {
+          "id": "data",
+          "style": "highlight",
+          "region": {
+            "x": 9.5,
+            "y": 51.0,
+            "width": 80,
+            "height": 3.8
+          }
+        },
+        {
+          "id": "condition",
+          "style": "highlight",
+          "region": {
+            "x": 9.5,
+            "y": 66.3,
+            "width": 45,
+            "height": 1.9
+          }
+        },
+        {
+          "id": "deadline",
+          "style": "highlight",
+          "region": {
+            "x": 56.93,
+            "y": 66.47,
+            "width": 12.43,
+            "height": 1.67
+          }
+        }
+      ],
+      "visual_cues": [
+        {
+          "anchor": "O calendário informado prevê",
+          "view": {
+            "x": 8,
+            "y": 12,
+            "width": 84,
+            "height": 15
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "até quarta-feira, quatorze de outubro.",
+          "view": {
+            "x": 8,
+            "y": 65.5,
+            "width": 84,
+            "height": 6
+          },
+          "mark_ids": [
+            "deadline"
+          ]
+        },
+        {
+          "anchor": "Para isso, as plataformas precisam",
+          "view": {
+            "x": 8,
+            "y": 59.3,
+            "width": 84,
+            "height": 6
+          },
+          "mark_ids": [
+            "identity"
+          ]
+        },
+        {
+          "anchor": "o CPF, e informar a conta bancária",
+          "view": {
+            "x": 8,
+            "y": 59.3,
+            "width": 84,
+            "height": 6
+          },
+          "mark_ids": [
+            "identity"
+          ]
+        },
+        {
+          "anchor": "Oito empresas ainda não encaminharam",
+          "view": {
+            "x": 8,
+            "y": 50,
+            "width": 84,
+            "height": 8.5
+          },
+          "mark_ids": [
+            "eight"
+          ]
+        },
+        {
+          "anchor": "A Advocacia-Geral da União,",
+          "view": {
+            "x": 8,
+            "y": 50,
+            "width": 84,
+            "height": 8.5
+          },
+          "mark_ids": [
+            "data"
+          ]
+        },
+        {
+          "anchor": "anunciou ação para exigir as informações.",
+          "view": {
+            "x": 8,
+            "y": 50,
+            "width": 84,
+            "height": 8.5
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "Se houver impedimento",
+          "view": {
+            "x": 8,
+            "y": 65.5,
+            "width": 84,
+            "height": 6
+          },
+          "mark_ids": [
+            "condition"
+          ]
+        },
+        {
+          "anchor": "à Caixa a partir do dia quatorze.",
+          "view": {
+            "x": 8,
+            "y": 65.5,
+            "width": 84,
+            "height": 6
+          },
+          "mark_ids": [
+            "deadline"
+          ]
+        },
+        {
+          "anchor": "Isso descreve o procedimento anunciado;",
+          "view": {
+            "x": 4,
+            "y": 2,
+            "width": 92,
+            "height": 70
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "não é prova de que cada transferência",
+          "view": {
+            "x": 8,
+            "y": 59.3,
+            "width": 84,
+            "height": 6
+          },
+          "mark_ids": []
+        }
+      ]
+    },
+    {
+      "id": "leitura-roberto",
+      "title": "O que cobrar agora",
+      "type": "opinion",
+      "document_id": "bets-gazeta",
+      "object_type": "cash",
+      "label": "ANÁLISE",
+      "headline": "PAGAMENTO PRECISA DE COMPROVAÇÃO",
+      "metric": "ACOMPANHAR RESULTADOS",
+      "visual_cards": [
+        "CADASTRO NÃO É DINHEIRO RECEBIDO",
+        "BANCO DEPENDE DE IDENTIFICAÇÃO",
+        "DADOS AGREGADOS TÊM LIMITES",
+        "RESULTADO PRECISA SER DEMONSTRADO"
+      ],
+      "narration": "Na minha leitura, uma política que promete proteger o consumidor precisa demonstrar também que consegue devolver o dinheiro dele. Ter um calendário e exigir os dados é necessário, mas falta de informação continua sendo um obstáculo concreto. Isso não permite culpar todos os bancos ou dizer que todo saldo sumiu. A pergunta certa agora é quanto foi efetivamente pago, quanto continua pendente e por quê. E a resposta ao nosso paradoxo é simples: muitos cadastros com trocados não dizem onde está a maior parte do dinheiro. Se esta leitura ajudou, inscreva-se no canal. Você acompanha o valor anunciado ou espera o comprovante para considerar o assunto resolvido?",
+      "annotations": [
+        {
+          "id": "identity",
+          "style": "highlight",
+          "region": {
+            "x": 0,
+            "y": 36,
+            "width": 48,
+            "height": 14
+          }
+        },
+        {
+          "id": "data",
+          "style": "highlight",
+          "region": {
+            "x": 49,
+            "y": 36,
+            "width": 45,
+            "height": 14
+          }
+        },
+        {
+          "id": "bank",
+          "style": "highlight",
+          "region": {
+            "x": 0,
+            "y": 53,
+            "width": 59,
+            "height": 14
+          }
+        },
+        {
+          "id": "condition",
+          "style": "highlight",
+          "region": {
+            "x": 60,
+            "y": 53,
+            "width": 32,
+            "height": 14
+          }
+        },
+        {
+          "id": "deadline",
+          "style": "highlight",
+          "region": {
+            "x": 0,
+            "y": 70,
+            "width": 93,
+            "height": 14
+          }
+        }
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Na minha leitura,",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 100
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "precisa demonstrar também",
+          "view": {
+            "x": 0,
+            "y": 32,
+            "width": 100,
+            "height": 39
+          },
+          "mark_ids": [
+            "bank"
+          ]
+        },
+        {
+          "anchor": "Ter um calendário",
+          "view": {
+            "x": 0,
+            "y": 51,
+            "width": 100,
+            "height": 49
+          },
+          "mark_ids": [
+            "deadline"
+          ]
+        },
+        {
+          "anchor": "mas falta de informação",
+          "view": {
+            "x": 0,
+            "y": 32,
+            "width": 100,
+            "height": 39
+          },
+          "mark_ids": [
+            "data"
+          ]
+        },
+        {
+          "anchor": "Isso não permite culpar todos os bancos",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 100
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "A pergunta certa agora",
+          "view": {
+            "x": 0,
+            "y": 32,
+            "width": 100,
+            "height": 39
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "E a resposta ao nosso paradoxo",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 100
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "muitos cadastros com trocados",
+          "view": {
+            "x": 0,
+            "y": 32,
+            "width": 100,
+            "height": 39
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "Se esta leitura ajudou,",
+          "view": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 100
+          },
+          "mark_ids": []
+        },
+        {
+          "anchor": "Você acompanha o valor anunciado",
+          "view": {
+            "x": 0,
+            "y": 51,
+            "width": 100,
+            "height": 49
+          },
+          "mark_ids": []
+        }
+      ]
+    }
+  ],
+  "engagement_question": "Você acompanha o valor anunciado ou espera o comprovante para considerar o assunto resolvido?",
+  "hashtags": [
+    "#Bets",
+    "#Dinheiro",
+    "#Economia"
+  ],
+  "tags": [
+    "saldo das bets",
+    "devolução das bets",
+    "159 milhões",
+    "contas de apostas",
+    "Roberto O Dinheiro Explica"
+  ],
+  "primary_keyword": "Bets",
+  "secondary_keywords": [
+    "saldo remanescente",
+    "devolução",
+    "14 de outubro"
+  ],
+  "pronunciations": {
+    "bets": "béts",
+    "CPF": "cê pê éfe",
+    "AGU": "a gê u"
+  },
+  "discovery_strategy": {
+    "viewer_intent": "Entender o saldo ainda informado para devolução e por que milhões de contas com trocados não eliminam um total elevado.",
+    "search_query": "saldo bets 159 milhões devolução bancos 14 outubro 2026",
+    "recommendation_angle": "Dois números aparentemente contraditórios abrem uma explicação sobre pessoas, contas, distribuição do dinheiro e prova de pagamento.",
+    "first_payoff": "A chave é esta: quantidade de contas e quantidade de dinheiro são medidas diferentes.",
+    "promise_proof": "O comunicado e as reportagens distinguem total de saldos, quantidade de contas e pessoas. O exemplo de duas carteiras é hipotético e não estima a distribuição real. A conclusão separa atualização de dados e comprovante de pagamento.",
+    "audience_hypothesis": "Brasileiros acompanhando a devolução, e espectadores de economia interessados em interpretar corretamente números grandes nas manchetes.",
+    "thumbnail_complement": "CADÊ O SALDO? apresenta a dúvida sobre o dinheiro ainda pendente; poucas moedas simbolizam resíduos, com o rosto fixo do Roberto identificando a análise.",
+    "verification_limits": "Dados fornecidos pelas próprias empresas, sem acesso à base individual ou conciliação dos pagamentos. Os veículos cruzam o mesmo comunicado. Não se conhece o valor associado às oito empresas nem se confirma a execução futura do calendário. CTR e retenção do canal indisponíveis."
+  },
+  "publication_description": "Bets ainda informam R$ 159 milhões a devolver, enquanto 90% das contas têm menos de R$ 1. Roberto explica por que esses dados podem coexistir e o que o calendário até 14 de outubro realmente permite concluir.\n\n- A diferença entre contas, pessoas e dinheiro\n- Por que a atualização dos saldos não substitui um comprovante\n- Os dados que faltam para os bancos devolverem recursos\n- O que ainda precisa ser demonstrado na prática"
+}

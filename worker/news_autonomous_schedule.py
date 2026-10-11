@@ -19,6 +19,18 @@ def load(path):
     return json.loads(Path(path).read_text(encoding="utf-8"))
 
 
+def explicitly_authorized_immediate(config, project_id, raw_target, local_day):
+    """Exact one-episode exception; cannot advance ordinary recurring slots."""
+    return any(
+        item.get("episode_id") == project_id
+        and item.get("original_publication_local") == raw_target
+        and item.get("news_date") == local_day
+        and item.get("authorized_by_user") is True
+        and item.get("mode") == "publish_immediately_after_qa"
+        for item in config.get("one_time_immediate_publications", [])
+    )
+
+
 def confirmed_video_identity(service, video_id: str, project_id: str,
                              attempts: int = 15) -> dict:
     """Read-after-write check; YouTube may lag after a private upload.
@@ -157,7 +169,10 @@ def main():
             for item in recoveries
         )
     )
-    publish_now = eligible_late_grace or eligible_recovery
+    immediate_exception = explicitly_authorized_immediate(
+        config, project_id, raw_target, now.astimezone(local_zone).date().isoformat()
+    )
+    publish_now = eligible_late_grace or eligible_recovery or immediate_exception
     if 0 < lead < config["min_lead_minutes"]:
         print("SHORT_LEAD_ADVISORY: programar no horário original sem atrasar nem cancelar.")
     service = youtube_service()
@@ -190,12 +205,17 @@ def main():
         ).execute()
         confirm_release_status(service, video_id, project_id, "public")
         payload = {
-            "project_id": project_id, "video_id": video_id, "status": "published_within_tolerance" if eligible_late_grace else "published_late_authorized",
+            "project_id": project_id, "video_id": video_id,
+            "status": "published_immediate_authorized" if immediate_exception else (
+                "published_within_tolerance" if eligible_late_grace else "published_late_authorized"),
             "publication_confirmation": "confirmed_public",
             "delay_minutes": round(max(0, delay_minutes), 2),
             "late_tolerance_minutes": grace_minutes,
+            "one_time_immediate_authorization": immediate_exception,
             "qa_warning_count": len(qa.get("warnings") or []),
-            "published_after_target_local": local_target.isoformat(),
+            "publication_target_local": local_target.isoformat(),
+            "published_at_local": now.astimezone(local_zone).isoformat(),
+            **({"published_after_target_local": local_target.isoformat()} if delay_minutes >= 0 else {}),
             "confirmed_at_utc": datetime.now(timezone.utc).isoformat(),
             "thumbnail_sha256": image_hash,
             "thumbnail_status": "attached" if image_hash else "youtube_automatic",

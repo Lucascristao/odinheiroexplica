@@ -1,0 +1,7 @@
+{
+  "mode": "authentic_pdf_page",
+  "source_page_url": "https://static.poder360.com.br/uploads/2026/10/1010-Release-Bets-informam-59-milhoes.pdf",
+  "expected_text": "Desse total, 90% das contas têm saldo inferior a R$ 1",
+  "image_sha256": "02d22cf4058b67f710ff1fe67909b25b14545b0592f6f185f43bb0e120290d8f",
+  "captured_at": "2026-10-11T04:02:50.237958+00:00"
+}

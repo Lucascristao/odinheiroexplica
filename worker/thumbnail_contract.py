@@ -59,6 +59,16 @@ def read_contract(project, production_dir):
         "composition", "visual_tension", "forbidden_elements",
         "palette", "format", "no_extra_text",
     }
+    if "presenter_identity" in contract:
+        expected.add("presenter_identity")
+        identity = contract["presenter_identity"]
+        if (not isinstance(identity, dict)
+            or set(identity) != {"id", "mode", "reference_path", "reference_sha256"}
+            or identity.get("mode") != "locked_asset"
+            or not re.fullmatch(r"[a-z][a-z0-9-]+", str(identity.get("id")))
+            or not re.fullmatch(r"video/public/presenters/[a-z0-9-]+/[a-z0-9-]+\.png", str(identity.get("reference_path")))
+            or not re.fullmatch(r"[a-f0-9]{64}", str(identity.get("reference_sha256")))):
+            raise ValueError("thumbnail: identidade estruturada do apresentador inválida.")
     if set(contract) != expected or contract.get("version") != "1.0":
         raise ValueError("thumbnail: esquema do contrato diferente da versão 1.0.")
     if contract["exact_headline"] != thumbnail.get("headline"):
@@ -135,4 +145,8 @@ def validate_thumbnail_audit(root, project, thumbnail_path, project_source_path=
         raise ValueError("thumbnail: nem todas as exclusões foram conferidas.")
     if data["observed_forbidden_elements"] != []:
         raise ValueError("thumbnail: imagem contém elemento proibido; gere nova capa e nova auditoria.")
+    if contract.get("presenter_identity"):
+        from presenter_identity import validate_presenter_composition
+        validate_presenter_composition(root, contract["presenter_identity"], episode_id,
+                                       contract_sha256(contract), file_sha256(image))
     return {"audit_path": audit_path, "audit_sha256": file_sha256(audit_path), "contract_sha256": contract_sha256(contract)}

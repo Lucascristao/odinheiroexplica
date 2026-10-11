@@ -29,6 +29,8 @@ const state=()=>existsSync(statePath)?load("work/production-state.json"):null;
 const save=(value:object)=>{mkdirSync(dirname(statePath),{recursive:true});writeFileSync(statePath,JSON.stringify(value,null,2)+"\n");};
 if(command==="thumbnail-spec") {
   run(process.execPath,["node_modules/tsx/dist/cli.mjs","scripts/thumbnail-spec.ts",...args.slice(1)]);
+} else if(command==="thumbnail-compose") {
+  run(process.execPath,["node_modules/tsx/dist/cli.mjs","scripts/compose-news-thumbnail.ts",...args.slice(1)]);
 } else if(command==="analytics") {
   run(process.execPath,["node_modules/tsx/dist/cli.mjs","scripts/youtube-analytics.ts",...args.slice(1)]);
 } else if(command==="prompt") {
@@ -92,4 +94,4 @@ if(command==="thumbnail-spec") {
 } else if(command==="complete"||command==="cleanup") {
   const production=option("--production");if(!production)throw new Error("complete exige --production production/EPISODIO com recibo completo.");
   const result=cleanupCompletedProduction(root,production);console.log(JSON.stringify(result,null,2));if(result.status!=="complete")process.exitCode=1;
-} else throw new Error("Comando desconhecido: context, capabilities, thumbnail-spec, prompt, analytics, preflight, dispatch, render, status, resume, review, deliver, complete.");
+} else throw new Error("Comando desconhecido: context, capabilities, thumbnail-spec, thumbnail-compose, prompt, analytics, preflight, dispatch, render, status, resume, review, deliver, complete.");

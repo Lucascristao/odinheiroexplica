@@ -21,6 +21,17 @@ def step_index(steps: list[str], marker: str) -> int:
 
 
 class ProductionWorkflowTests(unittest.TestCase):
+    def test_presenter_cover_preparation_cannot_publish_or_generate_voice(self):
+        workflow=(WORKFLOWS/'news-prepare-thumbnail.yml').read_text(encoding='utf-8')
+        self.assertIn('contents: read',workflow)
+        self.assertIn("news/preparations/*.json",workflow)
+        self.assertIn('compose-news-thumbnail.ts',workflow)
+        self.assertIn('thumbnail-composition.json',workflow)
+        self.assertNotIn('secrets.',workflow)
+        self.assertNotIn('synthesize_scenes',workflow)
+        self.assertNotIn('youtube_publication',workflow)
+        self.assertNotIn('renderStill --video',workflow)
+
     def test_shell_blocks_do_not_join_commands_with_literal_newline_text(self):
         for path in WORKFLOWS.glob("*.yml"):
             with self.subTest(workflow=path.name):

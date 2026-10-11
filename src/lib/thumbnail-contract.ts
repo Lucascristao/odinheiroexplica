@@ -17,6 +17,12 @@ export const thumbnailContractSchema = z.object({
   }).strict(),
   format: z.object({width:z.literal(1280),height:z.literal(720)}).strict(),
   no_extra_text: z.literal(true),
+  presenter_identity: z.object({
+    id: z.string().regex(/^[a-z][a-z0-9-]+$/),
+    mode: z.literal("locked_asset"),
+    reference_path: z.string().regex(/^video\/public\/presenters\/[a-z0-9-]+\/[a-z0-9-]+\.png$/),
+    reference_sha256: z.string().regex(/^[a-f0-9]{64}$/),
+  }).strict().optional(),
 }).strict().superRefine((value,ctx)=>{
   if(new Set(value.forbidden_elements.map(item=>item.toLocaleLowerCase("pt-BR"))).size!==value.forbidden_elements.length)ctx.addIssue({code:"custom",path:["forbidden_elements"],message:"Elementos proibidos não podem se repetir."});
 });

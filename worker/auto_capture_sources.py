@@ -1,5 +1,6 @@
 import argparse
 import json
+import hashlib
 import sys
 from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath
@@ -244,6 +245,19 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
     dest_path = (captures_dir / Path(*relative.parts)).resolve()
     if not dest_path.is_relative_to(captures_dir.resolve()):
         raise RuntimeError(f"Asset {asset.get('id')}: destino fora da pasta de capturas.")
+    pinned_hash = asset.get("capture_sha256")
+    if pinned_hash is not None:
+        receipt_path = dest_path.with_suffix(".provenance.json")
+        if (not isinstance(pinned_hash, str) or len(pinned_hash) != 64 or not dest_path.is_file()
+            or hashlib.sha256(dest_path.read_bytes()).hexdigest() != pinned_hash or not receipt_path.is_file()):
+            raise RuntimeError("Captura revisada ausente/alterada; não reutilizar coordenadas de outra imagem.")
+        proof = json.loads(receipt_path.read_text(encoding="utf-8"))
+        if (proof.get("mode") not in ("authentic_page_capture", "authentic_pdf_page")
+            or proof.get("source_page_url") != url or proof.get("expected_text") != expected_text
+            or proof.get("image_sha256") != pinned_hash or not proof.get("captured_at")):
+            raise RuntimeError("Proveniência da captura revisada não corresponde ao documento.")
+        print(f"[auto_capture] Captura autêntica revisada preservada: {dest_path.name}")
+        return True
     if playwright_browser is None:
         raise RuntimeError(f"Asset {asset.get('id')}: navegador Playwright indisponível; nenhuma captura foi criada.")
 
@@ -457,6 +471,8 @@ def main() -> None:
                     # with simulated article panels.
                     success_count += 1
             except Exception as exc:
+                if asset.get("capture_sha256"):
+                    raise  # Stale authored coordinates cannot target replacement pixels.
                 if not asset.get("editorial_reconstruction"):
                     raise
                 print(f"[auto_capture] Falha de captura ({exc}). Usando reconstrução editorial identificada.")

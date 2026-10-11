@@ -104,6 +104,8 @@ def validate(episode: dict, today: date | None = None) -> dict:
             require(any(doc["source_id"] in fact["source_ids"] for fact in claims),
                     "reconstrução sem fato verificado ligado à fonte")
         require(doc["id"] not in doc_ids, "asset duplicado")
+        if doc.get("capture_sha256") is not None:
+            require(bool(re.fullmatch(r"[a-f0-9]{64}", str(doc["capture_sha256"]))), "hash da captura revisada inválido")
         doc_ids.add(doc["id"])
     photos = episode.get("context_photos") or []
     require(isinstance(photos, list), "imagens contextuais precisam ser uma lista")
@@ -151,6 +153,19 @@ def validate(episode: dict, today: date | None = None) -> dict:
         if segment.get("document_id"):
             require(segment["document_id"] in doc_ids, "recorte documental não encontrado")
             used_docs.add(segment["document_id"])
+        cues = segment.get("visual_cues")
+        if cues is not None:
+            require(isinstance(cues, list) and 1 <= len(cues) <= 12, "cues autorais inválidas")
+            positions = []
+            for cue in cues:
+                anchor = cue.get("anchor", "")
+                require(isinstance(anchor, str) and 5 <= len(anchor) <= 160
+                        and segment["narration"].count(anchor) == 1, "cue deve ser trecho literal único da fala")
+                positions.append(segment["narration"].index(anchor))
+                if cue.get("view") or cue.get("mark_ids"):
+                    doc = next((d for d in documentary if d["id"] == segment.get("document_id")), {})
+                    require(bool(doc.get("capture_sha256")), "zoom/grifo autoral exige captura autêntica revisada e fixada por hash")
+            require(positions == sorted(set(positions)), "cues precisam acompanhar a ordem da narração")
     require(len(used_docs) >= 2, "as duas evidências documentais precisam aparecer no vídeo")
     # Mais de uma matéria visual sobre O MESMO assunto, com fontes diferentes.
     doc_source = {item["id"]: item["source_id"] for item in documentary}
@@ -204,6 +219,20 @@ def build_scene(index: int, segment: dict) -> dict:
     narration = segment["narration"]
     available_cues = anchors(narration)
     cards = segment["visual_cards"]
+    authored_cues = segment.get("visual_cues")
+    if authored_cues:
+        return {
+            "id": f"scene-{index:02d}", "index": index, "title": segment["title"],
+            "editorial_role": segment["type"], "narration": narration, "claim_ids": [],
+            "tts": {"delivery": "explain", "pause_ms": 120, "cues": []},
+            "visual": {"type": "authored_stage", "transition": "cut", "stage": build_stage(segment),
+                "beats": [{"anchor": cue["anchor"], "target_id": "evidence", "action": "focus",
+                           "headline": cue.get("headline", cards[cue_index % len(cards)]),
+                           "treatment": "spotlight", "behavior": "hold", "motion_seconds": .7,
+                           **({"view": cue["view"]} if cue.get("view") else {}),
+                           **({"mark_ids": cue["mark_ids"]} if "mark_ids" in cue else {})}
+                          for cue_index, cue in enumerate(authored_cues)]},
+        }
     # No unanchored text cards on top of material. Authored focus regions and
     # marks are optional: if none are reviewed, keep the evidence stable.
     cue_count = min(4, len(cards), len(available_cues))
@@ -249,6 +278,7 @@ def transform(episode: dict) -> dict:
         "source_id": doc["source_id"],
         **({"editorial_reconstruction": doc["editorial_reconstruction"]}
            if doc.get("editorial_reconstruction") else {}),
+        **({"capture_sha256": doc["capture_sha256"]} if doc.get("capture_sha256") else {}),
         "narrative_role": "documentary_proof", "country_context": "BR",
     } for doc in episode["documentary_evidence"]]
     photo_assets = [{
@@ -277,6 +307,12 @@ def transform(episode: dict) -> dict:
         "palette": {"base": "#090B0D", "accent": "#FFBD19", "text": "#F6F7F8"},
         "format": {"width": 1280, "height": 720}, "no_extra_text": True,
     }
+    from presenter_identity import news_presenter_contract
+    portrait = news_presenter_contract(episode["news_date"])
+    if portrait:
+        contract["presenter_identity"] = portrait
+        contract["secondary_subject"] = "Roberto, apresentador virtual do canal; reutilizar o retrato oficial sem recriar o rosto"
+        contract["composition"] += "; retrato oficial do Roberto em apoio à notícia, com rosto inteiro e texto separados"
     return {
         "version": "1.0", "project_id": episode["episode_id"], "title": episode["title"],
         "presenter": {"name": "Roberto", "gender": "male"},

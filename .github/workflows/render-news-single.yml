@@ -232,6 +232,9 @@ jobs:
             render-output/daily-video.mp4
             render-output/daily-youtube.json
             production/noticia-*/thumbnail.jpg
+            production/noticia-*/thumbnail.png
+            production/noticia-*/thumbnail-background.png
+            production/noticia-*/thumbnail-composition.json
             production/noticia-*/thumbnail-audit.json
           if-no-files-found: warn
           retention-days: 7

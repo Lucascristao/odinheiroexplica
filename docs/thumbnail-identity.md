@@ -21,6 +21,8 @@ A capa precisa funcionar primeiro como peça de clique e depois como peça de ma
 - espaçamento confortável entre letras, sem compressão agressiva;
 - um foco visual dominante e, no máximo, um apoio secundário.
 
+Nas notícias novas, Roberto é o apresentador virtual fixo explicitamente autorizado pelo titular e pelo contrato; seguir `docs/presenter-identity.md`. Reutilizar os pixels oficiais, sem reconstruir a identidade por prompt. Sua presença não autoriza outros rostos nem a cópia de capas dos canais de referência. O assunto deve continuar reconhecível.
+
 ## O que deve variar em toda capa
 
 A composição, o enquadramento, o objeto ou personagem central, a direção da luz, a escala do assunto, a posição do texto, a metáfora visual e o recurso de tensão devem nascer da história atual.

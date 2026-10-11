@@ -1,0 +1,79 @@
+name: ODE Notícias - preparar capa com Roberto fixo
+on:
+  push:
+    branches: [main]
+    paths: ['news/preparations/*.json']
+  workflow_dispatch:
+    inputs:
+      preparation_path:
+        description: Rascunho apurado em news/preparations/AAAA-MM-DD-slot.json
+        type: string
+        required: true
+permissions:
+  contents: read
+concurrency:
+  group: ode-news-thumbnail-${{ github.repository }}
+  cancel-in-progress: false
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Identificar somente o rascunho de capa
+        env:
+          REQUESTED_PATH: ${{ inputs.preparation_path }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [[ -n "$REQUESTED_PATH" ]]; then
+            PREPARATION="$REQUESTED_PATH"
+          else
+            mapfile -t CHANGED < <(git diff --name-only HEAD^ HEAD -- 'news/preparations/*.json')
+            [[ "${#CHANGED[@]}" -eq 1 ]] || { echo "Exige exatamente um rascunho de capa."; exit 1; }
+            PREPARATION="${CHANGED[0]}"
+          fi
+          [[ "$PREPARATION" =~ ^news/preparations/[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9-]+\.json$ ]] || { echo "Rascunho fora do caminho permitido."; exit 1; }
+          [[ -f "$PREPARATION" ]] || { echo "Rascunho ausente."; exit 1; }
+          echo "NEWS_PREPARATION=$PREPARATION" >> "$GITHUB_ENV"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci --no-audit --no-fund
+      - name: Adaptar o rascunho sem gerar voz ou vídeo
+        run: python worker/news_single_project.py --input "$NEWS_PREPARATION" --output video/generated/thumbnail-project.json
+      - name: Compor com o retrato oficial sem gerar outra pessoa
+        shell: bash
+        run: |
+          set -euo pipefail
+          PROJECT_ID="$(python -c 'import json;print(json.load(open("video/generated/thumbnail-project.json"))["project_id"])')"
+          mapfile -t LAYOUT < <(python - <<'PY'
+          import json, os
+          data=json.load(open(os.environ['NEWS_PREPARATION']))
+          side=data.get('thumbnail_text_side','left')
+          position=data.get('thumbnail_headline_position','lower')
+          size=data.get('thumbnail_portrait_size','close')
+          assert side in ('left','right') and position in ('upper','middle','lower') and size in ('compact','standard','close')
+          print('right' if side=='left' else 'left'); print(position); print(size)
+          PY
+          )
+          [[ "${#LAYOUT[@]}" -eq 3 ]] || { echo "Layout de capa inválido."; exit 1; }
+          npx tsx scripts/compose-news-thumbnail.ts --project video/generated/thumbnail-project.json \
+            --background "production/$PROJECT_ID/thumbnail-background.png" \
+            --portrait-side "${LAYOUT[0]}" --headline-position "${LAYOUT[1]}" --portrait-size "${LAYOUT[2]}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: news-thumbnail-preparation
+          path: |
+            video/generated/thumbnail-project.json
+            production/noticia-*/thumbnail.jpg
+            production/noticia-*/thumbnail-background.png
+            production/noticia-*/thumbnail-composition.json
+          if-no-files-found: error
+          retention-days: 7

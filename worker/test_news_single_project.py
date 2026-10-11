@@ -23,6 +23,22 @@ class SingleNewsContractTests(unittest.TestCase):
         self.assertGreaterEqual(len(self.doc["sources"]), 2)
         self.assertEqual(self.doc["editorial_status"], "approved_for_private_pilot")
 
+    def test_authored_cues_require_literal_order_and_pinned_capture(self):
+        doc=copy.deepcopy(self.doc)
+        segment=doc["segments"][1]
+        literal=segment["narration"][:45]
+        segment["visual_cues"]=[{"anchor":literal,"view":{"x":0,"y":0,"width":100,"height":100}}]
+        with self.assertRaisesRegex(ValueError,"captura autêntica"):
+            validate(doc,date(2026,10,9))
+        asset=next(d for d in doc["documentary_evidence"] if d["id"]==segment["document_id"])
+        asset["capture_sha256"]="a"*64
+        project=transform(doc)
+        self.assertEqual(project["scenes"][1]["visual"]["beats"][0]["anchor"],literal)
+        self.assertEqual(next(a for a in project["visual_assets"] if a["id"]==asset["id"])["capture_sha256"],"a"*64)
+        segment["visual_cues"][0]["anchor"]="Fala inventada que não existe no roteiro."
+        with self.assertRaisesRegex(ValueError,"trecho literal"):
+            validate(doc,date(2026,10,9))
+
     def test_titles_must_be_distinct_and_chosen_from_highest_ranked_option(self):
         base = copy.deepcopy(self.doc)
         validate(base, date(2026, 10, 9))

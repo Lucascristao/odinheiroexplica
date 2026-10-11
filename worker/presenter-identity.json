@@ -1,0 +1,17 @@
+{
+  "version": "1.0",
+  "news_enabled_since": "2026-10-11",
+  "default_news_presenter": "roberto-v1",
+  "identities": {
+    "roberto-v1": {
+      "name": "Roberto",
+      "kind": "fictional_channel_presenter",
+      "mode": "locked_asset",
+      "reference_path": "video/public/presenters/roberto/roberto-v1.png",
+      "reference_sha256": "97834c9d290d564009184699fdc7ef75ce3f16f0fa17f42194bf6340a737e654",
+      "voice_name": "Charon",
+      "generator": "native_chatgpt_imagegen",
+      "usage": "Reuse the approved portrait pixels. Do not regenerate, morph, mirror, recolor or replace the face per episode. Vary the story, layout, crop outside the face and placement."
+    }
+  }
+}

@@ -52,6 +52,19 @@ class FakeService:
 
 
 class TestScheduleWithoutCover(unittest.TestCase):
+    def test_immediate_release_is_limited_to_explicit_episode_day_and_target(self):
+        identity="noticia-2026-10-11-melhorias-producao"
+        target="2026-10-11T08:00:00-03:00"
+        config={"one_time_immediate_publications":[{"episode_id":identity,
+            "news_date":"2026-10-11", "original_publication_local":target,
+            "authorized_by_user":True,"mode":"publish_immediately_after_qa"}]}
+        self.assertTrue(scheduler.explicitly_authorized_immediate(config,identity,target,"2026-10-11"))
+        self.assertFalse(scheduler.explicitly_authorized_immediate(config,"noticia-2026-10-11-manha",target,"2026-10-11"))
+        self.assertFalse(scheduler.explicitly_authorized_immediate(config,identity,target,"2026-10-12"))
+        self.assertFalse(scheduler.explicitly_authorized_immediate(config,identity,"2026-10-11T12:00:00-03:00","2026-10-11"))
+        config["one_time_immediate_publications"][0]["authorized_by_user"]=False
+        self.assertFalse(scheduler.explicitly_authorized_immediate(config,identity,target,"2026-10-11"))
+
     def test_identity_can_arrive_after_the_old_five_read_limit(self):
         episode_id = "noticia-2026-10-10-teste-producao"
         service = FakeService(episode_id)
@@ -250,6 +263,8 @@ class TestScheduleWithoutCover(unittest.TestCase):
             ("outside", 16, 31, "warn", [], "blocked"),
             ("critical", 15, 45, "fail", [{"code": "missing-video"}], "blocked"),
             ("almost_due", 14, 58, "warn", [], "scheduled_private_until_publish_at"),
+            ("authorized_early", 14, 0, "warn", [], "published_immediate_authorized"),
+            ("authorized_critical", 14, 0, "fail", [{"code": "missing-video"}], "blocked"),
         ]
 
         for label, hour, minute, qa_status, failures, expected in cases:
@@ -275,6 +290,11 @@ class TestScheduleWithoutCover(unittest.TestCase):
                                         "privacy_requested": "private"},
                 }
                 args = ["schedule", "--root", root]
+                if label.startswith("authorized_"):
+                    payloads["config"]["one_time_immediate_publications"] = [{
+                        "episode_id": project_id, "news_date": day,
+                        "original_publication_local": day + "T12:00:00-03:00",
+                        "authorized_by_user": True, "mode": "publish_immediately_after_qa"}]
                 for name, payload in payloads.items():
                     target = Path(root) / (name + ".json")
                     target.write_text(json.dumps(payload), encoding="utf-8")

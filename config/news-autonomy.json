@@ -60,5 +60,15 @@
       "mode": "publish_immediately_after_qa",
       "reason": "O titular respondeu Publicar agora nesta conversa em 10/10/2026 após conferir o vídeo P76-M6tSbzs concluído com capa e saber que a janela das 21h30 havia vencido. Exceção exclusiva deste episódio, preservando o upload original, QA, canal e deduplicação."
     }
+  ],
+  "one_time_immediate_publications": [
+    {
+      "episode_id": "noticia-2026-10-11-melhorias-producao",
+      "news_date": "2026-10-11",
+      "original_publication_local": "2026-10-11T08:00:00-03:00",
+      "authorized_by_user": true,
+      "mode": "publish_immediately_after_qa",
+      "reason": "O titular pediu um novo vídeo em fluxo real com as melhorias de apresentação e capa do Roberto nesta conversa. Publicação imediata exclusiva desta edição extra em 11/10/2026, sem ocupar as janelas recorrentes; preserva QA, apuração, canal e deduplicação."
+    }
   ]
 }

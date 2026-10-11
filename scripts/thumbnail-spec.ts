@@ -6,7 +6,9 @@ import {stableJson} from "../src/lib/editorial-project";
 
 const root=resolve(import.meta.dirname,"..");
 const args=process.argv.slice(2);
-const episodePath=resolve(root,"video/data/daily.json");
+const projectArg=args.indexOf("--project");
+if(projectArg>=0&&!args[projectArg+1])throw Error("--project exige o caminho do projeto adaptado.");
+const episodePath=resolve(root,projectArg>=0?args[projectArg+1]:"video/data/daily.json");
 const episode=JSON.parse(readFileSync(episodePath,"utf8"));
 const thumb=episode.packaging?.thumbnails?.[0];
 const id=String(episode.project_id??"");
@@ -28,16 +30,18 @@ if(args.includes("--check")) {
   console.log(`Thumbnail OK: ${id}; headline ${JSON.stringify(c.exact_headline)}; SHA ${contractSha.slice(0,12)}; origem ${inline?"daily.json":"snapshot legado"}.`);
 } else {
   const prompt=[
-    "GERAR CAPA FINAL 1280 x 720, 16:9. Usar somente o episódio e o contrato abaixo, sem acrescentar personagens nem objetos por iniciativa própria.",
-    `HEADLINE EXATA, ÚNICO TEXTO VISÍVEL: ${JSON.stringify(c.exact_headline)}`,
+    c.presenter_identity
+      ? "GERAR SOMENTE FUNDO 16:9, SEM TEXTO E SEM PESSOAS. O motor adicionará a headline e o retrato oficial; nunca gerar outro rosto. Reservar espaço conforme a composição."
+      : "GERAR CAPA FINAL 1280 x 720, 16:9. Usar somente o episódio e o contrato abaixo, sem acrescentar personagens nem objetos por iniciativa própria.",
+    c.presenter_identity?`TEXTO RESERVADO PARA O MOTOR (NÃO DESENHAR): ${JSON.stringify(c.exact_headline)}`:`HEADLINE EXATA, ÚNICO TEXTO VISÍVEL: ${JSON.stringify(c.exact_headline)}`,
     `PROTAGONISTA: ${c.primary_subject}`,
-    `APOIO SECUNDÁRIO: ${c.secondary_subject??"nenhum"}`,
+    c.presenter_identity?`RETRATO EXCLUSIVO DO MOTOR (NÃO DESENHAR): ${c.presenter_identity.reference_path}`:`APOIO SECUNDÁRIO: ${c.secondary_subject??"nenhum"}`,
     `TENSÃO VISUAL: ${c.visual_tension}`,
     `COMPOSIÇÃO: ${c.composition}`,
     `CORES: fundo/base ${c.palette.base}, amarelo ${c.palette.accent}, branco ${c.palette.text}; cinematográfico, editorial, legível em 320x180.`,
     `PROIBIDO INCLUIR (todos os itens): ${c.forbidden_elements.join("; ")}.`,
     "Nenhum outro texto, número, rosto, documento ou ícone além dos explicitamente autorizados. Não reproduzir uma fórmula visual de outro episódio.",
-    "Depois da geração, INSPECIONAR a imagem real e criar thumbnail-audit.json vinculado aos hashes; não atestar o que não foi observado.",
+    c.presenter_identity?"Depois de gerar o fundo, executar thumbnail-compose. INSPECIONAR a capa composta e a leitura em 320x180 antes da auditoria, conferindo o mesmo Roberto. Seguir docs/presenter-identity.md.":"Depois da geração, INSPECIONAR a imagem real e criar thumbnail-audit.json vinculado aos hashes; não atestar o que não foi observado.",
   ].join("\n");
   console.log(JSON.stringify({project_id:id,title:episode.title,contract_sha256:contractSha,source_project_sha256:sourceSha,contract:c,prompt,scope:"Contrato estrutural; não verifica semanticamente pixels nem substitui revisão perceptual."},null,2));
 }

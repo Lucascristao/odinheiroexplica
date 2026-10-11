@@ -9,4 +9,9 @@ assert(!thumbnailContractSchema.safeParse({...valid,no_extra_text:false}).succes
 assert(!thumbnailContractSchema.safeParse({...valid,palette:{...valid.palette,accent:"#00FF00"}}).success);
 assert(!thumbnailContractSchema.safeParse({...valid,forbidden_elements:["rostos","Rostos"]}).success);
 assert(!thumbnailContractSchema.safeParse({...valid,primary_subject:"",extra:"não aprovado"}).success);
+const identity={id:"roberto-v1",mode:"locked_asset",reference_path:"video/public/presenters/roberto/roberto-v1.png",reference_sha256:"a".repeat(64)};
+assert(thumbnailContractSchema.safeParse({...valid,presenter_identity:identity}).success);
+assert(!thumbnailContractSchema.safeParse({...valid,presenter_identity:{...identity,mode:"generate_new_face"}}).success);
+assert(!thumbnailContractSchema.safeParse({...valid,presenter_identity:{...identity,reference_path:"../another-person.png"}}).success);
+assert(!thumbnailContractSchema.safeParse({...valid,presenter_identity:{...identity,reference_sha256:"old"}}).success);
 console.log("Thumbnail: esquema estrito, headline vinculada, elementos vedados e cores aprovadas.");
