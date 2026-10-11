@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "project_id": "noticia-2026-10-11-meio-dia",
+  "project_sha256": "aa809aceb5999f179290fe0aa1956793d037420fb45328b4a5891162a2c0eea1",
+  "contract_sha256": "e408c3c66125311f67bfbb9a72c5fe6d5d45a5eea2b77c091ffc28ade21a2878",
+  "image_sha256": "89535615d33588aade6974bfb28dc09a88c4385411ee56649ee1ca9ed76b8d4d",
+  "headline": "CHEGA NA BOMBA?",
+  "approval_status": "approved",
+  "reviewer": "Codex, inspeção dos pixels em 1280x720 e 320x180 nesta conversa",
+  "reviewed_at": "2026-10-11T15:00:13.653904+00:00",
+  "checks": {
+    "headline_exact": true,
+    "primary_subject": true,
+    "secondary_subject": true,
+    "forbidden_absent": true,
+    "identity_and_mobile": true,
+    "no_fabricated_data": true,
+    "unique_composition": true
+  },
+  "observations": {
+    "headline": "CHEGA NA BOMBA? aparece em duas linhas amarelas, interrogação íntegra, legível em 1280x720 e 320x180, sem palavras adicionais.",
+    "primary_subject": "Bico de abastecimento amarelo grande no alto à esquerda, com mangueira e estrutura da bomba. A bomba ao fundo está desfocada, sem preço legível ou marca comercial; metáfora do repasse, sem alegar um posto específico.",
+    "secondary_subject": "Retrato engaged oficial do Roberto domina a direita, cabeça, orelhas, olhos e queixo inteiros; mesma referência fixa que a edição da manhã, com luz suave e textura natural.",
+    "forbidden_absent": "Não há outro rosto, logo comercial/partidário, cifra, recibo, seta, alarme, marca d’água ou texto além da headline.",
+    "identity_and_mobile": "Pergunta clara e rosto reconhecível no celular. O bico segue identificável em 320x180; headline não cruza o rosto e usa suporte escuro de bom contraste.",
+    "no_fabricated_data": "Imagem editorial de um objeto cotidiano, sem simular preço de posto, desconto individual ou prova de repasse. A pergunta é uma incerteza que o roteiro explica com limites.",
+    "unique_composition": "Fundo de posto com bico amarelo difere do medidor/papel da manhã e das moedas do vídeo anterior. A pergunta complementar não repete a cifra ou a expressão imposto federal do título."
+  },
+  "checked_forbidden_elements": [
+    "outro rosto além do Roberto oficial",
+    "texto extra além da headline",
+    "logotipo comercial ou partidário",
+    "dados ou documentos inventados",
+    "setas e alarmes",
+    "marca d'água"
+  ],
+  "observed_forbidden_elements": []
+}

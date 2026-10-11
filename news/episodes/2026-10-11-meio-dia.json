@@ -1,0 +1,502 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-11-meio-dia",
+  "news_date": "2026-10-11",
+  "event_date": "2026-10-09",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-11T14:28:26.960079+00:00",
+  "publication_target_local": "2026-10-11T12:00:00-03:00",
+  "production_validation": {
+    "authorized_by_user": true,
+    "duplicate_event_checked": true,
+    "purpose": "Recuperação da edição solicitada diretamente pelo titular nesta conversa; mesmo assunto preparado na tarefa, reapurado com fontes atuais. Não há payload completo acessível da tarefa nem reaproveitamento fictício de seu roteiro.",
+    "subjective_listening_performed": false
+  },
+  "title": "Gasolina sem imposto federal: por que a bomba pode não baixar R$ 0,89?",
+  "title_options": [
+    {
+      "text": "Gasolina sem imposto federal: por que a bomba pode não baixar R$ 0,89?",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Gasolina: o alívio novo é de R$ 0,26, mas o anúncio fala em R$ 0,89",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Imposto da gasolina zerado por 30 dias: quem paga e quanto chega ao posto?",
+      "editorial_quality": 4
+    }
+  ],
+  "thumbnail_headline": "CHEGA NA BOMBA?",
+  "thumbnail_primary": "Bico de abastecimento de gasolina grande em primeiro plano, sem marca, e bomba desfocada sem preço ou números legíveis; imagem editorial do repasse ao consumidor.",
+  "thumbnail_tension": "O anúncio tributário é concreto, mas o resultado no preço do posto ainda precisa de observação; não afirmar retenção, fraude ou queda garantida.",
+  "thumbnail_composition": "Objeto da notícia dominante no alto à esquerda, fotografia editorial natural e fundo carvão. Roberto oficial engaged grande à direita, cabeça inteira. Headline amarela em duas linhas na região inferior esquerda, sem cobrir objeto ou rosto.",
+  "thumbnail_text_side": "left",
+  "thumbnail_headline_position": "lower",
+  "thumbnail_portrait_size": "close",
+  "thumbnail_forbidden_elements": [
+    "outro rosto além do Roberto oficial",
+    "texto extra além da headline",
+    "logotipo comercial ou partidário",
+    "dados ou documentos inventados",
+    "setas e alarmes",
+    "marca d'água"
+  ],
+  "scorecard": {
+    "method": "Avaliação editorial de curiosidade, utilidade e sustentação documental, sem estimativa de buscas ou CTR.",
+    "reason": "A vencedora preserva a pergunta escolhida na tarefa e entrega um contraste verificável: R$0,89 é total, R$0,26 é acréscimo. Confronta expectativa de queda exata com limites do repasse e discrimina custo sem inventar fraude ou intenção eleitoral.",
+    "criteria": {
+      "timeliness": 4,
+      "consumer_interest": 5,
+      "documentary_evidence": 5,
+      "original_angle": 5
+    },
+    "unavailable": [
+      "CTR e impressões do canal",
+      "efeito individual em faturas ou postos",
+      "previsão de visualizações"
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Ministério da Fazenda, comunicado oficial",
+      "url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/outubro/governo-federal-prorroga-desoneracao-da-gasolina-e-do-etanol/",
+      "published_at": "2026-10-09",
+      "role": "Fonte primária do anúncio às 18h37: redução de tributos da gasolina A passa de R$0,63 a R$0,89, 30 dias, justificativa e compensação. Não foi auditada a arrecadação futura nem observado repasse na bomba."
+    },
+    {
+      "id": "S2",
+      "publisher": "Gazeta do Povo, Guilherme Grandi",
+      "url": "https://www.gazetadopovo.com.br/economia/governo-zera-impostos-federais-gasolina-16-dias-segundo-turno/",
+      "published_at": "2026-10-09",
+      "role": "Veículo de direita/centro-direita consultado: limita repasse a outros componentes, destaca proximidade eleitoral e inclui negativa expressa do ministro. Não prova intenção eleitoral."
+    },
+    {
+      "id": "S3",
+      "publisher": "Poder360, Simone Kafruni",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-zera-tributos-federais-da-gasolina-antes-do-2o-turno/",
+      "published_at": "2026-10-09",
+      "role": "Reportagem lida: prazo de 30 dias, custo de R$5,2 bilhões do pacote completo e fiscalização anunciada. Fonte estatística governamental compartilhada, não auditoria independente."
+    },
+    {
+      "id": "S4",
+      "publisher": "Agência Brasil, Wellton Máximo",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/tributos-da-gasolina-sao-zerados-e-subsidios-combustiveis-ampliados",
+      "published_at": "2026-10-09",
+      "role": "Reportagem consultada integralmente: discrimina gasolina/etanol e diesel e distingue o crédito extraordinário de R$7,52 bilhões dos custos adicionais. Não usar foto sem licença."
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O anúncio eleva a desoneração de R$0,63 para R$0,89 por litro de gasolina A; acréscimo aritmético é R$0,26.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "O anúncio zera PIS/Pasep, Cofins e Cide federais e declara validade de 30 dias, prorrogável.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "O preço final depende de outros fatores da formação do valor do combustível; não foi verificado repasse uniforme nas bombas.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background"
+    },
+    {
+      "claim": "Pacote completo tem custo adicional estimado R$5,2 bilhões: R$3,6 bilhões de gasolina/etanol e R$1,6 bilhão de diesel adicional.",
+      "source_ids": [
+        "S1",
+        "S3",
+        "S4"
+      ],
+      "status": "projection"
+    },
+    {
+      "claim": "O governo alega compensação com receitas petrolíferas extraordinárias; não é auditoria de execução futura.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "Anúncio em 09/10, 16 dias antes do segundo turno em 25/10; Durigan nega motivação eleitoral e aponta pressão nos combustíveis.",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "status": "statement"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "gasolina-valores",
+      "kind": "source_excerpt",
+      "source_id": "S1",
+      "source_page_url": "https://www.gov.br/fazenda/pt-br/assuntos/noticias/2026/outubro/governo-federal-prorroga-desoneracao-da-gasolina-e-do-etanol/",
+      "expected_text": "passa a R$0,89 por litro de gasolina A",
+      "capture_file": "research/captures/gasolina-valores-11out.png",
+      "attribution": "Ministério da Fazenda, comunicado oficial, publicação de 2026-10-09; origem preservada no pacote técnico.",
+      "rights_review": "Citação crítica contextualizada de trecho curto necessário à explicação. Não reutilizar fotografia de imprensa como ilustração; conservar autoria e URL. Captura autêntica de desktop com manchete/contexto e prova, sem fabricar portal."
+    },
+    {
+      "id": "gasolina-repasse",
+      "kind": "source_excerpt",
+      "source_id": "S2",
+      "source_page_url": "https://www.gazetadopovo.com.br/economia/governo-zera-impostos-federais-gasolina-16-dias-segundo-turno/",
+      "expected_text": "o efeito final sobre os preços nas bombas dependa também de outros fatores",
+      "capture_file": "research/captures/gasolina-repasse-11out.png",
+      "attribution": "Gazeta do Povo, Guilherme Grandi, publicação de 2026-10-09; origem preservada no pacote técnico.",
+      "rights_review": "Citação crítica contextualizada de trecho curto necessário à explicação. Não reutilizar fotografia de imprensa como ilustração; conservar autoria e URL. Captura autêntica de desktop com manchete/contexto e prova, sem fabricar portal."
+    },
+    {
+      "id": "gasolina-custo",
+      "kind": "source_excerpt",
+      "source_id": "S3",
+      "source_page_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-zera-tributos-federais-da-gasolina-antes-do-2o-turno/",
+      "expected_text": "O impacto total será de R$ 5,2 bilhões.",
+      "capture_file": "research/captures/gasolina-custo-11out.png",
+      "attribution": "Poder360, Simone Kafruni, publicação de 2026-10-09; origem preservada no pacote técnico.",
+      "rights_review": "Citação crítica contextualizada de trecho curto necessário à explicação. Não reutilizar fotografia de imprensa como ilustração; conservar autoria e URL. Captura autêntica de desktop com manchete/contexto e prova, sem fabricar portal."
+    },
+    {
+      "id": "gasolina-fiscaliza",
+      "kind": "source_excerpt",
+      "source_id": "S3",
+      "source_page_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-zera-tributos-federais-da-gasolina-antes-do-2o-turno/",
+      "expected_text": "fiscalizará o repasse dos benefícios aos consumidores.",
+      "capture_file": "research/captures/gasolina-fiscaliza-11out.png",
+      "attribution": "Poder360, Simone Kafruni, publicação de 2026-10-09; origem preservada no pacote técnico.",
+      "rights_review": "Citação crítica contextualizada de trecho curto necessário à explicação. Não reutilizar fotografia de imprensa como ilustração; conservar autoria e URL. Captura autêntica de desktop com manchete/contexto e prova, sem fabricar portal."
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "type": "fact",
+      "title": "O desconto novo não é o total",
+      "narration": "Gasolina sem tributos federais: isso significa oitenta e nove centavos a menos na bomba? O primeiro detalhe muda a conta: o alívio anunciado já era de sessenta e três centavos. Agora passa a oitenta e nove. A diferença nova é de vinte e seis centavos por litro de gasolina A, no valor informado pelo governo. Eu sou o Roberto, do O Dinheiro Explica. Na sexta-feira, nove de outubro, a equipe econômica anunciou alíquota zero para os tributos federais sobre esse combustível por trinta dias. Oitenta e nove centavos é a redução total divulgada em relação à referência anterior aos benefícios. Não é uma queda adicional garantida sobre o preço que o posto cobra hoje.",
+      "document_id": "gasolina-valores",
+      "media_side": "left",
+      "object_type": "data",
+      "visual_cards": [
+        "Alívio: de R$0,63 a R$0,89",
+        "Diferença nova: R$0,26",
+        "Valor informado para gasolina A",
+        "Preço na bomba precisa ser observado"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Gasolina sem tributos federais",
+          "action": "focus",
+          "headline": "Alívio: de R$0,63 a R$0,89"
+        },
+        {
+          "anchor": "O primeiro detalhe",
+          "action": "focus",
+          "headline": "Diferença nova: R$0,26"
+        },
+        {
+          "anchor": "Agora passa",
+          "action": "focus",
+          "headline": "Valor informado para gasolina A"
+        },
+        {
+          "anchor": "A diferença nova",
+          "action": "focus",
+          "headline": "Preço na bomba precisa ser observado"
+        },
+        {
+          "anchor": "Eu sou o Roberto",
+          "action": "focus",
+          "headline": "Alívio: de R$0,63 a R$0,89"
+        },
+        {
+          "anchor": "Na sexta-feira",
+          "action": "focus",
+          "headline": "Diferença nova: R$0,26"
+        },
+        {
+          "anchor": "Oitenta e nove centavos",
+          "action": "focus",
+          "headline": "Valor informado para gasolina A"
+        },
+        {
+          "anchor": "Não é uma queda adicional",
+          "action": "focus",
+          "headline": "Preço na bomba precisa ser observado"
+        }
+      ]
+    },
+    {
+      "type": "fact",
+      "title": "Três tributos, vários custos",
+      "narration": "Quais tributos entram? PIS e Cofins, contribuições federais, e a Cide, contribuição de intervenção no domínio econômico. O anúncio trata dessa parte federal. Ele não elimina todos os componentes que formam o preço da gasolina. A reportagem consultada ressalta que o valor final depende de outros fatores da cadeia. Portanto, uma mudança tributária pode aliviar custos sem produzir uma redução idêntica, imediata e igual em todos os postos. Isso não prova que o posto está retendo um benefício; para afirmar isso seria preciso comparar seus custos de compra, suas margens e o preço de venda. O anúncio é um dado; o repasse efetivo exige outra verificação. Se essa distinção ajudou, inscreva-se no canal.",
+      "document_id": "gasolina-repasse",
+      "media_side": "left",
+      "object_type": "data",
+      "visual_cards": [
+        "PIS, Cofins e Cide federais",
+        "Outros componentes continuam",
+        "Repasse precisa de dados reais",
+        "Comparar compra, margem e venda"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Quais tributos entram",
+          "action": "focus",
+          "headline": "PIS, Cofins e Cide federais"
+        },
+        {
+          "anchor": "O anúncio trata",
+          "action": "focus",
+          "headline": "Outros componentes continuam"
+        },
+        {
+          "anchor": "Ele não elimina",
+          "action": "focus",
+          "headline": "Repasse precisa de dados reais"
+        },
+        {
+          "anchor": "A reportagem consultada",
+          "action": "focus",
+          "headline": "Comparar compra, margem e venda"
+        },
+        {
+          "anchor": "Portanto, uma mudança",
+          "action": "focus",
+          "headline": "PIS, Cofins e Cide federais"
+        },
+        {
+          "anchor": "Isso não prova",
+          "action": "focus",
+          "headline": "Outros componentes continuam"
+        },
+        {
+          "anchor": "O anúncio é um dado",
+          "action": "focus",
+          "headline": "Repasse precisa de dados reais"
+        },
+        {
+          "anchor": "Se essa distinção ajudou",
+          "action": "focus",
+          "headline": "Comparar compra, margem e venda"
+        }
+      ]
+    },
+    {
+      "type": "fact",
+      "title": "O custo do pacote inteiro",
+      "narration": "Agora, quem paga a conta dessa decisão? As reportagens apontam um custo adicional estimado de cinco bilhões e duzentos milhões de reais para o conjunto das medidas. Atenção ao conjunto: esse número inclui gasolina, etanol e o reforço ao diesel importado. Não é um desconto inteiro entregue a quem abastece um carro a gasolina. Para gasolina e etanol, o governo informa três bilhões e seiscentos milhões; para o reforço ao diesel, mais um bilhão e seiscentos milhões em trinta dias. O Ministério da Fazenda diz que receitas extraordinárias do petróleo compensarão as medidas e sustentarão a neutralidade fiscal. Essa é a justificativa oficial. Ela não é uma auditoria antecipada das receitas que de fato entrarão.",
+      "document_id": "gasolina-custo",
+      "media_side": "left",
+      "object_type": "data",
+      "visual_cards": [
+        "R$5,2 bilhões: pacote completo",
+        "Gasolina, etanol e diesel",
+        "Compensação oficial com petróleo",
+        "Estimativa não é execução fiscal"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Agora, quem paga",
+          "action": "focus",
+          "headline": "R$5,2 bilhões: pacote completo"
+        },
+        {
+          "anchor": "As reportagens apontam",
+          "action": "focus",
+          "headline": "Gasolina, etanol e diesel"
+        },
+        {
+          "anchor": "Atenção ao conjunto",
+          "action": "focus",
+          "headline": "Compensação oficial com petróleo"
+        },
+        {
+          "anchor": "Não é um desconto inteiro",
+          "action": "focus",
+          "headline": "Estimativa não é execução fiscal"
+        },
+        {
+          "anchor": "Para gasolina e etanol",
+          "action": "focus",
+          "headline": "R$5,2 bilhões: pacote completo"
+        },
+        {
+          "anchor": "O Ministério da Fazenda",
+          "action": "focus",
+          "headline": "Gasolina, etanol e diesel"
+        },
+        {
+          "anchor": "Essa é a justificativa",
+          "action": "focus",
+          "headline": "Compensação oficial com petróleo"
+        },
+        {
+          "anchor": "Ela não é uma auditoria",
+          "action": "focus",
+          "headline": "Estimativa não é execução fiscal"
+        }
+      ]
+    },
+    {
+      "type": "opinion",
+      "title": "O anúncio e a cobrança por resultado",
+      "narration": "Minha leitura é favorável a tirar imposto do combustível, mas o consumidor tem motivo para cobrar o resultado e a duração. Um alívio de trinta dias ajuda durante trinta dias; não vira política permanente só porque rende uma manchete bonita. O anúncio veio dezesseis dias antes do segundo turno. Esse calendário é um fato. Dizer que prova, sozinho, a intenção do governo seria ir além da evidência. O ministro da Fazenda negou motivação eleitoral e atribuiu as medidas à pressão internacional sobre os combustíveis. A crítica que cabe é concreta: mostrar o custo, explicar a compensação e medir quanto chegou ao consumidor. A explicação oficial merece ser apresentada; a comprovação do efeito precisa vir com dados.",
+      "document_id": "gasolina-repasse",
+      "media_side": "left",
+      "object_type": "data",
+      "visual_cards": [
+        "Minha leitura: menos imposto",
+        "Benefício temporário de 30 dias",
+        "Calendário não prova intenção",
+        "Cobrar custo e resultado mensurável"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Minha leitura é",
+          "action": "focus",
+          "headline": "Minha leitura: menos imposto"
+        },
+        {
+          "anchor": "Um alívio de trinta dias",
+          "action": "focus",
+          "headline": "Benefício temporário de 30 dias"
+        },
+        {
+          "anchor": "O anúncio veio",
+          "action": "focus",
+          "headline": "Calendário não prova intenção"
+        },
+        {
+          "anchor": "Esse calendário é um fato",
+          "action": "focus",
+          "headline": "Cobrar custo e resultado mensurável"
+        },
+        {
+          "anchor": "O ministro da Fazenda",
+          "action": "focus",
+          "headline": "Minha leitura: menos imposto"
+        },
+        {
+          "anchor": "A crítica que cabe",
+          "action": "focus",
+          "headline": "Benefício temporário de 30 dias"
+        },
+        {
+          "anchor": "A explicação oficial",
+          "action": "focus",
+          "headline": "Calendário não prova intenção"
+        }
+      ]
+    },
+    {
+      "type": "fact",
+      "title": "A resposta está no preço observado",
+      "narration": "Então a bomba pode não cair oitenta e nove centavos? Pode, porque essa cifra resume o benefício total anunciado, enquanto o acréscimo em relação ao alívio que já existia é de vinte e seis centavos por litro de gasolina A. E preço de venda depende de uma cadeia, não de uma única parcela. Isso também não significa que nada chegará ao consumidor: ainda falta observar o repasse. O governo informou que vai fiscalizar essa transmissão. A pergunta útil é quanto o preço efetivamente mudou, em qual lugar e em qual período, junto dos custos. A resposta honesta hoje é separar anúncio e resultado. Quando houver medição comprovada, dá para comparar. Prometer queda exata em todo posto antes disso seria entregar certeza que os documentos não oferecem.",
+      "document_id": "gasolina-fiscaliza",
+      "media_side": "left",
+      "object_type": "data",
+      "visual_cards": [
+        "R$0,89 total não é queda nova",
+        "R$0,26 a mais no benefício",
+        "Fiscalização foi anunciada",
+        "Resultado depende de observação"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Então a bomba pode",
+          "action": "focus",
+          "headline": "R$0,89 total não é queda nova"
+        },
+        {
+          "anchor": "Pode, porque essa cifra",
+          "action": "focus",
+          "headline": "R$0,26 a mais no benefício"
+        },
+        {
+          "anchor": "E preço de venda",
+          "action": "focus",
+          "headline": "Fiscalização foi anunciada"
+        },
+        {
+          "anchor": "Isso também não significa",
+          "action": "focus",
+          "headline": "Resultado depende de observação"
+        },
+        {
+          "anchor": "O governo informou",
+          "action": "focus",
+          "headline": "R$0,89 total não é queda nova"
+        },
+        {
+          "anchor": "A pergunta útil",
+          "action": "focus",
+          "headline": "R$0,26 a mais no benefício"
+        },
+        {
+          "anchor": "A resposta honesta hoje",
+          "action": "focus",
+          "headline": "Fiscalização foi anunciada"
+        },
+        {
+          "anchor": "Prometer queda exata",
+          "action": "focus",
+          "headline": "Resultado depende de observação"
+        }
+      ]
+    }
+  ],
+  "primary_keyword": "gasolina",
+  "secondary_keywords": [
+    "impacto no bolso",
+    "economia brasileira"
+  ],
+  "tags": [
+    "gasolina",
+    "O Dinheiro Explica",
+    "Roberto",
+    "economia",
+    "notícias econômicas"
+  ],
+  "hashtags": [
+    "#Economia",
+    "#Gasolina",
+    "#ODinheiroExplica"
+  ],
+  "engagement_question": "Na sua cidade, o preço da gasolina mudou depois do anúncio?",
+  "publication_description": "Gasolina sem imposto federal por 30 dias: o anúncio significa queda de R$0,89 no posto? Roberto compara o alívio anterior de R$0,63 com o novo total e explica por que repasse precisa de verificação.\n\n• A diferença de R$0,26 no benefício informado para gasolina A.\n• O custo estimado do pacote para gasolina, etanol e diesel.\n• A justificativa oficial e os limites do que já pode ser afirmado.\n\nA análise editorial está identificada na fala. Este vídeo não mede preços individuais de postos nem garante redução igual em todo o país.",
+  "discovery_strategy": {
+    "viewer_intent": "Descobrir se o corte dos tributos federais reduz a gasolina no posto e o que o número de R$0,89 significa.",
+    "search_query": "gasolina impostos federais zerados outubro 2026 redução na bomba",
+    "recommendation_angle": "Benefício total versus benefício adicional: diferença demonstrada de R$0,26 e repasse que exige medição.",
+    "first_payoff": "O primeiro detalhe muda a conta: o alívio anunciado já era de sessenta e três centavos.",
+    "promise_proof": "Comparação oficial R$0,63/R$0,89, distinção entre tributos e preço final, custo do pacote inteiro e fiscalização anunciada.",
+    "audience_hypothesis": "Motoristas que esperam descontar R$0,89 do preço atual e querem saber por que anúncio e bomba podem divergir.",
+    "thumbnail_complement": "CHEGA NA BOMBA? pergunta pelo resultado efetivo sem repetir o título ou simular preço baixo.",
+    "verification_limits": "Anúncio e justificativas oficiais conferidos; sem pesquisa própria de postos, sem auditoria fiscal, sem prova de motivação eleitoral e sem previsão de CTR."
+  },
+  "editorial": {
+    "narrative_contract": {
+      "topic_explanation": "Gasolina sem tributos federais: isso significa oitenta e nove centavos a menos na bomba? O primeiro detalhe muda a conta: o alívio anunciado já era de sessenta e três centavos. Agora passa a oitenta e nove. A diferença nova é de vinte e seis centavos por litro de gasolina A, no valor informado pelo governo.",
+      "presenter_introduction": "Eu sou o Roberto, do O Dinheiro Explica.",
+      "subscription_request": "Se essa distinção ajudou, inscreva-se no canal."
+    }
+  },
+  "pronunciations": {
+    "Cide": "cíde",
+    "Cofins": "cofíns",
+    "PIS": "pis"
+  }
+}
