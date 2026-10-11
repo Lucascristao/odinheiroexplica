@@ -373,7 +373,8 @@ def transform(episode: dict) -> dict:
     }
     from presenter_identity import news_presenter_contract
     portrait = news_presenter_contract(episode["news_date"], reviewed_at=episode.get("reviewed_at"),
-                                       expression=episode.get("thumbnail_presenter_expression"))
+                                       expression=episode.get("thumbnail_presenter_expression"),
+                                       variant_key=episode["episode_id"])
     if portrait:
         contract["presenter_identity"] = portrait
         contract["secondary_subject"] = "Roberto, apresentador virtual do canal; reutilizar o retrato oficial sem recriar o rosto"

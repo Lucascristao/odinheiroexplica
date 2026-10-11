@@ -27,6 +27,60 @@
       "voice_name": "Charon",
       "generator": "native_chatgpt_imagegen",
       "usage": "Identity-preserving edit inspected against the original Roberto: attentive asymmetric brows, mouth slightly parted, natural explanatory expression. Reuse these fixed pixels; never generate a new face per episode."
+    },
+    "roberto-v1-navy-left": {
+      "name": "Roberto",
+      "kind": "fictional_channel_presenter",
+      "mode": "locked_asset",
+      "parent_identity": "roberto-v1",
+      "parent_reference_sha256": "97834c9d290d564009184699fdc7ef75ce3f16f0fa17f42194bf6340a737e654",
+      "voice_name": "Charon",
+      "generator": "native_chatgpt_imagegen",
+      "reference_path": "video/public/presenters/roberto/roberto-v1-navy-left.png",
+      "reference_sha256": "34507d8171992e9ec26256c997de4842ebdf2e528c1b53e3334325e9a2721550",
+      "expression": "calm_questioning",
+      "pose": "three_quarter_viewer_left",
+      "wardrobe": "navy_blazer_light_blue_shirt",
+      "recommended_portrait_side": "right",
+      "usage": "Identity-preserving native edit inspected against original Roberto at full size and 320 px. Reuse these registered pixels. Choose the pose/wardrobe for the story layout; never regenerate, mirror or recolor the face per episode."
+    },
+    "roberto-v1-blue-right": {
+      "name": "Roberto",
+      "kind": "fictional_channel_presenter",
+      "mode": "locked_asset",
+      "parent_identity": "roberto-v1",
+      "parent_reference_sha256": "97834c9d290d564009184699fdc7ef75ce3f16f0fa17f42194bf6340a737e654",
+      "voice_name": "Charon",
+      "generator": "native_chatgpt_imagegen",
+      "reference_path": "video/public/presenters/roberto/roberto-v1-blue-right.png",
+      "reference_sha256": "ed4e478435e90a611c6547de8a0e43d0f1958332d77d64c0cb34b27bde04b805",
+      "expression": "attentive",
+      "pose": "three_quarter_viewer_right",
+      "wardrobe": "medium_blue_shirt",
+      "recommended_portrait_side": "left",
+      "usage": "Identity-preserving native edit inspected against original Roberto at full size and 320 px. Reuse these registered pixels. Choose the pose/wardrobe for the story layout; never regenerate, mirror or recolor the face per episode."
+    },
+    "roberto-v1-burgundy-front": {
+      "name": "Roberto",
+      "kind": "fictional_channel_presenter",
+      "mode": "locked_asset",
+      "parent_identity": "roberto-v1",
+      "parent_reference_sha256": "97834c9d290d564009184699fdc7ef75ce3f16f0fa17f42194bf6340a737e654",
+      "voice_name": "Charon",
+      "generator": "native_chatgpt_imagegen",
+      "reference_path": "video/public/presenters/roberto/roberto-v1-burgundy-front.png",
+      "reference_sha256": "e860e3929e4dc022d892da314daa79cf36e27126ff28b4415566184d1c2bbced",
+      "expression": "subtle_knowing_smile",
+      "pose": "front_slight_tilt",
+      "wardrobe": "dark_burgundy_polo",
+      "recommended_portrait_side": "either",
+      "usage": "Identity-preserving native edit inspected against original Roberto at full size and 320 px. Reuse these registered pixels. Choose the pose/wardrobe for the story layout; never regenerate, mirror or recolor the face per episode."
     }
-  }
+  },
+  "variants_enabled_after_utc": "2026-10-11T22:00:00+00:00",
+  "news_variant_ids": [
+    "roberto-v1-navy-left",
+    "roberto-v1-blue-right",
+    "roberto-v1-burgundy-front"
+  ]
 }

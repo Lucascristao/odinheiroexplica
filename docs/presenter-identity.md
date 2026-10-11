@@ -10,6 +10,20 @@ O gerador nativo cria somente o **fundo da notícia**, sem texto e sem pessoas. 
 
 O catálogo inclui `roberto-v1-engaged.png`, uma edição nativa conferida contra a referência original, com expressão atenta, sobrancelhas inquisitivas e boca discretamente entreaberta. O motor escolhe essa referência fixa para notícias revisadas a partir de `2026-10-11T05:00:00Z`; contratos anteriores conservam o retrato original. `thumbnail_presenter_expression` pode selecionar somente uma das referências registradas. A expressão varia pelo catálogo, sem recriar o rosto a cada edição. O hash verifica o arquivo; a continuidade percebida foi inspecionada visualmente, sem reconhecimento facial automático.
 
+## Variações de pose e roupa autorizadas em 11/10/2026
+
+O usuário pediu variações de posição e roupas mantendo o Roberto. Três novas edições nativas foram comparadas com a referência original em tamanho integral e no catálogo com largura de 320 px. São retratos PNG transparentes fixos, com prompts e auditorias próprios no mesmo diretório:
+
+| ID em `thumbnail_presenter_expression` | Pose e roupa | Uso de composição |
+| --- | --- | --- |
+| `roberto-v1-navy-left` | Blazer azul-marinho, camisa azul-clara, três quartos olhando à esquerda do observador | Retrato à direita, olhando para o assunto à esquerda |
+| `roberto-v1-blue-right` | Camisa azul, três quartos olhando à direita do observador | Retrato à esquerda, olhando para o assunto à direita |
+| `roberto-v1-burgundy-front` | Polo vinho, frontal com leve inclinação e sorriso discreto | Qualquer lado, conforme a prova e o texto |
+
+Para próximas notícias revisadas desde `variants_enabled_after_utc`, o editor escolhe a referência conforme o layout e o tom factual da pauta, consultando a última capa para evitar repetição imediata. Sem escolha explícita, as janelas canônicas usam uma distribuição estável por data e janela entre as três novas referências. A escolha explícita prevalece. A retomada do mesmo episódio conserva a mesma referência; revisões anteriores ao corte não recebem as variantes. Os contratos históricos permanecem idênticos. A voz Roberto/Charon não varia com a roupa.
+
+Abra `video/public/presenters/roberto/catalog-preview.html` para comparar os retratos. Essa inspeção é da biblioteca de referências; cada capa final ainda exige inspeção e auditoria próprias. O gerador de fundo continua sem pessoas, e o compositor usa os pixels registrados, sem espelhamento ou alteração do rosto.
+
 ## Execução local
 
 Depois de apurar e fechar o episódio, adaptar o JSON a um projeto temporário. Não alterar `video/data/daily.json`:

@@ -100,5 +100,32 @@ class LockedIdentityTest(unittest.TestCase):
             news_presenter_contract("2026-10-11", self.root, expression="unknown-face")
 
 
+    def test_wardrobe_variants_preserve_history_and_rotate_stably_by_window(self):
+        path = self.root / "worker/presenter-identity.json"
+        policy = json.loads(path.read_text())
+        variants = ["roberto-left", "roberto-right", "roberto-front"]
+        policy.update(variants_enabled_after_utc="2026-10-11T22:00:00+00:00", news_variant_ids=variants)
+        for variant in variants:
+            policy["identities"][variant] = {k: v for k, v in self.identity.items() if k != "id"}
+        path.write_text(json.dumps(policy))
+        before = "2026-10-11T21:59:59Z"
+        after = "2026-10-11T19:00:00-03:00"
+        selected = []
+        for slot in ("manha", "meio-dia", "noite"):
+            key = "noticia-2026-10-11-" + slot
+            self.assertEqual(news_presenter_contract("2026-10-11", self.root, reviewed_at=before, variant_key=key), self.identity)
+            actual = news_presenter_contract("2026-10-11", self.root, reviewed_at=after, variant_key=key)
+            self.assertEqual(actual, news_presenter_contract("2026-10-11", self.root, reviewed_at=after, variant_key=key))
+            selected.append(actual["id"])
+        self.assertEqual(set(selected), set(variants))
+        self.assertEqual(news_presenter_contract("2026-10-11", self.root, reviewed_at=after, expression=variants[0], variant_key="noticia-2026-10-11-noite")["id"], variants[0])
+        with self.assertRaisesRegex(ValueError, "catálogo"):
+            news_presenter_contract("2026-10-11", self.root, reviewed_at=before, expression=variants[0])
+        with self.assertRaisesRegex(ValueError, "catálogo"):
+            news_presenter_contract("2026-10-11", self.root, expression=variants[0])
+        with self.assertRaisesRegex(ValueError, "catálogo"):
+            news_presenter_contract("2026-10-11", self.root, reviewed_at=after, expression="unknown-face")
+
+
 if __name__ == "__main__":
     unittest.main()

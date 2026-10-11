@@ -1,0 +1,34 @@
+{
+  "version": "1.0",
+  "asset_id": "roberto-v1-navy-left",
+  "reviewed_at": "2026-10-11T21:55:14Z",
+  "reviewer": "Codex, comparação visual dos pixels originais e gerados, seguida de inspeção real do catálogo em 320 px no navegador",
+  "generator": "native_chatgpt_imagegen",
+  "parent_identity": "roberto-v1",
+  "parent_reference_sha256": "97834c9d290d564009184699fdc7ef75ce3f16f0fa17f42194bf6340a737e654",
+  "reference_sha256": "34507d8171992e9ec26256c997de4842ebdf2e528c1b53e3334325e9a2721550",
+  "dimensions": [
+    1312,
+    1199
+  ],
+  "observations": {
+    "identity": "A linha do cabelo, fios escuros e grisalhos, formato do nariz, olhos castanhos e barba curta grisalha mantêm a aparência do Roberto original. A rotação muda a perspectiva do rosto, sem trocar o personagem.",
+    "pose_and_wardrobe": "Rosto e ombros girados para a esquerda do observador, nariz e olhar seguem essa direção. Blazer azul-marinho sobre camisa azul-clara aberta. Cabeça inteira, sem acessórios.",
+    "lighting_and_background": "Luz suave, textura de pele preservada e recorte sem fundo visível. PNG RGBA com alfa de 0 a 255 conferido nos bytes. Sem texto, cifras, objetos, logotipo ou outra pessoa.",
+    "mobile": "No catálogo em 320 px, direção do olhar e sobrancelhas são legíveis; blazer e camisa clara se distinguem. A barba, o cabelo e a fisionomia continuam coerentes com o retrato original."
+  },
+  "checked_restrictions": [
+    "um único apresentador fictício",
+    "aparência coerente com Roberto original",
+    "sem texto ou logotipo",
+    "sem objetos extras",
+    "cabeça inteira",
+    "sem mudança de idade deliberada",
+    "fundo transparente"
+  ],
+  "limitations": [
+    "Continuidade percebida conferida visualmente; hashes comprovam integridade, sem reconhecimento facial automático.",
+    "Esta auditoria é da referência. Cada capa composta precisa de revisão e auditoria próprias em tamanho integral e 320x180.",
+    "Não mede CTR, naturalidade em vídeo ou desempenho comercial."
+  ]
+}
