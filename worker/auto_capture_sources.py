@@ -199,6 +199,9 @@ def unobscure_excerpt(locator) -> None:
     locator.evaluate(r"""async target => {
         const originalText = target.textContent;
         const paint = () => new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        const style = document.createElement('style');
+        style.textContent = '[data-ode-hidden-ui], [data-ode-hidden-ui] * { visibility: hidden !important; animation: none !important; transition: none !important; }';
+        document.head.appendChild(style);
         const overlaps = (el, box) => {
             if (target.contains(el) || el.contains(target)) return false;
             const r = el.getBoundingClientRect();
@@ -208,10 +211,12 @@ def unobscure_excerpt(locator) -> None:
         // to visible. Hide each outside subtree completely and allow its paint
         // to settle before Chromium captures the proof. Repeat after responsive
         // UI updates caused by scrolling, without rewriting source content.
-        for (let pass = 0; pass < 3; pass++) {
+        let clearPaints = 0;
+        for (let pass = 0; pass < 8; pass++) {
             const box = target.getBoundingClientRect();
             for (const el of document.querySelectorAll('*')) {
                 if (!overlaps(el, box)) continue;
+                el.setAttribute('data-ode-hidden-ui', 'true');
                 el.style.setProperty('transition', 'none', 'important');
                 el.style.setProperty('animation', 'none', 'important');
                 el.style.setProperty('visibility', 'hidden', 'important');
@@ -222,6 +227,14 @@ def unobscure_excerpt(locator) -> None:
                 }
             }
             await paint();
+            await new Promise(resolve => setTimeout(resolve, 100));
+            // Responsive widgets may mount or move after source-font layout.
+            // Re-measure before accepting the proof, instead of failing on UI
+            // that appeared only during the previous paint.
+            const settledBox = target.getBoundingClientRect();
+            const clear = ![...document.querySelectorAll('*')].some(el => overlaps(el, settledBox) && getComputedStyle(el).visibility === 'visible');
+            clearPaints = clear ? clearPaints + 1 : 0;
+            if (clearPaints >= 2) break;
         }
         const box = target.getBoundingClientRect();
         const remaining = [...document.querySelectorAll('*')].filter(el => overlaps(el, box) && getComputedStyle(el).visibility === 'visible');
