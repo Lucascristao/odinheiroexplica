@@ -1,13 +1,13 @@
 {
   "version": "1.0",
   "project_id": "noticia-2026-10-11-meio-dia",
-  "project_sha256": "aa809aceb5999f179290fe0aa1956793d037420fb45328b4a5891162a2c0eea1",
+  "project_sha256": "c702d1d3ff793b8fb66a2923473db43b378f0db37b0db75ad0a910563b9a2fc4",
   "contract_sha256": "e408c3c66125311f67bfbb9a72c5fe6d5d45a5eea2b77c091ffc28ade21a2878",
   "image_sha256": "89535615d33588aade6974bfb28dc09a88c4385411ee56649ee1ca9ed76b8d4d",
   "headline": "CHEGA NA BOMBA?",
   "approval_status": "approved",
   "reviewer": "Codex, inspeção dos pixels em 1280x720 e 320x180 nesta conversa",
-  "reviewed_at": "2026-10-11T15:00:13.653904+00:00",
+  "reviewed_at": "2026-10-11T16:47:02.197524+00:00",
   "checks": {
     "headline_exact": true,
     "primary_subject": true,
