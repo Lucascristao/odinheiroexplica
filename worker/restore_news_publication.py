@@ -13,6 +13,19 @@ def digest(data):
     return hashlib.sha256(data).hexdigest()
 
 
+REQUIRED_UPLOAD_STEPS = (
+    "Render Remotion", "Garantia técnica e vocal", "Entregar vídeo privado sem Google Drive"
+)
+
+
+def has_completed_upload(jobs):
+    """An automatic recovery is useful only after a single successful upload."""
+    if len(jobs) != 1:
+        raise ValueError("Produção original ambígua.")
+    steps = {step["name"]: step.get("conclusion") for step in jobs[0].get("steps", [])}
+    return all(steps.get(name) == "success" for name in REQUIRED_UPLOAD_STEPS)
+
+
 def validate_bundle(files, receipt_bytes, current_episode, source_episode):
     """Only a matching, previously passed production may release an existing ID."""
     project = json.loads(files["video/generated/daily-project.json"])
@@ -41,7 +54,7 @@ def validate_bundle(files, receipt_bytes, current_episode, source_episode):
     return project_id, receipt["video_id"]
 
 
-def restore(repo, run_id, root, token):
+def restore(repo, run_id, root, token, *, automatic=False):
     import requests
     if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repo) or not str(run_id).isdigit():
         raise ValueError("Repositório ou run inválidos.")
@@ -66,8 +79,11 @@ def restore(repo, run_id, root, token):
     jobs = get(f"/actions/runs/{run_id}/jobs?filter=latest").get("jobs", [])
     if len(jobs) != 1:
         raise ValueError("Produção original ambígua.")
+    if automatic and not has_completed_upload(jobs):
+        print("PUBLICATION_RECOVERY_SKIPPED: produção parou antes de concluir render, QA e upload; nenhum vídeo foi publicado por este fluxo.")
+        return
     steps = {step["name"]: step.get("conclusion") for step in jobs[0].get("steps", [])}
-    for name in ("Render Remotion", "Garantia técnica e vocal", "Entregar vídeo privado sem Google Drive"):
+    for name in REQUIRED_UPLOAD_STEPS:
         if steps.get(name) != "success":
             raise ValueError("Produção original não concluiu: " + name)
     artifacts = get(f"/actions/runs/{run_id}/artifacts").get("artifacts", [])
@@ -114,6 +130,9 @@ def restore(repo, run_id, root, token):
         json.dumps(proof, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as env:
         env.write("NEWS_EDITION=" + episode_path + "\n")
+    if os.environ.get("GITHUB_OUTPUT"):
+        with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
+            output.write("restored=true\n")
     print("ORIGINAL_NEWS_UPLOAD_RESTORED:", json.dumps(proof, ensure_ascii=False))
 
 
@@ -121,5 +140,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--run-id", required=True)
     parser.add_argument("--root", default=".")
+    parser.add_argument("--automatic", action="store_true", help="Ignorar produção que falhou antes do upload; retomadas manuais continuam estritas.")
     args = parser.parse_args()
-    restore(os.environ["GITHUB_REPOSITORY"], args.run_id, Path(args.root).resolve(), os.environ["GITHUB_TOKEN"])
+    restore(os.environ["GITHUB_REPOSITORY"], args.run_id, Path(args.root).resolve(), os.environ["GITHUB_TOKEN"], automatic=args.automatic)

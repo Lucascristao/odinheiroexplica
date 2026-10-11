@@ -6,10 +6,27 @@ import sys
 import unittest
 
 sys.path.insert(0, str(Path(__file__).parent))
-from restore_news_publication import validate_bundle
+from restore_news_publication import validate_bundle, has_completed_upload, REQUIRED_UPLOAD_STEPS
 
 
 class RestoreNewsPublicationTests(unittest.TestCase):
+    def test_pre_upload_failure_is_not_eligible_for_automatic_recovery(self):
+        jobs = [{"steps": [{"name": name, "conclusion": "skipped"} for name in REQUIRED_UPLOAD_STEPS]}]
+        self.assertFalse(has_completed_upload(jobs))
+
+    def test_partial_upload_does_not_release_video(self):
+        jobs = [{"steps": [{"name": name, "conclusion": "success" if index < 2 else "failure"}
+                           for index, name in enumerate(REQUIRED_UPLOAD_STEPS)]}]
+        self.assertFalse(has_completed_upload(jobs))
+
+    def test_completed_upload_can_continue_to_original_proof_gates(self):
+        jobs = [{"steps": [{"name": name, "conclusion": "success"} for name in REQUIRED_UPLOAD_STEPS]}]
+        self.assertTrue(has_completed_upload(jobs))
+
+    def test_ambiguous_jobs_remain_an_error(self):
+        with self.assertRaisesRegex(ValueError, "ambígua"):
+            has_completed_upload([{"steps": []}, {"steps": []}])
+
     def setUp(self):
         self.project_id = "noticia-2026-10-10-teste-producao"
         self.video = b"original MP4 bytes"
