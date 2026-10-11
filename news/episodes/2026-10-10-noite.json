@@ -1,0 +1,313 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-10-noite",
+  "news_date": "2026-10-10",
+  "event_date": "2026-10-07",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-10T21:25:01+00:00",
+  "publication_target_local": "2026-10-10T20:00:00-03:00",
+  "production_validation": {
+    "authorized_by_user": true,
+    "purpose": "Preparação revista da mesma pauta selecionada na ativação das 18h, após o bloqueio de escrita relatado pela tarefa. Sem execução anterior ou upload do slot.",
+    "duplicate_event_checked": true,
+    "subjective_listening_performed": false
+  },
+  "title": "Feriado fecha bancos: boleto pode esperar, imposto exige outro cuidado",
+  "title_options": [
+    {
+      "text": "Feriado fecha bancos: boleto pode esperar, imposto exige outro cuidado",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Pix funciona no feriado: por que alguns pagamentos ficam para terça?",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Bancos fecham em 12 de outubro: o que muda para suas contas",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "PAGA QUANDO?",
+  "thumbnail_primary": "Calendário de mesa sem números ou texto, com folha levantada, diante de porta bancária genérica fechada; metáfora editorial sem documento financeiro fictício",
+  "thumbnail_tension": "Fechamento presencial, disponibilidade digital e prazo de pagamento são coisas diferentes; a regra de contas de consumo não deve ser aplicada automaticamente a impostos.",
+  "thumbnail_composition": "Calendário grande à direita, fundo de porta fechada escuro desfocado e pergunta amarela à esquerda, com respiro; sem logotipo ou promessa de dispensa de multas.",
+  "thumbnail_text_side": "left",
+  "thumbnail_forbidden_elements": [
+    "boleto ou guia fiscal fictícios",
+    "QR code ou código de barras",
+    "números de valores ou multas",
+    "logotipo bancário ou de portal",
+    "pessoa pública",
+    "texto extra",
+    "marca d'água"
+  ],
+  "scorecard": {
+    "method": "Avaliação editorial de clareza, pertinência temporal e prova, sem previsão de CTR.",
+    "criteria": {
+      "timeliness": 5,
+      "consumer_interest": 5,
+      "documentary_evidence": 5,
+      "original_angle": 4
+    },
+    "unavailable": [
+      "CTR",
+      "datas de vencimento de tributos individuais",
+      "regras específicas de cada banco"
+    ],
+    "reason": "O título vencedor liga o feriado à diferença prática entre conta comum e tributo. A primeira cena entrega essa distinção e o roteiro preserva a condição: conferir vencimento e regra do emissor de cada guia, sem inventar prorrogação fiscal universal."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Febraban",
+      "url": "https://portal.febraban.org.br/noticia/4505/en-us",
+      "published_at": "2026-10-07",
+      "role": "Fonte primária do funcionamento bancário em 12/10: presencial, Pix, compensação e orientação sobre contas e tributos; não substitui a regra de vencimento de uma guia fiscal específica."
+    },
+    {
+      "id": "S2",
+      "publisher": "B3 Bora Investir",
+      "url": "https://borainvestir.b3.com.br/noticias/saiba-como-funcionarao-os-servicos-bancarios-no-feriado-do-dia-12-de-outubro/",
+      "published_at": "2026-10-08",
+      "role": "Publicador distinto, reportagem creditada à Agência Brasil; cruzamento do comunicado, não apuração bancária independente da Febraban."
+    },
+    {
+      "id": "S3",
+      "publisher": "Gazeta do Povo",
+      "url": "https://wwws.gazetadopovo.com.br/economia/confira-feriados-nacionais-outubro-dezembro/",
+      "published_at": "2026-10-01",
+      "role": "Veículo de orientação à direita/centro-direita consultado no conteúdo indexado integral. Acrescenta a distinção entre feriado nacional e ponto facultativo e confirma 12/10 numa segunda-feira; não acrescenta regra fiscal. A leitura direta adicional encontrou cache miss."
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "A Febraban comunicou em 07/10 que não haverá atendimento presencial nas agências na segunda-feira, 12 de outubro.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "O atendimento presencial será retomado em 13/10 nas localidades sem feriado estadual ou municipal.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "O Pix segue disponível 24 horas por dia, inclusive no feriado, segundo o comunicado bancário.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "Operações sujeitas a compensação podem ser registradas no feriado, mas o processamento ocorre no primeiro dia útil seguinte.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "A orientação da Febraban permite pagar contas de consumo e boletos com vencimento em 12/10 no próximo dia útil, sem acréscimos; a condição é vencimento no feriado e próximo dia útil local.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "O comunicado orienta antecipar tributos e impostos para evitar acréscimos; não foi verificada regra fiscal individual que autorize uma prorrogação universal até terça.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "12 de outubro de 2026 é uma segunda-feira e feriado nacional; não é ponto facultativo.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "status": "confirmed"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "feriado-febraban",
+      "kind": "source_excerpt",
+      "source_id": "S1",
+      "source_page_url": "https://portal.febraban.org.br/noticia/4505/en-us",
+      "expected_text": "O Pix funciona 24 horas por dia, inclusive no feriado.",
+      "attribution": "Febraban, Diretoria de Comunicação, 07/10/2026; trecho sobre funcionamento do Pix.",
+      "rights_review": "Recorte curto necessário ao comentário sobre atendimento e compensação, com origem e data; não copiar fotografias, logotipos ou a nota inteira.",
+      "capture_file": "research/captures/feriado-febraban-07out.png",
+      "editorial_reconstruction": {
+        "publisher": "Febraban",
+        "published_at": "2026-10-07",
+        "headline": "Agências fecham; canais digitais continuam disponíveis",
+        "context": "O comunicado distingue atendimento presencial, Pix e compensação bancária. A reabertura em 13 de outubro considera feriados estaduais e municipais."
+      }
+    },
+    {
+      "id": "feriado-b3",
+      "kind": "source_excerpt",
+      "source_id": "S2",
+      "source_page_url": "https://borainvestir.b3.com.br/noticias/saiba-como-funcionarao-os-servicos-bancarios-no-feriado-do-dia-12-de-outubro/",
+      "expected_text": "Pix, internet banking e caixas eletrônicos estarão disponíveis",
+      "attribution": "B3 Bora Investir, Redação, 08/10/2026 às 11h11, com crédito Agência Brasil; subtítulo e contexto dos canais.",
+      "rights_review": "Citação documental breve do texto pertinente ao feriado e aos pagamentos, com autoria e origem. Excluir foto de agência bancária da reprodução.",
+      "capture_file": "research/captures/feriado-b3-08out.png",
+      "editorial_reconstruction": {
+        "publisher": "B3 Bora Investir",
+        "published_at": "2026-10-08",
+        "headline": "Contas comuns e tributos não seguem a mesma orientação",
+        "context": "Reportagem cruza a orientação da Febraban: contas de consumo com vencimento no feriado têm tratamento distinto dos tributos. O Pix continua disponível."
+      }
+    },
+    {
+      "id": "feriado-gazeta",
+      "kind": "source_excerpt",
+      "source_id": "S3",
+      "source_page_url": "https://wwws.gazetadopovo.com.br/economia/confira-feriados-nacionais-outubro-dezembro/",
+      "expected_text": "É importante, porém, não confundir ponto facultativo com feriado nacional.",
+      "attribution": "Gazeta do Povo, Ana Paula Pickler, 01/10/2026 às 11h40; distinção de calendário vista na matéria indexada.",
+      "rights_review": "Trecho mínimo comentado sobre o calendário, com crédito, data e origem; não reutilizar as fotos de viagem nem reproduzir a matéria integral.",
+      "capture_file": "research/captures/feriado-gazeta-01out.png",
+      "editorial_reconstruction": {
+        "publisher": "Gazeta do Povo",
+        "published_at": "2026-10-01",
+        "headline": "12 de outubro é feriado nacional, não ponto facultativo",
+        "context": "O calendário situa Nossa Senhora Aparecida numa segunda-feira e distingue a data de pontos facultativos. Não é prova de prorrogação de qualquer obrigação tributária."
+      }
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "abertura",
+      "title": "A conta que parece igual, mas tem outra regra",
+      "type": "fact",
+      "document_id": "feriado-b3",
+      "object_type": "bank",
+      "label": "FERIADO",
+      "headline": "NEM TODA CONTA TEM A MESMA REGRA",
+      "metric": "CONFIRA O TIPO E O VENCIMENTO",
+      "visual_cards": [
+        "AGÊNCIA FECHADA EM 12 DE OUTUBRO",
+        "CONTA DE CONSUMO NÃO É TRIBUTO",
+        "VENCIMENTO IMPORTA",
+        "REGRA DO EMISSOR PRECISA SER CONFERIDA"
+      ],
+      "narration": "Os bancos fecham na segunda-feira, doze de outubro, mas isso não significa que toda conta possa esperar até terça. Para boletos e contas de consumo com vencimento no feriado, existe a orientação de pagar no próximo dia útil sem acréscimo. Impostos exigem outro cuidado: o prazo da guia precisa ser conferido. Eu sou o Roberto. A diferença está no tipo de pagamento, e não apenas no banco estar aberto ou fechado."
+    },
+    {
+      "id": "canais",
+      "title": "Agência fechada não significa Pix desligado",
+      "type": "fact",
+      "document_id": "feriado-febraban",
+      "object_type": "bank",
+      "label": "SERVIÇOS",
+      "headline": "PRESENCIAL E DIGITAL SÃO DIFERENTES",
+      "metric": "PIX CONTINUA DISPONÍVEL",
+      "visual_cards": [
+        "AGÊNCIAS SEM ATENDIMENTO PRESENCIAL",
+        "PIX FUNCIONA INCLUSIVE NO FERIADO",
+        "COMPENSAÇÃO ESPERA DIA ÚTIL",
+        "REGISTRAR NÃO É PROCESSAR"
+      ],
+      "narration": "A Febraban, entidade que representa os bancos, informou que as agências não terão atendimento presencial na segunda. O Pix continua disponível, inclusive durante o feriado. Já operações que dependem de compensação, como uma transferência eletrônica tradicional, seguem outro ritmo. Compensação é o processamento que efetiva aquela operação entre instituições. Um pedido pode ser registrado no aplicativo e só ser processado no primeiro dia útil seguinte. Apertar o botão, portanto, nem sempre significa concluir o pagamento naquele instante."
+    },
+    {
+      "id": "calendario",
+      "title": "Qual é o próximo dia útil",
+      "type": "fact",
+      "document_id": "feriado-gazeta",
+      "object_type": "bank",
+      "label": "CALENDÁRIO",
+      "headline": "O CALENDÁRIO LOCAL TAMBÉM CONTA",
+      "metric": "12 DE OUTUBRO É FERIADO NACIONAL",
+      "visual_cards": [
+        "SEGUNDA-FEIRA É FERIADO NACIONAL",
+        "NÃO É PONTO FACULTATIVO",
+        "REABERTURA PREVISTA EM 13 DE OUTUBRO",
+        "FERIADO LOCAL PODE MUDAR A ROTINA"
+      ],
+      "narration": "A data de doze de outubro é feriado nacional, e não ponto facultativo. Essa distinção aparece na reportagem consultada sobre o calendário. O comunicado bancário prevê a volta do atendimento na terça-feira, treze, onde não houver outro feriado estadual ou municipal. Por isso, quando a orientação fala em próximo dia útil, a condição local importa. A terça é a referência do comunicado, mas não uma licença para ignorar o calendário da sua cidade ou a data escrita em cada cobrança."
+    },
+    {
+      "id": "pagamentos",
+      "title": "Por que não estender a regra ao imposto",
+      "type": "fact",
+      "document_id": "feriado-b3",
+      "object_type": "cash",
+      "label": "PAGAMENTOS",
+      "headline": "A GUIA FISCAL TEM SUA PRÓPRIA REGRA",
+      "metric": "SEM PRORROGAÇÃO UNIVERSAL",
+      "visual_cards": [
+        "CONTA COM VENCIMENTO NO FERIADO",
+        "TRIBUTO EXIGE CONFERIR SUA REGRA",
+        "ANTECIPAÇÃO É ORIENTAÇÃO DO COMUNICADO",
+        "NÃO INVENTAR NOVA DATA DE VENCIMENTO"
+      ],
+      "narration": "Para água, energia e boletos com vencimento no próprio feriado, a orientação bancária permite o pagamento no primeiro dia útil seguinte sem acréscimo. Isso não apaga uma dívida que já estava atrasada. No caso de tributos e impostos, o comunicado orienta antecipação para evitar encargos. Só que ele não detalha todos os tributos do país. A conclusão segura é conferir o vencimento e a regra do emissor da guia. Não dá para inventar uma prorrogação geral até terça só porque a agência está fechada."
+    },
+    {
+      "id": "opiniao",
+      "title": "Previsibilidade para quem precisa pagar",
+      "type": "opinion",
+      "document_id": "feriado-b3",
+      "object_type": "cash",
+      "label": "ANÁLISE",
+      "headline": "PRAZO CLARO EVITA CONFUSÃO",
+      "metric": "DIFERENCIE SERVIÇO E VENCIMENTO",
+      "visual_cards": [
+        "PIX DISPONÍVEL NÃO MUDA TODO PRAZO",
+        "BOLETO COMUM NÃO É GUIA DE IMPOSTO",
+        "INFORMAÇÃO CLARA AJUDA O CLIENTE",
+        "CONFIRA A REGRA DA SUA COBRANÇA"
+      ],
+      "narration": "Na minha leitura, quem tem conta para pagar precisa de prazo claro, não de adivinhar como cada sistema funciona. Um aplicativo disponível o dia inteiro é útil, mas não muda sozinho a regra de uma cobrança. Então a resposta é: o Pix segue funcionando; a conta comum que vence no feriado pode seguir a orientação do próximo dia útil; o imposto exige conferir sua própria regra. Se essa distinção ajudou, inscreva-se no canal. Você costuma conferir o comprovante final ou apenas a mensagem de agendamento?"
+    }
+  ],
+  "engagement_question": "Você costuma conferir o comprovante final ou apenas a mensagem de agendamento?",
+  "hashtags": [
+    "#Feriado",
+    "#Pix"
+  ],
+  "tags": [
+    "feriado 12 de outubro",
+    "bancos",
+    "Pix no feriado",
+    "boletos",
+    "compensação bancária"
+  ],
+  "primary_keyword": "Feriado",
+  "secondary_keywords": [
+    "12 de outubro",
+    "bancos fechados",
+    "Pix",
+    "boletos"
+  ],
+  "pronunciations": {
+    "Pix": "pícs",
+    "Febraban": "febrabán"
+  },
+  "discovery_strategy": {
+    "viewer_intent": "Entender qual pagamento pode esperar no feriado e qual depende de conferir outra regra.",
+    "search_query": "feriado 12 outubro 2026 bancos Pix boleto imposto vencimento",
+    "recommendation_angle": "A agência fechada não determina sozinha nem a disponibilidade do Pix nem o vencimento de toda cobrança.",
+    "first_payoff": "Os bancos fecham na segunda-feira, doze de outubro, mas isso não significa que toda conta possa esperar até terça.",
+    "promise_proof": "O comunicado da Febraban e a cobertura da B3 distinguem contas de consumo e tributos. A Gazeta esclarece feriado nacional e ponto facultativo. O roteiro não substitui a regra do emissor de uma guia.",
+    "audience_hypothesis": "Brasileiros com contas vencendo perto de 12 de outubro e dúvidas sobre funcionamento bancário e confirmação de pagamentos.",
+    "thumbnail_complement": "PAGA QUANDO? apresenta a dúvida prática sem repetir o título nem sugerir dispensa universal de multas.",
+    "verification_limits": "Não foram examinadas guias, tributos individuais, legislação municipal ou todos os aplicativos bancários. B3 credita Agência Brasil e cruza a mesma nota: não constitui medição independente. Fonte Gazeta lida no conteúdo indexado, com falha de cache na abertura direta."
+  },
+  "publication_description": "O feriado de 12 de outubro fecha as agências, mas o Pix continua disponível. Roberto explica a diferença entre atendimento presencial, compensação e vencimento de contas, com os limites da orientação sobre boletos e tributos.\n\n- O que funciona nos canais digitais\n- Por que registrar uma operação não significa concluir a compensação\n- A condição do próximo dia útil e dos feriados locais\n- Por que não aplicar automaticamente a regra de contas comuns a impostos"
+}

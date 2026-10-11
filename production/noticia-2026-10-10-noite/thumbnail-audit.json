@@ -1,0 +1,39 @@
+{
+  "version": "1.0",
+  "project_id": "noticia-2026-10-10-noite",
+  "project_sha256": "58708ef665f87985f2046e3e153c5b5d2ffb4d1a8b8042752a755979a8045fe5",
+  "contract_sha256": "0c730912b29a7d0a2f9fcd110fd09450f3994c13d05f23fc8856b17efcacd3b9",
+  "image_sha256": "2c988fbb49c8089e3ee7b35553c6f0f29134bbc5d08b7ca478786f75285b2539",
+  "headline": "PAGA QUANDO?",
+  "approval_status": "approved",
+  "reviewer": "Codex, inspeção multimodal do arquivo final e da prévia em 320x180",
+  "reviewed_at": "2026-10-10T21:31:09+00:00",
+  "checks": {
+    "headline_exact": true,
+    "primary_subject": true,
+    "secondary_subject": true,
+    "forbidden_absent": true,
+    "identity_and_mobile": true,
+    "no_fabricated_data": true,
+    "unique_composition": true
+  },
+  "observations": {
+    "headline": "A imagem mostra somente PAGA QUANDO?, em duas linhas, sem letras extras, com espaçamento e margem visíveis.",
+    "primary_subject": "Calendário físico grande à direita, folhas sem escrita e uma folha levantada; porta genérica fechada e desfocada no fundo.",
+    "secondary_subject": "Não há segundo protagonista concorrente; a porta fechada é contexto de fundo, subordinado ao calendário aprovado.",
+    "forbidden_absent": "Não foram vistos boletos, guias fiscais, QR codes, códigos de barras, valores, multas, logotipos, pessoas públicas, texto extra ou marca d'água.",
+    "identity_and_mobile": "Fundo carvão e amarelo de destaque, headline imediatamente legível na prévia real 320x180. PNG nativo de 1672x941, aproximadamente 16:9, com 1866750 bytes; mantido sem reamostragem e acima da resolução de referência.",
+    "no_fabricated_data": "Calendário sem números e agência sem marca. A cena é uma metáfora ilustrativa, sem cobrança, documento, data fiscal ou promessa de dispensa inventada.",
+    "unique_composition": "Calendário de folha levantada e porta fechada substituem a caixa e o relógio previstos para a notícia anterior sobre entregas; composição própria desta dúvida sobre pagamentos."
+  },
+  "checked_forbidden_elements": [
+    "boleto ou guia fiscal fictícios",
+    "QR code ou código de barras",
+    "números de valores ou multas",
+    "logotipo bancário ou de portal",
+    "pessoa pública",
+    "texto extra",
+    "marca d'água"
+  ],
+  "observed_forbidden_elements": []
+}
