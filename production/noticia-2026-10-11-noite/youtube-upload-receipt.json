@@ -1,0 +1,12 @@
+{
+  "version": "1.0",
+  "destination": "youtube",
+  "project_id": "noticia-2026-10-11-noite",
+  "video_sha256": "1007457fa3e92e0f07a52210551de6eef83eb9d386cdc35649ff571664522e4e",
+  "video_id": "GED5vRJLf2Y",
+  "url": "https://youtu.be/GED5vRJLf2Y",
+  "privacy_requested": "private",
+  "thumbnail_required": true,
+  "publication": "not_authorized",
+  "recovered_existing_upload": false
+}

@@ -1,0 +1,55 @@
+{
+  "version": "1.0",
+  "generated_at_utc": "2026-10-11T22:57:34.811933+00:00",
+  "episode_id": "noticia-2026-10-11-noite",
+  "qa_status": "warn",
+  "failure_count": 0,
+  "warning_count": 4,
+  "warning_counts_by_code": {
+    "estimated-register-variation": 1,
+    "estimated-visual-anchors": 3
+  },
+  "warnings": [
+    {
+      "code": "estimated-visual-anchors",
+      "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+      "scene_id": "scene-01",
+      "count": 1
+    },
+    {
+      "code": "estimated-visual-anchors",
+      "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+      "scene_id": "scene-02",
+      "count": 1
+    },
+    {
+      "code": "estimated-visual-anchors",
+      "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+      "scene_id": "scene-03",
+      "count": 1
+    },
+    {
+      "code": "estimated-register-variation",
+      "message": "Estimativa de registro variou; conferir por escuta antes de decidir nova síntese.",
+      "from": "scene-00",
+      "to": "scene-01",
+      "estimated_register_delta_semitones": -3.82,
+      "action": "Review by listening; estimate is not proof of an identity change."
+    }
+  ],
+  "failures": [],
+  "next_cycle_actions": [
+    {
+      "code": "estimated-visual-anchors",
+      "occurrences": 3,
+      "suggestion": "Na próxima pauta, escolher âncoras visuais curtas, únicas e próximas à prova documental; conferir posições reais no áudio."
+    },
+    {
+      "code": "estimated-register-variation",
+      "occurrences": 1,
+      "suggestion": "Acompanhar prosódia e intenção de cenas similares; não refazer fala com base apenas em estimativa."
+    }
+  ],
+  "learning_status": "pending_next_edition_review",
+  "note": "Avisos preservados para comparação no próximo ciclo; não afirmam qualidade subjetiva nem justificam ignorar falhas."
+}

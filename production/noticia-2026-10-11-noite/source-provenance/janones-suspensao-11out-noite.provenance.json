@@ -1,0 +1,27 @@
+{
+  "mode": "authentic_page_capture",
+  "source_page_url": "https://wwws.gazetadopovo.com.br/eleicoes/2026/corregedor-do-tse-derruba-decisao-de-nunes-marques-e-libera-canal-exercito-do-lula/",
+  "expected_text": "Nesta manhã, Nunes Marques determinou a suspensão do canal no prazo de 3 horas",
+  "page_title": "Corregedor do TSE derruba decisão de Nunes Marques e libera canal “Exército do Lula”",
+  "image_sha256": "462ce6ed742a85e54b38bc5ff4c5cb2f5133b4ecc551637b7b762c3f52a14de2",
+  "captured_at": "2026-10-11T22:38:37Z",
+  "capture_scope": "desktop_context",
+  "clip": {
+    "x": 0,
+    "y": 4269,
+    "width": 1360,
+    "height": 900
+  },
+  "context_expected_text": "Corregedor do TSE derruba decisão de Nunes Marques e libera canal “Exército do Lula”",
+  "context_image_sha256": "98fd489775f7ef09a9b23b90fdd080d2863967b5072b7d662fb8687f208744ca",
+  "proof_region": {
+    "x": 7.941176470588235,
+    "y": 26.666666666666668,
+    "width": 55.294117647058826,
+    "height": 13.666666666666666
+  },
+  "viewport": {
+    "width": 1360,
+    "height": 900
+  }
+}

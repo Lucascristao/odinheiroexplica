@@ -1,0 +1,349 @@
+{
+  "version": "gemini-live-delivery-qa-v1",
+  "status": "warn",
+  "failures": [],
+  "warnings": [
+    {
+      "code": "estimated-visual-anchors",
+      "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+      "scene_id": "scene-01",
+      "count": 1
+    },
+    {
+      "code": "estimated-visual-anchors",
+      "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+      "scene_id": "scene-02",
+      "count": 1
+    },
+    {
+      "code": "estimated-visual-anchors",
+      "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+      "scene_id": "scene-03",
+      "count": 1
+    },
+    {
+      "code": "estimated-register-variation",
+      "message": "Estimativa de registro variou; conferir por escuta antes de decidir nova síntese.",
+      "from": "scene-00",
+      "to": "scene-01",
+      "estimated_register_delta_semitones": -3.82,
+      "action": "Review by listening; estimate is not proof of an identity change."
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene-00",
+      "model": "gemini-3.8-live",
+      "voice": "Charon",
+      "audio_sha256": "afd3395bcdbf8dfda715f2cf5ad5ed2568929d2c67e04dea07e37d558b65b5a2",
+      "raw_bytes_verified": true,
+      "start_seconds": 0.0,
+      "end_seconds": 31.8,
+      "audio_seconds": 31.5,
+      "activity": {
+        "method": "raw-pcm-energy-20ms-gate-minus45dbfs",
+        "sample_rate_hz": 24000,
+        "duration_seconds": 31.5,
+        "lead_seconds": 0.02,
+        "tail_seconds": 0.26,
+        "active_seconds": 26.1,
+        "has_activity": true,
+        "rms_dbfs": -18.964,
+        "active_rms_dbfs": -18.147,
+        "sample_peak_dbfs": -1.985,
+        "caveat": "activity estimates, not exact phonetic boundaries or a listening assessment"
+      },
+      "spoken_token_count": 75,
+      "words_per_minute": 142.86,
+      "fidelity": {
+        "version": "live-literal-token-fidelity-v2",
+        "passed": true,
+        "similarity": 1.0,
+        "canonical_token_match": true,
+        "reference_token_count": 75,
+        "output_token_count": 75,
+        "differences": [],
+        "numeric_only_mismatch": false,
+        "numeric_equivalences": [],
+        "rule": "all lexical tokens required; explicit pronunciations, numeric spelling, accents, punctuation and reference-bound equivalent year renderings are normalized"
+      }
+    },
+    {
+      "id": "scene-01",
+      "model": "gemini-3.8-live",
+      "voice": "Charon",
+      "audio_sha256": "83267abef4b0f040f492061d3a8b73b5136b413a0bb2fa136541ad6a206d668a",
+      "raw_bytes_verified": true,
+      "start_seconds": 31.8,
+      "end_seconds": 64.53333333333333,
+      "audio_seconds": 32.44,
+      "activity": {
+        "method": "raw-pcm-energy-20ms-gate-minus45dbfs",
+        "sample_rate_hz": 24000,
+        "duration_seconds": 32.44,
+        "lead_seconds": 0.02,
+        "tail_seconds": 0.28,
+        "active_seconds": 26.36,
+        "has_activity": true,
+        "rms_dbfs": -18.247,
+        "active_rms_dbfs": -17.346,
+        "sample_peak_dbfs": -1.003,
+        "caveat": "activity estimates, not exact phonetic boundaries or a listening assessment"
+      },
+      "spoken_token_count": 78,
+      "words_per_minute": 144.27,
+      "fidelity": {
+        "version": "live-literal-token-fidelity-v2",
+        "passed": true,
+        "similarity": 1.0,
+        "canonical_token_match": true,
+        "reference_token_count": 78,
+        "output_token_count": 78,
+        "differences": [],
+        "numeric_only_mismatch": false,
+        "numeric_equivalences": [],
+        "rule": "all lexical tokens required; explicit pronunciations, numeric spelling, accents, punctuation and reference-bound equivalent year renderings are normalized"
+      }
+    },
+    {
+      "id": "scene-02",
+      "model": "gemini-3.8-live",
+      "voice": "Charon",
+      "audio_sha256": "86093099c58a39c8c29bc5881ef48dc4f2d614b18b0760612e7c3dcc126f43b1",
+      "raw_bytes_verified": true,
+      "start_seconds": 64.53333333333333,
+      "end_seconds": 103.36666666666667,
+      "audio_seconds": 38.54004166666667,
+      "activity": {
+        "method": "raw-pcm-energy-20ms-gate-minus45dbfs",
+        "sample_rate_hz": 24000,
+        "duration_seconds": 38.540042,
+        "lead_seconds": 0.02,
+        "tail_seconds": 0.280042,
+        "active_seconds": 31.46,
+        "has_activity": true,
+        "rms_dbfs": -19.217,
+        "active_rms_dbfs": -18.336,
+        "sample_peak_dbfs": -1.694,
+        "caveat": "activity estimates, not exact phonetic boundaries or a listening assessment"
+      },
+      "spoken_token_count": 82,
+      "words_per_minute": 127.66,
+      "fidelity": {
+        "version": "live-literal-token-fidelity-v2",
+        "passed": true,
+        "similarity": 1.0,
+        "canonical_token_match": true,
+        "reference_token_count": 82,
+        "output_token_count": 82,
+        "differences": [],
+        "numeric_only_mismatch": false,
+        "numeric_equivalences": [],
+        "rule": "all lexical tokens required; explicit pronunciations, numeric spelling, accents, punctuation and reference-bound equivalent year renderings are normalized"
+      }
+    },
+    {
+      "id": "scene-03",
+      "model": "gemini-3.8-live",
+      "voice": "Charon",
+      "audio_sha256": "f8c174ce1c60d539dd49dfc55976d4bf2ecc605404885fd78a8808afa427d889",
+      "raw_bytes_verified": true,
+      "start_seconds": 103.36666666666666,
+      "end_seconds": 139.6,
+      "audio_seconds": 35.93,
+      "activity": {
+        "method": "raw-pcm-energy-20ms-gate-minus45dbfs",
+        "sample_rate_hz": 24000,
+        "duration_seconds": 35.93,
+        "lead_seconds": 0.02,
+        "tail_seconds": 0.27,
+        "active_seconds": 29.76,
+        "has_activity": true,
+        "rms_dbfs": -17.207,
+        "active_rms_dbfs": -16.389,
+        "sample_peak_dbfs": -1.155,
+        "caveat": "activity estimates, not exact phonetic boundaries or a listening assessment"
+      },
+      "spoken_token_count": 82,
+      "words_per_minute": 136.93,
+      "fidelity": {
+        "version": "live-literal-token-fidelity-v2",
+        "passed": true,
+        "similarity": 1.0,
+        "canonical_token_match": true,
+        "reference_token_count": 82,
+        "output_token_count": 82,
+        "differences": [],
+        "numeric_only_mismatch": false,
+        "numeric_equivalences": [],
+        "rule": "all lexical tokens required; explicit pronunciations, numeric spelling, accents, punctuation and reference-bound equivalent year renderings are normalized"
+      }
+    },
+    {
+      "id": "scene-04",
+      "model": "gemini-3.8-live",
+      "voice": "Charon",
+      "audio_sha256": "ec57751cdb372131c96f8f64fe68dea358f4121cecd2723e680662b1754a5e42",
+      "raw_bytes_verified": true,
+      "start_seconds": 139.6,
+      "end_seconds": 173.16666666666666,
+      "audio_seconds": 31.65,
+      "activity": {
+        "method": "raw-pcm-energy-20ms-gate-minus45dbfs",
+        "sample_rate_hz": 24000,
+        "duration_seconds": 31.65,
+        "lead_seconds": 0.02,
+        "tail_seconds": 0.33,
+        "active_seconds": 25.88,
+        "has_activity": true,
+        "rms_dbfs": -18.692,
+        "active_rms_dbfs": -17.818,
+        "sample_peak_dbfs": -1.75,
+        "caveat": "activity estimates, not exact phonetic boundaries or a listening assessment"
+      },
+      "spoken_token_count": 71,
+      "words_per_minute": 134.6,
+      "fidelity": {
+        "version": "live-literal-token-fidelity-v2",
+        "passed": true,
+        "similarity": 1.0,
+        "canonical_token_match": true,
+        "reference_token_count": 71,
+        "output_token_count": 71,
+        "differences": [],
+        "numeric_only_mismatch": false,
+        "numeric_equivalences": [],
+        "rule": "all lexical tokens required; explicit pronunciations, numeric spelling, accents, punctuation and reference-bound equivalent year renderings are normalized"
+      }
+    }
+  ],
+  "boundaries": [
+    {
+      "from": "scene-00",
+      "to": "scene-01",
+      "at_seconds": 31.8,
+      "activity_gap_seconds": 0.58,
+      "delta_wpm": 1.41,
+      "delta_rms_db": 0.717
+    },
+    {
+      "from": "scene-01",
+      "to": "scene-02",
+      "at_seconds": 64.53333333333333,
+      "activity_gap_seconds": 0.5933,
+      "delta_wpm": -16.61,
+      "delta_rms_db": -0.97
+    },
+    {
+      "from": "scene-02",
+      "to": "scene-03",
+      "at_seconds": 103.36666666666666,
+      "activity_gap_seconds": 0.5933,
+      "delta_wpm": 9.27,
+      "delta_rms_db": 2.01
+    },
+    {
+      "from": "scene-03",
+      "to": "scene-04",
+      "at_seconds": 139.6,
+      "activity_gap_seconds": 0.5933,
+      "delta_wpm": -2.33,
+      "delta_rms_db": -1.485
+    }
+  ],
+  "video": {
+    "file": "render-output/daily-video.mp4",
+    "sha256": "1007457fa3e92e0f07a52210551de6eef83eb9d386cdc35649ff571664522e4e",
+    "expected_seconds": 173.16666666666666,
+    "video_seconds": 173.166667,
+    "audio_seconds": 173.226667,
+    "channels": 2,
+    "sample_rate_hz": "48000",
+    "integrated_lufs": -15.79,
+    "true_peak_dbtp": -1.18,
+    "loudness_range_lu": 2.6,
+    "channel_handling": "actual encoded channel layout; no downmix"
+  },
+  "subjective_listening_performed": false,
+  "limitations": [
+    "No subjective listening: metrics do not certify naturalness, pronunciation or timbre.",
+    "Live output transcript is checked literally; local ASR remains confidence-gated and may misrecognize.",
+    "Activity uses an energy gate, not exact phonetic boundaries.",
+    "WPM and energy differences are diagnostics, never universal speed controls.",
+    "No DSP is applied and no new provider request is made by this gate."
+  ],
+  "voice_master": {
+    "sha256_verified": true,
+    "target_dbfs": -18.0,
+    "actual_levels": [
+      {
+        "id": "scene-00",
+        "actual_master_active_rms_dbfs": -18.001
+      },
+      {
+        "id": "scene-01",
+        "actual_master_active_rms_dbfs": -17.994
+      },
+      {
+        "id": "scene-02",
+        "actual_master_active_rms_dbfs": -18.009
+      },
+      {
+        "id": "scene-03",
+        "actual_master_active_rms_dbfs": -17.96
+      },
+      {
+        "id": "scene-04",
+        "actual_master_active_rms_dbfs": -17.981
+      }
+    ],
+    "pitch_diagnostics": [
+      {
+        "id": "scene-00",
+        "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+        "voiced_windows": 133,
+        "median_hz": 151.9,
+        "opening_hz": 143.71,
+        "closing_hz": 151.9,
+        "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+      },
+      {
+        "id": "scene-01",
+        "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+        "voiced_windows": 119,
+        "median_hz": 121.83,
+        "opening_hz": 130.11,
+        "closing_hz": 106.67,
+        "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+      },
+      {
+        "id": "scene-02",
+        "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+        "voiced_windows": 169,
+        "median_hz": 113.74,
+        "opening_hz": 107.87,
+        "closing_hz": 108.6,
+        "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+      },
+      {
+        "id": "scene-03",
+        "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+        "voiced_windows": 121,
+        "median_hz": 120.6,
+        "opening_hz": 137.14,
+        "closing_hz": 122.24,
+        "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+      },
+      {
+        "id": "scene-04",
+        "method": "autocorrelation-40ms-80ms-hop-70to350hz",
+        "voiced_windows": 105,
+        "median_hz": 121.83,
+        "opening_hz": 144.58,
+        "closing_hz": 114.56,
+        "scope": "Estimate only: intonation, octave errors and voice quality require listening. No pitch correction applied."
+      }
+    ],
+    "pitch_correction_applied": false
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "project_id": "noticia-2026-10-11-noite",
+  "video_id": "GED5vRJLf2Y",
+  "scheduled_for_utc": "2026-10-11T23:00:00Z",
+  "scheduled_for_local": "2026-10-11T20:00:00-03:00",
+  "thumbnail_sha256": "cdc033634b83aea03d2396dd2aacdabb6c221b3c6b6c9e0eee369eaba65f0bcb",
+  "thumbnail_status": "attached",
+  "qa_status": "warn",
+  "qa_warning_count": 4,
+  "late_tolerance_minutes": 90,
+  "status": "scheduled_private_until_publish_at",
+  "confirmed_at_utc": "2026-10-11T22:58:33.549000+00:00",
+  "url": "https://youtu.be/GED5vRJLf2Y",
+  "publication_confirmation": "pending_until_due"
+}

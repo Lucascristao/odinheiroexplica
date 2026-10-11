@@ -1,0 +1,27 @@
+{
+  "mode": "authentic_page_capture",
+  "source_page_url": "https://www.cnnbrasil.com.br/blogs/teo-cury/eleicoes/corregedor-do-tse-determina-retorno-provisorio-de-canal-exercito-de-lula/",
+  "expected_text": "Na decisão, Cueva determina o retorno imediato e provisório do canal.",
+  "page_title": "Corregedor do TSE determina retorno provisório de canal \"Exército de Lula\" | Blogs | CNN Brasil",
+  "image_sha256": "80914f1d25b46d09ba7c771cae216ec6b23ebb52b6f693993a32a01889c5d877",
+  "captured_at": "2026-10-11T22:38:26Z",
+  "capture_scope": "desktop_context",
+  "clip": {
+    "x": 0,
+    "y": 1397,
+    "width": 1360,
+    "height": 900
+  },
+  "context_expected_text": "Corregedor do TSE determina retorno provisório de canal \"Exército de Lula\"",
+  "context_image_sha256": "a961bc78500c3c14b7acb24d44171573d7199febdee0cab873ebd04c0c7f4fb6",
+  "proof_region": {
+    "x": 11.76470588235294,
+    "y": 26.666666666666668,
+    "width": 49.411764705882355,
+    "height": 6.222222222222222
+  },
+  "viewport": {
+    "width": 1360,
+    "height": 900
+  }
+}
