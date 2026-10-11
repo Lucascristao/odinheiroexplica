@@ -66,6 +66,13 @@
       "authorized_by_user": true,
       "mode": "publish_immediately_after_qa",
       "reason": "O titular solicitou diretamente nesta conversa em 11/10/2026: já coloca a de manhã pra rodar, após discutir o bloqueio da tarefa e saber que a edição das 08h não iniciou. Recuperar este episódio e publicar após QA, mesmo fora da tolerância. Exceção somente desta manhã, sem duplicar upload nem modificar as janelas seguintes."
+    },
+    {
+      "episode_id": "noticia-2026-10-11-meio-dia",
+      "original_publication_local": "2026-10-11T12:00:00-03:00",
+      "authorized_by_user": true,
+      "mode": "publish_immediately_after_qa",
+      "reason": "O titular autorizou diretamente nesta conversa de 11/10/2026 seguir até estar tudo publicado e configurado para o ChatGPT, durante a recuperação das edições da manhã e do meio-dia. Publicar este episódio já preparado após QA, preservando o upload original se ultrapassar a tolerância; exceção exclusiva desta edição, sem alterar as janelas recorrentes."
     }
   ],
   "one_time_immediate_publications": [
