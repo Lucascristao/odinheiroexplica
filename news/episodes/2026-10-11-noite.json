@@ -1,0 +1,531 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-11-noite",
+  "news_date": "2026-10-11",
+  "event_date": "2026-10-11",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-11T22:21:11Z",
+  "publication_target_local": "2026-10-11T20:00:00-03:00",
+  "production_validation": {
+    "authorized_by_user": true,
+    "authorization_quote": "posta a notícia das 20 horas",
+    "duplicate_event_checked": true,
+    "purpose": "Nova pauta política do dia, selecionada e reapurada nesta conversa. O episódio sobre micropensões não foi gravado nem reutilizado.",
+    "subjective_listening_performed": false,
+    "previous_qa_review": {
+      "run_id": 38157266556,
+      "reviewed_at": "2026-10-11T22:30:02Z",
+      "observed_warnings": [
+        "estimated-visual-anchors",
+        "estimated-register-variation"
+      ],
+      "applied": "Âncoras curtas, únicas e em ordem, iniciadas junto da primeira entrega de cada bloco. Direção explain uniforme, sem alternância de registro; a escuta do novo vídeo deverá julgar os avisos reais."
+    }
+  },
+  "title": "TSE libera 'Exército do Lula' horas após suspensão: o que ainda pode mudar?",
+  "title_options": [
+    {
+      "text": "TSE libera 'Exército do Lula' horas após suspensão: o que ainda pode mudar?",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Canal de Janones volta ao WhatsApp, mas continua sob disputa no TSE",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Bloquear um canal inteiro? A divergência no TSE sobre o 'Exército do Lula'",
+      "editorial_quality": 4
+    }
+  ],
+  "thumbnail_headline": "NÃO ACABOU",
+  "thumbnail_primary": "Um smartphone preto grande em perspectiva, com um único balão de mensagem vazio em amarelo e uma faixa vermelha interrompida sobre a tela, como metáfora editorial da disputa sobre um canal. Sem interface real, dados ou conversa.",
+  "thumbnail_tension": "O retorno é provisório: a imagem representa o conflito entre restrição de comunicação e funcionamento autorizado, sem declarar inocência, vitória definitiva ou suspensão atual.",
+  "thumbnail_composition": "Smartphone dominante no alto à esquerda, sobre fundo carvão, com área inferior esquerda vazia para a headline amarela. Roberto oficial de blazer azul-marinho em close à direita, olhando para a notícia à esquerda. Cabeça inteira, rosto e texto separados, espaço livre no canto inferior direito para duração.",
+  "thumbnail_presenter_expression": "roberto-v1-navy-left",
+  "thumbnail_text_side": "left",
+  "thumbnail_headline_position": "lower",
+  "thumbnail_portrait_size": "close",
+  "thumbnail_forbidden_elements": [
+    "outro rosto além do Roberto oficial",
+    "texto extra além da headline",
+    "logotipo comercial ou partidário",
+    "captura ou conversa fabricada",
+    "cifras e números na tela",
+    "setas e alarmes",
+    "marca d'água"
+  ],
+  "scorecard": {
+    "method": "Avaliação editorial de atualização, contradição factual, clareza e evidência; sem métricas de CTR ou previsão de audiência.",
+    "reason": "A alternativa de maior nota identifica o assunto e mostra a reversão ocorrida hoje. A pergunta é respondida pela provisoriedade, pelos limites e pelo julgamento pendente. As cenas 1 e 5 entregam o retorno; 2 e 3 explicam a diferença entre decisões, sem tratar acusações como condenações.",
+    "criteria": {
+      "timeliness": 5,
+      "public_interest": 5,
+      "documentary_evidence": 5,
+      "original_angle": 4
+    },
+    "unavailable": [
+      "volume de buscas",
+      "CTR e retenção deste vídeo",
+      "decisão final do plenário"
+    ]
+  },
+  "news_selection": {
+    "topic_area": "politics",
+    "new_fact": "Ricardo Villas Bôas Cueva autorizou em 11/10/2026 o retorno provisório do canal Exército do Lula, suspendendo a ordem de Nunes Marques até a análise pelo plenário do TSE.",
+    "why_today": "A ordem de suspensão da manhã de 11/10 foi suspensa por Cueva na tarde do mesmo dia. A edição noturna incorpora a atualização das 18h37 e explica o que continua pendente, em vez de publicar a manchete superada da manhã.",
+    "opening_anchor": "O canal Exército do Lula foi liberado provisoriamente neste domingo",
+    "candidate_review": [
+      {
+        "subject": "Retorno provisório do canal Exército do Lula",
+        "topic_area": "politics",
+        "event_date": "2026-10-11",
+        "urls": [
+          "https://www.cnnbrasil.com.br/blogs/teo-cury/eleicoes/corregedor-do-tse-determina-retorno-provisorio-de-canal-exercito-de-lula/",
+          "https://wwws.gazetadopovo.com.br/eleicoes/2026/corregedor-do-tse-derruba-decisao-de-nunes-marques-e-libera-canal-exercito-do-lula/",
+          "https://www.poder360.com.br/poder-eleicoes-2026/corregedor-do-tse-libera-canal-exercito-do-lula-de-janones/",
+          "https://sbtnews.sbt.com.br/noticia/eleicoes/tse-manda-reabrir-canal-de-janones-e-leva-caso-ao-plenario"
+        ],
+        "decision": "Escolhida: novo desdobramento hoje, conflito concreto entre decisões e três reportagens de publicadores distintos lidas, além de comunicado e decisão primários."
+      },
+      {
+        "subject": "Força-tarefa contra queimadas no Amazonas e suspensão de eventos em Manaus",
+        "topic_area": "politics",
+        "event_date": "2026-10-11",
+        "urls": [
+          "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-10/governo-ajudou-assim-que-amazonas-decretou-emergencia-diz-ministro"
+        ],
+        "decision": "Candidata atual lida: coletiva do ministro e chegada de aeronaves hoje. Não escolhida nesta edição; precisaria de cruzamento local independente e documentos do estado/município para produzir um episódio."
+      },
+      {
+        "subject": "Estudo sobre micropensões retomado em reportagem de 11/10",
+        "topic_area": "personal_finance",
+        "event_date": "2026-10-08",
+        "urls": [
+          "https://www.tivio.com/blog/deep-dive-micropensoes/"
+        ],
+        "decision": "Rejeitada: o fato central é estudo de 08/10, sem desdobramento novo central comprovado hoje. Não reaproveitar para preencher a janela."
+      }
+    ],
+    "last_source_check_utc": "2026-10-11T22:30:02Z"
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "CNN Brasil, Teo Cury",
+      "url": "https://www.cnnbrasil.com.br/blogs/teo-cury/eleicoes/corregedor-do-tse-determina-retorno-provisorio-de-canal-exercito-de-lula/",
+      "published_at": "2026-10-11",
+      "updated_at": "2026-10-11T18:37:00-03:00",
+      "role": "Reportagem com trechos da decisão de Cueva: retorno imediato e provisório, argumentos de proporcionalidade, vedação de conteúdos ilícitos e decisão final pelo plenário."
+    },
+    {
+      "id": "S2",
+      "publisher": "Gazeta do Povo, Camila Abrão",
+      "url": "https://wwws.gazetadopovo.com.br/eleicoes/2026/corregedor-do-tse-derruba-decisao-de-nunes-marques-e-libera-canal-exercito-do-lula/",
+      "published_at": "2026-10-11",
+      "updated_at": "2026-10-11T17:13:00-03:00",
+      "role": "Veículo de direita/centro-direita consultado: confirma a reversão e apresenta os fundamentos de ambas as decisões e a reação da campanha de Flávio. Acrescenta o contraponto sobre fiscalização da plataforma, sem converter acusação em conclusão judicial definitiva."
+    },
+    {
+      "id": "S3",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/corregedor-do-tse-libera-canal-exercito-do-lula-de-janones/",
+      "published_at": "2026-10-11",
+      "role": "Terceiro publicador consultado: permite distinguir retomada de publicações/seguidores, investigação em curso e limites a conteúdos já considerados ilícitos."
+    },
+    {
+      "id": "S4",
+      "publisher": "Tribunal Superior Eleitoral",
+      "url": "https://www.tse.jus.br/comunicacao/noticias/2026/Outubro/tse-determina-esclarecimentos-antes-de-analisar-pedidos-de-flavio-contra-lula-e-janones",
+      "published_at": "2026-10-10",
+      "role": "Fonte primária de contexto do sábado: esclarecimentos e provas requisitados; admitir a ação não equivale a comprovar as acusações."
+    },
+    {
+      "id": "S5",
+      "publisher": "Tribunal Superior Eleitoral, decisão de Nunes Marques reproduzida pelo Poder360",
+      "url": "https://static.poder360.com.br/uploads/2026/10/Decisao-Nunes-Marques-Reclamacao-administrativa-Flavio-contra-Janones-e-Lula-por-desinformacao-WhatsApp-10out2026.pdf",
+      "published_at": "2026-10-11",
+      "role": "Documento primário assinado por Nunes Marques em 11/10/2026 às 10:51:35, processo 0602791-73.2026.6.00.0000. Dispositivo nas páginas 30-32 conferido: suspensão em três horas contadas da notificação. Ordem posterior de Cueva suspendeu essa medida; não é a decisão atual."
+    },
+    {
+      "id": "S6",
+      "publisher": "SBT News, Caio Barcellos",
+      "url": "https://sbtnews.sbt.com.br/noticia/eleicoes/tse-manda-reabrir-canal-de-janones-e-leva-caso-ao-plenario",
+      "published_at": "2026-10-11",
+      "role": "Reportagem adicional conferida antes da escrita: retorno provisório, análise urgente pelo plenário e restrição a conteúdos previamente julgados ilícitos; nenhuma nova decisão final identificada."
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Ricardo Villas Bôas Cueva autorizou em 11/10/2026 o retorno provisório do canal Exército do Lula, suspendendo a ordem de Nunes Marques até a análise pelo plenário do TSE.",
+      "status": "confirmed",
+      "event_date": "2026-10-11",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S6"
+      ]
+    },
+    {
+      "claim": "A ordem anterior de Nunes Marques, assinada em 11/10 às 10h51, determinava suspensão em três horas após a notificação.",
+      "status": "confirmed",
+      "event_date": "2026-10-11",
+      "source_ids": [
+        "S2",
+        "S5"
+      ]
+    },
+    {
+      "claim": "A campanha de Flávio Bolsonaro acusa o canal administrado por André Janones de coordenar a divulgação de conteúdos falsos; trata-se de acusação e fundamento processual, não condenação final apurada.",
+      "status": "statement",
+      "event_date": "2026-10-11",
+      "source_ids": [
+        "S2",
+        "S3",
+        "S4",
+        "S5"
+      ]
+    },
+    {
+      "claim": "Cueva considerou insuficiente o suporte probatório para suspensão integral antes de concluir as diligências e defendeu avaliar medidas menos restritivas.",
+      "status": "statement",
+      "event_date": "2026-10-11",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "claim": "A autorização de funcionamento não permite divulgar ou reproduzir conteúdos cuja ilicitude já foi reconhecida pela Justiça Eleitoral.",
+      "status": "confirmed",
+      "event_date": "2026-10-11",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "claim": "O comunicado do TSE de 10/10 informa pedido de esclarecimentos e provas digitais e ressalva que admitir a investigação não comprova as alegações.",
+      "status": "background",
+      "event_date": "2026-10-10",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    {
+      "claim": "O caso deverá ser analisado pelo plenário do TSE; a reportagem registra pedido de exame urgente, sem resultado definitivo confirmado nesta apuração.",
+      "status": "confirmed",
+      "event_date": "2026-10-11",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "claim": "Janones chamou o bloqueio de censura, enquanto a campanha de Flávio contestou a liberação e distinguiu fiscalização da plataforma de investigação de abuso eleitoral.",
+      "status": "statement",
+      "event_date": "2026-10-11",
+      "source_ids": [
+        "S2"
+      ]
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "janones-retorno",
+      "source_id": "S1",
+      "source_page_url": "https://www.cnnbrasil.com.br/blogs/teo-cury/eleicoes/corregedor-do-tse-determina-retorno-provisorio-de-canal-exercito-de-lula/",
+      "expected_text": "Na decisão, Cueva determina o retorno imediato e provisório do canal.",
+      "attribution": "CNN Brasil, Teo Cury, 11/10/2026, atualização 18h37; recorte da ordem mais recente.",
+      "kind": "source_excerpt",
+      "capture_file": "research/captures/janones-retorno-11out-noite.png",
+      "rights_review": "Citação jornalística e crítica de trecho mínimo necessário, com autoria, origem e data. Capturar contexto real de desktop e trecho, sem imitar o portal. Não reutilizar fotografias isoladas de imprensa como ilustração. Reconstrução autoral só em falha técnica, com procedência registrada.",
+      "editorial_reconstruction": {
+        "publisher": "CNN Brasil, Teo Cury",
+        "published_at": "2026-10-11",
+        "headline": "Retorno do canal é provisório; julgamento segue no TSE",
+        "context": "A reportagem informa que Cueva suspendeu a ordem anterior, restabelecendo provisoriamente o canal. O plenário examinará o caso; conteúdos cuja ilicitude já foi reconhecida continuam sujeitos às decisões judiciais."
+      }
+    },
+    {
+      "id": "janones-suspensao",
+      "source_id": "S2",
+      "source_page_url": "https://wwws.gazetadopovo.com.br/eleicoes/2026/corregedor-do-tse-derruba-decisao-de-nunes-marques-e-libera-canal-exercito-do-lula/",
+      "expected_text": "Nesta manhã, Nunes Marques determinou a suspensão do canal no prazo de 3 horas",
+      "attribution": "Gazeta do Povo, Camila Abrão, 11/10/2026, atualização 17h13; ordem anterior e contraponto da campanha.",
+      "kind": "source_excerpt",
+      "capture_file": "research/captures/janones-suspensao-11out-noite.png",
+      "rights_review": "Citação jornalística e crítica de trecho mínimo necessário, com autoria, origem e data. Capturar contexto real de desktop e trecho, sem imitar o portal. Não reutilizar fotografias isoladas de imprensa como ilustração. Reconstrução autoral só em falha técnica, com procedência registrada.",
+      "editorial_reconstruction": {
+        "publisher": "Gazeta do Povo, Camila Abrão",
+        "published_at": "2026-10-11",
+        "headline": "Ordem da manhã determinava bloqueio; medida foi suspensa",
+        "context": "A apuração registra o prazo de três horas da ordem anterior, o fundamento nas obrigações da plataforma e a divergência sobre a suspensão integral. Cueva autorizou o retorno provisório, contestado pela campanha de Flávio."
+      }
+    },
+    {
+      "id": "janones-provas",
+      "source_id": "S4",
+      "source_page_url": "https://www.tse.jus.br/comunicacao/noticias/2026/Outubro/tse-determina-esclarecimentos-antes-de-analisar-pedidos-de-flavio-contra-lula-e-janones",
+      "expected_text": "receber a ação não significa reconhecer a veracidade das alegações",
+      "attribution": "Tribunal Superior Eleitoral, comunicado oficial de 10/10/2026; contexto da investigação.",
+      "kind": "source_excerpt",
+      "capture_file": "research/captures/janones-provas-11out-noite.png",
+      "rights_review": "Citação jornalística e crítica de trecho mínimo necessário, com autoria, origem e data. Capturar contexto real de desktop e trecho, sem imitar o portal. Não reutilizar fotografias isoladas de imprensa como ilustração. Reconstrução autoral só em falha técnica, com procedência registrada.",
+      "editorial_reconstruction": {
+        "publisher": "Tribunal Superior Eleitoral",
+        "published_at": "2026-10-10",
+        "headline": "TSE pediu esclarecimentos e provas antes de analisar medidas",
+        "context": "No comunicado de sábado, o TSE informa o pedido de esclarecimentos e arquivos digitais. Admitir a investigação não implica validar acusações; a análise depende das provas e do exercício de defesa."
+      }
+    }
+  ],
+  "context_photos": [],
+  "story_subject": "Retorno provisório do canal Exército do Lula e divergência entre decisões no TSE",
+  "story_angle": "Explicar a atualização do próprio dia, os limites da liberação e a diferença entre investigar, restringir e julgar.",
+  "primary_keyword": "Exército do Lula",
+  "secondary_keywords": [
+    "TSE",
+    "André Janones",
+    "Ricardo Villas Bôas Cueva",
+    "Nunes Marques",
+    "WhatsApp",
+    "eleições 2026"
+  ],
+  "discovery_strategy": {
+    "viewer_intent": "Saber o que vale após manchetes opostas sobre o canal de Janones no mesmo dia.",
+    "search_query": "TSE libera canal Exército do Lula Janones decisão Cueva hoje",
+    "recommendation_angle": "Uma suspensão de manhã e uma liberação à tarde: descobrir por que o retorno não encerra o caso.",
+    "first_payoff": "O canal Exército do Lula foi liberado provisoriamente neste domingo",
+    "promise_proof": "As reportagens de 11/10 confirmam a reversão, o caráter provisório, as restrições e o julgamento pendente; o comunicado e a decisão originais distinguem acusação, prova e medida processual.",
+    "audience_hypothesis": "Pessoas que acompanham política nacional e recebem manchetes conflitantes podem valorizar uma atualização que discrimina decisão atual e caso pendente. Hipótese editorial, sem segmentação sensível nem métricas inventadas.",
+    "thumbnail_complement": "NÃO ACABOU complementa a liberação do título, lembrando que o processo e seus limites continuam.",
+    "verification_limits": "Fontes relidas nesta noite antes da escrita, incluindo atualização da CNN e reportagem do SBT News. Nenhum resultado final do plenário foi confirmado. Não foi auditado todo o conteúdo do canal nem atribuída intenção pessoal aos ministros."
+  },
+  "publication_description": "O canal Exército do Lula, administrado por André Janones, foi liberado provisoriamente no mesmo dia em que Nunes Marques determinou sua suspensão. O que vale agora e quais limites continuam?\n\nNeste vídeo, Roberto explica:\n• a diferença entre a ordem da manhã e a decisão da tarde;\n• por que investigação e decisão provisória não encerram o caso;\n• os limites aos conteúdos e a análise que ainda caberá ao plenário.\n\nA apuração distingue decisões, acusações e posições das campanhas. O comentário do Roberto é identificado como opinião.",
+  "engagement_question": "O TSE deveria priorizar a retirada de publicações específicas ou suspender o canal inteiro?",
+  "tags": [
+    "Exército do Lula",
+    "TSE",
+    "André Janones",
+    "Cueva",
+    "Nunes Marques",
+    "WhatsApp",
+    "eleições 2026",
+    "notícias de hoje"
+  ],
+  "hashtags": [
+    "#TSE",
+    "#Eleicoes2026",
+    "#WhatsApp"
+  ],
+  "pronunciations": {
+    "TSE": "tê ésse é",
+    "Cueva": "Cuêva",
+    "WhatsApp": "uátizáp"
+  },
+  "segments": [
+    {
+      "title": "Voltou, mas a decisão não terminou",
+      "type": "fact",
+      "narration": "O canal Exército do Lula foi liberado provisoriamente neste domingo, onze de outubro, poucas horas depois da ordem de suspensão. Quem decide essa disputa e o que vale agora? Eu sou Roberto. No Tribunal Superior Eleitoral, o TSE, o corregedor Ricardo Villas Bôas Cueva suspendeu a ordem do presidente Nunes Marques. O canal pode funcionar enquanto o plenário analisa o caso. A liberação não encerra a investigação nem autoriza conteúdo já considerado ilícito.",
+      "object_type": "data",
+      "document_id": "janones-retorno",
+      "media_side": "right",
+      "visual_cards": [
+        "Retorno provisório",
+        "Duas decisões no mesmo dia",
+        "O plenário ainda decide"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "O canal Exército do Lula foi liberado provisoriamente neste domingo",
+          "headline": "Retorno provisório"
+        },
+        {
+          "anchor": "poucas horas depois da ordem de suspensão.",
+          "headline": "Duas decisões no mesmo dia"
+        },
+        {
+          "anchor": "Quem decide essa disputa",
+          "headline": "O plenário ainda decide"
+        },
+        {
+          "anchor": "Eu sou Roberto.",
+          "headline": "Retorno provisório"
+        },
+        {
+          "anchor": "No Tribunal Superior Eleitoral, o TSE,",
+          "headline": "Duas decisões no mesmo dia"
+        },
+        {
+          "anchor": "O canal pode funcionar",
+          "headline": "O plenário ainda decide"
+        },
+        {
+          "anchor": "A liberação não encerra a investigação",
+          "headline": "Retorno provisório"
+        }
+      ]
+    },
+    {
+      "title": "O fundamento da suspensão da manhã",
+      "type": "fact",
+      "narration": "A suspensão anterior saiu na manhã de hoje, a pedido da campanha de Flávio Bolsonaro. Nunes Marques determinou que a Meta, responsável pelo WhatsApp, bloqueasse novas publicações e a entrada de seguidores no canal administrado por André Janones. O prazo era de três horas após a notificação. A campanha acusa a estrutura de coordenar conteúdos falsos. O presidente do tribunal fundamentou a ordem em decisões anteriores e nas obrigações assumidas pela plataforma. Essa ordem foi suspensa à tarde.",
+      "object_type": "data",
+      "document_id": "janones-suspensao",
+      "media_side": "left",
+      "visual_cards": [
+        "A ordem anterior",
+        "Pedido da campanha de Flávio",
+        "Obrigação da plataforma"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "A suspensão anterior saiu",
+          "headline": "A ordem anterior"
+        },
+        {
+          "anchor": "Nunes Marques determinou",
+          "headline": "Pedido da campanha de Flávio"
+        },
+        {
+          "anchor": "O prazo era de três horas",
+          "headline": "Obrigação da plataforma"
+        },
+        {
+          "anchor": "A campanha acusa a estrutura",
+          "headline": "A ordem anterior"
+        },
+        {
+          "anchor": "O presidente do tribunal fundamentou",
+          "headline": "Pedido da campanha de Flávio"
+        },
+        {
+          "anchor": "Essa ordem foi suspensa à tarde.",
+          "headline": "Obrigação da plataforma"
+        }
+      ]
+    },
+    {
+      "title": "Uma investigação não é uma condenação",
+      "type": "fact",
+      "narration": "Cueva considerou insuficiente o suporte apresentado para interromper o canal inteiro antes de concluir a análise das provas. No sábado, já havia pedido esclarecimentos e arquivos digitais à campanha de Flávio. O próprio TSE explicou que abrir a investigação não comprova as acusações. Uma liminar é uma decisão provisória: a discussão ainda vai ao plenário. Janones chamou o bloqueio de censura. A campanha de Flávio contestou a liberação e defendeu que fiscalizar a plataforma é diferente de julgar abuso eleitoral.",
+      "object_type": "data",
+      "document_id": "janones-provas",
+      "media_side": "right",
+      "visual_cards": [
+        "Provas e esclarecimentos",
+        "Investigação não é condenação",
+        "A disputa continua"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Cueva considerou insuficiente",
+          "headline": "Provas e esclarecimentos"
+        },
+        {
+          "anchor": "No sábado, já havia pedido",
+          "headline": "Investigação não é condenação"
+        },
+        {
+          "anchor": "O próprio TSE explicou",
+          "headline": "A disputa continua"
+        },
+        {
+          "anchor": "Uma liminar é uma decisão provisória:",
+          "headline": "Provas e esclarecimentos"
+        },
+        {
+          "anchor": "Janones chamou o bloqueio de censura.",
+          "headline": "Investigação não é condenação"
+        },
+        {
+          "anchor": "A campanha de Flávio contestou",
+          "headline": "A disputa continua"
+        }
+      ]
+    },
+    {
+      "title": "Liberdade e responsabilidade para qualquer lado",
+      "type": "opinion",
+      "narration": "Agora, minha leitura é liberal: combater uma publicação ilegal e fechar todo um meio de comunicação exigem justificativas diferentes. Não basta gostar do candidato beneficiado pela decisão. Se liberdade de expressão só vale para a minha turma, virou clube, não princípio. Ao mesmo tempo, mobilização política não dá licença para repetir conteúdo que a Justiça já considerou ilícito. Criticar o bloqueio amplo e cobrar responsabilidade de Janones são posições compatíveis. A prova concreta deve orientar a medida, inclusive quando incomoda nossos aliados.",
+      "object_type": "data",
+      "document_id": "janones-provas",
+      "media_side": "left",
+      "visual_cards": [
+        "Leitura liberal do Roberto",
+        "A regra vale para qualquer lado",
+        "Cobrar provas e responsabilidade"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Agora, minha leitura é liberal:",
+          "headline": "Leitura liberal do Roberto"
+        },
+        {
+          "anchor": "Não basta gostar do candidato",
+          "headline": "A regra vale para qualquer lado"
+        },
+        {
+          "anchor": "Se liberdade de expressão",
+          "headline": "Cobrar provas e responsabilidade"
+        },
+        {
+          "anchor": "Ao mesmo tempo, mobilização política",
+          "headline": "Leitura liberal do Roberto"
+        },
+        {
+          "anchor": "Criticar o bloqueio amplo",
+          "headline": "A regra vale para qualquer lado"
+        },
+        {
+          "anchor": "A prova concreta deve orientar",
+          "headline": "Cobrar provas e responsabilidade"
+        }
+      ]
+    },
+    {
+      "title": "O que vale nesta noite",
+      "type": "fact",
+      "narration": "Então, o que vale agora? A ordem mais recente autoriza o funcionamento provisório, com restrições a conteúdos já considerados ilícitos. O processo continua, e o plenário deverá examinar a controvérsia; não há resultado definitivo apurado. Antes de compartilhar a manchete da manhã, confira a atualização da tarde. Se essa distinção ajudou, inscreva-se para acompanhar as próximas decisões. E você: a Justiça deve retirar publicações específicas ou fechar o canal inteiro?",
+      "object_type": "data",
+      "document_id": "janones-retorno",
+      "media_side": "right",
+      "visual_cards": [
+        "Funcionamento provisório",
+        "Sem decisão final apurada",
+        "Conferir a última atualização"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Então, o que vale agora?",
+          "headline": "Funcionamento provisório"
+        },
+        {
+          "anchor": "A ordem mais recente autoriza",
+          "headline": "Sem decisão final apurada"
+        },
+        {
+          "anchor": "O processo continua,",
+          "headline": "Conferir a última atualização"
+        },
+        {
+          "anchor": "Antes de compartilhar a manchete da manhã,",
+          "headline": "Funcionamento provisório"
+        },
+        {
+          "anchor": "Se essa distinção ajudou,",
+          "headline": "Sem decisão final apurada"
+        },
+        {
+          "anchor": "E você: a Justiça deve retirar",
+          "headline": "Conferir a última atualização"
+        }
+      ]
+    }
+  ]
+}

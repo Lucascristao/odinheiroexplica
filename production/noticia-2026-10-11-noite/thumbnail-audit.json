@@ -1,0 +1,39 @@
+{
+  "version": "1.0",
+  "project_id": "noticia-2026-10-11-noite",
+  "project_sha256": "75d4d7cac10bb7d4ded1980e6d0db25b0b510a1774e167eb124bb797ca1d00a8",
+  "contract_sha256": "2cce67786ebcbc971976757158ee49f3b901f13bfcae6f42c4aa7ce254737216",
+  "image_sha256": "cdc033634b83aea03d2396dd2aacdabb6c221b3c6b6c9e0eee369eaba65f0bcb",
+  "headline": "NÃO ACABOU",
+  "approval_status": "approved",
+  "reviewer": "Codex, inspeção dos pixels em 1280x720 pelo visualizador e 320x180 no navegador desta conversa",
+  "reviewed_at": "2026-10-11T22:33:45Z",
+  "checks": {
+    "headline_exact": true,
+    "primary_subject": true,
+    "secondary_subject": true,
+    "forbidden_absent": true,
+    "identity_and_mobile": true,
+    "no_fabricated_data": true,
+    "unique_composition": true
+  },
+  "observations": {
+    "headline": "NÃO ACABOU aparece em duas linhas amarelas na área inferior esquerda, com tilde íntegra e sem qualquer palavra adicional. As duas palavras permanecem legíveis em 320x180.",
+    "primary_subject": "Smartphone preto grande no alto à esquerda, com um único balão amarelo vazio na tela e faixa vermelha rompida. Não apresenta interface real do WhatsApp, mensagem escrita, cifra ou dado.",
+    "secondary_subject": "Somente Roberto de blazer azul-marinho, camisa clara e olhar à esquerda ocupa a direita. Cabeça, cabelo, olhos e barba inteiros; são os pixels da referência registrada roberto-v1-navy-left, sem o rosto da primeira arte rejeitada.",
+    "forbidden_absent": "Nenhum outro rosto, logotipo comercial ou partidário, captura de conversa, número, seta, alarme ou marca d'água. Na tela do telefone há somente a metáfora visual aprovada.",
+    "identity_and_mobile": "Em 320x180, a headline, o celular, a faixa rompida e o olhar do Roberto são distinguíveis. Texto não cobre rosto; a região inferior direita fica fora da informação principal.",
+    "no_fabricated_data": "Telefone e balão vazio são ilustração editorial, não screenshot apresentado como prova. A manchete indica continuidade do caso e não afirma absolvição ou bloqueio atual. Os prints de prova pertencem ao vídeo, não a esta capa.",
+    "unique_composition": "Telefone e faixa rompida substituem a bomba/bico de gasolina da última capa. O Roberto usa agora blazer e pose de três quartos, em vez da camisa grafite frontal; o texto complementa a provisoriedade do título."
+  },
+  "checked_forbidden_elements": [
+    "outro rosto além do Roberto oficial",
+    "texto extra além da headline",
+    "logotipo comercial ou partidário",
+    "captura ou conversa fabricada",
+    "cifras e números na tela",
+    "setas e alarmes",
+    "marca d'água"
+  ],
+  "observed_forbidden_elements": []
+}
