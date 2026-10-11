@@ -8,6 +8,8 @@ A referência é `video/public/presenters/roberto/roberto-v1.png`, gerada nativa
 
 O gerador nativo cria somente o **fundo da notícia**, sem texto e sem pessoas. A headline e o retrato são compostos pelo Remotion. Reserve espaço para a notícia e o rosto inteiro; não transforme o retrato em obstáculo para o objeto principal. As novas capas personalizadas usam esse mesmo Roberto. A política de publicação mantém capa opcional: falha de capa não impede vídeo válido de usar a miniatura automática do YouTube.
 
+O catálogo inclui `roberto-v1-engaged.png`, uma edição nativa conferida contra a referência original, com expressão atenta, sobrancelhas inquisitivas e boca discretamente entreaberta. O motor escolhe essa referência fixa para notícias revisadas a partir de `2026-10-11T05:00:00Z`; contratos anteriores conservam o retrato original. `thumbnail_presenter_expression` pode selecionar somente uma das referências registradas. A expressão varia pelo catálogo, sem recriar o rosto a cada edição. O hash verifica o arquivo; a continuidade percebida foi inspecionada visualmente, sem reconhecimento facial automático.
+
 ## Execução local
 
 Depois de apurar e fechar o episódio, adaptar o JSON a um projeto temporário. Não alterar `video/data/daily.json`:

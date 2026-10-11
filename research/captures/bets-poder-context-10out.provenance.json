@@ -1,0 +1,27 @@
+{
+  "mode": "authentic_page_capture",
+  "source_page_url": "https://www.poder360.com.br/poder-sportsmkt/bets-informam-r-159-milhoes-a-devolver-apos-prazo-de-saque/",
+  "expected_text": "Desse total, 90% das contas têm menos de R$ 1 disponível para restituição",
+  "page_title": "Bets informam R$ 159 milhões a devolver após prazo de saque",
+  "image_sha256": "2b8a5175523b283cd312172257ee4480942400aac199e0bfde6af8a952607d43",
+  "captured_at": "2026-10-11T05:16:12Z",
+  "capture_scope": "desktop_context",
+  "clip": {
+    "x": 0,
+    "y": 1284.734375,
+    "width": 1360,
+    "height": 900
+  },
+  "context_expected_text": "Bets informam R$ 159 milhões a devolver após prazo de saque",
+  "context_image_sha256": "79a4a5cc76e5803e6113aec2e97e7538613fe3d88e860039f6d64f491a282182",
+  "proof_region": {
+    "x": 9.558823529411764,
+    "y": 26.666666666666668,
+    "width": 52.818244485294116,
+    "height": 14.75
+  },
+  "viewport": {
+    "width": 1360,
+    "height": 900
+  }
+}

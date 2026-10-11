@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "asset_id": "roberto-v1-engaged",
+  "reviewed_at": "2026-10-11T12:28:13.915238+00:00",
+  "reviewer": "Codex, inspeção dos pixels da referência original, edição nativa e versão reduzida",
+  "generator": "native_chatgpt_imagegen",
+  "parent_identity": "roberto-v1",
+  "parent_reference_sha256": "97834c9d290d564009184699fdc7ef75ce3f16f0fa17f42194bf6340a737e654",
+  "reference_sha256": "aba953fb6a025eb43fbef7398fcaf4b08b950ba635728339761e7435b18e37d5",
+  "dimensions": [
+    1312,
+    1199
+  ],
+  "observations": {
+    "identity": "Mesma aparência do Roberto fictício: cabelo escuro com fios grisalhos, olhos castanhos, nariz, barba curta grisalha, textura de pele e camisa grafite. Não copia um apresentador real.",
+    "expression": "Sobrancelhas discretamente assimétricas e boca entreaberta, em expressão de explicação/pergunta; rosto e orelhas inteiros, sem gesto exagerado.",
+    "lighting": "Luz suave, textura visível e fundo transparente. Sem contorno dourado intenso, objetos, texto ou outra pessoa.",
+    "mobile": "Na redução de até 320px, olhos, boca e expressão continuam distinguíveis. Isto é inspeção do retrato; cada capa composta ainda exige auditoria própria."
+  },
+  "limitations": [
+    "Continuidade percebida conferida visualmente; hashes comprovam integridade, sem reconhecimento facial automático.",
+    "Não comprova naturalidade em vídeo, aumento de CTR ou desempenho comercial."
+  ]
+}

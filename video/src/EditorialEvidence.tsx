@@ -4,6 +4,7 @@ import type {Chart,Region} from "../../src/lib/editorial-evidence";
 import {chartLayout,chartNumber} from "../../src/lib/editorial-chart-layout";
 import {EDITORIAL_FONT,type TextLayout} from "../../src/lib/editorial-typography";
 import {measureEditorialText} from "./editorial-font";
+import {newsDocumentContext} from "../../src/lib/news-document-context";
 
 const GOLD="#ffbd19",WHITE="#f6f7f8";
 export const SourceExcerpt=({element,view,markIds,markProgress}:{element:StageElement;view:Region;markIds:string[];markProgress:Record<string,number>})=> {
@@ -25,16 +26,21 @@ export const SourceExcerpt=({element,view,markIds,markProgress}:{element:StageEl
 // ODE Notícias: o recorte permanece uma imagem autêntica e sem alterações.
 // O cenário ao redor é um tratamento de apresentação, nunca um portal recriado.
 export const NewsDocumentFrame=({
-  element,view,markIds,markProgress,width,height
+  element,view,markIds,markProgress,width,height,frame=0,fps=30
 }:{
   element:StageElement;view:Region;markIds:string[];markProgress:Record<string,number>;
   width:number;height:number;
+  frame?:number;fps?:number;
 })=>{
   if(!element.asset_file)throw new Error(`Recorte jornalístico ${element.id} sem arquivo original.`);
   const sourceWidth=Math.max(1,element.asset_width??1351);
   const sourceHeight=Math.max(1,element.asset_height??917);
-  const cropWidth=sourceWidth*Math.max(.01,view.width)/100;
-  const cropHeight=sourceHeight*Math.max(.01,view.height)/100;
+  // Establish the authentic page before following authored speech cues.
+  // Context is a camera treatment; the source pixels are never rewritten.
+  const {progress:contextProgress,showContext,view:contextualView}=newsDocumentContext(view,element.document_context_seconds,frame,fps);
+  const showingHeader=Boolean(element.document_context_file && showContext);
+  const cropWidth=showingHeader?(element.document_context_width??sourceWidth):sourceWidth*Math.max(.01,contextualView.width)/100;
+  const cropHeight=showingHeader?(element.document_context_height??sourceHeight):sourceHeight*Math.max(.01,contextualView.height)/100;
   const ratio=cropWidth/cropHeight;
   // A imagem inteira selecionada cabe no quadro sem distorção ou corte.
   // Para recortes muito largos, não criar barras vazias sobre fundo preto.
@@ -61,7 +67,15 @@ export const NewsDocumentFrame=({
       boxShadow:"0 20px 74px rgba(0,0,0,.8), 0 3px 20px rgba(0,0,0,.48)",
       overflow:"hidden",
     }}>
-      <SourceExcerpt element={element} view={view} markIds={markIds} markProgress={markProgress}/>
+      {!showingHeader && <div style={{position:"absolute",inset:6}}>
+        <SourceExcerpt element={element} view={contextualView} markIds={contextProgress>0?markIds:[]}
+          markProgress={Object.fromEntries(Object.entries(markProgress).map(([id,p])=>[id,p*contextProgress]))}/>
+      </div>}
+      {showingHeader && <div style={{position:"absolute",inset:6}}>
+        <SourceExcerpt element={{...element,asset_file:element.document_context_file,
+          asset_width:element.document_context_width,asset_height:element.document_context_height,annotations:[]}}
+          view={{x:0,y:0,width:100,height:100}} markIds={[]} markProgress={{}}/>
+      </div>}
     </div>
   </div>;
 };

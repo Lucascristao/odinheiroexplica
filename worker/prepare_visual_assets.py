@@ -152,6 +152,8 @@ def main() -> None:
     for asset in assets:
         asset_id = str(asset["id"])
         asset_type = str(asset.get("type") or "photo_cutout")
+        if asset.get('capture_scope') == 'desktop_context' and not asset.get('capture_file'):
+            raise RuntimeError(f'Asset {asset_id}: contexto desktop exige uma captura real em research/captures/.')
         if asset.get("capture_file"):
             capture = (Path(__file__).resolve().parents[1] / asset["capture_file"]).resolve()
             if not capture.is_relative_to(CAPTURE_ROOT.resolve()) or capture.suffix.lower() not in {".png", ".jpg", ".jpeg", ".webp"}:
@@ -175,7 +177,7 @@ def main() -> None:
             try:
                 filename, dimensions = prepare_excerpt(raw, output_dir, asset)
             except RuntimeError as exc:
-                if not asset.get("editorial_reconstruction"):
+                if asset.get("capture_sha256") or asset.get("capture_scope") == "desktop_context" or not asset.get("editorial_reconstruction"):
                     raise
                 from news_reconstruction import render_reconstruction
                 render_reconstruction(asset, CAPTURE_ROOT, f"qualidade visual insuficiente: {exc}")
@@ -196,10 +198,30 @@ def main() -> None:
                 session,
             )
 
+        context_dimensions = {}
+        if asset_type == 'source_excerpt' and asset.get('capture_scope') == 'desktop_context':
+            receipt_path = capture.with_suffix('.provenance.json')
+            proof = json.loads(receipt_path.read_text(encoding='utf-8')) if receipt_path.is_file() else {}
+            if proof.get('kind') == 'editorial_reconstruction' and proof.get('not_original_screenshot') is True and asset.get('editorial_reconstruction'):
+                pass  # Explicitly labelled fallback, never claimed to be an authentic page.
+            elif proof.get('mode') != 'authentic_pdf_page':
+                context_path = capture.with_name(capture.stem + '.context.png')
+                if (not context_path.is_file() or context_path.stat().st_size > MAX_BYTES
+                    or hashlib.sha256(context_path.read_bytes()).hexdigest() != proof.get('context_image_sha256')):
+                    raise RuntimeError(f'Asset {asset_id}: contexto original da manchete ausente/alterado.')
+                context_name, measured = prepare_excerpt(context_path.read_bytes(), output_dir, {'id':asset_id+'-context'})
+                context_dimensions = {'context_public_file':f'generated-assets/{context_name}',
+                                      'context_width':measured['width'],'context_height':measured['height']}
+                if proof.get('image_sha256') != hashlib.sha256(raw).hexdigest():
+                    raise RuntimeError(f'Asset {asset_id}: coordenadas de uma captura alterada.')
+                if proof.get('proof_region'):
+                    context_dimensions['proof_region'] = proof['proof_region']
+
         prepared.append(
             {
                 "id": asset_id,
                 **dimensions,
+                **context_dimensions,
                 "type": asset_type,
                 "subject": asset.get("subject"),
                 "narrative_role": asset.get("narrative_role"),

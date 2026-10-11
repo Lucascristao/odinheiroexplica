@@ -210,6 +210,8 @@ export const EditorialStage = ({stage, beats, title, frameOverride}: {stage: Sta
               checkedStage.full_bleed_news ? (
                 <NewsDocumentFrame
                   element={element}
+                  frame={frame}
+                  fps={fps}
                   view={element.view}
                   markIds={element.markIds}
                   markProgress={Object.fromEntries(

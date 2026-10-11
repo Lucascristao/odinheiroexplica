@@ -1,0 +1,90 @@
+{
+  "version": "1.0",
+  "project_id": "noticia-2026-10-11-melhorias-producao",
+  "reviewed_at": "2026-10-11T12:28:13.915238+00:00",
+  "reviewer": "Codex",
+  "source_run_id": 38110844391,
+  "run_url": "https://github.com/Lucascristao/odinheiroexplica/actions/runs/38110844391",
+  "publication_receipt": {
+    "project_id": "noticia-2026-10-11-melhorias-producao",
+    "video_id": "sKhlq1xYspI",
+    "status": "published_immediate_authorized",
+    "publication_confirmation": "confirmed_public",
+    "delay_minutes": 0,
+    "late_tolerance_minutes": 90,
+    "one_time_immediate_authorization": true,
+    "qa_warning_count": 7,
+    "publication_target_local": "2026-10-11T08:00:00-03:00",
+    "published_at_local": "2026-10-11T01:34:10.770668-03:00",
+    "confirmed_at_utc": "2026-10-11T04:34:20.811084+00:00",
+    "thumbnail_sha256": "ef57f83fea94d52e3372042f8ca257765226416952c4d208920b33cc70f84459",
+    "thumbnail_status": "attached",
+    "qa_status": "warn",
+    "url": "https://youtu.be/sKhlq1xYspI"
+  },
+  "qa_status": "warn",
+  "qa_failure_count": 0,
+  "qa_warnings": [
+    {
+      "code": "estimated-visual-anchors",
+      "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+      "scene_id": "scene-00",
+      "count": 1
+    },
+    {
+      "code": "estimated-visual-anchors",
+      "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+      "scene_id": "scene-01",
+      "count": 1
+    },
+    {
+      "code": "estimated-visual-anchors",
+      "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+      "scene_id": "scene-02",
+      "count": 3
+    },
+    {
+      "code": "estimated-visual-anchors",
+      "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+      "scene_id": "scene-04",
+      "count": 4
+    },
+    {
+      "code": "estimated-visual-anchors",
+      "message": "Algumas âncoras visuais continuam estimadas; revisar sincronização.",
+      "scene_id": "scene-05",
+      "count": 1
+    },
+    {
+      "code": "estimated-register-variation",
+      "message": "Estimativa de registro variou; conferir por escuta antes de decidir nova síntese.",
+      "from": "scene-01",
+      "to": "scene-02",
+      "estimated_register_delta_semitones": 3.21,
+      "action": "Review by listening; estimate is not proof of an identity change."
+    },
+    {
+      "code": "estimated-register-variation",
+      "message": "Estimativa de registro variou; conferir por escuta antes de decidir nova síntese.",
+      "from": "scene-02",
+      "to": "scene-03",
+      "estimated_register_delta_semitones": -4.12,
+      "action": "Review by listening; estimate is not proof of an identity change."
+    }
+  ],
+  "reviewed_mp4_sha256": "24325ec267eac6e38b539649f0c46e366c69f743e9f9a0c8c78ffa7d08d20f27",
+  "observations": {
+    "video_frame_35s": "Parágrafo real sobre 22,5 milhões de apostadores em quadro largo, com grifo e fundo escurecido/desfocado. A ausência da manchete e entorno da página prejudica o contexto documental.",
+    "thumbnail_full_and_320x180": "Headline amarela legível e rosto grande à direita; Roberto ainda parece posado. Porta-moedas com poucas moedas é metáfora de saldo residual, mas não identifica apostas por si só."
+  },
+  "motor_followup": {
+    "capture": "Dois arquivos reais, manchete/contexto e página em torno da prova; coordenadas medidas na mesma screenshot.",
+    "presentation": "Introdução à matéria antes do zoom; quadros 0,57,80 do Remotion inspecionados. Transição corrigida para não sobrepor os textos de duas capturas.",
+    "presenter": "Catálogo de expressão fixa engaged_questioning, sem recriar rosto por episódio.",
+    "scope": "Próximas revisões de notícias; MP4 público e contrato histórico preservados."
+  },
+  "limitations": [
+    "Áudio completo não recebeu escuta subjetiva nesta revisão; métricas de voz e ASR não certificam naturalidade.",
+    "Sem métricas do Studio para atribuir poucos cliques ao título, capa ou vídeo."
+  ]
+}

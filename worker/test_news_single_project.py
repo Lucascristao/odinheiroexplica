@@ -1,5 +1,6 @@
 """Single-story editorial contract and documentary-first Remotion output, offline."""
 import copy
+import hashlib
 from datetime import date
 import json
 from pathlib import Path
@@ -22,6 +23,20 @@ class SingleNewsContractTests(unittest.TestCase):
         self.assertEqual(len(set(s["id"] for s in self.doc["sources"])), len(self.doc["sources"]))
         self.assertGreaterEqual(len(self.doc["sources"]), 2)
         self.assertEqual(self.doc["editorial_status"], "approved_for_private_pilot")
+
+    def test_context_and_expression_cutover_preserve_reviewed_historical_project(self):
+        root=Path(__file__).resolve().parents[1]
+        historical=json.loads((root/'news/episodes/2026-10-11-melhorias-producao.json').read_text(encoding='utf-8'))
+        approved=json.loads((root/'production/noticia-2026-10-11-melhorias-producao/thumbnail-audit.json').read_text(encoding='utf-8'))
+        project=transform(historical)
+        serialized=(json.dumps(project,ensure_ascii=False,indent=2)+'\n').encode('utf-8')
+        self.assertEqual(hashlib.sha256(serialized).hexdigest(),approved['project_sha256'])
+        future=copy.deepcopy(historical)
+        future['reviewed_at']='2026-10-11T02:05:00-03:00'
+        updated=transform(future)
+        self.assertEqual(updated['packaging']['thumbnails'][0]['contract']['presenter_identity']['id'],'roberto-v1-engaged')
+        self.assertTrue(all(a['capture_scope']=='desktop_context' for a in updated['visual_assets'] if a['type']=='source_excerpt'))
+        self.assertTrue(all(s['visual']['stage']['elements'][0]['document_context_seconds']==1.6 for s in updated['scenes']))
 
     def test_authored_cues_require_literal_order_and_pinned_capture(self):
         doc=copy.deepcopy(self.doc)

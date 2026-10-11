@@ -1,15 +1,27 @@
 """Locked presenter assets: no face generation, matching or identity substitution."""
 import json
 import hashlib
+from datetime import datetime, timezone
 from pathlib import Path
 
 
-def news_presenter_contract(news_date, root=None):
+def news_presenter_contract(news_date, root=None, *, reviewed_at=None, expression=None):
     root = Path(root) if root else Path(__file__).resolve().parent.parent
     policy = json.loads((root / "worker/presenter-identity.json").read_text(encoding="utf-8"))
     if news_date < policy["news_enabled_since"]:
         return None  # Historical projects retain their exact original contracts.
     identity_id = policy["default_news_presenter"]
+    cutoff = policy.get("expressions_enabled_after_utc")
+    if cutoff and reviewed_at:
+        reviewed = datetime.fromisoformat(reviewed_at.replace("Z", "+00:00"))
+        if reviewed.tzinfo is None:
+            reviewed = reviewed.replace(tzinfo=timezone.utc)
+        if reviewed >= datetime.fromisoformat(cutoff):
+            identity_id = policy.get("default_new_news_presenter", identity_id)
+    if expression is not None:
+        if expression not in (policy["default_news_presenter"], policy.get("default_new_news_presenter")):
+            raise ValueError("thumbnail: expressão não pertence ao catálogo conferido do Roberto.")
+        identity_id = expression
     item = policy["identities"][identity_id]
     return {"id": identity_id, "mode": item["mode"],
             "reference_path": item["reference_path"], "reference_sha256": item["reference_sha256"]}

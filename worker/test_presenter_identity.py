@@ -80,6 +80,25 @@ class LockedIdentityTest(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "fundo alterado"):
             self.check()
 
+    def test_expression_is_fixed_and_old_contract_stays_unchanged(self):
+        path = self.root / "worker/presenter-identity.json"
+        policy = json.loads(path.read_text())
+        policy.update(expressions_enabled_after_utc="2026-10-11T05:00:00+00:00", default_new_news_presenter="roberto-v1-engaged")
+        variant = {**self.identity, "id": "roberto-v1-engaged", "reference_path": "video/public/presenters/roberto/roberto-v1-engaged.png"}
+        expression_path = self.root / variant["reference_path"]
+        expression_path.write_bytes(b"reviewed expression of the same Roberto")
+        variant["reference_sha256"] = hashlib.sha256(expression_path.read_bytes()).hexdigest()
+        policy["identities"][variant["id"]] = {k:v for k,v in variant.items() if k != "id"}
+        path.write_text(json.dumps(policy))
+        self.assertEqual(news_presenter_contract("2026-10-11", self.root, reviewed_at="2026-10-11T04:06:34+00:00"), self.identity)
+        self.assertEqual(news_presenter_contract("2026-10-11", self.root, reviewed_at="2026-10-11T02:30:00-03:00"), variant)
+        self.assertEqual(validate_locked_portrait(self.root, variant), expression_path)
+        expression_path.write_bytes(b"substituted face")
+        with self.assertRaisesRegex(ValueError, "retrato oficial alterado"):
+            validate_locked_portrait(self.root, variant)
+        with self.assertRaisesRegex(ValueError, "catálogo"):
+            news_presenter_contract("2026-10-11", self.root, expression="unknown-face")
+
 
 if __name__ == "__main__":
     unittest.main()

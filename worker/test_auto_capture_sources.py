@@ -30,6 +30,20 @@ class FakePage:
 
 
 class AutoCaptureNavigationTests(unittest.TestCase):
+    def test_desktop_context_keeps_page_width_and_surroundings(self):
+        clip = capture.desktop_context_clip({"x":200,"y":350,"width":650,"height":268}, 900, 1360, 900, 4000)
+        self.assertEqual(clip["width"],1360)
+        self.assertEqual(clip["height"],900)
+        self.assertLess(clip["y"],1250)
+        self.assertGreater(clip["y"]+clip["height"],1518)
+
+    def test_long_proof_is_not_cut_or_reduced_to_a_paragraph(self):
+        clip = capture.desktop_context_clip({"x":140,"y":50,"width":700,"height":1250},2000,1360,900,6000)
+        self.assertEqual(clip["width"],1360)
+        self.assertLessEqual(clip["y"],2050)
+        self.assertGreaterEqual(clip["y"]+clip["height"],3300)
+        self.assertLessEqual(clip["y"]+clip["height"],6000)
+
     def test_retries_execution_context_destroyed(self):
         page = FakePage([
             Exception(

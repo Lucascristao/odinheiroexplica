@@ -31,6 +31,8 @@ Na [página do canal](https://www.youtube.com/@FernandoUlrichCanal/videos), obse
 
 ## Medição antes de concluir por que há poucos cliques
 
+Na inspeção do vídeo real `sKhlq1xYspI` (run `38110844391`), o quadro de 35 segundos mostra um parágrafo largo, sem manchete ou contexto da página. O teste foi confirmado público com capa pelo recibo da API. Essa observação motivou a correção do capturador, da preparação dos dois arquivos reais e do enquadramento no Remotion para as próximas notícias, conforme `docs/news-single-format.md`. O MP4 já publicado não foi substituído. A capa foi conferida inteira e em 320x180: texto e rosto têm destaque, mas a expressão original continua posada e a bolsa com moedas não identifica apostas por si só. Uma expressão fixa mais espontânea do mesmo Roberto foi acrescentada ao catálogo; isso permanece hipótese editorial, sem métricas que comprovem aumento de cliques.
+
 | Sinal observado em recortes comparáveis | Hipótese a investigar |
 |---|---|
 | Poucas impressões | Alcance e adequação da pauta/público; CTR sozinho não explica |

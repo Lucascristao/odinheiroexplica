@@ -230,6 +230,70 @@ def unobscure_excerpt(locator) -> None:
     }""")
 
 
+def desktop_context_clip(box, scroll_y, viewport_width, viewport_height, document_height):
+    """Keep real desktop surroundings and the complete verified proof block."""
+    if not box or box["height"] <= 0 or box["width"] <= 0:
+        raise RuntimeError("Trecho sem região visível; não criar captura isolada.")
+    if box['x'] < 0 or box['x'] + box['width'] > viewport_width + 1:
+        raise RuntimeError('Trecho sai da largura desktop; não cortar informação para capturar.')
+    height = min(document_height, max(viewport_height, box["height"] + 360))
+    top = max(0, min(document_height - height, scroll_y + box["y"] - 240))
+    return {"x": 0, "y": top, "width": viewport_width, "height": height}
+
+
+def capture_desktop_context(page, expected_text, target_selector, temp_path):
+    """Screenshot the actual page, never a paragraph-only element screenshot."""
+    if target_selector:
+        locator = page.locator(target_selector).first
+        if not locator.is_visible(timeout=3000):
+            raise RuntimeError("target_selector não visível para captura contextual.")
+    else:
+        selected = evaluate_with_navigation_retry(page, r"""(expected) => {
+            const normalize = value => (value || '').replace(/\s+/g, ' ').trim().toLocaleLowerCase();
+            const needle = normalize(expected);
+            const candidates = [...document.querySelectorAll('p,li,tr,td,h1,h2,h3,blockquote,div,section,span,article,main')]
+                .filter(el => el.getClientRects().length && normalize(el.innerText).includes(needle));
+            candidates.sort((a,b) => normalize(a.innerText).length - normalize(b.innerText).length);
+            if (!candidates.length) return false;
+            candidates[0].setAttribute('data-ode-context-proof', 'true');
+            return true;
+        }""", expected_text, operation_name="localizar a prova na página desktop")
+        if not selected:
+            raise RuntimeError("Trecho contextual não localizado.")
+        locator = page.locator('[data-ode-context-proof="true"]').first
+    if " ".join(expected_text.casefold().split()) not in " ".join(locator.inner_text().casefold().split()):
+        raise RuntimeError("O bloco contextual não contém o trecho literal verificado.")
+    # Keep a separate authentic introduction to the article. Never merge,
+    # relocate or regenerate its masthead, headline or original byline.
+    header = page.locator('h1').first
+    context_expected = None
+    context_path = temp_path.with_name(temp_path.stem + '.context.png')
+    if header.count() and header.is_visible():
+        context_expected = header.inner_text().strip()
+        unobscure_excerpt(header)
+        geometry = evaluate_with_navigation_retry(page, "() => ({scrollY:window.scrollY,width:window.innerWidth,height:window.innerHeight,documentHeight:document.documentElement.scrollHeight})")
+        context_clip = desktop_context_clip(header.bounding_box(), geometry["scrollY"], geometry["width"], geometry["height"], geometry["documentHeight"])
+        # Retain the authentic masthead/article column while excluding unrelated
+        # sidebar players. The verified headline remains complete.
+        header_box = header.bounding_box()
+        context_clip['width'] = min(context_clip['width'], max(960, header_box['x'] + header_box['width'] + 48))
+        page.screenshot(path=str(context_path), full_page=True, clip=context_clip, animations="disabled")
+    else:
+        page.evaluate('() => window.scrollTo(0,0)')
+        page.screenshot(path=str(context_path), animations="disabled")
+    unobscure_excerpt(locator)
+    geometry = evaluate_with_navigation_retry(page, "() => ({scrollY:window.scrollY,width:window.innerWidth,height:window.innerHeight,documentHeight:document.documentElement.scrollHeight})")
+    box = locator.bounding_box()
+    clip = desktop_context_clip(box, geometry["scrollY"], geometry["width"], geometry["height"], geometry["documentHeight"])
+    page.screenshot(path=str(temp_path), full_page=True, clip=clip, animations="disabled")
+    return {"capture_scope": "desktop_context", "clip": clip, "context_expected_text": context_expected,
+            "context_image_sha256": hashlib.sha256(context_path.read_bytes()).hexdigest(),
+            "proof_region": {"x": box['x']/clip['width']*100,
+                             "y": (geometry['scrollY']+box['y']-clip['y'])/clip['height']*100,
+                             "width": box['width']/clip['width']*100,"height": box['height']/clip['height']*100},
+            "viewport": {"width": geometry["width"], "height": geometry["height"]}}
+
+
 def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> bool:
     url, expected_text = validate_source_asset(asset)
     capture_file = asset.get("capture_file")
@@ -256,6 +320,15 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
             or proof.get("source_page_url") != url or proof.get("expected_text") != expected_text
             or proof.get("image_sha256") != pinned_hash or not proof.get("captured_at")):
             raise RuntimeError("Proveniência da captura revisada não corresponde ao documento.")
+        if asset.get("capture_scope") == "desktop_context" and proof.get("mode") != "authentic_pdf_page":
+            from PIL import Image
+            with Image.open(dest_path) as original:
+                width, height = original.size
+            if proof.get("capture_scope") != "desktop_context" or width < 1200 or height < 720:
+                raise RuntimeError("Captura fixada mostra só um bloco: exigir página desktop com contexto antes dos zooms.")
+            context_file = dest_path.with_name(dest_path.stem + '.context.png')
+            if not context_file.is_file() or hashlib.sha256(context_file.read_bytes()).hexdigest() != proof.get('context_image_sha256'):
+                raise RuntimeError("Captura contextual da manchete ausente ou alterada.")
         print(f"[auto_capture] Captura autêntica revisada preservada: {dest_path.name}")
         return True
     if playwright_browser is None:
@@ -354,7 +427,10 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
         target_selector = asset.get("target_selector")
         captured_element = False
 
-        if target_selector:
+        if asset.get("capture_scope") == "desktop_context":
+            context_proof = capture_desktop_context(page, expected_text, target_selector, temp_path)
+            captured_element = True
+        elif target_selector:
             try:
                 locator = page.locator(target_selector).first
                 if locator.is_visible(timeout=3000):
@@ -409,12 +485,20 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
 
         temp_path.replace(dest_path)
         asset["captured_at"] = datetime.now(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
+        if asset.get("capture_scope") == "desktop_context":
+            temp_path.with_name(temp_path.stem + '.context.png').replace(dest_path.with_name(dest_path.stem + '.context.png'))
+            provenance = {"mode": "authentic_page_capture", "source_page_url": url,
+                          "expected_text": expected_text, "page_title": page_title,
+                          "image_sha256": hashlib.sha256(dest_path.read_bytes()).hexdigest(),
+                          "captured_at": asset["captured_at"], **context_proof}
+            dest_path.with_suffix(".provenance.json").write_text(json.dumps(provenance, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         return True
 
     except Exception as exc:
         raise RuntimeError(f"Asset {asset.get('id')}: captura de {url} falhou: {exc}") from exc
     finally:
         temp_path.unlink(missing_ok=True)
+        temp_path.with_name(temp_path.stem + '.context.png').unlink(missing_ok=True)
         if context is not None:
             context.close()
 

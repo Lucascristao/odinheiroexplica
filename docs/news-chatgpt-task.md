@@ -26,6 +26,7 @@ Os horários exatos são agendados por ChatGPT Tasks. Cada ativação é uma exe
 9. **Comprovar estado:** consultar runs e recibos. Sucesso de uma etapa não equivale à confirmação de publicação pública. Enviar no relatório o ID do episódio, assunto, link real da execução, vídeo (se confirmado), capa anexada ou miniatura automática, status agendado/publicado/falhou e impedimento. Não inventar sucesso. Se necessário, verificação pública posterior é feita por workflow independente.
 
 ## Princípios e limites
+- **Contexto da prova documental:** para revisões a partir de `2026-10-11T05:00:00Z`, o motor exige captura desktop da página ao redor do trecho e uma captura real de introdução à matéria, com manchete quando disponível. O Remotion apresenta esse contexto por 1,6 segundo antes de aproximar a prova. Se fixar imagens autorais por hash, incluir PNG da prova, `*.context.png` e `*.provenance.json` com hashes dos dois arquivos; um parágrafo isolado não satisfaz esse contrato. A região automática é medida na captura real e só atua quando não há enquadramento autoral nos beats. PDF mantém sua página real; reconstrução permanece exceção apurada e identificada.
 - A tarefa ChatGPT é o único cron editorial. `news-autonomous-editor.yml` e `news-scout.yml` são legados sem agendamento e não devem ser reativados.
 - A imagem não tem garantia de disponibilidade em Tasks. Não afirmar suporte inexistente nem trocar silenciosamente por Gemini.
 - Uso de `GEMINI_API_KEY` nos workflows de notícias deve estar restrito ao step `Narração Live Roberto`.

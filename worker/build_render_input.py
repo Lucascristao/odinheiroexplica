@@ -336,6 +336,15 @@ def main() -> None:
                             raise RuntimeError(f"Recorte sem dimensões ou tipo documental: {asset_id}")
                         element["asset_width"] = prepared["width"]
                         element["asset_height"] = prepared["height"]
+                        if prepared.get('context_public_file'):
+                            element['document_context_file'] = prepared['context_public_file']
+                            element['document_context_width'] = prepared['context_width']
+                            element['document_context_height'] = prepared['context_height']
+                        target_beats = [b for b in scene_with_resolved_visual['visual']['beats'] if b.get('target_id') == element['id']]
+                        if prepared.get('proof_region') and target_beats and not any(b.get('view') for b in target_beats):
+                            # Coordinates measured on the same authentic source pixels.
+                            # Preserve all authored camera directions when supplied.
+                            target_beats[0]['view'] = prepared['proof_region']
             scene_with_resolved_visual["visual"]["stage"] = stage
 
         caption_words, caption_timing = ([], None)

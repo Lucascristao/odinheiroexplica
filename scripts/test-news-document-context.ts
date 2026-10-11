@@ -1,0 +1,13 @@
+import assert from "node:assert/strict";
+import {newsDocumentContext} from "../src/lib/news-document-context";
+const proof={x:20,y:30,width:60,height:20};
+assert.deepEqual(newsDocumentContext(proof,1.6,0,30).view,{x:0,y:0,width:100,height:100});
+assert.deepEqual(newsDocumentContext(proof,1.6,48,30).view,{x:0,y:0,width:100,height:100});
+assert.equal(newsDocumentContext(proof,1.6,47,30).showContext,true);
+assert.equal(newsDocumentContext(proof,1.6,48,30).showContext,false);
+const moving=newsDocumentContext(proof,1.6,57,30);
+assert.equal(moving.progress,.5);
+assert(moving.view.y<proof.y && moving.view.y+moving.view.height>proof.y+proof.height);
+assert.deepEqual(newsDocumentContext(proof,1.6,66,30).view,proof);
+assert.deepEqual(newsDocumentContext(proof,undefined,0,30).view,proof);
+console.log("News document context: real page establishes before crop; intermediate frame preserves the complete proof; historical framing unchanged.");

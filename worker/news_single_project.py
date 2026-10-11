@@ -6,7 +6,7 @@ and a transparent right-of-center opinion segment by Roberto.
 from __future__ import annotations
 
 import argparse
-from datetime import date, timedelta
+from datetime import date, timedelta, datetime, timezone
 import json
 from pathlib import Path
 import re
@@ -195,6 +195,8 @@ def build_stage(segment: dict) -> dict:
             "surface": "none", "image_fit": "contain",
             "visual_role": "protagonist",
             "annotations": segment.get("annotations", []),
+            **({"document_context_seconds": segment["document_context_seconds"]}
+               if "document_context_seconds" in segment else {}),
         }
     else:
         evidence = {
@@ -271,6 +273,12 @@ def build_scene(index: int, segment: dict) -> dict:
 
 def transform(episode: dict) -> dict:
     episode = validate(episode)
+    # Freeze the cutover against the episode's factual review, never wall clock.
+    # Historical resumes retain identical projects and voice/thumbnail hashes.
+    reviewed = datetime.fromisoformat(episode["reviewed_at"].replace("Z", "+00:00"))
+    if reviewed.tzinfo is None:
+        reviewed = reviewed.replace(tzinfo=timezone.utc)
+    contextual = reviewed >= datetime(2026, 10, 11, 5, tzinfo=timezone.utc)
     docs = [{
         "id": doc["id"], "type": "source_excerpt", "source_page_url": doc["source_page_url"],
         "expected_text": doc["expected_text"], "capture_file": doc["capture_file"],
@@ -279,6 +287,7 @@ def transform(episode: dict) -> dict:
         **({"editorial_reconstruction": doc["editorial_reconstruction"]}
            if doc.get("editorial_reconstruction") else {}),
         **({"capture_sha256": doc["capture_sha256"]} if doc.get("capture_sha256") else {}),
+        **({"capture_scope": "desktop_context"} if contextual else {}),
         "narrative_role": "documentary_proof", "country_context": "BR",
     } for doc in episode["documentary_evidence"]]
     photo_assets = [{
@@ -308,7 +317,8 @@ def transform(episode: dict) -> dict:
         "format": {"width": 1280, "height": 720}, "no_extra_text": True,
     }
     from presenter_identity import news_presenter_contract
-    portrait = news_presenter_contract(episode["news_date"])
+    portrait = news_presenter_contract(episode["news_date"], reviewed_at=episode.get("reviewed_at"),
+                                       expression=episode.get("thumbnail_presenter_expression"))
     if portrait:
         contract["presenter_identity"] = portrait
         contract["secondary_subject"] = "Roberto, apresentador virtual do canal; reutilizar o retrato oficial sem recriar o rosto"
@@ -359,6 +369,7 @@ def transform(episode: dict) -> dict:
         "scenes": [
             build_scene(i, {
                 **seg,
+                **({"document_context_seconds": 1.6} if contextual else {}),
                 **({
                     "document_id" if episode["segments"][i-1].get("document_id") else "photo_id":
                     episode["segments"][i-1].get("document_id")
