@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "project_id": "noticia-2026-10-11-manha",
+  "project_sha256": "47788a08a2d1bdcb2a59ad734cb80f01f4ead411d5b21b6853167a95a7bcebbe",
+  "contract_sha256": "35981fba7d3603536c9eea03208fe5c38af3cbd00c2a7c6204d37b80c78d4ae0",
+  "image_sha256": "b8acd3f7aa72f87ca2150a0475951c442954c4a86c390eae85ad8a6b6348a389",
+  "headline": "CADÊ O DESCONTO?",
+  "approval_status": "approved",
+  "reviewer": "Codex, inspeção dos pixels em 1280x720 e 320x180 nesta conversa",
+  "reviewed_at": "2026-10-11T14:22:08.060125+00:00",
+  "checks": {
+    "headline_exact": true,
+    "primary_subject": true,
+    "secondary_subject": true,
+    "forbidden_absent": true,
+    "identity_and_mobile": true,
+    "no_fabricated_data": true,
+    "unique_composition": true
+  },
+  "observations": {
+    "headline": "CADÊ O DESCONTO? aparece em duas linhas amarelas, com acento e interrogação, legível tanto em 1280x720 quanto em 320x180; nenhum texto adicional.",
+    "primary_subject": "Medidor residencial no alto à esquerda, display escurecido sem valores legíveis; fatura dobrada sem dados legíveis, abaixo e ao lado. Objetos distinguíveis no celular, sem representar conta real.",
+    "secondary_subject": "Roberto engaged ocupa a direita com rosto dominante; cabelo, orelhas, nariz, boca e queixo inteiros. A composição usa os pixels da referência fixa, expressão atenta e luz natural.",
+    "forbidden_absent": "Não há outro rosto, logotipo comercial/partidário, preço ou desconto inventado, seta, alarme, marca d’água ou texto extra. Linhas genéricas do papel são metáfora editorial, não comprovante.",
+    "identity_and_mobile": "Rosto grande reconhecível e pergunta amarela nítida em 320x180. Texto separado do rosto e do medidor, contraste carvão/amarelo; a pergunta não afirma valor individual.",
+    "no_fabricated_data": "Imagem editorial gerada, sem dados legíveis nem aparência de prova da pesquisa. Não simula fatura específica ou desconto de todos os consumidores; o vídeo mostra fontes reais.",
+    "unique_composition": "Medidor e papel substituem a metáfora de moedas da última capa. Pergunta sobre o desconto complementa a contribuição de quase 40% do título, sem repetir o dado ou prometer reajuste."
+  },
+  "checked_forbidden_elements": [
+    "outro rosto além do Roberto oficial",
+    "texto extra além da headline",
+    "logotipo comercial ou partidário",
+    "dados ou documentos inventados",
+    "setas e alarmes",
+    "marca d'água"
+  ],
+  "observed_forbidden_elements": []
+}

@@ -59,6 +59,13 @@
       "authorized_by_user": true,
       "mode": "publish_immediately_after_qa",
       "reason": "O titular respondeu Publicar agora nesta conversa em 10/10/2026 após conferir o vídeo P76-M6tSbzs concluído com capa e saber que a janela das 21h30 havia vencido. Exceção exclusiva deste episódio, preservando o upload original, QA, canal e deduplicação."
+    },
+    {
+      "episode_id": "noticia-2026-10-11-manha",
+      "original_publication_local": "2026-10-11T08:00:00-03:00",
+      "authorized_by_user": true,
+      "mode": "publish_immediately_after_qa",
+      "reason": "O titular solicitou diretamente nesta conversa em 11/10/2026: já coloca a de manhã pra rodar, após discutir o bloqueio da tarefa e saber que a edição das 08h não iniciou. Recuperar este episódio e publicar após QA, mesmo fora da tolerância. Exceção somente desta manhã, sem duplicar upload nem modificar as janelas seguintes."
     }
   ],
   "one_time_immediate_publications": [

@@ -1,0 +1,494 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-11-manha",
+  "news_date": "2026-10-11",
+  "event_date": "2026-10-09",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-11T14:20:07.538029+00:00",
+  "publication_target_local": "2026-10-11T08:00:00-03:00",
+  "production_validation": {
+    "authorized_by_user": true,
+    "duplicate_event_checked": true,
+    "purpose": "Recuperação da edição solicitada diretamente pelo titular nesta conversa; mesmo assunto preparado na tarefa, reapurado com fontes atuais. Não há payload completo acessível da tarefa nem reaproveitamento fictício de seu roteiro.",
+    "subjective_listening_performed": false
+  },
+  "title": "A luz puxou quase 40% da inflação: o desconto que acabou",
+  "title_options": [
+    {
+      "text": "A luz puxou quase 40% da inflação: o desconto que acabou",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Conta de luz: por que o fim do bônus de Itaipu pesou na inflação?",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Inflação de setembro: a conta de luz subiu, mas não igual para todos",
+      "editorial_quality": 4
+    }
+  ],
+  "thumbnail_headline": "CADÊ O DESCONTO?",
+  "thumbnail_primary": "Medidor residencial de energia sem números legíveis e fatura dobrada sem dados, como metáfora editorial do crédito que terminou; não reproduzir conta real.",
+  "thumbnail_tension": "Desconto temporário desaparece da comparação, enquanto a casa continua consumindo energia; pergunta sobre o abatimento, sem sugerir fraude.",
+  "thumbnail_composition": "Objeto da notícia dominante no alto à esquerda, fotografia editorial natural e fundo carvão. Roberto oficial engaged grande à direita, cabeça inteira. Headline amarela em duas linhas na região inferior esquerda, sem cobrir objeto ou rosto.",
+  "thumbnail_text_side": "left",
+  "thumbnail_headline_position": "lower",
+  "thumbnail_portrait_size": "close",
+  "thumbnail_forbidden_elements": [
+    "outro rosto além do Roberto oficial",
+    "texto extra além da headline",
+    "logotipo comercial ou partidário",
+    "dados ou documentos inventados",
+    "setas e alarmes",
+    "marca d'água"
+  ],
+  "scorecard": {
+    "method": "Avaliação editorial de curiosidade, utilidade e sustentação documental, sem estimativa de buscas ou CTR.",
+    "reason": "A vencedora reúne o assunto reconhecível e uma proporção demonstrável, entregando imediatamente que 39% é contribuição no índice. O roteiro explica o desconto e não promete aumento de 40% na conta; alternativas focam mecanismo e heterogeneidade.",
+    "criteria": {
+      "timeliness": 4,
+      "consumer_interest": 5,
+      "documentary_evidence": 5,
+      "original_angle": 5
+    },
+    "unavailable": [
+      "CTR e impressões do canal",
+      "efeito individual em faturas ou postos",
+      "previsão de visualizações"
+    ]
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "InfoMoney, Equipe InfoMoney",
+      "url": "https://www.infomoney.com.br/economia/ipca-inflacao-setembro-2026-dados-ibge/",
+      "published_at": "2026-10-09",
+      "role": "Dados do IBGE consultados pela pesquisa web; números de energia, contribuição e diferença regional. Página oficial do IBGE instável, sem alegar leitura direta da tabela primária de setembro."
+    },
+    {
+      "id": "S2",
+      "publisher": "Agência Brasil, Bruno de Freitas Moura",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/inflacao-oficial-de-setembro-fica-em-082-mostra-ibge",
+      "published_at": "2026-10-09",
+      "role": "Reportagem consultada pela pesquisa web: explica o bônus e compara agosto/setembro. Mesma origem estatística IBGE, não levantamento independente."
+    },
+    {
+      "id": "S3",
+      "publisher": "Gazeta do Povo, Guilherme Grandi",
+      "url": "https://www.gazetadopovo.com.br/economia/ipca-inflacao-setembro-dispara-conta-de-luz-alimentos-mais-caros/",
+      "published_at": "2026-10-09",
+      "role": "Veículo de direita/centro-direita consultado. Acrescenta alimentação, preços que caíram e contraste regional, evitando atribuir toda inflação à energia."
+    },
+    {
+      "id": "S4",
+      "publisher": "ANEEL, comunicado oficial",
+      "url": "https://www.gov.br/aneel/pt-br/assuntos/noticias/2026-defeso-eleitoral/aneel-mantem-bandeira-tarifaria-amarela-em-setembro/",
+      "published_at": "2026-08-28",
+      "role": "Fonte primária oficial consultada: bandeira de setembro era amarela, mantida desde maio, cobrança de R$1,885/100kWh. Não é confirmação de bandeira de outubro."
+    },
+    {
+      "id": "S5",
+      "publisher": "InfoMoney, Lara Rizério",
+      "url": "https://www.infomoney.com.br/economia/ipca-inflacao-agosto-2026-dados-ibge/",
+      "published_at": "2026-09-11",
+      "role": "Dados de agosto consultados pela pesquisa web; queda de 7,63% da energia com crédito Itaipu. Captura substitui a página da Agência Brasil que entregou corpo invisível, sem alegar apuração independente do IBGE."
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "IPCA de setembro de 2026 foi 0,82%; contribuição da energia 0,32 ponto percentual, aproximadamente 39% do resultado mensal.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "Energia residencial subiu 7,98% em setembro; em agosto caiu 7,63% com incorporação do bônus de Itaipu.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "Fim do crédito de Itaipu em setembro altera a base de comparação com agosto, sem provar reajuste idêntico em toda fatura.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "confirmed"
+    },
+    {
+      "claim": "Bandeira amarela de setembro manteve cobrança de R$1,885/100kWh; a ANEEL declara manutenção desde maio.",
+      "source_ids": [
+        "S4"
+      ],
+      "status": "statement"
+    },
+    {
+      "claim": "Os nove grupos do IPCA subiram; alimentação e bebidas 0,83%, com alguns alimentos em queda.",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "status": "confirmed"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "luz-indice",
+      "kind": "source_excerpt",
+      "source_id": "S1",
+      "source_page_url": "https://www.infomoney.com.br/economia/ipca-inflacao-setembro-2026-dados-ibge/",
+      "expected_text": "principal impacto individual no índice do mês (0,32 p.p.)",
+      "capture_file": "research/captures/luz-indice-11out.png",
+      "attribution": "InfoMoney, Equipe InfoMoney, publicação de 2026-10-09; origem preservada no pacote técnico.",
+      "rights_review": "Citação crítica contextualizada de trecho curto necessário à explicação. Não reutilizar fotografia de imprensa como ilustração; conservar autoria e URL. Captura autêntica de desktop com manchete/contexto e prova, sem fabricar portal."
+    },
+    {
+      "id": "luz-bonus",
+      "kind": "source_excerpt",
+      "source_id": "S5",
+      "source_page_url": "https://www.infomoney.com.br/economia/ipca-inflacao-agosto-2026-dados-ibge/",
+      "expected_text": "energia elétrica residencial que recuou 7,63% no mês",
+      "capture_file": "research/captures/luz-bonus-11out.png",
+      "attribution": "InfoMoney, Lara Rizério, publicação de 2026-09-11; origem preservada no pacote técnico.",
+      "rights_review": "Citação crítica contextualizada de trecho curto necessário à explicação. Não reutilizar fotografia de imprensa como ilustração; conservar autoria e URL. Captura autêntica de desktop com manchete/contexto e prova, sem fabricar portal."
+    },
+    {
+      "id": "luz-bandeira",
+      "kind": "source_excerpt",
+      "source_id": "S4",
+      "source_page_url": "https://www.gov.br/aneel/pt-br/assuntos/noticias/2026-defeso-eleitoral/aneel-mantem-bandeira-tarifaria-amarela-em-setembro/",
+      "expected_text": "Desde maio a bandeira amarela é acionada no País.",
+      "capture_file": "research/captures/luz-bandeira-11out.png",
+      "attribution": "ANEEL, comunicado oficial, publicação de 2026-08-28; origem preservada no pacote técnico.",
+      "rights_review": "Citação crítica contextualizada de trecho curto necessário à explicação. Não reutilizar fotografia de imprensa como ilustração; conservar autoria e URL. Captura autêntica de desktop com manchete/contexto e prova, sem fabricar portal."
+    },
+    {
+      "id": "luz-outros",
+      "kind": "source_excerpt",
+      "source_id": "S3",
+      "source_page_url": "https://www.gazetadopovo.com.br/economia/ipca-inflacao-setembro-dispara-conta-de-luz-alimentos-mais-caros/",
+      "expected_text": "Na contramão, alguns alimentos ficaram mais baratos",
+      "capture_file": "research/captures/luz-outros-11out.png",
+      "attribution": "Gazeta do Povo, Guilherme Grandi, publicação de 2026-10-09; origem preservada no pacote técnico.",
+      "rights_review": "Citação crítica contextualizada de trecho curto necessário à explicação. Não reutilizar fotografia de imprensa como ilustração; conservar autoria e URL. Captura autêntica de desktop com manchete/contexto e prova, sem fabricar portal."
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "type": "fact",
+      "title": "O desconto e o índice",
+      "narration": "A conta de luz respondeu por quase quarenta por cento da inflação de setembro. E parte da virada aconteceu porque um desconto acabou. Por que a energia puxou tanto o índice? Eu sou o Roberto, do O Dinheiro Explica. O IPCA, Índice Nacional de Preços ao Consumidor Amplo, mede a mudança dos preços de uma cesta de consumo. Em setembro, essa cesta subiu zero vírgula oitenta e dois por cento. A energia contribuiu com zero vírgula trinta e dois ponto percentual. Dividir essa contribuição pelo resultado total dá aproximadamente trinta e nove por cento. É participação na inflação do mês, não aumento de quarenta por cento na sua fatura.",
+      "document_id": "luz-indice",
+      "media_side": "left",
+      "object_type": "data",
+      "visual_cards": [
+        "Energia: contribuição no índice",
+        "0,32 de 0,82 ponto percentual",
+        "Aproximadamente 39% do resultado",
+        "Não é reajuste da sua fatura"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "A conta de luz respondeu",
+          "action": "focus",
+          "headline": "Energia: contribuição no índice"
+        },
+        {
+          "anchor": "Por que a energia",
+          "action": "focus",
+          "headline": "0,32 de 0,82 ponto percentual"
+        },
+        {
+          "anchor": "O IPCA,",
+          "action": "focus",
+          "headline": "Aproximadamente 39% do resultado"
+        },
+        {
+          "anchor": "Em setembro, essa cesta",
+          "action": "focus",
+          "headline": "Não é reajuste da sua fatura"
+        },
+        {
+          "anchor": "A energia contribuiu",
+          "action": "focus",
+          "headline": "Energia: contribuição no índice"
+        },
+        {
+          "anchor": "Dividir essa contribuição",
+          "action": "focus",
+          "headline": "0,32 de 0,82 ponto percentual"
+        },
+        {
+          "anchor": "É participação na inflação",
+          "action": "focus",
+          "headline": "Aproximadamente 39% do resultado"
+        }
+      ]
+    },
+    {
+      "type": "fact",
+      "title": "Por que a comparação virou",
+      "narration": "O detalhe está na base da comparação. Em agosto, o bônus de Itaipu virou crédito na conta de energia e ajudou a reduzir o preço medido. Em setembro, esse abatimento deixou de entrar. Pense num exemplo inventado apenas para entender: uma cobrança de cem reais recebe um crédito de dez e fica em noventa. No mês seguinte, volta a cem. A diferença existe, mas não prova que a tarifa básica ganhou um reajuste de dez reais. Nesse exemplo, o desconto desapareceu. No levantamento nacional real, a energia caiu sete vírgula sessenta e três por cento em agosto e subiu sete vírgula noventa e oito em setembro. Não são as duas contas do nosso exemplo.",
+      "document_id": "luz-bonus",
+      "media_side": "left",
+      "object_type": "data",
+      "visual_cards": [
+        "Crédito temporário de Itaipu",
+        "Agosto tinha abatimento",
+        "Setembro sem esse crédito",
+        "Exemplo não é fatura real"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "O detalhe está",
+          "action": "focus",
+          "headline": "Crédito temporário de Itaipu"
+        },
+        {
+          "anchor": "Em agosto, o bônus",
+          "action": "focus",
+          "headline": "Agosto tinha abatimento"
+        },
+        {
+          "anchor": "Em setembro, esse abatimento",
+          "action": "focus",
+          "headline": "Setembro sem esse crédito"
+        },
+        {
+          "anchor": "Pense num exemplo",
+          "action": "focus",
+          "headline": "Exemplo não é fatura real"
+        },
+        {
+          "anchor": "No mês seguinte",
+          "action": "focus",
+          "headline": "Crédito temporário de Itaipu"
+        },
+        {
+          "anchor": "Nesse exemplo,",
+          "action": "focus",
+          "headline": "Agosto tinha abatimento"
+        },
+        {
+          "anchor": "No levantamento nacional",
+          "action": "focus",
+          "headline": "Setembro sem esse crédito"
+        },
+        {
+          "anchor": "Não são as duas",
+          "action": "focus",
+          "headline": "Exemplo não é fatura real"
+        }
+      ]
+    },
+    {
+      "type": "fact",
+      "title": "Bandeira não mudou naquele mês",
+      "narration": "Tem outro cuidado: não misturar esse bônus com a bandeira tarifária. A ANEEL anunciou que setembro continuaria com bandeira amarela, a mesma acionada desde maio. O adicional informado era de um real e oitocentos e oitenta e cinco milésimos a cada cem quilowatts-hora consumidos. A bandeira sinaliza o custo de geração; o bônus era um crédito temporário. São mecanismos diferentes. Portanto, explicar setembro como uma nova troca de bandeira distorce o que foi divulgado. Também houve efeitos de reajustes locais. O que entra no índice nacional combina essas situações, e não permite calcular a conta de uma casa só olhando a manchete. Se essa distinção ajudou, inscreva-se no canal.",
+      "document_id": "luz-bandeira",
+      "media_side": "left",
+      "object_type": "data",
+      "visual_cards": [
+        "Setembro manteve bandeira amarela",
+        "Bandeira e bônus são diferentes",
+        "Adicional por energia consumida",
+        "Índice não calcula sua casa"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Tem outro cuidado",
+          "action": "focus",
+          "headline": "Setembro manteve bandeira amarela"
+        },
+        {
+          "anchor": "A ANEEL anunciou",
+          "action": "focus",
+          "headline": "Bandeira e bônus são diferentes"
+        },
+        {
+          "anchor": "O adicional informado",
+          "action": "focus",
+          "headline": "Adicional por energia consumida"
+        },
+        {
+          "anchor": "A bandeira sinaliza",
+          "action": "focus",
+          "headline": "Índice não calcula sua casa"
+        },
+        {
+          "anchor": "Portanto, explicar setembro",
+          "action": "focus",
+          "headline": "Setembro manteve bandeira amarela"
+        },
+        {
+          "anchor": "Também houve efeitos",
+          "action": "focus",
+          "headline": "Bandeira e bônus são diferentes"
+        },
+        {
+          "anchor": "O que entra no índice",
+          "action": "focus",
+          "headline": "Adicional por energia consumida"
+        },
+        {
+          "anchor": "Se essa distinção ajudou",
+          "action": "focus",
+          "headline": "Índice não calcula sua casa"
+        }
+      ]
+    },
+    {
+      "type": "fact",
+      "title": "A inflação também passa pelo mercado",
+      "narration": "E a luz não explica tudo. Os nove grupos pesquisados tiveram aumento em setembro. A alimentação e as bebidas subiram zero vírgula oitenta e três por cento, e os transportes também contribuíram. Até dentro do mercado houve caminhos diferentes: tomate e batata ficaram mais caros, enquanto frango e frutas apareceram entre as quedas. Por isso a inflação é uma média ponderada, uma combinação em que cada item tem um peso no orçamento pesquisado. Quem consome mais de algo que encareceu pode sentir mais aperto; quem compra outros produtos pode ter outra experiência. O resultado nacional ajuda a enxergar a pressão geral. Ele não diz que todos os preços aumentaram igual ou que toda família perdeu exatamente a mesma quantia.",
+      "document_id": "luz-outros",
+      "media_side": "left",
+      "object_type": "data",
+      "visual_cards": [
+        "Nove grupos tiveram alta",
+        "Alimentos: movimentos diferentes",
+        "Cada item tem um peso",
+        "Média não é orçamento individual"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "E a luz não explica tudo",
+          "action": "focus",
+          "headline": "Nove grupos tiveram alta"
+        },
+        {
+          "anchor": "Os nove grupos",
+          "action": "focus",
+          "headline": "Alimentos: movimentos diferentes"
+        },
+        {
+          "anchor": "A alimentação e as bebidas",
+          "action": "focus",
+          "headline": "Cada item tem um peso"
+        },
+        {
+          "anchor": "Até dentro do mercado",
+          "action": "focus",
+          "headline": "Média não é orçamento individual"
+        },
+        {
+          "anchor": "Por isso a inflação",
+          "action": "focus",
+          "headline": "Nove grupos tiveram alta"
+        },
+        {
+          "anchor": "Quem consome mais",
+          "action": "focus",
+          "headline": "Alimentos: movimentos diferentes"
+        },
+        {
+          "anchor": "O resultado nacional",
+          "action": "focus",
+          "headline": "Cada item tem um peso"
+        },
+        {
+          "anchor": "Ele não diz",
+          "action": "focus",
+          "headline": "Média não é orçamento individual"
+        }
+      ]
+    },
+    {
+      "type": "opinion",
+      "title": "Desconto não é solução permanente",
+      "narration": "Minha leitura é que vale receber o desconto, claro, mas vale desconfiar quando um alívio temporário vira argumento de solução permanente. O bolso não vive de comemoração de um mês só. Isso também não autoriza dizer que o bônus foi dinheiro fictício: quem teve o crédito pagou menos naquele momento. A crítica é tratar um abatimento pontual como melhora duradoura do custo da energia. E não há motivo para apontar toda alta como culpa exclusiva de uma pessoa ou medida sem separar os fatores. A resposta à pergunta inicial é esta: a luz teve grande peso na inflação de setembro, e o fim do desconto de agosto ampliou a comparação. Quase quarenta por cento é a contribuição no índice, não um reajuste universal da sua conta.",
+      "document_id": "luz-bonus",
+      "media_side": "left",
+      "object_type": "data",
+      "visual_cards": [
+        "Minha leitura: benefício temporário",
+        "Crédito real naquele mês",
+        "Separar custo, desconto e índice",
+        "Contribuição não é reajuste universal"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Minha leitura é",
+          "action": "focus",
+          "headline": "Minha leitura: benefício temporário"
+        },
+        {
+          "anchor": "O bolso não vive",
+          "action": "focus",
+          "headline": "Crédito real naquele mês"
+        },
+        {
+          "anchor": "Isso também não autoriza",
+          "action": "focus",
+          "headline": "Separar custo, desconto e índice"
+        },
+        {
+          "anchor": "A crítica é",
+          "action": "focus",
+          "headline": "Contribuição não é reajuste universal"
+        },
+        {
+          "anchor": "E não há motivo",
+          "action": "focus",
+          "headline": "Minha leitura: benefício temporário"
+        },
+        {
+          "anchor": "A resposta à pergunta",
+          "action": "focus",
+          "headline": "Crédito real naquele mês"
+        },
+        {
+          "anchor": "Quase quarenta por cento",
+          "action": "focus",
+          "headline": "Separar custo, desconto e índice"
+        }
+      ]
+    }
+  ],
+  "primary_keyword": "conta de luz",
+  "secondary_keywords": [
+    "impacto no bolso",
+    "economia brasileira"
+  ],
+  "tags": [
+    "conta de luz",
+    "O Dinheiro Explica",
+    "Roberto",
+    "economia",
+    "notícias econômicas"
+  ],
+  "hashtags": [
+    "#Economia",
+    "#ContaDeLuz",
+    "#ODinheiroExplica"
+  ],
+  "engagement_question": "Na sua conta de luz, o desconto apareceu e depois sumiu?",
+  "publication_description": "Conta de luz e inflação: por que o fim do bônus de Itaipu pesou tanto no IPCA de setembro de 2026? Roberto explica a diferença entre contribuição no índice, reajuste e desconto temporário.\n\n• O que significa a luz responder por aproximadamente 39% do resultado mensal.\n• Por que comparar uma conta com crédito a outra sem crédito muda a leitura.\n• Como a bandeira de setembro e os demais preços entram nessa história.\n\nO exemplo de fatura é hipotético. Os dados nacionais não estimam o aumento de cada residência. A análise editorial está identificada na fala.",
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que a conta de luz voltou a pesar e o que o número da inflação realmente mede.",
+    "search_query": "conta de luz bônus Itaipu inflação setembro 2026",
+    "recommendation_angle": "Crédito temporário versus melhora permanente; separar quase 40% de contribuição de reajuste individual.",
+    "first_payoff": "A conta de luz respondeu por quase quarenta por cento da inflação de setembro.",
+    "promise_proof": "0,32 dividido por 0,82 resulta aproximadamente 39%; o roteiro explica o fim do crédito, bandeira mantida e outros grupos em alta.",
+    "audience_hypothesis": "Famílias que viram a fatura oscilar e confundem o impacto no IPCA com o reajuste de sua tarifa.",
+    "thumbnail_complement": "CADÊ O DESCONTO? chama atenção para a comparação entre meses sem repetir o número do título.",
+    "verification_limits": "IBGE oficial instável; valores cruzados em reportagens com origem IBGE, comunicado primário ANEEL conferido. Sem faturas individuais nem previsão de inflação ou CTR."
+  },
+  "editorial": {
+    "narrative_contract": {
+      "topic_explanation": "A conta de luz respondeu por quase quarenta por cento da inflação de setembro. E parte da virada aconteceu porque um desconto acabou. Por que a energia puxou tanto o índice?",
+      "presenter_introduction": "Eu sou o Roberto, do O Dinheiro Explica.",
+      "subscription_request": "Se essa distinção ajudou, inscreva-se no canal."
+    }
+  },
+  "pronunciations": {
+    "IPCA": "i pê cê a",
+    "Itaipu": "Itaipú"
+  }
+}
