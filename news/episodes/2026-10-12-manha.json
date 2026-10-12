@@ -1,0 +1,500 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-12-manha",
+  "news_date": "2026-10-12",
+  "event_date": "2026-10-12",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-12T17:20:09Z",
+  "publication_target_local": "2026-10-12T08:00:00-03:00",
+  "production_validation": {
+    "authorized_by_user": true,
+    "authorization_quote": "Veja pq novamente a postagem de manhã e meio dia não foram, arrume e publique",
+    "purpose": "Rascunho local da pauta da manhã preservada e reapurada após a rejeição da escrita; incorporar reversão intradiária sem repetir a manchete superada. Root verificará idempotência, autorização excepcional de horário e recibos antes da produção.",
+    "subjective_listening_performed": false,
+    "duplicate_event_checked": true,
+    "thumbnail_attempt_status": "youtube_automatic_for_reviewed_recovery",
+    "thumbnail_transfer_limit": "Recuperação submetida à nova verificação pelo mesmo create_file UTF-8 usado na tentativa rejeitada. Miniatura automática autorizada; não foram usadas outras ferramentas ou codificações para contornar a rejeição editorial."
+  },
+  "title": "Trump promete diesel russo, mas petróleo volta a subir: por quê?",
+  "title_options": [
+    {
+      "text": "Trump promete diesel russo, mas petróleo volta a subir: por quê?",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Diesel russo pode aliviar preços? O mercado separa promessa de entrega",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Petróleo vira para alta: ataques pesam mais que o anúncio de Trump",
+      "editorial_quality": 4
+    }
+  ],
+  "thumbnail_headline": "CADÊ O ALÍVIO?",
+  "thumbnail_primary": "Um tanque de combustível industrial em carvão e amarelo, com tubulação interrompida como metáfora editorial de oferta ainda incerta, sem marca, cifra, gráfico ou documento.",
+  "thumbnail_tension": "A promessa de mais oferta convive com insegurança de entrega; contraste factual sem afirmar escassez certa, bloqueio ou reajuste universal.",
+  "thumbnail_composition": "Tanque e tubulação grandes no alto à esquerda, fundo carvão e área inferior esquerda livre para a headline amarela. Retrato oficial do Roberto à direita, rosto inteiro e separado do texto, com respiro no canto inferior direito.",
+  "thumbnail_presenter_expression": "roberto-v1-blue-right",
+  "thumbnail_text_side": "left",
+  "thumbnail_headline_position": "lower",
+  "thumbnail_portrait_size": "close",
+  "thumbnail_forbidden_elements": [
+    "outro rosto além do Roberto oficial",
+    "texto extra além da headline",
+    "fotografia ou rosto de Trump ou Putin gerados",
+    "logotipos comerciais ou partidários",
+    "cifras e gráfico inventado",
+    "setas e alarmes",
+    "notícia ou documento fabricado",
+    "marca d'água"
+  ],
+  "scorecard": {
+    "method": "Avaliação editorial de atualidade, contraste verificável e pergunta específica; sem previsão de audiência ou métricas de CTR.",
+    "reason": "A opção de maior nota apresenta a promessa e a reversão do petróleo observada hoje. A abertura entrega a alta e a conclusão responde com insegurança de oferta e diferenças entre contratos. A capa pergunta pelo alívio sem declarar que a promessa fracassou definitivamente.",
+    "criteria": {
+      "timeliness": 5,
+      "public_interest": 5,
+      "documentary_evidence": 5,
+      "original_angle": 4
+    },
+    "unavailable": [
+      "CTR e retenção",
+      "entregas físicas comprovadas da promessa",
+      "cotação futura e efeito automático no posto"
+    ]
+  },
+  "news_selection": {
+    "topic_area": "international",
+    "new_fact": "Em 12/10/2026, o petróleo reverteu a queda inicial e passou a subir, apesar da promessa de diesel russo.",
+    "why_today": "A sessão de 12/10 reverteu a queda inicial do petróleo. A edição atualiza o mesmo assunto escolhido na manhã com a reação intradiária efetiva, em vez de manter o título superado que anunciava somente recuo.",
+    "opening_anchor": "O petróleo até caiu no começo desta segunda, mas voltou a subir.",
+    "candidate_review": [
+      {
+        "subject": "Diesel russo e reversão do petróleo em 12/10",
+        "topic_area": "international",
+        "event_date": "2026-10-12",
+        "urls": [
+          "https://www.marketscreener.com/news/oil-falls-on-hopes-russia-ukraine-energy-ceasefire-will-boost-supplies-ce785ddcdc8fff21",
+          "https://www.afp.com/en/oil-rises-trump-comments-roil-energy-markets"
+        ],
+        "decision": "Pauta preservada por pedido de publicar a edição da manhã. Reuters e AFP independentes conferidos; a reação de hoje sustenta atualização do gancho."
+      },
+      {
+        "subject": "Disputa política sobre importação de diesel russo",
+        "topic_area": "politics",
+        "event_date": "2026-10-11",
+        "urls": [
+          "https://www.foreign.senate.gov/press/dem/release/ranking-member-shaheen-and-6-bipartisan-senatorsstatement-on-legality-of-imports-of-russian-diesel-fuel",
+          "https://justthenews.com/politics-policy/energy/zelensky-critical-trump-plan-russia-diesel-oil-say-amount-wont-lower-global"
+        ],
+        "decision": "Pesquisa política feita durante a recuperação da pauta já selecionada. Comunicado de domingo e contraponto noticiado hoje entram apenas como contexto ou declaração, sem substituir a reação do mercado por fato antigo."
+      }
+    ],
+    "last_source_check_utc": "2026-10-12T17:20:09Z",
+    "selection_scope": "Recuperação da pauta já escolhida, não nova seleção de assunto. Não foram inventadas três candidatas independentes para preencher quota."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Reuters, Laila Kearney e Shadia Nasralla, republicada pelo MarketScreener",
+      "url": "https://www.marketscreener.com/news/oil-falls-on-hopes-russia-ukraine-energy-ceasefire-will-boost-supplies-ce785ddcdc8fff21",
+      "published_at": "2026-10-11",
+      "updated_at": "2026-10-12T12:32:00-03:00",
+      "role": "Apuração de mercado relida na atualização: reversão intradiária e cotações com horário; registro distingue petróleo bruto de contrato de gasóleo."
+    },
+    {
+      "id": "S2",
+      "publisher": "AFP",
+      "url": "https://www.afp.com/en/oil-rises-trump-comments-roil-energy-markets",
+      "published_at": "2026-10-12",
+      "role": "Agência independente confirma alta do petróleo nesta segunda e registra dúvidas sobre a trégua energética. Página mostra horário 17:55 sem fuso explícito; não usado para ordenar cronologia exata."
+    },
+    {
+      "id": "S3",
+      "publisher": "Associated Press, Alex Veiga",
+      "url": "https://apnews.com/article/trump-russia-diesel-oil-prices-8428a31b39e20a3a3f1fa3f0e15b8f99",
+      "published_at": "2026-10-10",
+      "role": "Contexto do anúncio de sexta-feira e de sua entrega futura, com ressalvas de especialistas. Não tratada como novidade de hoje."
+    },
+    {
+      "id": "S4",
+      "publisher": "Just The News, Joseph Weber",
+      "url": "https://justthenews.com/politics-policy/energy/zelensky-critical-trump-plan-russia-diesel-oil-say-amount-wont-lower-global",
+      "published_at": "2026-10-12",
+      "updated_at_display": "October 12, 2026 9:26am; página não declara fuso",
+      "role": "Veículo de direita/centro-direita consultado: acrescenta contraponto de Zelensky sobre escala da oferta e consumo. Posição apresentada como declaração de parte interessada."
+    },
+    {
+      "id": "S5",
+      "publisher": "Comissão de Relações Exteriores do Senado dos Estados Unidos",
+      "url": "https://www.foreign.senate.gov/press/dem/release/ranking-member-shaheen-and-6-bipartisan-senatorsstatement-on-legality-of-imports-of-russian-diesel-fuel",
+      "published_at": "2026-10-11",
+      "role": "Fonte primária do comunicado bipartidário sobre importação. Confirma a contestação parlamentar; não comprova decisão judicial nem conclusão jurídica do editor."
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Em 12/10/2026, o petróleo reverteu a queda inicial e passou a subir, apesar da promessa de diesel russo.",
+      "status": "confirmed",
+      "event_date": "2026-10-12",
+      "source_ids": [
+        "S1",
+        "S2"
+      ]
+    },
+    {
+      "claim": "No registro Reuters de 15:07 UTC de 12/10, o Brent estava a US$ 106,76 por barril, com alta de 2%.",
+      "status": "confirmed",
+      "event_date": "2026-10-12",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim": "A atualização Reuters de 12/10 registra queda de 2,3% no contrato ICE de gasóleo, ao mesmo tempo em que o petróleo bruto subia.",
+      "status": "confirmed",
+      "event_date": "2026-10-12",
+      "source_ids": [
+        "S1"
+      ]
+    },
+    {
+      "claim": "Trump anunciou em 09/10 promessa de fornecimento de mais de 300 mil toneladas de diesel russo, seguida de volumes adicionais.",
+      "status": "background",
+      "event_date": "2026-10-09",
+      "source_ids": [
+        "S1",
+        "S3"
+      ]
+    },
+    {
+      "claim": "Zelensky argumentou, em declaração registrada por reportagem de 12/10, que a oferta russa seria pequena perante o consumo global; trata-se de sua avaliação.",
+      "status": "statement",
+      "event_date": "2026-10-12",
+      "source_ids": [
+        "S4"
+      ]
+    },
+    {
+      "claim": "Em comunicado de 11/10, senadores republicanos e democratas pediram recuo de Trump e questionaram a legalidade da importação.",
+      "status": "background",
+      "event_date": "2026-10-11",
+      "source_ids": [
+        "S5"
+      ]
+    },
+    {
+      "claim": "AFP registra em 12/10 que a Rússia não confirmou acordo para cessar ataques à infraestrutura energética.",
+      "status": "confirmed",
+      "event_date": "2026-10-12",
+      "source_ids": [
+        "S2"
+      ]
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "diesel-mercado-12out",
+      "source_id": "S1",
+      "source_page_url": "https://www.marketscreener.com/news/oil-falls-on-hopes-russia-ukraine-energy-ceasefire-will-boost-supplies-ce785ddcdc8fff21",
+      "expected_text": "Rebounding from earlier losses, Brent crude futures were up $2.04, or 2%, to $106.76 a barrel",
+      "attribution": "Reuters, Laila Kearney e Shadia Nasralla, via MarketScreener; atualização 12/10/2026, 11h32 EDT.",
+      "kind": "source_excerpt",
+      "capture_file": "research/captures/diesel-mercado-12out.png",
+      "rights_review": "Citação jornalística de trecho mínimo efetivamente comentado, com contexto real da página em desktop, autoria e origem. Preservar os pixels do documento; fotografias de imprensa e publicidade não são ilustração autorizada. Não reconstruir portal, fabricar texto ou marcar coordenadas sem inspeção da captura."
+    },
+    {
+      "id": "diesel-contexto-12out",
+      "source_id": "S3",
+      "source_page_url": "https://apnews.com/article/trump-russia-diesel-oil-prices-8428a31b39e20a3a3f1fa3f0e15b8f99",
+      "expected_text": "President Donald Trump announced Friday",
+      "attribution": "Associated Press, Alex Veiga, 10/10/2026; contexto do anúncio de 09/10, não notícia nova.",
+      "kind": "source_excerpt",
+      "capture_file": "research/captures/diesel-contexto-12out.png",
+      "rights_review": "Citação jornalística de trecho mínimo efetivamente comentado, com contexto real da página em desktop, autoria e origem. Preservar os pixels do documento; fotografias de imprensa e publicidade não são ilustração autorizada. Não reconstruir portal, fabricar texto ou marcar coordenadas sem inspeção da captura."
+    },
+    {
+      "id": "diesel-contraponto-12out",
+      "source_id": "S4",
+      "source_page_url": "https://justthenews.com/politics-policy/energy/zelensky-critical-trump-plan-russia-diesel-oil-say-amount-wont-lower-global",
+      "expected_text": "Zelensky argues the amount being imported is too small to lower costs on the global market.",
+      "attribution": "Just The News, Joseph Weber, 12/10/2026, atualização exibida 9h26; declaração atribuída a Zelensky.",
+      "kind": "source_excerpt",
+      "capture_file": "research/captures/diesel-contraponto-12out.png",
+      "rights_review": "Citação jornalística de trecho mínimo efetivamente comentado, com contexto real da página em desktop, autoria e origem. Preservar os pixels do documento; fotografias de imprensa e publicidade não são ilustração autorizada. Não reconstruir portal, fabricar texto ou marcar coordenadas sem inspeção da captura."
+    },
+    {
+      "id": "diesel-senadores-12out",
+      "source_id": "S5",
+      "source_page_url": "https://www.foreign.senate.gov/press/dem/release/ranking-member-shaheen-and-6-bipartisan-senatorsstatement-on-legality-of-imports-of-russian-diesel-fuel",
+      "expected_text": "The Administration must immediately reverse course.",
+      "attribution": "Senado dos Estados Unidos, Comissão de Relações Exteriores, comunicado bipartidário de 11/10/2026.",
+      "kind": "source_excerpt",
+      "capture_file": "research/captures/diesel-senadores-12out.png",
+      "rights_review": "Citação jornalística de trecho mínimo efetivamente comentado, com contexto real da página em desktop, autoria e origem. Preservar os pixels do documento; fotografias de imprensa e publicidade não são ilustração autorizada. Não reconstruir portal, fabricar texto ou marcar coordenadas sem inspeção da captura."
+    },
+    {
+      "id": "diesel-afp-12out",
+      "source_id": "S2",
+      "source_page_url": "https://www.afp.com/en/oil-rises-trump-comments-roil-energy-markets",
+      "expected_text": "Brent North Sea crude: UP 1.8 percent at $106.61 per barrel",
+      "attribution": "AFP, reportagem de 12/10/2026; registro independente da alta do petróleo, não cotação em tempo real.",
+      "kind": "source_excerpt",
+      "capture_file": "research/captures/diesel-afp-12out.png",
+      "rights_review": "Citação jornalística de trecho mínimo efetivamente comentado, com contexto real da página em desktop, autoria e origem. Preservar os pixels do documento; fotografias de imprensa e publicidade não são ilustração autorizada. Não reconstruir portal, fabricar texto ou marcar coordenadas sem inspeção da captura."
+    }
+  ],
+  "context_photos": [],
+  "story_subject": "Promessa de diesel russo por Trump e reversão intradiária do petróleo em 12/10",
+  "story_angle": "Distinguir oferta anunciada, entrega e preços de contratos diferentes diante da insegurança de fornecimento.",
+  "primary_keyword": "diesel russo",
+  "secondary_keywords": [
+    "Trump",
+    "petróleo",
+    "Brent",
+    "preço do diesel",
+    "Rússia",
+    "oferta de combustível"
+  ],
+  "discovery_strategy": {
+    "viewer_intent": "Compreender por que a promessa de mais combustível não impediu a alta do petróleo hoje.",
+    "search_query": "Trump diesel russo petróleo sobe hoje Brent 12 outubro",
+    "recommendation_angle": "Contradição observada no mercado: oferta prometida convive com risco de entrega.",
+    "first_payoff": "O petróleo até caiu no começo desta segunda, mas voltou a subir.",
+    "promise_proof": "A abertura mostra a reversão do petróleo; a segunda cena distingue o contrato de diesel; o contexto explica incerteza de fornecimento e a conclusão responde à pergunta.",
+    "audience_hypothesis": "Pessoas brasileiras acompanhando preços de combustível e política internacional podem valorizar a distinção entre anúncio e efeito realizado. Hipótese editorial sem métricas inventadas.",
+    "thumbnail_complement": "CADÊ O ALÍVIO? complementa a contradição do título com uma pergunta, sem declarar fracasso definitivo ou aumento certo.",
+    "verification_limits": "Reuters e AFP independentes foram relidas, além de AP de contexto, Just The News e comunicado primário. Cotações são retratos intradiários em horários diferentes. Não se comprovou descarga de toda a oferta prometida nem efeito automático em postos brasileiros. As três URLs antigas reportadas na tarefa não foram usadas como conteúdo presumido."
+  },
+  "publication_description": "Trump prometeu mais diesel russo, mas o petróleo reverteu a queda inicial e voltou a subir em 12 de outubro. Por que a perspectiva de oferta não eliminou a tensão?\n\nRoberto explica:\n• a diferença entre petróleo bruto e combustível pronto;\n• o anúncio de fornecimento e a incerteza da entrega;\n• ataques, contestação política e limites da expectativa de alívio.\n\nAs cotações citadas são registros intradiários, com horário identificado, e não previsões do preço no posto. O comentário liberal do Roberto é apresentado como opinião.",
+  "engagement_question": "O que pesa mais agora, a promessa de oferta ou a segurança de entregar?",
+  "tags": [
+    "diesel russo",
+    "Trump",
+    "petróleo",
+    "Brent",
+    "combustíveis",
+    "Rússia",
+    "mercado de energia"
+  ],
+  "hashtags": [
+    "#Diesel",
+    "#Petroleo"
+  ],
+  "pronunciations": {
+    "Trump": "trâmp",
+    "Brent": "brênt",
+    "diesel": "dízel",
+    "Zelensky": "zelênski"
+  },
+  "segments": [
+    {
+      "title": "A promessa e a virada de hoje",
+      "type": "fact",
+      "narration": "Trump prometeu diesel russo. O petróleo até caiu no começo desta segunda, mas voltou a subir. Por que o alívio virou tensão? Eu sou Roberto. Em doze de outubro, a cotação do Brent, uma referência internacional de petróleo, chegou a cento e seis dólares e setenta e seis centavos por barril, alta de dois por cento no registro das doze e sete de Brasília. A promessa não eliminou o medo de interrupções no fornecimento.",
+      "object_type": "data",
+      "document_id": "diesel-mercado-12out",
+      "media_side": "right",
+      "visual_cards": [
+        "Queda inicial, depois alta",
+        "Brent: registro de hoje",
+        "Promessa versus fornecimento"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Trump prometeu diesel russo.",
+          "headline": "Queda inicial, depois alta"
+        },
+        {
+          "anchor": "O petróleo até caiu no começo desta segunda, mas voltou a subir.",
+          "headline": "Brent: registro de hoje"
+        },
+        {
+          "anchor": "Por que o alívio virou tensão?",
+          "headline": "Promessa versus fornecimento"
+        },
+        {
+          "anchor": "Eu sou Roberto.",
+          "headline": "Queda inicial, depois alta"
+        },
+        {
+          "anchor": "Em doze de outubro,",
+          "headline": "Brent: registro de hoje"
+        },
+        {
+          "anchor": "alta de dois por cento",
+          "headline": "Promessa versus fornecimento"
+        },
+        {
+          "anchor": "A promessa não eliminou",
+          "headline": "Queda inicial, depois alta"
+        }
+      ]
+    },
+    {
+      "title": "Anúncio, entrega e contratos diferentes",
+      "type": "fact",
+      "narration": "O anúncio veio na sexta-feira, dia nove: Trump disse que a Rússia forneceria imediatamente mais de trezentas mil toneladas de diesel, com volumes adicionais depois. Isso é promessa de entrega, não recibo de combustível desembarcado. Petróleo bruto e diesel pronto são mercados relacionados, mas diferentes. Na atualização consultada hoje, o petróleo subia, enquanto o contrato internacional de gasóleo, combustível próximo do diesel, caía dois vírgula três por cento. Uma manchete sobre petróleo não descreve todos os combustíveis.",
+      "object_type": "data",
+      "document_id": "diesel-contexto-12out",
+      "media_side": "left",
+      "visual_cards": [
+        "Anúncio de sexta-feira",
+        "Petróleo e diesel são diferentes",
+        "Entrega ainda precisa acontecer"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "O anúncio veio na sexta-feira, dia nove:",
+          "headline": "Anúncio de sexta-feira"
+        },
+        {
+          "anchor": "Isso é promessa de entrega,",
+          "headline": "Petróleo e diesel são diferentes"
+        },
+        {
+          "anchor": "Petróleo bruto e diesel pronto",
+          "headline": "Entrega ainda precisa acontecer"
+        },
+        {
+          "anchor": "Na atualização consultada hoje,",
+          "headline": "Anúncio de sexta-feira"
+        },
+        {
+          "anchor": "caía dois vírgula três por cento.",
+          "headline": "Petróleo e diesel são diferentes"
+        },
+        {
+          "anchor": "Uma manchete sobre petróleo",
+          "headline": "Entrega ainda precisa acontecer"
+        }
+      ]
+    },
+    {
+      "title": "Oferta cercada por insegurança",
+      "type": "fact",
+      "narration": "O problema continua do outro lado do mapa. Ataques na Arábia Saudita e contra embarcações renovaram receios de oferta. Um cessar-fogo energético seria uma pausa nos ataques a instalações de energia, mas anúncio não é adesão comprovada de todos. Moscou não confirmou o acordo nessa apuração. Zelensky também argumentou que o volume russo seria pequeno diante do consumo global. É a posição do presidente ucraniano, parte interessada no conflito, não prova de que o diesel jamais possa cair. O efeito depende do que efetivamente chegar ao mercado.",
+      "object_type": "data",
+      "document_id": "diesel-contraponto-12out",
+      "media_side": "right",
+      "visual_cards": [
+        "Ataques e oferta",
+        "Cessar-fogo ainda contestado",
+        "Contraponto do presidente ucraniano"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "O problema continua do outro lado do mapa.",
+          "headline": "Ataques e oferta"
+        },
+        {
+          "anchor": "Ataques na Arábia Saudita",
+          "headline": "Cessar-fogo ainda contestado"
+        },
+        {
+          "anchor": "Um cessar-fogo energético seria",
+          "headline": "Contraponto do presidente ucraniano"
+        },
+        {
+          "anchor": "Moscou não confirmou o acordo",
+          "headline": "Ataques e oferta"
+        },
+        {
+          "anchor": "Zelensky também argumentou",
+          "headline": "Cessar-fogo ainda contestado"
+        },
+        {
+          "anchor": "É a posição do presidente ucraniano,",
+          "headline": "Contraponto do presidente ucraniano"
+        },
+        {
+          "anchor": "O efeito depende",
+          "headline": "Ataques e oferta"
+        }
+      ]
+    },
+    {
+      "title": "A regra também vale para aliados",
+      "type": "opinion",
+      "narration": "Um grupo de senadores republicanos e democratas pediu, no domingo, que Trump recuasse e questionou a legalidade da importação. Isso é contestação parlamentar, não sentença. Agora, minha leitura liberal: abrir oferta e concorrência pode ajudar; vender promessa como preço garantido é propaganda. Presidente aliado também precisa explicar custo, regras e entrega. Se a liberdade de comércio só vale quando convém ao meu lado, o princípio virou torcida. E aliviar o combustível não apaga o debate sobre financiar uma economia em guerra.",
+      "object_type": "data",
+      "document_id": "diesel-senadores-12out",
+      "media_side": "left",
+      "visual_cards": [
+        "Contestação parlamentar",
+        "Opinião liberal do Roberto",
+        "Princípio vale para aliados"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Um grupo de senadores republicanos e democratas",
+          "headline": "Contestação parlamentar"
+        },
+        {
+          "anchor": "Isso é contestação parlamentar, não sentença.",
+          "headline": "Opinião liberal do Roberto"
+        },
+        {
+          "anchor": "Agora, minha leitura liberal:",
+          "headline": "Princípio vale para aliados"
+        },
+        {
+          "anchor": "Presidente aliado também precisa",
+          "headline": "Contestação parlamentar"
+        },
+        {
+          "anchor": "Se a liberdade de comércio",
+          "headline": "Opinião liberal do Roberto"
+        },
+        {
+          "anchor": "E aliviar o combustível",
+          "headline": "Princípio vale para aliados"
+        }
+      ]
+    },
+    {
+      "title": "O que explica a reversão",
+      "type": "fact",
+      "narration": "Então, por que o petróleo voltou a subir? A possibilidade de mais diesel russo continuou cercada por ataques e dúvidas sobre o fornecimento. A cotação do barril reagiu a esses riscos, enquanto outro contrato de combustível caiu. São retratos do mercado em horários específicos, não garantia do preço de amanhã. Cotação internacional não é etiqueta pronta no posto. Se essa distinção ajudou, inscreva-se para acompanhar os próximos fatos. E você: o que pesa mais agora, a promessa de oferta ou a segurança de entregar?",
+      "object_type": "data",
+      "document_id": "diesel-afp-12out",
+      "media_side": "right",
+      "visual_cards": [
+        "Oferta e segurança",
+        "Retrato do mercado, não garantia",
+        "Anúncio, entrega e preço"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Então, por que o petróleo voltou a subir?",
+          "headline": "Oferta e segurança"
+        },
+        {
+          "anchor": "A possibilidade de mais diesel russo",
+          "headline": "Retrato do mercado, não garantia"
+        },
+        {
+          "anchor": "A cotação do barril reagiu",
+          "headline": "Anúncio, entrega e preço"
+        },
+        {
+          "anchor": "São retratos do mercado",
+          "headline": "Oferta e segurança"
+        },
+        {
+          "anchor": "Cotação internacional não é etiqueta pronta no posto.",
+          "headline": "Retrato do mercado, não garantia"
+        },
+        {
+          "anchor": "Se essa distinção ajudou,",
+          "headline": "Anúncio, entrega e preço"
+        },
+        {
+          "anchor": "E você: o que pesa mais agora,",
+          "headline": "Oferta e segurança"
+        }
+      ]
+    }
+  ]
+}
