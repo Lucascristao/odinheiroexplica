@@ -1,0 +1,517 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-12-meio-dia",
+  "news_date": "2026-10-12",
+  "event_date": "2026-10-12",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-12T17:22:18Z",
+  "publication_target_local": "2026-10-12T12:00:00-03:00",
+  "production_validation": {
+    "authorized_by_user": true,
+    "authorization_quote": "Ok, mas conseguimos postar essas 2? Assim como já postamos antes?",
+    "purpose": "Recuperação local da edição de meio-dia de 12/10, preservando a pauta de visitas de Flávio a Bolsonaro e incorporando atualização do próprio dia. A autorização de publicação tardia e o estado externo serão conferidos pelo operador da recuperação.",
+    "subjective_listening_performed": false,
+    "factual_review_performed_by": "ChatGPT, com consultas web efetivas e leitura do PDF primário da decisão de 12/10",
+    "document_capture_review_performed": false,
+    "previous_qa_review": {
+      "observed_warnings": [
+        "estimated-visual-anchors",
+        "estimated-register-variation"
+      ],
+      "applied": "Cues literais únicas em ordem e direção explain uniforme em todas as cenas. Sem coordenadas de zoom ou grifo inventadas; a captura contextual real será medida pelo motor. Este registro não afirma escuta ou QA do vídeo ainda não produzido."
+    },
+    "duplicate_event_checked": true,
+    "thumbnail_attempt_status": "youtube_automatic_for_reviewed_recovery",
+    "thumbnail_transfer_limit": "Recuperação submetida à nova verificação pelo mesmo create_file UTF-8 usado na tentativa rejeitada. Miniatura automática autorizada; não foram usadas outras ferramentas ou codificações para contornar a rejeição editorial."
+  },
+  "title": "Moraes libera Flávio para visitar Bolsonaro: o que continua proibido?",
+  "title_options": [
+    {
+      "text": "Moraes libera Flávio para visitar Bolsonaro: o que continua proibido?",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Flávio pode voltar a ver Bolsonaro, mas não levar a visita para a campanha",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Fim dos 90 dias: por que Moraes manteve restrições ao encontro de pai e filho?",
+      "editorial_quality": 4
+    }
+  ],
+  "thumbnail_headline": "AINDA TEM LIMITES",
+  "thumbnail_primary": "Uma única porta doméstica simbólica entreaberta, em grafite, com luz amarela atravessando a abertura, representando a retomada de visitas familiares. Sem pessoas ou encenação de um encontro real.",
+  "thumbnail_tension": "A visita foi autorizada, mas o uso eleitoral e a divulgação de declarações permanecem vedados. A abertura parcial é metáfora editorial, sem sugerir que Jair Bolsonaro saiu da prisão ou que uma visita já aconteceu.",
+  "thumbnail_composition": "Porta protagonista grande no alto à direita sobre fundo carvão; área inferior direita reservada à headline amarela. Retrato oficial do Roberto em camisa azul à esquerda, olhando à direita para a porta; cabeça inteira e texto separados, canto inferior direito com respiro para duração.",
+  "thumbnail_presenter_expression": "roberto-v1-blue-right",
+  "thumbnail_text_side": "right",
+  "thumbnail_headline_position": "lower",
+  "thumbnail_portrait_size": "close",
+  "thumbnail_forbidden_elements": [
+    "rostos de políticos ou outro rosto além do Roberto oficial",
+    "texto extra além da headline",
+    "logotipo partidário ou judicial",
+    "abraço apresentado como acontecimento real",
+    "carta ou documento fabricado",
+    "cifras, setas, algemas e grades",
+    "marca d'água"
+  ],
+  "scorecard": {
+    "method": "Avaliação editorial de atualidade, relevância pública, clareza, contraste factual e suporte documental; sem previsão de CTR ou audiência.",
+    "reason": "A vencedora nomeia Moraes, Flávio e Bolsonaro e pergunta pelos limites concretos preservados na decisão de hoje. A abertura entrega a distinção e a cena final a retoma. As demais alternativas enfocam campanha e prazo, com menor clareza da pergunta central.",
+    "criteria": {
+      "timeliness": 5,
+      "public_interest": 5,
+      "documentary_evidence": 5,
+      "original_angle": 4
+    },
+    "unavailable": [
+      "volume de buscas",
+      "CTR ou retenção previstos",
+      "comprovação de visita efetiva após a autorização"
+    ]
+  },
+  "news_selection": {
+    "topic_area": "politics",
+    "new_fact": "Alexandre de Moraes autorizou em 12/10/2026 a retomada das visitas de Flávio Bolsonaro a Jair Bolsonaro, preservando as restrições ao uso político-eleitoral e à divulgação de declarações.",
+    "why_today": "A decisão assinada nesta segunda-feira encerra a suspensão das visitas após o prazo concluído em 11/10. A declaração de Flávio sobre um encontro previsto para 13/10 é atualização posterior do mesmo dia, sem confirmar uma visita realizada.",
+    "opening_anchor": "Moraes autorizou hoje, doze de outubro, Flávio Bolsonaro a voltar a visitar o pai.",
+    "candidate_review": [
+      {
+        "subject": "Retomada das visitas de Flávio a Jair Bolsonaro e restrições mantidas",
+        "topic_area": "politics",
+        "event_date": "2026-10-12",
+        "urls": [
+          "https://static.poder360.com.br/uploads/2026/10/decisao-autorizacao-flavio-visitar-bolsonaro-12out2026.pdf",
+          "https://jovempan.com.br/politica/moraes-autoriza-flavio-bolsonaro-a-retomar-visitas-ao-pai-apos-suspensao-de-90-dias/",
+          "https://www.gazetadopovo.com.br/eleicoes/2026/moraes-autoriza-flavio-visitar-bolsonaro-apos-90-dias-proibicao/",
+          "https://www.cnnbrasil.com.br/eleicoes/flavio-confirma-visita-a-bolsonaro-na-terca-ansioso-para-dar-um-abraco/"
+        ],
+        "decision": "Preservada a pauta da edição pendente, agora reapurada. Busca política confirmou a novidade em publicadores diferentes e no documento primário. A recuperação não autoriza trocar o tema; não foram inventadas candidatas para completar uma nova seleção."
+      }
+    ],
+    "last_source_check_utc": "2026-10-12T17:17:29Z",
+    "selection_scope": "Recuperação de pauta já definida para a edição pendente; consulta de desdobramentos do próprio assunto, sem nova seleção nem quota artificial de candidatas."
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Supremo Tribunal Federal, decisão de Alexandre de Moraes, cópia documental hospedada pelo Poder360",
+      "title": "Execução Penal 169/DF — decisão de 12 de outubro de 2026",
+      "url": "https://static.poder360.com.br/uploads/2026/10/decisao-autorizacao-flavio-visitar-bolsonaro-12out2026.pdf",
+      "published_at": "2026-10-12",
+      "role": "Fonte primária: duas páginas lidas, com data e assinatura. Confirma autorização, vedações, término do prazo e fundamento de ausência de fatos supervenientes. Não houve consulta a um registro completo do processo diretamente no portal do STF."
+    },
+    {
+      "id": "S2",
+      "publisher": "Jovem Pan",
+      "title": "Moraes autoriza Flávio Bolsonaro a retomar visitas ao pai após suspensão de 90 dias",
+      "url": "https://jovempan.com.br/politica/moraes-autoriza-flavio-bolsonaro-a-retomar-visitas-ao-pai-apos-suspensao-de-90-dias/",
+      "published_at": "2026-10-12",
+      "published_time_local": "09:53:00-03:00",
+      "role": "Publicador de linha à direita/centro-direita consultado: cruza a decisão e acrescenta o histórico da carta, as medidas cautelares e as condições mantidas. A análise do ministro é atribuída, sem tratá-la como consenso."
+    },
+    {
+      "id": "S3",
+      "publisher": "Gazeta do Povo, Omar Godoy",
+      "title": "Moraes autoriza Flávio a voltar a visitar Bolsonaro após 90 dias de proibição",
+      "url": "https://www.gazetadopovo.com.br/eleicoes/2026/moraes-autoriza-flavio-visitar-bolsonaro-apos-90-dias-proibicao/",
+      "published_at": "2026-10-12",
+      "published_time_local": "10:30:00-03:00",
+      "role": "Segundo veículo de direita/centro-direita efetivamente lido. Confirma o prazo, a manutenção das restrições e a posição da PGR. Horários detalhados de visitas não são reproduzidos sem nova ordem específica."
+    },
+    {
+      "id": "S4",
+      "publisher": "CNN Brasil, Luciana Amaral e Gabriela Piva",
+      "title": "Flávio confirma visita a Bolsonaro na terça: Ansioso para dar um abraço",
+      "url": "https://www.cnnbrasil.com.br/eleicoes/flavio-confirma-visita-a-bolsonaro-na-terca-ansioso-para-dar-um-abraco/",
+      "published_at": "2026-10-12",
+      "updated_at": "2026-10-12T13:02:00-03:00",
+      "role": "Atualização relida: registra declaração sobre visitar o pai na terça-feira, 13/10, após a autorização. Declaração sobre plano futuro não comprova encontro realizado."
+    },
+    {
+      "id": "S5",
+      "publisher": "UOL, Letícia Casado",
+      "title": "Flávio diz que vai encontrar Bolsonaro amanhã e se esquiva de falar da 6x1",
+      "url": "https://noticias.uol.com.br/eleicoes/2026/10/12/flavio-diz-que-vai-encontrar-bolsonaro-amanha-e-se-esquiva-de-falar-da-6x1.ghtm",
+      "published_at": "2026-10-12",
+      "published_time_local": "12:48:00-03:00",
+      "role": "Cruza a declaração de intenção de visita na terça. Questão da escala de trabalho não integra esta pauta única."
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Alexandre de Moraes autorizou em 12/10/2026 a retomada das visitas de Flávio Bolsonaro a Jair Bolsonaro, preservando as restrições ao uso político-eleitoral e à divulgação de declarações.",
+      "status": "confirmed",
+      "event_date": "2026-10-12",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "claim": "A autorização preserva os horários, as condições e as medidas de segurança anteriormente fixados para as visitas.",
+      "status": "confirmed",
+      "event_date": "2026-10-12",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "claim": "Continua vedada a divulgação de manifestos ou declarações de Jair Bolsonaro, inclusive por terceiros e independentemente do meio utilizado.",
+      "status": "confirmed",
+      "event_date": "2026-10-12",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "claim": "A decisão registra que a suspensão das visitas por 90 dias terminou em 11/10/2026 e que não houve fato superveniente que justificasse prorrogação, conforme também ressaltou a PGR.",
+      "status": "confirmed",
+      "event_date": "2026-10-12",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "claim": "O documento de 12/10 recorda que a suspensão fora determinada em 13/07/2026 após a divulgação de uma carta obtida por Flávio durante visita, conduta considerada por Moraes um descumprimento da proibição de redes sociais por terceiros.",
+      "status": "background",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "claim": "Jair Bolsonaro continua em prisão domiciliar; o despacho sobre visitas não cancela sua condenação nem autoriza participação eleitoral.",
+      "status": "confirmed",
+      "event_date": "2026-10-12",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ]
+    },
+    {
+      "claim": "Flávio declarou em 12/10/2026 que pretende visitar Jair Bolsonaro na terça-feira, 13/10; as reportagens registram um encontro futuro, não uma visita já realizada.",
+      "status": "statement",
+      "event_date": "2026-10-12",
+      "source_ids": [
+        "S4",
+        "S5"
+      ]
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "flavio-condicoes-jp",
+      "source_id": "S2",
+      "source_page_url": "https://jovempan.com.br/politica/moraes-autoriza-flavio-bolsonaro-a-retomar-visitas-ao-pai-apos-suspensao-de-90-dias/",
+      "expected_text": "Os encontros deverão seguir os mesmos horários",
+      "attribution": "Jovem Pan, 12/10/2026, 09h53; contexto da matéria e condições das visitas.",
+      "kind": "source_excerpt",
+      "capture_file": "research/captures/flavio-condicoes-jp-12out-meio-dia.png",
+      "rights_review": "Citação e crítica jornalística de trecho mínimo necessário, preservando portal, autoria e data. Capturar contexto real de desktop e o trecho efetivamente comentado; não recortar ou reutilizar a foto de imprensa isolada como ilustração. A reconstrução é exceção em falha técnica e deve registrar procedência.",
+      "editorial_reconstruction": {
+        "publisher": "Jovem Pan",
+        "published_at": "2026-10-12",
+        "headline": "Visitas retomadas; condições e restrições permanecem",
+        "context": "A reportagem registra a autorização de 12/10 e a manutenção das condições e medidas de segurança. As visitas não podem ter finalidade eleitoral nem servir para divulgar declarações do ex-presidente."
+      }
+    },
+    {
+      "id": "flavio-prazo-gazeta",
+      "source_id": "S3",
+      "source_page_url": "https://www.gazetadopovo.com.br/eleicoes/2026/moraes-autoriza-flavio-visitar-bolsonaro-apos-90-dias-proibicao/",
+      "expected_text": "O senador do PL ficou proibido de visitá-lo por 90 dias.",
+      "attribution": "Gazeta do Povo, Omar Godoy, 12/10/2026, 10h30; prazo e contexto da retomada.",
+      "kind": "source_excerpt",
+      "capture_file": "research/captures/flavio-prazo-gazeta-12out-meio-dia.png",
+      "rights_review": "Citação e crítica jornalística de trecho mínimo necessário, com origem, autoria e data. Capturar contexto real de desktop e trecho, sem recriar o portal. A fotografia de imprensa não será usada isoladamente como ilustração. Eventual reconstrução fica condicionada a falha técnica registrada.",
+      "editorial_reconstruction": {
+        "publisher": "Gazeta do Povo, Omar Godoy",
+        "published_at": "2026-10-12",
+        "headline": "Prazo encerrado e visitas autorizadas em 12 de outubro",
+        "context": "A apuração confirma a retomada após a suspensão de noventa dias. A decisão não identificou fato novo para prolongar a restrição e manteve as regras anteriores e a proibição de uso eleitoral dos encontros."
+      }
+    },
+    {
+      "id": "flavio-visita-futura-cnn",
+      "source_id": "S4",
+      "source_page_url": "https://www.cnnbrasil.com.br/eleicoes/flavio-confirma-visita-a-bolsonaro-na-terca-ansioso-para-dar-um-abraco/",
+      "expected_text": "nesta terça-feira (13)",
+      "attribution": "CNN Brasil, Luciana Amaral e Gabriela Piva, 12/10/2026, atualização 13h02; declaração de visita futura.",
+      "kind": "source_excerpt",
+      "capture_file": "research/captures/flavio-visita-futura-cnn-12out-meio-dia.png",
+      "rights_review": "Citação jornalística mínima para documentar a declaração sobre encontro futuro, preservando autoria, data e contexto de desktop. Não reproduzir fotografias integrais de imprensa como decoração. Reconstrução autoral só em falha técnica comprovada, com procedência registrada.",
+      "editorial_reconstruction": {
+        "publisher": "CNN Brasil, Luciana Amaral e Gabriela Piva",
+        "published_at": "2026-10-12",
+        "headline": "Flávio anuncia intenção de visitar o pai na terça-feira",
+        "context": "Depois da autorização judicial desta segunda, Flávio declarou que pretende encontrar Jair Bolsonaro em 13/10. Trata-se de anúncio de uma visita futura, e não de comprovação de encontro realizado."
+      }
+    }
+  ],
+  "context_photos": [],
+  "story_subject": "Retomada das visitas de Flávio a Jair Bolsonaro e limites preservados na decisão de Moraes",
+  "story_angle": "Separar visita familiar, cumprimento de pena e comunicação eleitoral, com prova da decisão atual e distinção entre anúncio e encontro efetivo.",
+  "primary_keyword": "Flávio Bolsonaro",
+  "secondary_keywords": [
+    "Alexandre de Moraes",
+    "Jair Bolsonaro",
+    "STF",
+    "prisão domiciliar",
+    "visitas",
+    "eleições 2026"
+  ],
+  "discovery_strategy": {
+    "viewer_intent": "Entender o que a liberação das visitas muda e quais restrições continuam valendo.",
+    "search_query": "Moraes libera Flávio Bolsonaro visitas pai decisão 12 outubro 2026 restrições",
+    "recommendation_angle": "O contraste verificável entre reencontro autorizado e comunicação eleitoral ainda vedada responde a uma dúvida concreta sobre a manchete.",
+    "first_payoff": "A visita pode voltar, mas o encontro não pode ser usado para campanha nem para divulgar declarações de Jair Bolsonaro.",
+    "promise_proof": "Documento primário da EP 169 e duas reportagens independentes confirmam a autorização, o término do prazo e as vedações. A última cena diferencia declaração de intenção e visita realizada.",
+    "audience_hypothesis": "Pessoas que acompanham política brasileira podem valorizar a distinção entre autorização familiar e liberdade eleitoral. Hipótese editorial, sem segmentação sensível nem métricas inventadas.",
+    "thumbnail_complement": "AINDA TEM LIMITES complementa a liberação no título e antecipa a pergunta respondida pela decisão, sem repetir nomes ou sugerir soltura.",
+    "verification_limits": "PDF primário lido em cópia hospedada pelo Poder360 e fontes de 12/10 relidas. Não foi verificado encontro realizado nem toda a tramitação da execução penal. A CNN registra atualização às 13h02. Horários concretos de uma próxima visita não são afirmados; prevalecem as condições da ordem aplicável. Prints ainda serão capturados e medidos pelo motor, sem coordenadas autorais inventadas."
+  },
+  "publication_description": "Flávio Bolsonaro foi autorizado por Alexandre de Moraes a retomar as visitas a Jair Bolsonaro nesta segunda-feira, 12 de outubro. A decisão mantém limites ao uso eleitoral dos encontros e à divulgação de declarações.\n\nRoberto explica:\n• o prazo de suspensão que terminou;\n• as condições que continuam valendo;\n• a diferença entre autorização, anúncio de visita e encontro realizado.\n\nApuração documental e comentário liberal identificado como opinião.",
+  "engagement_question": "Como equilibrar o direito de visita familiar e as restrições de uma execução penal?",
+  "tags": [
+    "Flávio Bolsonaro",
+    "Jair Bolsonaro",
+    "Alexandre de Moraes",
+    "STF",
+    "prisão domiciliar",
+    "eleições 2026",
+    "notícias de hoje"
+  ],
+  "hashtags": [
+    "#STF",
+    "#Eleicoes2026"
+  ],
+  "pronunciations": {
+    "STF": "ésse tê éfe",
+    "PGR": "pê gê érre"
+  },
+  "segments": [
+    {
+      "title": "A visita volta, a campanha não entra",
+      "type": "fact",
+      "narration": "Moraes autorizou hoje, doze de outubro, Flávio Bolsonaro a voltar a visitar o pai. O que continua proibido? A visita pode voltar, mas o encontro não pode ser usado para campanha nem para divulgar declarações de Jair Bolsonaro. Eu sou Roberto. A decisão do Supremo Tribunal Federal, o STF, restabelece os encontros depois da suspensão de noventa dias. Não é uma soltura nem uma autorização para Bolsonaro participar da campanha. É a retomada das visitas, com limites preservados.",
+      "object_type": "data",
+      "document_id": "flavio-condicoes-jp",
+      "media_side": "right",
+      "visual_cards": [
+        "Retomada autorizada hoje",
+        "Uso eleitoral continua vedado",
+        "Condições preservadas"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Moraes autorizou hoje,",
+          "headline": "Retomada autorizada hoje"
+        },
+        {
+          "anchor": "O que continua proibido?",
+          "headline": "Uso eleitoral continua vedado"
+        },
+        {
+          "anchor": "A visita pode voltar,",
+          "headline": "Condições preservadas"
+        },
+        {
+          "anchor": "Eu sou Roberto.",
+          "headline": "Retomada autorizada hoje"
+        },
+        {
+          "anchor": "A decisão do Supremo Tribunal Federal,",
+          "headline": "Uso eleitoral continua vedado"
+        },
+        {
+          "anchor": "Não é uma soltura",
+          "headline": "Condições preservadas"
+        },
+        {
+          "anchor": "É a retomada das visitas,",
+          "headline": "Retomada autorizada hoje"
+        }
+      ]
+    },
+    {
+      "title": "Por que o contato tinha sido suspenso",
+      "type": "fact",
+      "narration": "O documento desta segunda lembra o motivo da suspensão. Em julho, Flávio recebeu uma carta do pai durante uma visita e a divulgou nas redes sociais. Moraes considerou que isso descumpriu a proibição de Jair Bolsonaro usar essas redes, inclusive por outras pessoas. Portanto, na avaliação do ministro, não era apenas uma conversa familiar: o direito de visita tinha sido usado para transmitir uma mensagem pública. Essa foi a justificativa registrada para interromper os encontros por noventa dias.",
+      "object_type": "data",
+      "document_id": "flavio-prazo-gazeta",
+      "media_side": "left",
+      "visual_cards": [
+        "O fundamento da suspensão",
+        "Carta divulgada nas redes",
+        "Avaliação atribuída ao ministro"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "O documento desta segunda",
+          "headline": "O fundamento da suspensão"
+        },
+        {
+          "anchor": "Em julho, Flávio recebeu",
+          "headline": "Carta divulgada nas redes"
+        },
+        {
+          "anchor": "Moraes considerou que isso",
+          "headline": "Avaliação atribuída ao ministro"
+        },
+        {
+          "anchor": "Portanto, na avaliação do ministro,",
+          "headline": "O fundamento da suspensão"
+        },
+        {
+          "anchor": "o direito de visita tinha sido usado",
+          "headline": "Carta divulgada nas redes"
+        },
+        {
+          "anchor": "Essa foi a justificativa registrada",
+          "headline": "Avaliação atribuída ao ministro"
+        }
+      ]
+    },
+    {
+      "title": "O prazo acabou; a pena continua",
+      "type": "fact",
+      "narration": "Os noventa dias terminaram no domingo, onze de outubro. Na decisão de hoje, Moraes afirmou que não apareceu fato novo que justificasse prolongar a suspensão. A Procuradoria-Geral da República, a PGR, também sustentou esse entendimento. As visitas voltam seguindo os horários, as condições e a segurança definidos antes. Jair Bolsonaro continua em prisão domiciliar. A ordem não cancela a condenação nem remove as demais restrições. Acabar uma suspensão com prazo definido é diferente de encerrar o cumprimento de uma pena.",
+      "object_type": "data",
+      "document_id": "flavio-condicoes-jp",
+      "media_side": "right",
+      "visual_cards": [
+        "Prazo terminou em onze de outubro",
+        "Sem fato novo para prorrogar",
+        "Prisão domiciliar continua"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Os noventa dias terminaram",
+          "headline": "Prazo terminou em onze de outubro"
+        },
+        {
+          "anchor": "Na decisão de hoje,",
+          "headline": "Sem fato novo para prorrogar"
+        },
+        {
+          "anchor": "A Procuradoria-Geral da República,",
+          "headline": "Prisão domiciliar continua"
+        },
+        {
+          "anchor": "As visitas voltam seguindo",
+          "headline": "Prazo terminou em onze de outubro"
+        },
+        {
+          "anchor": "Jair Bolsonaro continua em prisão domiciliar.",
+          "headline": "Prisão domiciliar continua"
+        },
+        {
+          "anchor": "A ordem não cancela",
+          "headline": "Sem fato novo para prorrogar"
+        },
+        {
+          "anchor": "Acabar uma suspensão com prazo definido",
+          "headline": "Prisão domiciliar continua"
+        }
+      ]
+    },
+    {
+      "title": "Direito familiar exige limites justificados",
+      "type": "opinion",
+      "narration": "Agora, minha opinião, de uma perspectiva liberal: restrições a direitos precisam ter motivo concreto, alcance claro e limite de tempo. Visita familiar não deveria virar uma torneira que se abre ou fecha conforme a temperatura da eleição. Ao mesmo tempo, cumprir uma pena não é ganhar um corredor secreto para contornar uma ordem judicial. O fundamento apresentado por Moraes foi justamente o uso do encontro para divulgar uma carta. Dá para questionar a proporcionalidade daquela suspensão e reconhecer esse argumento, sem transformar a discussão em torcida por político ou ministro.",
+      "object_type": "data",
+      "document_id": "flavio-prazo-gazeta",
+      "media_side": "left",
+      "visual_cards": [
+        "Opinião liberal do Roberto",
+        "Limites claros e proporcionais",
+        "Considerar o fundamento judicial"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Agora, minha opinião,",
+          "headline": "Opinião liberal do Roberto"
+        },
+        {
+          "anchor": "restrições a direitos precisam",
+          "headline": "Limites claros e proporcionais"
+        },
+        {
+          "anchor": "Visita familiar não deveria",
+          "headline": "Considerar o fundamento judicial"
+        },
+        {
+          "anchor": "Ao mesmo tempo, cumprir uma pena",
+          "headline": "Opinião liberal do Roberto"
+        },
+        {
+          "anchor": "O fundamento apresentado por Moraes",
+          "headline": "Considerar o fundamento judicial"
+        },
+        {
+          "anchor": "Dá para questionar a proporcionalidade",
+          "headline": "Limites claros e proporcionais"
+        },
+        {
+          "anchor": "sem transformar a discussão em torcida",
+          "headline": "Opinião liberal do Roberto"
+        }
+      ]
+    },
+    {
+      "title": "Anúncio de visita não é encontro realizado",
+      "type": "fact",
+      "narration": "Depois da autorização, Flávio disse nesta segunda que pretende visitar o pai na terça-feira, treze de outubro. Isso é um anúncio sobre amanhã, não uma visita já realizada. E a resposta à pergunta inicial permanece: o encontro pode voltar, mas continuam proibidos o uso eleitoral e a divulgação de manifestos ou declarações de Bolsonaro, inclusive por terceiros. Se separar a decisão da torcida ajudou, inscreva-se para acompanhar as próximas notícias. A regra precisa ser compreensível para qualquer pessoa, mesmo quando o caso envolve um político de quem ela gosta.",
+      "object_type": "data",
+      "document_id": "flavio-visita-futura-cnn",
+      "media_side": "right",
+      "visual_cards": [
+        "Visita anunciada para treze de outubro",
+        "Anúncio não comprova encontro",
+        "Os limites permanecem"
+      ],
+      "visual_cues": [
+        {
+          "anchor": "Depois da autorização,",
+          "headline": "Visita anunciada para treze de outubro"
+        },
+        {
+          "anchor": "Isso é um anúncio sobre amanhã,",
+          "headline": "Anúncio não comprova encontro"
+        },
+        {
+          "anchor": "E a resposta à pergunta inicial permanece:",
+          "headline": "Os limites permanecem"
+        },
+        {
+          "anchor": "mas continuam proibidos o uso eleitoral",
+          "headline": "Os limites permanecem"
+        },
+        {
+          "anchor": "inclusive por terceiros.",
+          "headline": "Anúncio não comprova encontro"
+        },
+        {
+          "anchor": "Se separar a decisão da torcida ajudou,",
+          "headline": "Os limites permanecem"
+        },
+        {
+          "anchor": "A regra precisa ser compreensível",
+          "headline": "Visita anunciada para treze de outubro"
+        }
+      ]
+    }
+  ]
+}
