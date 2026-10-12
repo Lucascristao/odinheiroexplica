@@ -24,7 +24,13 @@
   "editorial_policy": {
     "version": "2026-10-11.1",
     "review_cutover_utc": "2026-10-11T21:00:00Z",
-    "topic_areas": ["politics", "economy", "personal_finance", "business", "international"],
+    "topic_areas": [
+      "politics",
+      "economy",
+      "personal_finance",
+      "business",
+      "international"
+    ],
     "research_politics_each_window": true,
     "main_event_recency": "same_day",
     "article_date_does_not_refresh_event": true,
@@ -83,6 +89,20 @@
       "authorized_by_user": true,
       "mode": "publish_immediately_after_qa",
       "reason": "O titular autorizou diretamente nesta conversa de 11/10/2026 seguir até estar tudo publicado e configurado para o ChatGPT, durante a recuperação das edições da manhã e do meio-dia. Publicar este episódio já preparado após QA, preservando o upload original se ultrapassar a tolerância; exceção exclusiva desta edição, sem alterar as janelas recorrentes."
+    },
+    {
+      "episode_id": "noticia-2026-10-12-manha",
+      "original_publication_local": "2026-10-12T08:00:00-03:00",
+      "authorized_by_user": true,
+      "mode": "publish_immediately_after_qa",
+      "reason": "Autorização direta do titular nesta conversa de 12/10/2026: “Veja pq novamente a postagem de manhã e meio dia não foram, arrume e publique”, reiterada em “Ok, mas conseguimos postar essas 2? Assim como já postamos antes?”. Recuperação exclusiva desta edição após reapuração factual; exige QA sem falhas, identidade do canal, recibos e deduplicação. Não altera as próximas janelas."
+    },
+    {
+      "episode_id": "noticia-2026-10-12-meio-dia",
+      "original_publication_local": "2026-10-12T12:00:00-03:00",
+      "authorized_by_user": true,
+      "mode": "publish_immediately_after_qa",
+      "reason": "Autorização direta do titular nesta conversa de 12/10/2026: “Veja pq novamente a postagem de manhã e meio dia não foram, arrume e publique”, reiterada em “Ok, mas conseguimos postar essas 2? Assim como já postamos antes?”. Recuperação exclusiva desta edição após reapuração factual; exige QA sem falhas, identidade do canal, recibos e deduplicação. Não altera as próximas janelas."
     }
   ],
   "one_time_immediate_publications": [
