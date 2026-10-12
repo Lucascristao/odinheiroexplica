@@ -97,6 +97,7 @@ jobs:
           python worker/test_news_project.py
           python worker/test_news_single_project.py
           python worker/test_news_autonomous_schedule.py
+          python worker/test_news_verify_publication.py
           python worker/test_restore_news_publication.py
           python worker/test_news_qa_feedback.py
           python worker/news_single_project.py --input news/episodes/2026-10-09-imposto-seletivo.json --output video/generated/news-single-ci.json

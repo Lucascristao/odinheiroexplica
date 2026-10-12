@@ -9,12 +9,17 @@ on:
           - meio-dia
           - noite
         required: true
+      news_date:
+        description: 'Data YYYY-MM-DD da edição; vazio usa hoje em Fortaleza (somente rechecagem).'
+        type: string
+        required: false
   schedule:
     - cron: '45 12 * * *'
     - cron: '45 16 * * *'
     - cron: '45 0 * * *'
 permissions:
   contents: read
+  actions: read
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -29,6 +34,7 @@ jobs:
           SCHEDULE_EXPRESSION: ${{ github.event.schedule }}
           EVENT_NAME: ${{ github.event_name }}
           DISPATCH_SLOT: ${{ inputs.slot }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           set -euo pipefail
           if [ "$EVENT_NAME" = workflow_dispatch ]; then
@@ -42,14 +48,44 @@ jobs:
             esac
           fi
           echo "ODE_SLOT=$SLOT" >> "$GITHUB_ENV"
+          if [ "$EVENT_NAME" = schedule ]; then
+            if ! CREATED_AT="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" --jq '.created_at')"; then
+              mkdir -p render-output
+              printf '%s\n' '{"stage":"window_unresolved","public_confirmed":false,"message":"Não foi possível ler a criação da run; conferir janela antes de consultar YouTube."}' > render-output/publication-check.json
+              exit 1
+            fi
+            echo "ODE_RUN_CREATED_AT=$CREATED_AT" >> "$GITHUB_ENV"
+          fi
       - name: Conferir privacidade pública real, sem fazer qualquer alteração
         env:
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          DISPATCH_NEWS_DATE: ${{ inputs.news_date }}
         run: |
+          set -euo pipefail
           python -m pip install --disable-pip-version-check 'google-auth>=2.35' 'google-api-python-client>=2.149'
-          python worker/news_verify_publication.py --slot "$ODE_SLOT" --output render-output/publication-check.json
+          ARGS=(--slot "$ODE_SLOT" --output render-output/publication-check.json)
+          if [ -n "${ODE_RUN_CREATED_AT:-}" ]; then ARGS+=(--run-created-at "$ODE_RUN_CREATED_AT"); fi
+          if [ -n "$DISPATCH_NEWS_DATE" ]; then ARGS+=(--news-date "$DISPATCH_NEWS_DATE"); fi
+          python worker/news_verify_publication.py "${ARGS[@]}"
+      - name: Mostrar etapa e resultado observado
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          report = Path("render-output/publication-check.json")
+          if report.exists():
+              result = json.loads(report.read_text(encoding="utf-8"))
+              summary = f"### Confirmação de notícia\n\nEdição: {result.get('episode_id', 'janela não identificada')}\n\nEtapa: **{result['stage']}**\n\n{result['message']}\n"
+              if result.get('url'):
+                  summary += f"\nVídeo observado: {result['url']}\n"
+          else:
+              summary = "### Confirmação não executada\n\nFalha antes da consulta; nenhum estado público foi confirmado.\n"
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as output:
+              output.write(summary)
+          PY
       - name: Guardar status observado
         if: always()
         uses: actions/upload-artifact@v4

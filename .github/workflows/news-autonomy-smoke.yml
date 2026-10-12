@@ -9,6 +9,9 @@ on:
       - '.github/workflows/render-news-single.yml'
       - '.github/workflows/news-scout.yml'
       - 'worker/news_autonomous_schedule.py'
+      - 'worker/news_verify_publication.py'
+      - 'worker/test_news_verify_publication.py'
+      - '.github/workflows/news-verify-publication.yml'
       - 'worker/news_qa_feedback.py'
       - 'worker/test_news_qa_feedback.py'
       - 'config/news-autonomy.json'
@@ -40,6 +43,7 @@ jobs:
               ".github/workflows/render-news-single.yml",
               ".github/workflows/news-scout.yml",
               ".github/workflows/news-autonomy-smoke.yml",
+              ".github/workflows/news-verify-publication.yml",
           ]:
               data = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
               assert isinstance(data, dict) and "jobs" in data, path
@@ -65,6 +69,7 @@ jobs:
       - name: Testar publicação agendada sem capa e proteções
         run: |
           python -m unittest worker/test_news_autonomous_schedule.py -v
+          python -m unittest worker/test_news_verify_publication.py -v
           python -m unittest worker/test_news_qa_feedback.py -v
       - name: Confirmar adaptação editorial do piloto sem render nem API
         run: |
