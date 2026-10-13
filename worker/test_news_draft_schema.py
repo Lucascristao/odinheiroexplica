@@ -184,5 +184,44 @@ class LiteralMetadataBinding(unittest.TestCase):
             self.assertEqual(value, before)
 
 
+class DerivedOpeningAndAttribution(unittest.TestCase):
+    def fixture(self):
+        claim = "O governo anunciou hoje uma proposta de perdão para MEIs."
+        return {"segments": [{"type": "fact", "narration": claim + " A aplicação depende da análise do Congresso."}],
+                "news_selection": {"new_fact": claim, "opening_anchor": "Uma paráfrase que não aparece na fala.",
+                                   "source_mode": "single_source_attributed", "independent_confirmation": False},
+                "verified_facts": [{"claim": claim, "source_ids": ["S1"], "status": "statement"}],
+                "sources": [{"id": "S1", "publisher": "Publicador da Fixture", "url": "https://example.com/proposta"}],
+                "discovery_strategy": {"first_payoff": "O relato apresenta uma proposta anunciada pelo governo."},
+                "publication_description": "A proposta e seus limites são explicados nesta notícia."}
+
+    def test_metadata_uses_real_fact_sentence_and_existing_source_without_changing_proof(self):
+        value = self.fixture()
+        original = copy.deepcopy(value)
+        EDITOR.bind_draft_metadata(value)
+        self.assertEqual(value["news_selection"]["opening_anchor"], original["verified_facts"][0]["claim"])
+        self.assertEqual(value["discovery_strategy"]["first_payoff"], value["news_selection"]["opening_anchor"])
+        self.assertIn("Apuração atribuída a Publicador da Fixture.", value["publication_description"])
+        for key in ("segments", "verified_facts", "sources"):
+            self.assertEqual(value[key], original[key])
+
+    def test_unknown_or_ambiguous_new_fact_is_not_filled(self):
+        for duplicate in (False, True):
+            value = self.fixture()
+            if duplicate:
+                value["verified_facts"].append(copy.deepcopy(value["verified_facts"][0]))
+            else:
+                value["news_selection"]["new_fact"] = "Outra alegação que não consta dos fatos fornecidos."
+            original = copy.deepcopy(value)
+            EDITOR.bind_draft_metadata(value)
+            self.assertEqual(value, original)
+
+    def test_intro_question_is_not_used_as_a_new_fact(self):
+        value = self.fixture()
+        value["segments"][0]["narration"] = "Você quer entender essa proposta? Eu sou Roberto. " + value["verified_facts"][0]["claim"]
+        EDITOR.bind_draft_metadata(value)
+        self.assertEqual(value["news_selection"]["opening_anchor"], value["verified_facts"][0]["claim"])
+
+
 if __name__ == "__main__":
     unittest.main(argv=[sys.argv[0]] + TEST_ARGS)
