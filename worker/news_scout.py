@@ -14,12 +14,14 @@ import urllib.request
 import xml.etree.ElementTree as ET
 
 SEARCHES = {
+    "politica": "política brasil congresso STF TSE presidência eleições hoje",
     "economia": "economia brasil ultimas noticias",
     "empresas": "empresas negocios brasil investimento",
     "tecnologia": "tecnologia inteligência artificial negócios brasil",
     "consumidor": "bancos pix consumidor Brasil",
+    "internacional": "economia internacional geopolítica brasil hoje",
 }
-TOPICS = ("economia", "empresas", "tecnologia", "consumidor")
+TOPICS = tuple(SEARCHES)
 
 
 def parse_rss(xml: bytes, category: str, now: datetime) -> list[dict]:
