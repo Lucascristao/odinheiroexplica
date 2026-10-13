@@ -1,4 +1,4 @@
-name: ODE Notícias - editor automático Gemini gratuito
+name: ODE Notícias - editor automático Groq
 on:
   workflow_dispatch:
     inputs:
@@ -68,9 +68,8 @@ jobs:
           python -m playwright install chromium
       - name: Selecionar, apurar, redigir e validar sem consumir voz
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          ODE_NEWS_RESEARCH_MODEL: gemini-3.8-flash
-          ODE_NEWS_WRITER_MODEL: gemini-3.8-flash
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          ODE_NEWS_GROQ_MODEL: openai/gpt-oss-120b
         run: |
           set -euo pipefail
           test "$(python - <<'PY'
