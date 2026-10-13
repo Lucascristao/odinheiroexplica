@@ -33,7 +33,7 @@ jobs:
       - name: Validar scripts e YAML sem chamadas a APIs
         run: |
           set -euo pipefail
-          python -m py_compile worker/news_autonomous_schedule.py worker/news_single_project.py worker/test_news_autonomous_schedule.py
+          python -m py_compile worker/news_autonomous_schedule.py worker/news_single_project.py worker/news_autonomous_editor.py worker/news_scout.py worker/test_news_autonomous_schedule.py
           python -m pip install --disable-pip-version-check PyYAML
           python - <<'PY'
           from pathlib import Path
@@ -49,7 +49,7 @@ jobs:
               assert isinstance(data, dict) and "jobs" in data, path
               print("YAML_OK", path)
           PY
-      - name: Confirmar reserva de Gemini apenas para voz
+      - name: Confirmar Gemini no editor e exclusividade de voz no render
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -58,9 +58,12 @@ jobs:
           scout = Path(".github/workflows/news-scout.yml").read_text(encoding="utf-8")
           assert render.count("GEMINI_API_KEY:") == 1, "Chave Gemini usada fora do step de voz"
           assert "worker/news_autonomous_thumbnail.py" not in render, "Render chama imagem Gemini"
-          assert "run: python worker/news_autonomous_editor.py" not in editor, "Editor Gemini legado reativado"
-          assert "schedule:" not in editor and "schedule:" not in scout, "Cron editorial concorrente"
-          print("GEMINI_VOICE_ONLY_OK")
+          assert "worker/news_autonomous_editor.py --slot" in editor, "Editor oficial não habilitado"
+          assert "workflow_dispatch:" in editor and "schedule:" in editor, "Cron editorial ausente"
+          assert "schedule:" not in scout, "Coletor auxiliar não deve rodar cron"
+          assert "gh workflow run render-news-single.yml" in editor, "Dispatch explicito obrigatorio"
+          assert "GEMINI_API_KEY:" in editor, "Editor não possui credencial declarada"
+          print("GEMINI_EDITOR_AND_VOICE_SEPARATION_OK")
           PY
       - name: Garantir reconstrução editorial limpa e proveniência fiel
         run: |
