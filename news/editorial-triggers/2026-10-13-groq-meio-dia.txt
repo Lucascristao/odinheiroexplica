@@ -1,0 +1,1 @@
+Acionar o editor Groq GPT-OSS 120B para a edição de meio-dia em 13/10/2026, explicitamente autorizada pelo titular, com apuração atual, fontes reais, sem duplicação e publicação após QA; GITHUB_TOKEN despacha o render.
