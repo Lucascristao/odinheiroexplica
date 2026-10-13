@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import re
+import traceback
 import unicodedata
 from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
@@ -17,6 +18,39 @@ from news_single_project import validate, transform
 from build_youtube_package import validate_publication_fields
 
 SLOTS = {"manha": "08:00", "meio-dia": "12:00", "noite": "20:00"}
+
+
+DRAFT_SCHEMA_GUIDE = "FORMA EXATA OBRIGATÓRIA — use nomes de chaves literalmente:\nA raiz é UM OBJETO JSON, nunca uma lista, nunca um envelope episodes/episode.\nObjetos (mapas): news_selection, scorecard, discovery_strategy, pronunciations.\nListas de OBJETOS: title_options, sources, verified_facts, documentary_evidence, segments.\nListas de strings: tags, hashtags, secondary_keywords. context_photos=[].\n\nnews_selection é UM OBJETO ANINHADO com estas chaves:\ntopic_area, source_mode, independent_confirmation, new_fact, why_today,\nopening_anchor, candidate_review; acrescentar attribution_note no modo single_source_attributed.\nEscreva news_selection.why_today como STRING de pelo menos 30 caracteres:\nexplique o acontecimento novo ocorrido na data da edição a partir do relatório.\nNão colocar why_today na raiz. Não usar why_now, justification, rationale, reason\nou currentness no lugar de news_selection.why_today.\nnew_fact COPIA literalmente UM verified_facts[].claim. opening_anchor COPIA\num trecho literal único da primeira narration. independent_confirmation é BOOLEAN,\nnão string; true SOMENTE no modo corroborated com confirmação real, false na exclusiva.\ncandidate_review é LISTA de objetos com subject, topic_area, event_date, urls e decision;\nurls é lista de URLs reais; não inventar candidatas nem datas.\n\nscorecard é UM OBJETO com method (string), reason (string) e criteria (OBJETO/mapa).\nNão usar lista para scorecard ou criteria. criteria registra julgamentos editoriais,\nnão métricas de audiência.\n\ntitle_options é LISTA de objetos, cada qual com text (string) e\neditorial_quality (INTEIRO de 1 a 5). Primeiro escreva e avalie as três opções.\nDepois COPIE EXATAMENTE o text de uma opção com editorial_quality máxima para title,\nmantendo todas as palavras e pontuação. Nunca crie um quarto título fora da lista.\nA escolha deve continuar factual; pontuação editorial não é previsão de CTR.\n\nCada source, verified_fact, documentary_evidence e segment é OBJETO,\nnunca lista de pares ou objeto indexado pelo ID. Os IDs são campos dentro dos objetos.\nCampos não citados acima continuam obrigatórios conforme as regras abaixo.\nNão fabricar valores para preencher a forma: se a evidência não sustenta um campo,\ndeclare insuficiência em vez de inventar fato, fonte ou data."
+
+
+def validate_draft_shape(episode):
+    """Reject malformed model JSON without defaults, aliases or invented fields."""
+    if not isinstance(episode, dict):
+        raise ValueError("draft: a raiz JSON deve ser um objeto, nunca lista ou envelope")
+    for key in ("news_selection", "scorecard", "discovery_strategy", "pronunciations"):
+        if not isinstance(episode.get(key), dict):
+            raise ValueError(f"draft.{key} precisa ser objeto JSON, não lista")
+    for key in ("title_options", "sources", "verified_facts", "documentary_evidence", "segments"):
+        value = episode.get(key)
+        if not isinstance(value, list) or any(not isinstance(item, dict) for item in value):
+            raise ValueError(f"draft.{key} precisa ser lista de objetos JSON")
+    selection = episode["news_selection"]
+    why_today = selection.get("why_today")
+    if not isinstance(why_today, str) or len(why_today.strip()) < 30:
+        raise ValueError("draft.news_selection.why_today é string obrigatória de 30+ caracteres; não usar why_now ou campo na raiz")
+    title = episode.get("title")
+    options = episode["title_options"]
+    if not isinstance(title, str) or not options:
+        raise ValueError("draft.title deve copiar uma opção de title_options")
+    if any(not isinstance(option.get("text"), str)
+           or type(option.get("editorial_quality")) is not int
+           or not 1 <= option["editorial_quality"] <= 5 for option in options):
+        raise ValueError("draft.title_options exige text string e editorial_quality inteiro de 1 a 5")
+    maximum = max(option["editorial_quality"] for option in options)
+    if not any(option["text"].strip() == title.strip()
+               and option["editorial_quality"] == maximum for option in options):
+        raise ValueError("draft.title deve copiar exatamente o text de uma opção com editorial_quality máxima")
+    return episode
 
 
 def plain(text):
@@ -176,6 +210,8 @@ def save_research_diagnostics(path, corpus, target, report=None, error_type=None
             record["rejection_reasons"].append("marker")
         if len(report) < 400:
             record["rejection_reasons"].append("short_report")
+        if (transport or {}).get("finish_reason") == "length":
+            record["rejection_reasons"].append("response_truncated")
     output = Path(path)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -216,12 +252,14 @@ menos dois trechos LITERAIS DIFERENTES realmente presentes no corpus, preferindo
         save_research_diagnostics(diagnostic_path, corpus, target, error_type=type(exc).__name__, transport=transport_diag)
         raise
     save_research_diagnostics(diagnostic_path, corpus, target, report=report, transport=transport_diag)
+    if transport_diag.get("finish_reason") == "length":
+        raise RuntimeError("Groq cortou o relatório no limite de resposta; não usar apuração incompleta.")
     if "EDITORIAL_INSUFFICIENT_EVIDENCE" in report or len(report) < 400:
         raise RuntimeError("Corpus não demonstra um relato verificável de acontecimento de hoje.")
     return report
 
 
-def draft(report, day, slot, history, error):
+def draft(report, day, slot, history, error, diagnostics=None):
     target = SLOTS[slot]
     prompt = f"""Retorne SOMENTE um objeto JSON válido, em português do Brasil,
 para um episódio jornalístico de notícia ÚNICA do canal O Dinheiro Explica.
@@ -232,6 +270,8 @@ Revisão de erro anterior: {error[:1200]}. Data: {day}, janela: {slot}.
 Roberto, brasileiro, conversacional e crítico na economia, com opiniões
 nitidamente separadas dos fatos. Não imitar fala nem slogan de ANCAPSU/Piter.
 Objetivo é CTR legítimo e compreensão, nunca clickbait enganoso.
+
+{DRAFT_SCHEMA_GUIDE}
 
 Esquema TOP-LEVEL obrigatório:
 version, format, episode_id, news_date, event_date, editorial_status,
@@ -301,8 +341,32 @@ verification_limits. first_payoff PRECISA SER UM TRECHO EXATO
 e literalmente presente na narração da primeira cena.
 Não reutilize fatos nem tema do vídeo-piloto de imposto seletivo.
 Não invente datas nem alegações sem respaldo. Não incluir links, hashtags, FONTES ou CAPÍTULOS na publication_description; páginas devem permitir captura Playwright. Não confundir data da matéria com a data do acontecimento."""
-    raw = complete(prompt, json_mode=True)
-    return json.loads(raw)
+    raw = complete(prompt, json_mode=True, diagnostics=diagnostics)
+    if (diagnostics or {}).get("finish_reason") == "length":
+        raise RuntimeError("Groq cortou o roteiro no limite de resposta; não usar JSON incompleto.")
+    episode = json.loads(raw)
+    if not isinstance(episode, dict):
+        raise ValueError("Groq deve retornar um objeto JSON na raiz, nunca uma lista.")
+    return validate_draft_shape(episode)
+
+
+def record_draft_diagnostic(path, attempt, episode, transport, error=None):
+    """Record structure and call metrics; rejected output is never editorial approval."""
+    target = Path(path)
+    record = json.loads(target.read_text(encoding="utf-8")) if target.exists() else {}
+    item = {"attempt": attempt, "validated": error is None,
+            "transport": safe_transport_diagnostics(transport),
+            "error_type": type(error).__name__ if error else None,
+            "error": diagnostic_text(str(error), 500) if error else None,
+            "field_types": {key: type(value).__name__ for key, value in episode.items()}
+                           if isinstance(episode, dict) else {"root": type(episode).__name__}}
+    if error:
+        item["location"] = [{"file": Path(frame.filename).name, "line": frame.lineno,
+                              "function": frame.name} for frame in traceback.extract_tb(error.__traceback__)[-3:]]
+    record.setdefault("draft_attempts", []).append(item)
+    target.parent.mkdir(parents=True, exist_ok=True)
+    target.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print("EDITORIAL_DRAFT_DIAGNOSTIC", json.dumps(item, ensure_ascii=False), flush=True)
 
 
 def main():
@@ -328,8 +392,10 @@ def main():
                       diagnostic_path=root / "render-output" / "news-editorial-diagnostics.json")
     error = ""
     for attempt in range(3):
+        episode = None
+        transport = {}
         try:
-            episode = draft(report, date, args.slot, history, error)
+            episode = draft(report, date, args.slot, history, error, diagnostics=transport)
             episode["version"] = "1.0"
             episode["format"] = "ode-news-single"
             episode["episode_id"] = f"noticia-{date}-{args.slot}"
@@ -348,9 +414,13 @@ def main():
             validate_publication_fields(project["publication"], episode["title"])
             output.parent.mkdir(parents=True, exist_ok=True)
             output.write_text(json.dumps(episode, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+            record_draft_diagnostic(root / "render-output/news-editorial-diagnostics.json",
+                                    attempt + 1, episode, transport)
             print(f"NEWS_EPISODE_VALIDATED:{output}, attempt={attempt+1}")
             return
         except (ValueError, KeyError, TypeError, IndexError, RuntimeError, requests.RequestException) as exc:
+            record_draft_diagnostic(root / "render-output/news-editorial-diagnostics.json",
+                                    attempt + 1, episode, transport, exc)
             error = f"Falha real {type(exc).__name__}: {str(exc)[:400]}"
             print("EDITORIAL_RETRY:", error)
     raise SystemExit("Nenhum roteiro passou na verificação factual e estrutural.")
