@@ -92,6 +92,8 @@ jobs:
         run: |
           python worker/test_news_source_corpus.py
           python worker/test_news_editor_modes.py
+          python worker/test_news_editor_diagnostics.py
+          python worker/test_news_groq_client_diagnostics.py
 
       - name: Validate render request, packaging and retry policy (offline)
         run: |
