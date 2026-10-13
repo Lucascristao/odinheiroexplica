@@ -94,8 +94,8 @@ Não invente números, fotos, notícias, links ou citações.
 Relatório em texto com URLs e trechos originais."""
     response = None
     failures = []
-    for model in (os.getenv("ODE_NEWS_RESEARCH_MODEL", "gemini-2.5-flash"),
-                  "gemini-2.5-flash-lite"):
+    for model in (os.getenv("ODE_NEWS_RESEARCH_MODEL", "gemini-3.8-flash"),
+                  "gemini-3.5-flash-lite"):
         try:
             response = client.models.generate_content(
                 model=model, contents=prompt,
