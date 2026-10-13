@@ -123,14 +123,13 @@
     }
   ],
   "editor": {
-    "provider": "gemini",
+    "provider": "groq",
     "orchestrator": "github_actions",
     "workflow": "news-autonomous-editor.yml",
     "research_mode": "publisher_pages_via_rss_no_paid_grounding",
-    "research_model": "gemini-3.8-flash",
-    "writer_model": "gemini-3.8-flash",
-    "writer_fallback": "gemini-3.5-flash-lite",
-    "gemini_api_secret": "GEMINI_API_KEY",
+    "research_model": "openai/gpt-oss-120b",
+    "writer_model": "openai/gpt-oss-120b",
+    "api_secret": "GROQ_API_KEY",
     "free_tier_only": true
   },
   "thumbnail_automation": {
