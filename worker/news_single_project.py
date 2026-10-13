@@ -51,8 +51,27 @@ def validate_news_selection(episode: dict, news_day: date) -> None:
     require(fact.get("event_date") == news_day.isoformat() and fact.get("status") != "background",
             "fato novo sem data do acontecimento ou classificado apenas como contexto")
     linked = [source for source in episode["sources"] if source["id"] in fact["source_ids"]]
-    require(len({urlparse(source["url"]).hostname.casefold().removeprefix("www.")
-                 for source in linked}) >= 2, "fato novo precisa de dois publicadores")
+    source_mode = selection.get("source_mode", "corroborated")
+    require(source_mode in ("corroborated", "single_source_attributed"),
+            "modo de comprovação jornalística inválido")
+    if source_mode == "corroborated":
+        require(len({urlparse(source["url"]).hostname.casefold().removeprefix("www.")
+                     for source in linked}) >= 2, "fato novo precisa de dois publicadores")
+        require(selection.get("independent_confirmation", True) is True,
+                "confirmação independente não pode ser negada no modo corroborated")
+    else:
+        require(len(linked) >= 1, "notícia exclusiva sem fonte real vinculada")
+        require(selection.get("independent_confirmation") is False,
+                "fonte única exige sinalizar ausência de confirmação independente")
+        require(fact.get("status") == "statement",
+                "fonte única precisa ser apresentada como relato atribuído, não fato confirmado")
+        require(len(str(selection.get("attribution_note") or "").strip()) >= 30,
+                "fonte única exige explicação de atribuição e limites")
+        publisher = str(linked[0].get("publisher") or "").strip()
+        opening = (episode.get("segments") or [{}])[0].get("narration", "")
+        description = str(episode.get("publication_description") or "")
+        require(len(publisher) >= 3 and publisher.casefold() in (opening + " " + description).casefold(),
+                "fonte única exige nomear publicador na abertura ou descrição")
     require(any(source["published_at"] == news_day.isoformat() for source in linked),
             "fato novo sem fonte publicada no dia da edição")
     anchor = selection.get("opening_anchor")
@@ -112,7 +131,9 @@ def validate(episode: dict, today: date | None = None) -> dict:
         "hashtags": episode.get("hashtags"),
     }, episode["title"])
     sources = episode.get("sources") or []
-    require(len(sources) >= 2, "apuração precisa de ao menos 2 fontes")
+    source_mode = (episode.get("news_selection") or {}).get("source_mode", "corroborated")
+    min_sources = 1 if source_mode == "single_source_attributed" else 2
+    require(len(sources) >= min_sources, "apuração sem o mínimo de fontes reais do modo editorial")
     hosts = set()
     source_ids = set()
     for source in sources:
@@ -123,7 +144,8 @@ def validate(episode: dict, today: date | None = None) -> dict:
         source_ids.add(source["id"])
         published = date.fromisoformat(source["published_at"])
         require(published <= news_day and published >= news_day - timedelta(days=45), "fonte fora do período documentado")
-    require(len(hosts) >= 2, "fontes precisam incluir publicadores diferentes")
+    if source_mode != "single_source_attributed":
+        require(len(hosts) >= 2, "fontes precisam incluir publicadores diferentes")
     claims = episode.get("verified_facts") or []
     require(len(claims) >= 4, "menos de quatro fatos apurados")
     for claim in claims:
@@ -218,11 +240,17 @@ def validate(episode: dict, today: date | None = None) -> dict:
                     require(bool(doc.get("capture_sha256")), "zoom/grifo autoral exige captura autêntica revisada e fixada por hash")
             require(positions == sorted(set(positions)), "cues precisam acompanhar a ordem da narração")
     require(len(used_docs) >= 2, "as duas evidências documentais precisam aparecer no vídeo")
-    # Mais de uma matéria visual sobre O MESMO assunto, com fontes diferentes.
+    # Exibir prova autêntica mesmo quando a pauta é exclusiva de uma fonte.
     doc_source = {item["id"]: item["source_id"] for item in documentary}
     source_host = {item["id"]: urlparse(item["url"]).hostname.lower().removeprefix("www.") for item in sources}
-    require(len({source_host[doc_source[doc_id]] for doc_id in used_docs}) >= 2,
-            "mostrar pelo menos duas matérias de publicadores independentes")
+    if source_mode == "single_source_attributed":
+        excerpts = [d["expected_text"].strip().casefold() for d in documentary
+                    if d["id"] in used_docs]
+        require(len(set(excerpts)) >= 2,
+                "fonte única exige dois trechos documentais diferentes, sem simular duas matérias")
+    else:
+        require(len({source_host[doc_source[doc_id]] for doc_id in used_docs}) >= 2,
+                "mostrar pelo menos duas matérias de publicadores independentes")
     require(len(used_photos | used_docs) >= len(segments) - 2,
             "noticiário não pode ser quase todo texto e ícones; inclua prints comentados")
     return episode
