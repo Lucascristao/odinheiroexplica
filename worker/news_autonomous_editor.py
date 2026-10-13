@@ -13,7 +13,8 @@ import requests
 from google import genai
 from google.genai import types
 from news_scout import collect
-from news_single_project import validate
+from news_single_project import validate, transform
+from build_youtube_package import validate_publication_fields
 
 SLOTS = {"manha": "08:00", "meio-dia": "12:00", "noite": "20:00"}
 
@@ -79,12 +80,12 @@ def research(client, candidates, history, target):
     prompt = f"""Você é repórter de O Dinheiro Explica, Brasil.
 Horário de publicação pretendido: {target}; hora da pesquisa:
 {datetime.now(ZoneInfo('America/Fortaleza')).isoformat()}.
-Escolha UMA notícia atual, concreta, verificável e diferente do histórico.
+Escolha UMA notícia cujo FATO NOVO aconteceu HOJE em Fortaleza, concreta, verificável e diferente do histórico. Compare candidatas atuais incluindo política; informe datas reais de fato e publicação.
 É OBRIGATÓRIO pesquisar a internet real pela ferramenta Google Search grounding.
 Candidatos RSS não apurados: {json.dumps(candidates[:28], ensure_ascii=False)}.
 Histórico: {json.dumps(history, ensure_ascii=False)}.
 Investigue uma pauta com consequência para brasileiros e prova documental.
-Retorne relatório factual detalhado com datas, ao menos 4 fatos separados
+Retorne relatório factual detalhado com datas do FATO e PUBLICAÇÃO, comparação de política e economia, ao menos 4 fatos separados
 e pelo menos 2 URLs HTTPS COMPLETAS de matérias reais de diferentes editoras,
 com trechos LITERAIS comprováveis no texto da página, não links Google News.
 Priorize matérias públicas e acessíveis para captura de trechos pelo navegador.
@@ -93,8 +94,8 @@ Não invente números, fotos, notícias, links ou citações.
 Relatório em texto com URLs e trechos originais."""
     response = None
     failures = []
-    for model in (os.getenv("ODE_NEWS_RESEARCH_MODEL", "gemini-3.1-pro-preview"),
-                  "gemini-3.5-flash-lite"):
+    for model in (os.getenv("ODE_NEWS_RESEARCH_MODEL", "gemini-2.5-flash"),
+                  "gemini-2.5-flash-lite"):
         try:
             response = client.models.generate_content(
                 model=model, contents=prompt,
@@ -131,7 +132,7 @@ Objetivo é CTR legítimo e compreensão, nunca clickbait enganoso.
 
 Esquema TOP-LEVEL obrigatório:
 version, format, episode_id, news_date, event_date, editorial_status,
-reviewed_at, title, title_options, thumbnail_headline,
+reviewed_at, news_selection, title, title_options, thumbnail_headline,
 thumbnail_primary, thumbnail_tension, thumbnail_composition,
 thumbnail_text_side, scorecard, sources, verified_facts,
 documentary_evidence, context_photos, segments, engagement_question,
@@ -142,7 +143,7 @@ version = "1.0"; format = "ode-news-single"; episode_id =
 publication_target_local="{day}T{target}:00-03:00".
 editorial_status="autonomous_fact_checked" e reviewed_at="" (serão
 definidos pelo verificador depois). event_date YYYY-MM-DD deve ser
-igual/menor à data atual e ligado ao acontecimento verificado.
+IGUAL à data {day}, com acontecimento ocorrido nesse dia; reportagem nova não renova fato antigo.
 
 title: 20-100 caracteres, factual e magnético, assunto no começo.
 title_options: lista de três objetos com text e editorial_quality (1-5).
@@ -151,13 +152,14 @@ thumbnail_primary: protagonista visual específico da notícia.
 thumbnail_tension: tensão editorial comprovável, sem mentira.
 thumbnail_composition: enquadramento e posição do protagonista próprios.
 thumbnail_text_side: "left" ou "right", lado oposto ao protagonista.
+news_selection: objeto contendo topic_area (politics,economy,personal_finance,business,international); new_fact deve ser EXATAMENTE um claim de verified_facts com event_date={day}, status diferente de background e source_ids de pelo menos DOIS publicadores distintos, um publicado em {day}; why_today com motivo concreto de 30+ caracteres; opening_anchor com trecho literal de 20 a 160 caracteres presente uma vez na narração inicial; candidate_review com candidatas reais comparadas, incluindo política, datas reais do fato, URLs e justificativas. Não inventar candidatas.
 scorecard: method, reason, criteria com julgamentos editoriais e não
 CTR ou dados inventados.
 
-sources: 2 ou 3 objetos, URLs REAIS HTTPS verificáveis do relatório,
+sources: 2 ou 3 objetos, URLs REAIS HTTPS verificáveis do relatório e capturáveis sem HTTP 403,
 cada item id (S1, S2...), publisher, url, published_at YYYY-MM-DD,
 role; no mínimo dois publicadores/dominios diferentes, até 45 dias.
-verified_facts: quatro ou mais itens {claim,source_ids,status}
+verified_facts: quatro ou mais itens {claim,source_ids,status,event_date}
 com status SOMENTE "statement","background","forecast_not_collected",
 "projection","confirmed"; source_ids devem existir.
 documentary_evidence: exatamente dois ou três itens com id doc-1,doc-2
@@ -168,7 +170,7 @@ citação curta e capture_file "research/captures/doc-1.png" etc.
 Não adicionar reconstrução editorial fictícia ou fotos da imprensa.
 context_photos=[].
 
-segments: EXATAMENTE QUATRO cenas, types nesta ordem fact,fact,opinion,outro.
+segments: EXATAMENTE QUATRO cenas, types nesta ordem fact,fact,opinion,outro. A primeira cena abre com o fato novo real e inclui news_selection.opening_anchor literalmente.
 Cada objeto deve ter id,title,type,label,headline,metric,object_type
 (data/store/cash/bank/package/truck/factory), visual_cards com 3-5
 strings de 6-65 caracteres, narration de 85-125 PALAVRAS, document_id
@@ -178,7 +180,7 @@ Pelo menos 2 cenas factuais com prova. Uma opinião editorial fundamentada
 sem fatos inventados. Final responde à pergunta inicial.
 Não incluir photo_id ao usar document_id.
 engagement_question termina em ponto de interrogação.
-hashtags: três hashtags específicas, sem espaço.
+hashtags: de 1 a 3 hashtags específicas e distintas, começando com # e sem espaço.
 tags: até 10 strings específicas. pronunciations: objeto vazio ou
 pronúncias comprováveis, sem forçar fala.
 publication_description: corpo editorial natural com palavra-chave no
@@ -191,8 +193,8 @@ promise_proof, audience_hypothesis, thumbnail_complement,
 verification_limits. first_payoff PRECISA SER UM TRECHO EXATO
 e literalmente presente na narração da primeira cena.
 Não reutilize fatos nem tema do vídeo-piloto de imposto seletivo.
-Não invente datas ou alegações sem respaldo documental."""
-    models = (os.getenv("ODE_NEWS_WRITER_MODEL", "gemini-3.1-pro-preview"),
+Não invente datas nem alegações sem respaldo. Não incluir links, hashtags, FONTES ou CAPÍTULOS na publication_description; páginas devem permitir captura Playwright. Não confundir data da matéria com a data do acontecimento."""
+    models = (os.getenv("ODE_NEWS_WRITER_MODEL", "gemini-3.8-flash"),
               "gemini-3.5-flash-lite")
     last = None
     for model in models:
@@ -247,11 +249,13 @@ def main():
             validate(episode, today=local.date())
             prevent_repeated_story(episode, root)
             check_documentary_sources(episode)
+            project = transform(episode)
+            validate_publication_fields(project["publication"], episode["title"])
             output.parent.mkdir(parents=True, exist_ok=True)
             output.write_text(json.dumps(episode, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
             print(f"NEWS_EPISODE_VALIDATED:{output}, attempt={attempt+1}")
             return
-        except (ValueError, KeyError, TypeError, IndexError, requests.RequestException) as exc:
+        except (ValueError, KeyError, TypeError, IndexError, RuntimeError, requests.RequestException) as exc:
             error = f"Falha real {type(exc).__name__}: {str(exc)[:400]}"
             print("EDITORIAL_RETRY:", error)
     raise SystemExit("Nenhum roteiro passou na verificação factual e estrutural.")
