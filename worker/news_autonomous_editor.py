@@ -10,10 +10,9 @@ import unicodedata
 from urllib.parse import urlparse
 from zoneinfo import ZoneInfo
 import requests
-from google import genai
-from google.genai import types
 from news_scout import collect
 from news_source_corpus import collect_verified
+from news_groq_client import complete
 from news_single_project import validate, transform
 from build_youtube_package import validate_publication_fields
 
@@ -77,46 +76,42 @@ def prevent_repeated_story(episode, root):
             raise ValueError("Provável tema repetido do título: " + old_path.name)
 
 
-def research(client, candidates, history, target):
-    """Use actual fetched publisher content to keep free-tier Gemini off paid Google Search grounding."""
+def research(candidates, history, target):
+    """Select an actually verified new event from publisher pages, without model web tools."""
     corpus = collect_verified(candidates)
-    prompt = f"""Você é editor factual do canal O Dinheiro Explica.
-Janela pretendida: {target}; hora agora: {datetime.now(ZoneInfo('America/Fortaleza')).isoformat()}.
-Abaixo há páginas efetivamente acessadas. Só use suas URLs literais e trechos
-efetivamente presentes em actual_article_text, sem atribuir prova ao RSS Google.
-Diferencie hora de reportagem e dia do fato central. Busque dentro do CORPUS um
-FATO NOVO ocorrido hoje na região de Fortaleza, apoiado por dois publicadores
-independentes: se não houver comprovação, diga que é impossível e pare.
-Compare candidatas atuais de política e economia; registre limitações.
-Não use as notícias do histórico: {json.dumps(history, ensure_ascii=False)}.
-CORPUS DE PÁGINAS VERIFICADAS:
-{json.dumps(corpus, ensure_ascii=False)[:46000]}
-Retorne relatório apurado com 4 fatos, URLs literais de publicadores, dois
-trechos literais curtos e diferenças de perspectiva. Sem fontes inventadas."""
-    errors = []
-    for model in (os.getenv("ODE_NEWS_RESEARCH_MODEL", "gemini-3.8-flash"), "gemini-3.5-flash-lite"):
-        try:
-            response = client.models.generate_content(
-                model=model, contents=prompt,
-                config=types.GenerateContentConfig(temperature=0.1),
-            )
-            if not response.text or len(response.text) < 400:
-                raise ValueError("Relatório factual insuficiente.")
-            return response.text
-        except Exception as error:
-            status = getattr(error, "code", None) or getattr(error, "status_code", None) or "unknown"
-            detail = re.sub(r"AIza[0-9A-Za-z_-]+", "[REDACTED]", str(error))[:300]
-            print("EDITOR_RESEARCH_API_ERROR", model, status, detail, flush=True)
-            if not any(code in str(error) for code in ("404", "429", "500", "502", "503", "504")):
-                raise
-            errors.append(str(status))
-    raise RuntimeError("Gemini sem cota disponível para redigir a partir das fontes: " + ", ".join(errors))
+    # Keep below the Groq free-plan TPM limit. Literal excerpts + real URLs are
+    # the only evidence the editor may use; full pages remain checked downstream.
+    compact = [
+        {**{k: entry[k] for k in ("category", "headline", "publisher_host", "url", "feed_published_utc")},
+         "actual_article_text": entry["actual_article_text"][:2200]}
+        for entry in corpus[:7]
+    ]
+    prompt = f"""Você é editor de apuração do canal O Dinheiro Explica.
+Hoje em Fortaleza: {datetime.now(ZoneInfo('America/Fortaleza')).isoformat()}. Janela: {target}.
+Compare pautas atuais, incluindo política e economia, usando SOMENTE os textos reais abaixo.
+Descubra um FATO NOVO ocorrido hoje, com confirmação explícita em dois sites independentes.
+Dia da publicação da reportagem NÃO equivale ao dia do fato; se não houver prova atual, declare.
+Priorize páginas com texto literal para captura. NÃO invente links, datas ou trechos.
+Verifique se duas páginas diferentes tratam realmente do mesmo acontecimento.
+Identifique nome e URLs exatas, data original do fato, e ao menos quatro fatos com evidência.
+Histórico (não repetir acontecimentos): {json.dumps(history[-12:], ensure_ascii=False)[:2000]}.
+CORPUS de páginas HTTP realmente consultadas:
+{json.dumps(compact, ensure_ascii=False)[:20000]}
+Se nenhuma pauta tiver duas provas independentes do acontecimento de hoje, devolva
+exatamente EDITORIAL_INSUFFICIENT_EVIDENCE, sem fabricar material.
+Caso exista, escreva relatório factual de 500 a 750 palavras, incluindo URLs e pelo
+menos dois trechos LITERAIS realmente presentes no corpus, preferindo trechos de 15 a 70 caracteres."""
+    report = complete(prompt)
+    if "EDITORIAL_INSUFFICIENT_EVIDENCE" in report or len(report) < 400:
+        raise RuntimeError("Corpus não demonstra um acontecimento de hoje por dois publicadores.")
+    return report
 
-def draft(client, report, day, slot, history, error):
+
+def draft(report, day, slot, history, error):
     target = SLOTS[slot]
     prompt = f"""Retorne SOMENTE um objeto JSON válido, em português do Brasil,
 para um episódio jornalístico de notícia ÚNICA do canal O Dinheiro Explica.
-A redação foi pesquisada por Google Search grounding:
+Relatório preliminar baseado EXCLUSIVAMENTE em páginas HTML recuperadas e verificáveis:
 {report}
 Assuntos proibidos por repetição: {json.dumps(history, ensure_ascii=False)}.
 Revisão de erro anterior: {error[:1200]}. Data: {day}, janela: {slot}.
@@ -188,25 +183,8 @@ verification_limits. first_payoff PRECISA SER UM TRECHO EXATO
 e literalmente presente na narração da primeira cena.
 Não reutilize fatos nem tema do vídeo-piloto de imposto seletivo.
 Não invente datas nem alegações sem respaldo. Não incluir links, hashtags, FONTES ou CAPÍTULOS na publication_description; páginas devem permitir captura Playwright. Não confundir data da matéria com a data do acontecimento."""
-    models = (os.getenv("ODE_NEWS_WRITER_MODEL", "gemini-3.8-flash"),
-              "gemini-3.5-flash-lite")
-    last = None
-    for model in models:
-        try:
-            response = client.models.generate_content(
-                model=model, contents=prompt,
-                config=types.GenerateContentConfig(
-                    response_mime_type="application/json", temperature=0.25
-                ),
-            )
-            return json.loads(response.text)
-        except Exception as error:
-            if not any(code in str(error) for code in ("404", "429", "500", "502", "503", "504")):
-                raise
-            status = getattr(error, "code", None) or getattr(error, "status_code", None) or "unknown"
-            print("EDITOR_WRITER_API_ERROR", model, status, str(error)[:180], flush=True)
-            last = type(error).__name__ + ":" + str(status)
-    raise RuntimeError("Nenhum modelo conseguiu gerar JSON: " + str(last))
+    raw = complete(prompt, json_mode=True)
+    return json.loads(raw)
 
 
 def main():
@@ -214,8 +192,8 @@ def main():
     p.add_argument("--slot", choices=SLOTS, required=True)
     p.add_argument("--root", default=".")
     args = p.parse_args()
-    if not os.getenv("GEMINI_API_KEY"):
-        raise SystemExit("GEMINI_API_KEY inexistente; sem apuração automática.")
+    if not os.getenv("GROQ_API_KEY"):
+        raise SystemExit("GROQ_API_KEY inexistente; configurar secret no GitHub.")
     local = datetime.now(ZoneInfo("America/Fortaleza"))
     date = local.date().isoformat()
     root = Path(args.root).resolve()
@@ -226,14 +204,13 @@ def main():
     candidates = collect()
     if not candidates.get("candidates"):
         raise SystemExit("Nenhuma pauta RSS atual, não inventar notícias.")
-    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
     history = existing_history(root)
-    report = research(client, candidates["candidates"], history,
+    report = research(candidates["candidates"], history,
                       f"{date}T{SLOTS[args.slot]}:00-03:00")
     error = ""
     for attempt in range(3):
         try:
-            episode = draft(client, report, date, args.slot, history, error)
+            episode = draft(report, date, args.slot, history, error)
             episode["version"] = "1.0"
             episode["format"] = "ode-news-single"
             episode["episode_id"] = f"noticia-{date}-{args.slot}"
@@ -241,7 +218,7 @@ def main():
             episode["publication_target_local"] = f"{date}T{SLOTS[args.slot]}:00-03:00"
             episode["editorial_status"] = "autonomous_fact_checked"
             episode["reviewed_at"] = datetime.now(ZoneInfo("America/Fortaleza")).isoformat()
-            episode["editorial_review_method"] = "AI Google Search grounded research and literal source checks"
+            episode["editorial_review_method"] = "Groq GPT-OSS 120B; independent publisher source corpus and literal source checks"
             validate(episode, today=local.date())
             prevent_repeated_story(episode, root)
             check_documentary_sources(episode)
