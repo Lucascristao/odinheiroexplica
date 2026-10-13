@@ -1,0 +1,1 @@
+Reexecutar seleção de meio-dia após melhoria de corpus, preservando a exceção já autorizada e somente um arquivo por slot. Não duplicar upload nem permitir notícia antiga.
