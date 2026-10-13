@@ -50,7 +50,7 @@ def extract_article(html):
     return unescape(re.sub(r"[ \t]+", " ", "".join(parser.parts))).strip()
 
 
-def collect_verified(candidates, max_links=35, max_articles=16):
+def collect_verified(candidates, max_links=28, max_articles=14):
     from gnews_decoder import decode_many
 
     chosen = [item for item in candidates if item.get("link", "").startswith("https://")][:max_links]
@@ -70,7 +70,7 @@ def collect_verified(candidates, max_links=35, max_articles=16):
             continue
         try:
             response = requests.get(url, headers={"User-Agent": "Mozilla/5.0 ODE-editor/1.0"},
-                                    timeout=16, allow_redirects=True)
+                                    timeout=10, allow_redirects=True)
             response.raise_for_status()
             final = response.url
             final_host = (urlparse(final).hostname or "").casefold().removeprefix("www.")
