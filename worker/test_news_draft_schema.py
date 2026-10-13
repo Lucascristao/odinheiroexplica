@@ -151,5 +151,38 @@ class DraftSchema(unittest.TestCase):
         self.assertIs(EDITOR.validate(self.episode, today=date(2026, 10, 13)), self.episode)
 
 
+class LiteralMetadataBinding(unittest.TestCase):
+    def test_paraphrased_payoff_binds_existing_literal_without_changing_facts(self):
+        anchor = "O governo apresentou hoje a proposta."
+        value = {"segments": [{"narration": anchor + " A decisão ainda depende do Congresso."}],
+                 "news_selection": {"opening_anchor": anchor},
+                 "discovery_strategy": {"first_payoff": "A proposta foi apresentada pelo governo hoje."},
+                 "verified_facts": [{"claim": "Uma proposta foi apresentada.", "source_ids": ["S1"]}],
+                 "sources": [{"id": "S1", "url": "https://example.com/proposta"}]}
+        original = copy.deepcopy(value)
+        EDITOR.bind_draft_metadata(value)
+        self.assertEqual(value["discovery_strategy"]["first_payoff"], anchor)
+        for key in ("segments", "news_selection", "verified_facts", "sources"):
+            self.assertEqual(value[key], original[key])
+
+    def test_existing_literal_is_preserved(self):
+        payoff = "A decisão ainda depende do Congresso."
+        value = {"segments": [{"narration": "A proposta chegou hoje. " + payoff}],
+                 "news_selection": {"opening_anchor": "A proposta chegou hoje."},
+                 "discovery_strategy": {"first_payoff": payoff}}
+        EDITOR.bind_draft_metadata(value)
+        self.assertEqual(value["discovery_strategy"]["first_payoff"], payoff)
+
+    def test_missing_ambiguous_or_absent_opening_is_not_fabricated(self):
+        anchor = "O governo apresentou hoje a proposta."
+        for opening in ("Outra narrativa sem esse trecho.", anchor + " " + anchor):
+            value = {"segments": [{"narration": opening}],
+                     "news_selection": {"opening_anchor": anchor},
+                     "discovery_strategy": {"first_payoff": "Paráfrase sem correspondência literal."}}
+            before = copy.deepcopy(value)
+            EDITOR.bind_draft_metadata(value)
+            self.assertEqual(value, before)
+
+
 if __name__ == "__main__":
     unittest.main(argv=[sys.argv[0]] + TEST_ARGS)
