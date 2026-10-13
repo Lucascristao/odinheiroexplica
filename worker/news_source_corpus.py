@@ -24,8 +24,9 @@ MIN_ARTICLE_CHARS = 200
 
 
 class VisibleText(HTMLParser):
-    def __init__(self):
+    def __init__(self, *, include_article_header=False):
         super().__init__()
+        self.include_article_header = include_article_header
         self.skip = 0
         self.parts = []
         self.stack = []
@@ -36,7 +37,10 @@ class VisibleText(HTMLParser):
                   or str(attributes.get("aria-hidden", "")).casefold() == "true"
                   or bool(re.search(r"(?:display\s*:\s*none|visibility\s*:\s*hidden)",
                                     attributes.get("style") or "", flags=re.I)))
-        blocked = tag in NON_CONTENT_TAGS or hidden
+        in_article = any(parent == "article" for parent, _ in self.stack)
+        article_header = (self.include_article_header and tag == "header" and in_article
+                          and str(attributes.get("role", "")).casefold() != "banner")
+        blocked = (tag in NON_CONTENT_TAGS and not article_header) or hidden
         if tag not in VOID_TAGS:
             self.stack.append((tag, blocked))
             self.skip += int(blocked)
@@ -57,18 +61,18 @@ class VisibleText(HTMLParser):
             self.parts.append(data.strip() + " ")
 
 
-def extract_article(html):
+def extract_article(html, *, include_article_header=True):
     html = re.sub(r"<!--.*?-->", " ", html, flags=re.S)
     match = re.search(r"<article\b[^>]*>(.*?)</article>", html, flags=re.S | re.I)
     if match:
-        html = match.group(1)
+        html = match.group(0)
     else:
         match = re.search(r"<main\b[^>]*>(.*?)</main>", html, flags=re.S | re.I)
         if match:
-            html = match.group(1)
-    for tag in ("header", "footer", "nav"):
+            html = match.group(0)
+    for tag in ("footer", "nav"):
         html = re.sub(fr"<{tag}\b[^>]*>.*?</{tag}>", "", html, flags=re.S | re.I)
-    parser = VisibleText()
+    parser = VisibleText(include_article_header=include_article_header)
     parser.feed(html)
     return unescape(re.sub(r"[ \t]+", " ", "".join(parser.parts))).strip()
 
@@ -197,7 +201,10 @@ def collect_verified(candidates, max_links=54, max_articles=18):
             if not has_article_content(response.text):
                 continue
             content = extract_article(response.text)
-            if len(content) < MIN_ARTICLE_CHARS:
+            # Preserve the existing body-length gate: a long headline/byline
+            # cannot turn an empty article into publisher evidence.
+            body = extract_article(response.text, include_article_header=False)
+            if len(body) < MIN_ARTICLE_CHARS:
                 continue
             results.append({"category": item["category"], "headline": item["title"],
                             "publisher_host": final_host, "url": final,
