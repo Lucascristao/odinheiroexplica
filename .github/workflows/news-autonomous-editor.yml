@@ -69,7 +69,7 @@ jobs:
       - name: Selecionar, apurar, redigir e validar sem consumir voz
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          ODE_NEWS_RESEARCH_MODEL: gemini-2.5-flash
+          ODE_NEWS_RESEARCH_MODEL: gemini-3.8-flash
           ODE_NEWS_WRITER_MODEL: gemini-3.8-flash
         run: |
           set -euo pipefail
