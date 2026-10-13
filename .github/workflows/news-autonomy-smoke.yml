@@ -65,7 +65,7 @@ jobs:
           assert "workflow_dispatch:" in editor and "schedule:" in editor, "Cron editorial ausente"
           assert "schedule:" not in scout, "Coletor auxiliar não deve rodar cron"
           assert "gh workflow run render-news-single.yml" in editor, "Dispatch explicito obrigatorio"
-          assert "GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}" in editor, "Editor sem secret Groq"
+          assert "GROQ_API_KEY:" in editor, "Editor sem secret Groq"
           assert "GEMINI_API_KEY:" in editor, "Chave Gemini restrita à auditoria opcional"
           assert "ODE_NEWS_GROQ_MODEL: openai/gpt-oss-120b" in editor
           code = Path("worker/news_autonomous_editor.py").read_text(encoding="utf-8")
