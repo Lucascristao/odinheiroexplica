@@ -1,17 +1,112 @@
-# Legado deliberadamente inativo. A tarefa ChatGPT ODE Notícias Automáticas
-# é a única responsável por pesquisa, edição e commit do episódio.
-# Não executar worker/news_autonomous_editor.py: Gemini API é exclusiva do áudio.
-name: ODE Notícias - editor antigo desativado
+name: ODE Notícias - editor automático Gemini gratuito
 on:
   workflow_dispatch:
+    inputs:
+      slot:
+        description: Janela de edição
+        type: choice
+        options: [manha, meio-dia, noite]
+        required: true
+  schedule:
+    - cron: '0 9 * * *'
+    - cron: '0 13 * * *'
+    - cron: '0 21 * * *'
+  push:
+    branches: [main]
+    paths:
+      - 'news/editorial-triggers/*.txt'
 permissions:
-  contents: read
+  contents: write
+  actions: write
+concurrency:
+  group: ode-news-editor
+  cancel-in-progress: false
 jobs:
-  retired-editor:
+  edit:
     runs-on: ubuntu-latest
+    timeout-minutes: 75
     steps:
-      - name: Informar fluxo canônico
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - name: Identificar janela por horário de gatilho, sem adivinhar
+        shell: bash
+        env:
+          TRIGGER: ${{ github.event_name }}
+          CRON: ${{ github.event.schedule }}
+          MANUAL_SLOT: ${{ inputs.slot }}
         run: |
-          echo 'O editor Gemini antigo está DESATIVADO.'
-          echo 'ChatGPT Tasks prepara notícias e capas; render-news-single.yml processa somente insumos já entregues.'
-          echo 'Não foi gerada nenhuma pauta, capa ou publicação neste workflow.'
+          set -euo pipefail
+          if [[ "$TRIGGER" == workflow_dispatch ]]; then
+            SLOT="$MANUAL_SLOT"
+          elif [[ "$TRIGGER" == schedule ]]; then
+            case "$CRON" in
+              '0 9 * * *') SLOT=manha ;;
+              '0 13 * * *') SLOT=meio-dia ;;
+              '0 21 * * *') SLOT=noite ;;
+              *) exit 1 ;;
+            esac
+          else
+            CHANGED="$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" -- 'news/editorial-triggers/*.txt')"
+            if [[ "$(printf '%s\n' "$CHANGED" | sed '/^$/d' | wc -l)" -ne 1 ]]; then
+              echo "Exige um único gatilho de edição"; exit 1
+            fi
+            SLOT="$(basename "$CHANGED" .txt | sed -E 's/^.*-(manha|meio-dia|noite)$/\1/')"
+          fi
+          case "$SLOT" in manha|meio-dia|noite) ;; *) echo "Slot inválido"; exit 1;; esac
+          echo "NEWS_SLOT=$SLOT" >> "$GITHUB_ENV"
+          echo "NEWS_DATE=$(TZ=America/Fortaleza date +%F)" >> "$GITHUB_ENV"
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: worker/requirements.txt
+      - name: Dependências gratuitas e navegador documental
+        run: |
+          python -m pip install --disable-pip-version-check -r worker/requirements.txt
+          python -m playwright install chromium
+      - name: Selecionar, apurar, redigir e validar sem consumir voz
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ODE_NEWS_RESEARCH_MODEL: gemini-2.5-flash
+          ODE_NEWS_WRITER_MODEL: gemini-3.8-flash
+        run: |
+          set -euo pipefail
+          test "$(python - <<'PY'
+          import json
+          print(str(json.load(open('config/news-autonomy.json'))['enabled']).lower())
+          PY
+          )" = true
+          FILE="news/episodes/$NEWS_DATE-$NEWS_SLOT.json"
+          if [[ -e "$FILE" ]]; then
+            echo "EPISODE_ALREADY_EXISTS $FILE"; exit 0
+          fi
+          python worker/news_autonomous_editor.py --slot "$NEWS_SLOT"
+          test -s "$FILE"
+          python worker/news_single_project.py --input "$FILE" --output video/generated/daily-project.json
+          python worker/auto_capture_sources.py --project video/generated/daily-project.json --captures-dir research/captures
+          echo "EDITORIAL_AND_DOCUMENTARY_PREFLIGHT_PASS $FILE"
+      - name: Commit único e dispatch explícito do motor de vídeo
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          FILE="news/episodes/$NEWS_DATE-$NEWS_SLOT.json"
+          if [[ ! -f "$FILE" ]]; then
+            echo "EPISODE_NOT_WRITTEN"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- "$FILE"
+          if git diff --cached --quiet; then
+            echo "EPISODE_ALREADY_COMMITTED"; exit 0
+          fi
+          git commit -m "news: produção automática $NEWS_DATE $NEWS_SLOT"
+          git pull --rebase origin main
+          git push origin HEAD:main
+          # Push por GITHUB_TOKEN não dispara outros workflows. Dispatch explícito é obrigatório.
+          gh workflow run render-news-single.yml --ref main -f edition_path="$FILE"
+          echo "NEWS_RENDER_DISPATCHED $FILE"
