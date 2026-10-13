@@ -114,5 +114,22 @@
       "mode": "publish_immediately_after_qa",
       "reason": "O titular pediu um novo vídeo em fluxo real com as melhorias de apresentação e capa do Roberto nesta conversa. Publicação imediata exclusiva desta edição extra em 11/10/2026, sem ocupar as janelas recorrentes; preserva QA, apuração, canal e deduplicação."
     }
-  ]
+  ],
+  "editor": {
+    "provider": "gemini",
+    "orchestrator": "github_actions",
+    "workflow": "news-autonomous-editor.yml",
+    "research_mode": "publisher_pages_via_rss_no_paid_grounding",
+    "research_model": "gemini-3.8-flash",
+    "writer_model": "gemini-3.8-flash",
+    "writer_fallback": "gemini-3.5-flash-lite",
+    "gemini_api_secret": "GEMINI_API_KEY",
+    "free_tier_only": true
+  },
+  "thumbnail_automation": {
+    "mode": "original_local_documentary_base_with_locked_roberto_if_audited",
+    "api_image_generation_enabled": false,
+    "reason": "Gemini image generation API has no free production tier; never silently bill",
+    "automatic_youtube_fallback": true
+  }
 }
