@@ -1,1 +1,3 @@
 Autorização específica do titular: iniciar imediatamente a notícia de 13/10/2026, edição meio-dia, usando novo editor Gemini e motor canônico; deduplicar por episode_id e publicar apenas após QA, identidade e apuração.
+
+Rechecagem autorizada para diagnóstico de disponibilidade do Gemini, após ajuste de log; nenhuma edição existente deve ser sobrescrita.
