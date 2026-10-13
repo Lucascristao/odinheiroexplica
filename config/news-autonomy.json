@@ -103,6 +103,13 @@
       "authorized_by_user": true,
       "mode": "publish_immediately_after_qa",
       "reason": "Autorização direta do titular nesta conversa de 12/10/2026: “Veja pq novamente a postagem de manhã e meio dia não foram, arrume e publique”, reiterada em “Ok, mas conseguimos postar essas 2? Assim como já postamos antes?”. Recuperação exclusiva desta edição após reapuração factual; exige QA sem falhas, identidade do canal, recibos e deduplicação. Não altera as próximas janelas."
+    },
+    {
+      "episode_id": "noticia-2026-10-13-meio-dia",
+      "original_publication_local": "2026-10-13T12:00:00-03:00",
+      "authorized_by_user": true,
+      "mode": "publish_immediately_after_qa",
+      "reason": "Titular autorizou produzir e publicar em produção a edição de meio-dia de 13/10/2026 e reiterou para continuar após configurar GROQ_API_KEY, mesmo com a janela já transcorrida; exceção exclusiva deste episódio, com apuração do dia, QA real, validação do canal e sem duplicar upload."
     }
   ],
   "one_time_immediate_publications": [
