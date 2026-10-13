@@ -69,7 +69,7 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
             {"role": "user", "content": prompt},
         ],
         "temperature": 0.2 if json_mode else 0.1,
-        "max_completion_tokens": 5800 if json_mode else 1200,
+        "max_completion_tokens": 5800 if json_mode else 2000,
         "reasoning_effort": "low",
         "stream": False,
     }
