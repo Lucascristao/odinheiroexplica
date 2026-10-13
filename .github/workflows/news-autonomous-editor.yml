@@ -87,6 +87,23 @@ jobs:
           python worker/news_single_project.py --input "$FILE" --output video/generated/daily-project.json
           python worker/auto_capture_sources.py --project video/generated/daily-project.json --captures-dir research/captures
           echo "EDITORIAL_AND_DOCUMENTARY_PREFLIGHT_PASS $FILE"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Compor capa local original e auditar pixels com Gemini, opcional e sem geração paga
+        continue-on-error: true
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ODE_NEWS_VISION_MODEL: gemini-3.8-flash
+        run: |
+          set -euo pipefail
+          FILE="news/episodes/$NEWS_DATE-$NEWS_SLOT.json"
+          if [[ ! -f "$FILE" ]]; then exit 0; fi
+          npm ci --no-audit --no-fund
+          python worker/news_auto_local_cover.py --project video/generated/daily-project.json --episode "$FILE"
+          mkdir -p render-output
+          echo "audited" > render-output/news-thumbnail-approved.txt
       - name: Commit único e dispatch explícito do motor de vídeo
         env:
           GH_TOKEN: ${{ github.token }}
@@ -101,6 +118,11 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -- "$FILE"
+          # Apenas capa auditada e verificada; arquivos incompletos são descartados.
+          if [[ -s render-output/news-thumbnail-approved.txt ]]; then
+            PROJECT_ID="noticia-$NEWS_DATE-$NEWS_SLOT"
+            git add -- "production/$PROJECT_ID/thumbnail.jpg" "production/$PROJECT_ID/thumbnail-background.png" "production/$PROJECT_ID/thumbnail-composition.json" "production/$PROJECT_ID/thumbnail-audit.json"
+          fi
           if git diff --cached --quiet; then
             echo "EPISODE_ALREADY_COMMITTED"; exit 0
           fi
