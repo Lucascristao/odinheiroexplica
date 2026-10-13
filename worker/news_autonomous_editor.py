@@ -1,6 +1,6 @@
 """Autonomous newsroom: current research, truthful source checks, and episode JSON."""
 import argparse
-from datetime import datetime
+from datetime import datetime, timezone
 from html import unescape
 import json
 import os
@@ -111,7 +111,79 @@ def prevent_repeated_story(episode, root):
             raise ValueError("Provável tema repetido do título: " + old_path.name)
 
 
-def research(candidates, history, target):
+def diagnostic_text(value, limit=1500):
+    """Bounded operational text; never read credentials from the environment."""
+    text = str(value)
+    text = re.sub(r"(?i)(\b(?:groq_api_key|gemini_api_key|api[_-]?key|access[_-]?token|refresh[_-]?token)\b[\"']?\s*[:=]\s*[\"']?)[^\s&;,\"']+",
+                  r"\1[REDACTED]", text)
+    text = re.sub(r"(?i)(\bBearer\s+)[A-Za-z0-9._~+/=-]+", r"\1[REDACTED]", text)
+    text = re.sub(r"\bgsk_[A-Za-z0-9_-]{20,}\b|\bAIza[A-Za-z0-9_-]{30,}\b", "[REDACTED]", text)
+    return text[:limit]
+
+
+def safe_transport_diagnostics(data):
+    """Copy only bounded transport state and token counts, never arbitrary payloads."""
+    data = data or {}
+    result = {}
+    for key in ("provider", "model", "finish_reason"):
+        if isinstance(data.get(key), str):
+            result[key] = diagnostic_text(data[key], 180)
+    for key in ("attempt", "http_status"):
+        if type(data.get(key)) is int:
+            result[key] = data[key]
+    usage = data.get("usage") or {}
+    if isinstance(usage, dict):
+        result["usage"] = {key: usage[key] for key in
+                           ("prompt_tokens", "completion_tokens", "total_tokens", "reasoning_tokens")
+                           if type(usage.get(key)) is int and usage[key] >= 0}
+    return result
+
+
+def save_research_diagnostics(path, corpus, target, report=None, error_type=None, transport=None):
+    if path is None:
+        return
+    record = {
+        "phase": "research_model_output",
+        "target_local": target,
+        "recorded_at_utc": datetime.now(timezone.utc).isoformat(),
+        "factual_review_completed": False,
+        "scope": "Corpus metadata and unverified bounded model output; not factual approval.",
+        "corpus": [{
+            "url": diagnostic_text(entry.get("url", ""), 1200),
+            "headline": diagnostic_text(entry.get("headline", ""), 240),
+            "publisher_host": diagnostic_text(entry.get("publisher_host", ""), 180),
+            "feed_published_utc": diagnostic_text(entry.get("feed_published_utc", ""), 100),
+            "article_characters": len(entry.get("actual_article_text", "")),
+        } for entry in corpus],
+        "model_report": None,
+        "rejection_reasons": [],
+        "error_type": error_type,
+        "transport": safe_transport_diagnostics(transport),
+    }
+    if report is not None:
+        preview = report
+        # A model may copy a supplied body; omit full copies before bounding.
+        for entry in corpus:
+            body = entry.get("actual_article_text", "")
+            if body:
+                preview = preview.replace(body, "[FULL_ARTICLE_BODY_OMITTED]")
+        record["model_report"] = {
+            "characters": len(report),
+            "preview": diagnostic_text(preview),
+            "preview_truncated": len(preview) > 1500,
+        }
+        if "EDITORIAL_INSUFFICIENT_EVIDENCE" in report:
+            record["rejection_reasons"].append("marker")
+        if len(report) < 400:
+            record["rejection_reasons"].append("short_report")
+    output = Path(path)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if report is not None or error_type is not None:
+        print("EDITORIAL_RESEARCH_DIAGNOSTIC", json.dumps(record, ensure_ascii=False), flush=True)
+
+
+def research(candidates, history, target, diagnostic_path=None):
     """Select an actually verified new event from publisher pages, without model web tools."""
     corpus = collect_verified(candidates)
     # Keep below the Groq free-plan TPM limit. Literal excerpts + real URLs are
@@ -136,7 +208,14 @@ Se não houver relato de acontecimento de hoje sustentado por texto real, seja c
 exatamente EDITORIAL_INSUFFICIENT_EVIDENCE, sem fabricar material. Não descarte automaticamente uma exclusiva só porque ainda não foi republicada.
 Caso exista, comece com SOURCE_MODE: corroborated ou SOURCE_MODE: single_source_attributed. Escreva relatório factual de 500 a 750 palavras, incluindo URLs e pelo
 menos dois trechos LITERAIS DIFERENTES realmente presentes no corpus, preferindo trechos de 15 a 70 caracteres. Na exclusiva, os dois trechos devem vir da mesma matéria HTML; não simule duas fontes porque há dois recortes."""
-    report = complete(prompt)
+    transport_diag = {}
+    save_research_diagnostics(diagnostic_path, corpus, target, transport=transport_diag)
+    try:
+        report = complete(prompt, diagnostics=transport_diag)
+    except Exception as exc:
+        save_research_diagnostics(diagnostic_path, corpus, target, error_type=type(exc).__name__, transport=transport_diag)
+        raise
+    save_research_diagnostics(diagnostic_path, corpus, target, report=report, transport=transport_diag)
     if "EDITORIAL_INSUFFICIENT_EVIDENCE" in report or len(report) < 400:
         raise RuntimeError("Corpus não demonstra um relato verificável de acontecimento de hoje.")
     return report
@@ -245,7 +324,8 @@ def main():
         raise SystemExit("Nenhuma pauta RSS atual, não inventar notícias.")
     history = existing_history(root)
     report = research(candidates["candidates"], history,
-                      f"{date}T{SLOTS[args.slot]}:00-03:00")
+                      f"{date}T{SLOTS[args.slot]}:00-03:00",
+                      diagnostic_path=root / "render-output" / "news-editorial-diagnostics.json")
     error = ""
     for attempt in range(3):
         try:
