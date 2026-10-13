@@ -107,7 +107,10 @@ Relatório em texto com URLs e trechos originais."""
         except Exception as error:
             if "404" not in str(error) and "429" not in str(error):
                 raise
-            failures.append(model + ":" + type(error).__name__)
+            status = getattr(error, "code", None) or getattr(error, "status_code", None) or "unknown"
+            detail = re.sub(r"AIza[0-9A-Za-z_-]+", "[REDACTED]", str(error))[:350]
+            print("EDITOR_RESEARCH_API_ERROR", model, status, detail, flush=True)
+            failures.append(model + ":" + type(error).__name__ + ":" + str(status))
     if response is None:
         raise RuntimeError("Pesquisa indisponível nos modelos autorizados: " + ", ".join(failures))
     grounding = getattr(response.candidates[0], "grounding_metadata", None)
@@ -209,7 +212,9 @@ Não invente datas nem alegações sem respaldo. Não incluir links, hashtags, F
         except Exception as error:
             if "404" not in str(error) and "429" not in str(error):
                 raise
-            last = type(error).__name__
+            status = getattr(error, "code", None) or getattr(error, "status_code", None) or "unknown"
+            print("EDITOR_WRITER_API_ERROR", model, status, str(error)[:180], flush=True)
+            last = type(error).__name__ + ":" + str(status)
     raise RuntimeError("Nenhum modelo conseguiu gerar JSON: " + str(last))
 
 
