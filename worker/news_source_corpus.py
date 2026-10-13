@@ -50,23 +50,58 @@ def extract_article(html):
     return unescape(re.sub(r"[ \t]+", " ", "".join(parser.parts))).strip()
 
 
-def collect_verified(candidates, max_links=28, max_articles=14):
+STOPWORDS = {
+    "brasil", "brasileiro", "brasileira", "hoje", "após", "sobre", "para", "com",
+    "uma", "que", "dos", "das", "nos", "nas", "pela", "pelo", "mais", "como",
+    "entre", "novo", "nova", "anos", "revela", "noticias", "notícia",
+}
+
+
+def headline_terms(title):
+    import unicodedata
+    unaccented = "".join(
+        c for c in unicodedata.normalize("NFKD", title.split(" - ")[0].casefold())
+        if not unicodedata.combining(c)
+    )
+    return {t for t in re.findall(r"[a-z0-9]{4,}", unaccented)
+            if t not in STOPWORDS}
+
+
+def prioritize_same_story(candidates):
+    """Favor a news event reported by several outlets without presuming it is verified."""
+    terms = [headline_terms(item.get("title", "")) for item in candidates]
+    scores = []
+    for i, left in enumerate(terms):
+        peers = sum(1 for j, right in enumerate(terms) if j != i
+                    and len(left & right) >= 3
+                    and len(left & right) >= 0.35 * min(len(left), len(right)))
+        scores.append(peers)
+    return [item for _, item in sorted(zip(scores, candidates),
+            key=lambda pair: (-pair[0], -len(headline_terms(pair[1].get("title", ""))))) ]
+
+
+def collect_verified(candidates, max_links=54, max_articles=18):
     from gnews_decoder import decode_many
 
-    chosen = [item for item in candidates if item.get("link", "").startswith("https://")][:max_links]
+    chosen = prioritize_same_story(
+        [item for item in candidates if item.get("link", "").startswith("https://")]
+    )[:max_links]
     if not chosen:
         raise RuntimeError("Corpus editorial sem candidatos RSS.")
     links = [item["link"] for item in chosen]
     decoded = decode_many(links, ceid="BR:pt-419", concurrency=8, timeout=20.0)
     results = []
-    seen = set()
+    seen_urls = set()
+    domain_counts = {}
     for item in chosen:
         original = item["link"]
         url = decoded.get(original) if "news.google.com" in urlparse(original).netloc else original
         if not url or not url.startswith("https://"):
             continue
         host = (urlparse(url).hostname or "").casefold().removeprefix("www.")
-        if not host or host.endswith("google.com") or host in seen:
+        if not host or host.endswith("google.com") or url in seen_urls:
+            continue
+        if domain_counts.get(host, 0) >= 3:
             continue
         try:
             response = requests.get(url, headers={"User-Agent": "Mozilla/5.0 ODE-editor/1.0"},
@@ -84,13 +119,14 @@ def collect_verified(candidates, max_links=28, max_articles=14):
             results.append({"category": item["category"], "headline": item["title"],
                             "publisher_host": final_host, "url": final,
                             "feed_published_utc": item["published_utc"],
-                            "actual_article_text": content[:6500]})
-            seen.add(final_host)
+                            "actual_article_text": content[:6000]})
+            seen_urls.add(final)
+            domain_counts[final_host] = domain_counts.get(final_host, 0) + 1
             if len(results) >= max_articles:
                 break
         except (requests.RequestException, ValueError):
             continue
-    if len(results) < 2:
-        raise RuntimeError("Menos de duas páginas de publicadores independentes foram lidas; abortar sem inventar evidências.")
-    print("VERIFIED_SOURCE_CORPUS", len(results), "publishers", len(seen), flush=True)
+    if len(domain_counts) < 2:
+        raise RuntimeError("Menos de dois publicadores independentes foram lidos; não fabricar evidências.")
+    print("VERIFIED_SOURCE_CORPUS", len(results), "publishers", len(domain_counts), flush=True)
     return results
