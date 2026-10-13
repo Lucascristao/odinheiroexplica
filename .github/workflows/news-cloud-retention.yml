@@ -1,0 +1,208 @@
+name: ODE Notícias - limpar artefatos da nuvem
+
+on:
+  workflow_dispatch:
+    inputs:
+      apply:
+        description: 'Aplicar limpeza após as verificações; desmarque para gerar apenas o plano.'
+        type: boolean
+        default: true
+        required: true
+      closed_runs:
+        description: 'IDs de runs encerradas e revisadas pelo operador, separados por espaços.'
+        type: string
+        required: false
+      protect_runs:
+        description: 'IDs de runs que devem ser preservadas, separados por espaços.'
+        type: string
+        required: false
+  schedule:
+    # 22h e 22h17 de Fortaleza. O cron pode atrasar; a publicação real é a trava.
+    - cron: '0 1 * * *'
+    - cron: '17 1 * * *'
+  workflow_run:
+    workflows: ['ODE Notícias - confirmar publicação pública']
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: read
+  actions: write
+
+concurrency:
+  group: ode-news-cloud-retention-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  cleanup:
+    if: >-
+      github.event_name != 'workflow_run' ||
+      (github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main' &&
+       github.event.workflow_run.head_repository.full_name == github.repository)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Ler confirmação pública da execução de origem
+        if: github.event_name == 'workflow_run'
+        continue-on-error: true
+        uses: actions/download-artifact@v4
+        with:
+          name: ode-publication-confirmation
+          path: render-output/source-publication
+          github-token: ${{ github.token }}
+          run-id: ${{ github.event.workflow_run.id }}
+      - name: Fixar janela e validar argumentos
+        id: window
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE_EXPRESSION: ${{ github.event.schedule }}
+          APPLY_INPUT: ${{ inputs.apply }}
+          CLOSED_RUNS: ${{ inputs.closed_runs }}
+          PROTECT_RUNS: ${{ inputs.protect_runs }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python - <<'PY'
+          from datetime import date, datetime, timedelta, timezone
+          import json
+          import os
+          from pathlib import Path
+          import re
+          import subprocess
+          from zoneinfo import ZoneInfo
+
+          def run_ids(value):
+              values = value.split()
+              if any(re.fullmatch(r'[1-9][0-9]*', item) is None for item in values):
+                  raise ValueError('Os IDs devem ser números inteiros positivos separados por espaços.')
+              return list(dict.fromkeys(values))
+
+          def night_date(created_at, schedule):
+              cron_minutes = {'0 1 * * *': 0, '17 1 * * *': 17}
+              if schedule not in cron_minutes:
+                  raise ValueError('Cron não reconhecido.')
+              created = datetime.fromisoformat(created_at.replace('Z', '+00:00'))
+              if created.tzinfo is None:
+                  raise ValueError('A criação da run precisa ter fuso.')
+              created = created.astimezone(timezone.utc)
+              nominal = created.replace(hour=1, minute=cron_minutes[schedule], second=0, microsecond=0)
+              if nominal > created:
+                  nominal -= timedelta(days=1)
+              return nominal.astimezone(ZoneInfo('America/Fortaleza')).date().isoformat()
+
+          def confirmed_night(report):
+              day = report.get('news_date')
+              if not isinstance(day, str) or date.fromisoformat(day).isoformat() != day:
+                  return None
+              if (report.get('public_confirmed') is True
+                      and report.get('privacy_observed') == 'public'
+                      and report.get('stage') == 'public_confirmed'
+                      and report.get('episode_id') == f'noticia-{day}-noite'):
+                  return day
+              return None
+
+          target = Path('render-output/cloud-retention-context.json')
+          target.parent.mkdir(parents=True, exist_ok=True)
+          context = {'trigger': os.environ['EVENT_NAME'], 'proceed': False,
+                     'apply': False, 'require_night_date': None, 'closed_runs': [],
+                     'protect_runs': [], 'stage': 'workflow_guarded'}
+          failed = False
+          try:
+              event = context['trigger']
+              if event == 'workflow_dispatch':
+                  if os.environ.get('APPLY_INPUT') not in ('true', 'false'):
+                      raise ValueError('A opção apply deve ser booleana.')
+                  context.update(proceed=True, apply=os.environ['APPLY_INPUT'] == 'true',
+                                 closed_runs=run_ids(os.environ.get('CLOSED_RUNS', '')),
+                                 protect_runs=run_ids(os.environ.get('PROTECT_RUNS', '')),
+                                 stage='manual_latest_public')
+              elif event == 'schedule':
+                  result = subprocess.run(
+                      ['gh', 'api', f"repos/{os.environ['GITHUB_REPOSITORY']}/actions/runs/{os.environ['GITHUB_RUN_ID']}",
+                       '--jq', '.created_at'], capture_output=True, text=True, check=True)
+                  day = night_date(result.stdout.strip(), os.environ['SCHEDULE_EXPRESSION'])
+                  context.update(proceed=True, apply=True, require_night_date=day, stage='night_window')
+              elif event == 'workflow_run':
+                  report = json.loads(Path('render-output/source-publication/publication-check.json').read_text(encoding='utf-8'))
+                  if not isinstance(report, dict):
+                      raise ValueError('Confirmação de origem inválida.')
+                  day = confirmed_night(report)
+                  if day:
+                      context.update(proceed=True, apply=True, require_night_date=day,
+                                     stage='night_monitor_confirmed')
+                  else:
+                      context['stage'] = 'monitor_other_window_or_not_public'
+              else:
+                  raise ValueError('Gatilho não reconhecido.')
+          except Exception as error:
+              # Não persistir resposta de API, credenciais ou texto arbitrário de exceção.
+              context['error_type'] = type(error).__name__
+              failed = True
+          target.write_text(json.dumps(context, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
+              output.write(f"proceed={'true' if context['proceed'] else 'false'}\n")
+          if failed:
+              raise SystemExit('Janela ou argumentos não validados; limpeza bloqueada.')
+          PY
+      - name: Instalar somente dependências da verificação e retenção
+        if: steps.window.outputs.proceed == 'true'
+        run: python -m pip install --disable-pip-version-check 'requests>=2.32' 'google-auth>=2.35' 'google-api-python-client>=2.149'
+      - name: Planejar e aplicar somente após as travas do script
+        if: steps.window.outputs.proceed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import subprocess
+          import sys
+          context = json.loads(Path('render-output/cloud-retention-context.json').read_text(encoding='utf-8'))
+          command = [sys.executable, 'worker/news_cloud_retention.py',
+                     '--output', 'render-output/cloud-retention-report.json']
+          if context['apply']:
+              command.append('--apply')
+          if context['require_night_date']:
+              command.extend(['--require-night-date', context['require_night_date']])
+          for run_id in context['closed_runs']:
+              command.extend(['--closed-run', run_id])
+          for run_id in context['protect_runs']:
+              command.extend(['--protect-run', run_id])
+          raise SystemExit(subprocess.run(command, check=False).returncode)
+          PY
+      - name: Registrar falha anterior à retenção, se houver
+        if: always()
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = Path('render-output/cloud-retention-report.json')
+          if not report.exists():
+              report.parent.mkdir(parents=True, exist_ok=True)
+              context_path = Path('render-output/cloud-retention-context.json')
+              context = json.loads(context_path.read_text(encoding='utf-8')) if context_path.exists() else {}
+              report.write_text(json.dumps({'stage': context.get('stage', 'workflow_not_executed'),
+                                           'applied': False, 'deleted_artifacts': [],
+                                           'message': 'O script de retenção não foi executado; nenhuma limpeza foi aplicada.'},
+                                          ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+      - name: Preservar somente relatório e contexto pequenos
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ode-cloud-retention-report
+          path: |
+            render-output/cloud-retention-report.json
+            render-output/cloud-retention-context.json
+          if-no-files-found: error
+          retention-days: 30
