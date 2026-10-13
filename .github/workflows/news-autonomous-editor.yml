@@ -86,6 +86,15 @@ jobs:
           python worker/news_single_project.py --input "$FILE" --output video/generated/daily-project.json
           python worker/auto_capture_sources.py --project video/generated/daily-project.json --captures-dir research/captures
           echo "EDITORIAL_AND_DOCUMENTARY_PREFLIGHT_PASS $FILE"
+      - name: Preservar diagnóstico editorial sem chaves nem artigos integrais
+        if: always()
+        continue-on-error: true
+        uses: actions/upload-artifact@v4
+        with:
+          name: news-editorial-diagnostics
+          path: render-output/news-editorial-diagnostics.json
+          if-no-files-found: warn
+          retention-days: 7
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
