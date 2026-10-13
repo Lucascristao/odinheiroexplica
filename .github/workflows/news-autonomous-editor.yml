@@ -11,6 +11,10 @@ on:
     - cron: '0 9 * * *'
     - cron: '0 13 * * *'
     - cron: '0 21 * * *'
+    # Backup after hourly congestion; current-main guard prevents duplicate editions.
+    - cron: '17 9 * * *'
+    - cron: '17 13 * * *'
+    - cron: '17 21 * * *'
   push:
     branches: [main]
     paths:
@@ -28,6 +32,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
           persist-credentials: true
       - name: Identificar janela por horário de gatilho, sem adivinhar
@@ -42,9 +47,9 @@ jobs:
             SLOT="$MANUAL_SLOT"
           elif [[ "$TRIGGER" == schedule ]]; then
             case "$CRON" in
-              '0 9 * * *') SLOT=manha ;;
-              '0 13 * * *') SLOT=meio-dia ;;
-              '0 21 * * *') SLOT=noite ;;
+              '0 9 * * *'|'17 9 * * *') SLOT=manha ;;
+              '0 13 * * *'|'17 13 * * *') SLOT=meio-dia ;;
+              '0 21 * * *'|'17 21 * * *') SLOT=noite ;;
               *) exit 1 ;;
             esac
           else
