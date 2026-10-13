@@ -17,6 +17,8 @@ on:
       - 'config/news-autonomy.json'
       - 'worker/test_news_autonomous_schedule.py'
       - 'worker/news_single_project.py'
+      - 'worker/news_autonomous_editor.py'
+      - 'worker/news_source_corpus.py'
       - 'worker/news_reconstruction.py'
       - 'worker/test_news_reconstruction.py'
 permissions:
@@ -33,7 +35,7 @@ jobs:
       - name: Validar scripts e YAML sem chamadas a APIs
         run: |
           set -euo pipefail
-          python -m py_compile worker/news_autonomous_schedule.py worker/news_single_project.py worker/news_autonomous_editor.py worker/news_scout.py worker/test_news_autonomous_schedule.py
+          python -m py_compile worker/news_autonomous_schedule.py worker/news_single_project.py worker/news_autonomous_editor.py worker/news_source_corpus.py worker/news_scout.py worker/test_news_autonomous_schedule.py
           python -m pip install --disable-pip-version-check PyYAML
           python - <<'PY'
           from pathlib import Path
