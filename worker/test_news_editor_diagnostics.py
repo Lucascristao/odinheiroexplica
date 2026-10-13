@@ -55,6 +55,31 @@ class ResearchDiagnosticTests(unittest.TestCase):
         self.assertEqual(record["rejection_reasons"], ["short_report"])
         self.assertEqual(record["model_report"]["characters"], 28)
 
+    def test_truncated_report_is_not_used_as_completed_research(self):
+        def completion(prompt, diagnostics):
+            diagnostics.update({"finish_reason": "length", "usage": {"completion_tokens": 2000}})
+            return "SOURCE_MODE: corroborated " + "Unfinished factual report. " * 60
+        with patch.object(editor, "collect_verified", return_value=self.corpus), patch.object(editor, "complete", side_effect=completion):
+            with self.assertRaisesRegex(RuntimeError, "cortou o relatório"):
+                editor.research([], [], "2026-10-13T12:00:00-03:00", diagnostic_path=self.path)
+        record = json.loads(self.path.read_text(encoding="utf-8"))
+        self.assertEqual(record["rejection_reasons"], ["response_truncated"])
+
+    def test_root_list_is_rejected_with_specific_schema_error(self):
+        with patch.object(editor, "complete", return_value="[]"):
+            with self.assertRaisesRegex(ValueError, "objeto JSON na raiz"):
+                editor.draft("Verified fixture report", "2026-10-13", "noite", [], "")
+
+    def test_rejected_draft_records_structure_without_script_or_keys(self):
+        episode = {"title": "PRIVATE_DRAFT_CONTENT", "segments": ["PRIVATE_NARRATION"],
+                   "api_key": "PRIVATE_KEY"}
+        editor.record_draft_diagnostic(self.path, 1, episode, {"finish_reason": "stop"},
+                                       ValueError("invalid fixture field"))
+        item = json.loads(self.path.read_text(encoding="utf-8"))["draft_attempts"][0]
+        self.assertFalse(item["validated"])
+        self.assertEqual(item["field_types"]["segments"], "list")
+        self.assertNotIn("PRIVATE_", json.dumps(item))
+
     def test_full_article_and_labeled_credentials_are_not_saved(self):
         report = self.body + " GROQ_API_KEY=synthetic-sensitive-value Bearer synthetic-bearer-value " + "Context. " * 100
         self.assertEqual(self.call(report), report)
@@ -85,7 +110,7 @@ class ResearchDiagnosticTests(unittest.TestCase):
         report = "Fixture unverified report. " * 25
         def complete(prompt, *, diagnostics):
             diagnostics.update({"provider":"groq", "model":"openai/gpt-oss-120b",
-                                "attempt":1, "http_status":200, "finish_reason":"length",
+                                "attempt":1, "http_status":200, "finish_reason":"stop",
                                 "usage":{"prompt_tokens":3000, "completion_tokens":1200,
                                          "total_tokens":4200, "reasoning_tokens":900,
                                          "private_extra":"synthetic-sensitive-value"},
@@ -99,7 +124,7 @@ class ResearchDiagnosticTests(unittest.TestCase):
         self.assertNotIn("synthetic-bearer-value", saved)
         self.assertNotIn(self.body, saved)
         transport = json.loads(saved)["transport"]
-        self.assertEqual(transport["finish_reason"], "length")
+        self.assertEqual(transport["finish_reason"], "stop")
         self.assertEqual(transport["usage"]["reasoning_tokens"], 900)
         self.assertEqual(transport["usage"]["completion_tokens"], 1200)
         self.assertNotIn("api_key", transport)
