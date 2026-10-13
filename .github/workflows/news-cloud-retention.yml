@@ -169,7 +169,7 @@ jobs:
           import sys
           context = json.loads(Path('render-output/cloud-retention-context.json').read_text(encoding='utf-8'))
           command = [sys.executable, 'worker/news_cloud_retention.py',
-                     '--output', 'render-output/cloud-retention-report.json']
+                     '--output', 'render-output/cloud-retention-report.json', '--prune-stale-dependencies']
           if context['apply']:
               command.append('--apply')
           if context['require_night_date']:
@@ -195,6 +195,25 @@ jobs:
                                            'applied': False, 'deleted_artifacts': [],
                                            'message': 'O script de retenção não foi executado; nenhuma limpeza foi aplicada.'},
                                           ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+      - name: Mostrar retenção efetivamente executada
+        if: always()
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          report = json.loads(Path('render-output/cloud-retention-report.json').read_text())
+          latest = report.get('latest_public', {})
+          removed = report.get('removed', [])
+          reclaimed = sum(item.get('bytes', 0) for item in removed)
+          message = ("### Retenção no GitHub\n\n"
+                     + f"Estado: **{report.get('status', report.get('stage'))}**\n\n"
+                     + f"Último público: {latest.get('project_id', 'não confirmado')}\n\n"
+                     + f"Pacotes/caches removidos: {len(removed)}; bytes liberados: {reclaimed}.\n")
+          if report.get('reason'):
+              message += f"\nMotivo observado: {report['reason']}\n"
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as output:
+              output.write(message)
           PY
       - name: Preservar somente relatório e contexto pequenos
         if: always()
