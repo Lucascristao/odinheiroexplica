@@ -95,7 +95,7 @@ class EditorSourceModeTests(unittest.TestCase):
         missing = "A frase oculta não constitui evidência."
         for extra in ("<script>" + missing + "</script>", "<nav>" + missing + "</nav>",
                       '<p hidden>' + missing + '</p>', '<p aria-hidden="true">' + missing + '</p>',
-                      '<p style="display:none">' + missing + '</p>', '<header>' + missing + '</header>'):
+                      '<p style="display:none">' + missing + '</p>', '<header role="banner">' + missing + '</header>'):
             with self.subTest(extra=extra), self.assertRaisesRegex(ValueError, "visible article"):
                 ep = episode()
                 ep["documentary_evidence"][1]["expected_text"] = missing
@@ -104,6 +104,21 @@ class EditorSourceModeTests(unittest.TestCase):
             ep = episode()
             ep["documentary_evidence"][1]["expected_text"] = missing
             self.run_check(ep, html=page().replace("<title>", "<title>" + missing))
+
+    def test_visible_article_headline_and_date_are_authentic_documentary_text(self):
+        headline = "A comissão publicou a decisão nesta terça-feira."
+        visible_date = "13 de outubro de 2026, às 08h32"
+        html = page().replace(
+            "<article><h1>Notícia atual com contexto e autoria</h1>",
+            '<article><header><h1>' + headline + '</h1>'
+            '<time datetime="2026-10-13T08:32:00-03:00">' + visible_date
+            + '</time><span>Autoria visível</span></header>',
+        )
+        ep = episode()
+        ep["documentary_evidence"][0]["expected_text"] = headline
+        ep["documentary_evidence"][1]["expected_text"] = visible_date
+        self.assertEqual(self.run_check(ep, html=html).call_count, 1)
+        self.assertEqual(ep["verified_facts"][0]["status"], "statement")
 
     def test_google_final_redirect_is_not_a_publisher(self):
         with self.assertRaisesRegex(ValueError, "aggregator"):
