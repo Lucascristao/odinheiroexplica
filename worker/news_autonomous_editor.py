@@ -13,6 +13,7 @@ import requests
 from google import genai
 from google.genai import types
 from news_scout import collect
+from news_source_corpus import collect_verified
 from news_single_project import validate, transform
 from build_youtube_package import validate_publication_fields
 
@@ -77,49 +78,39 @@ def prevent_repeated_story(episode, root):
 
 
 def research(client, candidates, history, target):
-    prompt = f"""Você é repórter de O Dinheiro Explica, Brasil.
-Horário de publicação pretendido: {target}; hora da pesquisa:
-{datetime.now(ZoneInfo('America/Fortaleza')).isoformat()}.
-Escolha UMA notícia cujo FATO NOVO aconteceu HOJE em Fortaleza, concreta, verificável e diferente do histórico. Compare candidatas atuais incluindo política; informe datas reais de fato e publicação.
-É OBRIGATÓRIO pesquisar a internet real pela ferramenta Google Search grounding.
-Candidatos RSS não apurados: {json.dumps(candidates[:28], ensure_ascii=False)}.
-Histórico: {json.dumps(history, ensure_ascii=False)}.
-Investigue uma pauta com consequência para brasileiros e prova documental.
-Retorne relatório factual detalhado com datas do FATO e PUBLICAÇÃO, comparação de política e economia, ao menos 4 fatos separados
-e pelo menos 2 URLs HTTPS COMPLETAS de matérias reais de diferentes editoras,
-com trechos LITERAIS comprováveis no texto da página, não links Google News.
-Priorize matérias públicas e acessíveis para captura de trechos pelo navegador.
-Separe afirmações do governo, fato, projeção, controvérsia e opinião.
-Não invente números, fotos, notícias, links ou citações.
-Relatório em texto com URLs e trechos originais."""
-    response = None
-    failures = []
-    for model in (os.getenv("ODE_NEWS_RESEARCH_MODEL", "gemini-3.8-flash"),
-                  "gemini-3.5-flash-lite"):
+    """Use actual fetched publisher content to keep free-tier Gemini off paid Google Search grounding."""
+    corpus = collect_verified(candidates)
+    prompt = f"""Você é editor factual do canal O Dinheiro Explica.
+Janela pretendida: {target}; hora agora: {datetime.now(ZoneInfo('America/Fortaleza')).isoformat()}.
+Abaixo há páginas efetivamente acessadas. Só use suas URLs literais e trechos
+efetivamente presentes em actual_article_text, sem atribuir prova ao RSS Google.
+Diferencie hora de reportagem e dia do fato central. Busque dentro do CORPUS um
+FATO NOVO ocorrido hoje na região de Fortaleza, apoiado por dois publicadores
+independentes: se não houver comprovação, diga que é impossível e pare.
+Compare candidatas atuais de política e economia; registre limitações.
+Não use as notícias do histórico: {json.dumps(history, ensure_ascii=False)}.
+CORPUS DE PÁGINAS VERIFICADAS:
+{json.dumps(corpus, ensure_ascii=False)[:46000]}
+Retorne relatório apurado com 4 fatos, URLs literais de publicadores, dois
+trechos literais curtos e diferenças de perspectiva. Sem fontes inventadas."""
+    errors = []
+    for model in (os.getenv("ODE_NEWS_RESEARCH_MODEL", "gemini-3.8-flash"), "gemini-3.5-flash-lite"):
         try:
             response = client.models.generate_content(
                 model=model, contents=prompt,
-                config=types.GenerateContentConfig(
-                    tools=[types.Tool(google_search=types.GoogleSearch())], temperature=0.2
-                ),
+                config=types.GenerateContentConfig(temperature=0.1),
             )
-            break
+            if not response.text or len(response.text) < 400:
+                raise ValueError("Relatório factual insuficiente.")
+            return response.text
         except Exception as error:
+            status = getattr(error, "code", None) or getattr(error, "status_code", None) or "unknown"
+            detail = re.sub(r"AIza[0-9A-Za-z_-]+", "[REDACTED]", str(error))[:300]
+            print("EDITOR_RESEARCH_API_ERROR", model, status, detail, flush=True)
             if "404" not in str(error) and "429" not in str(error):
                 raise
-            status = getattr(error, "code", None) or getattr(error, "status_code", None) or "unknown"
-            detail = re.sub(r"AIza[0-9A-Za-z_-]+", "[REDACTED]", str(error))[:350]
-            print("EDITOR_RESEARCH_API_ERROR", model, status, detail, flush=True)
-            failures.append(model + ":" + type(error).__name__ + ":" + str(status))
-    if response is None:
-        raise RuntimeError("Pesquisa indisponível nos modelos autorizados: " + ", ".join(failures))
-    grounding = getattr(response.candidates[0], "grounding_metadata", None)
-    if not grounding or not getattr(grounding, "grounding_chunks", None):
-        raise RuntimeError("A pesquisa não trouxe confirmações por grounding.")
-    if not response.text or len(response.text) < 400:
-        raise RuntimeError("Pesquisa superficial, sem relatório suficiente.")
-    return response.text
-
+            errors.append(str(status))
+    raise RuntimeError("Gemini sem cota disponível para redigir a partir das fontes: " + ", ".join(errors))
 
 def draft(client, report, day, slot, history, error):
     target = SLOTS[slot]
