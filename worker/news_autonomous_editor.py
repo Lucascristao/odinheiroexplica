@@ -83,8 +83,8 @@ def research(candidates, history, target):
     # the only evidence the editor may use; full pages remain checked downstream.
     compact = [
         {**{k: entry[k] for k in ("category", "headline", "publisher_host", "url", "feed_published_utc")},
-         "actual_article_text": entry["actual_article_text"][:2200]}
-        for entry in corpus[:7]
+         "actual_article_text": entry["actual_article_text"][:1550]}
+        for entry in corpus[:10]
     ]
     prompt = f"""Você é editor de apuração do canal O Dinheiro Explica.
 Hoje em Fortaleza: {datetime.now(ZoneInfo('America/Fortaleza')).isoformat()}. Janela: {target}.
