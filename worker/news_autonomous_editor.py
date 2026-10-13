@@ -107,7 +107,7 @@ trechos literais curtos e diferenças de perspectiva. Sem fontes inventadas."""
             status = getattr(error, "code", None) or getattr(error, "status_code", None) or "unknown"
             detail = re.sub(r"AIza[0-9A-Za-z_-]+", "[REDACTED]", str(error))[:300]
             print("EDITOR_RESEARCH_API_ERROR", model, status, detail, flush=True)
-            if "404" not in str(error) and "429" not in str(error):
+            if not any(code in str(error) for code in ("404", "429", "500", "502", "503", "504")):
                 raise
             errors.append(str(status))
     raise RuntimeError("Gemini sem cota disponível para redigir a partir das fontes: " + ", ".join(errors))
@@ -201,7 +201,7 @@ Não invente datas nem alegações sem respaldo. Não incluir links, hashtags, F
             )
             return json.loads(response.text)
         except Exception as error:
-            if "404" not in str(error) and "429" not in str(error):
+            if not any(code in str(error) for code in ("404", "429", "500", "502", "503", "504")):
                 raise
             status = getattr(error, "code", None) or getattr(error, "status_code", None) or "unknown"
             print("EDITOR_WRITER_API_ERROR", model, status, str(error)[:180], flush=True)
