@@ -18,6 +18,7 @@ on:
       - 'worker/test_news_autonomous_schedule.py'
       - 'worker/news_single_project.py'
       - 'worker/news_autonomous_editor.py'
+      - 'worker/news_groq_client.py'
       - 'worker/news_source_corpus.py'
       - 'worker/news_reconstruction.py'
       - 'worker/test_news_reconstruction.py'
@@ -35,7 +36,7 @@ jobs:
       - name: Validar scripts e YAML sem chamadas a APIs
         run: |
           set -euo pipefail
-          python -m py_compile worker/news_autonomous_schedule.py worker/news_single_project.py worker/news_autonomous_editor.py worker/news_source_corpus.py worker/news_scout.py worker/test_news_autonomous_schedule.py
+          python -m py_compile worker/news_autonomous_schedule.py worker/news_single_project.py worker/news_autonomous_editor.py worker/news_groq_client.py worker/news_source_corpus.py worker/news_scout.py worker/test_news_autonomous_schedule.py
           python -m pip install --disable-pip-version-check PyYAML
           python - <<'PY'
           from pathlib import Path
@@ -51,7 +52,7 @@ jobs:
               assert isinstance(data, dict) and "jobs" in data, path
               print("YAML_OK", path)
           PY
-      - name: Confirmar Gemini no editor e exclusividade de voz no render
+      - name: Confirmar editor Groq e Gemini somente na voz e auditoria visual opcional
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -64,8 +65,13 @@ jobs:
           assert "workflow_dispatch:" in editor and "schedule:" in editor, "Cron editorial ausente"
           assert "schedule:" not in scout, "Coletor auxiliar não deve rodar cron"
           assert "gh workflow run render-news-single.yml" in editor, "Dispatch explicito obrigatorio"
-          assert "GEMINI_API_KEY:" in editor, "Editor não possui credencial declarada"
-          print("GEMINI_EDITOR_AND_VOICE_SEPARATION_OK")
+          assert "GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}" in editor, "Editor sem secret Groq"
+          assert "GEMINI_API_KEY:" in editor, "Chave Gemini restrita à auditoria opcional"
+          assert "ODE_NEWS_GROQ_MODEL: openai/gpt-oss-120b" in editor
+          code = Path("worker/news_autonomous_editor.py").read_text(encoding="utf-8")
+          assert "from news_groq_client import complete" in code
+          assert "genai.Client" not in code, "Editor voltou a chamar Gemini"
+          print("GROQ_EDITOR_AND_GEMINI_VOICE_SEPARATION_OK")
           PY
       - name: Garantir reconstrução editorial limpa e proveniência fiel
         run: |
