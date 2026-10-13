@@ -1,7 +1,5 @@
-Autorização específica do titular: iniciar imediatamente a notícia de 13/10/2026, edição meio-dia, usando novo editor Gemini e motor canônico; deduplicar por episode_id e publicar apenas após QA, identidade e apuração.
+Teste real solicitado pelo titular nesta conversa em 13/10/2026: executar a edição meio-dia com o editor Groq atualizado, usando somente matérias reais e recentes, fonte única atribuída quando apropriada e sem inventar evidências.
 
-Rechecagem autorizada para diagnóstico de disponibilidade do Gemini, após ajuste de log; nenhuma edição existente deve ser sobrescrita.
+Solicitação registrada em 2026-10-13 17:53:25 UTC. Preservar o episode_id noticia-2026-10-13-meio-dia, não sobrescrever edição existente nem duplicar upload. Publicação tardia deste episódio já autorizada em config/news-autonomy.json: somente após apuração, capturas, QA e confirmação do canal.
 
-Tentativa com Gemini 3.8 Flash (modelo atual); validação obrigatória antes da voz, sem bypass.
-
-Nova tentativa com corpus RSS independente e Gemini sem ferramenta Google Search paga.
+Este gatilho inicia uma execução manual do mesmo workflow agendado às 06h, 10h e 18h America/Fortaleza. Manter a próxima edição noite independente, com publicação prevista às 20h.
