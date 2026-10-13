@@ -3,3 +3,5 @@ Teste real solicitado pelo titular nesta conversa em 13/10/2026: executar a edi�
 Solicitação registrada em 2026-10-13 17:53:25 UTC. Preservar o episode_id noticia-2026-10-13-meio-dia, não sobrescrever edição existente nem duplicar upload. Publicação tardia deste episódio já autorizada em config/news-autonomy.json: somente após apuração, capturas, QA e confirmação do canal.
 
 Este gatilho inicia uma execução manual do mesmo workflow agendado às 06h, 10h e 18h America/Fortaleza. Manter a próxima edição noite independente, com publicação prevista às 20h.
+
+Retomada do teste real em 2026-10-13 21:05:38 UTC, após CI aprovado no commit be1364bf3dab4145c86883e7b1b0dfbc704c8996. Registrar diagnóstico operacional do corpus e término da resposta Groq antes do gate factual. Manter a validação, a ausência de invenção e a guarda contra edição existente.
