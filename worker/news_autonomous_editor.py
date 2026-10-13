@@ -53,6 +53,23 @@ def validate_draft_shape(episode):
     return episode
 
 
+
+def bind_draft_metadata(episode):
+    """Bind descriptive metadata to an already-authored literal opening; facts stay untouched."""
+    segments = episode.get("segments") or []
+    opening = segments[0].get("narration", "") if segments and isinstance(segments[0], dict) else ""
+    selection = episode.get("news_selection") or {}
+    discovery = episode.get("discovery_strategy") or {}
+    anchor = selection.get("opening_anchor") if isinstance(selection, dict) else None
+    payoff = discovery.get("first_payoff") if isinstance(discovery, dict) else None
+    if (isinstance(opening, str) and isinstance(anchor, str) and 20 <= len(anchor) <= 160
+            and opening.count(anchor) == 1 and isinstance(payoff, str)
+            and len(payoff.strip()) >= 18 and payoff not in opening):
+        discovery["first_payoff"] = anchor
+        print("EDITORIAL_METADATA_BINDING discovery_strategy.first_payoff uses literal opening_anchor", flush=True)
+    return episode
+
+
 def plain(text):
     return " ".join(unicodedata.normalize(
         "NFKC", unescape(re.sub(r"<[^>]*>", " ", text))
@@ -347,7 +364,7 @@ Não invente datas nem alegações sem respaldo. Não incluir links, hashtags, F
     episode = json.loads(raw)
     if not isinstance(episode, dict):
         raise ValueError("Groq deve retornar um objeto JSON na raiz, nunca uma lista.")
-    return validate_draft_shape(episode)
+    return bind_draft_metadata(validate_draft_shape(episode))
 
 
 def record_draft_diagnostic(path, attempt, episode, transport, error=None):
