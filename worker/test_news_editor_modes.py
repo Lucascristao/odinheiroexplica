@@ -149,7 +149,8 @@ class EditorSourceModeTests(unittest.TestCase):
                 editor.research([], [], "2026-10-13T12:00:00-03:00")
 
     def test_draft_requests_truthful_single_source_contract(self):
-        with patch.object(editor, "complete", return_value=json.dumps({"fixture": True})) as complete:
+        with patch.object(editor, "complete", return_value=json.dumps({"fixture": True})) as complete, \
+             patch.object(editor, "validate_draft_shape", return_value={"fixture": True}):
             self.assertEqual(editor.draft("Relatório de fixture", "2026-10-13", "meio-dia", [], ""), {"fixture": True})
         prompt = complete.call_args.args[0]
         for expected in ('source_mode=', 'independent_confirmation=false', 'attribution_note',
