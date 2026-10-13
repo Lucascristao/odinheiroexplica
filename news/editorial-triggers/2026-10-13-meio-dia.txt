@@ -3,3 +3,5 @@ Autorização específica do titular: iniciar imediatamente a notícia de 13/10/
 Rechecagem autorizada para diagnóstico de disponibilidade do Gemini, após ajuste de log; nenhuma edição existente deve ser sobrescrita.
 
 Tentativa com Gemini 3.8 Flash (modelo atual); validação obrigatória antes da voz, sem bypass.
+
+Nova tentativa com corpus RSS independente e Gemini sem ferramenta Google Search paga.
