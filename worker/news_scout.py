@@ -47,26 +47,30 @@ def parse_rss(xml: bytes, category: str, now: datetime) -> list[dict]:
 
 def collect(now=None) -> dict:
     now = now or datetime.now(timezone.utc)
-    by_url = set()
+    seen = set()
     entries = []
     errors = []
+    by_category = {}
     for category in TOPICS:
         query = urllib.parse.quote(SEARCHES[category])
         url = "https://news.google.com/rss/search?q=" + query + "&hl=pt-BR&gl=BR&ceid=BR:pt-419"
         try:
             req = urllib.request.Request(url, headers={"User-Agent": "ODE-News-Scout/1.0"})
             with urllib.request.urlopen(req, timeout=15) as response:
-                items = parse_rss(response.read(2_000_000), category, now)
-            for article in items:
-                key = re.sub(r"\W+", "", article["title"].lower())
-                if key not in by_url:
-                    by_url.add(key)
-                    entries.append(article)
+                by_category[category] = parse_rss(response.read(2_000_000), category, now)
         except Exception as exc:
             errors.append(f"{category}: {type(exc).__name__}")
+    # Mix news desks instead of selecting the first 35 politics/economy headlines.
+    for index in range(12):
+        for category in TOPICS:
+            for article in by_category.get(category, [])[index:index + 1]:
+                key = re.sub(r"\\W+", "", article["title"].lower())
+                if key not in seen:
+                    seen.add(key)
+                    entries.append(article)
     return {"version": "1.0", "generated_at_utc": now.isoformat(),
             "editorial_status": "candidates_only_not_fact_checked",
-            "candidates": entries[:35], "feed_errors": errors}
+            "candidates": entries[:60], "feed_errors": errors}
 
 
 def main():
