@@ -54,19 +54,50 @@ def validate_draft_shape(episode):
 
 
 
+
 def bind_draft_metadata(episode):
-    """Bind descriptive metadata to an already-authored literal opening; facts stay untouched."""
+    """Derive literal metadata from authored speech, never create or change facts."""
     segments = episode.get("segments") or []
-    opening = segments[0].get("narration", "") if segments and isinstance(segments[0], dict) else ""
+    first = segments[0] if segments and isinstance(segments[0], dict) else {}
+    opening = first.get("narration", "")
     selection = episode.get("news_selection") or {}
     discovery = episode.get("discovery_strategy") or {}
-    anchor = selection.get("opening_anchor") if isinstance(selection, dict) else None
-    payoff = discovery.get("first_payoff") if isinstance(discovery, dict) else None
-    if (isinstance(opening, str) and isinstance(anchor, str) and 20 <= len(anchor) <= 160
-            and opening.count(anchor) == 1 and isinstance(payoff, str)
-            and len(payoff.strip()) >= 18 and payoff not in opening):
+    if not isinstance(opening, str) or not isinstance(selection, dict) or not isinstance(discovery, dict):
+        return episode
+    anchor = selection.get("opening_anchor")
+    matching = [fact for fact in episode.get("verified_facts", [])
+                if isinstance(fact, dict) and fact.get("claim") == selection.get("new_fact")]
+    valid_anchor = isinstance(anchor, str) and 20 <= len(anchor) <= 160 and opening.count(anchor) == 1
+    if not valid_anchor and len(matching) == 1 and first.get("type") == "fact":
+        claim_terms = set(re.findall(r"\w{3,}", matching[0]["claim"].casefold())) - {
+            "uma", "para", "com", "que", "dos", "das", "por", "hoje", "nesta", "esse", "essa"}
+        for sentence in re.split(r"(?<=[.!?])\s+", opening)[:3]:
+            if sentence.rstrip().endswith("?") or re.search(r"(?i)\b(?:sou|aqui|chamo)\b.{0,20}\b(?:Roberto|Luana)\b", sentence):
+                continue
+            literal = sentence.strip()
+            if len(literal) > 160:
+                literal = literal[:160].rsplit(" ", 1)[0]
+            overlap = claim_terms & set(re.findall(r"\w{3,}", literal.casefold()))
+            if 20 <= len(literal) <= 160 and opening.count(literal) == 1 and len(overlap) >= 2:
+                anchor = selection["opening_anchor"] = literal
+                valid_anchor = True
+                print("EDITORIAL_METADATA_BINDING news_selection.opening_anchor uses existing factual opening", flush=True)
+                break
+    payoff = discovery.get("first_payoff")
+    if valid_anchor and isinstance(payoff, str) and len(payoff.strip()) >= 18 and payoff not in opening:
         discovery["first_payoff"] = anchor
         print("EDITORIAL_METADATA_BINDING discovery_strategy.first_payoff uses literal opening_anchor", flush=True)
+    description = episode.get("publication_description")
+    if (selection.get("source_mode") == "single_source_attributed"
+            and selection.get("independent_confirmation") is False and len(matching) == 1
+            and isinstance(description, str)):
+        linked = [source for source in episode.get("sources", [])
+                  if isinstance(source, dict) and source.get("id") in matching[0].get("source_ids", [])]
+        if len(linked) == 1:
+            publisher = linked[0].get("publisher")
+            if isinstance(publisher, str) and len(publisher.strip()) >= 3 and publisher.casefold() not in (opening + " " + description).casefold():
+                episode["publication_description"] = description.rstrip() + "\n\nApuração atribuída a " + publisher.strip() + ". Relato de uma fonte, sem confirmação independente."
+                print("EDITORIAL_METADATA_BINDING publication_description credits existing single source", flush=True)
     return episode
 
 
@@ -383,6 +414,11 @@ def record_draft_diagnostic(path, attempt, episode, transport, error=None):
     record.setdefault("draft_attempts", []).append(item)
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if isinstance(episode, dict) and error:
+        recovery = {"status": "unverified_rejected_draft", "factual_approval": False,
+                    "attempt": attempt, "draft": episode}
+        recovery_path = target.with_name(f"news-editorial-rejected-draft-{attempt}.json")
+        recovery_path.write_text(diagnostic_text(json.dumps(recovery, ensure_ascii=False, indent=2), 40000) + "\n", encoding="utf-8")
     print("EDITORIAL_DRAFT_DIAGNOSTIC", json.dumps(item, ensure_ascii=False), flush=True)
 
 
