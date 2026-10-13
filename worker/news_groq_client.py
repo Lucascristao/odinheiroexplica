@@ -27,7 +27,7 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
             {"role": "system", "content":
              "Você é editor de notícias brasileiras. Cite apenas dados e textos fornecidos no corpus. "
              "Não invente URL, data, acontecimento, citação, título nem publicação. "
-             "Se as fontes não sustentarem notícia de hoje em dois publicadores, informe insuficiência. "
+             "Prefira confirmação do mesmo acontecimento de hoje em publicadores independentes. Uma notícia nova ou exclusiva em uma fonte real pode ser relatada com atribuição explícita, status statement e ausência de confirmação independente declarada; nunca invente a segunda fonte. Sem texto real ou prova de atualidade, informe insuficiência. "
              "O trabalho é jornalismo informativo: distinga fatos, alegações e opiniões."},
             {"role": "user", "content": prompt},
         ],
