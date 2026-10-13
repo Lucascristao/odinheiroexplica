@@ -5,6 +5,10 @@ on:
     branches: [main]
   pull_request:
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     # Explicit direct production leaves permanent suites available for other runs.
@@ -91,7 +95,9 @@ jobs:
       - name: Test flexible news collection and attributed exclusives (offline)
         run: |
           python worker/test_news_source_corpus.py
+          python worker/test_news_source_header.py
           python worker/test_news_editor_modes.py
+          python worker/test_news_draft_schema.py
           python worker/test_news_editor_diagnostics.py
           python worker/test_news_groq_client_diagnostics.py
 
