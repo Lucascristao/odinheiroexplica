@@ -108,7 +108,7 @@ class DiagnosticTransport(unittest.TestCase):
         self.assertEqual(self.call(diagnostics={}), "Factual report fixture")
         diagnostic_payload = REQUESTS.post.call_args.kwargs["json"]
         self.assertEqual(legacy_payload, diagnostic_payload)
-        self.assertEqual(diagnostic_payload["max_completion_tokens"], 1200)
+        self.assertEqual(diagnostic_payload["max_completion_tokens"], 2000)
         self.assertEqual(diagnostic_payload["model"], "openai/gpt-oss-120b")
         self.assertEqual(diagnostic_payload["reasoning_effort"], "low")
 
