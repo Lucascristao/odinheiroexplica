@@ -88,6 +88,11 @@ jobs:
           python worker/test_news_visual_cues.py
           python worker/test_news_document_framing.py
 
+      - name: Test flexible news collection and attributed exclusives (offline)
+        run: |
+          python worker/test_news_source_corpus.py
+          python worker/test_news_editor_modes.py
+
       - name: Validate render request, packaging and retry policy (offline)
         run: |
           python -m unittest discover -s tests -p 'test_news_publication_preflight.py'
