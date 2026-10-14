@@ -277,10 +277,11 @@ def research(candidates, history, target, diagnostic_path=None):
          "actual_article_text": entry["actual_article_text"][:1550]}
         for entry in corpus[:10]
     ]
+    day = target[:10] if (isinstance(target, str) and len(target) >= 10 and target[4] == "-" and target[7] == "-") else datetime.now(ZoneInfo("America/Fortaleza")).date().isoformat()
     prompt = f"""Você é editor de apuração do canal O Dinheiro Explica.
-Hoje em Fortaleza: {datetime.now(ZoneInfo('America/Fortaleza')).isoformat()}. Janela: {target}.
+Hoje em Fortaleza: {datetime.now(ZoneInfo('America/Fortaleza')).isoformat()}. Janela: {target}. Data do episódio: {day}.
 Compare pautas atuais, incluindo política e economia, usando SOMENTE os textos reais abaixo.
-Descubra um FATO NOVO ocorrido hoje. PREFIRA confirmação explícita em dois publicadores realmente independentes (source_mode=corroborated).\nUma matéria exclusiva de um único publicador também pode ser selecionada quando o texto demonstra o acontecimento de hoje: source_mode=single_source_attributed, independent_confirmation=false. Nesse caso, apresente o acontecimento como RELATO ATRIBUÍDO, nunca como confirmação independente.
+Descubra um FATO NOVO ocorrido em {day} (ou hoje). PREFIRA confirmação explícita em dois publicadores realmente independentes (source_mode=corroborated).\nUma matéria exclusiva de um único publicador também pode ser selecionada quando o texto demonstra o acontecimento de {day} (ou hoje): source_mode=single_source_attributed, independent_confirmation=false. Nesse caso, apresente o acontecimento como RELATO ATRIBUÍDO, nunca como confirmação independente.
 Dia da publicação da reportagem NÃO equivale ao dia do fato; se não houver prova atual, declare.
 Priorize páginas com texto literal para captura. NÃO invente links, datas ou trechos.
 Quando houver duas páginas, verifique se tratam realmente do mesmo acontecimento e não apenas repetem a mesma agência. Em fonte única, informe honestamente a ausência de segunda confirmação e os limites da reportagem.
@@ -288,7 +289,7 @@ Identifique nome e URLs exatas, data original do fato, e ao menos quatro fatos c
 Histórico (não repetir acontecimentos): {json.dumps(history[-12:], ensure_ascii=False)[:2000]}.
 CORPUS de páginas HTTP realmente consultadas:
 {json.dumps(compact, ensure_ascii=False)[:20000]}
-Se não houver relato de acontecimento de hoje sustentado por texto real, seja corroborado ou atribuído a fonte única, devolva
+Se não houver relato de acontecimento de {day} (ou hoje) sustentado por texto real, seja corroborado ou atribuído a fonte única, devolva
 exatamente EDITORIAL_INSUFFICIENT_EVIDENCE, sem fabricar material. Não descarte automaticamente uma exclusiva só porque ainda não foi republicada.
 Caso exista, comece com SOURCE_MODE: corroborated ou SOURCE_MODE: single_source_attributed. Escreva relatório factual de 500 a 750 palavras, incluindo URLs e pelo
 menos dois trechos LITERAIS DIFERENTES realmente presentes no corpus, preferindo trechos de 15 a 70 caracteres. Na exclusiva, os dois trechos devem vir da mesma matéria HTML; não simule duas fontes porque há dois recortes."""
@@ -425,12 +426,13 @@ def record_draft_diagnostic(path, attempt, episode, transport, error=None):
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--slot", choices=SLOTS, required=True)
+    p.add_argument("--date", default=None, help="Data YYYY-MM-DD da edição; padrão hoje em Fortaleza")
     p.add_argument("--root", default=".")
     args = p.parse_args()
     if not os.getenv("GROQ_API_KEY"):
         raise SystemExit("GROQ_API_KEY inexistente; configurar secret no GitHub.")
     local = datetime.now(ZoneInfo("America/Fortaleza"))
-    date = local.date().isoformat()
+    date = args.date or local.date().isoformat()
     root = Path(args.root).resolve()
     output = root / "news" / "episodes" / f"{date}-{args.slot}.json"
     if output.exists():

@@ -7,6 +7,10 @@ on:
         type: choice
         options: [manha, meio-dia, noite]
         required: true
+      date:
+        description: Data YYYY-MM-DD da edição (opcional; padrão hoje em Fortaleza)
+        type: string
+        required: false
   schedule:
     - cron: '0 9 * * *'
     - cron: '0 13 * * *'
@@ -45,7 +49,13 @@ jobs:
           set -euo pipefail
           if [[ "$TRIGGER" == workflow_dispatch ]]; then
             SLOT="$MANUAL_SLOT"
+            if [[ -n "${{ inputs.date }}" ]]; then
+              NEWS_DATE="${{ inputs.date }}"
+            else
+              NEWS_DATE="$(TZ=America/Fortaleza date +%F)"
+            fi
           elif [[ "$TRIGGER" == schedule ]]; then
+            NEWS_DATE="$(TZ=America/Fortaleza date +%F)"
             case "$CRON" in
               '0 9 * * *'|'17 9 * * *') SLOT=manha ;;
               '0 13 * * *'|'17 13 * * *') SLOT=meio-dia ;;
@@ -53,6 +63,7 @@ jobs:
               *) exit 1 ;;
             esac
           else
+            NEWS_DATE="$(TZ=America/Fortaleza date +%F)"
             CHANGED="$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" -- 'news/editorial-triggers/*.txt')"
             if [[ "$(printf '%s\n' "$CHANGED" | sed '/^$/d' | wc -l)" -ne 1 ]]; then
               echo "Exige um único gatilho de edição"; exit 1
@@ -61,7 +72,7 @@ jobs:
           fi
           case "$SLOT" in manha|meio-dia|noite) ;; *) echo "Slot inválido"; exit 1;; esac
           echo "NEWS_SLOT=$SLOT" >> "$GITHUB_ENV"
-          echo "NEWS_DATE=$(TZ=America/Fortaleza date +%F)" >> "$GITHUB_ENV"
+          echo "NEWS_DATE=$NEWS_DATE" >> "$GITHUB_ENV"
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
@@ -86,7 +97,7 @@ jobs:
           if [[ -e "$FILE" ]]; then
             echo "EPISODE_ALREADY_EXISTS $FILE"; exit 0
           fi
-          python worker/news_autonomous_editor.py --slot "$NEWS_SLOT"
+          python worker/news_autonomous_editor.py --slot "$NEWS_SLOT" --date "$NEWS_DATE"
           test -s "$FILE"
           python worker/news_single_project.py --input "$FILE" --output video/generated/daily-project.json
           python worker/auto_capture_sources.py --project video/generated/daily-project.json --captures-dir research/captures

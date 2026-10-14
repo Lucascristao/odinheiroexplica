@@ -110,6 +110,13 @@
       "authorized_by_user": true,
       "mode": "publish_immediately_after_qa",
       "reason": "Titular autorizou produzir e publicar em produção a edição de meio-dia de 13/10/2026 e reiterou para continuar após configurar GROQ_API_KEY, mesmo com a janela já transcorrida; exceção exclusiva deste episódio, com apuração do dia, QA real, validação do canal e sem duplicar upload."
+    },
+    {
+      "episode_id": "noticia-2026-10-13-noite",
+      "original_publication_local": "2026-10-13T20:00:00-03:00",
+      "authorized_by_user": true,
+      "mode": "publish_immediately_after_qa",
+      "reason": "Autorização do titular na conversa de 14/10/2026 para produzir e postar em produção a edição de 13/10/2026 com o perdão de dívidas para MEIs; publicação imediata após QA."
     }
   ],
   "one_time_immediate_publications": [
@@ -120,6 +127,14 @@
       "authorized_by_user": true,
       "mode": "publish_immediately_after_qa",
       "reason": "O titular pediu um novo vídeo em fluxo real com as melhorias de apresentação e capa do Roberto nesta conversa. Publicação imediata exclusiva desta edição extra em 11/10/2026, sem ocupar as janelas recorrentes; preserva QA, apuração, canal e deduplicação."
+    },
+    {
+      "episode_id": "noticia-2026-10-13-noite",
+      "news_date": "2026-10-14",
+      "original_publication_local": "2026-10-13T20:00:00-03:00",
+      "authorized_by_user": true,
+      "mode": "publish_immediately_after_qa",
+      "reason": "Autorização do titular na conversa de 14/10/2026 para postar o vídeo em produção imediatamente após QA."
     }
   ],
   "editor": {
