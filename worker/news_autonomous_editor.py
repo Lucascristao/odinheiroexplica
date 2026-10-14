@@ -97,13 +97,22 @@ def bind_draft_metadata(episode):
             publisher = linked[0].get("publisher")
             if isinstance(publisher, str) and len(publisher.strip()) >= 3 and publisher.casefold() not in (opening + " " + description).casefold():
                 episode["publication_description"] = description.rstrip() + "\n\nApuração atribuída a " + publisher.strip() + ". Relato de uma fonte, sem confirmação independente."
-                print("EDITORIAL_METADATA_BINDING publication_description credits existing single source", flush=True)
+    # Garantir identificação explícita de opinião do Roberto exigida pelo validador Zod
+    for seg in episode.get("segments") or []:
+        if isinstance(seg, dict) and seg.get("type") == "opinion":
+            narr = str(seg.get("narration") or "").strip()
+            if narr and not re.search(r"(?i)\b(minha leitura|minha opinião|na minha análise|meu ponto)\b", narr):
+                seg["narration"] = "Na minha análise, " + narr[:1].lower() + narr[1:]
+                print("EDITORIAL_METADATA_BINDING opinion segment prefixed with 'Na minha análise,'", flush=True)
+
     return episode
 
 
 def plain(text):
+    clean = (text or "").replace("\u2011", "-").replace("\u2013", "-").replace("\u2014", "-")
+    clean = clean.replace("\u00a0", " ").replace("\u202f", " ").replace("\u200b", "")
     return " ".join(unicodedata.normalize(
-        "NFKC", unescape(re.sub(r"<[^>]*>", " ", text))
+        "NFKC", unescape(re.sub(r"<[^>]*>", " ", clean))
     ).casefold().split())
 
 
@@ -360,13 +369,13 @@ com status SOMENTE "statement","background","forecast_not_collected",
 "projection","confirmed"; source_ids devem existir.
 documentary_evidence: exatamente dois ou três itens com id doc-1,doc-2
 etc, kind="source_excerpt", source_id, source_page_url IGUAL à URL
-original da fonte, expected_text sendo TRECHO VERBATIM copiado da matéria
-real de >=8 caracteres, attribution, rights_review com explicação da
+original da fonte, expected_text sendo TRECHO VERBATIM e cópia EXATA, CONTÍNUA e LITERAL de uma única frase ou oração da matéria real de >=8 caracteres, sem alterar nenhuma palavra, sem mudar pontuação (não troque vírgulas por pontos) e sem juntar fragmentos separados, attribution, rights_review com explicação da
 citação curta e capture_file "research/captures/doc-1.png" etc.\nNo modo single_source_attributed, use ao menos DOIS expected_text DIFERENTES da MESMA página HTML da exclusiva; não use cópias do mesmo trecho ou scripts, metadados, links de navegação ou conteúdo escondido como prova. Não simule duas matérias ou duas confirmações.
 Não adicionar reconstrução editorial fictícia ou fotos da imprensa.
 context_photos=[].
 
 segments: EXATAMENTE QUATRO cenas, types nesta ordem fact,fact,opinion,outro. A primeira cena abre com o fato novo real e inclui news_selection.opening_anchor literalmente.
+Na cena de tipo 'opinion', a fala (narration) DEVE OBRIGATORIAMENTE começar com 'Na minha análise,' ou 'Na minha opinião,'.
 Cada objeto deve ter id,title,type,label,headline,metric,object_type
 (data/store/cash/bank/package/truck/factory), visual_cards com 3-5
 strings de 6-65 caracteres, narration de 85-125 PALAVRAS, document_id
@@ -396,7 +405,19 @@ Não invente datas nem alegações sem respaldo. Não incluir links, hashtags, F
     episode = json.loads(raw)
     if not isinstance(episode, dict):
         raise ValueError("Groq deve retornar um objeto JSON na raiz, nunca uma lista.")
+    episode = clean_unicode_spaces(episode)
     return bind_draft_metadata(validate_draft_shape(episode))
+
+
+def clean_unicode_spaces(obj):
+    if isinstance(obj, str):
+        s = obj.replace("\u2011", "-")
+        return s.replace("\u00a0", " ").replace("\u202f", " ").replace("\u200b", "")
+    elif isinstance(obj, list):
+        return [clean_unicode_spaces(item) for item in obj]
+    elif isinstance(obj, dict):
+        return {k: clean_unicode_spaces(v) for k, v in obj.items()}
+    return obj
 
 
 def record_draft_diagnostic(path, attempt, episode, transport, error=None):
