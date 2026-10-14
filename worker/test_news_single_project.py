@@ -89,6 +89,15 @@ class SingleNewsContractTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "attribution ou publisher real"):
             validate(doc, date(2026, 10, 9))
 
+    def test_bare_capture_file_and_missing_keyword_in_description_are_normalized(self):
+        doc = copy.deepcopy(self.doc)
+        doc["documentary_evidence"][0]["capture_file"] = "doc-announcement.png"
+        doc["primary_keyword"] = "termo-inedito-na-descricao"
+        doc["publication_description"] = "Texto sem a palavra-chave informada explicitamente."
+        validated = validate(doc, date(2026, 10, 9))
+        self.assertEqual(validated["documentary_evidence"][0]["capture_file"], "research/captures/doc-announcement.png")
+        self.assertIn("termo-inedito-na-descricao", validated["publication_description"])
+
     def test_historical_transform_hash_and_input_are_unchanged(self):
         doc = copy.deepcopy(self.doc)
         self.assertIs(normalize_documentary_metadata(doc), doc)

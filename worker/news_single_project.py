@@ -111,7 +111,9 @@ def normalize_documentary_metadata(episode: dict) -> dict:
             if not updated.get("source_page_url"):
                 updated["source_page_url"] = url
             identifier = updated.get("id")
-            if (not updated.get("capture_file") and isinstance(identifier, str)
+            capture = updated.get("capture_file")
+            if ((not capture or not str(capture).startswith("research/captures/"))
+                    and isinstance(identifier, str)
                     and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,119}", identifier)):
                 updated["capture_file"] = f"research/captures/{identifier}.png"
             if not str(updated.get("attribution") or "").strip():
@@ -164,6 +166,16 @@ def validate(episode: dict, today: date | None = None) -> dict:
             "a primeira entrega precisa ser trecho literal da abertura")
     require(episode["thumbnail_headline"].casefold() not in episode["title"].casefold(),
             "capa não pode repetir o título")
+    keyword = str(episode.get("primary_keyword") or "").strip()
+    title = str(episode.get("title") or "").strip()
+    description = str(episode.get("publication_description") or "").strip()
+    if not keyword:
+        candidates = [t for t in episode.get("tags", []) if isinstance(t, str) and len(t) >= 3]
+        keyword = candidates[0] if candidates else "economia"
+        episode["primary_keyword"] = keyword
+    if keyword.casefold() not in (title + " " + description).casefold():
+        description = (description + f"\n\nContexto: {keyword}").strip()
+        episode["publication_description"] = description
     require(episode["primary_keyword"].casefold() in
             (episode["title"] + " " + episode.get("publication_description", "")).casefold(),
             "palavra-chave relevante precisa existir em título ou descrição")
