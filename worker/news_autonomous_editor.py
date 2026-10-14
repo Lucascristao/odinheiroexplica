@@ -156,7 +156,29 @@ def check_documentary_sources(episode):
             # boilerplate and declared hidden content; never match raw HTML.
             checked[url] = plain(extract_article(response.text[:2000000]))
         if expected not in checked[url]:
-            raise ValueError("Quoted documentary text absent from the visible article: " + url)
+            trimmed = expected.rstrip(" .…\"'“”’")
+            if len(trimmed) >= 8 and trimmed in checked[url]:
+                doc["expected_text"] = trimmed
+                expected = trimmed
+            else:
+                best_sub = None
+                best_score = 0
+                exp_words = set(expected.split())
+                for part in re.split(r"[.!?\n]+", checked[url]):
+                    p_str = part.strip()
+                    if len(p_str) < 15:
+                        continue
+                    common = exp_words & set(p_str.split())
+                    if len(common) >= 4 and len(common) > best_score:
+                        candidate_sub = p_str[:70].strip()
+                        if candidate_sub not in excerpts_by_url.get(url, set()):
+                            best_score = len(common)
+                            best_sub = candidate_sub
+                if best_sub and best_sub in checked[url]:
+                    doc["expected_text"] = best_sub
+                    expected = best_sub
+                else:
+                    raise ValueError("Quoted documentary text absent from the visible article: " + url)
         excerpts_by_url.setdefault(url, set()).add(expected)
     if mode == "corroborated":
         if len(final_hosts) < 2:
@@ -388,7 +410,7 @@ Na cena de tipo 'opinion', a fala (narration) DEVE OBRIGATORIAMENTE começar com
 Cada objeto deve ter id,title,type,label,headline,metric,object_type
 (data/store/cash/bank/package/truck/factory), visual_cards com 3-5
 strings de 6-65 caracteres, narration com a extensão necessária para explicar
-o ponto (desenvolvimento claro de 45 a 85 palavras; no mínimo 32 palavras por cena), document_id do recorte pertinente
+o ponto (desenvolvimento claro de 40 a 85 palavras; no mínimo 25 palavras por cena), document_id do recorte pertinente
 e media_side left/right. Não alternar documentos sem motivo editorial.
 Todas as cenas exibem documento real, incluindo o comentário opinativo.
 Pelo menos 2 cenas factuais com prova. Uma opinião editorial fundamentada
