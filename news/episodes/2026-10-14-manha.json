@@ -1,0 +1,219 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-14-manha",
+  "news_date": "2026-10-14",
+  "event_date": "2026-10-14",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-14T10:03:24.904667-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "single_source_attributed",
+    "independent_confirmation": false,
+    "new_fact": "O governo federal encerrou, nesta quarta-feira (14 de outubro de 2026), o prazo para que bancos e instituições financeiras devolvam aos apostadores o montante de R$ 1,325 bilhão deixado nas contas após o encerramento das plataformas de apostas on-line, conforme determina a Medida Provisória 1.394/2026.",
+    "why_today": "O encerramento do prazo de devolução dos saldos de apostas online ocorre hoje, 14 de outubro de 2026, e tem impacto imediato sobre dezenas de milhões de consumidores que aguardam o crédito de R$ 1,325 bilhão em suas contas bancárias, tornando-se notícia de relevância nacional.",
+    "opening_anchor": "O governo federal encerrou, nesta quarta-feira (14 de outubro de 2026), o prazo para que bancos e instituições financeiras devolvam aos apostadores o montante",
+    "candidate_review": [],
+    "attribution_note": "A informação provém exclusivamente da Agência Brasil – Economia, publicada em 14/10/2026 às 07:10 UTC. Não há outras fontes independentes que confirmem o relato até o momento, portanto o fato permanece atribuído a uma única fonte."
+  },
+  "title": "Prazo para devolução de R$ 1,325 bilhão a apostadores encerra nesta quarta-feira",
+  "title_options": [
+    {
+      "text": "Prazo para devolução de R$ 1,325 bilhão a apostadores encerra nesta quarta-feira",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Encerramento hoje do prazo de restituição de bilhões a usuários de apostas online",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Governo finaliza prazo de devolução de saldo de apostas: R$ 1,325 bi em jogo",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Prazo de devolução encerra",
+  "thumbnail_primary": "Banco central com bandeira nacional ao fundo",
+  "thumbnail_tension": "Milhões aguardam crédito bancário após fechamento de plataformas de apostas",
+  "thumbnail_composition": "Close no logo do Banco Central à esquerda, texto à direita",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato novo verificado por fonte única confiável, relevância econômica e impacto social amplo.",
+    "criteria": {
+      "veracity": "high",
+      "newsworthiness": "high",
+      "source_reliability": "high",
+      "independence": "low"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Agência Brasil – Economia",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/prazo-pra-bancos-devolverem-r-13-bilhao-de-bets-acaba-nesta-quarta",
+      "published_at": "2026-10-14",
+      "role": "primary"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O governo federal encerrou, nesta quarta-feira (14 de outubro de 2026), o prazo para que bancos e instituições financeiras devolvam aos apostadores o montante de R$ 1,325 bilhão deixado nas contas após o encerramento das plataformas de apostas on-line, conforme determina a Medida Provisória 1.394/2026.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-14"
+    },
+    {
+      "claim": "Cerca de R$ 1,325 bilhão ficou nas contas de aproximadamente 26,5 milhões de apostadores.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-14"
+    },
+    {
+      "claim": "A restituição começou na sexta-feira (9 de outubro) e deve beneficiar aproximadamente 26,5 milhões de apostadores.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-14"
+    },
+    {
+      "claim": "Os apostadores devem acompanhar as movimentações da conta bancária utilizada para depositar dinheiro nas plataformas.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-14"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "kind": "source_excerpt",
+      "source_page_url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/prazo-pra-bancos-devolverem-r-13-bilhao-de-bets-acaba-nesta-quarta",
+      "expected_text": "cerca de R$ 1,325 bilhão que permaneceu nas contas de apostadores",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Agência Brasil – Economia"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S1",
+      "kind": "source_excerpt",
+      "source_page_url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/prazo-pra-bancos-devolverem-r-13-bilhao-de-bets-acaba-nesta-quarta",
+      "expected_text": "aproximadamente 26,5 milhões de apostadores",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Agência Brasil – Economia"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Encerramento do prazo de devolução",
+      "type": "fact",
+      "label": "fato_novo",
+      "headline": "Prazo para devolução de R$ 1,325 bilhão encerra nesta quarta",
+      "metric": "data",
+      "object_type": "bank",
+      "visual_cards": [
+        "Calendário marcando 14/10",
+        "Ícone de dinheiro com seta para contas bancárias",
+        "Logo da Medida Provisória 1.394/2026"
+      ],
+      "narration": "O governo federal encerrou, nesta quarta-feira (14 de outubro de 2026), o prazo para que bancos e instituições financeiras devolvam aos apostadores o montante de R$ 1,325 bilhão deixado nas contas após o encerramento das plataformas de apostas on-line, conforme determina a Medida Provisória 1.394/2026. Essa decisão afeta cerca de 26,5 milhões de usuários que ainda aguardam o crédito em suas contas bancárias, gerando grande expectativa no setor financeiro.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes da devolução",
+      "type": "fact",
+      "label": "detalhe_operacional",
+      "headline": "Valor e beneficiários da restituição",
+      "metric": "amount",
+      "object_type": "bank",
+      "visual_cards": [
+        "Gráfico de barras com R$ 1,325 bi",
+        "Mapa do Brasil com ícones de usuários",
+        "Relógio marcando prazo final"
+      ],
+      "narration": "Cerca de R$ 1,325 bilhão ficou nas contas de aproximadamente 26,5 milhões de apostadores. A restituição, que começou na última sexta-feira (9 de outubro), deve ser concluída nos próximos dias, exigindo que os bancos processem milhões de transferências simultâneas. Os usuários precisam acompanhar as movimentações nas contas bancárias usadas originalmente para depositar nas plataformas de apostas.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de impacto",
+      "type": "opinion",
+      "label": "opinion",
+      "headline": "Implicações econômicas da devolução massiva",
+      "metric": "analysis",
+      "object_type": "bank",
+      "visual_cards": [
+        "Ícone de economia nacional",
+        "Seta ascendente representando consumo",
+        "Balão de discurso com opinião"
+      ],
+      "narration": "Na minha análise, a devolução de R$ 1,325 bilhão a dezenas de milhões de consumidores pode gerar um impulso temporário no consumo varejista, especialmente em setores de bens duráveis e serviços digitais. Contudo, o volume de transações pode sobrecarregar sistemas bancários, exigindo ajustes operacionais e monitoramento de fraudes. O efeito macroeconômico ainda será mensurado nas próximas semanas.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e próximos passos",
+      "type": "conclusion",
+      "label": "final",
+      "headline": "O que esperar após o encerramento do prazo",
+      "metric": "summary",
+      "object_type": "bank",
+      "visual_cards": [
+        "Checklist de próximos passos",
+        "Calendário com datas futuras",
+        "Ícone de alerta"
+      ],
+      "narration": "Com o prazo encerrado, os bancos devem concluir as transferências nos próximos dias úteis. Usuários que ainda não visualizam o crédito devem contatar suas instituições financeiras. O acompanhamento da efetividade da medida será fundamental para avaliar se futuras políticas de proteção ao consumidor em setores digitais precisarão de ajustes.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Você já recebeu o crédito referente ao saldo de apostas online?",
+  "hashtags": [
+    "#DevoluçãoBets",
+    "#MP1394"
+  ],
+  "tags": [
+    "apostas online",
+    "devolução",
+    "MP 1394",
+    "bancos",
+    "consumidor",
+    "economia",
+    "Brasil",
+    "finanças",
+    "regulação",
+    "2026"
+  ],
+  "primary_keyword": "devolução de apostas online",
+  "secondary_keywords": [
+    "R$ 1,325 bilhão",
+    "MP 1.394/2026"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender como será feita a devolução de recursos de apostas online ao consumidor brasileiro",
+    "search_query": "prazo devolução saldo apostas online 14 de outubro 2026",
+    "recommendation_angle": "Apresentar o encerramento do prazo e suas implicações econômicas de forma clara e objetiva",
+    "first_payoff": "O governo federal encerrou, nesta quarta-feira (14 de outubro de 2026), o prazo para que bancos e instituições financeiras devolvam aos apostadores o montante de R$ 1,325 bilhão deixado nas contas após o encerramento das plataformas de apostas on-line, conforme determina a Medida Provisória 1.394/2026.",
+    "promise_proof": "Dados oficiais da Agência Brasil confirmam o valor total e o número de beneficiários",
+    "audience_hypothesis": "Usuários de apostas online e interessados em políticas de proteção ao consumidor buscarão informações sobre o processo de devolução",
+    "thumbnail_complement": "Imagem de um caixa eletrônico com destaque para o valor em reais",
+    "verification_limits": "Apenas a Agência Brasil publicou o relato; ainda não há confirmação de outros veículos independentes"
+  },
+  "publication_description": "Devolução de R$ 1,325 bilhão a apostadores online encerra nesta quarta-feira, 14 de outubro de 2026, segundo a Agência Brasil. O governo determinou que bancos devolvam os saldos aos usuários, impactando cerca de 26,5 milhões de consumidores.\n\nApuração atribuída a Agência Brasil – Economia. Relato de uma fonte, sem confirmação independente.\n\nContexto: devolução de apostas online",
+  "publication_target_local": "2026-10-14T08:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=single_source_attributed"
+}
