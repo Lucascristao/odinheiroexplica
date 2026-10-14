@@ -117,6 +117,13 @@
       "authorized_by_user": true,
       "mode": "publish_immediately_after_qa",
       "reason": "Autorização do titular na conversa de 14/10/2026 para produzir e postar em produção a edição de 13/10/2026 com o perdão de dívidas para MEIs; publicação imediata após QA."
+    },
+    {
+      "episode_id": "noticia-2026-10-14-manha",
+      "original_publication_local": "2026-10-14T08:00:00-03:00",
+      "authorized_by_user": true,
+      "mode": "publish_immediately_after_qa",
+      "reason": "Autorização direta do titular nesta conversa de 14/10/2026 para produzir e postar em produção a edição da manhã de 14/10/2026 imediatamente após QA."
     }
   ],
   "one_time_immediate_publications": [
@@ -135,6 +142,14 @@
       "authorized_by_user": true,
       "mode": "publish_immediately_after_qa",
       "reason": "Autorização do titular na conversa de 14/10/2026 para postar o vídeo em produção imediatamente após QA."
+    },
+    {
+      "episode_id": "noticia-2026-10-14-manha",
+      "news_date": "2026-10-14",
+      "original_publication_local": "2026-10-14T08:00:00-03:00",
+      "authorized_by_user": true,
+      "mode": "publish_immediately_after_qa",
+      "reason": "Autorização direta do titular nesta conversa de 14/10/2026 para produzir e postar o vídeo da manhã em produção imediatamente após QA."
     }
   ],
   "editor": {

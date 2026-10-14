@@ -81,7 +81,52 @@ def validate_news_selection(episode: dict, news_day: date) -> None:
             "a abertura precisa apresentar o fato novo com trecho literal único de 20 a 160 caracteres")
 
 
+def normalize_documentary_metadata(episode: dict) -> dict:
+    """Fill technical source-excerpt metadata from existing proof, never facts or rights.
+
+    Return the original object when complete so historical renders retain exactly
+    their serialized content. A supplied quote, URL, credit or kind is not rewritten.
+    """
+    sources = {source.get("id"): source for source in episode.get("sources", [])
+               if isinstance(source, dict) and isinstance(source.get("id"), str)}
+    documents = episode.get("documentary_evidence")
+    if not isinstance(documents, list):
+        return episode
+    result = []
+    changed = False
+    for doc in documents:
+        if not isinstance(doc, dict):
+            result.append(doc)
+            continue
+        source = sources.get(doc.get("source_id"), {})
+        url = source.get("url")
+        quote = doc.get("expected_text")
+        updated = dict(doc)
+        # Metadata cannot make an absent source or an absent quotation usable.
+        if (isinstance(url, str) and url.startswith("https://")
+                and isinstance(quote, str) and len(quote) >= 8
+                and doc.get("kind", "source_excerpt") == "source_excerpt"):
+            if "kind" not in updated:
+                updated["kind"] = "source_excerpt"
+            if not updated.get("source_page_url"):
+                updated["source_page_url"] = url
+            identifier = updated.get("id")
+            if (not updated.get("capture_file") and isinstance(identifier, str)
+                    and re.fullmatch(r"[A-Za-z0-9][A-Za-z0-9_-]{0,119}", identifier)):
+                updated["capture_file"] = f"research/captures/{identifier}.png"
+            if not str(updated.get("attribution") or "").strip():
+                publisher = source.get("publisher")
+                if isinstance(publisher, str) and publisher.strip():
+                    title = source.get("title")
+                    updated["attribution"] = publisher.strip() + (
+                        "; " + title.strip() if isinstance(title, str) and title.strip() else "")
+        changed = changed or updated != doc
+        result.append(updated)
+    return {**episode, "documentary_evidence": result} if changed else episode
+
+
 def validate(episode: dict, today: date | None = None) -> dict:
+    episode = normalize_documentary_metadata(episode)
     today = today or date.today()
     require(episode.get("format") == "ode-news-single", "formato deve conter uma matéria por vídeo")
     ep_id = str(episode.get("episode_id") or "")
@@ -159,8 +204,15 @@ def validate(episode: dict, today: date | None = None) -> dict:
         require(doc.get("kind") == "source_excerpt", "imagem deve ser captura de evidência identificada")
         require(doc.get("source_id") in source_ids, "evidência sem fonte")
         require(len(doc.get("expected_text", "")) >= 8, "falta texto verificável na matéria")
-        require(doc.get("source_page_url", "").startswith("https://"), "origem visual não comprovada")
-        require(len(doc.get("attribution", "")) >= 15 and doc.get("rights_review"), "falta procedência/direitos visuais")
+        source = next(s for s in sources if s["id"] == doc["source_id"])
+        require(doc.get("source_page_url", "").startswith("https://")
+                and doc["source_page_url"] == source["url"],
+                f"documento {doc.get('id')}: source_page_url deve corresponder à URL da fonte vinculada")
+        require(isinstance(doc.get("attribution"), str) and bool(doc["attribution"].strip()),
+                f"documento {doc.get('id')}: informar attribution ou publisher real na fonte vinculada")
+        # A short authentic credit is enough. Boilerplate rights_review does not
+        # prove a license; source excerpts remain subject to real text/capture
+        # verification. Photo licensing/contextual-use checks below are unchanged.
         require(doc.get("capture_file", "").startswith("research/captures/"), "caminho de captura inválido")
         rec = doc.get("editorial_reconstruction")
         if rec is not None:

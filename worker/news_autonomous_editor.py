@@ -367,19 +367,29 @@ role; corroborated exige ao menos dois publicadores/dominios independentes; sing
 verified_facts: quatro ou mais itens {{claim,source_ids,status,event_date}}
 com status SOMENTE "statement","background","forecast_not_collected",
 "projection","confirmed"; source_ids devem existir.
-documentary_evidence: exatamente dois ou três itens com id doc-1,doc-2
-etc, kind="source_excerpt", source_id, source_page_url IGUAL à URL
-original da fonte, expected_text sendo TRECHO VERBATIM e cópia EXATA, CONTÍNUA e LITERAL de uma única frase ou oração da matéria real de >=8 caracteres, sem alterar nenhuma palavra, sem mudar pontuação (não troque vírgulas por pontos) e sem juntar fragmentos separados, attribution, rights_review com explicação da
-citação curta e capture_file "research/captures/doc-1.png" etc.\nNo modo single_source_attributed, use ao menos DOIS expected_text DIFERENTES da MESMA página HTML da exclusiva; não use cópias do mesmo trecho ou scripts, metadados, links de navegação ou conteúdo escondido como prova. Não simule duas matérias ou duas confirmações.
+documentary_evidence: pelo menos dois recortes reais; cada objeto precisa de
+id estável (doc-1, doc-2...), source_id e expected_text.
+expected_text é cópia EXATA, CONTÍNUA e LITERAL de uma frase ou oração real
+de >=8 caracteres: não altere palavras/pontuação nem junte fragmentos separados.
+O código preenche kind="source_excerpt", source_page_url a partir da URL da fonte,
+capture_file a partir do id e attribution a partir do publisher real quando omitidos.
+Se escrever esses campos, preserve os valores corretos. Crédito curto real é válido.
+rights_review é opcional para esses recortes; não invente licença, permissão de uso
+ou aprovação jurídica. Registre somente restrições concretas conhecidas.
+Use material suficiente para as cenas: N cenas precisam de pelo menos N-2 recortes distintos.
+No modo single_source_attributed, use ao menos DOIS expected_text DIFERENTES da MESMA página HTML da exclusiva; não use cópias do mesmo trecho ou scripts, metadados, links de navegação ou conteúdo escondido como prova. Não simule duas matérias ou duas confirmações.
 Não adicionar reconstrução editorial fictícia ou fotos da imprensa.
 context_photos=[].
 
-segments: EXATAMENTE QUATRO cenas, types nesta ordem fact,fact,opinion,outro. A primeira cena abre com o fato novo real e inclui news_selection.opening_anchor literalmente.
+segments: de 4 a 9 cenas conforme a explicação precisar, com pelo menos duas fact,
+uma opinion e conclusão. A primeira cena abre com o fato novo real e inclui
+news_selection.opening_anchor literalmente. Organize a progressão naturalmente.
 Na cena de tipo 'opinion', a fala (narration) DEVE OBRIGATORIAMENTE começar com 'Na minha análise,' ou 'Na minha opinião,'.
 Cada objeto deve ter id,title,type,label,headline,metric,object_type
 (data/store/cash/bank/package/truck/factory), visual_cards com 3-5
-strings de 6-65 caracteres, narration de 85-125 PALAVRAS, document_id
-doc-1/doc-2 alternando, media_side left/right.
+strings de 6-65 caracteres, narration com a extensão necessária para explicar
+o ponto (mínimo de 47 palavras por cena), document_id do recorte pertinente
+e media_side left/right. Não alternar documentos sem motivo editorial.
 Todas as cenas exibem documento real, incluindo o comentário opinativo.
 Pelo menos 2 cenas factuais com prova. Uma opinião editorial fundamentada
 sem fatos inventados. Final responde à pergunta inicial.
@@ -483,7 +493,7 @@ def main():
                 "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode="
                 + (episode.get("news_selection") or {}).get("source_mode", "corroborated")
             )
-            validate(episode, today=local.date())
+            episode = validate(episode, today=local.date())
             prevent_repeated_story(episode, root)
             check_documentary_sources(episode)
             project = transform(episode)

@@ -1,4 +1,5 @@
 name: ODE Notícias - editor automático Groq
+run-name: ODE editor | ${{ inputs.date || 'automatico' }} | ${{ inputs.slot || github.event.schedule || github.event_name }}
 on:
   workflow_dispatch:
     inputs:

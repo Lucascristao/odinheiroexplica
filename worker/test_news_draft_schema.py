@@ -88,6 +88,25 @@ class DraftSchema(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "objeto JSON"):
             self.draft([self.episode])
 
+    def test_prompt_leaves_technical_metadata_to_code_and_narrative_length_flexible(self):
+        self.draft(self.episode)
+        prompt = COMPLETE.call_args.args[0]
+        for text in ("O código preenche", "Crédito curto real é válido",
+                     "rights_review é opcional", "não invente licença",
+                     "de 4 a 9 cenas", "extensão necessária", "cópia EXATA, CONTÍNUA e LITERAL"):
+            self.assertIn(text, prompt)
+        self.assertNotIn("EXATAMENTE QUATRO", prompt)
+        self.assertNotIn("85-125", prompt)
+
+    def test_user_unicode_and_explicit_opinion_fixes_are_preserved(self):
+        self.episode["thumbnail_primary"] = "objeto\u00a0com\u200b contexto"
+        opinion = next(segment for segment in self.episode["segments"] if segment["type"] == "opinion")
+        opinion["narration"] = "Uma interpretação claramente apresentada como avaliação."
+        result = self.draft(self.episode)
+        self.assertEqual(result["thumbnail_primary"], "objeto com contexto")
+        self.assertTrue(next(segment for segment in result["segments"] if segment["type"] == "opinion")
+                        ["narration"].startswith("Na minha análise, "))
+
     def test_scorecard_list_is_rejected(self):
         self.episode["scorecard"] = [self.episode["scorecard"]]
         with self.assertRaisesRegex(ValueError, r"draft.scorecard"):

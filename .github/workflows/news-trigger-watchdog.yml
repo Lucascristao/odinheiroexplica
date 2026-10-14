@@ -1,0 +1,47 @@
+name: ODE Notícias - recuperar gatilho ausente
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: Somente observar; não iniciar editor/modelos
+        type: boolean
+        default: true
+  schedule:
+    # Fora da hora cheia; o guard aplica 06–09, 10–13 e 18–21 em Fortaleza.
+    - cron: '7,27,47 * * * *'
+permissions:
+  contents: read
+  actions: write
+concurrency:
+  group: ode-news-trigger-watchdog
+  cancel-in-progress: false
+jobs:
+  guard:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Conferir janela, main atual, execuções e recibos reais
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXECUTE: ${{ github.event_name == 'schedule' || inputs.dry_run == false }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          ARGS=()
+          if [[ "$EXECUTE" == true ]]; then ARGS+=(--dispatch); fi
+          python worker/news_trigger_guard.py "${ARGS[@]}"
+      - name: Preservar resultado do watchdog
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: news-trigger-watchdog
+          path: render-output/news-trigger-watchdog.json
+          if-no-files-found: error
+          retention-days: 14

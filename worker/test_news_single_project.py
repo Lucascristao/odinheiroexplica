@@ -7,7 +7,7 @@ from pathlib import Path
 import unittest
 from tempfile import TemporaryDirectory
 
-from news_single_project import validate, transform
+from news_single_project import validate, transform, normalize_documentary_metadata
 
 PILOT = Path(__file__).resolve().parents[1] / "news/episodes/2026-10-09-imposto-seletivo.json"
 
@@ -23,6 +23,79 @@ class SingleNewsContractTests(unittest.TestCase):
         self.assertEqual(len(set(s["id"] for s in self.doc["sources"])), len(self.doc["sources"]))
         self.assertGreaterEqual(len(self.doc["sources"]), 2)
         self.assertEqual(self.doc["editorial_status"], "approved_for_private_pilot")
+
+    def test_short_real_documentary_credit_does_not_need_rights_boilerplate(self):
+        for credit in ("BBC", "UOL", "Agência Brasil"):
+            with self.subTest(credit=credit):
+                doc = copy.deepcopy(self.doc)
+                evidence = doc["documentary_evidence"][0]
+                evidence["attribution"] = credit
+                evidence.pop("rights_review", None)
+                self.assertIs(validate(doc, date(2026, 10, 9)), doc)
+                asset = next(a for a in transform(doc)["visual_assets"] if a["id"] == evidence["id"])
+                self.assertEqual(asset["attribution"], credit)
+
+    def test_missing_documentary_metadata_comes_only_from_existing_source(self):
+        doc = copy.deepcopy(self.doc)
+        evidence = doc["documentary_evidence"][0]
+        source = next(s for s in doc["sources"] if s["id"] == evidence["source_id"])
+        source["title"] = "Título de fixture da matéria, não uma nova apuração"
+        for field in ("kind", "source_page_url", "capture_file", "attribution", "rights_review"):
+            evidence.pop(field, None)
+        original = copy.deepcopy(doc)
+        result = validate(doc, date(2026, 10, 9))
+        normalized = result["documentary_evidence"][0]
+        self.assertEqual(normalized["kind"], "source_excerpt")
+        self.assertEqual(normalized["source_page_url"], source["url"])
+        self.assertEqual(normalized["capture_file"], f"research/captures/{evidence['id']}.png")
+        self.assertEqual(normalized["attribution"], source["publisher"] + "; " + source["title"])
+        self.assertNotIn("rights_review", normalized)
+        self.assertEqual(normalized["expected_text"], original["documentary_evidence"][0]["expected_text"])
+        self.assertEqual(doc, original)
+        self.assertTrue(transform(doc)["visual_assets"][0]["attribution"])
+
+    def test_metadata_never_fills_an_unknown_source_or_missing_source_url(self):
+        for field in ("source_id", "url"):
+            with self.subTest(field=field):
+                doc = copy.deepcopy(self.doc)
+                evidence = doc["documentary_evidence"][0]
+                evidence.pop("source_page_url", None)
+                evidence.pop("attribution", None)
+                if field == "source_id":
+                    evidence["source_id"] = "absent-source"
+                else:
+                    source = next(s for s in doc["sources"] if s["id"] == evidence["source_id"])
+                    source.pop("url")
+                self.assertNotIn("source_page_url", normalize_documentary_metadata(doc)["documentary_evidence"][0])
+                with self.assertRaises(ValueError):
+                    validate(doc, date(2026, 10, 9))
+
+    def test_metadata_cannot_replace_a_missing_quote_or_mismatched_url(self):
+        doc = copy.deepcopy(self.doc)
+        doc["documentary_evidence"][0].pop("expected_text")
+        with self.assertRaisesRegex(ValueError, "texto verificável"):
+            validate(doc, date(2026, 10, 9))
+        doc = copy.deepcopy(self.doc)
+        doc["documentary_evidence"][0]["source_page_url"] = "https://example.com/unrelated-document"
+        with self.assertRaisesRegex(ValueError, "URL da fonte vinculada"):
+            validate(doc, date(2026, 10, 9))
+
+    def test_missing_credit_and_unknown_publisher_remain_actionable_error(self):
+        doc = copy.deepcopy(self.doc)
+        evidence = doc["documentary_evidence"][0]
+        evidence.pop("attribution")
+        source = next(s for s in doc["sources"] if s["id"] == evidence["source_id"])
+        source.pop("publisher")
+        with self.assertRaisesRegex(ValueError, "attribution ou publisher real"):
+            validate(doc, date(2026, 10, 9))
+
+    def test_historical_transform_hash_and_input_are_unchanged(self):
+        doc = copy.deepcopy(self.doc)
+        self.assertIs(normalize_documentary_metadata(doc), doc)
+        payload = json.dumps(transform(doc), ensure_ascii=False, sort_keys=True).encode()
+        self.assertEqual(hashlib.sha256(payload).hexdigest(),
+                         "31ecb47781c1078b3a90c06ae5dee00383d84c200c5d47e562c9d9c0fcb4bb18")
+        self.assertEqual(doc, self.doc)
 
     def current_selection_fixture(self):
         # Contract fixture only; these edits are never saved as a news episode.
@@ -282,6 +355,7 @@ class SingleNewsContractTests(unittest.TestCase):
         first = doc["documentary_evidence"][0]
         second["source_id"] = first["source_id"]
         publisher = next(s for s in doc["sources"] if s["id"] == first["source_id"])
+        second["source_page_url"] = publisher["url"]
         second["editorial_reconstruction"]["publisher"] = publisher["publisher"]
         second["editorial_reconstruction"]["published_at"] = publisher["published_at"]
         with self.assertRaisesRegex(ValueError, "publicadores independentes"):
