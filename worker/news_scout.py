@@ -13,6 +13,16 @@ import urllib.parse
 import urllib.request
 import xml.etree.ElementTree as ET
 
+DIRECT_FEEDS = (
+    ("jovempan", "politica", "https://jovempan.com.br/feed"),
+    ("revistaoeste", "politica", "https://revistaoeste.com/feed/"),
+    ("poder360", "politica", "https://www.poder360.com.br/feed/"),
+    ("braziljournal", "empresas", "https://braziljournal.com/feed/"),
+    ("moneytimes", "economia", "https://www.moneytimes.com.br/feed/"),
+    ("suno", "economia", "https://www.suno.com.br/noticias/feed/"),
+    ("bmcnews", "economia", "https://bmcnews.com.br/feed/"),
+)
+
 SEARCHES = {
     "politica": "política brasil congresso STF TSE presidência eleições hoje",
     "economia": "economia brasil ultimas noticias",
@@ -25,11 +35,19 @@ TOPICS = tuple(SEARCHES)
 
 
 def parse_rss(xml: bytes, category: str, now: datetime) -> list[dict]:
-    root = ET.fromstring(xml)
+    # Normalizar prefixos XML de WordPress (ex.: content:encoded, dc:creator) para evitar falhas de namespace
+    cleaned = re.sub(rb"<(/?)[a-zA-Z0-9_-]+:([a-zA-Z0-9_-]+)", rb"<\1\2", xml)
+    try:
+        root = ET.fromstring(cleaned)
+    except ET.ParseError:
+        try:
+            root = ET.fromstring(xml)
+        except ET.ParseError:
+            return []
     results = []
-    for item in root.findall("./channel/item"):
+    for item in root.findall(".//item"):
         title = " ".join((item.findtext("title") or "").split())
-        url = (item.findtext("link") or "").strip()
+        url = (item.findtext("link") or item.findtext("guid") or "").strip()
         date_text = item.findtext("pubDate") or ""
         if not title or not url.startswith("https://") or not date_text:
             continue
@@ -51,26 +69,44 @@ def collect(now=None) -> dict:
     entries = []
     errors = []
     by_category = {}
+    headers = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 ODE-News-Scout/1.0"}
+
+    # 1. Feeds diretos e verificados de direita, liberais e cobertura de mercado
+    for feed_id, category, url in DIRECT_FEEDS:
+        try:
+            req = urllib.request.Request(url, headers=headers)
+            with urllib.request.urlopen(req, timeout=12) as response:
+                parsed = parse_rss(response.read(2_000_000), category, now)
+                by_category.setdefault(category, []).extend(parsed)
+        except Exception as exc:
+            errors.append(f"direct_{feed_id}: {type(exc).__name__}")
+
+    # 2. Busca ampla temática no Google News RSS
     for category in TOPICS:
         query = urllib.parse.quote(SEARCHES[category])
         url = "https://news.google.com/rss/search?q=" + query + "&hl=pt-BR&gl=BR&ceid=BR:pt-419"
         try:
-            req = urllib.request.Request(url, headers={"User-Agent": "ODE-News-Scout/1.0"})
+            req = urllib.request.Request(url, headers=headers)
             with urllib.request.urlopen(req, timeout=15) as response:
-                by_category[category] = parse_rss(response.read(2_000_000), category, now)
+                parsed = parse_rss(response.read(2_000_000), category, now)
+                by_category.setdefault(category, []).extend(parsed)
         except Exception as exc:
-            errors.append(f"{category}: {type(exc).__name__}")
-    # Mix news desks instead of selecting the first 35 politics/economy headlines.
-    for index in range(12):
+            errors.append(f"gnews_{category}: {type(exc).__name__}")
+
+    # Mesclar editorias garantindo pluralidade de fontes e evitando repetições
+    max_items = max((len(items) for items in by_category.values()), default=0)
+    for index in range(max_items):
         for category in TOPICS:
-            for article in by_category.get(category, [])[index:index + 1]:
-                key = re.sub(r"\\W+", "", article["title"].lower())
+            items = by_category.get(category, [])
+            if index < len(items):
+                article = items[index]
+                key = re.sub(r"\W+", "", article["title"].lower())
                 if key not in seen:
                     seen.add(key)
                     entries.append(article)
     return {"version": "1.0", "generated_at_utc": now.isoformat(),
             "editorial_status": "candidates_only_not_fact_checked",
-            "candidates": entries[:60], "feed_errors": errors}
+            "candidates": entries[:70], "feed_errors": errors}
 
 
 def main():
