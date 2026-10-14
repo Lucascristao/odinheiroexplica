@@ -105,6 +105,26 @@ def bind_draft_metadata(episode):
                 seg["narration"] = "Na minha análise, " + narr[:1].lower() + narr[1:]
                 print("EDITORIAL_METADATA_BINDING opinion segment prefixed with 'Na minha análise,'", flush=True)
 
+    # Garantir apresentação do Roberto na cena inicial após o gancho factual
+    if len(segments) >= 4 and isinstance(segments[0], dict) and segments[0].get("type") == "fact":
+        first_narr = str(segments[0].get("narration") or "").strip()
+        if first_narr and not re.search(r"(?i)\bRoberto\b", first_narr):
+            parts = re.split(r"(?<=[.!?])\s+", first_narr, maxsplit=1)
+            if len(parts) == 2:
+                segments[0]["narration"] = parts[0] + " Eu sou o Roberto, do O Dinheiro Explica, e " + parts[1][:1].lower() + parts[1][1:]
+            else:
+                segments[0]["narration"] = first_narr.rstrip(" .!?") + ". Eu sou o Roberto, do O Dinheiro Explica."
+            print("EDITORIAL_METADATA_BINDING opening segment enriched with presenter introduction", flush=True)
+
+    # Garantir chamada de inscrição na conclusão
+    for seg in reversed(segments):
+        if isinstance(seg, dict) and seg.get("type") == "conclusion":
+            narr = str(seg.get("narration") or "").strip()
+            if narr and not re.search(r"(?i)\b(inscreva|inscri[cç][aã]o)\b", narr):
+                seg["narration"] = narr.rstrip(" .!?") + ". Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações."
+                print("EDITORIAL_METADATA_BINDING conclusion segment enriched with subscription CTA", flush=True)
+            break
+
     return episode
 
 
@@ -405,7 +425,7 @@ context_photos=[].
 
 segments: de 4 a 9 cenas conforme a explicação precisar, com pelo menos duas fact,
 uma opinion e conclusão. A primeira cena abre com o fato novo real e inclui
-news_selection.opening_anchor literalmente. Organize a progressão naturalmente.
+news_selection.opening_anchor literalmente; logo após o gancho da primeira cena, inclua a apresentação natural do Roberto com o canal (ex.: "Eu sou o Roberto, do O Dinheiro Explica, e hoje..."). Organize a progressão naturalmente.
 Na cena de tipo 'opinion', a fala (narration) DEVE OBRIGATORIAMENTE começar com 'Na minha análise,' ou 'Na minha opinião,'.
 Cada objeto deve ter id,title,type,label,headline,metric,object_type
 (data/store/cash/bank/package/truck/factory), visual_cards com 3-5
@@ -414,7 +434,7 @@ o ponto (desenvolvimento claro de 40 a 85 palavras; no mínimo 25 palavras por c
 e media_side left/right. Não alternar documentos sem motivo editorial.
 Todas as cenas exibem documento real, incluindo o comentário opinativo.
 Pelo menos 2 cenas factuais com prova. Uma opinião editorial fundamentada
-sem fatos inventados. Final responde à pergunta inicial.
+sem fatos inventados. A cena final de tipo 'conclusion' responde à pergunta inicial, projeta os desdobramentos e termina OBRIGATORIAMENTE com uma chamada breve para inscrição no canal (ex.: "Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.").
 Não incluir photo_id ao usar document_id.
 engagement_question termina em ponto de interrogação.
 hashtags: de 1 a 3 hashtags específicas e distintas, começando com # e sem espaço.

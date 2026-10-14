@@ -241,6 +241,23 @@ class DerivedOpeningAndAttribution(unittest.TestCase):
         EDITOR.bind_draft_metadata(value)
         self.assertEqual(value["news_selection"]["opening_anchor"], value["verified_facts"][0]["claim"])
 
+    def test_presenter_introduction_and_subscription_cta_enriched(self):
+        claim = "O governo anunciou hoje uma proposta de perdão para MEIs."
+        episode = {
+            "segments": [
+                {"type": "fact", "narration": claim + " A aplicação depende da análise do Congresso."},
+                {"type": "fact", "narration": "O impacto financeiro pode atingir milhões de empreendedores."},
+                {"type": "opinion", "narration": "A proposta é benéfica para a formalização da economia."},
+                {"type": "conclusion", "narration": "Resta aguardar a tramitação no Legislativo nas próximas semanas."},
+            ],
+            "news_selection": {"new_fact": claim, "opening_anchor": claim},
+            "discovery_strategy": {"first_payoff": claim},
+        }
+        EDITOR.bind_draft_metadata(episode)
+        self.assertIn("Roberto", episode["segments"][0]["narration"])
+        self.assertIn("Na minha análise,", episode["segments"][2]["narration"])
+        self.assertTrue(any(word in episode["segments"][3]["narration"] for word in ("inscreva", "inscrição")))
+
 
 if __name__ == "__main__":
     unittest.main(argv=[sys.argv[0]] + TEST_ARGS)
