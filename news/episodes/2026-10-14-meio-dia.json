@@ -1,0 +1,251 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-14-meio-dia",
+  "news_date": "2026-10-14",
+  "event_date": "2026-10-14",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-14T14:14:14.344294-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Meta bloqueou temporariamente a geração de imagens de campanha de Lula (número 13) na IA do WhatsApp, enquanto manteve habilitada para Flávio Bolsonaro (número 22).",
+    "why_today": "No dia 14 de outubro de 2026, a Meta alterou o funcionamento da IA do WhatsApp, gerando tratamento desigual entre candidatos, fato que pode influenciar a percepção dos eleitores antes do segundo turno.",
+    "opening_anchor": "Meta bloqueou temporariamente a geração de imagens de campanha de Lula (número 13) na IA do WhatsApp, enquanto manteve habilitada para Flávio Bolsonaro (número",
+    "candidate_review": [
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "presidential",
+        "event_date": "2026-10-14",
+        "urls": [
+          "https://jovempan.com.br/politica/apos-polemica-meta-anuncia-bloqueio-a-geracao-de-imagens-de-lula-e-flavio/",
+          "https://www.poder360.com.br/poder-eleicoes-2026/meta-bloqueia-lula-13-mas-libera-flavio-22-na-ia-do-whatsapp/"
+        ],
+        "decision": "bloqueio temporário da IA"
+      },
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "senatorial",
+        "event_date": "2026-10-14",
+        "urls": [
+          "https://jovempan.com.br/politica/apos-polemica-meta-anuncia-bloqueio-a-geracao-de-imagens-de-lula-e-flavio/",
+          "https://www.poder360.com.br/poder-eleicoes-2026/meta-bloqueia-lula-13-mas-libera-flavio-22-na-ia-do-whatsapp/"
+        ],
+        "decision": "continuação da geração de imagens"
+      }
+    ]
+  },
+  "title": "Meta bloqueia IA de imagens para Lula, mas libera para Flávio Bolsonaro",
+  "title_options": [
+    {
+      "text": "Meta bloqueia IA de imagens para Lula, mas libera para Flávio Bolsonaro",
+      "editorial_quality": 5
+    },
+    {
+      "text": "IA do WhatsApp impede imagens de campanha de Lula e permite Flávio Bolsonaro",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Diferença de tratamento da IA da Meta gera disputa judicial entre Lula e TSE",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Bloqueio IA Lula",
+  "thumbnail_primary": "logo da Meta",
+  "thumbnail_tension": "tratamento desigual entre candidatos",
+  "thumbnail_composition": "logo à esquerda, texto à direita",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato relevante para a disputa eleitoral e para a regulação de IA",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto_politico": "significativo"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/apos-polemica-meta-anuncia-bloqueio-a-geracao-de-imagens-de-lula-e-flavio/",
+      "published_at": "2026-10-14",
+      "role": "reportagem"
+    },
+    {
+      "id": "S2",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/meta-bloqueia-lula-13-mas-libera-flavio-22-na-ia-do-whatsapp/",
+      "published_at": "2026-10-14",
+      "role": "reportagem"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Meta bloqueou temporariamente a geração de imagens de campanha de Lula (número 13) na IA do WhatsApp, enquanto manteve habilitada para Flávio Bolsonaro (número 22).",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-14"
+    },
+    {
+      "claim": "A campanha de Lula acionou o TSE alegando tratamento desigual.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-14"
+    },
+    {
+      "claim": "A Meta afirmou que a medida segue as regras eleitorais brasileiras.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-14"
+    },
+    {
+      "claim": "O segundo turno da eleição presidencial está marcado para 25 de outubro de 2026.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-10-14"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "tomamos medidas adicionais para que comandos usando apenas o primeiro",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/apos-polemica-meta-anuncia-bloqueio-a-geracao-de-imagens-de-lula-e-flavio/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "meta bloqueia “lula 13” mas libera “flávio 22” na ia do whatsapp campa",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-eleicoes-2026/meta-bloqueia-lula-13-mas-libera-flavio-22-na-ia-do-whatsapp/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Poder360"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Bloqueio da IA para Lula",
+      "type": "fact",
+      "label": "fato",
+      "headline": "Meta impede geração de imagens de Lula",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "Meta logo",
+        "WhatsApp interface",
+        "Comando de texto"
+      ],
+      "narration": "Meta bloqueou temporariamente a geração de imagens de campanha de Lula (número 13) na IA do WhatsApp, enquanto manteve habilitada para Flávio Bolsonaro (número 22). A restrição foi anunciada às 12h38 (UTC-3) e confirmada por duas fontes independentes.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "IA continua funcionando para Flávio",
+      "type": "fact",
+      "label": "fato",
+      "headline": "Flávio Bolsonaro ainda gera imagens",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "Imagem gerada",
+        "Número 22",
+        "Cores verde e amarelo"
+      ],
+      "narration": "Conforme o relato da Poder360, a IA do WhatsApp produziu normalmente imagens com ‘Flávio 22’ nas cores da bandeira, demonstrando tratamento desigual entre os candidatos durante a campanha.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise da situação",
+      "type": "opinion",
+      "label": "opinião",
+      "headline": "Impacto da decisão da Meta",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de alcance",
+        "Comparação de candidatos",
+        "Citação do TSE"
+      ],
+      "narration": "Na minha análise, o bloqueio parcial pode gerar percepção de favorecimento e influenciar eleitores nas redes, sobretudo porque a IA do WhatsApp tem amplo uso. A medida levanta questões sobre transparência e neutralidade das plataformas digitais em períodos eleitorais.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e próximos passos",
+      "type": "conclusion",
+      "label": "conclusão",
+      "headline": "Campanha de Lula aciona TSE",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "Logo do TSE",
+        "Advogado da campanha",
+        "Calendário eleitoral"
+      ],
+      "narration": "A campanha de Lula, representada por seu advogado Marco Aurélio Carvalho, já acionou o TSE pedindo medida de urgência contra a Meta, alegando violação da igualdade de condições. O caso deverá ser analisado nas próximas semanas, podendo definir precedentes para o uso de IA em eleições futuras.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Você acha que a Meta deve garantir tratamento igualitário para todos os candidatos em suas ferramentas de IA?",
+  "hashtags": [
+    "#MetaIA",
+    "#Eleições2026",
+    "#IgualdadeDigital"
+  ],
+  "tags": [
+    "Meta",
+    "WhatsApp",
+    "IA",
+    "Lula",
+    "Flávio Bolsonaro",
+    "TSE",
+    "Campanha Eleitoral",
+    "Regulação Digital",
+    "Eleição Presidencial",
+    "Desigualdade de Plataforma"
+  ],
+  "primary_keyword": "Meta bloqueia IA de imagens para Lula",
+  "secondary_keywords": [
+    "WhatsApp IA",
+    "tratamento desigual",
+    "campanha eleitoral 2026"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que a IA do WhatsApp está bloqueando imagens de um candidato e não de outro durante a campanha eleitoral de 2026.",
+    "search_query": "Meta bloqueio IA imagens Lula Flávio Bolsonaro WhatsApp 2026",
+    "recommendation_angle": "Apresentar o fato com documentos reais e analisar suas implicações políticas e regulatórias.",
+    "first_payoff": "Meta bloqueou temporariamente a geração de imagens de campanha de Lula (número 13) na IA do WhatsApp, enquanto manteve habilitada para Flávio Bolsonaro (número 22).",
+    "promise_proof": "Trechos literais de duas reportagens independentes confirmam o tratamento desigual da IA.",
+    "audience_hypothesis": "Eleitores e analistas políticos buscam entender como plataformas digitais podem influenciar a disputa eleitoral.",
+    "thumbnail_complement": "Imagem da interface do WhatsApp com mensagem de erro ao tentar gerar a imagem de Lula.",
+    "verification_limits": "A verificação se baseia em duas fontes independentes publicadas no mesmo dia; não há acesso a documentos internos da Meta."
+  },
+  "publication_description": "Meta bloqueia IA de imagens para Lula, mas libera para Flávio Bolsonaro, gerando disputa judicial e debate sobre neutralidade digital nas eleições de 2026.",
+  "publication_target_local": "2026-10-14T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
