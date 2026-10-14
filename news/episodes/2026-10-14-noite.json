@@ -1,0 +1,270 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-14-noite",
+  "news_date": "2026-10-14",
+  "event_date": "2026-10-14",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-14T18:38:46.409282-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Flávio Bolsonaro tem 46% e Lula 44% nas intenções de voto para o segundo turno.",
+    "why_today": "A pesquisa divulgada nesta quarta-feira, 14 de outubro, mostra um empate técnico entre Flávio Bolsonaro e Lula a poucos dias do segundo turno, alterando estratégias de campanha e provocando reação imediata nos mercados financeiros.",
+    "opening_anchor": "Flávio Bolsonaro, com 46%, e Lula, com 44%, estão empatados tecnicamente no segundo turno",
+    "candidate_review": [
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "politics",
+        "event_date": "2026-10-14",
+        "urls": [
+          "https://www.moneytimes.com.br/pesquisa-quaest-14-de-outubro-gaep/",
+          "https://jovempan.com.br/politica/quaest-flavio-aparece-com-46-contra-44-de-lula-no-2o-turno/",
+          "https://revistaoeste.com/politica/quaest-flavio-tem-46-contra-44-de-lula/",
+          "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-46-e-lula-tem-44-no-2o-turno-diz-quaest/"
+        ],
+        "decision": "empate técnico dentro da margem de erro"
+      },
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "politics",
+        "event_date": "2026-10-14",
+        "urls": [
+          "https://www.moneytimes.com.br/pesquisa-quaest-14-de-outubro-gaep/",
+          "https://jovempan.com.br/politica/quaest-flavio-aparece-com-46-contra-44-de-lula-no-2o-turno/",
+          "https://revistaoeste.com/politica/quaest-flavio-tem-46-contra-44-de-lula/",
+          "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-46-e-lula-tem-44-no-2o-turno-diz-quaest/"
+        ],
+        "decision": "empate técnico dentro da margem de erro"
+      }
+    ]
+  },
+  "title_options": [
+    {
+      "text": "Pesquisa Quaest indica empate técnico entre Flávio Bolsonaro e Lula para o 2º turno",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Intenções de voto: Flávio Bolsonaro 46% x Lula 44% em pesquisa de 14/10/2026",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Eleitores divididos: pesquisa mostra Flávio à frente de Lula por 2 pontos",
+      "editorial_quality": 3
+    }
+  ],
+  "title": "Pesquisa Quaest indica empate técnico entre Flávio Bolsonaro e Lula para o 2º turno",
+  "thumbnail_headline": "Empate técnico nas urnas",
+  "thumbnail_primary": "Flávio Bolsonaro e Lula em debate",
+  "thumbnail_tension": "A disputa está tão equilibrada que os mercados reagem imediatamente",
+  "thumbnail_composition": "Close nos rostos dos candidatos, fundo desfocado de urna",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "verificação cruzada de quatro veículos independentes",
+    "reason": "Todas as fontes publicaram o mesmo trecho da pesquisa Quaest no mesmo dia, confirmando o dado de 46% x 44%",
+    "criteria": {
+      "source_independence": "alto",
+      "textual_consistency": "total",
+      "methodology_transparency": "presente"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/pesquisa-quaest-14-de-outubro-gaep/",
+      "published_at": "2026-10-14",
+      "role": "news"
+    },
+    {
+      "id": "S2",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/quaest-flavio-aparece-com-46-contra-44-de-lula-no-2o-turno/",
+      "published_at": "2026-10-14",
+      "role": "news"
+    },
+    {
+      "id": "S3",
+      "publisher": "Revista Oeste",
+      "url": "https://revistaoeste.com/politica/quaest-flavio-tem-46-contra-44-de-lula/",
+      "published_at": "2026-10-14",
+      "role": "news"
+    },
+    {
+      "id": "S4",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-46-e-lula-tem-44-no-2o-turno-diz-quaest/",
+      "published_at": "2026-10-14",
+      "role": "news"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Flávio Bolsonaro tem 46% e Lula 44% nas intenções de voto para o segundo turno.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-14"
+    },
+    {
+      "claim": "A margem de erro da pesquisa é ±2 pontos percentuais, nível de confiança 95%.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "status": "background",
+      "event_date": "2026-10-14"
+    },
+    {
+      "claim": "O Ibovespa recuou 0,18% na sessão de divulgação da pesquisa.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-14"
+    },
+    {
+      "claim": "O dólar subiu para R$ 5,03 na mesma sessão.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-14"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "Flávio Bolsonaro, com 46%, e Lula, com 44%, estão empatados tecnicamente no segundo turno",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/pesquisa-quaest-14-de-outubro-gaep/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "Flávio Bolsonaro (PL) aparece com 46% dos votos, enquanto Lula tem 44%",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/quaest-flavio-aparece-com-46-contra-44-de-lula-no-2o-turno/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Jovem Pan"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo",
+      "type": "fact",
+      "label": "intro",
+      "headline": "Pesquisa mostra empate técnico",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de barras com 46% x 44%",
+        "Mapa de distribuição regional",
+        "Tabela de margem de erro"
+      ],
+      "narration": "Flávio Bolsonaro, com 46%, e Lula, com 44%, estão empatados tecnicamente no segundo turno. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que esse empate significa para a corrida presidencial e para a economia.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Impacto nos mercados",
+      "type": "fact",
+      "label": "economy",
+      "headline": "Bolsa e dólar reagem",
+      "metric": "finance",
+      "object_type": "data",
+      "visual_cards": [
+        "Queda do Ibovespa 0,18%",
+        "Alta do dólar para R$5,03",
+        "Indicadores de volatilidade"
+      ],
+      "narration": "Na mesma sessão em que a pesquisa foi divulgada, o Ibovespa recuou 0,18% e o dólar subiu para R$ 5,03, refletindo a preocupação dos investidores com a proximidade do segundo turno e a incerteza sobre políticas econômicas futuras.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de risco",
+      "type": "opinion",
+      "label": "opinion",
+      "headline": "Minha opinião sobre o cenário",
+      "metric": "analysis",
+      "object_type": "data",
+      "visual_cards": [
+        "Seta indicando risco crescente",
+        "Comparativo de cenários de ajuste fiscal",
+        "Indicador de confiança do consumidor"
+      ],
+      "narration": "Na minha análise, o empate técnico eleva o risco de volatilidade nos próximos dias, pois candidatos de perfis econômicos opostos podem mudar drasticamente as expectativas de crédito e investimento. O mercado tende a reagir de forma mais agressiva quando a margem de erro é tão estreita.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "O que esperar",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário eleitoral",
+        "Resumo dos números",
+        "Chamada para inscrição"
+      ],
+      "narration": "Em resumo, a pesquisa Quaest indica que a disputa está extremamente equilibrada, o que deve intensificar a campanha nas duas semanas que antecedem o segundo turno e manter a volatilidade nos mercados. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que esse empate técnico pode influenciar as decisões de investimento nos próximos dias?",
+  "hashtags": [
+    "#Eleicoes2026",
+    "#MercadoFinanceiro"
+  ],
+  "tags": [
+    "pesquisa",
+    "intenção de voto",
+    "Flávio Bolsonaro",
+    "Lula",
+    "segundo turno",
+    "mercado",
+    "Ibovespa",
+    "dólar",
+    "economia",
+    "politica"
+  ],
+  "primary_keyword": "empate técnico",
+  "secondary_keywords": [
+    "Flávio Bolsonaro 46%",
+    "Lula 44%",
+    "pesquisa Quaest"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender o significado de um empate técnico nas pesquisas eleitorais e suas repercussões econômicas imediatas.",
+    "search_query": "pesquisa Quaest 14 de outubro 2026 empate técnico Flávio Bolsonaro Lula",
+    "recommendation_angle": "Apresentar dados verificados e análise de risco para investidores que acompanham a corrida presidencial.",
+    "first_payoff": "Flávio Bolsonaro, com 46%, e Lula, com 44%, estão empatados tecnicamente no segundo turno",
+    "promise_proof": "Quatro veículos independentes publicaram o mesmo trecho da pesquisa, confirmando a informação.",
+    "audience_hypothesis": "Investidores e eleitores buscam entender como a proximidade do segundo turno afeta mercados e estratégias de campanha.",
+    "thumbnail_complement": "Imagem dos candidatos lado a lado com gráficos de votação ao fundo.",
+    "verification_limits": "A margem de erro de ±2 pontos impede afirmar um vencedor definitivo neste momento."
+  },
+  "publication_description": "Empate técnico nas intenções de voto entre Flávio Bolsonaro e Lula foi revelado em pesquisa Quaest divulgada em 14/10/2026, gerando reação imediata nos mercados financeiros.",
+  "publication_target_local": "2026-10-14T20:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
