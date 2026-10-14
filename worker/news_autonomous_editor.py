@@ -388,7 +388,7 @@ Na cena de tipo 'opinion', a fala (narration) DEVE OBRIGATORIAMENTE começar com
 Cada objeto deve ter id,title,type,label,headline,metric,object_type
 (data/store/cash/bank/package/truck/factory), visual_cards com 3-5
 strings de 6-65 caracteres, narration com a extensão necessária para explicar
-o ponto (mínimo de 47 palavras por cena), document_id do recorte pertinente
+o ponto (desenvolvimento claro de 45 a 85 palavras; no mínimo 32 palavras por cena), document_id do recorte pertinente
 e media_side left/right. Não alternar documentos sem motivo editorial.
 Todas as cenas exibem documento real, incluindo o comentário opinativo.
 Pelo menos 2 cenas factuais com prova. Uma opinião editorial fundamentada

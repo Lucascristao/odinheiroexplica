@@ -271,7 +271,7 @@ def validate(episode: dict, today: date | None = None) -> dict:
     used_docs = set()
     used_photos = set()
     for segment in segments:
-        require(len(str(segment.get("narration", "")).split()) >= 47, "bloco narrativo curto demais")
+        require(len(str(segment.get("narration", "")).split()) >= 32, "bloco narrativo curto demais")
         cards = segment.get("visual_cards") or []
         require(3 <= len(cards) <= 8 and all(6 <= len(c) <= 65 for c in cards), "faltam destaques sincronizados")
         require(segment.get("object_type") in ("data", "store", "cash", "bank", "package", "truck", "factory"), "objeto gráfico inválido")
