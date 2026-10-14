@@ -156,7 +156,7 @@ def editor_identity(run, config):
         return match.groups()
     # Scheduled runs have no inputs/date. Their name preserves the actual cron;
     # bind it to the most recent nominal occurrence, not the runner start time.
-    cron = re.fullmatch(r"ODE editor \| automatico \| (0|17) (9|13|21) \* \* \*", title)
+    cron = re.fullmatch(r"ODE editor \| automatico \| (0|17|48|3) (8|9|12|13|20|21) \* \* \*", title)
     if cron and run.get("event") == "schedule":
         minute, hour = map(int, cron.groups())
         created = aware(run["created_at"]).astimezone(timezone.utc)
@@ -165,7 +165,8 @@ def editor_identity(run, config):
             nominal -= timedelta(days=1)
         local = nominal.astimezone(ZoneInfo(config["timezone"]))
         for index, start in enumerate(config["production_hours"]):
-            if local.strftime("%H") == start[:2]:
+            target_hour = int(start[:2])
+            if local.hour == target_hour or local.hour == (target_hour + 1):
                 return local.date().isoformat(), SLOTS[index]
     return None
 

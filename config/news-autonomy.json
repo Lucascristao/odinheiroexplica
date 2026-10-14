@@ -4,9 +4,9 @@
   "approval_basis": "Piloto explicitamente aprovado pelo titular em 2026-10-09; autorização permanente para edições automáticas futuras, sem revisão humana por episódio",
   "timezone": "America/Fortaleza",
   "production_hours": [
-    "06:00",
-    "10:00",
-    "18:00"
+    "05:48",
+    "09:48",
+    "17:48"
   ],
   "publication_hours": [
     "08:00",
@@ -131,6 +131,13 @@
       "authorized_by_user": true,
       "mode": "publish_immediately_after_qa",
       "reason": "Autorização direta do titular nesta conversa de 14/10/2026 para produzir e postar em produção a edição de meio-dia de 14/10/2026 imediatamente após QA."
+    },
+    {
+      "episode_id": "noticia-2026-10-14-noite",
+      "original_publication_local": "2026-10-14T20:00:00-03:00",
+      "authorized_by_user": true,
+      "mode": "publish_immediately_after_qa",
+      "reason": "Autorização direta do titular nesta conversa de 14/10/2026 para produzir e postar em produção a edição da noite de 14/10/2026 imediatamente após QA."
     }
   ],
   "one_time_immediate_publications": [
@@ -165,6 +172,14 @@
       "authorized_by_user": true,
       "mode": "publish_immediately_after_qa",
       "reason": "Autorização direta do titular nesta conversa de 14/10/2026 para produzir e postar o vídeo de meio-dia em produção imediatamente após QA."
+    },
+    {
+      "episode_id": "noticia-2026-10-14-noite",
+      "news_date": "2026-10-14",
+      "original_publication_local": "2026-10-14T20:00:00-03:00",
+      "authorized_by_user": true,
+      "mode": "publish_immediately_after_qa",
+      "reason": "Autorização direta do titular nesta conversa de 14/10/2026 para produzir e postar o vídeo da noite em produção imediatamente após QA."
     }
   ],
   "editor": {
