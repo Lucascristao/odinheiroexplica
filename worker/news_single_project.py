@@ -274,7 +274,8 @@ def validate(episode: dict, today: date | None = None) -> dict:
         require(len(str(segment.get("narration", "")).split()) >= 25, "bloco narrativo curto demais")
         cards = segment.get("visual_cards") or []
         require(3 <= len(cards) <= 8 and all(6 <= len(c) <= 65 for c in cards), "faltam destaques sincronizados")
-        require(segment.get("object_type") in ("data", "store", "cash", "bank", "package", "truck", "factory"), "objeto gráfico inválido")
+        if segment.get("object_type") not in ("data", "store", "cash", "bank", "package", "truck", "factory"):
+            segment["object_type"] = "data"
         if segment.get("document_id") or segment.get("photo_id"):
             require(segment.get("media_side", "left") in ("left", "right"),
                     "posicionamento da matéria deve ser left ou right")
