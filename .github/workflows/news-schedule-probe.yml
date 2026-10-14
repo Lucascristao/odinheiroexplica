@@ -1,0 +1,52 @@
+name: ODE - sonda real do agendamento
+run-name: Sonda cron — ${{ github.event_name }}
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '27 12 14 10 *'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Registrar gatilho e atraso observados
+        env:
+          EXPECTED_UTC: '2026-10-14T12:27:00Z'
+          EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import datetime as dt, json, os, urllib.request
+          expected = dt.datetime.fromisoformat(os.environ["EXPECTED_UTC"].replace("Z", "+00:00"))
+          observed = dt.datetime.now(dt.timezone.utc)
+          request = urllib.request.Request(
+              "https://api.github.com/repos/" + os.environ["GITHUB_REPOSITORY"] + "/actions/runs/" + os.environ["GITHUB_RUN_ID"],
+              headers={"Authorization": "Bearer " + os.environ["GH_TOKEN"], "Accept": "application/vnd.github+json"})
+          with urllib.request.urlopen(request, timeout=20) as response:
+              run = json.load(response)
+          created = dt.datetime.fromisoformat(run["created_at"].replace("Z", "+00:00"))
+          result = {
+              "expected_utc": expected.isoformat(), "run_created_utc": created.isoformat(),
+              "job_observed_utc": observed.isoformat(), "event": os.environ["EVENT_NAME"],
+              "schedule": os.environ.get("SCHEDULE"), "run_id": run["id"],
+              "run_url": run["html_url"], "commit": os.environ["GITHUB_SHA"],
+              "trigger_delay_seconds": (created - expected).total_seconds(),
+              "runner_delay_seconds": (observed - created).total_seconds(),
+              "scheduled_trigger_observed": os.environ["EVENT_NAME"] == "schedule",
+              "production_started": False, "model_api_called": False
+          }
+          with open("cron-probe.json", "w") as output:
+              json.dump(result, output, indent=2)
+          print(json.dumps(result, indent=2))
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as output:
+              output.write("## Teste real de cron\n\n" + json.dumps(result, indent=2) + "\n")
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ode-cron-probe
+          path: cron-probe.json
+          retention-days: 7
