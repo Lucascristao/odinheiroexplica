@@ -116,14 +116,18 @@ def sanitize_page_thoroughly(page) -> None:
 
         selectorsToRemove.forEach(sel => {
             try {
-                document.querySelectorAll(sel).forEach(el => el.remove());
+                document.querySelectorAll(sel).forEach(el => {
+                    if (el.querySelector('.conteudo-noticia, article, main, h1, .materia-conteudo') || el.closest('.conteudo-noticia, article, main')) return;
+                    el.remove();
+                });
             } catch (e) {}
         });
 
         // 3. Eliminar qualquer elemento fixo que esteja aplicando sombra ou escurecimento
         document.querySelectorAll('div, section, aside').forEach(el => {
             try {
-                const text = el.innerText || '';
+                if (el.querySelector('.conteudo-noticia, article, main, h1, .materia-conteudo') || el.closest('.conteudo-noticia, article, main')) return;
+                const text = el.innerText || el.textContent || '';
                 if (text.includes('Para começar') || text.includes('PERGUNTA PRO LEO')) {
                     el.remove();
                     return;
@@ -267,8 +271,8 @@ def capture_desktop_context(page, expected_text, target_selector, temp_path):
             const normalize = value => (value || '').replace(/\s+/g, ' ').trim().toLocaleLowerCase();
             const needle = normalize(expected);
             const candidates = [...document.querySelectorAll('p,li,tr,td,h1,h2,h3,blockquote,div,section,span,article,main')]
-                .filter(el => el.getClientRects().length && normalize(el.innerText).includes(needle));
-            candidates.sort((a,b) => normalize(a.innerText).length - normalize(b.innerText).length);
+                .filter(el => el.getClientRects().length && normalize(el.innerText || el.textContent).includes(needle));
+            candidates.sort((a,b) => normalize(a.innerText || a.textContent).length - normalize(b.innerText || b.textContent).length);
             if (!candidates.length) return false;
             candidates[0].setAttribute('data-ode-context-proof', 'true');
             return true;
@@ -276,7 +280,8 @@ def capture_desktop_context(page, expected_text, target_selector, temp_path):
         if not selected:
             raise RuntimeError("Trecho contextual não localizado.")
         locator = page.locator('[data-ode-context-proof="true"]').first
-    if " ".join(expected_text.casefold().split()) not in " ".join(locator.inner_text().casefold().split()):
+    locator_text = locator.inner_text() or locator.text_content() or ""
+    if " ".join(expected_text.casefold().split()) not in " ".join(locator_text.casefold().split()):
         raise RuntimeError("O bloco contextual não contém o trecho literal verificado.")
     # Keep a separate authentic introduction to the article. Never merge,
     # relocate or regenerate its masthead, headline or original byline.
@@ -385,9 +390,19 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
         # 5. Auditoria de conteúdo: detectar páginas de erro (ex: 404, não encontrada)
         content_text = evaluate_with_navigation_retry(
             page,
-            "() => document.body ? document.body.innerText : ''",
+            "() => document.body ? (document.body.innerText?.trim() ? document.body.innerText : (document.body.textContent || '')) : ''",
             operation_name="ler o conteúdo",
         )
+        if len(content_text.strip()) < 50:
+            try:
+                page.wait_for_selector(".conteudo-noticia, article, main, p", timeout=8000)
+                content_text = evaluate_with_navigation_retry(
+                    page,
+                    "() => document.body ? (document.body.innerText?.trim() ? document.body.innerText : (document.body.textContent || '')) : ''",
+                    operation_name="reler o conteúdo após espera",
+                )
+            except Exception:
+                pass
         page_title = title_with_navigation_retry(page)
         error_indicators = [
             "página não encontrada",
@@ -422,7 +437,7 @@ def capture_asset(asset: dict, captures_dir: Path, playwright_browser=None) -> b
                 let best = null;
                 for (const el of document.querySelectorAll('h1, h2, h3, p, td, li, span, div, section, article, main')) {
                     if (!el.getClientRects().length) continue;
-                    const text = normalize(el.innerText);
+                    const text = normalize(el.innerText || el.textContent);
                     if (text.includes(needle) && (!best || text.length < best.textLength)) {
                         best = { element: el, textLength: text.length };
                     }
