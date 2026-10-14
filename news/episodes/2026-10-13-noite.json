@@ -1,0 +1,237 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-13-noite",
+  "news_date": "2026-10-13",
+  "event_date": "2026-10-13",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-14T01:43:25.259267-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "single_source_attributed",
+    "independent_confirmation": false,
+    "new_fact": "O governo federal anunciou um pacote de cinco medidas para microempreendedores individuais, incluindo perdão de dívidas que totalizam cerca de R$ 12,6 bilhões.",
+    "why_today": "O anúncio, feito em 13/10/2026, traz um pacote de medidas inéditas que pode aliviar o endividamento de 3,6 milhões de MEIs, impactando diretamente a demanda interna e a recuperação econômica pós-pandemia.",
+    "opening_anchor": "O governo federal anunciou nesta terça-feira (13) um pacote de cinco medidas voltadas aos microempreendedores individuais (MEIs)",
+    "attribution_note": "A informação provém exclusivamente da Agência Brasil, publicada em 13/10/2026. Não há outra fonte independente que confirme o anúncio até o momento, portanto o relato permanece como atribuição única.",
+    "candidate_review": [
+      {
+        "subject": "Medida de perdão de dívidas para MEIs",
+        "topic_area": "economy",
+        "event_date": "2026-10-13",
+        "urls": [
+          "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/governo-anuncia-perdao-de-dividas-e-pacote-de-estimulo-para-meis"
+        ],
+        "decision": "exclusiva"
+      }
+    ]
+  },
+  "title": "Governo anuncia perdão de R$ 12,6 bi em dívidas para 3,6 mi de MEIs",
+  "title_options": [
+    {
+      "text": "Governo anuncia perdão de R$ 12,6 bi em dívidas para 3,6 mi de MEIs",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Pacote de estímulo ao MEI inclui perdão de bilhões de reais em débitos",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Medidas para microempreendedores: fim de R$ 12,6 bi em dívidas",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Perdão de dívidas MEI",
+  "thumbnail_primary": "Presidente Lula em cerimônia de anúncio",
+  "thumbnail_tension": "Alívio de endividamento versus necessidade de aprovação legislativa",
+  "thumbnail_composition": "Lula centralizado, com ministro ao lado, fundo de bandeira nacional",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato novo verificado em fonte única confiável; ausência de confirmação independente reconhecida.",
+    "criteria": {
+      "source_reliability": "alta",
+      "fact_veracity": "alta",
+      "contextual_accuracy": "alta",
+      "ethical_compliance": "total"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/governo-anuncia-perdao-de-dividas-e-pacote-de-estimulo-para-meis",
+      "published_at": "2026-10-13",
+      "role": "primary"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O governo federal anunciou um pacote de cinco medidas para microempreendedores individuais, incluindo perdão de dívidas que totalizam cerca de R$ 12,6 bilhões.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-13"
+    },
+    {
+      "claim": "A proposta poderá beneficiar cerca de 3,6 milhões de microempreendedores.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-13"
+    },
+    {
+      "claim": "O presidente Lula afirmou que o pacote vai ‘dar oxigênio’ aos MEIs.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-13"
+    },
+    {
+      "claim": "O ministro da Fazenda Dario Durigan destacou que a medida extinguirá cobranças judiciais relacionadas aos débitos dos MEIs.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-13"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "kind": "source_excerpt",
+      "source_id": "S1",
+      "source_page_url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/governo-anuncia-perdao-de-dividas-e-pacote-de-estimulo-para-meis",
+      "expected_text": "O governo federal anunciou nesta terça-feira (13) um pacote de cinco medidas voltadas aos microempreendedores individuais (MEIs)",
+      "attribution": "Agência Brasil, 13/10/2026",
+      "rights_review": "Citação curta sob direito de citação e uso justo para fins informativos e documentais.",
+      "capture_file": "research/captures/doc-1.png"
+    },
+    {
+      "id": "doc-2",
+      "kind": "source_excerpt",
+      "source_id": "S1",
+      "source_page_url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/governo-anuncia-perdao-de-dividas-e-pacote-de-estimulo-para-meis",
+      "expected_text": "projeto de lei complementar que prevê o perdão das dívidas acumuladas pelos MEIs com o governo federal",
+      "attribution": "Agência Brasil, 13/10/2026",
+      "rights_review": "Citação curta sob direito de citação e uso justo para fins informativos e documentais.",
+      "capture_file": "research/captures/doc-2.png"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Anúncio oficial do pacote MEI",
+      "type": "fact",
+      "label": "fato",
+      "headline": "Governo lança medidas de perdão de dívidas para MEIs",
+      "metric": "data",
+      "object_type": "package",
+      "visual_cards": [
+        "Lula apresenta o pacote em palco",
+        "Gráfico de R$ 12,6 bi em dívidas",
+        "Mapa dos 3,6 mi de beneficiados"
+      ],
+      "narration": "O governo federal anunciou nesta terça-feira (13) um pacote de cinco medidas voltadas aos microempreendedores individuais (MEIs), com foco na redução do endividamento, ampliação do acesso a crédito, elevação do teto de faturamento e simplificação de regras. A principal iniciativa é o envio ao Congresso de um projeto de lei complementar que prevê o perdão das dívidas acumuladas pelos MEIs, totalizando cerca de R$ 12,6 bilhões e beneficiando aproximadamente 3,6 milhões de empreendedores. O presidente Lula enfatizou que a ação vai ‘dar oxigênio’ ao setor, enquanto o ministro da Fazenda Dario Durigan destacou a extinção de cobranças judiciais relacionadas.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes financeiros da proposta",
+      "type": "fact",
+      "label": "fato",
+      "headline": "R$ 12,6 bi em dívidas podem ser perdoadas",
+      "metric": "finance",
+      "object_type": "bank",
+      "visual_cards": [
+        "Tabela de dívidas por região",
+        "Comparativo antes/depois do perdão",
+        "Estimativa de crédito liberado"
+      ],
+      "narration": "A proposta detalha que o perdão de dívidas alcançará cerca de R$ 12,6 bilhões, valor que representa uma parcela significativa do endividamento total dos microempreendedores individuais. Segundo a Agência Brasil, a medida poderá eliminar restrições de inadimplência, permitindo que os MEIs solicitem linhas de financiamento com condições mais favoráveis. Além disso, o pacote inclui a ampliação do teto de faturamento anual, facilitando a formalização de negócios em crescimento e reduzindo a carga burocrática que atualmente impede a expansão de pequenos empreendimentos.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de impacto econômico",
+      "type": "opinion",
+      "label": "opinião",
+      "headline": "Perdão de dívidas pode impulsionar a demanda interna",
+      "metric": "analysis",
+      "object_type": "store",
+      "visual_cards": [
+        "Impacto de 12,6 bilhões de reais no crédito",
+        "Custo fiscal transferido aos contribuintes",
+        "Risco de retração dos bancos privados"
+      ],
+      "narration": "Na minha análise, o alívio de 12,6 bilhões de reais em dívidas pode destravar o crédito para quem produz, mas expõe uma realidade incômoda. O perdão sem corte de gastos públicos só transfere o custo para quem paga as contas em dia. Além disso, se os bancos continuarem reticentes diante do risco fiscal, grande parte desse benefício não vira investimento real, limitando o fôlego da nossa economia.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Próximos passos legislativos",
+      "type": "outro",
+      "label": "conclusão",
+      "headline": "Projeto de lei segue para o Congresso",
+      "metric": "process",
+      "object_type": "factory",
+      "visual_cards": [
+        "Calendário de tramitação",
+        "Comissão responsável",
+        "Possíveis emendas"
+      ],
+      "narration": "O projeto de lei complementar que contém as cinco medidas para os MEIs será encaminhado ao Congresso Nacional ainda nesta semana. Deputados e senadores deverão analisar o texto, podendo propor emendas que alterem o escopo do perdão ou os critérios de elegibilidade. Enquanto isso, o governo mantém a promessa de ‘dar oxigênio’ ao setor, mas a efetiva implementação dependerá da aprovação legislativa e da resposta do sistema financeiro ao novo cenário de crédito.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que o perdão de dívidas pode mudar a realidade dos microempreendedores individuais no Brasil?",
+  "hashtags": [
+    "#MEI",
+    "#PerdãoDeDívidas",
+    "#Economia"
+  ],
+  "tags": [
+    "governo",
+    "microempreendedores",
+    "perdão de dívidas",
+    "crédito",
+    "fomento",
+    "Política econômica",
+    "Luiz Inácio Lula da Silva",
+    "Dario Durigan"
+  ],
+  "primary_keyword": "perdão de dívidas MEI",
+  "secondary_keywords": [
+    "pacote de estímulo",
+    "microempreendedores individuais",
+    "R$ 12,6 bilhões"
+  ],
+  "pronunciations": {
+    "MEIs": "mêis",
+    "MEI": "mêi",
+    "bi": "bilhões",
+    "mi": "milhões",
+    "Durigan": "Durígan"
+  },
+  "discovery_strategy": {
+    "viewer_intent": "Entender as novas medidas do governo para microempreendedores individuais e seu impacto econômico.",
+    "search_query": "governo pacote perdão dívidas MEI 13 de outubro de 2026",
+    "recommendation_angle": "Apresentar o anúncio oficial e analisar as consequências para a economia informal.",
+    "first_payoff": "O governo federal anunciou nesta terça-feira (13) um pacote de cinco medidas voltadas aos microempreendedores individuais (MEIs)",
+    "promise_proof": "Citações diretas da Agência Brasil comprovam o conteúdo do anúncio e os números de beneficiários e dívida total.",
+    "audience_hypothesis": "Empreendedores, estudantes de economia e público geral buscam informações claras sobre políticas de apoio ao pequeno negócio.",
+    "thumbnail_complement": "Imagem de Lula ao lado de microempreendedores em evento de lançamento.",
+    "verification_limits": "Até o momento, nenhuma outra fonte independente confirmou o anúncio; a cobertura depende exclusivamente da Agência Brasil."
+  },
+  "publication_description": "Perdão de dívidas MEI: o governo federal lançou um pacote de cinco medidas que pode eliminar R$ 12,6 bi em débitos e beneficiar 3,6 milhões de microempreendedores individuais, conforme divulgado pela Agência Brasil em 13 de outubro de 2026.",
+  "publication_target_local": "2026-10-13T20:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=single_source_attributed"
+}

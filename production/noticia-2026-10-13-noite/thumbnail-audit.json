@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "project_id": "noticia-2026-10-13-noite",
+  "project_sha256": "18aae84c765afdfb328bf67daf82fee3efe20a161f0eb2115fd94513d7f7e261",
+  "contract_sha256": "db3614178f55ad97d17c3b09e186d69ad8ba66e280704732eea96588c8fb1672",
+  "image_sha256": "089c2079c6f2d0fcdc94c539b6500c0b4dd3cb91f791cec2dd606278dea77b44",
+  "headline": "Perdão de dívidas MEI",
+  "approval_status": "approved",
+  "reviewer": "Antigravity, inspeção visual dos pixels em 1280x720 e leitura em 320x180",
+  "reviewed_at": "2026-10-14T04:54:09.983449+00:00",
+  "checks": {
+    "headline_exact": true,
+    "primary_subject": true,
+    "secondary_subject": true,
+    "forbidden_absent": true,
+    "identity_and_mobile": true,
+    "no_fabricated_data": true,
+    "unique_composition": true
+  },
+  "observations": {
+    "headline": "Perdão de dívidas MEI em amarelo #FFBD19 na área inferior esquerda, tipografia limpa em duas linhas, contraste excelente e perfeitamente legível em 320x180.",
+    "primary_subject": "Estúdio econômico elegante em tons grafite/navy com linhas douradas em onda e mapa estilizado do Brasil ao fundo, sem pessoas estranhas.",
+    "secondary_subject": "Apresentador oficial Roberto em camisa burgundy frontal na área direita, recorte limpo e olhar direto para a audiência.",
+    "forbidden_absent": "Nenhum texto extra, sem setas vermelhas, sem emojis, sem marcas d água e sem dados fabricados.",
+    "identity_and_mobile": "Perfeita legibilidade em tela mobile de 320x180 com contraste claro entre o texto amarelo e o chão escuro do estúdio.",
+    "no_fabricated_data": "Nenhum número ou alegação falsa desenhada; elementos visuais servem apenas de ambientação de telejornal de economia.",
+    "unique_composition": "Composição original com Roberto à direita e estúdio econômico escuro com linhas douradas."
+  },
+  "checked_forbidden_elements": [
+    "dados ou documentos inventados",
+    "cópias de capas de terceiros",
+    "foto apresentada como evidência de um evento diferente",
+    "logotipo inventado",
+    "texto extra",
+    "marca d'água"
+  ],
+  "observed_forbidden_elements": []
+}
