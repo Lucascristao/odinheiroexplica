@@ -1,0 +1,256 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-15-noite",
+  "news_date": "2026-10-15",
+  "event_date": "2026-10-15",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-15T19:16:06.903712-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Presidente Luiz Inácio Lula da Silva enviará ao Congresso Nacional uma Proposta de Emenda à Constituição (PEC) para garantir o passe livre no transporte coletivo urbano nos fins de semana e feriados.",
+    "why_today": "O anúncio da PEC de passe livre ocorre dez dias antes do segundo turno da eleição presidencial de 2026, tornando-se um elemento central da campanha de Lula e influenciando imediatamente o mercado financeiro.",
+    "opening_anchor": "Presidente Luiz Inácio Lula da Silva anunciou que enviará ao Congresso Nacional uma Proposta de Emenda à Constituição (PEC) para garantir o passe livre no",
+    "candidate_review": [
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "president",
+        "event_date": "2026-10-15",
+        "urls": [
+          "https://revistaoeste.com/politica/lula-quer-transporte-publico-gratuito-aos-fins-de-semana-em-todo-o-brasil/",
+          "https://www.moneytimes.com.br/lula-anuncia-pec-para-zerar-tarifa-do-transporte-coletivo-nos-finais-de-semana/"
+        ],
+        "decision": "propõe PEC de passe livre"
+      },
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "president",
+        "event_date": "2026-10-15",
+        "urls": [
+          "https://www.poder360.com.br/poder-eleicoes-2026/flavio-bolsonaro-reage-proposta-de-lula-pec-transporte/",
+          "https://www.brasildefato.com.br/2026/10/15/flavio-bolsonaro-critica-passe-livre-de-lula"
+        ],
+        "decision": "critica proposta como populismo eleitoral"
+      }
+    ]
+  },
+  "title": "Lula propõe PEC para passe livre no transporte urbano nos fins de semana",
+  "title_options": [
+    {
+      "text": "Lula propõe PEC para passe livre no transporte urbano nos fins de semana",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Presidente anuncia transporte gratuito nos fins de semana em todo o Brasil",
+      "editorial_quality": 4
+    },
+    {
+      "text": "PEC de tarifa zero: Lula mira eleitores antes do segundo turno",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Passe livre nos fins de semana",
+  "thumbnail_primary": "Luiz Inácio Lula da Silva em evento ao ar livre",
+  "thumbnail_tension": "Anúncio da PEC próximo à eleição gera debate sobre custos fiscais",
+  "thumbnail_composition": "Lula centralizado, multidão ao fundo",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato novo corroborado por três veículos independentes, relevância política e econômica imediata",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto_mercado": "moderado",
+      "contexto_eleitoral": "alto"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Revista Oeste",
+      "url": "https://revistaoeste.com/politica/lula-quer-transporte-publico-gratuito-aos-fins-de-semana-em-todo-o-brasil/",
+      "published_at": "2026-10-15",
+      "role": "primary"
+    },
+    {
+      "id": "S2",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/lula-anuncia-pec-para-zerar-tarifa-do-transporte-coletivo-nos-finais-de-semana/",
+      "published_at": "2026-10-15",
+      "role": "secondary"
+    },
+    {
+      "id": "S3",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-promete-onibus-de-graca-nos-fins-de-semana-no-brasil-inteiro/",
+      "published_at": "2026-10-15",
+      "role": "secondary"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Presidente Luiz Inácio Lula da Silva enviará ao Congresso Nacional uma Proposta de Emenda à Constituição (PEC) para garantir o passe livre no transporte coletivo urbano nos fins de semana e feriados.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-15"
+    },
+    {
+      "claim": "A proposta será financiada por emendas parlamentares conforme declaração de Lula.",
+      "source_ids": [
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-15"
+    },
+    {
+      "claim": "O anúncio ocorreu dez dias antes do segundo turno da eleição presidencial de 2026.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-15"
+    },
+    {
+      "claim": "Investidores reagiram com alta nos juros futuros após o anúncio da PEC.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-15"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "enviará ao Congresso Nacional uma Proposta de Emenda à Constituição (PEC) para garantir transporte público gratuito nos fins de semana",
+      "kind": "source_excerpt",
+      "source_page_url": "https://revistaoeste.com/politica/lula-quer-transporte-publico-gratuito-aos-fins-de-semana-em-todo-o-brasil/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Revista Oeste"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "enviar ao Congresso uma Proposta de Emenda à Constituição (PEC) para zerar a tarifa do transporte coletivo urbano nos finais de semana e feriados",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/lula-anuncia-pec-para-zerar-tarifa-do-transporte-coletivo-nos-finais-de-semana/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Money Times"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo: PEC de passe livre anunciada",
+      "type": "fact",
+      "label": "fact",
+      "headline": "Lula propõe passe livre nos fins de semana",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Lula em discurso ao ar livre",
+        "Multidão aplaudindo",
+        "Banner da PEC no fundo"
+      ],
+      "narration": "Presidente Luiz Inácio Lula da Silva anunciou que enviará ao Congresso Nacional uma Proposta de Emenda à Constituição (PEC) para garantir o passe livre no transporte coletivo urbano nos fins de semana e feriados. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que isso significa para a política e a economia.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Reação do mercado financeiro",
+      "type": "fact",
+      "label": "fact",
+      "headline": "Juros futuros sobem após anúncio",
+      "metric": "finance",
+      "object_type": "cash",
+      "visual_cards": [
+        "Gráfico de alta dos juros futuros",
+        "Ticker de mercado em alta",
+        "Análise de risco político"
+      ],
+      "narration": "Investidores reagiram com cautela: os juros futuros fecharam em alta, refletindo o aumento do prêmio de risco político devido ao custo fiscal adicional da proposta de transporte gratuito. O Money Times destacou que a medida eleva a incerteza sobre as contas públicas.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do analista",
+      "type": "opinion",
+      "label": "opinion",
+      "headline": "Análise de custo e benefício",
+      "metric": "opinion",
+      "object_type": "factory",
+      "visual_cards": [
+        "Tabela de custos estimados",
+        "Comparativo de políticas de transporte",
+        "Projeção de consumo nos fins de semana"
+      ],
+      "narration": "Na minha análise, a proposta traz benefícios sociais ao reduzir despesas de deslocamento, mas o financiamento via emendas parlamentares pode gerar pressões fiscais significativas, especialmente em um cenário eleitoral apertado.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e convite",
+      "type": "conclusion",
+      "label": "conclusion",
+      "headline": "Desdobramentos esperados",
+      "metric": "summary",
+      "object_type": "store",
+      "visual_cards": [
+        "Calendário eleitoral",
+        "Resumo da PEC",
+        "Chamada para inscrição"
+      ],
+      "narration": "Em resumo, a PEC de passe livre pode se tornar um ponto decisivo nas próximas eleições, ao mesmo tempo em que pressiona as contas públicas. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que a PEC de passe livre pode influenciar o resultado do segundo turno?",
+  "hashtags": [
+    "#Lula",
+    "#PECTransporte",
+    "#Eleicoes2026"
+  ],
+  "tags": [
+    "Lula",
+    "PEC",
+    "transporte público",
+    "eleição 2026",
+    "economia",
+    "juros futuros",
+    "política fiscal",
+    "Brasil",
+    "O Dinheiro Explica"
+  ],
+  "primary_keyword": "PEC de passe livre",
+  "secondary_keywords": [
+    "transporte gratuito",
+    "eleição 2026",
+    "custo fiscal"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender o impacto da proposta de passe livre anunciada por Lula antes do segundo turno das eleições de 2026.",
+    "search_query": "Lula PEC passe livre transporte fins de semana 2026",
+    "recommendation_angle": "Análise da proposta sob a ótica política e econômica, destacando riscos e oportunidades para o eleitorado.",
+    "first_payoff": "Presidente Luiz Inácio Lula da Silva anunciou que enviará ao Congresso Nacional uma Proposta de Emenda à Constituição (PEC) para garantir o passe livre no transporte coletivo urbano nos fins de semana e feriados.",
+    "promise_proof": "Trechos literais de três veículos independentes confirmam o anúncio e detalham financiamento e repercussão de mercado.",
+    "audience_hypothesis": "Eleitores e investidores buscam compreender como medidas de campanha podem afetar a economia e o resultado eleitoral.",
+    "thumbnail_complement": "Imagem de Lula em evento ao ar livre com multidão ao fundo reforça a mensagem de campanha.",
+    "verification_limits": "A verificação depende de fontes publicadas no mesmo dia; não há dados de implementação ainda."
+  },
+  "publication_description": "Lula propõe PEC para passe livre no transporte urbano nos fins de semana, medida que surge a dez dias do segundo turno e já movimenta o mercado financeiro.\n\nContexto: PEC de passe livre",
+  "publication_target_local": "2026-10-15T20:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
