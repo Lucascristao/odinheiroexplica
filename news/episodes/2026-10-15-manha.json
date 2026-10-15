@@ -1,0 +1,239 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-15-manha",
+  "news_date": "2026-10-15",
+  "event_date": "2026-10-15",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-15T10:44:36.295162-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Varejo restrito registrou crescimento de 0,1 % em agosto de 2026 em relação a julho",
+    "why_today": "O IBGE divulgou nesta quinta-feira, 15 de outubro de 2026, os resultados da Pesquisa Mensal de Comércio que mostram a primeira alta do varejo restrito em agosto, interrompendo a queda de julho e gerando atenção imediata dos analistas e investidores.",
+    "opening_anchor": "Varejo restrito registrou crescimento de 0,1 % em agosto de 2026 em relação a julho",
+    "candidate_review": []
+  },
+  "title": "Varejo restrito cresce 0,1% em agosto de 2026, interrompendo queda de julho",
+  "title_options": [
+    {
+      "text": "Varejo restrito cresce 0,1% em agosto de 2026, interrompendo queda de julho",
+      "editorial_quality": 5
+    },
+    {
+      "text": "IBGE indica leve alta de 0,1% no varejo restrito em agosto de 2026",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Comércio varejista registra alta de 0,1% em agosto, fim da queda de julho",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Varejo em alta",
+  "thumbnail_primary": "Gráfico de volume de vendas do varejo restrito",
+  "thumbnail_tension": "Expectativas de recuperação versus desempenho real",
+  "thumbnail_composition": "Gráfico centralizado com destaque ao ponto de alta",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por três veículos independentes, relevância econômica e clareza de dados",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "clareza": "media"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/vendas-do-varejo-crescem-01-em-agosto-ante-julho-aponta-ibge/",
+      "published_at": "2026-10-15",
+      "role": "primary"
+    },
+    {
+      "id": "S2",
+      "publisher": "BMC News",
+      "url": "https://bmcnews.com.br/economia/vendas-no-varejo-variam-01-em-agosto-apos-queda-de-08-em-julho-diz-ibge/",
+      "published_at": "2026-10-15",
+      "role": "secondary"
+    },
+    {
+      "id": "S3",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-economia/vendas-do-varejo-sobem-01-em-agosto-ante-julho/",
+      "published_at": "2026-10-15",
+      "role": "secondary"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Varejo restrito registrou crescimento de 0,1 % em agosto de 2026 em relação a julho",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-15"
+    },
+    {
+      "claim": "Varejo ampliado registrou queda de 0,2 % em agosto de 2026 em relação a julho",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-15"
+    },
+    {
+      "claim": "Crescimento anual sem ajuste foi de 0,4 % em relação a agosto de 2025",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-15"
+    },
+    {
+      "claim": "Acumulado de janeiro a agosto 2026 mostrou alta de 1,7 % no varejo restrito",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-15"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "varejo vendas do varejo crescem 0,1% em agosto ante julho, aponta ibge",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/vendas-do-varejo-crescem-01-em-agosto-ante-julho-aponta-ibge/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "o volume de vendas do comércio varejista brasileiro registrou variação",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bmcnews.com.br/economia/vendas-no-varejo-variam-01-em-agosto-apos-queda-de-08-em-julho-diz-ibge/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "BMC News"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato principal",
+      "type": "fact",
+      "label": "intro",
+      "headline": "Varejo restrito cresce 0,1% em agosto",
+      "metric": "volume",
+      "object_type": "store",
+      "visual_cards": [
+        "Gráfico de volume mensal",
+        "Comparativo julho-agosto",
+        "Linha de tendência anual"
+      ],
+      "narration": "Varejo restrito registrou crescimento de 0,1 % em agosto de 2026 em relação a julho, interrompendo a queda de 0,8 % observada no mês anterior. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que esse leve avanço significa para a economia.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhe do varejo ampliado",
+      "type": "fact",
+      "label": "detail",
+      "headline": "Varejo ampliado em retração",
+      "metric": "volume",
+      "object_type": "store",
+      "visual_cards": [
+        "Queda de 0,2% no segmento ampliado",
+        "Setores de construção e veículos",
+        "Impacto do crédito"
+      ],
+      "narration": "Enquanto o varejo restrito avançou, o varejo ampliado – que inclui material de construção, veículos e atacado alimentício – registrou queda de 0,2 % em agosto, refletindo a sensibilidade desses setores ao crédito e à confiança do consumidor.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do analista",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Recuperação tímida",
+      "metric": "assessment",
+      "object_type": "store",
+      "visual_cards": [
+        "Expectativas de analistas",
+        "Projeções de 0,7% não atingidas",
+        "Cenário de cautela monetária"
+      ],
+      "narration": "Na minha análise, o avanço de 0,1 % é insuficiente para mudar a perspectiva de cautela dos investidores, já que ficou bem abaixo da mediana das estimativas de 0,7 %. O consumo ainda mostra fragilidade, sobretudo nos bens duráveis.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e convite",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Perspectivas para o varejo",
+      "metric": "outlook",
+      "object_type": "store",
+      "visual_cards": [
+        "Crescimento anual de 0,4%",
+        "Acumulado Jan-ago +1,7%",
+        "Cenário de política monetária"
+      ],
+      "narration": "Em suma, o varejo brasileiro apresenta recuperação moderada, com alta anual ainda positiva, mas a performance mensal permanece tímida. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você avalia o impacto desse leve crescimento do varejo no seu planejamento financeiro?",
+  "hashtags": [
+    "#Varejo2026",
+    "#IBGE",
+    "#EconomiaBrasil"
+  ],
+  "tags": [
+    "vendas varejo",
+    "IBGE",
+    "PMC",
+    "crescimento econômico",
+    "consumo",
+    "política monetária",
+    "investimentos",
+    "análise de mercado"
+  ],
+  "primary_keyword": "vendas do varejo",
+  "secondary_keywords": [
+    "IBGE",
+    "PMC",
+    "crescimento de 0,1%"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender a evolução recente do comércio varejista brasileiro e suas implicações econômicas",
+    "search_query": "vendas varejo agosto 2026 IBGE resultados",
+    "recommendation_angle": "Apresentar o dado oficial corroborado por três veículos independentes e analisar seu significado",
+    "first_payoff": "Varejo restrito registrou crescimento de 0,1 % em agosto de 2026 em relação a julho",
+    "promise_proof": "Três fontes independentes confirmam o mesmo número-chave, garantindo a veracidade da informação",
+    "audience_hypothesis": "Investidores e consumidores buscam entender se a alta recente indica retomada do consumo",
+    "thumbnail_complement": "Gráfico destacando a alta de 0,1% contra a queda anterior",
+    "verification_limits": "Os trechos citados são extraídos diretamente das páginas HTML das fontes, sem alterações"
+  },
+  "publication_description": "Varejo restrito registra leve alta de 0,1% em agosto de 2026, interrompendo a queda de julho, conforme dados do IBGE divulgados hoje por três veículos independentes. A análise detalha o desempenho dos sub-segmentos, as expectativas dos analistas e as possíveis repercussões para política monetária e investimentos.\n\nContexto: vendas do varejo",
+  "publication_target_local": "2026-10-15T08:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
