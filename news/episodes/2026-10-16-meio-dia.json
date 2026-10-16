@@ -1,0 +1,248 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-16-meio-dia",
+  "news_date": "2026-10-16",
+  "event_date": "2026-10-16",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-16T14:02:02.545273-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "O Brasil deve voltar ao posto de oitava maior economia do mundo em 2027",
+    "why_today": "A projeção do FMI, divulgada em 16 out 2026, indica que o Brasil retomará a 8ª posição no ranking global de PIB nominal em 2027, alterando o cenário econômico imediato e influenciando o debate eleitoral.",
+    "opening_anchor": "O Brasil deve voltar ao posto de oitava maior economia do mundo em 2027",
+    "candidate_review": [
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "politics",
+        "event_date": "2026-10-16",
+        "urls": [
+          "https://www.camara.leg.br/"
+        ],
+        "decision": "neutral"
+      },
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "politics",
+        "event_date": "2026-10-16",
+        "urls": [
+          "https://www.tse.jus.br/"
+        ],
+        "decision": "neutral"
+      }
+    ]
+  },
+  "title": "FMI projeta Brasil como 8ª maior economia mundial em 2027",
+  "title_options": [
+    {
+      "text": "FMI projeta Brasil como 8ª maior economia mundial em 2027",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Brasil volta ao 8º lugar no ranking global de PIB, aponta FMI",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Projeção do FMI coloca Brasil entre as oito maiores economias em 2027",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Brasil 8ª maior economia",
+  "thumbnail_primary": "Roberto em frente a gráfico de PIB",
+  "thumbnail_tension": "Tensão entre projeção otimista e cenário político incerto",
+  "thumbnail_composition": "Roberto à esquerda, gráfico à direita",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes e dados do FMI",
+    "criteria": {
+      "source_reliability": "high",
+      "fact_verification": "confirmed",
+      "public_interest": "high"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "BMC News",
+      "url": "https://bmcnews.com.br/economia/brasil-deve-voltar-a-ser-8a-maior-economia-do-mundo-em-2027-preve-fmi/",
+      "published_at": "2026-10-16",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/brasil-deve-voltar-ser-8a-maior-economia-do-mundo-em-2027-preve-fmi",
+      "published_at": "2026-10-16",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O Brasil deve voltar ao posto de oitava maior economia do mundo em 2027",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-16"
+    },
+    {
+      "claim": "PIB brasileiro alcançará US$ 2,80 trilhões (R$ 14,65 trilhões) em 2027",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "projection",
+      "event_date": "2026-10-16"
+    },
+    {
+      "claim": "Em 2026 o Brasil ocupa a 10ª posição com PIB de US$ 2,655 trilhões",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-10-16"
+    },
+    {
+      "claim": "Crescimento real do PIB brasileiro será de 2,2 % em 2026",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "forecast_not_collected",
+      "event_date": "2026-10-16"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "O Brasil deve voltar ao posto de oitava maior economia do mundo em 2027",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bmcnews.com.br/economia/brasil-deve-voltar-a-ser-8a-maior-economia-do-mundo-em-2027-preve-fmi/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "BMC News"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "O Brasil deve voltar ao posto de oitava maior economia do mundo em 2027, deixando para trás Rússia e Itália.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-10/brasil-deve-voltar-ser-8a-maior-economia-do-mundo-em-2027-preve-fmi",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Agência Brasil"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo: Brasil 8ª maior economia",
+      "type": "fact",
+      "label": "ranking",
+      "headline": "FMI projeta Brasil como 8ª maior economia em 2027",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de ranking 2026-2027",
+        "Mapa de PIB nominal",
+        "Comparativo Brasil-Rússia-Itália"
+      ],
+      "narration": "O Brasil deve voltar ao posto de oitava maior economia do mundo em 2027, conforme divulgado pelo FMI em seu relatório de outubro. Em 2026 o país está na décima posição com PIB de US$ 2,655 trilhões, mas a projeção indica US$ 2,80 trilhões para 2027, superando Rússia e Itália. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que isso significa para a economia e a política.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes da projeção do FMI",
+      "type": "fact",
+      "label": "projection",
+      "headline": "PIB brasileiro deve alcançar US$ 2,80 trilhões em 2027",
+      "metric": "projection",
+      "object_type": "data",
+      "visual_cards": [
+        "Tabela de PIB 2025-2027",
+        "Taxa de câmbio projetada",
+        "Crescimento real esperado"
+      ],
+      "narration": "A projeção do FMI indica que o PIB nominal brasileiro chegará a US$ 2,80 trilhões (R$ 14,65 trilhões) em 2027, com crescimento real de 1,9 % naquele ano. Essa estimativa baseia-se em taxas de câmbio reais efetivas observadas entre 31 jul e 28 ago 2026. O documento também aponta crescimento real de 2,2 % em 2026.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião de Roberto",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Na minha análise, o ranking tem peso político",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Imagem de campanha eleitoral",
+        "Gráfico de investimento público",
+        "Comparativo de propostas fiscais"
+      ],
+      "narration": "Na minha opinião, a projeção do FMI chega num momento crítico das eleições de 2026. Tanto o candidato Lula quanto Flávio Bolsonaro vão usar esse dado para reforçar suas narrativas: Lula para defender a continuidade das políticas de estabilidade macroeconômica, e Bolsonaro para argumentar que reformas estruturais já estão gerando resultados. O ranking, porém, depende de variáveis cambiais que podem mudar rapidamente, portanto o discurso político deve ser cauteloso.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e chamada",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "O que vem pela frente para o Brasil?",
+      "metric": "conclusion",
+      "object_type": "data",
+      "visual_cards": [
+        "Seta de futuro econômico",
+        "Ícone de inscrição no canal",
+        "Calendário de próximos vídeos"
+      ],
+      "narration": "Em resumo, a projeção do FMI coloca o Brasil de volta ao 8º lugar no ranking global de PIB nominal em 2027, um sinal positivo para investidores, mas ainda sujeito a volatilidade cambial e decisões políticas. Acompanhe como esses fatores evoluirão nos próximos meses. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como a projeção do FMI pode influenciar sua decisão de investimento nos próximos anos?",
+  "hashtags": [
+    "#EconomiaBrasil",
+    "#FMI",
+    "#RankingPIB"
+  ],
+  "tags": [
+    "FMI",
+    "PIB",
+    "Brasil",
+    "8ª posição",
+    "2027",
+    "economia mundial",
+    "eleições 2026",
+    "investimento",
+    "câmbio",
+    "crescimento real"
+  ],
+  "primary_keyword": "Brasil 8ª maior economia",
+  "secondary_keywords": [
+    "FMI projeção 2027",
+    "PIB nominal Brasil",
+    "ranking global PIB"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender o impacto da nova projeção do FMI sobre a posição do Brasil no ranking global de economias.",
+    "search_query": "FMI projeção Brasil 8ª maior economia 2027",
+    "recommendation_angle": "Apresentar a projeção do FMI e analisar suas implicações políticas e de investimento.",
+    "first_payoff": "O Brasil deve voltar ao posto de oitava maior economia do mundo em 2027, conforme divulgado pelo FMI em seu relatório de outubro.",
+    "promise_proof": "Trechos literais de BMC News e Agência Brasil confirmam a projeção.",
+    "audience_hypothesis": "Investidores e eleitores buscam entender como indicadores macroeconômicos afetam decisões financeiras e políticas.",
+    "thumbnail_complement": "Gráfico de ranking com destaque para o Brasil em 2027.",
+    "verification_limits": "A projeção depende de taxas de câmbio e revisões do FMI; pode mudar em futuras atualizações."
+  },
+  "publication_description": "FMI projeta Brasil como 8ª maior economia mundial em 2027, trazendo novas perspectivas para investidores e o debate eleitoral. A análise detalha os números, comparações com Rússia e Itália, e as possíveis repercussões políticas.\n\nContexto: Brasil 8ª maior economia",
+  "publication_target_local": "2026-10-16T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
