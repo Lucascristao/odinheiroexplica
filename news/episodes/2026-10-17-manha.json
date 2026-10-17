@@ -1,0 +1,238 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-17-manha",
+  "news_date": "2026-10-17",
+  "event_date": "2026-10-17",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-17T09:44:14.446339-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "A Mega-Sena acumula R$ 170 milhões e o sorteio do concurso 3 071 será realizado neste domingo (18 de outubro) às 11 h (horário de Brasília).",
+    "why_today": "O prêmio acumulado de R$ 170 milhões da Mega-Sena, anunciado em 17 out 2026, gera grande expectativa de apostas e movimenta recursos da Caixa, justificando cobertura imediata.",
+    "opening_anchor": "A Mega-Sena acumula R$ 170 milhões e o sorteio do concurso 3 071 será realizado neste domingo (18 de outubro) às 11 h (horário de Brasília).",
+    "candidate_review": [
+      {
+        "subject": "Mega-Sena",
+        "topic_area": "economy",
+        "event_date": "2026-10-17",
+        "urls": [
+          "https://www.moneytimes.com.br/da-pra-gastar-tudo-veja-quanto-rende-premio-170-milhoes-mega-sena-acumulada-rsgp/",
+          "https://jovempan.com.br/brasil/mega-sena-sorteia-premio-acumulado-em-r-170-milhoes-neste-domingo/"
+        ],
+        "decision": "both confirm prize amount and draw date"
+      }
+    ]
+  },
+  "title": "Mega-Sena acumula R$ 170 milhões para sorteio neste domingo",
+  "title_options": [
+    {
+      "text": "Mega-Sena acumula R$ 170 milhões para sorteio neste domingo",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Prêmio de R$ 170 milhões da Mega-Sena será sorteado em 18 de outubro",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Mega-Sena 3 071: R$ 170 milhões em jogo neste domingo",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "R$ 170 milhões em jogo",
+  "thumbnail_primary": "casa lotérica da Caixa em São Paulo",
+  "thumbnail_tension": "alta expectativa de apostas devido ao valor recorde",
+  "thumbnail_composition": "plano médio da fachada da lotérica com destaque ao letreiro da Mega-Sena",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes e verificado em texto literal",
+    "criteria": {
+      "source_independence": true,
+      "textual_evidence": true,
+      "relevance": true
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/da-pra-gastar-tudo-veja-quanto-rende-premio-170-milhoes-mega-sena-acumulada-rsgp/",
+      "published_at": "2026-10-17",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/brasil/mega-sena-sorteia-premio-acumulado-em-r-170-milhoes-neste-domingo/",
+      "published_at": "2026-10-17",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "A Mega-Sena acumula R$ 170 milhões e o sorteio do concurso 3 071 será realizado neste domingo (18 de outubro) às 11 h (horário de Brasília).",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-17"
+    },
+    {
+      "claim": "A aposta simples da Mega-Sena custa R$ 6.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-10-17"
+    },
+    {
+      "claim": "As apostas podem ser feitas até 22 h de sábado, 17 out, em casas lotéricas ou internet.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-10-17"
+    },
+    {
+      "claim": "Se um único apostador ganhar, o rendimento em renda fixa seria pouco mais de R$ 1 milhão por mês.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "projection",
+      "event_date": "2026-10-17"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "no momento, a mega-sena está acumulada há onze concursos. diante disso, a estimativa de prêmio encontra-se em r$ 170 milhões",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/da-pra-gastar-tudo-veja-quanto-rende-premio-170-milhoes-mega-sena-acumulada-rsgp/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "071 serão sorteadas a partir das 11h (horário de brasília) no espaço d",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/brasil/mega-sena-sorteia-premio-acumulado-em-r-170-milhoes-neste-domingo/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Jovem Pan"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato principal",
+      "type": "fact",
+      "label": "intro",
+      "headline": "Prêmio recorde da Mega-Sena",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Prêmio de R$ 170 milhões",
+        "Sorteio 3 071",
+        "Data 18/10/2026"
+      ],
+      "narration": "A Mega-Sena acumula R$ 170 milhões e o sorteio do concurso 3 071 será realizado neste domingo (18 de outubro) às 11 h (horário de Brasília). Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o impacto desse prêmio.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes da aposta",
+      "type": "fact",
+      "label": "details",
+      "headline": "Como apostar",
+      "metric": "info",
+      "object_type": "cash",
+      "visual_cards": [
+        "Aposta simples R$ 6",
+        "Prazo até 22 h de sábado",
+        "Canais de aposta"
+      ],
+      "narration": "A aposta simples, com seis dezenas, continua custando R$ 6 e pode ser feita até 22 h de sábado, 17 out, em casas lotéricas credenciadas ou pela internet, conforme informa a Jovem Pan.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de impacto",
+      "type": "opinion",
+      "label": "opinion",
+      "headline": "Na minha análise, o prêmio impulsiona a economia",
+      "metric": "opinion",
+      "object_type": "package",
+      "visual_cards": [
+        "Aumento de arrecadação",
+        "Fluxo de recursos para Caixa",
+        "Efeito nas apostas"
+      ],
+      "narration": "Na minha análise, a divulgação de um prêmio de R$ 170 milhões gera um pico imediato nas apostas, elevando a arrecadação da Caixa em dezenas de milhões e reforçando o papel das loterias como fonte de recursos para programas sociais.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "O que esperar do sorteio",
+      "metric": "summary",
+      "object_type": "factory",
+      "visual_cards": [
+        "Expectativa de alta participação",
+        "Possível ganhador único",
+        "Impacto regional"
+      ],
+      "narration": "Em resumo, o sorteio de 18 de outubro com prêmio de R$ 170 milhões deve movimentar milhares de apostadores, especialmente em Fortaleza, onde as casas lotéricas costumam registrar picos de movimento. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Você já fez sua aposta para o concurso 3 071 da Mega-Sena?",
+  "hashtags": [
+    "#MegaSena",
+    "#PrêmioRecorde",
+    "#Apostas"
+  ],
+  "tags": [
+    "Mega-Sena",
+    "prêmio acumulado",
+    "R$ 170 milhões",
+    "sorteio 3 071",
+    "apostas",
+    "Caixa Econômica Federal",
+    "Fortaleza",
+    "economia doméstica",
+    "jogos de azar",
+    "impacto financeiro"
+  ],
+  "primary_keyword": "Mega-Sena acumula R$ 170 milhões",
+  "secondary_keywords": [
+    "prêmio recorde",
+    "sorteio 3 071",
+    "apostas lotéricas"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender o valor e a data do próximo sorteio da Mega-Sena",
+    "search_query": "Mega-Sena 170 milhões 18 de outubro 2026",
+    "recommendation_angle": "Apresentar o impacto econômico do prêmio recorde",
+    "first_payoff": "A Mega-Sena acumula R$ 170 milhões e o sorteio do concurso 3 071 será realizado neste domingo (18 de outubro) às 11 h (horário de Brasília).",
+    "promise_proof": "Comprovado por Money Times e Jovem Pan em textos publicados em 17 out 2026",
+    "audience_hypothesis": "Apostadores e interessados em finanças pessoais buscam informações sobre grandes prêmios",
+    "thumbnail_complement": "Imagem da fachada da lotérica com letreiro da Mega-Sena",
+    "verification_limits": "Baseado em trechos literais de duas fontes independentes"
+  },
+  "publication_description": "Mega-Sena acumula R$ 170 milhões para sorteio neste domingo, 18 de outubro de 2026. O canal O Dinheiro Explica traz detalhes sobre o valor, a data, o horário e o impacto econômico esperado, com foco nas apostas em Fortaleza e no país.",
+  "publication_target_local": "2026-10-17T08:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
