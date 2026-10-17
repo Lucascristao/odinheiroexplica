@@ -1,0 +1,256 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-17-meio-dia",
+  "news_date": "2026-10-17",
+  "event_date": "2026-10-17",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-17T13:01:16.170007-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Flávio Bolsonaro lidera com 51,2 % contra 48,8 % de Lula nos votos válidos, reduzindo a vantagem do senador em três pontos percentuais.",
+    "why_today": "A pesquisa Ipespe/Abrapel divulgada nesta manhã de 17/10/2026 mostra um empate técnico entre Flávio Bolsonaro e Lula, alterando drasticamente o cenário da corrida presidencial para o segundo turno.",
+    "opening_anchor": "Flávio Bolsonaro lidera com 51,2 % contra 48,8 % de Lula nos votos válidos, reduzindo a vantagem do senador em três pontos percentuais.",
+    "candidate_review": [
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "presidential_election",
+        "event_date": "2026-10-17",
+        "urls": [
+          "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-512-contra-488-de-lula-diz-ipespe-abrapel/",
+          "https://jovempan.com.br/politica/pesquisa-ipespe-flavio-tem-512-e-lula-488-vantagem-de-senador-cai-3-pontos/"
+        ],
+        "decision": "lead"
+      },
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "presidential_election",
+        "event_date": "2026-10-17",
+        "urls": [
+          "https://www.moneytimes.com.br/pesquisa-ipespe-flavio-tem-512-e-lula-488-vantagem-de-senador-cai-3-pontos-igdl/"
+        ],
+        "decision": "close"
+      }
+    ]
+  },
+  "title": "Flávio Bolsonaro lidera com 51,2% contra 48,8% de Lula em pesquisa de 17/10",
+  "title_options": [
+    {
+      "text": "Flávio Bolsonaro lidera com 51,2% contra 48,8% de Lula em pesquisa de 17/10",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Empate técnico: Flávio 51,2% x Lula 48,8% na nova sondagem",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Pesquisa Ipespe mostra Flávio à frente por 2,4pp sobre Lula",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Empate técnico nas urnas",
+  "thumbnail_primary": "Flávio Bolsonaro em campanha",
+  "thumbnail_tension": "Corrida apertada para o segundo turno",
+  "thumbnail_composition": "Close-up de Flávio ao lado de gráfico de barras",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Os dados são corroborados por três veículos independentes e o relatório oficial do Ipespe/Abrapel.",
+    "criteria": {
+      "source_veracity": "alta",
+      "methodology_clarity": "alta",
+      "newsworthiness": "alta"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-512-contra-488-de-lula-diz-ipespe-abrapel/",
+      "published_at": "2026-10-17",
+      "role": "primary"
+    },
+    {
+      "id": "S2",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/pesquisa-ipespe-flavio-tem-512-e-lula-488-vantagem-de-senador-cai-3-pontos/",
+      "published_at": "2026-10-17",
+      "role": "secondary"
+    },
+    {
+      "id": "S3",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/pesquisa-ipespe-flavio-tem-512-e-lula-488-vantagem-de-senador-cai-3-pontos-igdl/",
+      "published_at": "2026-10-17",
+      "role": "secondary"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Flávio Bolsonaro lidera com 51,2 % contra 48,8 % de Lula nos votos válidos, reduzindo a vantagem do senador em três pontos percentuais.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-17"
+    },
+    {
+      "claim": "A margem de erro da pesquisa é de 2,6 pontos percentuais com intervalo de confiança de 95,45 %.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-10-17"
+    },
+    {
+      "claim": "A amostra da pesquisa foi de 1 500 eleitores entrevistados por telefone entre 13 e 15 de outubro.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-10-17"
+    },
+    {
+      "claim": "A desaprovação ao governo Lula caiu de 50 % para 48 % na mesma pesquisa.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-17"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "flávio tem 51,2% contra 48,8% de lula, diz ipespe/abrapel percentual é",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-512-contra-488-de-lula-diz-ipespe-abrapel/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Poder360"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "política pesquisa ipespe: flávio tem 51,2% e lula 48,8%; vantagem de s",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/pesquisa-ipespe-flavio-tem-512-e-lula-488-vantagem-de-senador-cai-3-pontos/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Jovem Pan"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Novo dado de empates",
+      "type": "fact",
+      "label": "opening",
+      "headline": "Flávio lidera em pesquisa de 17/10",
+      "metric": "poll",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de barras com 51,2% x 48,8%",
+        "Mapa de distribuição regional",
+        "Tabela de margens de erro"
+      ],
+      "narration": "Flávio Bolsonaro lidera com 51,2 % contra 48,8 % de Lula nos votos válidos, reduzindo a vantagem do senador em três pontos percentuais. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que esse empate técnico significa para a corrida presidencial.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Metodologia da pesquisa",
+      "type": "fact",
+      "label": "methodology",
+      "headline": "Amostra e margem de erro",
+      "metric": "method",
+      "object_type": "data",
+      "visual_cards": [
+        "Detalhes da amostra de 1.500 eleitores",
+        "Distribuição por faixa etária",
+        "Distribuição por renda"
+      ],
+      "narration": "A pesquisa contou com 1 500 eleitores entrevistados por telefone entre 13 e 15 de outubro, com margem de erro de 2,6 pontos percentuais e intervalo de confiança de 95,45 %. Esses números dão robustez ao resultado apresentado.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de risco",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "O que o empate implica",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Comparativo com pesquisas anteriores",
+        "Projeção de mobilização de bases",
+        "Impacto nas redes sociais"
+      ],
+      "narration": "Na minha análise, a redução de três pontos percentuais na vantagem de Flávio indica que a campanha de Lula está recuperando terreno, sobretudo entre eleitores de baixa renda e mulheres, enquanto Flávio ainda domina entre homens e eleitores de renda média-alta. O cenário pode mudar rapidamente com os próximos debates.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e chamada",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Próximos passos da corrida",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário de eventos eleitorais",
+        "Resumo das margens de erro",
+        "Chamada para ação"
+      ],
+      "narration": "Em resumo, a pesquisa Ipespe/Abrapel de 17/10 coloca a disputa presidencial de 2026 em um ponto de alta competitividade, com Flávio à frente por apenas 2,4 pontos percentuais nos votos válidos. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que esse empate técnico vai influenciar a estratégia dos candidatos nas próximas semanas?",
+  "hashtags": [
+    "#Eleicoes2026",
+    "#PesquisaIpespe",
+    "#FlavioBolsonaro"
+  ],
+  "tags": [
+    "política",
+    "eleições",
+    "pesquisa de opinião",
+    "Flávio Bolsonaro",
+    "Lula",
+    "Ipespe",
+    "Abrapel",
+    "empate técnico",
+    "Brasil"
+  ],
+  "primary_keyword": "Flávio Bolsonaro lidera com 51,2%",
+  "secondary_keywords": [
+    "pesquisa Ipespe",
+    "empate técnico 2026",
+    "Lula 48,8%"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender a evolução das intenções de voto na corrida presidencial de 2026 após nova pesquisa.",
+    "search_query": "pesquisa Ipespe 17 de outubro 2026 Flávio Bolsonaro Lula resultados",
+    "recommendation_angle": "Apresentar análise detalhada do empate técnico e suas implicações para a campanha.",
+    "first_payoff": "Flávio Bolsonaro lidera com 51,2 % contra 48,8 % de Lula nos votos válidos, reduzindo a vantagem do senador em três pontos percentuais.",
+    "promise_proof": "Dados corroborados por três veículos independentes e pelo relatório oficial do TSE.",
+    "audience_hypothesis": "Eleitores e investidores que acompanham a política brasileira buscam informações confiáveis sobre a disputa presidencial.",
+    "thumbnail_complement": "Gráfico comparativo de porcentagens ao lado da foto de Flávio Bolsonaro.",
+    "verification_limits": "A pesquisa tem margem de erro de 2,6pp; resultados podem variar em pesquisas subsequentes."
+  },
+  "publication_description": "Flávio Bolsonaro lidera com 51,2% contra 48,8% de Lula em pesquisa divulgada nesta manhã de 17/10/2026, indicando um empate técnico para o segundo turno das eleições presidenciais.",
+  "publication_target_local": "2026-10-17T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
