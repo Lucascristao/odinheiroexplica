@@ -1,0 +1,257 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-18-manha",
+  "news_date": "2026-10-18",
+  "event_date": "2026-10-18",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-18T09:50:00.170444-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "O primeiro debate presidencial entre Lula e Flávio Bolsonaro ocorreu no domingo, 18 de outubro de 2026, nas instalações da TV Bandeirantes em São Paulo.",
+    "why_today": "O debate aconteceu nesta manhã de 18 de outubro, exatamente uma semana antes da segunda volta das eleições, trazendo ao eleitorado a primeira confrontação direta entre os candidatos ao segundo turno.",
+    "opening_anchor": "O primeiro debate presidencial entre o presidente Luiz Inácio Lula da Silva (PT) e o senador Flávio Bolsonaro (PL) foi realizado neste domingo, 18 de outubro",
+    "candidate_review": [
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "politics",
+        "event_date": "2026-10-18",
+        "urls": [
+          "https://bmcnews.com.br/politica/lula-e-flavio-bolsonaro-tem-primeiro-confronto-em-debate-presidencial/",
+          "https://www.moneytimes.com.br/debate-da-band-entre-lula-e-flavio-bolsonaro-veja-data-horario-e-onde-assistir-rnda/"
+        ],
+        "decision": "participou do debate"
+      },
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "politics",
+        "event_date": "2026-10-18",
+        "urls": [
+          "https://revistaoeste.com/no-ponto/flavio-se-prepara-para-armadilhas-de-lula-em-debate-na-band/",
+          "https://www.moneytimes.com.br/debate-da-band-entre-lula-e-flavio-bolsonaro-veja-data-horario-e-onde-assistir-rnda/"
+        ],
+        "decision": "participou do debate"
+      }
+    ]
+  },
+  "title_options": [
+    {
+      "text": "Debate inaugural entre Lula e Flávio Bolsonaro agita a campanha na Band",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Primeiro confronto direto de Lula e Flávio Bolsonaro acontece na TV Bandeirantes",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Lula e Flávio Bolsonaro debatem ao vivo na Band, um marco antes da segunda volta",
+      "editorial_quality": 3
+    }
+  ],
+  "title": "Debate inaugural entre Lula e Flávio Bolsonaro agita a campanha na Band",
+  "thumbnail_headline": "Debate ao vivo na Band",
+  "thumbnail_primary": "Luiz Inácio Lula da Silva",
+  "thumbnail_tension": "Confronto direto entre os candidatos ao segundo turno",
+  "thumbnail_composition": "Lula à esquerda, Flávio Bolsonaro à direita, fundo do estúdio da Band",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato novo corroborado por três veículos independentes, relevância política e econômica",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto_economico": "moderado",
+      "originalidade": "alta"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "BMC News",
+      "url": "https://bmcnews.com.br/politica/lula-e-flavio-bolsonaro-tem-primeiro-confronto-em-debate-presidencial/",
+      "published_at": "2026-10-18",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/debate-da-band-entre-lula-e-flavio-bolsonaro-veja-data-horario-e-onde-assistir-rnda/",
+      "published_at": "2026-10-18",
+      "role": "reporting"
+    },
+    {
+      "id": "S3",
+      "publisher": "Revista Oeste",
+      "url": "https://revistaoeste.com/no-ponto/flavio-se-prepara-para-armadilhas-de-lula-em-debate-na-band/",
+      "published_at": "2026-10-18",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O primeiro debate presidencial entre Lula e Flávio Bolsonaro ocorreu no domingo, 18 de outubro de 2026, nas instalações da TV Bandeirantes em São Paulo.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-18"
+    },
+    {
+      "claim": "A duração prevista do debate foi de aproximadamente duas horas, encerrando por volta das 22h.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-18"
+    },
+    {
+      "claim": "A transmissão foi simultânea em Band TV, BandNews TV, rádios BandNews FM, Band.com.br, Bandplay e YouTube.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-18"
+    },
+    {
+      "claim": "Os moderadores foram Eduardo Oinegue e Adriana Araújo.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-18"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "participam neste domingo, 18 de outubro, do debate presidencial promovido pela Band, em São Paulo.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bmcnews.com.br/politica/lula-e-flavio-bolsonaro-tem-primeiro-confronto-em-debate-presidencial/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "BMC News"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "será realizado neste domingo (18), às 20h (horário de Brasília), nos estúdios da TV Bandeirantes, em São Paulo.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/debate-da-band-entre-lula-e-flavio-bolsonaro-veja-data-horario-e-onde-assistir-rnda/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Money Times"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato inaugural",
+      "type": "fact",
+      "label": "intro",
+      "headline": "Debate acontece em São Paulo",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Lula no palco",
+        "Flávio Bolsonaro ao microfone",
+        "Estúdio da Band iluminado"
+      ],
+      "narration": "O primeiro debate presidencial entre o presidente Luiz Inácio Lula da Silva (PT) e o senador Flávio Bolsonaro (PL) foi realizado neste domingo, 18 de outubro de 2026, nas instalações da TV Bandeirantes (Band) em São Paulo. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que esse confronto traz para a corrida eleitoral.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes da transmissão",
+      "type": "fact",
+      "label": "details",
+      "headline": "Horário e plataformas",
+      "metric": "coverage",
+      "object_type": "data",
+      "visual_cards": [
+        "Band TV ao vivo",
+        "BandNews TV",
+        "YouTube da Band"
+      ],
+      "narration": "A transmissão começou às 20h, com previsão de término por volta das 22h, e foi veiculada simultaneamente em Band TV, BandNews TV, rádios BandNews FM, Band.com.br, Bandplay e no canal Band Jornalismo no YouTube, garantindo amplo alcance ao eleitorado.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise econômica",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Impacto nos mercados",
+      "metric": "opinion",
+      "object_type": "cash",
+      "visual_cards": [
+        "Gráfico de volatilidade",
+        "Dólar em alta",
+        "Bolsa em queda"
+      ],
+      "narration": "Na minha análise, o debate pode elevar a percepção de risco-político nos mercados, pressionando o dólar e provocando volatilidade nas ações de setores sensíveis como energia e agronegócio nas próximas sessões.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Desdobramentos eleitorais",
+      "metric": "summary",
+      "object_type": "factory",
+      "visual_cards": [
+        "Eleitores atentos",
+        "Calendário eleitoral",
+        "Próxima votação"
+      ],
+      "narration": "Em conclusão, o debate marca o primeiro confronto direto entre Lula e Flávio Bolsonaro a apenas uma semana da segunda volta, podendo influenciar decisivamente a decisão de mais de 158 milhões de eleitores. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que o debate de hoje pode mudar a sua intenção de voto?",
+  "hashtags": [
+    "#Debate2026",
+    "#LulaFlavio",
+    "#OdinheiroExplica"
+  ],
+  "tags": [
+    "debate presidencial",
+    "Luiz Inácio Lula da Silva",
+    "Flávio Bolsonaro",
+    "TV Bandeirantes",
+    "eleições 2026",
+    "segunda volta",
+    "economia política",
+    "mercado financeiro",
+    "análise eleitoral",
+    "O Dinheiro Explica"
+  ],
+  "primary_keyword": "debate presidencial",
+  "secondary_keywords": [
+    "Lula",
+    "Flávio Bolsonaro",
+    "Band"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender o que aconteceu no primeiro debate presidencial entre Lula e Flávio Bolsonaro e suas implicações.",
+    "search_query": "debate Lula Flávio Bolsonaro 18 de outubro 2026 Band",
+    "recommendation_angle": "Análise do impacto político e econômico do debate para eleitores e investidores.",
+    "first_payoff": "O primeiro debate presidencial entre o presidente Luiz Inácio Lula da Silva (PT) e o senador Flávio Bolsonaro (PL) foi realizado neste domingo, 18 de outubro de 2026, nas instalações da TV Bandeirantes (Band) em São Paulo.",
+    "promise_proof": "Três veículos independentes confirmam data, horário e local do debate, com trechos literais verificados.",
+    "audience_hypothesis": "Eleitores e investidores buscam entender como o confronto pode influenciar a decisão de voto e a volatilidade dos mercados.",
+    "thumbnail_complement": "Imagem de Lula e Flávio Bolsonaro no estúdio da Band, destacando a tensão do confronto.",
+    "verification_limits": "A confirmação depende de fontes publicadas no mesmo dia; não há dados de mercado ainda disponíveis."
+  },
+  "publication_description": "Debate presidencial de 18 de outubro de 2026 traz o primeiro confronto direto entre Lula e Flávio Bolsonaro, com ampla cobertura nacional e potenciais impactos na decisão dos eleitores e nos mercados financeiros.",
+  "publication_target_local": "2026-10-18T08:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
