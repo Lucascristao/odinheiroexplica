@@ -1,4 +1,4 @@
-﻿name: Teste de Vozes Gemini - O Dinheiro Explica
+name: OS4 - amostra narrada privada
 
 on:
   workflow_dispatch:
@@ -7,69 +7,31 @@ permissions:
   contents: read
 
 jobs:
-  gemini-voice-test:
+  os4-narration:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-
-      - name: Install dependencies
+          python-version: '3.11'
+      - name: Install audio dependencies
         run: |
-          pip install --no-cache-dir -r worker/requirements.txt
-
-      - name: Test Gemini Models
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          python -m pip install --disable-pip-version-check 'google-genai==2.26.0' num2words faster-whisper
+      - name: Generate approved OS4 narration
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          python worker/debug_gemini.py
-
-      - name: Generate Gemini Voice Samples
-        env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: |
-          rm -rf voice-test-output
-          mkdir -p voice-test-output
-          python worker/generate_gemini_voice_test.py \
-            --output-dir voice-test-output \
-            --manifest voice-test-output/manifest.json
-
-      - name: Upload to Google Drive
-        env:
-          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
-          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
-          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
-          GOOGLE_DRIVE_FOLDER_ID: ${{ secrets.GOOGLE_DRIVE_FOLDER_ID }}
-        run: |
-          python worker/upload_voice_test_to_drive.py \
-            --input-dir voice-test-output \
-            --manifest voice-test-output/manifest.json \
-            --output voice-test-output/drive.json
-
-      - name: Upload Artifact
+          python os4-pilot/tts-os4-live.py --ode-root . --script os4-pilot/roteiro.md --output-dir os4-pilot/audio
+      - name: Align captions to actual narration
+        run: python os4-pilot/tts-align-audio.py --audio-dir os4-pilot/audio
+      - name: Upload only sample audio and diagnostics
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: gemini-voice-test-audio
-          path: voice-test-output/
-
-      - name: Summary
-        run: |
-          python - <<'PY' >> "$GITHUB_STEP_SUMMARY"
-          import json
-          p = json.load(open("voice-test-output/drive.json", encoding="utf-8"))
-          print("## 🎙️ Teste de Vozes Gemini Concluído!")
-          print("")
-          print(f"📁 **[Abrir Pasta Completa no Google Drive]({p['folder_url']})**")
-          print(f"📄 **[Ver Roteiro e Descrição (LEIA-ME)]({p['readme_url']})**")
-          print("")
-          print("### 🎧 Amostras para Escolher:")
-          for v in p["voices"]:
-              genero = "👨 Masculina" if v["gender"] == "masculina" else "👩 Feminina"
-              print(f"- **{v['id']}** ({genero}): [{v['label']}]({v['url']})")
-          PY
+          name: os4-roberta-narration
+          path: os4-pilot/audio/
+          if-no-files-found: error
+          retention-days: 7
