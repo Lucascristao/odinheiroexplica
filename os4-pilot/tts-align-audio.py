@@ -15,9 +15,10 @@ import unicodedata
 import wave
 
 
-VERSION = "os4-canonical-word-alignment-v1"
+VERSION = "os4-canonical-word-alignment-v2-vocabulary-prompt"
 MINIMUM_COVERAGE = 0.85
 MAXIMUM_UNMATCHED_CANONICAL_GROUP = 2
+ASR_VOCABULARY_PROMPT = "Roberta Luchsinger, Lulinha, Antônio Camilo, Anvisa."
 
 
 def sha256_file(path):
@@ -268,6 +269,7 @@ def main():
         "compute_type": "int8",
         "language": "pt",
         "word_timestamps": True,
+        "initial_prompt": ASR_VOCABULARY_PROMPT,
         "canonical_text_preserved": True,
         "minimum_required_coverage": MINIMUM_COVERAGE,
         "scenes": [],
@@ -280,7 +282,7 @@ def main():
         duration = audio_duration(audio_file)
         segments, info = model.transcribe(
             str(audio_file), language="pt", word_timestamps=True,
-            initial_prompt=scene["narration"], beam_size=5,
+            initial_prompt=ASR_VOCABULARY_PROMPT, beam_size=5,
             condition_on_previous_text=False, vad_filter=False,
         )
         asr_words, asr_text = split_timed_asr_words(segments)
