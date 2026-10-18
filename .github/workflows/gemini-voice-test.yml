@@ -1,14 +1,10 @@
-name: OS4 - amostra narrada privada
-
+name: OS4 - voz conversada v2
 on:
   workflow_dispatch:
-
 permissions:
   contents: read
-  actions: read
-
 jobs:
-  os4-narration:
+  os4-v2:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -16,30 +12,22 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Install audio dependencies
+      - name: Dependencies
         run: |
           sudo apt-get update -qq
           sudo apt-get install -y -qq ffmpeg
           python -m pip install --disable-pip-version-check 'google-genai==2.26.0' num2words faster-whisper
-      - name: Reuse the accepted narration without another API generation
-        uses: actions/download-artifact@v4
-        with:
-          name: os4-roberta-narration
-          path: os4-pilot/audio
-          github-token: ${{ github.token }}
-          run-id: 39107724478
-      - name: Generate approved OS4 narration
+      - name: Generate literal narration with conversational direction
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-        run: |
-          python os4-pilot/tts-os4-live.py --ode-root . --script os4-pilot/roteiro.md --output-dir os4-pilot/audio
-      - name: Align captions to actual narration
+        run: python os4-pilot/tts-os4-live.py --ode-root . --plan os4-pilot/editorial-plan-v2.json --output-dir os4-pilot/audio
+      - name: Align canonical captions
         run: python os4-pilot/tts-align-audio.py --audio-dir os4-pilot/audio
-      - name: Upload only sample audio and diagnostics
+      - name: Upload sample audio only
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: os4-roberta-narration
+          name: os4-roberta-v2-narration
           path: os4-pilot/audio/
           if-no-files-found: error
           retention-days: 7
