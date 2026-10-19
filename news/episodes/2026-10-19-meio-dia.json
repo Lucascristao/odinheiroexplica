@@ -1,0 +1,246 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-19-meio-dia",
+  "news_date": "2026-10-19",
+  "event_date": "2026-10-19",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-19T15:54:33.897624-03:00",
+  "news_selection": {
+    "topic_area": "business",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Pedido de recuperação extrajudicial foi protocolado em 18 de outubro de 2026",
+    "why_today": "A recuperação extrajudicial da Ri Happy, anunciada em 19 de outubro, ocorre 48 dias após a mudança de controle, colocando em foco a estabilidade financeira da maior rede de brinquedos do país neste momento crítico de alta temporada.",
+    "opening_anchor": "A Ri Happy protocolou pedido de recuperação extrajudicial neste domingo (18), apenas 48 dias após a mudança de controle",
+    "candidate_review": [
+      {
+        "subject": "Ri Happy",
+        "topic_area": "business",
+        "event_date": "2026-10-19",
+        "urls": [
+          "https://bmcnews.com.br/empresas-e-negocios/ri-happy-pede-recuperacao-extrajudicial-48-dias-apos-troca-de-controle/",
+          "https://www.suno.com.br/noticias/grupo-ri-happy-protocola-pedido-recuperacao-extrajudicial-go/",
+          "https://www.poder360.com.br/poder-economia/ri-happy-pede-recuperacao-extrajudicial-para-renegociar-r-8274-mi/"
+        ],
+        "decision": "confirmado"
+      }
+    ]
+  },
+  "title": "Ri Happy pede recuperação extrajudicial 48 dias após mudança de controle",
+  "title_options": [
+    {
+      "text": "Ri Happy pede recuperação extrajudicial 48 dias após mudança de controle",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Recuperação extrajudicial da Ri Happy chega 48 dias após aquisição",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Grupo Ri Happy entra com pedido de recuperação extrajudicial após mudança de controle",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Ri Happy em recuperação",
+  "thumbnail_primary": "Héctor Núñez, presidente da Ri Happy",
+  "thumbnail_tension": "Risco de falência versus oportunidade de reestruturação",
+  "thumbnail_composition": "Close-up do presidente ao lado de documentos judiciais",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "verificação cruzada de três veículos independentes",
+    "reason": "Todas as fontes confirmam data, valor da dívida e prazo da solicitação",
+    "criteria": {
+      "fonte_independente": true,
+      "coerencia_factual": true,
+      "ausencia_de_conflito_de_interesse": true
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "BMC News",
+      "url": "https://bmcnews.com.br/empresas-e-negocios/ri-happy-pede-recuperacao-extrajudicial-48-dias-apos-troca-de-controle/",
+      "published_at": "2026-10-19",
+      "role": "reportagem"
+    },
+    {
+      "id": "S2",
+      "publisher": "Suno",
+      "url": "https://www.suno.com.br/noticias/grupo-ri-happy-protocola-pedido-recuperacao-extrajudicial-go/",
+      "published_at": "2026-10-19",
+      "role": "análise"
+    },
+    {
+      "id": "S3",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-economia/ri-happy-pede-recuperacao-extrajudicial-para-renegociar-r-8274-mi/",
+      "published_at": "2026-10-19",
+      "role": "notícia"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Pedido de recuperação extrajudicial foi protocolado em 18 de outubro de 2026",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-19"
+    },
+    {
+      "claim": "Valor total da dívida a renegociar é R$ 827,4 milhões",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-19"
+    },
+    {
+      "claim": "Credores que representam R$ 308,8 milhões já manifestaram concordância",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-19"
+    },
+    {
+      "claim": "A mudança de controle ocorreu em agosto de 2026, com a BluSun Capital adquirindo 100% das ações",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-19"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "A Ri Happy, uma das maiores varejistas de brinquedos do Brasil, protocolou um pedido de recuperação extrajudicial neste domingo (18), apenas 48 dias depois de anunciar uma mudança de controle",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bmcnews.com.br/empresas-e-negocios/ri-happy-pede-recuperacao-extrajudicial-48-dias-apos-troca-de-controle/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "BMC News"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "foto: divulgação/ri happy segundo o pedido apresentado à justiça, de a",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.suno.com.br/noticias/grupo-ri-happy-protocola-pedido-recuperacao-extrajudicial-go/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Suno"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato inicial",
+      "type": "fact",
+      "label": "intro",
+      "headline": "Ri Happy solicita recuperação extrajudicial",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "Documento judicial assinado",
+        "Logotipo da Ri Happy",
+        "Calendário marcando 18/10/2026"
+      ],
+      "narration": "A Ri Happy protocolou pedido de recuperação extrajudicial neste domingo (18), apenas 48 dias após a mudança de controle. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos entender o que isso significa para a empresa e para o setor de varejo de brinquedos.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes da dívida",
+      "type": "fact",
+      "label": "detail",
+      "headline": "R$ 827,4 mi em negociação",
+      "metric": "",
+      "object_type": "cash",
+      "visual_cards": [
+        "Gráfico de dívida total",
+        "Valor de R$ 827,4 milhões destacado",
+        "Setor de brinquedos em fundo cinza"
+      ],
+      "narration": "O montante total da dívida que a Ri Happy busca renegociar chega a R$ 827,4 milhões, dos quais R$ 308,8 milhões já contam com a concordância de credores para discutir novos termos, segundo as informações divulgadas pelos veículos Suno e Poder360.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de risco",
+      "type": "opinion",
+      "label": "opinion",
+      "headline": "Impactos da recuperação",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "Balanço financeiro em destaque",
+        "Calendário de Black Friday",
+        "Ícone de alerta de risco"
+      ],
+      "narration": "Na minha análise, a rapidez com que a nova controladora BluSun Capital acionou a recuperação extrajudicial indica uma estratégia de contenção de risco antes da alta temporada de vendas. Embora a adesão de credores seja positiva, a dependência de quase metade da dívida ainda representa vulnerabilidade caso as negociações não avancem.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap",
+      "headline": "Próximos passos",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "Seta indicando futuro",
+        "Inscrição no canal",
+        "Logo do O Dinheiro Explica"
+      ],
+      "narration": "Em resumo, a Ri Happy entrou com pedido de recuperação extrajudicial 48 dias após a mudança de controle, buscando renegociar R$ 827,4 milhões de dívida. O sucesso dependerá da capacidade de fechar acordos com os credores restantes antes da temporada de festas. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Você acha que a recuperação extrajudicial será suficiente para salvar a Ri Happy da crise financeira?",
+  "hashtags": [
+    "#RiHappy",
+    "#RecuperacaoExtrajudicial",
+    "#Varejo"
+  ],
+  "tags": [
+    "Ri Happy",
+    "recuperação extrajudicial",
+    "dívida",
+    "BluSun Capital",
+    "varejo de brinquedos",
+    "Black Friday",
+    "negociação de credores",
+    "economia brasileira"
+  ],
+  "primary_keyword": "Ri Happy",
+  "secondary_keywords": [
+    "recuperação extrajudicial",
+    "dívida R$ 827,4 milhões"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que a maior rede de brinquedos do Brasil recorreu à recuperação extrajudicial tão rapidamente após a mudança de controle.",
+    "search_query": "Ri Happy recuperação extrajudicial 48 dias mudança de controle 2026",
+    "recommendation_angle": "Análise do impacto da reestruturação de dívida na operação e nas próximas datas comerciais.",
+    "first_payoff": "A Ri Happy protocolou pedido de recuperação extrajudicial neste domingo (18), apenas 48 dias após a mudança de controle",
+    "promise_proof": "Três veículos independentes confirmam data, valor da dívida e adesão de credores.",
+    "audience_hypothesis": "Investidores e consumidores curiosos sobre a saúde financeira das grandes redes de varejo.",
+    "thumbnail_complement": "Imagem do presidente ao lado de documentos judiciais reforça a seriedade da medida.",
+    "verification_limits": "A verificação se baseia em trechos publicados em 19 de outubro de 2026; não há acesso a documentos internos da empresa."
+  },
+  "publication_description": "Ri Happy pede recuperação extrajudicial 48 dias após a mudança de controle, buscando renegociar R$ 827,4 milhões de dívida. A medida, confirmada por três veículos independentes, traz implicações para o varejo de brinquedos e para a alta temporada de vendas.",
+  "publication_target_local": "2026-10-19T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
