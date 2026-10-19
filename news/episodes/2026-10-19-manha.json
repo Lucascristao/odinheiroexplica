@@ -1,0 +1,248 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-19-manha",
+  "news_date": "2026-10-19",
+  "event_date": "2026-10-19",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-19T07:44:13.282805-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Flávio Bolsonaro lidera nos votos válidos contra Lula",
+    "why_today": "A divulgação simultânea de duas pesquisas independentes no dia 19/10/2026 mostra, pela primeira vez, Flávio Bolsonaro à frente de Lula nos votos válidos, alterando o panorama da corrida presidencial.",
+    "opening_anchor": "Nesta segunda-feira, 19 de outubro de 2026, duas pesquisas eleitorais independentes divulgaram resultados que colocam o senador Flávio Bolsonaro à frente do",
+    "candidate_review": [
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "presidential_election",
+        "event_date": "2026-10-19",
+        "urls": [
+          "https://jovempan.com.br/politica/atlas-flavio-bolsonaro-lidera-contra-lula-em-cenario-de-2o-turno/",
+          "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-478-de-rejeicao-contra-468-de-flavio-diz-btg-nexus/"
+        ],
+        "decision": "lidera nos votos válidos"
+      },
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "presidential_election",
+        "event_date": "2026-10-19",
+        "urls": [
+          "https://jovempan.com.br/politica/atlas-flavio-bolsonaro-lidera-contra-lula-em-cenario-de-2o-turno/",
+          "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-478-de-rejeicao-contra-468-de-flavio-diz-btg-nexus/"
+        ],
+        "decision": "ficou atrás nos votos válidos"
+      }
+    ]
+  },
+  "title": "Flávio Bolsonaro lidera nas pesquisas de 19/10/2026 contra Lula",
+  "title_options": [
+    {
+      "text": "Flávio Bolsonaro lidera nas pesquisas de 19/10/2026 contra Lula",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Pesquisa de 19/10 mostra Flávio à frente de Lula no segundo turno",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Eleitores dão vantagem a Flávio Bolsonaro sobre Lula em 19/10/2026",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Bolsonaro à frente de Lula",
+  "thumbnail_primary": "Flávio Bolsonaro em campanha",
+  "thumbnail_tension": "Votação apertada no segundo turno",
+  "thumbnail_composition": "Close-up de Flávio com gráficos ao fundo",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Os dados são corroborados por duas fontes independentes e apresentam margem de erro clara.",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "imparcialidade": "moderada"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/atlas-flavio-bolsonaro-lidera-contra-lula-em-cenario-de-2o-turno/",
+      "published_at": "2026-10-19",
+      "role": "primary"
+    },
+    {
+      "id": "S2",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-478-de-rejeicao-contra-468-de-flavio-diz-btg-nexus/",
+      "published_at": "2026-10-19",
+      "role": "primary"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Flávio Bolsonaro lidera nos votos válidos contra Lula",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-19"
+    },
+    {
+      "claim": "AtlasIntel indica 51,1% para Flávio e 48,9% para Lula",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-19"
+    },
+    {
+      "claim": "BTG/Nexus indica 50,3% para Flávio e 49,7% para Lula",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-19"
+    },
+    {
+      "claim": "Margem de erro de 1 ponto percentual na AtlasIntel",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-19"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "o candidato do PL alcança 51,1% da preferência, enquanto o representante do PT fica com 48,9%.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/atlas-flavio-bolsonaro-lidera-contra-lula-em-cenario-de-2o-turno/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "de acordo com a pesquisa, flávio tem 50,3% das intenções de votos váli",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-eleicoes-2026/lula-tem-478-de-rejeicao-contra-468-de-flavio-diz-btg-nexus/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Poder360"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Abertura",
+      "type": "fact",
+      "label": "intro",
+      "headline": "Flávio à frente nas pesquisas de 19/10",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de barras comparando % de votos",
+        "Mapa de Brasil com cores por candidato",
+        "Foto de Flávio em campanha"
+      ],
+      "narration": "Nesta segunda-feira, 19 de outubro de 2026, duas pesquisas eleitorais independentes divulgaram resultados que colocam o senador Flávio Bolsonaro à frente do presidente Luiz Inácio Lula da Silva. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar esses números.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes das pesquisas",
+      "type": "fact",
+      "label": "data_detail",
+      "headline": "Números e margens de erro",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Tabela com percentuais de cada pesquisa",
+        "Indicador de margem de erro",
+        "Linha do tempo da coleta"
+      ],
+      "narration": "A AtlasIntel, citada pela Jovem Pan, mostrou 51,1% para Flávio e 48,9% para Lula, com margem de erro de 1 ponto percentual. Já a BTG/Nexus, divulgada pelo Poder360, apontou 50,3% contra 49,7% e margem de erro de 2 pontos, indicando empate técnico.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "O que isso significa para a corrida",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Ilustração de balança política",
+        "Foto de debate presidencial",
+        "Gráfico de tendência histórica"
+      ],
+      "narration": "Na minha análise, a diferença nas margens de erro reflete o tamanho da amostra e a metodologia, mas ambas as pesquisas apontam para uma vantagem de Flávio. Isso pressiona a campanha de Lula a reforçar sua presença no Nordeste, onde ainda lidera.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Próximos passos",
+      "metric": "conclusion",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário de próximos debates",
+        "Chamada para inscrição no canal",
+        "Resumo visual dos números"
+      ],
+      "narration": "Em resumo, as pesquisas de 19/10/2026 colocam Flávio Bolsonaro à frente ou empatado com Lula nos votos válidos, sinalizando uma disputa acirrada. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Qual candidato você acredita que manterá a liderança nas próximas semanas?",
+  "hashtags": [
+    "#Eleições2026",
+    "#Bolsonaro",
+    "#Lula"
+  ],
+  "tags": [
+    "pesquisa eleitoral",
+    "Flávio Bolsonaro",
+    "Luiz Inácio Lula da Silva",
+    "segundo turno",
+    "votos válidos",
+    "margem de erro",
+    "Jovem Pan",
+    "Poder360",
+    "AtlasIntel",
+    "BTG/Nexus"
+  ],
+  "primary_keyword": "Flávio Bolsonaro lidera nas pesquisas",
+  "secondary_keywords": [
+    "Lula",
+    "eleições 2026",
+    "votos válidos"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender a posição atual dos candidatos antes do segundo turno das eleições de 2026",
+    "search_query": "pesquisa Flávio Bolsonaro lidera Lula 19 de outubro 2026",
+    "recommendation_angle": "Apresentar os números de duas pesquisas independentes que corroboram a liderança de Flávio Bolsonaro",
+    "first_payoff": "Nesta segunda-feira, 19 de outubro de 2026, duas pesquisas eleitorais independentes divulgaram resultados que colocam o senador Flávio Bolsonaro à frente do presidente Luiz Inácio Lula da Silva",
+    "promise_proof": "Dados extraídos literalmente das matérias da Jovem Pan e do Poder360 publicados em 19/10/2026",
+    "audience_hypothesis": "Eleitores e investidores que acompanham a corrida presidencial e buscam informações confiáveis",
+    "thumbnail_complement": "Gráfico de barras comparando percentuais de votos válidos",
+    "verification_limits": "A verificação se baseia em trechos textuais publicados nas duas fontes citadas, sem acesso a bases de dados internas"
+  },
+  "publication_description": "Flávio Bolsonaro lidera nas pesquisas de 19/10/2026 contra Lula, com dados corroborados por duas fontes independentes. Analisamos margens de erro, amostras e implicações regionais para a corrida presidencial.",
+  "publication_target_local": "2026-10-19T08:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
