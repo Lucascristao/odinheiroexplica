@@ -1,0 +1,228 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-20-meio-dia",
+  "news_date": "2026-10-20",
+  "event_date": "2026-10-20",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-20T14:46:13.974432-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "single_source_attributed",
+    "independent_confirmation": false,
+    "new_fact": "Flávio Bolsonaro pediu ao ministro Alexandre de Moraes acesso aos autos de um inquérito sigiloso que investiga suspeitas de lavagem de dinheiro envolvendo o advogado Willer Tomaz.",
+    "why_today": "A solicitação surge na reta final da campanha presidencial, poucos dias antes do segundo turno, podendo influenciar a percepção dos eleitores sobre a integridade do candidato.",
+    "opening_anchor": "O candidato à Presidência da República Flávio Bolsonaro (PL) pediu nesta terça-feira (20) ao ministro Alexandre de Moraes, do Supremo Tribunal Federal (STF),",
+    "candidate_review": [
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "politics",
+        "event_date": "2026-10-20",
+        "urls": [
+          "https://jovempan.com.br/politica/flavio-pede-a-moraes-acesso-a-inquerito-sobre-suspeita-de-lavagem-de-dinheiro/"
+        ],
+        "decision": "statement"
+      }
+    ],
+    "attribution_note": "A informação provém exclusivamente da reportagem da Jovem Pan publicada em 20 out 2026; nenhum outro veículo independente confirmou o fato até o momento, limitando a verificação a uma única fonte."
+  },
+  "title": "Flávio Bolsonaro pede acesso a inquérito sigiloso ao ministro Moraes",
+  "title_options": [
+    {
+      "text": "Flávio Bolsonaro pede acesso a inquérito sigiloso ao ministro Moraes",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Candidato Bolsonaro solicita autos de investigação de lavagem de dinheiro ao STF",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Pedido de Flávio Bolsonaro ao ministro Moraes gera debate sobre transparência na campanha",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Pedido ao STF",
+  "thumbnail_primary": "Flávio Bolsonaro em entrevista",
+  "thumbnail_tension": "Risco de interferência judicial na campanha",
+  "thumbnail_composition": "Close-up de Flávio ao lado de documento oficial",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato novo relevante para a corrida presidencial, verificado por fonte única confiável",
+    "criteria": {
+      "relevance": true,
+      "source_reliability": true,
+      "originality": true,
+      "balance": true
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/flavio-pede-a-moraes-acesso-a-inquerito-sobre-suspeita-de-lavagem-de-dinheiro/",
+      "published_at": "2026-10-20",
+      "role": "primary"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Flávio Bolsonaro pediu ao ministro Alexandre de Moraes acesso aos autos de um inquérito sigiloso que investiga suspeitas de lavagem de dinheiro envolvendo o advogado Willer Tomaz.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-20"
+    },
+    {
+      "claim": "O inquérito foi encaminhado ao STF em 8 de outubro de 2026 e distribuído a Moraes em 16 de outubro de 2026.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-20"
+    },
+    {
+      "claim": "A investigação tem origem em um inquérito da Polícia Federal no Rio Grande do Sul sobre evasão de divisas e lavagem de dinheiro em plataformas de apostas esportivas.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-20"
+    },
+    {
+      "claim": "A campanha de Flávio classificou a velocidade de tramitação do inquérito como atípica e temia decisão antes do segundo turno.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-20"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "O candidato à Presidência da República Flávio Bolsonaro (PL) pediu nesta terça-feira (20) ao ministro Alexandre de Moraes, do Supremo Tribunal Federal (STF), acesso aos autos de um inquérito sigiloso que investiga suspeitas de lavagem de dinheiro envolvendo o advogado Willer Tomaz, amigo do senador.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/flavio-pede-a-moraes-acesso-a-inquerito-sobre-suspeita-de-lavagem-de-dinheiro/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S1",
+      "expected_text": "Segundo integrantes da campanha de Flávio, o processo avançou rapidamente e já teria diligências em andamento antes da abertura de vista ao Ministério Público.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/flavio-pede-a-moraes-acesso-a-inquerito-sobre-suspeita-de-lavagem-de-dinheiro/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Jovem Pan"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo",
+      "type": "fact",
+      "label": "opening",
+      "headline": "Flávio solicita acesso ao inquérito",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Flávio em entrevista",
+        "Documento judicial",
+        "Ministro Moraes"
+      ],
+      "narration": "O candidato à Presidência da República Flávio Bolsonaro (PL) pediu nesta terça-feira (20) ao ministro Alexandre de Moraes, do Supremo Tribunal Federal (STF), acesso aos autos de um inquérito sigiloso que investiga suspeitas de lavagem de dinheiro envolvendo o advogado Willer Tomaz, amigo do senador. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o impacto desse pedido.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Contexto judicial",
+      "type": "fact",
+      "label": "detail",
+      "headline": "Procedimento do inquérito",
+      "metric": "timeline",
+      "object_type": "store",
+      "visual_cards": [
+        "Data de encaminhamento",
+        "Distribuição ao ministro",
+        "Origem da PF"
+      ],
+      "narration": "O inquérito foi encaminhado ao STF em 8 de outubro de 2026 e distribuído ao ministro Alexandre de Moraes em 16 de outubro, tendo origem em uma investigação da Polícia Federal no Rio Grande do Sul sobre evasão de divisas e apostas esportivas.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise política",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Implicações para a campanha",
+      "metric": "opinion",
+      "object_type": "cash",
+      "visual_cards": [
+        "Eleitores indecisos",
+        "Risco de decisão judicial",
+        "Estratégia de campanha"
+      ],
+      "narration": "Na minha análise, o pedido de Flávio Bolsonaro ao ministro Moraes pode ser visto como tentativa de demonstrar transparência, mas também arrisca ampliar a exposição do candidato a decisões judiciais que podem influenciar o segundo turno marcado para 25 out 2026.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "O que esperar",
+      "metric": "summary",
+      "object_type": "factory",
+      "visual_cards": [
+        "Próximos passos",
+        "Possíveis desdobramentos",
+        "Chamada para ação"
+      ],
+      "narration": "Em síntese, o pedido de acesso ao inquérito pode gerar grande repercussão midiática e pressionar o STF a se posicionar antes das eleições. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que a solicitação de Flávio Bolsonaro ao STF pode influenciar o segundo turno?",
+  "hashtags": [
+    "#Política",
+    "#STF",
+    "#Eleição2026"
+  ],
+  "tags": [
+    "Flávio Bolsonaro",
+    "Alexandre de Moraes",
+    "lavagem de dinheiro",
+    "Willer Tomaz",
+    "STF",
+    "campanha presidencial",
+    "Jovem Pan"
+  ],
+  "primary_keyword": "Flávio Bolsonaro pede acesso ao inquérito",
+  "secondary_keywords": [
+    "STF",
+    "lavagem de dinheiro",
+    "campanha 2026"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender o impacto de um pedido judicial feito por candidato presidencial na reta final da campanha.",
+    "search_query": "Flávio Bolsonaro pedido acesso inquérito Moraes 20 outubro 2026",
+    "recommendation_angle": "Análise de risco político e judicial para eleitores indecisos.",
+    "first_payoff": "O candidato à Presidência da República Flávio Bolsonaro (PL) pediu nesta terça-feira (20) ao ministro Alexandre de Moraes, do Supremo Tribunal Federal (STF), acesso aos autos de um inquérito sigiloso que investiga suspeitas de lavagem de dinheiro envolvendo o advogado Willer Tomaz, amigo do senador.",
+    "promise_proof": "Trechos literais da reportagem da Jovem Pan confirmam a data, o pedido e o contexto do inquérito.",
+    "audience_hypothesis": "Eleitores que acompanham a campanha e interessados em justiça e transparência buscarão entender as consequências desse pedido.",
+    "thumbnail_complement": "Imagem de Flávio Bolsonaro segurando documento oficial.",
+    "verification_limits": "A informação ainda não foi confirmada por outros veículos independentes."
+  },
+  "publication_description": "Flávio Bolsonaro pede ao ministro Alexandre de Moraes acesso a autos de inquérito sigiloso sobre suspeita de lavagem de dinheiro, fato divulgado pela Jovem Pan em 20 out 2026. A reportagem traz detalhes sobre a origem da investigação, o andamento no STF e as possíveis repercussões políticas na reta final da campanha presidencial.\n\nContexto: Flávio Bolsonaro pede acesso ao inquérito",
+  "publication_target_local": "2026-10-20T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=single_source_attributed"
+}
