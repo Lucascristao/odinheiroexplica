@@ -1,0 +1,235 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-20-noite",
+  "news_date": "2026-10-20",
+  "event_date": "2026-10-20",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-20T19:45:28.475467-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Lula exigiu que Flávio Bolsonaro abra sigilos bancário, fiscal e telefônico para participar do debate da TV Globo.",
+    "why_today": "A exigência feita por Lula em campanha em Juazeiro e Petrolina, no dia 20 de outubro de 2026, marca a primeira vez que um presidente condiciona a participação de um candidato a debate à quebra de sigilos pessoais, gerando imediato debate jurídico e político.",
+    "opening_anchor": "Lula exigiu que Flávio Bolsonaro abra sigilos bancário, fiscal e telefônico para participar do debate da TV Globo.",
+    "candidate_review": [
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "politics",
+        "event_date": "2026-10-20",
+        "urls": [
+          "https://www.poder360.com.br/poder-eleicoes/a-vida-dele-e-podre-diz-lula-sobre-flavio-nao-abrir-sigilo/",
+          "https://jovempan.com.br/politica/flavio-bolsonaro-so-podera-ir-a-debate-na-globo-se-quebrar-sigilo-diz-lula/"
+        ],
+        "decision": "necessária resposta ao pedido de quebra de sigilos"
+      }
+    ],
+    "attribution_note": ""
+  },
+  "title": "Lula condiciona debate da Globo à quebra de sigilos de Flávio Bolsonaro",
+  "title_options": [
+    {
+      "text": "Lula condiciona debate da Globo à quebra de sigilos de Flávio Bolsonaro",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Presidente exige abertura de sigilos de Flávio Bolsonaro para debate na TV Globo",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Exigência inédita de Lula: Flávio Bolsonaro só debate se abrir sigilos",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Lula impõe quebra de sigilos",
+  "thumbnail_primary": "Luiz Inácio Lula da Silva em ato de campanha",
+  "thumbnail_tension": "Conflito entre transparência política e direito à privacidade",
+  "thumbnail_composition": "Lula em primeiro plano, Flávio ao fundo",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato novo corroborado por duas fontes independentes, relevância política nacional",
+    "criteria": {
+      "veracity": "high",
+      "newsworthiness": "high",
+      "balance": "adequate"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-eleicoes/a-vida-dele-e-podre-diz-lula-sobre-flavio-nao-abrir-sigilo/",
+      "published_at": "2026-10-20",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/flavio-bolsonaro-so-podera-ir-a-debate-na-globo-se-quebrar-sigilo-diz-lula/",
+      "published_at": "2026-10-20",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Lula exigiu que Flávio Bolsonaro abra sigilos bancário, fiscal e telefônico para participar do debate da TV Globo.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-20"
+    },
+    {
+      "claim": "A exigência foi feita publicamente durante ato de campanha em Juazeiro (BA) e Petrolina (PE).",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-20"
+    },
+    {
+      "claim": "Lula condicionou a divulgação de seus próprios dados à autorização de Flávio para que suas informações também sejam divulgadas.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-20"
+    },
+    {
+      "claim": "O pedido de quebra de sigilos foi protocolado no TSE e inclui os últimos oito anos.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-20"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "Ele certamente não vai ter coragem de abrir o sigilo dele. Não vai ter coragem, nem o telefônico, nem a conta bancária",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-eleicoes/a-vida-dele-e-podre-diz-lula-sobre-flavio-nao-abrir-sigilo/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Poder360"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "Se ele apresentar um documento autorizando quebrar o sigilo, vai ter debate, porque, senão, ele não pode ir ao debate",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/flavio-bolsonaro-so-podera-ir-a-debate-na-globo-se-quebrar-sigilo-diz-lula/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Jovem Pan"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo",
+      "type": "fact",
+      "label": "intro",
+      "headline": "Lula impõe condição inédita a Flávio Bolsonaro",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Lula em discurso",
+        "Flávio Bolsonaro ao fundo",
+        "Mapa de Juazeiro e Petrolina"
+      ],
+      "narration": "Lula exigiu que Flávio Bolsonaro abra sigilos bancário, fiscal e telefônico para participar do debate da TV Globo. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que isso significa para a campanha.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes da exigência",
+      "type": "fact",
+      "label": "detail",
+      "headline": "Condição formalizada no TSE",
+      "metric": "legal",
+      "object_type": "data",
+      "visual_cards": [
+        "Protocolo no TSE",
+        "Texto da solicitação",
+        "Calendário de prazo"
+      ],
+      "narration": "O pedido de quebra de sigilos foi protocolado no Tribunal Superior Eleitoral, abrangendo os últimos oito anos, e o prazo para resposta foi fixado para a quarta-feira, 21 de outubro.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Impacto político da medida",
+      "metric": "analysis",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de apoio ao debate",
+        "Citação de especialistas",
+        "Comparativo histórico"
+      ],
+      "narration": "Na minha análise, a exigência de Lula cria um precedente perigoso ao colocar a privacidade pessoal como moeda de troca política, podendo gerar litígios judiciais e polarizar ainda mais o eleitorado.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Desdobramentos a observar",
+      "metric": "forecast",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário eleitoral",
+        "Possíveis decisões do TSE",
+        "Reação nas redes"
+      ],
+      "narration": "O desfecho dependerá da resposta de Flávio Bolsonaro e da decisão do TSE. Caso não haja acordo, a TV Globo pode excluir o senador do debate, alterando a dinâmica da disputa. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Você acha que a quebra de sigilos deve ser condição para participação em debates eleitorais?",
+  "hashtags": [
+    "#Política",
+    "#Debate2026"
+  ],
+  "tags": [
+    "Lula",
+    "Flávio Bolsonaro",
+    "TV Globo",
+    "TSE",
+    "sigilos",
+    "campanha 2026",
+    "debate eleitoral"
+  ],
+  "primary_keyword": "Lula condiciona debate da Globo",
+  "secondary_keywords": [
+    "quebra de sigilos",
+    "Flávio Bolsonaro",
+    "TSE"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que Lula condicionou a participação de Flávio Bolsonaro ao debate da Globo.",
+    "search_query": "Lula exige quebra de sigilos Flávio debate Globo 20 de outubro 2026",
+    "recommendation_angle": "Análise das implicações jurídicas e políticas da exigência de quebra de sigilos.",
+    "first_payoff": "Lula exigiu que Flávio Bolsonaro abra sigilos bancário, fiscal e telefônico para participar do debate da TV Globo.",
+    "promise_proof": "Trechos literais de Poder360 e Jovem Pan confirmam a declaração.",
+    "audience_hypothesis": "Eleitores e analistas políticos buscam entender como a medida pode mudar o cenário da campanha.",
+    "thumbnail_complement": "Imagem de Lula apontando para Flávio Bolsonaro ao fundo.",
+    "verification_limits": "A verificação se baseia em duas publicações independentes disponíveis publicamente."
+  },
+  "publication_description": "Lula condiciona debate da Globo à quebra de sigilos de Flávio Bolsonaro, fato novo que pode redefinir regras de transparência na campanha eleitoral.",
+  "publication_target_local": "2026-10-20T20:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
