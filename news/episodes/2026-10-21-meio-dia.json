@@ -1,0 +1,237 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-21-meio-dia",
+  "news_date": "2026-10-21",
+  "event_date": "2026-10-21",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-21T14:46:12.449347-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Lula sancionou o pacote Prospera MEI, que aumenta o limite de faturamento dos MEIs e perdoa dívidas tributárias.",
+    "why_today": "A sanção do pacote Prospera MEI ocorre quatro dias antes do segundo turno eleitoral, buscando reforçar a imagem de apoio ao pequeno empreendedor e potencialmente influenciar o voto dos 17,6 milhões de MEIs beneficiados.",
+    "opening_anchor": "O presidente Luiz Inácio Lula da Silva sancionou nesta quarta-feira (21) o programa Prospera MEI, que aumenta o limite de faturamento do MEI e perdoa dívidas",
+    "candidate_review": [
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "politics",
+        "event_date": "2026-10-21",
+        "urls": [
+          "https://www.moneytimes.com.br/lula-sanciona-pacote-que-aumenta-limite-de-faturamento-do-mei-e-perdoa-dividas/",
+          "https://bmcnews.com.br/economia/lula-sanciona-perdao-de-dividas-de-meis-e-envia-pec-do-transporte-gratuito/"
+        ],
+        "decision": "apresentado como ação de governo"
+      }
+    ]
+  },
+  "title": "Lula sanciona Prospera MEI e perdoa dívidas de microempreendedores",
+  "title_options": [
+    {
+      "text": "Lula sanciona Prospera MEI e perdoa dívidas de microempreendedores",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Pacote Prospera MEI aumenta limite de faturamento e perdoa débitos de MEIs",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Nova medida do governo amplia limite de faturamento dos MEIs",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Prospera MEI aprovado",
+  "thumbnail_primary": "Presidente Lula assinando documento no Planalto",
+  "thumbnail_tension": "Ação de governo pouco antes da eleição",
+  "thumbnail_composition": "Plano médio, foco no presidente",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes, relevância eleitoral e econômica",
+    "criteria": {
+      "source_independence": "confirmed",
+      "factual_accuracy": "high",
+      "public_interest": "high"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/lula-sanciona-pacote-que-aumenta-limite-de-faturamento-do-mei-e-perdoa-dividas/",
+      "published_at": "2026-10-21",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "BMC News",
+      "url": "https://bmcnews.com.br/economia/lula-sanciona-perdao-de-dividas-de-meis-e-envia-pec-do-transporte-gratuito/",
+      "published_at": "2026-10-21",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Lula sancionou o pacote Prospera MEI, que aumenta o limite de faturamento dos MEIs e perdoa dívidas tributárias.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-21"
+    },
+    {
+      "claim": "O limite de faturamento do MEI será elevado para R$ 110 mil em 2027 e R$ 140 mil em 2028.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-21"
+    },
+    {
+      "claim": "MEIs poderão contratar até dois funcionários a partir de 2027.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-21"
+    },
+    {
+      "claim": "A medida pode beneficiar cerca de 17,6 milhões de microempreendedores, incluindo 7,8 milhões de mulheres.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-10-21"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "microempreendedor individual (mei) lula sanciona pacote que aumenta li",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/lula-sanciona-pacote-que-aumenta-limite-de-faturamento-do-mei-e-perdoa-dividas/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "O presidente Lula sancionou o perdão de dívidas de MEIs e enviou ao Congresso uma proposta de emenda à Constituição sobre transporte gratuito nesta quarta-feira (21), antes da eleição.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bmcnews.com.br/economia/lula-sanciona-perdao-de-dividas-de-meis-e-envia-pec-do-transporte-gratuito/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "BMC News"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo",
+      "type": "fact",
+      "label": "opening",
+      "headline": "Lula sanciona Prospera MEI",
+      "metric": "data",
+      "object_type": "package",
+      "visual_cards": [
+        "Presidente assinando",
+        "Documento oficial",
+        "Planalto ao fundo"
+      ],
+      "narration": "O presidente Luiz Inácio Lula da Silva sancionou nesta quarta-feira (21) o programa Prospera MEI, que aumenta o limite de faturamento do MEI e perdoa dívidas tributárias. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos entender o que muda para os microempreendedores.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes do pacote",
+      "type": "fact",
+      "label": "detail",
+      "headline": "Novos limites e contratação",
+      "metric": "info",
+      "object_type": "package",
+      "visual_cards": [
+        "Teto de R$ 110 mil em 2027",
+        "Teto de R$ 140 mil em 2028",
+        "Até dois funcionários"
+      ],
+      "narration": "O Prospera MEI eleva o teto de faturamento de R$ 81 mil para R$ 110 mil a partir de janeiro de 2027 e para R$ 140 mil em 2028, além de permitir que o microempreendedor registre até dois empregados, ampliando a capacidade de geração de empregos formais.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do analista",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Impacto econômico",
+      "metric": "analysis",
+      "object_type": "data",
+      "visual_cards": [
+        "Potencial de arrecadação",
+        "Redução da inadimplência",
+        "Efeito eleitoral"
+      ],
+      "narration": "Na minha análise, a medida tem duplo objetivo: melhorar a arrecadação a médio prazo ao manter mais empreendedores no regime simplificado e, politicamente, reforçar a imagem de governo próximo ao trabalhador informal pouco antes da votação.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Próximos passos",
+      "metric": "summary",
+      "object_type": "package",
+      "visual_cards": [
+        "Acompanhe as mudanças",
+        "Inscreva-se no canal",
+        "Ative notificações"
+      ],
+      "narration": "Em resumo, o Prospera MEI traz benefícios fiscais e operacionais para cerca de 17,6 milhões de microempreendedores, mas seu timing próximo às eleições levanta dúvidas sobre motivação política. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como o aumento do limite de faturamento do MEI pode mudar a sua estratégia de negócio?",
+  "hashtags": [
+    "#ProsperaMEI",
+    "#Microempreendedor",
+    "#Economia"
+  ],
+  "tags": [
+    "Lula",
+    "MEI",
+    "prospera",
+    "perdão de dívidas",
+    "limite de faturamento",
+    "contratação",
+    "eleições 2026",
+    "Política econômica",
+    "Pequenos negócios"
+  ],
+  "primary_keyword": "Prospera MEI",
+  "secondary_keywords": [
+    "limite de faturamento MEI",
+    "perdão de dívidas",
+    "contratação de funcionários"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender como a nova medida do governo afeta microempreendedores individuais antes das eleições.",
+    "search_query": "Lula sanciona Prospera MEI 2026 detalhes limite faturamento",
+    "recommendation_angle": "Apresentar a medida como mudança prática para quem tem MEI e analisar seu contexto político.",
+    "first_payoff": "O presidente Luiz Inácio Lula da Silva sancionou nesta quarta-feira (21) o programa Prospera MEI, que aumenta o limite de faturamento do MEI e perdoa dívidas tributárias.",
+    "promise_proof": "Trechos literais de duas publicações independentes confirmam a sanção e o conteúdo da medida.",
+    "audience_hypothesis": "Microempreendedores e eleitores buscam entender impactos econômicos de decisões de governo próximo ao pleito.",
+    "thumbnail_complement": "Imagem do presidente assinando reforça a autoridade da ação.",
+    "verification_limits": "A verificação se baseia em duas fontes independentes publicadas no mesmo dia, sem necessidade de documentos adicionais."
+  },
+  "publication_description": "Prospera MEI foi sancionado por Lula nesta quarta-feira, ampliando o teto de faturamento dos microempreendedores e perdoando dívidas tributárias, medida que chega pouco antes da eleição e pode impactar milhões de negócios.",
+  "publication_target_local": "2026-10-21T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
