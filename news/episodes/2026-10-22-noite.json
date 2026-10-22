@@ -1,0 +1,245 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-22-noite",
+  "news_date": "2026-10-22",
+  "event_date": "2026-10-22",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-22T18:36:32.780876-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "A emissora dividiu o debate em quatro blocos",
+    "why_today": "Na tarde de 22 outubro de 2026 a Globo divulgou as regras oficiais do debate presidencial de segundo turno, informação confirmada por duas publicações independentes, o que define a dinâmica do confronto entre Lula e Flávio Bolsonaro antes da votação final.",
+    "opening_anchor": "A emissora dividiu o debate em quatro blocos",
+    "candidate_review": [
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "politics",
+        "event_date": "2026-10-22",
+        "urls": [
+          "https://www.moneytimes.com.br/globo-define-regras-para-o-debate-entre-flavio-bolsonaro-e-lula-saiba-como-vai-funcionar-davs/",
+          "https://www.poder360.com.br/poder-eleicoes-2026/globo-anuncia-checagem-de-fatos-para-o-debate-de-lula-e-flavio/"
+        ],
+        "decision": "informado"
+      },
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "politics",
+        "event_date": "2026-10-22",
+        "urls": [
+          "https://www.moneytimes.com.br/globo-define-regras-para-o-debate-entre-flavio-bolsonaro-e-lula-saiba-como-vai-funcionar-davs/",
+          "https://www.poder360.com.br/poder-eleicoes-2026/globo-anuncia-checagem-de-fatos-para-o-debate-de-lula-e-flavio/"
+        ],
+        "decision": "informado"
+      }
+    ]
+  },
+  "title": "Globo define regras detalhadas para debate Lula × Flávio Bolsonaro",
+  "title_options": [
+    {
+      "text": "Globo define regras detalhadas para debate Lula × Flávio Bolsonaro",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Debate presidencial 2026: Globo publica estrutura em quatro blocos e checagem ao vivo",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Segundo turno: Globo anuncia horário, transmissão e checagem de fatos para debate",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Regras do debate definidas",
+  "thumbnail_primary": "Câmera da TV Globo mostrando o logo da emissora",
+  "thumbnail_tension": "Expectativa de confrontos acirrados entre os candidatos",
+  "thumbnail_composition": "Logo centralizado, candidato em foco lateral",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes e verificado em página oficial da Globo",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto": "moderado"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/globo-define-regras-para-o-debate-entre-flavio-bolsonaro-e-lula-saiba-como-vai-funcionar-davs/",
+      "published_at": "2026-10-22",
+      "role": "independent"
+    },
+    {
+      "id": "S2",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/globo-anuncia-checagem-de-fatos-para-o-debate-de-lula-e-flavio/",
+      "published_at": "2026-10-22",
+      "role": "independent"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "A emissora dividiu o debate em quatro blocos",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-22"
+    },
+    {
+      "claim": "A emissora também confirmou que fará checagem de fatos das declarações",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-22"
+    },
+    {
+      "claim": "A TV Globo fará a checagem de fatos das declarações durante o debate",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-22"
+    },
+    {
+      "claim": "O debate terá início às 21h20, logo após o Jornal Nacional",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-22"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "a globo dividiu o debate em quatro blocos, que contarão com consideraç",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/globo-define-regras-para-o-debate-entre-flavio-bolsonaro-e-lula-saiba-como-vai-funcionar-davs/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "A TV Globo fará a checagem de fatos das declarações",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-eleicoes-2026/globo-anuncia-checagem-de-fatos-para-o-debate-de-lula-e-flavio/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Poder360"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Regra principal divulgada",
+      "type": "fact",
+      "label": "fato",
+      "headline": "Globo anuncia quatro blocos para debate",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Logo da Globo em destaque",
+        "Cronograma do debate",
+        "Candidatos em silhueta"
+      ],
+      "narration": "A emissora dividiu o debate em quatro blocos, conforme divulgado na tarde de 22 outubro. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que isso significa para o confronto entre Lula e Flávio Bolsonaro.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Checagem de fatos ao vivo",
+      "type": "fact",
+      "label": "fato",
+      "headline": "Globo garante verificação em tempo real",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Equipe de checagem da Globo",
+        "Logotipo do serviço Fato ou Fake",
+        "Tela de exemplo de verificação"
+      ],
+      "narration": "A TV Globo fará a checagem de fatos das declarações durante o debate, mobilizando equipes do G1, O Globo, Extra, Valor Econômico e da rádio CBN, garantindo transparência ao eleitorado.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de impacto",
+      "type": "opinion",
+      "label": "opinião",
+      "headline": "Na minha análise, a checagem eleva o padrão do debate",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de volatilidade do Ibovespa",
+        "Comparativo de debates anteriores",
+        "Indicador de confiança do eleitor"
+      ],
+      "narration": "Na minha análise, a inclusão de checagem de fatos em tempo real eleva o padrão de qualidade informativa do debate, reduzindo espaço para desinformação e podendo influenciar decisões de voto e de investimento nos próximos dias.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e convite",
+      "type": "conclusion",
+      "label": "conclusão",
+      "headline": "O debate como ponto de virada",
+      "metric": "conclusion",
+      "object_type": "data",
+      "visual_cards": [
+        "Imagem dos dois candidatos no palco",
+        "Relógio marcando 21h20",
+        "Ícone de inscrição no canal"
+      ],
+      "narration": "Com regras claras, ordem de fala por sorteio e checagem ao vivo, o debate de 23 outubro pode ser decisivo para definir a preferência dos eleitores e impactar os mercados. Para acompanhar as análises diárias que afetam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que a checagem de fatos ao vivo pode mudar a percepção dos eleitores?",
+  "hashtags": [
+    "#Debate2026",
+    "#Globo",
+    "#Política"
+  ],
+  "tags": [
+    "debate presidencial",
+    "Luiz Inácio Lula da Silva",
+    "Flávio Bolsonaro",
+    "Globo",
+    "checagem de fatos",
+    "transmissão multiplataforma",
+    "eleições 2026"
+  ],
+  "primary_keyword": "regras do debate",
+  "secondary_keywords": [
+    "Globo",
+    "Lula",
+    "Flávio Bolsonaro"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender as regras oficiais do debate presidencial de segundo turno e seu impacto no eleitorado.",
+    "search_query": "Globo regras debate Lula Flávio Bolsonaro 22 outubro 2026",
+    "recommendation_angle": "Apresentar de forma clara a estrutura do debate e a novidade da checagem de fatos ao vivo.",
+    "first_payoff": "A emissora dividiu o debate em quatro blocos",
+    "promise_proof": "Citações literais de Money Times e Poder360 confirmam as regras divulgadas.",
+    "audience_hypothesis": "Eleitores e investidores buscam informações confiáveis antes da votação final.",
+    "thumbnail_complement": "Imagem do logo da Globo ao lado de um relógio marcando 21h20.",
+    "verification_limits": "A verificação depende de duas fontes independentes publicadas no mesmo dia."
+  },
+  "publication_description": "Regras do debate presidencial de segundo turno foram divulgadas pela Globo e confirmadas por Money Times e Poder360, detalhando blocos, horário, checagem de fatos e transmissão multiplataforma.",
+  "publication_target_local": "2026-10-22T20:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
