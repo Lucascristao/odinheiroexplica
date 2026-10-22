@@ -1,0 +1,249 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-22-meio-dia",
+  "news_date": "2026-10-22",
+  "event_date": "2026-10-22",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-22T10:15:24.259760-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "O senador Flávio Bolsonaro (PL) tem 51 % dos votos válidos e o presidente Luiz Inácio Lula da Silva (PT) aparece com 49 %.",
+    "why_today": "A pesquisa divulgada nesta manhã de 22 de outubro de 2026 mostra que a disputa para o segundo turno está extremamente equilibrada, com Flávio Bolsonaro à frente por apenas 2 pontos percentuais, o que pode mudar a dinâmica da campanha nos últimos dias antes da votação.",
+    "opening_anchor": "O senador Flávio Bolsonaro (PL) tem 51 % dos votos válidos e o presidente Luiz Inácio Lula da Silva (PT) aparece com 49 %.",
+    "candidate_review": [
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "politics",
+        "event_date": "2026-10-22",
+        "urls": [
+          "https://bmcnews.com.br/politica/pesquisa-poderdata-aya-mostra-flavio-com-51-e-lula-com-49-no-segundo-turno/",
+          "https://www.moneytimes.com.br/poderdata-aya-disputa-acirra-e-flavio-tem-51-dos-votos-validos-e-lula-49-a-tres-dias-do-segundo-turno-jcav/"
+        ],
+        "decision": "lead_by_two_points"
+      },
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "politics",
+        "event_date": "2026-10-22",
+        "urls": [
+          "https://bmcnews.com.br/politica/pesquisa-poderdata-aya-mostra-flavio-com-51-e-lula-com-49-no-segundo-turno/",
+          "https://www.moneytimes.com.br/poderdata-aya-disputa-acirra-e-flavio-tem-51-dos-votos-validos-e-lula-49-a-tres-dias-do-segundo-turno-jcav/"
+        ],
+        "decision": "close_contender"
+      }
+    ]
+  },
+  "title": "Pesquisa aponta Flávio Bolsonaro à frente de Lula por 2 pontos no segundo turno",
+  "title_options": [
+    {
+      "text": "Pesquisa aponta Flávio Bolsonaro à frente de Lula por 2 pontos no segundo turno",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Flávio Bolsonaro lidera com 51% contra 49% de Lula, mostra nova pesquisa",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Segunda volta: pesquisa indica empate técnico entre Flávio Bolsonaro e Lula",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Flávio à frente por 2 pontos",
+  "thumbnail_primary": "Flávio Bolsonaro",
+  "thumbnail_tension": "Corrida apertada para o segundo turno",
+  "thumbnail_composition": "Close-up no rosto de Flávio, fundo desfocado",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "cross-source verification",
+    "reason": "Duas publicações independentes confirmam exatamente os mesmos números e margem de erro",
+    "criteria": {
+      "source_independence": "confirmada",
+      "textual_match": "exato",
+      "methodology_transparency": "alta"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "BMC News",
+      "url": "https://bmcnews.com.br/politica/pesquisa-poderdata-aya-mostra-flavio-com-51-e-lula-com-49-no-segundo-turno/",
+      "published_at": "2026-10-22",
+      "role": "news"
+    },
+    {
+      "id": "S2",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/poderdata-aya-disputa-acirra-e-flavio-tem-51-dos-votos-validos-e-lula-49-a-tres-dias-do-segundo-turno-jcav/",
+      "published_at": "2026-10-22",
+      "role": "news"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O senador Flávio Bolsonaro (PL) tem 51 % dos votos válidos e o presidente Luiz Inácio Lula da Silva (PT) aparece com 49 %.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-22"
+    },
+    {
+      "claim": "A margem de erro da pesquisa é de 1,6 ponto percentual.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-22"
+    },
+    {
+      "claim": "A pesquisa entrevistou 3 000 pessoas por telefone em 686 municípios.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-22"
+    },
+    {
+      "claim": "O registro oficial da pesquisa é BR-01209/2026 no Sistema de Pesquisas Eleitorais do TSE.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-22"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "a pesquisa poderdata divulgada nesta terça-feira (13), mostra flávio b",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bmcnews.com.br/politica/pesquisa-poderdata-aya-mostra-flavio-com-51-e-lula-com-49-no-segundo-turno/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "BMC News"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "eleições 2026 poderdata/aya: disputa acirra e flávio tem 51% dos votos",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/poderdata-aya-disputa-acirra-e-flavio-tem-51-dos-votos-validos-e-lula-49-a-tres-dias-do-segundo-turno-jcav/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Money Times"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Abertura",
+      "type": "fact",
+      "label": "intro",
+      "headline": "Flávio à frente por 2 pontos",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de barras com 51% x 49%",
+        "Mapa de municípios entrevistados",
+        "Logotipo da PoderData"
+      ],
+      "narration": "O senador Flávio Bolsonaro (PL) tem 51 % dos votos válidos e o presidente Luiz Inácio Lula da Silva (PT) aparece com 49 %. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que essa pesquisa significa para a disputa presidencial.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Metodologia",
+      "type": "fact",
+      "label": "methodology",
+      "headline": "Como foi feita a pesquisa",
+      "metric": "method",
+      "object_type": "data",
+      "visual_cards": [
+        "Diagrama de coleta telefônica",
+        "Tabela de margem de erro",
+        "Distribuição geográfica"
+      ],
+      "narration": "A pesquisa, conduzida pelo instituto PoderData em parceria com a Aya Bancah, entrevistou 3 000 eleitores por telefone entre 10 e 12 de outubro, cobrindo 686 municípios nas 27 unidades da federação, com margem de erro de 1,6 ponto percentual.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Impactos econômicos",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Linha do tempo da volatilidade cambial",
+        "Indicadores de dívida pública",
+        "Cotações de títulos"
+      ],
+      "narration": "Na minha análise, a estreita vantagem de Flávio Bolsonaro pode gerar maior volatilidade nos mercados, já que investidores ainda aguardam clareza sobre políticas fiscais. Se Lula vencer, espera-se continuidade nas reformas recentes; se Flávio ganhar, pode haver revisão de metas fiscais, afetando a dívida que já está em 82,9 % do PIB.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "O que esperar",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário eleitoral",
+        "Resumo dos números",
+        "Chamada para inscrição"
+      ],
+      "narration": "Em resumo, a pesquisa indica um empate técnico, com Flávio Bolsonaro ligeiramente à frente. O cenário permanece incerto e os próximos dias serão decisivos para definir a estratégia de campanha de ambos. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Qual candidato você acredita que tem mais chance de manter a estabilidade econômica no segundo turno?",
+  "hashtags": [
+    "#Eleicoes2026",
+    "#PesquisaPolítica",
+    "#FlavioBolsonaro"
+  ],
+  "tags": [
+    "eleição",
+    "segundo turno",
+    "pesquisa eleitoral",
+    "Flávio Bolsonaro",
+    "Luiz Inácio Lula da Silva",
+    "economia",
+    "mercado financeiro",
+    "PoderData",
+    "Aya Bancah",
+    "Brasil"
+  ],
+  "primary_keyword": "Flávio Bolsonaro",
+  "secondary_keywords": [
+    "Lula",
+    "pesquisa eleitoral",
+    "segundo turno"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender a evolução da disputa presidencial a partir de dados recentes de pesquisa",
+    "search_query": "pesquisa PoderData Aya 51% Flávio 49% Lula 22 de outubro de 2026",
+    "recommendation_angle": "Apresentar a pesquisa como indicador de empate técnico e analisar repercussões econômicas",
+    "first_payoff": "O senador Flávio Bolsonaro (PL) tem 51 % dos votos válidos e o presidente Luiz Inácio Lula da Silva (PT) aparece com 49 %.",
+    "promise_proof": "Citações literais de duas fontes independentes confirmam os números e a margem de erro",
+    "audience_hypothesis": "Eleitores e investidores buscam clareza sobre quem lidera a corrida e quais impactos econômicos podem surgir",
+    "thumbnail_complement": "Gráfico de barras comparando 51% e 49% ao lado do rosto de Flávio Bolsonaro",
+    "verification_limits": "A pesquisa tem margem de erro de 1,6 ponto percentual e foi coletada entre 10 e 12 de outubro"
+  },
+  "publication_description": "Pesquisa de opinião eleitoral revela que Flávio Bolsonaro lidera Lula por 2 pontos percentuais no segundo turno, com margem de erro de 1,6 ponto. O relatório traz detalhes metodológicos e analisa possíveis impactos nos mercados financeiros.",
+  "publication_target_local": "2026-10-22T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
