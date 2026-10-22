@@ -1,0 +1,240 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-22-manha",
+  "news_date": "2026-10-22",
+  "event_date": "2026-10-22",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-22T11:22:42.251262-03:00",
+  "news_selection": {
+    "topic_area": "business",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "BlackRock elevou sua participação na Lojas Renner para 10,088% das ações ordinárias emitidas.",
+    "why_today": "A elevação da participação da BlackRock na Lojas Renner, anunciada em 22 de outubro de 2026, indica um reforço institucional no varejo brasileiro em meio a incertezas macroeconômicas, o que pode impactar a liquidez e a percepção de risco dos investidores.",
+    "opening_anchor": "A BlackRock ampliou sua posição na Lojas Renner (LREN3) e passou a deter uma fatia superior a 10 % das ações ordinárias da varejista.",
+    "candidate_review": [
+      {
+        "subject": "BlackRock",
+        "topic_area": "business",
+        "event_date": "2026-10-22",
+        "urls": [
+          "https://www.suno.com.br/noticias/blackrock-eleva-participacao-lojas-renner-lren3-go/",
+          "https://www.moneytimes.com.br/lojas-renner-lren3-blackrock-eleva-participacao-na-varejista-lmrs/"
+        ],
+        "decision": "participação acionária aumentada para 10,088%."
+      }
+    ],
+    "attribution_note": ""
+  },
+  "title": "BlackRock eleva participação na Lojas Renner para 10,088% das ações ordinárias",
+  "title_options": [
+    {
+      "text": "BlackRock eleva participação na Lojas Renner para 10,088% das ações ordinárias",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Investidor global aumenta stake na Renner acima de 10% em outubro de 2026",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Participação da BlackRock na Renner ultrapassa 10% e pode mudar a liquidez da ação",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "BlackRock >10% Renner",
+  "thumbnail_primary": "Logotipo da BlackRock",
+  "thumbnail_tension": "Aumento de participação institucional em período de volatilidade",
+  "thumbnail_composition": "Logotipo à esquerda, gráfico de participação à direita",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes e evidência documental",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto_mercado": "moderado"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Suno",
+      "url": "https://www.suno.com.br/noticias/blackrock-eleva-participacao-lojas-renner-lren3-go/",
+      "published_at": "2026-10-22",
+      "role": "independent"
+    },
+    {
+      "id": "S2",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/lojas-renner-lren3-blackrock-eleva-participacao-na-varejista-lmrs/",
+      "published_at": "2026-10-22",
+      "role": "independent"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "BlackRock elevou sua participação na Lojas Renner para 10,088% das ações ordinárias emitidas.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-22"
+    },
+    {
+      "claim": "A participação corresponde a 101.573.795 ações ordinárias.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-22"
+    },
+    {
+      "claim": "A BlackRock não pretende mudar o controle acionário da Renner.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-22"
+    },
+    {
+      "claim": "Derivativos associados totalizam 13.736.247 instrumentos, cerca de 1,364% das ações.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-22"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "negócios lojas renner (lren3) blackrock eleva participação na lojas re",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.suno.com.br/noticias/blackrock-eleva-participacao-lojas-renner-lren3-go/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Suno"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "de acordo com o comunicado da blackrock, o objetivo da alteração na pa",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/lojas-renner-lren3-blackrock-eleva-participacao-na-varejista-lmrs/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Money Times"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo",
+      "type": "fact",
+      "label": "opening",
+      "headline": "BlackRock supera 10% de participação na Renner",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Logotipo BlackRock",
+        "Gráfico de participação",
+        "Número de ações 101.573.795"
+      ],
+      "narration": "A BlackRock ampliou sua posição na Lojas Renner (LREN3) e passou a deter uma fatia superior a 10 % das ações ordinárias da varejista. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que esse movimento significa para o mercado.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes da operação",
+      "type": "fact",
+      "label": "detail",
+      "headline": "101,5 milhões de ações e derivativos associados",
+      "metric": "quantitative",
+      "object_type": "data",
+      "visual_cards": [
+        "Quantidade de ações",
+        "Percentual 10,088%",
+        "Derivativos 13.736.247"
+      ],
+      "narration": "A participação corresponde a 101.573.795 ações ordinárias, o que representa 10,088 % do total emitido, além de 13.736.247 instrumentos derivativos, cerca de 1,364 % das ações, indicando uso de hedge ou alavancagem.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do analista",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Impacto para investidores",
+      "metric": "qualitative",
+      "object_type": "data",
+      "visual_cards": [
+        "Confiança institucional",
+        "Liquidez aumentada",
+        "Risco de concentração"
+      ],
+      "narration": "Na minha análise, a entrada da BlackRock reforça a confiança institucional no varejo brasileiro, pode melhorar a liquidez das ações LREN3 e traz um risco de concentração que exige atenção dos pequenos investidores.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "O que esperar daqui para frente",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Monitoramento de participação",
+        "Possíveis movimentos de venda",
+        "Acompanhamento de preço"
+      ],
+      "narration": "Em resumo, o aumento da participação da BlackRock na Renner sinaliza confiança no modelo de negócios da empresa, mas também cria maior sensibilidade a decisões da gestora. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que a presença da BlackRock pode influenciar a volatilidade das ações da Lojas Renner?",
+  "hashtags": [
+    "#BlackRock",
+    "#LojasRenner",
+    "#MercadoFinanceiro"
+  ],
+  "tags": [
+    "BlackRock",
+    "Lojas Renner",
+    "participação acionária",
+    "investimento institucional",
+    "mercado de capitais",
+    "ações LREN3",
+    "derivativos",
+    "liquidez",
+    "governo",
+    "economia"
+  ],
+  "primary_keyword": "BlackRock eleva participação na Lojas Renner",
+  "secondary_keywords": [
+    "10,088% das ações",
+    "101.573.795 ações",
+    "derivativos"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender o impacto da compra de ações da BlackRock na Renner",
+    "search_query": "BlackRock participação Lojas Renner 10,088% outubro 2026",
+    "recommendation_angle": "Análise de como investidores institucionais afetam o varejo brasileiro",
+    "first_payoff": "A BlackRock ampliou sua posição na Lojas Renner (LREN3) e passou a deter uma fatia superior a 10 % das ações ordinárias da varejista.",
+    "promise_proof": "Duas fontes independentes confirmam o número exato de ações e o percentual",
+    "audience_hypothesis": "Investidores individuais buscam entender movimentos de grandes gestores",
+    "thumbnail_complement": "Gráfico de participação crescente",
+    "verification_limits": "Limite de verificação a 45 dias a partir da publicação"
+  },
+  "publication_description": "BlackRock eleva participação na Lojas Renner para 10,088% das ações ordinárias, conforme comunicado oficial e duas fontes independentes. O aumento, efetivado em 19 de outubro, traz implicações de liquidez e governança para investidores.",
+  "publication_target_local": "2026-10-22T08:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
