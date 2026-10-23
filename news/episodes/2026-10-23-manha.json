@@ -1,0 +1,219 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-23-manha",
+  "news_date": "2026-10-23",
+  "event_date": "2026-10-23",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-23T07:23:54.980991-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "single_source_attributed",
+    "independent_confirmation": false,
+    "new_fact": "A Mega-Sena acumulou mais uma vez e os apostadores viram o prêmio subir para R$ 230 milhões.",
+    "why_today": "O prêmio da Mega-Sena atingiu R$ 230 milhões em 23 de outubro 2026, após 14 concursos consecutivos sem vencedor, gerando grande expectativa entre os apostadores.",
+    "opening_anchor": "A Mega-Sena acumulou mais uma vez e os apostadores viram o prêmio subir para R$ 230 milhões.",
+    "candidate_review": [],
+    "attribution_note": "A informação provém exclusivamente da reportagem do Money Times publicada em 23 out 2026; não há outra fonte independente que confirme o mesmo dado até o momento."
+  },
+  "title": "Mega-Sena acumula e prêmio chega a R$ 230 milhões em 23/10/2026",
+  "title_options": [
+    {
+      "text": "Mega-Sena acumula e prêmio chega a R$ 230 milhões em 23/10/2026",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Prêmio da Mega-Sena atinge R$ 230 milhões após 14 concursos sem ganhador",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Acúmulo da Mega-Sena chega a R$ 230 milhões; Quina e Lotofácil também em foco",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Mega-Sena R$ 230 mi",
+  "thumbnail_primary": "Bilhete da Mega-Sena com números destacados",
+  "thumbnail_tension": "Expectativa de milhões sem vencedor há duas semanas",
+  "thumbnail_composition": "Bilhete em primeiro plano, fundo desfocado de tela de resultados",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato exclusivo verificado em fonte única confiável, sem confirmação externa.",
+    "criteria": {
+      "source_reliability": "alta",
+      "fact_novelty": "alta",
+      "potential_impact": "moderado"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/mega-sena-acumula-novamente-premio-alcanca-230-milhoes-lotofacil-dia-de-sorte-quina-timemania-loterias-resultados-rsgp/",
+      "published_at": "2026-10-23",
+      "role": "primary"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "A Mega-Sena acumulou mais uma vez e os apostadores viram o prêmio subir para R$ 230 milhões.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-23"
+    },
+    {
+      "claim": "A Mega-Sena acumulou pelo 14º sorteio seguido na noite de quinta-feira.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-23"
+    },
+    {
+      "claim": "Ninguém acertou em cheio a sequência formada pelas dezenas 04, 13, 23, 28, 41 e 58, válidas pelo concurso 3073.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-23"
+    },
+    {
+      "claim": "A Quina pode pagar R$ 58,5 milhões nesta sexta-feira (23).",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-23"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "a mega-sena acumulou mais uma vez e os apostadores viram o prêmio subir para r$ 230 milhões",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/mega-sena-acumula-novamente-premio-alcanca-230-milhoes-lotofacil-dia-de-sorte-quina-timemania-loterias-resultados-rsgp/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S1",
+      "expected_text": "Ninguém acertou em cheio a sequência formada pelas dezenas 04, 13, 23, 28, 41 e 58, válidas pelo concurso 3073.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/mega-sena-acumula-novamente-premio-alcanca-230-milhoes-lotofacil-dia-de-sorte-quina-timemania-loterias-resultados-rsgp/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Money Times"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Abertura",
+      "type": "fact",
+      "label": "intro",
+      "headline": "Mega-Sena acumula R$ 230 milhões",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Bilhete da Mega-Sena com números",
+        "Tela de resultados da Caixa",
+        "Gráfico de acumulado histórico"
+      ],
+      "narration": "A Mega-Sena acumulou mais uma vez e os apostadores viram o prêmio subir para R$ 230 milhões. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que esse novo recorde significa para os jogadores e para a Caixa.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes do concurso",
+      "type": "fact",
+      "label": "detail",
+      "headline": "Concurso 3073 sem ganhador",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Lista das dezenas sorteadas",
+        "Contagem de concursos acumulados",
+        "Comparativo com acumulados anteriores"
+      ],
+      "narration": "No concurso 3073, as dezenas 04, 13, 23, 28, 41 e 58 foram sorteadas, mas nenhum apostador acertou a combinação completa, mantendo o acúmulo por 14 sorteios consecutivos.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do analista",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Impacto no comportamento dos apostadores",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Imagem de fila de apostas",
+        "Ilustração de expectativa de prêmio",
+        "Mapa de regiões com maior volume de apostas"
+      ],
+      "narration": "Na minha análise, o aumento do prêmio para R$ 230 milhões tende a atrair um volume maior de apostas, especialmente de jogadores que normalmente evitam concursos com prêmios menores, o que pode gerar um pico de arrecadação para a Caixa nesta rodada.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "O que esperar no próximo sorteio",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário do próximo sorteio",
+        "Resumo dos valores das demais loterias",
+        "Chamada para inscrição no canal"
+      ],
+      "narration": "Com o prêmio da Mega-Sena em R$ 230 milhões, a expectativa para o próximo sorteio é alta, e a Quina já indica pagamento de R$ 58,5 milhões. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Você já costuma apostar quando o prêmio da Mega-Sena ultrapassa R$ 200 milhões?",
+  "hashtags": [
+    "#MegaSena",
+    "#Loterias",
+    "#FinançasPessoais"
+  ],
+  "tags": [
+    "Mega-Sena",
+    "prêmio",
+    "acúmulo",
+    "Caixa",
+    "loterias",
+    "apostas",
+    "finanças",
+    "Brasil",
+    "23/10/2026"
+  ],
+  "primary_keyword": "Mega-Sena acumula",
+  "secondary_keywords": [
+    "prêmio R$ 230 milhões",
+    "concurso 3073",
+    "Quina"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que o prêmio da Mega-Sena chegou a R$ 230 milhões e quais são as implicações para os apostadores.",
+    "search_query": "Mega-Sena 230 milhões 23 de outubro 2026 resultado",
+    "recommendation_angle": "Apresentar o recorde de acúmulo e analisar o impacto econômico imediato.",
+    "first_payoff": "A Mega-Sena acumulou mais uma vez e os apostadores viram o prêmio subir para R$ 230 milhões.",
+    "promise_proof": "Dados oficiais do concurso 3073 e declaração da Money Times confirmam o valor do prêmio.",
+    "audience_hypothesis": "Audiência interessada em finanças pessoais busca entender como grandes prêmios afetam seu comportamento de consumo.",
+    "thumbnail_complement": "Imagem de bilhete de aposta com destaque para o valor do prêmio.",
+    "verification_limits": "A informação está baseada em única fonte verificada; não há confirmação independente até o momento."
+  },
+  "publication_description": "Mega-Sena acumula novamente e o prêmio atinge R$ 230 milhões em 23 de outubro de 2026, conforme divulgado pelo Money Times. Analisamos os números, o histórico de acumulados e o provável efeito nas apostas futuras.",
+  "publication_target_local": "2026-10-23T08:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=single_source_attributed"
+}
