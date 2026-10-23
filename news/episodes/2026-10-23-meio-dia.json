@@ -1,0 +1,238 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-23-meio-dia",
+  "news_date": "2026-10-23",
+  "event_date": "2026-10-23",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-23T12:23:24.942309-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "single_source_attributed",
+    "independent_confirmation": false,
+    "new_fact": "O ministro André Mendonça decidiu que o Tribunal Superior Eleitoral (TSE) não deve mediar a abertura de sigilos bancários, fiscais e telefônicos de Lula e Flávio Bolsonaro.",
+    "why_today": "A decisão foi tomada nesta quinta-feira (22) e publicada em 23/10/2026, exatamente quando a campanha presidencial entra na fase decisiva do segundo turno, tornando-se relevante para o eleitorado.",
+    "opening_anchor": "O ministro André Mendonça decidiu nesta quinta-feira (22) que o Tribunal Superior Eleitoral (TSE) não deve mediar a abertura de sigilos bancários, fiscais e",
+    "candidate_review": [
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "politics",
+        "event_date": "2026-10-23",
+        "urls": [
+          "https://bmcnews.com.br/politica/mendonca-afasta-tse-da-mediacao-na-abertura-de-sigilos-de-lula-e-flavio-bolsonaro/"
+        ],
+        "decision": "não há declaração oficial até o fechamento da matéria"
+      },
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "politics",
+        "event_date": "2026-10-23",
+        "urls": [
+          "https://bmcnews.com.br/politica/mendonca-afasta-tse-da-mediacao-na-abertura-de-sigilos-de-lula-e-flavio-bolsonaro/"
+        ],
+        "decision": "não há declaração oficial até o fechamento da matéria"
+      }
+    ],
+    "attribution_note": "A informação provém exclusivamente da reportagem publicada em 23/10/2026 pelo bmcnews.com.br, que reproduz integralmente o texto da decisão judicial e não há outras fontes independentes confirmando o mesmo fato até o momento."
+  },
+  "title": "Ministro André Mendonça afasta TSE da mediação de sigilos de Lula e Flávio Bolsonaro",
+  "title_options": [
+    {
+      "text": "Ministro André Mendonça afasta TSE da mediação de sigilos de Lula e Flávio Bolsonaro",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Decisão de Mendonça impede TSE de abrir sigilos de candidatos à Presidência",
+      "editorial_quality": 4
+    },
+    {
+      "text": "TSE excluído da quebra de sigilos de Lula e Flávio Bolsonaro por decisão ministerial",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "TSE excluído da mediação",
+  "thumbnail_primary": "André Mendonça",
+  "thumbnail_tension": "Tensão entre transparência eleitoral e privacidade dos candidatos",
+  "thumbnail_composition": "Close-up de Mendonça ao falar no plenário",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato exclusivo, bem documentado, relevância eleitoral imediata",
+    "criteria": {
+      "source_reliability": "alta",
+      "newsworthiness": "alta",
+      "clarity": "alta",
+      "balance": "moderada"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "bmcnews.com.br",
+      "url": "https://bmcnews.com.br/politica/mendonca-afasta-tse-da-mediacao-na-abertura-de-sigilos-de-lula-e-flavio-bolsonaro/",
+      "published_at": "2026-10-23",
+      "role": "primary"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O ministro André Mendonça decidiu que o Tribunal Superior Eleitoral (TSE) não deve mediar a abertura de sigilos bancários, fiscais e telefônicos de Lula e Flávio Bolsonaro.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-23"
+    },
+    {
+      "claim": "A decisão foi tomada na quinta-feira (22) de outubro de 2026.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-23"
+    },
+    {
+      "claim": "A medida não obriga Banco Central, Receita Federal ou operadoras a entregar registros ao TSE.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-23"
+    },
+    {
+      "claim": "A abertura de sigilos só poderia ocorrer mediante divulgação voluntária dos candidatos ou de seus familiares/empresas.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-23"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "O ministro André Mendonça decidiu nesta quinta-feira (22) que o Tribunal Superior Eleitoral (TSE) não deve mediar a abertura de sigilos bancários, fiscais e telefônicos de Lula e Flávio Bolsonaro.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bmcnews.com.br/politica/mendonca-afasta-tse-da-mediacao-na-abertura-de-sigilos-de-lula-e-flavio-bolsonaro/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "bmcnews.com.br"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S1",
+      "expected_text": "Mendonça afirmou que cabe ao eleitor avaliar quais informações os candidatos à Presidência decidem tornar públicas e ressaltou que a divulgação de documentos pessoais não substitui investigações conduzidas pelos órgãos competentes.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bmcnews.com.br/politica/mendonca-afasta-tse-da-mediacao-na-abertura-de-sigilos-de-lula-e-flavio-bolsonaro/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "bmcnews.com.br"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato principal",
+      "type": "fact",
+      "label": "opening",
+      "headline": "Ministro afasta TSE da mediação de sigilos",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Mendonça no plenário",
+        "Texto da decisão judicial",
+        "Calendário eleitoral"
+      ],
+      "narration": "O ministro André Mendonça decidiu nesta quinta-feira (22) que o Tribunal Superior Eleitoral (TSE) não deve mediar a abertura de sigilos bancários, fiscais e telefônicos de Lula e Flávio Bolsonaro. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos entender o que isso significa para a campanha.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Fundamento da decisão",
+      "type": "fact",
+      "label": "detail",
+      "headline": "Justificativa do ministro",
+      "metric": "explanation",
+      "object_type": "data",
+      "visual_cards": [
+        "Citação da fala de Mendonça",
+        "Referência à Lei Complementar 105/2001",
+        "Fluxo de decisão judicial"
+      ],
+      "narration": "Mendonça afirmou que cabe ao eleitor avaliar quais informações os candidatos à Presidência decidem tornar públicas e ressaltou que a divulgação de documentos pessoais não substitui investigações conduzidas pelos órgãos competentes.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de impacto",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "O que muda na disputa eleitoral",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de intenção de voto",
+        "Comparativo de transparência",
+        "Cenário de segunda volta"
+      ],
+      "narration": "Na minha análise, a retirada do TSE como mediador reduz a pressão por divulgação imediata de documentos sensíveis, podendo favorecer ambos os candidatos ao evitar escândalos de última hora. Contudo, a decisão reforça a necessidade de consentimento explícito, o que pode limitar futuras solicitações de quebra de sigilo por parte da Justiça Eleitoral.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e chamada",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Desdobramentos esperados",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário de segunda volta",
+        "Resumo da decisão",
+        "Chamada para inscrição"
+      ],
+      "narration": "Em síntese, a decisão de Mendonça pode suavizar o debate sobre transparência financeira nas próximas semanas, mas não impede investigações formais pelos órgãos competentes. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que a exclusão do TSE da mediação de sigilos afetará a confiança dos eleitores nas candidaturas?",
+  "hashtags": [
+    "#Política2026",
+    "#TransparênciaEleitoral"
+  ],
+  "tags": [
+    "André Mendonça",
+    "TSE",
+    "Lula",
+    "Flávio Bolsonaro",
+    "sigilos bancários",
+    "eleições 2026",
+    "justiça eleitoral",
+    "bmcnews"
+  ],
+  "primary_keyword": "Ministro André Mendonça afasta TSE",
+  "secondary_keywords": [
+    "sigilos bancários",
+    "Lula",
+    "Flávio Bolsonaro",
+    "eleição 2026"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender a decisão do ministro e seu impacto nas eleições presidenciais de 2026.",
+    "search_query": "André Mendonça TSE sigilos Lula Flávio Bolsonaro decisão 22 de outubro 2026",
+    "recommendation_angle": "Análise de como a exclusão do TSE pode mudar a dinâmica de transparência nas campanhas.",
+    "first_payoff": "O ministro André Mendonça decidiu nesta quinta-feira (22) que o Tribunal Superior Eleitoral (TSE) não deve mediar a abertura de sigilos bancários, fiscais e telefônicos de Lula e Flávio Bolsonaro.",
+    "promise_proof": "Citações diretas da reportagem do bmcnews.com.br que reproduzem o texto da decisão judicial.",
+    "audience_hypothesis": "Eleitores e analistas políticos buscam clareza sobre mudanças nas regras de transparência antes do segundo turno.",
+    "thumbnail_complement": "Imagem de Mendonça no plenário com destaque para a frase da decisão.",
+    "verification_limits": "Apenas uma fonte confirmada; ainda não há confirmação independente de outros veículos."
+  },
+  "publication_description": "Decisão ministerial afasta o TSE da mediação de abertura de sigilos de Lula e Flávio Bolsonaro, alterando o cenário de transparência nas eleições de 2026.\n\nApuração atribuída a bmcnews.com.br. Relato de uma fonte, sem confirmação independente.",
+  "publication_target_local": "2026-10-23T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=single_source_attributed"
+}
