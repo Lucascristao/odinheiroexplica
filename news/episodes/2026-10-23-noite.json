@@ -1,0 +1,252 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-23-noite",
+  "news_date": "2026-10-23",
+  "event_date": "2026-10-23",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-23T20:35:53.146335-03:00",
+  "publication_target_local": "2026-10-23T20:00:00-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "A campanha do senador Flávio Bolsonaro (PL-RJ) protocolou pedido de cassação do registro de candidatura de Lula e Alckmin ao TSE.",
+    "why_today": "Na tarde de 23/10/2026 a campanha de Flávio Bolsonaro protocolou ao TSE um pedido de cassação da candidatura de Lula e Alckmin, alegando uso eleitoral da Rádio Nacional, fato confirmado por duas publicações independentes no mesmo dia.",
+    "opening_anchor": "A campanha do senador Flávio Bolsonaro (PL-RJ) protocolou ao Tribunal Superior Eleitoral um pedido de cassação do registro de candidatura do presidente Luiz",
+    "candidate_review": [
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "presidential_candidate",
+        "event_date": "2026-10-23",
+        "urls": [
+          "https://jovempan.com.br/politica/flavio-pede-cassacao-da-chapa-de-lula-por-uso-eleitoral-da-radio-nacional/",
+          "https://www.poder360.com.br/poder-eleicoes-2026/flavio-pede-cassacao-de-lula-ao-tse-por-uso-eleitoral-da-radio-nacional/"
+        ],
+        "decision": "pedido de cassação apresentado"
+      },
+      {
+        "subject": "Geraldo Alckmin",
+        "topic_area": "vice_presidential_candidate",
+        "event_date": "2026-10-23",
+        "urls": [
+          "https://jovempan.com.br/politica/flavio-pede-cassacao-da-chapa-de-lula-por-uso-eleitoral-da-radio-nacional/",
+          "https://www.poder360.com.br/poder-eleicoes-2026/flavio-pede-cassacao-de-lula-ao-tse-por-uso-eleitoral-da-radio-nacional/"
+        ],
+        "decision": "pedido de cassação apresentado"
+      }
+    ]
+  },
+  "title": "Flávio Bolsonaro pede cassação da candidatura de Lula ao TSE por uso da Rádio Nacional",
+  "title_options": [
+    {
+      "text": "Flávio Bolsonaro pede cassação da candidatura de Lula ao TSE por uso da Rádio Nacional",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Campanha de Flávio Bolsonaro aciona TSE contra Lula alegando uso eleitoral da Rádio Nacional",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Pedido de cassação de Lula e Alckmin chega ao TSE; Flávio Bolsonaro acusa Rádio Nacional",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Cassação de Lula ao TSE",
+  "thumbnail_primary": "Flávio Bolsonaro em entrevista",
+  "thumbnail_tension": "Conflito judicial antes do segundo turno",
+  "thumbnail_composition": "Close-up de Flávio Bolsonaro ao lado de documentos oficiais",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato novo corroborado por duas fontes independentes, relevância política imediata",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto_eleitoral": "alto",
+      "fonte_independente": "sim"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/flavio-pede-cassacao-da-chapa-de-lula-por-uso-eleitoral-da-radio-nacional/",
+      "published_at": "2026-10-23",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-pede-cassacao-de-lula-ao-tse-por-uso-eleitoral-da-radio-nacional/",
+      "published_at": "2026-10-23",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "A campanha do senador Flávio Bolsonaro (PL-RJ) protocolou pedido de cassação do registro de candidatura de Lula e Alckmin ao TSE.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-23"
+    },
+    {
+      "claim": "O pedido alega uso eleitoral da Rádio Nacional, emissora pública da EBC.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-23"
+    },
+    {
+      "claim": "A petição solicita coleta de contratos, roteiros e gravações da Rádio Nacional entre 20/08 e 15/10.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-10-23"
+    },
+    {
+      "claim": "Ainda não há decisão do TSE sobre o pedido de cassação.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-23"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "A campanha do senador Flávio Bolsonaro (PL-RJ), candidato de oposição à Presidência, voltou a pedir ao corregedor-geral da Justiça Eleitoral, ministro Ricardo Villas Bôas Cuêva, a cassação do registro de candidatura do presidente Luiz Inácio Lula da Silva.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/flavio-pede-cassacao-da-chapa-de-lula-por-uso-eleitoral-da-radio-nacional/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "O candidato à Presidência Flávio Bolsonaro (PL) pediu nesta 6ª feira (23.out.2026) ao TSE (Tribunal Superior Eleitoral) a cassação do registro ou diploma do presidente Luiz Inácio Lula da Silva (PT) e do vice-presidente Geraldo Alckmin (PSB).",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-pede-cassacao-de-lula-ao-tse-por-uso-eleitoral-da-radio-nacional/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Poder360"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo confirmado",
+      "type": "fact",
+      "label": "opening",
+      "headline": "Flávio Bolsonaro protocolou pedido de cassação ao TSE",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Documento oficial do pedido",
+        "Imagem da capa da Rádio Nacional",
+        "Calendário de 23/10/2026"
+      ],
+      "narration": "A campanha do senador Flávio Bolsonaro (PL-RJ) protocolou ao Tribunal Superior Eleitoral um pedido de cassação do registro de candidatura do presidente Luiz Inácio Lula da Silva e do vice-presidente Geraldo Alckmin. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que está em jogo nessa ação judicial.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes da petição",
+      "type": "fact",
+      "label": "detail",
+      "headline": "Fundamento: uso eleitoral da Rádio Nacional",
+      "metric": "detail",
+      "object_type": "data",
+      "visual_cards": [
+        "Trecho da petição solicitando gravações",
+        "Lista de 36 trechos identificados",
+        "Logotipo da EBC"
+      ],
+      "narration": "O pedido alega que a Rádio Nacional, emissora pública da EBC, foi usada para promover o presidente Lula e atacar Flávio Bolsonaro, violando a lei eleitoral. A petição inclui solicitação de coleta de contratos, roteiros e gravações entre 20/08 e 15/10, totalizando 36 trechos que supostamente favorecem a chapa de Lula.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de risco político",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Na minha opinião, a estratégia judicial pode virar arma de duas lâminas",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de processos judiciais nas eleições",
+        "Comparativo de apoio ao candidato antes e depois",
+        "Imagem de urna eletrônica"
+      ],
+      "narration": "Na minha opinião, a ação de Flávio Bolsonaro pode acelerar a disputa judicial, mas também corre o risco de ser percebida como tentativa de judicialização da campanha, o que pode afastar eleitores indecisos. Se o TSE decidir pela cassação, a campanha de Lula seria interrompida; se rejeitar, a narrativa de abuso de poder pode fortalecer a imagem de Flávio como defensor da legalidade.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e próximos passos",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "O que esperar do TSE nas próximas horas",
+      "metric": "conclusion",
+      "object_type": "data",
+      "visual_cards": [
+        "Relógio marcando contagem regressiva",
+        "Logo do TSE",
+        "Chamada para inscrição no canal"
+      ],
+      "narration": "Em resumo, o pedido de cassação de Lula e Alckmin ao TSE, fundamentado no suposto uso eleitoral da Rádio Nacional, representa um novo ponto de tensão nas eleições de 2026. O tribunal ainda não se pronunciou, mas a decisão poderá mudar drasticamente o cenário do segundo turno. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você avalia a estratégia de usar o Judiciário para contestar a candidatura de Lula?",
+  "hashtags": [
+    "#Eleições2026",
+    "#Cassação",
+    "#RádioNacional"
+  ],
+  "tags": [
+    "Flávio Bolsonaro",
+    "Lula",
+    "Alckmin",
+    "TSE",
+    "Rádio Nacional",
+    "EBC",
+    "processo judicial",
+    "eleições",
+    "candidatura",
+    "Brasil"
+  ],
+  "primary_keyword": "cassação da candidatura de Lula",
+  "secondary_keywords": [
+    "Flávio Bolsonaro",
+    "Rádio Nacional",
+    "TSE"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que a campanha de Flávio Bolsonaro recorreu ao TSE para tentar cassar a candidatura de Lula.",
+    "search_query": "Flávio Bolsonaro pedido cassação TSE Rádio Nacional 23/10/2026",
+    "recommendation_angle": "Análise das implicações jurídicas e eleitorais do pedido de cassação antes do segundo turno.",
+    "first_payoff": "A campanha do senador Flávio Bolsonaro (PL-RJ) protocolou ao Tribunal Superior Eleitoral um pedido de cassação do registro de candidatura do presidente Luiz Inácio Lula da Silva e do vice-presidente Geraldo Alckmin.",
+    "promise_proof": "Trechos literais das matérias da Jovem Pan e Poder360 confirmam o pedido e seus fundamentos.",
+    "audience_hypothesis": "Eleitores indecisos e analistas políticos buscam entender como processos judiciais podem influenciar o resultado das eleições.",
+    "thumbnail_complement": "Imagem de Flávio Bolsonaro segurando documentos oficiais ao lado do logo do TSE.",
+    "verification_limits": "A verificação se baseia em duas fontes independentes publicadas no mesmo dia; ainda não há decisão do TSE."
+  },
+  "publication_description": "Cassação da candidatura de Lula ao TSE: Flávio Bolsonaro acusa uso eleitoral da Rádio Nacional e apresenta pedido formal ao tribunal.",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
