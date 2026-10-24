@@ -1,0 +1,258 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-24-noite",
+  "news_date": "2026-10-24",
+  "event_date": "2026-10-24",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-24T19:28:40.728779-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Flávio Bolsonaro (PL-RJ) tem 51 % dos votos válidos e Lula (PT) tem 49 % dos votos válidos.",
+    "why_today": "Na véspera do segundo turno, três institutos de pesquisa divulgaram resultados que mostram Flávio Bolsonaro à frente de Lula nos votos válidos, configurando empate técnico e influenciando a estratégia das campanhas.",
+    "opening_anchor": "Flávio Bolsonaro (PL-RJ) com 51% e o presidente Luiz Inácio Lula da Silva (PT) com 49% dos votos válidos.",
+    "candidate_review": [
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "politics",
+        "event_date": "2026-10-24",
+        "urls": [
+          "https://www.moneytimes.com.br/datafolha-flavio-bolsonaro-tem-51-e-lula-49-dos-votos-validos-gaep/",
+          "https://jovempan.com.br/politica/flavio-tem-51-dos-votos-validos-e-lula-49-diz-datafolha/",
+          "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-51-dos-votos-validos-contra-49-de-lula-diz-quaest/"
+        ],
+        "decision": "lidera levemente nos votos válidos, porém dentro da margem de erro."
+      },
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "politics",
+        "event_date": "2026-10-24",
+        "urls": [
+          "https://www.moneytimes.com.br/datafolha-flavio-bolsonaro-tem-51-e-lula-49-dos-votos-validos-gaep/",
+          "https://jovempan.com.br/politica/flavio-tem-51-dos-votos-validos-e-lula-49-diz-datafolha/",
+          "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-51-dos-votos-validos-contra-49-de-lula-diz-quaest/"
+        ],
+        "decision": "fica a poucos pontos de Flávio, mantendo disputa acirrada."
+      }
+    ]
+  },
+  "title": "Flávio Bolsonaro lidera com 51% nos votos válidos contra Lula em 24/10",
+  "title_options": [
+    {
+      "text": "Flávio Bolsonaro lidera com 51% nos votos válidos contra Lula em 24/10",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Empate técnico: Flávio Bolsonaro 51% x Lula 49% nas pesquisas de 24/10",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Votos válidos mostram Flávio à frente de Lula na véspera do segundo turno",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Empate técnico nas pesquisas",
+  "thumbnail_primary": "Flávio Bolsonaro",
+  "thumbnail_tension": "Diferença de 2 pontos dentro da margem de erro",
+  "thumbnail_composition": "Close-up de Flávio ao centro, gráficos ao fundo",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "verificação cruzada de três veículos independentes",
+    "reason": "Os dados são consistentes entre Money Times, Jovem Pan e Poder360, todos publicados em 24/10/2026.",
+    "criteria": {
+      "source_independence": "alto",
+      "methodology_transparency": "alto",
+      "margin_of_error_consistency": "alto"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/datafolha-flavio-bolsonaro-tem-51-e-lula-49-dos-votos-validos-gaep/",
+      "published_at": "2026-10-24",
+      "role": "reportagem"
+    },
+    {
+      "id": "S2",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/flavio-tem-51-dos-votos-validos-e-lula-49-diz-datafolha/",
+      "published_at": "2026-10-24",
+      "role": "reportagem"
+    },
+    {
+      "id": "S3",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-51-dos-votos-validos-contra-49-de-lula-diz-quaest/",
+      "published_at": "2026-10-24",
+      "role": "reportagem"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Flávio Bolsonaro (PL-RJ) tem 51 % dos votos válidos e Lula (PT) tem 49 % dos votos válidos.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-24"
+    },
+    {
+      "claim": "A diferença de 2 pontos percentuais configura empate técnico.",
+      "source_ids": [
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-24"
+    },
+    {
+      "claim": "Todas as pesquisas citam margem de erro de ±2 p.p. e nível de confiança de 95 %.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "background",
+      "event_date": "2026-10-24"
+    },
+    {
+      "claim": "O segundo turno está marcado para 30 outubro 2026.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-10-24"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "Flávio Bolsonaro (PL-RJ) com 51% e o presidente Luiz Inácio Lula da Silva (PT) com 49% dos votos válidos.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/datafolha-flavio-bolsonaro-tem-51-e-lula-49-dos-votos-validos-gaep/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S3",
+      "expected_text": "a diferença entre os candidatos é de 2 pontos percentuais, o que configura empate técnico",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-eleicoes-2026/flavio-tem-51-dos-votos-validos-contra-49-de-lula-diz-quaest/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Poder360"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo",
+      "type": "fact",
+      "label": "lead",
+      "headline": "Flávio à frente nas pesquisas de votos válidos",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de barras comparando 51% x 49%",
+        "Mapa de distribuição regional",
+        "Tabela de margem de erro"
+      ],
+      "narration": "Flávio Bolsonaro (PL-RJ) com 51% e o presidente Luiz Inácio Lula da Silva (PT) com 49% dos votos válidos. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que esses números significam para a corrida presidencial.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Confirmação dos dados",
+      "type": "fact",
+      "label": "corroboration",
+      "headline": "Empate técnico confirmado por múltiplas fontes",
+      "metric": "analysis",
+      "object_type": "data",
+      "visual_cards": [
+        "Comparativo entre as três pesquisas",
+        "Indicador de margem de erro",
+        "Linha do tempo da coleta"
+      ],
+      "narration": "A diferença de 2 pontos percentuais configura empate técnico, conforme apontado pela pesquisa Quaest e reforçado pelos dados do Money Times e da Jovem Pan, todos publicados em 24/10/2026.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do analista",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Impactos estratégicos da liderança estreita",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Ilustração da campanha de Flávio",
+        "Imagem de mobilização de Lula",
+        "Seta indicando volatilidade"
+      ],
+      "narration": "Na minha análise, a liderança de 1 ponto percentual de Flávio está dentro da margem de erro, o que significa que a campanha de Lula ainda tem espaço para virar o jogo, especialmente entre eleitores indecisos nas grandes cidades.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "O que esperar para 30 de outubro",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário eleitoral",
+        "Contagem regressiva",
+        "Chamada para inscrição"
+      ],
+      "narration": "Com o segundo turno a poucos dias, a disputa permanece apertada e qualquer mudança de opinião pode ser decisiva. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Qual candidato você acredita que tem mais chance de virar o placar nos próximos dias?",
+  "hashtags": [
+    "#Eleições2026",
+    "#EmpateTécnico",
+    "#Política"
+  ],
+  "tags": [
+    "Flávio Bolsonaro",
+    "Lula",
+    "pesquisa eleitoral",
+    "Datafolha",
+    "Quaest",
+    "BTG/Nexus",
+    "segundo turno",
+    "Brasil",
+    "politica"
+  ],
+  "primary_keyword": "Flávio Bolsonaro lidera 51% votos válidos",
+  "secondary_keywords": [
+    "Lula 49% votos válidos",
+    "empate técnico",
+    "pesquisa 24/10/2026"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender a situação das pesquisas na véspera do segundo turno presidencial de 2026.",
+    "search_query": "pesquisa Flávio Bolsonaro 51% Lula 49% 24 outubro 2026",
+    "recommendation_angle": "Apresentar a liderança estreita e o conceito de empate técnico com fontes independentes.",
+    "first_payoff": "Flávio Bolsonaro (PL-RJ) com 51% e o presidente Luiz Inácio Lula da Silva (PT) com 49% dos votos válidos.",
+    "promise_proof": "Citações literais de Money Times, Jovem Pan e Poder360 confirmam os números.",
+    "audience_hypothesis": "Eleitores e analistas que buscam entender o panorama eleitoral antes do segundo turno.",
+    "thumbnail_complement": "Gráfico de barras ao lado do rosto de Flávio mostrando a diferença de 2 pontos.",
+    "verification_limits": "Os dados são de pesquisas de opinião; margem de erro de ±2 p.p. pode alterar o resultado final."
+  },
+  "publication_description": "Flávio Bolsonaro lidera com 51% nos votos válidos contra Lula em 49% na véspera do segundo turno, conforme três pesquisas independentes publicadas em 24/10/2026.\n\nContexto: Flávio Bolsonaro lidera 51% votos válidos",
+  "publication_target_local": "2026-10-24T20:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
