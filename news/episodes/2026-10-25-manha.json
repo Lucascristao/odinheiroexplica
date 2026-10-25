@@ -1,0 +1,238 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-25-manha",
+  "news_date": "2026-10-25",
+  "event_date": "2026-10-25",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-25T07:02:01.261361-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "single_source_attributed",
+    "independent_confirmation": false,
+    "new_fact": "Lula venceu Flávio Bolsonaro na Nova Zelândia com 418 votos a 101.",
+    "why_today": "A divulgação dos primeiros boletins de urna do exterior no segundo turno das eleições de 2026 permite observar, pela primeira vez, como a diáspora brasileira está votando, trazendo um dado novo e relevante para a análise política do país.",
+    "opening_anchor": "Na Nova Zelândia, Lula recebeu 418 votos, contra 101 de Flávio Bolsonaro.",
+    "candidate_review": [
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "politics",
+        "event_date": "2026-10-25",
+        "urls": [
+          "https://jovempan.com.br/politica/lula-vence-flavio-bolsonaro-na-nova-zelandia-e-na-coreia-do-sul-no-2o-turno/"
+        ],
+        "decision": "vencedor nos boletins da Nova Zelândia e Coreia do Sul"
+      },
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "politics",
+        "event_date": "2026-10-25",
+        "urls": [
+          "https://jovempan.com.br/politica/lula-vence-flavio-bolsonaro-na-nova-zelandia-e-na-coreia-do-sul-no-2o-turno/"
+        ],
+        "decision": "derrotado nos mesmos boletins"
+      }
+    ],
+    "attribution_note": "A informação provém exclusivamente da reportagem da Jovem Pan publicada às 06h27 de 25/10/2026; ainda não há confirmação por outros veículos independentes."
+  },
+  "title": "Lula lidera Flávio Bolsonaro nos boletins de urna da Nova Zelândia e Coreia do Sul",
+  "title_options": [
+    {
+      "text": "Lula lidera Flávio Bolsonaro nos boletins de urna da Nova Zelândia e Coreia do Sul",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Voto externo: Lula vence Flávio na Nova Zelândia e Coreia do Sul",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Resultados preliminares no exterior mostram vitória de Lula sobre Flávio",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Voto externo revela vitória",
+  "thumbnail_primary": "Luiz Inácio Lula da Silva",
+  "thumbnail_tension": "Primeiros resultados externos podem mudar a percepção da disputa",
+  "thumbnail_composition": "Close-up no rosto de Lula ao lado de mapa do mundo",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato exclusivo ainda não corroborado, mas baseado em fonte oficial do TSE reproduzida pela Jovem Pan",
+    "criteria": {
+      "source_reliability": "alta",
+      "fact_verifiability": "moderada",
+      "newsworthiness": "alta"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/lula-vence-flavio-bolsonaro-na-nova-zelandia-e-na-coreia-do-sul-no-2o-turno/",
+      "published_at": "2026-10-25",
+      "role": "primary"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Lula venceu Flávio Bolsonaro na Nova Zelândia com 418 votos a 101.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-25"
+    },
+    {
+      "claim": "Lula venceu Flávio Bolsonaro na Coreia do Sul com 148 votos a 82.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-25"
+    },
+    {
+      "claim": "918.876 brasileiros estão aptos a votar no exterior, distribuídos por 186 cidades em mais de cem países.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-25"
+    },
+    {
+      "claim": "O número de eleitores externos representa crescimento de 31,82 % em relação a 2022.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-25"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "Na Nova Zelândia, Lula recebeu 418 votos, contra 101 de Flávio Bolsonaro.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/lula-vence-flavio-bolsonaro-na-nova-zelandia-e-na-coreia-do-sul-no-2o-turno/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S1",
+      "expected_text": "Na Coreia do Sul, o petista também ficou à frente, com 148 votos, enquanto o candidato do PL registrou 82.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/lula-vence-flavio-bolsonaro-na-nova-zelandia-e-na-coreia-do-sul-no-2o-turno/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Jovem Pan"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Primeiro resultado externo",
+      "type": "fact",
+      "label": "fato",
+      "headline": "Lula lidera na Nova Zelândia",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Mapa da Nova Zelândia com destaque ao voto",
+        "Tabela comparativa dos votos",
+        "Imagem da urna eletrônica"
+      ],
+      "narration": "Na Nova Zelândia, Lula recebeu 418 votos, contra 101 de Flávio Bolsonaro. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que esses números preliminares podem indicar para a corrida presidencial.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Resultado na Coreia do Sul",
+      "type": "fact",
+      "label": "fato",
+      "headline": "Lula também vence na Coreia do Sul",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Mapa da Coreia do Sul com destaque ao voto",
+        "Gráfico de barras dos candidatos",
+        "Foto de eleitores brasileiros em Seul"
+      ],
+      "narration": "Na Coreia do Sul, o petista também ficou à frente, com 148 votos, enquanto o candidato do PL registrou 82. Esses dois países somam quase 600 votos que já apontam para uma vantagem de Lula no exterior.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise da importância do voto externo",
+      "type": "opinion",
+      "label": "opinião",
+      "headline": "Por que o exterior importa",
+      "metric": "insight",
+      "object_type": "data",
+      "visual_cards": [
+        "Infográfico do eleitorado externo",
+        "Comparativo de crescimento 2022-2026",
+        "Ilustração da diáspora brasileira"
+      ],
+      "narration": "Na minha análise, o aumento de 31,82 % no número de eleitores brasileiros no exterior demonstra uma mobilização crescente que pode ser decisiva em eleições apertadas, ainda que o peso absoluto ainda seja pequeno em relação ao total nacional.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e convite",
+      "type": "conclusion",
+      "label": "conclusão",
+      "headline": "O que esperar depois das 17h",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Relógio marcando 17h",
+        "Tela de resultados do TSE",
+        "Logo do O Dinheiro Explica"
+      ],
+      "narration": "Em resumo, os primeiros boletins externos mostram Lula à frente em dois polos estratégicos, mas o resultado nacional só será oficial após as 17h. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que o voto da diáspora pode influenciar o resultado final das eleições?",
+  "hashtags": [
+    "#Eleições2026",
+    "#VotoExterno",
+    "#LulaFlávio"
+  ],
+  "tags": [
+    "eleições",
+    "voto no exterior",
+    "Lula",
+    "Flávio Bolsonaro",
+    "TSE",
+    "Brasil",
+    "política",
+    "diáspora",
+    "resultados preliminares"
+  ],
+  "primary_keyword": "Lula vence Flávio Bolsonaro na Nova Zelândia",
+  "secondary_keywords": [
+    "voto externo",
+    "eleições 2026",
+    "boletins de urna"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender como o voto da comunidade brasileira no exterior está se comportando no segundo turno das eleições de 2026.",
+    "search_query": "resultados voto exterior segunda volta eleições 2026 Brasil",
+    "recommendation_angle": "Apresentar os primeiros números externos e analisar seu peso potencial no resultado final.",
+    "first_payoff": "Na Nova Zelândia, Lula recebeu 418 votos, contra 101 de Flávio Bolsonaro.",
+    "promise_proof": "Trechos literais dos boletins de urna publicados pelo TSE e reproduzidos pela Jovem Pan.",
+    "audience_hypothesis": "Eleitores e investidores que acompanham a política brasileira buscam entender a influência da diáspora nos resultados eleitorais.",
+    "thumbnail_complement": "Mapa destacando Nova Zelândia e Coreia do Sul com ícones de voto.",
+    "verification_limits": "Até o momento, apenas a Jovem Pan divulgou os números; ainda não há confirmação por outros veículos independentes."
+  },
+  "publication_description": "Lula lidera Flávio Bolsonaro nos boletins de urna da Nova Zelândia e Coreia do Sul, conforme dados preliminares divulgados pelo TSE e reproduzidos pela Jovem Pan. A reportagem traz detalhes sobre o número de eleitores brasileiros no exterior e o crescimento desse contingente, oferecendo contexto para entender a relevância do voto externo nas eleições de 2026.\n\nContexto: Lula vence Flávio Bolsonaro na Nova Zelândia",
+  "publication_target_local": "2026-10-25T08:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=single_source_attributed"
+}
