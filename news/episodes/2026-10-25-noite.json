@@ -1,0 +1,246 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-25-noite",
+  "news_date": "2026-10-25",
+  "event_date": "2026-10-25",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-25T19:32:23.674450-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "O ministro do STF Cristiano Zanin prorrogou o horário de votação do segundo turno das Eleições 2026 até as 19h",
+    "why_today": "A prorrogação do horário de votação ocorreu nesta noite de 25/10/2026, após reclamações de falta de transporte público que poderiam impedir eleitores de votar, exigindo cobertura jornalística imediata.",
+    "opening_anchor": "O ministro do STF Cristiano Zanin prorrogou o horário de votação do segundo turno das Eleições 2026 até as 19h",
+    "candidate_review": [
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "politics",
+        "event_date": "2026-10-25",
+        "urls": [
+          "https://jovempan.com.br/politica/votacao-encerramento-cristiano-zanin-prorrogacao-prazo/"
+        ],
+        "decision": "solicitou extensão por falta de ônibus em cidades baianas"
+      },
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "politics",
+        "event_date": "2026-10-25",
+        "urls": [
+          "https://www.moneytimes.com.br/stf-prorroga-votacao-para-as-19h-em-todo-o-pais/"
+        ],
+        "decision": "solicitou extensão por chuvas e redução de frota em São Paulo"
+      }
+    ]
+  },
+  "title": "STF prorroga votação do segundo turno das Eleições 2026 até as 19h",
+  "title_options": [
+    {
+      "text": "STF prorroga votação do segundo turno das Eleições 2026 até as 19h",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Ministro Zanin estende horário das urnas para 19h em todo o Brasil",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Votação 2026: STF amplia prazo para garantir acesso ao voto",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Prorrogação das urnas",
+  "thumbnail_primary": "Cristiano Zanin em tribunal",
+  "thumbnail_tension": "Decisão monocrática gera controvérsia política",
+  "thumbnail_composition": "Close-up do ministro ao centro",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes e verificável em HTML",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto_publico": "alto"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/votacao-encerramento-cristiano-zanin-prorrogacao-prazo/",
+      "published_at": "2026-10-25",
+      "role": "news"
+    },
+    {
+      "id": "S2",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/stf-prorroga-votacao-para-as-19h-em-todo-o-pais/",
+      "published_at": "2026-10-25",
+      "role": "news"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O ministro do STF Cristiano Zanin prorrogou o horário de votação do segundo turno das Eleições 2026 até as 19h",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-25"
+    },
+    {
+      "claim": "A prorrogação foi solicitada pelas campanhas de Lula e Flávio Bolsonaro por problemas de transporte público",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-25"
+    },
+    {
+      "claim": "O TSE pausou a totalização dos resultados às 17h21 para adequar o processo ao novo horário",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-25"
+    },
+    {
+      "claim": "A medida gerou críticas do governador de São Paulo e do Ranking dos Políticos",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-25"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "A votação do segundo turno das eleições foi encerrada neste domingo (25) após o ministro do Supremo Tribunal Federal (STF) Cristiano Zanin determinar a prorrogação do prazo até as 19h",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/votacao-encerramento-cristiano-zanin-prorrogacao-prazo/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "eleições 2026 stf prorroga votação até 19h em todo o país; apuração é",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/stf-prorroga-votacao-para-as-19h-em-todo-o-pais/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Money Times"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato: prorrogação oficial",
+      "type": "fact",
+      "label": "new_fact",
+      "headline": "STF estende horário de votação",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Ministro Zanin assinando decisão",
+        "Relógio marcando 19h",
+        "Mapa do Brasil com urnas abertas"
+      ],
+      "narration": "O ministro do STF Cristiano Zanin prorrogou o horário de votação do segundo turno das Eleições 2026 até as 19h, atendendo a pedidos das campanhas de Lula e Flávio Bolsonaro que apontaram graves problemas de transporte público. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o impacto dessa decisão.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Fato: reação do TSE",
+      "type": "fact",
+      "label": "operational",
+      "headline": "TSE pausa a apuração",
+      "metric": "process",
+      "object_type": "data",
+      "visual_cards": [
+        "Tela de totalização pausada",
+        "Horário 17h21",
+        "Equipe do TSE em reunião"
+      ],
+      "narration": "O Tribunal Superior Eleitoral (TSE) interrompeu a totalização dos resultados às 17h21, antes da prorrogação, para adequar o processo ao novo horário e orientou os Tribunais Regionais a manterem abertas as seções ainda em funcionamento até as 19h.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião: implicações políticas",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Análise das consequências",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de votação pendente",
+        "Foto de protesto",
+        "Declaração do governador"
+      ],
+      "narration": "Na minha análise, a decisão monocrática de Zanin pode gerar contestação jurídica e alimentar narrativas de favorecimento, sobretudo entre os apoiadores de Bolsonaro, enquanto a extensão beneficia eleitores dependentes de transporte público, reduzindo o risco de abstinência em áreas críticas.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "O que vem a seguir?",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário eleitoral",
+        "Ícone de inscrição",
+        "Seta apontando para futuro"
+      ],
+      "narration": "Em síntese, a prorrogação busca garantir o acesso ao voto, mas abre espaço para debates sobre a legitimidade da medida. Os desdobramentos judiciais ainda serão acompanhados, e o resultado final dependerá da contagem até as 19h. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você avalia a decisão de prorrogar o horário das urnas nas eleições de 2026?",
+  "hashtags": [
+    "#Eleições2026",
+    "#STF",
+    "#Votação"
+  ],
+  "tags": [
+    "STF",
+    "Cristiano Zanin",
+    "prorrogação",
+    "eleições 2026",
+    "votação",
+    "transporte público",
+    "TSE",
+    "Luiz Inácio Lula da Silva",
+    "Flávio Bolsonaro"
+  ],
+  "primary_keyword": "prorrogação da votação",
+  "secondary_keywords": [
+    "STF",
+    "Cristiano Zanin",
+    "Eleicoes 2026"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que o horário de votação foi estendido e quais são as consequências para o resultado eleitoral.",
+    "search_query": "STF prorroga votação segundo turno 2026 19h",
+    "recommendation_angle": "Análise da decisão judicial e seu impacto no processo eleitoral.",
+    "first_payoff": "O ministro do STF Cristiano Zanin prorrogou o horário de votação do segundo turno das Eleições 2026 até as 19h",
+    "promise_proof": "Comprovado por trechos literais de duas fontes independentes publicadas em 25/10/2026.",
+    "audience_hypothesis": "Eleitores e interessados em política buscam clareza sobre mudanças de horário e possíveis contestações.",
+    "thumbnail_complement": "Imagem do ministro Zanin ao centro, com relógio marcando 19h ao fundo.",
+    "verification_limits": "A verificação se baseia em HTML público de duas fontes; não há acesso a documentos internos do TSE."
+  },
+  "publication_description": "Prorrogação da votação das Eleições 2026: o STF estendeu o horário até as 19h após reclamações de transporte público, gerando debates sobre legitimidade e impacto nos resultados.",
+  "publication_target_local": "2026-10-25T20:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
