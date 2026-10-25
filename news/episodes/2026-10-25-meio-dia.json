@@ -1,0 +1,246 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-25-meio-dia",
+  "news_date": "2026-10-25",
+  "event_date": "2026-10-25",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-25T11:21:12.558326-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Ministro Alexandre de Moraes elogia o sistema eleitoral brasileiro como “o melhor do mundo”.",
+    "why_today": "No segundo turno das eleições de 2026, o ministro Alexandre de Moraes compareceu a São Paulo e, ao votar, destacou publicamente a excelência do sistema eleitoral brasileiro, reforçando a confiança institucional no pleito.",
+    "opening_anchor": "Moraes vota em São Paulo e elogia sistema eleitoral",
+    "candidate_review": [
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "politics",
+        "event_date": "2026-10-25",
+        "urls": [
+          "https://www.poder360.com.br/poder-eleicoes-2026/moraes-vota-e-diz-que-sistema-eleitoral-do-brasil-e-o-melhor-do-mundo/"
+        ],
+        "decision": "citado como candidato no contexto eleitoral"
+      },
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "politics",
+        "event_date": "2026-10-25",
+        "urls": [
+          "https://www.poder360.com.br/poder-eleicoes-2026/moraes-vota-e-diz-que-sistema-eleitoral-do-brasil-e-o-melhor-do-mundo/"
+        ],
+        "decision": "citado como candidato no contexto eleitoral"
+      }
+    ]
+  },
+  "title": "Ministro Moraes declara que Brasil tem o melhor sistema eleitoral do mundo ao votar em SP",
+  "title_options": [
+    {
+      "text": "Ministro Moraes declara que Brasil tem o melhor sistema eleitoral do mundo ao votar em SP",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Moraes elogia sistema eleitoral brasileiro como o melhor do planeta durante votação em São Paulo",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Voto em SP: ministro do STF afirma que o Brasil possui o melhor sistema eleitoral",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Moraes elogia sistema eleitoral",
+  "thumbnail_primary": "Alexandre de Moraes no Colégio Madre Alix",
+  "thumbnail_tension": "Declaração de excelência do sistema eleitoral em dia de votação",
+  "thumbnail_composition": "Moraes em primeiro plano, urna ao fundo",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes, relevância política e impacto na percepção pública",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto_publico": "moderado",
+      "coerencia_narrativa": "alta"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Revista Oeste",
+      "url": "https://revistaoeste.com/politica/moraes-vota-em-sao-paulo-e-elogia-sistema-eleitoral/",
+      "published_at": "2026-10-25",
+      "role": "reportagem"
+    },
+    {
+      "id": "S2",
+      "publisher": "Poder 360",
+      "url": "https://www.poder360.com.br/poder-eleicoes-2026/moraes-vota-e-diz-que-sistema-eleitoral-do-brasil-e-o-melhor-do-mundo/",
+      "published_at": "2026-10-25",
+      "role": "reportagem"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Ministro Alexandre de Moraes elogia o sistema eleitoral brasileiro como “o melhor do mundo”.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-25"
+    },
+    {
+      "claim": "Moraes chegou ao Colégio Madre Alix por volta das 8 h da manhã para votar.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-25"
+    },
+    {
+      "claim": "A apuração começou às 8 h e terminou às 17 h, com resultados divulgados rapidamente.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-25"
+    },
+    {
+      "claim": "Pesquisa do PoderData/Aya indica empate técnico entre Lula e Flávio Bolsonaro.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-10-25"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "Moraes vota em São Paulo e elogia sistema eleitoral",
+      "kind": "source_excerpt",
+      "source_page_url": "https://revistaoeste.com/politica/moraes-vota-em-sao-paulo-e-elogia-sistema-eleitoral/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Revista Oeste"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "Moraes vota e diz que sistema eleitoral do Brasil é o melhor do mundo",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-eleicoes-2026/moraes-vota-e-diz-que-sistema-eleitoral-do-brasil-e-o-melhor-do-mundo/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Poder 360"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato: Moraes elogia o sistema eleitoral",
+      "type": "fact",
+      "label": "opening",
+      "headline": "Ministro Alexandre de Moraes declara que o Brasil tem o melhor sistema eleitoral",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Moraes no Colégio Madre Alix",
+        "Urna eletrônica em destaque",
+        "Placa de horário 8h"
+      ],
+      "narration": "Moraes vota em São Paulo e elogia sistema eleitoral. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que o ministro do STF disse ao comparecer à votação no Colégio Madre Alix, às 8 h da manhã, neste domingo de segundo turno.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Fato: Rapidez da apuração",
+      "type": "fact",
+      "label": "detail",
+      "headline": "Apuração começou às 8h e terminou às 17h",
+      "metric": "timeline",
+      "object_type": "data",
+      "visual_cards": [
+        "Relógio marcando 8h",
+        "Centro de apuração",
+        "Resultados sendo publicados"
+      ],
+      "narration": "Segundo o Poder 360, a apuração iniciou às 8 h e foi concluída às 17 h, com os resultados sendo divulgados rapidamente, reforçando a eficiência do processo eleitoral brasileiro.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião: Impacto da declaração",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Na minha análise, a fala de Moraes pode tranquilizar eleitores",
+      "metric": "insight",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de confiança nas urnas",
+        "Imagem de eleitores nas filas",
+        "Citação de Moraes em destaque"
+      ],
+      "narration": "Na minha análise, o elogio do ministro ao sistema eleitoral pode reduzir temores de fraudes e fortalecer a legitimidade do pleito, sobretudo em um cenário de disputa apertada entre Lula e Flávio Bolsonaro.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Conclusão e convite à inscrição",
+      "metric": "call_to_action",
+      "object_type": "data",
+      "visual_cards": [
+        "Logo do O Dinheiro Explica",
+        "Botão de inscrição",
+        "Imagem de fundo do estúdio"
+      ],
+      "narration": "Em resumo, a presença e o elogio de Alexandre de Moraes reforçam a confiança no processo eleitoral brasileiro. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você avalia a influência de declarações de autoridades judiciais na confiança dos eleitores?",
+  "hashtags": [
+    "#Eleições2026",
+    "#SistemaEleitoral",
+    "#Moraes"
+  ],
+  "tags": [
+    "eleições",
+    "STF",
+    "Alexandre de Moraes",
+    "sistema eleitoral",
+    "São Paulo",
+    "Colégio Madre Alix",
+    "transparência",
+    "rapidez",
+    "Política",
+    "Brasil"
+  ],
+  "primary_keyword": "Moraes elogia sistema eleitoral",
+  "secondary_keywords": [
+    "eleições 2026",
+    "confiança eleitoral"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender o que autoridades judiciais dizem sobre a integridade das eleições de 2026",
+    "search_query": "Moraes voto São Paulo melhor sistema eleitoral 2026",
+    "recommendation_angle": "Análise da declaração do ministro e seu efeito na percepção pública",
+    "first_payoff": "Moraes vota em São Paulo e elogia sistema eleitoral",
+    "promise_proof": "Citações literais de duas fontes independentes confirmam o discurso",
+    "audience_hypothesis": "Eleitores e analistas políticos buscam segurança institucional nas urnas",
+    "thumbnail_complement": "Imagem do ministro ao lado da urna",
+    "verification_limits": "A verificação se baseia em trechos publicados em 25/10/2026 por duas mídias independentes"
+  },
+  "publication_description": "Moraes elogia o sistema eleitoral brasileiro como o melhor do mundo ao votar em São Paulo, reforçando a confiança institucional no segundo turno das eleições de 2026.\n\nContexto: Moraes elogia sistema eleitoral",
+  "publication_target_local": "2026-10-25T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
