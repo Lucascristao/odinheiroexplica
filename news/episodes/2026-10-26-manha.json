@@ -1,0 +1,228 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-26-manha",
+  "news_date": "2026-10-26",
+  "event_date": "2026-10-26",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-26T12:32:44.879054-03:00",
+  "publication_target_local": "2026-10-26T08:00:00-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "B3 acionou o circuit-breaker e suspendeu negociações por 30 minutos após queda de 10 % do Ibovespa",
+    "why_today": "No primeiro pregão após a reeleição de Lula, a B3 interrompeu o mercado ao registrar queda de 10 % no Ibovespa, gerando forte volatilidade e alta do dólar, fato que impacta investidores e a economia nacional.",
+    "opening_anchor": "B3 acionou o circuit-breaker e suspendeu negociações por 30 minutos após queda de 10 % do Ibovespa",
+    "candidate_review": []
+  },
+  "title": "B3 aciona circuit-breaker e pausa pregão após queda de 10 % no Ibovespa",
+  "title_options": [
+    {
+      "text": "B3 aciona circuit-breaker e pausa pregão após queda de 10 % no Ibovespa",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Queda de 10 % no Ibovespa leva B3 a suspender negociações por 30 minutos",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Mercado em choque: B3 interrompe pregão com circuit-breaker após forte queda",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Circuit-breaker na B3",
+  "thumbnail_primary": "Tela de negociação da B3 com alerta vermelho",
+  "thumbnail_tension": "Suspensão inesperada gera pânico entre investidores",
+  "thumbnail_composition": "Alerta centralizado, gráfico em queda ao fundo",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato relevante, confirmado por duas fontes independentes, com impacto econômico amplo.",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "originalidade": "moderada",
+      "clareza": "alta"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "BMC News",
+      "url": "https://bmcnews.com.br/mercados/b3-aciona-circuit-breaker-no-primeiro-pregao-apos-reeleicao-de-lula/",
+      "published_at": "2026-10-26",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/economia/apos-reeleicao-de-lula-bolsa-aciona-circuit-breaker-e-pausa-pregao/",
+      "published_at": "2026-10-26",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "B3 acionou o circuit-breaker e suspendeu negociações por 30 minutos após queda de 10 % do Ibovespa",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-26"
+    },
+    {
+      "claim": "O Ibovespa recuou mais de 15 % ao meio-dia",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-26"
+    },
+    {
+      "claim": "O dólar subiu cerca de 9,5 % nas primeiras horas",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-26"
+    },
+    {
+      "claim": "O contrato DI futuro subiu 297,4 pontos-base",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-26"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bmcnews.com.br/mercados/b3-aciona-circuit-breaker-no-primeiro-pregao-apos-reeleicao-de-lula/",
+      "expected_text": "as negociações de ativos à vista, renda fixa privada, opções referenci",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "BMC News"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/economia/apos-reeleicao-de-lula-bolsa-aciona-circuit-breaker-e-pausa-pregao/",
+      "expected_text": "economia após reeleição de lula, bolsa aciona ‘circuit breaker’ e paus",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Jovem Pan"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato imediato",
+      "type": "fact",
+      "label": "opening",
+      "headline": "B3 aciona circuit-breaker",
+      "metric": "impact",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de queda do Ibovespa",
+        "Alerta de suspensão na tela da B3",
+        "Ticker do dólar em alta"
+      ],
+      "narration": "B3 acionou o circuit-breaker e suspendeu negociações por 30 minutos após queda de 10 % do Ibovespa. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos entender o que aconteceu e por que isso importa para o seu bolso.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Confirmação das fontes",
+      "type": "fact",
+      "label": "corroboration",
+      "headline": "Dupla confirmação",
+      "metric": "credibility",
+      "object_type": "store",
+      "visual_cards": [
+        "Logotipos BMC News e Jovem Pan",
+        "Trechos de ambas as matérias",
+        "Linha do tempo da queda"
+      ],
+      "narration": "Tanto o BMC News quanto o Jovem Pan confirmam que a B3 interrompeu o pregão após o Ibovespa registrar queda de 10 %, a primeira vez que o mecanismo é acionado desde a pandemia de 2020.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de risco",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Impactos para investidores",
+      "metric": "risk",
+      "object_type": "bank",
+      "visual_cards": [
+        "Comparativo de volatilidade histórica",
+        "Efeito sobre fundos de pensão",
+        "Projeção de inflação"
+      ],
+      "narration": "Na minha análise, a suspensão evidencia a vulnerabilidade do mercado brasileiro a choques políticos. O salto do dólar, acima de 9 %, pressiona importadores e eleva a inflação, enquanto a alta nos juros futuros indica maior custo de crédito para empresas.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e convite",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Próximos passos",
+      "metric": "outlook",
+      "object_type": "factory",
+      "visual_cards": [
+        "Calendário econômico da semana",
+        "Indicadores de confiança",
+        "Chamada para inscrição"
+      ],
+      "narration": "O acionamento do circuit-breaker sinaliza que a volatilidade pode permanecer alta nos próximos dias, especialmente com a definição de políticas fiscais pós-eleição. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você pretende proteger sua carteira diante da alta do dólar e da volatilidade do Ibovespa?",
+  "hashtags": [
+    "#B3",
+    "#CircuitBreaker",
+    "#MercadoFinanceiro"
+  ],
+  "tags": [
+    "B3",
+    "Ibovespa",
+    "circuit breaker",
+    "dólar",
+    "volatilidade",
+    "Lula",
+    "eleições 2026",
+    "investimentos",
+    "mercado brasileiro",
+    "economia"
+  ],
+  "primary_keyword": "circuit-breaker",
+  "secondary_keywords": [
+    "Ibovespa",
+    "dólar",
+    "B3"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que a B3 suspendeu o pregão e quais são os efeitos nos investimentos.",
+    "search_query": "B3 circuit breaker 26 de outubro 2026 Ibovespa queda 10%",
+    "recommendation_angle": "Análise prática de impacto imediato para investidores individuais e institucionais.",
+    "first_payoff": "B3 acionou o circuit-breaker e suspendeu negociações por 30 minutos após queda de 10 % do Ibovespa.",
+    "promise_proof": "Confirmação de duas fontes independentes (BMC News e Jovem Pan) com trechos literais.",
+    "audience_hypothesis": "Investidores que buscam explicações claras sobre eventos de alta volatilidade no mercado brasileiro.",
+    "thumbnail_complement": "Gráfico em queda com alerta vermelho da B3 ao fundo.",
+    "verification_limits": "A verificação depende de trechos publicados em 26/10/2026; não há acesso a documentos internos da B3."
+  },
+  "publication_description": "Circuit-breaker: B3 suspende pregão após queda de 10 % no Ibovespa, gerando alta do dólar e volatilidade nos mercados. Entenda o que aconteceu, as confirmações independentes e os impactos para sua carteira.",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
