@@ -1,0 +1,229 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-26-meio-dia",
+  "news_date": "2026-10-26",
+  "event_date": "2026-10-26",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-26T15:55:58.863789-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "single_source_attributed",
+    "independent_confirmation": false,
+    "new_fact": "Ibovespa recuou 10 % e a B3 acionou o mecanismo de circuit-breaker em 26/10/2026",
+    "why_today": "A queda abrupta do Ibovespa no primeiro pregão pós-reeleição de Lula provocou a primeira ativação do circuit-breaker desde a pandemia, gerando grande impacto nos mercados e demandando explicação imediata ao público.",
+    "opening_anchor": "Ibovespa cai 10% e B3 aciona circuit breaker nesta segunda-feira (26), depois que o Ibovespa recuou 10% em relação ao fechamento do pregão anterior.",
+    "candidate_review": [
+      {
+        "subject": "Ibovespa",
+        "topic_area": "economy",
+        "event_date": "2026-10-26",
+        "urls": [
+          "https://www.suno.com.br/noticias/circuit-breaker-ibovespa-b3-reeleicao-lula-26102026-go/"
+        ],
+        "decision": "included"
+      }
+    ],
+    "attribution_note": "A informação sobre o acionamento do circuit-breaker provém exclusivamente da reportagem da Suno de 26 out 2026; ainda não há confirmação por outros veículos independentes."
+  },
+  "title": "Ibovespa despenca 10 % e B3 aciona circuit-breaker após reeleição de Lula",
+  "title_options": [
+    {
+      "text": "Ibovespa despenca 10 % e B3 aciona circuit-breaker após reeleição de Lula",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Queda de 10 % no Ibovespa dispara primeira pausa de 30 minutos desde 2020",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Mercado reage à vitória de Lula: Ibovespa cai 10 % e B3 interrompe negociações",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Ibovespa cai 10 %",
+  "thumbnail_primary": "Tela da B3 mostrando o alerta de circuit-breaker",
+  "thumbnail_tension": "Suspensão inesperada das negociações gera tensão nos investidores",
+  "thumbnail_composition": "Close na tela da B3 à esquerda, gráfico em queda à direita",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato exclusivo verificado em fonte confiável, relevância econômica imediata",
+    "criteria": {
+      "veracity": "high",
+      "newsworthiness": "high",
+      "originality": "exclusive",
+      "balance": "adequate"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Suno",
+      "url": "https://www.suno.com.br/noticias/circuit-breaker-ibovespa-b3-reeleicao-lula-26102026-go/",
+      "published_at": "2026-10-26",
+      "role": "primary"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Ibovespa recuou 10 % e a B3 acionou o mecanismo de circuit-breaker em 26/10/2026",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-26"
+    },
+    {
+      "claim": "É a primeira vez que o mecanismo de circuit-breaker é acionado desde a pandemia de Covid-19 em 2020",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-26"
+    },
+    {
+      "claim": "O dólar comercial subia 12,21 % cotado a R$ 5,602 às 10h15 do dia 26/10/2026",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-26"
+    },
+    {
+      "claim": "O CDS de 5 anos do Brasil subiu 26 % para 151,7 pontos, maior nível desde junho 2025",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-26"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "negócios ibovespa ibovespa cai 10% e b3 aciona circuit breaker após re",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.suno.com.br/noticias/circuit-breaker-ibovespa-b3-reeleicao-lula-26102026-go/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Suno"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S1",
+      "expected_text": "É a primeira vez que o mecanismo de circuit breaker é acionado desde a pandemia de Covid-19, em 2020.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.suno.com.br/noticias/circuit-breaker-ibovespa-b3-reeleicao-lula-26102026-go/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Suno"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato principal",
+      "type": "fact",
+      "label": "new_fact",
+      "headline": "Ibovespa despenca 10 % e B3 interrompe o pregão",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de queda do Ibovespa",
+        "Alerta de circuit-breaker na tela da B3",
+        "Cotação do dólar em alta"
+      ],
+      "narration": "Ibovespa cai 10% e B3 aciona circuit breaker nesta segunda-feira (26), depois que o Ibovespa recuou 10% em relação ao fechamento do pregão anterior. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos entender o que aconteceu.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Contexto e repercussão",
+      "type": "fact",
+      "label": "background",
+      "headline": "Primeira ativação desde 2020 e impacto cambial",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Linha do tempo do circuit-breaker",
+        "Cotação do dólar em 5,602",
+        "Indicador de risco-país"
+      ],
+      "narration": "É a primeira vez que o mecanismo de circuit-breaker é acionado desde a pandemia de Covid-19, em 2020. Além disso, o dólar comercial subia 12,21 % cotado a R$ 5,602 às 10h15, refletindo a aversão ao risco dos investidores.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do analista",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Por que o mercado reagiu tão forte?",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Imagem de investidores preocupados",
+        "Seta indicando queda abrupta",
+        "Texto de alerta"
+      ],
+      "narration": "Na minha análise, a combinação da incerteza política pós-eleição e a expectativa de ajustes fiscais gerou um medo súbito, amplificado pela falta de liquidez nas primeiras horas de negociação, o que desencadeou o gatilho do circuit-breaker.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e próximos passos",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "O que esperar nos próximos dias?",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário econômico",
+        "Previsão de volatilidade",
+        "Chamada para inscrição"
+      ],
+      "narration": "A suspensão de 30 minutos deve ser seguida de retomada cautelosa, mas a volatilidade permanecerá alta enquanto o mercado digere os resultados eleitorais. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que a reeleição de Lula influenciará a volatilidade do mercado nos próximos dias?",
+  "hashtags": [
+    "#Ibovespa",
+    "#CircuitBreaker",
+    "#MercadoFinanceiro"
+  ],
+  "tags": [
+    "Ibovespa",
+    "B3",
+    "circuit-breaker",
+    "eleição 2026",
+    "Lula",
+    "dólar",
+    "CDS Brasil",
+    "volatilidade"
+  ],
+  "primary_keyword": "Ibovespa",
+  "secondary_keywords": [
+    "circuit-breaker",
+    "B3",
+    "eleição 2026"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que o Ibovespa caiu 10 % e o que significa o acionamento do circuit-breaker",
+    "search_query": "Ibovespa 10% queda circuit breaker 26 outubro 2026",
+    "recommendation_angle": "Análise exclusiva da Suno com explicação de impactos imediatos",
+    "first_payoff": "Ibovespa cai 10% e B3 aciona circuit breaker nesta segunda-feira (26), depois que o Ibovespa recuou 10% em relação ao fechamento do pregão anterior.",
+    "promise_proof": "Trecho literal da reportagem da Suno que confirma o acionamento do circuit-breaker",
+    "audience_hypothesis": "Investidores e público geral buscam entender a causa da forte queda pós-eleição",
+    "thumbnail_complement": "Imagem da tela da B3 com alerta de pausa",
+    "verification_limits": "Apenas a Suno confirmou o fato; ainda não há outras fontes independentes"
+  },
+  "publication_description": "Ibovespa despenca 10 % e B3 aciona circuit-breaker após a reeleição de Lula, provocando a primeira pausa de 30 minutos desde a pandemia. Analisamos as causas, o impacto cambial e o que esperar nos próximos dias.\n\nApuração atribuída a Suno. Relato de uma fonte, sem confirmação independente.",
+  "publication_target_local": "2026-10-26T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=single_source_attributed"
+}
