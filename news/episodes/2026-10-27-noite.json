@@ -1,0 +1,235 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-27-noite",
+  "news_date": "2026-10-27",
+  "event_date": "2026-10-27",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-27T19:33:15.156836-03:00",
+  "publication_target_local": "2026-10-27T20:00:00-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Flávio Bolsonaro chegou aos Estados Unidos após fugir do Brasil nesta terça-feira (27).",
+    "why_today": "A fuga do senador Flávio Bolsonaro para os EUA, em violação a ordem judicial, ocorre imediatamente após sua derrota no segundo turno, gerando repercussões políticas e jurídicas que exigem cobertura imediata.",
+    "opening_anchor": "Flávio Bolsonaro chegou aos Estados Unidos após fugir do Brasil nesta terça-feira (27).",
+    "candidate_review": [
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "politics",
+        "event_date": "2026-10-27",
+        "urls": [
+          "https://jovempan.com.br/politica/apos-fugir-do-brasil-flavio-bolsonaro-chega-aos-eua/",
+          "https://www.moneytimes.com.br/apos-fuga-de-flavio-bolsonaro-candidato-a-vice-admite-derrota-para-lula-mas-critica-eleicao-gaep/"
+        ],
+        "decision": "Fuga confirmada por duas fontes independentes"
+      }
+    ]
+  },
+  "title": "Senador Flávio Bolsonaro chega aos EUA após fugir do Brasil",
+  "title_options": [
+    {
+      "text": "Senador Flávio Bolsonaro chega aos EUA após fugir do Brasil",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Fuga de Flávio Bolsonaro: senador desembarca nos Estados Unidos",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Flávio Bolsonaro deixa o Brasil e vai para os EUA em violação judicial",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Fuga ao exterior",
+  "thumbnail_primary": "Flávio Bolsonaro no aeroporto",
+  "thumbnail_tension": "Viola ordem judicial de entrega de passaporte",
+  "thumbnail_composition": "Plano médio do senador ao desembarcar",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "corroborated_verification",
+    "reason": "Duas fontes independentes confirmam o fato",
+    "criteria": {
+      "source_independence": true,
+      "temporal_proximity": true,
+      "direct_quotes": true
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/apos-fugir-do-brasil-flavio-bolsonaro-chega-aos-eua/",
+      "published_at": "2026-10-27",
+      "role": "news"
+    },
+    {
+      "id": "S2",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/apos-fuga-de-flavio-bolsonaro-candidato-a-vice-admite-derrota-para-lula-mas-critica-eleicao-gaep/",
+      "published_at": "2026-10-27",
+      "role": "news"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Flávio Bolsonaro chegou aos Estados Unidos após fugir do Brasil nesta terça-feira (27).",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-27"
+    },
+    {
+      "claim": "A ordem do ministro Alexandre de Moraes exigia a entrega dos passaportes de Flávio Bolsonaro.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-27"
+    },
+    {
+      "claim": "Flávio Bolsonaro foi derrotado no segundo turno da eleição presidencial.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-10-27"
+    },
+    {
+      "claim": "A Polícia Federal cancelou os passaportes do senador.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-27"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "Flávio Bolsonaro (PL) chegou aos Estados Unidos após fugir do Brasil nesta terça-feira (27).",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/apos-fugir-do-brasil-flavio-bolsonaro-chega-aos-eua/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "A mulher e as filhas também saíram do País, mas os interlocutores não souberam precisar o destino.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/apos-fuga-de-flavio-bolsonaro-candidato-a-vice-admite-derrota-para-lula-mas-critica-eleicao-gaep/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Money Times"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fuga confirmada",
+      "type": "fact",
+      "label": "fact",
+      "headline": "Senador Flávio Bolsonaro chega aos EUA",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Imagem do aeroporto internacional",
+        "Passaporte cancelado",
+        "Mapa Brasil-EUA"
+      ],
+      "narration": "Flávio Bolsonaro chegou aos Estados Unidos após fugir do Brasil nesta terça-feira (27). Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar as implicações dessa fuga.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Ordem judicial violada",
+      "type": "fact",
+      "label": "fact",
+      "headline": "Desobediência à determinação de Moraes",
+      "metric": "legal",
+      "object_type": "data",
+      "visual_cards": [
+        "Imagem do ministro Alexandre de Moraes",
+        "Documento de ordem judicial",
+        "Escala de investigação"
+      ],
+      "narration": "A ordem do ministro Alexandre de Moraes exigia a entrega dos passaportes de Flávio Bolsonaro, mas o senador não cumpriu a determinação, configurando violação judicial.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise política",
+      "type": "opinion",
+      "label": "opinion",
+      "headline": "Impactos da fuga na cena política",
+      "metric": "analysis",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de votação segundo turno",
+        "Linha do tempo da fuga",
+        "Reação nas redes sociais"
+      ],
+      "narration": "Na minha análise, a fuga de Flávio Bolsonaro enfraquece ainda mais a bancada conservadora e pode gerar pressões adicionais sobre o STF, ao mesmo tempo que alimenta narrativas de perseguição política.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "conclusion",
+      "headline": "Desdobramentos esperados",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Síntese dos fatos",
+        "Próximos passos judiciais",
+        "Chamada para ação"
+      ],
+      "narration": "Em conclusão, a fuga de Flávio Bolsonaro abre caminho para novas investigações e pressiona o governo a responder juridicamente. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Qual será o próximo passo do STF diante da fuga de Flávio Bolsonaro?",
+  "hashtags": [
+    "#Política",
+    "#FugaBolsonaro",
+    "#STF"
+  ],
+  "tags": [
+    "Flávio Bolsonaro",
+    "fuga",
+    "Estados Unidos",
+    "ordem judicial",
+    "eleição 2026",
+    "Polícia Federal",
+    "Moraes",
+    "O Dinheiro Explica"
+  ],
+  "primary_keyword": "Flávio Bolsonaro",
+  "secondary_keywords": [
+    "fuga ao exterior",
+    "ordem judicial violada"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender as consequências da fuga de um senador após derrota eleitoral",
+    "search_query": "Flávio Bolsonaro fuga EUA ordem judicial 27 outubro 2026",
+    "recommendation_angle": "Análise das repercussões políticas e jurídicas da fuga",
+    "first_payoff": "Flávio Bolsonaro chegou aos Estados Unidos após fugir do Brasil nesta terça-feira (27).",
+    "promise_proof": "Duas fontes independentes confirmam o fato com trechos literais",
+    "audience_hypothesis": "Eleitores e investidores buscam clareza sobre instabilidade política pós-eleição",
+    "thumbnail_complement": "Imagem do senador no aeroporto reforça a narrativa de fuga",
+    "verification_limits": "A verificação depende de trechos publicados em sites de notícias acessíveis"
+  },
+  "publication_description": "Flávio Bolsonaro chegou aos Estados Unidos após fugir do Brasil nesta terça-feira (27), violando ordem judicial. A reportagem traz os fatos confirmados por duas fontes independentes e analisa os impactos políticos e jurídicos.",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
