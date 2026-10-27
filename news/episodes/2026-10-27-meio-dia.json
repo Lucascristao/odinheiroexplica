@@ -1,0 +1,247 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-27-meio-dia",
+  "news_date": "2026-10-27",
+  "event_date": "2026-10-27",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-27T15:35:04.798893-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "O senador Flávio Bolsonaro deixou o Brasil a bordo de um avião com destino aos Estados Unidos",
+    "why_today": "No dia 27 de outubro de 2026, após ordem judicial que proibia sua viagem e exigia a entrega do passaporte, Flávio Bolsonaro foi localizado em voo internacional, gerando urgência na cobertura por se tratar de descumprimento de medida cautelar e risco de fuga política.",
+    "opening_anchor": "O senador Flávio Bolsonaro (PL) deixou o Brasil e está a bordo de um avião com destino aos Estados Unidos",
+    "candidate_review": [
+      {
+        "subject": "Flávio Bolsonaro",
+        "topic_area": "politics",
+        "event_date": "2026-10-27",
+        "urls": [
+          "https://www.camara.leg.br/deputados/204555"
+        ],
+        "decision": "relevant"
+      },
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "politics",
+        "event_date": "2026-10-27",
+        "urls": [
+          "https://www.presidencia.gov.br/"
+        ],
+        "decision": "relevant"
+      }
+    ]
+  },
+  "title": "Senador Flávio Bolsonaro foge do Brasil a bordo de avião rumo aos EUA",
+  "title_options": [
+    {
+      "text": "Senador Flávio Bolsonaro foge do Brasil a bordo de avião rumo aos EUA",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Flávio Bolsonaro deixa o país em voo internacional após ordem judicial",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Fuga de Flávio Bolsonaro: avião parte para os Estados Unidos",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Fuga internacional de Flávio",
+  "thumbnail_primary": "Flávio Bolsonaro no avião",
+  "thumbnail_tension": "Violação de ordem judicial e risco de fuga",
+  "thumbnail_composition": "Plano médio do senador no corredor da aeronave",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes com trechos originais",
+    "criteria": {
+      "source_independence": "confirmed",
+      "evidence_veracity": "high",
+      "public_interest": "significant"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/aliados-dizem-que-flavio-bolsonaro-deixou-o-pais/",
+      "published_at": "2026-10-27",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/flavio-bolsonaro-fugiu-do-brasil-e-esta-em-aviao-a-caminho-dos-eua/",
+      "published_at": "2026-10-27",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O senador Flávio Bolsonaro deixou o Brasil a bordo de um avião com destino aos Estados Unidos",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-27"
+    },
+    {
+      "claim": "O ministro Alexandre de Moraes proibiu Flávio Bolsonaro de viajar ao exterior e exigiu a entrega do passaporte",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-10-26"
+    },
+    {
+      "claim": "Deputados do PT solicitaram prisão preventiva e alerta vermelho da Interpol contra Flávio Bolsonaro",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-27"
+    },
+    {
+      "claim": "O site argentino Infobae informou que o senador cruzou a fronteira para a Argentina antes de seguir para os EUA",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-10-27"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "aliados dizem que flávio bolsonaro deixou o país principal indício é o",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-justica/aliados-dizem-que-flavio-bolsonaro-deixou-o-pais/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Poder360"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "O senador Flávio Bolsonaro (PL) deixou o Brasil e está a bordo de um avião com destino aos Estados Unidos, segundo apuração da Jovem Pan nesta terça-feira (27).",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/flavio-bolsonaro-fugiu-do-brasil-e-esta-em-aviao-a-caminho-dos-eua/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Jovem Pan"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fuga confirmada",
+      "type": "fact",
+      "label": "fact",
+      "headline": "Flávio Bolsonaro deixa o Brasil em voo internacional",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Senador a bordo do avião",
+        "Mapa da rota Brasil-EUA",
+        "Horário de partida"
+      ],
+      "narration": "O senador Flávio Bolsonaro (PL) deixou o Brasil e está a bordo de um avião com destino aos Estados Unidos, segundo apuração da Jovem Pan nesta terça-feira (27). Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar os desdobramentos dessa fuga.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Ordem judicial violada",
+      "type": "fact",
+      "label": "fact",
+      "headline": "Descumprimento de medida do STF",
+      "metric": "legal",
+      "object_type": "data",
+      "visual_cards": [
+        "Decisão do ministro Moraes",
+        "Prazo para entrega do passaporte",
+        "Reação da PF"
+      ],
+      "narration": "O ministro Alexandre de Moraes havia proibido Flávio Bolsonaro de viajar ao exterior e exigido a entrega dos passaportes, medida que foi desrespeitada ao embarcar no voo internacional.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Reação política",
+      "type": "opinion",
+      "label": "opinion",
+      "headline": "Impactos da fuga para a política",
+      "metric": "analysis",
+      "object_type": "data",
+      "visual_cards": [
+        "Deputados do PT pedindo prisão",
+        "Alerta vermelho da Interpol",
+        "Possível reação do PL"
+      ],
+      "narration": "Na minha análise, a fuga de Flávio Bolsonaro pode acelerar processos de restrição a parlamentares que descumprem decisões judiciais, gerando pressão sobre o PL e alimentando o debate sobre a eficácia das medidas cautelares no Congresso.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e convite",
+      "type": "conclusion",
+      "label": "conclusion",
+      "headline": "Desdobramentos esperados",
+      "metric": "forecast",
+      "object_type": "data",
+      "visual_cards": [
+        "Possível ação da Interpol",
+        "Impacto nos mercados",
+        "Próximas declarações da PF"
+      ],
+      "narration": "A fuga de Flávio Bolsonaro abre caminho para que a Justiça Federal solicite sua prisão preventiva e que a Interpol seja acionada, ao mesmo tempo que pode gerar volatilidade nos mercados devido à instabilidade política. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que a fuga de Flávio Bolsonaro afetará a confiança nas instituições brasileiras?",
+  "hashtags": [
+    "#PolíticaBR",
+    "#FugaPolítica",
+    "#FlávioBolsonaro"
+  ],
+  "tags": [
+    "Flávio Bolsonaro",
+    "fuga",
+    "aviação",
+    "STF",
+    "passaporte",
+    "Política",
+    "Brasil",
+    "EUA",
+    "Interpol",
+    "Jovem Pan"
+  ],
+  "primary_keyword": "Flávio Bolsonaro",
+  "secondary_keywords": [
+    "fuga internacional",
+    "ordem judicial",
+    "passaporte"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender as consequências da fuga de um senador que desobedeceu ordem judicial",
+    "search_query": "Flávio Bolsonaro fuga avião Estados Unidos 27 de outubro 2026",
+    "recommendation_angle": "Análise de risco político e impacto econômico da fuga de um parlamentar de destaque",
+    "first_payoff": "O senador Flávio Bolsonaro (PL) deixou o Brasil e está a bordo de um avião com destino aos Estados Unidos",
+    "promise_proof": "Duas fontes independentes confirmam o voo e a violação de medida cautelar",
+    "audience_hypothesis": "Investidores e cidadãos preocupados com a estabilidade institucional buscam explicações claras",
+    "thumbnail_complement": "Imagem do senador no corredor da aeronave reforça a narrativa de fuga",
+    "verification_limits": "Ainda não há confirmação oficial da PF ou do STF sobre a localização exata do senador"
+  },
+  "publication_description": "Flávio Bolsonaro deixa o Brasil em voo internacional após ordem judicial que proibia sua viagem, gerando debate sobre a eficácia das medidas cautelares no Congresso.",
+  "publication_target_local": "2026-10-27T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
