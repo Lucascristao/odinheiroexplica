@@ -1,0 +1,237 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-28-meio-dia",
+  "news_date": "2026-10-28",
+  "event_date": "2026-10-28",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-28T12:20:09.109206-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Flávio Bolsonaro chega a Miami, nos Estados Unidos, após passar por Argentina e Equador",
+    "why_today": "Na manhã de 28 de outubro de 2026, o senador Flávio Bolsonaro desembarcou em Miami após fugir do Brasil, desafiando ordem do STF que proibia sua saída e exigia a entrega dos passaportes, gerando ampla repercussão nacional e internacional.",
+    "opening_anchor": "Flávio Bolsonaro chega a Miami, nos Estados Unidos, após passar por Argentina e Equador",
+    "candidate_review": []
+  },
+  "title": "Senador Flávio Bolsonaro chega a Miami em voo privado, violando ordem do STF",
+  "title_options": [
+    {
+      "text": "Senador Flávio Bolsonaro chega a Miami em voo privado, violando ordem do STF",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Flávio Bolsonaro desembarca em Miami após fugir da ordem judicial do STF",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Fuga de Flávio Bolsonaro: chegada a Miami confirma descumprimento de decisão do STF",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Chegada em Miami",
+  "thumbnail_primary": "Flávio Bolsonaro",
+  "thumbnail_tension": "Viola ordem judicial",
+  "thumbnail_composition": "Close-up no senador ao desembarcar",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato novo corroborado por múltiplas fontes independentes, relevância política e jurídica alta.",
+    "criteria": {
+      "veracity": "high",
+      "public_interest": "high",
+      "source_diversity": "multiple",
+      "clarity": "clear"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "bmcnews.com.br",
+      "url": "https://bmcnews.com.br/politica/aliados-dizem-que-governo-trump-concedera-asilo-a-flavio-bolsonaro/",
+      "published_at": "2026-10-28",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "moneytimes.com.br",
+      "url": "https://www.moneytimes.com.br/flavio-bolsonaro-chega-a-miami-com-esposa-e-filhas-apos-eleicoes-entenda-a-rota-da-fuga-do-senador-davs/",
+      "published_at": "2026-10-28",
+      "role": "reporting"
+    },
+    {
+      "id": "S3",
+      "publisher": "poder360.com.br",
+      "url": "https://www.poder360.com.br/politica/avião-com-flavio-bolsonaro-chega-aos-eua/",
+      "published_at": "2026-10-28",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Flávio Bolsonaro chega a Miami, nos Estados Unidos, após passar por Argentina e Equador",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-28"
+    },
+    {
+      "claim": "O avião pousou no aeroporto executivo Opa-Locka, em Miami, por volta das 10h24 (horário de Brasília)",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-28"
+    },
+    {
+      "claim": "A aeronave era um Gulfstream G400, prefixo LV-JQW, da companhia Baires Fly",
+      "source_ids": [
+        "S2",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-28"
+    },
+    {
+      "claim": "Flávio Bolsonaro descumpriu ordem do STF que proibia sua saída do país e exigia entrega dos passaportes",
+      "source_ids": [
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-28"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "flávio bolsonaro chega a miami após passar por argentina e equador mia",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bmcnews.com.br/politica/aliados-dizem-que-governo-trump-concedera-asilo-a-flavio-bolsonaro/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "bmcnews.com.br"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "Flávio Bolsonaro desembarca de um avião após chegar ao Aeroporto Executivo de Opa-Locka, em Miami, Flórida",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/flavio-bolsonaro-chega-a-miami-com-esposa-e-filhas-apos-eleicoes-entenda-a-rota-da-fuga-do-senador-davs/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "moneytimes.com.br"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Chegada ao aeroporto",
+      "type": "fact",
+      "label": "arrival",
+      "headline": "Flávio Bolsonaro chega a Miami",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Avião sobrevoando a pista de Opa-Locka",
+        "Família Bolsonaro desembarcando",
+        "Passaporte deixado no Brasil"
+      ],
+      "narration": "Flávio Bolsonaro chega a Miami, nos Estados Unidos, após passar por Argentina e Equador. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar os detalhes dessa fuga que desafia a ordem do STF.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes da rota",
+      "type": "fact",
+      "label": "route",
+      "headline": "Passagem pela Argentina e escala no Equador",
+      "metric": "timeline",
+      "object_type": "data",
+      "visual_cards": [
+        "Mapa da rota Argentina-Equador-Miami",
+        "Registro da migração argentina",
+        "Parada para reabastecimento em Guayaquil"
+      ],
+      "narration": "A viagem incluiu passagem pela Argentina, onde a Direção Nacional de Migrações registrou a entrada às 22h50 de 27 out, seguida de escala para reabastecimento em Guayaquil, Equador, às 5h25, antes de seguir para Miami.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise jurídica",
+      "type": "opinion",
+      "label": "legal_opinion",
+      "headline": "Violação de ordem do STF",
+      "metric": "assessment",
+      "object_type": "data",
+      "visual_cards": [
+        "Imagem do STF",
+        "Documento de intimação",
+        "Mapa de restrição de viagem"
+      ],
+      "narration": "Na minha análise, o descumprimento da ordem judicial pode gerar novas medidas coercitivas contra o senador, inclusive prisão preventiva, e reforça o risco de sanções políticas adicionais.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e próximos passos",
+      "type": "conclusion",
+      "label": "outlook",
+      "headline": "Desdobramentos esperados",
+      "metric": "forecast",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário de audiências do STF",
+        "Possível pedido de extradição",
+        "Reação internacional"
+      ],
+      "narration": "A chegada de Flávio Bolsonaro aos EUA coloca o STF sob pressão para definir medidas imediatas. Espera-se que o tribunal solicite sua volta ou imponha restrições adicionais. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Você acha que o STF deve solicitar a extradição de Flávio Bolsonaro?",
+  "hashtags": [
+    "#FlavioBolsonaro",
+    "#STF",
+    "#FugaPolítica"
+  ],
+  "tags": [
+    "Flávio Bolsonaro",
+    "Miami",
+    "STF",
+    "passaportes",
+    "Baires Fly",
+    "Gulfstream G400",
+    "Argentina",
+    "Equador",
+    "O Dinheiro Explica",
+    "política brasileira"
+  ],
+  "primary_keyword": "Flávio Bolsonaro chega a Miami",
+  "secondary_keywords": [
+    "ordem do STF",
+    "fuga política",
+    "avião privado"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender como o senador Flávio Bolsonaro escapou do Brasil após a eleição",
+    "search_query": "Flávio Bolsonaro fuga para Miami 28 de outubro 2026",
+    "recommendation_angle": "Análise das implicações jurídicas da fuga do senador contra ordem do STF",
+    "first_payoff": "Flávio Bolsonaro chega a Miami, nos Estados Unidos, após passar por Argentina e Equador",
+    "promise_proof": "Recortes de fontes independentes confirmam a rota e o descumprimento da ordem judicial",
+    "audience_hypothesis": "Eleitores e investidores preocupados com instabilidade política e seus efeitos econômicos",
+    "thumbnail_complement": "Imagem do senador ao desembarcar no aeroporto de Opa-Locka",
+    "verification_limits": "Confirmação baseada em três veículos independentes; documentos de voo e registros migratórios ainda não públicos"
+  },
+  "publication_description": "Flávio Bolsonaro chega a Miami em voo privado, violando ordem do STF que proibia sua saída do país. A reportagem traz detalhes da rota, do avião utilizado e das possíveis consequências jurídicas.",
+  "publication_target_local": "2026-10-28T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
