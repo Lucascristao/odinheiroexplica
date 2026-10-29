@@ -1,0 +1,227 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-29-noite",
+  "news_date": "2026-10-29",
+  "event_date": "2026-10-29",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-29T20:30:15.363520-03:00",
+  "news_selection": {
+    "topic_area": "business",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Petrobras confirmou a terceira descoberta de petróleo em águas ultraprofundas no poço Morpho, bloco FZA-M-59, na costa do Amapá, com lâmina d’água de 2.886 metros.",
+    "why_today": "A descoberta ocorre em um momento de pressão sobre a dívida pública e de busca por novas reservas que podem melhorar a balança comercial brasileira.",
+    "opening_anchor": "Petrobras confirmou, nesta quinta-feira, 29 de outubro de 2026, a terceira descoberta de petróleo em águas ultraprofundas da margem equatorial brasileira, no",
+    "candidate_review": []
+  },
+  "title": "Petrobras anuncia terceira descoberta de petróleo em águas ultraprofundas no Amapá",
+  "title_options": [
+    {
+      "text": "Petrobras anuncia terceira descoberta de petróleo em águas ultraprofundas no Amapá",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Terceira descoberta de petróleo da Petrobras em águas ultraprofundas na margem equatorial",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Poço Morpho revela nova jazida de petróleo a 2.886 metros de profundidade",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Terceira descoberta no Amapá",
+  "thumbnail_primary": "Roberto em frente a mapa da margem equatorial",
+  "thumbnail_tension": "Impacto econômico da nova jazida em meio à dívida pública alta",
+  "thumbnail_composition": "Roberto à esquerda, mapa ao fundo à direita",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes, relevância econômica e estratégica",
+    "criteria": {
+      "veracity": "high",
+      "relevance": "high",
+      "newsworthiness": "high"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/petrobras-petr4-confirma-terceira-descoberta-de-petroleo-em-aguas-ultraprofundas-do-amapa-bdap/",
+      "published_at": "2026-10-29",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "BMC News (Agência Brasil)",
+      "url": "https://bmcnews.com.br/economia/petrobras-anuncia-3a-descoberta-de-petroleo-em-poco-na-foz-do-amazonas/",
+      "published_at": "2026-10-29",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Petrobras confirmou a terceira descoberta de petróleo em águas ultraprofundas no poço Morpho, bloco FZA-M-59, na costa do Amapá, com lâmina d’água de 2.886 metros.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-29"
+    },
+    {
+      "claim": "O poço Morpho está localizado na Margem Equatorial entre Amapá e Rio Grande do Norte.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-29"
+    },
+    {
+      "claim": "A Petrobras já havia anunciado duas descobertas anteriores no mesmo bloco em agosto e outubro de 2026.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-10-29"
+    },
+    {
+      "claim": "O próximo passo será o abandono do poço e deslocamento da sonda para a Bacia Potiguar.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-29"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "empresas petrobras (petr4) confirma terceira descoberta de petróleo em",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/petrobras-petr4-confirma-terceira-descoberta-de-petroleo-em-aguas-ultraprofundas-do-amapa-bdap/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "A Petrobras anunciou nesta quinta-feira (29) a terceira descoberta de petróleo no poço Morpho, no bloco FZA-M-59, localizado em águas ultraprofundas na costa do estado do Amapá, na Foz do Amazonas, em lâmina d’água de 2.886 metros.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bmcnews.com.br/economia/petrobras-anuncia-3a-descoberta-de-petroleo-em-poco-na-foz-do-amazonas/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "BMC News (Agência Brasil)"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo confirmado",
+      "type": "fact",
+      "label": "new_discovery",
+      "headline": "Petrobras confirma terceira jazida ultraprofundas",
+      "metric": "data",
+      "object_type": "factory",
+      "visual_cards": [
+        "Mapa da margem equatorial",
+        "Imagem do poço Morpho",
+        "Gráfico de profundidade"
+      ],
+      "narration": "Petrobras confirmou, nesta quinta-feira, 29 de outubro de 2026, a terceira descoberta de petróleo em águas ultraprofundas da margem equatorial brasileira, no poço Morpho, bloco FZA-M-59, localizado na costa do Amapá (Foz do Amazonas). Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que isso significa para a economia nacional.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes da descoberta",
+      "type": "fact",
+      "label": "detail",
+      "headline": "Profundidade e localização exatas",
+      "metric": "data",
+      "object_type": "factory",
+      "visual_cards": [
+        "Foto da sonda offshore",
+        "Mapa de profundidade",
+        "Tabela de reservas estimadas"
+      ],
+      "narration": "A descoberta ocorreu em uma lâmina d’água de 2.886 metros, na costa do Amapá, dentro da Margem Equatorial, região que tem atraído investimentos internacionais devido ao seu potencial de reservas. O próximo passo será o abandono do poço e o deslocamento da sonda para a Bacia Potiguar.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do analista",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Impacto econômico da nova jazida",
+      "metric": "opinion",
+      "object_type": "factory",
+      "visual_cards": [
+        "Gráfico de dívida pública",
+        "Projeção de receitas de petróleo",
+        "Ícone de investimento"
+      ],
+      "narration": "Na minha análise, a terceira descoberta reforça a estratégia de longo prazo da Petrobras de recompor reservas e pode melhorar a balança comercial, mas o efeito imediato será limitado até que estudos de viabilidade e infraestrutura sejam concluídos.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e chamada",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Próximos passos e convite",
+      "metric": "engagement",
+      "object_type": "factory",
+      "visual_cards": [
+        "Logo do canal",
+        "Botão de inscrição",
+        "Seta apontando para notificação"
+      ],
+      "narration": "Em resumo, a terceira descoberta no poço Morpho amplia o potencial de reservas brasileiras, mas ainda depende de avaliações técnicas. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que essa nova jazida pode influenciar a política energética do Brasil?",
+  "hashtags": [
+    "#Petrobras",
+    "#DescobertaDePetróleo",
+    "#Energia"
+  ],
+  "tags": [
+    "Petrobras",
+    "Poço Morpho",
+    "FZA-M-59",
+    "Amapá",
+    "Margem Equatorial",
+    "Reservas de petróleo",
+    "Economia brasileira",
+    "Investimento offshore",
+    "Energia",
+    "Bacia Potiguar"
+  ],
+  "primary_keyword": "descoberta de petróleo",
+  "secondary_keywords": [
+    "poço Morpho",
+    "bloco FZA-M-59",
+    "águas ultraprofundas"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender a importância da nova descoberta de petróleo para a economia brasileira",
+    "search_query": "Petrobras terceira descoberta poço Morpho 2026",
+    "recommendation_angle": "Apresentar dados técnicos e implicações econômicas de forma clara",
+    "first_payoff": "Petrobras confirmou, nesta quinta-feira, 29 de outubro de 2026, a terceira descoberta de petróleo em águas ultraprofundas da margem equatorial brasileira, no poço Morpho, bloco FZA-M-59, localizado na costa do Amapá (Foz do Amazonas).",
+    "promise_proof": "Trechos literais de duas fontes independentes confirmam a descoberta e a profundidade de 2.886 metros",
+    "audience_hypothesis": "Investidores e público interessado em energia buscarão entender impactos financeiros",
+    "thumbnail_complement": "Imagem da sonda offshore ao fundo",
+    "verification_limits": "Baseado apenas em fontes publicadas no mesmo dia, sem acesso a documentos internos da Petrobras"
+  },
+  "publication_description": "Descoberta de petróleo: Petrobras anuncia terceira jazida ultraprofundas no Amapá, detalhando profundidade e próximos passos operacionais.",
+  "publication_target_local": "2026-10-29T20:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
