@@ -1,0 +1,245 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-29-meio-dia",
+  "news_date": "2026-10-29",
+  "event_date": "2026-10-29",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-29T15:42:03.730560-03:00",
+  "news_selection": {
+    "topic_area": "international",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Trump afirmou que não tomou partido nas eleições presidenciais do Brasil a pedido do presidente Lula",
+    "why_today": "A declaração de Donald Trump, feita em 29 de outubro de 2026, trouxe um novo elemento ao cenário político brasileiro ao afirmar que o presidente Lula lhe pediu neutralidade nas eleições, gerando repercussão diplomática e de risco-político imediatamente após o pleito.",
+    "opening_anchor": "não tomei partido nas eleições presidenciais do Brasil a pedido do presidente Lula (PT)",
+    "candidate_review": [
+      {
+        "subject": "Donald Trump",
+        "topic_area": "international",
+        "event_date": "2026-10-29",
+        "urls": [
+          "https://jovempan.com.br/mundo/trump-diz-que-nao-tomou-partido-na-eleicao-do-brasil-porque-lula-pediu/",
+          "https://revistaoeste.com/mundo/trump-chama-eleicao-no-brasil-de-desgraca-e-diz-que-vai-conversar-com-lula/",
+          "https://bmcnews.com.br/politica/trump-diz-que-lula-pediu-que-ele-nao-tomasse-partido-na-eleicao-brasileira/"
+        ],
+        "decision": "statement"
+      }
+    ]
+  },
+  "title": "Trump declara que Lula lhe pediu neutralidade nas eleições brasileiras",
+  "title_options": [
+    {
+      "text": "Trump declara que Lula lhe pediu neutralidade nas eleições brasileiras",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Ex-presidente dos EUA afirma que não apoiou nenhum candidato no Brasil a pedido de Lula",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Donald Trump chama eleição no Brasil de ‘desgraça’ e revela pedido de Lula para ficar neutro",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Trump e Lula em declaração",
+  "thumbnail_primary": "Donald Trump em entrevista",
+  "thumbnail_tension": "Tensão diplomática entre EUA e Brasil",
+  "thumbnail_composition": "Close-up de Trump à esquerda, Lula fora de foco à direita",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato novo corroborado por três veículos independentes, relevância internacional e impacto econômico",
+    "criteria": {
+      "veracity": "high",
+      "newsworthiness": "high",
+      "balance": "maintained",
+      "originality": "unique"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/mundo/trump-diz-que-nao-tomou-partido-na-eleicao-do-brasil-porque-lula-pediu/",
+      "published_at": "2026-10-29",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "Revista Oeste",
+      "url": "https://revistaoeste.com/mundo/trump-chama-eleicao-no-brasil-de-desgraca-e-diz-que-vai-conversar-com-lula/",
+      "published_at": "2026-10-29",
+      "role": "reporting"
+    },
+    {
+      "id": "S3",
+      "publisher": "BMC News",
+      "url": "https://bmcnews.com.br/politica/trump-diz-que-lula-pediu-que-ele-nao-tomasse-partido-na-eleicao-brasileira/",
+      "published_at": "2026-10-29",
+      "role": "analysis"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Trump afirmou que não tomou partido nas eleições presidenciais do Brasil a pedido do presidente Lula",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-29"
+    },
+    {
+      "claim": "Trump qualificou a eleição brasileira como ‘vergonha’",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-29"
+    },
+    {
+      "claim": "Trump chamou a eleição de ‘desgraça’",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-29"
+    },
+    {
+      "claim": "BMC News analisou que a fala coloca o governo brasileiro no centro de discussão sensível",
+      "source_ids": [
+        "S3"
+      ],
+      "status": "background",
+      "event_date": "2026-10-29"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "mundo trump diz que não tomou partido na eleição do brasil porque lula",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/mundo/trump-diz-que-nao-tomou-partido-na-eleicao-do-brasil-porque-lula-pediu/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "mundo trump chama eleição no brasil de 'desgraça' e diz que vai conver",
+      "kind": "source_excerpt",
+      "source_page_url": "https://revistaoeste.com/mundo/trump-chama-eleicao-no-brasil-de-desgraca-e-diz-que-vai-conversar-com-lula/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Revista Oeste"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo: Trump e a neutralidade nas eleições brasileiras",
+      "type": "fact",
+      "label": "opening",
+      "headline": "Trump declara que não apoiou nenhum candidato a pedido de Lula",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Trump em entrevista ao vivo",
+        "Lula em reunião diplomática",
+        "Mapa das eleições brasileiras"
+      ],
+      "narration": "não tomei partido nas eleições presidenciais do Brasil a pedido do presidente Lula (PT). Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que essa declaração significa para a política e os mercados.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Repercussão e análise de risco",
+      "type": "fact",
+      "label": "analysis",
+      "headline": "Especialistas apontam risco político ao mercado",
+      "metric": "analysis",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de fluxo de investimento estrangeiro",
+        "Cotações da Petrobras",
+        "Indicadores de risco país"
+      ],
+      "narration": "BMC News destaca que a fala coloca o governo brasileiro no centro de uma discussão sensível, podendo influenciar a percepção de risco dos investidores internacionais.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do apresentador",
+      "type": "opinion",
+      "label": "editorial",
+      "headline": "Na minha análise, a declaração tem peso simbólico",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Roberto em estúdio",
+        "Tela com manchete da entrevista",
+        "Seta indicando impacto econômico"
+      ],
+      "narration": "Na minha análise, a declaração de Trump serve mais como um gesto simbólico de apoio ao presidente Lula do que como uma interferência real, mas pode ser usada por opositores para alimentar narrativas de ingerência externa.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e chamada à ação",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Desdobramentos e convite para seguir o canal",
+      "metric": "conclusion",
+      "object_type": "data",
+      "visual_cards": [
+        "Logotipo do O Dinheiro Explica",
+        "Botão de inscrição",
+        "Resumo dos pontos principais"
+      ],
+      "narration": "Em resumo, a fala de Trump traz atenção internacional ao processo eleitoral brasileiro e pode gerar volatilidade nos mercados, mas ainda carece de consequências concretas. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que a declaração de Trump pode influenciar os investimentos estrangeiros no Brasil?",
+  "hashtags": [
+    "#TrumpNoBrasil",
+    "#RiscoPolítico"
+  ],
+  "tags": [
+    "Donald Trump",
+    "Lula",
+    "eleições 2026",
+    "diplomacia",
+    "mercado financeiro",
+    "investimento estrangeiro",
+    "Brasil",
+    "Estados Unidos"
+  ],
+  "primary_keyword": "Trump declara neutralidade nas eleições brasileiras",
+  "secondary_keywords": [
+    "Lula pedido",
+    "risco político",
+    "mercado brasileiro"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender o impacto da declaração de Trump nas eleições brasileiras e nos mercados",
+    "search_query": "Trump neutralidade eleições Brasil Lula 2026 declaração",
+    "recommendation_angle": "Análise de risco político e econômico a partir de uma fala inesperada de ex-presidente dos EUA",
+    "first_payoff": "não tomei partido nas eleições presidenciais do Brasil a pedido do presidente Lula (PT)",
+    "promise_proof": "Três veículos independentes confirmam a mesma fala de Trump no mesmo dia",
+    "audience_hypothesis": "Investidores e cidadãos interessados em política internacional buscam entender possíveis repercussões",
+    "thumbnail_complement": "Imagem de Trump ao microfone ao lado de símbolo da bandeira brasileira",
+    "verification_limits": "A verificação depende de trechos textuais publicados em sites de notícias acessíveis publicamente"
+  },
+  "publication_description": "Trump declara que não tomou partido nas eleições brasileiras a pedido de Lula, gerando debate sobre interferência externa e risco político para investidores.\n\nContexto: Trump declara neutralidade nas eleições brasileiras",
+  "publication_target_local": "2026-10-29T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
