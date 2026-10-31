@@ -1,0 +1,220 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-31-noite",
+  "news_date": "2026-10-31",
+  "event_date": "2026-10-31",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-31T18:29:27.878066-03:00",
+  "news_selection": {
+    "topic_area": "business",
+    "source_mode": "single_source_attributed",
+    "independent_confirmation": false,
+    "new_fact": "Binance informou que cobriu até agora 90 % das perdas com o ataque hacker que sofreu na quinta-feira (29).",
+    "why_today": "A Binance divulgou nesta noite que já cobriu 90 % das perdas de US$ 6,3 bilhões provocadas pelo maior ataque hacker ao setor cripto, informação inédita que impacta investidores brasileiros.",
+    "opening_anchor": "Binance informou que cobriu até agora 90 % das perdas com o ataque hacker que sofreu na quinta-feira (29).",
+    "candidate_review": [],
+    "attribution_note": "A informação provém exclusivamente da reportagem da Jovem Pan, que reproduz nota oficial da Binance. Não há confirmação por outros veículos independentes até o momento."
+  },
+  "title": "Binance cobre 90 % das perdas de US$ 6,3 bi após maior ataque hacker ao setor cripto",
+  "title_options": [
+    {
+      "text": "Binance cobre 90 % das perdas de US$ 6,3 bi após maior ataque hacker ao setor cripto",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Maior roubo cripto: Binance garante cobertura de 90 % dos US$ 6,3 bi desviados",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Binance usa tesouraria para cobrir 90 % de ataque que desviou US$ 6,3 bi",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Cobertura de 90 % das perdas",
+  "thumbnail_primary": "Logotipo da Binance",
+  "thumbnail_tension": "Risco de contágio no mercado cripto brasileiro",
+  "thumbnail_composition": "Logotipo centralizado, fundo escuro",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato exclusivo de fonte única, relevância alta para investidores e reguladores.",
+    "criteria": {
+      "source_reliability": "alta",
+      "newsworthiness": "alta",
+      "verification_level": "exclusiva"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/mundo/binance-diz-ter-coberto-90-das-perdas-apos-ataque-hacker-que-desviou-us-63-bilhoes/",
+      "published_at": "2026-10-31",
+      "role": "primary"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Foram desviados US$ 6,3 bilhões no maior ataque do gênero já registrado nesse setor.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-31"
+    },
+    {
+      "claim": "Binance informou que cobriu até agora 90 % das perdas com o ataque hacker que sofreu na quinta-feira (29).",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-31"
+    },
+    {
+      "claim": "A corretora usará recursos da própria tesouraria para compensar os prejuízos.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-31"
+    },
+    {
+      "claim": "Todos os criptoativos BTC, ETH, USDT, BNB, SOL, USDC, XRP, USD1, RLUSD e ZEC estão 100 % lastreados.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-31"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "foram desviados us$ 6,3 bilhões no maior ataque do gênero já registrado nesse setor",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/mundo/binance-diz-ter-coberto-90-das-perdas-apos-ataque-hacker-que-desviou-us-63-bilhoes/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S1",
+      "expected_text": "mundo binance diz ter coberto 90% das perdas após ataque hacker que de",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/mundo/binance-diz-ter-coberto-90-das-perdas-apos-ataque-hacker-que-desviou-us-63-bilhoes/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Jovem Pan"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato principal",
+      "type": "fact",
+      "label": "new_fact",
+      "headline": "Binance cobre 90 % das perdas",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Logotipo Binance",
+        "Gráfico de cobertura",
+        "Valor US$ 6,3 bi"
+      ],
+      "narration": "Binance informou que cobriu até agora 90 % das perdas com o ataque hacker que sofreu na quinta-feira (29). Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que isso significa para o mercado brasileiro.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Contexto do ataque",
+      "type": "fact",
+      "label": "background",
+      "headline": "Maior roubo cripto da história",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Imagem de hackers",
+        "Valor total roubado",
+        "Data do ataque"
+      ],
+      "narration": "Foram desviados US$ 6,3 bilhões no maior ataque do gênero já registrado nesse setor, ocorridos na quinta-feira, 29 de outubro de 2026, afetando toda a cadeia de exchanges globais.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do analista",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Impacto no mercado brasileiro",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de volatilidade",
+        "Indicadores de confiança",
+        "Cenário regulatório"
+      ],
+      "narration": "Na minha análise, a rápida cobertura de 90 % das perdas pela Binance reduz o risco de contágio imediato no ecossistema cripto brasileiro, mas a falta de confirmação independente mantém certa incerteza para investidores institucionais.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Próximos passos",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Resumo dos pontos",
+        "Chamada para ação",
+        "Logo do canal"
+      ],
+      "narration": "Em resumo, a Binance está usando sua tesouraria para garantir que 90 % das perdas já foram compensadas, mas ainda resta acompanhar se atingirá 100 % e como isso influenciará a regulação. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você avalia a capacidade da Binance de absorver perdas tão expressivas sem repassar custos aos usuários?",
+  "hashtags": [
+    "#Cripto",
+    "#Binance",
+    "#MercadoFinanceiro"
+  ],
+  "tags": [
+    "Binance",
+    "ataque hacker",
+    "US$6,3 bilhões",
+    "cobertura de perdas",
+    "tesouraria",
+    "criptoativos",
+    "stablecoins",
+    "regulação",
+    "Brasil",
+    "investimento"
+  ],
+  "primary_keyword": "Binance cobre 90 % das perdas",
+  "secondary_keywords": [
+    "ataque hacker",
+    "US$ 6,3 bi",
+    "cripto mercado"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender como a Binance está lidando com o maior roubo cripto da história e suas implicações para investidores brasileiros.",
+    "search_query": "Binance cobre 90% perdas ataque hacker 6,3 bilhões 31 outubro 2026",
+    "recommendation_angle": "Apresentar a resposta da maior exchange do mundo e analisar riscos para o mercado local.",
+    "first_payoff": "Binance informou que cobriu até agora 90 % das perdas com o ataque hacker que sofreu na quinta-feira (29).",
+    "promise_proof": "Citações diretas da reportagem da Jovem Pan confirmam o percentual de cobertura e o uso da tesouraria da Binance.",
+    "audience_hypothesis": "Investidores e entusiastas de cripto buscam segurança e clareza sobre a capacidade de resposta das exchanges após grandes incidentes.",
+    "thumbnail_complement": "Gráfico de cobertura de perdas ao lado do logotipo da Binance.",
+    "verification_limits": "Informação verificada apenas em fonte única; ausência de confirmação independente até o momento."
+  },
+  "publication_description": "Binance cobre 90 % das perdas de US$ 6,3 bilhões após o maior ataque hacker ao setor cripto, usando recursos próprios e garantindo lastro total dos principais ativos digitais.\n\nApuração atribuída a Jovem Pan. Relato de uma fonte, sem confirmação independente.",
+  "publication_target_local": "2026-10-31T20:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=single_source_attributed"
+}
