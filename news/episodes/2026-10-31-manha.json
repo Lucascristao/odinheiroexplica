@@ -1,0 +1,237 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-10-31-manha",
+  "news_date": "2026-10-31",
+  "event_date": "2026-10-31",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-10-31T11:49:58.813102-03:00",
+  "news_selection": {
+    "topic_area": "business",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "O site oficial do Sport Club Corinthians Paulista foi alvo de um ataque cibernético que exibiu uma nota falsa anunciando a contratação de Lionel Messi.",
+    "why_today": "O ataque ao site do Corinthians ocorreu na madrugada de 31 de outubro de 2026, gerando risco reputacional e destacando vulnerabilidades de cibersegurança em grandes organizações esportivas.",
+    "opening_anchor": "Na madrugada deste sábado (31), o site oficial do Corinthians foi alvo de ataque hacker.",
+    "candidate_review": [
+      {
+        "subject": "Sport Club Corinthians Paulista",
+        "topic_area": "business",
+        "event_date": "2026-10-31",
+        "urls": [
+          "https://jovempan.com.br/esportes/futebol/site-do-corinthians-e-alvo-de-ataque-hacker-e-anuncia-a-contratacao-de-lionel-messi/",
+          "https://www.poder360.com.br/poder-sportsmkt/site-do-corinthians-e-hackeado-e-anuncia-a-contratacao-de-messi/"
+        ],
+        "decision": "confirmado"
+      }
+    ]
+  },
+  "title": "Corinthians sofre ataque hacker que anuncia contratação falsa de Messi",
+  "title_options": [
+    {
+      "text": "Corinthians sofre ataque hacker que anuncia contratação falsa de Messi",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Site do Corinthians é hackeado e divulga nota falsa sobre Messi",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Ataque cibernético ao Corinthians gera notícia falsa de Messi",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Hack ao site do Corinthians",
+  "thumbnail_primary": "Logo do Corinthians com alerta de segurança",
+  "thumbnail_tension": "Risco de desinformação e prejuízo reputacional",
+  "thumbnail_composition": "Logo centralizado, alerta ao fundo",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "verificação cruzada de fontes independentes",
+    "reason": "Duas fontes reconhecidas confirmam o ataque e o conteúdo falsificado",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto": "moderado"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/esportes/futebol/site-do-corinthians-e-alvo-de-ataque-hacker-e-anuncia-a-contratacao-de-lionel-messi/",
+      "published_at": "2026-10-31",
+      "role": "reportagem"
+    },
+    {
+      "id": "S2",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-sportsmkt/site-do-corinthians-e-hackeado-e-anuncia-a-contratacao-de-messi/",
+      "published_at": "2026-10-31",
+      "role": "reportagem"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O site oficial do Sport Club Corinthians Paulista foi alvo de um ataque cibernético que exibiu uma nota falsa anunciando a contratação de Lionel Messi.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-31"
+    },
+    {
+      "claim": "O ataque foi identificado e neutralizado pela equipe de TI do clube, que recolocou o site em modo manutenção.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-31"
+    },
+    {
+      "claim": "Não foram constatados prejuízos financeiros nem comprometimento de dados.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-31"
+    },
+    {
+      "claim": "O ataque ocorreu na madrugada de sábado, 31 de outubro de 2026.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-10-31"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "Na madrugada deste sábado (31), o site oficial do Corinthians foi alvo de ataque hacker.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/esportes/futebol/site-do-corinthians-e-alvo-de-ataque-hacker-e-anuncia-a-contratacao-de-lionel-messi/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "2026) um ataque cibernético em seu site oficial, que parou de funciona",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-sportsmkt/site-do-corinthians-e-hackeado-e-anuncia-a-contratacao-de-messi/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Poder360"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato inicial",
+      "type": "fact",
+      "label": "intro",
+      "headline": "Corinthians sofre ataque hacker",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Logo do Corinthians com alerta",
+        "Captura de tela do site em manutenção",
+        "Mensagem de ataque exibida"
+      ],
+      "narration": "Na madrugada deste sábado (31), o site oficial do Corinthians foi alvo de ataque hacker. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que aconteceu, os riscos envolvidos e como o clube reagiu.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Reação do clube",
+      "type": "fact",
+      "label": "response",
+      "headline": "Corinthians neutraliza ataque",
+      "metric": "response",
+      "object_type": "data",
+      "visual_cards": [
+        "Equipe de TI trabalhando",
+        "Site em modo manutenção",
+        "Comunicado oficial do clube"
+      ],
+      "narration": "O clube informou que a invasão foi rapidamente neutralizada pela equipe de Tecnologia da Informação, recolocando o site em modo manutenção e garantindo que não houve prejuízos financeiros nem vazamento de dados de torcedores.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de risco",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Impacto reputacional e cibersegurança",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de ataques a clubes",
+        "Exemplo de fake news esportiva",
+        "Checklist de segurança digital"
+      ],
+      "narration": "Na minha análise, o incidente evidencia vulnerabilidades críticas em infraestruturas digitais de grandes organizações esportivas, podendo gerar confusão entre torcedores e afetar patrocinadores. Investimentos em cibersegurança são essenciais para prevenir danos reputacionais e financeiros.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Lições e próximos passos",
+      "metric": "conclusion",
+      "object_type": "data",
+      "visual_cards": [
+        "Resumo das medidas adotadas",
+        "Recomendações de segurança",
+        "Chamada para ação"
+      ],
+      "narration": "Em conclusão, o ataque ao site do Corinthians demonstra a necessidade de reforçar a segurança digital em clubes de futebol. O monitoramento constante e a comunicação transparente são fundamentais para preservar a credibilidade institucional. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que clubes esportivos podem melhorar sua segurança cibernética?",
+  "hashtags": [
+    "#cibersegurança",
+    "#Corinthians",
+    "#Messi"
+  ],
+  "tags": [
+    "corinthians",
+    "ataque hacker",
+    "cibersegurança",
+    "futebol",
+    "notícia falsa",
+    "Lionel Messi",
+    "tecnologia da informação"
+  ],
+  "primary_keyword": "ataque hacker Corinthians",
+  "secondary_keywords": [
+    "cibersegurança esportiva",
+    "notícia falsa Messi"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender o impacto de ataques cibernéticos em grandes clubes esportivos e suas consequências reputacionais.",
+    "search_query": "ataque hacker site Corinthians 31 outubro 2026 Messi contratação falsa",
+    "recommendation_angle": "Análise de risco e lições de cibersegurança para organizações de grande visibilidade.",
+    "first_payoff": "Na madrugada deste sábado (31), o site oficial do Corinthians foi alvo de ataque hacker.",
+    "promise_proof": "Duas fontes independentes confirmam o ataque e o conteúdo falsificado, com trechos literais apresentados.",
+    "audience_hypothesis": "Torcedores e investidores buscam entender como incidentes digitais podem afetar clubes e patrocinadores.",
+    "thumbnail_complement": "Alerta de segurança ao lado do logo do clube.",
+    "verification_limits": "A verificação depende de fontes públicas e não inclui dados internos do clube."
+  },
+  "publication_description": "Ataque hacker ao site do Corinthians gera notícia falsa de contratação de Messi e destaca vulnerabilidades de cibersegurança em grandes clubes esportivos.\n\nContexto: ataque hacker Corinthians",
+  "publication_target_local": "2026-10-31T08:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
