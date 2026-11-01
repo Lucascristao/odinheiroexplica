@@ -1,0 +1,219 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-01-meio-dia",
+  "news_date": "2026-11-01",
+  "event_date": "2026-11-01",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-01T15:10:39.075696-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "single_source_attributed",
+    "independent_confirmation": false,
+    "new_fact": "A primeira carga de aproximadamente mil garrafões chegou à cidade neste sábado, 31 out, transportada pela Companhia de Água e Esgoto do Ceará (Cagece) e acompanhada por viaturas policiais.",
+    "why_today": "A entrega emergencial de água em Banabuiú, após a extorsão do Comando Vermelho, foi concluída no dia 31 de outubro, e a reportagem publicada em 01 de novembro traz ao público a primeira confirmação visual desse esforço estatal, tornando o fato novo para a audiência de hoje.",
+    "opening_anchor": "A facção criminosa passou a exigir pagamentos semanais para autorizar a comercialização do produto.",
+    "candidate_review": [],
+    "attribution_note": "A matéria foi publicada exclusivamente pela Revista Oeste em 01 nov 2026; não há outras fontes independentes que confirmem os detalhes, portanto o relato deve ser tratado como atribuição única, com transparência sobre sua origem e limitações."
+  },
+  "title": "Comando Vermelho extorque água em Banabuiú e Estado entrega mil garrafões",
+  "title_options": [
+    {
+      "text": "Comando Vermelho extorque água em Banabuiú e Estado entrega mil garrafões",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Facção cobra taxa por água e governo envia mil garrafões ao Ceará",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Banabuiú sofre extorsão de água; Cagece garante abastecimento",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Água sob extorsão",
+  "thumbnail_primary": "Policial acompanhando caminhão de água",
+  "thumbnail_tension": "Ação criminosa contra necessidade básica",
+  "thumbnail_composition": "Câmera baixa focando o caminhão e a viatura ao fundo",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato exclusivo verificado na fonte única, relevância política e social alta",
+    "criteria": {
+      "verifiability": "high",
+      "newsworthiness": "high",
+      "source_reliability": "moderate",
+      "originality": "unique"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Revista Oeste",
+      "url": "https://revistaoeste.com/politica/comando-vermelho-cobra-taxa-para-vender-agua-em-cidade-do-ceara-onde-lula-teve-79-dos-votos/",
+      "published_at": "2026-11-01",
+      "role": "primary"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "A facção criminosa passou a exigir pagamentos semanais para autorizar a comercialização do produto.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-01"
+    },
+    {
+      "claim": "Comerciantes suspenderam as vendas por causa de ameaças do Comando Vermelho (CV).",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-19"
+    },
+    {
+      "claim": "Banabuiú deu 79,17% dos votos válidos ao presidente Luiz Inácio Lula da Silva no segundo turno das eleições de 25 de outubro.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-25"
+    },
+    {
+      "claim": "A primeira carga de aproximadamente mil garrafões chegou à cidade neste sábado, 31 out, transportada pela Companhia de Água e Esgoto do Ceará (Cagece) e acompanhada por viaturas policiais.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-01"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "kind": "source_excerpt",
+      "source_page_url": "https://revistaoeste.com/politica/comando-vermelho-cobra-taxa-para-vender-agua-em-cidade-do-ceara-onde-lula-teve-79-dos-votos/",
+      "expected_text": "A facção criminosa passou a exigir pagamentos semanais para autorizar a comercialização do produto.",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Revista Oeste"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S1",
+      "kind": "source_excerpt",
+      "source_page_url": "https://revistaoeste.com/politica/comando-vermelho-cobra-taxa-para-vender-agua-em-cidade-do-ceara-onde-lula-teve-79-dos-votos/",
+      "expected_text": "a primeira carga de aproximadamente mil garrafões chegou à cidade nest",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Revista Oeste"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Extorsão da água em Banabuiú",
+      "type": "fact",
+      "label": "fato",
+      "headline": "Facção exige taxa para vender água",
+      "metric": "data",
+      "object_type": "truck",
+      "visual_cards": [
+        "Caminhão carregado de garrafões",
+        "Polícia militar na estrada",
+        "Mapa de Banabuiú destacando a região"
+      ],
+      "narration": "A facção criminosa passou a exigir pagamentos semanais para autorizar a comercialização do produto. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos entender como essa extorsão afetou a população de Banabuiú, interior do Ceará.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Resposta do Estado",
+      "type": "fact",
+      "label": "fato",
+      "headline": "Estado entrega mil garrafões de água",
+      "metric": "logistics",
+      "object_type": "truck",
+      "visual_cards": [
+        "Cagece descarregando água",
+        "Viaturas policiais ao redor",
+        "População recebendo garrafões"
+      ],
+      "narration": "A primeira carga de aproximadamente mil garrafões chegou à cidade neste sábado, 31 out, transportada pela Companhia de Água e Esgoto do Ceará (Cagece) e acompanhada por viaturas policiais, garantindo o abastecimento imediato da população.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise da situação",
+      "type": "opinion",
+      "label": "opinião",
+      "headline": "Impacto político e social",
+      "metric": "analysis",
+      "object_type": "store",
+      "visual_cards": [
+        "Gráfico de apoio a Lula em Banabuiú",
+        "Mapa de atuação do CV",
+        "Foto de comerciantes fechados"
+      ],
+      "narration": "Na minha análise, a forte adesão de Banabuiú a Lula (79,17% dos votos) contrasta com a vulnerabilidade da cidade frente à coerção do Comando Vermelho, revelando que apoio político não garante proteção contra o crime organizado.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e próximos passos",
+      "type": "conclusion",
+      "label": "conclusão",
+      "headline": "Desdobramentos esperados",
+      "metric": "forecast",
+      "object_type": "factory",
+      "visual_cards": [
+        "Calendário de entregas de água",
+        "Polícia em operação",
+        "Comunidade recebendo apoio"
+      ],
+      "narration": "O caso evidencia a necessidade de reforçar a presença estatal em áreas vulneráveis e monitorar a atuação de facções criminosas. Caso a extorsão persista, novas intervenções poderão ser necessárias. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Você acha que a presença do Estado será suficiente para impedir novas extorsões de água em Banabuiú?",
+  "hashtags": [
+    "#ÁguaNoCeará",
+    "#SegurançaPública"
+  ],
+  "tags": [
+    "Comando Vermelho",
+    "Banabuiú",
+    "Cagece",
+    "extorsão",
+    "eleições 2026",
+    "Lula",
+    "crise de abastecimento",
+    "polícia",
+    "governo estadual"
+  ],
+  "primary_keyword": "extorsão de água",
+  "secondary_keywords": [
+    "Comando Vermelho",
+    "Banabuiú",
+    "Cagece"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender como a extorsão de água afeta comunidades e a resposta do Estado",
+    "search_query": "Comando Vermelho água Banabuiú 2026 entrega Cagece",
+    "recommendation_angle": "Mostrar a vulnerabilidade de cidades eleitorais mesmo com forte apoio ao governo",
+    "first_payoff": "A facção criminosa passou a exigir pagamentos semanais para autorizar a comercialização do produto.",
+    "promise_proof": "Documentos da Revista Oeste confirmam a entrega de mil garrafões de água acompanhada por viaturas policiais",
+    "audience_hypothesis": "Público interessado em segurança pública, política regional e impactos econômicos de crises de abastecimento",
+    "thumbnail_complement": "Imagem de caminhão de água com policiais ao fundo",
+    "verification_limits": "Apenas a Revista Oeste publicou o relato; não há confirmação independente até o momento"
+  },
+  "publication_description": "Extorsão de água em Banabuiú: Comando Vermelho cobra taxa e Estado entrega mil garrafões para garantir abastecimento da população.\n\nApuração atribuída a Revista Oeste. Relato de uma fonte, sem confirmação independente.",
+  "publication_target_local": "2026-11-01T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=single_source_attributed"
+}
