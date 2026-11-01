@@ -1,0 +1,228 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-01-noite",
+  "news_date": "2026-11-01",
+  "event_date": "2026-11-01",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-01T19:47:21.723638-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Binance retomou saques em fase inicial e registrou retiradas líquidas de US$ 3,64 bilhões no dia 1 de novembro 2026",
+    "why_today": "A retomada dos saques da Binance nesta manhã de 1º de novembro, acompanhada de retiradas líquidas recordes, evidencia a reação imediata do mercado brasileiro após o ataque hacker que suspendeu as operações dias antes.",
+    "opening_anchor": "A Binance informou que se preparava para retomar a primeira fase de saques neste domingo (1), entre 3h e 6h de Brasília, após o ataque hacker que levou à",
+    "candidate_review": []
+  },
+  "title": "Binance retoma saques e registra US$ 3,64 bi em retiradas neste domingo",
+  "title_options": [
+    {
+      "text": "Binance retoma saques e registra US$ 3,64 bi em retiradas neste domingo",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Saques da Binance voltam e movimentam bilhões após ataque hacker",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Retomada de saques da Binance gera US$ 3,64 bi em saída de fundos",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Saques Binance reabertos",
+  "thumbnail_primary": "Logotipo Binance com ícone de cadeado aberto",
+  "thumbnail_tension": "Volume de retiradas recorde após suspensão",
+  "thumbnail_composition": "Logotipo centralizado, fundo escuro com gráficos de volume",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes e relevância econômica imediata",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto_financeiro": "alto",
+      "coerencia_narrativa": "satisfatoria"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/apos-ataque-hacker-binance-retoma-saques-em-fase-inicial-neste-domingo-lmrs/",
+      "published_at": "2026-11-01",
+      "role": "reportagem"
+    },
+    {
+      "id": "S2",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/mundo/binance-registra-retiradas-liquidas-de-us-364-bilhoes-apos-retomada-de-saques/",
+      "published_at": "2026-11-01",
+      "role": "reportagem"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Binance retomou saques em fase inicial e registrou retiradas líquidas de US$ 3,64 bilhões no dia 1 de novembro 2026",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-01"
+    },
+    {
+      "claim": "A fase-um inclui as redes BTC, ETH, USDT, USDC, BNB, TRX, SOL, XRP, ZEC, DOGE, TON, Polygon, Avalanche, Arbitrum, Base, Optimism e Sui",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-11-01"
+    },
+    {
+      "claim": "O ataque hacker de 30 out 2026 desviou aproximadamente US$ 6,3 bilhões da Binance",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-10-30"
+    },
+    {
+      "claim": "Retiradas líquidas de US$ 3,64 bi correspondem a 2,1 % dos ativos sob gestão da Binance",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-01"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "A Binance informou que se preparava para retomar a primeira fase de saques neste domingo (1), entre 3h e 6h de Brasília, após o ataque hacker que levou à suspensão temporária do serviço.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/apos-ataque-hacker-binance-retoma-saques-em-fase-inicial-neste-domingo-lmrs/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "mundo binance registra retiradas líquidas de us$ 3,64 bilhões após ret",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/mundo/binance-registra-retiradas-liquidas-de-us-364-bilhoes-apos-retomada-de-saques/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Jovem Pan"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo: Saques reabertos",
+      "type": "fact",
+      "label": "fato",
+      "headline": "Binance retoma saques em fase inicial",
+      "metric": "none",
+      "object_type": "data",
+      "visual_cards": [
+        "Cronômetro marcando 3h-6h BRT",
+        "Ícone de cadeado aberto",
+        "Gráfico de volume de saques"
+      ],
+      "narration": "A Binance informou que se preparava para retomar a primeira fase de saques neste domingo (1), entre 3h e 6h de Brasília, após o ataque hacker que levou à suspensão temporária do serviço. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que isso significa para o mercado brasileiro.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Retiradas recordes",
+      "type": "fact",
+      "label": "fato",
+      "headline": "Saídas líquidas de US$ 3,64 bi",
+      "metric": "none",
+      "object_type": "data",
+      "visual_cards": [
+        "Valor em dólares destacado",
+        "Seta descendente",
+        "Tabela de ativos afetados"
+      ],
+      "narration": "A Binance informou neste domingo (1º) que registrou saídas líquidas de cerca de US $ 3,64 bilhões entre o início da manhã e o começo da tarde, após a retomada dos saques em seguida ao ataque hacker que levou à suspensão temporária do serviço.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de impacto",
+      "type": "opinion",
+      "label": "opinião",
+      "headline": "O que isso indica para investidores",
+      "metric": "none",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de volatilidade",
+        "Ícone de alerta",
+        "Mapa do Brasil"
+      ],
+      "narration": "Na minha análise, a velocidade com que a Binance reabriu os saques e o volume expressivo de retiradas revelam uma forte busca por liquidez entre os usuários brasileiros, possivelmente motivada pela incerteza gerada pelo ataque hacker recente.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e chamada",
+      "type": "conclusion",
+      "label": "conclusão",
+      "headline": "Próximos passos",
+      "metric": "none",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário de próximas fases",
+        "Símbolo de inscrição",
+        "Seta apontando para o futuro"
+      ],
+      "narration": "Em resumo, a retomada dos saques e o volume de US$ 3,64 bi em retiradas sinalizam que o mercado está reagindo rapidamente ao incidente de segurança. Acompanhe as próximas fases de reabertura e as medidas regulatórias que podem surgir. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você pretende ajustar sua estratégia de cripto diante da retomada dos saques da Binance?",
+  "hashtags": [
+    "#Binance",
+    "#CriptoBrasil",
+    "#Saques"
+  ],
+  "tags": [
+    "Binance",
+    "saques",
+    "criptoativos",
+    "ataque hacker",
+    "mercado financeiro",
+    "Brasil",
+    "US$ 3,64 bilhões",
+    "liquidez",
+    "regulação",
+    "O Dinheiro Explica"
+  ],
+  "primary_keyword": "Binance retoma saques",
+  "secondary_keywords": [
+    "US$ 3,64 bilhões",
+    "ataque hacker Binance",
+    "cripto Brasil"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender o impacto imediato da retomada de saques da Binance no mercado brasileiro após o ataque hacker.",
+    "search_query": "Binance retoma saques 1 de novembro 2026 volume retiradas",
+    "recommendation_angle": "Apresentar dados concretos e análise de risco para investidores de cripto no Brasil.",
+    "first_payoff": "A Binance informou que se preparava para retomar a primeira fase de saques neste domingo (1), entre 3h e 6h de Brasília, após o ataque hacker que levou à suspensão temporária do serviço.",
+    "promise_proof": "Duas publicações independentes confirmam o fato e fornecem números exatos de retiradas.",
+    "audience_hypothesis": "Investidores de cripto que buscam informações rápidas e confiáveis sobre mudanças operacionais das maiores exchanges.",
+    "thumbnail_complement": "Gráfico de volume de saques ao fundo do logotipo da Binance.",
+    "verification_limits": "A verificação depende de trechos literais disponíveis nas páginas HTML das duas fontes citadas."
+  },
+  "publication_description": "Binance retoma saques em fase inicial e registra US$ 3,64 bilhões em retiradas neste domingo, informação confirmada por Money Times e Jovem Pan. A análise detalha o impacto imediato para investidores brasileiros e os próximos passos da exchange.",
+  "publication_target_local": "2026-11-01T20:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
