@@ -1,0 +1,228 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-02-manha",
+  "news_date": "2026-11-02",
+  "event_date": "2026-11-02",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-02T15:53:03.960130-03:00",
+  "news_selection": {
+    "topic_area": "business",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "A defesa do ex-dono do Banco Master Daniel Vorcaro acionou a Comissão Interamericana de Direitos Humanos (CIDH)",
+    "why_today": "O pedido à CIDH foi protocolado nesta segunda-feira (2 de novembro de 2026), marcando a primeira vez que a defesa de Vorcaro recorre a um órgão internacional para contestar sua prisão preventiva no Brasil.",
+    "opening_anchor": "A defesa do ex-dono do Banco Master Daniel Vorcaro acionou a Comissão Interamericana de Direitos Humanos (CIDH)",
+    "candidate_review": []
+  },
+  "title": "Defesa de Daniel Vorcaro aciona CIDH contra prisão preventiva",
+  "title_options": [
+    {
+      "text": "Defesa de Daniel Vorcaro aciona CIDH contra prisão preventiva",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Vorcaro leva caso à Comissão Interamericana de Direitos Humanos",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Pedido internacional da defesa de Vorcaro gera debate jurídico no Brasil",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Pedido à CIDH",
+  "thumbnail_primary": "Daniel Vorcaro em frente ao tribunal",
+  "thumbnail_tension": "Conflito entre justiça nacional e mecanismos internacionais",
+  "thumbnail_composition": "Close-up do rosto de Vorcaro ao lado de documentos oficiais",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_review",
+    "reason": "Fato novo corroborado por duas fontes independentes, relevância jurídica e econômica",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto_publico": "moderado"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/defesa-daniel-vorcaro-banco-master-orgao-internacional/",
+      "published_at": "2026-11-02",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-justica/vorcaro-aciona-comissao-interamericana-de-direitos-humanos-contra-prisao/",
+      "published_at": "2026-11-02",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "A defesa do ex-dono do Banco Master Daniel Vorcaro acionou a Comissão Interamericana de Direitos Humanos (CIDH)",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-02"
+    },
+    {
+      "claim": "O pedido à CIDH foi protocolado em 27 de outubro de 2026",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-10-27"
+    },
+    {
+      "claim": "Vorcaro está preso preventivamente desde 4 de março de 2026",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-03-04"
+    },
+    {
+      "claim": "A defesa alega ausência de denúncia formal e violação de direitos humanos",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-02"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "política vorcaro aciona órgão internacional contra o brasil por supost",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/defesa-daniel-vorcaro-banco-master-orgao-internacional/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "vorcaro aciona comissão interamericana de direitos humanos contra pris",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-justica/vorcaro-aciona-comissao-interamericana-de-direitos-humanos-contra-prisao/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Poder360"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo",
+      "type": "fact",
+      "label": "opening",
+      "headline": "Defesa de Vorcaro aciona CIDH",
+      "metric": "data",
+      "object_type": "bank",
+      "visual_cards": [
+        "Documento da petição",
+        "Carimbo da CIDH",
+        "Calendário 27/10"
+      ],
+      "narration": "A defesa do ex-dono do Banco Master Daniel Vorcaro acionou a Comissão Interamericana de Direitos Humanos (CIDH) para contestar sua prisão preventiva. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos entender o que isso significa.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Contexto da prisão",
+      "type": "fact",
+      "label": "background",
+      "headline": "Vorcaro preso desde março",
+      "metric": "timeline",
+      "object_type": "bank",
+      "visual_cards": [
+        "Foto da prisão",
+        "Operação da PF",
+        "Linha do tempo"
+      ],
+      "narration": "Daniel Vorcaro está preso preventivamente desde 4 de março de 2026, após operação da Polícia Federal que resultou em indiciamento parcial, mas sem denúncia formal até o momento.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise jurídica",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Implicações do recurso à CIDH",
+      "metric": "insight",
+      "object_type": "data",
+      "visual_cards": [
+        "Mapa da OEA",
+        "Texto da Convenção Americana",
+        "Fluxograma do processo"
+      ],
+      "narration": "Na minha análise, recorrer à CIDH representa um escalonamento raro no Brasil, sinalizando que a defesa acredita que os recursos internos não são suficientes para garantir direitos processuais básicos.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Próximos passos",
+      "metric": "forecast",
+      "object_type": "data",
+      "visual_cards": [
+        "Relógio de contagem",
+        "Símbolo da justiça",
+        "Chamada para inscrição"
+      ],
+      "narration": "A CIDH avaliará se há risco de violação de direitos humanos e poderá solicitar medidas cautelares, inclusive a libertação provisória. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você avalia a estratégia de levar o caso à CIDH em vez de usar apenas os recursos nacionais?",
+  "hashtags": [
+    "#DireitosHumanos",
+    "#Vorcaro",
+    "#Justiça"
+  ],
+  "tags": [
+    "CIDH",
+    "Daniel Vorcaro",
+    "Banco Master",
+    "prisão preventiva",
+    "direitos humanos",
+    "justiça brasileira",
+    "OEA",
+    "processo judicial"
+  ],
+  "primary_keyword": "CIDH",
+  "secondary_keywords": [
+    "Daniel Vorcaro",
+    "Banco Master",
+    "prisão preventiva"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que a defesa de Vorcaro recorreu a um órgão internacional",
+    "search_query": "Vorcaro CIDH pedido 2 de novembro 2026",
+    "recommendation_angle": "Análise do impacto jurídico e econômico do recurso internacional",
+    "first_payoff": "A defesa do ex-dono do Banco Master Daniel Vorcaro acionou a Comissão Interamericana de Direitos Humanos (CIDH)",
+    "promise_proof": "Comprovação em duas fontes independentes (Jovem Pan e Poder360)",
+    "audience_hypothesis": "Investidores e profissionais de direito buscam entender riscos de processos judiciais de grandes empresários",
+    "thumbnail_complement": "Imagem de Vorcaro ao lado de documentos oficiais da CIDH",
+    "verification_limits": "Limite de 45 dias para fontes que cobrem o fato novo"
+  },
+  "publication_description": "CIDH recebe pedido da defesa de Daniel Vorcaro para contestar prisão preventiva. O caso, divulgado em 2 de novembro de 2026, traz à tona debate sobre mecanismos internacionais de proteção de direitos humanos no Brasil.",
+  "publication_target_local": "2026-11-02T08:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
