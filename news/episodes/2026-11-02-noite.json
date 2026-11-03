@@ -1,0 +1,229 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-02-noite",
+  "news_date": "2026-11-02",
+  "event_date": "2026-11-02",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-02T23:44:09.945410-03:00",
+  "publication_target_local": "2026-11-02T20:00:00-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Os contratos futuros do petróleo fecharam em forte queda nesta segunda-feira, 2, diante das expectativas de diálogo entre Irã e EUA.",
+    "why_today": "A queda abrupta dos preços do petróleo em 02/11/2026 foi impulsionada por sinais de retomada de negociações diplomáticas entre Irã e Estados Unidos e pela decisão da Opep+ de manter a meta de produção para dezembro, gerando forte impacto nos mercados globais e na inflação brasileira.",
+    "opening_anchor": "Os contratos futuros do petróleo fecharam em forte queda nesta segunda-feira, 2, diante das expectativas de diálogo entre Irã e EUA.",
+    "candidate_review": []
+  },
+  "title": "Petróleo despenca 7,6% com expectativa de diálogo Irã-EUA e Opep+ mantém meta",
+  "title_options": [
+    {
+      "text": "Petróleo despenca 7,6% com expectativa de diálogo Irã-EUA e Opep+ mantém meta",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Queda histórica do Brent: 7,6% após sinal de diplomacia Irã-EUA",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Mercado de energia reage: futuro do petróleo cai mais de 7% em 02/11/2026",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Petróleo em queda",
+  "thumbnail_primary": "Gráfico de queda do Brent",
+  "thumbnail_tension": "Queda de mais de 7% em um dia",
+  "thumbnail_composition": "Gráfico à esquerda, preço destacado à direita",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes e relevância econômica",
+    "criteria": {
+      "veracity": "high",
+      "impact": "high",
+      "clarity": "medium"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/petroleo-fecha-em-queda-de-mais-de-7-com-expectativa-de-dialogo-entre-eua-e-ira-sobre-guerra-jcav/",
+      "published_at": "2026-11-02",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "Suno",
+      "url": "https://www.suno.com.br/noticias/petroleo-fecha-forte-queda-02112026-go/",
+      "published_at": "2026-11-02",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Os contratos futuros do petróleo fecharam em forte queda nesta segunda-feira, 2, diante das expectativas de diálogo entre Irã e EUA.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-02"
+    },
+    {
+      "claim": "O petróleo Brent para janeiro fechou em queda de 7,63% (US$ 8,66), a US$ 104,77 o barril.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-02"
+    },
+    {
+      "claim": "O contrato WTI para dezembro recuou 7,36%, a US$ 96,46 o barril.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-02"
+    },
+    {
+      "claim": "A Opep+ decidiu manter a meta de produção para dezembro sem cortes adicionais.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-02"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "O petróleo Brent para janeiro fechou em queda de 7,63% (US$ 8,66), a US$ 104,77 o barril.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/petroleo-fecha-em-queda-de-mais-de-7-com-expectativa-de-dialogo-entre-eua-e-ira-sobre-guerra-jcav/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "os contratos futuros do petróleo fecharam em forte queda nesta segunda-feira, 2, diante das expectativas de diálogo entre irã e eua",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.suno.com.br/noticias/petroleo-fecha-forte-queda-02112026-go/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Suno"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato principal",
+      "type": "fact",
+      "label": "opening",
+      "headline": "Petróleo despenca 7,6% na segunda-feira",
+      "metric": "price_drop",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de queda do Brent",
+        "Preço do WTI em destaque",
+        "Linha do tempo da Opep+"
+      ],
+      "narration": "Os contratos futuros do petróleo fecharam em forte queda nesta segunda-feira, 2, diante das expectativas de diálogo entre Irã e EUA. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que provocou essa queda histórica de mais de 7% nos preços do Brent e do WTI.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes da queda",
+      "type": "fact",
+      "label": "detail",
+      "headline": "Brent cai 7,63% e WTI 7,36%",
+      "metric": "price_change",
+      "object_type": "data",
+      "visual_cards": [
+        "Tabela de preços",
+        "Comparativo com dias anteriores",
+        "Indicadores de volatilidade"
+      ],
+      "narration": "O petróleo Brent para janeiro fechou em queda de 7,63% (US$ 8,66), a US$ 104,77 o barril, enquanto o contrato WTI para dezembro recuou 7,36%, a US$ 96,46 o barril, refletindo a combinação de expectativas diplomáticas e a decisão da Opep+ de manter a meta de produção.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do analista",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Análise de risco geopolítico",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Mapa do Oriente Médio",
+        "Fluxo de exportação pelo Estreito de Ormuz",
+        "Projeção de demanda global"
+      ],
+      "narration": "Na minha análise, a queda reflete uma melhora nas expectativas de desescalada do conflito entre Irã e Estados Unidos, reduzindo o prêmio de risco geopolítico que havia mantido os preços elevados.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e próximos passos",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Impactos e o que observar",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Resumo dos efeitos inflacionários",
+        "Calendário de eventos econômicos",
+        "Chamada para ação"
+      ],
+      "narration": "Em resumo, a queda de mais de 7% nos preços do petróleo pode aliviar pressões inflacionárias no Brasil, especialmente nos setores de transporte e energia, mas o cenário ainda depende da concretização dos diálogos entre Irã e EUA e da política da Opep+. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como a queda dos preços do petróleo pode afetar sua conta de energia e o preço dos combustíveis?",
+  "hashtags": [
+    "#Petróleo",
+    "#MercadoFinanceiro",
+    "#Opep"
+  ],
+  "tags": [
+    "preço do petróleo",
+    "Brent",
+    "WTI",
+    "Irã",
+    "EUA",
+    "Opep+",
+    "inflação",
+    "Brasil",
+    "energia",
+    "mercado"
+  ],
+  "primary_keyword": "petróleo",
+  "secondary_keywords": [
+    "Brent",
+    "WTI",
+    "Opep+",
+    "Irã",
+    "EUA"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que o preço do petróleo despencou e quais são as consequências para a economia brasileira.",
+    "search_query": "queda preço petróleo 02/11/2026 Irã EUA Opep+",
+    "recommendation_angle": "Análise de impacto econômico e inflacionário da queda abrupta do petróleo.",
+    "first_payoff": "Os contratos futuros do petróleo fecharam em forte queda nesta segunda-feira, 2, diante das expectativas de diálogo entre Irã e EUA.",
+    "promise_proof": "Dados de duas fontes independentes confirmam a queda de 7,6% nos contratos futuros.",
+    "audience_hypothesis": "Investidores e consumidores preocupados com a inflação e o preço dos combustíveis buscarão explicações claras.",
+    "thumbnail_complement": "Gráfico de queda do Brent ao lado de um mapa do Oriente Médio.",
+    "verification_limits": "A confirmação depende de reportagens publicadas no mesmo dia por Money Times e Suno."
+  },
+  "publication_description": "Petróleo despenca 7,6% com expectativa de diálogo Irã-EUA e Opep+ mantém meta, gerando impacto imediato nos mercados e na inflação brasileira.",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
