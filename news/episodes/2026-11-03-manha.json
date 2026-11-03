@@ -1,0 +1,246 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-03-manha",
+  "news_date": "2026-11-03",
+  "event_date": "2026-11-03",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-03T13:51:34.620778-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Banco do Brasil sofreu interrupção significativa em seus canais digitais, impedindo milhares de clientes de acessar contas, pagar boletos e usar o Pix",
+    "why_today": "A falha ocorreu no início do mês, quando milhões de brasileiros precisam pagar contas e usar o Pix, gerando risco de atrasos e impacto imediato na liquidez dos consumidores.",
+    "opening_anchor": "Na manhã desta terça-feira, 3 de novembro de 2026, o Banco do Brasil (BB) sofreu uma interrupção significativa em seus canais digitais – site e aplicativo",
+    "candidate_review": []
+  },
+  "title": "Banco do Brasil tem instabilidade nos canais digitais e impede uso de Pix na manhã de 03/11/2026",
+  "title_options": [
+    {
+      "text": "Banco do Brasil tem instabilidade nos canais digitais e impede uso de Pix na manhã de 03/11/2026",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Falha no app e site do Banco do Brasil deixa milhões sem acesso a contas e Pix",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Interrupção nos canais digitais do BB gera milhares de reclamações em duas horas",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Instabilidade digital do BB",
+  "thumbnail_primary": "Tela de login do aplicativo Banco do Brasil com mensagem de erro",
+  "thumbnail_tension": "Milhares de clientes sem acesso ao Pix e pagamentos de contas",
+  "thumbnail_composition": "Close-up da tela de erro centralizado",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato relevante para consumidores e mercado financeiro, confirmado por três veículos independentes",
+    "criteria": {
+      "relevance": true,
+      "verifiability": true,
+      "impact": true,
+      "balance": true
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/banco-do-brasil-enfrenta-instabilidade-em-aplicativos-e-clientes-relatam-dificuldades-em-usar-pix-lmrs/",
+      "published_at": "2026-11-03",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "BPMoney",
+      "url": "https://bpmoney.com.br/economia/banco-do-brasil-app-fora-do-ar-clientes-sem-pix/",
+      "published_at": "2026-11-03",
+      "role": "reporting"
+    },
+    {
+      "id": "S3",
+      "publisher": "BMC News",
+      "url": "https://bmcnews.com.br/economia/site-e-aplicativo-do-banco-do-brasil-apresentam-instabilidade/",
+      "published_at": "2026-11-03",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Banco do Brasil sofreu interrupção significativa em seus canais digitais, impedindo milhares de clientes de acessar contas, pagar boletos e usar o Pix",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-03"
+    },
+    {
+      "claim": "O pico de reclamações no Downdetector foi registrado às 9h31 com 6.237 relatos",
+      "source_ids": [
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-03"
+    },
+    {
+      "claim": "O Banco do Brasil informou que transações com cartões não foram afetadas",
+      "source_ids": [
+        "S1",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-03"
+    },
+    {
+      "claim": "A normalização dos serviços digitais foi anunciada por volta das 13h30",
+      "source_ids": [
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-03"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "Clientes do Banco do Brasil (BBAS3) relataram dificuldades para acessar o aplicativo da instituição financeira na manhã desta terça-feira (3).",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/banco-do-brasil-enfrenta-instabilidade-em-aplicativos-e-clientes-relatam-dificuldades-em-usar-pix-lmrs/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "O relato que mais se repete envolve a abertura do próprio app, que não acontece: mesmo o login feito com a senha de oito dígitos deixa de funcionar.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bpmoney.com.br/economia/banco-do-brasil-app-fora-do-ar-clientes-sem-pix/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "BPMoney"
+    },
+    {
+      "id": "doc-3",
+      "source_id": "S3",
+      "expected_text": "de acordo com o site downdetector, que monitora problemas e interrupçõ",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bmcnews.com.br/economia/site-e-aplicativo-do-banco-do-brasil-apresentam-instabilidade/",
+      "capture_file": "research/captures/doc-3.png",
+      "attribution": "BMC News"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato inicial",
+      "type": "fact",
+      "label": "opening",
+      "headline": "Instabilidade afeta milhões de clientes do BB",
+      "metric": "data",
+      "object_type": "bank",
+      "visual_cards": [
+        "Tela de erro no app",
+        "Mensagem de indisponibilidade no site",
+        "Gráfico de reclamações no Downdetector"
+      ],
+      "narration": "Na manhã desta terça-feira, 3 de novembro de 2026, o Banco do Brasil (BB) sofreu uma interrupção significativa em seus canais digitais – site e aplicativo móvel – que impediu milhares de clientes de acessar contas, pagar boletos e usar o Pix. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que aconteceu.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes da reclamação",
+      "type": "fact",
+      "label": "detail",
+      "headline": "Pico de reclamações supera 6 mil",
+      "metric": "count",
+      "object_type": "bank",
+      "visual_cards": [
+        "Captura de tela do Downdetector",
+        "Lista de queixas no X",
+        "Horário de pico às 9h31"
+      ],
+      "narration": "O Downdetector registrou o pico de reclamações às 9h31, somando 6.237 relatos, conforme reportado pelo BMC News. O problema persistiu até cerca das 13h30, quando o Banco do Brasil anunciou a normalização dos serviços digitais.",
+      "document_id": "doc-3",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do analista",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Impacto imediato nos pagamentos",
+      "metric": "opinion",
+      "object_type": "bank",
+      "visual_cards": [
+        "Gráfico de fluxo de pagamentos",
+        "Ícone de alerta de risco",
+        "Foto de cliente frustrado"
+      ],
+      "narration": "Na minha análise, a interrupção ocorre em um momento crítico de pagamento de contas e uso do Pix, o que pode gerar atrasos e multas para consumidores e pressionar o fluxo de caixa de pequenos negócios. Embora o BB tenha garantido que cartões não foram afetados, a confiança digital do banco pode sofrer desgaste.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e chamada",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Banco do Brasil restaura serviços, mas vigilância continua",
+      "metric": "summary",
+      "object_type": "bank",
+      "visual_cards": [
+        "Logo do Banco do Brasil",
+        "Calendário de monitoramento",
+        "Seta de recuperação"
+      ],
+      "narration": "A normalização dos canais digitais foi confirmada por volta das 13h30, mas o Banco Central pode solicitar relatório de causa raiz. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você lidou com a indisponibilidade do app do Banco do Brasil nesta manhã?",
+  "hashtags": [
+    "#BancoDoBrasil",
+    "#InstabilidadeDigital",
+    "#Pix"
+  ],
+  "tags": [
+    "Banco do Brasil",
+    "interrupção digital",
+    "Pix",
+    "canais digitais",
+    "downdetector",
+    "clientes",
+    "pagamento de contas",
+    "tecnologia bancária",
+    "crise de serviço",
+    "economia digital"
+  ],
+  "primary_keyword": "Banco do Brasil",
+  "secondary_keywords": [
+    "instabilidade digital",
+    "Pix",
+    "downdetector"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender a causa e consequências da falha nos canais digitais do Banco do Brasil",
+    "search_query": "Banco do Brasil instabilidade app site 03/11/2026",
+    "recommendation_angle": "Mostrar impacto imediato nos pagamentos de contas e no uso do Pix",
+    "first_payoff": "Na manhã desta terça-feira, 3 de novembro de 2026, o Banco do Brasil (BB) sofreu uma interrupção significativa em seus canais digitais – site e aplicativo móvel – que impediu milhares de clientes de acessar contas, pagar boletos e usar o Pix.",
+    "promise_proof": "Dados do Downdetector e declarações de três veículos independentes confirmam o volume de reclamações",
+    "audience_hypothesis": "Consumidores e investidores buscam explicações rápidas sobre falhas que afetam seu dinheiro",
+    "thumbnail_complement": "Imagem da tela de erro do app do Banco do Brasil",
+    "verification_limits": "Nenhuma causa oficial divulgada ainda; dependemos de declarações do banco e monitoramento externo"
+  },
+  "publication_description": "Instabilidade digital do Banco do Brasil afeta milhares de clientes na manhã de 03/11/2026, impedindo acesso a contas, pagamentos de boletos e uso do Pix. A reportagem traz detalhes, números de reclamações e análise de impactos econômicos.",
+  "publication_target_local": "2026-11-03T08:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
