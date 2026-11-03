@@ -1,0 +1,238 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-03-meio-dia",
+  "news_date": "2026-11-03",
+  "event_date": "2026-11-03",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-03T16:54:46.187807-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "O deputado federal Nikolas Ferreira (PL-MG) apresentou, nesta terça-feira, 3 de novembro de 2026, um Projeto de Decreto Legislativo (PDL 1016/2026) que tem por objetivo suspender a Portaria nº 2, de 28 outubro 2026, do Ministério da Justiça e Segurança Pública, a qual classificou o programa infantil “Record Kids – Desenhos Bíblicos” como “não recomendado para menores de 12 anos”.",
+    "why_today": "A apresentação do PDL 1016/2026 nesta terça-feira cria um debate imediato sobre a uniformidade dos critérios de classificação indicativa, podendo mudar a forma como conteúdos infantis são exibidos na TV nacional.",
+    "opening_anchor": "O deputado federal Nikolas Ferreira (PL-MG) apresentou, nesta terça-feira, 3 de novembro de 2026, um Projeto de Decreto Legislativo (PDL 1016/2026) que tem por",
+    "candidate_review": [
+      {
+        "subject": "Nikolas Ferreira",
+        "topic_area": "politics",
+        "event_date": "2026-11-03",
+        "urls": [
+          "https://revistaoeste.com/politica/nikolas-critica-governo-lula-por-classificar-desenhos-biblicos-para-maiores-de-12-anos/",
+          "https://www.poder360.com.br/poder-congresso/nikolas-apresenta-projeto-para-revogar-classificacao-de-desenhos-biblicos/"
+        ],
+        "decision": "apresentou projeto"
+      }
+    ]
+  },
+  "title": "Deputado Nikolas Ferreira apresenta PDL para revogar classificação de “Record Kids”",
+  "title_options": [
+    {
+      "text": "Deputado Nikolas Ferreira apresenta PDL para revogar classificação de “Record Kids”",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Projeto de Lei de Nikolas Ferreira busca retirar restrição de idade de programa infantil",
+      "editorial_quality": 4
+    },
+    {
+      "text": "PDL 1016/2026 tenta suspender portaria que limitou “Record Kids” a maiores de 12 anos",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Projeto de Lei contra restrição",
+  "thumbnail_primary": "Nikolas Ferreira em plenário",
+  "thumbnail_tension": "Debate sobre critérios de classificação indicativa",
+  "thumbnail_composition": "Close-up do deputado ao apresentar o documento",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato novo corroborado por duas fontes independentes, relevância política e impacto cultural",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto_publico": "moderado"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Revista Oeste",
+      "url": "https://revistaoeste.com/politica/nikolas-critica-governo-lula-por-classificar-desenhos-biblicos-para-maiores-de-12-anos/",
+      "published_at": "2026-11-03",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-congresso/nikolas-apresenta-projeto-para-revogar-classificacao-de-desenhos-biblicos/",
+      "published_at": "2026-11-03",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O deputado federal Nikolas Ferreira (PL-MG) apresentou, nesta terça-feira, 3 de novembro de 2026, um Projeto de Decreto Legislativo (PDL 1016/2026) que tem por objetivo suspender a Portaria nº 2, de 28 outubro 2026, do Ministério da Justiça e Segurança Pública, a qual classificou o programa infantil “Record Kids – Desenhos Bíblicos” como “não recomendado para menores de 12 anos”.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-03"
+    },
+    {
+      "claim": "A portaria do Ministério da Justiça elevou a classificação indicativa do programa para 12 anos e recomendou exibição após as 20 h.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-10-28"
+    },
+    {
+      "claim": "Nikolas Ferreira comparou a classificação ao critério usado nos desfiles de escolas de samba de 2026.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-11-03"
+    },
+    {
+      "claim": "O Ministério da Justiça ainda não se pronunciou oficialmente sobre o PDL 1016/2026.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-03"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "o deputado federal nikolas ferreira (pl-mg) anunciou, nesta terça-feir",
+      "kind": "source_excerpt",
+      "source_page_url": "https://revistaoeste.com/politica/nikolas-critica-governo-lula-por-classificar-desenhos-biblicos-para-maiores-de-12-anos/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Revista Oeste"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "nikolas apresenta projeto para revogar classificação de desenhos bíbli",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-congresso/nikolas-apresenta-projeto-para-revogar-classificacao-de-desenhos-biblicos/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Poder360"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo",
+      "type": "fact",
+      "label": "opening",
+      "headline": "Deputado apresenta PDL para suspender portaria",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Nikolas Ferreira no plenário",
+        "Texto da portaria nº 2",
+        "Logotipo da Record Kids"
+      ],
+      "narration": "O deputado federal Nikolas Ferreira (PL-MG) apresentou, nesta terça-feira, 3 de novembro de 2026, um Projeto de Decreto Legislativo (PDL 1016/2026) que tem por objetivo suspender a Portaria nº 2, de 28 outubro 2026, do Ministério da Justiça e Segurança Pública, a qual classificou o programa infantil “Record Kids – Desenhos Bíblicos” como “não recomendado para menores de 12 anos”. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que está em jogo.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Contexto da classificação",
+      "type": "fact",
+      "label": "background",
+      "headline": "Portaria eleva idade mínima para 12 anos",
+      "metric": "context",
+      "object_type": "data",
+      "visual_cards": [
+        "Trecho da portaria",
+        "Horário de exibição pós-20h",
+        "Comparativo com outros programas"
+      ],
+      "narration": "A portaria nº 2, publicada em 28 de outubro de 2026, elevou a classificação indicativa do programa para 12 anos e recomendou sua exibição somente após as 20 h, gerando críticas de produtores e do próprio deputado.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião editorial",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "A uniformidade dos critérios está em questão",
+      "metric": "analysis",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de classificações 2026",
+        "Cenas de desfiles de samba",
+        "Trecho da justificativa do deputado"
+      ],
+      "narration": "Na minha análise, a disparidade entre a classificação dos desfiles de escolas de samba – indicados para maiores de 10 anos – e a restrição de “Record Kids” evidencia falta de proporcionalidade nos critérios do Ministério da Justiça, o que pode abrir precedentes para revisões futuras.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e próximos passos",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "O futuro da classificação indicativa",
+      "metric": "outlook",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário da CCJ",
+        "Logotipo da Câmara dos Deputados",
+        "Imagem da Record Kids"
+      ],
+      "narration": "Caso o PDL 1016/2026 seja aprovado na Comissão de Constituição e Justiça, o programa “Record Kids – Desenhos Bíblicos” poderá voltar a ser exibido sem restrição de idade, impactando a audiência infantil e a política de classificação no país. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que a revogação da classificação indicativa pode influenciar outras decisões do Ministério da Justiça?",
+  "hashtags": [
+    "#ClassificaçãoIndicativa",
+    "#PolíticaCultural",
+    "#RecordKids"
+  ],
+  "tags": [
+    "Nikolas Ferreira",
+    "PDL 1016/2026",
+    "Record Kids",
+    "Ministério da Justiça",
+    "Câmara dos Deputados",
+    "Classificação de conteúdo",
+    "Desenhos Bíblicos",
+    "TV infantil",
+    "Política cultural",
+    "Brasil"
+  ],
+  "primary_keyword": "Projeto de Decreto Legislativo",
+  "secondary_keywords": [
+    "classificação indicativa",
+    "Record Kids",
+    "Nikolas Ferreira"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que um deputado quer mudar a classificação de um programa infantil",
+    "search_query": "Nikolas Ferreira PDL 1016/2026 Record Kids classificação",
+    "recommendation_angle": "Análise do impacto legislativo na programação infantil",
+    "first_payoff": "O deputado federal Nikolas Ferreira (PL-MG) apresentou, nesta terça-feira, 3 de novembro de 2026, um Projeto de Decreto Legislativo (PDL 1016/2026) que tem por objetivo suspender a Portaria nº 2, de 28 outubro 2026, do Ministério da Justiça e Segurança Pública, a qual classificou o programa infantil “Record Kids – Desenhos Bíblicos” como “não recomendado para menores de 12 anos”.",
+    "promise_proof": "Duas fontes independentes confirmam a data, o autor e o conteúdo do projeto",
+    "audience_hypothesis": "Televidentes e profissionais de mídia buscam entender mudanças regulatórias que afetam conteúdo infantil",
+    "thumbnail_complement": "Imagem do deputado segurando o documento do PDL",
+    "verification_limits": "A verificação depende de trechos publicados nas páginas HTML das duas fontes citadas"
+  },
+  "publication_description": "Projeto de Lei de Nikolas Ferreira busca suspender a restrição de idade imposta ao programa infantil Record Kids, gerando debate sobre a uniformidade dos critérios de classificação indicativa no Brasil.\n\nContexto: Projeto de Decreto Legislativo",
+  "publication_target_local": "2026-11-03T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
