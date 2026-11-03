@@ -1,0 +1,224 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-03-noite",
+  "news_date": "2026-11-03",
+  "event_date": "2026-11-03",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-03T19:30:20.289103-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "O Senado aprovou, em primeiro turno, o texto-base da PEC da Segurança Pública com 73 votos a favor e 0 contra",
+    "why_today": "A aprovação do texto-base da PEC da Segurança Pública em 3 de novembro de 2026 marca um avanço legislativo significativo, ao mesmo tempo que isola a controvérsia da redução da maioridade penal para debate separado, impactando o cenário político e econômico do país.",
+    "opening_anchor": "O Senado Federal aprovou, em primeiro turno, o texto-base da PEC da Segurança Pública",
+    "candidate_review": []
+  },
+  "title": "Senado aprova texto-base da PEC da Segurança Pública por unanimidade",
+  "title_options": [
+    {
+      "text": "Senado aprova texto-base da PEC da Segurança Pública por unanimidade",
+      "editorial_quality": 5
+    },
+    {
+      "text": "PEC da Segurança Pública avança: 73 votos a favor no Senado",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Primeiro turno da PEC da Segurança Pública termina com aprovação total no Senado",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Aprovação unânime da PEC",
+  "thumbnail_primary": "Plenário do Senado em sessão",
+  "thumbnail_tension": "Debate sobre maioridade penal isolado",
+  "thumbnail_composition": "Plano médio do plenário com foco no presidente da sessão",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes, relevância política e econômica",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto": "moderado"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/senado-aprova-em-primeiro-turno-texto-base-da-pec-da-seguranca-publica/",
+      "published_at": "2026-11-03",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "Revista Oeste",
+      "url": "https://revistaoeste.com/politica/senado-aprova-pec-da-seguranca-publica-por-unanimidade-em-1o-turno/",
+      "published_at": "2026-11-03",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O Senado aprovou, em primeiro turno, o texto-base da PEC da Segurança Pública com 73 votos a favor e 0 contra",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-03"
+    },
+    {
+      "claim": "A retirada da discussão sobre a redução da maioridade penal foi aprovada por 38 votos a 36, com uma abstenção",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-03"
+    },
+    {
+      "claim": "Para aprovar a PEC, o Senado exige pelo menos 49 votos em cada turno",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-11-03"
+    },
+    {
+      "claim": "O relator Rogério Carvalho (PT-SE) argumentou que a redução da maioridade penal gera divergências jurídicas e políticas",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-11-03"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "após deliberação antes da votação da pec, os senadores optaram que o t",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/senado-aprova-em-primeiro-turno-texto-base-da-pec-da-seguranca-publica/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "Em votação relâmpago, o Senado aprovou por unanimidade, nesta terça-feira, 3, em primeiro turno, o texto-base da Proposta de Emenda à Constituição (PEC) da Segurança Pública.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://revistaoeste.com/politica/senado-aprova-pec-da-seguranca-publica-por-unanimidade-em-1o-turno/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Revista Oeste"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato principal",
+      "type": "fact",
+      "label": "aprovacao_pec",
+      "headline": "Senado aprova texto-base da PEC da Segurança Pública",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Plenário em sessão",
+        "Presidente da sessão anunciando o resultado",
+        "Senadores aplaudindo"
+      ],
+      "narration": "O Senado Federal aprovou, em primeiro turno, o texto-base da PEC da Segurança Pública com 73 votos a favor e 0 contra. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que isso significa para o Brasil.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Retirada da maioridade penal",
+      "type": "fact",
+      "label": "maioridade_penal",
+      "headline": "Senadores decidem retirar a discussão sobre a maioridade penal",
+      "metric": "vote",
+      "object_type": "data",
+      "visual_cards": [
+        "Votação separada no plenário",
+        "Contagem de votos 38 a 36",
+        "Abstenção registrada"
+      ],
+      "narration": "Em votação separada, a retirada da discussão sobre a redução da maioridade penal foi aprovada por 38 votos a 36, com uma abstenção, permitindo que o tema seja tratado como proposição autônoma.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do analista",
+      "type": "opinion",
+      "label": "analise",
+      "headline": "Análise do impacto legislativo",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de apoio partidário",
+        "Linha do tempo legislativa",
+        "Indicadores econômicos"
+      ],
+      "narration": "Na minha análise, a aprovação unânime do texto-base demonstra consenso sobre a necessidade de reforma da segurança, enquanto isolar a maioridade penal evita que a PEC seja bloqueada por divergências ideológicas.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "conclusao",
+      "headline": "Próximos passos da PEC",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário da segunda votação",
+        "Câmara dos Deputados em destaque",
+        "Perspectiva de debate futuro"
+      ],
+      "narration": "Com o texto-base aprovado, a PEC segue para a segunda votação no Senado e, se aprovada, avançará à Câmara dos Deputados. O debate sobre a maioridade penal continuará em separado, podendo gerar nova proposta. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que a separação da discussão sobre a maioridade penal pode influenciar o futuro da reforma da segurança pública?",
+  "hashtags": [
+    "#SegurançaPública",
+    "#PEC2026",
+    "#Política"
+  ],
+  "tags": [
+    "Senado",
+    "PEC Segurança Pública",
+    "maioridade penal",
+    "legislação",
+    "reforma",
+    "votação",
+    "Política brasileira"
+  ],
+  "primary_keyword": "PEC da Segurança Pública",
+  "secondary_keywords": [
+    "texto-base",
+    "maioridade penal",
+    "Senado Federal"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender o avanço legislativo da PEC da Segurança Pública e suas implicações políticas e econômicas",
+    "search_query": "Senado aprova texto base PEC Segurança Pública 03/11/2026",
+    "recommendation_angle": "Apresentar a aprovação unânime como marco e analisar a estratégia de isolar a maioridade penal",
+    "first_payoff": "O Senado Federal aprovou, em primeiro turno, o texto-base da PEC da Segurança Pública",
+    "promise_proof": "Com duas fontes independentes confirmando os números da votação e o contexto da retirada da maioridade penal",
+    "audience_hypothesis": "Público interessado em política e economia busca compreender como decisões legislativas afetam o cenário macroeconômico",
+    "thumbnail_complement": "Imagem do plenário com destaque para o presidente da sessão anunciando o resultado",
+    "verification_limits": "A verificação depende de trechos literais disponíveis nas páginas HTML das fontes citadas"
+  },
+  "publication_description": "PEC da Segurança Pública avança com aprovação unânime do texto-base no Senado, enquanto a discussão sobre a maioridade penal foi retirada para debate separado, sinalizando consenso sobre segurança e cautela sobre questões penais.",
+  "publication_target_local": "2026-11-03T20:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
