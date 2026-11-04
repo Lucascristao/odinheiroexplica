@@ -1,0 +1,248 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-04-manha",
+  "news_date": "2026-11-04",
+  "event_date": "2026-11-04",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-04T13:38:53.883015-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Janja publicou montagem do Cristo Redentor e da Estátua da Liberdade fazendo o gesto \"L\" no Instagram em 04/11/2026",
+    "why_today": "A publicação de Janja ocorre no mesmo dia da vitória dos democratas nos EUA, criando um vínculo simbólico entre o Brasil e o novo cenário político americano, o que pode influenciar a percepção internacional do governo Lula.",
+    "opening_anchor": "Janja publicou montagem do Cristo Redentor e da Estátua da Liberdade fazendo o gesto \"L\" no Instagram em 04/11/2026",
+    "candidate_review": [
+      {
+        "subject": "Rosângela \"Janja\" da Silva",
+        "topic_area": "politics",
+        "event_date": "2026-11-04",
+        "urls": [
+          "https://revistaoeste.com/politica/janja-publica-imagem-do-cristo-redentor-e-da-estatua-da-liberdade-fazendo-o-l/",
+          "https://www.poder360.com.br/poder-gente/janja-posta-cristo-redentor-e-estatua-da-liberdade-fazendo-o-l/"
+        ],
+        "decision": "cobertura factual da postagem"
+      },
+      {
+        "subject": "Luiz Inácio Lula da Silva",
+        "topic_area": "politics",
+        "event_date": "2026-11-04",
+        "urls": [
+          "https://revistaoeste.com/politica/janja-publica-imagem-do-cristo-redentor-e-da-estatua-da-liberdade-fazendo-o-l/",
+          "https://www.poder360.com.br/poder-gente/janja-posta-cristo-redentor-e-estatua-da-liberdade-fazendo-o-l/"
+        ],
+        "decision": "contextualização do gesto \"L\" como símbolo de apoio"
+      }
+    ]
+  },
+  "title": "Janja posta montagem do Cristo Redentor e da Estátua da Liberdade fazendo o gesto “L”",
+  "title_options": [
+    {
+      "text": "Janja posta montagem do Cristo Redentor e da Estátua da Liberdade fazendo o gesto “L”",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Primeira-dama publica imagem simbólica com Cristo Redentor e Estátua da Liberdade em apoio a Lula",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Instagram de Janja exibe Cristo e Liberdade unidos pelo “L” após vitória democrata nos EUA",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Janja e o gesto L",
+  "thumbnail_primary": "Rosângela Janja da Silva",
+  "thumbnail_tension": "Simbólico apoio político ao presidente Lula",
+  "thumbnail_composition": "Close-up da tela do Instagram mostrando a montagem",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_review",
+    "reason": "Fato corroborado por duas fontes independentes com trechos literais",
+    "criteria": {
+      "factual_accuracy": "high",
+      "source_reliability": "high",
+      "relevance": "high"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Revista Oeste",
+      "url": "https://revistaoeste.com/politica/janja-publica-imagem-do-cristo-redentor-e-da-estatua-da-liberdade-fazendo-o-l/",
+      "published_at": "2026-11-04",
+      "role": "independent"
+    },
+    {
+      "id": "S2",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-gente/janja-posta-cristo-redentor-e-estatua-da-liberdade-fazendo-o-l/",
+      "published_at": "2026-11-04",
+      "role": "independent"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Janja publicou montagem do Cristo Redentor e da Estátua da Liberdade fazendo o gesto \"L\" no Instagram em 04/11/2026",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-04"
+    },
+    {
+      "claim": "A montagem mostra o Cristo Redentor e a Estátua da Liberdade lado a lado com o gesto \"L\"",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-11-04"
+    },
+    {
+      "claim": "A postagem coincidiu com a vitória dos democratas nas eleições de meio de mandato nos EUA",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-11-04"
+    },
+    {
+      "claim": "O gesto \"L\" tem sido usado como símbolo de apoio ao presidente Lula em diversos países",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-11-04"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "política janja publica imagem do cristo redentor e da estátua da liber",
+      "kind": "source_excerpt",
+      "source_page_url": "https://revistaoeste.com/politica/janja-publica-imagem-do-cristo-redentor-e-da-estatua-da-liberdade-fazendo-o-l/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Revista Oeste"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "Janja posta Cristo Redentor e Estátua da Liberdade “fazendo o L”",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-gente/janja-posta-cristo-redentor-e-estatua-da-liberdade-fazendo-o-l/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Poder360"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo",
+      "type": "fact",
+      "label": "opening",
+      "headline": "Janja publica montagem simbólica",
+      "metric": "view",
+      "object_type": "data",
+      "visual_cards": [
+        "Tela do Instagram com a montagem",
+        "Cristo Redentor ao lado da Estátua da Liberdade",
+        "Gestão do gesto L em destaque"
+      ],
+      "narration": "Janja publicou montagem do Cristo Redentor e da Estátua da Liberdade fazendo o gesto \"L\" no Instagram em 04/11/2026. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o significado dessa publicação.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Contexto político",
+      "type": "fact",
+      "label": "context",
+      "headline": "Coincidência com eleições nos EUA",
+      "metric": "engagement",
+      "object_type": "data",
+      "visual_cards": [
+        "Resultado das eleições americanas",
+        "Democratas conquistam maioria no Congresso",
+        "Mapa dos EUA com destaque para o Congresso"
+      ],
+      "narration": "A postagem coincidiu com a vitória dos democratas nas eleições de meio de mandato nos Estados Unidos, que assumiram a maioria no Senado e na Câmara, criando um cenário favorável para a relação Brasil-EUA.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião editorial",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Significado do gesto L",
+      "metric": "sentiment",
+      "object_type": "data",
+      "visual_cards": [
+        "Símbolo L em manifestações",
+        "Comparação com campanhas anteriores",
+        "Impacto na percepção internacional"
+      ],
+      "narration": "Na minha análise, o uso do gesto \"L\" por Janja serve como um reforço visual da identidade do governo Lula, aproveitando a atenção gerada pela vitória democrática nos EUA para projetar estabilidade e alinhamento ideológico.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Desdobramentos esperados",
+      "metric": "completion",
+      "object_type": "data",
+      "visual_cards": [
+        "Perspectiva de mercado",
+        "Reação nas redes sociais",
+        "Próximos passos do governo"
+      ],
+      "narration": "Em resumo, a montagem de Janja reforça a narrativa de apoio ao presidente Lula e sinaliza um alinhamento simbólico com o novo cenário político americano. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você interpreta o uso do gesto \"L\" na postagem de Janja em relação à política externa brasileira?",
+  "hashtags": [
+    "#Janja",
+    "#PolíticaBrasil",
+    "#GestodeL"
+  ],
+  "tags": [
+    "Rosângela Janja da Silva",
+    "Lula",
+    "Cristo Redentor",
+    "Estátua da Liberdade",
+    "Instagram",
+    "Eleições EUA",
+    "Democratas",
+    "Símbolo L",
+    "Política internacional",
+    "O Dinheiro Explica"
+  ],
+  "primary_keyword": "Janja publica montagem do Cristo Redentor e da Estátua da Liberdade fazendo o gesto L",
+  "secondary_keywords": [
+    "gesto L",
+    "primeira-dama Brasil",
+    "eleições meio de mandato EUA"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender o significado político de uma postagem da primeira-dama que combina símbolos nacionais e internacionais.",
+    "search_query": "Janja Instagram Cristo Redentor Estátua da Liberdade L gesto 04/11/2026",
+    "recommendation_angle": "Análise do impacto simbólico da imagem no contexto das eleições americanas.",
+    "first_payoff": "Janja publicou montagem do Cristo Redentor e da Estátua da Liberdade fazendo o gesto \"L\" no Instagram em 04/11/2026.",
+    "promise_proof": "Duas fontes independentes confirmam a postagem e descrevem o conteúdo da imagem.",
+    "audience_hypothesis": "Investidores e cidadãos interessados em política brasileira e relações internacionais buscam entender como gestos simbólicos podem influenciar percepções de estabilidade.",
+    "thumbnail_complement": "Imagem da tela do Instagram com a montagem destacada.",
+    "verification_limits": "A confirmação depende exclusivamente das duas matérias citadas; não há outras fontes disponíveis no momento."
+  },
+  "publication_description": "Janja publica montagem do Cristo Redentor e da Estátua da Liberdade fazendo o gesto “L” no Instagram, coincidindo com a vitória dos democratas nos EUA, e o vídeo analisa o significado político desse gesto.\n\nContexto: Janja publica montagem do Cristo Redentor e da Estátua da Liberdade fazendo o gesto L",
+  "publication_target_local": "2026-11-04T08:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
