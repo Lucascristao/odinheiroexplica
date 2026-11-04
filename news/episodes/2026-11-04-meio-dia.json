@@ -1,0 +1,245 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-04-meio-dia",
+  "news_date": "2026-11-04",
+  "event_date": "2026-11-04",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-04T17:06:51.196875-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "O senador Rogério Marinho (PL-RN) confirmou nesta quarta-feira (4) que será candidato à presidência do Senado",
+    "why_today": "A confirmação oficial da candidatura de Rogério Marinho ao cargo de presidente do Senado, feita em 4 de novembro de 2026, altera o cenário de disputa interna para a eleição de fevereiro de 2027, exigindo análise imediata dos impactos políticos e parlamentares.",
+    "opening_anchor": "O senador Rogério Marinho (PL-RN) confirmou nesta quarta-feira (4) que será candidato à presidência do Senado",
+    "candidate_review": [
+      {
+        "subject": "Rogério Marinho",
+        "topic_area": "politics",
+        "event_date": "2026-11-04",
+        "urls": [
+          "https://www.moneytimes.com.br/rogerio-marinho-diz-que-acordo-com-tereza-sera-fechado-no-futuro-e-evita-falar-em-rodizio/",
+          "https://bmcnews.com.br/politica/pl-confirma-rogerio-marinho-como-candidato-a-presidencia-do-senado/",
+          "https://jovempan.com.br/politica/rogerio-marinho-confirma-candidatura-ao-senado-faremos-cumprir-a-constituicao/"
+        ],
+        "decision": "candidato oficial"
+      }
+    ]
+  },
+  "title": "Senador Rogério Marinho confirma candidatura à presidência do Senado",
+  "title_options": [
+    {
+      "text": "Senador Rogério Marinho confirma candidatura à presidência do Senado",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Marinho oficializa disputa pela presidência do Senado em 4 de novembro",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Candidatura de Rogério Marinho ao Senado é confirmada por três veículos",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Marinho anuncia candidatura",
+  "thumbnail_primary": "Rogério Marinho em reunião com colegas do PL",
+  "thumbnail_tension": "Conflito entre bancada do PL e governo Lula",
+  "thumbnail_composition": "Plano médio, senador ao centro, colegas ao fundo",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por múltiplas fontes independentes, relevância política nacional",
+    "criteria": {
+      "veracity": "high",
+      "newsworthiness": "high",
+      "clarity": "medium"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/rogerio-marinho-diz-que-acordo-com-tereza-sera-fechado-no-futuro-e-evita-falar-em-rodizio/",
+      "published_at": "2026-11-04",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "BMC News",
+      "url": "https://bmcnews.com.br/politica/pl-confirma-rogerio-marinho-como-candidato-a-presidencia-do-senado/",
+      "published_at": "2026-11-04",
+      "role": "reporting"
+    },
+    {
+      "id": "S3",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/rogerio-marinho-confirma-candidatura-ao-senado-faremos-cumprir-a-constituicao/",
+      "published_at": "2026-11-04",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O senador Rogério Marinho (PL-RN) confirmou nesta quarta-feira (4) que será candidato à presidência do Senado",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-04"
+    },
+    {
+      "claim": "O PL deve encerrar 2026 como a maior bancada da Casa, com 29 senadores",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-11-04"
+    },
+    {
+      "claim": "Marinho contou que tem mais de 40 votos de apoio",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-04"
+    },
+    {
+      "claim": "A votação para presidente do Senado está prevista para 1º de fevereiro de 2027",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-11-04"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "O senador Rogério Marinho (PL-RN) confirmou nesta quarta-feira (4) que será candidato à presidência do Senado",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/rogerio-marinho-diz-que-acordo-com-tereza-sera-fechado-no-futuro-e-evita-falar-em-rodizio/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "O PL confirmou nesta quarta-feira (04), a candidatura de Rogério Marinho à Presidência do Senado",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bmcnews.com.br/politica/pl-confirma-rogerio-marinho-como-candidato-a-presidencia-do-senado/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "BMC News"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo",
+      "type": "fact",
+      "label": "opening",
+      "headline": "Marinho confirma candidatura ao Senado",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Senador Rogério Marinho em reunião",
+        "Colegas do PL ao fundo",
+        "Brasília, interior da Câmara"
+      ],
+      "narration": "O senador Rogério Marinho (PL-RN) confirmou nesta quarta-feira (4) que será candidato à presidência do Senado. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que isso significa para a política nacional.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Contexto parlamentar",
+      "type": "fact",
+      "label": "background",
+      "headline": "Base de apoio de Marinho",
+      "metric": "support",
+      "object_type": "data",
+      "visual_cards": [
+        "Mais de 40 votos declarados",
+        "Apoio de Novo, PP, Republicanos",
+        "PL com 29 cadeiras"
+      ],
+      "narration": "Marinho contou que tem mais de 40 votos de apoio, incluindo o Novo, PP e Republicanos, e que o PL deve encerrar 2026 como a maior bancada da Casa, com 29 senadores, o que supera o limiar de 41 votos necessário para vencer no primeiro turno.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião editorial",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Impacto da candidatura",
+      "metric": "analysis",
+      "object_type": "data",
+      "visual_cards": [
+        "Possível confronto com governo Lula",
+        "Risco de polarização no Senado",
+        "Estratégia de voto aberto"
+      ],
+      "narration": "Na minha análise, a candidatura de Marinho pode intensificar a polarização entre o Executivo e o Legislativo, sobretudo porque ele já se posicionou contra o presidente Lula, chamando-o de \"Robin Hood às avessas\". Seu pedido de voto aberto pode mudar a dinâmica interna, exigindo maior transparência nas decisões da Mesa.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Próximos passos",
+      "metric": "outlook",
+      "object_type": "data",
+      "visual_cards": [
+        "Eleição em fevereiro de 2027",
+        "Possível disputa com Davi Alcolumbre",
+        "Acompanhamento das alianças"
+      ],
+      "narration": "Em resumo, a oficialização da candidatura de Rogério Marinho altera o cenário da disputa para a presidência do Senado, com uma base de apoio robusta e uma agenda de transparência que pode gerar atritos com o governo. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que a candidatura de Rogério Marinho pode influenciar a relação entre o Senado e o governo Lula?",
+  "hashtags": [
+    "#Política",
+    "#Senado",
+    "#Marinho"
+  ],
+  "tags": [
+    "Rogério Marinho",
+    "candidatura",
+    "presidência do Senado",
+    "PL",
+    "voto aberto",
+    "Davi Alcolumbre",
+    "Lula",
+    "conflito político"
+  ],
+  "primary_keyword": "candidatura ao Senado",
+  "secondary_keywords": [
+    "Rogério Marinho",
+    "presidência do Senado",
+    "PL"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender as implicações da nova candidatura ao presidente do Senado",
+    "search_query": "Rogério Marinho candidatura presidente do Senado 2026",
+    "recommendation_angle": "Análise das alianças parlamentares e possíveis impactos no Executivo",
+    "first_payoff": "O senador Rogério Marinho (PL-RN) confirmou nesta quarta-feira (4) que será candidato à presidência do Senado",
+    "promise_proof": "Três veículos independentes confirmam a declaração, oferecendo respaldo factual",
+    "audience_hypothesis": "Investidores e cidadãos preocupados com a estabilidade política buscam explicações claras",
+    "thumbnail_complement": "Imagem do senador em reunião, destacando a tensão política",
+    "verification_limits": "A confirmação depende de fontes publicadas em 04/11/2026; não há dados posteriores"
+  },
+  "publication_description": "candidatura ao Senado foi confirmada oficialmente por Rogério Marinho em 4 de novembro de 2026, trazendo novas dinâmicas ao cenário político brasileiro.",
+  "publication_target_local": "2026-11-04T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
