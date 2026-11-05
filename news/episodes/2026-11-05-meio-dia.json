@@ -1,0 +1,254 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-05-meio-dia",
+  "news_date": "2026-11-05",
+  "event_date": "2026-11-05",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-05T17:28:53.680873-03:00",
+  "news_selection": {
+    "topic_area": "international",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "O presidente do Paraguai, Santiago Peña, anunciou sua renúncia ao cargo.",
+    "why_today": "A renúncia de Santiago Peña, anunciada na tarde de 5 de novembro de 2026, surge como culminação da crise bancária provocada pelo colapso do Ueno Bank, gerando pressão política intensa e abertura de processo de impeachment.",
+    "opening_anchor": "O presidente do Paraguai, Santiago Peña, anunciou sua renúncia ao cargo.",
+    "candidate_review": [
+      {
+        "subject": "Santiago Peña",
+        "topic_area": "politics",
+        "event_date": "2026-11-05",
+        "urls": [
+          "https://www.moneytimes.com.br/sob-ameaca-de-impeachment-presidente-do-paraguai-renuncia-em-meio-a-crise-desatada-pelo-colapso-do-ueno-bank/",
+          "https://www.suno.com.br/noticias/ueno-bank-crise-paraguai-contas/",
+          "https://www.poder360.com.br/poder-internacional/entenda-porque-crise-bancaria-no-paraguai-levou-a-renuncia-de-pena/",
+          "https://www.cnnbrasil.com.br/blogs/lucinda-pinto/economia/money/macroeconomia/crise-no-paraguai-tem-risco-limitado-para-brasil-mas-ameaca-investimentos/"
+        ],
+        "decision": "Renúncia confirmada por quatro veículos independentes."
+      }
+    ]
+  },
+  "title": "Presidente do Paraguai renuncia após colapso do Ueno Bank e crise política",
+  "title_options": [
+    {
+      "text": "Presidente do Paraguai renuncia após colapso do Ueno Bank e crise política",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Crise bancária no Paraguai leva presidente Santiago Peña a renunciar",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Ueno Bank quebra e presidente paraguaio deixa o cargo",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Renúncia de Peña",
+  "thumbnail_primary": "Santiago Peña em discurso",
+  "thumbnail_tension": "Crise bancária e pressão política",
+  "thumbnail_composition": "Close-up do presidente ao microfone",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por múltiplas fontes independentes e evidência documental",
+    "criteria": {
+      "source_independence": "confirmed",
+      "fact_verification": "high",
+      "public_interest": "high"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/sob-ameaca-de-impeachment-presidente-do-paraguai-renuncia-em-meio-a-crise-desatada-pelo-colapso-do-ueno-bank/",
+      "published_at": "2026-11-05",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "Suno",
+      "url": "https://www.suno.com.br/noticias/ueno-bank-crise-paraguai-contas/",
+      "published_at": "2026-11-05",
+      "role": "analysis"
+    },
+    {
+      "id": "S3",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-internacional/entenda-porque-crise-bancaria-no-paraguai-levou-a-renuncia-de-pena/",
+      "published_at": "2026-11-05",
+      "role": "explanation"
+    },
+    {
+      "id": "S4",
+      "publisher": "CNN Brasil",
+      "url": "https://www.cnnbrasil.com.br/blogs/lucinda-pinto/economia/money/macroeconomia/crise-no-paraguai-tem-risco-limitado-para-brasil-mas-ameaca-investimentos/",
+      "published_at": "2026-11-05",
+      "role": "context"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O presidente do Paraguai, Santiago Peña, anunciou sua renúncia ao cargo.",
+      "source_ids": [
+        "S1",
+        "S2",
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-05"
+    },
+    {
+      "claim": "O Ueno Bank, maior banco digital do Paraguai, teve suas operações suspensas em 2 de novembro de 2026.",
+      "source_ids": [
+        "S2",
+        "S4"
+      ],
+      "status": "background",
+      "event_date": "2026-11-05"
+    },
+    {
+      "claim": "O vice-presidente Pedro Alliana assumirá a presidência interinamente.",
+      "source_ids": [
+        "S3"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-05"
+    },
+    {
+      "claim": "A crise tem risco limitado de contágio ao Brasil, segundo analistas da CNN Brasil.",
+      "source_ids": [
+        "S4"
+      ],
+      "status": "background",
+      "event_date": "2026-11-05"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "internacional sob ameaça de impeachment, presidente do paraguai renunc",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/sob-ameaca-de-impeachment-presidente-do-paraguai-renuncia-em-meio-a-crise-desatada-pelo-colapso-do-ueno-bank/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "O caso também ganhou proporções políticas, chegando à renúncia do presidente paraguaio Santiago Peña nesta quinta-feira (5).",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.suno.com.br/noticias/ueno-bank-crise-paraguai-contas/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Suno"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato da renúncia",
+      "type": "fact",
+      "label": "news",
+      "headline": "Presidente do Paraguai anuncia renúncia",
+      "metric": "none",
+      "object_type": "data",
+      "visual_cards": [
+        "Santiago Peña ao microfone",
+        "Placa de 'Renúncia' no Palácio",
+        "Multidão de manifestantes"
+      ],
+      "narration": "O presidente do Paraguai, Santiago Peña, anunciou sua renúncia ao cargo. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos entender como a crise do Ueno Bank desencadeou esse desfecho político inesperado.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Contexto da crise bancária",
+      "type": "fact",
+      "label": "background",
+      "headline": "Ueno Bank colapsa e gera corrida bancária",
+      "metric": "none",
+      "object_type": "bank",
+      "visual_cards": [
+        "Tela de aplicativo bloqueada",
+        "Fila de clientes em frente ao banco",
+        "Gráfico de queda de ativos"
+      ],
+      "narration": "Em 2 de novembro, o Banco Central do Paraguai suspendeu as operações do Ueno Bank, citando capital abaixo da metade do exigido por lei, o que provocou corridas bancárias e protestos massivos.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião sobre os impactos regionais",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Risco limitado ao Brasil, mas atenção necessária",
+      "metric": "none",
+      "object_type": "data",
+      "visual_cards": [
+        "Mapa da América do Sul",
+        "Seta indicando fluxo de investimentos",
+        "Ícone de alerta econômico"
+      ],
+      "narration": "Na minha análise, embora a crise paraguaia não deva contagiar o sistema financeiro brasileiro, o grande número de brasileiros – cerca de 270 mil – e os investimentos de US$ 5,84 bilhões no país exigem monitoramento cuidadoso para evitar restrições de crédito.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e chamada",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Próximos passos da política paraguaia",
+      "metric": "none",
+      "object_type": "data",
+      "visual_cards": [
+        "Foto do Congresso paraguaio",
+        "Imagem de Pedro Alliana",
+        "Relógio marcando tempo"
+      ],
+      "narration": "A sucessão de Pedro Alliana ainda depende da aprovação do Congresso, mas a instabilidade pode retardar reformas e afetar investimentos brasileiros. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que a renúncia de Peña afetará os investimentos brasileiros no Paraguai?",
+  "hashtags": [
+    "#Paraguai",
+    "#CriseBancária",
+    "#Renúncia"
+  ],
+  "tags": [
+    "Santiago Peña",
+    "Ueno Bank",
+    "Paraguai",
+    "crise financeira",
+    "impeachment",
+    "Pedro Alliana",
+    "Brasil",
+    "investimentos",
+    "economia sul-americana"
+  ],
+  "primary_keyword": "renúncia de Santiago Peña",
+  "secondary_keywords": [
+    "Ueno Bank",
+    "crise bancária Paraguai"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender as consequências da renúncia do presidente paraguaio após crise bancária.",
+    "search_query": "renúncia presidente Paraguai Ueno Bank crise 2026",
+    "recommendation_angle": "Análise de impacto econômico para investidores brasileiros.",
+    "first_payoff": "O presidente do Paraguai, Santiago Peña, anunciou sua renúncia ao cargo.",
+    "promise_proof": "Quatro veículos independentes confirmam o fato, com trechos literais das publicações.",
+    "audience_hypothesis": "Investidores e público interessado em política internacional buscarão explicações sobre riscos regionais.",
+    "thumbnail_complement": "Imagem de Peña ao microfone reforça a gravidade do anúncio.",
+    "verification_limits": "A verificação depende de fontes públicas disponíveis até 45 dias antes da publicação."
+  },
+  "publication_description": "Renúncia de Santiago Peña ao cargo de presidente do Paraguai confirmada por múltiplas fontes independentes após o colapso do Ueno Bank, gerando instabilidade política e econômica na região.",
+  "publication_target_local": "2026-11-05T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
