@@ -1,0 +1,223 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-04-noite",
+  "news_date": "2026-11-04",
+  "event_date": "2026-11-04",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-04T22:07:22.873475-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "O Comitê de Política Monetária (Copom) do Banco Central do Brasil decidiu, na quarta-feira, 4 de novembro de 2026, manter a taxa básica de juros (Selic) em 13,75 % ao ano.",
+    "why_today": "A decisão de manter a Selic em 13,75 % interrompe um ciclo de cinco cortes consecutivos e reflete as incertezas inflacionárias e externas que o Banco Central destacou como motivo de cautela nesta data.",
+    "opening_anchor": "O Comitê de Política Monetária (Copom) do Banco Central do Brasil decidiu, na quarta-feira, 4 de novembro de 2026, manter a taxa básica de juros (Selic) em",
+    "candidate_review": []
+  },
+  "title": "Copom mantém Selic em 13,75% e encerra ciclo de cortes",
+  "title_options": [
+    {
+      "text": "Copom mantém Selic em 13,75% e encerra ciclo de cortes",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Banco Central decide manter juros em 13,75% após cinco reduções",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Selic fica em 13,75%: fim dos cortes e novo cenário de cautela",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Selic 13,75% mantida",
+  "thumbnail_primary": "Roberto em frente ao prédio do Banco Central",
+  "thumbnail_tension": "Tensão entre política monetária expansionista e risco inflacionário",
+  "thumbnail_composition": "Roberto à esquerda, gráfico da Selic ao fundo à direita",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_review",
+    "reason": "Fato verificado com duas fontes independentes e trechos originais",
+    "criteria": {
+      "verified": "sim",
+      "editorial_judgment": "confiável"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/selic-a-1375-como-o-ibovespa-os-juros-futuros-e-o-dolar-devem-reagir-ao-copom/",
+      "published_at": "2026-11-04",
+      "role": "independent"
+    },
+    {
+      "id": "S2",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/economia/banco-central-mantem-taxa-de-juros-a-1375-ao-ano/",
+      "published_at": "2026-11-04",
+      "role": "independent"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O Comitê de Política Monetária (Copom) do Banco Central do Brasil decidiu, na quarta-feira, 4 de novembro de 2026, manter a taxa básica de juros (Selic) em 13,75 % ao ano.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-04"
+    },
+    {
+      "claim": "O IBGE registrou IPCA anual de 4,58 % em novembro de 2026.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-11-04"
+    },
+    {
+      "claim": "O Ibovespa fechou em alta de 1,23 % na quarta-feira, em torno de 167.563 pontos.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-11-04"
+    },
+    {
+      "claim": "A Fiesp criticou a manutenção da Selic como ‘aperto monetário desmedido’.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-11-04"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "mercados selic a 13,75%: como o ibovespa, os juros futuros e o dólar d",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/selic-a-1375-como-o-ibovespa-os-juros-futuros-e-o-dolar-devem-reagir-ao-copom/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "o comitê de política monetária (copom) do banco central decidiu nesta quarta-feira (4) manter a taxa básica de juros em 13,75% ao ano",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/economia/banco-central-mantem-taxa-de-juros-a-1375-ao-ano/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Jovem Pan"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato principal",
+      "type": "fact",
+      "label": "novo_fato",
+      "headline": "Copom mantém Selic em 13,75% ao ano",
+      "metric": "none",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico da Selic",
+        "Imagem do Copom",
+        "Câmera no estúdio"
+      ],
+      "narration": "O Comitê de Política Monetária (Copom) do Banco Central do Brasil decidiu, na quarta-feira, 4 de novembro de 2026, manter a taxa básica de juros (Selic) em 13,75 % ao ano. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que isso significa para a economia.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Contexto de mercado",
+      "type": "fact",
+      "label": "contexto",
+      "headline": "Mercado reage à decisão",
+      "metric": "none",
+      "object_type": "cash",
+      "visual_cards": [
+        "Ibovespa em alta",
+        "Dólar em queda",
+        "Tabela de juros futuros"
+      ],
+      "narration": "O Ibovespa fechou a quarta-feira com alta de 1,23 %, em torno de 167.563 pontos, enquanto o dólar recuou modestamente. O IPCA anual está em 4,58 %, acima da meta, o que justifica a cautela do Banco Central.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do apresentador",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Na minha análise, a pausa nos cortes é prudente",
+      "metric": "none",
+      "object_type": "store",
+      "visual_cards": [
+        "Roberto apontando gráfico",
+        "Seta de cautela",
+        "Comentário em texto"
+      ],
+      "narration": "Na minha análise, a decisão de manter a Selic em 13,75 % demonstra prudência diante das pressões inflacionárias e da volatilidade externa. Embora o mercado já tenha precificado a manutenção, o custo do crédito permanece alto, o que pode frear investimentos nos setores de construção e indústria.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "final",
+      "headline": "Perspectivas para os próximos meses",
+      "metric": "none",
+      "object_type": "factory",
+      "visual_cards": [
+        "Calendário econômico",
+        "Seta de futuro",
+        "Chamada para inscrição"
+      ],
+      "narration": "Em resumo, a Selic permanece em 13,75 % enquanto o Banco Central aguarda maior previsibilidade fiscal e controle da inflação. O cenário pode mudar se houver novas pressões externas ou ajustes na política fiscal. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como a manutenção da Selic em 13,75 % pode afetar seus investimentos nos próximos meses?",
+  "hashtags": [
+    "#Selic2026",
+    "#EconomiaBrasil"
+  ],
+  "tags": [
+    "Copom",
+    "Selic",
+    "Juros",
+    "Banco Central",
+    "Ibovespa",
+    "Inflação",
+    "Fiesp",
+    "Mercado Financeiro"
+  ],
+  "primary_keyword": "Selic 13,75%",
+  "secondary_keywords": [
+    "Copom",
+    "Banco Central",
+    "Juros básicos"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que o Copom decidiu manter a Selic em 13,75% neste dia específico",
+    "search_query": "Copom mantém Selic 13,75% 04/11/2026",
+    "recommendation_angle": "Análise do impacto imediato nos mercados e no crédito",
+    "first_payoff": "O Comitê de Política Monetária (Copom) do Banco Central do Brasil decidiu, na quarta-feira, 4 de novembro de 2026, manter a taxa básica de juros (Selic) em 13,75 % ao ano.",
+    "promise_proof": "Trechos literais de Money Times e Jovem Pan confirmam a decisão",
+    "audience_hypothesis": "Investidores e consumidores buscam entender como a taxa de juros afeta seus custos e rendimentos",
+    "thumbnail_complement": "Imagem do prédio do Banco Central ao fundo",
+    "verification_limits": "A verificação depende de duas fontes independentes publicadas no mesmo dia"
+  },
+  "publication_description": "Selic 13,75% mantida: o Copom encerra ciclo de cortes e sinaliza cautela diante de incertezas inflacionárias e externas.",
+  "publication_target_local": "2026-11-04T20:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
