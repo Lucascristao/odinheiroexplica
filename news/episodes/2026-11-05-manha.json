@@ -1,0 +1,240 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-05-manha",
+  "news_date": "2026-11-05",
+  "event_date": "2026-11-05",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-05T08:40:20.113075-03:00",
+  "news_selection": {
+    "topic_area": "international",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Cristiano Ronaldo anunciou sua aposentadoria da seleção portuguesa após 23 anos.",
+    "why_today": "O anúncio de aposentadoria de Cristiano Ronaldo, ícone do futebol mundial, ocorre hoje, 5 de novembro de 2026, marcando o fim de uma carreira internacional de 23 anos e gerando impactos imediatos na seleção portuguesa e no mercado esportivo.",
+    "opening_anchor": "Cristiano Ronaldo anunciou nesta quinta-feira (5) que não voltará a defender a seleção de Portugal.",
+    "candidate_review": [
+      {
+        "subject": "Seleção Portuguesa",
+        "topic_area": "international",
+        "event_date": "2026-11-05",
+        "urls": [
+          "https://jovempan.com.br/esportes/futebol/cristiano-ronaldo-anuncia-aposentadoria-da-selecao-portuguesa-apos-23-anos/",
+          "https://www.poder360.com.br/poder-sportsmkt/cristiano-ronaldo-anuncia-aposentadoria-da-selecao-portuguesa/"
+        ],
+        "decision": "Acompanhar a reestruturação do elenco e a escolha de novo capitão."
+      }
+    ]
+  },
+  "title": "Cristiano Ronaldo anuncia aposentadoria da seleção portuguesa após 23 anos",
+  "title_options": [
+    {
+      "text": "Cristiano Ronaldo anuncia aposentadoria da seleção portuguesa após 23 anos",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Fim de era: Ronaldo se despede da seleção de Portugal",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Ronaldo encerra 23 anos na seleção portuguesa",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Ronaldo se aposenta",
+  "thumbnail_primary": "Cristiano Ronaldo em vídeo no Instagram",
+  "thumbnail_tension": "Despedida inesperada de um ícone do futebol",
+  "thumbnail_composition": "Close no rosto de Ronaldo, centrado",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes, sem contradições, relevância internacional e impacto econômico.",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto_economico": "moderado",
+      "originalidade": "media"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/esportes/futebol/cristiano-ronaldo-anuncia-aposentadoria-da-selecao-portuguesa-apos-23-anos/",
+      "published_at": "2026-11-05",
+      "role": "independent"
+    },
+    {
+      "id": "S2",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-sportsmkt/cristiano-ronaldo-anuncia-aposentadoria-da-selecao-portuguesa/",
+      "published_at": "2026-11-05",
+      "role": "independent"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Cristiano Ronaldo anunciou sua aposentadoria da seleção portuguesa após 23 anos.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-05"
+    },
+    {
+      "claim": "O anúncio foi feito por meio de vídeo publicado no Instagram.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-05"
+    },
+    {
+      "claim": "Ronaldo tem 41 anos ao se aposentar da seleção.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-11-05"
+    },
+    {
+      "claim": "A decisão ocorre pouco mais de um mês após desentendimento com o técnico Jorge Jesus.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-11-05"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "Cristiano Ronaldo anunciou nesta quinta-feira (5) que não voltará a defender a seleção de Portugal.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/esportes/futebol/cristiano-ronaldo-anuncia-aposentadoria-da-selecao-portuguesa-apos-23-anos/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "cristiano ronaldo anuncia aposentadoria da seleção portuguesa atacante",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-sportsmkt/cristiano-ronaldo-anuncia-aposentadoria-da-selecao-portuguesa/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Poder360"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato principal",
+      "type": "fact",
+      "label": "apresentacao",
+      "headline": "Ronaldo anuncia aposentadoria",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Ronaldo no Instagram",
+        "Data da declaração",
+        "Título da matéria"
+      ],
+      "narration": "Cristiano Ronaldo anunciou nesta quinta-feira (5) que não voltará a defender a seleção de Portugal. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que essa decisão significa para o futebol português e para o mercado esportivo.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Confirmação das fontes",
+      "type": "fact",
+      "label": "corroboracao",
+      "headline": "Duas fontes independentes confirmam",
+      "metric": "credibilidade",
+      "object_type": "data",
+      "visual_cards": [
+        "Jovem Pan confirma",
+        "Poder360 confirma",
+        "Vídeo oficial"
+      ],
+      "narration": "Tanto a Jovem Pan quanto a Poder360 publicaram matérias nesta manhã, reproduzindo trechos do vídeo de Ronaldo e confirmando a data e o conteúdo da declaração.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião editorial",
+      "type": "opinion",
+      "label": "analise",
+      "headline": "Impactos no futebol e na economia",
+      "metric": "analise",
+      "object_type": "data",
+      "visual_cards": [
+        "Vácuo de liderança",
+        "Revisão de contratos",
+        "Próximas competições"
+      ],
+      "narration": "Na minha análise, a saída de Ronaldo deixa um vácuo de liderança que o técnico Jorge Jesus poderá preencher com maior liberdade tática, enquanto patrocinadores como Nike deverão renegociar contratos de imagem, o que pode gerar ajustes nos valores de mercado dos jogadores portugueses.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "fechamento",
+      "headline": "O que vem a seguir",
+      "metric": "encerramento",
+      "object_type": "data",
+      "visual_cards": [
+        "Novo capitão",
+        "Próximas fases",
+        "Inscrição no canal"
+      ],
+      "narration": "Em resumo, a aposentadoria de Ronaldo marca o fim de uma era e abre espaço para a renovação da seleção portuguesa. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que a saída de Ronaldo afetará a performance da seleção portuguesa nas próximas competições?",
+  "hashtags": [
+    "#Ronaldo",
+    "#SeleçãoPortuguesa",
+    "#Futebol"
+  ],
+  "tags": [
+    "Cristiano Ronaldo",
+    "aposentadoria",
+    "seleção portuguesa",
+    "futebol",
+    "esporte",
+    "Jovem Pan",
+    "Poder360",
+    "Instagram",
+    "Jorge Jesus",
+    "Nike"
+  ],
+  "primary_keyword": "Cristiano Ronaldo aposentadoria seleção",
+  "secondary_keywords": [
+    "futebol internacional",
+    "impacto econômico",
+    "renovação da seleção"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender as consequências da aposentadoria de um ícone do futebol mundial.",
+    "search_query": "Ronaldo aposentadoria seleção portuguesa 2026",
+    "recommendation_angle": "Análise de impacto esportivo e econômico para o público brasileiro.",
+    "first_payoff": "Cristiano Ronaldo anunciou nesta quinta-feira (5) que não voltará a defender a seleção de Portugal.",
+    "promise_proof": "Duas fontes independentes confirmam o vídeo oficial de Ronaldo.",
+    "audience_hypothesis": "Espectadores buscam informações rápidas e confiáveis sobre grandes notícias esportivas.",
+    "thumbnail_complement": "Imagem de Ronaldo em close, transmitindo emoção da despedida.",
+    "verification_limits": "A verificação depende de trechos literais publicados nas matérias de 05/11/2026."
+  },
+  "publication_description": "Cristiano Ronaldo anuncia sua aposentadoria da seleção portuguesa, encerrando 23 anos de carreira internacional e gerando impactos no futebol e no mercado esportivo.\n\nContexto: Cristiano Ronaldo aposentadoria seleção",
+  "publication_target_local": "2026-11-05T08:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
