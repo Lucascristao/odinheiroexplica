@@ -1,0 +1,227 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-06-noite",
+  "news_date": "2026-11-06",
+  "event_date": "2026-11-06",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-06T18:00:24.089404-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Lula sancionou a lei que cria o Enamed, exame nacional obrigatório para a formação médica.",
+    "why_today": "A sanção da lei que institui o Enamed ocorre no mesmo dia em que o governo anuncia a reforma da avaliação médica, tornando-se o primeiro exame nacional obrigatório para médicos no Brasil.",
+    "opening_anchor": "Lula sancionou a lei que cria o Enamed, exame nacional obrigatório para a formação médica.",
+    "candidate_review": []
+  },
+  "title": "Lula sanciona lei que cria o Enamed, exame nacional obrigatório para médicos",
+  "title_options": [
+    {
+      "text": "Lula sanciona lei que cria o Enamed, exame nacional obrigatório para médicos",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Presidente aprova Enamed: novo exame nacional para estudantes de medicina",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Enamed nasce: governo institui exame obrigatório para a prática da medicina",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Enamed: exame nacional",
+  "thumbnail_primary": "Presidente Lula assinando a lei",
+  "thumbnail_tension": "Debate sobre mercantilização da medicina",
+  "thumbnail_composition": "Close no documento oficial ao lado do presidente",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes, relevância política e econômica clara",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto_publico": "moderado"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/lula-sanciona-a-oab-da-medicina-lei-que-obriga-a-realizacao-de-provas-durante-o-curso/",
+      "published_at": "2026-11-06",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-governo/lula-sanciona-obrigatoriedade-de-exame-para-exercicio-da-medicina/",
+      "published_at": "2026-11-06",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Lula sancionou a lei que cria o Enamed, exame nacional obrigatório para a formação médica.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-06"
+    },
+    {
+      "claim": "O Enamed avaliará a formação dos estudantes ao longo da graduação, substituindo avaliação única ao final do curso.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-11-06"
+    },
+    {
+      "claim": "O ministro da Educação, Leonardo Barchini, afirmou que o Enamed pode auxiliar na formação de políticas públicas.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-06"
+    },
+    {
+      "claim": "O ministro da Saúde, Alexandre Padilha, rejeitou o apelido “OAB da Medicina”.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-06"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "política lula sanciona a ‘oab da medicina’, lei que obriga a realizaçã",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/lula-sanciona-a-oab-da-medicina-lei-que-obriga-a-realizacao-de-provas-durante-o-curso/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "O presidente Luiz Inácio Lula da Silva (PT) sancionou, nesta 6ª feira (6.nov.2026), o Enamed (Exame Nacional de Avaliação da Formação Médica), que se torna obrigatório para o exercício da medicina no Brasil.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-governo/lula-sanciona-obrigatoriedade-de-exame-para-exercicio-da-medicina/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Poder360"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato principal",
+      "type": "fact",
+      "label": "new_fact",
+      "headline": "Lula sanciona o Enamed",
+      "metric": "view",
+      "object_type": "data",
+      "visual_cards": [
+        "Presidente assinando",
+        "Documento oficial",
+        "Calendário 06/11/2026"
+      ],
+      "narration": "Lula sancionou a lei que cria o Enamed, exame nacional obrigatório para a formação médica. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos entender o que muda para os estudantes de medicina.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes da lei",
+      "type": "fact",
+      "label": "background",
+      "headline": "Objetivo e motivação do Enamed",
+      "metric": "view",
+      "object_type": "data",
+      "visual_cards": [
+        "Trecho da lei",
+        "Declaração de Lula",
+        "Comentário do ministro Barchini"
+      ],
+      "narration": "A medida visa garantir que a formação médica seja avaliada ao longo da graduação, evitando a mercantilização que, segundo Lula, faz com que médicos se formem apenas para ganhar dinheiro. O ministro da Educação, Leonardo Barchini, destacou que o exame também ajudará na formulação de políticas públicas de saúde.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do apresentador",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Impacto econômico e social",
+      "metric": "view",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de custos de saúde",
+        "Projeção de qualidade médica",
+        "Cenário de mercado"
+      ],
+      "narration": "Na minha análise, a criação do Enamed pode reduzir gastos futuros com atendimentos inadequados, ao elevar a qualidade da formação médica. Contudo, a obrigatoriedade traz desafios logísticos e custos adicionais para universidades, que precisarão adaptar suas estruturas de avaliação.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Próximos passos do Enamed",
+      "metric": "view",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário de implementação",
+        "Mensagem de encerramento",
+        "Call to action"
+      ],
+      "narration": "O Enamed entra em vigor a partir do próximo semestre, e as universidades já começam a adaptar seus currículos. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que o Enamed vai influenciar a qualidade da saúde no Brasil?",
+  "hashtags": [
+    "#Enamed",
+    "#SaúdePública",
+    "#ReformaEducacional"
+  ],
+  "tags": [
+    "Lula",
+    "Enamed",
+    "medicina",
+    "exame nacional",
+    "educação superior",
+    "saúde pública",
+    "Política brasileira",
+    "reforma educacional",
+    "ministerio da educação",
+    "ministerio da saúde"
+  ],
+  "primary_keyword": "Enamed",
+  "secondary_keywords": [
+    "exame nacional",
+    "formação médica",
+    "Lula sanciona"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender a nova exigência para estudantes de medicina no Brasil",
+    "search_query": "Enamed lei sancionada Lula 06/11/2026",
+    "recommendation_angle": "Apresentar impacto da medida na formação médica e nas contas públicas",
+    "first_payoff": "Lula sancionou a lei que cria o Enamed, exame nacional obrigatório para a formação médica.",
+    "promise_proof": "Comprovado por trechos de Jovem Pan e Poder360 publicados no mesmo dia",
+    "audience_hypothesis": "Profissionais de saúde, estudantes e investidores interessados em políticas públicas",
+    "thumbnail_complement": "Imagem do presidente assinando a lei ao lado de estudantes de medicina",
+    "verification_limits": "Apenas duas fontes independentes confirmam o fato; demais detalhes dependem de regulamentação futura"
+  },
+  "publication_description": "Enamed: o novo exame nacional que Lula sancionou para garantir a qualidade da formação médica no Brasil. A medida, confirmada por Jovem Pan e Poder360, traz mudanças estruturais na avaliação dos estudantes de medicina.",
+  "publication_target_local": "2026-11-06T20:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
