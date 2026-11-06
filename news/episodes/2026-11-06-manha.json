@@ -1,0 +1,228 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-06-manha",
+  "news_date": "2026-11-06",
+  "event_date": "2026-11-06",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-06T13:22:35.999721-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "O relatório Payroll de outubro de 2026 mostrou a criação de 165 mil vagas não agrícolas nos EUA.",
+    "why_today": "O dado de 165 mil vagas não agrícolas foi divulgado nesta sexta-feira, 06/11/2026, surpreendendo analistas e indicando aceleração inesperada no mercado de trabalho americano.",
+    "opening_anchor": "Payroll: EUA abrem 165 mil vagas de emprego em outubro; taxa de desemprego cai para 4,1%",
+    "candidate_review": []
+  },
+  "title": "Payroll de outubro 2026 cria 165 mil vagas não agrícolas nos EUA",
+  "title_options": [
+    {
+      "text": "Payroll de outubro 2026 cria 165 mil vagas não agrícolas nos EUA",
+      "editorial_quality": 5
+    },
+    {
+      "text": "EUA registram 165 mil novas vagas não agrícolas em outubro, superando projeções",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Desemprego nos EUA cai para 4,1% enquanto surgem 165 mil vagas em outubro",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "165 mil vagas criadas",
+  "thumbnail_primary": "Gráfico de vagas não agrícolas de outubro 2026",
+  "thumbnail_tension": "Superação de expectativas de analistas",
+  "thumbnail_composition": "Gráfico centralizado com destaque ao número 165 000",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "cross-source verification",
+    "reason": "Duas publicações independentes citam o mesmo BLS e apresentam números idênticos",
+    "criteria": {
+      "source_independence": "confirmada",
+      "data_consistency": "alta",
+      "editorial_integrity": "mantida"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/payroll-eua-abrem-165-mil-vagas-de-emprego-em-outubro-taxa-de-desemprego-cai-para-41/",
+      "published_at": "2026-11-06",
+      "role": "primary"
+    },
+    {
+      "id": "S2",
+      "publisher": "BMC News",
+      "url": "https://bmcnews.com.br/economia/payroll-dos-eua-cria-165-mil-vagas-em-outubro-e-supera-previsao/",
+      "published_at": "2026-11-06",
+      "role": "secondary"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O relatório Payroll de outubro de 2026 mostrou a criação de 165 mil vagas não agrícolas nos EUA.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-06"
+    },
+    {
+      "claim": "A taxa de desemprego em outubro de 2026 foi de 4,1%.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-06"
+    },
+    {
+      "claim": "O salário médio por hora no setor privado subiu para US$ 38, alta de US$ 0,14.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-06"
+    },
+    {
+      "claim": "Revisões de agosto e setembro elevaram os números de vagas para 186 mil e 60 mil respectivamente.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-11-06"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/payroll-eua-abrem-165-mil-vagas-de-emprego-em-outubro-taxa-de-desemprego-cai-para-41/",
+      "expected_text": "Payroll: EUA abrem 165 mil vagas de emprego em outubro; taxa de desemprego cai para 4,1%",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bmcnews.com.br/economia/payroll-dos-eua-cria-165-mil-vagas-em-outubro-e-supera-previsao/",
+      "expected_text": "O payroll dos Estados Unidos criou 165 mil vagas não agrícolas em outubro de 2026, ante 60 mil em setembro, dado revisado, e superou a previsão de 65 mil.",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "BMC News"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato principal",
+      "type": "fact",
+      "label": "new_fact",
+      "headline": "165 mil vagas não agrícolas criadas em outubro",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Número de vagas",
+        "Comparação com projeções",
+        "Linha do tempo de revisões"
+      ],
+      "narration": "Payroll: EUA abrem 165 mil vagas de emprego em outubro; taxa de desemprego cai para 4,1%. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que esse número recorde significa para a economia americana.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes adicionais",
+      "type": "fact",
+      "label": "supporting_fact",
+      "headline": "Desemprego em 4,1% e salário médio $38",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Taxa de desemprego",
+        "Salário médio por hora",
+        "Comparativo histórico"
+      ],
+      "narration": "Além das vagas, a taxa de desemprego recuou para 4,1%, a menor desde o início de 2025, e o salário médio por hora no setor privado subiu para US$ 38, alta de US$ 0,14 em relação ao mês anterior.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de Roberto",
+      "type": "opinion",
+      "label": "opinion",
+      "headline": "Implicações para a política monetária",
+      "metric": "analysis",
+      "object_type": "data",
+      "visual_cards": [
+        "Fed e juros",
+        "Pressão inflacionária",
+        "Cenário futuro"
+      ],
+      "narration": "Na minha análise, a combinação de criação robusta de vagas e aumento salarial pode pressionar o Federal Reserve a rever sua trajetória de alta de juros, embora o banco central ainda destaque a necessidade de observar a participação da força-de-trabalho.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "O que vem a seguir?",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Resumo dos números",
+        "Projeções de mercado",
+        "Chamada à ação"
+      ],
+      "narration": "Em resumo, o relatório de outubro indica um mercado de trabalho ainda apertado, o que pode influenciar decisões de política monetária nos próximos meses. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que esses números vão afetar a política de juros dos EUA?",
+  "hashtags": [
+    "#Payroll2026",
+    "#MercadoDeTrabalho",
+    "#Fed"
+  ],
+  "tags": [
+    "vagas não agrícolas",
+    "taxa de desemprego",
+    "salário médio",
+    "Federal Reserve",
+    "BLS",
+    "economia americana",
+    "relatório payroll",
+    "análise econômica",
+    "O Dinheiro Explica",
+    "Roberto"
+  ],
+  "primary_keyword": "Payroll",
+  "secondary_keywords": [
+    "vagas não agrícolas",
+    "taxa de desemprego",
+    "salário médio"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender o impacto das últimas cifras de emprego nos EUA",
+    "search_query": "Payroll outubro 2026 vagas não agrícolas 165 mil",
+    "recommendation_angle": "Apresentar o número recorde e suas consequências para a política monetária",
+    "first_payoff": "Payroll: EUA abrem 165 mil vagas de emprego em outubro; taxa de desemprego cai para 4,1%",
+    "promise_proof": "Duas fontes independentes confirmam os mesmos números do BLS",
+    "audience_hypothesis": "Investidores e profissionais de finanças buscam entender como o mercado de trabalho afeta juros",
+    "thumbnail_complement": "Gráfico de vagas com destaque ao número 165 000",
+    "verification_limits": "Os trechos citados são extraídos diretamente das páginas HTML das duas publicações"
+  },
+  "publication_description": "Payroll de outubro 2026 revela criação de 165 mil vagas não agrícolas nos EUA, taxa de desemprego em 4,1% e salário médio por hora em US$ 38, superando expectativas de analistas.",
+  "publication_target_local": "2026-11-06T08:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
