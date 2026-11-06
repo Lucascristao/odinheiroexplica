@@ -1,0 +1,237 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-06-meio-dia",
+  "news_date": "2026-11-06",
+  "event_date": "2026-11-06",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-06T16:45:45.763343-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Lula afirmou que “ninguém nesse País pode falar mais de responsabilidade fiscal do que minha equipe econômica”.",
+    "why_today": "Na manhã de 6 de novembro de 2026, durante reunião extraordinária do CNPE, o presidente Lula respondeu a críticas sobre responsabilidade fiscal, usando a frase “pobre não pagará a conta”, fato que pode influenciar a percepção de risco-país e decisões de investimento.",
+    "opening_anchor": "Ninguém nesse País pode falar mais de responsabilidade fiscal do que minha equipe econômica.",
+    "candidate_review": [
+      {
+        "subject": "Presidente Luiz Inácio Lula da Silva",
+        "topic_area": "politics",
+        "event_date": "2026-11-06",
+        "urls": [
+          "https://www.moneytimes.com.br/pobre-nao-pagara-a-conta-a-resposta-de-lula-as-criticas-sobre-responsabilidade-fiscal-ml/",
+          "https://jovempan.com.br/economia/macroeconomia/lula-rebate-criticas-sobre-falta-de-responsabilidade-fiscal-pobres-nao-pagarao-conta/"
+        ],
+        "decision": "afirmação de defesa da responsabilidade fiscal"
+      }
+    ]
+  },
+  "title": "Lula defende responsabilidade fiscal e garante que o pobre não pagará a conta",
+  "title_options": [
+    {
+      "text": "Lula defende responsabilidade fiscal e garante que o pobre não pagará a conta",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Presidente Lula rebate críticas e afirma que equipe econômica protege as contas públicas",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Em reunião do CNPE, Lula destaca superávit de 2,8% do PIB e protege os mais vulneráveis",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Lula protege o pobre",
+  "thumbnail_primary": "Luiz Inácio Lula da Silva no plenário do CNPE",
+  "thumbnail_tension": "declaração sobre responsabilidade fiscal em meio a pressão do mercado",
+  "thumbnail_composition": "close-up do presidente ao centro, fundo com bandeira do Brasil",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes, sem contradições, e relevância política-econômica.",
+    "criteria": {
+      "source_independence": "alta",
+      "verifiability": "completa",
+      "news_value": "elevada"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/pobre-nao-pagara-a-conta-a-resposta-de-lula-as-criticas-sobre-responsabilidade-fiscal-ml/",
+      "published_at": "2026-11-06",
+      "role": "reporting"
+    },
+    {
+      "id": "S2",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/economia/macroeconomia/lula-rebate-criticas-sobre-falta-de-responsabilidade-fiscal-pobres-nao-pagarao-conta/",
+      "published_at": "2026-11-06",
+      "role": "reporting"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Lula afirmou que “ninguém nesse País pode falar mais de responsabilidade fiscal do que minha equipe econômica”.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-06"
+    },
+    {
+      "claim": "Lula disse que “o pobre não pagará a conta”.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-06"
+    },
+    {
+      "claim": "O superávit fiscal de 2026 foi de 2,8 % do PIB.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-06"
+    },
+    {
+      "claim": "A reunião do CNPE foi extraordinária e ocorreu no Ministério de Minas e Energia.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-11-06"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "Ninguém nesse País pode falar mais de responsabilidade fiscal do que minha equipe econômica.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/pobre-nao-pagara-a-conta-a-resposta-de-lula-as-criticas-sobre-responsabilidade-fiscal-ml/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "a única coisa que eles têm que saber é que o pobre não pagará a conta, nós não levaremos o povo pobre a nenhum sacrifício",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/economia/macroeconomia/lula-rebate-criticas-sobre-falta-de-responsabilidade-fiscal-pobres-nao-pagarao-conta/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Jovem Pan"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo",
+      "type": "fact",
+      "label": "opening",
+      "headline": "Lula defende equipe econômica em reunião do CNPE",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Presidente no plenário",
+        "Microfone ao centro",
+        "Bandeira ao fundo"
+      ],
+      "narration": "Ninguém nesse País pode falar mais de responsabilidade fiscal do que minha equipe econômica. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que o presidente Lula disse na reunião extraordinária do CNPE, nesta manhã de 6 de novembro de 2026, e quais são os impactos para a economia.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhe da fala",
+      "type": "fact",
+      "label": "detail",
+      "headline": "“Pobre não pagará a conta”",
+      "metric": "quote",
+      "object_type": "data",
+      "visual_cards": [
+        "Close-up do presidente",
+        "Legenda da citação",
+        "Gráfico de superávit"
+      ],
+      "narration": "Lula reforçou que “o pobre não pagará a conta”, argumentando que o governo não pretende sacrificar as camadas mais vulneráveis para cumprir metas fiscais, ao mesmo tempo que destaca um superávit de 2,8 % do PIB neste ano.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Análise de risco-país",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Ícone de risco-país",
+        "Seta de tendência",
+        "Tabela de dívida pública"
+      ],
+      "narration": "Na minha análise, a defesa enfática da responsabilidade fiscal, aliada à proteção social, pode suavizar a percepção de risco-país entre investidores, mas a falta de um plano de ajuste concreto ainda gera incerteza nos mercados.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Desdobramentos esperados",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário de próximas decisões",
+        "Símbolo de inscrição",
+        "Logo do canal"
+      ],
+      "narration": "Em resumo, a fala de Lula reforça a narrativa de responsabilidade fiscal sem sacrificar os mais vulneráveis, o que pode estabilizar a confiança dos investidores, embora o mercado ainda aguarde medidas de ajuste mais claras. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você avalia a estratégia de Lula ao combinar discurso fiscal responsável com proteção social?",
+  "hashtags": [
+    "#Lula",
+    "#ResponsabilidadeFiscal",
+    "#EconomiaBrasil"
+  ],
+  "tags": [
+    "Luiz Inácio Lula da Silva",
+    "CNPE",
+    "responsabilidade fiscal",
+    "superávit",
+    "política econômica",
+    "investidores",
+    "mercado financeiro",
+    "Brasil",
+    "O Dinheiro Explica"
+  ],
+  "primary_keyword": "responsabilidade fiscal",
+  "secondary_keywords": [
+    "superávit 2,8% PIB",
+    "pobre não pagará a conta"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender a posição do presidente sobre responsabilidade fiscal e seu impacto econômico.",
+    "search_query": "Lula responsabilidade fiscal reunião CNPE 06/11/2026",
+    "recommendation_angle": "Análise de como a fala presidencial pode influenciar risco-país e políticas sociais.",
+    "first_payoff": "Ninguém nesse País pode falar mais de responsabilidade fiscal do que minha equipe econômica.",
+    "promise_proof": "Citações diretas de duas fontes independentes confirmam a declaração.",
+    "audience_hypothesis": "Investidores e cidadãos preocupados com a estabilidade econômica buscarão explicações claras.",
+    "thumbnail_complement": "Imagem do presidente no plenário com destaque para a citação.",
+    "verification_limits": "A verificação depende de trechos publicados em Money Times e Jovem Pan, sem acesso a gravações internas."
+  },
+  "publication_description": "Responsabilidade fiscal: Lula afirma que sua equipe econômica é a mais capacitada e garante que o pobre não pagará a conta, destacando superávit de 2,8 % do PIB durante reunião do CNPE em 6 de novembro de 2026.",
+  "publication_target_local": "2026-11-06T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
