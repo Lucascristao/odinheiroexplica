@@ -1,0 +1,225 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-07-noite",
+  "news_date": "2026-11-07",
+  "event_date": "2026-11-07",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-07T19:22:11.126044-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Para orientar a população sobre como evitar fraudes e proteger seu patrimônio na compra de imóveis, os Cartórios de Notas realizam neste sábado (7) um mutirão nacional gratuito em várias cidades do país.",
+    "why_today": "O mutirão de cartórios acontece exatamente neste sábado, 7 de novembro de 2026, quando o risco de fraudes imobiliárias aumenta devido ao cenário de juros reais elevados e maior fluxo de capitais no país.",
+    "opening_anchor": "Para orientar a população sobre como evitar fraudes e proteger seu patrimônio na compra de imóveis, os Cartórios de Notas realizam neste sábado (7) um mutirão",
+    "candidate_review": []
+  },
+  "title": "Cartórios de Notas lançam mutirão gratuito contra fraudes imobiliárias em todo o Brasil",
+  "title_options": [
+    {
+      "text": "Cartórios de Notas lançam mutirão gratuito contra fraudes imobiliárias em todo o Brasil",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Mutirão nacional dos cartórios alerta compradores sobre golpes na compra de imóveis",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Brasil recebe ação gratuita de cartórios para prevenir fraudes na compra de imóveis",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Mutirão contra fraudes",
+  "thumbnail_primary": "Tabelião explicando documentos a cidadãos",
+  "thumbnail_tension": "Risco crescente de golpes imobiliários em alta de juros",
+  "thumbnail_composition": "Close-up do tabelião ao centro, público ao fundo",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes e relevância econômica",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto_publico": "moderado"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Agência Brasil",
+      "url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/cartorios-fazem-mutirao-para-prevenir-golpes-na-compra-de-imoveis",
+      "published_at": "2026-11-07",
+      "role": "primary"
+    },
+    {
+      "id": "S2",
+      "publisher": "BMC News",
+      "url": "https://bmcnews.com.br/economia/cartorios-fazem-mutirao-para-prevenir-golpes-na-compra-de-imoveis/",
+      "published_at": "2026-11-07",
+      "role": "secondary"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Para orientar a população sobre como evitar fraudes e proteger seu patrimônio na compra de imóveis, os Cartórios de Notas realizam neste sábado (7) um mutirão nacional gratuito em várias cidades do país.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-07"
+    },
+    {
+      "claim": "O mutirão é coordenado pelo Colégio Notarial do Brasil – Conselho Federal (CNB/CF) em parceria com seccionais estaduais e tabelionatos de notas.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-11-07"
+    },
+    {
+      "claim": "A iniciativa ocorre em um contexto de juros reais de 9,05% e superávit comercial recorde de US$ 9,32 bi em outubro de 2026.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-11-07"
+    },
+    {
+      "claim": "Cartórios oferecem atendimento presencial, distribuição de material informativo e esclarecimento sobre documentos como escrituras e procurações.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-11-07"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "Para orientar a população sobre como evitar fraudes e proteger seu patrimônio na compra de imóveis, os Cartórios de Notas realizam neste sábado (7) um mutirão nacional gratuito em várias cidades do país.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://agenciabrasil.ebc.com.br/economia/noticia/2026-11/cartorios-fazem-mutirao-para-prevenir-golpes-na-compra-de-imoveis",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Agência Brasil"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "Para orientar a população sobre como evitar fraudes e proteger seu patrimônio na compra de imóveis, os Cartórios de Notas realizam neste sábado (7) um mutirão nacional gratuito em várias cidades do país.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bmcnews.com.br/economia/cartorios-fazem-mutirao-para-prevenir-golpes-na-compra-de-imoveis/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "BMC News"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato principal",
+      "type": "fact",
+      "label": "mutirão_inaugurado",
+      "headline": "Cartórios iniciam mutirão gratuito contra fraudes imobiliárias",
+      "metric": "data",
+      "object_type": "store",
+      "visual_cards": [
+        "Tabelião em frente a estande",
+        "Público recebendo folhetos",
+        "Mapa das cidades participantes"
+      ],
+      "narration": "Para orientar a população sobre como evitar fraudes e proteger seu patrimônio na compra de imóveis, os Cartórios de Notas realizam neste sábado (7) um mutirão nacional gratuito em várias cidades do país. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos entender o que essa ação significa para quem pretende comprar um imóvel.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes da ação",
+      "type": "fact",
+      "label": "mutirão_detalhes",
+      "headline": "Atividades e organizadores do mutirão",
+      "metric": "info",
+      "object_type": "bank",
+      "visual_cards": [
+        "Tabeliães explicando escrituras",
+        "Distribuição de panfletos informativos",
+        "Espaços em shoppings e praças"
+      ],
+      "narration": "O mutirão, coordenado pelo Colégio Notarial do Brasil – Conselho Federal, conta com seccionais estaduais e tabelionatos de notas que atendem presencialmente, esclarecendo dúvidas sobre escrituras, procurações e doações, além de distribuir material sobre os principais tipos de fraude imobiliária.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de risco",
+      "type": "opinion",
+      "label": "opinion_risk",
+      "headline": "Por que o mutirão é crucial agora",
+      "metric": "opinion",
+      "object_type": "factory",
+      "visual_cards": [
+        "Gráfico de juros reais 9,05%",
+        "Indicador de superávit comercial",
+        "Cenário de crédito imobiliário"
+      ],
+      "narration": "Na minha análise, o mutirão chega em um momento crítico: juros reais elevados encarecem o financiamento habitacional, enquanto o superávit comercial recorde aumenta o fluxo de capitais, criando um ambiente propício para golpes. A orientação preventiva dos cartórios pode reduzir significativamente perdas financeiras dos compradores.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "conclusion_call",
+      "headline": "Impactos esperados e convite",
+      "metric": "summary",
+      "object_type": "truck",
+      "visual_cards": [
+        "Resumo dos benefícios",
+        "Chamada para inscrição",
+        "Logo do O Dinheiro Explica"
+      ],
+      "narration": "Em resumo, o mutirão nacional dos Cartórios de Notas oferece orientação essencial para evitar fraudes imobiliárias, reforçando a confiança nas instituições notariais e contribuindo para a estabilidade do mercado habitacional. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Você já conhecia os riscos de fraudes na compra de imóveis?",
+  "hashtags": [
+    "#Cartórios",
+    "#FraudeImobiliária",
+    "#Mutirão"
+  ],
+  "tags": [
+    "cartórios",
+    "mutirão",
+    "fraude",
+    "imóveis",
+    "financiamento",
+    "juros",
+    "economia",
+    "CNB",
+    "proteção ao consumidor"
+  ],
+  "primary_keyword": "mutirão cartórios",
+  "secondary_keywords": [
+    "fraudes imobiliárias",
+    "orientação gratuita"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender como se proteger de golpes ao comprar imóvel",
+    "search_query": "mutirão cartórios fraudes imobiliárias 2026",
+    "recommendation_angle": "Apresentar ação gratuita e coordenada dos cartórios em todo o país",
+    "first_payoff": "Para orientar a população sobre como evitar fraudes e proteger seu patrimônio na compra de imóveis, os Cartórios de Notas realizam neste sábado (7) um mutirão",
+    "promise_proof": "Duas fontes independentes confirmam o início do mutirão nesta data",
+    "audience_hypothesis": "Público interessado em compra de imóveis e prevenção de golpes",
+    "thumbnail_complement": "Imagem de tabelião atendendo cidadão em shopping",
+    "verification_limits": "A verificação se baseia em trechos literais de duas publicações oficiais"
+  },
+  "publication_description": "Mutirão nacional dos Cartórios de Notas inicia neste sábado 7 de novembro de 2026, oferecendo orientação gratuita para evitar fraudes na compra de imóveis em todo o Brasil.\n\nContexto: mutirão cartórios",
+  "publication_target_local": "2026-11-07T20:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
