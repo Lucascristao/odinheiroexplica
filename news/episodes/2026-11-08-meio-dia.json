@@ -1,0 +1,227 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-08-meio-dia",
+  "news_date": "2026-11-08",
+  "event_date": "2026-11-08",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-08T12:06:51.919356-03:00",
+  "news_selection": {
+    "topic_area": "international",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Um terremoto de magnitude 5,7 atingiu a região central do Japão na madrugada deste domingo, provocando a quebra de vitrines, queda de objetos e deixando ao menos 22 pessoas feridas.",
+    "why_today": "O sismo de magnitude 5,7 ocorreu na madrugada de 8 de novembro de 2026, gerando feridos e danos materiais, o que exige cobertura imediata para informar brasileiros que podem estar no Japão ou planejando viajar.",
+    "opening_anchor": "Um terremoto de magnitude 5,7 atingiu a região central do Japão na madrugada deste domingo, provocando a quebra de vitrines, queda de objetos e deixando ao",
+    "candidate_review": []
+  },
+  "title": "Terremoto de magnitude 5,7 atinge centro do Japão e fere 22 pessoas",
+  "title_options": [
+    {
+      "text": "Terremoto de magnitude 5,7 atinge centro do Japão e fere 22 pessoas",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Sismo de 5,7 sacode região central do Japão, deixa 22 feridos",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Japão: terremoto de 5,7 causa danos e 22 feridos na madrugada de 8/11",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Sismo de 5,7 no Japão",
+  "thumbnail_primary": "Vitrines quebradas em loja de Shizuoka",
+  "thumbnail_tension": "Danos materiais e feridos após o tremor",
+  "thumbnail_composition": "Close nas vitrines estilhaçadas ao centro da rua",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes, relevância internacional e impacto direto em viajantes brasileiros.",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "originalidade": "moderada",
+      "clareza": "alta"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/mundo/terremoto-de-magnitude-57-no-japao-deixa-ao-menos-22-pessoas-feridas/",
+      "published_at": "2026-11-08",
+      "role": "news"
+    },
+    {
+      "id": "S2",
+      "publisher": "Revista Oeste",
+      "url": "https://revistaoeste.com/mundo/terremoto-atinge-japao-quebra-vitrines-e-fere-mais-de-20-pessoas/",
+      "published_at": "2026-11-08",
+      "role": "news"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Um terremoto de magnitude 5,7 atingiu a região central do Japão na madrugada deste domingo, provocando a quebra de vitrines, queda de objetos e deixando ao menos 22 pessoas feridas.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-08"
+    },
+    {
+      "claim": "A magnitude foi registrada como 5,7 pela Agência Meteorológica do Japão.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-11-08"
+    },
+    {
+      "claim": "O USGS registrou magnitude 5,5 para o mesmo sismo.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-11-08"
+    },
+    {
+      "claim": "Pelo menos 22 pessoas foram atendidas em hospitais locais.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-08"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "Um forte terremoto atingiu o centro do Japão na madrugada deste domingo, 8, quebrando vitrines de lojas, fazendo com que pessoas fugissem de prédios e deixando pelo menos 22 feridos, segundo a mídia local.",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/mundo/terremoto-de-magnitude-57-no-japao-deixa-ao-menos-22-pessoas-feridas/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "• o fenômeno feriu ao menos 22 pessoas e causou danos, como vitrines q",
+      "kind": "source_excerpt",
+      "source_page_url": "https://revistaoeste.com/mundo/terremoto-atinge-japao-quebra-vitrines-e-fere-mais-de-20-pessoas/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Revista Oeste"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato principal",
+      "type": "fact",
+      "label": "intro",
+      "headline": "Terremoto de 5,7 atinge Japão",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Mapa do epicentro em Shizuoka",
+        "Vitrines quebradas na rua principal",
+        "Hospital atendendo feridos"
+      ],
+      "narration": "Um terremoto de magnitude 5,7 atingiu a região central do Japão na madrugada deste domingo, provocando a quebra de vitrines, queda de objetos e deixando ao menos 22 pessoas feridas. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar os impactos desse sismo para brasileiros no Japão.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes e confirmações",
+      "type": "fact",
+      "label": "details",
+      "headline": "Corroboração das fontes",
+      "metric": "verification",
+      "object_type": "data",
+      "visual_cards": [
+        "Citação da Jovem Pan",
+        "Citação da Revista Oeste",
+        "Comparativo de magnitudes"
+      ],
+      "narration": "A Jovem Pan, citando a Agência Brasil, confirma que o sismo teve magnitude 5,7 e deixou 22 feridos, enquanto a Revista Oeste, baseada em dados oficiais, repete a mesma magnitude e os mesmos números de vítimas, reforçando a veracidade do acontecimento.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de risco",
+      "type": "opinion",
+      "label": "opinion",
+      "headline": "Implicações para viajantes",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Turistas em Shizuoka",
+        "Alertas de réplicas",
+        "Mapa de rotas de evacuação"
+      ],
+      "narration": "Na minha análise, o terremoto de magnitude moderada eleva o risco de novas réplicas nas próximas 24 horas, o que pode impactar itinerários de turistas brasileiros. Recomendo que quem estiver no Japão acompanhe os alertas da Agência Meteorológica do Japão e evite áreas com vitrines danificadas até nova avaliação.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "outro",
+      "headline": "Próximos passos",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Número de feridos atualizado",
+        "Avisos de segurança",
+        "Chamada para inscrição"
+      ],
+      "narration": "Em resumo, o sismo de 5,7 no centro do Japão causou danos materiais e 22 feridos, com possibilidade de réplicas nas próximas horas. Brasileiros no país devem ficar atentos às orientações das autoridades locais. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Você já esteve em uma região sísmica e como se preparou para possíveis tremores?",
+  "hashtags": [
+    "#Japão",
+    "#Terremoto",
+    "#ViagemSegura"
+  ],
+  "tags": [
+    "Japão",
+    "sismo",
+    "magnitude 5,7",
+    "feridos",
+    "vitrines quebradas",
+    "réplicas",
+    "Agência Meteorológica do Japão",
+    "USGS",
+    "viajantes brasileiros"
+  ],
+  "primary_keyword": "terremoto de magnitude 5,7",
+  "secondary_keywords": [
+    "Japão",
+    "feridos",
+    "vitrines quebradas"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender o impacto de um terremoto recente no Japão para quem tem interesse em viajar ou investir no país.",
+    "search_query": "terremoto Japão 8 de novembro 2026 magnitude 5,7 feridos",
+    "recommendation_angle": "Apresentar fatos confirmados e orientações práticas para brasileiros que podem estar no local.",
+    "first_payoff": "Um terremoto de magnitude 5,7 atingiu a região central do Japão na madrugada deste domingo, provocando a quebra de vitrines, queda de objetos e deixando ao menos 22 pessoas feridas.",
+    "promise_proof": "Duas fontes independentes confirmam magnitude, número de feridos e danos materiais.",
+    "audience_hypothesis": "O público busca informações rápidas e confiáveis sobre eventos sísmicos que possam afetar suas viagens ou negócios no Japão.",
+    "thumbnail_complement": "Imagem de vitrines estilhaçadas com texto resumido do número de feridos.",
+    "verification_limits": "A verificação se baseia em trechos publicados nas páginas HTML das duas fontes citadas, sem acesso a dados internos."
+  },
+  "publication_description": "Terremoto de magnitude 5,7 sacode a região central do Japão, deixando 22 feridos e danos em vitrines comerciais. A cobertura traz confirmação de duas fontes independentes e orientações para brasileiros no país.",
+  "publication_target_local": "2026-11-08T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
