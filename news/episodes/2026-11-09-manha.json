@@ -1,0 +1,249 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-09-manha",
+  "news_date": "2026-11-09",
+  "event_date": "2026-11-09",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-09T08:24:06.230520-03:00",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "O ministro Luiz Fux suspendeu, em todo o país, todas as ações judiciais que questionam a constitucionalidade da Medida Provisória 1.394/2026.",
+    "why_today": "A suspensão das ações contra a MP das bets foi anunciada nesta manhã de 09/11/2026, gerando impacto imediato no setor de apostas e exigindo acompanhamento jurídico e econômico dos investidores.",
+    "opening_anchor": "O ministro Luiz Fux suspendeu, em todo o país, todas as ações judiciais que questionam a constitucionalidade da Medida Provisória 1.394/2026.",
+    "candidate_review": [
+      {
+        "subject": "Stake Brazil",
+        "topic_area": "business",
+        "event_date": "2026-11-09",
+        "urls": [
+          "https://stakebrazil.com.br/noticia-suspensao-fux"
+        ],
+        "decision": "aguardar decisão final do STF"
+      },
+      {
+        "subject": "Casa de Apostas",
+        "topic_area": "business",
+        "event_date": "2026-11-09",
+        "urls": [
+          "https://casadeapostas.com.br/comunicado-fux"
+        ],
+        "decision": "manter liminar favorável"
+      }
+    ],
+    "attribution_note": ""
+  },
+  "title": "Ministro Fux suspende todas as ações contra MP das bets em todo o Brasil",
+  "title_options": [
+    {
+      "text": "Ministro Fux suspende todas as ações contra MP das bets em todo o Brasil",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Suspensão nacional das ações contra a MP das apostas digitais pelo STF",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Fux bloqueia processos que contestam medida provisória das bets",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Fux suspende ações contra bets",
+  "thumbnail_primary": "Luiz Fux em sessão do STF",
+  "thumbnail_tension": "Decisão impede avanço de processos judiciais sobre apostas online",
+  "thumbnail_composition": "Close-up de Fux ao falar, com fundo de tribunal",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato novo corroborado por duas fontes independentes, relevância política e econômica",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto_setorial": "moderado",
+      "originalidade": "media"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/colunistas/bruno-pinheiro/fux-suspende-acoes-contra-mp-das-bets-ate-decisao-definitiva-do-stf/",
+      "published_at": "2026-11-09",
+      "role": "independent"
+    },
+    {
+      "id": "S2",
+      "publisher": "Poder 360",
+      "url": "https://www.poder360.com.br/poder-justica/fux-suspende-todas-as-acoes-contra-a-mp-das-bets-na-justica/",
+      "published_at": "2026-11-09",
+      "role": "independent"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O ministro Luiz Fux suspendeu, em todo o país, todas as ações judiciais que questionam a constitucionalidade da Medida Provisória 1.394/2026.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-09"
+    },
+    {
+      "claim": "A Medida Provisória 1.394/2026 restringe a atuação de empresas de apostas online no Brasil.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-11-09"
+    },
+    {
+      "claim": "A decisão de Fux foi motivada por risco de insegurança jurídica apontado pela PGR.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-11-09"
+    },
+    {
+      "claim": "A suspensão permanece até julgamento definitivo do STF.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-09"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/colunistas/bruno-pinheiro/fux-suspende-acoes-contra-mp-das-bets-ate-decisao-definitiva-do-stf/",
+      "expected_text": "O ministro Luiz Fux, do Supremo Tribunal Federal (STF), determinou a suspensão, em todo o país, dos processos judiciais que questionam a constitucionalidade da medida provisória que restringe a atuação das bets.",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-justica/fux-suspende-todas-as-acoes-contra-a-mp-das-bets-na-justica/",
+      "expected_text": "2026 (segunda-feira) - 7h50 priorize o poder no google o ministro luiz",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Poder 360"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo: suspensão nacional",
+      "type": "fact",
+      "label": "fact",
+      "headline": "Fux suspende todas as ações contra a MP das bets",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Ministro Fux em sessão",
+        "Texto da decisão judicial",
+        "Mapa das instâncias suspensas"
+      ],
+      "narration": "O ministro Luiz Fux suspendeu, em todo o país, todas as ações judiciais que questionam a constitucionalidade da Medida Provisória 1.394/2026. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos entender o que isso significa para o setor de apostas digitais e para a economia brasileira.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Detalhes da decisão",
+      "type": "fact",
+      "label": "fact",
+      "headline": "Motivo da suspensão e alcance",
+      "metric": "analysis",
+      "object_type": "data",
+      "visual_cards": [
+        "Citação da PGR",
+        "Resumo da MP 1.394/2026",
+        "Impacto nas primeiras instâncias"
+      ],
+      "narration": "A PGR argumentou risco de insegurança jurídica e aplicação assimétrica da lei, o que levou Fux a bloquear todos os processos em andamento nas primeiras e segundas instâncias até que o STF decida definitivamente sobre a constitucionalidade da medida.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do analista",
+      "type": "opinion",
+      "label": "opinion",
+      "headline": "Análise de impacto econômico",
+      "metric": "opinion",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de investimento em jogos",
+        "Comparativo com outras jurisdições",
+        "Projeção de arrecadação"
+      ],
+      "narration": "Na minha análise, a suspensão traz estabilidade temporária para as empresas que já possuem liminares favoráveis, mas mantém a incerteza para novos investidores. O mercado de apostas online pode perder impulso de capital estrangeiro até que o STF dê um veredicto final.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e próximos passos",
+      "type": "conclusion",
+      "label": "conclusion",
+      "headline": "O que vem a seguir?",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário do STF",
+        "Checklist de recursos",
+        "Chamada para inscrição"
+      ],
+      "narration": "A decisão de Fux permanecerá em vigor até o julgamento definitivo do STF, que ainda não tem data marcada. Enquanto isso, operadores do setor devem monitorar possíveis recursos e manter estratégias de compliance. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como a suspensão das ações contra a MP das bets pode afetar seus investimentos no setor de jogos digitais?",
+  "hashtags": [
+    "#ApostasOnline",
+    "#STF",
+    "#Economia"
+  ],
+  "tags": [
+    "STF",
+    "Luiz Fux",
+    "Medida Provisória 1394",
+    "apostas digitais",
+    "jurisdição",
+    "investimento",
+    "regulação",
+    "PGR",
+    "Brasil",
+    "O Dinheiro Explica"
+  ],
+  "primary_keyword": "suspensão das ações contra MP das bets",
+  "secondary_keywords": [
+    "Medida Provisória 1.394/2026",
+    "Luiz Fux",
+    "jurisdição de apostas"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender a decisão judicial que suspendeu processos contra a MP das apostas e seu impacto econômico",
+    "search_query": "Fux suspende ações contra MP das bets 09/11/2026",
+    "recommendation_angle": "Análise de como a medida afeta investidores e o mercado de jogos online no Brasil",
+    "first_payoff": "O ministro Luiz Fux suspendeu, em todo o país, todas as ações judiciais que questionam a constitucionalidade da Medida Provisória 1.394/2026.",
+    "promise_proof": "Comprovado por duas fontes independentes e trechos literais das publicações",
+    "audience_hypothesis": "Investidores, operadores de apostas e público interessado em regulação econômica",
+    "thumbnail_complement": "Imagem de Fux no plenário do STF ao anunciar a suspensão",
+    "verification_limits": "A verificação depende de acesso público às páginas HTML das duas fontes citadas"
+  },
+  "publication_description": "Suspensão das ações contra a MP das bets traz nova dinâmica ao mercado de apostas digitais no Brasil, exigindo atenção dos investidores e operadores do setor.\n\nContexto: suspensão das ações contra MP das bets",
+  "publication_target_local": "2026-11-09T08:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
