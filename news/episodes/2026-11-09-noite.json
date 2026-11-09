@@ -1,0 +1,226 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-09-noite",
+  "news_date": "2026-11-09",
+  "event_date": "2026-11-09",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-09T18:34:22.888949-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "O Banco Central do Brasil divulgou que, na sexta-feira 6 de novembro de 2026, o sistema de pagamentos instantâneos Pix registrou 319,7 milhões de transações em um único dia, movimentando R$ 180,5 bilhões.",
+    "why_today": "O recorde de 319,7 milhões de transações Pix em 6 de novembro de 2026 evidencia a crescente digitalização dos pagamentos no Brasil, sendo relevante para entender a dinâmica da economia doméstica neste momento de alta de juros.",
+    "opening_anchor": "O Banco Central do Brasil divulgou que, na sexta-feira 6 de novembro de 2026, o sistema de pagamentos instantâneos Pix registrou 319,7 milhões de transações em",
+    "candidate_review": []
+  },
+  "title": "Pix bate recorde histórico com 319,7 milhões de transações em 6 de novembro",
+  "title_options": [
+    {
+      "text": "Pix bate recorde histórico com 319,7 milhões de transações em 6 de novembro",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Sistema Pix registra 319,7 milhões de operações em um dia, novo pico",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Brasil atinge 319,7 milhões de transações Pix em 24h, maior volume já visto",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Recorde Pix 2026",
+  "thumbnail_primary": "logo_pix",
+  "thumbnail_tension": "volume de transações supera marca anterior",
+  "thumbnail_composition": "centralizado",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato corroborado por duas fontes independentes e dados oficiais do Banco Central",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto_economico": "significativo"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/economia/pix-atinge-novo-recorde-com-3197-milhoes-de-transacoes-em-um-unico-dia/",
+      "published_at": "2026-11-09",
+      "role": "independent"
+    },
+    {
+      "id": "S2",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-economia/pix-bate-recorde-com-3197-milhoes-de-transacoes-em-1-dia/",
+      "published_at": "2026-11-09",
+      "role": "independent"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O Banco Central do Brasil divulgou que, na sexta-feira 6 de novembro de 2026, o sistema de pagamentos instantâneos Pix registrou 319,7 milhões de transações em um único dia, movimentando R$ 180,5 bilhões.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-09"
+    },
+    {
+      "claim": "O recorde anterior de transações Pix foi de 318,1 milhões, registrado em 4 de setembro de 2026.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-09-04"
+    },
+    {
+      "claim": "O Pix conta com cerca de 187,8 milhões de usuários, entre pessoas físicas e jurídicas.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-01-01"
+    },
+    {
+      "claim": "A movimentação de R$ 180,5 bilhões corresponde a aproximadamente 2 % do PIB brasileiro.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-11-09"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "foram registradas 319,7 milhões de transações em um único dia, que corresponderam a r$ 180,5 bilhões",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/economia/pix-atinge-novo-recorde-com-3197-milhoes-de-transacoes-em-um-unico-dia/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "somente em 6 de novembro, foram feitas 319,7 milhões de transferências",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-economia/pix-bate-recorde-com-3197-milhoes-de-transacoes-em-1-dia/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Poder360"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato histórico",
+      "type": "fact",
+      "label": "recorde_pix",
+      "headline": "Pix bate recorde de transações",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de volume diário",
+        "Comparativo com setembro 2026",
+        "Mapa de uso por região"
+      ],
+      "narration": "O Banco Central do Brasil divulgou que, na sexta-feira 6 de novembro de 2026, o sistema de pagamentos instantâneos Pix registrou 319,7 milhões de transações em um único dia, movimentando R$ 180,5 bilhões. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que esse número significa para a economia.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Confirmação independente",
+      "type": "fact",
+      "label": "confirmacao",
+      "headline": "Duas fontes confirmam o dado",
+      "metric": "source",
+      "object_type": "data",
+      "visual_cards": [
+        "Logotipo Jovem Pan",
+        "Logotipo Poder360",
+        "Captura de tela da manchete"
+      ],
+      "narration": "Tanto a Jovem Pan quanto a Poder360 publicaram, na mesma tarde, o mesmo número de 319,7 milhões de transações e o valor de R$ 180,5 bilhões, reforçando a confiabilidade da informação.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Opinião do analista",
+      "type": "opinion",
+      "label": "analise",
+      "headline": "Impacto no cenário econômico",
+      "metric": "analysis",
+      "object_type": "data",
+      "visual_cards": [
+        "Ícone de crescimento",
+        "Seta indicando tendência",
+        "Imagem de smartphone"
+      ],
+      "narration": "Na minha análise, esse recorde demonstra que o Pix já se consolidou como a principal via de pagamento instantâneo no país, reduzindo a dependência de cartões de crédito e fortalecendo a inclusão financeira, sobretudo em um contexto de juros elevados.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "fechamento",
+      "headline": "O que vem a seguir?",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Seta para futuro",
+        "Ícone de inscrição",
+        "Logo do canal"
+      ],
+      "narration": "Em resumo, o recorde de 319,7 milhões de transações reforça o papel central do Pix na economia digital brasileira e indica que a demanda por pagamentos instantâneos continuará a crescer. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Você acha que o Pix vai substituir outros meios de pagamento no Brasil?",
+  "hashtags": [
+    "#PixRecorde",
+    "#PagamentosInstantâneos"
+  ],
+  "tags": [
+    "Pix",
+    "Banco Central",
+    "transações",
+    "economia digital",
+    "inclusão financeira",
+    "Brasil",
+    "recorde",
+    "2026"
+  ],
+  "primary_keyword": "Pix recorde 319,7 milhões",
+  "secondary_keywords": [
+    "transações Pix",
+    "movimentação R$ 180,5 bilhões"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender a importância do recorde de transações Pix para a economia brasileira",
+    "search_query": "Pix recorde 319,7 milhões 6 de novembro 2026",
+    "recommendation_angle": "Análise do impacto econômico e de inclusão financeira do Pix",
+    "first_payoff": "O Banco Central do Brasil divulgou que, na sexta-feira 6 de novembro de 2026, o sistema de pagamentos instantâneos Pix registrou 319,7 milhões de transações em um único dia, movimentando R$ 180,5 bilhões.",
+    "promise_proof": "Duas fontes independentes confirmam o número de transações e o valor movimentado",
+    "audience_hypothesis": "Investidores e consumidores curiosos sobre a evolução dos pagamentos digitais no Brasil",
+    "thumbnail_complement": "Gráfico comparativo de recordes anteriores",
+    "verification_limits": "Os dados são limitados ao dia 6 de novembro de 2026 e dependem das publicações oficiais do Banco Central e da imprensa"
+  },
+  "publication_description": "Pix bate recorde histórico com 319,7 milhões de transações em 6 de novembro, movimentando R$ 180,5 bilhões, segundo o Banco Central e duas fontes independentes.\n\nContexto: Pix recorde 319,7 milhões",
+  "publication_target_local": "2026-11-09T20:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
