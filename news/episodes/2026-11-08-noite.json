@@ -1,0 +1,228 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-08-noite",
+  "news_date": "2026-11-08",
+  "event_date": "2026-11-08",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-08T21:09:21.885317-03:00",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Lula reconheceu preocupação com a trajetória da dívida pública e com os juros elevados",
+    "why_today": "O pronunciamento de Lula nesta noite de 8 de novembro marca o primeiro discurso nacional após sua vitória, trazendo ao debate público a preocupação com a dívida e os juros, tema crucial para investidores e para a política fiscal do país.",
+    "opening_anchor": "Lula reconheceu publicamente a preocupação com a trajetória da dívida pública e com os juros elevados",
+    "candidate_review": []
+  },
+  "title": "Lula reconhece preocupação com dívida pública e juros altos em primeiro discurso nacional",
+  "title_options": [
+    {
+      "text": "Lula reconhece preocupação com dívida pública e juros altos em primeiro discurso nacional",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Presidente Lula fala sobre dívida e juros em pronunciamento após vitória eleitoral",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Primeiro discurso de Lula destaca risco da dívida e juros elevados",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Lula fala sobre dívida",
+  "thumbnail_primary": "Luiz Inácio Lula da Silva em estúdio",
+  "thumbnail_tension": "Preocupação com alta dívida pública e juros",
+  "thumbnail_composition": "Close-up do presidente ao centro, fundo neutro",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Fato novo confirmado por duas fontes independentes, relevância econômica e política",
+    "criteria": {
+      "veracidade": "alta",
+      "relevancia": "alta",
+      "impacto_economico": "moderado",
+      "originalidade": "nova cobertura"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/em-pronunciamento-lula-reconhece-preocupacao-com-divida-publica-e-juros-altos-mas-nao-apresenta-medidas-de-ajuste-fiscal-igdl/",
+      "published_at": "2026-11-08",
+      "role": "independent"
+    },
+    {
+      "id": "S2",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/em-pronunciamento-lula-cita-divida-publica-e-volta-a-falar-sobre-responsabilidade-fiscal/",
+      "published_at": "2026-11-08",
+      "role": "independent"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Lula reconheceu preocupação com a trajetória da dívida pública e com os juros elevados",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-08"
+    },
+    {
+      "claim": "O discurso foi transmitido em rede nacional na noite de domingo",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-08"
+    },
+    {
+      "claim": "Lula reafirmou compromisso com a responsabilidade fiscal",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-08"
+    },
+    {
+      "claim": "Pretende elevar investimento privado para mais de 20% do PIB",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-08"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "política em pronunciamento, lula reconhece ‘preocupação’ com dívida pú",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/em-pronunciamento-lula-reconhece-preocupacao-com-divida-publica-e-juros-altos-mas-nao-apresenta-medidas-de-ajuste-fiscal-igdl/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "a trajetória da dívida pública e dos juros altos me preocupam, por isso, reafirmo meu compromisso com a responsabilidade fiscal",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/em-pronunciamento-lula-cita-divida-publica-e-volta-a-falar-sobre-responsabilidade-fiscal/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Jovem Pan"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Abertura",
+      "type": "fact",
+      "label": "intro",
+      "headline": "Lula reconhece preocupação com dívida e juros",
+      "metric": "view",
+      "object_type": "data",
+      "visual_cards": [
+        "Lula no estúdio",
+        "Gráfico da dívida pública",
+        "Indicador de juros"
+      ],
+      "narration": "Lula reconheceu publicamente a preocupação com a trajetória da dívida pública e com os juros elevados. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos analisar o que esse pronunciamento significa para a economia brasileira.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Contexto da transmissão",
+      "type": "fact",
+      "label": "context",
+      "headline": "Primeiro discurso nacional após vitória",
+      "metric": "engagement",
+      "object_type": "store",
+      "visual_cards": [
+        "Imagem da transmissão ao vivo",
+        "Mapa das regiões alcançadas",
+        "Relógio marcando 20:42 UTC"
+      ],
+      "narration": "O pronunciamento foi transmitido em rede nacional de rádio e TV na noite de domingo, 8/11/2026, sendo o primeiro do presidente desde a vitória eleitoral contra o senador Flávio Bolsonaro.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de risco",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Impactos para investidores",
+      "metric": "sentiment",
+      "object_type": "cash",
+      "visual_cards": [
+        "Bolsa de valores em alta",
+        "Índice de risco soberano",
+        "Setor de crédito"
+      ],
+      "narration": "Na minha análise, a ênfase de Lula na responsabilidade fiscal sem detalhar medidas concretas gera cautela nos mercados, mas a ausência de discurso austero sinaliza estabilidade para investidores de médio prazo.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "Desdobramentos esperados",
+      "metric": "completion",
+      "object_type": "factory",
+      "visual_cards": [
+        "Projeção de investimento privado",
+        "Cenário de juros futuros",
+        "Perspectiva de PPPs no Ceará"
+      ],
+      "narration": "Em resumo, o pronunciamento de Lula traz alívio ao mercado ao reconhecer a dívida e os juros, mas deixa aberto o caminho para políticas de ajuste. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que a postura de Lula sobre a dívida pública pode influenciar o crédito para pequenas empresas?",
+  "hashtags": [
+    "#EconomiaBrasil",
+    "#DívidaPública",
+    "#Juros"
+  ],
+  "tags": [
+    "Lula",
+    "dívida pública",
+    "juros",
+    "responsabilidade fiscal",
+    "investimento privado",
+    "Fortaleza",
+    "Ceará",
+    "mercado financeiro",
+    "PPP",
+    "política econômica"
+  ],
+  "primary_keyword": "dívida pública",
+  "secondary_keywords": [
+    "juros elevados",
+    "responsabilidade fiscal"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender o impacto do discurso de Lula sobre a dívida pública e juros para a economia brasileira",
+    "search_query": "Lula pronunciamento dívida pública juros 8 de novembro 2026",
+    "recommendation_angle": "Análise de risco para investidores e microempresas após o primeiro discurso presidencial",
+    "first_payoff": "Lula reconheceu publicamente a preocupação com a trajetória da dívida pública e com os juros elevados",
+    "promise_proof": "Trechos verificados de Money Times e Jovem Pan confirmam a fala exata do presidente",
+    "audience_hypothesis": "Investidores e cidadãos preocupados com a estabilidade fiscal buscarão explicações detalhadas",
+    "thumbnail_complement": "Imagem de Lula no estúdio com destaque para gráficos de dívida",
+    "verification_limits": "A confirmação depende de duas fontes independentes publicadas no mesmo dia"
+  },
+  "publication_description": "Lula reconhece preocupação com a dívida pública e juros altos em seu primeiro discurso nacional após a vitória eleitoral, reforçando compromisso com responsabilidade fiscal e sinalizando intenção de ampliar investimentos privados.",
+  "publication_target_local": "2026-11-08T20:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
