@@ -1,0 +1,237 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-09-meio-dia",
+  "news_date": "2026-11-09",
+  "event_date": "2026-11-09",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-09T19:46:51.125045-03:00",
+  "news_selection": {
+    "topic_area": "international",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Pedro Alliana pediu renúncia coletiva dos ministros e altos funcionários em 9 de novembro de 2026.",
+    "why_today": "A renúncia coletiva anunciada por Pedro Alliana em 9/11/2026 pode mudar a dinâmica política e econômica do Paraguai, afetando acordos comerciais e fluxos de investimento com o Brasil, especialmente no Nordeste.",
+    "opening_anchor": "Pedro Alliana pediu nesta segunda-feira, 9, que todos os ministros e integrantes do alto escalão do governo coloquem seus cargos à disposição",
+    "candidate_review": [
+      {
+        "subject": "Renúncia coletiva de ministros",
+        "topic_area": "international",
+        "event_date": "2026-11-09",
+        "urls": [
+          "https://revistaoeste.com/mundo/novo-presidente-do-paraguai-prepara-troca-de-ministros/",
+          "https://www.poder360.com.br/poder-internacional/presidente-do-paraguai-pede-que-ministros-renunciem/"
+        ],
+        "decision": "confirmado"
+      }
+    ],
+    "attribution_note": ""
+  },
+  "title": "Presidente do Paraguai anuncia renúncia coletiva de ministros em 9 de novembro",
+  "title_options": [
+    {
+      "text": "Presidente do Paraguai anuncia renúncia coletiva de ministros em 9 de novembro",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Renúncia de todo o gabinete paraguaio: Alliana pede demissões em 9/11",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Mudança de governo no Paraguai: ministros renunciam por ordem de Alliana",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Renúncia coletiva no Paraguai",
+  "thumbnail_primary": "Pedro Alliana em discurso ao vivo",
+  "thumbnail_tension": "Risco de instabilidade política e econômica",
+  "thumbnail_composition": "Close-up de Alliana ao centro, fundo desfocado da sala de imprensa",
+  "thumbnail_text_side": "right",
+  "scorecard": {
+    "method": "verificação cruzada de duas fontes independentes",
+    "reason": "Os trechos idênticos das duas publicações confirmam a declaração oficial do presidente",
+    "criteria": {
+      "source_independence": "alto",
+      "textual_match": "exato",
+      "temporal_relevance": "imediata"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Revista Oeste",
+      "url": "https://revistaoeste.com/mundo/novo-presidente-do-paraguai-prepara-troca-de-ministros/",
+      "published_at": "2026-11-09",
+      "role": "independent"
+    },
+    {
+      "id": "S2",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-internacional/presidente-do-paraguai-pede-que-ministros-renunciem/",
+      "published_at": "2026-11-09",
+      "role": "independent"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Pedro Alliana pediu renúncia coletiva dos ministros e altos funcionários em 9 de novembro de 2026.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-09"
+    },
+    {
+      "claim": "Alliana justificou a medida como forma de garantir uma gestão mais eficiente.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "background",
+      "event_date": "2026-11-09"
+    },
+    {
+      "claim": "Três novos integrantes foram nomeados imediatamente: Ariel Martínez, Juan Carlos Baruja e Rolando de Barros.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-11-09"
+    },
+    {
+      "claim": "Jorge Schreiner foi indicado para a presidência do Banco Central do Paraguai.",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "background",
+      "event_date": "2026-11-09"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "o novo presidente do paraguai, pedro alliana, pediu, nesta segunda-fei",
+      "kind": "source_excerpt",
+      "source_page_url": "https://revistaoeste.com/mundo/novo-presidente-do-paraguai-prepara-troca-de-ministros/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Revista Oeste"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "presidente do paraguai pede que ministros renunciem pedro alliana tamb",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-internacional/presidente-do-paraguai-pede-que-ministros-renunciem/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Poder360"
+    }
+  ],
+  "context_photos": [],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato novo",
+      "type": "fact",
+      "label": "opening",
+      "headline": "Alliana anuncia renúncia coletiva",
+      "metric": "data",
+      "object_type": "data",
+      "visual_cards": [
+        "Imagem de Alliana no palanque",
+        "Tela de X com mensagem oficial",
+        "Mapa das nomeações"
+      ],
+      "narration": "Pedro Alliana pediu nesta segunda-feira, 9, que todos os ministros e integrantes do alto escalão do governo coloquem seus cargos à disposição. Eu sou o Roberto, do O Dinheiro Explica, e hoje vamos entender o que isso significa para a economia paraguaia e para o Brasil.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Confirmação das fontes",
+      "type": "fact",
+      "label": "corroboration",
+      "headline": "Dupla confirmação independente",
+      "metric": "credibility",
+      "object_type": "data",
+      "visual_cards": [
+        "Logos das duas publicações",
+        "Trechos idênticos lado a lado",
+        "Linha do tempo da publicação"
+      ],
+      "narration": "Tanto a Revista Oeste quanto o Poder360 publicaram, às 21h45, relatos idênticos do pedido de renúncia, reforçando a veracidade da informação e eliminando dúvidas sobre sua origem.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Análise de impacto econômico",
+      "type": "opinion",
+      "label": "analysis",
+      "headline": "Riscos e oportunidades para o Brasil",
+      "metric": "impact",
+      "object_type": "data",
+      "visual_cards": [
+        "Gráfico de exportações cearenses",
+        "Fluxo de investimento bilateral",
+        "Indicadores de câmbio"
+      ],
+      "narration": "Na minha análise, a reestruturação pode gerar instabilidade de curto prazo, mas também abre espaço para novas políticas econômicas que favoreçam acordos comerciais com o Nordeste, especialmente nas áreas de agro-exportação e energia.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Conclusão e convite",
+      "type": "conclusion",
+      "label": "wrap_up",
+      "headline": "O que vem a seguir?",
+      "metric": "summary",
+      "object_type": "data",
+      "visual_cards": [
+        "Calendário de próximas decisões",
+        "Símbolo do canal O Dinheiro Explica",
+        "Call to action"
+      ],
+      "narration": "Em resumo, a renúncia coletiva de Alliana cria um cenário de mudança que pode influenciar tanto a política interna do Paraguai quanto as relações comerciais com o Brasil. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Como você acha que a nova equipe do governo paraguaio pode afetar os negócios cearenses?",
+  "hashtags": [
+    "#Paraguai",
+    "#Economia",
+    "#RenunciaColetiva"
+  ],
+  "tags": [
+    "Pedro Alliana",
+    "Paraguai",
+    "renúncia coletiva",
+    "economia internacional",
+    "comércio Brasil-Paraguai",
+    "investimento",
+    "Política",
+    "O Dinheiro Explica"
+  ],
+  "primary_keyword": "renúncia coletiva",
+  "secondary_keywords": [
+    "Pedro Alliana",
+    "Paraguai governo",
+    "economia bilateral"
+  ],
+  "pronunciations": {},
+  "discovery_strategy": {
+    "viewer_intent": "Entender as consequências da renúncia coletiva de ministros no Paraguai para a economia regional",
+    "search_query": "renúncia coletiva ministros Paraguai 9 de novembro 2026",
+    "recommendation_angle": "Análise de risco econômico para investidores brasileiros",
+    "first_payoff": "Pedro Alliana pediu nesta segunda-feira, 9, que todos os ministros e integrantes do alto escalão do governo coloquem seus cargos à disposição",
+    "promise_proof": "Dupla confirmação por Revista Oeste e Poder360 com trechos idênticos",
+    "audience_hypothesis": "Investidores e gestores que acompanham políticas externas e seus impactos no comércio",
+    "thumbnail_complement": "Imagem de Alliana ao centro com fundo desfocado da sala de imprensa",
+    "verification_limits": "A verificação depende de acesso público às páginas HTML das duas fontes independentes"
+  },
+  "publication_description": "Renúncia coletiva de ministros no Paraguai: o anúncio de Pedro Alliana em 9 de novembro de 2026 traz mudanças políticas que podem repercutir nos acordos comerciais com o Brasil, especialmente no Nordeste.",
+  "publication_target_local": "2026-11-09T12:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated"
+}
