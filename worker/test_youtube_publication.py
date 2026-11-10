@@ -194,6 +194,21 @@ class YouTubePublicationTest(unittest.TestCase):
             add_thumbnail(self.service, cover, "zzzzzzzzzzz", "noticia-2026-11-10-manha")
         self.service.thumbnails.return_value.set.assert_not_called()
 
+    def test_just_uploaded_video_waits_for_its_own_metadata(self):
+        project_id = 'noticia-2026-11-10-manha'
+        self.service.videos.return_value.list.return_value.execute.side_effect = [
+            {'items': []}, {'items': [{'id': 'zzzzzzzzzzz',
+                'snippet': {'channelId': EXPECTED_ID, 'tags': ['ODE_EPISODE_' + project_id]},
+                'status': {'privacyStatus': 'private'}}]}]
+        cover = Path(self.work.name, 'thumb.jpg')
+        cover.write_bytes(b'fixture cover')
+        with patch('youtube_publication.time.sleep') as wait, patch.dict(sys.modules,
+                {'googleapiclient.http': SimpleNamespace(MediaFileUpload=MagicMock(return_value=MagicMock()))}):
+            result = add_thumbnail(self.service, cover, 'zzzzzzzzzzz', project_id)
+        wait.assert_called_once_with(3)
+        self.assertEqual(result['video_id'], 'zzzzzzzzzzz')
+        self.service.thumbnails.return_value.set.assert_called_once()
+
 
 if __name__ == "__main__":
     unittest.main()

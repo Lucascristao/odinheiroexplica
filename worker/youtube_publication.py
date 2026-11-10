@@ -10,6 +10,7 @@ import hashlib
 import json
 import os
 import re
+import time
 from pathlib import Path
 
 EXPECTED_ID = "UCd7laspUAiQk0DEF9NQ-itw"
@@ -171,15 +172,24 @@ def upload_private(service, channel, video_path: Path, metadata: dict, project_i
     return save_receipt(receipt_path, project_id, digest, video_id, False)
 
 
+class ThumbnailTargetNotReady(ValueError):
+    """YouTube has not exposed the just-uploaded resource's metadata yet."""
+
+
 def validate_thumbnail_target(service, video_id: str, receipted_news_project: str = ""):
     found = service.videos().list(part="snippet,status", id=video_id).execute().get("items", [])
+    if not found:
+        raise ThumbnailTargetNotReady("Vídeo recém-enviado ainda não está disponível para confirmar a capa.")
     if len(found) != 1 or found[0].get("snippet", {}).get("channelId") != EXPECTED_ID:
         raise ValueError("O vídeo não pertence ao canal O Dinheiro Explica.")
     privacy = found[0].get("status", {}).get("privacyStatus")
     if receipted_news_project:
-        if (not receipted_news_project.startswith("noticia-") or
-                "ODE_EPISODE_" + receipted_news_project not in found[0].get("snippet", {}).get("tags", [])):
+        tags = found[0].get("snippet", {}).get("tags", [])
+        marker = "ODE_EPISODE_" + receipted_news_project
+        if not receipted_news_project.startswith("noticia-") or any(tag.startswith("ODE_EPISODE_") and tag != marker for tag in tags):
             raise ValueError("O episódio do vídeo difere do recibo da capa.")
+        if marker not in tags:
+            raise ThumbnailTargetNotReady("Metadados do episódio recém-enviado ainda não estão disponíveis.")
     if privacy != "private" and not (receipted_news_project and privacy == "public"):
         raise ValueError("Não alterar capa de vídeo que não esteja privado neste fluxo.")
     return privacy
@@ -188,7 +198,15 @@ def validate_thumbnail_target(service, video_id: str, receipted_news_project: st
 def add_thumbnail(service, thumbnail: Path, video_id: str, receipted_news_project: str = ""):
     if not thumbnail.is_file() or thumbnail.suffix.lower() not in (".png", ".jpg", ".jpeg"):
         raise ValueError("Capa inexistente ou em formato não suportado.")
-    privacy = validate_thumbnail_target(service, video_id, receipted_news_project)
+    for attempt in range(4):
+        try:
+            privacy = validate_thumbnail_target(service, video_id, receipted_news_project)
+            break
+        except ThumbnailTargetNotReady:
+            if attempt == 3:
+                raise
+            print("YOUTUBE_THUMBNAIL_TARGET_PENDING: aguardar metadados do mesmo ID", flush=True)
+            time.sleep(3 * (2 ** attempt))
     from googleapiclient.http import MediaFileUpload
     mime = "image/png" if thumbnail.suffix.lower() == ".png" else "image/jpeg"
     media = MediaFileUpload(str(thumbnail), mimetype=mime, resumable=False)
@@ -321,6 +339,9 @@ def cli():
     except Exception as error:
         # Google API errors can include URL/request metadata; do not log raw exceptions.
         print(f"YOUTUBE_ERROR: {type(error).__name__}: operação interrompida. Verifique credenciais, canal e recibo.")
+        if isinstance(error, ValueError):
+            # Validation errors are our own fixed messages, never HTTP bodies.
+            print("YOUTUBE_VALIDATION_REASON:", str(error)[:240])
         raise SystemExit(1) from None
 
 

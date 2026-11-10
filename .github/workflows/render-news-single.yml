@@ -13,6 +13,7 @@ on:
       - 'news/episodes/*.json'
 permissions:
   contents: read
+  actions: write
 concurrency:
   group: ode-news-single-${{ github.repository }}
   cancel-in-progress: false
@@ -319,3 +320,12 @@ jobs:
             render-output/news-publication-scheduled.json
           if-no-files-found: error
           retention-days: 30
+      - name: Solicitar retomada de capa diretamente pelo motor
+        if: always() && env.ODE_AUTONOMOUS == 'true' && steps.attach_cover.outcome != 'success' && hashFiles('render-output/daily-youtube-private.json') != ''
+        continue-on-error: true
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          PROJECT_ID="$(python -c 'import json;print(json.load(open("render-output/daily-youtube-private.json"))["project_id"])')"
+          gh workflow run news-auto-thumbnail.yml --repo "$GITHUB_REPOSITORY" --ref main \
+            -f "audit_path=production/$PROJECT_ID/thumbnail-audit.json"
