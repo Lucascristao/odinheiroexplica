@@ -50,6 +50,15 @@ class SingleNewsContractTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'trecho literal'):
             validate(doc, date(2026, 10, 9), drafting=True)
 
+    def test_verified_brief_draft_does_not_need_artificial_opinion_or_duplicate_crops(self):
+        doc = copy.deepcopy(self.doc)
+        first = doc['segments'][0]
+        first['document_id'] = doc['documentary_evidence'][0]['id']
+        first.pop('photo_id', None)
+        doc['segments'] = [first]
+        doc['documentary_evidence'] = [d for d in doc['documentary_evidence'] if d['id'] == first['document_id']]
+        validate(doc, date(2026, 10, 9), drafting=True)
+
     def test_short_real_documentary_credit_does_not_need_rights_boilerplate(self):
         for credit in ("BBC", "UOL", "Agência Brasil"):
             with self.subTest(credit=credit):

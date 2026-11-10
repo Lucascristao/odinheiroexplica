@@ -127,7 +127,8 @@ def bind_draft_metadata(episode):
                 print("EDITORIAL_METADATA_BINDING opinion segment prefixed with 'Na minha análise,'", flush=True)
 
     # Garantir apresentação do Roberto na cena inicial após o gancho factual
-    if len(segments) >= 4 and isinstance(segments[0], dict) and segments[0].get("type") == "fact":
+    if (segments and (len(segments) >= 4 or str(episode.get('news_date', '')) >= '2026-11-10')
+            and isinstance(segments[0], dict) and segments[0].get("type") == "fact"):
         first_narr = str(segments[0].get("narration") or "").strip()
         if first_narr and not re.search(r"(?i)\bRoberto\b", first_narr):
             parts = re.split(r"(?<=[.!?])\s+", first_narr, maxsplit=1)
@@ -438,6 +439,9 @@ Não confundir opinião com fato; ausência de evidência exige insuficiência. 
     if (diagnostics or {}).get("finish_reason") == "length":
         raise RuntimeError("Groq cortou o roteiro no limite de resposta; não usar JSON incompleto.")
     episode = json.loads(raw)
+    if day >= '2026-11-10':
+        from news_draft_contract import normalize_draft_metadata
+        episode = normalize_draft_metadata(episode)
     if not isinstance(episode, dict):
         raise ValueError("Groq deve retornar um objeto JSON na raiz, nunca uma lista.")
     episode = clean_unicode_spaces(episode)
@@ -446,7 +450,11 @@ Não confundir opinião com fato; ausência de evidência exige insuficiência. 
         episode.setdefault('context_photos', [])
     if episode.get('insufficient_evidence') is True:
         return episode
-    return bind_draft_metadata(validate_draft_shape(episode))
+    try:
+        return bind_draft_metadata(validate_draft_shape(episode))
+    except ValueError as error:
+        error.unverified_draft = episode
+        raise
 
 
 def clean_unicode_spaces(obj):
@@ -609,6 +617,8 @@ def main():
             print(f"NEWS_EPISODE_VALIDATED:{output}, attempt={attempt+1}")
             return
         except (ValueError, KeyError, TypeError, IndexError, AttributeError, RuntimeError, requests.RequestException) as exc:
+            if episode is None:
+                episode = getattr(exc, 'unverified_draft', None)
             record_draft_diagnostic(root / "render-output/news-editorial-diagnostics.json",
                                     attempt + 1, episode, transport, exc)
             error = f"Falha real {type(exc).__name__}: {str(exc)[:400]}"

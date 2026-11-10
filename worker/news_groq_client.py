@@ -149,8 +149,20 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
         if response.status_code in (429, 500, 502, 503, 504):
             return unavailable("http_" + str(response.status_code))
         if response.status_code == 400 and response_schema:
+            try:
+                candidate = response.json().get('error', {}).get('failed_generation')
+                if isinstance(candidate, str):
+                    candidate = json.loads(candidate)
+                if isinstance(candidate, (dict, list)):
+                    if diagnostics is not None:
+                        diagnostics['schema_candidate_recovered'] = True
+                    print('GROQ_SCHEMA_CANDIDATE_RECOVERED: JSON only; factual review still required', flush=True)
+                    return json.dumps(candidate, ensure_ascii=False)
+            except (ValueError, TypeError):
+                pass
             print('GROQ_SCHEMA_TRANSPORT_UNAVAILABLE: retry JSON object on same model; factual review unchanged', flush=True)
-            return complete(prompt, json_mode=True, model=selected, max_retries=2, diagnostics=diagnostics,
+            guided = prompt + '\nEstrutura JSON exata; objetos são mapas, nunca listas de pares:\n' + json.dumps(response_schema, ensure_ascii=False)
+            return complete(guided, json_mode=True, model=selected, max_retries=2, diagnostics=diagnostics,
                             max_output_tokens=max_output_tokens)
         # Never emit raw response: it can include content from news pages.
         detail = ""

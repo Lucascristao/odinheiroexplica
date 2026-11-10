@@ -54,7 +54,8 @@ def contextual_proof_views(proof: dict) -> tuple[dict, dict]:
 
 def apply_news_document_views(element: dict, prepared: dict, beats: list[dict], candidates=()) -> None:
     proof = prepared.get("proof_region")
-    if not proof or not beats or any(beat.get("view") for beat in beats):
+    if (not proof or not beats or any(beat.get("view") or beat.get('mark_ids') for beat in beats)
+            or element.get('annotations')):
         return
     if element.get("document_context_seconds") is None:
         # Preserve historical resumes and non-news source framing.

@@ -1,4 +1,6 @@
 """Mechanical JSON structure, not a factual verdict or an approval."""
+import re
+import unicodedata
 
 TEXT = {'type': 'string'}
 FLAG = {'type': 'boolean'}
@@ -46,6 +48,85 @@ def episode_schema():
         'discovery_strategy': record(fields('viewer_intent', 'search_query', 'recommendation_angle', 'first_payoff',
             'promise_proof', 'audience_hypothesis', 'thumbnail_complement', 'verification_limits')),
     })
+
+
+def object_encoding(value):
+    """Recover only unambiguous map encodings; never guess a factual value."""
+    if isinstance(value, dict):
+        return value
+    if not isinstance(value, list):
+        return None
+    if not value:
+        return {}
+    pairs = []
+    for item in value:
+        if isinstance(item, dict):
+            pairs.extend(item.items())
+        elif isinstance(item, list) and len(item) == 2 and isinstance(item[0], str):
+            pairs.append((item[0], item[1]))
+        else:
+            return None
+    if len({key for key, _ in pairs}) != len(pairs):
+        return None
+    return dict(pairs)
+
+
+def normalize_draft_metadata(episode):
+    if not isinstance(episode, dict):
+        episode = object_encoding(episode)
+    if not isinstance(episode, dict):
+        return episode
+    for key in ('news_selection', 'discovery_strategy', 'pronunciations', 'scorecard'):
+        decoded = object_encoding(episode.get(key))
+        if decoded is not None:
+            episode[key] = decoded
+    for key in ('sources', 'verified_facts', 'documentary_evidence', 'segments', 'title_options'):
+        if isinstance(episode.get(key), list):
+            episode[key] = [object_encoding(item) if object_encoding(item) is not None else item for item in episode[key]]
+    if episode.get('insufficient_evidence') in ('true', 'false'):
+        episode['insufficient_evidence'] = episode['insufficient_evidence'] == 'true'
+    score = episode.get('scorecard')
+    if not isinstance(score, dict):
+        score = episode['scorecard'] = {}
+    # This describes the recorded selection process, not a fabricated editorial
+    # endorsement. The later packaging pass supplies its actual choice reason.
+    if not isinstance(score.get('method'), str) or not score['method'].strip():
+        score['method'] = 'writer_title_scores_only_pending_packaging_comparison'
+    if not isinstance(score.get('reason'), str) or not score['reason'].strip():
+        score['reason'] = 'O redator forneceu alternativas e notas; a comparação da embalagem será feita após o desenvolvimento, sem previsão de CTR.'
+    score['criteria'] = object_encoding(score.get('criteria')) or {}
+    episode['pronunciations'] = object_encoding(episode.get('pronunciations')) or {}
+    episode.setdefault('context_photos', [])
+    selection = episode.get('news_selection')
+    if isinstance(selection, dict):
+        topic = ''.join(c for c in unicodedata.normalize('NFKD', str(selection.get('topic_area', '')).casefold()) if not unicodedata.combining(c))
+        aliases = {'politics': ('politics','politica','justica'), 'economy': ('economy','economia'),
+            'business': ('business','empresas','negocios'), 'personal_finance': ('personal_finance','financas pessoais'),
+            'international': ('international','internacional')}
+        selection['topic_area'] = next((canonical for canonical, words in aliases.items()
+            if any(re.search(r'(?<!\w)'+re.escape(word)+r'(?!\w)', topic) for word in words)), 'general')
+        for key in ('independent_confirmation',):
+            if selection.get(key) in ('true', 'false'):
+                selection[key] = selection[key] == 'true'
+        discovery = episode.get('discovery_strategy')
+        if not isinstance(discovery, dict):
+            discovery = episode['discovery_strategy'] = {}
+        first = (episode.get('segments') or [{}])[0]
+        anchor = selection.get('opening_anchor')
+        if isinstance(first, dict) and isinstance(anchor, str) and anchor in first.get('narration', ''):
+            payoff = discovery.get('first_payoff')
+            if not isinstance(payoff, str) or not payoff or payoff not in first.get('narration', ''):
+                discovery['first_payoff'] = anchor
+    options = episode.get('title_options')
+    if isinstance(options, list) and options and all(isinstance(o, dict) for o in options):
+        for option in options:
+            if isinstance(option.get('editorial_quality'), str) and option['editorial_quality'] in ('1', '2', '3', '4', '5'):
+                option['editorial_quality'] = int(option['editorial_quality'])
+        if all(type(o.get('editorial_quality')) is int and isinstance(o.get('text'), str) for o in options):
+            best = max(o['editorial_quality'] for o in options)
+            if not any(o['text'] == episode.get('title') and o['editorial_quality'] == best for o in options):
+                episode['title'] = next(o['text'] for o in options if o['editorial_quality'] == best)
+    return episode
 
 
 def structured_prompt(report, day, slot, target, history, error):

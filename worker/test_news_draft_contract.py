@@ -5,11 +5,42 @@ import unittest
 from unittest.mock import Mock, patch
 
 sys.path.insert(0, str(Path(__file__).parent))
-from news_draft_contract import episode_schema
+from news_draft_contract import episode_schema, normalize_draft_metadata, object_encoding
 import news_groq_client as groq
 
 
 class StructuredNews(unittest.TestCase):
+    def test_metadata_repair_does_not_invent_or_change_sources_facts_or_event_dates(self):
+        original = {'news_date': '2026-11-10', 'event_date': '2026-11-09',
+            'verified_facts': [{'claim': 'Fixture fact from yesterday', 'event_date': '2026-11-09'}],
+            'sources': [{'url': 'https://example.org/original', 'published_at': '2026-11-10'}],
+            'news_selection': {'topic_area': 'Economia / Empresas', 'new_fact': 'Fixture fact from yesterday',
+                'opening_anchor': 'Este trecho literal apresenta o fato real.'},
+            'segments': [{'narration': 'Este trecho literal apresenta o fato real.'}],
+            'scorecard': [], 'pronunciations': [], 'discovery_strategy': []}
+        facts = json.loads(json.dumps({k: original[k] for k in ('verified_facts', 'sources', 'event_date')}))
+        repaired = normalize_draft_metadata(original)
+        self.assertIsInstance(repaired['scorecard'], dict)
+        self.assertEqual(repaired['pronunciations'], {})
+        self.assertEqual(repaired['discovery_strategy']['first_payoff'], repaired['news_selection']['opening_anchor'])
+        self.assertEqual({k: repaired[k] for k in facts}, facts)
+        self.assertNotIn('editorial_quality', repaired)
+
+    def test_object_encoding_never_discards_duplicate_factual_keys(self):
+        self.assertEqual(object_encoding([{'a': 1}, {'b': 2}]), {'a': 1, 'b': 2})
+        self.assertIsNone(object_encoding([{'event_date': '2026-11-09'}, {'event_date': '2026-11-10'}]))
+
+    def test_schema_failure_can_preserve_json_candidate_without_approving_facts(self):
+        bad = Mock(status_code=400)
+        bad.json.return_value = {'error': {'failed_generation': '{"scorecard":[],"news_date":"2026-11-09"}'}}
+        with patch.dict(groq.__dict__, {'_model_cooldowns': {}}), patch.dict(groq.os.environ,
+                {'GROQ_API_KEY': 'unit-test-fixture', 'ODE_NEWS_GROQ_MIN_INTERVAL_SECONDS': '0'}), \
+             patch.object(groq.requests, 'post', return_value=bad) as post:
+            raw = json.loads(groq.complete('JSON fixture', json_mode=True, response_schema=episode_schema()))
+        self.assertEqual(raw['news_date'], '2026-11-09')
+        self.assertNotIn('editorial_quality', raw)
+        self.assertEqual(post.call_count, 1)
+
     def test_schema_forces_mechanical_shapes_without_factual_approval(self):
         schema = episode_schema()
         def inspect(node):

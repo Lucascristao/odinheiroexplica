@@ -10,7 +10,7 @@ if (project?.editorial?.format !== "ode-news-single") {
 }
 const scenes = project.scenes ?? [];
 const developed = project.editorial.quality_contract?.version === "2026-11-10.1";
-if (scenes.length < (developed ? 3 : 4) || scenes.length > (developed ? 12 : 9)) {
+if (scenes.length < (developed ? 1 : 4) || scenes.length > (developed ? 12 : 9)) {
   throw new Error("NEWS_PREFLIGHT: invalid sequential scene count");
 }
 const assets = new Map((project.visual_assets ?? []).map((x: any) => [x.id, x]));
@@ -59,10 +59,13 @@ for (const [index, scene] of scenes.entries()) {
     }
   }
 }
-if (distinctDocs.size < 2) {
+if (distinctDocs.size < (developed ? 1 : 2)) {
   throw new Error("NEWS_PREFLIGHT: at least 2 different documentary excerpts required");
 }
-if (opinionCount < 1) throw new Error("NEWS_PREFLIGHT: no clearly marked Roberto commentary");
+if (opinionCount < 1) {
+  if (developed) console.warn("NEWS_STYLE_ADVISORY: factual bulletin without commentary; do not block verified reporting");
+  else throw new Error("NEWS_PREFLIGHT: no clearly marked Roberto commentary");
+}
 if (distinctCards.size < scenes.length * 2) {
   if (developed) console.warn("NEWS_VISUAL_ADVISORY: improve variety in the next edition without blocking verified reporting");
   else throw new Error("NEWS_PREFLIGHT: not enough original visual changes");

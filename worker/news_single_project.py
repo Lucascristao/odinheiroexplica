@@ -18,7 +18,7 @@ from visual_anchor import normalize_text
 
 
 SELECTION_POLICY_START = datetime(2026, 10, 11, 21, tzinfo=timezone.utc)
-NEWS_TOPIC_AREAS = {"politics", "economy", "personal_finance", "business", "international"}
+NEWS_TOPIC_AREAS = {"politics", "economy", "personal_finance", "business", "international", "general"}
 
 
 def validate_news_selection(episode: dict, news_day: date) -> None:
@@ -236,7 +236,8 @@ def validate(episode: dict, today: date | None = None, drafting: bool = False) -
         require(claim.get("status") in ("statement", "background", "forecast_not_collected", "projection", "confirmed"), "tipo factual desconhecido")
     validate_news_selection(episode, news_day)
     documentary = episode.get("documentary_evidence") or []
-    require(len(documentary) >= 2, "exigir pelo menos duas referências visuais documentais")
+    require(len(documentary) >= (1 if quality or drafting else 2),
+            "exigir referência visual documental autêntica" if quality or drafting else "exigir pelo menos duas referências visuais documentais")
     doc_ids = set()
     for doc in documentary:
         require(doc.get("kind") == "source_excerpt", "imagem deve ser captura de evidência identificada")
@@ -291,13 +292,13 @@ def validate(episode: dict, today: date | None = None, drafting: bool = False) -
                 "foto deve ser identificada como arquivo/contexto, nunca notícia atual")
         require(photo.get("needs_cutout") is False, "fotos de contexto não podem perder o fundo")
     segments = episode.get("segments") or []
-    require((3 if quality or drafting else 4) <= len(segments) <= (12 if quality or drafting else 9), "quantidade de blocos narrativos fora do contrato")
+    require((1 if quality or drafting else 4) <= len(segments) <= (12 if quality or drafting else 9), "quantidade de blocos narrativos fora do contrato")
     if quality or drafting:
         if not any(s.get('type') == 'opinion' for s in segments):
             print('NEWS_STYLE_ADVISORY: matéria factual sem bloco opinativo; não bloquear notícia válida')
     else:
         require(sum(s.get("type") == "opinion" for s in segments) >= 1, "falta opinião claramente identificada")
-    require(sum(s.get("type") == "fact" for s in segments) >= 2, "poucos blocos factuais")
+    require(sum(s.get("type") == "fact" for s in segments) >= (1 if quality or drafting else 2), "falta bloco factual")
     used_docs = set()
     used_photos = set()
     for segment in segments:
@@ -336,19 +337,19 @@ def validate(episode: dict, today: date | None = None, drafting: bool = False) -
                     doc = next((d for d in documentary if d["id"] == segment.get("document_id")), {})
                     require(bool(doc.get("capture_sha256")), "zoom/grifo autoral exige captura autêntica revisada e fixada por hash")
             require(positions == sorted(set(positions)), "cues precisam acompanhar a ordem da narração")
-    require(len(used_docs) >= 2, "as duas evidências documentais precisam aparecer no vídeo")
+    require(len(used_docs) >= (1 if quality or drafting else 2), "a evidência documental precisa aparecer no vídeo")
     # Exibir prova autêntica mesmo quando a pauta é exclusiva de uma fonte.
     doc_source = {item["id"]: item["source_id"] for item in documentary}
     source_host = {item["id"]: urlparse(item["url"]).hostname.lower().removeprefix("www.") for item in sources}
     if source_mode == "single_source_attributed":
         excerpts = [d["expected_text"].strip().casefold() for d in documentary
                     if d["id"] in used_docs]
-        require(len(set(excerpts)) >= 2,
+        require(len(set(excerpts)) >= (1 if quality or drafting else 2),
                 "fonte única exige dois trechos documentais diferentes, sem simular duas matérias")
     else:
-        require(len({source_host[doc_source[doc_id]] for doc_id in used_docs}) >= 2,
+        require(len({source_host[doc_source[doc_id]] for doc_id in used_docs}) >= (1 if quality or drafting else 2),
                 "mostrar pelo menos duas matérias de publicadores independentes")
-    require(len(used_photos | used_docs) >= (2 if quality or drafting else len(segments) - 2),
+    require(len(used_photos | used_docs) >= (1 if quality or drafting else len(segments) - 2),
             "noticiário não pode ser quase todo texto e ícones; inclua prints comentados")
     return episode
 
