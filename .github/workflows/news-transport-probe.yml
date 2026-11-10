@@ -1,0 +1,42 @@
+name: ODE Notícias - diagnóstico real do transporte JSON
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check requests
+      - name: Testar schema simples e editorial sem notícia nem publicação
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          python - <<'PY'
+          import json,os,re,sys,time
+          import requests
+          sys.path.insert(0,'worker')
+          from news_draft_contract import episode_schema
+          simple={'type':'object','properties':{'ok':{'type':'boolean'}},'required':['ok'],'additionalProperties':False}
+          for label,schema in [('simple',simple),('news',episode_schema())]:
+              r=requests.post('https://api.groq.com/openai/v1/chat/completions',headers={'Authorization':'Bearer '+os.environ['GROQ_API_KEY']},json={
+                  'model':'openai/gpt-oss-20b','messages':[{'role':'user','content':'JSON transport test only, no factual source or publication. For simple schema return ok=true. For news schema return insufficient_evidence=true; use empty strings, empty arrays, false booleans and valid first enum choices. Do not invent a news story.'}],
+                  'response_format':{'type':'json_schema','json_schema':{'name':'ode_probe','strict':True,'schema':schema}},
+                  'reasoning_effort':'low','max_completion_tokens':1600},timeout=90)
+              report={'schema':label,'http_status':r.status_code}
+              if r.status_code==200:
+                  payload=r.json(); report['finish_reason']=payload['choices'][0].get('finish_reason')
+                  content=json.loads(payload['choices'][0]['message']['content']); report['root_types']={k:type(v).__name__ for k,v in content.items()}
+              else:
+                  try: message=str(r.json().get('error',{}).get('message',''))
+                  except ValueError: message='non-json response'
+                  message=re.sub(r'gsk_[A-Za-z0-9_-]+|Bearer\s+\S+','[REDACTED]',message)
+                  report['validation_reason']=message[:700]
+              print('REAL_GROQ_SCHEMA_PROBE',json.dumps(report),flush=True)
+              time.sleep(4)
+          PY
