@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "project_id": "noticia-2026-11-09-meio-dia",
+  "project_sha256": "a859604dc2e5c785be241dc71fb155d4dc6d45df0d98c30a876cfdf62fe8ef0a",
+  "contract_sha256": "f48fc36073a9a6f105c57d2656eae0900054e00a64e3ed0788443665f0d7655b",
+  "image_sha256": "0aa5a052bbf20f8857f18b460bac23881c31b0ec6251419c46f9c014e73b9b70",
+  "headline": "Renúncia coletiva no Paraguai",
+  "approval_status": "approved",
+  "reviewer": "Groq multimodal automated pixel reviewer; qwen/qwen3.8-27b",
+  "reviewed_at": "2026-11-10T18:17:32.836830+00:00",
+  "checks": {
+    "headline_exact": true,
+    "primary_subject": true,
+    "secondary_subject": true,
+    "forbidden_absent": true,
+    "identity_and_mobile": true,
+    "no_fabricated_data": true,
+    "unique_composition": true
+  },
+  "observations": {
+    "headline": "A headline 'Renúncia coletiva no Paraguai' está presente em amarelo, legível na thumbnail de 1280x720 e perceptível na redução, sem sobreposição indevida ao rosto.",
+    "primary_subject": "O protagonista é representado por um documento digital em primeiro plano (print de interface) que menciona explicitamente o nome 'Pedro Alliana' e o contexto de renúncia, atendendo à permissão de prova documental.",
+    "secondary_subject": "O retrato do apresentador Roberto está presente à esquerda, mantendo a integridade facial e a identidade visual exigida, sem deformações perceptíveis.",
+    "forbidden_absent": "Não foram detectados logotipos inventados, marcas d'água, textos extras fora do escopo ou cópias de capas de terceiros.",
+    "identity_and_mobile": "A paleta de cores (fundo escuro, texto amarelo) está correta. Na redução de 320x180, a headline permanece legível e o rosto do apresentador não é encoberto.",
+    "no_fabricated_data": "O conteúdo textual visível no documento de apoio é consistente com a narrativa de renúncia e não apresenta dados inventados ou desconexos do contexto.",
+    "unique_composition": "A composição é única, utilizando o layout de 'notícia' com o print de interface como elemento central e o apresentador como âncora visual."
+  },
+  "checked_forbidden_elements": [
+    "dados ou documentos inventados",
+    "cópias de capas de terceiros",
+    "foto apresentada como evidência de um evento diferente",
+    "logotipo inventado",
+    "texto extra",
+    "marca d'água"
+  ],
+  "observed_forbidden_elements": []
+}

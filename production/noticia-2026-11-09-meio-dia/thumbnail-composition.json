@@ -1,0 +1,14 @@
+{
+  "version": "locked-presenter-cover-v1",
+  "project_id": "noticia-2026-11-09-meio-dia",
+  "contract_sha256": "f48fc36073a9a6f105c57d2656eae0900054e00a64e3ed0788443665f0d7655b",
+  "identity_id": "roberto-v1-blue-right",
+  "portrait_sha256": "ed4e478435e90a611c6547de8a0e43d0f1958332d77d64c0cb34b27bde04b805",
+  "image_sha256": "0aa5a052bbf20f8857f18b460bac23881c31b0ec6251419c46f9c014e73b9b70",
+  "background_path": "production/noticia-2026-11-09-meio-dia/thumbnail-background.png",
+  "background_sha256": "ec92da6ce6f3adb928cfa5fbeb274cb37a81fa3b1d75b7ac675830fa4a5e4f1a",
+  "portrait_side": "left",
+  "headline_position": "lower",
+  "portrait_size": "close",
+  "created_at": "2026-11-10T18:17:31.371Z"
+}
