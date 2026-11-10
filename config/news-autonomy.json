@@ -223,7 +223,8 @@
     "factual_verdict_fallback": false,
     "external_availability_fallback": {
       "provider": "openrouter",
-      "model": "openrouter/free",
+      "model": "nvidia/nemotron-3.5-super-vl:free",
+      "fallback_models": ["xingchen-agi/xing4.0-29b-a4b:free"],
       "api_secret": "OPENROUTER_API_KEY",
       "free_only": true,
       "paid_fallback": false

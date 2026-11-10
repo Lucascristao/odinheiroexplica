@@ -29,7 +29,7 @@ jobs:
           diagnostic={}
           schema={'type':'object','properties':{'ok':{'type':'boolean'}},'required':['ok'],'additionalProperties':False}
           result=json.loads(complete_free('Teste de disponibilidade sem notícia: retorne apenas {"ok":true}.',
-              json_mode=True, response_schema=schema, max_output_tokens=512, diagnostics=diagnostic))
+              json_mode=True, response_schema=schema, max_output_tokens=2048, diagnostics=diagnostic))
           assert result.get('ok') is True
           Path('render-output').mkdir(exist_ok=True)
           Path('render-output/free-provider-check.json').write_text(json.dumps(diagnostic,indent=2)+'\n')

@@ -44,8 +44,9 @@ class FreeFallback(unittest.TestCase):
                 response_schema=schema, max_output_tokens=100, diagnostics=diag)), {'ok': True})
         args, kwargs = post.call_args
         self.assertEqual(args[0], free.ENDPOINT)
-        self.assertEqual(kwargs['json']['model'], 'openrouter/free')
-        self.assertNotIn('models', kwargs['json'])
+        self.assertEqual(kwargs['json']['model'], free.MODEL)
+        self.assertEqual(kwargs['json']['models'], list(free.MODELS))
+        self.assertTrue(all(model.endswith(':free') for model in free.MODELS))
         self.assertEqual(kwargs['json']['provider']['max_price'], {'prompt': 0, 'completion': 0})
         self.assertEqual(kwargs['json']['response_format']['json_schema']['schema'], schema)
         self.assertEqual(diag['provider'], 'openrouter')

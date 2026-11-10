@@ -73,7 +73,7 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
                 return result
         from news_free_fallback import enabled, complete_free
         if enabled() and selected in {primary, *alternates}:
-            print('EDITORIAL_PROVIDER_FALLBACK groq openrouter/free', reason, flush=True)
+            print('EDITORIAL_PROVIDER_FALLBACK groq openrouter_free_models', reason, flush=True)
             result = complete_free(prompt, json_mode=json_mode, diagnostics=diagnostics,
                                    max_output_tokens=max_output_tokens, response_schema=response_schema)
             if diagnostics is not None:
