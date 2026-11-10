@@ -288,10 +288,10 @@ def safe_transport_diagnostics(data):
     """Copy only bounded transport state and token counts, never arbitrary payloads."""
     data = data or {}
     result = {}
-    for key in ("provider", "model", "finish_reason"):
+    for key in ("provider", "model", "finish_reason", "response_error"):
         if isinstance(data.get(key), str):
             result[key] = diagnostic_text(data[key], 180)
-    for key in ("attempt", "http_status"):
+    for key in ("attempt", "http_status", "response_characters"):
         if type(data.get(key)) is int:
             result[key] = data[key]
     usage = data.get("usage") or {}

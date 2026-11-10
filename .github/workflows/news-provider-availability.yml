@@ -34,8 +34,20 @@ jobs:
           Path('render-output').mkdir(exist_ok=True)
           Path('render-output/free-provider-check.json').write_text(json.dumps(diagnostic,indent=2)+'\n')
           print('FREE_TEXT_PROVIDER_AVAILABLE',diagnostic['provider'],diagnostic['model'])
+          from news_draft_contract import episode_schema
+          full_diagnostic={}
+          fixture=json.loads(complete_free(
+              'Teste técnico sem notícia e sem fontes. Retorne todos os campos do schema, '
+              'insufficient_evidence=true, insufficient_reason=Sem fontes fornecidas, '
+              'strings vazias e listas vazias quando faltarem dados. Não invente notícia, fonte ou data.',
+              json_mode=True,response_schema=episode_schema(),max_output_tokens=5800,diagnostics=full_diagnostic))
+          assert fixture.get('insufficient_evidence') is True
+          assert isinstance(fixture.get('news_selection'),dict)
+          assert isinstance(fixture.get('title_options'),list)
+          Path('render-output/free-provider-full-schema-check.json').write_text(json.dumps(full_diagnostic,indent=2)+'\n')
+          print('FREE_TEXT_PROVIDER_FULL_SCHEMA_AVAILABLE',full_diagnostic['provider'],full_diagnostic['model'])
           PY
       - uses: actions/upload-artifact@v4
         with:
           name: free-provider-availability
-          path: render-output/free-provider-check.json
+          path: render-output/free-provider-*-check.json

@@ -91,8 +91,28 @@ class FreeFallback(unittest.TestCase):
 
     def test_nonzero_cost_response_cannot_be_accepted_as_free(self):
         with patch.object(free.requests, 'post', return_value=reply(usage={'cost': .01})):
-            with self.assertRaisesRegex(RuntimeError, 'invalid response'):
+            with self.assertRaisesRegex(RuntimeError, 'zero-cost guard'):
                 free.complete_free('Fixture')
+
+    def test_empty_completion_uses_other_free_model_and_keeps_diagnostics(self):
+        diag = {}
+        empty = reply(content=None, usage={'completion_tokens': 5800, 'cost': 0})
+        empty.json.return_value['choices'][0]['finish_reason'] = 'length'
+        with patch.object(free.requests, 'post', side_effect=[empty, reply()]) as post:
+            self.assertEqual(json.loads(free.complete_free('Fixture', json_mode=True, diagnostics=diag)), {'ok': True})
+        self.assertEqual(post.call_args.kwargs['json']['model'], free.MODELS[1])
+        self.assertEqual(diag['attempt'], 2)
+        self.assertNotIn('response_error', diag)
+        self.assertIs(post.call_args.kwargs['json']['reasoning']['enabled'], False)
+
+    def test_persistent_empty_completion_records_structure_without_content(self):
+        diag = {}
+        with patch.object(free.requests, 'post', return_value=reply(content=None)):
+            with self.assertRaisesRegex(RuntimeError, 'empty_message'):
+                free.complete_free('PRIVATE-prompt', json_mode=True, diagnostics=diag)
+        self.assertEqual(diag['response_characters'], 0)
+        self.assertEqual(diag['response_error'], 'empty_message')
+        self.assertNotIn('PRIVATE', json.dumps(diag))
 
     def test_quota_error_never_emits_provider_body_or_routes_to_paid(self):
         diag = {}
