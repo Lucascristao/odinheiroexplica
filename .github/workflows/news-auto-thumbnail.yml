@@ -1,7 +1,7 @@
 name: ODE Notícias - anexar capa automaticamente
 on:
   # Sem push automático: capa opcional já é anexada em render-news-single.yml.
-  # Uso manual reservado apenas para corrigir capas de episódios históricos.
+  # Também permite anexar posteriormente ao mesmo vídeo de notícia já público.
   workflow_dispatch:
     inputs:
       audit_path:
@@ -103,7 +103,7 @@ jobs:
             --thumbnail "$PIC" \
             --receipt render-output/private-proof/daily-youtube-private.json \
             --delivery-record render-output/youtube-thumbnail-delivery.json
-          echo "THUMBNAIL_ATTACHED: Vídeo continua PRIVADO aguardando aprovação final."
+          echo "THUMBNAIL_ATTACHED: capa anexada ao ID comprovado; privacidade preservada conforme recibo da operação."
       - name: Comprovar ligação da capa com o vídeo
         uses: actions/upload-artifact@v4
         with:

@@ -171,23 +171,32 @@ def upload_private(service, channel, video_path: Path, metadata: dict, project_i
     return save_receipt(receipt_path, project_id, digest, video_id, False)
 
 
-def validate_thumbnail_target(service, video_id: str):
+def validate_thumbnail_target(service, video_id: str, receipted_news_project: str = ""):
     found = service.videos().list(part="snippet,status", id=video_id).execute().get("items", [])
     if len(found) != 1 or found[0].get("snippet", {}).get("channelId") != EXPECTED_ID:
         raise ValueError("O vídeo não pertence ao canal O Dinheiro Explica.")
-    if found[0].get("status", {}).get("privacyStatus") != "private":
+    privacy = found[0].get("status", {}).get("privacyStatus")
+    if receipted_news_project:
+        if (not receipted_news_project.startswith("noticia-") or
+                "ODE_EPISODE_" + receipted_news_project not in found[0].get("snippet", {}).get("tags", [])):
+            raise ValueError("O episódio do vídeo difere do recibo da capa.")
+    if privacy != "private" and not (receipted_news_project and privacy == "public"):
         raise ValueError("Não alterar capa de vídeo que não esteja privado neste fluxo.")
+    return privacy
 
 
-def add_thumbnail(service, thumbnail: Path, video_id: str):
+def add_thumbnail(service, thumbnail: Path, video_id: str, receipted_news_project: str = ""):
     if not thumbnail.is_file() or thumbnail.suffix.lower() not in (".png", ".jpg", ".jpeg"):
         raise ValueError("Capa inexistente ou em formato não suportado.")
-    validate_thumbnail_target(service, video_id)
+    privacy = validate_thumbnail_target(service, video_id, receipted_news_project)
     from googleapiclient.http import MediaFileUpload
     mime = "image/png" if thumbnail.suffix.lower() == ".png" else "image/jpeg"
     media = MediaFileUpload(str(thumbnail), mimetype=mime, resumable=False)
-    service.thumbnails().set(videoId=video_id, media_body=media).execute()
-    return {"video_id": video_id, "thumbnail_sha256": sha256(thumbnail), "privacy": "private"}
+    try:
+        service.thumbnails().set(videoId=video_id, media_body=media).execute()
+    finally:
+        media.stream().close()
+    return {"video_id": video_id, "thumbnail_sha256": sha256(thumbnail), "privacy": privacy}
 
 
 def publish_after_review(service, project_id: str, video_id: str, image: Path,
@@ -282,6 +291,7 @@ def cli():
                 raise ValueError("ID do projeto difere do projeto aprovado.")
             audit = validate_thumbnail_audit(root, project, Path(args.thumbnail), project_source_path=args.project)
             target_id = args.video_id
+            receipt = None
             if receipt_path and receipt_path.exists():
                 receipt = json.loads(receipt_path.read_text(encoding="utf-8"))
                 if receipt.get("project_id") != args.project_id or receipt.get("destination") != "youtube":
@@ -292,7 +302,8 @@ def cli():
             if not target_id or not re.fullmatch(r"[A-Za-z0-9_-]{11}", target_id):
                 raise ValueError("Informe ID válido do vídeo privado.")
             if args.action == "thumbnail":
-                result = add_thumbnail(service, Path(args.thumbnail), target_id)
+                news_project = args.project_id if receipt and args.project_id.startswith("noticia-") else ""
+                result = add_thumbnail(service, Path(args.thumbnail), target_id, news_project)
                 result["project_id"] = args.project_id
                 result["contract_sha256"] = audit["contract_sha256"]
                 if args.delivery_record:

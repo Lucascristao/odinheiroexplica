@@ -167,6 +167,28 @@ class YouTubePublicationTest(unittest.TestCase):
             add_thumbnail(self.service, cover, "zzzzzzzzzzz")
         self.service.thumbnails.return_value.set.assert_not_called()
 
+    def test_receipted_news_can_get_cover_after_automatic_publication(self):
+        project_id = "noticia-2026-11-10-manha"
+        self.service.videos.return_value.list.return_value.execute.return_value = {
+            "items": [{"id": "zzzzzzzzzzz", "snippet": {"channelId": EXPECTED_ID,
+                       "tags": ["ODE_EPISODE_" + project_id]}, "status": {"privacyStatus": "public"}}]}
+        cover = Path(self.work.name, "thumb.jpg")
+        cover.write_bytes(b"synthetic test cover")
+        result = add_thumbnail(self.service, cover, "zzzzzzzzzzz", project_id)
+        self.assertEqual(result["privacy"], "public")
+        self.service.thumbnails.return_value.set.assert_called_once()
+        self.service.videos.return_value.update.assert_not_called()
+
+    def test_late_news_cover_cannot_cross_episode(self):
+        self.service.videos.return_value.list.return_value.execute.return_value = {
+            "items": [{"id": "zzzzzzzzzzz", "snippet": {"channelId": EXPECTED_ID,
+                       "tags": ["ODE_EPISODE_noticia-2026-11-10-noite"]}, "status": {"privacyStatus": "public"}}]}
+        cover = Path(self.work.name, "thumb.jpg")
+        cover.write_bytes(b"synthetic test cover")
+        with self.assertRaisesRegex(ValueError, "difere do recibo"):
+            add_thumbnail(self.service, cover, "zzzzzzzzzzz", "noticia-2026-11-10-manha")
+        self.service.thumbnails.return_value.set.assert_not_called()
+
 
 if __name__ == "__main__":
     unittest.main()
