@@ -11,7 +11,7 @@ def hold(service, record, receipt, episode_bytes):
     pid, vid = record['project_id'], record['video_id']
     if (receipt.get('project_id') != pid or receipt.get('video_id') != vid
             or receipt.get('destination') != 'youtube'
-            or record.get('episode_sha256') != hashlib.sha256(episode_bytes).hexdigest()
+            or record.get('episode_sha256') != hashlib.sha256(episode_bytes.replace(b'\r\n', b'\n')).hexdigest()
             or len(record.get('reason', '')) < 30 or record.get('requested_privacy') != 'private'):
         raise ValueError('Hold requires original episode, exact upload receipt and material reason')
     assert_channel(service)

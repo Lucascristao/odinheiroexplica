@@ -2,7 +2,7 @@
   "project_id": "noticia-2026-11-10-manha",
   "video_id": "1ofBrOabvfc",
   "source_run_id": 42810877532,
-  "episode_sha256": "8a63cfa94e961f5f62fd32abb215d08f748027adc9dfc78c9204b7142680e439",
+  "episode_sha256": "ad4ea64428a143a606b2c7a80a3e43d858431ba78617f81a997131b4e4a498a8",
   "requested_privacy": "private",
   "reason": "Material narration error: scene3 falsely defines the 6x1 work schedule as an energy tariff mechanism; scene4 reads editorial instructions aloud; scene5 confuses a meeting with minutes. Technical QA and the prior machine review did not detect these errors. Retain private for traceability; correct before re-release.",
   "evidence": [
