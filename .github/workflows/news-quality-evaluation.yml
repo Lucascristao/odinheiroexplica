@@ -98,8 +98,7 @@ jobs:
           ODE_NEWS_VISION_MODEL: qwen/qwen3.8-27b
           COVER_EPISODE: ${{ inputs.cover_episode_path }}
         run: |
-          if [[ -n "$COVER_EPISODE" ]]; then
-            python - <<'PY'
+          python - <<'PY'
           import json,re
           from pathlib import Path
           project=json.loads(Path('video/generated/daily-project.json').read_text())
@@ -110,7 +109,6 @@ jobs:
           for name in ('thumbnail.jpg','thumbnail.png','thumbnail-audit.json','thumbnail-composition.json'):
               (folder/name).unlink(missing_ok=True)
           PY
-          fi
           python worker/news_auto_local_cover.py --project video/generated/daily-project.json --episode render-output/news-editorial-evaluation.json
       - name: Preservar resultados reais, incluindo tentativa de capa
         if: always()

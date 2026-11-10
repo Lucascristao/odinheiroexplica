@@ -63,17 +63,21 @@ def develop(episode, corpus, completed_ids=(), on_progress=None):
         excerpts = {sid: {**corpus[sid], "text": corpus[sid]["text"][:2000]}
                     for sid in source_ids}
         writing_batch = [{key: s.get(key) for key in ("id", "title", "type", "narration", "document_id")} for s in batch]
+        previous = [{"title": s["title"], "narration": s["narration"][-1100:]} for s in segments[max(0, offset-3):offset]]
         prompt = f"""Desenvolva APENAS o único bloco solicitado desta notícia. Retorne JSON simples {{"narration":"fala completa deste bloco"}}. Não devolver IDs nem outras cenas.
 Plano completo (não repetir as outras cenas): {json.dumps(outline, ensure_ascii=False)}
+Já dito na voz; continuar daqui sem recontar os mesmos números: {json.dumps(previous, ensure_ascii=False)}
 Blocos para escrever: {json.dumps(writing_batch, ensure_ascii=False)}
 Fatos apurados: {json.dumps(facts, ensure_ascii=False)}
 Textos reais pertinentes: {json.dumps(excerpts, ensure_ascii=False)}
 Desenvolva cada bloco com clareza: alvo de 80 a 125 palavras, sem mínimo rígido. Total desejado 700-950 palavras, cerca de4-6 minutos. Uma cena pode ser mais curta quando sua função é simples.
 Acrescente contexto, mecanismo, consequência CONDICIONAL, contraponto e limites. Conceitos estáveis podem ser explicados didaticamente sem inventar dados da empresa. Se faltar informação, explique honestamente o limite e escreva um bloco mais curto. Não declarar insufficient_evidence só por não atingir a meta de palavras; use isso apenas se a premissa factual for falsa ou sem apoio. Não encha com repetição.
+Avance na pergunta específica deste bloco. Não repita a lista de lucro/receita/dívida em cada cena; um número só retorna quando permite nova comparação ou explicação. Explique siglas na primeira menção, por exemplo o que a medida operacional significa e o que ela não mede. A conclusão responde à pergunta com os fatos disponíveis, não termina apenas perguntando de novo. Não usar 'histórica', 'recorde' ou ameaça a dividendos sem prova correspondente.
 Toda frase factual precisa de respaldo nos textos ou fatos fornecidos. Separe hipótese de efeito observado, acusação de condenação. NÃO atribua causalidade nem impacto ao Ceará, Nordeste ou bolso sem prova.
+Modo de apuração: {episode['news_selection'].get('source_mode', 'corroborated')}. Se single_source_attributed, atribua brevemente o relato na primeira cena ('uma reportagem consultada'), sem alegar confirmação independente nem citar nome do portal na fala.
 Voz Roberto de direita/liberal: análise própria sobre incentivos e consequências, sarcasmo pontual, sem imitar pessoa, bordão ou transformar interpretação em fato. Contextualize o fato antes da opinião.
 Português falado com frases claras e variadas; preserve números exatamente, escrevendo decimais, moedas, porcentagens, siglas e datas por extenso quando isso evita ambiguidade vocal. Não usar barras, URLs, parênteses extensos ou códigos legislativos sem explicação.
-Na abertura preserve o FATO e a promessa destes trechos, podendo escrever números e siglas em forma falada: {json.dumps([episode['news_selection']['opening_anchor'], episode['discovery_strategy']['first_payoff']], ensure_ascii=False)}. O código vincula os metadados literais à fala final depois. Entregue a descoberta antes de se apresentar brevemente como Roberto, do O Dinheiro Explica. Nada de saudação longa ou inscrição antes da entrega.
+Somente se este for o bloco inicial: preserve o FATO e a promessa destes trechos, podendo escrever números e siglas em forma falada: {json.dumps([episode['news_selection']['opening_anchor'], episode['discovery_strategy']['first_payoff']], ensure_ascii=False)}. O código vincula os metadados literais à fala final depois. Entregue a descoberta antes de se apresentar brevemente como Roberto, do O Dinheiro Explica. Nada de saudação longa ou inscrição antes da entrega; demais blocos não repetem essa abertura.
 Opinião inicia 'Na minha análise,' ou 'Na minha opinião,'. Conclusão responde à pergunta, explicita o que ainda falta acontecer e inclui um pedido curto de inscrição ligado à utilidade do canal.
 Não incluir diretivas de voz no texto nem alegar consenso de fontes. Preserve nomes próprios e os limites das reportagens. Não copiar parágrafos da fonte."""
         result = parse_reply(prompt, budget=1100)
