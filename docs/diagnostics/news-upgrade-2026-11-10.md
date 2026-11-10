@@ -26,4 +26,14 @@ Gemini Live tem limites de sessão, concorrência e tokens dependentes da conta;
 
 GitHub pode atrasar crons. Prazo de publicação até 180 minutos, mesmo dia, QA sem falhas e identidade/recibos obrigatórios. Privados antigos não serão liberados em lote: podem estar vencidos ou ter falhado em apuração/QA.
 
-Testes offline, avaliação de APIs reais, configuração implantada e publicação confirmada serão registrados separadamente após execução.
+## Resultado real e limites da validação
+
+Piloto [42759271598](https://github.com/Lucascristao/odinheiroexplica/actions/runs/42759271598): Live/Charon, render, QA e upload concluídos. [Vídeo público](https://youtu.be/W34OwdmtBxc), 263,77 segundos (4min24s), 647 palavras. O fato foi divulgado em 09/11; publicação de teste em 10/11 autorizada explicitamente, sem fingir novidade de 10/11.
+
+QA `warn`, `failures=[]`: âncoras estimadas, cobertura ASR de 86,24% em uma cena, estimativa de variação de registro e pico interamostras de +1,34 dBTP. Esses avisos foram preservados, sem apresentar estimativas como defeitos audíveis comprovados nem alterar o WAV raw. Não houve escuta subjetiva completa por este agente. Inspecionados seis quadros do MP4 e a capa nas duas resoluções. Os prints preservam documentos reais, mas anúncios presentes nas páginas disputam espaço: oportunidade de acabamento, sem prova de impacto na retenção.
+
+A primeira capa deste piloto foi montada/inspecionada no chat e anexada por [42796188057](https://github.com/Lucascristao/odinheiroexplica/actions/runs/42796188057), com recibo `privacy=public`; conferidos os pixels servidos pelo CDN do YouTube. Isso comprova entrega da imagem, **não geração autônoma**. O titular explicitou que aceita anexação posterior desde que feita pelo fluxo. Foi implementada recuperação pós-render/horária com geração, inspeção multimodal e anexação ao ID original; a execução real dessa geração deve ser registrada separadamente.
+
+**Geração e anexação autônomas comprovadas:** [42799131053](https://github.com/Lucascristao/odinheiroexplica/actions/runs/42799131053) fez novas capturas, composição Remotion, revisão multimodal real em `qwen/qwen3.8-27b` e `thumbnails.set` no vídeo público original. Nenhuma imagem foi montada ou enviada pelo chat nessa execução. `FREE_NEWS_THUMBNAIL_AUDITED` às 10:28:13 UTC; anexo confirmado às 10:28:25 UTC. SHA da nova imagem `a513f5fd27f2a61157d5c6c511d5a6e5c1bcb7ed75c51abf632f312d38ea17fa`; commit automático `ad6ab6a`, com auditoria, entrega e tentativa `attached`. CI `42799082189` aprovado no código de recuperação `97a6d8f`. A auditoria automática é identificada como tal; não é revisão humana nem previsão de CTR.
+
+CI [42796994005](https://github.com/Lucascristao/odinheiroexplica/actions/runs/42796994005) aprovado em `122dc2c`, além das verificações locais de sete janelas, fontes, revisão, retomada e YouTube. A avaliação integral da redação automática continua separada do piloto apurado no chat: não declarar sete vídeos diários comprovados a partir de uma única publicação.

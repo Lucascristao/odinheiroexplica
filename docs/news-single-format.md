@@ -6,6 +6,8 @@
 
 Cenas desenvolvidas têm âncoras ao longo de toda a fala. Reenquadramentos usam as regiões de prova medidas nas capturas; não inventar grifos nem substituir citação ausente por texto parecido. Contratos anteriores permanecem compatíveis nas retomadas.
 
+Capa posterior também é automática: `news-auto-thumbnail.yml` roda ao concluir a produção e por retomada horária. Quando faltar arte auditada, captura documentos, compõe o retrato oficial com headline medida, pede inspeção multimodal real e anexa ao ID comprovado, inclusive público. Recibo de entrega e tentativas ficam versionados por episódio. Máximo de três tentativas com intervalo de uma hora nas últimas 48 horas; falha de capa não altera a privacidade nem bloqueia a notícia. Captura sempre recebe `news-capture-project.json`, cópia técnica, enquanto a auditoria se vincula a `daily-project.json` editorial imutável.
+
 **Vigente:** até três vídeos por dia, cada vídeo com UMA notícia central; não um giro. Contratos: news/episodes/*.json, worker/news_single_project.py, render-news-single.yml. O multiassunto news/editions é histórico, não produzir novos episódios nesse padrão. Nunca modificar o explanatory video/data/daily.json.
 
 ## Pesquisa da referência ANCAPSU / Peter Turguniev
