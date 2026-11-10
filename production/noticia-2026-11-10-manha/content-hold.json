@@ -1,0 +1,12 @@
+{
+  "project_id": "noticia-2026-11-10-manha",
+  "video_id": "1ofBrOabvfc",
+  "source_run_id": 42810877532,
+  "episode_sha256": "8a63cfa94e961f5f62fd32abb215d08f748027adc9dfc78c9204b7142680e439",
+  "requested_privacy": "private",
+  "reason": "Material narration error: scene3 falsely defines the 6x1 work schedule as an energy tariff mechanism; scene4 reads editorial instructions aloud; scene5 confuses a meeting with minutes. Technical QA and the prior machine review did not detect these errors. Retain private for traceability; correct before re-release.",
+  "evidence": [
+    "https://especial.camara.leg.br/reducao-da-jornada-detrabalho-e-fim-da-escala-6x1/"
+  ],
+  "authorization": "Titular autorizou corrigir, testar e publicar; retirada temporária da versão incorreta para correção."
+}

@@ -413,9 +413,9 @@ Objetivo: interesse concreto, título forte comprovado e explicação útil. Nun
 {DRAFT_SCHEMA_GUIDE}
 Campos e formas obrigatórios:
 version="1.0",format="ode-news-single",episode_id,news_date="{day}",event_date="{day}",editorial_status="autonomous_fact_checked",reviewed_at="".
-title:20-100 caracteres, assunto reconhecível cedo, contradição/mudança/consequência concreta; sem título burocrático, superlativo vazio ou alarmismo.
+title:20-100 caracteres, assunto reconhecível cedo, contradição/mudança/consequência concreta. REGRA DO TITULAR: linguagem exagerada, provocativa e dramática por padrão; metáforas e curiosidade fortes, sem jargão nem manchete burocrática. Exagerar a expressão, preservando fatos, números e condições; não inventar acontecimentos ou efeitos.
 title_options:3 objetos {{text,editorial_quality:inteiro 1-5}}, ângulos distintos; title COPIA uma opção com nota máxima; scorecard={{method,reason,criteria:objeto}} justifica a mais forte por tensão factual e público.
-thumbnail_headline:2-4 palavras,8-34 caracteres, COMPLEMENTA título com tensão concreta, sem repetir a manchete. thumbnail_primary:prova documental real sobre o assunto, pois a composição local usa print autêntico como protagonista e Roberto em apoio; não exigir foto de personagem que não foi autorizada. thumbnail_tension,thumbnail_composition,thumbnail_text_side:left/right. Nada de rostos/objetos aleatórios para chamar atenção.
+thumbnail_headline:2-4 palavras,8-34 caracteres, mesma intensidade exagerada e dramática do título, COMPLEMENTA com tensão concreta, sem repetir a manchete. thumbnail_primary:prova documental real sobre o assunto, pois a composição local usa print autêntico como protagonista e Roberto em apoio; não exigir foto de personagem que não foi autorizada. thumbnail_tension,thumbnail_composition,thumbnail_text_side:left/right. Nada de rostos/objetos aleatórios para chamar atenção.
 sources:2-4 objetos {{id:S1/S2...,publisher,url,published_at:YYYY-MM-DD,role}}, apenas URLs específicas do relatório. Dê nome real, título da matéria se disponível e papel real: primary/independent/context. Não chamar republicação de agência de fonte independente. Fonte primária quando realmente disponível; não alegar ter lido documento ausente.
 verified_facts:2-7 objetos {{claim,source_ids:[IDs],status,event_date}}; registre apenas fatos realmente apurados, sem preencher quota. status:statement/background/forecast_not_collected/projection/confirmed. Todo número exige apoio. Cálculos precisam de denominador e período comparáveis. Acontecimento CENTRAL ocorrido hoje, não apenas matéria publicada hoje sobre fato antigo.
 news_selection:OBJETO {{topic_area:politics/economy/personal_finance/business/international,source_mode:corroborated/single_source_attributed,independent_confirmation:boolean,new_fact,why_today,opening_anchor,candidate_review}}.
@@ -561,6 +561,13 @@ def main():
                 print("NEWS_DEVELOPMENT_ADVISORY:", detail, "| retain supported script; factual review remains required", flush=True)
                 episode.setdefault("production_advisories", []).append({"code": "development_unavailable_shorter_fallback", "error_type": type(development_error).__name__, "detail": detail})
             episode = bind_draft_metadata(episode)
+            try:
+                from news_packaging import improve_packaging
+                episode = improve_packaging(episode)
+            except (RuntimeError, ValueError, KeyError, TypeError) as packaging_error:
+                print('NEWS_PACKAGING_ADVISORY: retain existing factual packaging after', type(packaging_error).__name__, flush=True)
+                episode.setdefault('production_advisories', []).append({'code': 'packaging_upgrade_unavailable',
+                    'detail': diagnostic_text(str(packaging_error), 200)})
             episode = validate(episode, today=local.date(), drafting=True)
             try:
                 episode = review(episode, corpus)

@@ -104,6 +104,8 @@ jobs:
           python worker/test_news_event_date.py
           python worker/test_news_upgrade.py
           python worker/test_news_render_dispatch.py
+          python worker/test_news_packaging.py
+          python worker/test_news_content_hold.py
 
       - name: Validate render request, packaging and retry policy (offline)
         run: |
