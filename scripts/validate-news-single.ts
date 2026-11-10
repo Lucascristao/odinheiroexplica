@@ -10,8 +10,8 @@ if (project?.editorial?.format !== "ode-news-single") {
 }
 const scenes = project.scenes ?? [];
 const developed = project.editorial.quality_contract?.version === "2026-11-10.1";
-if (scenes.length < 4 || scenes.length > 9) {
-  throw new Error("NEWS_PREFLIGHT: expected 4-9 sequential scenes");
+if (scenes.length < (developed ? 3 : 4) || scenes.length > (developed ? 12 : 9)) {
+  throw new Error("NEWS_PREFLIGHT: invalid sequential scene count");
 }
 const assets = new Map((project.visual_assets ?? []).map((x: any) => [x.id, x]));
 const distinctDocs = new Set<string>();

@@ -24,6 +24,24 @@ class SingleNewsContractTests(unittest.TestCase):
         self.assertGreaterEqual(len(self.doc["sources"]), 2)
         self.assertEqual(self.doc["editorial_status"], "approved_for_private_pilot")
 
+    def test_optional_cover_can_exceed_preferred_length_within_image_contract(self):
+        doc = copy.deepcopy(self.doc)
+        doc['thumbnail_headline'] = 'Transferência de competência no STF'
+        self.assertEqual(len(doc['thumbnail_headline']), 35)
+        validate(doc, date(2026, 10, 9))
+
+    def test_unchosen_long_title_does_not_block_valid_upload_title(self):
+        doc = copy.deepcopy(self.doc)
+        alternative = next(option for option in doc['title_options'] if option['text'] != doc['title'])
+        alternative['text'] += ' contexto adicional para análise editorial sem enviar esta alternativa ao YouTube' * 2
+        validate(doc, date(2026, 10, 9))
+
+    def test_actual_upload_title_still_respects_youtube_limit(self):
+        doc = copy.deepcopy(self.doc)
+        doc['title'] = 'Texto ' * 30
+        with self.assertRaisesRegex(ValueError, 'título inválido'):
+            validate(doc, date(2026, 10, 9))
+
     def test_short_real_documentary_credit_does_not_need_rights_boilerplate(self):
         for credit in ("BBC", "UOL", "Agência Brasil"):
             with self.subTest(credit=credit):

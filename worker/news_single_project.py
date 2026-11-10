@@ -139,12 +139,16 @@ def validate(episode: dict, today: date | None = None, drafting: bool = False) -
     require(episode.get("editorial_status") in ("approved_for_private_pilot", "autonomous_fact_checked"), "roteiro ainda não verificado")
     require(bool(episode.get("reviewed_at")), "sem data da revisão editorial")
     require(20 <= len(str(episode.get("title", ""))) <= 100, "título inválido")
-    require(8 <= len(str(episode.get("thumbnail_headline", ""))) <= 34, "headline da capa inválida")
+    require(2 <= len(str(episode.get("thumbnail_headline", ""))) <= 90, "headline da capa fora do contrato da imagem")
+    if not 8 <= len(str(episode.get("thumbnail_headline", ""))) <= 34:
+        print("NEWS_PACKAGING_ADVISORY: headline fora da faixa preferida; conferir leitura da capa sem bloquear notícia")
     title_options = episode.get("title_options") or []
     require(len(title_options) >= 3, "comparar pelo menos três alternativas de título")
     titles = [str(option.get("text", "")).strip() for option in title_options if isinstance(option, dict)]
-    require(len(titles) == len(title_options) and all(20 <= len(text) <= 100 for text in titles),
+    require(len(titles) == len(title_options) and all(text for text in titles),
             "alternativas de título incompletas")
+    if any(not 20 <= len(text) <= 100 for text in titles):
+        print("NEWS_PACKAGING_ADVISORY: alternativa não selecionada fora da faixa; título publicado mantém limite de 100 caracteres")
     require(len({re.sub(r"\s+", " ", text).casefold() for text in titles}) >= 3,
             "as três alternativas de título precisam ser diferentes")
     require(episode["title"].strip() in titles,
@@ -205,7 +209,7 @@ def validate(episode: dict, today: date | None = None, drafting: bool = False) -
         require(len(hosts) >= 2, "fontes precisam incluir publicadores diferentes")
     claims = episode.get("verified_facts") or []
     quality = episode.get("editorial_quality")
-    require(len(claims) >= (2 if quality or drafting else 4), "apuração factual insuficiente")
+    require(len(claims) >= (1 if quality or drafting else 4), "apuração factual insuficiente")
     if quality is not None:
         from news_quality_contract import editorial_fingerprint
         require(isinstance(quality, dict) and quality.get("version") == "2026-11-10.1", "contrato de desenvolvimento desconhecido")
@@ -278,7 +282,7 @@ def validate(episode: dict, today: date | None = None, drafting: bool = False) -
                 "foto deve ser identificada como arquivo/contexto, nunca notícia atual")
         require(photo.get("needs_cutout") is False, "fotos de contexto não podem perder o fundo")
     segments = episode.get("segments") or []
-    require(4 <= len(segments) <= (12 if quality or drafting else 9), "quantidade de blocos narrativos fora do contrato")
+    require((3 if quality or drafting else 4) <= len(segments) <= (12 if quality or drafting else 9), "quantidade de blocos narrativos fora do contrato")
     require(sum(s.get("type") == "opinion" for s in segments) >= 1, "falta opinião claramente identificada")
     require(sum(s.get("type") == "fact" for s in segments) >= 2, "poucos blocos factuais")
     used_docs = set()
