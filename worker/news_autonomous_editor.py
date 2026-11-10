@@ -540,8 +540,9 @@ def main():
                 episode = develop(episode, corpus, completed_ids=completed,
                     on_progress=lambda current, ids: save_state(checkpoint, date, args.slot, report, current, ids))
             except (RuntimeError, ValueError) as development_error:
-                print("NEWS_DEVELOPMENT_ADVISORY: availability failure; retain supported shorter/partly developed script and require factual review", flush=True)
-                episode.setdefault("production_advisories", []).append({"code": "development_unavailable_shorter_fallback", "error_type": type(development_error).__name__})
+                detail = diagnostic_text(str(development_error), 260)
+                print("NEWS_DEVELOPMENT_ADVISORY:", detail, "| retain supported script; factual review remains required", flush=True)
+                episode.setdefault("production_advisories", []).append({"code": "development_unavailable_shorter_fallback", "error_type": type(development_error).__name__, "detail": detail})
             episode = bind_draft_metadata(episode)
             episode = review(episode, corpus)
             episode = validate(episode, today=local.date())
