@@ -1,0 +1,326 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-10-manha-2",
+  "news_date": "2026-11-10",
+  "event_date": "2026-11-10",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-10T09:42:37.648210-03:00",
+  "title_options": [
+    {
+      "text": "Defesa de Vorcaro pede a Fachin que Gilmar Mendes julgue revogação de prisão preventiva",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Vorcaro solicita transferência de competência ao ministro mais antigo do STF",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Pedido de mudança de relator no caso Master pode mudar rumo da prisão de Vorcaro",
+      "editorial_quality": 3
+    }
+  ],
+  "title": "Defesa de Vorcaro pede a Fachin que Gilmar Mendes julgue revogação de prisão preventiva",
+  "thumbnail_headline": "Transferência de competência no STF",
+  "thumbnail_primary": "documento judicial",
+  "thumbnail_tension": "tensão institucional",
+  "thumbnail_composition": "layout textual",
+  "thumbnail_text_side": "left",
+  "news_selection": {
+    "topic_area": "politics",
+    "source_mode": "single_source_attributed",
+    "independent_confirmation": false,
+    "attribution_note": "A informação provém exclusivamente da reportagem da Jovem Pan, que reproduz conteúdo da agência Estadão Conteúdo, sem confirmação independente adicional.",
+    "new_fact": "Defesa de Daniel Vorcaro pediu ao presidente do STF Edson Fachin transferência de competência para Gilmar Mendes decidir sobre revogação da prisão preventiva.",
+    "why_today": "O pedido de transferência de competência foi protocolado nesta segunda-feira, 9 de novembro de 2026, introduzindo um novo capítulo judicial no caso Master e podendo alterar a decisão sobre a prisão preventiva de Vorcaro.",
+    "opening_anchor": "A defesa protocolou, na segunda‑feira, 9 de novembro, um pedido ao presidente do STF, Edson Fachin, para que o decano Gilmar Mendes assuma a relatoria das",
+    "candidate_review": [
+      {
+        "subject": "Defesa de Daniel Vorcaro pede ao STF que Gilmar Mendes decida sobre revogação de prisão preventiva",
+        "topic_area": "Política / Justiça",
+        "event_date": null,
+        "urls": [
+          "https://jovempan.com.br/politica/defesa-de-vorcaro-pede-a-fachin-que-gilmar-decida-sobre-revogacao-de-prisao/",
+          "https://www.moneytimes.com.br/defesa-de-vorcaro-pede-a-fachin-que-gilmar-decida-sobre-revogacao-de-prisao-igdl/"
+        ],
+        "decision": "keep"
+      },
+      {
+        "subject": "PF prende ex-servidor do STJ suspeito de vazar informações para Willer Tomaz",
+        "topic_area": "Política / Segurança",
+        "event_date": null,
+        "urls": [
+          "https://jovempan.com.br/politica/pf-prende-ex-servidor-do-stj-suspeito-de-vazar-informacoes-para-willer-tomaz/",
+          "https://revistaoeste.com/brasil/pf-prende-servidor-do-stj-suspeito-de-vazar-dados-a-willer-tomaz/"
+        ],
+        "decision": "keep"
+      },
+      {
+        "subject": "Petrobras divulga resultados do 3T26 com produção recorde e expectativa de dividendos",
+        "topic_area": "Economia / Empresas",
+        "event_date": null,
+        "urls": [
+          "https://www.moneytimes.com.br/petrobras-petr4-producao-recorde-deve-compensar-petroleo-mais-barato-e-sustentar-dividendos-no-3t26-bdap/"
+        ],
+        "decision": "consider"
+      }
+    ]
+  },
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "A escolha do título destaca o pedido concreto de transferência de competência, fato central e de maior interesse público, mantendo clareza e neutralidade.",
+    "criteria": {
+      "relevance": "alto",
+      "clarity": "alto",
+      "novelty": "alto"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/politica/defesa-de-vorcaro-pede-a-fachin-que-gilmar-decida-sobre-revogacao-de-prisao/",
+      "published_at": "2026-11-10",
+      "role": "primary"
+    },
+    {
+      "id": "S2",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/defesa-de-vorcaro-pede-a-fachin-que-gilmar-decida-sobre-revogacao-de-prisao-igdl/",
+      "published_at": "2026-11-10",
+      "role": "context"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Defesa de Daniel Vorcaro pediu ao presidente do STF Edson Fachin transferência de competência para Gilmar Mendes decidir sobre revogação da prisão preventiva.",
+      "source_ids": [
+        "S1"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-10"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "Defesa de Vorcaro pede a Fachin que Gilmar decida sobre revogação de prisão",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/defesa-de-vorcaro-pede-a-fachin-que-gilmar-decida-sobre-revogacao-de-prisao/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "Jovem Pan",
+      "selection_method": "visible_page_context_fallback_not_claim_highlight"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S1",
+      "expected_text": "Advogados alegam violação do princípio do juiz natural após afastamento de André Mendonça da relatoria do caso Master",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/defesa-de-vorcaro-pede-a-fachin-que-gilmar-decida-sobre-revogacao-de-prisao/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Jovem Pan",
+      "selection_method": "visible_page_context_fallback_not_claim_highlight"
+    },
+    {
+      "id": "doc-3",
+      "source_id": "S1",
+      "expected_text": "10/11/2026 às 07h57 Acusado de comandar organização criminosa responsável por fraude de R$ 12,2 bilhões contra o",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/politica/defesa-de-vorcaro-pede-a-fachin-que-gilmar-decida-sobre-revogacao-de-prisao/",
+      "capture_file": "research/captures/doc-3.png",
+      "attribution": "Jovem Pan",
+      "selection_method": "visible_page_context_fallback_not_claim_highlight"
+    }
+  ],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Pedido de transferência de competência",
+      "type": "fact",
+      "label": "pedido",
+      "headline": "Defesa solicita mudança de relator ao STF",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "pedido",
+        "STF",
+        "competência"
+      ],
+      "narration": "A defesa protocolou, na segunda‑feira, 9 de novembro, um pedido ao presidente do STF, Edson Fachin, para que o decano Gilmar Mendes assuma a relatoria das medidas cautelares no caso Master. Eu sou o Roberto, do O Dinheiro Explica, e conforme relatado em uma reportagem da Jovem Pan, os advogados alegam violação do princípio do juiz natural após o afastamento de André Mendonça da relatoria. Eles pedem que Gilmar, como ministro mais antigo, decida sobre a revogação da prisão preventiva de Daniel Vorcaro, dono do Banco Master, que está detido há oito meses.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Fundamento jurídico",
+      "type": "fact",
+      "label": "jurídico",
+      "headline": "Argumento de juiz natural e artigo 38",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "artigo 38",
+        "juiz natural",
+        "regimento"
+      ],
+      "narration": "A defesa de Daniel Vorcaro sustenta que a transferência de competência se fundamenta na violação do princípio do juiz natural, invocando o inciso I do artigo 38 do Regimento Interno do STF. Segundo a petição protocolada na segunda‑feira, 9 de novembro, o afastamento do ministro André Mendonça teria criado \"impossibilidade da prestação jurisdicional\", obrigando, por analogia, que a relatoria recaia sobre o ministro mais antigo, Gilmar Mendes. Essa argumentação foi apresentada em uma reportagem da Jovem Pan, que reproduz o texto da própria petição.",
+      "document_id": "doc-3",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Contexto da operação",
+      "type": "background",
+      "label": "contexto",
+      "headline": "Operação Compliance Zero e prisão de Vorcaro",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "fraude 12,2 bi",
+        "Banco Master",
+        "prisão preventiva"
+      ],
+      "narration": "A reportagem consultada da Jovem Pan descreve que Daniel Vorcaro, acusado de comandar organização criminosa responsável por uma fraude de R$ 12,2 bilhões contra o sistema financeiro nacional, está preso há oito meses. A prisão preventiva foi decretada no âmbito da operação \"Compliance Zero\", que investiga a suposta estrutura de lavagem de dinheiro e manipulação de crédito envolvendo o Banco Master. Segundo a fonte, a detenção ocorreu sem julgamento definitivo, gerando alegações de violação de direitos fundamentais por parte da defesa. O caso permanece sob investigação, e a manutenção da prisão depende de decisões judiciais ainda não proferidas.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Implicações políticas",
+      "type": "opinion",
+      "label": "análise",
+      "headline": "Possível mudança de rumo judicial",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "impacto político",
+        "STF",
+        "conservadorismo"
+      ],
+      "narration": "Na minha análise, a solicitação para que o ministro Gilmar Mendes assuma a relatoria pode favorecer a defesa de Daniel Vorcaro, já que o decano costuma adotar uma postura mais conservadora em questões de prisão preventiva. Essa mudança de competência, embora fundamentada no princípio do juiz natural, cria uma expectativa de que a decisão sobre a revogação da prisão seja menos rígida, o que poderia aliviar a pressão sobre o empresário detido há oito meses. Contudo, vale lembrar que a argumentação ainda depende de aprovação do presidente do STF, Edson Fachin, e não há confirmação independente de que a transferência será efetivada. Uma reportagem consultada da Jovem Pan traz os detalhes do pedido e das alegações da defesa.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-5",
+      "title": "Próximos passos",
+      "type": "conclusion",
+      "label": "próximos",
+      "headline": "STF ainda não se pronunciou",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "decisão STF",
+        "próximos dias",
+        "MP"
+      ],
+      "narration": "A expectativa é que o plenário ou a Turma analise o pedido nos próximos dias, podendo gerar nova decisão sobre a prisão preventiva. Para acompanhar as análises diárias que impactam o seu bolso, inscreva‑se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-6",
+      "title": "Engajamento",
+      "type": "opinion",
+      "label": "call_to_action",
+      "headline": "Qual será o impacto da decisão?",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "inscrição",
+        "feedback"
+      ],
+      "narration": "Na minha análise, o impacto da decisão de Gilmar Mendes no futuro do caso Master dependerá de como o decano interpretará o princípio do juiz natural e a ausência de norma regimental específica. Se Mendes aceitar a relatoria, ele poderá acelerar a revisão da prisão preventiva, o que beneficiaria Vorcaro e reduziria o tempo de detenção sem julgamento. Contudo, a decisão ainda está sujeita à aprovação do presidente do STF, Edson Fachin, e à avaliação da Turma ou do plenário. Caso a transferência seja rejeitada, Vorcaro permanecerá preso, e a defesa terá que buscar outras vias, como recursos ao Conselho Nacional de Justiça ou à Corte Interamericana de Direitos Humanos. Assim, o futuro do caso Master permanece incerto, aguardando a decisão do STF e a possível reavaliação das medidas cautelares. Para acompanhar as análises diárias que impactam o seu bolso, inscreva‑se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-3",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Qual será o impacto da decisão de Gilmar Mendes no futuro do caso Master?",
+  "hashtags": [
+    "#STF",
+    "#Vorcaro",
+    "#Justiça"
+  ],
+  "tags": [
+    "justiça",
+    "STF",
+    "Banco Master",
+    "prisão preventiva",
+    "Gilmar Mendes",
+    "Daniel Vorcaro",
+    "operacao Compliance Zero"
+  ],
+  "primary_keyword": "transferência de competência STF",
+  "secondary_keywords": [
+    "jurisprudência",
+    "prisão preventiva",
+    "juiz natural"
+  ],
+  "pronunciations": {},
+  "publication_description": "Transferência de competência no STF: a defesa de Daniel Vorcaro pediu a Edson Fachin que Gilmar Mendes julgue a revogação da prisão preventiva, gerando debate sobre o princípio do juiz natural e possíveis impactos políticos e econômicos.\n\nApuração atribuída a Jovem Pan. Relato de uma fonte, sem confirmação independente.\n\nContexto: transferência de competência STF",
+  "discovery_strategy": {
+    "viewer_intent": "Entender o pedido de mudança de relator no caso Master e suas consequências jurídicas",
+    "search_query": "pedido transferência competência STF Vorcaro Gilmar Mendes",
+    "recommendation_angle": "Análise da disputa judicial e risco de mudança de decisão",
+    "first_payoff": "A defesa protocolou, na segunda‑feira, 9 de novembro, um pedido ao presidente do STF, Edson Fachin, para que o decano Gilmar Mendes assuma a relatoria das",
+    "promise_proof": "Trecho da petição protocolada em 9 de novembro demonstra o fundamento jurídico invocado.",
+    "audience_hypothesis": "Interessados em política e justiça buscarão entender como a mudança de relator pode influenciar o caso.",
+    "thumbnail_complement": "Imagem de documento judicial com destaque ao nome Gilmar Mendes",
+    "verification_limits": "A informação depende de única fonte Jovem Pan; ainda não há confirmação independente."
+  },
+  "publication_target_local": "2026-11-10T10:30:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=single_source_attributed",
+  "production_advisories": [
+    {
+      "code": "document_context_fallback",
+      "message": "Plano de recortes não confirmado descartado; usar contexto autêntico da página. Fatos seguem sujeitos à revisão integral."
+    }
+  ],
+  "editorial_quality": {
+    "version": "2026-11-10.1",
+    "review_method": "groq_second_pass_with_literal_source_support",
+    "reviewed_at": "2026-11-10T09:58:40.643345-03:00",
+    "reviewed_content_sha256": "ccf2ddd0a7db58500c722e2d5a7cdfd2c07fc89307babb9e3748053020a4940a",
+    "narration_word_count": 586,
+    "target_minutes": [
+      4,
+      6
+    ],
+    "review": {
+      "approved": true,
+      "issues": [],
+      "warnings": [],
+      "same_day_event_supported": true,
+      "title_opening_delivered": true,
+      "event_date_evidence": {
+        "passage_id": "S1-P8",
+        "source_id": "S1",
+        "quote": "Na petição, protocolada nesta segunda-feira, 9, eles alegam que o afastamento do ministro André Mendonça da relatoria da operação Compliance Zero, em setembro, gerou quadro de “impossibilidade da prestação jurisdicional”. Sustentam ainda que, ao trazer para si a relatoria, Fachin violou o princípio do juiz natural."
+      },
+      "claim_checks": [
+        {
+          "claim_index": 0,
+          "supported": true,
+          "evidence": [
+            {
+              "passage_id": "S1-P5",
+              "source_id": "S1",
+              "quote": "A defesa do dono do Banco Master, Daniel Vorcaro, pediu ao presidente do Supremo Tribunal Federal (STF), Edson Fachin, que transfira ao decano da Corte a competência para julgar cautelares no âmbito do caso Master. Assim, caberia Gilmar Mendes decidir sobre revogação da prisão preventiva do banqueiro"
+            },
+            {
+              "passage_id": "S1-P8",
+              "source_id": "S1",
+              "quote": "Na petição, protocolada nesta segunda-feira, 9, eles alegam que o afastamento do ministro André Mendonça da relatoria da operação Compliance Zero, em setembro, gerou quadro de “impossibilidade da prestação jurisdicional”. Sustentam ainda que, ao trazer para si a relatoria, Fachin violou o princípio do juiz natural."
+            },
+            {
+              "passage_id": "S1-P10",
+              "source_id": "S1",
+              "quote": "“Importante destacar que o caso concreto comporta, por ausência de supedâneo regimental específico, o inciso I do artigo 38 do Regimento desta Corte que dispõe expressamente que o Relator deve ser substituído pelo Ministro mais antigo da Turma ou do Pleno, conforme o caso, para apreciação de matérias urgentes.”"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
