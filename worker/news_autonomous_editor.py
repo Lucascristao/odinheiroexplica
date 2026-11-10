@@ -527,7 +527,7 @@ def main():
             )
             episode = validate(episode, today=local.date(), drafting=True)
             prevent_repeated_story(episode, root)
-            from news_editorial_quality import fetch_sources, develop, review, context_document_fallback
+            from news_editorial_quality import fetch_sources, develop, review, context_document_fallback, repair_after_review
             corpus = fetch_sources(episode)
             try:
                 check_documentary_sources(episode)
@@ -546,7 +546,16 @@ def main():
                 print("NEWS_DEVELOPMENT_ADVISORY:", detail, "| retain supported script; factual review remains required", flush=True)
                 episode.setdefault("production_advisories", []).append({"code": "development_unavailable_shorter_fallback", "error_type": type(development_error).__name__, "detail": detail})
             episode = bind_draft_metadata(episode)
-            episode = review(episode, corpus)
+            episode = validate(episode, today=local.date(), drafting=True)
+            try:
+                episode = review(episode, corpus)
+            except ValueError:
+                corrected = repair_after_review(episode, corpus)
+                if corrected is None:
+                    raise
+                episode = bind_draft_metadata(corrected)
+                episode = validate(episode, today=local.date(), drafting=True)
+                episode = review(episode, corpus)
             episode = validate(episode, today=local.date())
             allowed, _, _ = editorial_window(load_config(root), date, args.slot, datetime.now(ZoneInfo("America/Fortaleza")))
             if not allowed and not args.evaluation:
@@ -566,6 +575,22 @@ def main():
             if isinstance(exc, ValueError) and "editorial review" in str(exc).lower():
                 discard_state(checkpoint)
             print("EDITORIAL_RETRY:", error)
+            if (not args.resume_draft and attempt < 2 and isinstance(episode, dict)
+                    and episode.get("editorial_review_rejection")):
+                # A genuinely unsupported premise is replaced by another story,
+                # never by a looser factual verdict or an invented event date.
+                discard_state(checkpoint)
+                history.insert(0, {"episode_id": "rejected-unpublished", "title": episode.get("title"),
+                                   "reason": "material factual review failed; select a different event"})
+                resumed, cached = None, None
+                try:
+                    fresh = collect()
+                    report = research(fresh["candidates"], history, f"{date}T{SLOTS[args.slot]}:00-03:00",
+                                      diagnostic_path=root / "render-output/news-editorial-diagnostics.json")
+                    save_state(checkpoint, date, args.slot, report)
+                except (RuntimeError, ValueError, requests.RequestException) as next_error:
+                    print("NEWS_ALTERNATIVE_STORY_UNAVAILABLE", type(next_error).__name__, flush=True)
+                    break
     raise SystemExit("Nenhum roteiro passou na verificação factual e estrutural.")
 
 

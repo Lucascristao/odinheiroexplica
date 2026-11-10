@@ -12,6 +12,7 @@ from news_schedule import load_config, slots, nominal_occurrence, editorial_wind
 from news_production_gate import validate_production
 from news_editorial_quality import validate_review, develop
 from news_editorial_quality import reference_passages, bind_review_passages
+from news_editorial_quality import apply_editorial_corrections
 from news_trigger_guard import editor_identity
 from news_render_dispatch import eligible
 from news_quality_contract import editorial_fingerprint
@@ -154,6 +155,16 @@ class SourceReview(unittest.TestCase):
 
 
 class AutonomousRecovery(unittest.TestCase):
+    def test_editorial_repair_cannot_fake_dates_or_sources(self):
+        ep = {"title": "Fixture", "thumbnail_headline": "Fixture", "segments": [],
+              "verified_facts": [{"claim": "Central"}, {"claim": "Secondary"}], "news_selection": {"new_fact": "Central"}}
+        with self.assertRaisesRegex(ValueError, "dates, sources"):
+            apply_editorial_corrections(ep, {"corrections": [{"field": "event_date", "replacement": "2026-11-10"}]})
+        self.assertIsNone(apply_editorial_corrections(ep, {"remove_fact_indexes": [0]}))
+        fixed = apply_editorial_corrections(ep, {"corrections": [{"field": "thumbnail_headline", "replacement": "Fato comprovado"}]})
+        self.assertEqual(fixed["thumbnail_headline"], "Fato comprovado")
+        self.assertNotIn("editorial_quality", fixed)
+
     def test_unverified_checkpoint_never_crosses_edition_or_day(self):
         with tempfile.TemporaryDirectory(dir=Path(__file__).parent) as directory:
             path = Path(directory) / "state.json"

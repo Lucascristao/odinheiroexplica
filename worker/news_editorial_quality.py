@@ -68,8 +68,8 @@ Plano completo (não repetir as outras cenas): {json.dumps(outline, ensure_ascii
 Blocos para escrever: {json.dumps(writing_batch, ensure_ascii=False)}
 Fatos apurados: {json.dumps(facts, ensure_ascii=False)}
 Textos reais pertinentes: {json.dumps(excerpts, ensure_ascii=False)}
-Escreva de 100 a 125 palavras por bloco; 80 a 100 na abertura. Total final desejado 700-950 palavras, cerca de 4-6 minutos de fala natural.
-Acrescente contexto, mecanismo, consequência CONDICIONAL, contraponto e limites documentados. Nenhum dado novo sem texto de apoio. Se a fonte não sustentar desenvolvimento, retorne {{"insufficient_evidence":true}}; não encha com repetição.
+Desenvolva cada bloco com clareza: alvo de 80 a 125 palavras, sem mínimo rígido. Total desejado 700-950 palavras, cerca de4-6 minutos. Uma cena pode ser mais curta quando sua função é simples.
+Acrescente contexto, mecanismo, consequência CONDICIONAL, contraponto e limites. Conceitos estáveis podem ser explicados didaticamente sem inventar dados da empresa. Se faltar informação, explique honestamente o limite e escreva um bloco mais curto. Não declarar insufficient_evidence só por não atingir a meta de palavras; use isso apenas se a premissa factual for falsa ou sem apoio. Não encha com repetição.
 Toda frase factual precisa de respaldo nos textos ou fatos fornecidos. Separe hipótese de efeito observado, acusação de condenação. NÃO atribua causalidade nem impacto ao Ceará, Nordeste ou bolso sem prova.
 Voz Roberto de direita/liberal: análise própria sobre incentivos e consequências, sarcasmo pontual, sem imitar pessoa, bordão ou transformar interpretação em fato. Contextualize o fato antes da opinião.
 Português falado com frases claras e variadas; preserve números exatamente, escrevendo decimais, moedas, porcentagens, siglas e datas por extenso quando isso evita ambiguidade vocal. Não usar barras, URLs, parênteses extensos ou códigos legislativos sem explicação.
@@ -78,8 +78,13 @@ Opinião inicia 'Na minha análise,' ou 'Na minha opinião,'. Conclusão respond
 Não incluir diretivas de voz no texto nem alegar consenso de fontes. Preserve nomes próprios e os limites das reportagens. Não copiar parágrafos da fonte."""
         result = parse_reply(prompt, budget=1800)
         revised = result.get("segments", [])
-        if result.get("insufficient_evidence") or [s.get("id") for s in revised] != [s["id"] for s in batch]:
-            raise ValueError("Source material did not support the requested development")
+        if result.get("insufficient_evidence"):
+            raise ValueError("Writer reported unsupported factual premise; preserve original text for independent review")
+        if isinstance(revised, list) and len(revised) == len(batch):
+            for original, replacement in zip(batch, revised):
+                replacement["id"] = original["id"]  # IDs are technical; preserve the requested narrative order.
+        if not isinstance(revised, list) or len(revised) != len(batch):
+            raise ValueError("Writing response did not return the requested narrative blocks")
         for original, replacement in zip(batch, revised):
             narration = replacement.get("narration")
             if not isinstance(narration, str) or not narration.strip():
@@ -189,12 +194,12 @@ def bind_review_passages(result, lookup):
         result["issues"] = []
     elif isinstance(result.get("issues"), str):
         result["issues"] = [result["issues"]]
-    for check in result.get("claim_checks", []):
+    for check in result.get("claim_checks") or []:
         if isinstance(check.get("claim_index"), str) and check["claim_index"].isdigit():
             check["claim_index"] = int(check["claim_index"])
         if isinstance(check.get("supported"), str) and check["supported"].lower() in ("true", "false"):
             check["supported"] = check["supported"].lower() == "true"
-        evidence_list = check.get("evidence", [])
+        evidence_list = check.get("evidence") or []
         if isinstance(evidence_list, (str, dict)):
             evidence_list = [evidence_list]
         check["evidence"] = [{"passage_id": item} if isinstance(item, str) else item for item in evidence_list]
@@ -202,12 +207,81 @@ def bind_review_passages(result, lookup):
             pid = evidence.get("passage_id")
             if pid in lookup:
                 evidence.update(lookup[pid])
-    evidence = result.get("event_date_evidence", {})
+    evidence = result.get("event_date_evidence") or {}
     if isinstance(evidence, str):
         evidence = result["event_date_evidence"] = {"passage_id": evidence}
     if evidence.get("passage_id") in lookup:
         evidence.update(lookup[evidence["passage_id"]])
     return result
+
+
+def apply_editorial_corrections(episode, proposal):
+    """Apply a bounded editorial correction, never fabricate recency or sources."""
+    if proposal.get("cannot_repair") is True:
+        return None
+    corrected = json.loads(json.dumps(episode, ensure_ascii=False))
+    edits = proposal.get("corrections", [])
+    if not edits and not proposal.get("remove_fact_indexes") and not proposal.get("use_attributed_reporting"):
+        return None
+    for edit in edits:
+        field, replacement = edit.get("field", ""), edit.get("replacement")
+        if not isinstance(replacement, str) or not replacement.strip():
+            raise ValueError("Editorial correction lacks usable replacement text")
+        if field in ("title", "thumbnail_headline", "publication_description"):
+            corrected[field] = replacement
+        elif field.startswith("segments.") and field.endswith(".narration"):
+            sid = field[len("segments."):-len(".narration")]
+            matches = [s for s in corrected["segments"] if s["id"] == sid]
+            if len(matches) != 1:
+                raise ValueError("Correction refers to an unknown narration segment")
+            matches[0]["narration"] = replacement
+        else:
+            raise ValueError("Editorial correction may not modify dates, sources or approval")
+    remove = proposal.get("remove_fact_indexes", [])
+    if not all(type(i) is int and 0 <= i < len(corrected["verified_facts"]) for i in remove):
+        raise ValueError("Correction has invalid fact indexes")
+    central = corrected["news_selection"]["new_fact"]
+    if any(corrected["verified_facts"][i]["claim"] == central for i in remove):
+        return None  # The central event needs new research/a different story.
+    corrected["verified_facts"] = [f for i, f in enumerate(corrected["verified_facts"]) if i not in remove]
+    if corrected["title"] != episode["title"]:
+        options = proposal.get("title_options")
+        if not isinstance(options, list) or len(options) < 3:
+            raise ValueError("A changed title requires three factual alternatives")
+        corrected["title_options"] = options
+    corrected.pop("editorial_quality", None)
+    corrected.pop("editorial_review_rejection", None)
+    corrected.setdefault("production_advisories", []).append({"code": "automatic_editorial_correction",
+        "message": "Roteiro corrigido a partir da revisão; nova revisão factual integral obrigatória."})
+    return corrected
+
+
+def repair_after_review(episode, corpus):
+    rejection = episode.get("editorial_review_rejection", {})
+    if rejection.get("same_day_event_supported") is False:
+        return None
+    evidence, _ = reference_passages(corpus)
+    story = {key: episode[key] for key in ("title", "thumbnail_headline", "publication_description", "verified_facts", "segments", "news_selection")}
+    prompt = f"""Corrija um roteiro REJEITADO sem baixar os critérios factuais. Retorne JSON com cannot_repair:boolean,use_attributed_reporting:boolean,
+corrections:[{{field,replacement}}], remove_fact_indexes:[inteiros]. Apenas mudanças necessárias, preservando conteúdo válido.
+Problemas reais: {json.dumps(rejection, ensure_ascii=False)}
+Roteiro: {json.dumps(story, ensure_ascii=False)}
+Fontes reais: {json.dumps(evidence, ensure_ascii=False)}
+Campos permitidos: title, thumbnail_headline, publication_description, segments.ID.narration. Pode retirar um verified_fact secundário sem apoio (índices iniciam em0), junto com a correspondente afirmação na fala. Nunca remover ou alterar o fato central, fontes, datas, números comprovados, status de aprovação ou fabricar evidência.
+Superlativo como recorde sem série histórica comprovada deve ser substituído por consequência/contraste verdadeiro. Se mudar title, retorne também title_options com3 alternativas e editorial_quality, escolhendo a melhor; mantenha título clicável e factual.
+Não corrigir data velha fingindo acontecimento novo. Se a premissa central não se sustenta, cannot_repair=true: outra pauta será pesquisada. Detalhes de estilo são avisos, sem bloqueio. Depois haverá nova revisão integral, não autodeclaração de aprovação."""
+    prompt += "\nSe o único problema é alegar independência entre republicações de uma agência, pode usar use_attributed_reporting=true e corrigir a fala para relato explicitamente atribuído, preservando fatos reportados e limites. Isso nunca transforma alegação em confirmação."
+    proposal = parse_reply(prompt, budget=2000)
+    corrected = apply_editorial_corrections(episode, proposal)
+    if corrected is not None and proposal.get("use_attributed_reporting") is True:
+        corrected["news_selection"].update(source_mode="single_source_attributed", independent_confirmation=False,
+            attribution_note="Relato atribuído às fontes citadas, sem confirmação independente; a reprodução de uma mesma agência não constitui duas confirmações.")
+        for fact in corrected["verified_facts"]:
+            if fact.get("status") == "confirmed" or fact["claim"] == corrected["news_selection"]["new_fact"]:
+                fact["status"] = "statement"
+        publishers = ", ".join(dict.fromkeys(source["publisher"] for source in corrected["sources"]))
+        corrected["publication_description"] += "\n\nApuração atribuída a " + publishers + ". Sem confirmação independente do relato."
+    return corrected
 
 
 def review(episode, corpus):
@@ -222,10 +296,12 @@ Retorne JSON com approved:boolean, issues:[somente falhas factuais materiais], w
 event_date_evidence:{{passage_id}}, claim_checks:[{{claim_index:inteiro começando em 0,supported:boolean,evidence:[{{passage_id}}]}}].
 Selecione os IDs EXATOS das passagens fornecidas (ex.: S1-P2). Não redigite ou parafraseie citações: o código recupera a passagem original pelo ID. Um ID não prova o sentido; verifique se o trecho realmente sustenta a afirmação.
 Revise TODAS as falas, título e capa. Reprove: data do fato antiga disfarçada de hoje; publicação de artigo confundida com acontecimento; percentual/cálculo falso ou sem base verificável; número, entidade, mandato ou cargo inventados; impacto/causalidade inventados; manchete enganosa; acusação virando condenação; agências repetidas chamadas independentes; promessa de risco/perda universal. Data da divulgação oficial hoje é novo fato quando comprovada, deixando clara a data original do dado.
+Para balanços e estatísticas, a notícia é a DIVULGAÇÃO. O trimestre/período apurado é anterior: isso não torna velha uma divulgação comprovada na data da edição. Expressão como 'balanço apresentado nesta segunda-feira', combinada com a data visível da matéria, é evidência temporal válida; não exigir repetição literal do dia numérico na mesma frase.
 Seja proporcional: sugestões de estilo, duração, quantidade de recortes, falta de documento primário não disponível, ritmo, redundância leve ou preferências de título são warnings, não issues. Não bloquear por metas formais ou por uma redação diferente igualmente sustentada. Relato de fonte única claramente atribuído é permitido. Não exigir que opiniões sejam fatos; exigir que sua premissa factual seja verdadeira.
 Uma quote precisa ser literal e contínua do texto fornecido. Para cada claim, a quote deve sustentar o SENTIDO e os números, não só citar o mesmo assunto. Se faltar contexto/data explícita, marque false. Opinião liberal é permitida como opinião, nunca salva fato falso. Não alegar consulta a documento primário que não está nos textos.
 Analise a abertura: entrega a novidade, identifica assunto/pergunta e evita preâmbulo. Não há previsão de CTR ou garantia de viralização. Todos os problemas vão em issues; só approved=true se não houver problemas."""
     result = bind_review_passages(parse_reply(prompt, budget=1700), passage_lookup)
+    print("NEWS_EDITORIAL_REVIEW_RESULT", json.dumps({k: result.get(k) for k in ("approved", "issues", "warnings")}, ensure_ascii=False), flush=True)
     try:
         validate_review(result, episode, corpus)
     except ValueError:
