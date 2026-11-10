@@ -8,6 +8,7 @@ from pathlib import Path
 import re
 import urllib.parse
 import urllib.request
+import urllib.error
 from zoneinfo import ZoneInfo
 from news_schedule import slots as configured_slots
 
@@ -99,7 +100,12 @@ class GitHub:
         return json.loads(body) if body else None
 
     def episode(self, path, ref="main"):
-        result = self.request("/contents/" + path + "?ref=" + urllib.parse.quote(ref, safe=""))
+        try:
+            result = self.request("/contents/" + path + "?ref=" + urllib.parse.quote(ref, safe=""))
+        except urllib.error.HTTPError as error:
+            if error.code == 404:
+                return None
+            raise
         return base64.b64decode(result["content"]).replace(b"\r\n", b"\n")
 
 
@@ -152,7 +158,11 @@ def ensure_render(api, episode_path, episode_bytes, config, now, apply=False):
     if decision["action"] == "rerun":
         source = next(run for run in matching if run["id"] == decision["run_id"])
         if api.episode(episode_path, source["head_sha"]) != episode_bytes:
-            return {"action": "none", "reason": "episode_changed_since_render", "run_id": source["id"]}
+            # choose_action reached rerun only after checking EVERY matching
+            # attempt's upload step was skipped. A corrected/reselected episode
+            # needs current main, not a rerun of the rejected historical SHA.
+            decision = {"action": "dispatch", "reason": "episode_revised_before_upload",
+                        "previous_run_id": source["id"]}
     if apply and decision["action"] == "dispatch":
         api.request(f"/actions/workflows/{WORKFLOW}/dispatches", {"ref": "main", "inputs": {"edition_path": episode_path}})
     elif apply and decision["action"] == "rerun":
