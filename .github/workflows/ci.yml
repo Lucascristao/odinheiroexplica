@@ -13,7 +13,7 @@ jobs:
   build:
     # Explicit direct production leaves permanent suites available for other runs.
     if: github.event_name != 'push' || !contains(github.event.head_commit.message, '[production direct]')
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -135,7 +135,7 @@ jobs:
         run: |
           if ! command -v ffmpeg >/dev/null 2>&1 || ! command -v ffprobe >/dev/null 2>&1; then
             sudo apt-get update -o Acquire::Retries=2 -o Acquire::http::Timeout=30 -o Acquire::https::Timeout=30
-            sudo apt-get install -y --no-install-recommends ffmpeg
+            sudo apt-get install -y --no-install-recommends ffmpeg -o Acquire::Retries=2 -o Acquire::http::Timeout=20 -o Acquire::https::Timeout=20
           fi
           # The Remotion compositor binary omits rawvideo/lavfi; the full pipeline needs stock FFmpeg.
           python -m pip install --disable-pip-version-check "numpy>=1.26" "Pillow>=10.4" "num2words>=0.5.13,<1" "google-genai==2.26.0"
