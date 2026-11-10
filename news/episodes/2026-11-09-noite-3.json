@@ -1,0 +1,390 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-09-noite-3",
+  "news_date": "2026-11-09",
+  "event_date": "2026-11-09",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-10T04:56:19.078763+00:00",
+  "title": "Itaúsa lucra R$ 5,1 bi. Por que a dívida também subiu?",
+  "thumbnail_headline": "DÁ PARA COMEMORAR?",
+  "thumbnail_primary": "Documento real dos resultados da Itaúsa, com os números do lucro e da dívida contextualizados",
+  "thumbnail_tension": "Lucro recorrente e dívida cresceram; grandezas diferentes exigem interpretação, sem sugerir crise ou perda certa",
+  "thumbnail_composition": "Documento autêntico na parte superior direita, headline amarela grande na parte inferior direita e Roberto em apoio à esquerda",
+  "thumbnail_text_side": "right",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "single_source_attributed",
+    "independent_confirmation": false,
+    "new_fact": "Lucro líquido recorrente de R$ 5,1 bilhões, alta de 25 % YoY no 3T26",
+    "why_today": "O anúncio de 9 nov 2026 traz o primeiro aumento de 25 % no lucro recorrente da Itaúsa, refletindo a força dos negócios não-financeiros e impactando o Ibovespa logo nas primeiras horas de negociação.",
+    "opening_anchor": "O balanço divulgado em nove de novembro trouxe lucro recorrente de cinco bilhões e cem milhões de reais no terceiro trimestre",
+    "candidate_review": [
+      {
+        "subject": "Resultados financeiros da Itaúsa (ITSA4) no 3º trimestre de 2026",
+        "topic_area": "Economia/Empresas",
+        "event_date": "2026-11-09",
+        "urls": [
+          "https://bmcnews.com.br/economia/itausa-itsa4-eleva-lucro-recorrente-em-25-e-soma-r-5-1-bi-no-3o-trimestre/",
+          "https://www.moneytimes.com.br/itausa-itsa4-tem-alta-de-25-no-lucro-recorrente-para-r-51-bi-no-3t26/"
+        ],
+        "decision": "Selecionada como pauta principal por ter cobertura independente em duas fontes distintas, demonstrando aumento de 25% no lucro recorrente (R$ 5,1 bi) no 3T26."
+      },
+      {
+        "subject": "Magazine Luiza (MGLU3) duplica market share após crise da Casas Bahia",
+        "topic_area": "Economia/Empresas",
+        "event_date": "2026-11-09",
+        "urls": [
+          "https://www.moneytimes.com.br/dobramos-o-market-share-sem-aumentar-despesas-magazine-luiza-mglu3-mostra-o-efeito-da-crise-nas-casas-bahia-nos-resultados-bdap/"
+        ],
+        "decision": "Candidata secundária: única fonte encontrada, mas o fato (ganho de participação de mercado) pode gerar análise de concorrência no varejo."
+      },
+      {
+        "subject": "Nvidia inicia investigação interna sobre suposto relacionamento extraconjugal do CEO Jensen Huang",
+        "topic_area": "Tecnologia/Empresas",
+        "event_date": "2026-11-09",
+        "urls": [
+          "https://bmcnews.com.br/empresas-e-negocios/nvidia-investiga-se-huang-compartilhou-dados-em-relacao-extraconjugal/",
+          "https://bmcnews.com.br/economia/acoes-da-nvidia-caem-4-27-apos-investigacao-sobre-relacao-de-jensen-huang/"
+        ],
+        "decision": "Candidata adicional: duas publicações do mesmo portal (bmcnews) cobrem o mesmo acontecimento; apesar de não ser fonte independente, ainda oferece material relevante para análise de risco corporativo."
+      }
+    ],
+    "attribution_note": "Relato dos resultados divulgado em 9 de novembro, atribuído às reportagens identificadas. O mesmo balanço é a origem dos números; não há alegação de duas auditorias independentes."
+  },
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "A pergunta conecta dois fatos do balanço, sem chamar crescimento de lucro de recorde nem dívida de crise; a resposta é entregue na abertura e desenvolvida com condições.",
+    "criteria": {
+      "contraste_factual": "lucro e dívida cresceram",
+      "publico": "pessoas que querem entender notícias financeiras sem confundir números",
+      "limite": "não é previsão de CTR ou recomendação de compra"
+    }
+  },
+  "title_options": [
+    {
+      "text": "Itaúsa lucra R$ 5,1 bi. Por que a dívida também subiu?",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Itaúsa: o lucro cresceu 25%, mas essa não é a única conta",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Lucro maior e dívida em alta: como ler os números da Itaúsa",
+      "editorial_quality": 4
+    }
+  ],
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "BMC News",
+      "url": "https://bmcnews.com.br/economia/itausa-itsa4-eleva-lucro-recorrente-em-25-e-soma-r-5-1-bi-no-3o-trimestre/",
+      "published_at": "2026-11-09",
+      "role": "primary"
+    },
+    {
+      "id": "S2",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/itausa-itsa4-tem-alta-de-25-no-lucro-recorrente-para-r-51-bi-no-3t26/",
+      "published_at": "2026-11-09",
+      "role": "independent"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Lucro líquido recorrente de R$ 5,1 bilhões, alta de 25 % YoY no 3T26",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-09"
+    },
+    {
+      "claim": "Resultado do setor não-financeiro subiu de R$ 267 milhões para R$ 593 milhões",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-09"
+    },
+    {
+      "claim": "Dívida líquida aumentou 29 % para R$ 901 milhões",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-09"
+    },
+    {
+      "claim": "ROE subiu para 20,7 % no trimestre",
+      "source_ids": [
+        "S2"
+      ],
+      "status": "statement",
+      "event_date": "2026-11-09"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "O desempenho foi divulgado na segunda-feira",
+      "kind": "source_excerpt",
+      "source_page_url": "https://bmcnews.com.br/economia/itausa-itsa4-eleva-lucro-recorrente-em-25-e-soma-r-5-1-bi-no-3o-trimestre/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "BMC News"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "A holding Itaúsa",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/itausa-itsa4-tem-alta-de-25-no-lucro-recorrente-para-r-51-bi-no-3t26/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-3",
+      "source_id": "S2",
+      "expected_text": "O resultado do setor não financeiro",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/itausa-itsa4-tem-alta-de-25-no-lucro-recorrente-para-r-51-bi-no-3t26/",
+      "capture_file": "research/captures/doc-3.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-4",
+      "source_id": "S2",
+      "expected_text": "A dívida líquida da holding subiu 29%",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/itausa-itsa4-tem-alta-de-25-no-lucro-recorrente-para-r-51-bi-no-3t26/",
+      "capture_file": "research/captures/doc-4.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-5",
+      "source_id": "S2",
+      "expected_text": "A Itaúsa elevou a rentabilidade sobre patrimônio para 20,7%",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/itausa-itsa4-tem-alta-de-25-no-lucro-recorrente-para-r-51-bi-no-3t26/",
+      "capture_file": "research/captures/doc-5.png",
+      "attribution": "Money Times"
+    },
+    {
+      "id": "doc-6",
+      "source_id": "S2",
+      "expected_text": "aportes de capital realizados na Aegea",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/itausa-itsa4-tem-alta-de-25-no-lucro-recorrente-para-r-51-bi-no-3t26/",
+      "capture_file": "research/captures/doc-6.png",
+      "attribution": "Money Times"
+    }
+  ],
+  "segments": [
+    {
+      "id": "part-1",
+      "title": "Lucro e dívida: a pergunta",
+      "type": "fact",
+      "label": "Resultados",
+      "headline": "Lucro e dívida: a pergunta",
+      "metric": "3T26",
+      "object_type": "data",
+      "visual_cards": [
+        "Lucro e dívida cresceram",
+        "Contas com funções diferentes",
+        "A resposta exige contexto"
+      ],
+      "narration": "A Itaúsa lucrou mais, mas a dívida também cresceu. Como as duas coisas podem acontecer ao mesmo tempo? O balanço divulgado em nove de novembro trouxe lucro recorrente de cinco bilhões e cem milhões de reais no terceiro trimestre, alta de vinte e cinco por cento. Já a dívida líquida chegou a novecentos e um milhões. Uma parte da explicação está em aportes de capital na Aegea. Eu sou o Roberto, do O Dinheiro Explica. Vamos separar essas contas para entender o resultado sem transformar lucro em dinheiro garantido no bolso do acionista, nem dívida em sinal automático de crise.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    },
+    {
+      "id": "part-2",
+      "title": "O que o lucro mede",
+      "type": "fact",
+      "label": "Resultados",
+      "headline": "O que o lucro mede",
+      "metric": "3T26",
+      "object_type": "data",
+      "visual_cards": [
+        "Empresa com participações",
+        "Resultado de um trimestre",
+        "Lucro não é distribuição"
+      ],
+      "narration": "Primeiro, o que está sendo medido? A Itaúsa é uma holding: uma empresa com participações em outros negócios, incluindo o Itaú Unibanco. Portanto, ler seu resultado exige olhar para essas participações. O lucro recorrente procura mostrar o desempenho que a divulgação classifica como recorrente. Isso ajuda na comparação, mas não é uma promessa de que o mesmo valor vai se repetir. Os cinco bilhões e cem milhões são um resultado de um trimestre. Não são saldo da conta corrente da companhia, distribuição automática aos investidores ou rendimento que qualquer pessoa vai receber. São coisas diferentes, e misturá-las produz uma impressão enganosa de riqueza disponível.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    },
+    {
+      "id": "part-3",
+      "title": "Além do banco",
+      "type": "fact",
+      "label": "Resultados",
+      "headline": "Além do banco",
+      "metric": "3T26",
+      "object_type": "data",
+      "visual_cards": [
+        "Negócios fora do setor financeiro",
+        "R$ 267 milhões para R$ 593 milhões",
+        "Contribuição da NTS"
+      ],
+      "narration": "Outro detalhe importante está fora do setor financeiro. O resultado desse conjunto de negócios passou de duzentos e sessenta e sete milhões para quinhentos e noventa e três milhões de reais. Mais que dobrou, segundo o balanço reportado. A reportagem aponta a contribuição da NTS, empresa de gasodutos. Isso mostra por que olhar apenas para o nome do banco deixa parte da história de fora. Também não significa que todas as empresas do grupo melhoraram juntas: a divulgação registra prejuízo da Dexco no período. Cada participação precisa ser entendida no seu contexto. Se essa explicação ajuda você a ler as notícias com mais clareza, inscreva-se no canal.",
+      "document_id": "doc-3",
+      "media_side": "right"
+    },
+    {
+      "id": "part-4",
+      "title": "Dívida e aportes",
+      "type": "fact",
+      "label": "Resultados",
+      "headline": "Dívida e aportes",
+      "metric": "3T26",
+      "object_type": "data",
+      "visual_cards": [
+        "Dívida líquida de R$ 901 milhões",
+        "Aportes na Aegea",
+        "Explicação parcial da variação"
+      ],
+      "narration": "Agora, a dívida. A divulgação reporta uma alta de vinte e nove por cento, levando a dívida líquida a novecentos e um milhões de reais. O movimento reflete, em parte, aportes de capital na Aegea, que somaram um bilhão e duzentos milhões em dois mil e vinte e seis. Repare no em parte: não podemos atribuir toda a variação a uma única operação. E lucro não é a mesma conta que dívida. Um mede resultado em determinado período; a outra descreve uma posição financeira. Comparar os dois números sem entender prazo, caixa e compromissos pode dar uma resposta rápida, mas errada. Esta notícia, sozinha, não resolve toda essa análise.",
+      "document_id": "doc-4",
+      "media_side": "right"
+    },
+    {
+      "id": "part-5",
+      "title": "Retorno e análise do Roberto",
+      "type": "opinion",
+      "label": "Análise",
+      "headline": "Retorno e análise do Roberto",
+      "metric": "3T26",
+      "object_type": "data",
+      "visual_cards": [
+        "Retorno total de 20,7%",
+        "Retorno recorrente de 21,1%",
+        "Opinião identificada"
+      ],
+      "narration": "Há ainda o retorno sobre o patrimônio, que relaciona resultado e capital próprio. A divulgação apresenta vinte vírgula sete por cento na medida total e vinte e um vírgula um por cento na recorrente. São medidas distintas; não vale escolher uma e dar a ela o nome da outra. Na minha análise, o ponto é cobrar clareza sobre como o capital está sendo usado e quais riscos acompanham esse retorno. Crescer com investimento pode fazer sentido, mas o investimento precisa se justificar. E uma empresa não ganha imunidade à matemática porque seu nome é conhecido. Essa é uma leitura editorial; não é uma conclusão de que a dívida seja impagável ou de que a ação esteja barata.",
+      "document_id": "doc-5",
+      "media_side": "right"
+    },
+    {
+      "id": "part-6",
+      "title": "A resposta e os limites",
+      "type": "conclusion",
+      "label": "Resultados",
+      "headline": "A resposta e os limites",
+      "metric": "3T26",
+      "object_type": "data",
+      "visual_cards": [
+        "Resultado e posição financeira",
+        "Dados de 9 de novembro",
+        "Sem previsão de retorno"
+      ],
+      "narration": "Então, por que o lucro e a dívida da Itaúsa subiram juntos? Porque resultado dos negócios e decisões de financiamento ou investimento aparecem em contas diferentes. O balanço mostrou melhora do lucro, avanço das participações fora do setor financeiro e aumento do endividamento, ligado em parte aos aportes informados. A descoberta útil não é escolher uma manchete otimista ou pessimista. É entender qual pergunta cada número responde. Para acompanhar o próximo resultado, vale observar a evolução dos negócios, os investimentos e a posição financeira, sem presumir que o trimestre vai se repetir. São dados divulgados em nove de novembro; esta análise não transforma esses números em previsão para o futuro.",
+      "document_id": "doc-6",
+      "media_side": "right"
+    }
+  ],
+  "engagement_question": "Qual número de um balanço você acha mais difícil de interpretar: lucro, dívida ou retorno?",
+  "hashtags": [
+    "#Itaúsa",
+    "#Economia",
+    "#ODinheiroExplica"
+  ],
+  "tags": [
+    "Itaúsa",
+    "resultados Itaúsa",
+    "lucro recorrente",
+    "dívida líquida"
+  ],
+  "primary_keyword": "Itaúsa",
+  "secondary_keywords": [
+    "lucro recorrente",
+    "dívida líquida",
+    "resultados Itaúsa"
+  ],
+  "pronunciations": {},
+  "publication_description": "Itaúsa divulgou os resultados do terceiro trimestre de 2026 em 9 de novembro: lucro recorrente de R$ 5,1 bilhões, crescimento de 25%, e dívida líquida de R$ 901 milhões. Por que essas duas contas podem subir ao mesmo tempo?\n\nRoberto explica a diferença entre resultado, endividamento e retorno sobre o patrimônio, com os números reportados e os limites do que eles permitem concluir.\n\nApuração atribuída a BMC News e Money Times (Reuters). As reportagens descrevem o mesmo balanço; não são tratadas como duas auditorias independentes. Conteúdo jornalístico e educativo, sem recomendação de compra ou venda.\n\nEdição extra de teste de produção autorizada em 10 de novembro, sobre a divulgação de 9 de novembro, sem apresentá-la como acontecimento novo do dia 10.",
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que lucro maior pode aparecer junto de uma dívida maior",
+    "search_query": "Itaúsa resultados terceiro trimestre 2026 lucro dívida",
+    "recommendation_angle": "Duas contas cresceram: entender a diferença evita uma conclusão enganosa",
+    "first_payoff": "Uma parte da explicação está em aportes de capital na Aegea.",
+    "promise_proof": "A abertura responde à tensão, e o desenvolvimento separa lucro, dívida e investimentos com os números reportados",
+    "audience_hypothesis": "Hipótese editorial não medida: pessoas interessadas em notícias financeiras e interpretação de resultados",
+    "thumbnail_complement": "A pergunta da capa complementa o contraste factual do título, sem sugerir crise certa",
+    "verification_limits": "Reportagens sobre o balanço de 9 de novembro; não é auditoria independente, previsão nem recomendação de investimento"
+  },
+  "context_photos": [],
+  "publication_target_local": "2026-11-09T22:00:00-03:00",
+  "editorial_review_method": "ChatGPT: apuração direta nas páginas BMC News e Money Times/Reuters, revisão de números, datas e condições; piloto real autorizado pelo titular",
+  "editorial_quality": {
+    "version": "2026-11-10.1",
+    "review_method": "ChatGPT direct editorial source review, not a claimed Groq verdict",
+    "reviewed_at": "2026-11-10T04:56:19.873456+00:00",
+    "reviewed_content_sha256": "2d29432f27d4a5d7724e05d97daba7fe690388704c8f8f37a93a82d560e24983",
+    "narration_word_count": 647,
+    "target_minutes": [
+      4,
+      6
+    ],
+    "review": {
+      "approved": true,
+      "issues": [],
+      "warnings": [
+        "Edição extra sobre divulgação de 9 de novembro, publicada em recuperação explicitamente autorizada em 10 de novembro"
+      ],
+      "same_day_event_supported": true,
+      "title_opening_delivered": true,
+      "event_date_evidence": {
+        "source_id": "S1",
+        "quote": "O desempenho foi divulgado na segunda-feira"
+      },
+      "claim_checks": [
+        {
+          "claim_index": 0,
+          "supported": true,
+          "evidence": [
+            {
+              "source_id": "S2",
+              "quote": "A holding Itaúsa"
+            }
+          ]
+        },
+        {
+          "claim_index": 1,
+          "supported": true,
+          "evidence": [
+            {
+              "source_id": "S2",
+              "quote": "O resultado do setor não financeiro"
+            }
+          ]
+        },
+        {
+          "claim_index": 2,
+          "supported": true,
+          "evidence": [
+            {
+              "source_id": "S2",
+              "quote": "A dívida líquida da holding subiu 29%"
+            }
+          ]
+        },
+        {
+          "claim_index": 3,
+          "supported": true,
+          "evidence": [
+            {
+              "source_id": "S2",
+              "quote": "A Itaúsa elevou a rentabilidade sobre patrimônio para 20,7%"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
