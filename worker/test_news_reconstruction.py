@@ -1,5 +1,6 @@
 """Não poluir a imagem editorial com avisos; preservar a proveniência real."""
 import json
+import copy
 import sys
 import tempfile
 import unittest
@@ -9,10 +10,41 @@ from unittest.mock import patch
 from PIL import Image, ImageDraw
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from news_reconstruction import GOLD, PAPER, render_reconstruction
+from news_reconstruction import GOLD, PAPER, render_reconstruction, prepare_source_fallbacks
+from news_quality_contract import editorial_fingerprint
 
 
 class EditorialReconstructionVisualTests(unittest.TestCase):
+    def episode(self):
+        ep = {'news_date': '2026-11-10', 'title': 'Pix: a mudança que exige atenção ao prazo',
+            'sources': [{'id': 'S1', 'publisher': 'Veículo Exemplo', 'published_at': '2026-11-10'}],
+            'verified_facts': [{'claim': 'A aplicação da medida depende das condições expressas no documento.', 'source_ids': ['S1']}],
+            'documentary_evidence': [{'id': 'doc-1', 'source_id': 'S1'}]}
+        ep['editorial_quality'] = {'reviewed_content_sha256': editorial_fingerprint(ep),
+                                  'review': {'approved': True, 'issues': []}}
+        return ep
+
+    def test_browser_fallback_copies_exact_reviewed_title_fact_and_source(self):
+        ep = self.episode()
+        prepare_source_fallbacks(ep)
+        rec = ep['documentary_evidence'][0]['editorial_reconstruction']
+        self.assertEqual(rec['headline'], ep['title'])
+        self.assertEqual(rec['context'], ep['verified_facts'][0]['claim'])
+        self.assertEqual(rec['publisher'], ep['sources'][0]['publisher'])
+        self.assertEqual(ep['editorial_quality']['reviewed_content_sha256'], editorial_fingerprint(ep))
+
+    def test_missing_rejected_or_stale_review_never_enables_automatic_fallback(self):
+        for case in ('missing', 'rejected', 'stale', 'pinned', 'historical'):
+            ep = copy.deepcopy(self.episode())
+            if case == 'missing': ep.pop('editorial_quality')
+            if case == 'rejected': ep['editorial_quality']['review']['approved'] = False
+            if case == 'stale': ep['title'] += ' com outra promessa'
+            if case == 'pinned': ep['documentary_evidence'][0]['capture_sha256'] = 'a' * 64
+            if case == 'historical': ep['news_date'] = '2026-10-09'
+            with self.subTest(case=case):
+                prepare_source_fallbacks(ep)
+                self.assertNotIn('editorial_reconstruction', ep['documentary_evidence'][0])
+
     def test_clean_editorial_visual_and_machine_readable_provenance(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -50,6 +82,7 @@ class EditorialReconstructionVisualTests(unittest.TestCase):
                               "NOTÍCIA EM CONTEXTO"):
                 self.assertNotIn(forbidden, words)
             self.assertIn("O DINHEIRO EXPLICA", recorded_texts)
+            self.assertTrue(any('Resumo editorial' in text for text in recorded_texts))
             self.assertTrue(any("Fonte: Veículo Exemplo" in text for text in recorded_texts))
             provenance = json.loads(image_path.with_suffix(".provenance.json").read_text(encoding="utf-8"))
             self.assertEqual(provenance["kind"], "editorial_reconstruction")

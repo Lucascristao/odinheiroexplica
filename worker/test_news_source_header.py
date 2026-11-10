@@ -68,6 +68,24 @@ class HeaderExtraction(unittest.TestCase):
         self.assertIn("Autoria visível", text)
         self.assertIn(BODY, text)
 
+    def test_inline_publisher_markup_keeps_literal_punctuation_and_amount(self):
+        html = (
+            '<article><p>A <strong>Embraer</strong> (<a>EMBJ3</a>) reportou '
+            'lucro líquido ajustado de R$ <strong>379,8</strong> milhões no '
+            'terceiro trimestre de 2026 (<a>3T26</a>), uma queda.</p></article>'
+        )
+        self.assertEqual(CORPUS.extract_article(html),
+            'A Embraer (EMBJ3) reportou lucro líquido ajustado de R$ 379,8 '
+            'milhões no terceiro trimestre de 2026 (3T26), uma queda.')
+
+    def test_inline_boundaries_do_not_split_words_or_remove_real_spaces(self):
+        html = '<article><p><b>lu</b>cro<!-- tracking -->: <b>R$</b> <i>1</i>,50</p></article>'
+        self.assertEqual(CORPUS.extract_article(html), 'lucro: R$ 1,50')
+
+    def test_inline_html_newlines_collapse_but_block_boundaries_remain(self):
+        html = '<article><div>Um\n  <b>texto</b> real.</div><div>Outro texto.</div></article>'
+        self.assertEqual(CORPUS.extract_article(html), 'Um texto real.\n\nOutro texto.')
+
     def test_site_header_nav_head_scripts_and_footer_remain_excluded(self):
         text = CORPUS.extract_article(ARTICLE)
         for marker in (

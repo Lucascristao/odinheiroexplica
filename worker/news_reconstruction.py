@@ -13,6 +13,36 @@ GOLD = "#FFBD19"
 PAPER = "#F6F5F0"
 
 
+def prepare_source_fallbacks(episode):
+    """Allow failed browser captures to use already reviewed words, never new facts.
+
+    Kept out of historical resumes. No HTTP failure, crop count or unavailable
+    style improvement can approve a story; this runs after its factual review.
+    """
+    from news_quality_contract import editorial_fingerprint
+    quality = episode.get('editorial_quality') or {}
+    verdict = quality.get('review') or {}
+    if (str(episode.get('news_date', '')) < '2026-11-10'
+            or verdict.get('approved') is not True or verdict.get('issues') != []
+            or quality.get('reviewed_content_sha256') != editorial_fingerprint(episode)):
+        return episode
+    sources = {s['id']: s for s in episode['sources']}
+    for doc in episode.get('documentary_evidence', []):
+        if doc.get('capture_sha256') or doc.get('editorial_reconstruction'):
+            continue
+        source = sources.get(doc.get('source_id'))
+        claims = [f['claim'] for f in episode['verified_facts']
+                  if doc.get('source_id') in f.get('source_ids', [])
+                  and 30 <= len(f.get('claim', '')) <= 420]
+        title = episode.get('title', '')
+        if source and claims and 20 <= len(title) <= 180:
+            doc['editorial_reconstruction'] = {
+                'headline': title, 'context': claims[0],
+                'publisher': source['publisher'], 'published_at': source['published_at'],
+            }
+    return episode
+
+
 def _font(bold: bool, size: int):
     name = "DejaVuSans-Bold.ttf" if bold else "DejaVuSans.ttf"
     for base in ("/usr/share/fonts/truetype/dejavu", "/usr/share/fonts/truetype/liberation2"):
@@ -95,7 +125,7 @@ def render_reconstruction(asset: dict, captures_dir: Path, reason: str) -> Path:
 
     # Crédito discreto sobre o mesmo fundo, sem cabeçalho ou tarja de aviso.
     # Um título editorial nunca deve ser estilizado como recorte original do jornal.
-    credit = f"Fonte: {rec['publisher']}  •  {rec['published_at']}"
+    credit = f"Resumo editorial • Fonte: {rec['publisher']}  •  {rec['published_at']}"
     credit_font, credit_lines, _ = _fit(d, credit, 1660, 43, False, 27, 19, 1.1)
     d.text((115, 1017), credit_lines[0], font=credit_font, fill="#68635C")
     im.save(dest, "PNG", optimize=True)

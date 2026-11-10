@@ -20,6 +20,8 @@ NON_CONTENT_TAGS = {"head", "script", "style", "svg", "noscript", "header",
                     "footer", "nav", "aside", "form", "button"}
 VOID_TAGS = {"area", "base", "br", "col", "embed", "hr", "img", "input",
              "link", "meta", "param", "source", "track", "wbr"}
+TEXT_BLOCK_TAGS = {"article", "main", "section", "div", "p", "h1", "h2", "h3",
+                   "h4", "h5", "h6", "li", "ul", "ol", "blockquote", "tr"}
 MIN_ARTICLE_CHARS = 200
 
 
@@ -44,7 +46,7 @@ class VisibleText(HTMLParser):
         if tag not in VOID_TAGS:
             self.stack.append((tag, blocked))
             self.skip += int(blocked)
-        if not self.skip and tag in {"p", "h1", "h2", "h3", "li", "blockquote", "br"}:
+        if not self.skip and tag in TEXT_BLOCK_TAGS | {"br"}:
             self.parts.append("\n")
 
     def handle_endtag(self, tag):
@@ -53,16 +55,20 @@ class VisibleText(HTMLParser):
                 self.skip -= sum(int(blocked) for _, blocked in self.stack[index:])
                 del self.stack[index:]
                 break
-        if not self.skip and tag in {"p", "h1", "h2", "h3", "li", "blockquote"}:
+        if not self.skip and tag in TEXT_BLOCK_TAGS:
             self.parts.append("\n")
 
     def handle_data(self, data):
-        if not self.skip and data.strip():
-            self.parts.append(data.strip() + " ")
+        if not self.skip:
+            # Inline tags do not introduce a space in Chromium's visible text.
+            # Preserve the publisher's separators, including whitespace-only
+            # nodes: '(</strong>3T26<strong>)' must stay '(3T26)'. Only collapse
+            # HTML whitespace here; semantic block boundaries are added above.
+            self.parts.append(re.sub(r"[ \t\r\n\f]+", " ", data))
 
 
 def extract_article(html, *, include_article_header=True):
-    html = re.sub(r"<!--.*?-->", " ", html, flags=re.S)
+    html = re.sub(r"<!--.*?-->", "", html, flags=re.S)
     match = re.search(r"<article\b[^>]*>(.*?)</article>", html, flags=re.S | re.I)
     if match:
         html = match.group(0)

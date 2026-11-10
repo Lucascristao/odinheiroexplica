@@ -612,6 +612,8 @@ def main():
                 episode = bind_draft_metadata(corrected)
                 episode = validate(episode, today=local.date(), drafting=True)
                 episode = review(episode, corpus)
+            from news_reconstruction import prepare_source_fallbacks
+            episode = prepare_source_fallbacks(episode)
             episode = validate(episode, today=local.date())
             allowed, _, _ = editorial_window(load_config(root), date, args.slot, datetime.now(ZoneInfo("America/Fortaleza")))
             if not allowed and not args.evaluation:

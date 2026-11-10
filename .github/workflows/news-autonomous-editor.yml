@@ -105,6 +105,7 @@ jobs:
           path: |
             render-output/news-editorial-diagnostics.json
             render-output/news-editorial-rejected-draft-*.json
+            news/episodes/${{ env.NEWS_DATE }}-${{ env.NEWS_SLOT }}.json
           if-no-files-found: ignore
           retention-days: 7
       - uses: actions/setup-node@v4

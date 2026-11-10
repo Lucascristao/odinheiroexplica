@@ -23,3 +23,11 @@ Essas fontes foram lidas; não equivalem a uma análise quadro a quadro dos víd
 da Vox. Testes de contrato verificam origem e execução; a avaliação do resultado
 precisa inspecionar o MP4 real. Quantidade de cortes não comprova qualidade ou
 retenção. Reaproveitar voz compatível nas mudanças exclusivamente visuais.
+
+Falhas do portal ao capturar uma notícia já revisada usam, quando disponível,
+um resumo editorial identificado: título e fato copiados do conteúdo revisado,
+com fonte e data preservadas. O caminho tenta primeiro o print real e nunca
+substitui uma captura bem-sucedida. Não habilita fallback para revisão ausente,
+rejeitada ou desatualizada, nem altera capturas fixadas de retomadas históricas.
+O extrator preserva separadores originais entre tags inline; não acrescenta
+espaços a siglas, pontuação, números ou palavras para depois buscar texto parecido.

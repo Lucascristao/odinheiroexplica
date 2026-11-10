@@ -89,6 +89,7 @@ jobs:
       - name: Test source-capture context and navigation retry (offline)
         run: |
           python worker/test_auto_capture_sources.py
+          python worker/test_news_reconstruction.py
           python worker/test_news_visual_cues.py
           python worker/test_news_document_framing.py
 
