@@ -33,7 +33,22 @@ jobs:
                   payload=r.json(); report['finish_reason']=payload['choices'][0].get('finish_reason')
                   content=json.loads(payload['choices'][0]['message']['content']); report['root_types']={k:type(v).__name__ for k,v in content.items()}
               else:
-                  try: message=str(r.json().get('error',{}).get('message',''))
+                  try:
+                      error=r.json().get('error',{}); message=str(error.get('message',''))
+                      failed=error.get('failed_generation')
+                      if isinstance(failed,str):
+                          failed=json.loads(failed)
+                      wrong=[]
+                      def shape(value,spec,path='root'):
+                          kind=spec.get('type')
+                          if kind=='object':
+                              if not isinstance(value,dict): wrong.append({'path':path,'expected':'object','got':type(value).__name__}); return
+                              for key,child in spec['properties'].items():
+                                  if key in value: shape(value[key],child,path+'.'+key)
+                          elif kind=='array' and isinstance(value,list):
+                              for i,item in enumerate(value[:12]): shape(item,spec['items'],path+'.'+str(i))
+                      if failed is not None: shape(failed,schema)
+                      report['format_mismatches']=wrong[:25]
                   except ValueError: message='non-json response'
                   message=re.sub(r'gsk_[A-Za-z0-9_-]+|Bearer\s+\S+','[REDACTED]',message)
                   report['validation_reason']=message[:700]
