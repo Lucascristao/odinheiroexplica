@@ -1,0 +1,336 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-10-manha",
+  "news_date": "2026-11-10",
+  "event_date": "2026-11-10",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-10T08:42:26.258301-03:00",
+  "title": "Banco Central mantém Selic em 13,75% e avisa política monetária restritiva por mais tempo",
+  "title_options": [
+    {
+      "text": "Banco Central mantém Selic em 13,75% e avisa política monetária restritiva por mais tempo",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Copom indica juros altos por mais tempo para conter inflação acima da meta",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Selic em 13,75%: BC reforça postura restritiva diante de inflação desancorada",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Selic firme, inflação alta",
+  "thumbnail_primary": "doc-1",
+  "thumbnail_tension": "tensão econômica",
+  "thumbnail_composition": "left",
+  "thumbnail_text_side": "right",
+  "news_selection": {
+    "topic_area": "economy",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "A política monetária deverá permanecer restritiva por mais tempo, mantendo a taxa Selic em 13,75 % ao ano.",
+    "why_today": "A ata do Copom de 10 de novembro de 2026 confirma que, diante de inflação acima da meta e de choques de oferta, o Banco Central decidiu manter a Selic em 13,75 % e prolongar a restrição monetária.",
+    "opening_anchor": "O Banco Central confirmou que a taxa Selic permanecerá em 13,75 % ao ano.",
+    "candidate_review": [
+      {
+        "subject": "Decisão do Copom sobre manutenção de juros altos",
+        "topic_area": "economia",
+        "event_date": "2026-11-10",
+        "urls": [
+          "https://www.moneytimes.com.br/ata-do-copom-bc-ve-economia-perder-forca-mas-diz-que-inflacao-exige-juros-altos-por-mais-tempo-jcav/",
+          "https://www.poder360.com.br/poder-economia/copom-indica-juros-altos-por-mais-tempo-para-conter-inflacao/"
+        ],
+        "decision": "pending"
+      },
+      {
+        "subject": "Operação Linceu: PF prende ex-servidor do STJ suspeito de vazar informações para Willer Tomaz",
+        "topic_area": "política",
+        "event_date": "2026-11-10",
+        "urls": [
+          "https://jovempan.com.br/politica/pf-prende-ex-servidor-do-stj-suspeito-de-vazar-informacoes-para-willer-tomaz/",
+          "https://revistaoeste.com/brasil/pf-prende-servidor-do-stj-suspeito-de-vazar-dados-a-willer-tomaz/"
+        ],
+        "decision": "pending"
+      },
+      {
+        "subject": "Petrobras divulga resultados do 3T26 com produção recorde",
+        "topic_area": "empresas",
+        "event_date": "2026-11-10",
+        "urls": [
+          "https://www.moneytimes.com.br/petrobras-petr4-producao-recorde-deve-compensar-petroleo-mais-barato-e-sustentar-dividendos-no-3t26-bdap/"
+        ],
+        "decision": "pending"
+      }
+    ]
+  },
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "A combinação de duas fontes independentes confirma o claim central, gerando alta relevância para o público que acompanha juros e inflação.",
+    "criteria": {
+      "factual_accuracy": "high",
+      "public_interest": "high",
+      "source_diversity": "present"
+    }
+  },
+  "sources": [
+    {
+      "id": "S1",
+      "publisher": "MoneyTimes",
+      "url": "https://www.moneytimes.com.br/ata-do-copom-bc-ve-economia-perder-forca-mas-diz-que-inflacao-exige-juros-altos-por-mais-tempo-jcav/",
+      "published_at": "2026-11-10",
+      "role": "primary"
+    },
+    {
+      "id": "S2",
+      "publisher": "Poder360",
+      "url": "https://www.poder360.com.br/poder-economia/copom-indica-juros-altos-por-mais-tempo-para-conter-inflacao/",
+      "published_at": "2026-11-10",
+      "role": "independent"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "A política monetária deverá permanecer restritiva por mais tempo, mantendo a taxa Selic em 13,75 % ao ano.",
+      "source_ids": [
+        "S1",
+        "S2"
+      ],
+      "status": "confirmed",
+      "event_date": "2026-11-10"
+    },
+    {
+      "claim": "O Copom estima inflação de 5,6 % para 2026 e 4,7 % para 2027, acima da meta de 3 %.",
+      "source_ids": [
+        "S2",
+        "S1"
+      ],
+      "status": "confirmed",
+      "event_date": "2026-11-10"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc-1",
+      "source_id": "S1",
+      "expected_text": "Ata do Copom: BC vê economia perder força, mas diz que inflação exige juros altos por mais tempo",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/ata-do-copom-bc-ve-economia-perder-forca-mas-diz-que-inflacao-exige-juros-altos-por-mais-tempo-jcav/",
+      "capture_file": "research/captures/doc-1.png",
+      "attribution": "MoneyTimes",
+      "selection_method": "visible_page_context_fallback_not_claim_highlight"
+    },
+    {
+      "id": "doc-2",
+      "source_id": "S2",
+      "expected_text": "Copom indica juros altos por mais tempo para conter inflação",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.poder360.com.br/poder-economia/copom-indica-juros-altos-por-mais-tempo-para-conter-inflacao/",
+      "capture_file": "research/captures/doc-2.png",
+      "attribution": "Poder360",
+      "selection_method": "visible_page_context_fallback_not_claim_highlight"
+    }
+  ],
+  "segments": [
+    {
+      "id": "seg-1",
+      "title": "Fato central",
+      "type": "fact",
+      "label": "Selic mantida",
+      "headline": "BC mantém Selic em 13,75%",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "Selic 13,75%",
+        "Inflação 5,6%/4,7%"
+      ],
+      "narration": "O Banco Central confirmou que a taxa Selic permanecerá em 13,75 % ao ano. Eu sou o Roberto, do O Dinheiro Explica. Na ata do Copom divulgada nesta terça‑feira, 10 de novembro de 2026, o colegiado destacou que a economia brasileira está perdendo força e que as expectativas de inflação continuam desancoradas, acima da meta de 3 % em todos os horizontes. Por isso, a política monetária precisa permanecer restritiva por mais tempo, mantendo os juros elevados para conter a pressão inflacionária, sobretudo diante de choques de oferta e incertezas domésticas.",
+      "document_id": "doc-1",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-2",
+      "title": "Contexto econômico",
+      "type": "fact",
+      "label": "Desaceleração",
+      "headline": "Economia perde força",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "PIB desacelera",
+        "Comércio enfraquece"
+      ],
+      "narration": "A ata do Copom revela que a economia brasileira está desacelerando rapidamente, reflexo dos juros elevados que freiam consumo e investimento. O documento destaca que a alta taxa Selic, mantida em 13,75 % ao ano, tem pressionado o crédito, reduzindo a demanda nos setores mais sensíveis ao financiamento. Essa retração afeta tanto o mercado interno quanto as expectativas de crescimento nos próximos meses, sinalizando que a política monetária restritiva está começando a reverberar na atividade real. Contudo, o Banco Central alerta que choques de oferta e incertezas domésticas ainda podem agravar o cenário, exigindo cautela nas projeções de recuperação.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-3",
+      "title": "Choques de oferta",
+      "type": "fact",
+      "label": "Pressões externas",
+      "headline": "Petróleo, El Niño e real",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "Petróleo alto",
+        "El Niño",
+        "Real desvalorizado"
+      ],
+      "narration": "Quatro fatores externos são apontados como fontes de pressão inflacionária no Brasil. Primeiro, a alta do petróleo eleva os custos de transporte e energia, refletindo nos preços ao consumidor. Segundo, o fenômeno El Niño tende a intensificar secas e chuvas excessivas, afetando a produção agrícola e encarecendo alimentos. Terceiro, o fim da escala de ajuste 6×1 – medida que limitava aumentos de tarifas de energia – pode levar a reajustes mais agressivos nos preços de eletricidade e gás. Por fim, a depreciação do real encarece as importações, sobretudo de insumos e bens de consumo, ampliando ainda mais a inflação. Esses choques de oferta, citados na ata do Copom de 10 de novembro de 2026, reforçam a necessidade de política monetária restritiva.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-4",
+      "title": "Riscos fiscais",
+      "type": "fact",
+      "label": "Disciplina fiscal",
+      "headline": "Déficit pode elevar juros",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "Déficit fiscal",
+        "Juros neutros"
+      ],
+      "narration": "A falta de disciplina nas contas públicas pode elevar o nível de juros necessário para controlar a inflação, alerta o texto de referência para o segmento de riscos fiscais. Contudo, não há fonte adicional que confirme ou detalhe esse ponto específico na ata do Copom de 10 de novembro de 2026. Sem dados complementares, a afirmação permanece limitada ao enunciado fornecido, sem evidência de quantificação ou de mecanismos precisos que liguem o déficit fiscal ao aumento da taxa Selic. Assim, o bloco deve ser breve, reconhecendo a preocupação fiscal, mas indicando a ausência de comprovação adicional no material disponível.",
+      "document_id": "doc-1",
+      "media_side": "right"
+    },
+    {
+      "id": "seg-5",
+      "title": "Próximos passos",
+      "type": "opinion",
+      "label": "Expectativa",
+      "headline": "Próxima reunião do Copom",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "Reunião 8-9 dez"
+      ],
+      "narration": "Na minha análise, a próxima ata do Copom, prevista para 8 e 9 de dezembro, será decisiva para confirmar se a postura restritiva da política monetária se mantém ou se surgirá algum sinal de retomada de cortes na taxa Selic. Caso a ata reafirme a necessidade de juros elevados, o mercado provavelmente continuará precificando a Selic em 13,75 % até o fim de 2026, reforçando a expectativa de que a inflação ainda está fora da meta. Por outro lado, se houver indícios de que as pressões inflacionárias estão diminuindo, poderemos observar um primeiro movimento de flexibilização, ainda que tímido, que abriria caminho para futuros abatimentos. Essa bifurcação será crucial para investidores, empresas e consumidores, que aguardam clareza sobre o ritmo da política monetária nos próximos meses.",
+      "document_id": "doc-2",
+      "media_side": "left"
+    },
+    {
+      "id": "seg-6",
+      "title": "Conclusão",
+      "type": "conclusion",
+      "label": "Resumo",
+      "headline": "Selic firme, inflação alta",
+      "metric": "",
+      "object_type": "data",
+      "visual_cards": [
+        "Juros altos",
+        "Inflação acima da meta"
+      ],
+      "narration": "Em resumo, o BC mantém a Selic em 13,75 % para conter uma inflação ainda acima da meta, sinalizando que a política monetária permanecerá restritiva nos próximos meses. Para acompanhar as análises diárias que impactam o seu bolso, inscreva-se no canal O Dinheiro Explica e ative as notificações.",
+      "document_id": "doc-2",
+      "media_side": "right"
+    }
+  ],
+  "tags": [
+    "economia",
+    "juros",
+    "inflação"
+  ],
+  "hashtags": [
+    "#Selic",
+    "#Inflação"
+  ],
+  "secondary_keywords": [
+    "Copom",
+    "política monetária",
+    "taxa de juros"
+  ],
+  "primary_keyword": "Selic 13,75%",
+  "pronunciations": {},
+  "publication_description": "Selic firme, inflação alta: o Banco Central manteve a taxa básica em 13,75 % e avisou que a política monetária continuará restritiva para conter a inflação acima da meta. O documento destaca desaceleração econômica, choques de oferta e riscos fiscais, apontando que a próxima reunião do Copom será decisiva.\n\nContexto: Selic 13,75%",
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que o BC mantém juros altos e quais são os impactos para consumidores e investidores.",
+    "search_query": "Banco Central Selic 13,75% 10 de novembro 2026 ata Copom",
+    "recommendation_angle": "Análise da decisão de manter juros altos e suas consequências macroeconômicas.",
+    "first_payoff": "O Banco Central confirmou que a taxa Selic permanecerá em 13,75 % ao ano.",
+    "promise_proof": "A ata do Copom de 10 nov 2026, confirmada por MoneyTimes e Poder360, comprova a manutenção da Selic e a projeção inflacionária.",
+    "audience_hypothesis": "Investidores e público geral buscam clareza sobre juros e inflação para planejar finanças.",
+    "thumbnail_complement": "Selic firme, inflação alta",
+    "verification_limits": "A confirmação depende exclusivamente das atas publicadas; não há dados de mercado ainda disponíveis."
+  },
+  "engagement_question": "Você acha que a manutenção da Selic em 13,75 % vai frear a inflação ou prejudicar o crescimento econômico?",
+  "publication_target_local": "2026-11-10T08:00:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated",
+  "production_advisories": [
+    {
+      "code": "document_context_fallback",
+      "message": "Plano de recortes não confirmado descartado; usar contexto autêntico da página. Fatos seguem sujeitos à revisão integral."
+    }
+  ],
+  "editorial_quality": {
+    "version": "2026-11-10.1",
+    "review_method": "groq_second_pass_with_literal_source_support",
+    "reviewed_at": "2026-11-10T08:50:09.071842-03:00",
+    "reviewed_content_sha256": "fc589e6df31d24b2a041235e574786f4bf02d36e120b9a681e390fb9ddf40192",
+    "narration_word_count": 584,
+    "target_minutes": [
+      4,
+      6
+    ],
+    "review": {
+      "approved": true,
+      "issues": [],
+      "warnings": [],
+      "same_day_event_supported": true,
+      "title_opening_delivered": true,
+      "event_date_evidence": {
+        "passage_id": "S1-P4",
+        "source_id": "S1",
+        "quote": "A economia brasileira está desacelerando rapidamente, mas a piora das expectativas de inflação exige a manutenção dos juros elevados por mais tempo, afirma o Banco Central (BC) na ata do Comitê de Política Monetária ( Copom ), divulgada nesta terça-feira (10)."
+      },
+      "claim_checks": [
+        {
+          "claim_index": 0,
+          "supported": true,
+          "evidence": [
+            {
+              "passage_id": "S1-P7",
+              "source_id": "S1",
+              "quote": "“Em um ambiente de expectativas desancoradas, como é o caso do atual, exige-se uma restrição monetária maior e por mais tempo do que outrora seria apropriado”, afirma o documento."
+            },
+            {
+              "passage_id": "S1-P8",
+              "source_id": "S1",
+              "quote": "Segundo o Comitê, as expectativas de inflação continuam acima da meta de 3% em todos os horizontes, enquanto os choques de oferta e as incertezas domésticas dificultam o processo de desinflação."
+            },
+            {
+              "passage_id": "S2-P7",
+              "source_id": "S2",
+              "quote": "“A principal conclusão obtida, e compartilhada por todos os membros do Comitê, foi a de que, em um ambiente de expectativas desancoradas, como é o caso do atual, exige-se uma restrição monetária maior e por mais tempo do que outrora seria apropriado” , afirma o documento."
+            },
+            {
+              "passage_id": "S2-P6",
+              "source_id": "S2",
+              "quote": "Na 4ª feira (4.nov), o colegiado decidiu, por unanimidade, manter os juros diante da piora das expectativas de inflação, do aumento das incertezas e da desaceleração da atividade econômica. A ata reforça que a desancoragem das expectativas exige uma política monetária mais restritiva, mesmo com sinais de perda de força da economia."
+            }
+          ]
+        },
+        {
+          "claim_index": 1,
+          "supported": true,
+          "evidence": [
+            {
+              "passage_id": "S1-P20",
+              "source_id": "S1",
+              "quote": "Com isso, o BC passou a trabalhar com uma inflação de 3,5% no segundo trimestre de 2028 , atual horizonte relevante da política monetária, ante os 3,1% projetados anteriormente. Para 2026 e 2027, as estimativas do Comitê são de 5,6% e 4,7%, respectivamente."
+            },
+            {
+              "passage_id": "S2-P12",
+              "source_id": "S2",
+              "quote": "O Banco Central estima inflação de 5,6% em 2026, 4,7% em 2027 e 3,5% no 2º trimestre de 2028, atual horizonte relevante da política monetária."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

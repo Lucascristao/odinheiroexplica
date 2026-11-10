@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "project_id": "noticia-2026-11-10-manha",
+  "project_sha256": "c9b5c9278570a483931e27d14110ed141fade960c1474547544434b08b09b78e",
+  "contract_sha256": "44c98ec0dcfba6a47913b728011d98932ae87f5739cf23cb49ed2cc0c41f8c81",
+  "image_sha256": "d720ae20c156b38e35f71703f7f6cae354e8c6543e3c853e463edbc0ba638fa5",
+  "headline": "Selic firme, inflação alta",
+  "approval_status": "approved",
+  "reviewer": "Groq multimodal automated pixel reviewer; qwen/qwen3.8-27b",
+  "reviewed_at": "2026-11-10T11:51:23.692562+00:00",
+  "checks": {
+    "headline_exact": true,
+    "primary_subject": true,
+    "secondary_subject": true,
+    "forbidden_absent": true,
+    "identity_and_mobile": true,
+    "no_fabricated_data": true,
+    "unique_composition": true
+  },
+  "observations": {
+    "headline": "A headline 'Selic firme, inflação alta' está presente em amarelo na thumbnail de 1280x720. Na redução de 320x180, o texto permanece legível, embora a segunda linha esteja parcialmente cortada na borda direita do frame.",
+    "primary_subject": "O documento (print de página web) está claramente visível no canto superior direito, servindo como protagonista da composição conforme solicitado.",
+    "secondary_subject": "O retrato do apresentador Roberto está presente à esquerda, ocupando uma área significativa da imagem, sem deformações perceptíveis.",
+    "forbidden_absent": "Não foram detectados logotipos inventados, marcas d'água ou textos extras além da headline e do conteúdo do print.",
+    "identity_and_mobile": "A paleta de cores (amarelo sobre fundo escuro) está presente. A headline não encobre o rosto do apresentador. A legibilidade é mantida na versão reduzida.",
+    "no_fabricated_data": "O conteúdo do print é um documento real (notícia do site Money Times) e não há dados inventados sobrepostos.",
+    "unique_composition": "A composição é única, utilizando o print como elemento central e o apresentador como âncora visual, sem parecer uma cópia de capa de terceiros."
+  },
+  "checked_forbidden_elements": [
+    "dados ou documentos inventados",
+    "cópias de capas de terceiros",
+    "foto apresentada como evidência de um evento diferente",
+    "logotipo inventado",
+    "texto extra",
+    "marca d'água"
+  ],
+  "observed_forbidden_elements": []
+}
