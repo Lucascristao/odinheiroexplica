@@ -92,6 +92,8 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
     }
     if json_mode:
         payload["response_format"] = {"type": "json_object"}
+        # Groq rejects json_object unless a message explicitly says JSON.
+        payload["messages"][0]["content"] += " Responda exclusivamente com um objeto JSON válido."
     # Pace sequential passes as well as retries; don't assume a free API is unlimited.
     interval = float(os.environ.get("ODE_NEWS_GROQ_MIN_INTERVAL_SECONDS", "0"))
     elapsed = time.monotonic() - globals().get("_last_completed_at", -1000)

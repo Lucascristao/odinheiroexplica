@@ -493,7 +493,9 @@ def main():
         resumed = saved.get("draft")
         if not isinstance(resumed, dict) or resumed.get("news_date") != date:
             raise SystemExit("Saved draft does not match the requested factual date")
-        report = ""
+        report = saved.get("report", "")
+        if "developed_segment_ids" in saved:
+            cached = saved
     elif cached and cached.get("report"):
         report = cached["report"]
         resumed = cached.get("draft")
@@ -557,7 +559,7 @@ def main():
                                     attempt + 1, episode, transport)
             print(f"NEWS_EPISODE_VALIDATED:{output}, attempt={attempt+1}")
             return
-        except (ValueError, KeyError, TypeError, IndexError, RuntimeError, requests.RequestException) as exc:
+        except (ValueError, KeyError, TypeError, IndexError, AttributeError, RuntimeError, requests.RequestException) as exc:
             record_draft_diagnostic(root / "render-output/news-editorial-diagnostics.json",
                                     attempt + 1, episode, transport, exc)
             error = f"Falha real {type(exc).__name__}: {str(exc)[:400]}"

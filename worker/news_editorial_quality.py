@@ -182,12 +182,29 @@ def reference_passages(corpus):
 
 
 def bind_review_passages(result, lookup):
+    for key in ("approved", "same_day_event_supported", "title_opening_delivered"):
+        if isinstance(result.get(key), str) and result[key].lower() in ("true", "false"):
+            result[key] = result[key].lower() == "true"
+    if result.get("issues") in (None, ""):
+        result["issues"] = []
+    elif isinstance(result.get("issues"), str):
+        result["issues"] = [result["issues"]]
     for check in result.get("claim_checks", []):
-        for evidence in check.get("evidence", []):
+        if isinstance(check.get("claim_index"), str) and check["claim_index"].isdigit():
+            check["claim_index"] = int(check["claim_index"])
+        if isinstance(check.get("supported"), str) and check["supported"].lower() in ("true", "false"):
+            check["supported"] = check["supported"].lower() == "true"
+        evidence_list = check.get("evidence", [])
+        if isinstance(evidence_list, (str, dict)):
+            evidence_list = [evidence_list]
+        check["evidence"] = [{"passage_id": item} if isinstance(item, str) else item for item in evidence_list]
+        for evidence in check["evidence"]:
             pid = evidence.get("passage_id")
             if pid in lookup:
                 evidence.update(lookup[pid])
     evidence = result.get("event_date_evidence", {})
+    if isinstance(evidence, str):
+        evidence = result["event_date_evidence"] = {"passage_id": evidence}
     if evidence.get("passage_id") in lookup:
         evidence.update(lookup[evidence["passage_id"]])
     return result

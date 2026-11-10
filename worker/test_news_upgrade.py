@@ -11,6 +11,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from news_schedule import load_config, slots, nominal_occurrence, editorial_window
 from news_production_gate import validate_production
 from news_editorial_quality import validate_review, develop
+from news_editorial_quality import reference_passages, bind_review_passages
 from news_trigger_guard import editor_identity
 from news_render_dispatch import eligible
 from news_quality_contract import editorial_fingerprint
@@ -97,6 +98,13 @@ class SourceReview(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Every"):
             validate_review(self.review, self.ep, self.corpus)
 
+    def test_passage_ids_can_be_strings_without_retyping_source_quotes(self):
+        _, lookup = reference_passages(self.corpus)
+        result = {"approved": "true", "issues": [], "same_day_event_supported": True,
+                  "title_opening_delivered": True, "event_date_evidence": "S1-P1",
+                  "claim_checks": [{"claim_index": "0", "supported": "true", "evidence": ["S1-P1"]}]}
+        validate_review(bind_review_passages(result, lookup), self.ep, self.corpus)
+
     def test_review_issues_block_even_when_model_sets_approved(self):
         self.review["issues"] = ["Fixture number lacks comparable denominator"]
         with self.assertRaisesRegex(ValueError, "rejected"):
@@ -171,6 +179,8 @@ class AutonomousRecovery(unittest.TestCase):
         self.assertEqual(post.call_args_list[0].kwargs["json"]["model"], groq.MODEL)
         self.assertEqual(post.call_args_list[1].kwargs["json"]["model"], "openai/gpt-oss-20b")
         self.assertEqual(diag["fallback_from"], groq.MODEL)
+        messages = post.call_args_list[0].kwargs["json"]["messages"]
+        self.assertIn("json", " ".join(message["content"] for message in messages).lower())
 
 
 if __name__ == "__main__":
