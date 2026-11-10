@@ -544,6 +544,12 @@ def main():
             prevent_repeated_story(episode, root, evaluation=args.evaluation)
             from news_editorial_quality import fetch_sources, develop, review, context_document_fallback, repair_after_review
             corpus = fetch_sources(episode)
+            # A correct headline alone is poor visual coverage of a developed
+            # explanation. Select authentic body context before pixel capture;
+            # source support is still decided by the independent review.
+            if any(doc['expected_text'] in '\n'.join(corpus[doc['source_id']]['text'].splitlines()[:2])
+                   for doc in episode['documentary_evidence']):
+                episode = context_document_fallback(episode, corpus)
             try:
                 check_documentary_sources(episode)
             except ValueError as source_error:

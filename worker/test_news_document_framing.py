@@ -5,6 +5,34 @@ from news_document_framing import apply_news_document_views, contextual_proof_vi
 
 
 class DocumentaryCameraTests(unittest.TestCase):
+    def test_optional_motion_failure_keeps_authentic_page_and_does_not_block_render(self):
+        prepared = {'id': 'proof', 'type': 'source_excerpt', 'expected_text': 'verified source words',
+            'proof_region': {'x': 10, 'y': 25, 'width': 80, 'height': 8},
+            'public_file': 'unprepared-file', 'width': 1360, 'height': 900}
+        beats = [{'anchor': 'verified source words'}]
+        apply_news_document_views({'document_context_seconds': 1.6}, prepared, beats, [prepared])
+        self.assertNotIn('document_shot', beats[0])
+        self.assertEqual(beats[0]['view'], {'x': 0, 'y': 0, 'width': 100, 'height': 100})
+
+    def test_sequence_changes_authentic_capture_only_for_relevant_speech_and_marks_measured_proof(self):
+        first = {'id': 'rates', 'type': 'source_excerpt', 'expected_text': 'juros elevados inflação expectativas',
+            'proof_region': {'x': 10, 'y': 25, 'width': 80, 'height': 8}, 'public_file': 'generated-assets/rates.png', 'width': 1360, 'height': 900}
+        second = {**first, 'id': 'activity', 'public_file': 'generated-assets/activity.png',
+            'expected_text': 'economia brasileira atividade desaceleração demanda'}
+        beats = [{'anchor': 'juros elevados inflação'}, {'anchor': 'pressões inflacionárias'},
+            {'anchor': 'expectativas de inflação'}, {'anchor': 'economia brasileira atividade'},
+            {'anchor': 'demanda desaceleração'}, {'anchor': 'limites do diagnóstico'}]
+        apply_news_document_views({'document_context_seconds': 1.6}, first, beats, [first, second])
+        self.assertEqual(beats[0]['document_shot']['asset_id'], 'rates')
+        self.assertEqual(beats[3]['document_shot']['asset_id'], 'activity')
+        self.assertTrue(any(b['mark_ids'] for b in beats))
+        for beat in beats:
+            self.assertEqual(beat['document_shot']['annotations'][0]['region'], first['proof_region'])
+        unrelated = [{**second, 'expected_text': 'futebol campeonato campeonato regional'}]
+        fresh = [{'anchor': b['anchor']} for b in beats]
+        apply_news_document_views({'document_context_seconds': 1.6}, first, fresh, unrelated)
+        self.assertTrue(all(b['document_shot']['asset_id'] == 'rates' for b in fresh))
+
     def test_thin_aneel_passage_and_edge_proofs_stay_inside_each_view(self):
         proofs = [
             {"x": 7.647, "y": 26.667, "width": 84.706, "height": 6.222},

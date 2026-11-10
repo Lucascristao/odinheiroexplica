@@ -227,6 +227,7 @@ def main() -> None:
                 "narrative_role": asset.get("narrative_role"),
                 "country_context": asset.get("country_context"),
                 "source_page_url": asset.get("source_page_url"),
+                "expected_text": asset.get("expected_text"),
                 "license": asset.get("license"),
                 "attribution": asset.get("attribution"),
                 "public_file": f"generated-assets/{filename}",

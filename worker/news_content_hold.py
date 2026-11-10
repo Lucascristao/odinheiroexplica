@@ -3,6 +3,7 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import time
 from pathlib import Path
 from youtube_publication import youtube_service, assert_channel, EXPECTED_ID
 
@@ -23,9 +24,13 @@ def hold(service, record, receipt, episode_bytes):
     previous = items[0].get('status', {}).get('privacyStatus')
     if previous != 'private':
         service.videos().update(part='status', body={'id': vid, 'status': {'privacyStatus': 'private'}}).execute()
-    observed = service.videos().list(part='status,snippet', id=vid).execute().get('items', [])
-    if len(observed) != 1 or observed[0].get('status', {}).get('privacyStatus') != 'private':
-        raise ValueError('YouTube did not confirm private status')
+    for attempt in range(5):
+        observed = service.videos().list(part='status,snippet', id=vid).execute().get('items', [])
+        if len(observed) == 1 and observed[0].get('status', {}).get('privacyStatus') == 'private':
+            break
+        if attempt == 4:
+            raise ValueError('YouTube did not confirm private status')
+        time.sleep(3 * (attempt + 1))
     return {**record, 'previous_privacy': previous, 'confirmed_privacy': 'private',
             'confirmed_at': datetime.now(timezone.utc).isoformat()}
 

@@ -111,6 +111,7 @@ def context_document_fallback(episode, corpus):
     by_source = {}
     for sid, source in corpus.items():
         quotes = []
+        paragraphs = []
         for line in source["text"].splitlines():
             line = line.strip()
             if len(line) < 20:
@@ -118,6 +119,8 @@ def context_document_fallback(episode, corpus):
             quote = line if len(line) <= 120 else line[:120].rsplit(" ", 1)[0]
             if quote not in quotes:
                 quotes.append(quote)
+            if len(line) >= 150:
+                paragraphs.append((line, quote))
         if len(quotes) < 2:
             text = source["text"].strip()
             tail = text[-120:].split(" ", 1)[-1]
@@ -125,12 +128,18 @@ def context_document_fallback(episode, corpus):
                 quotes.append(tail)
         if not quotes:
             raise ValueError("No authentic visible page context for documentary fallback")
-        by_source[sid] = quotes
+        by_source[sid] = {'quotes': quotes, 'paragraphs': paragraphs}
     positions = {}
     for doc in episode["documentary_evidence"]:
         sid = doc["source_id"]
         index = positions.get(sid, 0)
-        doc["expected_text"] = by_source[sid][index % len(by_source[sid])]
+        material = by_source[sid]
+        narration = ' '.join(s['narration'] for s in episode.get('segments', []) if s.get('document_id') == doc['id'])
+        terms = set(re.findall(r'\w{5,}', narration.casefold()))
+        used = {d.get('expected_text') for d in episode['documentary_evidence'][:episode['documentary_evidence'].index(doc)]}
+        ranked = sorted(material['paragraphs'], key=lambda pair: len(terms & set(re.findall(r'\w{5,}', pair[0].casefold()))), reverse=True)
+        body = next((quote for _, quote in ranked if quote not in used), None)
+        doc["expected_text"] = body or material['quotes'][index % len(material['quotes'])]
         doc["selection_method"] = "visible_page_context_fallback_not_claim_highlight"
         positions[sid] = index + 1
     episode.setdefault("production_advisories", []).append({"code": "document_context_fallback",

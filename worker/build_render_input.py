@@ -334,7 +334,8 @@ def main() -> None:
                             element['document_context_width'] = prepared['context_width']
                             element['document_context_height'] = prepared['context_height']
                         target_beats = [b for b in scene_with_resolved_visual['visual']['beats'] if b.get('target_id') == element['id']]
-                        apply_news_document_views(element, prepared, target_beats)
+                        apply_news_document_views(element, prepared, target_beats,
+                            candidates=list(visual_assets_by_id.values()) if stage.get('full_bleed_news') else ())
             scene_with_resolved_visual["visual"]["stage"] = stage
 
         caption_words, caption_timing = ([], None)

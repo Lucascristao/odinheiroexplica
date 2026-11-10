@@ -168,6 +168,11 @@ export const editorialStageSchema = z.object({
 });
 
 export const stageEventFields = {
+  document_shot: z.object({
+    asset_id:z.string().min(1), asset_file:z.string().regex(/^generated-assets\/[A-Za-z0-9._-]+$/),
+    asset_width:z.number().positive(), asset_height:z.number().positive(),
+    annotations:z.array(annotationSchema).max(16).default([]),
+  }).optional(),
   chart_reveal_to: z.number().int().min(-1).max(39).optional(),
   content_fraction: z.number().min(0).max(1).optional(),
   operation: visualOperationSchema.optional(),
@@ -192,6 +197,7 @@ export const stageEventFields = {
 export type EditorialStage = z.infer<typeof editorialStageSchema>;
 export type StageElement = z.infer<typeof stageElementSchema>;
 export type StageEvent = {
+  document_shot?: z.infer<typeof stageEventFields.document_shot>;
   chart_reveal_to?: number;
   content_fraction?: number;
   operation?: VisualOperation;
@@ -327,7 +333,8 @@ export function validateStageEvents(stage: EditorialStage, beats: StageEvent[]):
       if(beat.action==="update"){target.label=beat.headline;}
       if(beat.emphasis && (!target.label.includes(beat.emphasis.phrase) || target.label.split(beat.emphasis.phrase).length!==2 || !["label","note","step","metric"].includes(target.kind)))errors.push(`Beat ${index}: frase de marcação precisa ser única no rótulo de texto.`);
       if(beat.view && target.kind!=="source_excerpt")errors.push(`Beat ${index}: enquadramento regional exige recorte.`);
-      if(beat.mark_ids && (target.kind!=="source_excerpt" || beat.mark_ids.some(id=>!target.annotations.some(a=>a.id===id))))errors.push(`Beat ${index}: marcação inexistente ou alvo incompatível.`);
+      if(beat.document_shot && (target.kind!=="source_excerpt" || !stage.full_bleed_news))errors.push(`Beat ${index}: troca documental exige palco de notícia e recorte autêntico.`);
+      if(beat.mark_ids && (target.kind!=="source_excerpt" || beat.mark_ids.some(id=>!(beat.document_shot?.annotations??target.annotations).some(a=>a.id===id))))errors.push(`Beat ${index}: marcação inexistente ou alvo incompatível.`);
       if(beat.chart_focus && (target.kind!=="chart" || !target.chart || beat.chart_focus.from>beat.chart_focus.to || beat.chart_focus.to>=target.chart.points.length))errors.push(`Beat ${index}: intervalo de gráfico inválido.`);
       if(beat.actuation && !target.icon && target.kind!=="object")errors.push(`Beat ${index}: atuação exige ícone ou objeto SVG; não modifica texto, números nem provas.`);
       if(beat.actuation==="dispense" && target.object_type!=="atm")errors.push(`Beat ${index}: saída de cédulas exige objeto ATM.`);
@@ -400,6 +407,10 @@ export function resolveStage(stage: EditorialStage, beats: StageEvent[], frame: 
         if(beat.chart_reveal_to !== undefined && beat.chart_reveal_to !== element.chart_reveal_to){element.chartRevealFrom=element.chart_reveal_to??((element.chart?.points.length??0)-1);element.chart_reveal_to=beat.chart_reveal_to;element.chartRevealFrame=beat.resolved_frame!;element.chartRevealDuration=motionFrames;}
         element.cueFrame=beat.resolved_frame!; element.cueDuration=motionFrames;
         element.cueAction=beat.action; element.treatment=beat.treatment;
+        if(beat.document_shot){
+          if(element.asset_file!==beat.document_shot.asset_file){element.view={...fullView};element.markTiming={};element.markIds=[];}
+          Object.assign(element,beat.document_shot);
+        }
         element.entrance=beat.entrance;
         if(beat.actuation){element.actuation=beat.actuation;element.actuationFrame=beat.resolved_frame!;element.actuationDuration=Math.max(motionFrames,fps*0.75);}
         if(beat.actuation==="lock"||beat.actuation==="unlock"){element.lockFrom=element.locked??true;element.locked=beat.actuation==="lock";element.lockFrame=beat.resolved_frame!;element.lockDuration=Math.max(motionFrames,fps*0.75);}
