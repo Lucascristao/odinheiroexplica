@@ -218,6 +218,10 @@ def validate(episode: dict, today: date | None = None, drafting: bool = False) -
         count = sum(len(s.get("narration", "").split()) for s in episode.get("segments", []))
         require(count == quality.get("narration_word_count"), "contagem de palavras mudou após a revisão")
         review = quality.get("review", {})
+        from news_event_date import validate_event_date
+        date_proof = review.get('event_date_evidence') or {}
+        date_source = next((s for s in sources if s.get('id') == date_proof.get('source_id')), {})
+        validate_event_date(date_proof.get('quote'), episode.get('news_date'), date_source.get('published_at'))
         require(review.get("approved") is True and review.get("issues") == []
                 and review.get("same_day_event_supported") is True
                 and review.get("title_opening_delivered") is True,

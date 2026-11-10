@@ -221,10 +221,12 @@ def check_documentary_sources(episode):
 
 def existing_history(root):
     history = []
-    for file in sorted((root / "news/episodes").glob("*.json"), reverse=True)[:60]:
+    paths = list((root / 'news/rejected').glob('*.json')) + list((root / "news/episodes").glob("*.json"))
+    for file in sorted(paths, key=lambda p: p.name, reverse=True)[:60]:
         try:
             e = json.loads(file.read_text(encoding="utf-8"))
             history.append({"episode_id": e.get("episode_id"), "title": e.get("title"),
+                            'rejection_reason': e.get('rejection_reason'),
                             "source_urls": [s.get("url", "") for s in e.get("sources", [])]})
         except (OSError, ValueError):
             continue

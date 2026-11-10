@@ -84,6 +84,37 @@ class SourceReview(unittest.TestCase):
     def test_complete_literal_support_can_pass(self):
         validate_review(self.review, self.ep, self.corpus)
 
+    def test_positive_model_verdict_cannot_override_yesterdays_event(self):
+        quote = 'Na petição, protocolada nesta segunda-feira, 9, a defesa fez o pedido.'
+        self.ep['news_date'] = '2026-11-10'
+        self.corpus['S1']['text'] += ' ' + quote
+        self.review['event_date_evidence']['quote'] = quote
+        with self.assertRaisesRegex(ValueError, 'contradicts'):
+            validate_review(self.review, self.ep, self.corpus)
+        self.assertIs(self.review['same_day_event_supported'], False)
+        self.assertIs(self.review['approved'], False)
+
+    def test_facts_list_approval_does_not_cover_unreviewed_narration(self):
+        self.ep['segments'] = [{'id': 'seg-1', 'type': 'opinion', 'narration': 'Na minha análise, um recurso ao CNJ muda a decisão.'}]
+        with self.assertRaisesRegex(ValueError, 'Every narration'):
+            validate_review(self.review, self.ep, self.corpus)
+        self.review['narration_checks'] = [{'segment_id': 'seg-1', 'supported': False,
+            'has_factual_assertions': True, 'unsupported_assertions': ['um recurso ao CNJ muda a decisão.'], 'evidence': []}]
+        with self.assertRaisesRegex(ValueError, 'Unsupported assertion'):
+            validate_review(self.review, self.ep, self.corpus)
+
+    def test_supported_narration_and_pure_opinion_have_distinct_source_needs(self):
+        self.ep['segments'] = [{'id': 'fact', 'type': 'fact'}, {'id': 'opinion', 'type': 'opinion'}]
+        self.review['narration_checks'] = [
+            {'segment_id': 'fact', 'supported': True, 'has_factual_assertions': True,
+             'unsupported_assertions': [], 'evidence': self.review['claim_checks'][0]['evidence']},
+            {'segment_id': 'opinion', 'supported': True, 'has_factual_assertions': False,
+             'unsupported_assertions': [], 'evidence': []}]
+        validate_review(self.review, self.ep, self.corpus)
+        self.review['narration_checks'][0]['evidence'] = []
+        with self.assertRaisesRegex(ValueError, 'need source evidence'):
+            validate_review(self.review, self.ep, self.corpus)
+
     def test_review_can_add_support_from_another_fetched_source(self):
         self.corpus["S2"] = {"text": "Outra fonte consultada confirma o resultado e suas condições."}
         self.review["claim_checks"][0]["evidence"] = [{"source_id": "S2", "quote": self.corpus["S2"]["text"]}]
@@ -208,6 +239,10 @@ class AutonomousRecovery(unittest.TestCase):
             self.assertEqual(state["developed_segment_ids"], ["scene-1"])
             self.assertIsNone(read_state(path, "2026-11-11", "manha"))
             self.assertIsNone(read_state(path, "2026-11-10", "noite"))
+            legacy = json.loads(path.read_text(encoding='utf-8'))
+            legacy['version'] = '1.0'
+            path.write_text(json.dumps(legacy), encoding='utf-8')
+            self.assertIsNone(read_state(path, '2026-11-10', 'manha'))
             discard_state(path)
             self.assertIsNone(read_state(path, "2026-11-10", "manha"))
 

@@ -2,6 +2,8 @@
 import json
 from pathlib import Path
 
+STATE_VERSION = '2.0-full-narration-review'
+
 
 def read_state(path, day, slot):
     path = Path(path)
@@ -12,6 +14,7 @@ def read_state(path, day, slot):
     except (ValueError, OSError):
         return None
     if (state.get("news_date") != day or state.get("slot") != slot
+            or state.get('version') != STATE_VERSION
             or state.get("factual_approval") is not False or state.get("discarded") is True):
         return None
     return state
@@ -20,7 +23,7 @@ def read_state(path, day, slot):
 def save_state(path, day, slot, report, episode=None, completed=()):
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps({"version": "1.0", "news_date": day, "slot": slot,
+    path.write_text(json.dumps({"version": STATE_VERSION, "news_date": day, "slot": slot,
         "factual_approval": False, "report": report, "draft": episode,
         "developed_segment_ids": sorted(completed)}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 

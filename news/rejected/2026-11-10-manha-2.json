@@ -4,7 +4,7 @@
   "episode_id": "noticia-2026-11-10-manha-2",
   "news_date": "2026-11-10",
   "event_date": "2026-11-10",
-  "editorial_status": "autonomous_fact_checked",
+  "editorial_status": "rejected_unpublished",
   "reviewed_at": "2026-11-10T09:42:37.648210-03:00",
   "title_options": [
     {
@@ -288,10 +288,12 @@
       6
     ],
     "review": {
-      "approved": true,
-      "issues": [],
+      "approved": false,
+      "issues": [
+        "Render 42820579423 cancelled before upload: central petition was filed on 2026-11-09, not the declared event date 2026-11-10; narration added unsupported legal premises. Prior positive machine review is invalid. Re-research a different event; do not reuse this script or voice."
+      ],
       "warnings": [],
-      "same_day_event_supported": true,
+      "same_day_event_supported": false,
       "title_opening_delivered": true,
       "event_date_evidence": {
         "passage_id": "S1-P8",
@@ -322,5 +324,6 @@
         }
       ]
     }
-  }
+  },
+  "rejection_reason": "Render 42820579423 cancelled before upload: central petition was filed on 2026-11-09, not the declared event date 2026-11-10; narration added unsupported legal premises. Prior positive machine review is invalid. Re-research a different event; do not reuse this script or voice."
 }
