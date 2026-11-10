@@ -429,13 +429,20 @@ engagement_question:pergunta específica terminada em?;hashtags:1-3 começando c
 publication_description:corpo editorial com palavra-chave no início, consequências e limites, sem URLs/FONTES/CAPÍTULOS/hashtags. Não repetir seções geradas pelo motor.
 discovery_strategy:OBJETO com oito strings>=18 caracteres:viewer_intent,search_query,recommendation_angle,first_payoff,promise_proof,audience_hypothesis,thumbnail_complement,verification_limits. first_payoff COPIA trecho literal da primeira narração, de preferência opening_anchor; promessa entregue cedo, sem segredo/fraude/urgência inventados.
 Não confundir opinião com fato; ausência de evidência exige insuficiência. Não copiar piloto."""
-    raw = complete(prompt, json_mode=True, diagnostics=diagnostics)
+    if day >= '2026-11-10':
+        from news_draft_contract import episode_schema, structured_prompt
+        prompt = structured_prompt(report, day, slot, target, history, error)
+        raw = complete(prompt, json_mode=True, diagnostics=diagnostics, response_schema=episode_schema(), max_output_tokens=3600)
+    else:
+        raw = complete(prompt, json_mode=True, diagnostics=diagnostics)
     if (diagnostics or {}).get("finish_reason") == "length":
         raise RuntimeError("Groq cortou o roteiro no limite de resposta; não usar JSON incompleto.")
     episode = json.loads(raw)
     if not isinstance(episode, dict):
         raise ValueError("Groq deve retornar um objeto JSON na raiz, nunca uma lista.")
     episode = clean_unicode_spaces(episode)
+    if episode.get('insufficient_evidence') is True:
+        return episode
     return bind_draft_metadata(validate_draft_shape(episode))
 
 
@@ -536,6 +543,8 @@ def main():
             episode["publication_target_local"] = f"{date}T{SLOTS[args.slot]}:00-03:00"
             episode["editorial_status"] = "autonomous_fact_checked"
             episode["reviewed_at"] = datetime.now(ZoneInfo("America/Fortaleza")).isoformat()
+            if episode.get('insufficient_evidence') is True:
+                raise ValueError('Writer reports insufficient factual evidence: ' + str(episode.get('insufficient_reason', ''))[:220])
             episode["editorial_review_method"] = (
                 "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode="
                 + (episode.get("news_selection") or {}).get("source_mode", "corroborated")
@@ -604,7 +613,7 @@ def main():
                 discard_state(checkpoint)
             print("EDITORIAL_RETRY:", error)
             if (not args.resume_draft and attempt < 2 and isinstance(episode, dict)
-                    and episode.get("editorial_review_rejection")):
+                    and (episode.get("editorial_review_rejection") or episode.get('insufficient_evidence'))):
                 # A genuinely unsupported premise is replaced by another story,
                 # never by a looser factual verdict or an invented event date.
                 discard_state(checkpoint)

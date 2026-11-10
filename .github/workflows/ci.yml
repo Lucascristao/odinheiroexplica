@@ -98,6 +98,7 @@ jobs:
           python worker/test_news_source_header.py
           python worker/test_news_editor_modes.py
           python worker/test_news_draft_schema.py
+          python worker/test_news_draft_contract.py
           python worker/test_news_editor_diagnostics.py
           python worker/test_news_groq_client_diagnostics.py
           python worker/test_news_cloud_retention.py

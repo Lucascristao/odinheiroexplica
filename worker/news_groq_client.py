@@ -50,7 +50,8 @@ def _transport_metadata(data):
 def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
              max_retries: int = 4,
              diagnostics: dict[str, Any] | None = None,
-             max_output_tokens: int | None = None) -> str:
+             max_output_tokens: int | None = None,
+             response_schema: dict | None = None) -> str:
     api_key = os.environ.get("GROQ_API_KEY")
     if not api_key:
         raise RuntimeError("GROQ_API_KEY não configurada no GitHub Actions.")
@@ -66,7 +67,7 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
                     continue
                 print("GROQ_AVAILABILITY_FALLBACK", selected, alternate, reason, flush=True)
                 result = complete(prompt, json_mode=json_mode, model=alternate, max_retries=2,
-                                  diagnostics=diagnostics, max_output_tokens=max_output_tokens)
+                                  diagnostics=diagnostics, max_output_tokens=max_output_tokens, response_schema=response_schema)
                 if diagnostics is not None:
                     diagnostics.update(fallback_from=selected, fallback_reason=reason)
                 return result
@@ -97,6 +98,9 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
         payload["response_format"] = {"type": "json_object"}
         # Groq rejects json_object unless a message explicitly says JSON.
         payload["messages"][0]["content"] += " Responda exclusivamente com um objeto JSON válido."
+    if response_schema:
+        payload['response_format'] = {'type': 'json_schema', 'json_schema': {
+            'name': 'ode_news_draft', 'strict': True, 'schema': response_schema}}
     # Pace sequential passes as well as retries; don't assume a free API is unlimited.
     interval = float(os.environ.get("ODE_NEWS_GROQ_MIN_INTERVAL_SECONDS", "0"))
     elapsed = time.monotonic() - globals().get("_last_completed_at", -1000)
@@ -144,6 +148,10 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
             continue
         if response.status_code in (429, 500, 502, 503, 504):
             return unavailable("http_" + str(response.status_code))
+        if response.status_code == 400 and response_schema:
+            print('GROQ_SCHEMA_TRANSPORT_UNAVAILABLE: retry JSON object on same model; factual review unchanged', flush=True)
+            return complete(prompt, json_mode=True, model=selected, max_retries=2, diagnostics=diagnostics,
+                            max_output_tokens=max_output_tokens)
         # Never emit raw response: it can include content from news pages.
         detail = ""
         try:

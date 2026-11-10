@@ -292,7 +292,11 @@ def validate(episode: dict, today: date | None = None, drafting: bool = False) -
         require(photo.get("needs_cutout") is False, "fotos de contexto não podem perder o fundo")
     segments = episode.get("segments") or []
     require((3 if quality or drafting else 4) <= len(segments) <= (12 if quality or drafting else 9), "quantidade de blocos narrativos fora do contrato")
-    require(sum(s.get("type") == "opinion" for s in segments) >= 1, "falta opinião claramente identificada")
+    if quality or drafting:
+        if not any(s.get('type') == 'opinion' for s in segments):
+            print('NEWS_STYLE_ADVISORY: matéria factual sem bloco opinativo; não bloquear notícia válida')
+    else:
+        require(sum(s.get("type") == "opinion" for s in segments) >= 1, "falta opinião claramente identificada")
     require(sum(s.get("type") == "fact" for s in segments) >= 2, "poucos blocos factuais")
     used_docs = set()
     used_photos = set()
