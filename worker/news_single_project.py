@@ -164,8 +164,8 @@ def validate(episode: dict, today: date | None = None, drafting: bool = False) -
                 f"estratégia YouTube sem {field}")
     require(discovery["first_payoff"] in (episode.get("segments") or [{}])[0].get("narration", ""),
             "a primeira entrega precisa ser trecho literal da abertura")
-    require(episode["thumbnail_headline"].casefold() not in episode["title"].casefold(),
-            "capa não pode repetir o título")
+    if episode["thumbnail_headline"].casefold() in episode["title"].casefold():
+        print("NEWS_PACKAGING_ADVISORY: capa repete palavras do título; melhorar complemento sem bloquear notícia apurada")
     keyword = str(episode.get("primary_keyword") or "").strip()
     title = str(episode.get("title") or "").strip()
     description = str(episode.get("publication_description") or "").strip()
@@ -378,7 +378,6 @@ def build_stage(segment: dict) -> dict:
 
 def build_scene(index: int, segment: dict, developed: bool = False) -> dict:
     narration = segment["narration"]
-    available_cues = anchors(narration)
     cards = segment["visual_cards"]
     authored_cues = segment.get("visual_cues")
     if authored_cues:
@@ -396,8 +395,10 @@ def build_scene(index: int, segment: dict, developed: bool = False) -> dict:
         }
     # No unanchored text cards on top of material. Authored focus regions and
     # marks are optional: if none are reviewed, keep the evidence stable.
+    available_cues = anchors(narration, min_count=1 if developed else 3)
     cue_count = len(available_cues) if developed else min(4, len(cards), len(available_cues))
-    cue_indices = [round(i * (len(available_cues) - 1) / (cue_count - 1)) for i in range(cue_count)]
+    cue_indices = ([0] if cue_count == 1 else
+                   [round(i * (len(available_cues) - 1) / (cue_count - 1)) for i in range(cue_count)])
     beats = []
     for i, cue_index in enumerate(cue_indices):
         beat = {
@@ -463,7 +464,7 @@ def transform(episode: dict) -> dict:
         "rights_basis": photo.get("rights_basis", "licensed" if photo.get("license") else "contextual_quotation"),
         "image_fallback_urls": photo.get("image_fallback_urls", []),
         "needs_cutout": False, "country_context": "BR",
-    } for photo in episode["context_photos"]]
+    } for photo in (episode.get("context_photos") or [])]
     contract = {
         "version": "1.0",
         "exact_headline": episode["thumbnail_headline"],

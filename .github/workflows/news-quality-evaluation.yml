@@ -56,9 +56,9 @@ jobs:
         run: |
           ARGS=()
           if [[ -n "$RESUME" ]]; then
-            DRAFT="$(find render-output/resumed -name news-editorial-rejected-draft-1.json -type f)"
+            DRAFT="$(find render-output/resumed -path '*/news-editor-cache/*.json' -type f | head -1)"
             if [[ -z "$DRAFT" ]]; then
-              DRAFT="$(find render-output/resumed -path '*/news-editor-cache/*.json' -type f | head -1)"
+              DRAFT="$(find render-output/resumed -name 'news-editorial-rejected-draft-*.json' -type f | sort | tail -1)"
             fi
             [[ -f "$DRAFT" ]]
             ARGS=(--resume-draft "$DRAFT")

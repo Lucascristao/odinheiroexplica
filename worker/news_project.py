@@ -58,7 +58,7 @@ def validate(edition: dict, now: date | None = None) -> dict:
     return edition
 
 
-def anchors(narration: str) -> list[str]:
+def anchors(narration: str, min_count: int = 3) -> list[str]:
     tokens = list(re.finditer(r"\S+", narration))
     candidates = []
     for offset in range(0, len(tokens), 11):
@@ -67,7 +67,7 @@ def anchors(narration: str) -> list[str]:
         phrase = narration[start:end]
         if narration.count(phrase) == 1 and len(phrase) <= 140:
             candidates.append(phrase)
-    require(len(candidates) >= 3, "não há âncoras únicas suficientes para sincronizar")
+    require(len(candidates) >= min_count, "não há âncoras únicas suficientes para sincronizar")
     return candidates
 
 

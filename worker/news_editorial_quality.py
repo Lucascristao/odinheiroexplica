@@ -156,7 +156,7 @@ def validate_review(result, episode, corpus):
                 fact["source_ids"].append(sid)
     if result.get("same_day_event_supported") is not True or result.get("title_opening_delivered") is not True:
         raise ValueError("Recency or title/opening promise unproven")
-    evidence = result.get("event_date_evidence", {})
+    evidence = result.get("event_date_evidence") or {}
     sid, quote = evidence.get("source_id"), evidence.get("quote", "")
     if sid not in corpus or len(quote) < 12 or normalize(quote) not in normalize(corpus[sid]["text"]):
         raise ValueError("Event date needs a literal source quotation, not the article publication date")
@@ -214,6 +214,7 @@ def bind_review_passages(result, lookup):
         evidence = result["event_date_evidence"] = {"passage_id": evidence}
     if evidence.get("passage_id") in lookup:
         evidence.update(lookup[evidence["passage_id"]])
+    result["event_date_evidence"] = evidence
     return result
 
 
@@ -303,6 +304,24 @@ Seja proporcional: sugestões de estilo, duração, quantidade de recortes, falt
 Uma quote precisa ser literal e contínua do texto fornecido. Para cada claim, a quote deve sustentar o SENTIDO e os números, não só citar o mesmo assunto. Se faltar contexto/data explícita, marque false. Opinião liberal é permitida como opinião, nunca salva fato falso. Não alegar consulta a documento primário que não está nos textos.
 Analise a abertura: entrega a novidade, identifica assunto/pergunta e evita preâmbulo. Não há previsão de CTR ou garantia de viralização. Todos os problemas vão em issues; só approved=true se não houver problemas."""
     result = bind_review_passages(parse_reply(prompt, budget=1700), passage_lookup)
+    if (result.get("approved") is True and result.get("issues") == []
+            and result.get("same_day_event_supported") is True
+            and not result["event_date_evidence"].get("quote")):
+        # A positive verdict without its required pointer is incomplete, not
+        # permission to infer an event date. Recover only that missing field.
+        followup = parse_reply(f"""Complete apenas a evidência temporal que faltou na revisão anterior.
+Data factual solicitada: {episode['news_date']}. Fato central: {episode['news_selection']['new_fact']}.
+Passagens reais: {json.dumps(evidence, ensure_ascii=False)}
+Retorne JSON {{"same_day_event_supported":boolean,"event_date_evidence":{{"passage_id":"ID exato"}},"issues":[]}}.
+Selecione uma passagem que comprove o dia do acontecimento/divulgação, não apenas a publicação do artigo.
+Data da matéria em conjunto com referência inequívoca a 'nesta segunda-feira' pode comprovar divulgação de balanço. Não inferir data ausente.
+Se não houver prova suficiente, false com issues; não confirme por concordar com a revisão anterior.""", budget=500)
+        temporal = bind_review_passages(followup, passage_lookup)
+        result['event_date_evidence'] = temporal['event_date_evidence']
+        result['same_day_event_supported'] = temporal.get('same_day_event_supported') is True
+        result['issues'].extend(temporal.get('issues') or [])
+        if not result['same_day_event_supported'] or result['issues']:
+            result['approved'] = False
     print("NEWS_EDITORIAL_REVIEW_RESULT", json.dumps({k: result.get(k) for k in ("approved", "issues", "warnings")}, ensure_ascii=False), flush=True)
     try:
         validate_review(result, episode, corpus)

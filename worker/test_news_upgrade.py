@@ -105,6 +105,11 @@ class SourceReview(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Recency"):
             validate_review(self.review, self.ep, self.corpus)
 
+    def test_missing_date_pointer_is_a_recoverable_validation_error_not_a_crash(self):
+        self.review['event_date_evidence'] = None
+        with self.assertRaisesRegex(ValueError, 'Event date'):
+            validate_review(bind_review_passages(self.review, {}), self.ep, self.corpus)
+
     def test_missing_claim_review_fails_closed(self):
         self.review["claim_checks"] = []
         with self.assertRaisesRegex(ValueError, "Every"):
@@ -163,6 +168,13 @@ class SourceReview(unittest.TestCase):
         self.assertEqual(len(old["visual"]["beats"]), 3)
         self.assertGreater(len(developed["visual"]["beats"]), 8)
         self.assertIn("termo110", developed["visual"]["beats"][-1]["anchor"])
+
+    def test_brief_supported_scene_uses_real_cue_without_artificial_padding(self):
+        segment = {'narration': 'Esse é o limite do dado apurado.', 'title': 'Limite', 'type': 'fact',
+                   'document_id': 'doc-1', 'visual_cards': ['Prova real']}
+        scene = build_scene(0, segment, developed=True)
+        self.assertEqual(len(scene['visual']['beats']), 1)
+        self.assertIn(scene['visual']['beats'][0]['anchor'], segment['narration'])
 
 
 class AutonomousRecovery(unittest.TestCase):
