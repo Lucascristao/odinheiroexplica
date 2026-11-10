@@ -10,6 +10,10 @@ on:
         description: Retomar rascunho rejeitado da avaliação anterior, sem repetir pesquisa
         type: string
         required: false
+      cover_episode_path:
+        description: Testar só captura/composição/visão de episódio existente, sem publicar ou refazer voz
+        type: string
+        required: false
 permissions:
   contents: read
   actions: read
@@ -48,6 +52,7 @@ jobs:
           ODE_NEWS_GROQ_FALLBACK_MODELS: openai/gpt-oss-20b
           EVALUATION_DAY: ${{ inputs.news_date }}
           RESUME: ${{ inputs.resume_run_id }}
+          COVER_EPISODE: ${{ inputs.cover_episode_path }}
         run: |
           ARGS=()
           if [[ -n "$RESUME" ]]; then
@@ -58,7 +63,15 @@ jobs:
             [[ -f "$DRAFT" ]]
             ARGS=(--resume-draft "$DRAFT")
           fi
-          python worker/news_autonomous_editor.py --slot noite-3 --date "$EVALUATION_DAY" --evaluation "${ARGS[@]}"
+          if [[ -n "$COVER_EPISODE" ]]; then
+            [[ -z "$RESUME" ]]
+            [[ "$COVER_EPISODE" =~ ^news/episodes/[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9-]+\.json$ ]]
+            mkdir -p render-output
+            cp -- "$COVER_EPISODE" render-output/news-editorial-evaluation.json
+            echo "COVER_ONLY_EVALUATION: reutilizar pauta existente; nenhuma nova revisão factual ou publicação."
+          else
+            python worker/news_autonomous_editor.py --slot noite-3 --date "$EVALUATION_DAY" --evaluation "${ARGS[@]}"
+          fi
           python worker/news_single_project.py --input render-output/news-editorial-evaluation.json --output video/generated/daily-project.json
           npx tsx scripts/validate-news-single.ts video/generated/daily-project.json
           python worker/auto_capture_sources.py --project video/generated/daily-project.json --captures-dir research/captures
@@ -82,7 +95,22 @@ jobs:
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           ODE_NEWS_VISION_MODEL: qwen/qwen3.8-27b
-        run: python worker/news_auto_local_cover.py --project video/generated/daily-project.json --episode render-output/news-editorial-evaluation.json
+          COVER_EPISODE: ${{ inputs.cover_episode_path }}
+        run: |
+          if [[ -n "$COVER_EPISODE" ]]; then
+            python - <<'PY'
+          import json,re
+          from pathlib import Path
+          project=json.loads(Path('video/generated/daily-project.json').read_text())
+          pid=project['project_id']
+          assert re.fullmatch(r'noticia-[0-9]{4}-[0-9]{2}-[0-9]{2}-[a-z0-9-]+',pid)
+          folder=Path('production')/pid
+          # Only this disposable runner checkout: never commit or upload the test.
+          for name in ('thumbnail.jpg','thumbnail.png','thumbnail-audit.json','thumbnail-composition.json'):
+              (folder/name).unlink(missing_ok=True)
+          PY
+          fi
+          python worker/news_auto_local_cover.py --project video/generated/daily-project.json --episode render-output/news-editorial-evaluation.json
       - name: Preservar resultados reais, incluindo tentativa de capa
         if: always()
         uses: actions/upload-artifact@v4
