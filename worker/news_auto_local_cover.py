@@ -27,6 +27,12 @@ def make_background(root, project, episode):
     for doc in docs:
         candidate = root / doc["capture_file"]
         if candidate.is_file() and candidate.stat().st_size > 5000:
+            receipt = candidate.with_suffix('.provenance.json')
+            if receipt.is_file():
+                proof = json.loads(receipt.read_text(encoding='utf-8'))
+                if (proof.get('kind') == 'editorial_reconstruction'
+                        or proof.get('not_original_screenshot') is True):
+                    continue  # A sourced fallback is not an authentic document.
             real.append(candidate)
     if not real:
         raise ValueError("Capa: nenhum documento real capturado; não inventar cenário.")

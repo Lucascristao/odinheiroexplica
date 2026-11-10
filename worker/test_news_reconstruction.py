@@ -45,6 +45,21 @@ class EditorialReconstructionVisualTests(unittest.TestCase):
                 prepare_source_fallbacks(ep)
                 self.assertNotIn('editorial_reconstruction', ep['documentary_evidence'][0])
 
+    def test_cover_never_presents_reconstruction_as_an_original_document(self):
+        from news_auto_local_cover import make_background
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            capture = root / 'research/captures/report.png'
+            capture.parent.mkdir(parents=True)
+            Image.effect_noise((800, 500), 30).convert('RGB').save(capture)
+            capture.with_suffix('.provenance.json').write_text(json.dumps({
+                'kind': 'editorial_reconstruction', 'not_original_screenshot': True}), encoding='utf-8')
+            episode = {'episode_id': 'fixture-test', 'documentary_evidence': [{'capture_file': 'research/captures/report.png'}]}
+            with self.assertRaisesRegex(ValueError, 'nenhum documento real'):
+                make_background(root, {}, episode)
+            capture.with_suffix('.provenance.json').write_text(json.dumps({'mode': 'authentic_page_capture'}), encoding='utf-8')
+            self.assertTrue(make_background(root, {}, episode).is_file())
+
     def test_clean_editorial_visual_and_machine_readable_provenance(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
