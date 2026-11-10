@@ -305,18 +305,38 @@ def save_research_diagnostics(path, corpus, target, report=None, error_type=None
 def research(candidates, history, target, diagnostic_path=None):
     """Select an actually verified new event from publisher pages, without model web tools."""
     corpus = collect_verified(candidates)
+    day = target[:10] if (isinstance(target, str) and len(target) >= 10 and target[4] == "-" and target[7] == "-") else datetime.now(ZoneInfo("America/Fortaleza")).date().isoformat()
+    candidate_review = None
+    selected = corpus
+    if len(corpus) > 3:
+        # First compare breadth; then give the factual pass depth on one event.
+        # A short snippet is a lead, never the completed factual verification.
+        leads = [{k: entry[k] for k in ("headline", "publisher_host", "url", "feed_published_utc")}
+                 | {"lead": entry["actual_article_text"][:500]} for entry in corpus]
+        selector = complete(f"""Selecione uma pauta candidata para o canal O Dinheiro Explica na data factual {day}.
+Use SOMENTE estas pistas reais: {json.dumps(leads, ensure_ascii=False)}
+Histórico recente a evitar: {json.dumps(history[:15], ensure_ascii=False)[:1800]}.
+Retorne JSON {{"selected_urls":[1 a 3 URLs exatas das pistas sobre O MESMO acontecimento],"candidate_review":[3 candidatas reais com subject,topic_area,event_date (null se ainda desconhecida),urls,decision]}}.
+Priorize política, economia e empresas, tensão factual/contradição/consequência que possa ser demonstrada. Evite celebridade genérica, tragédia sem pertinência e recorde sem pergunta interessante. Não inventar interesse medido, CTR, fatos ou datas. Fonte única pode ser candidata com atribuição; republicações da mesma agência não são independentes. Esta é triagem: os textos completos selecionados serão examinados a seguir, ainda sem aprovação factual. Escolha as melhores pistas de acontecimento novo em {day}, sem confundir dia da reportagem com dia do fato.""", json_mode=True, max_output_tokens=1100)
+        selection = json.loads(selector)
+        urls = selection.get("selected_urls", [])
+        if (not isinstance(urls, list) or not 1 <= len(urls) <= 3
+                or len(set(urls)) != len(urls) or not set(urls) <= {entry["url"] for entry in corpus}):
+            raise RuntimeError("Research triage did not select real corpus URLs")
+        selected = [entry for entry in corpus if entry["url"] in urls]
+        candidate_review = selection.get("candidate_review")
     # Keep below the Groq free-plan TPM limit. Literal excerpts + real URLs are
     # the only evidence the editor may use; full pages remain checked downstream.
     compact = [
         {**{k: entry[k] for k in ("category", "headline", "publisher_host", "url", "feed_published_utc")},
-         "actual_article_text": entry["actual_article_text"][:1550]}
-        for entry in corpus[:10]
+         "actual_article_text": entry["actual_article_text"][:4500]}
+        for entry in selected[:3]
     ]
     day = target[:10] if (isinstance(target, str) and len(target) >= 10 and target[4] == "-" and target[7] == "-") else datetime.now(ZoneInfo("America/Fortaleza")).date().isoformat()
     prompt = f"""Você é editor de apuração do canal O Dinheiro Explica.
-Hoje em Fortaleza: {datetime.now(ZoneInfo('America/Fortaleza')).isoformat()}. Janela: {target}. Data do episódio: {day}.
+Relógio real da consulta: {datetime.now(ZoneInfo('America/Fortaleza')).isoformat()}. Data FACTUAL a avaliar: {day}. Janela: {target}. Avalie o acontecimento nessa data explícita, mesmo em uma avaliação histórica; não substitua pela data atual do relógio.
 Compare pautas atuais, incluindo política e economia, usando SOMENTE os textos reais abaixo.
-Descubra um FATO NOVO ocorrido em {day} (ou hoje). PREFIRA confirmação explícita em dois publicadores realmente independentes (source_mode=corroborated).\nUma matéria exclusiva de um único publicador também pode ser selecionada quando o texto demonstra o acontecimento de {day} (ou hoje): source_mode=single_source_attributed, independent_confirmation=false. Nesse caso, apresente o acontecimento como RELATO ATRIBUÍDO, nunca como confirmação independente.
+Descubra um FATO NOVO ocorrido em {day}. PREFIRA confirmação explícita em dois publicadores realmente independentes (source_mode=corroborated).\nUma matéria exclusiva de um único publicador também pode ser selecionada quando o texto demonstra o acontecimento de {day}: source_mode=single_source_attributed, independent_confirmation=false. Nesse caso, apresente o acontecimento como RELATO ATRIBUÍDO, nunca como confirmação independente.
 Dia da publicação da reportagem NÃO equivale ao dia do fato; se não houver prova atual, declare.
 Priorize páginas com texto literal para captura. NÃO invente links, datas ou trechos.
 Quando houver duas páginas, verifique se tratam realmente do mesmo acontecimento e não apenas repetem a mesma agência. Em fonte única, informe honestamente a ausência de segunda confirmação e os limites da reportagem.
@@ -342,6 +362,8 @@ menos oito trechos LITERAIS DIFERENTES realmente presentes no corpus, preferindo
         raise RuntimeError("Groq cortou o relatório no limite de resposta; não usar apuração incompleta.")
     if "EDITORIAL_INSUFFICIENT_EVIDENCE" in report or len(report) < 400:
         raise RuntimeError("Corpus não demonstra um relato verificável de acontecimento de hoje.")
+    if candidate_review:
+        report += "\nTRIAGEM DE CANDIDATAS REAIS (não é aprovação factual):\n" + json.dumps(candidate_review, ensure_ascii=False)
     return report
 
 

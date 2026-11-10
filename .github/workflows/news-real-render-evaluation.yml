@@ -1,0 +1,84 @@
+name: ODE Notícias - teste real de voz longa e render
+on:
+  workflow_dispatch:
+    inputs:
+      source_run_id:
+        description: Run aprovada da avaliação de apuração e capa
+        required: true
+        type: string
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: ode-news-single-${{ github.repository }}
+  cancel-in-progress: false
+jobs:
+  render-evaluation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Conferir origem da avaliação
+        env:
+          GH_TOKEN: ${{ github.token }}
+          SOURCE_RUN: ${{ inputs.source_run_id }}
+        run: |
+          [[ "$SOURCE_RUN" =~ ^[0-9]+$ ]]
+          gh api "repos/$GITHUB_REPOSITORY/actions/runs/$SOURCE_RUN" > /tmp/evaluation-run.json
+          python - <<'PY'
+          import json
+          r=json.load(open('/tmp/evaluation-run.json'))
+          assert r['head_branch']=='main' and r['conclusion']=='success'
+          assert r['path']=='.github/workflows/news-quality-evaluation.yml'
+          PY
+      - uses: actions/download-artifact@v4
+        with:
+          name: news-quality-real-evaluation
+          run-id: ${{ inputs.source_run_id }}
+          github-token: ${{ github.token }}
+          path: .
+      - name: Preparar motor real
+        run: |
+          python -m pip install -r worker/requirements.txt
+          npm ci --no-audit --no-fund
+          command -v ffmpeg
+          command -v ffprobe
+          npx tsx scripts/validate-news-single.ts video/generated/daily-project.json
+      - uses: actions/cache/restore@v4
+        with:
+          path: public/generated-audio/daily
+          key: news-evaluation-live-${{ inputs.source_run_id }}-${{ github.run_attempt }}
+          restore-keys: news-evaluation-live-${{ inputs.source_run_id }}-
+      - name: Sintetizar Roberto, alinhar, renderizar e medir QA sem upload
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python worker/news_evaluate_render.py
+      - uses: actions/cache/save@v4
+        if: always() && hashFiles('public/generated-audio/daily/*.tts.json') != ''
+        with:
+          path: public/generated-audio/daily
+          key: news-evaluation-live-${{ inputs.source_run_id }}-${{ github.run_attempt }}
+      - name: Guardar MP4 e diagnósticos reais
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: news-real-voice-render-evaluation
+          path: |
+            render-output/daily-video.mp4
+            render-output/visual-review/
+            render-output/daily-youtube.json
+            video/generated/daily-delivery-qa.json
+            video/generated/daily-alignment-report.json
+            video/generated/daily-live-diagnostics.json
+            video/generated/daily-render-input.json
+            video/generated/daily-project.json
+            public/generated-audio/daily/*.tts.json
+            public/processed-audio/daily/daily-continuous-narration.wav
+          retention-days: 7
+          if-no-files-found: warn
