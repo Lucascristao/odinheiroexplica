@@ -16,7 +16,7 @@ from urllib.parse import urlencode, urlparse
 from urllib.request import Request, build_opener, HTTPRedirectHandler, urlopen
 import zipfile
 from zoneinfo import ZoneInfo
-from news_schedule import slots as configured_slots, editorial_window, nominal_occurrence
+from news_schedule import slots as configured_slots, editorial_window, nominal_occurrence, recovery_deadline, recovery_policy_applies
 
 SLOTS = ("manha", "meio-dia", "noite")
 MAX_ATTEMPTS = 3
@@ -205,7 +205,8 @@ def plan_slot(api, config, slot, now):
         return {**result, "state": "completed", "reason": "editor_succeeded_but_json_absent", "run_id": completed[0]["id"]}
     attempts = sum(max(1, int(run.get("run_attempt", 1))) for run in matching)
     result["attempts"] = attempts
-    if attempts >= MAX_ATTEMPTS:
+    maximum = None if recovery_policy_applies(config, day, 'unlimited_attempts') else MAX_ATTEMPTS
+    if maximum is not None and attempts >= maximum:
         return {**result, "state": "maxattempt", "reason": "three_editor_attempts_reached"}
     if matching:
         latest = max(aware(run.get("updated_at") or run["created_at"]) for run in matching)
@@ -216,19 +217,28 @@ def plan_slot(api, config, slot, now):
 
 
 def run_watchdog(api, config, now, dry_run=True):
-    results = []
-    for slot in configured_slots(config):
-        result = plan_slot(api, config, slot, now)
-        if result["state"] == "missing" and not dry_run:
-            # Capture/receipt reads can take time. Recheck current main, runs and
-            # cooldown immediately before the only permitted write.
-            result = plan_slot(api, config, slot, now)
-            if result["state"] == "missing":
-                api.dispatch_editor(result["news_date"], slot)
-                result = {**result, "state": "dispatch", "reason": "editor_workflow_dispatch_accepted",
-                          "next_attempt": result["attempts"] + 1}
-        results.append(result)
-    return {"checked_at": now.isoformat(), "dry_run": dry_run, "max_attempts": MAX_ATTEMPTS,
+    results = [plan_slot(api, config, slot, now) for slot in configured_slots(config)]
+    if not dry_run:
+        # Retry without a lifetime ceiling, but never let a repeatedly failing
+        # morning edition monopolize Groq while later slots have not been tried.
+        pending = sorted((i for i, row in enumerate(results) if row['state'] == 'missing'),
+                         key=lambda i: (results[i]['attempts'], results[i]['window_start']))
+        for index in pending:
+            row = results[index]
+            result = plan_slot(api, config, row['slot'], now)
+            results[index] = result
+            if result['state'] == 'missing':
+                api.dispatch_editor(result['news_date'], result['slot'])
+                results[index] = {**result, 'state': 'dispatch', 'reason': 'editor_workflow_dispatch_accepted',
+                                  'next_attempt': result['attempts'] + 1}
+                for other in pending:
+                    if other != index:
+                        results[other] = {**results[other], 'state': 'deferred',
+                            'reason': 'one_editor_handoff_per_guard_fewest_attempts_first'}
+                break
+    day = now.astimezone(ZoneInfo(config['timezone'])).date().isoformat()
+    maximum = None if recovery_policy_applies(config, day, 'unlimited_attempts') else MAX_ATTEMPTS
+    return {"checked_at": now.isoformat(), "dry_run": dry_run, "max_attempts": maximum,
             "cooldown_minutes": 20, "slots": results}
 
 
@@ -277,12 +287,13 @@ def recover_committed_and_uploaded(api, config, result, now):
             continue
         episode = json.loads(Path(match[1]).read_text(encoding="utf-8"))
         target = aware(episode["publication_target_local"])
-        if now > target + timedelta(minutes=config["late_tolerance_minutes"]):
+        if now > recovery_deadline(config, episode['news_date'], target):
             continue
         attempts = [r for r in recoveries if r.get("display_title") == f"ODE recover | {run['id']}"]
         if any(r.get("status") != "completed" or r.get("conclusion") == "success" for r in attempts):
             continue
-        if len(attempts) >= config["publication_recovery"]["max_attempts"]:
+        if (not recovery_policy_applies(config, episode['news_date'], 'unlimited_attempts')
+                and len(attempts) >= config["publication_recovery"]["max_attempts"]):
             continue
         if attempts and now < max(aware(r["updated_at"]) for r in attempts) + COOLDOWN:
             continue

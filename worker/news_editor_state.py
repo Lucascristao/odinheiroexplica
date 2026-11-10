@@ -5,7 +5,7 @@ from pathlib import Path
 STATE_VERSION = '2.0-full-narration-review'
 
 
-def read_state(path, day, slot):
+def read_state(path, day, slot, excluded_source_urls=()):
     path = Path(path)
     if not path.is_file():
         return None
@@ -17,6 +17,8 @@ def read_state(path, day, slot):
             or state.get('version') != STATE_VERSION
             or state.get("factual_approval") is not False or state.get("discarded") is True):
         return None
+    if any(url in str(state.get('report', '')) for url in excluded_source_urls if url):
+        return None  # A cached report cannot revive a materially rejected source.
     return state
 
 

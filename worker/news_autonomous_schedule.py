@@ -13,7 +13,7 @@ from zoneinfo import ZoneInfo
 
 from thumbnail_contract import validate_thumbnail_audit, file_sha256
 from youtube_publication import assert_channel, youtube_service, EXPECTED_ID
-from news_schedule import slots as configured_slots
+from news_schedule import slots as configured_slots, recovery_policy_applies
 
 
 def load(path):
@@ -156,10 +156,12 @@ def main():
     if type(grace_minutes) is not int or not 0 <= grace_minutes <= 180:
         raise SystemExit("Tolerância de publicação inválida.")
     delay_minutes = -lead
+    no_deadline = recovery_policy_applies(config, episode['news_date'], 'same_day_no_deadline')
     eligible_late_grace = (
         config.get("publish_if_late") is True
-        and grace_minutes > 0
-        and 0 <= delay_minutes <= grace_minutes
+        and (no_deadline or grace_minutes > 0)
+        and 0 <= delay_minutes
+        and (no_deadline or delay_minutes <= grace_minutes)
         and now.astimezone(local_zone).date() == local_target.date()
     )
     # Exceções históricas explícitas continuam isoladas por episódio/data.
@@ -221,10 +223,11 @@ def main():
         payload = {
             "project_id": project_id, "video_id": video_id,
             "status": "published_immediate_authorized" if immediate_exception else (
-                "published_within_tolerance" if eligible_late_grace else "published_late_authorized"),
+                "published_late_no_deadline" if eligible_late_grace and no_deadline else (
+                    "published_within_tolerance" if eligible_late_grace else "published_late_authorized")),
             "publication_confirmation": "confirmed_public",
             "delay_minutes": round(max(0, delay_minutes), 2),
-            "late_tolerance_minutes": grace_minutes,
+            "late_tolerance_minutes": None if no_deadline else grace_minutes,
             "one_time_immediate_authorization": immediate_exception,
             "qa_warning_count": len(qa.get("warnings") or []),
             "publication_target_local": local_target.isoformat(),

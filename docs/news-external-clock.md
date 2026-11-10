@@ -11,6 +11,15 @@ concorrência única, limite de tentativas, recibos e recusa de edições vencid
 Essa recuperação por eventos reduz a dependência do cron, mas não substitui o
 relógio externo quando não chega evento algum do GitHub.
 
+Para volume e continuidade, a política autorizada posterior em 10/11 retira o
+corte por atraso e o teto acumulado de tentativas das edições do dia. Cada vigia
+entrega no máximo um editor, priorizando a edição com menos tentativas e depois
+o horário mais antigo. Assim uma pauta que falha repetidamente não ocupa todas
+as oportunidades das edições seguintes. As pausas, a apuração e os recibos
+continuam obrigatórios. Uma rejeição material grava fontes em quarentena também
+no cache do Actions; a próxima pesquisa exclui essas páginas em vez de repetir
+o mesmo acontecimento rejeitado.
+
 O Netlify já hospeda o painel `odinheiroexplica`. A função agendada `news-watchdog`
 consulta o vigia da `main` e solicita sua execução quando não há execução ativa ou
 iniciada nos últimos vinte minutos. O vigia existente decide quais episódios faltam,

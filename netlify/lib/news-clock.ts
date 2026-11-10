@@ -6,19 +6,24 @@ export type ClockConfig = {
   enabled: boolean; timezone: string; publish_if_late: boolean;
   late_tolerance_minutes: number; minimum_production_budget_minutes: number;
   slots: {production: string; publication: string}[];
+  recovery_policy?: {effective_from: string; same_day_no_deadline: boolean};
 };
 
 export function withinNewsWindow(now: Date, settings: ClockConfig) {
   if (!settings.enabled) return false;
   const parts = new Intl.DateTimeFormat("en-CA", {timeZone: settings.timezone,
+    year: "numeric", month: "2-digit", day: "2-digit",
     hour: "2-digit", minute: "2-digit", hourCycle: "h23"}).formatToParts(now);
   const minutes = Number(parts.find(p => p.type === "hour")!.value) * 60 +
     Number(parts.find(p => p.type === "minute")!.value);
   const minuteOf = (time: string) => Number(time.slice(0, 2)) * 60 + Number(time.slice(3, 5));
   const grace = settings.publish_if_late ? settings.late_tolerance_minutes : 0;
+  const localDay = ["year", "month", "day"].map(type=>parts.find(p=>p.type===type)!.value).join("-");
+  const noDeadline = settings.recovery_policy?.same_day_no_deadline === true &&
+    localDay >= settings.recovery_policy.effective_from;
   return settings.slots.some(slot => minutes >= minuteOf(slot.production) &&
-    minutes <= Math.min(1440-settings.minimum_production_budget_minutes,
-      minuteOf(slot.publication)+grace-settings.minimum_production_budget_minutes));
+    minutes <= (noDeadline ? 1439 : Math.min(1440-settings.minimum_production_budget_minutes,
+      minuteOf(slot.publication)+grace-settings.minimum_production_budget_minutes)));
 }
 
 export async function tickNewsClock(options: {

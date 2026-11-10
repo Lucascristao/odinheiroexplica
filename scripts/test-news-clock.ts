@@ -7,6 +7,7 @@ const run = {id: 123, created_at: "2026-11-10T11:00:00Z", status: "completed"};
 assert.equal(withinNewsWindow(now, settings), true);
 assert.equal(withinNewsWindow(new Date("2026-11-10T07:00:00Z"), settings), false);
 assert.equal(withinNewsWindow(now, {...settings, enabled: false}), false);
+assert.equal(withinNewsWindow(new Date("2026-11-11T02:59:00Z"), settings), true);
 await assert.rejects(tickNewsClock({now, settings}), /missing_dispatch_credential/);
 
 for (const status of ["pending", "in_progress", "queued"]) {

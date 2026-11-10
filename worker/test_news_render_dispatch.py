@@ -6,7 +6,7 @@ import sys
 import unittest
 
 sys.path.insert(0, str(Path(__file__).parent))
-from news_render_dispatch import ensure_render, UPLOAD_STEP
+from news_render_dispatch import ensure_render, choose_action, UPLOAD_STEP
 from news_schedule import load_config
 
 
@@ -37,6 +37,15 @@ class FakeAPI:
 
 
 class RevisedBeforeUpload(unittest.TestCase):
+    def test_no_attempt_ceiling_still_preserves_upload_and_cooldown(self):
+        now = datetime(2026, 11, 10, 23, tzinfo=timezone.utc)
+        run = {'id': 42, 'status': 'completed', 'conclusion': 'failure', 'run_attempt': 12,
+               'created_at': '2026-11-10T15:00:00Z', 'updated_at': '2026-11-10T22:00:00Z'}
+        jobs = {42: [{'steps': [{'name': UPLOAD_STEP, 'conclusion': 'skipped'}]}]}
+        self.assertEqual(choose_action([run], jobs, now, max_attempts=None)['action'], 'rerun')
+        jobs[42][0]['steps'][0]['conclusion'] = 'success'
+        self.assertEqual(choose_action([run], jobs, now, max_attempts=None)['reason'], 'upload_started_or_state_unknown')
+
     def run_recovery(self, api):
         return ensure_render(api, 'news/episodes/2026-11-10-manha-2.json', api.current, load_config(),
                              datetime(2026, 11, 10, 13, tzinfo=timezone.utc), apply=True)

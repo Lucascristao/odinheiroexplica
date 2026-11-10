@@ -40,6 +40,7 @@ class TriggerRecovery(unittest.TestCase):
             "created_at": "2026-11-10T16:36:57Z", "updated_at": "2026-11-10T16:37:10Z"}
 
     def test_delayed_morning_success_does_not_complete_missing_lunch(self):
+        self.config.pop('recovery_policy')
         api = Inventory([self.delayed_morning])
         result = run_watchdog(api, self.config, self.now, dry_run=False)
         self.assertEqual(api.dispatched, [("2026-11-10", "meio-dia")])
@@ -47,9 +48,17 @@ class TriggerRecovery(unittest.TestCase):
         self.assertEqual(states["manha"], "outside")
         self.assertEqual(states["manha-2"], "outside")
         self.assertEqual(states["meio-dia"], "dispatch")
-        self.assertEqual(states["tarde"], "active")
+        self.assertEqual(states["tarde"], "deferred")
+
+    def test_unlimited_old_failure_does_not_starve_untried_lunch(self):
+        failed = {'id': 12, 'status': 'completed', 'conclusion': 'failure', 'run_attempt': 12,
+                  'display_title': 'ODE editor | 2026-11-10 | manha-2', 'created_at': '2026-11-10T15:00:00Z'}
+        api = Inventory([self.delayed_morning, failed])
+        run_watchdog(api, self.config, self.now, dry_run=False)
+        self.assertEqual(api.dispatched, [('2026-11-10', 'meio-dia')])
 
     def test_no_new_editor_after_remaining_production_budget(self):
+        self.config.pop('recovery_policy')  # Archived policy stays unchanged.
         late = self.now.replace(hour=18, minute=41)
         result = plan_slot(Inventory(), self.config, "meio-dia", late)
         self.assertEqual(result["state"], "outside")
@@ -69,10 +78,26 @@ class TriggerRecovery(unittest.TestCase):
         self.assertEqual(result["reason"], "exact_episode_upload_receipt")
 
     def test_event_recovery_cannot_bypass_retry_limit(self):
+        self.config.pop('recovery_policy')
         failed = {"status": "completed", "conclusion": "failure", "id": 5,
             "display_title": "ODE editor | 2026-11-10 | meio-dia",
             "created_at": "2026-11-10T15:00:00Z", "run_attempt": 3}
         self.assertEqual(plan_slot(Inventory([failed]), self.config, "meio-dia", self.now)["state"], "maxattempt")
+
+    def test_current_policy_recovers_late_lunch_after_many_failures(self):
+        failed = {"status": "completed", "conclusion": "failure", "id": 5,
+            "display_title": "ODE editor | 2026-11-10 | meio-dia",
+            "created_at": "2026-11-10T15:00:00Z", "run_attempt": 12}
+        late = self.now.replace(hour=23, minute=20)  # 20:20 Fortaleza
+        result = plan_slot(Inventory([failed]), self.config, "meio-dia", late)
+        self.assertEqual(result['state'], 'missing')
+        self.assertEqual(result['attempts'], 12)
+
+    def test_unlimited_attempts_still_keep_cooldown(self):
+        failed = {"status": "completed", "conclusion": "failure", "id": 5,
+            "display_title": "ODE editor | 2026-11-10 | meio-dia",
+            "created_at": "2026-11-10T18:15:00Z", "run_attempt": 12}
+        self.assertEqual(plan_slot(Inventory([failed]), self.config, 'meio-dia', self.now)['state'], 'cooldown')
 
     def test_workflow_completion_is_independent_of_cron_and_dry_run(self):
         import yaml

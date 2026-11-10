@@ -10,7 +10,7 @@ import urllib.parse
 import urllib.request
 import urllib.error
 from zoneinfo import ZoneInfo
-from news_schedule import slots as configured_slots
+from news_schedule import slots as configured_slots, recovery_deadline, recovery_policy_applies
 
 WORKFLOW = "render-news-single.yml"
 TITLE_PREFIX = "ODE render | "
@@ -50,7 +50,7 @@ def eligible(episode_path, episode, config, now):
     start = datetime.fromisoformat(f"{day}T{start_hour}:00").replace(tzinfo=zone)
     if config.get("enabled") is not True:
         return "disabled"
-    deadline = target + timedelta(minutes=grace if config.get("publish_if_late") is True else 0)
+    deadline = recovery_deadline(config, day, target)
     if now.astimezone(zone).date().isoformat() != day or not start <= now <= deadline:
         return "outside_window"
     return None
@@ -75,7 +75,7 @@ def choose_action(runs, jobs_by_id, now, max_attempts=3):
     if latest.get("conclusion") not in ("failure", "cancelled", "timed_out"):
         return {"action": "none", "reason": "render_conclusion_not_retryable", "run_id": latest["id"]}
     # Count attempts across all runs, rather than resetting the budget with a new ID.
-    if sum(int(run.get("run_attempt", 1)) for run in runs) >= max_attempts:
+    if max_attempts is not None and sum(int(run.get("run_attempt", 1)) for run in runs) >= max_attempts:
         return {"action": "none", "reason": "retry_limit", "run_id": latest["id"]}
     if now - timestamp(latest["updated_at"]) < timedelta(minutes=10):
         return {"action": "none", "reason": "retry_cooldown", "run_id": latest["id"]}
@@ -154,7 +154,8 @@ def ensure_render(api, episode_path, episode_bytes, config, now, apply=False):
     if matching and all(run.get("status") == "completed" and run.get("conclusion") != "success" for run in matching):
         for run in matching:
             jobs[run["id"]] = api.request(f"/actions/runs/{run['id']}/jobs?filter=latest&per_page=100")["jobs"]
-    decision = choose_action(matching, jobs, now)
+    maximum = None if recovery_policy_applies(config, episode['news_date'], 'unlimited_attempts') else 3
+    decision = choose_action(matching, jobs, now, max_attempts=maximum)
     if decision["action"] == "rerun":
         source = next(run for run in matching if run["id"] == decision["run_id"])
         if api.episode(episode_path, source["head_sha"]) != episode_bytes:

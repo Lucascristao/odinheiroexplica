@@ -265,6 +265,8 @@ class TestScheduleWithoutCover(unittest.TestCase):
             ("almost_due", 14, 58, "warn", [], "scheduled_private_until_publish_at"),
             ("authorized_early", 14, 0, "warn", [], "published_immediate_authorized"),
             ("authorized_critical", 14, 0, "fail", [{"code": "missing-video"}], "blocked"),
+            ("no_deadline", 23, 0, "warn", [], "published_late_no_deadline"),
+            ("no_deadline_critical", 23, 0, "fail", [{"code": "missing-video"}], "blocked"),
         ]
 
         for label, hour, minute, qa_status, failures, expected in cases:
@@ -290,6 +292,9 @@ class TestScheduleWithoutCover(unittest.TestCase):
                                         "privacy_requested": "private"},
                 }
                 args = ["schedule", "--root", root]
+                if label.startswith('no_deadline'):
+                    payloads['config']['recovery_policy'] = {
+                        'effective_from': day, 'same_day_no_deadline': True, 'unlimited_attempts': True}
                 if label.startswith("authorized_"):
                     payloads["config"]["one_time_immediate_publications"] = [{
                         "episode_id": project_id, "news_date": day,

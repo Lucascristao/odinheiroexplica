@@ -10,6 +10,18 @@ from zoneinfo import ZoneInfo
 LEGACY_SLOTS = {"manha": "08:00", "meio-dia": "12:00", "noite": "20:00"}
 
 
+def recovery_policy_applies(config, day, key):
+    policy = config.get('recovery_policy') or {}
+    return policy.get(key) is True and day >= policy.get('effective_from', '9999')
+
+
+def recovery_deadline(config, day, target):
+    if recovery_policy_applies(config, day, 'same_day_no_deadline'):
+        return target.replace(hour=0, minute=0, second=0, microsecond=0) + timedelta(days=1, microseconds=-1)
+    grace = config.get('late_tolerance_minutes', 0) if config.get('publish_if_late') else 0
+    return target + timedelta(minutes=grace)
+
+
 def load_config(root=None):
     root = Path(root) if root else Path(__file__).resolve().parents[1]
     return json.loads((root / "config/news-autonomy.json").read_text(encoding="utf-8"))
@@ -59,12 +71,13 @@ def editorial_window(config, day, slot, now):
     row = slots(config)[slot]
     start = datetime.fromisoformat(day + "T" + row["production"]).replace(tzinfo=zone)
     target = datetime.fromisoformat(day + "T" + row["publication"]).replace(tzinfo=zone)
-    # Do not spend voice/render quota on an edition that cannot finish in time.
+    # Archived configurations keep their original production budget.
     budget = config.get("minimum_production_budget_minutes", 45)
-    grace = config.get("late_tolerance_minutes", 0) if config.get("publish_if_late") else 0
-    end = target + timedelta(minutes=grace - budget)
-    midnight = start.replace(hour=0, minute=0) + timedelta(days=1)
-    end = min(end, midnight - timedelta(minutes=budget))
+    end = recovery_deadline(config, day, target)
+    if not recovery_policy_applies(config, day, 'same_day_no_deadline'):
+        end -= timedelta(minutes=budget)
+        midnight = start.replace(hour=0, minute=0) + timedelta(days=1)
+        end = min(end, midnight - timedelta(minutes=budget))
     return (config.get("enabled") is True and now.astimezone(zone).date().isoformat() == day
             and start <= now <= end), start, end
 

@@ -60,6 +60,12 @@
   },
   "allow_qa_warnings": true,
   "late_tolerance_minutes": 180,
+  "recovery_policy": {
+    "effective_from": "2026-11-10",
+    "same_day_no_deadline": true,
+    "unlimited_attempts": true,
+    "authorization": "Titular pediu retirar horário limite e número de tentativas em 10/11/2026. Manter pausas, apuração, QA, identidade e idempotência; não liberar privados históricos em lote."
+  },
   "qa_warning_policy": "record_and_improve_next_episode_no_block",
   "additional_late_recoveries": [
     {

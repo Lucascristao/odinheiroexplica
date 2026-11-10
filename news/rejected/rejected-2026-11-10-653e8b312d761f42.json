@@ -1,0 +1,315 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-10-meio-dia",
+  "news_date": "2026-11-10",
+  "event_date": "2026-11-10",
+  "editorial_status": "rejected",
+  "reviewed_at": "2026-11-10T15:15:27.904056-03:00",
+  "title": "Paraguai devolve 93 % dos depósitos do Ueno Bank: quase US$ 330 mi já pagos",
+  "title_options": [
+    {
+      "text": "Paraguai devolve 93 % dos depósitos do Ueno Bank: quase US$ 330 mi já pagos",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Ueno Bank: 93 % dos poupadores já recebem dinheiro bloqueado",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Banco Central do Paraguai avança na restituição de recursos do Ueno Bank",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Devolução massiva de depósitos",
+  "thumbnail_primary": "93 % dos clientes já receberam",
+  "thumbnail_tension": "Última fase até 11 nov",
+  "thumbnail_composition": "texto-imagem",
+  "thumbnail_text_side": "right",
+  "primary_keyword": "Ueno Bank",
+  "secondary_keywords": [
+    "Banco Central do Paraguai",
+    "FGD",
+    "depósitos garantidos"
+  ],
+  "tags": [
+    "economia",
+    "finanças",
+    "Paraguai"
+  ],
+  "hashtags": [
+    "#UenoBank",
+    "#Paraguai",
+    "#Depósitos"
+  ],
+  "publication_description": "Reportagem sobre a devolução de depósitos garantidos do Ueno Bank pelo Banco Central do Paraguai, com dados de três veículos independentes.",
+  "publication_target_local": "2026-11-10T13:00:00-03:00",
+  "opening_anchor": "O Banco Central do Paraguai anunciou que 93 % dos clientes do Ueno Bank já receberam parte dos recursos bloqueados.",
+  "engagement_question": "Você sabia que quase todos os poupadores paraguaios já foram reembolsados?",
+  "why_today": "É a primeira vez que o BCP divulga números tão avançados da restituição, indicando que a crise bancária está quase encerrada.",
+  "new_fact": "93 % dos clientes do Ueno Bank já receberam parte dos recursos bloqueados.",
+  "source_mode": "corroborated",
+  "independent_confirmation": true,
+  "news_selection": {
+    "attribution_note": "Informação confirmada por três veículos de imprensa independentes.",
+    "candidate_review": [
+      {
+        "subject": "Devolução de depósitos do Ueno Bank no Paraguai",
+        "topic_area": "economia",
+        "event_date": "2026-11-10",
+        "urls": [
+          "https://revistaoeste.com/mundo/banco-central-do-paraguai-devolve-dinheiro-a-93-dos-clientes-do-ueno-bank/",
+          "https://jovempan.com.br/mundo/paraguai-devolve-parte-dos-depositos-a-mais-de-90-de-clientes-do-ueno-bank/",
+          "https://www.moneytimes.com.br/novo-presidente-do-paraguai-diz-que-quase-95-dos-poupadores-do-banco-ueno-ja-foram-pagos-mlem/"
+        ],
+        "decision": "candidata"
+      },
+      {
+        "subject": "Ata do Copom indica inflação mais alta e risco cambial",
+        "topic_area": "economia",
+        "event_date": "2026-11-10",
+        "urls": [
+          "https://jovempan.com.br/economia/ata-do-copom-aponta-inflacao-mais-alta-com-guerra-el-nino-fim-da-6x1-e-disparada-do-dolar/",
+          "https://suno.com.br/noticias/ata-do-copom-reuniao-novembro-2026-go/",
+          "https://revistaoeste.com/economia/dolar-sobe-e-vai-a-r-560-e-ibovespa-recua-com-ata-do-copom-e-inflacao-nos-eua/"
+        ],
+        "decision": "candidata"
+      },
+      {
+        "subject": "Prorrogação da desoneração da gasolina e do etanol até 9 de dezembro",
+        "topic_area": "economia",
+        "event_date": "2026-11-10",
+        "urls": [
+          "https://jovempan.com.br/economia/governo-prorroga-ate-9-de-dezembro-desoneracao-da-gasolina-e-do-etanol/",
+          "https://bmcnews.com.br/economia/governo-prorroga-desoneracao-da-gasolina-e-do-etanol-ate-9-de-dezembro/",
+          "https://jovempan.com.br/economia/governo-prorroga-ate-9-de-dezembro-desoneracao-da-gasolina-e-do-etanol/"
+        ],
+        "decision": "candidata"
+      }
+    ],
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "93 % dos clientes do Ueno Bank já receberam parte dos recursos bloqueados",
+    "why_today": "É a primeira vez que o BCP divulga números tão avançados da restituição, indicando que a crise bancária está quase encerrada.",
+    "opening_anchor": "O Banco Central do Paraguis informou que noventa e três por cento dos clientes do Ueno Bank já receberam parte dos recursos bloqueados, totalizando cerca de",
+    "topic_area": "general"
+  },
+  "sources": [
+    {
+      "id": "src1",
+      "publisher": "Revista Oeste",
+      "url": "https://revistaoeste.com/mundo/banco-central-do-paraguai-devolve-dinheiro-a-93-dos-clientes-do-ueno-bank/",
+      "published_at": "2026-11-10",
+      "role": "primary",
+      "published_at_timestamp": "2026-11-10T17:30:43Z"
+    },
+    {
+      "id": "src2",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/novo-presidente-do-paraguai-diz-que-quase-95-dos-poupadores-do-banco-ueno-ja-foram-pagos-mlem/",
+      "published_at": "2026-11-10",
+      "role": "independent",
+      "published_at_timestamp": "2026-11-10T17:58:43Z"
+    },
+    {
+      "id": "src3",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/mundo/paraguai-devolve-parte-dos-depositos-a-mais-de-90-de-clientes-do-ueno-bank/",
+      "published_at": "2026-11-10",
+      "role": "independent",
+      "published_at_timestamp": "2026-11-10T17:35:36Z"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "93 % dos clientes do Ueno Bank já receberam parte dos recursos bloqueados",
+      "event_date": "2026-11-10",
+      "source_ids": [
+        "src1",
+        "src2",
+        "src3"
+      ],
+      "status": "confirmed"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc1",
+      "source_id": "src1",
+      "expected_text": "O Banco Central do Paraguai anunciou que 93% dos clientes com direito a ressarcimento do Ueno Bank já receberam parte",
+      "kind": "source_excerpt",
+      "source_page_url": "https://revistaoeste.com/mundo/banco-central-do-paraguai-devolve-dinheiro-a-93-dos-clientes-do-ueno-bank/",
+      "capture_file": "research/captures/doc1.png",
+      "attribution": "Revista Oeste",
+      "selection_method": "visible_page_context_fallback_not_claim_highlight"
+    },
+    {
+      "id": "doc2",
+      "source_id": "src2",
+      "expected_text": "O novo presidente do Paraguai, Pedro Alliana, disse que foram concluídos os pagamentos a quase 95% dos poupadores do",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/novo-presidente-do-paraguai-diz-que-quase-95-dos-poupadores-do-banco-ueno-ja-foram-pagos-mlem/",
+      "capture_file": "research/captures/doc2.png",
+      "attribution": "Money Times",
+      "selection_method": "visible_page_context_fallback_not_claim_highlight"
+    },
+    {
+      "id": "doc3",
+      "source_id": "src3",
+      "expected_text": "O Banco Central do Paraguai anunciou que 93% dos clientes do Ueno Bank com direito a uma garantia estatal já receberam",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/mundo/paraguai-devolve-parte-dos-depositos-a-mais-de-90-de-clientes-do-ueno-bank/",
+      "capture_file": "research/captures/doc3.png",
+      "attribution": "Jovem Pan",
+      "selection_method": "visible_page_context_fallback_not_claim_highlight"
+    }
+  ],
+  "segments": [
+    {
+      "id": "seg1",
+      "title": "Devolução massiva de depósitos",
+      "label": "Resumo",
+      "headline": "93 % dos poupadores já recebem dinheiro",
+      "metric": "93 % atendidos",
+      "narration": "O Banco Central do Paraguis informou que noventa e três por cento dos clientes do Ueno Bank já receberam parte dos recursos bloqueados, totalizando cerca de trezentos e trinta milhões de dólares para um milhão e setecentos e quarenta mil poupadores. Eu sou o Roberto, do O Dinheiro Explica. A devolução começou em cinco de novembro e deve encerrar até onze de novembro, com pagamentos que somam um trilhão e trezentos e vinte bilhões de guaranis. Essa operação demonstra a capacidade de resposta da autoridade monetária, embora ainda restem cerca de sete por cento dos correntistas aguardando a liberação final dos seus fundos.",
+      "document_id": "doc1",
+      "type": "fact",
+      "object_type": "cash",
+      "visual_cards": [
+        "chart_devolucao"
+      ],
+      "media_side": "left"
+    }
+  ],
+  "discovery_strategy": {
+    "viewer_intent": "Entender o estágio da restituição de depósitos do Ueno Bank e seus impactos regionais.",
+    "search_query": "Ueno Bank devolução 93% clientes Paraguai 10 novembro 2026",
+    "recommendation_angle": "Foco na velocidade da restituição e nas implicações para investidores brasileiros.",
+    "first_payoff": "O Banco Central do Paraguis informou que noventa e três por cento dos clientes do Ueno Bank já receberam parte dos recursos bloqueados, totalizando cerca de",
+    "promise_proof": "Três veículos independentes confirmam o percentual e o valor total devolvido.",
+    "audience_hypothesis": "Público interessado em finanças regionais verá a notícia como relevante para negócios fronteiriços.",
+    "thumbnail_complement": "Número 93 % em destaque",
+    "verification_limits": "Ainda falta confirmação oficial do comunicado completo do BCP."
+  },
+  "scorecard": {
+    "method": "editorial_review",
+    "reason": "Alta relevância econômica, dados confirmados por múltiplas fontes, clareza na narrativa.",
+    "criteria": {
+      "relevance": "alto",
+      "curiosity": "moderado",
+      "clarity": "alto"
+    }
+  },
+  "insufficient_evidence": false,
+  "insufficient_reason": "",
+  "pronunciations": {},
+  "context_photos": [],
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated",
+  "production_advisories": [
+    {
+      "code": "document_context_fallback",
+      "message": "Plano de recortes não confirmado descartado; usar contexto autêntico da página. Fatos seguem sujeitos à revisão integral."
+    },
+    {
+      "code": "packaging_upgrade_unavailable",
+      "detail": "Title needs valid length, editorial score and literal spoken support"
+    }
+  ],
+  "editorial_review_rejection": {
+    "approved": false,
+    "issues": [
+      {
+        "description": "A data do fato central (colapso do Ueno Bank e início da devolução) ocorreu em 3 e 5 de novembro, não em 10 de novembro. A notícia apresenta 10/11/2026 como data de publicação, mas não indica que a devolução começou no dia 10. Isso viola a regra de que a data do fato deve ser a data real do evento, não apenas a data de divulgação."
+      },
+      {
+        "description": "O título e a capa usam linguagem exagerada (“Devolução massiva de depósitos”) sem evidência de que a devolução seja realmente “massiva” em comparação a outras crises bancárias. Embora 93% dos clientes tenham sido pagos, a expressão pode induzir a impressão de que a operação é inédita ou mais ampla do que o fato real."
+      },
+      {
+        "description": "A afirmação de que “quase 95% dos poupadores do Banco Ueno já foram pagos” é baseada em fontes que relatam 93,1%. A diferença de 1,9% não é comprovada por nenhuma passagem fornecida, tornando a cifra de 95% não suportada."
+      },
+      {
+        "description": "A narrativa afirma que “o pagamento dessa etapa deve terminar até a quarta-feira 11” e que “o restante será pago até amanhã”. Nenhuma passagem confirma a data exata de conclusão ou a promessa de pagamento até o dia seguinte, tornando essa informação não verificada."
+      },
+      {
+        "description": "A narrativa menciona “um trilhão e trezentos e vinte bilhões de guaranis” como total de pagamentos, mas nenhuma passagem fornece esse número exato. A cifra não é corroborada por nenhuma fonte."
+      },
+      {
+        "description": "A narrativa inclui a frase “o restante será pago até amanhã” sem referência a uma fonte que confirme essa promessa, violando a exigência de evidência para afirmações de prazo."
+      }
+    ],
+    "warnings": [
+      {
+        "description": "O texto contém repetições de informações já apresentadas em outras passagens (ex.: número de clientes e montante em dólares), o que pode ser considerado redundância."
+      },
+      {
+        "description": "A estrutura da narrativa mistura fatos e opiniões (ex.: “demonstrando a capacidade de resposta da autoridade monetária”), o que pode confundir o leitor sobre o que é fato e o que é avaliação."
+      }
+    ],
+    "same_day_event_supported": false,
+    "title_opening_delivered": true,
+    "event_date_evidence": {
+      "passage_id": "src3-P5",
+      "source_id": "src3",
+      "quote": "O Banco Central do Paraguai anunciou que 93% dos clientes do Ueno Bank com direito a uma garantia estatal já receberam pelo menos parte de suas economias, uma semana após o colapso do banco digital que provocou a destituição do presidente Santiago Peña."
+    },
+    "claim_checks": [
+      {
+        "claim_index": 0,
+        "supported": true,
+        "evidence": [
+          {
+            "passage_id": "src3-P5",
+            "source_id": "src3",
+            "quote": "O Banco Central do Paraguai anunciou que 93% dos clientes do Ueno Bank com direito a uma garantia estatal já receberam pelo menos parte de suas economias, uma semana após o colapso do banco digital que provocou a destituição do presidente Santiago Peña."
+          }
+        ]
+      },
+      {
+        "claim_index": 1,
+        "supported": false,
+        "evidence": []
+      },
+      {
+        "claim_index": 2,
+        "supported": false,
+        "evidence": []
+      },
+      {
+        "claim_index": 3,
+        "supported": false,
+        "evidence": []
+      },
+      {
+        "claim_index": 4,
+        "supported": false,
+        "evidence": []
+      },
+      {
+        "claim_index": 5,
+        "supported": false,
+        "evidence": []
+      }
+    ],
+    "narration_checks": [
+      {
+        "segment_id": "seg1",
+        "supported": false,
+        "has_factual_assertions": true,
+        "unsupported_assertions": [
+          "\"um trilhão e trezentos e vinte bilhões de guaranis\"",
+          "\"o restante será pago até amanhã\""
+        ],
+        "evidence": [
+          {
+            "passage_id": "src3-P5",
+            "source_id": "src3",
+            "quote": "O Banco Central do Paraguai anunciou que 93% dos clientes do Ueno Bank com direito a uma garantia estatal já receberam pelo menos parte de suas economias, uma semana após o colapso do banco digital que provocou a destituição do presidente Santiago Peña."
+          }
+        ]
+      }
+    ]
+  },
+  "rejection_source_run_id": 42872755105,
+  "factual_approval": false,
+  "rejection_reason": "material factual review failed; select a different event"
+}

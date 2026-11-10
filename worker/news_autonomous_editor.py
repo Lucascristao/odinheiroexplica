@@ -1,5 +1,6 @@
 """Autonomous newsroom: current research, truthful source checks, and episode JSON."""
 import argparse
+import hashlib
 from datetime import datetime, timezone
 from html import unescape
 import json
@@ -105,7 +106,7 @@ def bind_draft_metadata(episode):
                 print("EDITORIAL_METADATA_BINDING news_selection.opening_anchor uses existing factual opening", flush=True)
                 break
     payoff = discovery.get("first_payoff")
-    if valid_anchor and isinstance(payoff, str) and len(payoff.strip()) >= 18 and payoff not in opening:
+    if valid_anchor and (not isinstance(payoff, str) or len(payoff.strip()) < 18 or payoff not in opening):
         discovery["first_payoff"] = anchor
         print("EDITORIAL_METADATA_BINDING discovery_strategy.first_payoff uses literal opening_anchor", flush=True)
     description = episode.get("publication_description")
@@ -222,7 +223,9 @@ def check_documentary_sources(episode):
 
 def existing_history(root):
     history = []
-    paths = list((root / 'news/rejected').glob('*.json')) + list((root / "news/episodes").glob("*.json"))
+    paths = (list((root / 'news/rejected').glob('*.json'))
+             + list((root / 'render-output/news-editor-cache').glob('rejected-*.json'))
+             + list((root / "news/episodes").glob("*.json")))
     for file in sorted(paths, key=lambda p: p.name, reverse=True)[:60]:
         try:
             e = json.loads(file.read_text(encoding="utf-8"))
@@ -232,6 +235,25 @@ def existing_history(root):
         except (OSError, ValueError):
             continue
     return history
+
+
+def quarantine_rejected_story(root, episode):
+    """Preserve material rejection outside the engine and across bounded retries."""
+    urls = sorted({source['url'] for source in episode.get('sources', [])
+                   if isinstance(source, dict) and isinstance(source.get('url'), str)})
+    identity = json.dumps([episode.get('episode_id'), episode.get('title'), urls], ensure_ascii=False)
+    digest = hashlib.sha256(identity.encode('utf-8')).hexdigest()[:16]
+    day = episode.get('news_date', '')
+    if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', day):
+        raise ValueError('Cannot quarantine rejected story without its factual date')
+    rejected = {**episode, 'editorial_status': 'rejected', 'factual_approval': False,
+                'rejection_reason': 'material factual review failed; select a different event'}
+    filename = f'rejected-{day}-{digest}.json'
+    for directory in (root / 'news/rejected', root / 'render-output/news-editor-cache'):
+        directory.mkdir(parents=True, exist_ok=True)
+        (directory / filename).write_text(json.dumps(rejected, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+    return {'episode_id': episode.get('episode_id'), 'title': episode.get('title'),
+            'reason': rejected['rejection_reason'], 'source_urls': urls}
 
 
 def prevent_repeated_story(episode, root, evaluation=False):
@@ -525,7 +547,8 @@ def main():
         return
     history = existing_history(root)
     checkpoint = root / "render-output/news-editor-cache" / f"{date}-{args.slot}.json"
-    cached = read_state(checkpoint, date, args.slot) if not args.resume_draft else None
+    rejected_urls = {url for row in history if row.get('rejection_reason') for url in row.get('source_urls', [])}
+    cached = read_state(checkpoint, date, args.slot, rejected_urls) if not args.resume_draft else None
     resumed = None
     if args.resume_draft:
         if not args.evaluation:
@@ -632,16 +655,18 @@ def main():
             record_draft_diagnostic(root / "render-output/news-editorial-diagnostics.json",
                                     attempt + 1, episode, transport, exc)
             error = f"Falha real {type(exc).__name__}: {str(exc)[:400]}"
+            materially_rejected = (isinstance(episode, dict)
+                                   and (episode.get('editorial_review_rejection') or episode.get('insufficient_evidence')))
+            if materially_rejected:
+                history.insert(0, quarantine_rejected_story(root, episode))
+                discard_state(checkpoint)
             if isinstance(exc, ValueError) and "editorial review" in str(exc).lower():
                 discard_state(checkpoint)
             print("EDITORIAL_RETRY:", error)
-            if (not args.resume_draft and attempt < 2 and isinstance(episode, dict)
-                    and (episode.get("editorial_review_rejection") or episode.get('insufficient_evidence'))):
+            if not args.resume_draft and attempt < 2 and materially_rejected:
                 # A genuinely unsupported premise is replaced by another story,
                 # never by a looser factual verdict or an invented event date.
                 discard_state(checkpoint)
-                history.insert(0, {"episode_id": "rejected-unpublished", "title": episode.get("title"),
-                                   "reason": "material factual review failed; select a different event"})
                 resumed, cached = None, None
                 try:
                     fresh = collect()

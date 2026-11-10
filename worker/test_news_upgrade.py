@@ -48,9 +48,16 @@ class SevenSlots(unittest.TestCase):
                     self.assertEqual(editor_identity(run, self.config), ("2026-11-10", name))
 
     def test_late_editor_is_refused_before_api_spend(self):
+        self.config.pop('recovery_policy', None)  # Archived policy.
         late = datetime(2026, 11, 10, 23, 30, tzinfo=timezone.utc)
         active, _, _ = editorial_window(self.config, "2026-11-10", "manha", late)
         self.assertFalse(active)
+
+    def test_current_day_editor_has_no_late_cutoff(self):
+        late = datetime(2026, 11, 10, 23, 30, tzinfo=timezone.utc)
+        self.assertTrue(editorial_window(self.config, '2026-11-10', 'manha', late)[0])
+        tomorrow = datetime(2026, 11, 11, 3, 0, tzinfo=timezone.utc)
+        self.assertFalse(editorial_window(self.config, '2026-11-10', 'manha', tomorrow)[0])
 
     def test_render_dispatch_understands_all_seven_paths(self):
         from zoneinfo import ZoneInfo
@@ -252,6 +259,8 @@ class AutonomousRecovery(unittest.TestCase):
             state = read_state(path, "2026-11-10", "manha")
             self.assertIs(state["factual_approval"], False)
             self.assertEqual(state["developed_segment_ids"], ["scene-1"])
+            save_state(path, '2026-11-10', 'manha', 'Report https://example.org/rejected', {'title': 'Fixture'})
+            self.assertIsNone(read_state(path, '2026-11-10', 'manha', ['https://example.org/rejected']))
             self.assertIsNone(read_state(path, "2026-11-11", "manha"))
             self.assertIsNone(read_state(path, "2026-11-10", "noite"))
             legacy = json.loads(path.read_text(encoding='utf-8'))

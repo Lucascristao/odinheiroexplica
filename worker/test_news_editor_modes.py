@@ -5,6 +5,7 @@ from pathlib import Path
 import sys
 from types import ModuleType
 import unittest
+import tempfile
 from unittest.mock import Mock, patch
 
 DRAFT = Path(__file__).parent
@@ -47,6 +48,35 @@ def episode(mode="single_source_attributed", second_url=None):
             "verified_facts": [{"claim": "Relato atribuído da medida anunciada hoje.", "status": "statement", "source_ids": ["S1"]}]}
 
 class EditorSourceModeTests(unittest.TestCase):
+    def test_rejected_story_survives_cache_and_excludes_exact_source_urls(self):
+        with tempfile.TemporaryDirectory(dir=ROOT / 'work') as directory:
+            root = Path(directory)
+            ep = {'episode_id': 'noticia-2026-11-10-meio-dia', 'news_date': '2026-11-10',
+                  'title': 'Rejected factual premise', 'editorial_status': 'autonomous_fact_checked',
+                  'sources': [{'id': 'S1', 'url': 'https://example.com/rejected'}],
+                  'editorial_review_rejection': {'approved': False, 'issues': ['Unsupported event date']}}
+            item = editor.quarantine_rejected_story(root, ep)
+            self.assertEqual(item['source_urls'], ['https://example.com/rejected'])
+            saved = next((root / 'news/rejected').glob('*.json'))
+            self.assertEqual(json.loads(saved.read_text(encoding='utf-8'))['editorial_status'], 'rejected')
+            # Restoring only the Actions cache must retain the rejection.
+            saved.unlink()
+            history = editor.existing_history(root)
+            self.assertEqual(history[0]['source_urls'], item['source_urls'])
+            with patch.object(editor, 'complete') as complete:
+                with self.assertRaisesRegex(RuntimeError, 'relato verificável'):
+                    editor.research([], history, '2026-11-10T13:00:00-03:00',
+                        _corpus=[{'url': 'https://example.com/rejected?utm_source=rss'}])
+                complete.assert_not_called()
+
+    def test_missing_payoff_is_bound_to_existing_literal_anchor(self):
+        text = 'O órgão anunciou hoje uma medida com condições explícitas.'
+        for payoff in (None, '', 'Incompatible metadata'):
+            ep = {'segments': [{'type': 'fact', 'narration': text}],
+                  'news_selection': {'opening_anchor': text},
+                  'discovery_strategy': {'first_payoff': payoff}}
+            self.assertEqual(editor.bind_draft_metadata(ep)['discovery_strategy']['first_payoff'], text)
+
     def run_check(self, ep, html=None, final_url=None, content_type="text/html", http_error=None):
         def response(url, **kwargs):
             result = Mock()
