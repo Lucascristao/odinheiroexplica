@@ -224,20 +224,21 @@ def existing_history(root):
     for file in sorted((root / "news/episodes").glob("*.json"), reverse=True)[:60]:
         try:
             e = json.loads(file.read_text(encoding="utf-8"))
-            history.append({"episode_id": e.get("episode_id"), "title": e.get("title")})
+            history.append({"episode_id": e.get("episode_id"), "title": e.get("title"),
+                            "source_urls": [s.get("url", "") for s in e.get("sources", [])]})
         except (OSError, ValueError):
             continue
     return history
 
 
-def prevent_repeated_story(episode, root):
+def prevent_repeated_story(episode, root, evaluation=False):
     import string
     new_urls = {str(s.get("url", "")).strip().split("?")[0].lower()
                 for s in episode.get("sources", [])}
     title_words = set(re.findall(r"[a-z0-9]{4,}", plain(episode.get("title", ""))))
     for old_path in (root / "news" / "episodes").glob("*.json"):
         old = json.loads(old_path.read_text(encoding="utf-8"))
-        if old.get("episode_id") == episode.get("episode_id"):
+        if old.get("episode_id") == episode.get("episode_id") and not evaluation:
             raise ValueError("Episódio dessa janela já existe.")
         old_urls = {str(s.get("url", "")).strip().split("?")[0].lower()
                     for s in old.get("sources", [])}
@@ -322,9 +323,15 @@ def save_research_diagnostics(path, corpus, target, report=None, error_type=None
         print("EDITORIAL_RESEARCH_DIAGNOSTIC", json.dumps(record, ensure_ascii=False), flush=True)
 
 
-def research(candidates, history, target, diagnostic_path=None):
+def research(candidates, history, target, diagnostic_path=None, *, _corpus=None, _remaining_attempts=2):
     """Select an actually verified new event from publisher pages, without model web tools."""
-    corpus = collect_verified(candidates)
+    corpus = collect_verified(candidates) if _corpus is None else _corpus
+    canonical_url = lambda url: str(url).strip().split("?")[0].lower().rstrip("/")
+    covered = {canonical_url(url) for row in history for url in row.get("source_urls", [])}
+    corpus = [entry for entry in corpus if canonical_url(entry["url"]) not in covered]
+    if not corpus:
+        raise RuntimeError("Nenhum relato verificável inédito disponível nesta coleta; não repetir o vídeo anterior.")
+    prompt_history = [{k: row.get(k) for k in ("episode_id", "title")} for row in history]
     day = target[:10] if (isinstance(target, str) and len(target) >= 10 and target[4] == "-" and target[7] == "-") else datetime.now(ZoneInfo("America/Fortaleza")).date().isoformat()
     candidate_review = None
     selected = corpus
@@ -335,7 +342,7 @@ def research(candidates, history, target, diagnostic_path=None):
                  | {"lead": entry["actual_article_text"][:500]} for entry in corpus]
         selector = complete(f"""Selecione uma pauta candidata para o canal O Dinheiro Explica na data factual {day}.
 Use SOMENTE estas pistas reais: {json.dumps(leads, ensure_ascii=False)}
-Histórico recente a evitar: {json.dumps(history[:15], ensure_ascii=False)[:1800]}.
+Histórico recente a evitar: {json.dumps(prompt_history[:15], ensure_ascii=False)[:1800]}.
 Retorne JSON {{"selected_urls":[1 a 3 URLs exatas das pistas sobre O MESMO acontecimento],"candidate_review":[3 candidatas reais com subject,topic_area,event_date (null se ainda desconhecida),urls,decision]}}.
 Priorize política, economia e empresas, tensão factual/contradição/consequência que possa ser demonstrada. Evite celebridade genérica, tragédia sem pertinência e recorde sem pergunta interessante. Não inventar interesse medido, CTR, fatos ou datas. Fonte única pode ser candidata com atribuição; republicações da mesma agência não são independentes. Esta é triagem: os textos completos selecionados serão examinados a seguir, ainda sem aprovação factual. Escolha as melhores pistas de acontecimento novo em {day}, sem confundir dia da reportagem com dia do fato.""", json_mode=True, max_output_tokens=1100)
         selection = json.loads(selector)
@@ -361,8 +368,9 @@ Dia da publicação da reportagem NÃO equivale ao dia do fato; se não houver p
 Priorize páginas com texto literal para captura. NÃO invente links, datas ou trechos.
 Quando houver duas páginas, verifique se tratam realmente do mesmo acontecimento e não apenas repetem a mesma agência. Em fonte única, informe honestamente a ausência de segunda confirmação e os limites da reportagem.
 Identifique nomes e URLs exatas, data original e os fatos necessários à explicação, sem inventar informação para completar uma quantidade.
-Histórico recente (não repetir acontecimentos): {json.dumps(history[:20], ensure_ascii=False)[:3200]}.
-Compare pelo menos três candidatas REAIS. Prefira tensão factual, contradição demonstrável, decisão pública com consequência concreta e pergunta que o público deseja entender. Registro burocrático, recorde isolado ou celebridade sem relevância ao público do canal não ganham só por serem recentes. Política é relevante por si; não invente ligação com finanças. Não simule Trends, CTR ou popularidade.
+Histórico recente (não repetir acontecimentos): {json.dumps(prompt_history[:20], ensure_ascii=False)[:3200]}.
+A comparação de candidatas já foi feita na triagem: {json.dumps(candidate_review, ensure_ascii=False)}. Agora apure o acontecimento selecionado nos textos completos; não exigir três acontecimentos diferentes neste subconjunto de fontes sobre uma só notícia. Prefira tensão factual, contradição demonstrável, decisão pública com consequência concreta e pergunta que o público deseja entender. Registro burocrático, recorde isolado ou celebridade sem relevância ao público do canal não ganham só por serem recentes. Política é relevante por si; não invente ligação com finanças. Não simule Trends, CTR ou popularidade.
+Para balanços e estatísticas, a novidade é a divulgação comprovada na data da edição, mesmo que o período medido seja anterior. Uma frase como 'balanço divulgado nesta segunda-feira', combinada com a data da matéria, pode comprovar o dia da divulgação. Preservar o período original na explicação.
 Depois de selecionar, identifique onde buscar o documento primário, o contraponto e quais efeitos ainda não ocorreram. Se o corpus não contém a prova, declare a lacuna. Fontes que republicam a mesma agência não são confirmações independentes.
 CORPUS de páginas HTTP realmente consultadas:
 {json.dumps(compact, ensure_ascii=False)[:20000]}
@@ -381,6 +389,11 @@ menos dois trechos LITERAIS DIFERENTES realmente presentes no corpus, acrescenta
     if transport_diag.get("finish_reason") == "length":
         raise RuntimeError("Groq cortou o relatório no limite de resposta; não usar apuração incompleta.")
     if "EDITORIAL_INSUFFICIENT_EVIDENCE" in report or len(report) < 400:
+        selected_urls = {entry["url"] for entry in selected}
+        remaining = [entry for entry in corpus if entry["url"] not in selected_urls]
+        if remaining and _remaining_attempts > 0:
+            print("NEWS_RESEARCH_NEXT_CANDIDATE: selected event lacked evidence; trying other fetched sources", flush=True)
+            return research([], history, target, diagnostic_path, _corpus=remaining, _remaining_attempts=_remaining_attempts - 1)
         raise RuntimeError("Corpus não demonstra um relato verificável de acontecimento de hoje.")
     if candidate_review:
         report += "\nTRIAGEM DE CANDIDATAS REAIS (não é aprovação factual):\n" + json.dumps(candidate_review, ensure_ascii=False)
@@ -526,7 +539,7 @@ def main():
                 + (episode.get("news_selection") or {}).get("source_mode", "corroborated")
             )
             episode = validate(episode, today=local.date(), drafting=True)
-            prevent_repeated_story(episode, root)
+            prevent_repeated_story(episode, root, evaluation=args.evaluation)
             from news_editorial_quality import fetch_sources, develop, review, context_document_fallback, repair_after_review
             corpus = fetch_sources(episode)
             try:

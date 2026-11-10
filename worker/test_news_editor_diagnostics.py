@@ -48,6 +48,27 @@ class ResearchDiagnosticTests(unittest.TestCase):
         self.assertEqual(record["rejection_reasons"], ["marker"])
         self.assertFalse(record["factual_review_completed"])
 
+    def test_research_tries_another_event_without_refetching_or_overruling_rejection(self):
+        corpus = [{**self.corpus[0], "url": f"https://example.com/event-{i}"} for i in range(4)]
+        good_report = "SOURCE_MODE: single_source_attributed " + "Supported fixture report. " * 25
+        responses = [json.dumps({"selected_urls": [corpus[0]["url"]], "candidate_review": []}),
+                     "EDITORIAL_INSUFFICIENT_EVIDENCE", good_report]
+        with patch.object(editor, "collect_verified", return_value=corpus) as fetch, \
+             patch.object(editor, "complete", side_effect=responses) as model:
+            result = editor.research([], [], "2026-10-13T12:00:00-03:00")
+        self.assertEqual(result, good_report)
+        fetch.assert_called_once()
+        self.assertNotIn(corpus[0]["url"], model.call_args.args[0])
+
+    def test_already_used_source_is_excluded_before_triage(self):
+        old = {**self.corpus[0], "url": "https://example.com/already-covered"}
+        history = [{"episode_id": "old", "title": "Previous topic", "source_urls": [old["url"]]}]
+        report = "SOURCE_MODE: single_source_attributed " + "Supported fixture report. " * 25
+        with patch.object(editor, "collect_verified", return_value=[old, self.corpus[0]]), \
+             patch.object(editor, "complete", return_value=report) as model:
+            editor.research([], history, "2026-10-13T12:00:00-03:00")
+        self.assertNotIn(old["url"], model.call_args.args[0])
+
     def test_short_report_is_distinct_from_marker(self):
         with self.assertRaises(RuntimeError):
             self.call("Resposta curta sem marcador.")

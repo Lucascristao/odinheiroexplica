@@ -2,6 +2,8 @@
 from __future__ import annotations
 import json
 import tempfile
+import sys
+from types import SimpleNamespace
 import unittest
 from pathlib import Path
 from unittest.mock import MagicMock, patch
@@ -174,8 +176,11 @@ class YouTubePublicationTest(unittest.TestCase):
                        "tags": ["ODE_EPISODE_" + project_id]}, "status": {"privacyStatus": "public"}}]}
         cover = Path(self.work.name, "thumb.jpg")
         cover.write_bytes(b"synthetic test cover")
-        result = add_thumbnail(self.service, cover, "zzzzzzzzzzz", project_id)
+        media = MagicMock()
+        with patch.dict(sys.modules, {"googleapiclient.http": SimpleNamespace(MediaFileUpload=MagicMock(return_value=media))}):
+            result = add_thumbnail(self.service, cover, "zzzzzzzzzzz", project_id)
         self.assertEqual(result["privacy"], "public")
+        media.stream.return_value.close.assert_called_once()
         self.service.thumbnails.return_value.set.assert_called_once()
         self.service.videos.return_value.update.assert_not_called()
 
