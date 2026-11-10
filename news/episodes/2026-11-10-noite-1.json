@@ -1,0 +1,317 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-10-noite-1",
+  "news_date": "2026-11-10",
+  "event_date": "2026-11-10",
+  "publication_target_local": "2026-11-10T18:00:00-03:00",
+  "title": "Tarcísio de Freitas: Flávio Bolsonaro tem direito de concorrer em 2030!",
+  "thumbnail_headline": "Tarcísio e Flávio",
+  "thumbnail_primary": "Tarcísio",
+  "thumbnail_tension": "Política",
+  "thumbnail_composition": "Foto do governador",
+  "thumbnail_text_side": "left",
+  "primary_keyword": "Política",
+  "secondary_keywords": [
+    "Eleições",
+    "São Paulo",
+    "Presidência"
+  ],
+  "tags": [
+    "Política",
+    "Eleições",
+    "São Paulo",
+    "Presidência"
+  ],
+  "hashtags": [
+    "#Tarcísio",
+    "#FlávioBolsonaro",
+    "#2030"
+  ],
+  "opening_anchor": "O governador de São Paulo, Tarcísio de Freitas, declarou nesta terça-feira que o senador Flávio Bolsonaro tem direito de concorrer à Presidência da República em 2030.",
+  "engagement_question": "Será que Flávio Bolsonaro vai se candidatar em 2030?",
+  "source_mode": "corroborated",
+  "independent_confirmation": true,
+  "new_fact": "O governador de São Paulo, Tarcísio de Freitas, declarou que o senador Flávio Bolsonaro tem direito de concorrer à Presidência da República em 2030.",
+  "why_today": "A declaração foi feita em coletiva de imprensa após a inauguração do novo pronto-socorro do Instituto Dante Pazzanese de Cardiologia, na zona sul da capital paulista.",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-10T16:07:10.756475-03:00",
+  "insufficient_evidence": false,
+  "insufficient_reason": "",
+  "scorecard": {
+    "method": "attention_first_editorial_comparison_not_ctr_prediction",
+    "reason": "A promessa de que Flávio Bolsonaro pode concorrer em 2030 cria uma expectativa imediata e direta, enquanto a confirmação de Tarcísio, figura de autoridade, gera curiosidade sobre as implicações políticas e a reação de outros atores. O título combina surpresa, autoridade e futuro, estimulando o clique.",
+    "criteria": {
+      "curiosity": "specific",
+      "tone": "provocative",
+      "evidence": "spoken_literal"
+    }
+  },
+  "discovery_strategy": {
+    "audience_hypothesis": "Interessados em política estadual e nacional",
+    "first_payoff": "O governador de São Paulo, Tarcísio de Freitas, declarou nesta terça-feira que o senador Flávio Bolsonaro tem direito de concorrer à Presidência da República",
+    "promise_proof": "Declaração do governador e cobertura de mídia",
+    "recommendation_angle": "Política",
+    "search_query": "Tarcísio de Freitas Flávio Bolsonaro 2030",
+    "thumbnail_complement": "Foto do governador",
+    "verification_limits": "Conferido por duas fontes independentes",
+    "viewer_intent": "Informar"
+  },
+  "news_selection": {
+    "attribution_note": "Declaração do governador de São Paulo, Tarcísio de Freitas, publicada em 10 nov 2026",
+    "candidate_review": [
+      {
+        "subject": "Tarcísio de Freitas comenta possibilidade de Flávio Bolsonaro concorrer à Presidência em 2030",
+        "topic_area": "Política",
+        "decision": "selecionado",
+        "event_date": "2026-11-10",
+        "urls": [
+          "https://www.moneytimes.com.br/e-claro-que-flavio-bolsonaro-tem-direito-de-ser-candidato-em-2030-diz-tarcisio/",
+          "https://revistaoeste.com/politica/tarcisio-comenta-possivel-candidatura-de-flavio-em-2030/"
+        ]
+      }
+    ],
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "O governador de São Paulo, Tarcísio de Freitas, declarou que o senador Flávio Bolsonaro tem direito de concorrer à Presidência da República em 2030.",
+    "why_today": "A declaração foi feita em coletiva de imprensa após a inauguração do novo pronto-socorro do Instituto Dante Pazzanese de Cardiologia, na zona sul da capital paulista.",
+    "opening_anchor": "O governador de São Paulo, Tarcísio de Freitas, declarou nesta terça-feira que o senador Flávio Bolsonaro tem direito de concorrer à Presidência da República",
+    "topic_area": "general"
+  },
+  "sources": [
+    {
+      "id": "src1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/e-claro-que-flavio-bolsonaro-tem-direito-de-ser-candidato-em-2030-diz-tarcisio/",
+      "published_at": "2026-11-10",
+      "role": "primary",
+      "published_at_timestamp": "2026-11-10T13:48:00-03:00"
+    },
+    {
+      "id": "src2",
+      "publisher": "Revista Oeste",
+      "url": "https://revistaoeste.com/politica/tarcisio-comenta-possivel-candidatura-de-flavio-em-2030/",
+      "published_at": "2026-11-10",
+      "role": "primary",
+      "published_at_timestamp": "2026-11-10T15:13:00-03:00"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "O governador de São Paulo, Tarcísio de Freitas, declarou que o senador Flávio Bolsonaro tem direito de concorrer à Presidência da República em 2030.",
+      "event_date": "2026-11-10",
+      "source_ids": [
+        "src1",
+        "src2"
+      ],
+      "status": "confirmed"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc1",
+      "source_id": "src1",
+      "expected_text": "O governador de São Paulo, Tarcísio de Freitas (Republicanos), disse nesta terça-feira, 10, que o senador Flávio",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/e-claro-que-flavio-bolsonaro-tem-direito-de-ser-candidato-em-2030-diz-tarcisio/",
+      "capture_file": "research/captures/doc1.png",
+      "attribution": "Money Times",
+      "selection_method": "visible_page_context_fallback_not_claim_highlight",
+      "editorial_reconstruction": {
+        "headline": "Tarcísio de Freitas: Flávio Bolsonaro tem direito de concorrer em 2030!",
+        "context": "O governador de São Paulo, Tarcísio de Freitas, declarou que o senador Flávio Bolsonaro tem direito de concorrer à Presidência da República em 2030.",
+        "publisher": "Money Times",
+        "published_at": "2026-11-10"
+      }
+    },
+    {
+      "id": "doc2",
+      "source_id": "src2",
+      "expected_text": "O governador de São Paulo, Tarcísio de Freitas, afirmou em coletiva nesta terça-feira, 10, que o senador Flávio",
+      "kind": "source_excerpt",
+      "source_page_url": "https://revistaoeste.com/politica/tarcisio-comenta-possivel-candidatura-de-flavio-em-2030/",
+      "capture_file": "research/captures/doc2.png",
+      "attribution": "Revista Oeste",
+      "selection_method": "visible_page_context_fallback_not_claim_highlight",
+      "editorial_reconstruction": {
+        "headline": "Tarcísio de Freitas: Flávio Bolsonaro tem direito de concorrer em 2030!",
+        "context": "O governador de São Paulo, Tarcísio de Freitas, declarou que o senador Flávio Bolsonaro tem direito de concorrer à Presidência da República em 2030.",
+        "publisher": "Revista Oeste",
+        "published_at": "2026-11-10"
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "seg1",
+      "title": "A declaração",
+      "label": "Declaração",
+      "headline": "Tarcísio confirma direito de Flávio Bolsonaro a concorrer em 2030",
+      "metric": "Política",
+      "narration": "O governador de São Paulo, Tarcísio de Freitas, declarou nesta terça-feira que o senador Flávio Bolsonaro tem direito de concorrer à Presidência da República em 2030, mas que ainda é cedo para discutir a sucessão presidencial. Eu sou o Roberto, do O Dinheiro Explica.",
+      "document_id": "doc1",
+      "type": "fact",
+      "object_type": "data",
+      "visual_cards": [
+        "card1"
+      ]
+    },
+    {
+      "id": "seg2",
+      "title": "Reação política",
+      "label": "Reação",
+      "headline": "Flávio Bolsonaro responde à declaração",
+      "metric": "Política",
+      "narration": "Flávio Bolsonaro, que havia mencionado a possibilidade de candidatura em entrevista à Folha de S.Paulo na semana anterior, respondeu que pretende voltar a concorrer se o PL concordar.",
+      "document_id": "doc2",
+      "type": "background",
+      "object_type": "data",
+      "visual_cards": [
+        "card2"
+      ]
+    },
+    {
+      "id": "seg3",
+      "title": "Contexto da coletiva",
+      "label": "Contexto",
+      "headline": "Coletiva após inauguração do pronto-socorro",
+      "metric": "Política",
+      "narration": "A declaração foi feita durante uma coletiva de imprensa após a inauguração do novo pronto-socorro do Instituto Dante Pazzanese de Cardiologia, na zona sul da capital paulista.",
+      "document_id": "doc1",
+      "type": "background",
+      "object_type": "data",
+      "visual_cards": [
+        "card3"
+      ]
+    }
+  ],
+  "title_options": [
+    {
+      "text": "Tarcísio de Freitas: Flávio Bolsonaro tem direito de concorrer em 2030!",
+      "editorial_quality": 5,
+      "proof_anchor": "O governador de São Paulo, Tarcísio de Freitas, declarou nesta terça-feira que o senador Flávio Bolsonaro tem direito de concorrer à Presidência da República em 2030, mas que ainda é cedo para discutir a sucessão presidencial."
+    },
+    {
+      "text": "Flávio Bolsonaro pode ser candidato em 2030? Tarcísio confirma!",
+      "editorial_quality": 4,
+      "proof_anchor": "O governador de São Paulo, Tarcísio de Freitas, declarou nesta terça-feira que o senador Flávio Bolsonaro tem direito de concorrer à Presidência da República em 2030, mas que ainda é cedo para discutir a sucessão presidencial."
+    },
+    {
+      "text": "Política em choque: Tarcísio libera Flávio Bolsonaro para 2030!",
+      "editorial_quality": 4,
+      "proof_anchor": "O governador de São Paulo, Tarcísio de Freitas, declarou nesta terça-feira que o senador Flávio Bolsonaro tem direito de concorrer à Presidência da República em 2030, mas que ainda é cedo para discutir a sucessão presidencial."
+    }
+  ],
+  "pronunciations": {},
+  "context_photos": [],
+  "editorial_review_method": "Automated source-backed review; actual providers/models recorded in transport diagnostics; source_mode=corroborated",
+  "publication_description": "Contexto: Política",
+  "production_advisories": [
+    {
+      "code": "document_context_fallback",
+      "message": "Plano de recortes não confirmado descartado; usar contexto autêntico da página. Fatos seguem sujeitos à revisão integral."
+    },
+    {
+      "code": "development_unavailable_shorter_fallback",
+      "error_type": "RuntimeError",
+      "detail": "OpenRouter free fallback returned invalid response"
+    }
+  ],
+  "packaging_strategy": {
+    "policy": "provocative_language_precise_facts",
+    "thumbnail_proof_anchor": "O governador de São Paulo, Tarcísio de Freitas, declarou nesta terça-feira que o senador Flávio Bolsonaro tem direito de concorrer à Presidência da República em 2030, mas que ainda é cedo para discutir a sucessão presidencial.",
+    "compared_after_full_narration": true
+  },
+  "editorial_quality": {
+    "version": "2026-11-10.1",
+    "review_method": "groq_second_pass_with_literal_source_support",
+    "reviewed_at": "2026-11-10T16:08:40.447017-03:00",
+    "reviewed_content_sha256": "6a13ce34b12b2630cffc70c317f02a1f6a18d812ee7248545315692ccb01ca25",
+    "narration_word_count": 99,
+    "target_minutes": [
+      4,
+      6
+    ],
+    "review": {
+      "approved": true,
+      "issues": [],
+      "warnings": [],
+      "same_day_event_supported": true,
+      "title_opening_delivered": true,
+      "event_date_evidence": {
+        "passage_id": "src1-P6",
+        "source_id": "src1",
+        "quote": "O governador de São Paulo, Tarcísio de Freitas (Republicanos), disse nesta terça-feira, 10, que o senador Flávio Bolsonaro (PL) tem direito de voltar a disputar a Presidência da República em 2030, mas que ainda é cedo para discutir a sucessão presidencial. Tarcísio, que no fim de outubro admitiu a possibilidade de concorrer ao Planalto, afirmou que agora vai se dedicar ao governo de São Paulo."
+      },
+      "claim_checks": [
+        {
+          "claim_index": 0,
+          "supported": true,
+          "evidence": [
+            {
+              "passage_id": "src1-P6",
+              "source_id": "src1",
+              "quote": "O governador de São Paulo, Tarcísio de Freitas (Republicanos), disse nesta terça-feira, 10, que o senador Flávio Bolsonaro (PL) tem direito de voltar a disputar a Presidência da República em 2030, mas que ainda é cedo para discutir a sucessão presidencial. Tarcísio, que no fim de outubro admitiu a possibilidade de concorrer ao Planalto, afirmou que agora vai se dedicar ao governo de São Paulo."
+            },
+            {
+              "passage_id": "src2-P11",
+              "source_id": "src2",
+              "quote": "O governador de São Paulo, Tarcísio de Freitas, afirmou em coletiva nesta terça-feira, 10, que o senador Flávio Bolsonaro tem o direito de concorrer à Presidência em 2030. Tarcísio elogiou Flávio, que na semana anterior mencionou a possibilidade de candidatura, e também comentou sobre a disputa pela presidência do Senado, elogiando os senadores Rogério Marinho e Tereza Cristina como bons nomes."
+            }
+          ]
+        }
+      ],
+      "narration_checks": [
+        {
+          "segment_id": "seg1",
+          "supported": true,
+          "has_factual_assertions": true,
+          "unsupported_assertions": [],
+          "evidence": [
+            {
+              "passage_id": "src1-P6",
+              "source_id": "src1",
+              "quote": "O governador de São Paulo, Tarcísio de Freitas (Republicanos), disse nesta terça-feira, 10, que o senador Flávio Bolsonaro (PL) tem direito de voltar a disputar a Presidência da República em 2030, mas que ainda é cedo para discutir a sucessão presidencial. Tarcísio, que no fim de outubro admitiu a possibilidade de concorrer ao Planalto, afirmou que agora vai se dedicar ao governo de São Paulo."
+            },
+            {
+              "passage_id": "src2-P11",
+              "source_id": "src2",
+              "quote": "O governador de São Paulo, Tarcísio de Freitas, afirmou em coletiva nesta terça-feira, 10, que o senador Flávio Bolsonaro tem o direito de concorrer à Presidência em 2030. Tarcísio elogiou Flávio, que na semana anterior mencionou a possibilidade de candidatura, e também comentou sobre a disputa pela presidência do Senado, elogiando os senadores Rogério Marinho e Tereza Cristina como bons nomes."
+            }
+          ]
+        },
+        {
+          "segment_id": "seg2",
+          "supported": true,
+          "has_factual_assertions": true,
+          "unsupported_assertions": [],
+          "evidence": [
+            {
+              "passage_id": "src1-P9",
+              "source_id": "src1",
+              "quote": "Derrotado pelo presidente Luiz Inácio Lula da Silva (PT) no segundo turno, Flávio disse na semana passada, em entrevista à Folha de S.Paulo, que pretende voltar a concorrer se o PL concordar. O senador afirmou que já havia comunicado sua intenção a Tarcísio."
+            }
+          ]
+        },
+        {
+          "segment_id": "seg3",
+          "supported": true,
+          "has_factual_assertions": true,
+          "unsupported_assertions": [],
+          "evidence": [
+            {
+              "passage_id": "src1-P10",
+              "source_id": "src1",
+              "quote": "O governador foi questionado sobre os planos de Flávio e sobre como os aliados vão definir a candidatura à Presidência em 2030. Ele falou a jornalistas após a inauguração do novo pronto-socorro do Instituto Dante Pazzanese de Cardiologia, na zona sul da capital paulista."
+            },
+            {
+              "passage_id": "src2-P17",
+              "source_id": "src2",
+              "quote": "A declaração ocorreu durante uma coletiva de imprensa depois da inauguração do novo pronto-socorro do Instituto Dante Pazzanese de Cardiologia, na Vila Mariana, zona sul da capital paulista. Na semana passada, Flávio afirmou que poderá voltar a concorrer à Presidência da República em 2030."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
