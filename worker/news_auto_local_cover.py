@@ -34,12 +34,23 @@ def make_background(root, project, episode):
     directory.mkdir(parents=True, exist_ok=True)
     output = directory / "thumbnail-background.png"
     with Image.open(real[0]) as src:
-        source = ImageOps.fit(src.convert("RGB"), (1280, 720), method=Image.Resampling.LANCZOS)
+        original = src.convert("RGB")
+        source = ImageOps.fit(original, (1280, 720), method=Image.Resampling.LANCZOS)
     washed = ImageEnhance.Color(source).enhance(0.65).filter(ImageFilter.GaussianBlur(11))
     charcoal = Image.new("RGB", (1280, 720), "#090B0D")
     merged = Image.blend(charcoal, washed, 0.52)
-    # Keep center/subject visually anchored in authentic document pixels.
-    # No logo, headline or new object is generated in the source-backed background.
+    # Keep an unaltered, sharp documentary object above the headline, on the
+    # side opposite Roberto. The washed copy supplies depth, not the evidence.
+    document = ImageOps.contain(original, (590, 330), method=Image.Resampling.LANCZOS)
+    framed = ImageOps.expand(document, border=3, fill="#D4D8DC")
+    column_x = 42 if episode.get("thumbnail_text_side") != "right" else 648
+    x, y = column_x + (590 - document.width) // 2, 58
+    shadow = Image.new("RGBA", (1280, 720))
+    shadow.paste((0, 0, 0, 180), (x-8, y+10, x+framed.width+8, y+framed.height+26))
+    shadow = shadow.filter(ImageFilter.GaussianBlur(18))
+    merged = Image.alpha_composite(merged.convert("RGBA"), shadow)
+    merged.paste(framed, (x, y))
+    merged = merged.convert("RGB")
     merged.save(output)
     print("THUMBNAIL_VERIFIED_DOCUMENT_BACKGROUND", str(real[0]), flush=True)
     return output
@@ -62,7 +73,8 @@ Protagonista exigido: {contract['primary_subject']}.
 Elemento de apoio permitido: {contract['secondary_subject']!r}.
 Identidade: carvão #090B0D, amarelo #FFBD19, texto claro; rosto oficial do Roberto,
 sem deformação, e headline não encoberta. Exclusões: {contract['forbidden_elements']}.
-A imagem de fundo deriva de screenshot editorial autêntico, não de documento fabricado.
+A imagem contém documento real em primeiro plano e fundo derivado da mesma captura; textos do print são parte da fonte, não headline autoral extra.
+Não exigir fotografia do personagem quando o contrato autoriza a prova documental como protagonista. Avalie legibilidade da headline e clareza do assunto; não reprovar por preferência estética pessoal.
 Apenas marque true em checks se a respectiva verificação for perceptualmente óbvia.
 Cheque texto literalmente palavra por palavra e legibilidade na imagem pequena.
 Em cada observations descreva o que efetivamente viu, não a intenção do prompt.

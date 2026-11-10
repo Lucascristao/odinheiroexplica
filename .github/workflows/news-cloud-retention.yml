@@ -98,13 +98,16 @@ jobs:
               return nominal.astimezone(ZoneInfo('America/Fortaleza')).date().isoformat()
 
           def confirmed_night(report):
+              if isinstance(report.get('editions'), list):
+                  matches = [confirmed_night(item) for item in report['editions'] if isinstance(item, dict)]
+                  return max((day for day in matches if day), default=None)
               day = report.get('news_date')
               if not isinstance(day, str) or date.fromisoformat(day).isoformat() != day:
                   return None
               if (report.get('public_confirmed') is True
                       and report.get('privacy_observed') == 'public'
                       and report.get('stage') == 'public_confirmed'
-                      and report.get('episode_id') == f'noticia-{day}-noite'):
+                      and report.get('episode_id') in {f'noticia-{day}-{slot}' for slot in ('noite', 'noite-1', 'noite-3')}):
                   return day
               return None
 

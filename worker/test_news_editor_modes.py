@@ -62,6 +62,12 @@ class EditorSourceModeTests(unittest.TestCase):
     def test_one_article_two_distinct_excerpts_is_valid(self):
         self.assertEqual(self.run_check(episode()).call_count, 1)
 
+    def test_similar_words_do_not_replace_an_absent_source_quote(self):
+        ep = episode()
+        ep["documentary_evidence"][0]["expected_text"] = "A medida foi anunciada hoje e garante benefício universal inexistente."
+        with self.assertRaisesRegex(ValueError, "absent"):
+            self.run_check(ep)
+
     def test_duplicate_quotes_do_not_simulate_two_excerpts(self):
         ep = episode()
         ep["documentary_evidence"][1]["expected_text"] = "  " + Q1.upper() + "  "

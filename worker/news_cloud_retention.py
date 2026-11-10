@@ -180,7 +180,8 @@ def make_plan(github, service, channel, *, now=None, protected=(), closed=(), re
     report = {"version": "1.0", "repository": REPO, "created_at_utc": now.isoformat(),
               "status": "guarded", "reason": None, "delete": [], "keep": [], "removed": []}
     latest = latest_public(service, channel)
-    if require_night_date and latest["project_id"] != "noticia-" + require_night_date + "-noite":
+    if require_night_date and not re.fullmatch(
+            "noticia-" + re.escape(require_night_date) + r"-(?:noite|noite-1|noite-3)", latest["project_id"]):
         report.update(reason="required_night_not_public", latest_public=latest)
         return report
     artifacts, caches = github.artifacts(), github.caches()

@@ -63,6 +63,8 @@ def editorial_window(config, day, slot, now):
     budget = config.get("minimum_production_budget_minutes", 45)
     grace = config.get("late_tolerance_minutes", 0) if config.get("publish_if_late") else 0
     end = target + timedelta(minutes=grace - budget)
+    midnight = start.replace(hour=0, minute=0) + timedelta(days=1)
+    end = min(end, midnight - timedelta(minutes=budget))
     return (config.get("enabled") is True and now.astimezone(zone).date().isoformat() == day
             and start <= now <= end), start, end
 

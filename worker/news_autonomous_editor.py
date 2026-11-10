@@ -68,6 +68,25 @@ def bind_draft_metadata(episode):
     anchor = selection.get("opening_anchor")
     matching = [fact for fact in episode.get("verified_facts", [])
                 if isinstance(fact, dict) and fact.get("claim") == selection.get("new_fact")]
+    if not matching and isinstance(selection.get("new_fact"), str):
+        # Bind a duplicate metadata pointer to an existing claim, without
+        # rewriting source text or narration. Final semantic review still runs.
+        terms = lambda value: set(re.findall(r"\w{3,}", plain(value))) - {"para", "com", "que", "dos", "das", "por", "uma"}
+        requested = terms(selection["new_fact"])
+        scored = []
+        for fact in episode.get("verified_facts", []):
+            if fact.get("event_date") != episode.get("news_date") or fact.get("status") == "background":
+                continue
+            existing = terms(fact.get("claim", ""))
+            overlap = len(requested & existing)
+            score = overlap / max(1, min(len(requested), len(existing)))
+            if overlap >= 4 and score >= .7:
+                scored.append((score, fact))
+        scored.sort(key=lambda pair: pair[0], reverse=True)
+        if scored and (len(scored) == 1 or scored[0][0] - scored[1][0] >= .2):
+            selection["new_fact"] = scored[0][1]["claim"]
+            matching = [scored[0][1]]
+            print("EDITORIAL_METADATA_BINDING new_fact linked to existing dated claim; no factual text changed", flush=True)
     valid_anchor = isinstance(anchor, str) and 20 <= len(anchor) <= 160 and opening.count(anchor) == 1
     if not valid_anchor and len(matching) == 1 and first.get("type") == "fact":
         claim_terms = set(re.findall(r"\w{3,}", matching[0]["claim"].casefold())) - {
@@ -380,7 +399,7 @@ Campos e formas obrigatórios:
 version="1.0",format="ode-news-single",episode_id,news_date="{day}",event_date="{day}",editorial_status="autonomous_fact_checked",reviewed_at="".
 title:20-100 caracteres, assunto reconhecível cedo, contradição/mudança/consequência concreta; sem título burocrático, superlativo vazio ou alarmismo.
 title_options:3 objetos {{text,editorial_quality:inteiro 1-5}}, ângulos distintos; title COPIA uma opção com nota máxima; scorecard={{method,reason,criteria:objeto}} justifica a mais forte por tensão factual e público.
-thumbnail_headline:2-4 palavras,8-34 caracteres, COMPLEMENTA título, sem repetir a manchete. thumbnail_primary:protagonista real da notícia; thumbnail_tension,thumbnail_composition,thumbnail_text_side:left/right. Nada de rostos/objetos aleatórios para chamar atenção.
+thumbnail_headline:2-4 palavras,8-34 caracteres, COMPLEMENTA título com tensão concreta, sem repetir a manchete. thumbnail_primary:prova documental real sobre o assunto, pois a composição local usa print autêntico como protagonista e Roberto em apoio; não exigir foto de personagem que não foi autorizada. thumbnail_tension,thumbnail_composition,thumbnail_text_side:left/right. Nada de rostos/objetos aleatórios para chamar atenção.
 sources:2-4 objetos {{id:S1/S2...,publisher,url,published_at:YYYY-MM-DD,role}}, apenas URLs específicas do relatório. Dê nome real, título da matéria se disponível e papel real: primary/independent/context. Não chamar republicação de agência de fonte independente. Fonte primária quando realmente disponível; não alegar ter lido documento ausente.
 verified_facts:4-7 objetos {{claim,source_ids:[IDs],status,event_date}}; status:statement/background/forecast_not_collected/projection/confirmed. Todo número exige apoio. Cálculos precisam de denominador e período comparáveis. Acontecimento CENTRAL ocorrido hoje, não apenas matéria publicada hoje sobre fato antigo.
 news_selection:OBJETO {{topic_area:politics/economy/personal_finance/business/international,source_mode:corroborated/single_source_attributed,independent_confirmation:boolean,new_fact,why_today,opening_anchor,candidate_review}}.
@@ -445,6 +464,7 @@ def main():
     p.add_argument("--date", default=None, help="Data YYYY-MM-DD da edição; padrão hoje em Fortaleza")
     p.add_argument("--root", default=".")
     p.add_argument("--evaluation", action="store_true", help="Exercise real research/writing into a non-publishing artifact only")
+    p.add_argument("--resume-draft", help="Evaluation only: recheck a saved rejected draft instead of repeating research calls")
     args = p.parse_args()
     if not os.getenv("GROQ_API_KEY"):
         raise SystemExit("GROQ_API_KEY inexistente; configurar secret no GitHub.")
@@ -461,19 +481,29 @@ def main():
     if output.exists():
         print("NEWS_SLOT_ALREADY_EXISTS:", output)
         return
-    candidates = collect()
-    if not candidates.get("candidates"):
-        raise SystemExit("Nenhuma pauta RSS atual, não inventar notícias.")
     history = existing_history(root)
-    report = research(candidates["candidates"], history,
-                      f"{date}T{SLOTS[args.slot]}:00-03:00",
-                      diagnostic_path=root / "render-output" / "news-editorial-diagnostics.json")
+    resumed = None
+    if args.resume_draft:
+        if not args.evaluation:
+            raise SystemExit("Saved rejected drafts can only resume a non-publishing evaluation")
+        saved = json.loads(Path(args.resume_draft).read_text(encoding="utf-8"))
+        resumed = saved.get("draft")
+        if not isinstance(resumed, dict) or resumed.get("news_date") != date:
+            raise SystemExit("Saved draft does not match the requested factual date")
+        report = ""
+    else:
+        candidates = collect()
+        if not candidates.get("candidates"):
+            raise SystemExit("Nenhuma pauta RSS atual, não inventar notícias.")
+        report = research(candidates["candidates"], history,
+                          f"{date}T{SLOTS[args.slot]}:00-03:00",
+                          diagnostic_path=root / "render-output" / "news-editorial-diagnostics.json")
     error = ""
-    for attempt in range(3):
+    for attempt in range(1 if resumed else 3):
         episode = None
         transport = {}
         try:
-            episode = draft(report, date, args.slot, history, error, diagnostics=transport)
+            episode = bind_draft_metadata(clean_unicode_spaces(resumed)) if resumed else draft(report, date, args.slot, history, error, diagnostics=transport)
             episode["version"] = "1.0"
             episode["format"] = "ode-news-single"
             episode["episode_id"] = f"noticia-{date}-{args.slot}"

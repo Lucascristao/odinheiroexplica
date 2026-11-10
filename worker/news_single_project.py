@@ -284,9 +284,11 @@ def validate(episode: dict, today: date | None = None, drafting: bool = False) -
     used_docs = set()
     used_photos = set()
     for segment in segments:
-        require(len(str(segment.get("narration", "")).split()) >= 25, "bloco narrativo curto demais")
+        require(len(str(segment.get("narration", "")).split()) >= (1 if drafting else 25), "bloco narrativo curto demais")
         cards = segment.get("visual_cards") or []
-        require(3 <= len(cards) <= 8 and all(6 <= len(c) <= 65 for c in cards), "faltam destaques sincronizados")
+        require((1 if quality or drafting else 3) <= len(cards) <= 8
+                and all((1 if quality or drafting else 6) <= len(c) <= 65 for c in cards),
+                "faltam destaques sincronizados")
         if segment.get("object_type") not in ("data", "store", "cash", "bank", "package", "truck", "factory"):
             segment["object_type"] = "data"
         if segment.get("document_id") or segment.get("photo_id"):

@@ -138,6 +138,9 @@ def read_upload_receipt(blob):
 def active_window(config, slot, now):
     zone = ZoneInfo(config["timezone"])
     local = now.astimezone(zone)
+    if config.get("slots"):
+        active, start, end = editorial_window(config, local.date().isoformat(), slot, now)
+        return active, local.date().isoformat(), start, end
     row = configured_slots(config)[slot]
     start = datetime.fromisoformat(local.date().isoformat() + "T" + row["production"]).replace(tzinfo=zone)
     publication = datetime.fromisoformat(local.date().isoformat() + "T" + row["publication"]).replace(tzinfo=zone)
