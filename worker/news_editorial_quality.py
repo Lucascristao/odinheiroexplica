@@ -54,8 +54,8 @@ def develop(episode, corpus, completed_ids=(), on_progress=None):
     outline = [{"id": s["id"], "type": s["type"], "title": s["title"]} for s in segments]
     facts = episode["verified_facts"]
     completed = set(completed_ids)
-    for offset in range(0, len(segments), 2):
-        batch = segments[offset:offset + 2]
+    for offset in range(len(segments)):
+        batch = segments[offset:offset + 1]
         if all(s["id"] in completed for s in batch):
             continue
         source_ids = {doc["source_id"] for doc in episode["documentary_evidence"]
@@ -63,7 +63,7 @@ def develop(episode, corpus, completed_ids=(), on_progress=None):
         excerpts = {sid: {**corpus[sid], "text": corpus[sid]["text"][:2000]}
                     for sid in source_ids}
         writing_batch = [{key: s.get(key) for key in ("id", "title", "type", "narration", "document_id")} for s in batch]
-        prompt = f"""Desenvolva APENAS estes blocos de uma notícia única. Retorne {{"segments":[{{"id":"...","narration":"..."}}]}}.
+        prompt = f"""Desenvolva APENAS o único bloco solicitado desta notícia. Retorne JSON simples {{"narration":"fala completa deste bloco"}}. Não devolver IDs nem outras cenas.
 Plano completo (não repetir as outras cenas): {json.dumps(outline, ensure_ascii=False)}
 Blocos para escrever: {json.dumps(writing_batch, ensure_ascii=False)}
 Fatos apurados: {json.dumps(facts, ensure_ascii=False)}
@@ -76,15 +76,13 @@ Português falado com frases claras e variadas; preserve números exatamente, es
 Na abertura preserve o FATO e a promessa destes trechos, podendo escrever números e siglas em forma falada: {json.dumps([episode['news_selection']['opening_anchor'], episode['discovery_strategy']['first_payoff']], ensure_ascii=False)}. O código vincula os metadados literais à fala final depois. Entregue a descoberta antes de se apresentar brevemente como Roberto, do O Dinheiro Explica. Nada de saudação longa ou inscrição antes da entrega.
 Opinião inicia 'Na minha análise,' ou 'Na minha opinião,'. Conclusão responde à pergunta, explicita o que ainda falta acontecer e inclui um pedido curto de inscrição ligado à utilidade do canal.
 Não incluir diretivas de voz no texto nem alegar consenso de fontes. Preserve nomes próprios e os limites das reportagens. Não copiar parágrafos da fonte."""
-        result = parse_reply(prompt, budget=1800)
-        revised = result.get("segments", [])
+        result = parse_reply(prompt, budget=1100)
+        narration = result.get("narration")
+        if not isinstance(narration, str) and isinstance(result.get("segments"), list) and len(result["segments"]) == 1:
+            narration = result["segments"][0].get("narration")
+        revised = [{"id": batch[0]["id"], "narration": narration}]
         if result.get("insufficient_evidence"):
             raise ValueError("Writer reported unsupported factual premise; preserve original text for independent review")
-        if isinstance(revised, list) and len(revised) == len(batch):
-            for original, replacement in zip(batch, revised):
-                replacement["id"] = original["id"]  # IDs are technical; preserve the requested narrative order.
-        if not isinstance(revised, list) or len(revised) != len(batch):
-            raise ValueError("Writing response did not return the requested narrative blocks")
         for original, replacement in zip(batch, revised):
             narration = replacement.get("narration")
             if not isinstance(narration, str) or not narration.strip():
@@ -150,8 +148,12 @@ def validate_review(result, episode, corpus):
             raise ValueError("Unsupported claim in editorial review")
         for proof in evidence:
             sid, quote = proof.get("source_id"), proof.get("quote", "")
-            if sid not in fact["source_ids"] or sid not in corpus or len(quote) < 12 or normalize(quote) not in normalize(corpus[sid]["text"]):
+            if sid not in corpus or len(quote) < 12 or normalize(quote) not in normalize(corpus[sid]["text"]):
                 raise ValueError("Claim-support quotation absent from its real source")
+            if sid not in fact["source_ids"]:
+                # The reviewer found support in an already fetched source;
+                # derive the metadata link instead of rejecting correct facts.
+                fact["source_ids"].append(sid)
     if result.get("same_day_event_supported") is not True or result.get("title_opening_delivered") is not True:
         raise ValueError("Recency or title/opening promise unproven")
     evidence = result.get("event_date_evidence", {})

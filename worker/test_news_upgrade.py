@@ -84,6 +84,17 @@ class SourceReview(unittest.TestCase):
     def test_complete_literal_support_can_pass(self):
         validate_review(self.review, self.ep, self.corpus)
 
+    def test_review_can_add_support_from_another_fetched_source(self):
+        self.corpus["S2"] = {"text": "Outra fonte consultada confirma o resultado e suas condições."}
+        self.review["claim_checks"][0]["evidence"] = [{"source_id": "S2", "quote": self.corpus["S2"]["text"]}]
+        validate_review(self.review, self.ep, self.corpus)
+        self.assertEqual(self.ep["verified_facts"][0]["source_ids"], ["S1", "S2"])
+
+    def test_unfetched_source_cannot_be_added_by_review(self):
+        self.review["claim_checks"][0]["evidence"][0]["source_id"] = "S99"
+        with self.assertRaisesRegex(ValueError, "absent"):
+            validate_review(self.review, self.ep, self.corpus)
+
     def test_approving_model_cannot_invent_quote(self):
         self.review["claim_checks"][0]["evidence"][0]["quote"] = "Um texto parecido mas nunca publicado nesta fonte."
         with self.assertRaisesRegex(ValueError, "absent"):
@@ -155,6 +166,17 @@ class SourceReview(unittest.TestCase):
 
 
 class AutonomousRecovery(unittest.TestCase):
+    def test_scene_development_resumes_without_rewriting_completed_voice_text(self):
+        ep = {"segments": [{"id": "one", "type": "opening", "title": "Abertura", "narration": "Preservado", "document_id": "doc1"},
+                           {"id": "two", "type": "fact", "title": "Detalhe", "narration": "Rascunho", "document_id": "doc1"}],
+              "verified_facts": [], "documentary_evidence": [{"id": "doc1", "source_id": "S1"}],
+              "news_selection": {"opening_anchor": "Preservado"}, "discovery_strategy": {"first_payoff": "Preservado"}}
+        with patch("news_editorial_quality.parse_reply", return_value={"narration": "Explicação desenvolvida com respaldo."}) as writer:
+            develop(ep, {"S1": {"text": "Fonte real de teste."}}, completed_ids={"one"})
+        self.assertEqual(writer.call_count, 1)
+        self.assertEqual(ep["segments"][0]["narration"], "Preservado")
+        self.assertEqual(ep["segments"][1]["narration"], "Explicação desenvolvida com respaldo.")
+
     def test_editorial_repair_cannot_fake_dates_or_sources(self):
         ep = {"title": "Fixture", "thumbnail_headline": "Fixture", "segments": [],
               "verified_facts": [{"claim": "Central"}, {"claim": "Secondary"}], "news_selection": {"new_fact": "Central"}}

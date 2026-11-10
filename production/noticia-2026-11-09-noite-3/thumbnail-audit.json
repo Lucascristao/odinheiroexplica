@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "project_id": "noticia-2026-11-09-noite-3",
+  "project_sha256": "93cc2c392b5115d5cc223031255e9c34805f6d611f6da857932f45f0178dbee6",
+  "contract_sha256": "12f30684e9822d9c044ea28ff6d18b4bd5425a6f593ec0f2ef1ef9058ccba352",
+  "image_sha256": "6e0135efdcf817f131dda70068459c1bf9eeb823bcee175a09b0125e83dba248",
+  "headline": "DÁ PARA COMEMORAR?",
+  "approval_status": "approved",
+  "reviewer": "ChatGPT — inspeção visual dos pixels em 1280x720 e 320x180",
+  "reviewed_at": "2026-11-10T05:16:58.600111+00:00",
+  "checks": {
+    "headline_exact": true,
+    "primary_subject": true,
+    "secondary_subject": true,
+    "forbidden_absent": true,
+    "identity_and_mobile": true,
+    "no_fabricated_data": true,
+    "unique_composition": true
+  },
+  "observations": {
+    "headline": "Inspecionados 1280x720 e 320x180: DÁ PARA COMEMORAR? aparece inteiro em duas linhas, sem cortar a interrogação à direita.",
+    "primary_subject": "Recorte autêntico do Money Times no alto à direita: cabeçalho, título do lucro de R$ 5,1 bi, data e foto da matéria preservados. O texto pequeno da reportagem não é apresentado como legível no celular; o título do vídeo explica a dívida.",
+    "secondary_subject": "Retrato oficial Roberto v1 engaged à esquerda, rosto completo e nítido, sem alteração de identidade.",
+    "forbidden_absent": "Não observei números ou documento inventados, setas, cifras externas, logotipo criado, marca dágua adicional nem outra headline. Os elementos da página original permanecem no print.",
+    "identity_and_mobile": "Em 320x180 reconheci o rosto e li a headline amarela completa. Fundo documental desfocado, sombra e base escura sustentam contraste sem cobrir o rosto.",
+    "no_fabricated_data": "A imagem mostra pixels da página capturada, não uma reportagem reconstruída. Não adicionei cifra ou gráfico; a foto permanece dentro da página como contexto editorial.",
+    "unique_composition": "Comparado ao canal observado, que usava frames de reportagens como miniatura, esta composição tem retrato oficial à esquerda, página em moldura superior direita e pergunta complementar embaixo."
+  },
+  "checked_forbidden_elements": [
+    "dados ou documentos inventados",
+    "cópias de capas de terceiros",
+    "foto apresentada como evidência de um evento diferente",
+    "logotipo inventado",
+    "texto extra",
+    "marca d'água"
+  ],
+  "observed_forbidden_elements": []
+}

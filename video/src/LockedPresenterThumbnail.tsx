@@ -1,16 +1,28 @@
-import React from "react";
-import {AbsoluteFill, Img, Still, registerRoot} from "remotion";
+import React, {useEffect, useState} from "react";
+import {AbsoluteFill, Img, Still, registerRoot, delayRender, continueRender, cancelRender} from "remotion";
+import {composeText} from "../../src/lib/editorial-typography";
 import "@fontsource/inter/900.css";
 
 export type LockedCoverProps = {headline:string; portrait:string; background:string; portraitSide:"left"|"right";
   headlinePosition:"upper"|"middle"|"lower"; portraitSize:"compact"|"standard"|"close"};
 export const LockedPresenterThumbnail:React.FC<LockedCoverProps> = ({headline,portrait,background,portraitSide,headlinePosition,portraitSize}) => {
   const portraitLeft=portraitSide==="left";
-  const words=headline.trim().split(/\s+/);
-  const split=Math.ceil(words.length/2);
-  const lines=[words.slice(0,split).join(" "),words.slice(split).join(" ")].filter(Boolean);
-  const longest=Math.max(...lines.map(line=>line.length));
-  const fontSize=Math.min(94,Math.max(52,Math.floor(640/(longest*.65))));
+  const [handle]=useState(()=>delayRender("Medindo a headline com a fonte real"));
+  const [layout,setLayout]=useState({lines:[headline],size:52});
+  useEffect(()=>{
+    document.fonts.load('900 94px "Inter"').then(()=>{
+      const context=document.createElement("canvas").getContext("2d");
+      if(!context)throw new Error("Medição da fonte indisponível");
+      const measured=composeText(headline,600,200,94,44,(text,size)=>{
+        context.font=`900 ${size}px Inter`;
+        return context.measureText(text).width;
+      });
+      if(!measured.fits)throw new Error("Headline não cabe na capa; revisar composição");
+      setLayout({lines:measured.lines,size:measured.size});
+      continueRender(handle);
+    }).catch(cancelRender);
+  },[headline,handle]);
+  const lines=layout.lines,fontSize=layout.size;
   return <AbsoluteFill style={{backgroundColor:"#090B0D",overflow:"hidden",fontFamily:"Inter,Arial,sans-serif"}}>
     <Img src={background} style={{width:"100%",height:"100%",objectFit:"cover"}} />
     <AbsoluteFill style={{background:"linear-gradient(0deg,rgba(9,11,13,.85) 0%,rgba(9,11,13,.22) 38%,transparent 68%)"}} />
