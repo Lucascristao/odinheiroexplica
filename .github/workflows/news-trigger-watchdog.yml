@@ -1,6 +1,10 @@
 name: ODE Notícias - recuperar gatilho ausente
-run-name: ODE watchdog | ${{ github.event_name == 'schedule' && 'github-cron' || inputs.trigger_source || 'manual' }}
+run-name: ODE watchdog | ${{ github.event_name == 'schedule' && 'github-cron' || github.event_name == 'workflow_run' && 'production-completed' || inputs.trigger_source || 'manual' }}
 on:
+  workflow_run:
+    workflows: ['ODE Notícias - editor automático Groq', 'ODE Notícia Única - produção real']
+    types: [completed]
+    branches: [main]
   workflow_dispatch:
     inputs:
       dry_run:
@@ -23,8 +27,8 @@ concurrency:
   cancel-in-progress: false
 jobs:
   guard:
-    if: github.ref == 'refs/heads/main'
-    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && (github.event_name != 'workflow_run' || github.event.workflow_run.head_repository.full_name == github.repository)
+    runs-on: ubuntu-24.04
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v4
@@ -36,8 +40,8 @@ jobs:
       - name: Conferir janela, main atual, execuções e recibos reais
         env:
           GH_TOKEN: ${{ github.token }}
-          EXECUTE: ${{ github.event_name == 'schedule' || inputs.dry_run == false }}
-          ODE_TRIGGER_SOURCE: ${{ github.event_name == 'schedule' && 'github-cron' || inputs.trigger_source || 'manual' }}
+          EXECUTE: ${{ github.event_name == 'schedule' || github.event_name == 'workflow_run' || inputs.dry_run == false }}
+          ODE_TRIGGER_SOURCE: ${{ github.event_name == 'schedule' && 'github-cron' || github.event_name == 'workflow_run' && 'production-completed' || inputs.trigger_source || 'manual' }}
         shell: bash
         run: |
           set -euo pipefail

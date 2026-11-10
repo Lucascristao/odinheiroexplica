@@ -3,6 +3,14 @@
 Estado: preparado e testado localmente; ativação depende de uma credencial própria.
 Não afirmar que um agendamento está funcionando apenas por haver deploy ou teste manual.
 
+O vigia também reage à conclusão dos workflows do editor e do render na `main`,
+inclusive quando um cron editorial atrasado termina sem produzir. Esse evento
+confere todas as janelas ainda válidas, sem reinterpretar o cron antigo como uma
+edição nova. O próprio vigia não está na lista de workflows observados; mantém
+concorrência única, limite de tentativas, recibos e recusa de edições vencidas.
+Essa recuperação por eventos reduz a dependência do cron, mas não substitui o
+relógio externo quando não chega evento algum do GitHub.
+
 O Netlify já hospeda o painel `odinheiroexplica`. A função agendada `news-watchdog`
 consulta o vigia da `main` e solicita sua execução quando não há execução ativa ou
 iniciada nos últimos vinte minutos. O vigia existente decide quais episódios faltam,

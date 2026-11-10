@@ -26,6 +26,9 @@ on:
       - 'worker/news_production_gate.py'
       - 'worker/news_editorial_quality.py'
       - 'worker/test_news_upgrade.py'
+      - 'worker/news_trigger_guard.py'
+      - 'worker/test_news_trigger_guard.py'
+      - '.github/workflows/news-trigger-watchdog.yml'
 permissions:
   contents: read
 jobs:
@@ -51,6 +54,7 @@ jobs:
               ".github/workflows/news-scout.yml",
               ".github/workflows/news-autonomy-smoke.yml",
               ".github/workflows/news-verify-publication.yml",
+              ".github/workflows/news-trigger-watchdog.yml",
           ]:
               data = yaml.safe_load(Path(path).read_text(encoding="utf-8"))
               assert isinstance(data, dict) and "jobs" in data, path
@@ -78,7 +82,9 @@ jobs:
           print("GROQ_EDITOR_AND_GEMINI_VOICE_SEPARATION_OK")
           PY
       - name: Testar sete janelas, atraso de cron, duração e provas de apuração
-        run: python worker/test_news_upgrade.py
+        run: |
+          python worker/test_news_upgrade.py
+          python worker/test_news_trigger_guard.py
       - name: Garantir reconstrução editorial limpa e proveniência fiel
         run: |
           python -m pip install --disable-pip-version-check 'Pillow>=10.4'
