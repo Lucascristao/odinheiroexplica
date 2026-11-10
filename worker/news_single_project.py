@@ -161,11 +161,16 @@ def validate(episode: dict, today: date | None = None, drafting: bool = False) -
     require(episode.get("scorecard", {}).get("method") and episode["scorecard"].get("reason"),
             "avaliação de potencial ausente")
     discovery = episode.get("discovery_strategy") or {}
+    developed_draft = drafting or bool(episode.get('editorial_quality'))
     for field in ("viewer_intent", "search_query", "recommendation_angle", "first_payoff",
                   "promise_proof", "audience_hypothesis", "thumbnail_complement",
                   "verification_limits"):
-        require(isinstance(discovery.get(field), str) and len(discovery[field].strip()) >= 18,
-                f"estratégia YouTube sem {field}")
+        complete = isinstance(discovery.get(field), str) and len(discovery[field].strip()) >= 18
+        if developed_draft and field != 'first_payoff':
+            if not complete:
+                print(f'NEWS_PACKAGING_ADVISORY: estratégia opcional sem {field}; não bloquear notícia válida')
+        else:
+            require(complete, f"estratégia YouTube sem {field}")
     require(discovery["first_payoff"] in (episode.get("segments") or [{}])[0].get("narration", ""),
             "a primeira entrega precisa ser trecho literal da abertura")
     if episode["thumbnail_headline"].casefold() in episode["title"].casefold():

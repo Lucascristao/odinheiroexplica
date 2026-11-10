@@ -209,6 +209,21 @@ class SourceReview(unittest.TestCase):
 
 
 class AutonomousRecovery(unittest.TestCase):
+    def test_long_primary_rate_limit_uses_backup_and_remembers_its_cooldown(self):
+        limited = Mock(status_code=429, headers={'retry-after': '536'})
+        success = Mock(status_code=200, headers={})
+        success.json.return_value = {'choices': [{'finish_reason': 'stop', 'message': {'content': '{"ok":true}'}}]}
+        with patch.dict(groq.__dict__, {'_model_cooldowns': {}}), \
+             patch.dict(groq.os.environ, {'GROQ_API_KEY': 'unit-test-fixture', 'ODE_NEWS_GROQ_MODEL': groq.MODEL,
+                 'ODE_NEWS_GROQ_FALLBACK_MODELS': 'openai/gpt-oss-20b', 'ODE_NEWS_GROQ_MIN_INTERVAL_SECONDS': '0'}), \
+             patch.object(groq.requests, 'post', side_effect=[limited, success, success]) as post, \
+             patch.object(groq.time, 'sleep') as sleep:
+            self.assertEqual(json.loads(groq.complete('Fixture', json_mode=True)), {'ok': True})
+            self.assertEqual(json.loads(groq.complete('Fixture followup', json_mode=True)), {'ok': True})
+            self.assertEqual([c.kwargs['json']['model'] for c in post.call_args_list],
+                             [groq.MODEL, 'openai/gpt-oss-20b', 'openai/gpt-oss-20b'])
+            self.assertNotIn(536, [c.args[0] for c in sleep.call_args_list])
+
     def test_scene_development_resumes_without_rewriting_completed_voice_text(self):
         ep = {"segments": [{"id": "one", "type": "opening", "title": "Abertura", "narration": "Preservado", "document_id": "doc1"},
                            {"id": "two", "type": "fact", "title": "Detalhe", "narration": "Rascunho", "document_id": "doc1"}],

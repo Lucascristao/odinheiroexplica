@@ -75,6 +75,9 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
         diagnostics.update({"provider": "groq", "model": selected, "attempt": 0,
                             "http_status": None,
                             **_transport_metadata({})})
+    cooldown = globals().get('_model_cooldowns', {}).get(selected, 0)
+    if cooldown > time.monotonic():
+        return unavailable('recorded_quota_cooldown')
     payload: dict[str, Any] = {
         "model": selected,
         "messages": [
@@ -133,7 +136,9 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
             except ValueError:
                 seconds = 40
             print("GROQ_RETRY", response.status_code, "seconds", round(seconds), flush=True)
-            if seconds > 600:
+            has_backup = bool(os.environ.get('ODE_NEWS_GROQ_FALLBACK_MODELS', '').strip()) and selected == os.environ.get('ODE_NEWS_GROQ_MODEL', MODEL)
+            if seconds > (90 if has_backup else 600):
+                globals().setdefault('_model_cooldowns', {})[selected] = time.monotonic() + seconds
                 return unavailable("primary_quota_retry_later")
             time.sleep(seconds)
             continue

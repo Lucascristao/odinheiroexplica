@@ -42,6 +42,14 @@ class SingleNewsContractTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'título inválido'):
             validate(doc, date(2026, 10, 9))
 
+    def test_optional_discovery_label_does_not_block_developed_draft(self):
+        doc = copy.deepcopy(self.doc)
+        doc['discovery_strategy'].pop('thumbnail_complement', None)
+        validate(doc, date(2026, 10, 9), drafting=True)
+        doc['discovery_strategy']['first_payoff'] = 'Trecho que não está na fala original'
+        with self.assertRaisesRegex(ValueError, 'trecho literal'):
+            validate(doc, date(2026, 10, 9), drafting=True)
+
     def test_short_real_documentary_credit_does_not_need_rights_boilerplate(self):
         for credit in ("BBC", "UOL", "Agência Brasil"):
             with self.subTest(credit=credit):
