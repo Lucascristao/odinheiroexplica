@@ -3,11 +3,11 @@
   "project_id": "noticia-2026-11-09-noite-3",
   "project_sha256": "93cc2c392b5115d5cc223031255e9c34805f6d611f6da857932f45f0178dbee6",
   "contract_sha256": "12f30684e9822d9c044ea28ff6d18b4bd5425a6f593ec0f2ef1ef9058ccba352",
-  "image_sha256": "6e0135efdcf817f131dda70068459c1bf9eeb823bcee175a09b0125e83dba248",
+  "image_sha256": "a513f5fd27f2a61157d5c6c511d5a6e5c1bcb7ed75c51abf632f312d38ea17fa",
   "headline": "DÁ PARA COMEMORAR?",
   "approval_status": "approved",
-  "reviewer": "ChatGPT — inspeção visual dos pixels em 1280x720 e 320x180",
-  "reviewed_at": "2026-11-10T05:16:58.600111+00:00",
+  "reviewer": "Groq multimodal automated pixel reviewer; qwen/qwen3.8-27b",
+  "reviewed_at": "2026-11-10T10:28:13.979214+00:00",
   "checks": {
     "headline_exact": true,
     "primary_subject": true,
@@ -18,13 +18,13 @@
     "unique_composition": true
   },
   "observations": {
-    "headline": "Inspecionados 1280x720 e 320x180: DÁ PARA COMEMORAR? aparece inteiro em duas linhas, sem cortar a interrogação à direita.",
-    "primary_subject": "Recorte autêntico do Money Times no alto à direita: cabeçalho, título do lucro de R$ 5,1 bi, data e foto da matéria preservados. O texto pequeno da reportagem não é apresentado como legível no celular; o título do vídeo explica a dívida.",
-    "secondary_subject": "Retrato oficial Roberto v1 engaged à esquerda, rosto completo e nítido, sem alteração de identidade.",
-    "forbidden_absent": "Não observei números ou documento inventados, setas, cifras externas, logotipo criado, marca dágua adicional nem outra headline. Os elementos da página original permanecem no print.",
-    "identity_and_mobile": "Em 320x180 reconheci o rosto e li a headline amarela completa. Fundo documental desfocado, sombra e base escura sustentam contraste sem cobrir o rosto.",
-    "no_fabricated_data": "A imagem mostra pixels da página capturada, não uma reportagem reconstruída. Não adicionei cifra ou gráfico; a foto permanece dentro da página como contexto editorial.",
-    "unique_composition": "Comparado ao canal observado, que usava frames de reportagens como miniatura, esta composição tem retrato oficial à esquerda, página em moldura superior direita e pergunta complementar embaixo."
+    "headline": "A headline 'DÁ PARA COMEMORAR?' está presente em amarelo, com tipografia legível na thumbnail de 1280x720 e na redução de 320x180.",
+    "primary_subject": "O documento digital (print de análise) está visível no canto superior direito, contendo texto sobre lucros e dívida, servindo como protagonista contextual.",
+    "secondary_subject": "O retrato do apresentador Roberto está presente à esquerda, ocupando uma parte significativa do quadro, sem deformações aparentes.",
+    "forbidden_absent": "Não foram detectados logotipos inventados, marcas d'água ou textos extras fora do documento e da headline.",
+    "identity_and_mobile": "A paleta de cores (fundo escuro, texto amarelo) está presente. A headline permanece legível na versão reduzida, embora o texto do documento se torne ilegível (o que é esperado para a fonte de prova).",
+    "no_fabricated_data": "O documento exibe dados numéricos específicos (ex: R$ 5,1 bilhões) que parecem ser parte de uma captura de tela real, não texto inventado sobreposto.",
+    "unique_composition": "A composição é assimétrica, com o rosto à esquerda e o documento à direita, criando um layout de thumbnail padrão e funcional."
   },
   "checked_forbidden_elements": [
     "dados ou documentos inventados",

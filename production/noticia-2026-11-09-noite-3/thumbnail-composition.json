@@ -4,11 +4,11 @@
   "contract_sha256": "12f30684e9822d9c044ea28ff6d18b4bd5425a6f593ec0f2ef1ef9058ccba352",
   "identity_id": "roberto-v1-engaged",
   "portrait_sha256": "aba953fb6a025eb43fbef7398fcaf4b08b950ba635728339761e7435b18e37d5",
-  "image_sha256": "6e0135efdcf817f131dda70068459c1bf9eeb823bcee175a09b0125e83dba248",
+  "image_sha256": "a513f5fd27f2a61157d5c6c511d5a6e5c1bcb7ed75c51abf632f312d38ea17fa",
   "background_path": "production/noticia-2026-11-09-noite-3/thumbnail-background.png",
-  "background_sha256": "1a73280615cfad447fae73e51420088904614943f89f3d33d4317ec758da8d28",
+  "background_sha256": "c8a04e63953541352f798c443712f402b80e32b6edae9024235fc3e13048ae46",
   "portrait_side": "left",
   "headline_position": "lower",
   "portrait_size": "close",
-  "created_at": "2026-11-10T05:12:39.530Z"
+  "created_at": "2026-11-10T10:28:12.399Z"
 }
