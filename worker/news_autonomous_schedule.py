@@ -14,6 +14,7 @@ from zoneinfo import ZoneInfo
 from thumbnail_contract import validate_thumbnail_audit, file_sha256
 from youtube_publication import assert_channel, youtube_service, EXPECTED_ID
 from news_schedule import slots as configured_slots, recovery_policy_applies
+from news_minimum_duration import policy_for_episode, require_measured_duration
 
 
 def load(path):
@@ -102,6 +103,12 @@ def main():
     allowed_qa_states = ("pass", "warn") if config.get("allow_qa_warnings") is True else (config["require_qa_status"],)
     if qa.get("status") not in allowed_qa_states or qa.get("failures"):
         raise SystemExit("QA técnico possui falhas ou status inválido.")
+    minimum = policy_for_episode(episode, config)
+    if minimum:
+        try:
+            require_measured_duration(qa, minimum['seconds'])
+        except ValueError as error:
+            raise SystemExit(str(error)) from None
     if qa.get("warnings"):
         print("QA_WARNINGS_NON_BLOCKING:", json.dumps(qa["warnings"], ensure_ascii=False))
     receipt = load(args.private_receipt)

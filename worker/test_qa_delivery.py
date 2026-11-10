@@ -76,6 +76,12 @@ class DeliveryGateTests(unittest.TestCase):
         self.assertFalse(result["subjective_listening_performed"])
         self.assertEqual(result["video"]["true_peak_dbtp"], -1.23)
 
+    def test_future_news_with_real_short_audio_and_video_cannot_pass(self):
+        self.project['editorial'] = {'quality_contract': {'minimum_duration_seconds': 180}}
+        result = self.analyze()
+        self.assertEqual(result['status'], 'fail')
+        self.assertTrue(any('News minimum is 180' in f['message'] for f in result['failures']))
+
     def test_master_is_measured_from_actual_samples_and_hash_checked(self):
         from align_narration import audio_activity
         from voice_master import level_plan

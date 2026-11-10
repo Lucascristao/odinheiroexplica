@@ -329,7 +329,19 @@
   },
   "editorial_quality": {
     "version": "2026-11-10.1",
-    "duration_policy": "advisory_no_block_for_valid_reporting",
+    "duration_policy": "minimum_180_real_seconds_for_future_editions",
+    "minimum_duration": {
+      "version": "2026-11-10-min180",
+      "effective_from_date": "2026-11-10",
+      "seconds": 180,
+      "minimum_narration_words": 600,
+      "preserved_episode_ids": [
+        "noticia-2026-11-10-manha",
+        "noticia-2026-11-10-manha-2",
+        "noticia-2026-11-10-noite-1"
+      ],
+      "authorization": "Titular exigiu mínimo de 3 minutos em 10/11/2026, somente próximas edições; preservar os vídeos já enviados, inclusive o das 18h. Sem silêncio, repetição ou voz desacelerada."
+    },
     "target_words": [
       700,
       950

@@ -19,6 +19,7 @@ from news_single_project import validate, transform
 from build_youtube_package import validate_publication_fields
 from news_schedule import load_config, slots as configured_slots, editorial_window
 from news_editor_state import read_state, save_state, discard_state
+from news_minimum_duration import DevelopmentIncomplete, policy_for_episode, require_developed_script
 
 SLOTS = {name: row["publication"] for name, row in configured_slots(load_config()).items()}
 
@@ -369,6 +370,7 @@ def research(candidates, history, target, diagnostic_path=None, *, _corpus=None,
 Use SOMENTE estas pistas reais: {json.dumps(leads, ensure_ascii=False)}
 Histórico recente a evitar: {json.dumps(prompt_history[:15], ensure_ascii=False)[:1800]}.
 Retorne JSON {{"selected_urls":[1 a 3 URLs exatas das pistas sobre O MESMO acontecimento],"candidate_review":[3 candidatas reais com subject,topic_area,event_date (null se ainda desconhecida),urls,decision]}}.
+Prefira uma pauta com contexto e evidências suficientes para explicar o assunto por pelo menos 3 minutos, sem repetir uma declaração isolada nem inventar consequências.
 Priorize política, economia e empresas, tensão factual/contradição/consequência que possa ser demonstrada. Evite celebridade genérica, tragédia sem pertinência e recorde sem pergunta interessante. Não inventar interesse medido, CTR, fatos ou datas. Fonte única pode ser candidata com atribuição; republicações da mesma agência não são independentes. Esta é triagem: os textos completos selecionados serão examinados a seguir, ainda sem aprovação factual. Escolha as melhores pistas de acontecimento novo em {day}, sem confundir dia da reportagem com dia do fato.""", json_mode=True, max_output_tokens=1100)
         selection = json.loads(selector)
         urls = selection.get("selected_urls", [])
@@ -609,11 +611,18 @@ def main():
                 episode = context_document_fallback(episode, corpus)
                 check_documentary_sources(episode)
             completed = cached.get("developed_segment_ids", []) if cached and attempt == 0 else []
+            minimum = policy_for_episode(episode, load_config(root))
+            if minimum:
+                episode['development_requirement'] = {'minimum_duration_seconds': minimum['seconds'],
+                    'minimum_narration_words': minimum['minimum_narration_words']}
             save_state(checkpoint, date, args.slot, report, episode, completed)
             try:
                 episode = develop(episode, corpus, completed_ids=completed,
+                    minimum_words=minimum['minimum_narration_words'] if minimum else 0,
                     on_progress=lambda current, ids: save_state(checkpoint, date, args.slot, report, current, ids))
             except (RuntimeError, ValueError) as development_error:
+                if policy_for_episode(episode, load_config(root)):
+                    raise DevelopmentIncomplete('Development incomplete; preserve checkpoint and retry without publishing a short summary') from development_error
                 detail = diagnostic_text(str(development_error), 260)
                 print("NEWS_DEVELOPMENT_ADVISORY:", detail, "| retain supported script; factual review remains required", flush=True)
                 episode.setdefault("production_advisories", []).append({"code": "development_unavailable_shorter_fallback", "error_type": type(development_error).__name__, "detail": detail})
@@ -635,6 +644,7 @@ def main():
                 episode = bind_draft_metadata(corrected)
                 episode = validate(episode, today=local.date(), drafting=True)
                 episode = review(episode, corpus)
+            require_developed_script(episode, load_config(root), stamp=True)
             from news_reconstruction import prepare_source_fallbacks
             episode = prepare_source_fallbacks(episode)
             episode = validate(episode, today=local.date())
@@ -663,6 +673,11 @@ def main():
             if isinstance(exc, ValueError) and "editorial review" in str(exc).lower():
                 discard_state(checkpoint)
             print("EDITORIAL_RETRY:", error)
+            if isinstance(exc, DevelopmentIncomplete):
+                if getattr(exc, 'requires_rewrite', False):
+                    save_state(checkpoint, date, args.slot, report, episode, [])
+                print('NEWS_DEVELOPMENT_WAITING: checkpoint preserved; no short publication', flush=True)
+                break
             if not args.resume_draft and attempt < 2 and materially_rejected:
                 # A genuinely unsupported premise is replaced by another story,
                 # never by a looser factual verdict or an invented event date.

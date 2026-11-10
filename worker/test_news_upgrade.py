@@ -169,7 +169,19 @@ class SourceReview(unittest.TestCase):
         self.review["warnings"] = ["Fixture: roteiro poderia ser mais longo ou usar outro enquadramento"]
         validate_review(self.review, self.ep, self.corpus)
 
-    def test_word_target_is_not_a_publication_block(self):
+    def test_future_development_review_requires_progression_not_only_facts(self):
+        from news_minimum_duration import DevelopmentIncomplete
+        self.ep['development_requirement'] = {'minimum_duration_seconds': 180}
+        with self.assertRaisesRegex(DevelopmentIncomplete, 'Narrative development'):
+            validate_review(self.review, self.ep, self.corpus)
+        self.review['development_checks'] = dict.fromkeys((
+            'logical_progression', 'substantive_context', 'no_padding_or_repetition', 'opening_question_answered'), True)
+        validate_review(self.review, self.ep, self.corpus)
+        self.review['development_checks']['no_padding_or_repetition'] = False
+        with self.assertRaises(DevelopmentIncomplete):
+            validate_review(self.review, self.ep, self.corpus)
+
+    def test_word_target_is_advisory_for_a_preserved_episode(self):
         episode = {"episode_id": "noticia-2026-11-10-manha", "news_date": "2026-11-10",
                    "editorial_status": "autonomous_fact_checked", "segments": [{"narration": "fixture " * 420}]}
         episode["editorial_quality"] = {"version": "2026-11-10.1", "narration_word_count": 420,

@@ -28,6 +28,8 @@ on:
       - 'worker/news_production_gate.py'
       - 'worker/news_editorial_quality.py'
       - 'worker/test_news_upgrade.py'
+      - 'worker/news_minimum_duration.py'
+      - 'worker/test_news_minimum_duration.py'
       - 'worker/news_trigger_guard.py'
       - 'worker/test_news_trigger_guard.py'
       - '.github/workflows/news-trigger-watchdog.yml'
@@ -86,6 +88,7 @@ jobs:
       - name: Testar sete janelas, atraso de cron, duração e provas de apuração
         run: |
           python worker/test_news_upgrade.py
+          python worker/test_news_minimum_duration.py
           python worker/test_news_trigger_guard.py
           python worker/test_news_free_fallback.py
       - name: Garantir reconstrução editorial limpa e proveniência fiel

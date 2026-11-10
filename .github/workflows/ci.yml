@@ -108,6 +108,7 @@ jobs:
           python worker/test_news_cloud_retention.py
           python worker/test_news_event_date.py
           python worker/test_news_upgrade.py
+          python worker/test_news_minimum_duration.py
           python worker/test_news_trigger_guard.py
           python worker/test_news_render_dispatch.py
           python worker/test_news_packaging.py

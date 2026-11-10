@@ -137,6 +137,11 @@ jobs:
             --audio-dir public/processed-audio/daily \
             --visual-assets-manifest video/generated/daily-visual-assets.json \
             --output video/generated/daily-render-input.json
+      - name: Conferir mínimo real de narração antes do render
+        run: |
+          python worker/news_minimum_duration.py \
+            --project video/generated/daily-project.json \
+            --render-input video/generated/daily-render-input.json
       - name: Música e SEO
         run: |
           python worker/generate_music.py --project video/generated/daily-project.json \

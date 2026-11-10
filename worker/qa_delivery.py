@@ -12,6 +12,7 @@ from align_narration import audio_activity
 from voice_master import active_rms
 from editorial_project import normalize_project
 from gemini_live_fidelity import canonical_tokens, evaluate_transcription
+from news_minimum_duration import require_measured_duration
 from tts_config import (DEFAULT_PRESENTER, MINIMUM_TRANSCRIPTION_SIMILARITY, PRESENTER_VOICES,
                         PRIMARY_TTS_MODEL, VOICE_POLICY_VERSION, project_pronunciations,
                         project_speech_fingerprint, scene_direction_fingerprint, scene_voice_direction,
@@ -211,6 +212,10 @@ def analyze_delivery(project, render_input, manifest, video, audio_dir):
         report["video"] = {"file": str(video), "sha256": sha(video), "expected_seconds": expected_duration,
                            "video_seconds": encoded_video_duration, "audio_seconds": encoded_audio_duration,
                            "channels": audio_streams[0].get("channels"), "sample_rate_hz": audio_streams[0].get("sample_rate"), **meter}
+        minimum = ((project.get('editorial') or {}).get('quality_contract') or {}).get('minimum_duration_seconds')
+        if minimum:
+            require_measured_duration(report, minimum)
+            report['minimum_duration_seconds'] = minimum
     except (ValueError, KeyError, TypeError, OSError, subprocess.CalledProcessError) as exc:
         issue("failures", "delivery-unavailable-or-invalid", str(exc))
     report["status"] = "fail" if report["failures"] else "warn" if report["warnings"] else "pass"

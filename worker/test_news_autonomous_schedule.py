@@ -267,6 +267,8 @@ class TestScheduleWithoutCover(unittest.TestCase):
             ("authorized_critical", 14, 0, "fail", [{"code": "missing-video"}], "blocked"),
             ("no_deadline", 23, 0, "warn", [], "published_late_no_deadline"),
             ("no_deadline_critical", 23, 0, "fail", [{"code": "missing-video"}], "blocked"),
+            ("minimum_short", 15, 45, "warn", [], "blocked"),
+            ("minimum_valid", 15, 45, "warn", [], "published_within_tolerance"),
         ]
 
         for label, hour, minute, qa_status, failures, expected in cases:
@@ -292,6 +294,11 @@ class TestScheduleWithoutCover(unittest.TestCase):
                                         "privacy_requested": "private"},
                 }
                 args = ["schedule", "--root", root]
+                if label.startswith('minimum_'):
+                    payloads['config']['editorial_quality'] = {'minimum_duration': {
+                        'effective_from_date': day, 'seconds': 180, 'preserved_episode_ids': []}}
+                    duration = 44 if label == 'minimum_short' else 200
+                    payloads['qa'].update(video={'video_seconds': duration}, scenes=[{'audio_seconds': duration}])
                 if label.startswith('no_deadline'):
                     payloads['config']['recovery_policy'] = {
                         'effective_from': day, 'same_day_no_deadline': True, 'unlimited_attempts': True}
@@ -318,7 +325,7 @@ class TestScheduleWithoutCover(unittest.TestCase):
                      patch.object(scheduler, "youtube_service", return_value=service), \
                      patch.object(scheduler, "assert_channel", return_value=True):
                     if expected == "blocked":
-                        with self.assertRaisesRegex(SystemExit, "Janela de tolerância|QA técnico"):
+                        with self.assertRaisesRegex(SystemExit, "Janela de tolerância|QA técnico|News minimum"):
                             scheduler.main()
                         self.assertFalse(service.impl.updated)
                     else:

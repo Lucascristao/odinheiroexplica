@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 from news_schedule import load_config, editorial_window
 from news_quality_contract import editorial_fingerprint
+from news_minimum_duration import require_developed_script
 
 
 def validate_production(episode, config, now):
@@ -25,6 +26,7 @@ def validate_production(episode, config, now):
             or quality.get("narration_word_count") != count
             or review.get("approved") is not True or review.get("issues") != []):
         raise ValueError("New news edition lacks developed narration and the second source review")
+    require_developed_script(episode, config)
 
 
 if __name__ == "__main__":

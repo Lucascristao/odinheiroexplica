@@ -13,6 +13,7 @@ from news_source_corpus import extract_article
 from news_quality_contract import editorial_fingerprint
 from news_event_date import validate_event_date
 import requests
+from news_minimum_duration import DevelopmentIncomplete
 
 VERSION = "2026-11-10.1"
 MIN_WORDS = 650
@@ -49,12 +50,16 @@ def parse_reply(prompt, budget=2200):
     return result
 
 
-def develop(episode, corpus, completed_ids=(), on_progress=None):
+def develop(episode, corpus, completed_ids=(), on_progress=None, minimum_words=0):
     """Small sequential batches keep free-tier TPM and output size bounded."""
     segments = episode["segments"]
     outline = [{"id": s["id"], "type": s["type"], "title": s["title"]} for s in segments]
     facts = episode["verified_facts"]
     completed = set(completed_ids)
+    if minimum_words and words(episode) < minimum_words and all(s['id'] in completed for s in segments):
+        completed.discard(min(segments, key=lambda s: len(s['narration'].split()))['id'])
+    target_per_block = max(100, round(825 / max(1, len(segments)))) if minimum_words else 100
+    block_low, block_high = (round(target_per_block * .85), round(target_per_block * 1.15)) if minimum_words else (80, 125)
     for offset in range(len(segments)):
         batch = segments[offset:offset + 1]
         if all(s["id"] in completed for s in batch):
@@ -71,7 +76,7 @@ Já dito na voz; continuar daqui sem recontar os mesmos números: {json.dumps(pr
 Blocos para escrever: {json.dumps(writing_batch, ensure_ascii=False)}
 Fatos apurados: {json.dumps(facts, ensure_ascii=False)}
 Textos reais pertinentes: {json.dumps(excerpts, ensure_ascii=False)}
-Desenvolva cada bloco com clareza: alvo de 80 a 125 palavras, sem mínimo rígido. Total desejado 700-950 palavras, cerca de4-6 minutos. Uma cena pode ser mais curta quando sua função é simples.
+Desenvolva cada bloco com clareza: alvo de {block_low} a {block_high} palavras, conforme sua função. Total desejado 700-950 palavras, cerca de 4-6 minutos. O vídeo precisa ter pelo menos 3 minutos reais. Uma cena pode ser mais curta quando sua função é simples, mas um resumo não substitui o desenvolvimento completo.
 Acrescente contexto, mecanismo, consequência CONDICIONAL, contraponto e limites. Conceitos estáveis podem ser explicados didaticamente sem inventar dados da empresa. Se faltar informação, explique honestamente o limite e escreva um bloco mais curto. Não declarar insufficient_evidence só por não atingir a meta de palavras; use isso apenas se a premissa factual for falsa ou sem apoio. Não encha com repetição.
 Avance na pergunta específica deste bloco. Não repita a lista de lucro/receita/dívida em cada cena; um número só retorna quando permite nova comparação ou explicação. Explique siglas na primeira menção, por exemplo o que a medida operacional significa e o que ela não mede. A conclusão responde à pergunta com os fatos disponíveis, não termina apenas perguntando de novo. Não usar 'histórica', 'recorde' ou ameaça a dividendos sem prova correspondente.
 Toda frase factual precisa de respaldo nos textos ou fatos fornecidos. Separe hipótese de efeito observado, acusação de condenação. NÃO atribua causalidade nem impacto ao Ceará, Nordeste ou bolso sem prova.
@@ -81,7 +86,7 @@ Português falado com frases claras e variadas; preserve números exatamente, es
 Somente se este for o bloco inicial: preserve o FATO e a promessa destes trechos, podendo escrever números e siglas em forma falada: {json.dumps([episode['news_selection']['opening_anchor'], episode['discovery_strategy']['first_payoff']], ensure_ascii=False)}. O código vincula os metadados literais à fala final depois. Entregue a descoberta antes de se apresentar brevemente como Roberto, do O Dinheiro Explica. Nada de saudação longa ou inscrição antes da entrega; demais blocos não repetem essa abertura.
 Opinião inicia 'Na minha análise,' ou 'Na minha opinião,'. Conclusão responde à pergunta, explicita o que ainda falta acontecer e inclui um pedido curto de inscrição ligado à utilidade do canal.
 Não incluir diretivas de voz no texto nem alegar consenso de fontes. Preserve nomes próprios e os limites das reportagens. Não copiar parágrafos da fonte."""
-        result = parse_reply(prompt, budget=1100)
+        result = parse_reply(prompt, budget=max(1100, min(4200, target_per_block * 4)))
         narration = result.get("narration")
         if not isinstance(narration, str) and isinstance(result.get("segments"), list) and len(result["segments"]) == 1:
             narration = result["segments"][0].get("narration")
@@ -97,6 +102,8 @@ Não incluir diretivas de voz no texto nem alegar consenso de fontes. Preserve n
         if on_progress:
             on_progress(episode, completed)
     total = words(episode)
+    if minimum_words and total < minimum_words:
+        raise DevelopmentIncomplete(f'Development remains too short: {total} words; need {minimum_words} before synthesis')
     if not MIN_WORDS <= total <= MAX_WORDS:
         print(f"NEWS_LENGTH_ADVISORY: target {MIN_WORDS}-{MAX_WORDS} words; got {total}. Preserve supported reporting; never pad or slow audio", flush=True)
     return episode
@@ -196,6 +203,13 @@ def validate_review(result, episode, corpus):
                 source, text = proof.get('source_id'), proof.get('quote', '')
                 if source not in corpus or len(text) < 12 or normalize(text) not in normalize(corpus[source]['text']):
                     raise ValueError('Narration-support quotation absent from its real source')
+    if episode.get('development_requirement'):
+        development = result.get('development_checks') or {}
+        required = ('logical_progression', 'substantive_context', 'no_padding_or_repetition', 'opening_question_answered')
+        if any(development.get(key) is not True for key in required):
+            error = DevelopmentIncomplete('Narrative development needs revision: progression, context, padding or unanswered opening')
+            error.requires_rewrite = True
+            raise error
     return result
 
 
@@ -345,7 +359,9 @@ Seja proporcional: sugestões de estilo, duração, quantidade de recortes, falt
 O titular exige títulos e texto da capa com linguagem exagerada, dramática e provocativa. Metáfora como 'balde de água fria' para uma expectativa frustrada é retórica permitida, não alegação literal. Não neutralize títulos apenas por serem fortes. Reprove somente exagero FACTUAL material: inventar consequência, evento, crime, certeza, abrangência, número ou condição. Examine explicações de termos: escala6x1 é jornada de trabalho, não mecanismo tarifário de energia. Texto editorial meta como 'o bloco deve ser breve' deve ser retirado da narração, sem perder informação.
 Uma quote precisa ser literal e contínua do texto fornecido. Para cada claim, a quote deve sustentar o SENTIDO e os números, não só citar o mesmo assunto. Se faltar contexto/data explícita, marque false. Opinião liberal é permitida como opinião, nunca salva fato falso. Não alegar consulta a documento primário que não está nos textos.
 Analise a abertura: entrega a novidade, identifica assunto/pergunta e evita preâmbulo. Não há previsão de CTR ou garantia de viralização. Todos os problemas vão em issues; só approved=true se não houver problemas."""
-    result = bind_review_passages(parse_reply(prompt, budget=2400), passage_lookup)
+    if episode.get('development_requirement'):
+        prompt += '''\nExigência das próximas edições: conteúdo desenvolvido para no mínimo 3 minutos reais, sem esticar áudio, silêncio ou repetição. Inclua development_checks:{logical_progression:boolean,substantive_context:boolean,no_padding_or_repetition:boolean,opening_question_answered:boolean}. Confira se a narração avança de fato para contexto, explicação, consequências condicionais, limites e conclusão; não basta acumular palavras. Marque false se há enrolação, repetição para preencher tempo, saltos sem lógica ou pergunta inicial sem resposta. Detalhes de estilo continuam avisos; estes checks avaliam conteúdo e compreensão.'''
+    result = bind_review_passages(parse_reply(prompt, budget=2700 if episode.get('development_requirement') else 2400), passage_lookup)
     if (result.get("approved") is True and result.get("issues") == []
             and result.get("same_day_event_supported") is True
             and not result["event_date_evidence"].get("quote")):
@@ -370,7 +386,7 @@ Se não houver prova suficiente, false com issues; não confirme por concordar c
     except ValueError:
         episode["editorial_review_rejection"] = result
         raise
-    episode["editorial_quality"] = {"version": VERSION, "review_method": "groq_second_pass_with_literal_source_support",
+    episode["editorial_quality"] = {"version": VERSION, "review_method": "automated_second_pass_with_literal_source_support",
         "reviewed_at": datetime.now(ZoneInfo("America/Fortaleza")).isoformat(),
         "reviewed_content_sha256": editorial_fingerprint(episode),
         "narration_word_count": words(episode), "target_minutes": [4, 6], "review": result}

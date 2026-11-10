@@ -4,6 +4,8 @@
 
 O editor compara candidatas, prepara oito blocos, desenvolve 650–1100 palavras em lotes e faz segunda revisão automatizada com apoio literal de fatos/data. Alvo de 4–6 minutos; o áudio real determina a duração. Falta de evidência exige diagnóstico, nunca conteúdo inventado. Google só na voz Gemini Live/Charon; capa local e visão Groq opcionais.
 
+Decisão posterior de 10/11: **mínimo obrigatório de 3 minutos para as próximas edições**, preservando os vídeos já enviados, inclusive o das 18h. `editorial_quality.minimum_duration` registra 180 segundos medidos de narração e vídeo; a preparação exige roteiro desenvolvido antes do TTS. Falha de desenvolvimento mantém checkpoint para retomada, sem liberar resumo curto. A revisão deve verificar progressão, contexto, ausência de preenchimento repetitivo e resposta à pergunta inicial. Não acrescentar silêncio ou desacelerar a fala para atingir duração.
+
 O watchdog recupera gatilho, render e publicação separadamente. Decisão posterior do titular em 10/11: priorizar volume efetivamente publicado, retirando o prazo de atraso e o teto acumulado de tentativas das edições do dia. `recovery_policy` mantém pausa entre tentativas, cache, apuração, QA e identidade/recibos originais; configurações históricas preservam seus contratos. O monitor distingue privado programado de agendamento vencido. Crons podem atrasar; sete horários não comprovam sete publicações.
 
 ## Escopo e autorização
