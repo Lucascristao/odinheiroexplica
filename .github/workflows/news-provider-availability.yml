@@ -1,0 +1,41 @@
+name: ODE Notícias - conferir fallback gratuito externo
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ode-news-free-provider-check
+  cancel-in-progress: false
+jobs:
+  check:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install --disable-pip-version-check requests
+      - name: Conferir API real sem produzir conteúdo nem publicar
+        env:
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          ODE_NEWS_FREE_FALLBACK: openrouter
+        run: |
+          python - <<'PY'
+          import json,sys
+          from pathlib import Path
+          sys.path.insert(0,'worker')
+          from news_free_fallback import complete_free
+          diagnostic={}
+          schema={'type':'object','properties':{'ok':{'type':'boolean'}},'required':['ok'],'additionalProperties':False}
+          result=json.loads(complete_free('Teste de disponibilidade sem notícia: retorne apenas {"ok":true}.',
+              json_mode=True, response_schema=schema, max_output_tokens=512, diagnostics=diagnostic))
+          assert result.get('ok') is True
+          Path('render-output').mkdir(exist_ok=True)
+          Path('render-output/free-provider-check.json').write_text(json.dumps(diagnostic,indent=2)+'\n')
+          print('FREE_TEXT_PROVIDER_AVAILABLE',diagnostic['provider'],diagnostic['model'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: free-provider-availability
+          path: render-output/free-provider-check.json

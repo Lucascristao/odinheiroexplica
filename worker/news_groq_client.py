@@ -71,6 +71,14 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
                 if diagnostics is not None:
                     diagnostics.update(fallback_from=selected, fallback_reason=reason)
                 return result
+        from news_free_fallback import enabled, complete_free
+        if enabled() and selected in {primary, *alternates}:
+            print('EDITORIAL_PROVIDER_FALLBACK groq openrouter/free', reason, flush=True)
+            result = complete_free(prompt, json_mode=json_mode, diagnostics=diagnostics,
+                                   max_output_tokens=max_output_tokens, response_schema=response_schema)
+            if diagnostics is not None:
+                diagnostics.update(fallback_from=selected, fallback_reason=reason)
+            return result
         raise RuntimeError("Editorial model unavailable after bounded retries: " + reason)
     if diagnostics is not None:
         diagnostics.update({"provider": "groq", "model": selected, "attempt": 0,
@@ -141,6 +149,8 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
                 seconds = 40
             print("GROQ_RETRY", response.status_code, "seconds", round(seconds), flush=True)
             has_backup = bool(os.environ.get('ODE_NEWS_GROQ_FALLBACK_MODELS', '').strip()) and selected == os.environ.get('ODE_NEWS_GROQ_MODEL', MODEL)
+            from news_free_fallback import enabled
+            has_backup = has_backup or enabled()
             if seconds > (90 if has_backup else 600):
                 globals().setdefault('_model_cooldowns', {})[selected] = time.monotonic() + seconds
                 return unavailable("primary_quota_retry_later")

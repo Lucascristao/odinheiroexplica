@@ -221,6 +221,13 @@
       "openai/gpt-oss-20b"
     ],
     "factual_verdict_fallback": false,
+    "external_availability_fallback": {
+      "provider": "openrouter",
+      "model": "openrouter/free",
+      "api_secret": "OPENROUTER_API_KEY",
+      "free_only": true,
+      "paid_fallback": false
+    },
     "api_secret": "GROQ_API_KEY",
     "free_tier_only": true,
     "minimum_call_interval_seconds": 65

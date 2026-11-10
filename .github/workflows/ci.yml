@@ -104,6 +104,7 @@ jobs:
           python worker/test_news_draft_contract.py
           python worker/test_news_editor_diagnostics.py
           python worker/test_news_groq_client_diagnostics.py
+          python worker/test_news_free_fallback.py
           python worker/test_news_cloud_retention.py
           python worker/test_news_event_date.py
           python worker/test_news_upgrade.py

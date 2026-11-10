@@ -277,10 +277,10 @@ def prevent_repeated_story(episode, root, evaluation=False):
 def diagnostic_text(value, limit=1500):
     """Bounded operational text; never read credentials from the environment."""
     text = str(value)
-    text = re.sub(r"(?i)(\b(?:groq_api_key|gemini_api_key|api[_-]?key|access[_-]?token|refresh[_-]?token)\b[\"']?\s*[:=]\s*[\"']?)[^\s&;,\"']+",
+    text = re.sub(r"(?i)(\b(?:groq_api_key|openrouter_api_key|gemini_api_key|api[_-]?key|access[_-]?token|refresh[_-]?token)\b[\"']?\s*[:=]\s*[\"']?)[^\s&;,\"']+",
                   r"\1[REDACTED]", text)
     text = re.sub(r"(?i)(\bBearer\s+)[A-Za-z0-9._~+/=-]+", r"\1[REDACTED]", text)
-    text = re.sub(r"\bgsk_[A-Za-z0-9_-]{20,}\b|\bAIza[A-Za-z0-9_-]{30,}\b", "[REDACTED]", text)
+    text = re.sub(r"\bgsk_[A-Za-z0-9_-]{20,}\b|\bAIza[A-Za-z0-9_-]{30,}\b|\bsk-or-v1-[A-Za-z0-9_-]+\b", "[REDACTED]", text)
     return text[:limit]
 
 
@@ -588,7 +588,7 @@ def main():
             if episode.get('insufficient_evidence') is True:
                 raise ValueError('Writer reports insufficient factual evidence: ' + str(episode.get('insufficient_reason', ''))[:220])
             episode["editorial_review_method"] = (
-                "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode="
+                "Automated source-backed review; actual providers/models recorded in transport diagnostics; source_mode="
                 + (episode.get("news_selection") or {}).get("source_mode", "corroborated")
             )
             episode = validate(episode, today=local.date(), drafting=True)

@@ -47,6 +47,8 @@ jobs:
       - name: Testar pesquisa e desenvolvimento reais sem gerar gatilho de publicação
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          ODE_NEWS_FREE_FALLBACK: openrouter
           ODE_NEWS_GROQ_MODEL: openai/gpt-oss-120b
           ODE_NEWS_GROQ_MIN_INTERVAL_SECONDS: '65'
           ODE_NEWS_GROQ_FALLBACK_MODELS: openai/gpt-oss-20b

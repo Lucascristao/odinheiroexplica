@@ -1,13 +1,17 @@
 # Relógio externo de recuperação de notícias
 
-Estado: preparado e testado localmente; ativação depende de uma credencial própria.
-Não afirmar que um agendamento está funcionando apenas por haver deploy ou teste manual.
+Estado em 10/11/2026: implantado com credencial cadastrada pelo titular e disparo
+natural observado às 15h41min06s de Fortaleza. O log da função registrou
+`source=netlify_schedule`, `status=guard_recent` e `run_id=42877023766`: a consulta
+autenticada reconheceu o vigia recente e evitou duplicação. A escrita de dispatch
+com essa credencial ainda precisa de uma ocorrência sem vigia ativo/recente;
+não confundir essa consulta bem-sucedida com publicação de notícia.
 
 O vigia também reage à conclusão dos workflows do editor e do render na `main`,
 inclusive quando um cron editorial atrasado termina sem produzir. Esse evento
 confere todas as janelas ainda válidas, sem reinterpretar o cron antigo como uma
 edição nova. O próprio vigia não está na lista de workflows observados; mantém
-concorrência única, limite de tentativas, recibos e recusa de edições vencidas.
+concorrência única, pausas entre tentativas, recibos e política de recuperação.
 Essa recuperação por eventos reduz a dependência do cron, mas não substitui o
 relógio externo quando não chega evento algum do GitHub.
 
@@ -23,7 +27,7 @@ o mesmo acontecimento rejeitado.
 O Netlify já hospeda o painel `odinheiroexplica`. A função agendada `news-watchdog`
 consulta o vigia da `main` e solicita sua execução quando não há execução ativa ou
 iniciada nos últimos vinte minutos. O vigia existente decide quais episódios faltam,
-recupera o render ou a publicação e mantém os limites de tentativas. A função externa
+recupera o render ou a publicação e mantém a política atual de tentativas. A função externa
 não redige, não usa modelos, não envia vídeos e não recebe parâmetros públicos.
 
 Agenda UTC `11,41 * * * *`. A janela válida é calculada a partir de
@@ -62,5 +66,6 @@ público não registrava incidente ativo de Actions na consulta.
 
 A revisão automática de segurança rejeitou extrair o token existente do CLI e copiá-lo
 ao Netlify por falta de autorização explícita dessa transferência e do seu alcance.
-A credencial limitada descrita acima é a alternativa proposta. Até sua ativação, os
-gatilhos nativos continuam configurados, sem promessa de pontualidade.
+A credencial foi posteriormente cadastrada diretamente pelo titular, sem extrair
+a autenticação do CLI. Os gatilhos nativos continuam como proteção adicional,
+sem promessa de pontualidade.

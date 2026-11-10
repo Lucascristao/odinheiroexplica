@@ -19,6 +19,8 @@ on:
       - 'worker/news_single_project.py'
       - 'worker/news_autonomous_editor.py'
       - 'worker/news_groq_client.py'
+      - 'worker/news_free_fallback.py'
+      - 'worker/test_news_free_fallback.py'
       - 'worker/news_source_corpus.py'
       - 'worker/news_reconstruction.py'
       - 'worker/test_news_reconstruction.py'
@@ -85,6 +87,7 @@ jobs:
         run: |
           python worker/test_news_upgrade.py
           python worker/test_news_trigger_guard.py
+          python worker/test_news_free_fallback.py
       - name: Garantir reconstrução editorial limpa e proveniência fiel
         run: |
           python -m pip install --disable-pip-version-check 'Pillow>=10.4'
