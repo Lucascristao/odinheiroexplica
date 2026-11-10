@@ -5,6 +5,11 @@ como reserva interna e OpenRouter como provedor externo quando há erro de
 conexão, cota ou indisponibilidade. Um parecer factual negativo não aciona essa
 cascata: o motor corrige ou pesquisa outro acontecimento.
 
+A recusa HTTP 400 do transporte JSON schema também usa o provedor externo com
+o mesmo schema, sem tentar aprovar o rascunho malformado do erro. Essa recusa da
+API não é um parecer factual. Uma resposta válida com `approved=false` continua
+sem acionar a troca de provedor.
+
 `worker/news_free_fallback.py` fixa o endpoint oficial e variantes `:free`, com
 preço máximo zero para entrada/saída, sem plugins ou modelos pagos. Preserva
 pedidos JSON/schema e registra o modelo efetivamente retornado. Se os gratuitos

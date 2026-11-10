@@ -66,6 +66,17 @@ class FreeFallback(unittest.TestCase):
             self.assertIs(json.loads(groq.complete('Fixture', json_mode=True))['approved'], False)
         self.assertEqual(post.call_count, 1)
 
+    def test_rejected_schema_transport_uses_schema_capable_external_provider(self):
+        schema = {'type': 'object', 'properties': {'ok': {'type': 'boolean'}}}
+        diag = {}
+        invalid = reply(status=400, error={'failed_generation': '{"title_options":["bad shape"]}'})
+        with patch.object(groq.requests, 'post', side_effect=[invalid, reply()]) as post:
+            self.assertEqual(json.loads(groq.complete('Fixture', json_mode=True,
+                response_schema=schema, diagnostics=diag)), {'ok': True})
+        self.assertEqual([call.args[0] for call in post.call_args_list], [groq.ENDPOINT, free.ENDPOINT])
+        self.assertEqual(diag['fallback_reason'], 'schema_transport_rejected')
+        self.assertEqual(diag['provider'], 'openrouter')
+
     def test_missing_key_never_calls_other_host(self):
         with patch.dict(free.os.environ, {'OPENROUTER_API_KEY': ''}), patch.object(free.requests, 'post') as post:
             with self.assertRaisesRegex(RuntimeError, 'credential unavailable'):

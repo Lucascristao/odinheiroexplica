@@ -159,6 +159,17 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
         if response.status_code in (429, 500, 502, 503, 504):
             return unavailable("http_" + str(response.status_code))
         if response.status_code == 400 and response_schema:
+            # API schema transport refusal is a capability/availability error,
+            # not a negative factual verdict. Prefer a real schema-capable
+            # external provider over repeatedly recovering malformed output.
+            from news_free_fallback import enabled, complete_free
+            if enabled():
+                print('GROQ_SCHEMA_TRANSPORT_FALLBACK openrouter_free_models', flush=True)
+                result = complete_free(prompt, json_mode=True, diagnostics=diagnostics,
+                                       max_output_tokens=max_output_tokens, response_schema=response_schema)
+                if diagnostics is not None:
+                    diagnostics.update(fallback_from=selected, fallback_reason='schema_transport_rejected')
+                return result
             try:
                 candidate = response.json().get('error', {}).get('failed_generation')
                 if isinstance(candidate, str):
