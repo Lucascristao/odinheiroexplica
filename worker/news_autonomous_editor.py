@@ -441,6 +441,9 @@ Não confundir opinião com fato; ausência de evidência exige insuficiência. 
     if not isinstance(episode, dict):
         raise ValueError("Groq deve retornar um objeto JSON na raiz, nunca uma lista.")
     episode = clean_unicode_spaces(episode)
+    if day >= '2026-11-10':
+        episode.setdefault('pronunciations', {})
+        episode.setdefault('context_photos', [])
     if episode.get('insufficient_evidence') is True:
         return episode
     return bind_draft_metadata(validate_draft_shape(episode))

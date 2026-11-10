@@ -14,6 +14,7 @@ class StructuredNews(unittest.TestCase):
         schema = episode_schema()
         def inspect(node):
             if node.get('type') == 'object':
+                self.assertTrue(node['properties'], 'Groq rejects empty object schemas even with properties={}')
                 self.assertIs(node['additionalProperties'], False)
                 self.assertEqual(set(node['properties']), set(node['required']))
                 for child in node['properties'].values():
