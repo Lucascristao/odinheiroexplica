@@ -24,6 +24,11 @@ continuam obrigatórios. Uma rejeição material grava fontes em quarentena tamb
 no cache do Actions; a próxima pesquisa exclui essas páginas em vez de repetir
 o mesmo acontecimento rejeitado.
 
+A fila mantém apenas um editor de texto por vez, mas pode preparar a próxima
+notícia enquanto outra edição identificada está no render. Render da mesma
+edição ou com identidade legada desconhecida continua impedindo novo editor;
+recibos e publicação permanecem vinculados ao episódio original.
+
 O Netlify já hospeda o painel `odinheiroexplica`. A função agendada `news-watchdog`
 consulta o vigia da `main` e solicita sua execução quando não há execução ativa ou
 iniciada nos últimos vinte minutos. O vigia existente decide quais episódios faltam,

@@ -191,9 +191,17 @@ def plan_slot(api, config, slot, now):
     zone = ZoneInfo(config["timezone"])
     editors = api.runs(EDITOR, day, zone)
     renders = api.runs(RENDER, day, zone)
-    # Legacy active runs have no reliable episode identity. Block conservatively;
-    # do not infer an upload or a completed edition from their generic titles.
-    active = [run for run in editors + renders if run.get("status") != "completed"]
+    # Groq remains sequential, but rendering a positively identified DIFFERENT
+    # episode must not block writing the next one. Unknown legacy render titles
+    # still block conservatively; no upload identity is inferred from them.
+    active = [run for run in editors if run.get('status') != 'completed']
+    for run in renders:
+        if run.get('status') == 'completed':
+            continue
+        identity = re.fullmatch(r'ODE render \| (news/episodes/\d{4}-\d{2}-\d{2}-[a-z0-9-]+\.json)',
+                                run.get('display_title', ''))
+        if identity is None or identity[1] == result['episode_path']:
+            active.append(run)
     if active:
         return {**result, "state": "active", "reason": "editor_or_render_active", "run_ids": [run["id"] for run in active]}
     upload = api.upload_for_episode(renders, "noticia-" + day + "-" + slot)

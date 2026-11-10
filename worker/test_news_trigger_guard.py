@@ -10,17 +10,18 @@ from news_trigger_guard import EDITOR, plan_slot, run_watchdog
 
 
 class Inventory:
-    def __init__(self, editors=None, exists=False, upload=None):
+    def __init__(self, editors=None, exists=False, upload=None, renders=None):
         self.editors = editors or []
         self.exists = exists
         self.upload = upload
+        self.renders = renders or []
         self.dispatched = []
 
     def episode_exists(self, path):
         return self.exists
 
     def runs(self, workflow, day, zone):
-        return self.editors if workflow == EDITOR else []
+        return self.editors if workflow == EDITOR else self.renders
 
     def upload_for_episode(self, runs, project_id):
         return self.upload
@@ -67,6 +68,17 @@ class TriggerRecovery(unittest.TestCase):
         result = plan_slot(Inventory([{"id": 33, "status": "in_progress"}]),
                            self.config, "meio-dia", self.now)
         self.assertEqual(result["state"], "active")
+
+    def test_render_of_other_identified_edition_does_not_block_next_editor(self):
+        render = {'id': 44, 'status': 'in_progress',
+                  'display_title': 'ODE render | news/episodes/2026-11-10-noite-1.json'}
+        result = plan_slot(Inventory(renders=[render]), self.config, 'meio-dia', self.now)
+        self.assertEqual(result['state'], 'missing')
+
+    def test_own_or_unknown_render_still_prevents_duplicate_editor(self):
+        for title in ('ODE render | news/episodes/2026-11-10-meio-dia.json', 'ODE render | legacy-sha'):
+            render = {'id': 44, 'status': 'in_progress', 'display_title': title}
+            self.assertEqual(plan_slot(Inventory(renders=[render]), self.config, 'meio-dia', self.now)['state'], 'active')
 
     def test_committed_episode_is_delegated_without_new_editor(self):
         result = plan_slot(Inventory(exists=True), self.config, "meio-dia", self.now)
