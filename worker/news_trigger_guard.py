@@ -305,6 +305,7 @@ def main():
         config = json.loads(Path(args.config).read_text(encoding="utf-8"))
         api = GitHub(os.environ["GITHUB_REPOSITORY"], os.getenv("GH_TOKEN") or os.getenv("GITHUB_TOKEN"))
         result = run_watchdog(api, config, datetime.now(timezone.utc), dry_run=not args.dispatch)
+        result["trigger_source"] = os.getenv("ODE_TRIGGER_SOURCE", "manual")
         if args.dispatch:
             recover_committed_and_uploaded(api, config, result, datetime.now(timezone.utc))
     except Exception as error:

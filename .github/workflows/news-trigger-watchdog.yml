@@ -1,4 +1,5 @@
 name: ODE Notícias - recuperar gatilho ausente
+run-name: ODE watchdog | ${{ github.event_name == 'schedule' && 'github-cron' || inputs.trigger_source || 'manual' }}
 on:
   workflow_dispatch:
     inputs:
@@ -6,6 +7,11 @@ on:
         description: Somente observar; não iniciar editor/modelos
         type: boolean
         default: true
+      trigger_source:
+        description: Origem do relógio que solicitou a conferência
+        type: choice
+        options: [manual, netlify]
+        default: manual
   schedule:
     # O guard lê as sete janelas e os prazos em config/news-autonomy.json.
     - cron: '7,27,47 * * * *'
@@ -31,6 +37,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           EXECUTE: ${{ github.event_name == 'schedule' || inputs.dry_run == false }}
+          ODE_TRIGGER_SOURCE: ${{ github.event_name == 'schedule' && 'github-cron' || inputs.trigger_source || 'manual' }}
         shell: bash
         run: |
           set -euo pipefail

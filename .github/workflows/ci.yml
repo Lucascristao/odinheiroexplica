@@ -94,6 +94,8 @@ jobs:
 
       - name: Test flexible news collection and attributed exclusives (offline)
         run: |
+          npx tsx scripts/test-news-clock.ts
+          npx tsc --noEmit --module NodeNext --moduleResolution NodeNext --target ES2022 --allowImportingTsExtensions --resolveJsonModule --types node --skipLibCheck netlify/functions/news-watchdog.mts scripts/test-news-clock.ts
           python worker/test_news_source_corpus.py
           python worker/test_news_source_header.py
           python worker/test_news_editor_modes.py
