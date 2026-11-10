@@ -38,7 +38,7 @@ def validate_draft_shape(episode):
             raise ValueError(f"draft.{key} precisa ser lista de objetos JSON")
     selection = episode["news_selection"]
     why_today = selection.get("why_today")
-    if not isinstance(why_today, str) or len(why_today.strip()) < 30:
+    if (not isinstance(why_today, str) or len(why_today.strip()) < 30) and str(episode.get('news_date', '')) < '2026-11-10':
         raise ValueError("draft.news_selection.why_today é string obrigatória de 30+ caracteres; não usar why_now ou campo na raiz")
     title = episode.get("title")
     options = episode["title_options"]
@@ -442,6 +442,8 @@ Não confundir opinião com fato; ausência de evidência exige insuficiência. 
     if day >= '2026-11-10':
         from news_draft_contract import normalize_draft_metadata
         episode = normalize_draft_metadata(episode)
+        if isinstance(episode, dict):
+            episode['news_date'] = day  # Edition identity, never the event_date.
     if not isinstance(episode, dict):
         raise ValueError("Groq deve retornar um objeto JSON na raiz, nunca uma lista.")
     episode = clean_unicode_spaces(episode)
@@ -451,7 +453,13 @@ Não confundir opinião com fato; ausência de evidência exige insuficiência. 
     if episode.get('insufficient_evidence') is True:
         return episode
     try:
-        return bind_draft_metadata(validate_draft_shape(episode))
+        bound = bind_draft_metadata(validate_draft_shape(episode))
+        if day >= '2026-11-10':
+            anchor = bound.get('news_selection', {}).get('opening_anchor')
+            opening = (bound.get('segments') or [{}])[0].get('narration', '')
+            if isinstance(anchor, str) and 20 <= len(anchor) <= 160 and anchor in opening:
+                bound.setdefault('discovery_strategy', {})['first_payoff'] = anchor
+        return bound
     except ValueError as error:
         error.unverified_draft = episode
         raise

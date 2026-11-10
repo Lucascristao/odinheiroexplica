@@ -10,6 +10,22 @@ import news_groq_client as groq
 
 
 class StructuredNews(unittest.TestCase):
+    def test_flattened_exact_fields_and_timestamp_are_losslessly_rebound(self):
+        ep = {'news_selection': {}, 'new_fact': 'A literal fact', 'why_today': 'A literal reason',
+            'topic_area': 'business', 'opening_anchor': 'Esta frase literal já está na abertura.',
+            'segments': [{'narration': 'Esta frase literal já está na abertura.'}],
+            'sources': [{'url': 'https://example.org/news', 'published_at': '2026-11-10T08:09:00-03:00'}]}
+        result = normalize_draft_metadata(ep)
+        self.assertEqual(result['news_selection']['new_fact'], 'A literal fact')
+        self.assertEqual(result['news_selection']['why_today'], 'A literal reason')
+        self.assertEqual(result['sources'][0]['published_at'], '2026-11-10')
+        self.assertEqual(result['sources'][0]['published_at_timestamp'], '2026-11-10T08:09:00-03:00')
+        self.assertNotIn('editorial_quality', result)
+
+    def test_timestamp_conversion_never_refreshes_yesterdays_publication(self):
+        result = normalize_draft_metadata({'sources': [{'published_at': '2026-11-10T01:00:00Z'}]})
+        self.assertEqual(result['sources'][0]['published_at'], '2026-11-09')
+
     def test_metadata_repair_does_not_invent_or_change_sources_facts_or_event_dates(self):
         original = {'news_date': '2026-11-10', 'event_date': '2026-11-09',
             'verified_facts': [{'claim': 'Fixture fact from yesterday', 'event_date': '2026-11-09'}],

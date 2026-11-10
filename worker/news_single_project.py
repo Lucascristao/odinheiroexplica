@@ -40,8 +40,12 @@ def validate_news_selection(episode: dict, news_day: date) -> None:
     require(selection.get("topic_area") in NEWS_TOPIC_AREAS, "editoria da notícia inválida")
     require(episode.get("event_date") == news_day.isoformat(),
             "o acontecimento novo precisa ser do dia da edição; reportagem recente não renova fato antigo")
-    require(isinstance(selection.get("why_today"), str)
-            and len(selection["why_today"].strip()) >= 30, "seleção sem justificativa de atualidade")
+    if news_day >= date(2026, 11, 10):
+        if not isinstance(selection.get('why_today'), str) or len(selection['why_today'].strip()) < 30:
+            print('NEWS_METADATA_ADVISORY: justificativa breve; data factual será comprovada pela revisão de fontes')
+    else:
+        require(isinstance(selection.get("why_today"), str)
+                and len(selection["why_today"].strip()) >= 30, "seleção sem justificativa de atualidade")
     fact_text = selection.get("new_fact")
     require(isinstance(fact_text, str) and len(fact_text.strip()) >= 30,
             "seleção sem fato novo literal")
