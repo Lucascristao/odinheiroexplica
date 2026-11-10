@@ -45,6 +45,7 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           ODE_NEWS_GROQ_MODEL: openai/gpt-oss-120b
           ODE_NEWS_GROQ_MIN_INTERVAL_SECONDS: '65'
+          ODE_NEWS_GROQ_FALLBACK_MODELS: openai/gpt-oss-20b
           EVALUATION_DAY: ${{ inputs.news_date }}
           RESUME: ${{ inputs.resume_run_id }}
         run: |
@@ -58,6 +59,20 @@ jobs:
           python worker/news_single_project.py --input render-output/news-editorial-evaluation.json --output video/generated/daily-project.json
           npx tsx scripts/validate-news-single.ts video/generated/daily-project.json
           python worker/auto_capture_sources.py --project video/generated/daily-project.json --captures-dir research/captures
+      - name: Confirmar disponibilidade real do modelo editorial reserva
+        continue-on-error: true
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: |
+          python - <<'PY'
+          import json,sys
+          sys.path.insert(0,'worker')
+          from news_groq_client import complete
+          result=json.loads(complete('Teste de disponibilidade, sem notícia: retorne apenas {"ok":true}.',
+              json_mode=True,model='openai/gpt-oss-20b',max_output_tokens=256))
+          assert result.get('ok') is True
+          print('EDITORIAL_BACKUP_REAL_API_AVAILABLE openai/gpt-oss-20b')
+          PY
       - name: Testar capa local e revisão multimodal sem Google
         id: cover
         continue-on-error: true
@@ -74,6 +89,7 @@ jobs:
             render-output/news-editorial-evaluation.json
             render-output/news-editorial-diagnostics.json
             render-output/news-editorial-rejected-draft-*.json
+            render-output/news-editor-cache/
             video/generated/daily-project.json
             research/captures/
             production/noticia-*/thumbnail*

@@ -197,6 +197,8 @@
     "research_mode": "publisher_pages_via_rss_no_paid_grounding",
     "research_model": "openai/gpt-oss-120b",
     "writer_model": "openai/gpt-oss-120b",
+    "availability_fallback_models": ["openai/gpt-oss-20b"],
+    "factual_verdict_fallback": false,
     "api_secret": "GROQ_API_KEY",
     "free_tier_only": true,
     "minimum_call_interval_seconds": 65

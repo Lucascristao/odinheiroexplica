@@ -55,6 +55,22 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
     if not api_key:
         raise RuntimeError("GROQ_API_KEY não configurada no GitHub Actions.")
     selected = model or os.environ.get("ODE_NEWS_GROQ_MODEL", MODEL)
+    def unavailable(reason):
+        # Availability-only fallback. A rejected factual verdict never reaches
+        # this branch, and no Google key/model is involved in editorial work.
+        alternates = [name.strip() for name in os.environ.get("ODE_NEWS_GROQ_FALLBACK_MODELS", "").split(",") if name.strip()]
+        primary = os.environ.get("ODE_NEWS_GROQ_MODEL", MODEL)
+        if selected == primary:
+            for alternate in alternates:
+                if alternate == selected:
+                    continue
+                print("GROQ_AVAILABILITY_FALLBACK", selected, alternate, reason, flush=True)
+                result = complete(prompt, json_mode=json_mode, model=alternate, max_retries=2,
+                                  diagnostics=diagnostics, max_output_tokens=max_output_tokens)
+                if diagnostics is not None:
+                    diagnostics.update(fallback_from=selected, fallback_reason=reason)
+                return result
+        raise RuntimeError("Editorial model unavailable after bounded retries: " + reason)
     if diagnostics is not None:
         diagnostics.update({"provider": "groq", "model": selected, "attempt": 0,
                             "http_status": None,
@@ -92,7 +108,7 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
             )
         except requests.RequestException as exc:
             if attempt == max_retries - 1:
-                raise RuntimeError("Groq indisponível após tentativas de conexão.") from exc
+                return unavailable("connection_failure")
             time.sleep(min(60, 12 * (attempt + 1)))
             continue
         if diagnostics is not None:
@@ -116,9 +132,11 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
                 seconds = 40
             print("GROQ_RETRY", response.status_code, "seconds", round(seconds), flush=True)
             if seconds > 600:
-                raise RuntimeError("Groq quota requires a later retry; preserve draft diagnostics and wait for watchdog")
+                return unavailable("primary_quota_retry_later")
             time.sleep(seconds)
             continue
+        if response.status_code in (429, 500, 502, 503, 504):
+            return unavailable("http_" + str(response.status_code))
         # Never emit raw response: it can include content from news pages.
         detail = ""
         try:

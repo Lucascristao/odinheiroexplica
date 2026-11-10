@@ -48,14 +48,17 @@ def parse_reply(prompt, budget=2200):
     return result
 
 
-def develop(episode, corpus):
+def develop(episode, corpus, completed_ids=(), on_progress=None):
     """Small sequential batches keep free-tier TPM and output size bounded."""
     segments = episode["segments"]
     outline = [{"id": s["id"], "type": s["type"], "title": s["title"],
                 "summary": s["narration"]} for s in segments]
     facts = episode["verified_facts"]
+    completed = set(completed_ids)
     for offset in range(0, len(segments), 2):
         batch = segments[offset:offset + 2]
+        if all(s["id"] in completed for s in batch):
+            continue
         source_ids = {doc["source_id"] for doc in episode["documentary_evidence"]
                       if doc["id"] in {s.get("document_id") for s in batch}}
         excerpts = {sid: {**corpus[sid], "text": corpus[sid]["text"][:5000]}
@@ -82,9 +85,49 @@ Não incluir diretivas de voz no texto nem alegar consenso de fontes. Preserve n
             if not isinstance(narration, str) or not narration.strip():
                 raise ValueError("Developed scene has no usable narration")
             original["narration"] = narration
+            completed.add(original["id"])
+        if on_progress:
+            on_progress(episode, completed)
     total = words(episode)
     if not MIN_WORDS <= total <= MAX_WORDS:
         print(f"NEWS_LENGTH_ADVISORY: target {MIN_WORDS}-{MAX_WORDS} words; got {total}. Preserve supported reporting; never pad or slow audio", flush=True)
+    return episode
+
+
+def context_document_fallback(episode, corpus):
+    """Discard an unverified crop plan; show real page context instead.
+
+    This never treats a similar sentence as support for the old quotation.
+    Factual approval still requires the separate full-text claim review.
+    """
+    by_source = {}
+    for sid, source in corpus.items():
+        quotes = []
+        for line in source["text"].splitlines():
+            line = line.strip()
+            if len(line) < 20:
+                continue
+            quote = line if len(line) <= 120 else line[:120].rsplit(" ", 1)[0]
+            if quote not in quotes:
+                quotes.append(quote)
+        if len(quotes) < 2:
+            text = source["text"].strip()
+            tail = text[-120:].split(" ", 1)[-1]
+            if len(tail) >= 20 and tail not in quotes:
+                quotes.append(tail)
+        if not quotes:
+            raise ValueError("No authentic visible page context for documentary fallback")
+        by_source[sid] = quotes
+    positions = {}
+    for doc in episode["documentary_evidence"]:
+        sid = doc["source_id"]
+        index = positions.get(sid, 0)
+        doc["expected_text"] = by_source[sid][index % len(by_source[sid])]
+        doc["selection_method"] = "visible_page_context_fallback_not_claim_highlight"
+        positions[sid] = index + 1
+    episode.setdefault("production_advisories", []).append({"code": "document_context_fallback",
+        "message": "Plano de recortes não confirmado descartado; usar contexto autêntico da página. Fatos seguem sujeitos à revisão integral."})
+    print("NEWS_DOCUMENT_FALLBACK: original page context selected; no fuzzy quote replacement or factual approval", flush=True)
     return episode
 
 

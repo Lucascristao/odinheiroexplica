@@ -15,6 +15,10 @@ from news_trigger_guard import editor_identity
 from news_render_dispatch import eligible
 from news_quality_contract import editorial_fingerprint
 from news_single_project import build_scene
+from news_editor_state import read_state, save_state, discard_state
+import news_groq_client as groq
+import tempfile
+from unittest.mock import Mock
 
 
 class SevenSlots(unittest.TestCase):
@@ -139,6 +143,34 @@ class SourceReview(unittest.TestCase):
         self.assertEqual(len(old["visual"]["beats"]), 3)
         self.assertGreater(len(developed["visual"]["beats"]), 8)
         self.assertIn("termo110", developed["visual"]["beats"][-1]["anchor"])
+
+
+class AutonomousRecovery(unittest.TestCase):
+    def test_unverified_checkpoint_never_crosses_edition_or_day(self):
+        with tempfile.TemporaryDirectory(dir=Path(__file__).parent) as directory:
+            path = Path(directory) / "state.json"
+            save_state(path, "2026-11-10", "manha", "Fixture unverified report", {"title": "Fixture"}, {"scene-1"})
+            state = read_state(path, "2026-11-10", "manha")
+            self.assertIs(state["factual_approval"], False)
+            self.assertEqual(state["developed_segment_ids"], ["scene-1"])
+            self.assertIsNone(read_state(path, "2026-11-11", "manha"))
+            self.assertIsNone(read_state(path, "2026-11-10", "noite"))
+            discard_state(path)
+            self.assertIsNone(read_state(path, "2026-11-10", "manha"))
+
+    def test_primary_quota_uses_editorial_backup_without_google(self):
+        limited = Mock(status_code=429, headers={"retry-after": "900"})
+        success = Mock(status_code=200, headers={})
+        success.json.return_value = {"choices": [{"finish_reason": "stop", "message": {"content": '{"ok":true}'}}], "usage": {}}
+        diag = {}
+        with patch.dict(groq.os.environ, {"GROQ_API_KEY": "unit-test-fixture", "ODE_NEWS_GROQ_MODEL": groq.MODEL,
+                "ODE_NEWS_GROQ_FALLBACK_MODELS": "openai/gpt-oss-20b", "ODE_NEWS_GROQ_MIN_INTERVAL_SECONDS": "0"}), \
+             patch.object(groq.requests, "post", side_effect=[limited, success]) as post, \
+             patch.object(groq.time, "sleep"):
+            self.assertEqual(json.loads(groq.complete("Fixture transport test", json_mode=True, diagnostics=diag)), {"ok": True})
+        self.assertEqual(post.call_args_list[0].kwargs["json"]["model"], groq.MODEL)
+        self.assertEqual(post.call_args_list[1].kwargs["json"]["model"], "openai/gpt-oss-20b")
+        self.assertEqual(diag["fallback_from"], groq.MODEL)
 
 
 if __name__ == "__main__":

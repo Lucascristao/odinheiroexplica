@@ -204,8 +204,8 @@ def validate(episode: dict, today: date | None = None, drafting: bool = False) -
     if source_mode != "single_source_attributed":
         require(len(hosts) >= 2, "fontes precisam incluir publicadores diferentes")
     claims = episode.get("verified_facts") or []
-    require(len(claims) >= 4, "menos de quatro fatos apurados")
     quality = episode.get("editorial_quality")
+    require(len(claims) >= (2 if quality or drafting else 4), "apuração factual insuficiente")
     if quality is not None:
         from news_quality_contract import editorial_fingerprint
         require(isinstance(quality, dict) and quality.get("version") == "2026-11-10.1", "contrato de desenvolvimento desconhecido")
@@ -284,7 +284,7 @@ def validate(episode: dict, today: date | None = None, drafting: bool = False) -
     used_docs = set()
     used_photos = set()
     for segment in segments:
-        require(len(str(segment.get("narration", "")).split()) >= (1 if drafting else 25), "bloco narrativo curto demais")
+        require(len(str(segment.get("narration", "")).split()) >= (1 if quality or drafting else 25), "bloco narrativo sem fala")
         cards = segment.get("visual_cards") or []
         require((1 if quality or drafting else 3) <= len(cards) <= 8
                 and all((1 if quality or drafting else 6) <= len(c) <= 65 for c in cards),

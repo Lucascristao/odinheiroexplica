@@ -17,6 +17,7 @@ from news_groq_client import complete
 from news_single_project import validate, transform
 from build_youtube_package import validate_publication_fields
 from news_schedule import load_config, slots as configured_slots, editorial_window
+from news_editor_state import read_state, save_state, discard_state
 
 SLOTS = {name: row["publication"] for name, row in configured_slots(load_config()).items()}
 
@@ -359,7 +360,7 @@ Descubra um FATO NOVO ocorrido em {day}. PREFIRA confirmação explícita em doi
 Dia da publicação da reportagem NÃO equivale ao dia do fato; se não houver prova atual, declare.
 Priorize páginas com texto literal para captura. NÃO invente links, datas ou trechos.
 Quando houver duas páginas, verifique se tratam realmente do mesmo acontecimento e não apenas repetem a mesma agência. Em fonte única, informe honestamente a ausência de segunda confirmação e os limites da reportagem.
-Identifique nome e URLs exatas, data original do fato, e ao menos quatro fatos com evidência.
+Identifique nomes e URLs exatas, data original e os fatos necessários à explicação, sem inventar informação para completar uma quantidade.
 Histórico recente (não repetir acontecimentos): {json.dumps(history[:20], ensure_ascii=False)[:3200]}.
 Compare pelo menos três candidatas REAIS. Prefira tensão factual, contradição demonstrável, decisão pública com consequência concreta e pergunta que o público deseja entender. Registro burocrático, recorde isolado ou celebridade sem relevância ao público do canal não ganham só por serem recentes. Política é relevante por si; não invente ligação com finanças. Não simule Trends, CTR ou popularidade.
 Depois de selecionar, identifique onde buscar o documento primário, o contraponto e quais efeitos ainda não ocorreram. Se o corpus não contém a prova, declare a lacuna. Fontes que republicam a mesma agência não são confirmações independentes.
@@ -401,7 +402,7 @@ title:20-100 caracteres, assunto reconhecível cedo, contradição/mudança/cons
 title_options:3 objetos {{text,editorial_quality:inteiro 1-5}}, ângulos distintos; title COPIA uma opção com nota máxima; scorecard={{method,reason,criteria:objeto}} justifica a mais forte por tensão factual e público.
 thumbnail_headline:2-4 palavras,8-34 caracteres, COMPLEMENTA título com tensão concreta, sem repetir a manchete. thumbnail_primary:prova documental real sobre o assunto, pois a composição local usa print autêntico como protagonista e Roberto em apoio; não exigir foto de personagem que não foi autorizada. thumbnail_tension,thumbnail_composition,thumbnail_text_side:left/right. Nada de rostos/objetos aleatórios para chamar atenção.
 sources:2-4 objetos {{id:S1/S2...,publisher,url,published_at:YYYY-MM-DD,role}}, apenas URLs específicas do relatório. Dê nome real, título da matéria se disponível e papel real: primary/independent/context. Não chamar republicação de agência de fonte independente. Fonte primária quando realmente disponível; não alegar ter lido documento ausente.
-verified_facts:4-7 objetos {{claim,source_ids:[IDs],status,event_date}}; status:statement/background/forecast_not_collected/projection/confirmed. Todo número exige apoio. Cálculos precisam de denominador e período comparáveis. Acontecimento CENTRAL ocorrido hoje, não apenas matéria publicada hoje sobre fato antigo.
+verified_facts:2-7 objetos {{claim,source_ids:[IDs],status,event_date}}; registre apenas fatos realmente apurados, sem preencher quota. status:statement/background/forecast_not_collected/projection/confirmed. Todo número exige apoio. Cálculos precisam de denominador e período comparáveis. Acontecimento CENTRAL ocorrido hoje, não apenas matéria publicada hoje sobre fato antigo.
 news_selection:OBJETO {{topic_area:politics/economy/personal_finance/business/international,source_mode:corroborated/single_source_attributed,independent_confirmation:boolean,new_fact,why_today,opening_anchor,candidate_review}}.
 new_fact copia EXATAMENTE um claim com event_date={day}, não background. why_today:string>=30 caracteres, novidade demonstrada hoje. opening_anchor:trecho literal único de20-160 caracteres da primeira narration. candidate_review:3 candidatas reais {{subject,topic_area,event_date,urls:[URLs],decision}}; não inventar concorrentes. Corroborated exige2 publicadores independentes vinculados ao claim. Fonte única só relato atribuído statement,independent_confirmation=false,attribution_note>=30 caracteres e publicador nomeado na descrição. Se não houver prova de hoje, não fabricar JSON aprovado.
 documentary_evidence:2-8 recortes REAIS {{id:doc-1...,source_id,expected_text}}, trechos contínuos de12-120 caracteres COPIADOS LITERALMENTE das páginas do relatório, distintos e pertinentes. Use o material necessário, sem cota artificial. Nunca substituir fonte por texto inventado. Metadados técnicos são preenchidos pelo motor. context_photos=[].
@@ -482,6 +483,8 @@ def main():
         print("NEWS_SLOT_ALREADY_EXISTS:", output)
         return
     history = existing_history(root)
+    checkpoint = root / "render-output/news-editor-cache" / f"{date}-{args.slot}.json"
+    cached = read_state(checkpoint, date, args.slot) if not args.resume_draft else None
     resumed = None
     if args.resume_draft:
         if not args.evaluation:
@@ -491,6 +494,10 @@ def main():
         if not isinstance(resumed, dict) or resumed.get("news_date") != date:
             raise SystemExit("Saved draft does not match the requested factual date")
         report = ""
+    elif cached and cached.get("report"):
+        report = cached["report"]
+        resumed = cached.get("draft")
+        print("NEWS_EDITOR_CHECKPOINT_RESUMED: unverified same-day work; source checks and final review will run", flush=True)
     else:
         candidates = collect()
         if not candidates.get("candidates"):
@@ -498,12 +505,13 @@ def main():
         report = research(candidates["candidates"], history,
                           f"{date}T{SLOTS[args.slot]}:00-03:00",
                           diagnostic_path=root / "render-output" / "news-editorial-diagnostics.json")
+        save_state(checkpoint, date, args.slot, report)
     error = ""
-    for attempt in range(1 if resumed else 3):
+    for attempt in range(1 if args.resume_draft else 3):
         episode = None
         transport = {}
         try:
-            episode = bind_draft_metadata(clean_unicode_spaces(resumed)) if resumed else draft(report, date, args.slot, history, error, diagnostics=transport)
+            episode = bind_draft_metadata(clean_unicode_spaces(resumed)) if resumed and attempt == 0 else draft(report, date, args.slot, history, error, diagnostics=transport)
             episode["version"] = "1.0"
             episode["format"] = "ode-news-single"
             episode["episode_id"] = f"noticia-{date}-{args.slot}"
@@ -517,10 +525,23 @@ def main():
             )
             episode = validate(episode, today=local.date(), drafting=True)
             prevent_repeated_story(episode, root)
-            check_documentary_sources(episode)
-            from news_editorial_quality import fetch_sources, develop, review
+            from news_editorial_quality import fetch_sources, develop, review, context_document_fallback
             corpus = fetch_sources(episode)
-            episode = develop(episode, corpus)
+            try:
+                check_documentary_sources(episode)
+            except ValueError as source_error:
+                if "Quoted documentary text absent" not in str(source_error):
+                    raise
+                episode = context_document_fallback(episode, corpus)
+                check_documentary_sources(episode)
+            completed = cached.get("developed_segment_ids", []) if cached and attempt == 0 else []
+            save_state(checkpoint, date, args.slot, report, episode, completed)
+            try:
+                episode = develop(episode, corpus, completed_ids=completed,
+                    on_progress=lambda current, ids: save_state(checkpoint, date, args.slot, report, current, ids))
+            except (RuntimeError, ValueError) as development_error:
+                print("NEWS_DEVELOPMENT_ADVISORY: availability failure; retain supported shorter/partly developed script and require factual review", flush=True)
+                episode.setdefault("production_advisories", []).append({"code": "development_unavailable_shorter_fallback", "error_type": type(development_error).__name__})
             episode = bind_draft_metadata(episode)
             episode = review(episode, corpus)
             episode = validate(episode, today=local.date())
@@ -539,6 +560,8 @@ def main():
             record_draft_diagnostic(root / "render-output/news-editorial-diagnostics.json",
                                     attempt + 1, episode, transport, exc)
             error = f"Falha real {type(exc).__name__}: {str(exc)[:400]}"
+            if isinstance(exc, ValueError) and "editorial review" in str(exc).lower():
+                discard_state(checkpoint)
             print("EDITORIAL_RETRY:", error)
     raise SystemExit("Nenhum roteiro passou na verificação factual e estrutural.")
 

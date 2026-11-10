@@ -64,6 +64,12 @@ jobs:
             if [[ -n "$NEWS_DAY" ]]; then ARGS+=(--date "$NEWS_DAY"); fi
           fi
           python worker/news_schedule.py "${ARGS[@]}"
+      - uses: actions/cache/restore@v4
+        if: env.NEWS_SLOT_ACTIVE == 'true'
+        with:
+          path: render-output/news-editor-cache
+          key: news-editor-state-${{ env.NEWS_DATE }}-${{ env.NEWS_SLOT }}-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: news-editor-state-${{ env.NEWS_DATE }}-${{ env.NEWS_SLOT }}-
       - name: Preparar dependências editoriais e documentais
         if: env.NEWS_SLOT_ACTIVE == 'true'
         run: |
@@ -75,6 +81,7 @@ jobs:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           ODE_NEWS_GROQ_MODEL: openai/gpt-oss-120b
           ODE_NEWS_GROQ_MIN_INTERVAL_SECONDS: '65'
+          ODE_NEWS_GROQ_FALLBACK_MODELS: openai/gpt-oss-20b
         run: |
           set -euo pipefail
           FILE="news/episodes/$NEWS_DATE-$NEWS_SLOT.json"
@@ -84,6 +91,11 @@ jobs:
           if [[ ! -s "$FILE" ]]; then exit 0; fi
           python worker/news_single_project.py --input "$FILE" --output video/generated/daily-project.json
           python worker/auto_capture_sources.py --project video/generated/daily-project.json --captures-dir research/captures
+      - uses: actions/cache/save@v4
+        if: always() && env.NEWS_SLOT_ACTIVE == 'true' && hashFiles('render-output/news-editor-cache/*.json') != ''
+        with:
+          path: render-output/news-editor-cache
+          key: news-editor-state-${{ env.NEWS_DATE }}-${{ env.NEWS_SLOT }}-${{ github.run_id }}-${{ github.run_attempt }}
       - name: Preservar diagnóstico sem credenciais nem artigos completos
         if: always()
         uses: actions/upload-artifact@v4
