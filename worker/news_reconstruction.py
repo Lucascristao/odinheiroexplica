@@ -19,6 +19,10 @@ def _font(bold: bool, size: int):
         path = Path(base) / name
         if path.is_file():
             return ImageFont.truetype(str(path), size)
+    # Local Windows QA uses an installed font; Linux production keeps DejaVu.
+    windows_font = Path("C:/Windows/Fonts") / ("arialbd.ttf" if bold else "arial.ttf")
+    if windows_font.is_file():
+        return ImageFont.truetype(str(windows_font), size)
     raise RuntimeError("Fonte editorial indisponível")
 
 

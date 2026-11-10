@@ -1,4 +1,10 @@
-# ODE Notícias, execução agendada comandada pelo ChatGPT
+# ODE Notícias, execução automática GitHub/Groq
+
+**Atualização autorizada de 10/11/2026:** manter a automação GitHub/Groq e ampliar para sete oportunidades diárias. As referências antigas a redação exclusiva via Tasks abaixo são históricas. Agenda única: `config/news-autonomy.json:slots`, consumida por `worker/news_schedule.py`: 08h, 10h30, 13h, 16h, 18h, 20h e 22h em Fortaleza.
+
+O editor compara candidatas, prepara oito blocos, desenvolve 650–1100 palavras em lotes e faz segunda revisão automatizada com apoio literal de fatos/data. Alvo de 4–6 minutos; o áudio real determina a duração. Falta de evidência exige diagnóstico, nunca conteúdo inventado. Google só na voz Gemini Live/Charon; capa local e visão Groq opcionais.
+
+O watchdog recupera gatilho, render e publicação separadamente. Cron atrasado não pode iniciar edição vencida. Prazo de 180 minutos, mesmo dia, QA sem falhas e identidade/recibos originais. O monitor distingue privado programado de agendamento vencido. Crons podem atrasar; sete horários não comprovam sete publicações.
 
 ## Escopo e autorização
 Somente novas notícias únicas `ode-news-single`. O titular autorizou operação recorrente integral, sem pedir pauta nem aprovação por episódio, inclusive publicação **sem capa personalizada**, usando a miniatura automática do YouTube. Esta autorização não se aplica a vídeos explicativos evergreen. O ChatGPT seleciona e edita as pautas; o GitHub executa somente o motor de vídeo, QA e publicação. Gemini API é reservada EXCLUSIVAMENTE à voz Gemini 3.8 Live Roberto/Charon. Não chamar o editor Gemini `worker/news_autonomous_editor.py`, o gerador Gemini `worker/news_autonomous_thumbnail.py` nem criar cron editorial no GitHub.

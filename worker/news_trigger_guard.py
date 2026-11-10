@@ -16,6 +16,7 @@ from urllib.parse import urlencode, urlparse
 from urllib.request import Request, build_opener, HTTPRedirectHandler, urlopen
 import zipfile
 from zoneinfo import ZoneInfo
+from news_schedule import slots as configured_slots, editorial_window, nominal_occurrence
 
 SLOTS = ("manha", "meio-dia", "noite")
 MAX_ATTEMPTS = 3
@@ -137,23 +138,28 @@ def read_upload_receipt(blob):
 def active_window(config, slot, now):
     zone = ZoneInfo(config["timezone"])
     local = now.astimezone(zone)
-    index = SLOTS.index(slot)
-    start = datetime.fromisoformat(local.date().isoformat() + "T" + config["production_hours"][index]).replace(tzinfo=zone)
-    publication = datetime.fromisoformat(local.date().isoformat() + "T" + config["publication_hours"][index]).replace(tzinfo=zone)
+    row = configured_slots(config)[slot]
+    start = datetime.fromisoformat(local.date().isoformat() + "T" + row["production"]).replace(tzinfo=zone)
+    publication = datetime.fromisoformat(local.date().isoformat() + "T" + row["publication"]).replace(tzinfo=zone)
     tolerance = config.get("late_tolerance_minutes", 0) if config.get("publish_if_late") is True else 0
     if type(tolerance) is not int or not 0 <= tolerance <= 180 or publication <= start:
         raise ValueError("Invalid configured production/publication window")
     # Stop new editorial attempts one hour after the target, at the latest.
     # This is 09h/13h/21h under current config and never expands its tolerance.
-    end = publication + timedelta(minutes=min(60, tolerance))
+    end = publication + timedelta(minutes=max(0, tolerance - config.get("minimum_production_budget_minutes", 30)))
     return config.get("enabled") is True and start <= local < end, local.date().isoformat(), start, end
 
 
 def editor_identity(run, config):
     title = run.get("display_title", "")
-    match = re.fullmatch(r"ODE editor \| (\d{4}-\d{2}-\d{2}) \| (manha|meio-dia|noite)", title)
+    match = re.fullmatch(r"ODE editor \| (\d{4}-\d{2}-\d{2}) \| ([a-z0-9-]+)", title)
     if match:
-        return match.groups()
+        return match.groups() if match[2] in configured_slots(config) else None
+    if config.get("slots") and run.get("event") == "schedule" and title.startswith("ODE editor | automatico | "):
+        try:
+            return nominal_occurrence(title.split(" | ")[-1], run["created_at"], config)
+        except ValueError:
+            return None
     # Scheduled runs have no inputs/date. Their name preserves the actual cron;
     # bind it to the most recent nominal occurrence, not the runner start time.
     cron = re.fullmatch(r"ODE editor \| automatico \| (0|17|48|3) (8|9|12|13|20|21) \* \* \*", title)
@@ -208,7 +214,7 @@ def plan_slot(api, config, slot, now):
 
 def run_watchdog(api, config, now, dry_run=True):
     results = []
-    for slot in SLOTS:
+    for slot in configured_slots(config):
         result = plan_slot(api, config, slot, now)
         if result["state"] == "missing" and not dry_run:
             # Capture/receipt reads can take time. Recheck current main, runs and
@@ -238,6 +244,53 @@ def write_report(result, output):
     print(json.dumps(result, ensure_ascii=False))
 
 
+def recover_committed_and_uploaded(api, config, result, now):
+    """Separate missing triggers, pre-upload renders and existing private IDs.
+
+    A fresh scheduled watchdog avoids GitHub's workflow_run chain depth limit.
+    Never rerender an upload whose step started; restore the original receipts.
+    """
+    from news_render_dispatch import GitHub as RenderAPI, ensure_render
+    from restore_news_publication import has_completed_upload
+    token = os.getenv("GH_TOKEN") or os.getenv("GITHUB_TOKEN")
+    render_api = RenderAPI(os.environ["GITHUB_REPOSITORY"], token)
+    for item in result["slots"]:
+        if item["state"] == "delegated_to_render":
+            path = Path(item["episode_path"])
+            if path.is_file():
+                item["render_recovery"] = ensure_render(render_api, item["episode_path"], path.read_bytes(), config, now, apply=True)
+    if not config.get("publication_recovery", {}).get("enabled"):
+        return
+    zone = ZoneInfo(config["timezone"])
+    day = now.astimezone(zone).date().isoformat()
+    runs = api.runs(RENDER, day, zone)
+    recoveries = api.runs("news-resume-publication.yml", day, zone)
+    result["publication_recoveries"] = []
+    for run in runs:
+        if run.get("status") != "completed" or run.get("conclusion") != "failure":
+            continue
+        match = re.fullmatch(r"ODE render \| (news/episodes/" + day + r"-[a-z0-9-]+\.json)", run.get("display_title", ""))
+        if not match or not Path(match[1]).is_file():
+            continue
+        episode = json.loads(Path(match[1]).read_text(encoding="utf-8"))
+        target = aware(episode["publication_target_local"])
+        if now > target + timedelta(minutes=config["late_tolerance_minutes"]):
+            continue
+        attempts = [r for r in recoveries if r.get("display_title") == f"ODE recover | {run['id']}"]
+        if any(r.get("status") != "completed" or r.get("conclusion") == "success" for r in attempts):
+            continue
+        if len(attempts) >= config["publication_recovery"]["max_attempts"]:
+            continue
+        if attempts and now < max(aware(r["updated_at"]) for r in attempts) + COOLDOWN:
+            continue
+        jobs = api.request(f"/actions/runs/{run['id']}/jobs?filter=latest&per_page=100").get("jobs", [])
+        if not has_completed_upload(jobs):
+            continue
+        api.request("/actions/workflows/news-resume-publication.yml/dispatches", payload={
+            "ref": "main", "inputs": {"source_run_id": str(run["id"]), "publish": "true"}})
+        result["publication_recoveries"].append({"source_run_id": run["id"], "action": "restore_original_upload"})
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default="config/news-autonomy.json")
@@ -249,6 +302,8 @@ def main():
         config = json.loads(Path(args.config).read_text(encoding="utf-8"))
         api = GitHub(os.environ["GITHUB_REPOSITORY"], os.getenv("GH_TOKEN") or os.getenv("GITHUB_TOKEN"))
         result = run_watchdog(api, config, datetime.now(timezone.utc), dry_run=not args.dispatch)
+        if args.dispatch:
+            recover_committed_and_uploaded(api, config, result, datetime.now(timezone.utc))
     except Exception as error:
         result["error_type"] = type(error).__name__
         write_report(result, args.output)

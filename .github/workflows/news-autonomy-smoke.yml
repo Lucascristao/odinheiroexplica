@@ -22,6 +22,10 @@ on:
       - 'worker/news_source_corpus.py'
       - 'worker/news_reconstruction.py'
       - 'worker/test_news_reconstruction.py'
+      - 'worker/news_schedule.py'
+      - 'worker/news_production_gate.py'
+      - 'worker/news_editorial_quality.py'
+      - 'worker/test_news_upgrade.py'
 permissions:
   contents: read
 jobs:
@@ -37,7 +41,7 @@ jobs:
         run: |
           set -euo pipefail
           python -m py_compile worker/news_autonomous_schedule.py worker/news_single_project.py worker/news_autonomous_editor.py worker/news_groq_client.py worker/news_source_corpus.py worker/news_scout.py worker/test_news_autonomous_schedule.py
-          python -m pip install --disable-pip-version-check PyYAML
+          python -m pip install --disable-pip-version-check PyYAML requests
           python - <<'PY'
           from pathlib import Path
           import yaml
@@ -52,7 +56,7 @@ jobs:
               assert isinstance(data, dict) and "jobs" in data, path
               print("YAML_OK", path)
           PY
-      - name: Confirmar editor Groq e Gemini somente na voz e auditoria visual opcional
+      - name: Confirmar Google exclusivamente na voz; editor e visão no Groq
         run: |
           python - <<'PY'
           from pathlib import Path
@@ -64,15 +68,17 @@ jobs:
           assert "worker/news_autonomous_editor.py --slot" in editor, "Editor oficial não habilitado"
           assert "workflow_dispatch:" in editor and "schedule:" in editor, "Cron editorial ausente"
           assert "schedule:" not in scout, "Coletor auxiliar não deve rodar cron"
-          assert "gh workflow run render-news-single.yml" in editor, "Dispatch explicito obrigatorio"
+          assert "worker/news_render_dispatch.py --episode" in editor, "Entrega idempotente obrigatoria"
           assert "GROQ_API_KEY:" in editor, "Editor sem secret Groq"
-          assert "GEMINI_API_KEY:" in editor, "Chave Gemini restrita à auditoria opcional"
+          assert "GEMINI_API_KEY:" not in editor, "Editor/capa não podem consumir chave Google"
           assert "ODE_NEWS_GROQ_MODEL: openai/gpt-oss-120b" in editor
           code = Path("worker/news_autonomous_editor.py").read_text(encoding="utf-8")
           assert "from news_groq_client import complete" in code
           assert "genai.Client" not in code, "Editor voltou a chamar Gemini"
           print("GROQ_EDITOR_AND_GEMINI_VOICE_SEPARATION_OK")
           PY
+      - name: Testar sete janelas, atraso de cron, duração e provas de apuração
+        run: python worker/test_news_upgrade.py
       - name: Garantir reconstrução editorial limpa e proveniência fiel
         run: |
           python -m pip install --disable-pip-version-check 'Pillow>=10.4'

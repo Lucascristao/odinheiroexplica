@@ -6,24 +6,28 @@ on:
       slot:
         description: Janela de edição
         type: choice
-        options: [manha, meio-dia, noite]
+        options: [manha, manha-2, meio-dia, tarde, noite-1, noite, noite-3]
         required: true
       date:
-        description: Data YYYY-MM-DD da edição (opcional; padrão hoje em Fortaleza)
+        description: Data YYYY-MM-DD; vazio usa hoje em Fortaleza
         type: string
         required: false
   schedule:
+    # Fortaleza: publicar 08h, 10h30, 13h, 16h, 18h, 20h, 22h.
     - cron: '48 8 * * *'
-    - cron: '48 12 * * *'
-    - cron: '48 20 * * *'
-    # Backup redundante fora do congestionamento de hora cheia
     - cron: '3 9 * * *'
-    - cron: '3 13 * * *'
+    - cron: '18 11 * * *'
+    - cron: '33 11 * * *'
+    - cron: '48 13 * * *'
+    - cron: '3 14 * * *'
+    - cron: '48 16 * * *'
+    - cron: '3 17 * * *'
+    - cron: '48 18 * * *'
+    - cron: '3 19 * * *'
+    - cron: '48 20 * * *'
     - cron: '3 21 * * *'
-  push:
-    branches: [main]
-    paths:
-      - 'news/editorial-triggers/*.txt'
+    - cron: '48 22 * * *'
+    - cron: '3 23 * * *'
 permissions:
   contents: write
   actions: write
@@ -39,123 +43,101 @@ jobs:
         with:
           ref: main
           fetch-depth: 0
-          persist-credentials: true
-      - name: Identificar janela por horário de gatilho, sem adivinhar
-        shell: bash
-        env:
-          TRIGGER: ${{ github.event_name }}
-          CRON: ${{ github.event.schedule }}
-          MANUAL_SLOT: ${{ inputs.slot }}
-        run: |
-          set -euo pipefail
-          if [[ "$TRIGGER" == workflow_dispatch ]]; then
-            SLOT="$MANUAL_SLOT"
-            if [[ -n "${{ inputs.date }}" ]]; then
-              NEWS_DATE="${{ inputs.date }}"
-            else
-              NEWS_DATE="$(TZ=America/Fortaleza date +%F)"
-            fi
-          elif [[ "$TRIGGER" == schedule ]]; then
-            NEWS_DATE="$(TZ=America/Fortaleza date +%F)"
-            case "$CRON" in
-              '48 8 * * *'|'3 9 * * *'|'0 9 * * *'|'17 9 * * *') SLOT=manha ;;
-              '48 12 * * *'|'3 13 * * *'|'0 13 * * *'|'17 13 * * *') SLOT=meio-dia ;;
-              '48 20 * * *'|'3 21 * * *'|'0 21 * * *'|'17 21 * * *') SLOT=noite ;;
-              *) exit 1 ;;
-            esac
-          else
-            NEWS_DATE="$(TZ=America/Fortaleza date +%F)"
-            CHANGED="$(git diff --name-only "${{ github.event.before }}" "${{ github.sha }}" -- 'news/editorial-triggers/*.txt')"
-            if [[ "$(printf '%s\n' "$CHANGED" | sed '/^$/d' | wc -l)" -ne 1 ]]; then
-              echo "Exige um único gatilho de edição"; exit 1
-            fi
-            SLOT="$(basename "$CHANGED" .txt | sed -E 's/^.*-(manha|meio-dia|noite)$/\1/')"
-          fi
-          case "$SLOT" in manha|meio-dia|noite) ;; *) echo "Slot inválido"; exit 1;; esac
-          echo "NEWS_SLOT=$SLOT" >> "$GITHUB_ENV"
-          echo "NEWS_DATE=$NEWS_DATE" >> "$GITHUB_ENV"
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-          cache: pip
-          cache-dependency-path: worker/requirements.txt
-      - name: Dependências gratuitas e navegador documental
+      - name: Resolver janela nominal e recusar gatilho vencido antes de chamar API
+        env:
+          GH_TOKEN: ${{ github.token }}
+          TRIGGER: ${{ github.event_name }}
+          CRON: ${{ github.event.schedule }}
+          SLOT: ${{ inputs.slot }}
+          NEWS_DAY: ${{ inputs.date }}
+        run: |
+          set -euo pipefail
+          ARGS=()
+          if [[ "$TRIGGER" == schedule ]]; then
+            CREATED="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" --jq .created_at)"
+            ARGS=(--cron "$CRON" --created-at "$CREATED")
+          else
+            ARGS=(--slot "$SLOT")
+            if [[ -n "$NEWS_DAY" ]]; then ARGS+=(--date "$NEWS_DAY"); fi
+          fi
+          python worker/news_schedule.py "${ARGS[@]}"
+      - name: Preparar dependências editoriais e documentais
+        if: env.NEWS_SLOT_ACTIVE == 'true'
         run: |
           python -m pip install --disable-pip-version-check -r worker/requirements.txt
           python -m playwright install chromium
-      - name: Selecionar, apurar, redigir e validar sem consumir voz
+      - name: Selecionar, desenvolver e revisar sem usar a API Google
+        if: env.NEWS_SLOT_ACTIVE == 'true'
         env:
           GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
           ODE_NEWS_GROQ_MODEL: openai/gpt-oss-120b
+          ODE_NEWS_GROQ_MIN_INTERVAL_SECONDS: '65'
         run: |
           set -euo pipefail
-          test "$(python - <<'PY'
-          import json
-          print(str(json.load(open('config/news-autonomy.json'))['enabled']).lower())
-          PY
-          )" = true
           FILE="news/episodes/$NEWS_DATE-$NEWS_SLOT.json"
-          if [[ -e "$FILE" ]]; then
-            echo "EPISODE_ALREADY_EXISTS $FILE"; exit 0
+          if [[ ! -e "$FILE" ]]; then
+            python worker/news_autonomous_editor.py --slot "$NEWS_SLOT" --date "$NEWS_DATE"
           fi
-          python worker/news_autonomous_editor.py --slot "$NEWS_SLOT" --date "$NEWS_DATE"
-          test -s "$FILE"
+          if [[ ! -s "$FILE" ]]; then exit 0; fi
           python worker/news_single_project.py --input "$FILE" --output video/generated/daily-project.json
           python worker/auto_capture_sources.py --project video/generated/daily-project.json --captures-dir research/captures
-          echo "EDITORIAL_AND_DOCUMENTARY_PREFLIGHT_PASS $FILE"
-      - name: Preservar diagnóstico editorial sem chaves nem artigos integrais
+      - name: Preservar diagnóstico sem credenciais nem artigos completos
         if: always()
-        continue-on-error: true
         uses: actions/upload-artifact@v4
         with:
           name: news-editorial-diagnostics
           path: |
             render-output/news-editorial-diagnostics.json
             render-output/news-editorial-rejected-draft-*.json
-          if-no-files-found: warn
+          if-no-files-found: ignore
           retention-days: 7
       - uses: actions/setup-node@v4
+        if: env.NEWS_SLOT_ACTIVE == 'true'
         with:
           node-version: '22'
-          cache: npm
-      - name: Compor capa local original e auditar pixels com Gemini, opcional e sem geração paga
+      - name: Tentar capa original local e inspeção visual Groq, opcional
+        if: env.NEWS_SLOT_ACTIVE == 'true'
         continue-on-error: true
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
-          ODE_NEWS_VISION_MODEL: gemini-3.8-flash
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          ODE_NEWS_VISION_MODEL: qwen/qwen3.8-27b
         run: |
           set -euo pipefail
           FILE="news/episodes/$NEWS_DATE-$NEWS_SLOT.json"
-          if [[ ! -f "$FILE" ]]; then exit 0; fi
+          if [[ ! -s "$FILE" ]]; then exit 0; fi
           npm ci --no-audit --no-fund
           python worker/news_auto_local_cover.py --project video/generated/daily-project.json --episode "$FILE"
           mkdir -p render-output
-          echo "audited" > render-output/news-thumbnail-approved.txt
-      - name: Commit único e dispatch explícito do motor de vídeo
+          echo audited > render-output/news-thumbnail-approved.txt
+      - name: Commit e retomada idempotente do motor, inclusive após falha de dispatch
+        if: env.NEWS_SLOT_ACTIVE == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
-        shell: bash
         run: |
           set -euo pipefail
           FILE="news/episodes/$NEWS_DATE-$NEWS_SLOT.json"
-          if [[ ! -f "$FILE" ]]; then
-            echo "EPISODE_NOT_WRITTEN"
-            exit 0
-          fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if [[ ! -s "$FILE" ]]; then exit 0; fi
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git add -- "$FILE"
-          # Apenas capa auditada e verificada; arquivos incompletos são descartados.
           if [[ -s render-output/news-thumbnail-approved.txt ]]; then
             PROJECT_ID="noticia-$NEWS_DATE-$NEWS_SLOT"
             git add -- "production/$PROJECT_ID/thumbnail.jpg" "production/$PROJECT_ID/thumbnail-background.png" "production/$PROJECT_ID/thumbnail-composition.json" "production/$PROJECT_ID/thumbnail-audit.json"
           fi
-          if git diff --cached --quiet; then
-            echo "EPISODE_ALREADY_COMMITTED"; exit 0
+          if ! git diff --cached --quiet; then
+            git commit -m "news: produção automática $NEWS_DATE $NEWS_SLOT"
+            git pull --rebase origin main
+            git push origin HEAD:main
           fi
-          git commit -m "news: produção automática $NEWS_DATE $NEWS_SLOT"
-          git pull --rebase origin main
-          git push origin HEAD:main
-          # Push por GITHUB_TOKEN não dispara outros workflows. Dispatch explícito é obrigatório.
-          gh workflow run render-news-single.yml --ref main -f edition_path="$FILE"
-          echo "NEWS_RENDER_DISPATCHED $FILE"
+          python worker/news_render_dispatch.py --episode "$FILE" --apply
+      - name: Preservar decisão da entrega
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: news-editor-render-handoff
+          path: render-output/news-render-dispatch.json
+          if-no-files-found: ignore
+          retention-days: 7

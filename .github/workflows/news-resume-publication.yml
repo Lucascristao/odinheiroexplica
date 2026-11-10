@@ -1,4 +1,5 @@
 name: ODE Notícia Única - retomar publicação do upload original
+run-name: ODE recover | ${{ inputs.source_run_id || github.event.workflow_run.id }}
 on:
   workflow_run:
     workflows: ['ODE Notícia Única - produção real']

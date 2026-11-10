@@ -5,8 +5,9 @@ import json
 from pathlib import Path
 from zoneinfo import ZoneInfo
 from youtube_publication import youtube_service, assert_channel, lookup_existing
+from news_schedule import load_config, slots as configured_slots
 
-SLOT_HOURS = {"manha": "08:00", "meio-dia": "12:00", "noite": "20:00"}
+SLOT_HOURS = {name: row["publication"] for name, row in configured_slots(load_config()).items()}
 CHECK_HOURS_UTC = {"manha": (12, 45), "meio-dia": (16, 45), "noite": (0, 45)}
 LOCAL_ZONE = ZoneInfo("America/Fortaleza")
 
@@ -48,6 +49,7 @@ def check_publication(slot, day, episodes_dir=Path("news/episodes")):
         episode = json.loads(episode_path.read_text(encoding="utf-8"))
         if not isinstance(episode, dict) or episode.get("episode_id") != project_id:
             raise ValueError("Identidade da edição divergente.")
+        outcome["publication_target_local"] = episode.get("publication_target_local")
     except (ValueError, OSError):
         return {**outcome, "stage": "episode_invalid", "message": "JSON da edição inválido ou identidade divergente."}
     try:
@@ -69,6 +71,15 @@ def check_publication(slot, day, episodes_dir=Path("news/episodes")):
             return {**outcome, "stage": "identity_mismatch", "message": "Identidade do vídeo/episódio/canal divergente."}
         privacy = state[0].get("status", {}).get("privacyStatus")
         outcome.update(privacy_observed=privacy, public_confirmed=privacy == "public")
+        status = state[0].get("status", {})
+        outcome["publish_at_observed"] = status.get("publishAt")
+        outcome["upload_status_observed"] = status.get("uploadStatus")
+        outcome["rejection_reason"] = status.get("rejectionReason")
+        if privacy == "private" and status.get("publishAt"):
+            due = datetime.fromisoformat(status["publishAt"].replace("Z", "+00:00"))
+            if due > datetime.now(timezone.utc):
+                return {**outcome, "stage": "scheduled_waiting", "message": "Upload privado com horário futuro confirmado; publicação pública ainda pendente."}
+            return {**outcome, "stage": "schedule_overdue", "message": "O publishAt já venceu e o YouTube ainda informa privado; conferir processamento/restrições do mesmo ID."}
         return {**outcome, "stage": "public_confirmed" if privacy == "public" else "not_public",
                 "message": "Publicação pública confirmada." if privacy == "public" else
                 "Vídeo encontrado, mas não está público; conferir agendamento e eventuais restrições de API."}
@@ -80,12 +91,36 @@ def check_publication(slot, day, episodes_dir=Path("news/episodes")):
 
 def main():
     p = argparse.ArgumentParser()
-    p.add_argument("--slot", choices=SLOT_HOURS, required=True)
+    p.add_argument("--slot", choices=SLOT_HOURS)
+    p.add_argument("--recent", action="store_true", help="Read all existing editions from the last two local days")
     p.add_argument("--output", required=True)
     p.add_argument("--news-date", help="Data explícita YYYY-MM-DD para rechecagem manual.")
     p.add_argument("--run-created-at", help="Criação UTC da run agendada, para fixar a janela antes de filas/atrasos.")
     p.add_argument("--episodes-dir", default="news/episodes")
     args = p.parse_args()
+    if args.recent:
+        today = datetime.now(LOCAL_ZONE).date()
+        reports = []
+        for path in sorted(Path(args.episodes_dir).glob("*.json")):
+            for offset in (1, 0):
+                day = (today - timedelta(days=offset)).isoformat()
+                if path.name.startswith(day + "-"):
+                    slot = path.stem[len(day) + 1:]
+                    if slot in SLOT_HOURS:
+                        reports.append(check_publication(slot, day, Path(args.episodes_dir)))
+        outcome = {"checked_at_utc": datetime.now(timezone.utc).isoformat(), "stage": "recent_editions_checked",
+                   "public_confirmed": bool(reports) and all(r["public_confirmed"] for r in reports),
+                   "editions": reports, "message": "Estados individuais observados por API; agendamento não comprova publicação."}
+        target = Path(args.output)
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(json.dumps(outcome, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        for report in reports:
+            print("YOUTUBE_PUBLICATION_CHECK:", report["stage"], report["episode_id"], report.get("url"))
+        if any(r["stage"] not in ("public_confirmed", "scheduled_waiting") for r in reports):
+            raise SystemExit("Há edições não públicas ou sem upload; consultar os motivos individuais no relatório.")
+        return
+    if not args.slot:
+        p.error("--slot or --recent is required")
     try:
         day = edition_date(args.slot, args.news_date, args.run_created_at)
         outcome = check_publication(args.slot, day, Path(args.episodes_dir))

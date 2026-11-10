@@ -13,6 +13,7 @@ from zoneinfo import ZoneInfo
 
 from thumbnail_contract import validate_thumbnail_audit, file_sha256
 from youtube_publication import assert_channel, youtube_service, EXPECTED_ID
+from news_schedule import slots as configured_slots
 
 
 def load(path):
@@ -137,10 +138,16 @@ def main():
         raise SystemExit("Horário de publicação precisa trazer timezone explícito.")
     local_target = target.astimezone(local_zone)
     allowed = config["publication_hours"]
+    if episode.get("news_date", "") < config.get("schedule_effective_from", "0000"):
+        allowed = allowed + config.get("legacy_publication_hours", [])
     if (local_target.strftime("%H:%M") not in allowed
         or local_target.date().isoformat() != episode.get("news_date")
         or local_target.second or local_target.microsecond):
         raise SystemExit("Publicação fora da data/horários autorizados.")
+    if config.get("editorial_quality") and episode.get("news_date", "") >= config.get("schedule_effective_from", "9999"):
+        quality = episode.get("editorial_quality") or {}
+        if quality.get("version") != config["editorial_quality"]["version"] or (quality.get("review") or {}).get("approved") is not True:
+            raise SystemExit("Edição nova sem revisão factual e desenvolvimento exigidos.")
     now = datetime.now(timezone.utc)
     lead = (target.astimezone(timezone.utc) - now).total_seconds() / 60
     # Atraso operacional de até 90 min, conforme autorização permanente.
@@ -193,7 +200,14 @@ def main():
     if status.get("privacyStatus") != "private":
         raise SystemExit("Vídeo não está privado; não alterar.")
     if lead < 0 and not publish_now:
-        raise SystemExit("Janela de tolerância vencida; preservar vídeo privado.")
+        output = Path(args.output)
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(json.dumps({"project_id": project_id, "video_id": video_id,
+            "status": "expired_private", "reason": "late_window_expired",
+            "delay_minutes": round(delay_minutes, 2), "late_tolerance_minutes": grace_minutes,
+            "publication_target_local": local_target.isoformat(), "public_confirmed": False,
+            "url": "https://youtu.be/" + video_id}, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        raise SystemExit("Janela de tolerância vencida; preservar vídeo privado. Diagnóstico: expired_private.")
     existing = status.get("publishAt")
     desired = target.astimezone(timezone.utc).isoformat(timespec="seconds").replace("+00:00", "Z")
     if publish_now:

@@ -1,0 +1,62 @@
+name: ODE Notícias - validar apuração longa e capa com APIs reais
+on:
+  workflow_dispatch:
+    inputs:
+      news_date:
+        description: Dia factual YYYY-MM-DD a avaliar, sem publicar o teste
+        required: true
+        type: string
+permissions:
+  contents: read
+concurrency:
+  group: ode-news-editor
+  cancel-in-progress: false
+jobs:
+  evaluate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Preparar dependências de apuração, captura e composição
+        run: |
+          python -m pip install -r worker/requirements.txt
+          python -m playwright install chromium
+          npm ci --no-audit --no-fund
+      - name: Testar pesquisa e desenvolvimento reais sem gerar gatilho de publicação
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          ODE_NEWS_GROQ_MODEL: openai/gpt-oss-120b
+          ODE_NEWS_GROQ_MIN_INTERVAL_SECONDS: '65'
+          EVALUATION_DAY: ${{ inputs.news_date }}
+        run: |
+          python worker/news_autonomous_editor.py --slot noite-3 --date "$EVALUATION_DAY" --evaluation
+          python worker/news_single_project.py --input render-output/news-editorial-evaluation.json --output video/generated/daily-project.json
+          npx tsx scripts/validate-news-single.ts video/generated/daily-project.json
+          python worker/auto_capture_sources.py --project video/generated/daily-project.json --captures-dir research/captures
+      - name: Testar capa local e revisão multimodal sem Google
+        id: cover
+        continue-on-error: true
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          ODE_NEWS_VISION_MODEL: qwen/qwen3.8-27b
+        run: python worker/news_auto_local_cover.py --project video/generated/daily-project.json --episode render-output/news-editorial-evaluation.json
+      - name: Preservar resultados reais, incluindo tentativa de capa
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: news-quality-real-evaluation
+          path: |
+            render-output/news-editorial-evaluation.json
+            render-output/news-editorial-diagnostics.json
+            render-output/news-editorial-rejected-draft-*.json
+            video/generated/daily-project.json
+            research/captures/
+            production/noticia-*/thumbnail*
+          retention-days: 7
+          if-no-files-found: warn

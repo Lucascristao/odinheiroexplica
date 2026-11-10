@@ -1,5 +1,18 @@
 # Produção do O Dinheiro Explica no chat
 
+## Prioridade autorizada em 10/11/2026: sete notícias desenvolvidas
+
+O titular autorizou melhorar, testar e publicar mantendo a operação GitHub/Groq, com 2 vídeos de manhã, 2 à tarde e 3 à noite. Esta decisão prevalece sobre horários e fluxos históricos abaixo. Não criar redação duplicada no ChatGPT Tasks nem depender do PC.
+
+- Agenda única em `config/news-autonomy.json:slots`: 08h, 10h30, 13h, 16h, 18h, 20h e 22h, America/Fortaleza. Sete oportunidades não dispensam acontecimento atual apurado; não fabricar nem repetir assunto para preencher quota.
+- Alvo 700–950 palavras, contrato 650–1100, aproximadamente 4–6 minutos. Medir duração real; QA bloqueia abaixo de 3min30s no novo contrato. Não desacelerar áudio, acrescentar silêncio ou repetir informação.
+- Redação em lotes e segunda revisão automatizada com apoio literal para cada fato e para a data do acontecimento. Não equivale a revisão humana ou garantia de verdade. Não substituir citação ausente por texto parecido. Histórico mantém contratos/cache.
+- Comparar três títulos com ângulos distintos, tensão factual e promessa entregue na abertura. Não garantir viralização, CTR ou inscritos; avaliar dados reais do Studio sem atribuir causalidade a um caso isolado.
+- `GEMINI_API_KEY` exclusiva para voz Gemini 3.8 Live/Roberto/Charon. Live tem limites de sessão, concorrência e tokens; não dizer ilimitado. Groq faz texto/revisão em sequência, com espera e retentativas limitadas.
+- Tentar capa local original com documento real e identidade oficial, seguida de revisão de pixels em 1280×720 e 320×180 pelo modelo multimodal Groq configurado. Disponibilidade precisa ser testada. Sem auditoria aprovada, usar miniatura automática; não fabricar observações nem usar a chave Google para visão/capa.
+- Resolver cron pela ocorrência nominal, recusar produção vencida antes do TTS e recuperar gatilho, render pré-upload e publicação do mesmo ID separadamente. Tolerância de até 180 minutos no mesmo dia, mantendo QA sem falhas e identidade/recibos. Não liberar privados antigos em lote.
+- `news-quality-evaluation.yml` testa APIs reais de apuração/desenvolvimento/capa em artefatos sem publicação; `news-autonomy-smoke.yml` testa contratos e horários sem APIs. Configuração, agendamento e publicação confirmada são estados distintos.
+
 Para novos episódios, leia também `docs/editorial-learning.md`, preencha `editorial.learning_strategy` e execute `npm run ode -- preflight --new-episode`. Registre público concreto e hipótese, primeira descoberta na abertura, provas do título/capa com condições e progressão pelas unidades explicativas. O hash da revisão desses projetos inclui estratégia e embalagem. Retomadas históricas preservam contratos e cache. Após publicação manual, registre snapshots reais do Studio em 72h, 7 e 28 dias com `npm run ode -- analytics`; compare formato, idade, janela e origem semelhantes, sem inventar métricas ou atribuir causalidade a um único vídeo.
 
 O fluxo portátil começa em `skills/ode-video/SKILL.md`; `npm run ode -- context` informa contratos, capacidades e estado. As skills canônicas pertencem ao Git e podem ser lidas explicitamente por qualquer agente. `docs/production-portable.md` descreve execução e retomada. Decisões/autorização explícitas da conversa prevalecem: quando o usuário autorizar escolher a pauta, escolha após pesquisa e histórico sem pedir a escolha novamente.

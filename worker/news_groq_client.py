@@ -49,7 +49,8 @@ def _transport_metadata(data):
 
 def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
              max_retries: int = 4,
-             diagnostics: dict[str, Any] | None = None) -> str:
+             diagnostics: dict[str, Any] | None = None,
+             max_output_tokens: int | None = None) -> str:
     api_key = os.environ.get("GROQ_API_KEY")
     if not api_key:
         raise RuntimeError("GROQ_API_KEY não configurada no GitHub Actions.")
@@ -69,13 +70,17 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
             {"role": "user", "content": prompt},
         ],
         "temperature": 0.2 if json_mode else 0.1,
-        "max_completion_tokens": 5800 if json_mode else 2000,
+        "max_completion_tokens": max_output_tokens or (5800 if json_mode else 2000),
         "reasoning_effort": "low",
         "stream": False,
     }
     if json_mode:
         payload["response_format"] = {"type": "json_object"}
-    # 8K tokens/minute on free GPT-OSS 120B; no burst fanout.
+    # Pace sequential passes as well as retries; don't assume a free API is unlimited.
+    interval = float(os.environ.get("ODE_NEWS_GROQ_MIN_INTERVAL_SECONDS", "0"))
+    elapsed = time.monotonic() - globals().get("_last_completed_at", -1000)
+    if elapsed < interval:
+        time.sleep(interval - elapsed)
     for attempt in range(max_retries):
         if diagnostics is not None:
             diagnostics.update({"attempt": attempt + 1, "http_status": None,
@@ -93,6 +98,7 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
         if diagnostics is not None:
             diagnostics["http_status"] = response.status_code
         if response.status_code == 200:
+            globals()["_last_completed_at"] = time.monotonic()
             data = response.json()
             if diagnostics is not None:
                 diagnostics.update(_transport_metadata(data))
@@ -105,10 +111,12 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
         if response.status_code in (429, 500, 502, 503, 504) and attempt < max_retries - 1:
             wait = response.headers.get("retry-after")
             try:
-                seconds = min(90, max(5, float(wait))) if wait else min(75, 22 * (attempt + 1))
+                seconds = max(5, float(wait)) if wait else min(90, 30 * (attempt + 1))
             except ValueError:
                 seconds = 40
             print("GROQ_RETRY", response.status_code, "seconds", round(seconds), flush=True)
+            if seconds > 600:
+                raise RuntimeError("Groq quota requires a later retry; preserve draft diagnostics and wait for watchdog")
             time.sleep(seconds)
             continue
         # Never emit raw response: it can include content from news pages.

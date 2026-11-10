@@ -91,9 +91,8 @@ class DraftSchema(unittest.TestCase):
     def test_prompt_leaves_technical_metadata_to_code_and_narrative_length_flexible(self):
         self.draft(self.episode)
         prompt = COMPLETE.call_args.args[0]
-        for text in ("O código preenche", "Crédito curto real é válido",
-                     "rights_review é opcional", "não invente licença",
-                     "de 4 a 9 cenas", "extensão necessária", "cópia EXATA, CONTÍNUA e LITERAL"):
+        for text in ("Metadados técnicos são preenchidos pelo motor", "COPIADOS LITERALMENTE",
+                     "segments:8 objetos", "PLANO em25-45 palavras", "700-950 palavras"):
             self.assertIn(text, prompt)
         self.assertNotIn("EXATAMENTE QUATRO", prompt)
         self.assertNotIn("85-125", prompt)

@@ -205,6 +205,20 @@ def validate(episode: dict, today: date | None = None) -> dict:
         require(len(hosts) >= 2, "fontes precisam incluir publicadores diferentes")
     claims = episode.get("verified_facts") or []
     require(len(claims) >= 4, "menos de quatro fatos apurados")
+    quality = episode.get("editorial_quality")
+    if quality is not None:
+        from news_quality_contract import editorial_fingerprint
+        require(isinstance(quality, dict) and quality.get("version") == "2026-11-10.1", "contrato de desenvolvimento desconhecido")
+        require(quality.get("reviewed_content_sha256") == editorial_fingerprint(episode),
+                "roteiro/fontes/embalagem mudaram após a segunda revisão")
+        count = sum(len(s.get("narration", "").split()) for s in episode.get("segments", []))
+        require(650 <= count <= 1100 and count == quality.get("narration_word_count"),
+                "notícia desenvolvida precisa de 650 a 1100 palavras reais, sem repetição para preencher")
+        review = quality.get("review", {})
+        require(review.get("approved") is True and review.get("issues") == []
+                and review.get("same_day_event_supported") is True
+                and review.get("title_opening_delivered") is True,
+                "notícia sem segunda revisão factual aprovada")
     for claim in claims:
         require(claim.get("source_ids") and set(claim["source_ids"]) <= source_ids, "fato sem fonte identificável")
         require(claim.get("status") in ("statement", "background", "forecast_not_collected", "projection", "confirmed"), "tipo factual desconhecido")
@@ -265,7 +279,7 @@ def validate(episode: dict, today: date | None = None) -> dict:
                 "foto deve ser identificada como arquivo/contexto, nunca notícia atual")
         require(photo.get("needs_cutout") is False, "fotos de contexto não podem perder o fundo")
     segments = episode.get("segments") or []
-    require(4 <= len(segments) <= 9, "uma notícia exige 4 a 9 blocos narrativos")
+    require(4 <= len(segments) <= (12 if quality else 9), "quantidade de blocos narrativos fora do contrato")
     require(sum(s.get("type") == "opinion" for s in segments) >= 1, "falta opinião claramente identificada")
     require(sum(s.get("type") == "fact" for s in segments) >= 2, "poucos blocos factuais")
     used_docs = set()
@@ -361,7 +375,7 @@ def build_stage(segment: dict) -> dict:
     }
 
 
-def build_scene(index: int, segment: dict) -> dict:
+def build_scene(index: int, segment: dict, developed: bool = False) -> dict:
     narration = segment["narration"]
     available_cues = anchors(narration)
     cards = segment["visual_cards"]
@@ -381,13 +395,13 @@ def build_scene(index: int, segment: dict) -> dict:
         }
     # No unanchored text cards on top of material. Authored focus regions and
     # marks are optional: if none are reviewed, keep the evidence stable.
-    cue_count = min(4, len(cards), len(available_cues))
+    cue_count = len(available_cues) if developed else min(4, len(cards), len(available_cues))
     cue_indices = [round(i * (len(available_cues) - 1) / (cue_count - 1)) for i in range(cue_count)]
     beats = []
     for i, cue_index in enumerate(cue_indices):
         beat = {
             "anchor": available_cues[cue_index], "target_id": "evidence",
-            "action": "focus", "headline": cards[i],
+            "action": "focus", "headline": cards[i % len(cards)],
             "treatment": "spotlight", "behavior": "hold",
             "motion_seconds": .6,
         }
@@ -490,6 +504,7 @@ def transform(episode: dict) -> dict:
             "editorial_status": episode["editorial_status"],
             "scorecard": episode["scorecard"],
             "discovery_strategy": episode["discovery_strategy"],
+            **({"quality_contract": episode["editorial_quality"]} if episode.get("editorial_quality") else {}),
             **({"news_selection": episode["news_selection"]} if "news_selection" in episode else {}),
             "youtube_suitability": {"risk_level": "low", "title_thumbnail_safe": True},
         },
@@ -530,7 +545,7 @@ def transform(episode: dict) -> dict:
                     and not seg.get("document_id") and not seg.get("photo_id")
                     and (episode["segments"][i-1].get("document_id")
                          or episode["segments"][i-1].get("photo_id")) else {}),
-            })
+            }, developed=bool(episode.get("editorial_quality")))
             for i, seg in enumerate(episode["segments"])
         ],
     }

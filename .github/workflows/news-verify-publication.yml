@@ -4,92 +4,47 @@ on:
     inputs:
       slot:
         type: choice
-        options:
-          - manha
-          - meio-dia
-          - noite
-        required: true
+        options: [all, manha, manha-2, meio-dia, tarde, noite-1, noite, noite-3]
+        default: all
       news_date:
-        description: 'Data YYYY-MM-DD da edição; vazio usa hoje em Fortaleza (somente rechecagem).'
+        description: Data opcional YYYY-MM-DD para conferir uma edição
         type: string
-        required: false
   schedule:
-    - cron: '45 12 * * *'
-    - cron: '45 16 * * *'
-    - cron: '45 0 * * *'
+    - cron: '17 * * * *'
 permissions:
   contents: read
-  actions: read
 jobs:
   verify:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: main
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Identificar a janela prevista
-        env:
-          SCHEDULE_EXPRESSION: ${{ github.event.schedule }}
-          EVENT_NAME: ${{ github.event_name }}
-          DISPATCH_SLOT: ${{ inputs.slot }}
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          set -euo pipefail
-          if [ "$EVENT_NAME" = workflow_dispatch ]; then
-            SLOT="$DISPATCH_SLOT"
-          else
-            case "$SCHEDULE_EXPRESSION" in
-              '45 12 * * *') SLOT=manha ;;
-              '45 16 * * *') SLOT=meio-dia ;;
-              '45 0 * * *') SLOT=noite ;;
-              *) exit 1 ;;
-            esac
-          fi
-          echo "ODE_SLOT=$SLOT" >> "$GITHUB_ENV"
-          if [ "$EVENT_NAME" = schedule ]; then
-            if ! CREATED_AT="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" --jq '.created_at')"; then
-              mkdir -p render-output
-              printf '%s\n' '{"stage":"window_unresolved","public_confirmed":false,"message":"Não foi possível ler a criação da run; conferir janela antes de consultar YouTube."}' > render-output/publication-check.json
-              exit 1
-            fi
-            echo "ODE_RUN_CREATED_AT=$CREATED_AT" >> "$GITHUB_ENV"
-          fi
-      - name: Conferir privacidade pública real, sem fazer qualquer alteração
+      - name: Ler os estados reais; agendamento futuro é diferente de falha
         env:
           GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
           GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
-          DISPATCH_NEWS_DATE: ${{ inputs.news_date }}
+          SELECTED_SLOT: ${{ inputs.slot }}
+          SELECTED_DAY: ${{ inputs.news_date }}
         run: |
           set -euo pipefail
-          python -m pip install --disable-pip-version-check 'google-auth>=2.35' 'google-api-python-client>=2.149'
-          ARGS=(--slot "$ODE_SLOT" --output render-output/publication-check.json)
-          if [ -n "${ODE_RUN_CREATED_AT:-}" ]; then ARGS+=(--run-created-at "$ODE_RUN_CREATED_AT"); fi
-          if [ -n "$DISPATCH_NEWS_DATE" ]; then ARGS+=(--news-date "$DISPATCH_NEWS_DATE"); fi
-          python worker/news_verify_publication.py "${ARGS[@]}"
-      - name: Mostrar etapa e resultado observado
-        if: always()
-        run: |
-          python - <<'PY'
-          import json, os
-          from pathlib import Path
-          report = Path("render-output/publication-check.json")
-          if report.exists():
-              result = json.loads(report.read_text(encoding="utf-8"))
-              summary = f"### Confirmação de notícia\n\nEdição: {result.get('episode_id', 'janela não identificada')}\n\nEtapa: **{result['stage']}**\n\n{result['message']}\n"
-              if result.get('url'):
-                  summary += f"\nVídeo observado: {result['url']}\n"
-          else:
-              summary = "### Confirmação não executada\n\nFalha antes da consulta; nenhum estado público foi confirmado.\n"
-          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a', encoding='utf-8') as output:
-              output.write(summary)
-          PY
-      - name: Guardar status observado
+          python -m pip install --disable-pip-version-check google-auth google-api-python-client tzdata
+          ARGS=(--recent)
+          if [[ -n "$SELECTED_SLOT" && "$SELECTED_SLOT" != all ]]; then
+            ARGS=(--slot "$SELECTED_SLOT")
+            if [[ -n "$SELECTED_DAY" ]]; then ARGS+=(--news-date "$SELECTED_DAY"); fi
+          fi
+          python worker/news_verify_publication.py "${ARGS[@]}" --output render-output/publication-check.json
+      - name: Preservar estados observados e causas por episódio
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ode-publication-confirmation
           path: render-output/publication-check.json
-          if-no-files-found: warn
+          if-no-files-found: error
+          retention-days: 14

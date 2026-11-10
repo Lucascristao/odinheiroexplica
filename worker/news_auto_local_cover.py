@@ -4,6 +4,7 @@ No paid image model, no invented photos, no replacement of official Roberto.
 Failure is OPTIONAL and does not block video release.
 """
 import argparse
+import base64
 import json
 import os
 import subprocess
@@ -11,8 +12,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from PIL import Image, ImageEnhance, ImageFilter, ImageOps
-from google import genai
-from google.genai import types
+import requests
+import time
 
 from thumbnail_contract import (
     REQUIRED_CHECKS, REQUIRED_OBSERVATIONS, read_contract, contract_sha256,
@@ -44,7 +45,7 @@ def make_background(root, project, episode):
     return output
 
 
-def inspect_real_pixels(client, image_path, contract):
+def inspect_real_pixels(image_path, contract):
     full = image_path.read_bytes()
     with Image.open(image_path) as image:
         small = image.convert("RGB").resize((320, 180), Image.Resampling.LANCZOS)
@@ -67,13 +68,32 @@ Cheque texto literalmente palavra por palavra e legibilidade na imagem pequena.
 Em cada observations descreva o que efetivamente viu, não a intenção do prompt.
 Se não souber se o assunto principal é representado, marque false.
 Não alegue inspeção humana nem crie informações ausentes nos pixels."""
-    response = client.models.generate_content(
-        model=os.getenv("ODE_NEWS_VISION_MODEL", "gemini-3.8-flash"),
-        contents=[types.Part.from_bytes(data=full, mime_type="image/jpeg"),
-                  types.Part.from_bytes(data=tiny, mime_type="image/jpeg"), prompt],
-        config=types.GenerateContentConfig(response_mime_type="application/json", temperature=0),
-    )
-    result = json.loads(response.text)
+    content = [{"type": "text", "text": prompt}]
+    for pixels in (full, tiny):
+        content.append({"type": "image_url", "image_url": {
+            "url": "data:image/jpeg;base64," + base64.b64encode(pixels).decode("ascii")}})
+    for attempt in range(2):
+        response = requests.post("https://api.groq.com/openai/v1/chat/completions",
+            headers={"Authorization": "Bearer " + os.environ["GROQ_API_KEY"], "Content-Type": "application/json"},
+            json={"model": os.getenv("ODE_NEWS_VISION_MODEL", "qwen/qwen3.8-27b"),
+                  "messages": [{"role": "user", "content": content}],
+                  "response_format": {"type": "json_object"}, "temperature": 0, "max_completion_tokens": 1600}, timeout=90)
+        if response.status_code == 429 and attempt == 0:
+            try:
+                delay = float(response.headers.get("retry-after", "30"))
+            except ValueError:
+                delay = 30
+            if delay > 60:
+                raise ValueError("Capa opcional: quota de visão indisponível nesta janela")
+            time.sleep(max(5, delay))
+            continue
+        if response.status_code != 200:
+            raise ValueError("Capa opcional: revisão visual Groq HTTP " + str(response.status_code))
+        payload = response.json()
+        if payload["choices"][0].get("finish_reason") == "length":
+            raise ValueError("Capa opcional: revisão visual truncada")
+        result = json.loads(payload["choices"][0]["message"]["content"])
+        break
     checks, observations = result.get("checks", {}), result.get("observations", {})
     if set(checks) != set(REQUIRED_CHECKS) or set(observations) != set(REQUIRED_OBSERVATIONS):
         raise ValueError("Revisão multimodal incompleta.")
@@ -107,17 +127,16 @@ def main():
                     "--portrait-side", side, "--headline-position", "lower",
                     "--portrait-size", "close"], check=True)
     cover = folder / "thumbnail.jpg"
-    if not os.environ.get("GEMINI_API_KEY"):
-        raise ValueError("Auditoria multimodal sem chave; rejeitar capa sem prejudicar publicação.")
-    client = genai.Client(api_key=os.environ["GEMINI_API_KEY"])
-    checks, observations = inspect_real_pixels(client, cover, contract)
+    if not os.environ.get("GROQ_API_KEY"):
+        raise ValueError("Revisão visual Groq indisponível; publicar com miniatura automática.")
+    checks, observations = inspect_real_pixels(cover, contract)
     audit = {
         "version": "1.0", "project_id": project["project_id"],
         "project_sha256": normalized_project_sha256(project_path),
         "contract_sha256": contract_sha256(contract),
         "image_sha256": file_sha256(cover),
         "headline": contract["exact_headline"], "approval_status": "approved",
-        "reviewer": "Gemini multimodal automated pixel reviewer",
+        "reviewer": "Groq multimodal automated pixel reviewer; " + os.getenv("ODE_NEWS_VISION_MODEL", "qwen/qwen3.8-27b"),
         "reviewed_at": datetime.now(timezone.utc).isoformat(),
         "checks": checks, "observations": observations,
         "checked_forbidden_elements": contract["forbidden_elements"],

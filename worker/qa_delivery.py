@@ -69,6 +69,8 @@ def analyze_delivery(project, render_input, manifest, video, audio_dir):
         project = normalize_project(project)
         fps = finite_positive(render_input["fps"])
         expected_duration = finite_positive(render_input["duration_in_frames"]) / fps
+        if (project.get("editorial") or {}).get("quality_contract") and expected_duration < 210:
+            issue("failures", "developed-news-too-short", "Notícia desenvolvida ficou abaixo de 3min30s no áudio/render real; revisar desenvolvimento sem desacelerar ou preencher silêncio.", seconds=expected_duration)
         audio_dir = Path(audio_dir).resolve()
         render_scenes = render_input.get("scenes") or []
         audio_scenes = manifest.get("scenes") or []

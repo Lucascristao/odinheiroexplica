@@ -1,17 +1,25 @@
 {
   "version": "1.0",
   "enabled": true,
-  "approval_basis": "Piloto explicitamente aprovado pelo titular em 2026-10-09; autorização permanente para edições automáticas futuras, sem revisão humana por episódio",
+  "approval_basis": "Titular autorizou em 10/11/2026 melhorias, testes, publicação e automação com 2 vídeos pela manhã, 2 à tarde e 3 à noite; apuração e QA continuam obrigatórios.",
   "timezone": "America/Fortaleza",
   "production_hours": [
     "05:48",
-    "09:48",
-    "17:48"
+    "08:18",
+    "10:48",
+    "13:48",
+    "15:48",
+    "17:48",
+    "19:48"
   ],
   "publication_hours": [
     "08:00",
-    "12:00",
-    "20:00"
+    "10:30",
+    "13:00",
+    "16:00",
+    "18:00",
+    "20:00",
+    "22:00"
   ],
   "required_editorial_status": "autonomous_fact_checked",
   "require_qa_status": "pass",
@@ -20,7 +28,7 @@
   "min_lead_minutes": 5,
   "publish_if_late": true,
   "thumbnail_optional": true,
-  "thumbnail_provider": "chatgpt_optional_youtube_automatic_fallback",
+  "thumbnail_provider": "local_original_composition_groq_vision_optional_youtube_fallback",
   "editorial_policy": {
     "version": "2026-10-11.1",
     "review_cutover_utc": "2026-10-11T21:00:00Z",
@@ -45,7 +53,7 @@
     "reason": "Publicação tardia da edição das 08h solicitada explicitamente pelo titular em 09/10/2026; exceção somente para este episódio"
   },
   "allow_qa_warnings": true,
-  "late_tolerance_minutes": 90,
+  "late_tolerance_minutes": 180,
   "qa_warning_policy": "record_and_improve_next_episode_no_block",
   "additional_late_recoveries": [
     {
@@ -190,12 +198,118 @@
     "research_model": "openai/gpt-oss-120b",
     "writer_model": "openai/gpt-oss-120b",
     "api_secret": "GROQ_API_KEY",
-    "free_tier_only": true
+    "free_tier_only": true,
+    "minimum_call_interval_seconds": 65
   },
   "thumbnail_automation": {
     "mode": "original_local_documentary_base_with_locked_roberto_if_audited",
     "api_image_generation_enabled": false,
     "reason": "Gemini image generation API has no free production tier; never silently bill",
-    "automatic_youtube_fallback": true
+    "automatic_youtube_fallback": true,
+    "review_provider": "groq",
+    "review_model": "qwen/qwen3.8-27b",
+    "review_api_secret": "GROQ_API_KEY",
+    "google_api_usage": "voice_only",
+    "optional": true
+  },
+  "slots": [
+    {
+      "id": "manha",
+      "period": "manha",
+      "production": "05:48",
+      "publication": "08:00",
+      "crons_utc": [
+        "48 8 * * *",
+        "3 9 * * *"
+      ]
+    },
+    {
+      "id": "manha-2",
+      "period": "manha",
+      "production": "08:18",
+      "publication": "10:30",
+      "crons_utc": [
+        "18 11 * * *",
+        "33 11 * * *"
+      ]
+    },
+    {
+      "id": "meio-dia",
+      "period": "tarde",
+      "production": "10:48",
+      "publication": "13:00",
+      "crons_utc": [
+        "48 13 * * *",
+        "3 14 * * *"
+      ]
+    },
+    {
+      "id": "tarde",
+      "period": "tarde",
+      "production": "13:48",
+      "publication": "16:00",
+      "crons_utc": [
+        "48 16 * * *",
+        "3 17 * * *"
+      ]
+    },
+    {
+      "id": "noite-1",
+      "period": "noite",
+      "production": "15:48",
+      "publication": "18:00",
+      "crons_utc": [
+        "48 18 * * *",
+        "3 19 * * *"
+      ]
+    },
+    {
+      "id": "noite",
+      "period": "noite",
+      "production": "17:48",
+      "publication": "20:00",
+      "crons_utc": [
+        "48 20 * * *",
+        "3 21 * * *"
+      ]
+    },
+    {
+      "id": "noite-3",
+      "period": "noite",
+      "production": "19:48",
+      "publication": "22:00",
+      "crons_utc": [
+        "48 22 * * *",
+        "3 23 * * *"
+      ]
+    }
+  ],
+  "legacy_publication_hours": [
+    "12:00"
+  ],
+  "schedule_effective_from": "2026-11-10",
+  "minimum_production_budget_minutes": 45,
+  "publication_recovery": {
+    "enabled": true,
+    "max_attempts": 3,
+    "cooldown_minutes": 20,
+    "same_day_only": true
+  },
+  "editorial_quality": {
+    "version": "2026-11-10.1",
+    "min_words": 650,
+    "target_words": [
+      700,
+      950
+    ],
+    "max_words": 1100,
+    "target_minutes": [
+      4,
+      6
+    ],
+    "second_source_review_required": true,
+    "allow_filler": false,
+    "allow_audio_slowdown": false,
+    "primary_source_when_available": true
   }
 }

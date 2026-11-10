@@ -168,8 +168,8 @@ class EditorSourceModeTests(unittest.TestCase):
              patch.object(editor, "validate_draft_shape", return_value={"fixture": True}):
             self.assertEqual(editor.draft("Relatório de fixture", "2026-10-13", "meio-dia", [], ""), {"fixture": True})
         prompt = complete.call_args.args[0]
-        for expected in ('source_mode=', 'independent_confirmation=false', 'attribution_note',
-                         'Não use status confirmed', 'MESMA página HTML', 'ocorrido nesse dia'):
+        for expected in ('source_mode:', 'independent_confirmation=false', 'attribution_note',
+                         'relato atribuído statement', 'COPIADOS LITERALMENTE', 'CENTRAL ocorrido hoje'):
             self.assertIn(expected, prompt)
 
 if __name__ == "__main__":

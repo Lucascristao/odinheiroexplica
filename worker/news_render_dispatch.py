@@ -9,6 +9,7 @@ import re
 import urllib.parse
 import urllib.request
 from zoneinfo import ZoneInfo
+from news_schedule import slots as configured_slots
 
 WORKFLOW = "render-news-single.yml"
 TITLE_PREFIX = "ODE render | "
@@ -24,24 +25,27 @@ def timestamp(value):
 
 
 def eligible(episode_path, episode, config, now):
-    match = re.fullmatch(r"news/episodes/(\d{4}-\d{2}-\d{2})-(manha|meio-dia|noite)\.json", episode_path)
+    match = re.fullmatch(r"news/episodes/(\d{4}-\d{2}-\d{2})-([a-z0-9-]+)\.json", episode_path)
     if not match:
         raise ValueError("A retomada automática exige caminho canônico de data e janela.")
     day, slot = match.groups()
+    schedule = configured_slots(config)
+    if slot not in schedule:
+        raise ValueError("Unknown configured news slot")
     zone = ZoneInfo(config["timezone"])
     target = timestamp(episode["publication_target_local"]).astimezone(zone)
     if (episode.get("episode_id") != f"noticia-{day}-{slot}"
             or episode.get("news_date") != day
             or episode.get("editorial_status") != "autonomous_fact_checked"
             or target.date().isoformat() != day
-            or target.strftime("%H:%M") != SLOTS[slot]
+            or target.strftime("%H:%M") != schedule[slot]["publication"]
             or target.second or target.microsecond
-            or SLOTS[slot] not in config["publication_hours"]):
+            or schedule[slot]["publication"] not in config["publication_hours"]):
         raise ValueError("Identidade, apuração ou horário da edição inválidos.")
     grace = config.get("late_tolerance_minutes", 0)
     if type(grace) is not int or not 0 <= grace <= 180:
         raise ValueError("Tolerância inválida.")
-    start_hour = config["production_hours"][list(SLOTS).index(slot)]
+    start_hour = schedule[slot]["production"]
     start = datetime.fromisoformat(f"{day}T{start_hour}:00").replace(tzinfo=zone)
     if config.get("enabled") is not True:
         return "disabled"
