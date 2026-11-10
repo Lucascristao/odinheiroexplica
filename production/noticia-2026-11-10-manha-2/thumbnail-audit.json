@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "project_id": "noticia-2026-11-10-manha-2",
+  "project_sha256": "6a8add50422d0acd07769defaaa1a788a4b48ab3fd3fb543fdcf26b6827dff3c",
+  "contract_sha256": "5a91ee60adb896d7b09792b1b07ec1309946ac2faec17abdc7a58d796501d879",
+  "image_sha256": "e131633276e625566ab5182c6577380993b5bd6662160b8d5333d709a80bd875",
+  "headline": "Lucro da Embraer recua 15,6%",
+  "approval_status": "approved",
+  "reviewer": "Groq multimodal automated pixel reviewer; qwen/qwen3.8-27b",
+  "reviewed_at": "2026-11-10T18:45:24.493418+00:00",
+  "checks": {
+    "headline_exact": true,
+    "primary_subject": true,
+    "secondary_subject": true,
+    "forbidden_absent": true,
+    "identity_and_mobile": true,
+    "no_fabricated_data": true,
+    "unique_composition": true
+  },
+  "observations": {
+    "headline": "A frase 'Lucro da Embraer recua 15,6%' está presente e legível na thumbnail de 1280x720. Na redução de 320x180, o texto permanece nítido e reconhecível, embora a fonte seja menor.",
+    "primary_subject": "O protagonista é o documento real (print de relatório) exibido em primeiro plano no canto superior direito, contendo dados de cotações e texto sobre a Embraer, conforme autorizado pelo contrato.",
+    "secondary_subject": "O retrato do apresentador Roberto está presente à esquerda, ocupando a maior parte do espaço, sem deformações visíveis ou alterações no rosto.",
+    "forbidden_absent": "Não foram detectados logotipos inventados, marcas d'água, textos extras fora do escopo ou cópias de capas de terceiros.",
+    "identity_and_mobile": "A paleta de cores segue a identidade visual (fundo escuro, texto amarelo). A composição é legível mesmo na versão reduzida, mantendo o contraste necessário.",
+    "no_fabricated_data": "Os dados visíveis no documento (gráficos e tabelas) parecem ser parte de uma captura de tela real de um relatório, sem indícios de manipulação ou invenção de números.",
+    "unique_composition": "A composição é limpa, utilizando o espaço negativo à direita para destacar o documento e o texto, evitando a sobreposição de elementos."
+  },
+  "checked_forbidden_elements": [
+    "dados ou documentos inventados",
+    "cópias de capas de terceiros",
+    "foto apresentada como evidência de um evento diferente",
+    "logotipo inventado",
+    "texto extra",
+    "marca d'água"
+  ],
+  "observed_forbidden_elements": []
+}

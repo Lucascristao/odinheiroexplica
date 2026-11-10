@@ -1,0 +1,288 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-10-manha-2",
+  "news_date": "2026-11-10",
+  "event_date": "2026-11-10",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-10T15:42:08.457345-03:00",
+  "title": "Embraer vê lucro trimestral cair 15,6% mas margem EBITDA sobe a 13,5%",
+  "title_options": [
+    {
+      "editorial_quality": 5,
+      "text": "Embraer vê lucro trimestral cair 15,6% mas margem EBITDA sobe a 13,5%"
+    },
+    {
+      "editorial_quality": 4,
+      "text": "Lucro da Embraer recua, mas eficiência melhora no 3T26"
+    },
+    {
+      "editorial_quality": 3,
+      "text": "Resultado da Embraer: lucro menor, margem EBITDA em alta"
+    }
+  ],
+  "thumbnail_headline": "Lucro da Embraer recua 15,6%",
+  "thumbnail_primary": "Embraer 3T26",
+  "thumbnail_tension": "Queda de lucro vs margem em alta",
+  "thumbnail_composition": "Imagem da logomarca da Embraer sobre gráfico de resultados",
+  "thumbnail_text_side": "right",
+  "primary_keyword": "Embraer 3T26",
+  "secondary_keywords": [
+    "lucro líquido",
+    "EBITDA",
+    "receita",
+    "financeiro"
+  ],
+  "tags": [
+    "economia",
+    "empresas",
+    "aviação",
+    "resultados"
+  ],
+  "hashtags": [
+    "#Embraer",
+    "#Resultados",
+    "#Mercado"
+  ],
+  "opening_anchor": "A Embraer divulgou nesta quinta-feira seu resultado do terceiro trimestre de 2026, com lucro líquido ajustado de R$ 379,8 milhões, queda de 15,6% em relação ao ano passado.",
+  "engagement_question": "Como você avalia a queda de lucro frente à melhora da margem EBITDA?",
+  "why_today": "É a primeira divulgação oficial do 3T26 da Embraer, trazendo números inéditos sobre lucro, margem e projeções para o restante do ano, confirmados por duas fontes independentes no mesmo dia.",
+  "new_fact": "Embraer registrou lucro líquido ajustado de R$ 379,8 milhões no terceiro trimestre de 2026",
+  "source_mode": "corroborated",
+  "independent_confirmation": true,
+  "attribution_note": "Os dados foram extraídos dos comunicados da própria Embraer e confirmados por Money Times e Suno Notícias, ambos publicados em 10 de novembro de 2026.",
+  "topic_area": "economy",
+  "insufficient_evidence": false,
+  "insufficient_reason": "",
+  "news_selection": {
+    "attribution_note": "Candidata selecionada com base na relevância econômica e cobertura independente.",
+    "candidate_review": [
+      {
+        "subject": "Embraer registra lucro líquido ajustado de R$ 379,8 milhões no 3T26",
+        "topic_area": "Economia/Empresas",
+        "event_date": "2026-11-10",
+        "decision": "selected",
+        "urls": [
+          "https://www.moneytimes.com.br/embraer-embj3-lucra-r-3798-milhoes-no-3t26-e-melhora-projecoes-para-o-ano-lmrs/",
+          "https://www.suno.com.br/noticias/embraer-registra-lucro-liquido-milhoes-no-3o-trimestre26-go/"
+        ]
+      }
+    ],
+    "topic_area": "economy",
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "Embraer registrou lucro líquido ajustado de R$ 379,8 milhões no terceiro trimestre de 2026",
+    "why_today": "É a primeira divulgação oficial do 3T26 da Embraer, trazendo números inéditos sobre lucro, margem e projeções para o restante do ano, confirmados por duas fontes independentes no mesmo dia.",
+    "opening_anchor": "A Embraer divulgou seu lucro líquido ajustado de R$ 379,8 milhões no terceiro trimestre de 2026, representando queda de 15,6% em relação ao mesmo período de"
+  },
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Alta relevância para investidores e mercado de aviação, números claros e fontes independentes.",
+    "criteria": {
+      "relevance": "Alta",
+      "curiosity": "Média",
+      "clarity": "Alta"
+    }
+  },
+  "discovery_strategy": {
+    "viewer_intent": "Investidores buscam entender desempenho trimestral da Embraer.",
+    "search_query": "Embraer 3T26 lucro 2026",
+    "recommendation_angle": "Queda de lucro versus melhora de margem EBITDA.",
+    "first_payoff": "A Embraer divulgou seu lucro líquido ajustado de R$ 379,8 milhões no terceiro trimestre de 2026, representando queda de 15,6% em relação ao mesmo período de",
+    "promise_proof": "Dados confirmados por Money Times e Suno Notícias.",
+    "audience_hypothesis": "Audiência financeira valoriza detalhes de margem e projeções.",
+    "thumbnail_complement": "Gráfico de evolução de lucro e margem.",
+    "verification_limits": "Baseado em comunicados oficiais e duas fontes independentes; sem acesso a documentos internos."
+  },
+  "sources": [
+    {
+      "id": "src1",
+      "publisher": "Money Times",
+      "url": "https://www.moneytimes.com.br/embraer-embj3-lucra-r-3798-milhoes-no-3t26-e-melhora-projecoes-para-o-ano-lmrs/",
+      "published_at": "2026-11-10",
+      "role": "primary",
+      "published_at_timestamp": "2026-11-10T08:09:00-03:00"
+    },
+    {
+      "id": "src2",
+      "publisher": "Suno Notícias",
+      "url": "https://www.suno.com.br/noticias/embraer-registra-lucro-liquido-milhoes-no-3o-trimestre26-go/",
+      "published_at": "2026-11-10",
+      "role": "independent",
+      "published_at_timestamp": "2026-11-10T09:15:00-03:00"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "Embraer registrou lucro líquido ajustado de R$ 379,8 milhões no terceiro trimestre de 2026",
+      "event_date": "2026-11-10",
+      "source_ids": [
+        "src1",
+        "src2"
+      ],
+      "status": "confirmed"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc1",
+      "source_id": "src1",
+      "expected_text": "A queda anual ocorreu principalmente por conta de maiores despesas financeiras líquidas, relacionadas à marcação a",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.moneytimes.com.br/embraer-embj3-lucra-r-3798-milhoes-no-3t26-e-melhora-projecoes-para-o-ano-lmrs/",
+      "capture_file": "research/captures/doc1.png",
+      "attribution": "Money Times",
+      "selection_method": "visible_page_context_fallback_not_claim_highlight",
+      "editorial_reconstruction": {
+        "headline": "Embraer vê lucro trimestral cair 15,6% mas margem EBITDA sobe a 13,5%",
+        "context": "Embraer registrou lucro líquido ajustado de R$ 379,8 milhões no terceiro trimestre de 2026",
+        "publisher": "Money Times",
+        "published_at": "2026-11-10"
+      }
+    },
+    {
+      "id": "doc2",
+      "source_id": "src2",
+      "expected_text": "A Embraer (EMBJ3) registrou lucro líquido ajustado de R$ 379,8 milhões (US$ 73,6 milhões) no terceiro trimestre de",
+      "kind": "source_excerpt",
+      "source_page_url": "https://www.suno.com.br/noticias/embraer-registra-lucro-liquido-milhoes-no-3o-trimestre26-go/",
+      "capture_file": "research/captures/doc2.png",
+      "attribution": "Suno Notícias",
+      "selection_method": "visible_page_context_fallback_not_claim_highlight",
+      "editorial_reconstruction": {
+        "headline": "Embraer vê lucro trimestral cair 15,6% mas margem EBITDA sobe a 13,5%",
+        "context": "Embraer registrou lucro líquido ajustado de R$ 379,8 milhões no terceiro trimestre de 2026",
+        "publisher": "Suno Notícias",
+        "published_at": "2026-11-10"
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "seg1",
+      "document_id": "doc1",
+      "title": "Resultado financeiro da Embraer",
+      "label": "Financeiro",
+      "headline": "Lucro ajustado cai 15,6%, margem EBITDA sobe",
+      "metric": "R$ 379,8 mi",
+      "narration": "A Embraer divulgou seu lucro líquido ajustado de R$ 379,8 milhões no terceiro trimestre de 2026, representando queda de 15,6% em relação ao mesmo período de 2025. Eu sou o Roberto, do O Dinheiro Explica, e apesar disso, a companhia manteve uma margem EBITDA ajustada de 13,5%, um salto em relação aos 11,7% do trimestre anterior, indicando maior eficiência operacional. O resultado foi abaixo da expectativa do mercado, que apontava R$ 764 milhões. A queda no lucro foi atribuída a despesas financeiras líquidas maiores, especialmente a marcação a mercado do plano de incentivo de longo prazo e impostos. A receita líquida subiu 11% para R$ 12,07 bilhões, impulsionada por crescimento em todas as divisões. Na minha análise, a margem EBITDA mais robusta sugere que a Embraer está conseguindo controlar custos e melhorar a rentabilidade, embora o impacto das despesas financeiras continue a pressionar o lucro líquido. Para acompanhar como esses números afetam a estratégia futura da empresa, inscreva-se no canal do O Dinheiro Explica.",
+      "type": "fact",
+      "object_type": "cash",
+      "media_side": "left",
+      "visual_cards": [
+        "chart_profit",
+        "chart_margin"
+      ]
+    }
+  ],
+  "pronunciations": {},
+  "context_photos": [],
+  "publication_target_local": "2026-11-10T10:30:00-03:00",
+  "editorial_review_method": "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode=corroborated",
+  "publication_description": "Contexto: Embraer 3T26",
+  "production_advisories": [
+    {
+      "code": "document_context_fallback",
+      "message": "Plano de recortes não confirmado descartado; usar contexto autêntico da página. Fatos seguem sujeitos à revisão integral."
+    },
+    {
+      "code": "document_context_fallback",
+      "message": "Plano de recortes não confirmado descartado; usar contexto autêntico da página. Fatos seguem sujeitos à revisão integral."
+    },
+    {
+      "code": "packaging_upgrade_unavailable",
+      "detail": "Title needs valid length, editorial score and literal spoken support"
+    }
+  ],
+  "editorial_quality": {
+    "version": "2026-11-10.1",
+    "review_method": "groq_second_pass_with_literal_source_support",
+    "reviewed_at": "2026-11-10T15:44:37.633995-03:00",
+    "reviewed_content_sha256": "945025ebf4929844f7a47e09c31a8ca7061beed2085b926fce834db14fbb7687",
+    "narration_word_count": 164,
+    "target_minutes": [
+      4,
+      6
+    ],
+    "review": {
+      "approved": true,
+      "issues": [],
+      "warnings": [],
+      "same_day_event_supported": true,
+      "title_opening_delivered": true,
+      "event_date_evidence": {
+        "passage_id": "src1-P6",
+        "source_id": "src1",
+        "quote": "A Embraer (EMBJ3) reportou lucro líquido ajustado de R$ 379,8 milhões no terceiro trimestre de 2026 (3T26), uma queda de 15,6% em relação ao mesmo período em 2025, mostra relatório de resultados divulgado nesta terça-feira (10)."
+      },
+      "claim_checks": [
+        {
+          "claim_index": 0,
+          "supported": true,
+          "evidence": [
+            {
+              "passage_id": "src1-P6",
+              "source_id": "src1",
+              "quote": "A Embraer (EMBJ3) reportou lucro líquido ajustado de R$ 379,8 milhões no terceiro trimestre de 2026 (3T26), uma queda de 15,6% em relação ao mesmo período em 2025, mostra relatório de resultados divulgado nesta terça-feira (10)."
+            },
+            {
+              "passage_id": "src2-P4",
+              "source_id": "src2",
+              "quote": "A Embraer (EMBJ3) registrou lucro líquido ajustado de R$ 379,8 milhões (US$ 73,6 milhões) no terceiro trimestre de 2026, queda de 15,6% em relação aos R$ 450 milhões (US$ 84,3 milhões) do mesmo período do ano passado. O lucro líquido contábil atribuível aos acionistas caiu 41,1%, para R$ 366,7 milhões (US$ 71,1 milhões)."
+            }
+          ]
+        }
+      ],
+      "narration_checks": [
+        {
+          "segment_id": "seg1",
+          "supported": true,
+          "has_factual_assertions": true,
+          "unsupported_assertions": [],
+          "evidence": [
+            {
+              "passage_id": "src1-P6",
+              "source_id": "src1",
+              "quote": "A Embraer (EMBJ3) reportou lucro líquido ajustado de R$ 379,8 milhões no terceiro trimestre de 2026 (3T26), uma queda de 15,6% em relação ao mesmo período em 2025, mostra relatório de resultados divulgado nesta terça-feira (10)."
+            },
+            {
+              "passage_id": "src1-P9",
+              "source_id": "src1",
+              "quote": "A queda anual ocorreu principalmente por conta de maiores despesas financeiras líquidas, relacionadas à marcação a mercado do plano de incentivo de longo prazo e impostos no período, conforme a companhia."
+            },
+            {
+              "passage_id": "src1-P11",
+              "source_id": "src1",
+              "quote": "A cifra veio abaixo da expectativa do mercado. Consenso da Bloomberg apontava para um lucro de R$ 764 milhões no período."
+            },
+            {
+              "passage_id": "src1-P12",
+              "source_id": "src1",
+              "quote": "O lucro antes de juros, impostos, depreciação e amortização (Ebitda) ficou em R$ 1,63 bilhão, um avanço de 27,7% na comparação anual. Já a margem Ebitda ajustada passou de 11,7% para 13,5%."
+            },
+            {
+              "passage_id": "src1-P16",
+              "source_id": "src1",
+              "quote": "A receita líquida foi de R$ 12,07 bilhões no terceiro trimestre, um aumento de 11% em relação ao mesmo período do ano anterior, com crescimento em todas as divisões."
+            },
+            {
+              "passage_id": "src2-P4",
+              "source_id": "src2",
+              "quote": "A Embraer (EMBJ3) registrou lucro líquido ajustado de R$ 379,8 milhões (US$ 73,6 milhões) no terceiro trimestre de 2026, queda de 15,6% em relação aos R$ 450 milhões (US$ 84,3 milhões) do mesmo período do ano passado. O lucro líquido contábil atribuível aos acionistas caiu 41,1%, para R$ 366,7 milhões (US$ 71,1 milhões)."
+            },
+            {
+              "passage_id": "src2-P7",
+              "source_id": "src2",
+              "quote": "A queda do lucro veio do resultado financeiro. As despesas financeiras mais que dobraram, para R$ 1,127 bilhão (US$ 218,9 milhões), ante R$ 540,7 milhões (US$ 99,1 milhões) um ano antes, puxadas principalmente pela marcação a mercado das ações do plano de incentivo de longo prazo, ou seja, o ajuste no valor das ações usadas na remuneração de executivos, que acompanha a cotação. A despesa com impostos também pesou."
+            },
+            {
+              "passage_id": "src2-P6",
+              "source_id": "src2",
+              "quote": "A receita líquida somou R$ 12,067 bilhões (US$ 2,347 bilhões) no recorde para um terceiro trimestre, com alta de 11%. O Ebitda ajustado subiu 27,7%, para R$ 1,630 bilhão (US$ 317,1 milhões), e a margem Ebit ajustada foi de 8,5% para 10,9%."
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
