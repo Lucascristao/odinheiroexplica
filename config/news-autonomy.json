@@ -288,7 +288,7 @@
     "12:00"
   ],
   "schedule_effective_from": "2026-11-10",
-  "minimum_production_budget_minutes": 45,
+  "minimum_production_budget_minutes": 20,
   "publication_recovery": {
     "enabled": true,
     "max_attempts": 3,
@@ -297,12 +297,12 @@
   },
   "editorial_quality": {
     "version": "2026-11-10.1",
-    "min_words": 650,
+    "duration_policy": "advisory_no_block_for_valid_reporting",
     "target_words": [
       700,
       950
     ],
-    "max_words": 1100,
+    "advisory_word_range": [650, 1100],
     "target_minutes": [
       4,
       6

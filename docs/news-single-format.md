@@ -2,7 +2,7 @@
 
 **Prioridade de 10/11/2026:** sete slots em `config/news-autonomy.json`, com 2 vídeos pela manhã, 2 à tarde e 3 à noite. Redação GitHub/Groq autorizada pelo titular. As três janelas antigas abaixo são históricas.
 
-`editorial_quality.version=2026-11-10.1` registra segunda revisão automatizada, apoio literal por fato, evidência da data do acontecimento e entrega do título na abertura. Fala alvo 700–950 palavras (contrato 650–1100), com progressão e limites; nenhum preenchimento artificial. QA mede duração real e bloqueia abaixo de 3min30s nessa versão. Tamanho e booleanos do modelo não comprovam compreensão, naturalidade ou verdade.
+`editorial_quality.version=2026-11-10.1` registra segunda revisão automatizada, apoio literal por fato, evidência da data do acontecimento e entrega do título na abertura. Fala alvo 700–950 palavras, com progressão e limites; nenhum preenchimento artificial. A pedido do titular, faixa de palavras, duração, estilo e quantidade de recortes são metas/avisos, sem bloquear notícia válida. QA mede duração real e registra o desvio para melhoria. Tamanho e booleanos do modelo não comprovam compreensão, naturalidade ou verdade.
 
 Cenas desenvolvidas têm âncoras ao longo de toda a fala. Reenquadramentos usam as regiões de prova medidas nas capturas; não inventar grifos nem substituir citação ausente por texto parecido. Contratos anteriores permanecem compatíveis nas retomadas.
 

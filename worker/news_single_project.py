@@ -127,7 +127,7 @@ def normalize_documentary_metadata(episode: dict) -> dict:
     return {**episode, "documentary_evidence": result} if changed else episode
 
 
-def validate(episode: dict, today: date | None = None) -> dict:
+def validate(episode: dict, today: date | None = None, drafting: bool = False) -> dict:
     episode = normalize_documentary_metadata(episode)
     today = today or date.today()
     require(episode.get("format") == "ode-news-single", "formato deve conter uma matéria por vídeo")
@@ -212,8 +212,7 @@ def validate(episode: dict, today: date | None = None) -> dict:
         require(quality.get("reviewed_content_sha256") == editorial_fingerprint(episode),
                 "roteiro/fontes/embalagem mudaram após a segunda revisão")
         count = sum(len(s.get("narration", "").split()) for s in episode.get("segments", []))
-        require(650 <= count <= 1100 and count == quality.get("narration_word_count"),
-                "notícia desenvolvida precisa de 650 a 1100 palavras reais, sem repetição para preencher")
+        require(count == quality.get("narration_word_count"), "contagem de palavras mudou após a revisão")
         review = quality.get("review", {})
         require(review.get("approved") is True and review.get("issues") == []
                 and review.get("same_day_event_supported") is True
@@ -279,7 +278,7 @@ def validate(episode: dict, today: date | None = None) -> dict:
                 "foto deve ser identificada como arquivo/contexto, nunca notícia atual")
         require(photo.get("needs_cutout") is False, "fotos de contexto não podem perder o fundo")
     segments = episode.get("segments") or []
-    require(4 <= len(segments) <= (12 if quality else 9), "quantidade de blocos narrativos fora do contrato")
+    require(4 <= len(segments) <= (12 if quality or drafting else 9), "quantidade de blocos narrativos fora do contrato")
     require(sum(s.get("type") == "opinion" for s in segments) >= 1, "falta opinião claramente identificada")
     require(sum(s.get("type") == "fact" for s in segments) >= 2, "poucos blocos factuais")
     used_docs = set()
@@ -330,7 +329,7 @@ def validate(episode: dict, today: date | None = None) -> dict:
     else:
         require(len({source_host[doc_source[doc_id]] for doc_id in used_docs}) >= 2,
                 "mostrar pelo menos duas matérias de publicadores independentes")
-    require(len(used_photos | used_docs) >= len(segments) - 2,
+    require(len(used_photos | used_docs) >= (2 if quality or drafting else len(segments) - 2),
             "noticiário não pode ser quase todo texto e ícones; inclua prints comentados")
     return episode
 

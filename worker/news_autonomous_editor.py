@@ -349,7 +349,7 @@ CORPUS de páginas HTTP realmente consultadas:
 Se não houver relato de acontecimento de {day} (ou hoje) sustentado por texto real, seja corroborado ou atribuído a fonte única, devolva
 exatamente EDITORIAL_INSUFFICIENT_EVIDENCE, sem fabricar material. Não descarte automaticamente uma exclusiva só porque ainda não foi republicada.
 Caso exista, comece com SOURCE_MODE: corroborated ou SOURCE_MODE: single_source_attributed. Escreva relatório factual de 500 a 750 palavras, incluindo URLs e pelo
-menos oito trechos LITERAIS DIFERENTES realmente presentes no corpus, preferindo trechos de 20 a 90 caracteres e identificando a URL de cada um. Esses recortes vão sustentar as oito cenas. Na exclusiva, os trechos devem vir da mesma matéria HTML; não simule duas fontes porque há dois recortes."""
+menos dois trechos LITERAIS DIFERENTES realmente presentes no corpus, acrescentando outros quando ajudam a explicar, sem cota artificial. Prefira 20 a 90 caracteres e identifique a URL de cada trecho. Na exclusiva, os trechos devem vir da mesma matéria HTML; não simule duas fontes porque há dois recortes."""
     transport_diag = {}
     save_research_diagnostics(diagnostic_path, corpus, target, transport=transport_diag)
     try:
@@ -385,9 +385,9 @@ sources:2-4 objetos {{id:S1/S2...,publisher,url,published_at:YYYY-MM-DD,role}}, 
 verified_facts:4-7 objetos {{claim,source_ids:[IDs],status,event_date}}; status:statement/background/forecast_not_collected/projection/confirmed. Todo número exige apoio. Cálculos precisam de denominador e período comparáveis. Acontecimento CENTRAL ocorrido hoje, não apenas matéria publicada hoje sobre fato antigo.
 news_selection:OBJETO {{topic_area:politics/economy/personal_finance/business/international,source_mode:corroborated/single_source_attributed,independent_confirmation:boolean,new_fact,why_today,opening_anchor,candidate_review}}.
 new_fact copia EXATAMENTE um claim com event_date={day}, não background. why_today:string>=30 caracteres, novidade demonstrada hoje. opening_anchor:trecho literal único de20-160 caracteres da primeira narration. candidate_review:3 candidatas reais {{subject,topic_area,event_date,urls:[URLs],decision}}; não inventar concorrentes. Corroborated exige2 publicadores independentes vinculados ao claim. Fonte única só relato atribuído statement,independent_confirmation=false,attribution_note>=30 caracteres e publicador nomeado na descrição. Se não houver prova de hoje, não fabricar JSON aprovado.
-documentary_evidence:6-8 recortes REAIS {{id:doc-1...,source_id,expected_text}}, trechos contínuos de20-100 caracteres COPIADOS LITERALMENTE das páginas do relatório, distintos e pertinentes. Nunca substituir fonte por texto inventado. Metadados técnicos são preenchidos pelo motor. context_photos=[].
-segments:8 objetos {{id,title,type:fact/opinion/conclusion,label,headline,metric,object_type:data/store/cash/bank/package/truck/factory,visual_cards:[3-5 strings de6-65 caracteres],narration,document_id,media_side:left/right}}.
-Aqui escreva o PLANO em25-45 palavras por bloco; outra etapa vai desenvolver a fala com as fontes reais até700-950 palavras. Encadear: novidade/pergunta, prova, mecanismo, contexto, quem é afetado e condições, contraponto/limites, opinião, resposta/desdobramentos. Todas as cenas exibem documento pertinente, use ao menos6 recortes distintos; não mudar documento só para variar.
+documentary_evidence:2-8 recortes REAIS {{id:doc-1...,source_id,expected_text}}, trechos contínuos de12-120 caracteres COPIADOS LITERALMENTE das páginas do relatório, distintos e pertinentes. Use o material necessário, sem cota artificial. Nunca substituir fonte por texto inventado. Metadados técnicos são preenchidos pelo motor. context_photos=[].
+segments:6-10 objetos conforme a apuração pedir, sem quantidade fixa: {{id,title,type:fact/opinion/conclusion,label,headline,metric,object_type:data/store/cash/bank/package/truck/factory,visual_cards:[3-5 strings de6-65 caracteres],narration,document_id,media_side:left/right}}.
+Aqui escreva o PLANO em25-45 palavras por bloco; outra etapa vai desenvolver a fala com as fontes reais até700-950 palavras. Encadear: novidade/pergunta, prova, mecanismo, contexto, quem é afetado e condições, contraponto/limites, opinião, resposta/desdobramentos. Todas as cenas exibem documento pertinente; reutilize uma prova quando ela continua sendo o objeto da explicação, sem trocar só para variar.
 Primeira cena entrega o fato antes da apresentação breve 'Eu sou o Roberto, do O Dinheiro Explica'. Nada de saudação longa. Opinião começa 'Na minha análise,' e marca perspectiva própria de direita/liberal, com crítica verificável e sarcasmo pontual; não imitar pessoa/bordão. Conclusão responde à pergunta e inclui pedido curto de inscrição depois do valor. Não atrelar notícia ao bolso/Ceará/Nordeste sem evidência.
 Escrever números, siglas e datas em forma falada clara; não barras, URLs ou instruções vocais na narração. Nunca alterar valor ao escrever por extenso.
 engagement_question:pergunta específica terminada em?;hashtags:1-3 começando com#;tags:até10;primary_keyword;secondary_keywords:lista;pronunciations:objeto.
@@ -485,7 +485,7 @@ def main():
                 "Groq GPT-OSS 120B; fetched publisher corpus and literal source checks; source_mode="
                 + (episode.get("news_selection") or {}).get("source_mode", "corroborated")
             )
-            episode = validate(episode, today=local.date())
+            episode = validate(episode, today=local.date(), drafting=True)
             prevent_repeated_story(episode, root)
             check_documentary_sources(episode)
             from news_editorial_quality import fetch_sources, develop, review

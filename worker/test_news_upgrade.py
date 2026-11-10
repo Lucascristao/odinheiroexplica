@@ -98,6 +98,17 @@ class SourceReview(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "rejected"):
             validate_review(self.review, self.ep, self.corpus)
 
+    def test_style_warnings_do_not_block_supported_reporting(self):
+        self.review["warnings"] = ["Fixture: roteiro poderia ser mais longo ou usar outro enquadramento"]
+        validate_review(self.review, self.ep, self.corpus)
+
+    def test_word_target_is_not_a_publication_block(self):
+        episode = {"episode_id": "noticia-2026-11-10-manha", "news_date": "2026-11-10",
+                   "editorial_status": "autonomous_fact_checked", "segments": [{"narration": "fixture " * 420}]}
+        episode["editorial_quality"] = {"version": "2026-11-10.1", "narration_word_count": 420,
+            "reviewed_content_sha256": editorial_fingerprint(episode), "review": {"approved": True, "issues": []}}
+        validate_production(episode, load_config(), datetime(2026, 11, 10, 9, tzinfo=timezone.utc))
+
     def test_short_script_cannot_enter_new_production(self):
         ep = {"episode_id": "noticia-2026-11-10-manha", "news_date": "2026-11-10",
               "editorial_status": "autonomous_fact_checked", "segments": [{"narration": "palavra " * 180}]}

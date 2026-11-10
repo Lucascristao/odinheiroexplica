@@ -16,7 +16,7 @@ O titular autorizou análise, correções, testes e publicação, com sete víde
 
 Agenda 08h/10h30, 13h/16h, 18h/20h/22h (Fortaleza), com produção antecipada, deduplicação, cron nominal e bloqueio antes de consumir voz numa janela vencida. Watchdog distingue redação, render pré-upload e publicação do ID original; não depende exclusivamente de cadeias `workflow_run`, limitadas pelo GitHub.
 
-Oito blocos, alvo 700–950 palavras, desenvolvimento em lotes e segunda revisão com citações por fato/data. Três títulos de ângulos diferentes, promessa demonstrável e abertura direta. Perspectiva liberal explicitamente separada dos fatos. QA real exige ao menos 3min30s no novo contrato. Nenhuma desaceleração ou silêncio para preencher tempo.
+Oito blocos, alvo 700–950 palavras, desenvolvimento em lotes e segunda revisão com citações por fato/data. Três títulos de ângulos diferentes, promessa demonstrável e abertura direta. Perspectiva liberal explicitamente separada dos fatos. Por orientação posterior do titular, duração/faixa de palavras, estilo e quantidade de recortes viraram avisos, sem bloquear notícia válida. Nenhuma desaceleração ou silêncio para preencher tempo.
 
 Capa composta localmente com identidade oficial e material real, tentativa de revisão multimodal Groq em duas resoluções. Google fica exclusiva na voz. Modelo/quota indisponível ou reprovação visual usa miniatura automática; nenhuma auditoria fictícia. Capa chamativa é hipótese editorial, sem promessa de CTR.
 

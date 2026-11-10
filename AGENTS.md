@@ -5,7 +5,7 @@
 O titular autorizou melhorar, testar e publicar mantendo a operação GitHub/Groq, com 2 vídeos de manhã, 2 à tarde e 3 à noite. Esta decisão prevalece sobre horários e fluxos históricos abaixo. Não criar redação duplicada no ChatGPT Tasks nem depender do PC.
 
 - Agenda única em `config/news-autonomy.json:slots`: 08h, 10h30, 13h, 16h, 18h, 20h e 22h, America/Fortaleza. Sete oportunidades não dispensam acontecimento atual apurado; não fabricar nem repetir assunto para preencher quota.
-- Alvo 700–950 palavras, contrato 650–1100, aproximadamente 4–6 minutos. Medir duração real; QA bloqueia abaixo de 3min30s no novo contrato. Não desacelerar áudio, acrescentar silêncio ou repetir informação.
+- Alvo 700–950 palavras, aproximadamente 4–6 minutos. Por orientação posterior do titular em 10/11, duração e faixa 650–1100 são avisos, sem bloquear notícia válida. Não desacelerar áudio, acrescentar silêncio ou repetir informação. Quantidade de recortes e preferências de estilo também não bloqueiam.
 - Redação em lotes e segunda revisão automatizada com apoio literal para cada fato e para a data do acontecimento. Não equivale a revisão humana ou garantia de verdade. Não substituir citação ausente por texto parecido. Histórico mantém contratos/cache.
 - Comparar três títulos com ângulos distintos, tensão factual e promessa entregue na abertura. Não garantir viralização, CTR ou inscritos; avaliar dados reais do Studio sem atribuir causalidade a um caso isolado.
 - `GEMINI_API_KEY` exclusiva para voz Gemini 3.8 Live/Roberto/Charon. Live tem limites de sessão, concorrência e tokens; não dizer ilimitado. Groq faz texto/revisão em sequência, com espera e retentativas limitadas.

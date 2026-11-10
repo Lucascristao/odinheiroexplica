@@ -92,7 +92,7 @@ class DraftSchema(unittest.TestCase):
         self.draft(self.episode)
         prompt = COMPLETE.call_args.args[0]
         for text in ("Metadados técnicos são preenchidos pelo motor", "COPIADOS LITERALMENTE",
-                     "segments:8 objetos", "PLANO em25-45 palavras", "700-950 palavras"):
+                     "segments:6-10 objetos", "PLANO em25-45 palavras", "700-950 palavras"):
             self.assertIn(text, prompt)
         self.assertNotIn("EXATAMENTE QUATRO", prompt)
         self.assertNotIn("85-125", prompt)

@@ -22,7 +22,7 @@ def validate_production(episode, config, now):
     count = sum(len(s["narration"].split()) for s in episode["segments"])
     if (quality.get("version") != config["editorial_quality"]["version"]
             or quality.get("reviewed_content_sha256") != editorial_fingerprint(episode)
-            or not 650 <= count <= 1100 or quality.get("narration_word_count") != count
+            or quality.get("narration_word_count") != count
             or review.get("approved") is not True or review.get("issues") != []):
         raise ValueError("New news edition lacks developed narration and the second source review")
 
