@@ -29,6 +29,12 @@
   "publish_if_late": true,
   "thumbnail_optional": true,
   "thumbnail_provider": "local_original_composition_groq_vision_optional_youtube_fallback",
+  "thumbnail_recovery": {
+    "enabled": true,
+    "max_attempts": 3,
+    "cooldown_minutes": 60,
+    "lookback_hours": 48
+  },
   "editorial_policy": {
     "version": "2026-10-11.1",
     "review_cutover_utc": "2026-10-11T21:00:00Z",

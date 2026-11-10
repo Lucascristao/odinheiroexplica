@@ -74,7 +74,8 @@ jobs:
           fi
           python worker/news_single_project.py --input render-output/news-editorial-evaluation.json --output video/generated/daily-project.json
           npx tsx scripts/validate-news-single.ts video/generated/daily-project.json
-          python worker/auto_capture_sources.py --project video/generated/daily-project.json --captures-dir research/captures
+          cp video/generated/daily-project.json video/generated/news-capture-project.json
+          python worker/auto_capture_sources.py --project video/generated/news-capture-project.json --captures-dir research/captures
       - name: Confirmar disponibilidade real do modelo editorial reserva
         continue-on-error: true
         env:
