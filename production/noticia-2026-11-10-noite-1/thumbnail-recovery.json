@@ -10,6 +10,11 @@
       "started_at": "2026-11-10T23:43:38.391857+00:00",
       "source_run_id": 42882396359,
       "status": "failed_optional_cover"
+    },
+    {
+      "started_at": "2026-11-11T07:09:14.642597+00:00",
+      "source_run_id": 42882396359,
+      "status": "failed_optional_cover"
     }
   ]
 }
