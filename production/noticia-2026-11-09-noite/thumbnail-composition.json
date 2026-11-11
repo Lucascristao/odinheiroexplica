@@ -1,0 +1,14 @@
+{
+  "version": "locked-presenter-cover-v1",
+  "project_id": "noticia-2026-11-09-noite",
+  "contract_sha256": "3088d592338761776c174e919554c01dd0db9eb913980e4749da9b7108933e68",
+  "identity_id": "roberto-v1-burgundy-front",
+  "portrait_sha256": "e860e3929e4dc022d892da314daa79cf36e27126ff28b4415566184d1c2bbced",
+  "image_sha256": "14651f45d7b58b1eb72ee384b97c5cf0274dcbe140e0bfbb37c063b83a0fea57",
+  "background_path": "production/noticia-2026-11-09-noite/thumbnail-background.png",
+  "background_sha256": "056bd2de554601201e12ac17da61d597ebe5a127a1519b13516c6df9eadfedec",
+  "portrait_side": "left",
+  "headline_position": "lower",
+  "portrait_size": "close",
+  "created_at": "2026-11-11T15:39:09.663Z"
+}

@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "project_id": "noticia-2026-11-09-noite",
+  "project_sha256": "291ef9b15348ab5728307515674fad5ab5d677db2cb4ced68264b1a423b0c3c2",
+  "contract_sha256": "3088d592338761776c174e919554c01dd0db9eb913980e4749da9b7108933e68",
+  "image_sha256": "14651f45d7b58b1eb72ee384b97c5cf0274dcbe140e0bfbb37c063b83a0fea57",
+  "headline": "Recorde Pix 2026",
+  "approval_status": "approved",
+  "reviewer": "Groq multimodal automated pixel reviewer; qwen/qwen3.8-27b",
+  "reviewed_at": "2026-11-11T15:39:11.467477+00:00",
+  "checks": {
+    "headline_exact": true,
+    "primary_subject": true,
+    "secondary_subject": true,
+    "forbidden_absent": true,
+    "identity_and_mobile": true,
+    "no_fabricated_data": true,
+    "unique_composition": true
+  },
+  "observations": {
+    "headline": "A headline 'Recorde Pix 2026' está presente em amarelo, legível na thumbnail de 1280x720 e parcialmente visível na redução de 320x180.",
+    "primary_subject": "O protagonista é o documento real (print de notícias) em primeiro plano, conforme autorizado pelo contrato, sem necessidade de fotografia do personagem como prova.",
+    "secondary_subject": "O retrato oficial do apresentador Roberto está presente à esquerda, sem deformação perceptível.",
+    "forbidden_absent": "Não foram detectados logotipos inventados, marcas d'água ou textos extras além da headline e do conteúdo do print.",
+    "identity_and_mobile": "A identidade visual (fundo escuro, texto amarelo) é consistente e a headline não encobre o rosto do apresentador.",
+    "no_fabricated_data": "Os dados visíveis pertencem ao print de notícias real, não constituindo dados inventados pelo criador da imagem.",
+    "unique_composition": "A composição é única, utilizando o print como elemento central e o retrato como apoio, sem cópias de capas de terceiros."
+  },
+  "checked_forbidden_elements": [
+    "dados ou documentos inventados",
+    "cópias de capas de terceiros",
+    "foto apresentada como evidência de um evento diferente",
+    "logotipo inventado",
+    "texto extra",
+    "marca d'água"
+  ],
+  "observed_forbidden_elements": []
+}
