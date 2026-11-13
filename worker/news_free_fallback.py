@@ -7,10 +7,10 @@ import requests
 
 ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions'
 MODELS = (
-    'dots-studio/dots-3-note-preview:free',
-    'baidu/ernie-5.5-flash-preview:free',
     'nvidia/nemotron-3.5-super-vl:free',
+    'dots-studio/dots-3-note-preview:free',
     'particle-ai/particle-1:free',
+    'google/gemma-4-26b-a4b-it:free',
 )
 MODEL = MODELS[0]
 
@@ -45,7 +45,7 @@ def complete_free(prompt, *, json_mode=False, diagnostics=None, max_output_token
         'max_tokens': max_output_tokens or (5800 if json_mode else 2000),
         # Native thinking can otherwise exhaust the completion budget before
         # emitting any JSON. Source checks/review criteria stay unchanged.
-        'reasoning': {'enabled': False, 'exclude': True},
+        'reasoning': {'enabled': False},
         'provider': {'max_price': {'prompt': 0, 'completion': 0}}}
     if json_mode:
         payload['response_format'] = {'type': 'json_object'}
@@ -127,9 +127,11 @@ def complete_free(prompt, *, json_mode=False, diagnostics=None, max_output_token
         if response.status_code in (400, 404) and attempt == 0:
             payload['model'] = MODELS[1]
             payload['models'] = list(MODELS[1:])
-            if response.status_code == 400 and response_schema:
-                payload['response_format'] = {'type': 'json_object'}
-                payload['messages'][0]['content'] += '\nResponda estritamente com JSON válido: ' + json.dumps(response_schema)
+            if response.status_code == 400:
+                payload.pop('reasoning', None)
+                if response_schema:
+                    payload['response_format'] = {'type': 'json_object'}
+                    payload['messages'][0]['content'] += '\nResponda estritamente com JSON válido: ' + json.dumps(response_schema)
             print('OPENROUTER_FREE_STATUS_RETRY', response.status_code, 'switching to', MODELS[1], flush=True)
             time.sleep(5)
             continue
