@@ -66,11 +66,14 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
                 if alternate == selected:
                     continue
                 print("GROQ_AVAILABILITY_FALLBACK", selected, alternate, reason, flush=True)
-                result = complete(prompt, json_mode=json_mode, model=alternate, max_retries=2,
-                                  diagnostics=diagnostics, max_output_tokens=max_output_tokens, response_schema=response_schema)
-                if diagnostics is not None:
-                    diagnostics.update(fallback_from=selected, fallback_reason=reason)
-                return result
+                try:
+                    result = complete(prompt, json_mode=json_mode, model=alternate, max_retries=2,
+                                      diagnostics=diagnostics, max_output_tokens=max_output_tokens, response_schema=response_schema)
+                    if diagnostics is not None:
+                        diagnostics.update(fallback_from=selected, fallback_reason=reason)
+                    return result
+                except Exception as exc:
+                    print("GROQ_ALTERNATE_FAILED", alternate, str(exc)[:100], flush=True)
         from news_free_fallback import enabled, complete_free
         if enabled() and selected in {primary, *alternates}:
             print('EDITORIAL_PROVIDER_FALLBACK groq openrouter_free_models', reason, flush=True)
@@ -164,12 +167,15 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
             # external provider over repeatedly recovering malformed output.
             from news_free_fallback import enabled, complete_free
             if enabled():
-                print('GROQ_SCHEMA_TRANSPORT_FALLBACK openrouter_free_models', flush=True)
-                result = complete_free(prompt, json_mode=True, diagnostics=diagnostics,
-                                       max_output_tokens=max_output_tokens, response_schema=response_schema)
-                if diagnostics is not None:
-                    diagnostics.update(fallback_from=selected, fallback_reason='schema_transport_rejected')
-                return result
+                try:
+                    print('GROQ_SCHEMA_TRANSPORT_FALLBACK openrouter_free_models', flush=True)
+                    result = complete_free(prompt, json_mode=True, diagnostics=diagnostics,
+                                           max_output_tokens=max_output_tokens, response_schema=response_schema)
+                    if diagnostics is not None:
+                        diagnostics.update(fallback_from=selected, fallback_reason='schema_transport_rejected')
+                    return result
+                except Exception as exc:
+                    print('GROQ_SCHEMA_TRANSPORT_EXTERNAL_FAILED:', str(exc)[:120], flush=True)
             try:
                 candidate = response.json().get('error', {}).get('failed_generation')
                 if isinstance(candidate, str):

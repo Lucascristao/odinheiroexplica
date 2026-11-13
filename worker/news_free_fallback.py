@@ -6,7 +6,12 @@ import time
 import requests
 
 ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions'
-MODELS = ('nvidia/nemotron-3.5-super-vl:free', 'xingchen-agi/xing4.0-29b-a4b:free')
+MODELS = (
+    'google/gemma-4-31b-it:free',
+    'google/gemma-4-26b-a4b-it:free',
+    'baidu/ernie-5.5-flash-preview:free',
+    'nvidia/nemotron-3.5-super-vl:free',
+)
 MODEL = MODELS[0]
 
 
@@ -103,13 +108,16 @@ def complete_free(prompt, *, json_mode=False, diagnostics=None, max_output_token
             return message
         # Long quota waits are handled by the recurring recovery, never by
         # switching to a paid model or weakening the factual verdict.
-        if response.status_code in (429, 500, 502, 503, 504) and attempt == 0:
+        if response.status_code in (404, 429, 500, 502, 503, 504) and attempt == 0:
             try:
                 wait = max(5, float(response.headers.get('retry-after', 15)))
             except (ValueError, TypeError):
                 wait = 15
             if wait <= 60:
                 time.sleep(wait)
+                payload['model'] = MODELS[1]
+                payload['models'] = list(MODELS[1:])
+                print('OPENROUTER_FREE_STATUS_RETRY', response.status_code, 'switching to', MODELS[1], flush=True)
                 continue
         raise RuntimeError('OpenRouter free fallback unavailable: http_' + str(response.status_code))
     raise RuntimeError('OpenRouter free fallback unavailable')

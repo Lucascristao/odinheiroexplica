@@ -51,7 +51,7 @@ jobs:
           ODE_NEWS_FREE_FALLBACK: openrouter
           ODE_NEWS_GROQ_MODEL: openai/gpt-oss-120b
           ODE_NEWS_GROQ_MIN_INTERVAL_SECONDS: '65'
-          ODE_NEWS_GROQ_FALLBACK_MODELS: openai/gpt-oss-20b
+          ODE_NEWS_GROQ_FALLBACK_MODELS: openai/gpt-oss-20b,llama-3.3-70b-versatile
           EVALUATION_DAY: ${{ inputs.news_date }}
           RESUME: ${{ inputs.resume_run_id }}
           COVER_EPISODE: ${{ inputs.cover_episode_path }}
