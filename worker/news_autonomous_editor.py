@@ -37,6 +37,11 @@ def validate_draft_shape(episode):
     opts = episode.get("title_options")
     if isinstance(opts, list) and opts and all(isinstance(o, str) for o in opts):
         episode["title_options"] = [{"text": o.strip(), "editorial_quality": 5 if i == 0 else 4} for i, o in enumerate(opts)]
+    # Normalize sources, verified_facts, documentary_evidence, segments if sent as dict
+    for list_key in ("sources", "verified_facts", "documentary_evidence", "segments"):
+        v = episode.get(list_key)
+        if isinstance(v, dict):
+            episode[list_key] = [{"id": k, **val} if isinstance(val, dict) else {"id": k, "value": val} for k, val in v.items()]
     for key in ("title_options", "sources", "verified_facts", "documentary_evidence", "segments"):
         value = episode.get(key)
         if not isinstance(value, list) or any(not isinstance(item, dict) for item in value):

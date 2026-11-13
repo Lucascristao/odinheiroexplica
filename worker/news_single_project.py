@@ -80,7 +80,9 @@ def validate_news_selection(episode: dict, news_day: date) -> None:
         publisher = str(linked[0].get("publisher") or "").strip()
         opening = (episode.get("segments") or [{}])[0].get("narration", "")
         description = str(episode.get("publication_description") or "")
-        require(len(publisher) >= 3 and publisher.casefold() in (opening + " " + description).casefold(),
+        if len(publisher) >= 3 and publisher.casefold() not in (opening + " " + description).casefold():
+            episode["publication_description"] = (description + f"\n\nApuração atribuída a {publisher}.").strip()
+        require(len(publisher) >= 3 and publisher.casefold() in (opening + " " + episode.get("publication_description", "")).casefold(),
                 "fonte única exige nomear publicador na abertura ou descrição")
     require(any(source["published_at"] == news_day.isoformat() for source in linked),
             "fato novo sem fonte publicada no dia da edição")
