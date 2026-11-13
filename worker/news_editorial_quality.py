@@ -84,10 +84,12 @@ def develop(episode, corpus, completed_ids=(), on_progress=None, minimum_words=0
     outline = [{"id": s["id"], "type": s["type"], "title": s["title"]} for s in segments]
     facts = episode["verified_facts"]
     completed = set(completed_ids)
-    if minimum_words and words(episode) < minimum_words and all(s['id'] in completed for s in segments):
-        completed.discard(min(segments, key=lambda s: len(s['narration'].split()))['id'])
     target_per_block = max(100, round(825 / max(1, len(segments)))) if minimum_words else 100
     block_low, block_high = (round(target_per_block * .85), round(target_per_block * 1.15)) if minimum_words else (80, 125)
+    if minimum_words and words(episode) < minimum_words:
+        for s in segments:
+            if len(s.get("narration", "").split()) < block_low:
+                completed.discard(s["id"])
     for offset in range(len(segments)):
         batch = segments[offset:offset + 1]
         if all(s["id"] in completed for s in batch):
@@ -129,6 +131,40 @@ Não incluir diretivas de voz no texto nem alegar consenso de fontes. Preserve n
             completed.add(original["id"])
         if on_progress:
             on_progress(episode, completed)
+    extra_rounds = 0
+    while minimum_words and words(episode) < minimum_words and extra_rounds < 3:
+        extra_rounds += 1
+        short_segments = [s for s in segments if len(s.get("narration", "").split()) < target_per_block]
+        if not short_segments:
+            short_segments = [min(segments, key=lambda s: len(s.get("narration", "").split()))]
+        for seg in short_segments:
+            if words(episode) >= minimum_words:
+                break
+            offset = [i for i, s in enumerate(segments) if s["id"] == seg["id"]][0]
+            batch = [seg]
+            source_ids = {doc["source_id"] for doc in episode["documentary_evidence"]
+                          if doc["id"] in {s.get("document_id") for s in batch}}
+            excerpts = {sid: {**corpus[sid], "text": corpus[sid]["text"][:2000]}
+                        for sid in source_ids}
+            writing_batch = [{key: s.get(key) for key in ("id", "title", "type", "narration", "document_id")} for s in batch]
+            previous = [{"title": s["title"], "narration": s["narration"][-1100:]} for s in segments[max(0, offset-3):offset]]
+            prompt = f"""Desenvolva com mais detalhes e profundidade APENAS o único bloco solicitado desta notícia. Alvo de {block_low} a {block_high} palavras.
+Retorne JSON simples {{"narration":"fala completa e aprofundada deste bloco"}}.
+Plano: {json.dumps(outline, ensure_ascii=False)}
+Já dito antes: {json.dumps(previous, ensure_ascii=False)}
+Bloco a expandir: {json.dumps(writing_batch, ensure_ascii=False)}
+Fatos: {json.dumps(facts, ensure_ascii=False)}
+Textos reais: {json.dumps(excerpts, ensure_ascii=False)}"""
+            try:
+                res = parse_reply(prompt, budget=max(1100, min(4200, target_per_block * 4)))
+                narr = res.get("narration")
+                if isinstance(narr, str) and len(narr.split()) > len(seg.get("narration", "").split()):
+                    seg["narration"] = narr
+                    completed.add(seg["id"])
+                    if on_progress:
+                        on_progress(episode, completed)
+            except Exception as e:
+                print(f"EXPAND_BLOCK_ADVISORY: {e}", flush=True)
     total = words(episode)
     if minimum_words and total < minimum_words:
         raise DevelopmentIncomplete(f'Development remains too short: {total} words; need {minimum_words} before synthesis')
