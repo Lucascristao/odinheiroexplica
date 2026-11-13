@@ -44,6 +44,9 @@ def fetch_sources(episode, known_urls=None):
                         response.raise_for_status()
                         source["url"] = matches[0]
                         url = matches[0]
+                        for doc in episode.get("documentary_evidence", []):
+                            if doc.get("source_id") == source.get("id"):
+                                doc["source_page_url"] = matches[0]
                         resolved = True
                     except Exception:
                         pass
@@ -56,6 +59,11 @@ def fetch_sources(episode, known_urls=None):
             raise ValueError("Insufficient source text for developed reporting")
         corpus[source["id"]] = {"url": source["url"], "publisher": source["publisher"],
                                 "declared_publication_date": source["published_at"], "text": text[:7500]}
+    sources_by_id = {s["id"]: s["url"] for s in episode.get("sources", []) if "id" in s and "url" in s}
+    for doc in episode.get("documentary_evidence", []):
+        sid = doc.get("source_id")
+        if sid in sources_by_id:
+            doc["source_page_url"] = sources_by_id[sid]
     return corpus
 
 

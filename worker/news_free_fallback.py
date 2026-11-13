@@ -20,6 +20,18 @@ def enabled():
             and bool(os.getenv('OPENROUTER_API_KEY')))
 
 
+def _extract_transport_metadata(data):
+    try:
+        from news_groq_client import _transport_metadata
+        return _transport_metadata(data)
+    except Exception:
+        return {
+            "server": data.get("system_fingerprint"),
+            "total_tokens": (data.get("usage") or {}).get("total_tokens"),
+            "finish_reason": ((data.get("choices") or [{}])[0] or {}).get("finish_reason"),
+        }
+
+
 def complete_free(prompt, *, json_mode=False, diagnostics=None, max_output_tokens=None, response_schema=None):
     if not enabled():
         raise RuntimeError('Free editorial fallback credential unavailable')
@@ -67,9 +79,8 @@ def complete_free(prompt, *, json_mode=False, diagnostics=None, max_output_token
                 data = response.json()
                 if not isinstance(data, dict):
                     raise ValueError('envelope')
-                from news_groq_client import _transport_metadata
                 if diagnostics is not None:
-                    diagnostics.update(_transport_metadata(data))
+                    diagnostics.update(_extract_transport_metadata(data))
                 choices = data.get('choices') or []
                 message = choices[0].get('message', {}).get('content') if choices else None
                 if diagnostics is not None:
@@ -101,7 +112,7 @@ def complete_free(prompt, *, json_mode=False, diagnostics=None, max_output_token
             if not re.fullmatch(r'[a-zA-Z0-9._-]+/[a-zA-Z0-9._:/-]{1,160}', actual):
                 actual = MODEL
             if diagnostics is not None:
-                diagnostics.update(_transport_metadata(data), model=actual, router=MODEL)
+                diagnostics.update(_extract_transport_metadata(data), model=actual, router=MODEL)
                 diagnostics.pop('response_error', None)
             globals()['_last_completed_at'] = time.monotonic()
             print('OPENROUTER_FREE_EDITOR_COMPLETION', actual, 'cost_usd', 0, flush=True)

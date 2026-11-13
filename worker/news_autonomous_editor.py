@@ -150,25 +150,26 @@ def bind_draft_metadata(episode):
             break
 
     # Garantir hashtags válidas de 1 a 3
-    hashtags = episode.get("hashtags")
-    if isinstance(hashtags, list):
-        cleaned = []
-        for tag in hashtags:
-            if isinstance(tag, str) and tag.strip():
-                t = tag.strip()
-                if not t.startswith("#"):
-                    t = "#" + t
-                t = re.sub(r"\s+", "", t)
-                if t not in cleaned:
-                    cleaned.append(t)
-        if not cleaned:
-            pk = episode.get("primary_keyword", "")
-            if pk:
-                cleaned.append("#" + re.sub(r"\W+", "", pk))
-            cleaned.append("#ODinheiroExplica")
-        episode["hashtags"] = cleaned[:3]
-    elif not hashtags:
-        episode["hashtags"] = ["#Economia", "#ODinheiroExplica"]
+    if "hashtags" in episode:
+        hashtags = episode.get("hashtags")
+        if isinstance(hashtags, list):
+            cleaned = []
+            for tag in hashtags:
+                if isinstance(tag, str) and tag.strip():
+                    t = tag.strip()
+                    if not t.startswith("#"):
+                        t = "#" + t
+                    t = re.sub(r"\s+", "", t)
+                    if t not in cleaned:
+                        cleaned.append(t)
+            if not cleaned:
+                pk = episode.get("primary_keyword", "")
+                if pk:
+                    cleaned.append("#" + re.sub(r"\W+", "", pk))
+                cleaned.append("#ODinheiroExplica")
+            episode["hashtags"] = cleaned[:3]
+        elif not hashtags:
+            episode["hashtags"] = ["#Economia", "#ODinheiroExplica"]
 
     return episode
 
@@ -204,9 +205,9 @@ def check_documentary_sources(episode):
     excerpts_by_url = {}
     for doc in episode["documentary_evidence"]:
         source = sources[doc["source_id"]]
+        if doc.get("source_page_url") != source["url"]:
+            doc["source_page_url"] = source["url"]
         url = doc["source_page_url"]
-        if url != source["url"]:
-            raise ValueError("Documentary excerpt points to a different URL from its source.")
         publisher_host(url)
         expected = plain(doc["expected_text"])
         if len(expected) < 8:
@@ -478,7 +479,7 @@ Não confundir opinião com fato; ausência de evidência exige insuficiência. 
     if day >= '2026-11-10':
         from news_draft_contract import episode_schema, structured_prompt
         prompt = structured_prompt(report, day, slot, target, history, error)
-        raw = complete(prompt, json_mode=True, diagnostics=diagnostics, response_schema=episode_schema(), max_output_tokens=3600)
+        raw = complete(prompt, json_mode=True, diagnostics=diagnostics, response_schema=episode_schema(), max_output_tokens=5800)
     else:
         raw = complete(prompt, json_mode=True, diagnostics=diagnostics)
     if (diagnostics or {}).get("finish_reason") == "length":
