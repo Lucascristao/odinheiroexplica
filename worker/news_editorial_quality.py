@@ -109,7 +109,7 @@ Textos reais pertinentes: {json.dumps(excerpts, ensure_ascii=False)}
 Desenvolva cada bloco com clareza: alvo de {block_low} a {block_high} palavras, conforme sua função. Total desejado 700-950 palavras, cerca de 4-6 minutos. O vídeo precisa ter pelo menos 3 minutos reais. Uma cena pode ser mais curta quando sua função é simples, mas um resumo não substitui o desenvolvimento completo.
 Acrescente contexto, mecanismo, consequência CONDICIONAL, contraponto e limites. Conceitos estáveis podem ser explicados didaticamente sem inventar dados da empresa. Se faltar informação, explique honestamente o limite e escreva um bloco mais curto. Não declarar insufficient_evidence só por não atingir a meta de palavras; use isso apenas se a premissa factual for falsa ou sem apoio. Não encha com repetição.
 Avance na pergunta específica deste bloco. Não repita a lista de lucro/receita/dívida em cada cena; um número só retorna quando permite nova comparação ou explicação. Explique siglas na primeira menção, por exemplo o que a medida operacional significa e o que ela não mede. A conclusão responde à pergunta com os fatos disponíveis, não termina apenas perguntando de novo. Não usar 'histórica', 'recorde' ou ameaça a dividendos sem prova correspondente.
-Toda frase factual precisa de respaldo nos textos ou fatos fornecidos. Separe hipótese de efeito observado, acusação de condenação. NÃO atribua causalidade nem impacto ao Ceará, Nordeste ou bolso sem prova.
+Toda frase factual precisa de respaldo estrito nos textos ou fatos fornecidos. PROIBIDO inventar números, porcentagens, prazos em dias, estimativas orçamentárias ou artigos legais ausentes das fontes. Para aprofundar e atingir a duração, desenvolva didaticamente os conceitos econômicos, causas estruturais, mecanismos práticos, contrapontos e consequências conceituais sem criar novos dados quantitativos. Separe hipótese de efeito observado, acusação de condenação. NÃO atribua causalidade nem impacto ao Ceará, Nordeste ou bolso sem prova.
 Modo de apuração: {episode['news_selection'].get('source_mode', 'corroborated')}. Se single_source_attributed, atribua brevemente o relato na primeira cena ('uma reportagem consultada'), sem alegar confirmação independente nem citar nome do portal na fala.
 Voz Roberto de direita/liberal: análise própria sobre incentivos e consequências, sarcasmo pontual, sem imitar pessoa, bordão ou transformar interpretação em fato. Contextualize o fato antes da opinião.
 Português falado com frases claras e variadas; preserve números exatamente, escrevendo decimais, moedas, porcentagens, siglas e datas por extenso quando isso evita ambiguidade vocal. Não usar barras, URLs, parênteses extensos ou códigos legislativos sem explicação.
@@ -154,7 +154,8 @@ Plano: {json.dumps(outline, ensure_ascii=False)}
 Já dito antes: {json.dumps(previous, ensure_ascii=False)}
 Bloco a expandir: {json.dumps(writing_batch, ensure_ascii=False)}
 Fatos: {json.dumps(facts, ensure_ascii=False)}
-Textos reais: {json.dumps(excerpts, ensure_ascii=False)}"""
+Textos reais: {json.dumps(excerpts, ensure_ascii=False)}
+PROIBIDO inventar números, porcentagens, prazos ou dados orçamentários inexistentes nas fontes. Aprofunde a análise de incentivos, explicação conceitual do mecanismo e consequências práticas sem criar fatos quantitativos novos."""
             try:
                 res = parse_reply(prompt, budget=max(1100, min(4200, target_per_block * 4)))
                 narr = res.get("narration")
@@ -406,18 +407,34 @@ def repair_after_review(episode, corpus):
     rejection = episode.get("editorial_review_rejection", {})
     if rejection.get("same_day_event_supported") is False:
         return None
-    evidence, _ = reference_passages(corpus)
-    story = {key: episode[key] for key in ("title", "thumbnail_headline", "publication_description", "verified_facts", "segments", "news_selection")}
+    # Compact payload keeps token budget well within Groq smaller models
+    rejection_summary = {
+        "issues": rejection.get("issues", []),
+        "failed_claims": [c for c in rejection.get("claim_checks", []) if not c.get("supported")],
+        "failed_narrations": [n for n in rejection.get("narration_checks", []) if not n.get("supported") or n.get("unsupported_assertions")],
+    }
+    compact_story = {
+        "title": episode.get("title"),
+        "thumbnail_headline": episode.get("thumbnail_headline"),
+        "publication_description": episode.get("publication_description"),
+        "new_fact": episode.get("news_selection", {}).get("new_fact"),
+        "verified_facts": [{"claim": f.get("claim"), "status": f.get("status")} for f in episode.get("verified_facts", [])],
+        "segments": [{"id": s["id"], "type": s.get("type"), "narration": s.get("narration")} for s in episode.get("segments", [])],
+    }
+    compact_sources = {
+        sid: {"publisher": entry.get("publisher"), "text": entry.get("text", "")[:1500]}
+        for sid, entry in corpus.items()
+    }
     prompt = f"""Corrija um roteiro REJEITADO sem baixar os critérios factuais. Retorne JSON com cannot_repair:boolean,use_attributed_reporting:boolean,
 corrections:[{{field,replacement}}], remove_fact_indexes:[inteiros]. Apenas mudanças necessárias, preservando conteúdo válido.
-Problemas reais: {json.dumps(rejection, ensure_ascii=False)}
-Roteiro: {json.dumps(story, ensure_ascii=False)}
-Fontes reais: {json.dumps(evidence, ensure_ascii=False)}
+Problemas reais: {json.dumps(rejection_summary, ensure_ascii=False)}
+Roteiro: {json.dumps(compact_story, ensure_ascii=False)}
+Fontes reais: {json.dumps(compact_sources, ensure_ascii=False)}
 Campos permitidos: title, thumbnail_headline, publication_description, segments.ID.narration. Pode retirar um verified_fact secundário sem apoio (índices iniciam em0), junto com a correspondente afirmação na fala. Nunca remover ou alterar o fato central, fontes, datas, números comprovados, status de aprovação ou fabricar evidência.
 Superlativo como recorde sem série histórica comprovada deve ser substituído por consequência/contraste verdadeiro. Se mudar title, retorne também title_options com3 alternativas e editorial_quality, escolhendo a melhor; mantenha título clicável e factual.
 Não corrigir data velha fingindo acontecimento novo. Se a premissa central não se sustenta, cannot_repair=true: outra pauta será pesquisada. Detalhes de estilo são avisos, sem bloqueio. Depois haverá nova revisão integral, não autodeclaração de aprovação."""
     prompt += "\nSe o único problema é alegar independência entre republicações de uma agência, pode usar use_attributed_reporting=true e corrigir a fala para relato explicitamente atribuído, preservando fatos reportados e limites. Isso nunca transforma alegação em confirmação."
-    proposal = parse_reply(prompt, budget=2000)
+    proposal = parse_reply(prompt, budget=1000)
     corrected = apply_editorial_corrections(episode, proposal)
     if corrected is not None and proposal.get("use_attributed_reporting") is True:
         corrected["news_selection"].update(source_mode="single_source_attributed", independent_confirmation=False,

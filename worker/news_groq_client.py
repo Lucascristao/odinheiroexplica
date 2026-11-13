@@ -96,19 +96,19 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
                 if m not in valid_alternates and m != primary:
                     valid_alternates.append(m)
             alternates = valid_alternates
+        untried = [a for a in alternates if a != selected and a != primary]
         if selected == primary:
-            for alternate in alternates:
-                if alternate == selected:
-                    continue
-                print("GROQ_AVAILABILITY_FALLBACK", selected, alternate, reason, flush=True)
-                try:
-                    result = complete(prompt, json_mode=json_mode, model=alternate, max_retries=4,
-                                      diagnostics=diagnostics, max_output_tokens=max_output_tokens, response_schema=response_schema)
-                    if diagnostics is not None:
-                        diagnostics.update(fallback_from=selected, fallback_reason=reason)
-                    return result
-                except Exception as exc:
-                    print("GROQ_ALTERNATE_FAILED", alternate, str(exc)[:100], flush=True)
+            untried = [a for a in alternates if a != selected]
+        for alternate in untried:
+            print("GROQ_AVAILABILITY_FALLBACK", selected, alternate, reason, flush=True)
+            try:
+                result = complete(prompt, json_mode=json_mode, model=alternate, max_retries=4,
+                                  diagnostics=diagnostics, max_output_tokens=max_output_tokens, response_schema=response_schema)
+                if diagnostics is not None:
+                    diagnostics.update(fallback_from=selected, fallback_reason=reason)
+                return result
+            except Exception as exc:
+                print("GROQ_ALTERNATE_FAILED", alternate, str(exc)[:100], flush=True)
         try:
             from news_free_fallback import enabled, complete_free
         except ImportError:
@@ -131,6 +131,9 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
     cooldown = globals().get('_model_cooldowns', {}).get(selected, 0)
     if cooldown > time.monotonic():
         return unavailable('recorded_quota_cooldown')
+    completion_budget = max_output_tokens or (5800 if json_mode else 2000)
+    if selected != "openai/gpt-oss-120b":
+        completion_budget = min(completion_budget, 2500)
     payload: dict[str, Any] = {
         "model": selected,
         "messages": [
@@ -142,7 +145,7 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
             {"role": "user", "content": prompt},
         ],
         "temperature": 0.2 if json_mode else 0.1,
-        "max_completion_tokens": max_output_tokens or (5800 if json_mode else 2000),
+        "max_completion_tokens": completion_budget,
         "reasoning_effort": "low",
         "stream": False,
     }
@@ -160,7 +163,7 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
                 'name': 'ode_news_draft', 'strict': True, 'schema': response_schema}}
         else:
             payload['response_format'] = {'type': 'json_object'}
-            payload['messages'][0]['content'] += '\nResponda estritamente com JSON válido no formato: ' + json.dumps(response_schema)
+            payload['messages'][0]['content'] += '\nResponda estritamente com JSON válido contendo os campos exigidos.'
     # Pace sequential passes as well as retries; don't assume a free API is unlimited.
     interval = float(os.environ.get("ODE_NEWS_GROQ_MIN_INTERVAL_SECONDS", "0"))
     elapsed = time.monotonic() - globals().get("_last_completed_at", -1000)
@@ -210,6 +213,13 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
                 globals().setdefault('_model_cooldowns', {})[selected] = time.monotonic() + min(120, seconds)
                 return unavailable("primary_quota_retry_later")
             time.sleep(seconds)
+            continue
+        if response.status_code == 413 and attempt < max_retries - 1:
+            print(f"GROQ_PAYLOAD_TOO_LARGE {selected}: reducing tokens and truncating prompt", flush=True)
+            payload["max_completion_tokens"] = max(800, payload.get("max_completion_tokens", 2000) // 2)
+            if len(payload["messages"][1]["content"]) > 4000:
+                payload["messages"][1]["content"] = payload["messages"][1]["content"][:3800] + "\n[texto condensado]"
+            time.sleep(2)
             continue
         if response.status_code in (413, 429, 500, 502, 503, 504):
             return unavailable("http_" + str(response.status_code))
