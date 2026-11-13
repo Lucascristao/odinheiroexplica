@@ -108,6 +108,9 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
         "reasoning_effort": "low",
         "stream": False,
     }
+    if "qwen" in selected or "deepseek" in selected:
+        payload.pop("reasoning_effort", None)
+        payload["reasoning_format"] = "parsed"
     if json_mode:
         payload["response_format"] = {"type": "json_object"}
         # Groq rejects json_object unless a message explicitly says JSON.
@@ -189,21 +192,28 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
                     return result
                 except Exception as exc:
                     print('GROQ_SCHEMA_TRANSPORT_EXTERNAL_FAILED:', str(exc)[:120], flush=True)
+        if response.status_code == 400 and (response_schema or json_mode):
             try:
                 candidate = response.json().get('error', {}).get('failed_generation')
                 if isinstance(candidate, str):
-                    candidate = json.loads(candidate)
-                if isinstance(candidate, (dict, list)):
-                    if diagnostics is not None:
-                        diagnostics['schema_candidate_recovered'] = True
-                    print('GROQ_SCHEMA_CANDIDATE_RECOVERED: JSON only; factual review still required', flush=True)
-                    return json.dumps(candidate, ensure_ascii=False)
-            except (ValueError, TypeError):
+                    import re
+                    clean = re.sub(r'(?s)<think>.*?</think>', '', candidate).strip()
+                    match = re.search(r'(\{.*\})', clean, re.DOTALL)
+                    if match:
+                        clean = match.group(1)
+                    parsed = json.loads(clean)
+                    if isinstance(parsed, (dict, list)):
+                        if diagnostics is not None:
+                            diagnostics['schema_candidate_recovered'] = True
+                        print('GROQ_SCHEMA_CANDIDATE_RECOVERED: JSON only; factual review still required', flush=True)
+                        return json.dumps(parsed, ensure_ascii=False)
+            except Exception:
                 pass
-            print('GROQ_SCHEMA_TRANSPORT_UNAVAILABLE: retry JSON object on same model; factual review unchanged', flush=True)
-            guided = prompt + '\nEstrutura JSON exata; objetos são mapas, nunca listas de pares:\n' + json.dumps(response_schema, ensure_ascii=False)
-            return complete(guided, json_mode=True, model=selected, max_retries=2, diagnostics=diagnostics,
-                            max_output_tokens=max_output_tokens)
+            if response_schema:
+                print('GROQ_SCHEMA_TRANSPORT_UNAVAILABLE: retry JSON object on same model; factual review unchanged', flush=True)
+                guided = prompt + '\nEstrutura JSON exata; objetos são mapas, nunca listas de pares:\n' + json.dumps(response_schema, ensure_ascii=False)
+                return complete(guided, json_mode=True, model=selected, max_retries=2, diagnostics=diagnostics,
+                                max_output_tokens=max_output_tokens)
         # Never emit raw response: it can include content from news pages.
         detail = ""
         try:
