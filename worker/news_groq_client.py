@@ -80,11 +80,14 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
             from worker.news_free_fallback import enabled, complete_free
         if enabled() and selected in {primary, *alternates}:
             print('EDITORIAL_PROVIDER_FALLBACK groq openrouter_free_models', reason, flush=True)
-            result = complete_free(prompt, json_mode=json_mode, diagnostics=diagnostics,
-                                   max_output_tokens=max_output_tokens, response_schema=response_schema)
-            if diagnostics is not None:
-                diagnostics.update(fallback_from=selected, fallback_reason=reason)
-            return result
+            try:
+                result = complete_free(prompt, json_mode=json_mode, diagnostics=diagnostics,
+                                       max_output_tokens=max_output_tokens, response_schema=response_schema)
+                if diagnostics is not None:
+                    diagnostics.update(fallback_from=selected, fallback_reason=reason)
+                return result
+            except Exception as exc:
+                print('OPENROUTER_FALLBACK_FAILED', str(exc)[:100], flush=True)
         raise RuntimeError("Editorial model unavailable after bounded retries: " + reason)
     if diagnostics is not None:
         diagnostics.update({"provider": "groq", "model": selected, "attempt": 0,
