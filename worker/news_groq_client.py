@@ -113,8 +113,12 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
         # Groq rejects json_object unless a message explicitly says JSON.
         payload["messages"][0]["content"] += " Responda exclusivamente com um objeto JSON válido."
     if response_schema:
-        payload['response_format'] = {'type': 'json_schema', 'json_schema': {
-            'name': 'ode_news_draft', 'strict': True, 'schema': response_schema}}
+        if selected.startswith("openai/"):
+            payload['response_format'] = {'type': 'json_schema', 'json_schema': {
+                'name': 'ode_news_draft', 'strict': True, 'schema': response_schema}}
+        else:
+            payload['response_format'] = {'type': 'json_object'}
+            payload['messages'][0]['content'] += '\nResponda estritamente com JSON válido no formato: ' + json.dumps(response_schema)
     # Pace sequential passes as well as retries; don't assume a free API is unlimited.
     interval = float(os.environ.get("ODE_NEWS_GROQ_MIN_INTERVAL_SECONDS", "0"))
     elapsed = time.monotonic() - globals().get("_last_completed_at", -1000)
