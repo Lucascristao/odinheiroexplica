@@ -149,9 +149,17 @@ def bind_draft_metadata(episode):
                     if len(linked_hosts) >= 2:
                         break
 
-            if len(linked_hosts) < 2 and len(linked_hosts) >= 1:
+            if len(linked_hosts) >= 2:
+                if selection.get("independent_confirmation") is False:
+                    selection["independent_confirmation"] = True
+                if episode.get("independent_confirmation") is False:
+                    episode["independent_confirmation"] = True
+                if fact.get("status") == "statement":
+                    fact["status"] = "confirmed"
+            elif len(linked_hosts) >= 1:
                 selection["source_mode"] = "single_source_attributed"
                 selection["independent_confirmation"] = False
+                episode["independent_confirmation"] = False
                 fact["status"] = "statement"
                 linked = [s for s in all_sources if isinstance(s, dict) and s.get("id") in fact["source_ids"]]
                 pub_name = linked[0].get("publisher") if linked else "veículo consultado"

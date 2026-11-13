@@ -344,6 +344,12 @@ def validate(episode: dict, today: date | None = None, drafting: bool = False) -
     for segment in segments:
         require(len(str(segment.get("narration", "")).split()) >= (1 if quality or drafting else 25), "bloco narrativo sem fala")
         cards = segment.get("visual_cards") or []
+        if (drafting or quality) and not cards:
+            headline = str(segment.get("headline") or segment.get("title") or segment.get("label") or "").strip()
+            if not headline:
+                words = str(segment.get("narration", "")).split()
+                headline = " ".join(words[:4]) if words else "Informação"
+            segment["visual_cards"] = cards = [headline[:60] if len(headline) >= 6 else (headline + " detalhe")[:60]]
         require((1 if quality or drafting else 3) <= len(cards) <= 8
                 and all((1 if quality or drafting else 6) <= len(c) <= 65 for c in cards),
                 "faltam destaques sincronizados")
