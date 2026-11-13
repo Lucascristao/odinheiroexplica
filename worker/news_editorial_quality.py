@@ -280,7 +280,7 @@ def validate_review(result, episode, corpus):
 def reference_passages(corpus):
     """Give the reviewer stable IDs; it need not retype a quotation perfectly."""
     numbered, lookup = {}, {}
-    allowance = max(1200, 10500 // max(1, len(corpus)))
+    allowance = max(800, 6000 // max(1, len(corpus)))
     for sid, entry in corpus.items():
         source = entry["text"][:allowance]
         pieces = []
@@ -452,7 +452,7 @@ Uma quote precisa ser literal e contínua do texto fornecido. Para cada claim, a
 Analise a abertura: entrega a novidade, identifica assunto/pergunta e evita preâmbulo. Não há previsão de CTR ou garantia de viralização. Todos os problemas vão em issues; só approved=true se não houver problemas."""
     if episode.get('development_requirement'):
         prompt += '''\nExigência das próximas edições: conteúdo desenvolvido para no mínimo 3 minutos reais, sem esticar áudio, silêncio ou repetição. Inclua development_checks:{logical_progression:boolean,substantive_context:boolean,no_padding_or_repetition:boolean,opening_question_answered:boolean}. Confira se a narração avança de fato para contexto, explicação, consequências condicionais, limites e conclusão; não basta acumular palavras. Marque false se há enrolação, repetição para preencher tempo, saltos sem lógica ou pergunta inicial sem resposta. Detalhes de estilo continuam avisos; estes checks avaliam conteúdo e compreensão.'''
-    result = bind_review_passages(parse_reply(prompt, budget=2700 if episode.get('development_requirement') else 2400), passage_lookup)
+    result = bind_review_passages(parse_reply(prompt, budget=1800 if episode.get('development_requirement') else 1600), passage_lookup)
     if (result.get("approved") is True and result.get("issues") == []
             and result.get("same_day_event_supported") is True
             and not result["event_date_evidence"].get("quote")):

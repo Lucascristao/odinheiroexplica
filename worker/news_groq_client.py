@@ -207,11 +207,11 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
                 from worker.news_free_fallback import enabled
             has_backup = has_backup or enabled()
             if seconds > (360 if has_backup else 900):
-                globals().setdefault('_model_cooldowns', {})[selected] = time.monotonic() + seconds
+                globals().setdefault('_model_cooldowns', {})[selected] = time.monotonic() + min(120, seconds)
                 return unavailable("primary_quota_retry_later")
             time.sleep(seconds)
             continue
-        if response.status_code in (429, 500, 502, 503, 504):
+        if response.status_code in (413, 429, 500, 502, 503, 504):
             return unavailable("http_" + str(response.status_code))
         if response.status_code == 400 and response_schema:
             # API schema transport refusal is a capability/availability error,
