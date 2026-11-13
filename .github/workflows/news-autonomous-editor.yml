@@ -83,7 +83,7 @@ jobs:
           ODE_NEWS_FREE_FALLBACK: openrouter
           ODE_NEWS_GROQ_MODEL: openai/gpt-oss-120b
           ODE_NEWS_GROQ_MIN_INTERVAL_SECONDS: '65'
-          ODE_NEWS_GROQ_FALLBACK_MODELS: openai/gpt-oss-20b
+          ODE_NEWS_GROQ_FALLBACK_MODELS: openai/gpt-oss-20b,qwen/qwen3.8-27b,llama-3.3-70b-versatile
         run: |
           set -euo pipefail
           FILE="news/episodes/$NEWS_DATE-$NEWS_SLOT.json"

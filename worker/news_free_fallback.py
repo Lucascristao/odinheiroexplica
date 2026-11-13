@@ -137,11 +137,11 @@ def complete_free(prompt, *, json_mode=False, diagnostics=None, max_output_token
             continue
         if response.status_code in (429, 500, 502, 503, 504) and attempt == 0:
             try:
-                wait = float(response.headers.get('retry-after', 15))
+                wait = float(response.headers.get('retry-after', 20))
             except (ValueError, TypeError):
-                wait = 15
+                wait = 20
             if wait <= 60:
-                time.sleep(max(5, wait))
+                time.sleep(max(15, wait))
                 payload['model'] = MODELS[1]
                 payload['models'] = list(MODELS[1:])
                 print('OPENROUTER_FREE_STATUS_RETRY', response.status_code, 'switching to', MODELS[1], flush=True)

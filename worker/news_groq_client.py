@@ -74,7 +74,10 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
                     return result
                 except Exception as exc:
                     print("GROQ_ALTERNATE_FAILED", alternate, str(exc)[:100], flush=True)
-        from news_free_fallback import enabled, complete_free
+        try:
+            from news_free_fallback import enabled, complete_free
+        except ImportError:
+            from worker.news_free_fallback import enabled, complete_free
         if enabled() and selected in {primary, *alternates}:
             print('EDITORIAL_PROVIDER_FALLBACK groq openrouter_free_models', reason, flush=True)
             result = complete_free(prompt, json_mode=json_mode, diagnostics=diagnostics,
@@ -152,7 +155,10 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
                 seconds = 40
             print("GROQ_RETRY", response.status_code, "seconds", round(seconds), flush=True)
             has_backup = bool(os.environ.get('ODE_NEWS_GROQ_FALLBACK_MODELS', '').strip()) and selected == os.environ.get('ODE_NEWS_GROQ_MODEL', MODEL)
-            from news_free_fallback import enabled
+            try:
+                from news_free_fallback import enabled
+            except ImportError:
+                from worker.news_free_fallback import enabled
             has_backup = has_backup or enabled()
             if seconds > (360 if has_backup else 900):
                 globals().setdefault('_model_cooldowns', {})[selected] = time.monotonic() + seconds
@@ -165,7 +171,10 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
             # API schema transport refusal is a capability/availability error,
             # not a negative factual verdict. Prefer a real schema-capable
             # external provider over repeatedly recovering malformed output.
-            from news_free_fallback import enabled, complete_free
+            try:
+                from news_free_fallback import enabled, complete_free
+            except ImportError:
+                from worker.news_free_fallback import enabled, complete_free
             if enabled():
                 try:
                     print('GROQ_SCHEMA_TRANSPORT_FALLBACK openrouter_free_models', flush=True)
