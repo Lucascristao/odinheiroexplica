@@ -89,6 +89,7 @@ def main():
         p.add_argument("--" + name, required=True)
     p.add_argument("--thumbnail", help="Capa opcional criada e auditada pelo ChatGPT")
     p.add_argument("--thumbnail-receipt", help="Recibo da capa opcional, se anexada")
+    p.add_argument("--manual", action="store_true", help="Publicação imediata em modo teste ou sob demanda autorizado")
     p.add_argument("--root", default=".")
     args = p.parse_args()
     config = load(args.config)
@@ -188,7 +189,7 @@ def main():
     immediate_exception = explicitly_authorized_immediate(
         config, project_id, raw_target, now.astimezone(local_zone).date().isoformat()
     )
-    publish_now = eligible_late_grace or eligible_recovery or immediate_exception
+    publish_now = eligible_late_grace or eligible_recovery or immediate_exception or args.manual
     if 0 < lead < config["min_lead_minutes"]:
         print("SHORT_LEAD_ADVISORY: programar no horário original sem atrasar nem cancelar.")
     service = youtube_service()

@@ -25,7 +25,7 @@ def timestamp(value):
     return parsed
 
 
-def eligible(episode_path, episode, config, now):
+def eligible(episode_path, episode, config, now, manual=False):
     match = re.fullmatch(r"news/episodes/(\d{4}-\d{2}-\d{2})-([a-z0-9-]+)\.json", episode_path)
     if not match:
         raise ValueError("A retomada automática exige caminho canônico de data e janela.")
@@ -51,7 +51,7 @@ def eligible(episode_path, episode, config, now):
     if config.get("enabled") is not True:
         return "disabled"
     deadline = recovery_deadline(config, day, target)
-    if now.astimezone(zone).date().isoformat() != day or not start <= now <= deadline:
+    if not manual and (now.astimezone(zone).date().isoformat() != day or not start <= now <= deadline):
         return "outside_window"
     return None
 
@@ -109,10 +109,10 @@ class GitHub:
         return base64.b64decode(result["content"]).replace(b"\r\n", b"\n")
 
 
-def ensure_render(api, episode_path, episode_bytes, config, now, apply=False):
+def ensure_render(api, episode_path, episode_bytes, config, now, apply=False, manual=False):
     episode_bytes = episode_bytes.replace(b"\r\n", b"\n")
     episode = json.loads(episode_bytes)
-    reason = eligible(episode_path, episode, config, now)
+    reason = eligible(episode_path, episode, config, now, manual=manual)
     if reason:
         return {"action": "none", "reason": reason}
     if api.episode(episode_path) != episode_bytes:
@@ -177,10 +177,11 @@ def main():
     parser.add_argument("--config", default="config/news-autonomy.json")
     parser.add_argument("--output", default="render-output/news-render-dispatch.json")
     parser.add_argument("--apply", action="store_true")
+    parser.add_argument("--manual", action="store_true")
     args = parser.parse_args()
     api = GitHub(os.environ["GITHUB_REPOSITORY"], os.environ["GH_TOKEN"])
     decision = ensure_render(api, args.episode, Path(args.episode).read_bytes(),
-        json.loads(Path(args.config).read_text(encoding="utf-8")), datetime.now(timezone.utc), args.apply)
+        json.loads(Path(args.config).read_text(encoding="utf-8")), datetime.now(timezone.utc), args.apply, manual=args.manual)
     report = {"episode_path": args.episode, "checked_at": datetime.now(timezone.utc).isoformat(), **decision}
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)

@@ -61,7 +61,7 @@ jobs:
           [[ "$NEWS_EDITION" =~ ^news/episodes/[A-Za-z0-9._-]+\.json$ ]]
           python -m py_compile worker/news_single_project.py worker/news_reconstruction.py worker/auto_capture_sources.py worker/prepare_visual_assets.py
           python worker/news_single_project.py --input "$NEWS_EDITION" --output video/generated/daily-project.json
-          python worker/news_production_gate.py --episode "$NEWS_EDITION"
+          python worker/news_production_gate.py --episode "$NEWS_EDITION" --manual
           python worker/validate_voice_policy.py
       - name: Validar todas as cenas com o contrato Zod de produção
         run: npx tsx scripts/validate-news-single.ts video/generated/daily-project.json
@@ -295,6 +295,7 @@ jobs:
             --root . --project video/generated/daily-project.json \
             --episode "$NEWS_EDITION" \
             --private-receipt render-output/daily-youtube-private.json \
+            --manual \
             "${COVER_ARGS[@]}" \
             --qa video/generated/daily-delivery-qa.json \
             --config config/news-autonomy.json \

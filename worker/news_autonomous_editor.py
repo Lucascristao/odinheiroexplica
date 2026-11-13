@@ -553,6 +553,7 @@ def main():
     p.add_argument("--root", default=".")
     p.add_argument("--evaluation", action="store_true", help="Exercise real research/writing into a non-publishing artifact only")
     p.add_argument("--resume-draft", help="Evaluation only: recheck a saved rejected draft instead of repeating research calls")
+    p.add_argument("--manual", action="store_true", help="Autorização direta para produção sob demanda fora da janela estrita")
     args = p.parse_args()
     if not os.getenv("GROQ_API_KEY"):
         raise SystemExit("GROQ_API_KEY inexistente; configurar secret no GitHub.")
@@ -560,7 +561,7 @@ def main():
     date = args.date or local.date().isoformat()
     root = Path(args.root).resolve()
     allowed, _, _ = editorial_window(load_config(root), date, args.slot, local)
-    if not allowed and not args.evaluation:
+    if not allowed and not args.evaluation and not args.manual:
         print("NEWS_EDITOR_OUTSIDE_WINDOW: não criar notícia atrasada que ficará privada")
         return
     output = root / "news" / "episodes" / f"{date}-{args.slot}.json"
@@ -672,7 +673,7 @@ def main():
             episode = prepare_source_fallbacks(episode)
             episode = validate(episode, today=local.date())
             allowed, _, _ = editorial_window(load_config(root), date, args.slot, datetime.now(ZoneInfo("America/Fortaleza")))
-            if not allowed and not args.evaluation:
+            if not allowed and not args.evaluation and not args.manual:
                 raise ValueError("Editorial window expired during research; do not trigger stale production")
             project = transform(episode)
             validate_publication_fields(project["publication"], episode["title"])

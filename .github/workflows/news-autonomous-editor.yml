@@ -88,7 +88,7 @@ jobs:
           set -euo pipefail
           FILE="news/episodes/$NEWS_DATE-$NEWS_SLOT.json"
           if [[ ! -e "$FILE" ]]; then
-            python worker/news_autonomous_editor.py --slot "$NEWS_SLOT" --date "$NEWS_DATE"
+            python worker/news_autonomous_editor.py --slot "$NEWS_SLOT" --date "$NEWS_DATE" --manual
           fi
           if [[ ! -s "$FILE" ]]; then exit 0; fi
           python worker/news_single_project.py --input "$FILE" --output video/generated/daily-project.json
@@ -148,7 +148,7 @@ jobs:
             git pull --rebase origin main
             git push origin HEAD:main
           fi
-          python worker/news_render_dispatch.py --episode "$FILE" --apply
+          python worker/news_render_dispatch.py --episode "$FILE" --apply --manual
       - name: Preservar decisão da entrega
         if: always()
         uses: actions/upload-artifact@v4
