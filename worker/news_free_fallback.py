@@ -7,10 +7,10 @@ import requests
 
 ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions'
 MODELS = (
-    'google/gemma-4-31b-it:free',
-    'google/gemma-4-26b-a4b-it:free',
     'baidu/ernie-5.5-flash-preview:free',
+    'dots-studio/dots-3-note-preview:free',
     'nvidia/nemotron-3.5-super-vl:free',
+    'particle-ai/particle-1:free',
 )
 MODEL = MODELS[0]
 
@@ -34,7 +34,7 @@ def complete_free(prompt, *, json_mode=False, diagnostics=None, max_output_token
         # Native thinking can otherwise exhaust the completion budget before
         # emitting any JSON. Source checks/review criteria stay unchanged.
         'reasoning': {'enabled': False, 'exclude': True},
-        'provider': {'require_parameters': True, 'max_price': {'prompt': 0, 'completion': 0}}}
+        'provider': {'max_price': {'prompt': 0, 'completion': 0}}}
     if json_mode:
         payload['response_format'] = {'type': 'json_object'}
         payload['messages'][0]['content'] += ' Responda exclusivamente com um objeto JSON válido.'
@@ -106,9 +106,18 @@ def complete_free(prompt, *, json_mode=False, diagnostics=None, max_output_token
             globals()['_last_completed_at'] = time.monotonic()
             print('OPENROUTER_FREE_EDITOR_COMPLETION', actual, 'cost_usd', 0, flush=True)
             return message
+        if response.status_code in (400, 404) and attempt == 0:
+            payload['model'] = MODELS[1]
+            payload['models'] = list(MODELS[1:])
+            if response.status_code == 400 and response_schema:
+                payload['response_format'] = {'type': 'json_object'}
+                payload['messages'][0]['content'] += '\nResponda estritamente com JSON válido: ' + json.dumps(response_schema)
+            print('OPENROUTER_FREE_STATUS_RETRY', response.status_code, 'switching to', MODELS[1], flush=True)
+            time.sleep(5)
+            continue
         # Long quota waits are handled by the recurring recovery, never by
         # switching to a paid model or weakening the factual verdict.
-        if response.status_code in (404, 429, 500, 502, 503, 504) and attempt == 0:
+        if response.status_code in (429, 500, 502, 503, 504) and attempt == 0:
             try:
                 wait = max(5, float(response.headers.get('retry-after', 15)))
             except (ValueError, TypeError):

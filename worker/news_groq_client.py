@@ -154,7 +154,7 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
             has_backup = bool(os.environ.get('ODE_NEWS_GROQ_FALLBACK_MODELS', '').strip()) and selected == os.environ.get('ODE_NEWS_GROQ_MODEL', MODEL)
             from news_free_fallback import enabled
             has_backup = has_backup or enabled()
-            if seconds > (90 if has_backup else 600):
+            if seconds > (360 if has_backup else 900):
                 globals().setdefault('_model_cooldowns', {})[selected] = time.monotonic() + seconds
                 return unavailable("primary_quota_retry_later")
             time.sleep(seconds)
