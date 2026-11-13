@@ -133,7 +133,7 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
         return unavailable('recorded_quota_cooldown')
     completion_budget = max_output_tokens or (5800 if json_mode else 2000)
     if selected != "openai/gpt-oss-120b":
-        completion_budget = min(completion_budget, 2500)
+        completion_budget = min(completion_budget, 3600)
     payload: dict[str, Any] = {
         "model": selected,
         "messages": [

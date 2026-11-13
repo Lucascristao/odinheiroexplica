@@ -183,6 +183,27 @@ def normalize_draft_metadata(episode):
         scorecard.setdefault('method', 'comparative_factual_tension')
         scorecard.setdefault('reason', 'Opção selecionada entrega a tensão factual central com maior clareza e promessa entregue na abertura.')
         scorecard.setdefault('criteria', {'clarity': 5, 'relevance': 5, 'tension': 5})
+
+    # Normalize hashtags: 1 to 3 valid hashtags, formatted as #[^\s#]+
+    raw_tags = episode.get('hashtags')
+    cleaned_tags = []
+    seen_tags = set()
+    if isinstance(raw_tags, list):
+        for t in raw_tags:
+            if isinstance(t, str) and t.strip():
+                clean = re.sub(r'[\s#]+', '', t.strip())
+                if clean:
+                    tag = '#' + clean
+                    if tag.casefold() not in seen_tags:
+                        seen_tags.add(tag.casefold())
+                        cleaned_tags.append(tag)
+    if not cleaned_tags:
+        pk = re.sub(r'[\s\W]+', '', str(episode.get('primary_keyword') or ''))
+        if pk:
+            cleaned_tags.append('#' + pk)
+        cleaned_tags.append('#Economia')
+        cleaned_tags.append('#ODinheiroExplica')
+    episode['hashtags'] = cleaned_tags[:3]
     return episode
 
 
