@@ -7,8 +7,8 @@ import requests
 
 ENDPOINT = 'https://openrouter.ai/api/v1/chat/completions'
 MODELS = (
-    'baidu/ernie-5.5-flash-preview:free',
     'dots-studio/dots-3-note-preview:free',
+    'baidu/ernie-5.5-flash-preview:free',
     'nvidia/nemotron-3.5-super-vl:free',
     'particle-ai/particle-1:free',
 )
@@ -109,16 +109,12 @@ def complete_free(prompt, *, json_mode=False, diagnostics=None, max_output_token
             except (ValueError, KeyError, TypeError, IndexError, AttributeError):
                 if diagnostics is not None:
                     diagnostics['response_error'] = response_error
-                # Empty/truncated/malformed transport output is not a factual
-                # verdict. A second fixed free model can retry the SAME task.
                 if attempt == 0:
                     payload['model'] = MODELS[1]
                     payload['models'] = [MODELS[1]]
                     print('OPENROUTER_FREE_RESPONSE_RETRY', response_error, flush=True)
                     continue
                 raise RuntimeError('OpenRouter free fallback returned ' + response_error) from None
-            # Record which free model actually served the request, not only the
-            # router name; never copy prompts, reasoning, headers or error bodies.
             actual = str(data.get('model', ''))
             if not re.fullmatch(r'[a-zA-Z0-9._-]+/[a-zA-Z0-9._:/-]{1,160}', actual):
                 actual = MODEL
@@ -137,15 +133,13 @@ def complete_free(prompt, *, json_mode=False, diagnostics=None, max_output_token
             print('OPENROUTER_FREE_STATUS_RETRY', response.status_code, 'switching to', MODELS[1], flush=True)
             time.sleep(5)
             continue
-        # Long quota waits are handled by the recurring recovery, never by
-        # switching to a paid model or weakening the factual verdict.
         if response.status_code in (429, 500, 502, 503, 504) and attempt == 0:
             try:
-                wait = max(5, float(response.headers.get('retry-after', 15)))
+                wait = float(response.headers.get('retry-after', 15))
             except (ValueError, TypeError):
                 wait = 15
             if wait <= 60:
-                time.sleep(wait)
+                time.sleep(max(5, wait))
                 payload['model'] = MODELS[1]
                 payload['models'] = list(MODELS[1:])
                 print('OPENROUTER_FREE_STATUS_RETRY', response.status_code, 'switching to', MODELS[1], flush=True)
