@@ -388,19 +388,24 @@ def research(candidates, history, target, diagnostic_path=None, *, _corpus=None,
         # A short snippet is a lead, never the completed factual verification.
         leads = [{k: entry[k] for k in ("headline", "publisher_host", "url", "feed_published_utc")}
                  | {"lead": entry["actual_article_text"][:500]} for entry in corpus]
-        selector = complete(f"""Selecione uma pauta candidata para o canal O Dinheiro Explica na data factual {day}.
+        try:
+            selector = complete(f"""Selecione uma pauta candidata para o canal O Dinheiro Explica na data factual {day}.
 Use SOMENTE estas pistas reais: {json.dumps(leads, ensure_ascii=False)}
 Histórico recente a evitar: {json.dumps(prompt_history[:15], ensure_ascii=False)[:1800]}.
 Retorne JSON {{"selected_urls":[1 a 3 URLs exatas das pistas sobre O MESMO acontecimento],"candidate_review":[3 candidatas reais com subject,topic_area,event_date (null se ainda desconhecida),urls,decision]}}.
 Prefira uma pauta com contexto e evidências suficientes para explicar o assunto por pelo menos 3 minutos, sem repetir uma declaração isolada nem inventar consequências.
-Priorize política, economia e empresas, tensão factual/contradição/consequência que possa ser demonstrada. Evite celebridade genérica, tragédia sem pertinência e recorde sem pergunta interessante. Não inventar interesse medido, CTR, fatos ou datas. Fonte única pode ser candidata com atribuição; republicações da mesma agência não são independentes. Esta é triagem: os textos completos selecionados serão examinados a seguir, ainda sem aprovação factual. Escolha as melhores pistas de acontecimento novo em {day}, sem confundir dia da reportagem com dia do fato.""", json_mode=True, max_output_tokens=1100)
-        selection = json.loads(selector)
-        urls = selection.get("selected_urls", [])
-        if (not isinstance(urls, list) or not 1 <= len(urls) <= 3
-                or len(set(urls)) != len(urls) or not set(urls) <= {entry["url"] for entry in corpus}):
-            raise RuntimeError("Research triage did not select real corpus URLs")
-        selected = [entry for entry in corpus if entry["url"] in urls]
-        candidate_review = selection.get("candidate_review")
+Priorize política, economia e empresas, tensão factual/contradição/consequência que possa ser demonstrada. Evite celebridade genérica, tragédia sem pertinência e recorde sem pergunta interessante. Não inventar interesse medido, CTR, fatos ou datas. Fonte única pode ser candidata com atribuição; republicações da mesma agência não são independentes. Esta é triagem: os textos completos selecionados serão examinados a seguir, ainda sem aprovação factual. Escolha as melhores pistas de acontecimento novo em {day}, sem confundir dia da reportagem com dia do fato.""", json_mode=True, max_output_tokens=2800)
+            selection = json.loads(selector)
+            urls = selection.get("selected_urls", [])
+            if (isinstance(urls, list) and 1 <= len(urls) <= 3
+                    and len(set(urls)) == len(urls) and set(urls) <= {entry["url"] for entry in corpus}):
+                selected = [entry for entry in corpus if entry["url"] in urls]
+                candidate_review = selection.get("candidate_review")
+            else:
+                selected = corpus[:3]
+        except Exception as exc:
+            print(f"TRIAGE_FALLBACK_TO_TOP_CORPUS: {exc}", flush=True)
+            selected = corpus[:3]
     # Keep below the Groq free-plan TPM limit. Literal excerpts + real URLs are
     # the only evidence the editor may use; full pages remain checked downstream.
     compact = [
