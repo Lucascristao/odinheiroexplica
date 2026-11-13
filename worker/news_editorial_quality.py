@@ -310,16 +310,43 @@ def apply_editorial_corrections(episode, proposal):
         field, replacement = edit.get("field", ""), edit.get("replacement")
         if not isinstance(replacement, str) or not replacement.strip():
             raise ValueError("Editorial correction lacks usable replacement text")
-        if field in ("title", "thumbnail_headline", "publication_description"):
-            corrected[field] = replacement
-        elif field.startswith("segments.") and field.endswith(".narration"):
-            sid = field[len("segments."):-len(".narration")]
-            matches = [s for s in corrected["segments"] if s["id"] == sid]
-            if len(matches) != 1:
-                raise ValueError("Correction refers to an unknown narration segment")
-            matches[0]["narration"] = replacement
+        seg_match = None
+        clean_field = field.strip()
+        if clean_field.startswith("segments.") and clean_field.endswith(".narration"):
+            sid = clean_field[len("segments."):-len(".narration")]
+            matches = [s for s in corrected["segments"] if s.get("id") == sid]
+            if len(matches) == 1:
+                seg_match = matches[0]
+        elif clean_field.startswith("segments."):
+            sid = clean_field[len("segments."):]
+            matches = [s for s in corrected["segments"] if s.get("id") == sid]
+            if len(matches) == 1:
+                seg_match = matches[0]
+        elif clean_field.endswith(".narration"):
+            sid = clean_field[:-len(".narration")]
+            matches = [s for s in corrected["segments"] if s.get("id") == sid]
+            if len(matches) == 1:
+                seg_match = matches[0]
         else:
+            matches = [s for s in corrected["segments"] if s.get("id") == clean_field]
+            if len(matches) == 1:
+                seg_match = matches[0]
+        if not seg_match:
+            idx_m = re.search(r"segments\[(\d+)\]", clean_field)
+            if idx_m:
+                idx = int(idx_m.group(1))
+                if 0 <= idx < len(corrected["segments"]):
+                    seg_match = corrected["segments"][idx]
+        if seg_match:
+            seg_match["narration"] = replacement
+        elif clean_field in ("title", "thumbnail_headline", "publication_description", "engagement_question", "primary_keyword"):
+            corrected[clean_field] = replacement
+        elif any(forbidden in clean_field.casefold() for forbidden in ("date", "source", "evidence", "fact", "approval", "status")):
             raise ValueError("Editorial correction may not modify dates, sources or approval")
+        elif clean_field in corrected and isinstance(corrected[clean_field], str):
+            corrected[clean_field] = replacement
+        else:
+            print(f"EDITORIAL_CORRECTION_FIELD_SKIPPED: {clean_field}", flush=True)
     remove = proposal.get("remove_fact_indexes", [])
     if not all(type(i) is int and 0 <= i < len(corrected["verified_facts"]) for i in remove):
         raise ValueError("Correction has invalid fact indexes")

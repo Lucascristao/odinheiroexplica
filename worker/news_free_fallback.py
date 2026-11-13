@@ -93,8 +93,19 @@ def complete_free(prompt, *, json_mode=False, diagnostics=None, max_output_token
                     raise ValueError('empty')
                 if json_mode or response_schema:
                     response_error = 'invalid_json_object'
-                    if not isinstance(json.loads(message), dict):
+                    text = message.strip()
+                    if text.startswith("```"):
+                        text = re.sub(r"^```(?:json)?\s*", "", text, flags=re.IGNORECASE)
+                        text = re.sub(r"\s*```$", "", text)
+                        text = text.strip()
+                    if not (text.startswith("{") and text.endswith("}")):
+                        m = re.search(r"(\{.*\})", text, re.DOTALL)
+                        if m:
+                            text = m.group(1).strip()
+                    parsed = json.loads(text)
+                    if not isinstance(parsed, dict):
                         raise ValueError('root')
+                    message = json.dumps(parsed, ensure_ascii=False)
             except (ValueError, KeyError, TypeError, IndexError, AttributeError):
                 if diagnostics is not None:
                     diagnostics['response_error'] = response_error
