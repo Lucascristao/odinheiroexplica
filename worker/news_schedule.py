@@ -91,6 +91,7 @@ def main():
     parser.add_argument("--date")
     parser.add_argument("--cron")
     parser.add_argument("--created-at")
+    parser.add_argument("--manual", action="store_true")
     args = parser.parse_args()
     config = load_config()
     now = datetime.now(timezone.utc)
@@ -102,6 +103,8 @@ def main():
     if slot not in slots(config):
         raise SystemExit("Unknown editorial slot")
     active, start, end = editorial_window(config, day, slot, now)
+    if args.manual:
+        active = True
     payload = {"NEWS_DATE": day, "NEWS_SLOT": slot, "NEWS_SLOT_ACTIVE": str(active).lower()}
     if os.getenv("GITHUB_ENV"):
         with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as stream:

@@ -60,7 +60,7 @@ jobs:
             CREATED="$(gh api "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID" --jq .created_at)"
             ARGS=(--cron "$CRON" --created-at "$CREATED")
           else
-            ARGS=(--slot "$SLOT")
+            ARGS=(--slot "$SLOT" --manual)
             if [[ -n "$NEWS_DAY" ]]; then ARGS+=(--date "$NEWS_DAY"); fi
           fi
           python worker/news_schedule.py "${ARGS[@]}"
