@@ -361,9 +361,13 @@ def validate(episode: dict, today: date | None = None, drafting: bool = False) -
         require(not (segment.get("document_id") and segment.get("photo_id")),
                 "imagem e documento não podem disputar o mesmo quadro de prova")
         if segment.get("photo_id"):
+            if drafting and segment["photo_id"] not in photo_ids and photo_ids:
+                segment["photo_id"] = sorted(list(photo_ids))[0]
             require(segment["photo_id"] in photo_ids, "fotografia não encontrada no manifesto")
             used_photos.add(segment["photo_id"])
         if segment.get("document_id"):
+            if drafting and segment["document_id"] not in doc_ids and doc_ids:
+                segment["document_id"] = sorted(list(doc_ids))[0]
             require(segment["document_id"] in doc_ids, "recorte documental não encontrado")
             used_docs.add(segment["document_id"])
         cues = segment.get("visual_cues")

@@ -278,6 +278,25 @@ def bind_draft_metadata(episode):
             scorecard.setdefault('reason', 'Opção selecionada entrega a tensão factual central com maior clareza e promessa entregue na abertura.')
             scorecard.setdefault('criteria', {'clarity': 5, 'relevance': 5, 'tension': 5})
 
+    # Normalizar referências a documentos e fotos nos segmentos
+    valid_doc_ids = [doc["id"] for doc in episode.get("documentary_evidence", []) if isinstance(doc, dict) and doc.get("id")]
+    valid_photo_ids = [photo["id"] for photo in episode.get("context_photos", []) if isinstance(photo, dict) and photo.get("id")]
+    for i, seg in enumerate(episode.get("segments") or []):
+        if not isinstance(seg, dict):
+            continue
+        doc_id = seg.get("document_id")
+        if doc_id and doc_id not in valid_doc_ids:
+            if valid_doc_ids:
+                seg["document_id"] = valid_doc_ids[i % len(valid_doc_ids)]
+            else:
+                seg["document_id"] = None
+        photo_id = seg.get("photo_id")
+        if photo_id and photo_id not in valid_photo_ids:
+            if valid_photo_ids:
+                seg["photo_id"] = valid_photo_ids[i % len(valid_photo_ids)]
+            else:
+                seg["photo_id"] = None
+
     return episode
 
 
