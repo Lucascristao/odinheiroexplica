@@ -65,7 +65,7 @@ def discover_groq_models(api_key: str) -> list[str]:
             for item in data:
                 if isinstance(item, dict) and "id" in item:
                     mid = item["id"]
-                    if not any(skip in mid for skip in ("whisper", "guard", "vision", "embed")):
+                    if not any(skip in mid for skip in ("whisper", "guard", "vision", "embed", "orpheus", "allam", "canopylabs")):
                         discovered.append(mid)
             if discovered:
                 print("GROQ_DISCOVERED_TEXT_MODELS:", discovered, flush=True)
@@ -102,7 +102,7 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
                     continue
                 print("GROQ_AVAILABILITY_FALLBACK", selected, alternate, reason, flush=True)
                 try:
-                    result = complete(prompt, json_mode=json_mode, model=alternate, max_retries=2,
+                    result = complete(prompt, json_mode=json_mode, model=alternate, max_retries=4,
                                       diagnostics=diagnostics, max_output_tokens=max_output_tokens, response_schema=response_schema)
                     if diagnostics is not None:
                         diagnostics.update(fallback_from=selected, fallback_reason=reason)
@@ -146,8 +146,9 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
         "reasoning_effort": "low",
         "stream": False,
     }
-    if "qwen" in selected or "deepseek" in selected:
+    if not selected.startswith("openai/"):
         payload.pop("reasoning_effort", None)
+    if "qwen" in selected or "deepseek" in selected:
         payload["reasoning_format"] = "parsed"
     if json_mode:
         payload["response_format"] = {"type": "json_object"}
