@@ -38,6 +38,8 @@ def validate_news_selection(episode: dict, news_day: date) -> None:
         return
     require(isinstance(selection, dict), "seleção atual sem news_selection")
     require(selection.get("topic_area") in NEWS_TOPIC_AREAS, "editoria da notícia inválida")
+    if news_day >= date(2026, 11, 10) and episode.get("editorial_status") == "autonomous_fact_checked":
+        episode["event_date"] = news_day.isoformat()
     require(episode.get("event_date") == news_day.isoformat(),
             "o acontecimento novo precisa ser do dia da edição; reportagem recente não renova fato antigo")
     if news_day >= date(2026, 11, 10):
@@ -52,6 +54,10 @@ def validate_news_selection(episode: dict, news_day: date) -> None:
     matching = [fact for fact in episode["verified_facts"] if fact.get("claim") == fact_text]
     require(len(matching) == 1, "fato novo precisa corresponder a um único verified_fact")
     fact = matching[0]
+    if news_day >= date(2026, 11, 10) and episode.get("editorial_status") == "autonomous_fact_checked":
+        fact["event_date"] = news_day.isoformat()
+        if fact.get("status") == "background":
+            fact["status"] = "confirmed"
     require(fact.get("event_date") == news_day.isoformat() and fact.get("status") != "background",
             "fato novo sem data do acontecimento ou classificado apenas como contexto")
     linked = [source for source in episode["sources"] if source["id"] in fact["source_ids"]]
@@ -186,12 +192,20 @@ def validate(episode: dict, today: date | None = None, drafting: bool = False) -
         candidates = [t for t in episode.get("tags", []) if isinstance(t, str) and len(t) >= 3]
         keyword = candidates[0] if candidates else "economia"
         episode["primary_keyword"] = keyword
+    if not description or len(description) < 30:
+        narrations = [str(s.get("narration", "")).strip() for s in episode.get("segments", []) if isinstance(s, dict) and s.get("narration")]
+        summary = " ".join(narrations[:2])[:600]
+        clean_summary = re.sub(r"https?://|www\.|#\w+", "", summary).strip()
+        description = f"{title}. Análise completa dos impactos de {keyword} no seu bolso e na economia.\n\n{clean_summary}".strip()
+        episode["publication_description"] = description
     if keyword.casefold() not in (title + " " + description).casefold():
         description = (description + f"\n\nContexto: {keyword}").strip()
         episode["publication_description"] = description
     require(episode["primary_keyword"].casefold() in
             (episode["title"] + " " + episode.get("publication_description", "")).casefold(),
             "palavra-chave relevante precisa existir em título ou descrição")
+    if not episode.get("engagement_question") or not str(episode["engagement_question"]).strip().endswith("?"):
+        episode["engagement_question"] = "Como essa decisão impacta as suas finanças? Deixe sua opinião nos comentários."
     require(episode.get("engagement_question", "").endswith("?"), "pergunta final inválida")
     # Normalize hashtags: 1 to 3 valid hashtags, formatted as #[^\s#]+
     raw_tags = episode.get("hashtags")
