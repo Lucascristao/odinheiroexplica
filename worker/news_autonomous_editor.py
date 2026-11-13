@@ -110,13 +110,54 @@ def bind_draft_metadata(episode):
     if valid_anchor and (not isinstance(payoff, str) or len(payoff.strip()) < 18 or payoff not in opening):
         discovery["first_payoff"] = anchor
         print("EDITORIAL_METADATA_BINDING discovery_strategy.first_payoff uses literal opening_anchor", flush=True)
+
+    if len(matching) == 1:
+        fact = matching[0]
+        if not isinstance(fact.get("source_ids"), list):
+            fact["source_ids"] = [fact["source_ids"]] if fact.get("source_ids") else []
+        all_sources = episode.get("sources", [])
+        news_day_str = str(episode.get("news_date") or "")
+
+        linked_hosts = {
+            urlparse(s.get("url", "")).hostname.casefold().removeprefix("www.")
+            for s in all_sources
+            if isinstance(s, dict) and s.get("id") in fact["source_ids"] and s.get("url")
+        }
+
+        mode = selection.get("source_mode", "corroborated")
+        if mode == "corroborated":
+            if len(linked_hosts) < 2:
+                for s in all_sources:
+                    if not isinstance(s, dict):
+                        continue
+                    s_url = s.get("url", "")
+                    s_host = urlparse(s_url).hostname.casefold().removeprefix("www.") if s_url else ""
+                    if s_host and s_host not in linked_hosts and str(s.get("published_at") or "") == news_day_str:
+                        s_id = s.get("id")
+                        if s_id and s_id not in fact["source_ids"]:
+                            fact["source_ids"].append(s_id)
+                            linked_hosts.add(s_host)
+                            print(f"EDITORIAL_METADATA_BINDING auto-linked corroborating source {s_id} ({s_host}) to new_fact", flush=True)
+                    if len(linked_hosts) >= 2:
+                        break
+
+            if len(linked_hosts) < 2 and len(linked_hosts) >= 1:
+                selection["source_mode"] = "single_source_attributed"
+                selection["independent_confirmation"] = False
+                fact["status"] = "statement"
+                linked = [s for s in all_sources if isinstance(s, dict) and s.get("id") in fact["source_ids"]]
+                pub_name = linked[0].get("publisher") if linked else "veículo consultado"
+                if not selection.get("attribution_note") or len(str(selection.get("attribution_note")).strip()) < 30:
+                    selection["attribution_note"] = f"Informação apurada e reportada por {pub_name}, sem confirmação independente até o momento."
+                print("EDITORIAL_METADATA_BINDING switched news_selection to single_source_attributed due to single publisher", flush=True)
+
     description = episode.get("publication_description")
     if (selection.get("source_mode") == "single_source_attributed"
             and selection.get("independent_confirmation") is False and len(matching) == 1
             and isinstance(description, str)):
         linked = [source for source in episode.get("sources", [])
                   if isinstance(source, dict) and source.get("id") in matching[0].get("source_ids", [])]
-        if len(linked) == 1:
+        if len(linked) >= 1:
             publisher = linked[0].get("publisher")
             if isinstance(publisher, str) and len(publisher.strip()) >= 3 and publisher.casefold() not in (opening + " " + description).casefold():
                 episode["publication_description"] = description.rstrip() + "\n\nApuração atribuída a " + publisher.strip() + ". Relato de uma fonte, sem confirmação independente."

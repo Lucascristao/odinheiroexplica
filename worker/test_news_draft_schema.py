@@ -258,5 +258,61 @@ class DerivedOpeningAndAttribution(unittest.TestCase):
         self.assertTrue(any(word in episode["segments"][3]["narration"] for word in ("inscreva", "inscrição")))
 
 
+    def test_corroborated_auto_links_second_publisher(self):
+        claim = "O Senado aprovou hoje o texto-base do pacote de ajuste fiscal."
+        episode = {
+            "news_date": "2026-11-12",
+            "segments": [
+                {"type": "fact", "narration": claim + " A votação foi concluída no início da noite."},
+            ],
+            "news_selection": {
+                "new_fact": claim,
+                "opening_anchor": claim,
+                "source_mode": "corroborated",
+                "independent_confirmation": True,
+            },
+            "verified_facts": [
+                {"claim": claim, "source_ids": ["S1"], "status": "confirmed", "event_date": "2026-11-12"},
+            ],
+            "sources": [
+                {"id": "S1", "publisher": "G1", "url": "https://g1.globo.com/politica/senado.ghtml", "published_at": "2026-11-12"},
+                {"id": "S2", "publisher": "Poder360", "url": "https://www.poder360.com.br/congresso/senado-aprova-ajuste.html", "published_at": "2026-11-12"},
+            ],
+            "discovery_strategy": {"first_payoff": claim},
+        }
+        EDITOR.bind_draft_metadata(episode)
+        self.assertIn("S2", episode["verified_facts"][0]["source_ids"])
+        self.assertEqual(len(episode["verified_facts"][0]["source_ids"]), 2)
+        self.assertEqual(episode["news_selection"]["source_mode"], "corroborated")
+
+    def test_single_publisher_switches_to_single_source_attributed(self):
+        claim = "O ministro antecipou em entrevista exclusiva novos cortes de gastos."
+        episode = {
+            "news_date": "2026-11-12",
+            "segments": [
+                {"type": "fact", "narration": claim + " A medida pegou o mercado financeiro de surpresa."},
+            ],
+            "news_selection": {
+                "new_fact": claim,
+                "opening_anchor": claim,
+                "source_mode": "corroborated",
+                "independent_confirmation": True,
+            },
+            "verified_facts": [
+                {"claim": claim, "source_ids": ["S1"], "status": "confirmed", "event_date": "2026-11-12"},
+            ],
+            "sources": [
+                {"id": "S1", "publisher": "Folha", "url": "https://www1.folha.uol.com.br/mercado/exclusivo.shtml", "published_at": "2026-11-12"},
+            ],
+            "discovery_strategy": {"first_payoff": claim},
+            "publication_description": "Análise da entrevista econômica do ministro e seus impactos.",
+        }
+        EDITOR.bind_draft_metadata(episode)
+        self.assertEqual(episode["news_selection"]["source_mode"], "single_source_attributed")
+        self.assertFalse(episode["news_selection"]["independent_confirmation"])
+        self.assertEqual(episode["verified_facts"][0]["status"], "statement")
+        self.assertIn("Folha", episode["publication_description"])
+
+
 if __name__ == "__main__":
     unittest.main(argv=[sys.argv[0]] + TEST_ARGS)
