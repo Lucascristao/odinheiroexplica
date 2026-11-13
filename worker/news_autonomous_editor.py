@@ -149,6 +149,27 @@ def bind_draft_metadata(episode):
                 print("EDITORIAL_METADATA_BINDING conclusion segment enriched with subscription CTA", flush=True)
             break
 
+    # Garantir hashtags válidas de 1 a 3
+    hashtags = episode.get("hashtags")
+    if isinstance(hashtags, list):
+        cleaned = []
+        for tag in hashtags:
+            if isinstance(tag, str) and tag.strip():
+                t = tag.strip()
+                if not t.startswith("#"):
+                    t = "#" + t
+                t = re.sub(r"\s+", "", t)
+                if t not in cleaned:
+                    cleaned.append(t)
+        if not cleaned:
+            pk = episode.get("primary_keyword", "")
+            if pk:
+                cleaned.append("#" + re.sub(r"\W+", "", pk))
+            cleaned.append("#ODinheiroExplica")
+        episode["hashtags"] = cleaned[:3]
+    elif not hashtags:
+        episode["hashtags"] = ["#Economia", "#ODinheiroExplica"]
+
     return episode
 
 
@@ -596,7 +617,8 @@ def main():
             episode = validate(episode, today=local.date(), drafting=True)
             prevent_repeated_story(episode, root, evaluation=args.evaluation)
             from news_editorial_quality import fetch_sources, develop, review, context_document_fallback, repair_after_review
-            corpus = fetch_sources(episode)
+            known_urls = list(set(re.findall(r'https?://[^\s"\'\)\]]+', report)))
+            corpus = fetch_sources(episode, known_urls=known_urls)
             # A correct headline alone is poor visual coverage of a developed
             # explanation. Select authentic body context before pixel capture;
             # source support is still decided by the independent review.

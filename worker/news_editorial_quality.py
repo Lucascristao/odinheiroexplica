@@ -24,11 +24,31 @@ def words(episode):
     return sum(len(segment["narration"].split()) for segment in episode["segments"])
 
 
-def fetch_sources(episode):
+def fetch_sources(episode, known_urls=None):
     corpus = {}
     for source in episode["sources"]:
-        response = requests.get(source["url"], timeout=25, headers={"User-Agent": "Mozilla/5.0 ODE-news-review/1.0"})
-        response.raise_for_status()
+        url = source["url"]
+        try:
+            response = requests.get(url, timeout=25, headers={"User-Agent": "Mozilla/5.0 ODE-news-review/1.0"})
+            response.raise_for_status()
+        except requests.HTTPError as exc:
+            resolved = False
+            candidates = known_urls or []
+            if candidates:
+                import difflib
+                matches = difflib.get_close_matches(url, candidates, n=1, cutoff=0.6)
+                if matches and matches[0] != url:
+                    try:
+                        print(f"SOURCE_URL_HEALED: {url} -> {matches[0]}", flush=True)
+                        response = requests.get(matches[0], timeout=25, headers={"User-Agent": "Mozilla/5.0 ODE-news-review/1.0"})
+                        response.raise_for_status()
+                        source["url"] = matches[0]
+                        url = matches[0]
+                        resolved = True
+                    except Exception:
+                        pass
+            if not resolved:
+                raise
         if "text/html" not in response.headers.get("Content-Type", "").lower():
             raise ValueError("Editorial review requires real publisher HTML")
         text = extract_article(response.text[:2000000])
