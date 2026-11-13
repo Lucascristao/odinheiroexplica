@@ -137,14 +137,32 @@ def normalize_draft_metadata(episode):
             except ValueError:
                 pass
     options = episode.get('title_options')
-    if isinstance(options, list) and options and all(isinstance(o, dict) for o in options):
-        for option in options:
-            if isinstance(option.get('editorial_quality'), str) and option['editorial_quality'] in ('1', '2', '3', '4', '5'):
-                option['editorial_quality'] = int(option['editorial_quality'])
-        if all(type(o.get('editorial_quality')) is int and isinstance(o.get('text'), str) for o in options):
-            best = max(o['editorial_quality'] for o in options)
-            if not any(o['text'] == episode.get('title') and o['editorial_quality'] == best for o in options):
-                episode['title'] = next(o['text'] for o in options if o['editorial_quality'] == best)
+    if isinstance(options, list) and options:
+        normalized_opts = []
+        for i, o in enumerate(options):
+            if isinstance(o, str):
+                normalized_opts.append({'text': o.strip(), 'editorial_quality': 5 if i == 0 else 4})
+            elif isinstance(o, dict) and isinstance(o.get('text'), str):
+                eq = o.get('editorial_quality')
+                try:
+                    eq = int(eq) if eq is not None else 4
+                except (ValueError, TypeError):
+                    eq = 4
+                eq = max(1, min(5, eq))
+                normalized_opts.append({'text': o['text'].strip(), 'editorial_quality': eq})
+        if normalized_opts:
+            episode['title_options'] = normalized_opts
+            best = max(o['editorial_quality'] for o in normalized_opts)
+            if not any(o['text'] == (episode.get('title') or '').strip() and o['editorial_quality'] == best for o in normalized_opts):
+                episode['title'] = next(o['text'] for o in normalized_opts if o['editorial_quality'] == best)
+    elif not isinstance(options, list) or not options:
+        t = (episode.get('title') or 'Notícia apurada do dia').strip()
+        episode['title_options'] = [
+            {'text': t, 'editorial_quality': 5},
+            {'text': t + ': entenda o impacto', 'editorial_quality': 4},
+            {'text': t + ': o que você precisa saber', 'editorial_quality': 4}
+        ]
+        episode['title'] = t
     return episode
 
 
