@@ -47,6 +47,34 @@ def _transport_metadata(data):
     }}
 
 
+def discover_groq_models(api_key: str) -> list[str]:
+    if not api_key or api_key.startswith("mock") or api_key.startswith("test") or "fixture" in api_key:
+        return []
+    cached = globals().get("_discovered_groq_models")
+    if cached is not None:
+        return cached
+    discovered = []
+    try:
+        resp = requests.get(
+            "https://api.groq.com/openai/v1/models",
+            headers={"Authorization": f"Bearer {api_key}"},
+            timeout=8
+        )
+        if resp.status_code == 200:
+            data = resp.json().get("data", [])
+            for item in data:
+                if isinstance(item, dict) and "id" in item:
+                    mid = item["id"]
+                    if not any(skip in mid for skip in ("whisper", "guard", "vision", "embed")):
+                        discovered.append(mid)
+            if discovered:
+                print("GROQ_DISCOVERED_TEXT_MODELS:", discovered, flush=True)
+    except Exception:
+        pass
+    globals()["_discovered_groq_models"] = discovered
+    return discovered
+
+
 def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
              max_retries: int = 4,
              diagnostics: dict[str, Any] | None = None,
@@ -61,6 +89,13 @@ def complete(prompt: str, *, json_mode: bool = False, model: str | None = None,
         # this branch, and no Google key/model is involved in editorial work.
         alternates = [name.strip() for name in os.environ.get("ODE_NEWS_GROQ_FALLBACK_MODELS", "").split(",") if name.strip()]
         primary = os.environ.get("ODE_NEWS_GROQ_MODEL", MODEL)
+        discovered = discover_groq_models(api_key)
+        if discovered:
+            valid_alternates = [a for a in alternates if a in discovered]
+            for m in discovered:
+                if m not in valid_alternates and m != primary:
+                    valid_alternates.append(m)
+            alternates = valid_alternates
         if selected == primary:
             for alternate in alternates:
                 if alternate == selected:
