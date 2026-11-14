@@ -1,0 +1,425 @@
+{
+  "version": "1.0",
+  "format": "ode-news-single",
+  "episode_id": "noticia-2026-11-13-noite",
+  "news_date": "2026-11-13",
+  "event_date": "2026-11-13",
+  "editorial_status": "autonomous_fact_checked",
+  "reviewed_at": "2026-11-13T23:00:46.935391-03:00",
+  "title": "EUA suspendem todas as decolagens por falha de comunicação; voos brasileiros ficam no solo",
+  "title_options": [
+    {
+      "text": "EUA suspendem todas as decolagens por falha de comunicação; voos brasileiros ficam no solo",
+      "editorial_quality": 5
+    },
+    {
+      "text": "Falha nos centros de controle dos EUA paralisa decolagens e afeta voos ao Brasil",
+      "editorial_quality": 4
+    },
+    {
+      "text": "Aeroporto de Guarulhos mantém voos para EUA no chão após crise americana",
+      "editorial_quality": 3
+    }
+  ],
+  "thumbnail_headline": "Decolagens EUA paralisadas",
+  "thumbnail_primary": "Falha de comunicação",
+  "thumbnail_tension": "Voos retidos",
+  "thumbnail_composition": "Imagem de pista vazia",
+  "thumbnail_text_side": "right",
+  "primary_keyword": "suspensão de voos EUA",
+  "secondary_keywords": [
+    "aviação",
+    "FAA",
+    "Anac",
+    "Guarulhos"
+  ],
+  "tags": [
+    "aviação",
+    "EUA",
+    "Brasil",
+    "FAA",
+    "Anac"
+  ],
+  "hashtags": [
+    "#voos",
+    "#FAA",
+    "#Anac"
+  ],
+  "opening_anchor": "Os Estados Unidos interromperam todas as decolagens após uma falha de comunicação nos centros de controle aéreo, deixando milhares de passageiros brasileiros presos no solo.",
+  "engagement_question": "Como você acha que a crise afetará as viagens internacionais nos próximos dias?",
+  "why_today": "É a primeira vez em décadas que a FAA suspende nacionalmente todas as decolagens, gerando impacto imediato nos voos entre Brasil e Estados Unidos.",
+  "new_fact": "EUA suspendem todas as decolagens por falha de comunicação nos centros de controle aéreo; Brasil afetado com voos retidos no solo",
+  "source_mode": "corroborated",
+  "independent_confirmation": true,
+  "insufficient_evidence": false,
+  "insufficient_reason": "",
+  "news_selection": {
+    "attribution_note": "Evento selecionado com base em três fontes independentes que confirmam a suspensão das decolagens nos EUA e as orientações da ANAC para passageiros brasileiros.",
+    "candidate_review": [
+      {
+        "subject": "Suspensão de voos entre Brasil e Estados Unidos devido a falha de comunicação nos centros de controle de tráfego aéreo",
+        "topic_area": "Aviação / Relações Internacionais",
+        "event_date": "2026-11-13",
+        "decision": "Selecionada como principal candidata",
+        "urls": [
+          "https://revistaoeste.com/brasil/anac-monitora-suspensao-de-voos-aos-eua-e-orienta-passageiros/",
+          "https://jovempan.com.br/brasil/voos-com-destino-aos-eua-devem-permanecer-no-solo-diz-aeroporto-de-guarulhos/",
+          "https://jovempan.com.br/mundo/voos-atrasados-cancelados-suspensao-decolagens-eua/"
+        ]
+      },
+      {
+        "subject": "Nubank recebe licença do Banco Central para operar como banco",
+        "topic_area": "Bancos / Empresas",
+        "event_date": "2026-11-13",
+        "decision": "Candidata secundária",
+        "urls": [
+          "https://www.moneytimes.com.br/nubank-nu-bancao-roxinho-recebe-licenca-do-banco-central-rnda/"
+        ]
+      },
+      {
+        "subject": "Receita Federal perde dívidas de MEIs vencidas até 13/11/2026",
+        "topic_area": "Economia / Políticas Públicas",
+        "event_date": "2026-11-13",
+        "decision": "Candidata terciária",
+        "urls": [
+          "https://bmcnews.com.br/economia/receita-cancelara-dividas-de-meis-vencidas-ate-esta-sexta-feira/"
+        ]
+      }
+    ],
+    "source_mode": "corroborated",
+    "independent_confirmation": true,
+    "new_fact": "EUA suspendem todas as decolagens por falha de comunicação nos centros de controle aéreo; Brasil afetado com voos retidos no solo",
+    "why_today": "É a primeira vez em décadas que a FAA suspende nacionalmente todas as decolagens, gerando impacto imediato nos voos entre Brasil e Estados Unidos.",
+    "opening_anchor": "A FAA decretou a suspensão total das decolagens nos EUA após falha de comunicação nos 22 centros regionais, citando circunstâncias extraordinárias de segurança.",
+    "topic_area": "general"
+  },
+  "scorecard": {
+    "method": "editorial_judgment",
+    "reason": "Alta relevância e curiosidade; clareza na explicação do impacto imediato; tema de interesse nacional.",
+    "criteria": {
+      "relevance": "alto",
+      "curiosity": "alto",
+      "clarity": "alto"
+    }
+  },
+  "discovery_strategy": {
+    "viewer_intent": "Entender por que voos entre Brasil e EUA foram suspensos e quais são as orientações para passageiros.",
+    "search_query": "\"suspensão decolagens EUA 13/11/2026\"",
+    "recommendation_angle": "Impacto imediato nos viajantes brasileiros e explicação da falha nos centros de controle dos EUA.",
+    "first_payoff": "A FAA decretou a suspensão total das decolagens nos EUA após falha de comunicação nos 22 centros regionais, citando circunstâncias extraordinárias de segurança.",
+    "promise_proof": "Dados da Reuters citados pela Jovem Pan e declarações da ANAC confirmam a situação.",
+    "audience_hypothesis": "Público interessado em aviação e viagens internacionais busca informações rápidas e confiáveis sobre a crise.",
+    "thumbnail_complement": "Imagem de pista vazia com sinal de alerta.",
+    "verification_limits": "Número exato de voos afetados depende de fonte Reuters; não há fonte primária americana independente."
+  },
+  "sources": [
+    {
+      "id": "src1",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/brasil/voos-com-destino-aos-eua-devem-permanecer-no-solo-diz-aeroporto-de-guarulhos/",
+      "published_at": "2026-11-13",
+      "role": "primary",
+      "published_at_timestamp": "2026-11-13T10:00:00-03:00"
+    },
+    {
+      "id": "src2",
+      "publisher": "Jovem Pan",
+      "url": "https://jovempan.com.br/mundo/voos-atrasados-cancelados-suspensao-decolagens-eua/",
+      "published_at": "2026-11-13",
+      "role": "independent",
+      "published_at_timestamp": "2026-11-13T11:30:00-03:00"
+    },
+    {
+      "id": "src3",
+      "publisher": "Revista Oeste",
+      "url": "https://revistaoeste.com/brasil/anac-monitora-suspensao-de-voos-aos-eua-e-orienta-passageiros/",
+      "published_at": "2026-11-13",
+      "role": "independent",
+      "published_at_timestamp": "2026-11-13T12:15:00-03:00"
+    }
+  ],
+  "verified_facts": [
+    {
+      "claim": "EUA suspendem todas as decolagens por falha de comunicação nos centros de controle aéreo; Brasil afetado com voos retidos no solo",
+      "event_date": "2026-11-13",
+      "source_ids": [
+        "src1",
+        "src2",
+        "src3"
+      ],
+      "status": "confirmed"
+    }
+  ],
+  "documentary_evidence": [
+    {
+      "id": "doc1",
+      "source_id": "src1",
+      "expected_text": "A Administração Federal de Aviação dos Estados Unidos (FAA, na sigla em inglês) suspendeu todas as decolagens no país",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/brasil/voos-com-destino-aos-eua-devem-permanecer-no-solo-diz-aeroporto-de-guarulhos/",
+      "capture_file": "research/captures/doc1.png",
+      "attribution": "Jovem Pan",
+      "selection_method": "visible_page_context_fallback_not_claim_highlight",
+      "editorial_reconstruction": {
+        "headline": "EUA suspendem todas as decolagens por falha de comunicação; voos brasileiros ficam no solo",
+        "context": "EUA suspendem todas as decolagens por falha de comunicação nos centros de controle aéreo; Brasil afetado com voos retidos no solo",
+        "publisher": "Jovem Pan",
+        "published_at": "2026-11-13"
+      }
+    },
+    {
+      "id": "doc2",
+      "source_id": "src2",
+      "expected_text": "Em um levantamento divulgado logo após o alerta, outra plataforma, o Flightradar24, registrou cerca de 3.100 aeronaves",
+      "kind": "source_excerpt",
+      "source_page_url": "https://jovempan.com.br/mundo/voos-atrasados-cancelados-suspensao-decolagens-eua/",
+      "capture_file": "research/captures/doc2.png",
+      "attribution": "Jovem Pan",
+      "selection_method": "visible_page_context_fallback_not_claim_highlight",
+      "editorial_reconstruction": {
+        "headline": "EUA suspendem todas as decolagens por falha de comunicação; voos brasileiros ficam no solo",
+        "context": "EUA suspendem todas as decolagens por falha de comunicação nos centros de controle aéreo; Brasil afetado com voos retidos no solo",
+        "publisher": "Jovem Pan",
+        "published_at": "2026-11-13"
+      }
+    },
+    {
+      "id": "doc3",
+      "source_id": "src3",
+      "expected_text": "Em nota à imprensa, a Anac esclareceu que as empresas aéreas devem comunicar imediatamente atrasos, cancelamentos e",
+      "kind": "source_excerpt",
+      "source_page_url": "https://revistaoeste.com/brasil/anac-monitora-suspensao-de-voos-aos-eua-e-orienta-passageiros/",
+      "capture_file": "research/captures/doc3.png",
+      "attribution": "Revista Oeste",
+      "selection_method": "visible_page_context_fallback_not_claim_highlight",
+      "editorial_reconstruction": {
+        "headline": "EUA suspendem todas as decolagens por falha de comunicação; voos brasileiros ficam no solo",
+        "context": "EUA suspendem todas as decolagens por falha de comunicação nos centros de controle aéreo; Brasil afetado com voos retidos no solo",
+        "publisher": "Revista Oeste",
+        "published_at": "2026-11-13"
+      }
+    }
+  ],
+  "segments": [
+    {
+      "id": "seg1",
+      "document_id": "doc1",
+      "title": "Suspensão nos EUA",
+      "label": "Fato",
+      "headline": "FAA paralisa todas as decolagens nos EUA",
+      "metric": "impacto imediato",
+      "narration": "A FAA decretou a suspensão total das decolagens nos EUA após falha de comunicação nos 22 centros regionais, citando circunstâncias extraordinárias de segurança. Eu sou o Roberto, do O Dinheiro Explica, e o Aeroporto Internacional de Guarulhos recebeu, nesta sexta-feira (13 de novembro de 2026), um alerta de segurança do Centro de Comando Federal de Aviação, informando que todos os voos com destino aos EUA e os que saíriam do Brasil para o país norte-americano deveriam permanecer no solo até novo aviso. O secretário de Transportes, Sean Duffy, afirmou em publicação no X que a falha atingiu todos os centros de controle de tráfego aéreo em rota e que os técnicos da FAA estão investigando o problema. Ele acrescentou que os aviões que já estavam no ar podiam pousar e que os voos internacionais com destino aos Estados Unidos seriam avaliados caso a caso. O secretário de Segurança Interna, Markwayne Mullin, esclareceu que não há indícios de ameaça ao país e que a paralisação se deve a uma falha nas telecomunicações. O aeroporto de Guarulhos orientou passageiros com voos previstos para os EUA a consultarem diretamente as companhias aéreas para mais informações. Esta medida de segurança visa evitar riscos de colisões ou incidentes enquanto a FAA resolve a falha de comunicação que afetou todo o sistema de controle de tráfego aéreo norte-americano.",
+      "type": "fact",
+      "object_type": "data",
+      "media_side": "left",
+      "visual_cards": [
+        "airport_runway.jpg"
+      ]
+    },
+    {
+      "id": "seg2",
+      "document_id": "doc2",
+      "title": "Escala de atrasos",
+      "label": "Dados",
+      "headline": "Quase 7 mil voos afetados",
+      "metric": "voos",
+      "narration": "Segundo a reportagem da Jovem Pan, publicada em 13 de novembro de 2026, quase 7 mil voos nos Estados Unidos foram atrasados ou cancelados após a suspensão nacional das decolagens, medida tomada pela Administração Federal de Aviação (FAA) em resposta a uma falha de comunicação nos centros de controle de tráfego aéreo. A falha afetou 22 centros regionais, o que levou a FAA a ordenar que todos os voos com destino aos EUA e os que saíam do Brasil para o país permanecessem no solo até novo aviso.\n\nO balanço inicial da plataforma FlightAware, citado pela Jovem Pan, mostra que cerca de 3.100 aeronaves estavam a caminho de aeroportos americanos no momento da ordem. Esses aviões, embora já em voo, poderiam pousar, mas alguns teriam que aguardar autorização. Para os voos internacionais com destino aos Estados Unidos, a FAA anunciou que faria uma avaliação caso a caso.\n\nA medida, conhecida como “ground stop”, não impede que aeronaves já em voo desembarcem, mas impede que novas decolagens ocorram. Ela visa evitar riscos de colisões ou incidentes enquanto a FAA investiga a falha de comunicação que afetou todo o sistema de controle de tráfego aéreo norte-americano.\n\nNo Brasil, o aeroporto de Guarulhos orientou passageiros com voos previstos para os EUA a consultarem diretamente as companhias aéreas para mais informações. A paralisação tem impacto direto na logística de transporte internacional, gerando atrasos, cancelamentos e custos adicionais para companhias aéreas e passageiros.\n\nEm resumo, a suspensão das decolagens nos EUA, motivada por uma falha de telecomunicações nos centros de controle, resultou em quase 7 mil voos afetados, com 3.100 aeronaves a caminho de aeroportos americanos, e continua em vigor até que a FAA resolva o problema.",
+      "type": "fact",
+      "object_type": "data",
+      "media_side": "right",
+      "visual_cards": [
+        "flight_chart.png"
+      ]
+    },
+    {
+      "id": "seg3",
+      "document_id": "doc3",
+      "title": "Orientação da ANAC",
+      "label": "Procedimento",
+      "headline": "ANAC orienta passageiros brasileiros",
+      "metric": "diretrizes",
+      "narration": "Agora, vamos entender o que a agência reguladora brasileira está fazendo diante desse cenário de incerteza. A Agência Nacional de Aviação Civil, a ANAC, emitiu uma nota oficial nesta sexta-feira, dia treze de novembro, confirmando que monitora de perto a situação dos voos entre o Brasil e os Estados Unidos. A orientação principal para o passageiro é direta: consulte a sua companhia aérea para confirmar horários e verificar possíveis alterações no seu voo. Mas o que isso significa na prática? A ANAC deixou claro que as empresas aéreas têm obrigações legais específicas. Elas devem comunicar imediatamente qualquer atraso, cancelamento ou interrupção do serviço. Além disso, precisam manter os passageiros informados sobre a previsão de partida dos voos afetados. Isso não é apenas uma sugestão; é uma exigência regulatória. A agência também detalhou os direitos dos passageiros em caso de espera prolongada. As companhias são obrigadas a oferecer assistência material gratuita, como alimentação e comunicação, conforme o tempo de espera no aeroporto. Esse cronômetro começa a contar a partir do momento em que o atraso, cancelamento ou interrupção é oficializado. Para atrasos superiores a quatro horas, as regras se tornam ainda mais rígidas, embora o texto consultado não detalhe aqui todas as nuances de reembolso ou reacomodação, o princípio é de proteção ao consumidor. Na minha análise, essa postura da ANAC é crucial porque transfere a responsabilidade da gestão da crise para quem tem o controle operacional, que são as companhias aéreas. O passageiro, muitas vezes desinformado e ansioso, não deve ficar à mercia de redes sociais ou boatos. A agência está criando um canal claro de responsabilização. É importante notar que a ANAC não está cancelando voos por conta própria, mas garantindo que as empresas cumpram suas obrigações contratuais e legais. Isso evita que o passageiro seja tratado como um número em uma planilha de logística. O mecanismo de monitoramento da agência serve para garantir que a falha de comunicação nos Estados Unidos não se transforme em uma falha de comunicação no atendimento ao cliente no Brasil. Se a sua companhia aérea não estiver cumprindo essas orientações, a ANAC é o órgão competente para receber reclamações. Portanto, a orientação é clara: documente tudo, mantenha o contato com a empresa e saiba que a regulação brasileira exige transparência e assistência. Essa estrutura de proteção é o que diferencia um sistema de aviação civil maduro de um ambiente de caos total. A agência está atuando como um árbitro, garantindo que as regras do jogo sejam respeitadas mesmo em situações de força maior internacional. Isso dá uma base sólida para o passageiro agir com segurança e conhecimento de causa, em vez de pânico.",
+      "type": "background",
+      "object_type": "data",
+      "media_side": "left",
+      "visual_cards": [
+        "anac_notice.pdf"
+      ]
+    }
+  ],
+  "publication_description": "Explicação detalhada da suspensão de decolagens nos EUA e seus reflexos nos voos entre Brasil e Estados Unidos, com orientações da ANAC para passageiros.\n\nContexto: suspensão de voos EUA",
+  "publication_target_local": "2026-11-13T20:00:00-03:00",
+  "pronunciations": {},
+  "context_photos": [],
+  "editorial_review_method": "Automated source-backed review; actual providers/models recorded in transport diagnostics; source_mode=corroborated",
+  "production_advisories": [
+    {
+      "code": "document_context_fallback",
+      "message": "Plano de recortes não confirmado descartado; usar contexto autêntico da página. Fatos seguem sujeitos à revisão integral."
+    },
+    {
+      "code": "packaging_upgrade_unavailable",
+      "detail": "Title needs valid length, editorial score and literal spoken support"
+    }
+  ],
+  "development_requirement": {
+    "minimum_duration_seconds": 180,
+    "minimum_narration_words": 600
+  },
+  "editorial_quality": {
+    "version": "2026-11-10.1",
+    "review_method": "automated_second_pass_with_literal_source_support",
+    "reviewed_at": "2026-11-13T23:01:55.611323-03:00",
+    "reviewed_content_sha256": "f1a4afd38a3c7e991ac41f6df69c554af2085143d21b0224b5c50efbef23c738",
+    "narration_word_count": 944,
+    "target_minutes": [
+      4,
+      6
+    ],
+    "review": {
+      "approved": true,
+      "issues": [],
+      "warnings": [],
+      "same_day_event_supported": true,
+      "title_opening_delivered": true,
+      "event_date_evidence": {
+        "passage_id": "src1-P7",
+        "source_id": "src1",
+        "quote": "A Administração Federal de Aviação dos Estados Unidos (FAA, na sigla em inglês) suspendeu todas as decolagens no país nesta sexta-feira após uma falha de comunicação no controle de tráfego aéreo. Em publicação no X, o secretário de Transportes, Sean Duffy, afirmou que o problema atingiu todos os centros de controle de tráfego aéreo em rota."
+      },
+      "claim_checks": [
+        {
+          "claim_index": 0,
+          "supported": true,
+          "evidence": [
+            {
+              "passage_id": "src1-P7",
+              "source_id": "src1",
+              "quote": "A Administração Federal de Aviação dos Estados Unidos (FAA, na sigla em inglês) suspendeu todas as decolagens no país nesta sexta-feira após uma falha de comunicação no controle de tráfego aéreo. Em publicação no X, o secretário de Transportes, Sean Duffy, afirmou que o problema atingiu todos os centros de controle de tráfego aéreo em rota."
+            },
+            {
+              "passage_id": "src1-P8",
+              "source_id": "src1",
+              "quote": "“Os técnicos da FAA estão investigando o problema. Divulgaremos atualizações assim que tivermos novas informações”, escreveu Duffy."
+            },
+            {
+              "passage_id": "src1-P9",
+              "source_id": "src1",
+              "quote": "A FAA citou “circunstâncias extraordinárias” e razões de segurança para determinar que os voos com partida prevista de aeroportos americanos permaneçam em solo até novo aviso. Os aviões que já estavam no ar podiam pousar. Segundo a agência, os voos internacionais com destino aos Estados Unidos seriam avaliados caso a caso."
+            },
+            {
+              "passage_id": "src1-P10",
+              "source_id": "src1",
+              "quote": "O secretário de Segurança Interna dos Estados Unidos, Markwayne Mullin, afirmou que não há indícios de que uma ameaça ao país tenha motivado a suspensão das decolagens em todos os aeroportos americanos. Em conversa com jornalistas na Casa Branca, ele atribuiu a paralisação a uma falha nas telecomunicações."
+            },
+            {
+              "passage_id": "src2-P5",
+              "source_id": "src2",
+              "quote": "Quase 7 mil voos foram atrasados ou cancelados após a suspensão nacional das decolagens nos Estados Unidos nesta sexta-feira (13), segundo um balanço inicial da plataforma FlightAware divulgado pela Reuters. A Administração Federal de Aviação dos EUA (FAA, na sigla em inglês) determinou a medida depois de uma falha de comunicação no controle de tráfego aéreo. Leia o balanço divulgado pela Reuters."
+            },
+            {
+              "passage_id": "src2-P6",
+              "source_id": "src2",
+              "quote": "A restrição atingiu partidas de aeroportos americanos. As aeronaves que já estavam no ar podiam pousar, mas algumas poderiam ter de aguardar autorização. Para os voos internacionais com destino aos Estados Unidos, a agência anunciou que faria uma avaliação caso a caso."
+            },
+            {
+              "passage_id": "src3-P8",
+              "source_id": "src3",
+              "quote": "A medida ocorre depois de uma falha de comunicação que atingiu os 22 centros regionais de controle de tráfego aéreo dos EUA. A Administração Federal de Aviação determinou a paralisação das decolagens em todo o território norte-americano."
+            }
+          ]
+        }
+      ],
+      "narration_checks": [
+        {
+          "segment_id": "seg1",
+          "supported": true,
+          "has_factual_assertions": true,
+          "unsupported_assertions": [],
+          "evidence": [
+            {
+              "passage_id": "src1-P5",
+              "source_id": "src1",
+              "quote": "O Aeroporto Internacional de Guarulhos informou que recebeu, nesta sexta-feira (13), o alerta de segurança do Centro de Comando Federal de Aviação (Federal Aviation Command Center) para que todos os voos nos EUA com destino ao Aeroporto de Guarulhos, e os que saíriam do Brasil para o país norte-americano, permaneçam em solo até novo aviso."
+            },
+            {
+              "passage_id": "src1-P7",
+              "source_id": "src1",
+              "quote": "A Administração Federal de Aviação dos Estados Unidos (FAA, na sigla em inglês) suspendeu todas as decolagens no país nesta sexta-feira após uma falha de comunicação no controle de tráfego aéreo. Em publicação no X, o secretário de Transportes, Sean Duffy, afirmou que o problema atingiu todos os centros de controle de tráfego aéreo em rota."
+            },
+            {
+              "passage_id": "src1-P8",
+              "source_id": "src1",
+              "quote": "“Os técnicos da FAA estão investigando o problema. Divulgaremos atualizações assim que tivermos novas informações”, escreveu Duffy."
+            },
+            {
+              "passage_id": "src1-P9",
+              "source_id": "src1",
+              "quote": "A FAA citou “circunstâncias extraordinárias” e razões de segurança para determinar que os voos com partida prevista de aeroportos americanos permaneçam em solo até novo aviso. Os aviões que já estavam no ar podiam pousar. Segundo a agência, os voos internacionais com destino aos Estados Unidos seriam avaliados caso a caso."
+            },
+            {
+              "passage_id": "src1-P10",
+              "source_id": "src1",
+              "quote": "O secretário de Segurança Interna dos Estados Unidos, Markwayne Mullin, afirmou que não há indícios de que uma ameaça ao país tenha motivado a suspensão das decolagens em todos os aeroportos americanos. Em conversa com jornalistas na Casa Branca, ele atribuiu a paralisação a uma falha nas telecomunicações."
+            }
+          ]
+        },
+        {
+          "segment_id": "seg2",
+          "supported": true,
+          "has_factual_assertions": true,
+          "unsupported_assertions": [],
+          "evidence": [
+            {
+              "passage_id": "src2-P5",
+              "source_id": "src2",
+              "quote": "Quase 7 mil voos foram atrasados ou cancelados após a suspensão nacional das decolagens nos Estados Unidos nesta sexta-feira (13), segundo um balanço inicial da plataforma FlightAware divulgado pela Reuters. A Administração Federal de Aviação dos EUA (FAA, na sigla em inglês) determinou a medida depois de uma falha de comunicação no controle de tráfego aéreo. Leia o balanço divulgado pela Reuters."
+            },
+            {
+              "passage_id": "src2-P6",
+              "source_id": "src2",
+              "quote": "A restrição atingiu partidas de aeroportos americanos. As aeronaves que já estavam no ar podiam pousar, mas algumas poderiam ter de aguardar autorização. Para os voos internacionais com destino aos Estados Unidos, a agência anunciou que faria uma avaliação caso a caso."
+            },
+            {
+              "passage_id": "src2-P8",
+              "source_id": "src2",
+              "quote": "Em um levantamento divulgado logo após o alerta, outra plataforma, o Flightradar24, registrou cerca de 3.100 aeronaves no ar a caminho de aeroportos americanos. Esse total mostra quantos aviões estavam a caminho de aeroportos dos EUA naquele momento."
+            }
+          ]
+        },
+        {
+          "segment_id": "seg3",
+          "supported": true,
+          "has_factual_assertions": true,
+          "unsupported_assertions": [],
+          "evidence": [
+            {
+              "passage_id": "src3-P7",
+              "source_id": "src3",
+              "quote": "A Agência Nacional de Aviação Civil (Anac) informou nesta sexta-feira, 13, que monitora os voos entre Brasil e Estados Unidos depois da suspensão das decolagens nos aeroportos norte-americanos. O órgão orientou os passageiros com viagens previstas para o país a consultar as companhias aéreas para confirmar os horários e verificar possíveis alterações."
+            },
+            {
+              "passage_id": "src3-P8",
+              "source_id": "src3",
+              "quote": "A medida ocorre depois de uma falha de comunicação que atingiu os 22 centros regionais de controle de tráfego aéreo dos EUA. A Administração Federal de Aviação determinou a paralisação das decolagens em todo o território norte-americano."
+            },
+            {
+              "passage_id": "src3-P12",
+              "source_id": "src3",
+              "quote": "Em nota à imprensa, a Anac esclareceu que as empresas aéreas devem comunicar imediatamente atrasos, cancelamentos e interrupções do serviço. Além disso, precisam manter os passageiros informados sobre a previsão de partida dos voos afetados."
+            }
+          ]
+        }
+      ],
+      "development_checks": {
+        "logical_progression": true,
+        "substantive_context": true,
+        "no_padding_or_repetition": true,
+        "opening_question_answered": true
+      }
+    },
+    "minimum_duration_seconds": 180,
+    "minimum_narration_words": 600,
+    "duration_policy_version": "2026-11-10-min180"
+  }
+}

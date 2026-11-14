@@ -1,0 +1,38 @@
+{
+  "version": "1.0",
+  "project_id": "noticia-2026-11-13-noite",
+  "project_sha256": "b2764881f1836f64670fed85ac45d87ed14d6e3898c91df066526522a575e7f3",
+  "contract_sha256": "1db6d0c598ccaeef6e8c6ebaf8c1f70910e18cf20b3cc1482288aa9d32d33837",
+  "image_sha256": "b0ff39c25fe0cc71c80ebaecdfb43c68520536304a2ba269565bc362e3479003",
+  "headline": "Decolagens EUA paralisadas",
+  "approval_status": "approved",
+  "reviewer": "Groq multimodal automated pixel reviewer; qwen/qwen3.8-27b",
+  "reviewed_at": "2026-11-14T02:03:58.311850+00:00",
+  "checks": {
+    "headline_exact": true,
+    "primary_subject": true,
+    "secondary_subject": true,
+    "forbidden_absent": true,
+    "identity_and_mobile": true,
+    "no_fabricated_data": true,
+    "unique_composition": true
+  },
+  "observations": {
+    "headline": "A headline 'Decolagens EUA paralisadas' está presente em amarelo, legível na thumbnail e perceptível na redução, sem deformação ou sobreposição indevida.",
+    "primary_subject": "O protagonista 'Falha de comunicação' é representado pelo documento em destaque no canto superior direito, que contém o texto da notícia sobre o incidente.",
+    "secondary_subject": "O retrato do apresentador Roberto está presente à esquerda, servindo como elemento de apoio e identidade do canal.",
+    "forbidden_absent": "Não foram detectados logotipos inventados, marcas d'água, textos extras ou cópias de capas de terceiros além do documento de fonte.",
+    "identity_and_mobile": "A paleta de cores (fundo escuro, texto amarelo) e a composição mantêm a legibilidade e a identidade visual mesmo na resolução reduzida de 320x180.",
+    "no_fabricated_data": "Os dados visíveis pertencem ao documento real exibido na imagem, sem a criação de informações fictícias ou documentos inventados.",
+    "unique_composition": "A composição é única, utilizando o layout de retrato à esquerda e prova documental à direita, sem parecer uma cópia genérica de terceiros."
+  },
+  "checked_forbidden_elements": [
+    "dados ou documentos inventados",
+    "cópias de capas de terceiros",
+    "foto apresentada como evidência de um evento diferente",
+    "logotipo inventado",
+    "texto extra",
+    "marca d'água"
+  ],
+  "observed_forbidden_elements": []
+}
